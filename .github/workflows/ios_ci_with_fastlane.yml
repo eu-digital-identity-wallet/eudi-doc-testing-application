@@ -1,0 +1,89 @@
+name: iOS Fastlane Tests
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: referenceApp
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Scenario 1
+        run: |
+          #!/bin/bash
+          mvn clean verify -Dcucumber.filter.tags="@WEB and @SCENARIO_01" $*
+          mvn serenity:aggregate
+          echo "Scenario 1 completed."
+
+      - name: Retrieve decodedHref
+        run: |
+          DECODED_HREF=$(cat decoded_url.txt)
+          echo "DECODED_HREF=$DECODED_HREF" >> $GITHUB_ENV
+        shell: bash
+        env:
+          JAVA_HOME: /Users/runner/hostedtoolcache/Java_Oracle_jdk/17/arm64/Contents/Home
+          JAVA_HOME_17_ARM64: /Users/runner/hostedtoolcache/Java_Oracle_jdk/17/arm64/Contents/Home
+          DECODED_HREF: ${{ env.DECODED_HREF }}
+
+      - name: Checkout Additional Repository
+        uses: actions/checkout@v3
+        with:
+          repository: eu-digital-identity-wallet/eudi-lib-ios-siop-openid4vp-swift
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use a token if the repo is private
+          path: 'eudi-lib-ios-siop-openid4vp-swift'  # Clones the repo into a directory with this name
+
+      - name: Setup Homebrew
+        run: brew update
+
+      - name: Install Fastlane
+        run: brew install fastlane
+
+      - name: List root directory contents
+        run: ls -la
+
+      - name: Check Fastlane directory
+        run: ls -la eudi-lib-ios-siop-openid4vp-swift/fastlane
+
+      - name: Print DECODED_HREF
+        run: echo "DECODED_HREF=${{ env.DECODED_HREF }}"
+
+      - name: Replace value in file
+        run: |
+             echo "Current directory:"
+             pwd
+             echo "Listing current directory contents:"
+             ls -l
+             cd eudi-lib-ios-siop-openid4vp-swift/Tests/DirectPost
+             echo "Listing target directory contents:"
+             ls -l
+             echo "Contents of DirectPostTests.swift before replacement:"
+             cat DirectPostTests.swift
+             FILE_PATH="./path/to/your/file.swift"
+             perl -pi -e 's|#06|${{ env.DECODED_HREF }}|g' DirectPostTests.swift
+             echo "Contents of DirectPostTests.swift after replacement:"
+             cat DirectPostTests.swift
+#           cd eudi-lib-ios-siop-openid4vp-swift/Tests/DirectPost
+#           sed -i '' 's|#06|#16|g' DirectPostTests.swift
+#          sed -i '' 's|#04|${{ env.DECODED_HREF }}|g' DirectPostJWTTests.swift
+#          sed -i '' 's|#05|${{ env.DECODED_HREF }}|g' DirectPostJWTTests.swift
+#          sed -i '' 's|#07|${{ env.DECODED_HREF }}|g' DirectPostJWTTests.swift
+
+      - name: Run Fastlane Tests
+        run: |
+          cd eudi-lib-ios-siop-openid4vp-swift
+          fastlane tests
+
+      - name: Upload Fastlane Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: fastlane-test-reports
+          path: eudi-lib-ios-siop-openid4vp-swift/fastlane/test_output/**/*
