@@ -1,2 +1,1 @@
 # Functional tests for EUDI Wallet
-
