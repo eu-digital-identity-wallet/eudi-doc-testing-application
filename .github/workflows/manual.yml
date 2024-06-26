@@ -23,7 +23,8 @@ jobs:
 
       - name: Run Ui Tests
         run: |
-         cd eu-digital-identity-walleteudi-doc-testing-application-internal
+         cd eudi-doc-testing-application-internal
+         ls -l
          mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
