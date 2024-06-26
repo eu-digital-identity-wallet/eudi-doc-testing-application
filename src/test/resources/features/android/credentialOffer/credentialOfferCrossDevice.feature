@@ -29,7 +29,7 @@ Feature: Credential issuance process for cross device
   @US_COCD_TC_05 @manual:Passed
   Scenario: Issuing the new document via QR code
     Given the user is presented with the credential details to be issued
-    When the user presses the ‘ISSUE’ button
+    When the user presses the ISSUE button manually
     Then the user should be redirected to the issuer service for authentication and consent
 
   @US_COCD_TC_06 @manual:Passed
@@ -43,7 +43,7 @@ Feature: Credential issuance process for cross device
   @US_COCD_TC_07 @manual:Passed
   Scenario: Viewing the newly added document on the dashboard
     Given the user sees a success message in the EUDI Wallet app
-    When the user presses the ‘CONTINUE’ button
+    When the user presses the CONTINUE button manually
     Then the new document should be presented in the dashboard screen
 
 

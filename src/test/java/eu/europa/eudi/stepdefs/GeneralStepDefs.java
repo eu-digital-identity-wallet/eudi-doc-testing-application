@@ -731,5 +731,20 @@ public class GeneralStepDefs{
     public void theNewDocumentIsDisplayedInTheDashboardScreenOfTheEUDIWalletApp() {
         //manual
     }
+
+    @When("the user clicks on the {string} option manually")
+    public void theUserClicksOnTheScanQROptionManually() {
+        //manual
+    }
+
+    @When("the user presses the ISSUE button manually")
+    public void theUserPressesTheISSUEButtonManually() {
+        //manual
+    }
+
+    @And("the user presses the CONTINUE button manually")
+    public void theUserPressesTheCONTINUEButtonManually() {
+        //manual
+    }
 }
 
