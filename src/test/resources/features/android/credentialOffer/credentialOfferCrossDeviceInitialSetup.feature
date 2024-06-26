@@ -36,6 +36,6 @@ Feature: Credential issuance on the cross device through the issuer service (fir
   @US_COCDIS_TC_06 @manual:Passed
   Scenario: User views success message and continues
     Given the user is redirected back to the EUDI Wallet app after the issuance
-    When a success message is displayed
+    When a success message is displayed manually
     And the user presses the CONTINUE button manually
     Then the new document is displayed in the dashboard screen
