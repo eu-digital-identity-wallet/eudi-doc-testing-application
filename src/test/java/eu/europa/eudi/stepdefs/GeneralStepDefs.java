@@ -474,210 +474,262 @@ public class GeneralStepDefs{
 
     @Given("the user has the EUDI Wallet app installed")
     public void theUserHasTheEUDIWalletAppInstalled() {
+        //manual
     }
 
     @When("the user opens the EUDI Wallet app")
     public void theUserOpensTheEUDIWalletApp() {
+        //manual
     }
 
     @And("the user enters their PIN correctly")
     public void theUserEntersTheirPINCorrectly() {
+        //manual
     }
 
     @Then("the dashboard page should be displayed")
     public void theDashboardPageShouldBeDisplayed() {
+        //manual
     }
 
     @Given("the user is on the dashboard page of the EUDI Wallet app")
     public void theUserIsOnTheDashboardPageOfTheEUDIWalletApp() {
+        //manual
     }
 
     @When("the user clicks on the ‘Add doc’ button")
     public void theUserClicksOnTheAddDocButton() {
+        //manual
     }
 
     @Then("the {string} page should be displayed")
     public void theAddDocumentPageShouldBeDisplayed() {
+        //manual
     }
 
     @Given("the user is on the {string} page")
     public void theUserIsOnTheAddDocumentPage() {
+        //manual
     }
 
     @When("the user clicks on the ‘Scan QR’ option")
     public void theUserClicksOnTheScanQROption() {
+        //manual
     }
 
     @Then("the QR code scanner should be activated")
     public void theQRCodeScannerShouldBeActivated() {
+        //manual
     }
 
     @Given("the QR code scanner is activated")
     public void theQRCodeScannerIsActivated() {
+        //manual
     }
 
     @When("the user scans a QR code from the issuer service")
     public void theUserScansAQRCodeFromTheIssuerService() {
+        //manual
     }
 
     @Then("the details of the credential to be issued should be displayed including the type of credential and the issuer name")
     public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheTypeOfCredentialAndTheIssuerName() {
+        //manual
     }
 
     @Given("the user is presented with the credential details to be issued")
     public void theUserIsPresentedWithTheCredentialDetailsToBeIssued() {
+        //manual
     }
 
     @Then("the user should be redirected to the issuer service for authentication and consent")
     public void theUserShouldBeRedirectedToTheIssuerServiceForAuthenticationAndConsent() {
+        //manual
     }
 
     @Given("the user is on the issuer's service page and has authenticated")
     public void theUserIsOnTheIssuerSServicePageAndHasAuthenticated() {
+        //manual
     }
 
     @When("the user consents to the issuance and inserts the credential")
     public void theUserConsentsToTheIssuanceAndInsertsTheCredential() {
+        //manual
     }
 
     @And("the credential issuance process completes")
     public void theCredentialIssuanceProcessCompletes() {
+        //manual
     }
 
     @Then("the user should be redirected back to the EUDI Wallet app")
     public void theUserShouldBeRedirectedBackToTheEUDIWalletApp() {
+        //manual
     }
 
     @And("a success message should appear")
     public void aSuccessMessageShouldAppear() {
+        //manual
     }
 
     @Then("the new document should be presented in the dashboard screen")
     public void theNewDocumentShouldBePresentedInTheDashboardScreen() {
+        //manual
     }
 
     @When("the user opens the EUDI Wallet for the first time")
     public void theUserOpensTheEUDIWalletForTheFirstTime() {
+        //manual
     }
 
     @Then("the user is prompted to set up a PIN")
     public void theUserIsPromptedToSetUpAPIN() {
+        //manual
     }
 
     @When("the user sets up the PIN successfully")
     public void theUserSetsUpThePINSuccessfully() {
+        //manual
     }
 
     @Then("the {string} page is displayed")
     public void theAddDocumentPageIsDisplayed() {
+        //manual
     }
 
     @Then("the camera is activated to scan a QR code")
     public void theCameraIsActivatedToScanAQRCode() {
+        //manual
     }
 
     @Given("the user has activated the camera to scan a QR code")
     public void theUserHasActivatedTheCameraToScanAQRCode() {
+        //manual
     }
 
     @When("the user scans the QR code from the issuer service")
     public void theUserScansTheQRCodeFromTheIssuerService() {
+        //manual
     }
 
     @Then("the user is presented with the details of the credential to be issued including the type of credential and issuer name")
     public void theUserIsPresentedWithTheDetailsOfTheCredentialToBeIssuedIncludingTheTypeOfCredentialAndIssuerName() {
+        //manual
     }
 
     @Given("the user is presented with the credential details")
     public void theUserIsPresentedWithTheCredentialDetails() {
+        //manual
     }
 
     @Then("the user is redirected to the issuer service for authentication and consent")
     public void theUserIsRedirectedToTheIssuerServiceForAuthenticationAndConsent() {
+        //manual
     }
 
     @Given("the user is at the issuer service page")
     public void theUserIsAtTheIssuerServicePage() {
+        //manual
     }
 
     @When("the user authenticates and consents to the issuance of the document")
     public void theUserAuthenticatesAndConsentsToTheIssuanceOfTheDocument() {
+        //manual
     }
 
     @Then("the credential is issued to the user")
     public void theCredentialIsIssuedToTheUser() {
+        //manual
     }
 
     @And("the user is redirected back to the EUDI Wallet app")
     public void theUserIsRedirectedBackToTheEUDIWalletApp() {
+        //manual
     }
 
     @Given("the user is redirected back to the EUDI Wallet app after the issuance")
     public void theUserIsRedirectedBackToTheEUDIWalletAppAfterTheIssuance() {
+        //manual
     }
 
     @Then("the new document is displayed in the dashboard screen")
     public void theNewDocumentIsDisplayedInTheDashboardScreen() {
+        //manual
     }
 
     @When("the user opens the issuer service")
     public void theUserOpensTheIssuerService() {
+        //manual
     }
 
     @And("selects to issue a credential")
     public void selectsToIssueACredential() {
+        //manual
     }
 
     @Then("the EUDI Wallet app opens")
     public void theEUDIWalletAppOpens() {
+        //manual
     }
 
     @Given("the EUDI Wallet app is open")
     public void theEUDIWalletAppIsOpen() {
+        //manual
     }
 
     @When("the user sets up a PIN successfully")
     public void theUserSetsUpAPINSuccessfully() {
+        //manual
     }
 
     @Then("the user is presented with details of the credential to be issued")
     public void theUserIsPresentedWithDetailsOfTheCredentialToBeIssued() {
+        //manual
     }
 
     @Given("the user has successfully set up a PIN")
     public void theUserHasSuccessfullySetUpAPIN() {
+        //manual
     }
 
     @When("the wallet app presents the details of the credential")
     public void theWalletAppPresentsTheDetailsOfTheCredential() {
+        //manual
     }
 
     @Then("the details include the type of credential and issuer name")
     public void theDetailsIncludeTheTypeOfCredentialAndIssuerName() {
+        //manual
     }
 
     @Given("the details of the credential are displayed")
     public void theDetailsOfTheCredentialAreDisplayed() {
+        //manual
     }
 
     @Given("the user is redirected to the issuer service")
     public void theUserIsRedirectedToTheIssuerService() {
+        //manual
     }
 
     @When("the user authenticates and consents to the issuance of the credential")
     public void theUserAuthenticatesAndConsentsToTheIssuanceOfTheCredential() {
+        //manual
     }
 
     @Then("the credential is inserted into the user's EUDI Wallet")
     public void theCredentialIsInsertedIntoTheUserSEUDIWallet() {
+        //manual
     }
 
     @Given("the user is redirected back to the EUDI Wallet app after the credential issuance")
     public void theUserIsRedirectedBackToTheEUDIWalletAppAfterTheCredentialIssuance() {
+        //manual
     }
 
     @Then("the new document is displayed in the dashboard screen of the EUDI Wallet app")
     public void theNewDocumentIsDisplayedInTheDashboardScreenOfTheEUDIWalletApp() {
+        //manual
     }
 }
 
