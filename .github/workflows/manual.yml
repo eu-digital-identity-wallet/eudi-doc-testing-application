@@ -22,9 +22,9 @@ jobs:
           node-version: '18.16.1'
 
       - name: Run Ui Tests
-        run: mvn clean verify -Dcucumber.filter.tags="@manual"
-        shell: cmd
-        working-directory: C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal
+        run: |
+         cd C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal
+         mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
         run: mvn serenity:aggregate
