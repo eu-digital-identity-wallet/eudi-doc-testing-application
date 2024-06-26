@@ -497,7 +497,7 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @When("the user clicks on the ‘Add doc’ button")
+    @When("the user clicks on the Add doc button")
     public void theUserClicksOnTheAddDocButton() {
         //manual
     }
