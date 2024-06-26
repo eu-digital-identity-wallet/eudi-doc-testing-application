@@ -502,17 +502,17 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @Then("the {string} page should be displayed")
+    @Then("the Add document page should be displayed")
     public void theAddDocumentPageShouldBeDisplayed() {
         //manual
     }
 
-    @Given("the user is on the {string} page")
+    @Given("the user is on the Add document page")
     public void theUserIsOnTheAddDocumentPage() {
         //manual
     }
 
-    @When("the user clicks on the ‘Scan QR’ option")
+    @When("the user clicks on the Scan QR option")
     public void theUserClicksOnTheScanQROption() {
         //manual
     }
@@ -592,7 +592,7 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @Then("the {string} page is displayed")
+    @Then("the Add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
         //manual
     }
@@ -732,7 +732,7 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @When("the user clicks on the {string} option manually")
+    @When("the user clicks on the Scan QR option manually")
     public void theUserClicksOnTheScanQROptionManually() {
         //manual
     }

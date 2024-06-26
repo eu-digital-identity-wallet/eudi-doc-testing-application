@@ -6,12 +6,12 @@ Feature: Credential issuance on the cross device through the issuer service (fir
     When the user opens the EUDI Wallet for the first time
     Then the user is prompted to set up a PIN
     When the user sets up the PIN successfully
-    Then the 'Add document' page is displayed
+    Then the Add document page is displayed
 
   @US_COCDIS_TC_02 @manual:Failed
   Scenario: User scans QR code to add a document
-    Given the user is on the 'Add document' page
-    When the user clicks on the 'Scan QR' option manually
+    Given the user is on the Add document page
+    When the user clicks on the Scan QR option manually
     Then the camera is activated to scan a QR code
 
   @US_COCDIS_TC_03 @manual:Passed
