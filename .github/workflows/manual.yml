@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Ui Tests
         run: |
-         cd C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal
+         cd eu-digital-identity-walleteudi-doc-testing-application-internal
          mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
