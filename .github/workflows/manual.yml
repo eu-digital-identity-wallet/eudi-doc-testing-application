@@ -1,5 +1,4 @@
 name: Ui Workflow
-# on push we will trigger our code
 on: [push]
 jobs:
   build:
@@ -23,7 +22,7 @@ jobs:
           node-version: '18.16.1'
 
       - name: Run Ui Tests
-        run: mvn clean verify -Dcucumber.filter.tags="@manual" %*
+        run: mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
         run: mvn serenity:aggregate
