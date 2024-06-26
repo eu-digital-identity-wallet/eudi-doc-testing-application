@@ -23,6 +23,7 @@ jobs:
 
       - name: Run Ui Tests
         run: mvn clean verify -Dcucumber.filter.tags="@manual"
+        shell: cmd
 
       - name: Produce report
         run: mvn serenity:aggregate
