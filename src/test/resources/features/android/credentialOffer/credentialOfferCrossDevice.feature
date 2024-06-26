@@ -42,7 +42,7 @@ Feature: Credential issuance process for cross device
 
   @US_COCD_TC_07 @manual:Passed
   Scenario: Viewing the newly added document on the dashboard
-    Given the user sees a success message in the EUDI Wallet app
+    Given the user sees a success message in the EUDI Wallet app manually
     When the user presses the CONTINUE button manually
     Then the new document should be presented in the dashboard screen
 

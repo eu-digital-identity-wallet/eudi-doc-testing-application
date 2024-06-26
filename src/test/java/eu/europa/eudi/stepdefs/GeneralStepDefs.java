@@ -746,5 +746,15 @@ public class GeneralStepDefs{
     public void theUserPressesTheCONTINUEButtonManually() {
         //manual
     }
+
+    @Given("the user sees a success message in the EUDI Wallet app manually")
+    public void theUserSeesASuccessMessageInTheEUDIWalletAppManually() {
+        //manual
+    }
+
+    @When("a success message is displayed manually")
+    public void aSuccessMessageIsDisplayedManually() {
+        //manual
+    }
 }
 

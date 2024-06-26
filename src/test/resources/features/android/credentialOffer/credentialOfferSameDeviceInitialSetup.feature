@@ -22,7 +22,7 @@ Feature: Credential issuance on the same device through the issuer service (firs
   @US_COSDIS_TC_04 @manual:Passed
   Scenario: User proceeds with the credential issuance process
     Given the details of the credential are displayed
-    When the user presses the ISSUE button
+    When the user presses the ISSUE button manually
     Then the user is redirected to the issuer service for authentication and consent
 
   @US_COSDIS_TC_05 @manual:Passed
@@ -35,6 +35,6 @@ Feature: Credential issuance on the same device through the issuer service (firs
   @US_COSDIS_TC_06 @manual:Passed
   Scenario: User views success message and accesses the new document
     Given the user is redirected back to the EUDI Wallet app after the credential issuance
-    When a success message is displayed
-    And the user presses the CONTINUE button
+    When a success message is displayed manually
+    And the user presses the CONTINUE button manually
     Then the new document is displayed in the dashboard screen of the EUDI Wallet app
