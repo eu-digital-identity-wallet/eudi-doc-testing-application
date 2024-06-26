@@ -471,5 +471,213 @@ public class GeneralStepDefs{
     public void theUserShouldBeAbleToPreviewThePID() {
         test.mobile().wallet().previewPid();
     }
+
+    @Given("the user has the EUDI Wallet app installed")
+    public void theUserHasTheEUDIWalletAppInstalled() {
+    }
+
+    @When("the user opens the EUDI Wallet app")
+    public void theUserOpensTheEUDIWalletApp() {
+    }
+
+    @And("the user enters their PIN correctly")
+    public void theUserEntersTheirPINCorrectly() {
+    }
+
+    @Then("the dashboard page should be displayed")
+    public void theDashboardPageShouldBeDisplayed() {
+    }
+
+    @Given("the user is on the dashboard page of the EUDI Wallet app")
+    public void theUserIsOnTheDashboardPageOfTheEUDIWalletApp() {
+    }
+
+    @When("the user clicks on the ‘Add doc’ button")
+    public void theUserClicksOnTheAddDocButton() {
+    }
+
+    @Then("the {string} page should be displayed")
+    public void theAddDocumentPageShouldBeDisplayed() {
+    }
+
+    @Given("the user is on the {string} page")
+    public void theUserIsOnTheAddDocumentPage() {
+    }
+
+    @When("the user clicks on the ‘Scan QR’ option")
+    public void theUserClicksOnTheScanQROption() {
+    }
+
+    @Then("the QR code scanner should be activated")
+    public void theQRCodeScannerShouldBeActivated() {
+    }
+
+    @Given("the QR code scanner is activated")
+    public void theQRCodeScannerIsActivated() {
+    }
+
+    @When("the user scans a QR code from the issuer service")
+    public void theUserScansAQRCodeFromTheIssuerService() {
+    }
+
+    @Then("the details of the credential to be issued should be displayed including the type of credential and the issuer name")
+    public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheTypeOfCredentialAndTheIssuerName() {
+    }
+
+    @Given("the user is presented with the credential details to be issued")
+    public void theUserIsPresentedWithTheCredentialDetailsToBeIssued() {
+    }
+
+    @Then("the user should be redirected to the issuer service for authentication and consent")
+    public void theUserShouldBeRedirectedToTheIssuerServiceForAuthenticationAndConsent() {
+    }
+
+    @Given("the user is on the issuer's service page and has authenticated")
+    public void theUserIsOnTheIssuerSServicePageAndHasAuthenticated() {
+    }
+
+    @When("the user consents to the issuance and inserts the credential")
+    public void theUserConsentsToTheIssuanceAndInsertsTheCredential() {
+    }
+
+    @And("the credential issuance process completes")
+    public void theCredentialIssuanceProcessCompletes() {
+    }
+
+    @Then("the user should be redirected back to the EUDI Wallet app")
+    public void theUserShouldBeRedirectedBackToTheEUDIWalletApp() {
+    }
+
+    @And("a success message should appear")
+    public void aSuccessMessageShouldAppear() {
+    }
+
+    @Then("the new document should be presented in the dashboard screen")
+    public void theNewDocumentShouldBePresentedInTheDashboardScreen() {
+    }
+
+    @When("the user opens the EUDI Wallet for the first time")
+    public void theUserOpensTheEUDIWalletForTheFirstTime() {
+    }
+
+    @Then("the user is prompted to set up a PIN")
+    public void theUserIsPromptedToSetUpAPIN() {
+    }
+
+    @When("the user sets up the PIN successfully")
+    public void theUserSetsUpThePINSuccessfully() {
+    }
+
+    @Then("the {string} page is displayed")
+    public void theAddDocumentPageIsDisplayed() {
+    }
+
+    @Then("the camera is activated to scan a QR code")
+    public void theCameraIsActivatedToScanAQRCode() {
+    }
+
+    @Given("the user has activated the camera to scan a QR code")
+    public void theUserHasActivatedTheCameraToScanAQRCode() {
+    }
+
+    @When("the user scans the QR code from the issuer service")
+    public void theUserScansTheQRCodeFromTheIssuerService() {
+    }
+
+    @Then("the user is presented with the details of the credential to be issued including the type of credential and issuer name")
+    public void theUserIsPresentedWithTheDetailsOfTheCredentialToBeIssuedIncludingTheTypeOfCredentialAndIssuerName() {
+    }
+
+    @Given("the user is presented with the credential details")
+    public void theUserIsPresentedWithTheCredentialDetails() {
+    }
+
+    @Then("the user is redirected to the issuer service for authentication and consent")
+    public void theUserIsRedirectedToTheIssuerServiceForAuthenticationAndConsent() {
+    }
+
+    @Given("the user is at the issuer service page")
+    public void theUserIsAtTheIssuerServicePage() {
+    }
+
+    @When("the user authenticates and consents to the issuance of the document")
+    public void theUserAuthenticatesAndConsentsToTheIssuanceOfTheDocument() {
+    }
+
+    @Then("the credential is issued to the user")
+    public void theCredentialIsIssuedToTheUser() {
+    }
+
+    @And("the user is redirected back to the EUDI Wallet app")
+    public void theUserIsRedirectedBackToTheEUDIWalletApp() {
+    }
+
+    @Given("the user is redirected back to the EUDI Wallet app after the issuance")
+    public void theUserIsRedirectedBackToTheEUDIWalletAppAfterTheIssuance() {
+    }
+
+    @Then("the new document is displayed in the dashboard screen")
+    public void theNewDocumentIsDisplayedInTheDashboardScreen() {
+    }
+
+    @When("the user opens the issuer service")
+    public void theUserOpensTheIssuerService() {
+    }
+
+    @And("selects to issue a credential")
+    public void selectsToIssueACredential() {
+    }
+
+    @Then("the EUDI Wallet app opens")
+    public void theEUDIWalletAppOpens() {
+    }
+
+    @Given("the EUDI Wallet app is open")
+    public void theEUDIWalletAppIsOpen() {
+    }
+
+    @When("the user sets up a PIN successfully")
+    public void theUserSetsUpAPINSuccessfully() {
+    }
+
+    @Then("the user is presented with details of the credential to be issued")
+    public void theUserIsPresentedWithDetailsOfTheCredentialToBeIssued() {
+    }
+
+    @Given("the user has successfully set up a PIN")
+    public void theUserHasSuccessfullySetUpAPIN() {
+    }
+
+    @When("the wallet app presents the details of the credential")
+    public void theWalletAppPresentsTheDetailsOfTheCredential() {
+    }
+
+    @Then("the details include the type of credential and issuer name")
+    public void theDetailsIncludeTheTypeOfCredentialAndIssuerName() {
+    }
+
+    @Given("the details of the credential are displayed")
+    public void theDetailsOfTheCredentialAreDisplayed() {
+    }
+
+    @Given("the user is redirected to the issuer service")
+    public void theUserIsRedirectedToTheIssuerService() {
+    }
+
+    @When("the user authenticates and consents to the issuance of the credential")
+    public void theUserAuthenticatesAndConsentsToTheIssuanceOfTheCredential() {
+    }
+
+    @Then("the credential is inserted into the user's EUDI Wallet")
+    public void theCredentialIsInsertedIntoTheUserSEUDIWallet() {
+    }
+
+    @Given("the user is redirected back to the EUDI Wallet app after the credential issuance")
+    public void theUserIsRedirectedBackToTheEUDIWalletAppAfterTheCredentialIssuance() {
+    }
+
+    @Then("the new document is displayed in the dashboard screen of the EUDI Wallet app")
+    public void theNewDocumentIsDisplayedInTheDashboardScreenOfTheEUDIWalletApp() {
+    }
 }
 
