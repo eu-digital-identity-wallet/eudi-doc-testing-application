@@ -2,7 +2,7 @@ name: Ui Workflow
 on: [push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout main repository
