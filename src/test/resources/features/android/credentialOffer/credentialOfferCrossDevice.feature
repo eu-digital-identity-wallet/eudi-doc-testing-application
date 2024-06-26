@@ -11,13 +11,13 @@ Feature: Credential issuance process for cross device
   @US_COCD_TC_02 @manual:Failed
   Scenario: Navigating to the 'Add document' page
     Given the user is on the dashboard page of the EUDI Wallet app
-    When the user clicks on the ‘Add doc’ button
-    Then the 'Add document' page should be displayed
+    When the user clicks on the Add doc button
+    Then the Add document page should be displayed
 
   @US_COCD_TC_03 @manual:Passed
   Scenario: Initiating the QR code scanning for document addition
-    Given the user is on the 'Add document' page
-    When the user clicks on the ‘Scan QR’ option
+    Given the user is on the Add document page
+    When the user clicks on the Scan QR option
     Then the QR code scanner should be activated
 
   @US_COCD_TC_04 @manual:Passed
