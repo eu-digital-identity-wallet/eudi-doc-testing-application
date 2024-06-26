@@ -17,9 +17,9 @@ jobs:
           distribution: 'oracle'
 
       - name: Set up Node JS 18.16.1
-        uses: actions/setup-node@latest  # Updated to use the latest version supporting Node.js 20
+        uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '18.16.1'
 
       - name: Run Ui Tests
         run: |
