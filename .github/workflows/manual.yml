@@ -24,6 +24,7 @@ jobs:
       - name: Run Ui Tests
         run: mvn clean verify -Dcucumber.filter.tags="@manual"
         shell: cmd
+        working-directory: C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal
 
       - name: Produce report
         run: mvn serenity:aggregate
