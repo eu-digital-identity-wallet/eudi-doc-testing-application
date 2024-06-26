@@ -23,8 +23,7 @@ jobs:
 
       - name: Run Ui Tests
         run: |
-         cd eudi-doc-testing-application-internal
-         ls -l
+         #!/bin/bash
          mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
