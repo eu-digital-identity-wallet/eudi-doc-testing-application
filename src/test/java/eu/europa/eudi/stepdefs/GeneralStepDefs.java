@@ -309,6 +309,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().selectIssueTest();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().clickPersonalIdentificationData();
+        test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmitButton();
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
