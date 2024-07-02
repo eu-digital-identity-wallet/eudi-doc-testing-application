@@ -5,6 +5,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3 # Checkout the code
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -29,24 +30,31 @@ jobs:
         run: appium driver update uiautomator2
 
       - name: Start appium
-#        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub &
-        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
+        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --allow-insecure adb_shell &
 
       - name: Wait for Appium to start
-        run: sleep 60 # Adjust the time as needed
+        run: |
+          for i in `seq 1 30`; do
+            if curl -s http://127.0.0.1:4723/status | grep -q '"state":"success"'; then
+              echo "Appium is up and running"
+              break
+            fi
+            echo "Waiting for Appium to start..."
+            sleep 2
+          done
 
       - name: Print Appium status
-        run: curl http://127.0.0.1:4723/wd/hub/status
+        run: curl http://127.0.0.1:4723/status
 
-      - name: Run Ui Tests
+      - name: Run UI Tests
         run: |
           adb devices # Ensure your device is connected and recognized
           mvn verify --file pom.xml \
-            -Dappium.hub=http://127.0.0.1:4723/wd/hub \
+            -Dappium.hub=http://127.0.0.1:4723 \
             -Dwebdriver.driver=appium \
             -Dappium.platformName=Android \
             -Dappium.deviceName="POCO X5 Pro" \
-            -Dappium.udid=58d5b98
+            -Dappium.udid=58d5b98 \
             -Dcucumber.filter.tags='@automated and @ANDROID'
 
       - name: Produce report
