@@ -38,16 +38,28 @@ jobs:
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
 
+      - name: Verify device connection
+        run: adb devices
+
+
+      - name: Check Appium server logs
+        run: cat /path/to/appium-server-log.txt
+
       - name: Run Ui Tests
         run: |
           adb devices 
           mvn verify --file pom.xml \
-            -Dappium.url=http://127.0.0.1:4723/wd/hub \
-            -Dwebdriver.driver=appium \
-            -Dappium.platformName=Android \
-            -Dappium.deviceName="POCO X5 Pro" \
-            -Dappium.udid=58d5b98
-            -Dcucumber.filter.tags='@automated and @ANDROID'
+           -Dappium.hub=http://127.0.0.1:4723/wd/hub \
+           -Dwebdriver.driver=appium \
+           -Dappium.platformName=Android \
+           -Dappium.deviceName="POCO X5 Pro" \
+           -Dappium.udid=58d5b98 \
+           -Dappium.appActivity=eu.europa.ec.assemblylogic.ui.MainActivity \
+           -Dappium.appPackage=eu.europa.ec.euidi.dev \
+           -Dappium.automationName=UiAutomator2 \
+           -Dappium.platformVersion=14.0.8 \
+           -Dappium.skipUnlock=true \
+           -Dcucumber.filter.tags='@automated and @ANDROID'
 
       - name: Produce report
         run: mvn serenity:aggregate
