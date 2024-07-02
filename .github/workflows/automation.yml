@@ -45,6 +45,7 @@ jobs:
             -Dwebdriver.driver=appium \
             -Dappium.platformName=Android \
             -Dappium.deviceName="POCO X5 Pro" \
+            -Dappium.udid=58d5b98
             -Dcucumber.filter.tags='@automated and @ANDROID'
 
       - name: Produce report
