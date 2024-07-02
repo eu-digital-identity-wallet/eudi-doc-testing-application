@@ -33,16 +33,16 @@ jobs:
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
       - name: Wait for Appium to start
-        run: sleep 60 # Adjust the time as needed
+        run: sleep 120 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
 
       - name: Run Ui Tests
         run: |
-          adb devices # Ensure your device is connected and recognized
+          adb devices 
           mvn verify --file pom.xml \
-            -Dappium.hub=http://127.0.0.1:4723/wd/hub \
+            -Dappium.url=http://127.0.0.1:4723/wd/hub \
             -Dwebdriver.driver=appium \
             -Dappium.platformName=Android \
             -Dappium.deviceName="POCO X5 Pro" \
