@@ -81,7 +81,7 @@ public class MobileWebDriverFactory {
     public WebDriverWait getWait() {
         return wait;
     }
-    public WebDriver getDriverAndroid() {
+    public AndroidDriver getDriverAndroid() {
         return androidDriver;
     }
     public WebDriver getDriverIos() {
