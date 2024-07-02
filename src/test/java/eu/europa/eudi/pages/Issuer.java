@@ -33,7 +33,7 @@ public class Issuer {
     public void issuerService(){
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.activateApp("com.android.chrome");
+//            driver.activateApp("com.android.chrome");
             String url = "https://tester.issuer.eudiw.dev/";
             Map<String, Object> args = new HashMap<>();
             args.put("command", "am");
