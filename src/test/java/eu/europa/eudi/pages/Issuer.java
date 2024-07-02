@@ -13,6 +13,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -320,12 +321,11 @@ public class Issuer {
             }
             AppiumDriver appiumDriver = (AppiumDriver) webDriver;
             while (true) {
-                List<WebElement> elements = appiumDriver.findElements(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
+                List<WebElement> elements = webDriver.findElements(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
                 if (!elements.isEmpty()) {
                     // Element is found, break the loop.
                     break;
                 } else {
-                    //element not found, scroll once and then check again.
                     Dimension dimension = appiumDriver.manage().window().getSize();
                     int startX = dimension.width / 2;
                     int startY = (int) (dimension.height * 0.8);
