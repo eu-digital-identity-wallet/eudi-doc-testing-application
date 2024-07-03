@@ -29,7 +29,7 @@ jobs:
         run: appium driver update uiautomator2
 
       - name: Start appium
-#        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub &
+        #        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub &
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
       - name: Wait for Appium to start
@@ -45,7 +45,7 @@ jobs:
         run: |
           adb devices 
           mvn verify --file pom.xml \
-           -Dappium.hub=http://127.0.0.1:4723/wd/hub \
+           -Dappium.hub=http://127.0.0.1:4723 \
            -Dwebdriver.driver=appium \
            -Dappium.platformName=Android \
            -Dappium.deviceName="POCO X5 Pro" \
