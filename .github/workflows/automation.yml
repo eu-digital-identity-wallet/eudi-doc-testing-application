@@ -44,6 +44,12 @@ jobs:
         run: curl http://127.0.0.1:4723/wd/hub/status
 
       - name: Verify device connection
+        run: adb kill-server
+
+      - name: Verify device connection
+        run: adb start-server
+
+      - name: Verify device connection
         run: adb devices
 
       - name: Run Ui Tests
