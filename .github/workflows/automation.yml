@@ -165,6 +165,13 @@ jobs:
       - name: Run Ui Tests
         run: |
           mvn clean verify -Dcucumber.filter.tags="@automated and @ANDROID"
+                           -Dappium.deviceName="POCO X5 Pro" \
+                           -Dappium.platformVersion="14.0.8" \
+                           -Dappium.platformName="Android" \
+                           -Dappium.udid="58d5b98" \
+                           -Dappium.automationName="UiAutomator2" \
+                           -Dappium.appPackage="eu.europa.ec.euidi.dev" \
+                           -Dappium.appActivity="eu.europa.ec.assemblylogic.ui.MainActivity"
 
       - name: Produce report
         run: mvn serenity:aggregate
