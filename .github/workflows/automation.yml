@@ -43,19 +43,22 @@ jobs:
 
       - name: Run Ui Tests
         run: |
-          adb devices 
-          mvn verify --file pom.xml \
-           -Dappium.hub=http://127.0.0.1:4723 \
-           -Dwebdriver.driver=appium \
-           -Dappium.platformName=Android \
-           -Dappium.deviceName="POCO X5 Pro" \
-           -Dappium.udid=58d5b98 \
-           -Dappium.appActivity=eu.europa.ec.assemblylogic.ui.MainActivity \
-           -Dappium.appPackage=eu.europa.ec.euidi.dev \
-           -Dappium.automationName=UiAutomator2 \
-           -Dappium.platformVersion=14.0.8 \
-           -Dappium.skipUnlock=true \
-           -Dcucumber.filter.tags='@automated and @ANDROID'
+          #!/bin/bash
+          mvn clean verify -Dcucumber.filter.tags="@automated & @ANDROID"
+#        run: |
+#          adb devices
+#          mvn verify --file pom.xml \
+#           -Dappium.hub=http://127.0.0.1:4723 \
+#           -Dwebdriver.driver=appium \
+#           -Dappium.platformName=Android \
+#           -Dappium.deviceName="POCO X5 Pro" \
+#           -Dappium.udid=58d5b98 \
+#           -Dappium.appActivity=eu.europa.ec.assemblylogic.ui.MainActivity \
+#           -Dappium.appPackage=eu.europa.ec.euidi.dev \
+#           -Dappium.automationName=UiAutomator2 \
+#           -Dappium.platformVersion=14.0.8 \
+#           -Dappium.skipUnlock=true \
+#           -Dcucumber.filter.tags='@automated and @ANDROID'
 
       - name: Produce report
         run: mvn serenity:aggregate
