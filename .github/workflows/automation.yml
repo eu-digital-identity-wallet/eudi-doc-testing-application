@@ -38,7 +38,7 @@ jobs:
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
       - name: Wait for Appium to start
-        run: sleep 120 # Adjust the time as needed
+        run: sleep 60 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -49,7 +49,7 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@automated & @ANDROID"
+          mvn clean verify -Dcucumber.filter.tags="@automated and @ANDROID"
 #        run: |
 #          adb devices
 #          mvn verify --file pom.xml \
