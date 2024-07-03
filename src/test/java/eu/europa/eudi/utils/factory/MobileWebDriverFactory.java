@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Base64;
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -44,7 +45,6 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
-
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(80));
