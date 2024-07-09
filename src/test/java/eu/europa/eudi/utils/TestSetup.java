@@ -37,6 +37,11 @@ public class TestSetup {
         mobileWebDriverFactory.startAndroidDriverSession();
     }
 
+    public void reInitializeDriver() {
+
+        mobileWebDriverFactory.startAndroidDriverSession();
+    }
+
     public void startIosDriverSession() {
 
         mobileWebDriverFactory.startIosDriverSession();

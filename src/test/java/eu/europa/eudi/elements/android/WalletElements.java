@@ -15,14 +15,16 @@ public class WalletElements {
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"You successfully set the quick pin\"]");
     public static By clickShareData = By.xpath("//android.widget.RadioGroup/android.view.View[1]");
     public static By clickNext = By.xpath("//android.widget.Button[@text=\"NEXT\"]");
-    public static By chooseData = By.xpath("//android.webkit.WebView[@text=\"VerifierUi\"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By chooseData = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
+    public static By chooseData2 = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
+
     public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"AUTHENTICATE WITH WALLET\"]");
     public static By chooseSampleData = By.xpath("//android.widget.TextView[@text=\"Load Sample Documents\"]");
-    public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"Please review carefully before sharing your data.Why we need your data?\"]");
+    public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"Please review carefully before sharing your data. Why we need your data?\"]");
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"SHARE\"]");
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared information with EUDI Remote Verifier\"]");
     public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"CONTINUE\"]");
-    public static By appOpensSuccessfully = By.xpath("//android.widget.TextView[@text=\"Authenticate by sharing your PID\"]");
+    public static By appOpensSuccessfully = By.xpath("(//android.view.View[@text=\"PID authentication\"])[1]");
     public static By loginPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Login\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Proceed to authentication\"]");
     public static By welcomePage = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
@@ -44,10 +46,10 @@ public class WalletElements {
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickFormEu = By.xpath("//android.widget.RadioButton[@text=\"FormEU\"]");
     public static By dataPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Enter the data for your EUDI Wallet\"]");
-    public static By clickGivenName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
-    public static By givenNameField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
-    public static By clickFamilyName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
-    public static By givenFamilyField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
+    public static By clickGivenName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText");
+    public static By givenNameField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText");
+    public static By clickFamilyName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText");
+    public static By givenFamilyField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText");
     public static By clickBirthDate = By.xpath("//android.widget.Spinner");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
     public static By successMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You can now add your National ID\"]");
@@ -66,4 +68,16 @@ public class WalletElements {
     public static By clickIssue = By.xpath("//android.widget.TextView[@text=\"ISSUE\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"Your documents from issuer.eudiw.dev have been successfully issued.\"]");
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
+    public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
+    public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Date of issuance\"]");
+    public static By countrySelection;
+    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
+    public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");;
+    public static By clickSecondNationalId = By.xpath("(//android.widget.TextView[@text=\"National ID\"])[2]");
+    public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
+    public static By clickEyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\"]");
+    public static By actuallDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"ANDERSSON\"]");
+    public static By clickExpandVerification = By.xpath("//android.widget.TextView[@text=\"Verification Data\"]");
+    public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Date of issuance\"]");
+    public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EUDI Remote Verifier requests the following\"]");
 }
