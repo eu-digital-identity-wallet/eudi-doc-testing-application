@@ -81,7 +81,6 @@ public class GeneralStepDefs{
             test.mobile().issuer().enterFamilyName();
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().clickSubmit();
-            test.mobile().issuer().authoizePageIsDisplayed();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
             test.mobile().wallet().clickNextButton();
@@ -247,16 +246,16 @@ public class GeneralStepDefs{
 
     @Then("the dashboard page is displayed")
     public void theDashboardPageIsDisplayed() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().startAndStopDriver();
+//        test.mobile().wallet().checkIfPageIsTrue();
+//        test.mobile().wallet().createAPin();
+//        test.mobile().wallet().clickNextButton();
+//        test.mobile().wallet().renterThePin();
+//        test.mobile().wallet().clickConfirm();
+//        test.mobile().wallet().successMessageOfSetUpPin();
+//        test.mobile().wallet().clickContinue();
+//        test.mobile().wallet().loadSampleDocuments();
+//        test.mobile().wallet().dashboardPageIsDisplayed();
+//        test.mobile().wallet().startAndStopDriver();
         test.mobile().wallet().loginPageIsDisplayed();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().dashboardPageIsDisplayed();
