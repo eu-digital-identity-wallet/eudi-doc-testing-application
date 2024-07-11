@@ -2,6 +2,9 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -10,6 +13,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 public class GeneralStepDefs{
 
     TestSetup test;
@@ -17,15 +25,67 @@ public class GeneralStepDefs{
     @Before
     public void setup(Scenario scenario) {
         boolean noReset = scenario.getSourceTagNames().contains("@NoReset");
+        boolean data = scenario.getSourceTagNames().contains("@data");
+        boolean without_data = scenario.getSourceTagNames().contains("@without_data");
+        boolean data_two_pid = scenario.getSourceTagNames().contains("@data_two_pid");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
+        if (android) {
             test = new TestSetup(noReset, Literals.General.ANDROID.label, scenario);
             test.startAndroidDriverSession();
         }
-        if (ios){
+        if (ios) {
             test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
+        }
+        if (data) {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().loadSampleDocuments();
+            test.mobile().wallet().dashboardPageIsDisplayed();
+        }
+
+        if (without_data) {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickContinue();
+        }
+
+        if (data_two_pid) {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().loadSampleDocuments();
+            test.mobile().wallet().dashboardPageIsDisplayed();
+            test.mobile().wallet().addDocButton();
+            test.mobile().wallet().clickNationalId();
+            test.mobile().issuer().authenticationMethodSelection();
+            test.mobile().issuer().clickCountrySelection();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().clickFormEu();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().enterGivenName();
+            test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().clickXButton();
+            test.mobile().wallet().dashboardPageIsDisplayed();
         }
     }
 
@@ -60,7 +120,6 @@ public class GeneralStepDefs{
         test.mobile().wallet().userOpensVerifier();
     }
 
-
     @And("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
         test.mobile().verifier().appOpensSuccefully();
@@ -73,7 +132,6 @@ public class GeneralStepDefs{
 
     @And("user selects to be identified using EUDI Wallet")
     public void userSelectsToBeIdentifiedUsingEUDIWallet() {
-        test.mobile().verifier().AuthenticationPageIsDisplayed();
         test.mobile().verifier().chooseWallet();
     }
 
@@ -86,6 +144,23 @@ public class GeneralStepDefs{
 
     @And("user presses the share button")
     public void userPressesTheShareButton() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickConfirm();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().loadSampleDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().selectShareAttributes();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseData();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseWallet();
+        test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
     }
 
@@ -171,11 +246,26 @@ public class GeneralStepDefs{
 
     @Then("the dashboard page is displayed")
     public void theDashboardPageIsDisplayed() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickConfirm();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().loadSampleDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+        test.mobile().wallet().createAPin();
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @And("user clicks load sample data")
     public void userClicksLoadSampleData() {
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheAddDocumentPage();
         test.mobile().wallet().loadSampleDocuments();
     }
 
@@ -595,7 +685,7 @@ public class GeneralStepDefs{
 
     @Then("the Add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
-        //manual
+       test.mobile().wallet().addDocumentPageIsDisplayed();
     }
 
     @Then("the camera is activated to scan a QR code")
@@ -756,6 +846,508 @@ public class GeneralStepDefs{
     @When("a success message is displayed manually")
     public void aSuccessMessageIsDisplayedManually() {
         //manual
+    }
+
+    @Given("the user is on the Login screen")
+    public void theUserIsOnTheLoginScreen() {
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+    }
+
+    @When("the user enters their PIN")
+    public void theUserEntersTheirPIN() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @Then("the user should see the dashboard screen")
+    public void theUserShouldSeeTheDashboardScreen() {
+      test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Given("the user is on the dashboard screen")
+    public void theUserIsOnTheDashboardScreen() {
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheDashboardScreen();
+    }
+
+    @When("the user clicks on the PID doc")
+    public void theUserClicksOnThePIDDoc() {
+        test.mobile().wallet().clickNationalId();
+    }
+
+    @Then("the PID should open")
+    public void thePIDShouldOpen() {
+        test.mobile().wallet().nationalIdIsDisplayed();
+    }
+
+    @And("the user should see the details of the PID")
+    public void theUserShouldSeeTheDetailsOfThePID() {
+        test.mobile().wallet().detailsOfPidIsDisplayed();
+    }
+
+    @Given("the PID is open")
+    public void thePIDIsOpen() {
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheDashboardScreen();
+        theUserClicksOnThePIDDoc();
+        thePIDShouldOpen();
+        theUserShouldSeeTheDetailsOfThePID();
+    }
+
+    @When("the user clicks the X button")
+    public void theUserClicksTheXButton() {
+        test.mobile().wallet().clickXButton();
+    }
+
+    @Then("the PID should close")
+    public void thePIDShouldClose() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @And("the user should see the dashboard screen again")
+    public void theUserShouldSeeTheDashboardScreenAgain() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Then("the user should see the documents they have issued so far")
+    public void theUserShouldSeeTheDocumentsTheyHaveIssuedSoFar() {
+        test.mobile().wallet().nationalIdIsDisplayed();
+    }
+
+    @When("the user clicks on the mDL doc")
+    public void theUserClicksOnTheMDLDoc() {
+        test.mobile().wallet().clickMdl();
+    }
+
+    @Then("the mDL should open")
+    public void theMDLShouldOpen() {
+        test.mobile().wallet().mdlIsDisplayed();
+    }
+
+    @And("the user should see the details of the mDL")
+    public void theUserShouldSeeTheDetailsOfTheMDL() {
+        test.mobile().wallet().mdlDetailsAreDisplayed();
+    }
+
+    @Given("the mDL is open")
+    public void theMDLIsOpen() {
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheDashboardScreen();
+        theUserClicksOnTheMDLDoc();
+        theMDLShouldOpen();
+        theUserShouldSeeTheDetailsOfTheMDL();
+    }
+
+    @Then("the mDL should close")
+    public void theMDLShouldClose() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the user clicks the add doc button")
+    public void theUserClicksTheAddDocButton() {
+        test.mobile().wallet().addDocButton();
+    }
+
+    @And("the add document page is displayed automated")
+    public void theAddDocumentPageIsDisplayedAutomated() {
+       test.mobile().wallet().addDocumentPageIsDisplayed();
+    }
+
+    @And("the user clicks the national id button")
+    public void theUserClicksTheNationalIdButton() {
+        test.mobile().wallet().clickNationalId();
+    }
+
+    @Then("the authentication method selection is displayed")
+    public void theAuthenticationMethodSelectionIsDisplayed() {
+        test.mobile().issuer().authenticationMethodSelection();
+    }
+
+    @When("the dashboard page is displayed on wallet")
+    public void theDashboardPageIsDisplayedOnWallet() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Given("the user has successfully entered the PIN")
+    public void theUserHasSuccessfullyEnteredThePIN() {
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+        test.mobile().wallet().createAPin();
+    }
+
+    @When("the user opens a mDL")
+    public void theUserOpensAMDL() {
+        test.mobile().wallet().clickMdl();
+    }
+
+    @Then("the user should see the document contents")
+    public void theUserShouldSeeTheDocumentContents() {
+        test.mobile().wallet().mdlDetailsAreDisplayed();
+    }
+
+    @Given("the user has opened the selected mDL")
+    public void theUserHasOpenedTheSelectedMDL() {
+        theUserHasSuccessfullyEnteredThePIN();
+        theUserOpensAMDL();
+        theUserShouldSeeTheDocumentContents();
+    }
+
+    @When("the user presses the delete button")
+    public void theUserPressesTheDeleteButton() {
+        test.mobile().wallet().clickDeleteButton();
+        test.mobile().wallet().confirmsDeletion();
+    }
+
+    @Then("the document should be deleted")
+    public void theDocumentShouldBeDeleted() {
+        test.mobile().wallet().confirmsDeletion();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Given("the document has been deleted")
+    public void theDocumentHasBeenDeleted() {
+        theUserHasSuccessfullyEnteredThePIN();
+        theUserOpensAMDL();
+        theUserShouldSeeTheDocumentContents();
+        theUserPressesTheDeleteButton();
+        theDocumentShouldBeDeleted();
+    }
+
+    @Then("the user should see the dashboard")
+    public void theUserShouldSeeTheDashboard() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the user opens a PID \\(not the first one issued)")
+    public void theUserOpensAPIDNotTheFirstOneIssued() {
+        test.mobile().wallet().clickSecondNationalId();
+    }
+
+    @Then("the user should see the pid document contents")
+    public void theUserShouldSeeThePidDocumentContents() {
+        test.mobile().wallet().detailsOfDocumentIsDisplayed();
+    }
+
+    @Given("the user has opened the selected PID")
+    public void theUserHasOpenedTheSelectedPID() {
+        theUserHasSuccessfullyEnteredThePIN();
+        theUserOpensAPIDNotTheFirstOneIssued();
+        theUserShouldSeeThePidDocumentContents();
+    }
+
+    @Given("the user has opened the first PID that was issued")
+    public void theUserHasOpenedTheFirstPIDThatWasIssued() {
+        theUserHasSuccessfullyEnteredThePIN();
+        test.mobile().wallet().clickNationalId();
+        test.mobile().wallet().detailsOfDocumentIsDisplayed();
+    }
+
+    @And("the application should reboot")
+    public void theApplicationShouldReboot() {
+        test.mobile().wallet().loginPageIsDisplayed();
+    }
+
+    @Given("the application has rebooted")
+    public void theApplicationHasRebooted() {
+        theUserHasOpenedTheFirstPIDThatWasIssued();
+        theUserPressesTheDeleteButton();
+    }
+
+    @When("the login screen appears")
+    public void theLoginScreenAppears() {
+        theApplicationShouldReboot();
+    }
+
+    @Then("the user should enter the PIN")
+    public void theUserShouldEnterThePIN() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @Given("the user has successfully entered the PIN after reboot")
+    public void theUserHasSuccessfullyEnteredThePINAfterReboot() {
+        theUserHasOpenedTheFirstPIDThatWasIssued();
+        theUserPressesTheDeleteButton();
+        theApplicationShouldReboot();
+        theUserShouldEnterThePIN();
+    }
+
+    @When("the user is prompted to enter a PID")
+    public void theUserIsPromptedToEnterAPID() {
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+    }
+
+    @Then("the user should be able to enter a PID again")
+    public void theUserShouldBeAbleToEnterAPIDAgain() {
+        test.mobile().wallet().nationalIdIsDisplayed();
+    }
+
+    @And("the user clicks the driving license button")
+    public void theUserClicksTheDrivingLicenseButton() {
+        test.mobile().wallet().clickDrivingLicenceButton();
+    }
+
+    @Then("the user is redirected to the issuer service to issue mDL")
+    public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
+//test
+test.startAndroidDriverSession();
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.runAppInBackground(Duration.ofSeconds(10));
+        driver.activateApp("com.android.chrome");
+    }
+
+    @Given("the issuer service -authentication method selection screen- is displayed")
+    public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
+        theDashboardPageIsDisplayed();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayedAutomated();
+        theUserClicksTheDrivingLicenseButton();
+        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
+    }
+
+    @When("the user clicks on country selection and submits")
+    public void theUserClicksOnCountrySelectionAndSubmits() {
+        test.mobile().issuer().clickCountrySelection();
+        test.mobile().issuer().clickSubmit();
+    }
+
+    @And("the user clicks on Credential Provider FormEU and submits")
+    public void theUserClicksOnCredentialProviderFormEUAndSubmits() {
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().clickSubmit();
+    }
+
+    @Then("the provider form is displayed for the user to register personal data")
+    public void theProviderFormIsDisplayedForTheUserToRegisterPersonalData() {
+        test.mobile().issuer().formIsDisplayed();
+    }
+
+    @Given("a provider form is displayed")
+    public void aProviderFormIsDisplayed() {
+        theDashboardPageIsDisplayed();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayedAutomated();
+        theUserClicksTheDrivingLicenseButton();
+        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
+        theUserClicksOnCountrySelectionAndSubmits();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+    }
+
+    @When("the user registers personal data")
+    public void theUserRegistersPersonalData() {
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterDocumentNumber();
+        test.mobile().issuer().clickScreen();
+        test.mobile().issuer().scrollUntilFindDate();
+        test.mobile().issuer().chooseIssueDate();
+        test.mobile().issuer().chooseExpiryDate();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @Then("a success message for mdl is displayed")
+    public void aSuccessMessageForMdlIsDisplayed() {
+        test.mobile().wallet().successMessageForDrivingIsDisplayed();
+        test.mobile().wallet().clickNextButton();
+    }
+
+    @And("the driving license is displayed in the wallet")
+    public void theDrivingLicenseIsDisplayedInTheWallet() {
+        test.mobile().wallet().mdlIsDisplayed();
+        test.mobile().wallet().clickXButton();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the user fills in the form")
+    public void theUserFillsInTheForm() {
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @Then("a success message for pid is displayed")
+    public void aSuccessMessageForPidIsDisplayed() {
+        test.mobile().wallet().successMessageIsDisplayed();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().nationalIdIsDisplayed();
+        test.mobile().wallet().clickXButton();
+    }
+
+    @And("the national id is displayed in the dashboard")
+    public void theNationalIdIsDisplayedInTheDashboard() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Then("the user should see the add document page")
+    public void theUserShouldSeeTheAddDocumentPage() {
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+    }
+
+    @Given("user opens Verifier Application")
+    public void userOpensVerifierApplication() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickConfirm();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().loadSampleDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().userOpensVerifier();
+    }
+
+    @Given("the user is in the verifier app")
+    public void theUserIsInTheVerifierApp() {
+        userOpensVerifierApp();
+    }
+
+    @When("the verifier requests a doc from the wallet user")
+    public void theVerifierRequestsADocFromTheWalletUser() {
+        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().selectShareAttributes();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseData();
+        test.mobile().verifier().chooseData2();
+//        test.mobile().verifier().scrollUntilFindIssuanceDate();
+//        test.mobile().verifier().clickIssuanceDate();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseWallet();
+    }
+
+    @Then("the requestor of the data is displayed in the wallet")
+    public void theRequestorOfTheDataIsDisplayedInTheWallet() {
+        test.mobile().verifier().viewDataPage();
+    }
+
+    @And("the document from which the data are requested is displayed")
+    public void theDocumentFromWhichTheDataAreRequestedIsDisplayed() {
+        test.mobile().wallet().nationalIdIsDisplayed();
+    }
+
+    @Given("the user is viewing the optional data")
+    public void theUserIsViewingTheOptionalData() {
+        theUserIsInTheVerifierApp();
+        theVerifierRequestsADocFromTheWalletUser();
+        theRequestorOfTheDataIsDisplayedInTheWallet();
+        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
+        test.mobile().wallet().optionalDataIsDisplayed();
+    }
+
+    @When("the user clicks the eye icon")
+    public void theUserClicksTheEyeIcon() {
+        test.mobile().wallet().clickEyeIcon();
+    }
+
+    @Then("the actual values of the data are displayed")
+    public void theActualValuesOfTheDataAreDisplayed() {
+        test.mobile().wallet().actualDataAreDisplayed();
+    }
+
+    @Given("the user is viewing the data request details")
+    public void theUserIsViewingTheDataRequestDetails() {
+        theUserIsViewingTheOptionalData();
+        theUserClicksTheEyeIcon();
+        theActualValuesOfTheDataAreDisplayed();
+    }
+
+    @When("the user clicks to expand the verification section")
+    public void theUserClicksToExpandTheVerificationSection() {
+        test.mobile().wallet().clickExpandVerification();
+    }
+
+    @Then("the expanded verification details are displayed")
+    public void theExpandedVerificationDetailsAreDisplayed() {
+        test.mobile().wallet().verificationDetailsAreDisplayed();
+    }
+
+    @Given("the user has selected some data")
+    public void theUserHasSelectedSomeData() {
+        theUserIsInTheVerifierApp();
+        theVerifierRequestsADocFromTheWalletUser();
+        theRequestorOfTheDataIsDisplayedInTheWallet();
+        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
+        test.mobile().wallet().optionalDataIsDisplayed();
+    }
+
+    @When("the user unselects some of this data")
+    public void theUserUnselectsSomeOfThisData() {
+        test.mobile().wallet().unselectData();
+    }
+
+    @Given("the user has finalized data selection")
+    public void theUserHasFinalizedDataSelection() {
+        theUserIsInTheVerifierApp();
+        theVerifierRequestsADocFromTheWalletUser();
+        theRequestorOfTheDataIsDisplayedInTheWallet();
+        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
+        test.mobile().wallet().optionalDataIsDisplayed();
+    }
+
+    @When("the user clicks the share button")
+    public void theUserClicksTheSHAREButton() {
+        test.mobile().wallet().clickShareButton();
+    }
+
+    @Then("the PIN field is displayed to authorize sharing")
+    public void thePINFieldIsDisplayedToAuthorizeSharing() {
+        test.mobile().wallet().pinFieldIsDisplayed();
+    }
+
+    @Given("the user is prompted to enter a PIN for sharing")
+    public void theUserIsPromptedToEnterAPINForSharing() {
+        theUserIsInTheVerifierApp();
+        theVerifierRequestsADocFromTheWalletUser();
+        theRequestorOfTheDataIsDisplayedInTheWallet();
+        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
+        test.mobile().wallet().optionalDataIsDisplayed();
+        test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().pinFieldIsDisplayed();
+    }
+
+    @When("the user enters the correct PIN")
+    public void theUserEntersTheCorrectPIN() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @Then("a successful message is displayed indicating the data has been authorized for sharing")
+    public void aSuccessfulMessageIsDisplayedIndicatingTheDataHasBeenAuthorizedForSharing() {
+        test.mobile().wallet().authenticationSuccessfully();
+    }
+
+    @Given("user selects to be identified using the EUDI Wallet")
+    public void userSelectsToBeIdentifiedUsingTheEUDIWallet() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickConfirm();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().loadSampleDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().selectShareAttributes();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseData();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().chooseWallet();
+    }
+
+    @When("user authorizes the disclosure of the data")
+    public void userAuthorizesTheDisclosureOfTheData() {
+        test.mobile().wallet().pinFieldIsDisplayed();
+        test.mobile().wallet().createAPin();
     }
 }
 
