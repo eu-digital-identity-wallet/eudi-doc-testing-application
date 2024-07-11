@@ -1364,5 +1364,10 @@ public class GeneralStepDefs{
     public void userPressesTheShareButtonOnWallet() {
         test.mobile().wallet().clickShareButton();
     }
+
+    @When("the user clicks on the Age Verification")
+    public void theUserClicksOnTheAgeVerification() {
+        //manual
+    }
 }
 
