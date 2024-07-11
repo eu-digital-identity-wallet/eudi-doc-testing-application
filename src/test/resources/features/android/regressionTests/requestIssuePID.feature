@@ -9,20 +9,20 @@ Feature: Request/Issue PID
 
   @US_RIP_TC_02 @data
   Scenario: Add document via national ID
-    Given the dashboard page is displayed
+    Given the dashboard page is displayed on wallet
     When the user clicks the add doc button
     And the add document page is displayed automated
     And the user clicks the national id button
     Then the authentication method selection is displayed
 
-  @US_RIP_TC_03
+  @US_RIP_TC_03 @data
   Scenario: Select authentication method and enter data
     Given the authentication method selection is displayed
     When the user clicks on country selection and submits
     And the user clicks on Credential Provider FormEU and submits
     Then the provider form is displayed for the user to register personal data
 
-  @US_RIP_TC_04
+  @US_RIP_TC_04 @noreset
   Scenario: Enter data and display national ID
     Given a provider form is displayed
     When the user fills in the form
