@@ -3,6 +3,7 @@ import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,6 +46,8 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
+        caps2.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
+        caps2.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_EXECUTABLE, "com.android.chrome");
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(80));
@@ -55,6 +58,7 @@ public class MobileWebDriverFactory {
         if(test.envDataConfig().getAppiumRecording()) {
             androidDriver.startRecordingScreen();}
     }
+
     public void startIosDriverSession() {
         envDataConfig = new EnvDataConfig();
         File apkPath1 = new File("src/test/resources/app/Wallet.ipa");

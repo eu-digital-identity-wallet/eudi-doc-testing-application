@@ -49,8 +49,8 @@ public class WalletElements {
     public static By clickDeleteButton = By.xpath("//XCUIElementTypeButton[@name=\"Bin\"]");
     public static By confirmsDeletion = By.xpath("//XCUIElementTypeButton[@name=\"yes\"]");
     public static By loginPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Login\"]");
-    public static By enterDocumentNumber = By.xpath("//XCUIElementTypeTextField[@name=\"document_number\"]");
-    public static By documentNumberField = By.xpath("//XCUIElementTypeTextField[@name=\"document_number\"]");
+    public static By enterDocumentNumber = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.EditText");
+    public static By documentNumberField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.EditText");
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait:\"]");
     public static By expiryDate = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date:\"]");
     public static By clickIssueDate = By.xpath("//XCUIElementTypeOther[@name=\"Issue Date\"]");
