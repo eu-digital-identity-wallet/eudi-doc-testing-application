@@ -23,7 +23,7 @@ Feature: Online Identification & Authentication (same-device)
   Scenario: User views and unselects data
     Given user selects to be identified using the EUDI Wallet
     When user views the data and can unselect any of them
-    Then user presses the share button
+    Then user presses the share button on wallet
 
   @US_OIASD_TC_05
   Scenario: User authorizes data disclosure

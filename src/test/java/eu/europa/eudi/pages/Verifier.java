@@ -11,6 +11,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Verifier {
     TestSetup test;
@@ -45,7 +47,9 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.chooseData)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.chooseData)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseData)).click();
         }
     }
 
@@ -62,7 +66,7 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.viewDataPage)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE_IOS.label, pageHeader);
         }
     }
@@ -91,8 +95,8 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.appOpensSuccessfully)).getText();
             Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.appOpensSuccessfully)).getText();
-            Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.appOpensSuccessfully)).getText();
+            Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY_IOS.label, pageHeader);
         }
     }
 
@@ -110,7 +114,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.chooseData2)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.chooseData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseData2)).click();
         }
     }
 
@@ -143,39 +147,37 @@ public class Verifier {
                 }
             }
         } else {
-            IOSDriver webDriver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            if (!(webDriver instanceof AppiumDriver)) {
-                throw new IllegalStateException(Literals.General.WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE.label);
-            }
-            AppiumDriver appiumDriver = (AppiumDriver) webDriver;
-            while (true) {
-                List<WebElement> elements = appiumDriver.findElements(WalletElements.expiryDate);
-                if (!elements.isEmpty()) {
-                    // Element is found, break the loop.
-                    break;
-                } else {
-                    //element not found, scroll once and then check again.
-                    Dimension dimension = appiumDriver.manage().window().getSize();
-                    int startX = dimension.width / 2;
-                    int startY = (int) (dimension.height * 0.8);
-                    int endY = (int) (dimension.height * 0.2);
-                    new TouchAction((PerformsTouchActions) appiumDriver)
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            By locator = By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]");
+            WebElement element = null;
+            int i=1;
+            while (i<4) {
+//                element = driver.findElement(By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]"));
+//                if (element.isDisplayed()) {
+//                    // Element is found, break the loop.
+//                    break;
+//                } else {
+                    Dimension size = driver.manage().window().getSize();
+                    int startX = size.width / 2;
+                    int startY = size.height / 2;  // Start from the middle of the screen
+                    int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+                    new TouchAction<>((PerformsTouchActions) driver)
                             .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
+                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                             .moveTo(PointOption.point(startX, endY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
                             .release()
                             .perform();
+                    i++;
                 }
             }
         }
-    }
+
 
     public void clickIssuanceDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.issuanceDate)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.issuanceDate)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.chooseData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.issuanceDate)).click();
         }
     }
 }
