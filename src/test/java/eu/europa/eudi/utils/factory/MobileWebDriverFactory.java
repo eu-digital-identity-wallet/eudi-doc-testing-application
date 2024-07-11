@@ -46,8 +46,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
-        caps2.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
-        caps2.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_EXECUTABLE, "com.android.chrome");
+
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(80));

@@ -24,7 +24,7 @@ public class GeneralStepDefs{
 
     @Before
     public void setup(Scenario scenario) {
-        boolean noReset = scenario.getSourceTagNames().contains("@NoReset");
+        boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@data");
         boolean without_data = scenario.getSourceTagNames().contains("@without_data");
         boolean data_two_pid = scenario.getSourceTagNames().contains("@data_two_pid");
@@ -81,6 +81,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().enterFamilyName();
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().authoizePageIsDisplayed();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
             test.mobile().wallet().clickNextButton();
@@ -89,17 +90,17 @@ public class GeneralStepDefs{
         }
     }
 
-    @After
-    public void tearDown(Scenario scenario) {
-        boolean android = scenario.getSourceTagNames().contains("@ANDROID");
-        boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
-            test.stopAndroidDriverSession();
-        }
-        if (ios){
-            test.stopIosDriverSession();
-        }
-    }
+//    @After
+//    public void tearDown(Scenario scenario) {
+//        boolean android = scenario.getSourceTagNames().contains("@ANDROID");
+//        boolean ios = scenario.getSourceTagNames().contains("@IOS");
+//        if (android){
+//            test.stopAndroidDriverSession();
+//        }
+//        if (ios){
+//            test.stopIosDriverSession();
+//        }
+//    }
 
     @Given("user sets up wallet")
     public void userSetsUpWallet() {
@@ -1092,19 +1093,32 @@ public class GeneralStepDefs{
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
 //test
-test.startAndroidDriverSession();
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.runAppInBackground(Duration.ofSeconds(10));
-        driver.activateApp("com.android.chrome");
+//test.startAndroidDriverSession();
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//        driver.runAppInBackground(Duration.ofSeconds(10));
+//        driver.activateApp("com.android.chrome");
     }
 
     @Given("the issuer service -authentication method selection screen- is displayed")
     public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
-        theDashboardPageIsDisplayed();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayedAutomated();
-        theUserClicksTheDrivingLicenseButton();
-        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
+//        test.mobile().wallet().checkIfPageIsTrue();
+//        test.mobile().wallet().createAPin();
+//        test.mobile().wallet().clickNextButton();
+//        test.mobile().wallet().renterThePin();
+//        test.mobile().wallet().clickConfirm();
+//        test.mobile().wallet().successMessageOfSetUpPin();
+//        test.mobile().wallet().clickContinue();
+//        test.mobile().wallet().loadSampleDocuments();
+//        test.mobile().wallet().dashboardPageIsDisplayed();
+//        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().addDocButton();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickDrivingLicenceButton();
+        test.mobile().issuer().authenticationMethodSelection();
+
     }
 
     @When("the user clicks on country selection and submits")
@@ -1126,11 +1140,7 @@ test.startAndroidDriverSession();
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() {
-        theDashboardPageIsDisplayed();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayedAutomated();
-        theUserClicksTheDrivingLicenseButton();
-        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
+        theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed();
         theUserClicksOnCountrySelectionAndSubmits();
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
@@ -1218,8 +1228,8 @@ test.startAndroidDriverSession();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().chooseData();
         test.mobile().verifier().chooseData2();
-//        test.mobile().verifier().scrollUntilFindIssuanceDate();
-//        test.mobile().verifier().clickIssuanceDate();
+        test.mobile().verifier().scrollUntilFindIssuanceDate();
+        test.mobile().verifier().clickIssuanceDate();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().chooseWallet();
     }
@@ -1348,6 +1358,11 @@ test.startAndroidDriverSession();
     public void userAuthorizesTheDisclosureOfTheData() {
         test.mobile().wallet().pinFieldIsDisplayed();
         test.mobile().wallet().createAPin();
+    }
+
+    @Then("user presses the share button on wallet")
+    public void userPressesTheShareButtonOnWallet() {
+        test.mobile().wallet().clickShareButton();
     }
 }
 
