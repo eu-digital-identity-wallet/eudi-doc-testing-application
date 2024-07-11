@@ -13,7 +13,7 @@ Feature: Online Identification & Authentication (same-device)
     When the dashboard page is displayed on wallet
     Then user opens Verifier App
 
-  @US_OIASD_TC_03  @without_data
+  @US_OIASD_TC_03
   Scenario: User selects data to share
     Given user opens Verifier Application
     When user selects specific data to share
@@ -21,9 +21,9 @@ Feature: Online Identification & Authentication (same-device)
 
   @US_OIASD_TC_04
   Scenario: User views and unselects data
-    Given user selects to be identified using EUDI Wallet
+    Given user selects to be identified using the EUDI Wallet
     When user views the data and can unselect any of them
-    Then user presses the share button
+    Then user presses the share button on wallet
 
   @US_OIASD_TC_05
   Scenario: User authorizes data disclosure

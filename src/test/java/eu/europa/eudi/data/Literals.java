@@ -7,7 +7,6 @@ public interface Literals {
         WELCOME_HEADER("Welcome to the EUDI Wallet"),
         SUCCESS_MESSAGE("You successfully set the quick pin"),
         AUTHENTICATION_SUCCESS("You successfully shared information with EUDI Remote Verifier"),
-        AUTHENTICATION_SUCCESS_IOS("You successfully shared information with the Verifier"),
         LOGIN("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
@@ -25,13 +24,14 @@ public interface Literals {
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("Your documents from issuer.eudiw.dev have been successfully issued."),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("Your documents from https://issuer.eudiw.dev have been successfully issued."),
         SCAN_QR("SCAN QR"),
-        DETAILS_NATIONAL_ID("Date of issuance"),
+        DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_MDL("Family Name"),
         DETAILS_DOCUMENT("Family Name"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
         VERIFICATION_DETAILS("Date of issuance"),
-        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following");
+        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following"),
+        AUTHENTICATION_SUCCESS_IOS("You successfully shared information with the EUDI Remote Verifier");
 
         public final String label;
         Wallet(String label) {
@@ -45,7 +45,8 @@ public interface Literals {
         VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
 
         APP_OPEN_SUCCESSFULLY("PID authentication"),
-        AUTHENTICATION_PAGE("Proceed to authentication");
+        AUTHENTICATION_PAGE("Proceed to authentication"),
+        APP_OPEN_SUCCESSFULLY_IOS("1");
 
         public final String label;
         Verifier(String label) {
@@ -68,7 +69,8 @@ public interface Literals {
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet");
+        FORM("Enter the data for your EUDI Wallet"),
+        AUTHORIZE_PAGE("Authorize data from your EUDI Wallet");
         public final String label;
         Issuer(String label) {
             this.label = label;
