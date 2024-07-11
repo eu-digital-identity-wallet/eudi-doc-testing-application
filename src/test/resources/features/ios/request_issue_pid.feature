@@ -7,7 +7,7 @@ Feature: Request/Issue PID
     When the user enters their PIN
     Then the user should see the dashboard screen
 
-  @US_RIP_TC_02 @data
+  @US_RIP_TC_02 @noreset
   Scenario: Add document via national ID
     Given the dashboard page is displayed
     When the user clicks the add doc button
@@ -15,7 +15,7 @@ Feature: Request/Issue PID
     And the user clicks the national id button
     Then the authentication method selection is displayed
 
-  @US_RIP_TC_03
+  @US_RIP_TC_03 @noreset @WIP
   Scenario: Select authentication method and enter data
     Given the authentication method selection is displayed
     When the user clicks on country selection and submits

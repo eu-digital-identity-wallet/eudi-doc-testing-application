@@ -69,7 +69,7 @@ public class WalletElements {
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"Your documents from issuer.eudiw.dev have been successfully issued.\"]");
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-    public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Date of issuance\"]");
+    public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
     public static By countrySelection;
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");;
