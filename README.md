@@ -15,10 +15,11 @@
 
 
 ## Overview
-This repository contains the scripts for automated end-to-end (E2E) tests for the EUDIW application. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
+This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests will be conducted, following the User Stories created by the Analysis team. Any additional testing requests will be evaluated on a case-by-case basis, and relevant tests will be conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
 
 ## Requirements
 To run the automated tests, ensure your system meets the following requirements:
+
 - [Maven 3.9.6](https://maven.apache.org/download.cgi) or newer: Apache Maven is a software project management tool. It manages the project's build, reporting, and documentation.
 - [Java 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html): The programming language used for writing the automation scripts.
 - [Appium 2.4.1](https://github.com/appium/appium/releases/tag/v2.4.1) or newer: An open-source automation testing tool for mobile applications.
@@ -26,7 +27,9 @@ To run the automated tests, ensure your system meets the following requirements:
 - [Xcode 15](https://developer.apple.com/xcode/) or newer: An IDE for developing software on Mac OS, including iOS applications.
 - [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent) (for real iPhone devices): WebDriverAgent is a WebDriver server implementation for iOS that can be used to remote control iOS devices. It allows you to launch & kill applications, tap & scroll views or confirm view presence on a screen. This is needed for running tests on real iPhone devices.
 
-A physical device or an emulator will be needed to run the tests.
+**Note: If you want to run only the manual tests you need only maven 3.9.6 and java 17**
+
+A physical device or an emulator will be needed to run the tests (for automation tests only).
 
 ## Installation
 
@@ -200,9 +203,13 @@ To execute the tests, follow the steps below:
    Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh
 
 6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html.
+ 
+   Serenity Report will be the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results will include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
 ## Implemented test cases
-The implemented test cases can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
+Test cases will be written in Gherkin language for both manual and automated tests and can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
+
+The feature files will be named after the respective User Story to ensure better traceability.
 
 In general, the test cases cover the following areas:
 
