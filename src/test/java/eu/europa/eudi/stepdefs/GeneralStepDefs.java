@@ -246,16 +246,16 @@ public class GeneralStepDefs{
 
     @Then("the dashboard page is displayed")
     public void theDashboardPageIsDisplayed() {
-//        test.mobile().wallet().checkIfPageIsTrue();
-//        test.mobile().wallet().createAPin();
-//        test.mobile().wallet().clickNextButton();
-//        test.mobile().wallet().renterThePin();
-//        test.mobile().wallet().clickConfirm();
-//        test.mobile().wallet().successMessageOfSetUpPin();
-//        test.mobile().wallet().clickContinue();
-//        test.mobile().wallet().loadSampleDocuments();
-//        test.mobile().wallet().dashboardPageIsDisplayed();
-//        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickConfirm();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().loadSampleDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().startAndStopDriver();
         test.mobile().wallet().loginPageIsDisplayed();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().dashboardPageIsDisplayed();
@@ -1100,23 +1100,11 @@ public class GeneralStepDefs{
 
     @Given("the issuer service -authentication method selection screen- is displayed")
     public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
-//        test.mobile().wallet().checkIfPageIsTrue();
-//        test.mobile().wallet().createAPin();
-//        test.mobile().wallet().clickNextButton();
-//        test.mobile().wallet().renterThePin();
-//        test.mobile().wallet().clickConfirm();
-//        test.mobile().wallet().successMessageOfSetUpPin();
-//        test.mobile().wallet().clickContinue();
-//        test.mobile().wallet().loadSampleDocuments();
-//        test.mobile().wallet().dashboardPageIsDisplayed();
-//        test.mobile().wallet().startAndStopDriver();
-        test.mobile().wallet().loginPageIsDisplayed();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().addDocButton();
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-        test.mobile().wallet().clickDrivingLicenceButton();
-        test.mobile().issuer().authenticationMethodSelection();
+        theDashboardPageIsDisplayedOnWallet();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayedAutomated();
+        theUserClicksTheDrivingLicenseButton();
+        theAuthenticationMethodSelectionIsDisplayed();
 
     }
 
@@ -1139,7 +1127,7 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() {
-        theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed();
+        theAuthenticationMethodSelectionIsDisplayedOnScreen();
         theUserClicksOnCountrySelectionAndSubmits();
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
@@ -1367,6 +1355,23 @@ public class GeneralStepDefs{
     @When("the user clicks on the Age Verification")
     public void theUserClicksOnTheAgeVerification() {
         //manual
+    }
+
+    @Given("the authentication method selection is displayed on screen")
+    public void theAuthenticationMethodSelectionIsDisplayedOnScreen() {
+        theDashboardPageIsDisplayedOnWallet();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayedAutomated();
+        theUserClicksTheNationalIdButton();
+        theAuthenticationMethodSelectionIsDisplayed();
+    }
+
+    @Given("a provider form is displayed for mdl")
+    public void aProviderFormIsDisplayedForMdl() {
+        theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed();
+        theUserClicksOnCountrySelectionAndSubmits();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 }
 

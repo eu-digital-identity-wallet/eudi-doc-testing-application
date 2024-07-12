@@ -17,7 +17,6 @@ public class WalletElements {
     public static By clickNext = By.xpath("//android.widget.Button[@text=\"NEXT\"]");
     public static By chooseData = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
     public static By chooseData2 = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
-
     public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"AUTHENTICATE WITH WALLET\"]");
     public static By chooseSampleData = By.xpath("//android.widget.TextView[@text=\"Load Sample Documents\"]");
     public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"Please review carefully before sharing your data. Why we need your data?\"]");
@@ -61,7 +60,6 @@ public class WalletElements {
     public static By drivingLicenceIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You can now add your Driving License\"]");
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]");
-    public static By expiryDate = By.xpath("//android.widget.TextView[@text=\"Expiry Date:\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Portrait:\"]");
     public static By clickXButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Button");
     public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
@@ -70,7 +68,6 @@ public class WalletElements {
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
-    public static By countrySelection;
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");;
     public static By clickSecondNationalId = By.xpath("(//android.widget.TextView[@text=\"National ID\"])[2]");

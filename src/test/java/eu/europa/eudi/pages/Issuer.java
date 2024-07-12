@@ -374,7 +374,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             int i=1;
-            while (i<4) {
+            while (i<5) {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = size.height / 2;  // Start from the middle of the screen
@@ -415,16 +415,6 @@ public class Issuer {
                 }
             }
 
-            public void countrySelectionIsDisplayed () {
-                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                    String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationMethodSelection)).getText();
-                    Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SELECTION.label, pageHeader);
-                } else {
-                    String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.authenticationMethodSelection)).getText();
-                    Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SELECTION.label, pageHeader);
-                }
-            }
-
             public void formIsDisplayed () {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                     String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
@@ -434,17 +424,4 @@ public class Issuer {
                     Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
                 }
             }
-
-            public void authoizePageIsDisplayed () {
-                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                    String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
-                    Assert.assertEquals(Literals.Issuer.AUTHORIZE_PAGE.label, pageHeader);
-                } else {
-                    String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePage)).getText();
-                    Assert.assertEquals(Literals.Issuer.AUTHORIZE_PAGE.label, pageHeader);
-                    IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-                }
-            }
-
         }
