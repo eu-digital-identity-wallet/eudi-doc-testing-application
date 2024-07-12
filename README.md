@@ -189,7 +189,9 @@ To execute the tests, follow the steps below:
 5. Run the tests: Depending on your system, execute the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac) to start the tests.
    In order to run them open the terminal and run `cd C:\Projects\wallet` (replace the path with the path that you have saved the project). After you navigate to the correct directory, run the .cmd file by typing its name and pressing Enter. So, you should type: `local-execution.cmd`
 
-   Note: On tests there are some tags.
+   Or run them through the framework clicking run on local-execution.cmd (for Windows) or local-execution-mac.sh
+   
+6. Note: On tests there are some tags.
  
    - @ANDROID: will run all the android tests
    - @IOS: will run all the ios tests
