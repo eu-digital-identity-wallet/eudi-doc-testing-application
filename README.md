@@ -1,4 +1,4 @@
-# Functional automated E2E tests for EUDIW application
+# Functional E2E tests for EUDI Wallet application
 
 ## Table of contents
 
@@ -12,8 +12,7 @@
 * [License](#license)
     + [License details](#license-details)
 
-
-
+    
 ## Overview
 This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests will be conducted, following the User Stories created by the Analysis team. Any additional testing requests will be evaluated on a case-by-case basis, and relevant tests will be conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
 
