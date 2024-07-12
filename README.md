@@ -154,6 +154,8 @@ Some of the tests need to install the app from scratch for this reason the execu
 
 To execute the tests, follow the steps below:
 
+**If you want to run only the manual tests start from the step 4.**
+
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
 2. Connect a real device through cable to the machine and find the UDID of the device. For android devices execute the 'adb devices' command. For iphone devices execute the 'xcrun simctl list'.
