@@ -149,7 +149,7 @@ Minimum device requirements
 
 To complete the flows described below you need to download the android app into your device. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
 
-After downloading you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
+After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
 Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
 
 ## Running the tests
