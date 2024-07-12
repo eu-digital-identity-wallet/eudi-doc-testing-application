@@ -191,7 +191,7 @@ To execute the tests, follow the steps below:
 
    Or run them through the framework clicking run on local-execution.cmd (for Windows) or local-execution-mac.sh
    
-6. Note: On tests there are some tags.
+   Note: On tests there are some tags.
  
    - @ANDROID: will run all the android tests
    - @IOS: will run all the ios tests
