@@ -286,30 +286,20 @@ public class Issuer {
                 i++;
             }
         } else {
-            IOSDriver webDriver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            if (!(webDriver instanceof AppiumDriver)) {
-                throw new IllegalStateException(Literals.General.WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE.label);
-            }
-            AppiumDriver appiumDriver = (AppiumDriver) webDriver;
-            while (true) {
-                List<WebElement> elements = appiumDriver.findElements(WalletElements.expiryDateMdl);
-                if (!elements.isEmpty()) {
-                    // Element is found, break the loop.
-                    break;
-                } else {
-                    //element not found, scroll once and then check again.
-                    Dimension dimension = appiumDriver.manage().window().getSize();
-                    int startX = dimension.width / 2;
-                    int startY = (int) (dimension.height * 0.8);
-                    int endY = (int) (dimension.height * 0.2);
-                    new TouchAction((PerformsTouchActions) appiumDriver)
-                            .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .moveTo(PointOption.point(startX, endY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .release()
-                            .perform();
-                }
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            int i=1;
+            while (i<4) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = size.height / 2;  // Start from the middle of the screen
+                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+                new TouchAction<>((PerformsTouchActions) driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                i++;
             }
         }
     }
