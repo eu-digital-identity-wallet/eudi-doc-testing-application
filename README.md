@@ -77,7 +77,7 @@ This will allow you to run the automation scripts on the Android and iOS devices
 
 **-Install Appium using Node.js**
 
-1.Install Node.js
+1. Install Node.js
 The first step is to verify whether Node.js is already installed in the system. To do so, open the terminal and run the following command:
 `node --version`
 If Node.js is already installed in the system, it’ll return the Node version, else it throws an error stating – ‘node is not recognized’, which means Node.js is not installed in the system.
@@ -138,23 +138,17 @@ Minimum device requirements
 
 Prerequisites
 
-To complete the flows described below you need to download the Android app onto your device.
-
-App center download method (iOS app)
-
-In addition to building the app from the source, you can also use the Android app which you can download here
+To complete the flows described below you need to download the iOS app into your device. You can download it from App center download method (iOS app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-iOS-Dev).
 
 - Android:
 Minimum device requirements
 
     API level 26.
 
-Prerequisites
-
-You can download the application here.
+To complete the flows described below you need to download the android app into your device. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
 
 You can install them with drag and drop inside the device that created before on android studio or let automated tests install them automatically.
-Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and APP4ESS.ipa
+Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
 
 ## Running the tests
 
@@ -174,7 +168,17 @@ To execute the tests, follow the steps below:
 4. Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac).
 
 5. Run the tests: Depending on your system, execute the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac) to start the tests.
-   In order to run them open the terminal and run `cd C:\Projects\frontex` (replace the path with the path that you have saved the project). After you navigate to the correct directory, run the .cmd file by typing its name and pressing Enter. So, you should type: `local-execution.cmd`
+   In order to run them open the terminal and run `cd C:\Projects\wallet` (replace the path with the path that you have saved the project). After you navigate to the correct directory, run the .cmd file by typing its name and pressing Enter. So, you should type: `local-execution.cmd`
+
+   Note: On tests there are some tags.
+ 
+   @ANDROID: will run all android tests
+   @IOS: will run all the ios tests
+   Or you can run a specific test with a unique tag that each test has, for example @US_VD_TC_01.
+
+   Tags: @before_01, @before_02, @before_03 are used for technical reasons on automation tests and don't use them for execution.
+
+   Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh
 
 6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. If you have enabled the appium.recording property then a .mp4 file will be created in the ./target/recordings folder.  If you execute the tests in Mac then you have to install also ffmpeg.
 
