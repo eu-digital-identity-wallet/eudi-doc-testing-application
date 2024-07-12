@@ -1,13 +1,13 @@
-@ANDROID @manual @US_OIASD
+@ANDROID @automated @US_OIASD
 Feature: Online Identification & Authentication (same-device)
 
-  @US_OIASD_TC_01 @without_data
+  @US_OIASD_TC_01 @before_02
   Scenario: User successfully logs in and sees the dashboard
     Given the user is on the Login screen
     When the user enters their PIN
     Then the user should see the add document page
 
-  @US_OIASD_TC_02 @without_data
+  @US_OIASD_TC_02 @before_02
   Scenario: Dashboard page is displayed
     Given user clicks load sample data
     When the dashboard page is displayed on wallet

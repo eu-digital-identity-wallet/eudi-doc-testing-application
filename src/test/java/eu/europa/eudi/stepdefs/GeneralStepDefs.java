@@ -25,9 +25,9 @@ public class GeneralStepDefs{
     @Before
     public void setup(Scenario scenario) {
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
-        boolean data = scenario.getSourceTagNames().contains("@data");
-        boolean without_data = scenario.getSourceTagNames().contains("@without_data");
-        boolean data_two_pid = scenario.getSourceTagNames().contains("@data_two_pid");
+        boolean data = scenario.getSourceTagNames().contains("@before_01");
+        boolean without_data = scenario.getSourceTagNames().contains("@before_02");
+        boolean two_pid_data = scenario.getSourceTagNames().contains("@before_03");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android) {
@@ -60,7 +60,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickContinue();
         }
 
-        if (data_two_pid) {
+        if (two_pid_data) {
             test.mobile().wallet().checkIfPageIsTrue();
             test.mobile().wallet().createAPin();
             test.mobile().wallet().clickNextButton();
