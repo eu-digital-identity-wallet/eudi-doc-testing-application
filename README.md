@@ -181,7 +181,7 @@ To execute the tests, follow the steps below:
 
    Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh
 
-6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. If you have enabled the appium.recording property then a .mp4 file will be created in the ./target/recordings folder.  If you execute the tests in Mac then you have to install also ffmpeg.
+6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html.
 
 ## Implemented test cases
 The implemented test cases can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
