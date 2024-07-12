@@ -202,8 +202,6 @@ To execute the tests, follow the steps below:
 ## Implemented test cases
 The implemented test cases can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
 
-The full scope of implemented test cases can be executed in DEV environment in Debug version of the app because mock data like travellers are used. In Release version of the application, the scope is reduced because some of the actions cannot be automated like scanning of passport. For this reason, some manual actions are needed.
-
 In general, the test cases cover the following areas:
 
 - Age Verification
