@@ -157,11 +157,12 @@ To execute the tests, follow the steps below:
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
 2. Connect a real device through cable to the machine and find the UDID of the device. For android devices execute the 'adb devices' command. For iphone devices execute the 'xcrun simctl list'.
+   
    **For android devices are needed also:**
-   Step 1: Go to the settings menu and click on "about phone" icon.
-   Step 2: After clicking on the about phone icon you will be redirected to a page containing all the information related to your phone. Now click on build version for 7 times, yes you have to click 7 times on the build number. Once you will start clicking on the build version, you will get some pop-up messages stating “You are 4 steps away from being a developer“. After clicking it for 7 times, you will again get a pop-up message stating “You are now a developer“. This message means that you have enabled the developer options on your phone.
-   Step 3:  Click on additional settings after enabling developer options and there you can see the developer options:
-   Step 4: Now scroll down and search for the "USB debugging", "revoke USB debugging authorizations", "install via USB" and "USB debugging(Security settings)" option and enable them.(It's optional, it's depend on device)
+   - Step 1: Go to the settings menu and click on "about phone" icon.
+   - Step 2: After clicking on the about phone icon you will be redirected to a page containing all the information related to your phone. Now click on build version for 7 times, yes you have to click 7 times on the build number. Once you will start clicking on the build version, you will get some pop-up messages stating “You are 4 steps away from being a developer“. After clicking it for 7 times, you will again get a pop-up message stating “You are now a developer“. This message means that you have enabled the developer options on your phone.
+   - Step 3:  Click on additional settings after enabling developer options and there you can see the developer options:
+   - Step 4: Now scroll down and search for the "USB debugging", "revoke USB debugging authorizations", "install via USB" and "USB debugging(Security settings)" option and enable them.(It's optional, it's depend on device)
 
 3. Go to env.properties file and update the values based on your environment.
 
