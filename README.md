@@ -175,9 +175,9 @@ To execute the tests, follow the steps below:
  
    - @ANDROID: will run all the android tests
    - @IOS: will run all the ios tests
-   - Or you can run a specific test with a unique tag that each test has, for example @US_VD_TC_01.
    - @manual: will run all the manual tests
    - @automated: will run all the automated tests
+   - Or you can run a specific test with a unique tag that each test has, for example @US_VD_TC_01.
 
    Tags: @before_01, @before_02, @before_03 are used for technical reasons on automation tests and don't use them for execution.
 
