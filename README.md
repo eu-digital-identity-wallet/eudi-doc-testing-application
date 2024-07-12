@@ -166,6 +166,20 @@ To execute the tests, follow the steps below:
 
 3. Go to env.properties file and update the values based on your environment.
 
+   Need to change this values:
+
+   - android:
+     appium.android.deviceName=POCO X5 Pro
+     appium.android.platformVersion=14.0.8
+     appium.android.udid=emulator-5554
+     appium.android.udid=58d5b98
+ 
+   - ios:
+     appium.ios.deviceName=iPhone 14 Plus
+     appium.ios.platformVersion=17.3
+     appium.ios.platformName=iOS
+     appium.ios.udid=00008110-000470843429401E
+
 4. Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac).
 
 5. Run the tests: Depending on your system, execute the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac) to start the tests.
