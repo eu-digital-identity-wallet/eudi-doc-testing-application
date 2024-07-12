@@ -5,7 +5,7 @@
 * [Overview](#overview)
 * [Requirements](#requirements)
 * [Installation](#installation)
-* [EUDIW Application](#pplications)
+* [EUDI Wallet Application](#pplications)
 * [Running the tests](#running-the-tests)
 * [Implemented test cases](#implemented-test-cases)
 * [How to contribute](#how-to-contribute)
