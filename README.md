@@ -206,7 +206,7 @@ To execute the tests, follow the steps below:
 
 7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. Or you can find the report on github actions section, clicking the latest workflow and there you can find the report and download it.
  
-   Serenity Report will be the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results will include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
+   Note: Serenity Report will be the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results will include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
 ## Implemented test cases
 Test cases will be written in Gherkin language for both manual and automated tests and can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
