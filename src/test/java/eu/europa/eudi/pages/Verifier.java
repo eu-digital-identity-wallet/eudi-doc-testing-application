@@ -126,11 +126,6 @@ public class Verifier {
             WebElement element = null;
             int i=1;
             while (i<4) {
-//                element = driver.findElement(By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]"));
-//                if (element.isDisplayed()) {
-//                    // Element is found, break the loop.
-//                    break;
-//                } else {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = size.height / 2;  // Start from the middle of the screen
@@ -146,15 +141,8 @@ public class Verifier {
 
         } else {
             WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            By locator = By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]");
-            WebElement element = null;
             int i=1;
             while (i<4) {
-//                element = driver.findElement(By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]"));
-//                if (element.isDisplayed()) {
-//                    // Element is found, break the loop.
-//                    break;
-//                } else {
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
                     int startY = size.height / 2;  // Start from the middle of the screen

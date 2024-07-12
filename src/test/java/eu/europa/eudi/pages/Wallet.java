@@ -591,10 +591,4 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PIN_FIELD_IS_DISPLAYED.label, pageHeader);
         }
     }
-
-    public void terminateWallet() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
-
-    }
 }

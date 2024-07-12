@@ -24,7 +24,6 @@ public class WalletElements {
     public static By chooseData = By.xpath("//XCUIElementTypeSwitch[@name=\"Family name\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Proceed to authentication\"]");
     public static By chooseWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"AUTHENTICATE WITH WALLET\"]");
-    public static By clickOpenWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"Open\"]");
     public static By viewDataPage = By.xpath("//XCUIElementTypeStaticText[@name=\"Please review carefully before sharing your data. Why we need your data?\"]");
     public static By clickShare = By.xpath("//XCUIElementTypeButton[@name=\"SHARE\"]");
     public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared information with the EUDI Remote Verifier\"]");
@@ -80,5 +79,4 @@ public class WalletElements {
     public static By clickSecondNationalId = By.xpath("(//XCUIElementTypeStaticText[@name=\"National ID\"])[2]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeStaticText[@name=\"Verification Data\"]");
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Date of issuance\"]");
-    public static By authorizeButton = By.xpath("//XCUIElementTypeStaticText[@name=\"age_over_18\"]");
 }
