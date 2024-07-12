@@ -200,8 +200,9 @@ To execute the tests, follow the steps below:
    Tags: @before_01, @before_02, @before_03 are used for technical reasons on automation tests and don't use them for execution.
 
    Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh
+6. After the execution the github actions are running and you can find them [this](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions)
 
-6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html.
+7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. Or you can find the report on github actions section, clicking the latest workflow and there you can find the report and download it.
  
    Serenity Report will be the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results will include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
