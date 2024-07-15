@@ -5,7 +5,7 @@ on:
     push:
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 #checkout the code
       - name: Set up JDK 17
@@ -39,6 +39,12 @@ jobs:
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
+        
+      - name: Enable KVM group perms
+        run: |
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
 
       - name: Run Ui Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
@@ -48,7 +54,27 @@ jobs:
           arch: arm64-v8a
           avd-name: Pixel_6_API_33
           disable-animations: true
-          script: adb devices
+          script: |
+            adb shell input keyevent 82
+            adb wait-for-device
+
+      - name: Wait for Emulator to boot
+        run: |
+          # Wait for the Android Emulator to finish booting
+          boot_completed=""
+          boot_attempts=0
+          while [[ "$boot_completed" != "1" && $boot_attempts -lt 10 ]]; do
+            sleep 30
+            boot_completed=$(adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')
+            boot_attempts=$((boot_attempts + 1))
+            echo "Waiting for emulator to boot... Attempt $boot_attempts"
+          done
+
+          if [[ "$boot_completed" != "1" ]]; then
+            echo "Emulator failed to boot within the time limit."
+            exit 1
+          fi
+          echo "Emulator booted successfully."
 
       - name: Wait for emulator to boot
         run: |
