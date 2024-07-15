@@ -34,14 +34,14 @@ Feature: Pre-authorization code cross device
   @US_PACCD_TC_06
   Scenario: Issuing the new document via QR code
     Given the user is presented with the request details to be issued
-    When the user presses the ‘ISSUE’ button
+    When the user presses the ISSUE button
     Then the Wallet app requests the transaction code
     And the user enters the transaction code provided by the Issuer
 
   @US_PACCD_TC_07
   Scenario: Document display
     Given the user enters the transaction code provided by the Issuer
-    When the Wallet app displays a success message
+    When the Wallet app displays a success message on screen
     Then the user clicks on the 'CONTINUE' button
     And the doc is displayed in the dashboard screen
 

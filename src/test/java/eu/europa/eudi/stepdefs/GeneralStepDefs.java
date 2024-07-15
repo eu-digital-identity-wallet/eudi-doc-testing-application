@@ -1743,5 +1743,10 @@ public class GeneralStepDefs{
     public void theUserIsRedirectedToTheEUDIWalletApplication() {
         //manual
     }
+
+    @When("the Wallet application displays a success message")
+    public void theWalletApplicationDisplaysASuccessMessage() {
+        //manual
+    }
 }
 

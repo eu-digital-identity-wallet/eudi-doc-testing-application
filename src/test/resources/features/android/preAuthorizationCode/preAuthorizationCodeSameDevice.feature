@@ -30,6 +30,6 @@ Feature: Pre-authorization code same device
   @US_PACSD_TC_05
   Scenario: Document display
     Given the user entered the transaction code provided by the Issuer
-    When the Wallet app displays a success message
+    When the Wallet application displays a success message
     Then the user clicks on the 'CONTINUE' button
     And the doc is displayed in the dashboard screen
