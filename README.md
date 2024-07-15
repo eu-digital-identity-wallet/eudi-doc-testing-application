@@ -5,7 +5,7 @@
 * [Overview](#overview)
 * [Requirements](#requirements)
 * [Installation](#installation)
-* [EUDI Wallet Application](#pplications)
+* [EUDI Wallet Application](#eudi-wallet-application)
 * [Running the tests](#running-the-tests)
 * [Implemented test cases](#implemented-test-cases)
 * [How to contribute](#how-to-contribute)
@@ -129,7 +129,7 @@ If you want to run tests on a real iPhone device, you will need to install WebDr
 
 - If the build is successful, WebDriverAgent is installed on your iPhone.
 
-## Application
+## EUDI Wallet Application
 
 Download and install the EUDIW app:
 
@@ -147,7 +147,7 @@ Minimum device requirements
 
     API level 26.
 
-To complete the flows described below you need to download the android app into your device. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
+To complete the flows described below you need to download the app. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
 
 After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
 Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
@@ -188,8 +188,6 @@ To execute the tests, follow the steps below:
 
 5. Run the tests: Depending on your system, execute the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac) to start the tests.
    In order to run them open the terminal and run `cd C:\Projects\wallet` (replace the path with the path that you have saved the project). After you navigate to the correct directory, run the .cmd file by typing its name and pressing Enter. So, you should type: `local-execution.cmd`
-
-   Or run them through the framework clicking run on local-execution.cmd (for Windows) or local-execution-mac.sh
    
    Note: On tests there are some tags.
  
