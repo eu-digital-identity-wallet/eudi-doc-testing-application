@@ -1,6 +1,8 @@
 name: automation_with_emulator - 2
 # on push we will trigger our code
-on: [workflow_dispatch,push]
+on:
+    workflow_dispatch:
+    push:
 jobs:
   build:
     runs-on: macos-latest
