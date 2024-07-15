@@ -45,7 +45,17 @@ jobs:
        #     echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
        #     sudo udevadm control --reload-rules
        #     sudo udevadm trigger --name-match=kvm
+       
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
 
+      - name: Restart ADB server
+        run: |
+          adb kill-server
+          adb start-server
+          adb devices
+        continue-on-error: true
+        
       - name: Run Ui Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
@@ -54,8 +64,14 @@ jobs:
           arch: x86_64
           avd-name: Pixel_6_API_33
           disable-animations: true
-          script: mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33" -Dcucumber.filter.tags='@ANDROID'
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dcucumber.filter.tags='@ANDROID'
+
+      - name: Restart ADB server
+        run: |
+          adb kill-server
+          adb start-server
+          adb devices
           
       - name: Wait for Emulator to boot
         run: |
