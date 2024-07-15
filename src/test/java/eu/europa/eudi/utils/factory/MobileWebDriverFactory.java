@@ -35,22 +35,12 @@ public class MobileWebDriverFactory {
         File apkPath2 = new File("src/test/resources/app/androidApp.apk");
         apkPath2.getAbsolutePath();
         DesiredCapabilities caps2 = new DesiredCapabilities();
-        DesiredCapabilities caps1 = new DesiredCapabilities();
-        caps2.setCapability("deviceName", "Pixel_6_API_33_1");
-        caps2.setCapability("udid", "emulator-5554"); //DeviceId from "adb devices" command
-        caps2.setCapability("platformName", "Android");
-        caps2.setCapability("platformVersion", "13.0");
-        caps2.setCapability("automationName", "UiAutomator2");
-        caps2.setCapability("appium:uiautomator2ServerLaunchTimeout", 120000);
-        caps2.setCapability("appium:uiautomator2ServerInstallTimeout", 120000);
-        caps2.setCapability("appium:androidInstallTimeout", 200000);
-        caps2.setCapability("appium:adbExecTimeout", 200000);
-//        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
-//        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
-//        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
-//        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
-//        caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
-//        caps2.setCapability("skipUnlock", "true");
+        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
+        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
+        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
+        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
+        caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
+        caps2.setCapability("skipUnlock", "true");
         caps2.setCapability("appPackage", test.envDataConfig().getAppiumAndroidAppPackage());
         caps2.setCapability("appActivity", test.envDataConfig().getAppiumAndroidAppActivity());
         caps2.setCapability("noReset", noReset);
