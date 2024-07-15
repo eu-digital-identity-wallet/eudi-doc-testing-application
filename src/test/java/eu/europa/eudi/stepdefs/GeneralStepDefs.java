@@ -1833,5 +1833,10 @@ public class GeneralStepDefs{
     public void theUserRegistersPersonalDataManually() {
         //manual
     }
+
+    @Then("the Add document page is displayed on wallet manually")
+    public void theAddDocumentPageIsDisplayedOnWalletManually() {
+        //manual
+    }
 }
 
