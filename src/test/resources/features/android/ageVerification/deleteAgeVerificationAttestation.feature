@@ -30,5 +30,5 @@ Feature: Delete age verification attestation
   Scenario: User confirms the document deletion
     Given a confirmation modal is displayed
     When the user clicks the Yes button
-    Then the document should be deleted
+    Then the document should be deleted manually
     And the user should be redirected to the dashboard
