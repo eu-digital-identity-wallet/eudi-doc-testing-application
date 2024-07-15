@@ -1,4 +1,4 @@
-@ANDROID @manual @US_DIC
+@IOS @manual @US_DIC
 Feature: Credential Issuance Cancellation
 
   @US_DIC_TC_01 @manual:Passed
