@@ -1753,5 +1753,85 @@ public class GeneralStepDefs{
     public void theAddDocumentPageIsDisplayedOnWallet() {
        // manual
     }
+
+    @Given("the user is on the Login screen manually")
+    public void theUserIsOnTheLoginScreenManually() {
+        //manual
+    }
+
+    @Given("the user has successfully entered the PIN manually")
+    public void theUserHasSuccessfullyEnteredThePINManually() {
+        //manual
+    }
+
+    @Then("the user should see the document contents manually")
+    public void theUserShouldSeeTheDocumentContentsManually() {
+      //  manual
+    }
+
+    @Then("the document should be deleted manually")
+    public void theDocumentShouldBeDeletedManually() {
+        //manual
+    }
+
+    @When("the user enters their PIN manually")
+    public void theUserEntersTheirPINManually() {
+        //manual
+    }
+
+    @Then("the user should see the dashboard screen manually")
+    public void theUserShouldSeeTheDashboardScreenManually() {
+        //manual
+    }
+
+    @Given("the dashboard page is displayed manually")
+    public void theDashboardPageIsDisplayedManually() {
+        //manual
+    }
+
+    @When("the user clicks the add doc button manually")
+    public void theUserClicksTheAddDocButtonManually() {
+        //manual
+    }
+
+    @Then("the authentication method selection is displayed manually")
+    public void theAuthenticationMethodSelectionIsDisplayedManually() {
+        //manual
+    }
+
+    @When("the user fills in the form manually")
+    public void theUserFillsInTheFormManually() {
+        //manual
+    }
+
+    @Given("the user is on the dashboard screen manually")
+    public void theUserIsOnTheDashboardScreenManually() {
+        //manual
+    }
+
+    @Then("the PID should open manually")
+    public void thePIDShouldOpenManually() {
+        //manual
+    }
+
+    @When("the user clicks the X button manually")
+    public void theUserClicksTheXButtonManually() {
+        //manual
+    }
+
+    @And("the user should see the dashboard screen again manually")
+    public void theUserShouldSeeTheDashboardScreenAgainManually() {
+        //manual
+    }
+
+    @Given("the user is on the issuer service manually")
+    public void theUserIsOnTheIssuerServiceManually() {
+        //manual
+    }
+
+    @Then("the user registers personal data manually")
+    public void theUserRegistersPersonalDataManually() {
+        //manual
+    }
 }
 

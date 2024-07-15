@@ -3,9 +3,9 @@ Feature: Pre-authorization code same device
 
   @US_PACSD_TC_01
   Scenario: User selects to issue a credential
-    Given the user is on the issuer service
+    Given the user is on the issuer service manually
     When the user chooses to issue a doc with pre-authorization
-    Then the user registers personal data
+    Then the user registers personal data manually
     And a transaction code has been created
 
   @US_PACSD_TC_02
