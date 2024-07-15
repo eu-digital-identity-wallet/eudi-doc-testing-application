@@ -1,4 +1,4 @@
-@ANDROID @manual @US_DI
+@IOS @manual @US_DI
 Feature: Deferred Issuing
 
   @US_DI_TC_01 @manual:Passed

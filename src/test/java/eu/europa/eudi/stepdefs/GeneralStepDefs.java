@@ -1843,5 +1843,140 @@ public class GeneralStepDefs{
     public void theUserIsOnTheIssuerServicePage() {
         //manual
     }
+
+    @When("the user chooses to issue a credential to the wallet app")
+    public void theUserChoosesToIssueACredentialToTheWalletApp() {
+        //manual
+    }
+
+    @Then("the user is redirected to the wallet app")
+    public void theUserIsRedirectedToTheWalletApp() {
+        //manual
+    }
+
+    @And("the user views the details regarding the issuance")
+    public void theUserViewsTheDetailsRegardingTheIssuance() {
+        //manual
+    }
+
+    @Given("the user is on the wallet app with issuance details")
+    public void theUserIsOnTheWalletAppWithIssuanceDetails() {
+        //manual
+    }
+
+    @When("the user clicks the cancel button")
+    public void theUserClicksTheCancelButton() {
+        //manual
+    }
+
+    @Then("a modal appears asking if they really want to cancel the issuance process")
+    public void aModalAppearsAskingIfTheyReallyWantToCancelTheIssuanceProcess() {
+        //manual
+    }
+
+    @Given("the user views the cancellation confirmation modal")
+    public void theUserViewsTheCancellationConfirmationModal() {
+        //manual
+    }
+
+    @When("the user clicks the cancel button on the modal")
+    public void theUserClicksTheCancelButtonOnTheModal() {
+        //manual
+    }
+
+    @Then("the issuance process is canceled")
+    public void theIssuanceProcessIsCanceled() {
+        //manual
+    }
+
+    @And("the user returns to the {string} screen")
+    public void theUserReturnsToTheAddDocumentScreen() {
+        //manual
+    }
+
+    @And("the user sees the details regarding the issuance")
+    public void theUserSeesTheDetailsRegardingTheIssuance() {
+        //manual
+    }
+
+    @When("the user clicks the {string} button")
+    public void theUserClicksTheISSUEButton() {
+        //manual
+    }
+
+    @Then("the user is redirected to the issuer for authentication and consent")
+    public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
+        //manual
+    }
+
+    @Given("the user is on the issuer page for authentication and consent")
+    public void theUserIsOnTheIssuerPageForAuthenticationAndConsent() {
+        //manual
+    }
+
+    @When("the user authenticates and consents to the issuance manually")
+    public void theUserAuthenticatesAndConsentsToTheIssuanceManually() {
+        //manual
+    }
+
+    @And("a message appears stating that the request is in progress")
+    public void aMessageAppearsStatingThatTheRequestIsInProgress() {
+        //manual
+    }
+
+    @Given("the user sees the issuance in progress message")
+    public void theUserSeesTheIssuanceInProgressMessage() {
+        //manual
+    }
+
+    @When("the user clicks OK")
+    public void theUserClicksOK() {
+        //manual
+    }
+
+    @Then("the dashboard appears with the document grayed out and in a pending state")
+    public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
+        //manual
+    }
+
+    @Given("the wallet app is polling the issuer for the credential")
+    public void theWalletAppIsPollingTheIssuerForTheCredential() {
+        //manual
+    }
+
+    @When("the issuer sends the credential to the wallet app")
+    public void theIssuerSendsTheCredentialToTheWalletApp() {
+        //manual
+    }
+
+    @Then("the user views a modal informing them that the document has been issued")
+    public void theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued() {
+        //manual
+    }
+
+    @Given("the user views the issuance confirmation modal")
+    public void theUserViewsTheIssuanceConfirmationModal() {
+        //manual
+    }
+
+    @When("the user clicks the view button")
+    public void theUserClicksTheViewButton() {
+        //manual
+    }
+
+    @Then("the user views the document information")
+    public void theUserViewsTheDocumentInformation() {
+        //manual
+    }
+
+    @And("the user clicks the ADD button")
+    public void theUserClicksTheADDButton() {
+        //manual
+    }
+
+    @Then("the document appears on the dashboard screen")
+    public void theDocumentAppearsOnTheDashboardScreen() {
+        //manual
+    }
 }
 
