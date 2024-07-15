@@ -19,11 +19,11 @@ Feature: Pre-authorization code same device
   Scenario: Handling issuer request on wallet app
     Given the user has entered the PIN
     When the request from the issuer is displayed on the wallet app
-    Then the user clicks on the 'ISSUE' button
+    Then the user clicks on the ISSUE button
 
   @US_PACSD_TC_04 @manual:Passed
   Scenario: Transaction code entry
-    Given the user has clicked on the 'ISSUE' button
+    Given the user has clicked on the ISSUE button
     When the Wallet app requests the transaction code
     Then the user enters the transaction code provided by the Issuer
 
@@ -31,5 +31,5 @@ Feature: Pre-authorization code same device
   Scenario: Document display
     Given the user entered the transaction code provided by the Issuer
     When the Wallet application displays a success message
-    Then the user clicks on the 'CONTINUE' button
+    Then the user clicks on the CONTINUE button
     And the doc is displayed in the dashboard screen

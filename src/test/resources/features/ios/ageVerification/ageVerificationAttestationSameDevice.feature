@@ -17,7 +17,7 @@ Feature: Age verification attestation same device
   Scenario: Inform user about Age Verification Attestation request
     Given the EUDI Wallet presents a screen to inform the user about the Age Verification Attestation request
     When the user views the Age Verification Attestation to be presented
-    Then the user clicks on the 'Share' button
+    Then the user clicks on the Share button
 
   @US_AVASD_TC_04 @manual:Passed
   Scenario: User authorization for attestation release
@@ -36,10 +36,10 @@ Feature: Age verification attestation same device
     Given the wallet app displays a corresponding error message
     When the user re-enters the correct PIN
     Then the wallet app displays a success message
-    And the user clicks on the 'Continue' button
+    And the user clicks on the Continue button
 
   @US_AVASD_TC_06 @manual:Passed
   Scenario: Relying Party receives age verification attestation
-    Given the user has clicked on the 'Continue' button
+    Given the user has clicked on continue button
     When the user is redirected to the relying party
     Then the Relying Party service presents the data from the EUDI wallet
