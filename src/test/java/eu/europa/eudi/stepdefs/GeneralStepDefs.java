@@ -1978,5 +1978,10 @@ public class GeneralStepDefs{
     public void theDocumentAppearsOnTheDashboardScreen() {
         //manual
     }
+
+    @Then("the Add document page is displayed manually")
+    public void theAddDocumentPageIsDisplayedManually() {
+        //manual
+    }
 }
 
