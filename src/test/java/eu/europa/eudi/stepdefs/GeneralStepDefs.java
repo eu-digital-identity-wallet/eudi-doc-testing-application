@@ -1373,5 +1373,375 @@ public class GeneralStepDefs{
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
+
+    @Given("the user visits the Relying Party service on a different device from the one where the wallet app is installed")
+    public void theUserVisitsTheRelyingPartyServiceOnADifferentDeviceFromTheOneWhereTheWalletAppIsInstalled() {
+        //manual
+    }
+
+    @When("the Relying Party service displays a QR code")
+    public void theRelyingPartyServiceDisplaysAQRCode() {
+        //manual
+    }
+
+    @Then("the user views the QR code")
+    public void theUserViewsTheQRCode() {
+        //manual
+    }
+
+    @When("the user clicks on the options button")
+    public void theUserClicksOnTheOptionsButton() {
+        //manual
+    }
+
+    @And("the user clicks on the {string} button")
+    public void theUserClicksOnTheScanAQRCodeButton() {
+        //manual
+    }
+
+    @Then("the camera opens and the user scans the QR code")
+    public void theCameraOpensAndTheUserScansTheQRCode() {
+        //manual
+    }
+
+    @Given("the user scans the QR code")
+    public void theUserScansTheQRCode() {
+        //manual
+    }
+
+    @When("the wallet app displays a screen informing the user about the age verification request")
+    public void theWalletAppDisplaysAScreenInformingTheUserAboutTheAgeVerificationRequest() {
+        //manual
+    }
+
+    @Then("the user reads the age verification request")
+    public void theUserReadsTheAgeVerificationRequest() {
+        //manual
+    }
+
+    @When("the user taps the share button in the wallet app")
+    public void theUserTapsTheShareButtonInTheWalletApp() {
+        //manual
+    }
+
+    @Then("the wallet app prompts the user to enter the PIN")
+    public void theWalletAppPromptsTheUserToEnterThePIN() {
+        //manual
+    }
+
+    @When("the user enters the incorrect PIN")
+    public void theUserEntersTheIncorrectPIN() {
+        //manual
+    }
+
+    @Then("the wallet app displays a corresponding error message")
+    public void theWalletAppDisplaysACorrespondingErrorMessage() {
+        //manual
+    }
+
+    @When("the user re-enters the correct PIN")
+    public void theUserReEntersTheCorrectPIN() {
+        //manual
+    }
+
+    @Then("the wallet app displays a success message")
+    public void theWalletAppDisplaysASuccessMessage() {
+        //manual
+    }
+
+    @Given("the user visits the Relying Party service on their mobile device")
+    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() {
+        //manual
+    }
+
+    @When("the user selects to verify the age limit with the EUDI Wallet")
+    public void theUserSelectsToVerifyTheAgeLimitWithTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Relying Party service redirects the user to the EUDI Wallet")
+    public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user authenticates successfully in the EUDI Wallet")
+    public void theUserAuthenticatesSuccessfullyInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents a screen to inform the user about the Age Verification Attestation request")
+    public void theEUDIWalletPresentsAScreenToInformTheUserAboutTheAgeVerificationAttestationRequest() {
+        //manual
+    }
+
+    @When("the user views the Age Verification Attestation to be presented")
+    public void theUserViewsTheAgeVerificationAttestationToBePresented() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet user clicks on the share button")
+    public void theEUDIWalletUserClicksOnTheShareButton() {
+        //manual
+    }
+
+    @When("a authentication page appears")
+    public void aAuthenticationPageAppears() {
+        //manual
+    }
+
+    @Given("the user has clicked on the {string} button")
+    public void theUserHasClickedOnTheContinueButton() {
+        //manual
+    }
+
+    @When("the user is redirected to the relying party")
+    public void theUserIsRedirectedToTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the Relying Party service presents the data from the EUDI wallet")
+    public void theRelyingPartyServicePresentsTheDataFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user opens an age verification doc")
+    public void theUserOpensAnAgeVerificationDoc() {
+        //manual
+    }
+
+    @Given("the user has an age verification document open")
+    public void theUserHasAnAgeVerificationDocumentOpen() {
+        //manual
+    }
+
+    @When("the user clicks the delete button")
+    public void theUserClicksTheDeleteButton() {
+        //manual
+    }
+
+    @Then("a confirmation modal should appear")
+    public void aConfirmationModalShouldAppear() {
+        //manual
+    }
+
+    @Given("a confirmation modal is displayed")
+    public void aConfirmationModalIsDisplayed() {
+        //manual
+    }
+
+    @When("the user clicks the No button")
+    public void theUserClicksTheNoButton() {
+        //manual
+    }
+
+    @Then("the modal should close")
+    public void theModalShouldClose() {
+        //manual
+    }
+
+    @And("the user should still view the age verification document")
+    public void theUserShouldStillViewTheAgeVerificationDocument() {
+        //manual
+    }
+
+    @When("the user clicks the delete button again")
+    public void theUserClicksTheDeleteButtonAgain() {
+        //manual
+    }
+
+    @When("the user clicks the Yes button")
+    public void theUserClicksTheYesButton() {
+        //manual
+    }
+
+    @And("the user should be redirected to the dashboard")
+    public void theUserShouldBeRedirectedToTheDashboard() {
+        //manual
+    }
+
+    @And("the user clicks the Age Verification button")
+    public void theUserClicksTheAgeVerificationButton() {
+        //manual
+    }
+
+    @When("the user clicks country selection")
+    public void theUserClicksCountrySelection() {
+        //manual
+    }
+
+    @And("the user clicks FormEU")
+    public void theUserClicksFormEU() {
+        //manual
+    }
+
+    @Then("the data page is displayed")
+    public void theDataPageIsDisplayed() {
+        //manual
+    }
+
+    @Given("a form is displayed")
+    public void aFormIsDisplayed() {
+        //manual
+    }
+
+    @And("the age verification is displayed in the dashboard")
+    public void theAgeVerificationIsDisplayedInTheDashboard() {
+        //manual
+    }
+
+    @And("the user should see the details of the Age Verification")
+    public void theUserShouldSeeTheDetailsOfTheAgeVerification() {
+        //manual
+    }
+
+    @Given("the Age Verification is open")
+    public void theAgeVerificationIsOpen() {
+        //manual
+    }
+
+    @Then("the Age Verification should close")
+    public void theAgeVerificationShouldClose() {
+        //manual
+    }
+
+    @Given("the user visits the Issuer service")
+    public void theUserVisitsTheIssuerService() {
+        //manual
+    }
+
+    @When("the user chooses to issue a doc with pre-authorization")
+    public void theUserChoosesToIssueADocWithPreAuthorization() {
+        //manual
+    }
+
+    @Then("the Issuer service creates a QR code and a transaction code")
+    public void theIssuerServiceCreatesAQRCodeAndATransactionCode() {
+        //manual
+    }
+
+    @Given("the issuer has displayed a QR code")
+    public void theIssuerHasDisplayedAQRCode() {
+        //manual
+    }
+
+    @When("the user initiates the wallet app")
+    public void theUserInitiatesTheWalletApp() {
+        //manual
+    }
+
+    @Then("the dashboard screen is displayed")
+    public void theDashboardScreenIsDisplayed() {
+        //manual
+    }
+
+    @Given("the waller app has been initiated")
+    public void theWallerAppHasBeenInitiated() {
+        //manual
+    }
+
+    @When("the user clicks on the {string} button on the wallet app")
+    public void theUserClicksOnTheADDDOCButtonOnTheWalletApp() {
+        //manual
+    }
+
+    @Then("the user views the {string} screen")
+    public void theUserViewsTheAddDocumentScreen() {
+        //manual
+    }
+
+    @Given("the {string} screen is diplayed")
+    public void theAddDocumentScreenIsDiplayed() {
+        //manual
+    }
+
+    @Then("the phone camera opens")
+    public void thePhoneCameraOpens() {
+        //manual
+    }
+
+    @Given("the phone camera has opened")
+    public void thePhoneCameraHasOpened() {
+        //manual
+    }
+
+    @When("the user scans the QR code from the issuer")
+    public void theUserScansTheQRCodeFromTheIssuer() {
+        //manual
+    }
+
+    @Then("the details of the request are displayed on the wallet app")
+    public void theDetailsOfTheRequestAreDisplayedOnTheWalletApp() {
+        //manual
+    }
+
+    @Given("the user is presented with the request details to be issued")
+    public void theUserIsPresentedWithTheRequestDetailsToBeIssued() {
+        //manual
+    }
+
+    @Then("the Wallet app requests the transaction code")
+    public void theWalletAppRequestsTheTransactionCode() {
+        //manual
+    }
+
+    @And("the user enters the transaction code provided by the Issuer")
+    public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
+        //manual
+    }
+
+    @And("the doc is displayed in the dashboard screen")
+    public void theDocIsDisplayedInTheDashboardScreen() {
+        //manual
+    }
+
+    @And("a transaction code has been created")
+    public void aTransactionCodeHasBeenCreated() {
+        //manual
+    }
+
+    @Given("the transaction code has been created")
+    public void theTransactionCodeHasBeenCreated() {
+        //manual
+    }
+
+    @When("the user selects to register with the EUDI wallet app")
+    public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
+        //manual
+    }
+
+    @And("the user enters the PIN")
+    public void theUserEntersThePIN() {
+        //manual
+    }
+
+    @Given("the user has entered the PIN")
+    public void theUserHasEnteredThePIN() {
+        //manual
+    }
+
+    @When("the request from the issuer is displayed on the wallet app")
+    public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
+        //manual
+    }
+
+    @Given("the user entered the transaction code provided by the Issuer")
+    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() {
+        //manual
+    }
+
+    @And("the add document page is displayed on screen")
+    public void theAddDocumentPageIsDisplayedOnScreen() {
+        //manual
+    }
+
+    @When("the Wallet app displays a success message on screen")
+    public void theWalletAppDisplaysASuccessMessageOnScreen() {
+        //manual
+    }
+
+    @Then("the user is redirected to the EUDI wallet application")
+    public void theUserIsRedirectedToTheEUDIWalletApplication() {
+        //manual
+    }
 }
 
