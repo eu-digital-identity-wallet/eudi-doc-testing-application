@@ -1748,5 +1748,10 @@ public class GeneralStepDefs{
     public void theWalletApplicationDisplaysASuccessMessage() {
         //manual
     }
+
+    @Then("the Add document page is displayed on wallet")
+    public void theAddDocumentPageIsDisplayedOnWallet() {
+       // manual
+    }
 }
 
