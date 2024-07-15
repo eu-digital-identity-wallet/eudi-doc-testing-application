@@ -1838,5 +1838,10 @@ public class GeneralStepDefs{
     public void theAddDocumentPageIsDisplayedOnWalletManually() {
         //manual
     }
+
+    @Given("the user is on the issuer service page")
+    public void theUserIsOnTheIssuerServicePage() {
+        //manual
+    }
 }
 
