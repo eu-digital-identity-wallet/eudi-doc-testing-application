@@ -1,4 +1,4 @@
-name: Ui Workflow
+name: Automation With Emulator Workflow
 # on push we will trigger our code
 on: [push]
 jobs:
