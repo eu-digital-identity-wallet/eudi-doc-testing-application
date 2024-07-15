@@ -3,7 +3,7 @@ Feature: View age verification attestation
 
   @US_VAVA_TC_01
   Scenario: User successfully logs in and sees the dashboard
-    Given the user is on the Login screen
+    Given the user is on the Login screen manually
     When the user enters their PIN
     Then the user should see the dashboard screen
 
