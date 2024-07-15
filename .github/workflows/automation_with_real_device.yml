@@ -1,4 +1,4 @@
-name: Ui Workflow
+name: Automation With Real Device Workflow
 on: [push]
 jobs:
   build:
