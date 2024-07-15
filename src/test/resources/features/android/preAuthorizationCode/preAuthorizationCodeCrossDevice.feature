@@ -16,13 +16,13 @@ Feature: Pre-authorization code cross device
   @US_PACCD_TC_03 @manual:Passed
   Scenario: Wallet app is initiated
     Given the waller app has been initiated
-    When the user clicks on the 'ADD DOC' button on the wallet app
-    Then the user views the 'Add document' screen
+    When the user clicks on the ADD DOC button on the wallet application
+    Then the user views the Add document page screen
 
   @US_PACCD_TC_04 @manual:Passed
   Scenario: Initiating QR Scan from Add Document Screen
-    Given the 'Add document' screen is diplayed
-    When the user clicks on the 'SCAN QR' button
+    Given the Add document screen is displayed
+    When the user clicks on the SCAN QR button
     Then the phone camera opens
 
   @US_PACCD_TC_05 @manual:Passed
@@ -42,7 +42,7 @@ Feature: Pre-authorization code cross device
   Scenario: Document display
     Given the user enters the transaction code provided by the Issuer
     When the Wallet app displays a success message on screen
-    Then the user clicks on the 'CONTINUE' button
+    Then the user clicks on the CONTINUE button
     And the doc is displayed in the dashboard screen
 
 

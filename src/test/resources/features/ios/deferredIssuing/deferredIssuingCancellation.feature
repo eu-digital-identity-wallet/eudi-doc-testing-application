@@ -19,5 +19,5 @@ Feature: Credential Issuance Cancellation
     Given the user views the cancellation confirmation modal
     When the user clicks the cancel button on the modal
     Then the issuance process is canceled
-    And the user returns to the 'Add Document' screen
+    And the user returns to the Add Document page screen
 

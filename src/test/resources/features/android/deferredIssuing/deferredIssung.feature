@@ -11,7 +11,7 @@ Feature: Deferred Issuing
   @US_DI_TC_02 @manual:Passed
   Scenario: User proceeds with credential issuance
     Given the user is on the wallet app with issuance details
-    When the user clicks the 'ISSUE' button
+    When the user clicks the Issue button
     Then the user is redirected to the issuer for authentication and consent
 
   @US_DI_TC_03 @manual:Passed

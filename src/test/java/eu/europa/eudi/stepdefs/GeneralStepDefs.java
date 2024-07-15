@@ -1394,12 +1394,12 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @And("the user clicks on the {string} button")
+    @And("the user clicks on the scan qr code button")
     public void theUserClicksOnTheScanAQRCodeButton() {
         //manual
     }
 
-    @Then("the camera opens and the user scans the QR code")
+    @Then("the camera opens and the user scan a QR code")
     public void theCameraOpensAndTheUserScansTheQRCode() {
         //manual
     }
@@ -1981,6 +1981,81 @@ public class GeneralStepDefs{
 
     @Then("the Add document page is displayed manually")
     public void theAddDocumentPageIsDisplayedManually() {
+        //manual
+    }
+
+    @And("the user clicks on the scan a qr code button")
+    public void theUserClicksOnTheScanAQrCodeButton() {
+        //manual
+    }
+
+    @And("the user clicks on scan a QR code button")
+    public void theUserClicksOnScanAQRCodeButton() {
+        //manual
+    }
+
+    @Then("camera opens and the user scans the QR code")
+    public void cameraOpensAndTheUserScansTheQRCode() {
+        //manual
+    }
+
+    @Then("the user clicks on the Share button")
+    public void theUserClicksOnTheShareButton() {
+        //manual
+    }
+
+    @And("the user clicks on the Continue button")
+    public void theUserClicksOnTheContinueButton() {
+        //manual
+    }
+
+    @Given("the user has clicked on continue button")
+    public void theUserHasClickedOnContinueButton() {
+        //manual
+    }
+
+    @And("the user returns to the Add Document page screen")
+    public void theUserReturnsToTheAddDocumentPageScreen() {
+        //manual
+    }
+
+    @Then("the user clicks on the CONTINUE button")
+    public void theUserClicksOnTheCONTINUEButton() {
+        //manual
+    }
+
+    @When("the user clicks on the SCAN QR button")
+    public void theUserClicksOnTheSCANQRButton() {
+        //manual
+    }
+
+    @Given("the Add document screen is displayed")
+    public void theAddDocumentScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the user views the Add document page screen")
+    public void theUserViewsTheAddDocumentPageScreen() {
+        //manual
+    }
+
+    @When("the user clicks on the ADD DOC button on the wallet application")
+    public void theUserClicksOnTheADDDOCButtonOnTheWalletApplication() {
+        //manual
+    }
+
+    @Then("the user clicks on the ISSUE button")
+    public void theUserClicksOnTheISSUEButton() {
+        //manual
+    }
+
+    @Given("the user has clicked on the ISSUE button")
+    public void theUserHasClickedOnTheISSUEButton() {
+        //manual
+    }
+
+    @When("the user clicks the Issue button")
+    public void theUserClicksTheIssueButton() {
         //manual
     }
 }
