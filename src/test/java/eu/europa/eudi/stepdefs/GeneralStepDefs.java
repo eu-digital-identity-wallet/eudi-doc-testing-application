@@ -2058,5 +2058,15 @@ public class GeneralStepDefs{
     public void theUserClicksTheIssueButton() {
         //manual
     }
+
+    @Given("the authentication method selection is displayed on screen manually")
+    public void theAuthenticationMethodSelectionIsDisplayedOnScreenManually() {
+        //manual
+    }
+
+    @When("the user presses the Issue button manually")
+    public void theUserPressesTheIssueButtonManually() {
+        //manual
+    }
 }
 

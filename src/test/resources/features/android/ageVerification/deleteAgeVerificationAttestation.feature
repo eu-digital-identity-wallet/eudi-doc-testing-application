@@ -3,9 +3,9 @@ Feature: Delete age verification attestation
 
   @US_DAVA_TC_01 @manual:Passed
   Scenario: User enters PIN and selects an age verification document
-    Given the user has successfully entered the PIN
+    Given the user has successfully entered the PIN manually
     When the user opens an age verification doc
-    Then the user should see the document contents
+    Then the user should see the document contents manually
 
   @US_DAVA_TC_02 @manual:Passed
   Scenario: User initiates document deletion
