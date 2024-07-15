@@ -35,7 +35,7 @@ jobs:
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub &
 
       - name: Wait for Appium to start
-        run: sleep 60 # Adjust the time as needed
+        run: sleep 15 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -48,7 +48,7 @@ jobs:
           arch: arm64-v8a
           avd-name: Pixel_6_API_33
           disable-animations: true
-          script: /bin/true
+          script: adb devices
 
       - name: Wait for emulator to boot
         run: |
