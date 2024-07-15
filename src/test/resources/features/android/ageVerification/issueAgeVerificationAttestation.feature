@@ -11,7 +11,7 @@ Feature: Issue age verification attestation
   Scenario: Add document via Age Verification
     Given the dashboard page is displayed
     When the user clicks the add doc button
-    And the add document page is displayed
+    And the add document page is displayed on screen
     And the user clicks the Age Verification button
     Then the authentication method selection is displayed
 

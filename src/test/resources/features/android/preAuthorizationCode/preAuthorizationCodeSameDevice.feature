@@ -12,7 +12,7 @@ Feature: Pre-authorization code same device
   Scenario: User proceeds with the doc issuance
     Given the transaction code has been created
     When the user selects to register with the EUDI wallet app
-    Then the user is redirected to the EUDI wallet app
+    Then the user is redirected to the EUDI wallet application
     And the user enters the PIN
 
   @US_PACSD_TC_03
