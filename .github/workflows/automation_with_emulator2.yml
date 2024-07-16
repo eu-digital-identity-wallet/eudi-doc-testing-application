@@ -32,7 +32,7 @@ jobs:
         run: appium driver update uiautomator2
 
       - name: Start appium
-        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
+        run: appium --allow-insecure=adb_shell
 
       - name: Wait for Appium to start
         run: sleep 15 # Adjust the time as needed
@@ -65,7 +65,7 @@ jobs:
           avd-name: Pixel_6_API_33
           disable-animations: true
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          script: sleep 120 && mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dcucumber.filter.tags='@automated and @ANDROID'
+          script: sleep 120 && mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dcucumber.filter.tags='@automated and @ANDROID and @US_COSD'
 
 
       - name: Produce report

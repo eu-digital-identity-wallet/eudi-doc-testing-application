@@ -306,57 +306,42 @@ public class Issuer {
 
     public void scrollUntilFindSubmit() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebDriver webDriver = test.mobileWebDriverFactory().getDriverAndroid();
-            if (!(webDriver instanceof AppiumDriver)) {
-                throw new IllegalStateException(Literals.General.WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE.label);
-            }
-            AppiumDriver appiumDriver = (AppiumDriver) webDriver;
-            while (true) {
-                List<WebElement> elements = webDriver.findElements(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
-                if (!elements.isEmpty()) {
-                    // Element is found, break the loop.
-                    break;
-                } else {
-                    Dimension dimension = appiumDriver.manage().window().getSize();
-                    int startX = dimension.width / 2;
-                    int startY = (int) (dimension.height * 0.8);
-                    int endY = (int) (dimension.height * 0.2);
-                    new TouchAction((PerformsTouchActions) appiumDriver)
-                            .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .moveTo(PointOption.point(startX, endY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .release()
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .perform();
-                }
-            }
+            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
+            AppiumDriver appiumDriver = (AppiumDriver) driver; // Cast WebDriver to AppiumDriver
+
+            Dimension size = appiumDriver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8); // Start from 80% of the screen height
+            int endY = (int) (size.height * 0.2);   // End at 20% of the screen height
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
+
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), startX, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            appiumDriver.perform(Arrays.asList(swipe));
+
+
         } else {
-            IOSDriver webDriver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            if (!(webDriver instanceof AppiumDriver)) {
-                throw new IllegalStateException(Literals.General.WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE.label);
-            }
-            AppiumDriver appiumDriver = (AppiumDriver) webDriver;
-            while (true) {
-                List<WebElement> elements = appiumDriver.findElements(eu.europa.eudi.elements.ios.IssuerElements.clickSubmitButton);
-                if (!elements.isEmpty()) {
-                    // Element is found, break the loop.
-                    break;
-                } else {
-                    //element not found, scroll once and then check again.
-                    Dimension dimension = appiumDriver.manage().window().getSize();
-                    int startX = dimension.width / 2;
-                    int startY = (int) (dimension.height * 0.8);
-                    int endY = (int) (dimension.height * 0.2);
-                    new TouchAction((PerformsTouchActions) appiumDriver)
-                            .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .moveTo(PointOption.point(startX, endY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(test.envDataConfig().getAppiumShortWaitInMilliseconds())))
-                            .release()
-                            .perform();
-                }
-            }
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            AppiumDriver appiumDriver = (AppiumDriver) driver; // Cast WebDriver to AppiumDriver
+
+            Dimension size = appiumDriver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8); // Start from 80% of the screen height
+            int endY = (int) (size.height * 0.2);   // End at 20% of the screen height
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
+
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), startX, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            appiumDriver.perform(Arrays.asList(swipe));
         }
     }
 
