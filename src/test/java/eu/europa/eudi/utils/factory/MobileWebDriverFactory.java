@@ -55,7 +55,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
-        caps2.setCapability("adb_shell", true);
+        caps2.setCapability("allowInsecure", "adb_shell");
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
