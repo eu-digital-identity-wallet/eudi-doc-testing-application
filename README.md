@@ -152,6 +152,13 @@ To complete the flows described below you need to download the app. You can down
 After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
 Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
 
+## Implemented test cases
+Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
+feature files
+" folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features). 
+
+Each feature file is named based on the folder it is contained in, which aligns with the respective user story. These files include the relevant test cases to be executed, the expected outcomes, and any prerequisites or assumptions.
+
 ## Running the tests
 
 To execute the tests, follow the steps below:
@@ -204,21 +211,39 @@ To execute the tests, follow the steps below:
 
 7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. Or you can find the report on github actions section, clicking the latest workflow and there you can find the report and download it.
 
-   Inside the Serenity Report, there is a dedicated feature file specifically for tracking bugs. This file provides a detailed list of all identified bugs. Each bug entry contains a direct link to the corresponding issue on GitHub, allowing for easy navigation and further investigation.
-
    Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
-## Implemented test cases
-Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
-feature files
-" folder. Each feature file is named after the respective user story including the corresponding Test Cases to be executed, the expected outcome, and any prerequisites or assumptions.
+## Bug Reporting
 
-In general, the test cases cover the following areas:
+Inside the Serenity Report, there is a dedicated feature file specifically for tracking bugs. This file provides a [link](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues) of all identified bugs reported οn GitΗub, which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues).
 
-- Age Verification
-- Credential Offer
-- Pre-Authorization Code
-- Regressions Tests
+When opening bugs on GitHub as issues, the following format is used.
+It would be very helpful if the same format could be used for reporting all bugs.
+
+### Bug Report Format
+
+**Smartphone:**
+
+**Device:**
+- Example: Samsung A54
+
+**OS:**
+- Example: Android 14
+
+**Application:**
+
+**Version:**
+- Example: 2024.07.29
+
+**Description:**
+Provide a brief and clear description of the issue.  
+Insert image here if applicable.
+
+**Steps to Reproduce:**
+Write exactly the steps that must be followed in order to reproduce the bug.
+
+**Expected Behavior:**
+Describe what you expect to happen instead of the error.
 
 ## How to contribute
 

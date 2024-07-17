@@ -2068,5 +2068,66 @@ public class GeneralStepDefs{
     public void theUserPressesTheIssueButtonManually() {
         //manual
     }
+
+    @And("there is an age verification attestation")
+    public void thereIsAnAgeVerificationAttestation() {
+        //manual
+    }
+
+    @Then("the verifier's request appears in the wallet app")
+    public void theVerifierSRequestAppearsInTheWalletApp() {
+        //manual
+    }
+
+
+    @Then("the QR code appears")
+    public void theQRCodeAppears() {
+        //manual
+    }
+
+    @Given("the QR code is displayed")
+    public void theQRCodeIsDisplayed() {
+        //manual
+    }
+
+    @When("the verifier scans the QR code")
+    public void theVerifierScansTheQRCode() {
+        //manual
+    }
+
+    @When("the user clicks on the SHOW QR button")
+    public void theUserClicksOnTheSHOWQRButton() {
+        //manual
+    }
+
+    @When("the user chooses to proceed with the request")
+    public void theUserChoosesToProceedWithTheRequest() {
+        //manual
+    }
+
+    @And("the user presses the {string} button")
+    public void theUserPressesTheSHAREButton() {
+        //manual
+    }
+
+    @Then("the user is prompted to enter the PIN")
+    public void theUserIsPromptedToEnterThePIN() {
+        //manual
+    }
+
+    @Given("the user has pressed the {string} button")
+    public void theUserHasPressedTheSHAREButton() {
+        //manual
+    }
+
+    @Then("a success message appears in the wallet app")
+    public void aSuccessMessageAppearsInTheWalletApp() {
+        //manual
+    }
+
+    @And("the verifier views the information shared by the wallet user")
+    public void theVerifierViewsTheInformationSharedByTheWalletUser() {
+        //manual
+    }
 }
 
