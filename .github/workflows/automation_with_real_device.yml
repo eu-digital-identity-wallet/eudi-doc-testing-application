@@ -1,0 +1,80 @@
+name: automation_with_real_device
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3 # Checkout the code
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS 18.16.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+
+      - name: Install appium
+        run: npm install -g appium
+
+      - name: Check appium installation
+        run: appium -v
+
+      - name: Install appium automator
+        run: appium driver install uiautomator2
+
+      - name: Update appium automator
+        run: appium driver update uiautomator2
+
+      - name: Start appium
+        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
+
+      - name: Wait for Appium to start
+        run: sleep 15 # Adjust the time as needed
+
+      - name: Print Appium status
+        run: curl http://127.0.0.1:4723/wd/hub/status
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+
+      # Comment out the emulator setup steps
+      # - name: Run Ui Tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 33
+      #     target: google_apis
+      #     arch: x86_64
+      #     avd-name: Pixel_6_API_33
+      #     disable-animations: true
+      #     emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+      #     script: sleep 120 && mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dcucumber.filter.tags='@automated and @ANDROID'
+
+      - name: Ensure device is connected
+        run: adb devices
+        continue-on-error: true
+
+      - name: Run Ui Tests on Real Device
+        run: mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="POCO X5 Pro" -Dcucumber.filter.tags='@automated and @ANDROID'
+
+      - name: Produce report
+        run: mvn serenity:aggregate
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-screenshots
+          path: artifacts/screenshots
+
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: target/site

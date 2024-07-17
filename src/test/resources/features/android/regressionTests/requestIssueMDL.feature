@@ -5,7 +5,7 @@ Feature: Request/Issue mDL
   Scenario: Log in successfully
     Given the user is on the Login screen
     When the user enters their PIN
-    Then the user should see the dashboard screen
+    Then the user should see the dashboard screen manually
 
   @US_RIM_TC_02 @before_01
   Scenario: Select document for issuance
