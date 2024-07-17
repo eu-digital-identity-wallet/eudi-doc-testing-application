@@ -2105,7 +2105,7 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @And("the user presses the {string} button")
+    @And("the user presses the SHARE button")
     public void theUserPressesTheSHAREButton() {
         //manual
     }
@@ -2127,6 +2127,16 @@ public class GeneralStepDefs{
 
     @And("the verifier views the information shared by the wallet user")
     public void theVerifierViewsTheInformationSharedByTheWalletUser() {
+        //manual
+    }
+
+    @Given("the user has pressed the SHARE button manually")
+    public void theUserHasPressedTheSHAREButtonManually() {
+        //manual
+    }
+
+    @When("the user presses the SHOW QR\\/TAP button")
+    public void theUserPressesTheSHOWQRTAPButton() {
         //manual
     }
 }
