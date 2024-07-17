@@ -2135,7 +2135,7 @@ public class GeneralStepDefs{
         //manual
     }
 
-    @When("the user presses the SHOW QR\\/TAP button")
+    @When("the user presses the SHOW QR/TAP button")
     public void theUserPressesTheSHOWQRTAPButton() {
         //manual
     }
