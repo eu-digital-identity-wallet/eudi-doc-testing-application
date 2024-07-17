@@ -1,4 +1,4 @@
-name: Ui Workflow
+name: Manual Workflow
 on: [push]
 jobs:
   build:
