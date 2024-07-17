@@ -11,7 +11,7 @@ Feature: Age verification attestation (proximity)
   Scenario: User shares age verification through QR code scan
     Given the user is on the dashboard screen
     And there is an age verification attestation
-    When the user presses the SHOW QR/TAP button
+    When the user presses the SHOW QR button
     Then the QR code appears
 
   @US_AVAP_TC_3 @manual:Passed
