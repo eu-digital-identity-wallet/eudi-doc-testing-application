@@ -203,13 +203,15 @@ To execute the tests, follow the steps below:
 6. After the execution the github actions are running and you can find them [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions).
 
 7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. Or you can find the report on github actions section, clicking the latest workflow and there you can find the report and download it.
- 
+
+   Inside the Serenity Report, there is a dedicated feature file specifically for tracking bugs. This file provides a detailed list of all identified bugs. Each bug entry contains a direct link to the corresponding issue on GitHub, allowing for easy navigation and further investigation.
+
    Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
 ## Implemented test cases
-Test cases are written in Gherkin language for both manual and automated tests and can be found in the "feature files" folder. Each feature file corresponds to a specific test case, outlining the steps to be followed, the expected outcome, and any prerequisites or assumptions.
-
-The feature files are named after the respective User Story to ensure better traceability.
+Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
+feature files
+" folder. Each feature file is named after the respective user story including the corresponding Test Cases to be executed, the expected outcome, and any prerequisites or assumptions.
 
 In general, the test cases cover the following areas:
 
