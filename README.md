@@ -157,7 +157,7 @@ Test cases are written in Gherkin language for both manual and automated tests a
 feature files
 " folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features). 
 
-Each feature file is named based on the folder it is contained in, which aligns with the respective user story. These files include the relevant test cases to be executed, the expected outcomes, and any prerequisites or assumptions.
+There are two main categories: iOS and Android. Each category has several parent folders named after the respective user stories. Inside each of these folders, you will find feature files that contain the corresponding set of test cases.
 
 ## Running the tests
 
@@ -215,25 +215,25 @@ To execute the tests, follow the steps below:
 
 ## Bug Reporting
 
-Inside the Serenity Report, there is a dedicated feature file specifically for tracking bugs. This file provides a [link](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues) of all identified bugs reported οn GitΗub, which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues).
+The list of reported bugs can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues). 
 
-When opening bugs on GitHub as issues, the following format is used.
-It would be very helpful if the same format could be used for reporting all bugs.
+The aforementioned link is also included in a feature file named bugReport.feature (which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/blob/develop/src/test/resources/features/bugReport.feature)), in order to be used by the Serenity Report.
+
+
+When opening bugs on GitHub (as issues), the following format is proposed.
+
 
 ### Bug Report Format
 
-**Smartphone:**
+**Smartphone attributes**
 
-**Device:**
-- Example: Samsung A54
+- **Device:** e.g., Samsung A54
 
-**OS:**
-- Example: Android 14
+- **OS:** e.g., Android 14
 
-**Application:**
+**Application attributes**
 
-**Version:**
-- Example: 2024.07.29
+- **Version:** e.g., 2024.07.29
 
 **Description:**
 Provide a brief and clear description of the issue.  
