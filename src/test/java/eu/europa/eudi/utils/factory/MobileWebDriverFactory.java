@@ -44,6 +44,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("appium:uiautomator2ServerInstallTimeout", 200000);
         caps2.setCapability("appium:androidInstallTimeout", 200000);
         caps2.setCapability("appium:adbExecTimeout", 200000);
+        caps2.setCapability("enforceXPath1", true);
 //        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
 //        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
 //        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
