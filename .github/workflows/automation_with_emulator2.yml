@@ -82,9 +82,3 @@ jobs:
         with:
           name: report
           path: target/site
-
-       #yvonne
-      - name: Ensure Emulator is Shutdown
-        if: always()
-        run: |
-         adb -s emulator-5554 emu kill || true
