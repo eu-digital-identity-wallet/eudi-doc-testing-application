@@ -5,11 +5,11 @@ Feature: Age verification attestation (proximity)
   Scenario: User successfully logs in and sees the dashboard
     Given the user is on the Login screen manually
     When the user enters their PIN manually
-    Then the user should see the dashboard screen
+    Then the user should see the dashboard screen manually
 
   @US_AVAP_TC_02 @manual:Passed
   Scenario: User shares age verification through QR code scan
-    Given the user is on the dashboard screen
+    Given the user is on the dashboard screen manually
     And there is an age verification attestation
     When the user presses the SHOW QR button
     Then the QR code appears
