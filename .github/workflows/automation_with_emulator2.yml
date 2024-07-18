@@ -33,7 +33,6 @@ jobs:
 
       - name: Start appium
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
-        background: true
 
       - name: Wait for Appium to start
         run: sleep 60 # Adjust the time as needed
