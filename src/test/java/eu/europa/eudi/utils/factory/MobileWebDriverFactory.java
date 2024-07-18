@@ -60,7 +60,7 @@ public class MobileWebDriverFactory {
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
-            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(80));
+            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();

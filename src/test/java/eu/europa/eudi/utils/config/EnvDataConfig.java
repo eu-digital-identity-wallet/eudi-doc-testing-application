@@ -93,6 +93,10 @@ public class EnvDataConfig {
         return Integer.parseInt(getEnvProperties().getProperty(APPIUM_SHORT_WAIT_IN_MILLISECONDS));
     }
 
+    public int getAppiumLongWaitInSeconds() {
+        return Integer.parseInt(getEnvProperties().getProperty(APPIUM_MEDIUM_WAIT_IN_SECONDS));
+    }
+
     public Boolean getAppiumRecording() {
         return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_RECORDING));
     }
