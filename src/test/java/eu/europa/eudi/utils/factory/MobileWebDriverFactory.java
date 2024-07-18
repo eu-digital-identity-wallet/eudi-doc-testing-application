@@ -40,6 +40,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("platformName", "Android");
         caps2.setCapability("platformVersion", "13.0");
         caps2.setCapability("automationName", "UiAutomator2");
+        caps2.setCapability("androidInstallTimeout", 180000); // Set to 180000ms (3 minutes)
 //        caps2.setCapability("appium:uiautomator2ServerLaunchTimeout", 200000);
 //        caps2.setCapability("appium:uiautomator2ServerInstallTimeout", 200000);
 //        caps2.setCapability("appium:androidInstallTimeout", 200000);
