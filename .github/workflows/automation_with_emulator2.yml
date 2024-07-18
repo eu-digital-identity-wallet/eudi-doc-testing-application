@@ -66,9 +66,7 @@ jobs:
           disable-animations: true
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
-            adb wait-for-device shell getprop init.svc.bootanim | grep stopped
             sleep 120 && mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dcucumber.filter.tags='@automated and @ANDROID and @US_COSD'
-
 
       - name: Produce report
         run: mvn serenity:aggregate
