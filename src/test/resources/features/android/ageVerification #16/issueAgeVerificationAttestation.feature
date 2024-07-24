@@ -3,21 +3,21 @@ Feature: Issue age verification attestation
 
   @US_IAVA_TC_01 @manual:Passed
   Scenario: Log in successfully
-    Given the user is on the Login screen manually
+    Given the user is on Login screen
     When the user enters their PIN manually
-    Then the user should see the dashboard screen manually
+    Then the user see the dashboard screen
 
   @US_IAVA_TC_02 @manual:Passed
   Scenario: Add document via Age Verification
-    Given the dashboard page is displayed manually
-    When the user clicks the add doc button manually
+    Given the dashboard page is displayed on screen
+    When the user clicks add doc button
     And the add document page is displayed on screen
     And the user clicks the Age Verification button
-    Then the authentication method selection is displayed manually
+    Then on screen is displayed the authentication method selection
 
   @US_IAVA_TC_03 @manual:Passed
   Scenario: Select authentication method and enter data
-    Given the authentication method selection is displayed manually
+    Given on screen is displayed the authentication method selection
     When the user clicks country selection
     And the user clicks FormEU
     Then the data page is displayed

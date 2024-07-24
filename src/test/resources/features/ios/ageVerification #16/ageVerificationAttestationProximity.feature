@@ -1,17 +1,17 @@
-@iOS @manual @US_AVAP
+@IOS @manual @US_AVAP
 Feature: Age verification attestation (proximity)
 
   @US_AVAP_TC_01 @manual:Passed
   Scenario: User successfully logs in and sees the dashboard
-    Given the user is on the Login screen manually
-    When the user enters their PIN manually
-    Then the user should see the dashboard screen manually
+    Given the user is on Login screen
+    When the user enters PIN
+    Then the user see the dashboard screen
 
   @US_AVAP_TC_02 @manual:Passed
   Scenario: User shares age verification through QR code scan
-    Given the user is on the dashboard screen manually
+    Given the user is on dashboard screen
     And there is an age verification attestation
-    When the user presses the SHOW QR button
+    When the user clicks on the SHOW QR button
     Then the QR code appears
 
   @US_AVAP_TC_3 @manual:Passed
@@ -29,7 +29,8 @@ Feature: Age verification attestation (proximity)
 
   @US_AVAP_TC_05 @manual:Passed
   Scenario: User enters the PIN and shares information
-    Given the user has pressed the SHARE button manually
+    Given the user presses the SHARE button
     When the user enters the PIN
     Then a success message appears in the wallet app
     And the verifier views the information shared by the wallet user
+

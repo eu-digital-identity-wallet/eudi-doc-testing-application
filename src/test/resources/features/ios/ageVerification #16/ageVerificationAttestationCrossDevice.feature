@@ -11,7 +11,7 @@ Feature: Age verification attestation cross device
   Scenario: User scans the QR code
     Given the user views the QR code
     When the user clicks on the options button
-    And the user clicks on scan a QR code button
+    And the user clicks on the scan a qr code button
     Then camera opens and the user scans the QR code
 
   @US_AVACD_TC_03 @manual:Passed
