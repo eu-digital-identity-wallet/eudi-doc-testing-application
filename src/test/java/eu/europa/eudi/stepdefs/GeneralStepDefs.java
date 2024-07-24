@@ -2139,5 +2139,101 @@ public class GeneralStepDefs{
     public void theUserPressesTheSHOWQRTAPButton() {
         //manual
     }
+
+    @Then("the user is presented with a URL to initiate the EUDI Wallet on the same device")
+    public void theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice() {
+        //manual
+    }
+
+    @Given("the user is presented with a URL to initiate the EUDI Wallet")
+    public void theUserIsPresentedWithAURLToInitiateTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the URL")
+    public void theUserSelectsTheURL() {
+        //manual
+    }
+
+    @Then("the Wallet is initiated and the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
+    public void theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
+        //manual
+    }
+
+    @Given("the user is presented with details of the credentials to be issued")
+    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssued() {
+        //manual
+    }
+
+    @When("the user selects to proceed with the issuance process")
+    public void theUserSelectsToProceedWithTheIssuanceProcess() {
+        //manual
+    }
+
+    @Then("the user is redirected to the Issuer service to present their PID")
+    public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
+        //manual
+    }
+
+    @Given("the user has been redirected to the Issuer service to present their PID")
+    public void theUserHasBeenRedirectedToTheIssuerServiceToPresentTheirPID() {
+        //manual
+    }
+
+    @When("the EUDI Wallet displays the presentation request for PID")
+    public void theEUDIWalletDisplaysThePresentationRequestForPID() {
+        //manual
+    }
+
+    @Then("the user is prompted to consent by selecting the Share button")
+    public void theUserIsPromptedToConsentBySelectingTheShareButton() {
+        //manual
+    }
+
+    @Given("the user has been prompted to consent by selecting the Share button")
+    public void theUserHasBeenPromptedToConsentBySelectingTheShareButton() {
+        //manual
+    }
+
+    @When("the user selects the Share button")
+    public void theUserSelectsTheShareButton() {
+        //manual
+    }
+
+
+    @Then("a success message is displayed for the successful presentation of the PID")
+    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
+        //manual
+    }
+
+    @When("the user clicks the Continue button")
+    public void theUserClicksTheContinueButton() {
+        //manual
+    }
+
+    @Then("the user views a success message for issuing the document")
+    public void theUserViewsASuccessMessageForIssuingTheDocument() {
+        //manual
+    }
+
+    @And("the user views the document on the dashboard which issued based on the PID")
+    public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
+        //manual
+    }
+
+    @Then("the user is prompted to enter their six-digit PIN")
+    public void theUserIsPromptedToEnterTheirSixDigitPIN() {
+        //manual
+    }
+
+    @Given("the user has been prompted to enter their six-digit PIN")
+    public void theUserHasBeenPromptedToEnterTheirSixDigitPIN() {
+        //manual
+    }
+
+    @When("the user enters their six-digit PIN correctly")
+    public void theUserEntersTheirSixDigitPINCorrectly() {
+        //manual
+    }
 }
 
