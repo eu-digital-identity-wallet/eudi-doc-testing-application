@@ -1,4 +1,4 @@
-@ANDROID @automated @US_VP
+@IOS @automated @US_VP
 Feature: View PID document
 
   @US_VP_TC_01 @before_01

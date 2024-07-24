@@ -17,7 +17,7 @@ Feature: Deferred Issuing
   @US_DI_TC_03 @manual:Passed
   Scenario: User authenticates and consents to issuance
     Given the user is on the issuer page for authentication and consent
-    When the user authenticates and consents to the issuance manually
+    When the user authenticates and consents the issuance
     Then the user is redirected to the wallet app
     And a message appears stating that the request is in progress
 
