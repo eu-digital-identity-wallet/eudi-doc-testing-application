@@ -112,4 +112,9 @@ public class ManuallyStepDefs {
     public void aSuccessMessageIsDisplayedOnScreen() {
         //manual
     }
+
+    @Then("the PID open")
+    public void thePIDOpen() {
+        //manual
+    }
 }
