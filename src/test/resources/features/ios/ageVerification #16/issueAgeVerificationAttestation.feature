@@ -4,7 +4,7 @@ Feature: Issue age verification attestation
   @US_IAVA_TC_01 @manual:Passed
   Scenario: Log in successfully
     Given the user is on Login screen
-    When the user enters their PIN manually
+    When the user enters the PIN
     Then the user see the dashboard screen
 
   @US_IAVA_TC_02 @manual:Passed

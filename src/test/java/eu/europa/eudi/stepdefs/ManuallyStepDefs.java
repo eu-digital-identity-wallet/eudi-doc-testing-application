@@ -102,4 +102,14 @@ public class ManuallyStepDefs {
     public void theUserRegistersTheirPersonalData() {
         //manual
     }
+
+    @When("the user fills the form")
+    public void theUserFillsTheForm() {
+        //manual
+    }
+
+    @Then("a success message is displayed on screen")
+    public void aSuccessMessageIsDisplayedOnScreen() {
+        //manual
+    }
 }
