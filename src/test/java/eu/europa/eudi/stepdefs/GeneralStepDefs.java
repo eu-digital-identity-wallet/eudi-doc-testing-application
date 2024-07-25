@@ -1085,5 +1085,6 @@ public class GeneralStepDefs{
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
+
 }
 
