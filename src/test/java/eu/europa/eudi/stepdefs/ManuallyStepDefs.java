@@ -1269,4 +1269,19 @@ public class ManuallyStepDefs {
     public void aSuccessMessageIsDisplayedManually() {
         //manual
     }
+
+    @When("the user clicks to view the document information")
+    public void theUserClicksToViewTheDocumentInformation() {
+        //manual
+    }
+
+    @Then("the document is open")
+    public void theDocumentIsOpen() {
+        //manual
+    }
+
+    @Then("the document should close")
+    public void theDocumentShouldClose() {
+        //manual
+    }
 }

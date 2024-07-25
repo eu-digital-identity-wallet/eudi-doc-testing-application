@@ -36,8 +36,9 @@ Feature: Deferred Issuing
   @US_DI_TC_06 @manual:Passed
   Scenario: User views and adds issued document
     Given the user views the issuance confirmation modal
-    When the user clicks the view button
-    Then the user views the document information
-    And the user clicks the ADD button
-    Then the document appears on the dashboard screen
+    When the user clicks to view the document information
+    Then the document is open
+    And the user clicks on the X button
+    Then the document should close
+    And the document appears on the dashboard screen
 
