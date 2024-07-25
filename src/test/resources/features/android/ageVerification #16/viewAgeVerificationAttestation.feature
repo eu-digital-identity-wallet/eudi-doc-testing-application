@@ -11,7 +11,7 @@ Feature: View age verification attestation
   Scenario: User opens an Age Verification attestation from the dashboard
     Given the user is on dashboard screen
     When the user clicks on the Age Verification
-    Then the PID open
+    Then the Age Verification open
     And the user should see the details of the Age Verification
 
   @US_VAVA_TC_03 @manual:Passed
