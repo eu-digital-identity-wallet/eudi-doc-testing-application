@@ -1284,4 +1284,9 @@ public class ManuallyStepDefs {
     public void theDocumentShouldClose() {
         //manual
     }
+
+    @When("an authentication page appears")
+    public void anAuthenticationPageAppears() {
+        //manual
+    }
 }
