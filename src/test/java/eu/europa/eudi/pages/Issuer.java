@@ -83,7 +83,7 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPersonalIdentificationData)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement elementToDoubleClick = (WebElement) driver.findElement(IssuerElements.clickPersonalIdentificationData);
+            WebElement elementToDoubleClick = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickPersonalIdentificationData);
             TouchAction action = new TouchAction(driver);
             action.tap(element(elementToDoubleClick)).perform();
         }
@@ -364,22 +364,20 @@ public class Issuer {
             }
         } else {
             WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            By locator = By.xpath("//XCUIElementTypeStaticText[@name='age_over_18']");
-            WebElement element = null;
-                    element = driver.findElement(locator);
-                do {
-                    Dimension size = driver.manage().window().getSize();
-                    int startY = (int) (size.height * 0.8);
-                    int endY = (int) (size.height * 0.2);
-                    int startX = size.width / 2;
-                    new TouchAction<>((PerformsTouchActions) driver)
-                            .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                            .moveTo(PointOption.point(startX, endY))
-                            .release()
-                            .perform();
-                }while(!(element.isDisplayed()));
-
+            int i = 1;
+            while (i < 5) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = size.height / 2;  // Start from the middle of the screen
+                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+                new TouchAction<>((PerformsTouchActions) driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                i++;
+            }
         }
     }
             public void clickAuthorize () {
