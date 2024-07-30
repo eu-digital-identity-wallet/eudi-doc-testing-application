@@ -1289,4 +1289,9 @@ public class ManuallyStepDefs {
     public void anAuthenticationPageAppears() {
         //manual
     }
+
+    @When("the user selects to issue credential")
+    public void theUserSelectsToIssueCredential() {
+        //manual
+    }
 }
