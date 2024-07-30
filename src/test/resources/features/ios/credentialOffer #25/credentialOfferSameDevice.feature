@@ -1,5 +1,4 @@
 @IOS @US_COSD @automated
-
 Feature: Credential issuance process for the same device
   As a user of the issuer service
   I want to be able to issue a credential

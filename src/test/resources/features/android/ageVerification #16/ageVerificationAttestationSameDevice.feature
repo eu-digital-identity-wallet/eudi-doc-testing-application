@@ -1,5 +1,8 @@
 @ANDROID @manual @US_AVASD
 Feature: Age verification attestation same device
+  As a user of the EUDI Wallet
+  I want to present my Age Verification Attestation to a requestor Relying Party residing on the same device
+  So that I can prove that I am over 18 years old without revealing my age or any other personal information
 
   @US_AVASD_TC_01 @manual:Passed
   Scenario: Age Verification via EUDI Wallet
@@ -10,7 +13,7 @@ Feature: Age verification attestation same device
   @US_AVASD_TC_02 @manual:Passed
   Scenario: Redirect to EUDI Wallet for successful authentication
     Given the Relying Party service redirects the user to the EUDI Wallet
-    When the user authenticates successfully in the EUDI Wallet
+    When the Wallet is initiated
     Then the EUDI Wallet presents a screen to inform the user about the Age Verification Attestation request
 
   @US_AVASD_TC_03 @manual:Passed

@@ -1,5 +1,8 @@
-@IOS @manual @US_DIP
+@ANDROID @manual @US_DIP
 Feature: Dynamic issuance process
+  As a user of the issuer service
+  I want to be able to dynamically present attestations requested by issuers
+  So that I can securely issue credentials from trusted issuers in my EUDI Wallet
 
   @US_DIP_TC_01 @manual:Passed
   Scenario: User Initiates Credential Issuance
@@ -11,7 +14,8 @@ Feature: Dynamic issuance process
   Scenario: Wallet Initiation and Credential Details Presentation
     Given the user is presented with a URL to initiate the EUDI Wallet
     When the user selects the URL
-    Then the Wallet is initiated and the user is presented with details of the credentials to be issued (type of credential, issuer name, image)
+    Then the Wallet is initiated
+    And the user is presented with details of the credentials to be issued (type of credential, issuer name, image)
 
   @US_DIP_TC_03 @manual:Passed
   Scenario: User Proceeds with Credential Issuance
@@ -21,7 +25,7 @@ Feature: Dynamic issuance process
 
   @US_DIP_TC_04 @manual:Passed
   Scenario: Presentation Request for PID
-    Given the user is redirected to the Issuer service to present their PID
+    Given the user has been redirected to the Issuer service to present their PID
     When the EUDI Wallet displays the presentation request for PID
     Then the user is prompted to consent by selecting the Share button
 
@@ -43,3 +47,4 @@ Feature: Dynamic issuance process
     When the user clicks the Continue button
     Then the user views a success message for issuing the document
     And the user views the document on the dashboard which issued based on the PID
+

@@ -1,6 +1,7 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.utils.TestSetup;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -110,6 +111,41 @@ public class ManuallyStepDefs {
 
     @Then("a success message is displayed on screen")
     public void aSuccessMessageIsDisplayedOnScreen() {
+        //manual
+    }
+
+    @When("the user clicks to view the document information")
+    public void theUserClicksToViewTheDocumentInformation() {
+        //manual
+    }
+
+    @Then("the document is open")
+    public void theDocumentIsOpen() {
+        //manual
+    }
+
+    @Then("the document should close")
+    public void theDocumentShouldClose() {
+        //manual
+    }
+
+    @And("the user returns to the dashboard screen")
+    public void theUserReturnsToTheDashboardScreen() {
+        //manual
+    }
+
+    @Then("the Age Verification should open manually")
+    public void theAgeVerificationShouldOpenManually() {
+        //manual
+    }
+
+    @Then("the Wallet is initiated")
+    public void theWalletIsInitiated() {
+        //manual
+    }
+
+    @And("the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
+    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
         //manual
     }
 }

@@ -1,5 +1,8 @@
 @IOS @manual @US_AVAP
 Feature: Age verification attestation (proximity)
+  As a user of the EUDI Wallet
+  I want to present my Age Verification Attestation to a requesting Relying Party operating a ‘reader’ device in a proximity scenario
+  So that I can prove that I am over 18 years old without revealing my age or any other personal information
 
   @US_AVAP_TC_01 @manual:Passed
   Scenario: User successfully logs in and sees the dashboard
