@@ -1,5 +1,8 @@
 @ANDROID @manual @US_DIC
 Feature: Credential Issuance Cancellation
+  As a user of the issuer service
+  I want to be able to issue a credential in deferred mode
+  So that it can be securely added to my EUDI Wallet
 
   @US_DIC_TC_01 @manual:Passed
   Scenario: User initiates credential issuance
@@ -19,5 +22,5 @@ Feature: Credential Issuance Cancellation
     Given the user views the cancellation confirmation modal
     When the user clicks the cancel button on the modal
     Then the issuance process is canceled
-    And the user returns to the Add Document page screen
+    And the user returns to the dashboard screen
 

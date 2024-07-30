@@ -1,5 +1,8 @@
 @ANDROID @manual @US_COCD
 Feature: Credential issuance process for cross device
+  As a user of the issuer service
+  I want to be able to issue a credential
+  So that it can be securely added to my EUDI Wallet
 
   @US_COCD_TC_01 @manual:Failed
   Scenario: Opening the EUDI Wallet and viewing the dashboard

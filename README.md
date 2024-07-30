@@ -157,7 +157,8 @@ Test cases are written in Gherkin language for both manual and automated tests a
 feature files
 " folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features). 
 
-There are two main categories: iOS and Android. Each category has several parent folders named after the respective user stories. Inside each of these folders, you will find feature files that contain the corresponding set of test cases.
+There are two main categories: iOS and Android. Each category has several parent folders named after the respective user stories, with the #id of the corresponding story next to the folder name. 
+Inside each of these folders, you will find feature files that contain the corresponding set of test cases.
 
 ## Running the tests
 

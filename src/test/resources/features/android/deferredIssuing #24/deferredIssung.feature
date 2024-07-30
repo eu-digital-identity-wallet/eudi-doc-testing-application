@@ -1,5 +1,8 @@
 @ANDROID @manual @US_DI
 Feature: Deferred Issuing
+  As a user of the issuer service
+  I want to be able to issue a credential in deferred mode
+  So that it can be securely added to my EUDI Wallet
 
   @US_DI_TC_01 @manual:Passed
   Scenario: User issues a credential to the wallet app
@@ -36,8 +39,9 @@ Feature: Deferred Issuing
   @US_DI_TC_06 @manual:Passed
   Scenario: User views and adds issued document
     Given the user views the issuance confirmation modal
-    When the user clicks the view button
-    Then the user views the document information
-    And the user clicks the ADD button
-    Then the document appears on the dashboard screen
+    When the user clicks to view the document information
+    Then the document is open
+    And the user clicks on the X button
+    Then the document should close
+    And the document appears on the dashboard screen
 

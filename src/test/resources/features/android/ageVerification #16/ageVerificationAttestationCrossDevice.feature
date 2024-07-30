@@ -1,5 +1,8 @@
 @ANDROID @manual @US_AVACD
 Feature: Age verification attestation cross device
+  As a user of the EUDI Wallet
+  I want to present my Age Verification Attestation to a requester Relying Party residing on the same device
+  So that I can prove that I am over 18 years old without revealing my age or any other personal information
 
   @US_AVACD_TC_01 @manual:Passed
   Scenario: Display QR code on Relying Party service

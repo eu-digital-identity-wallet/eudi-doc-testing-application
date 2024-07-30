@@ -1,5 +1,8 @@
 @ANDROID @manual @US_DAVA
 Feature: Delete age verification attestation
+  As a user of the EUDI Wallet
+  I want to delete an Age Verification Attestation from my EUDI Wallet
+  So that I can manage my attestations and remove those that are no longer needed
 
   @US_DAVA_TC_01 @manual:Passed
   Scenario: User enters PIN and selects an age verification document
