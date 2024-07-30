@@ -7,7 +7,7 @@ Feature: Dynamic issuance process
   @US_DIP_TC_01
   Scenario: User Initiates Credential Issuance
     Given the user visits the Issuer service
-    When the user selects to issue a credential
+    When the user selects to issue credential
     Then the user is presented with a URL to initiate the EUDI Wallet on the same device
 
   @US_DIP_TC_02
@@ -25,7 +25,7 @@ Feature: Dynamic issuance process
 
   @US_DIP_TC_04
   Scenario: Presentation Request for PID
-    Given the user is redirected to the Issuer service to present their PID
+    Given the user has been redirected to the Issuer service to present their PID
     When the EUDI Wallet displays the presentation request for PID
     Then the user is prompted to consent by selecting the Share button
 
@@ -47,3 +47,4 @@ Feature: Dynamic issuance process
     When the user clicks the Continue button
     Then the user views a success message for issuing the document
     And the user views the document on the dashboard which issued based on the PID
+

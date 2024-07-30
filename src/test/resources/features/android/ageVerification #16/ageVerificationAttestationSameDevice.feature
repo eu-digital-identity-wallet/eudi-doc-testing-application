@@ -25,7 +25,7 @@ Feature: Age verification attestation same device
   @US_AVASD_TC_04 @manual:Passed
   Scenario: User authorization for attestation release
     Given the EUDI Wallet user clicks on the share button
-    When a authentication page appears
+    When an authentication page appears
     Then the wallet app prompts the user to enter the PIN
 
   @US_AVASD_TC_05 @manual:Passed
