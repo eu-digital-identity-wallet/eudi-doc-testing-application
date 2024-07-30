@@ -1,8 +1,5 @@
 @ANDROID @manual @US_VAVA
 Feature: View age verification attestation
-  As a user of the EUDI Wallet
-  I want to view an Age Verification Attestation stored in my EUDI Wallet
-  So that I can be informed about the contents of the Age Verification Attestation
 
   @US_VAVA_TC_01 @manual:Passed
   Scenario: User successfully logs in and sees the dashboard
@@ -14,7 +11,7 @@ Feature: View age verification attestation
   Scenario: User opens an Age Verification attestation from the dashboard
     Given the user is on dashboard screen
     When the user clicks on the Age Verification
-    Then the Age Verification should open manually
+    Then the Age Verification open
     And the user should see the details of the Age Verification
 
   @US_VAVA_TC_03 @manual:Passed

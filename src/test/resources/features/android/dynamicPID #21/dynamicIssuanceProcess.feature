@@ -7,7 +7,7 @@ Feature: Dynamic issuance process
   @US_DIP_TC_01 @manual:Passed
   Scenario: User Initiates Credential Issuance
     Given the user visits the Issuer service
-    When the user selects to issue a credential
+    When the user selects to issue credential
     Then the user is presented with a URL to initiate the EUDI Wallet on the same device
 
   @US_DIP_TC_02 @manual:Passed

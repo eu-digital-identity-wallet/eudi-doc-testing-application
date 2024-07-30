@@ -27,6 +27,10 @@
         <assembly.phase>none</assembly.phase>
         <serenity.bdd.version>3.9.2</serenity.bdd.version>
         <rerun.failed.scenarios>2</rerun.failed.scenarios>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
     <dependencies>
