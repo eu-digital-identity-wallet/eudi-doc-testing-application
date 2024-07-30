@@ -5,7 +5,6 @@ Feature: Credential issuance process for the same device
   I want to be able to issue a credential
   So that it can be securely added to my EUDI Wallet
 
-
   @US_COSD_TC_01
   Scenario: User selects to issue a credential
     Given the user is on the issuer service
