@@ -391,12 +391,10 @@ public class GeneralStepDefs{
     @Given("the user is on the issuer service")
     public void theUserIsOnTheIssuerService() {
         test.mobile().issuer().issuerService();
-        test.mobile().issuer().issuerServicePageIsDisplayed();
     }
 
     @When("the user selects to issue a credential")
     public void theUserSelectsToIssueACredential() {
-        test.mobile().issuer().selectIssueTest();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().scrollUntilFindSubmit();
