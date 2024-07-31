@@ -109,26 +109,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the user returns to the dashboard screen")
-    public void theUserReturnsToTheDashboardScreen() {
-        //manual
-    }
-
-    @Then("the Age Verification should open manually")
-    public void theAgeVerificationShouldOpenManually() {
-        //manual
-    }
-
-    @Then("the Wallet is initiated")
-    public void theWalletIsInitiated() {
-        //manual
-    }
-
-    @And("the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
-    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
-        //manual
-    }
-
     @Then("the PID open")
     public void thePIDOpen() {
         //manual
