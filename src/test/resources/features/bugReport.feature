@@ -3,7 +3,7 @@ Feature: Bugs report
 
   @manual
   @manual-result:failed
-  Scenario: All reported bugs on GitHub
+  Scenario: Reported bugs on GitHub
 
-  This feature provides a comprehensive list of all reported bugs. Each reported issue includes detailed information such as Smartphone attributes, Application attributes, bug description, steps to reproduce, expected and actual behavior and screenshots. To view the complete list of reported bugs, please visit our GitHub issues page.
-  <a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues">View all reported bugs on GitHub</a>
+  This feature provides a comprehensive list of all reported bugs. Each reported issue includes detailed information such as Smartphone attributes, Application attributes, bug description, steps to reproduce, expected and actual behavior and screenshots. To view the complete list of reported bugs, please visit our GitHub issues page
+  <a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues">here</a>.
