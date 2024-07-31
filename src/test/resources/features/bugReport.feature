@@ -2,7 +2,8 @@ Feature: Bugs report
 
   @manual
   @manual-result:failed
-  Scenario: [iOS Bug] The credential offer case does not function for version 16 #8
-  <a href="https://github.com/niscy-eudiw/eudi-automated-tests/issues/8">Bug overview in github</a>
-#  Bug overview in github: https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues
+  Scenario: All reported bugs on GitHub
+  reported bugs on GitHub</a>
 
+  This feature provides a comprehensive list of all reported bugs. Each reported issue includes detailed information such as the bug description, steps to reproduce, expected and actual behavior, screenshots, and version details. To view the complete list of reported bugs, please visit our GitHub issues page.
+  <a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues">View all reported bugs on GitHub</a>
