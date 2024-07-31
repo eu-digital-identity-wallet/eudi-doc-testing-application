@@ -151,7 +151,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SUCCESS.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticationSuccess)).getText();
-            Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SUCCESS_IOS.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SUCCESS.label, pageHeader);
         }
     }
 

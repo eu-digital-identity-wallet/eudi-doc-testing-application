@@ -26,7 +26,7 @@ public class WalletElements {
     public static By chooseWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"AUTHENTICATE WITH WALLET\"]");
     public static By viewDataPage = By.xpath("//XCUIElementTypeStaticText[@name=\"Please review carefully before sharing your data. Why we need your data?\"]");
     public static By clickShare = By.xpath("//XCUIElementTypeButton[@name=\"SHARE\"]");
-    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared information with the EUDI Remote Verifier\"]");
+    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared information with EUDI Remote Verifier\"]");
     public static By clickNationalId = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By nationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By clickMdl = By.xpath("//XCUIElementTypeStaticText[@name=\"Driving License\"]");
