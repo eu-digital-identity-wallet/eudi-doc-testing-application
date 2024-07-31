@@ -30,9 +30,7 @@ public interface Literals {
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
         VERIFICATION_DETAILS("Date of issuance"),
-        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following"),
-        AUTHENTICATION_SUCCESS_IOS("You successfully shared information with the EUDI Remote Verifier");
-
+        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following");
         public final String label;
         Wallet(String label) {
             this.label = label;
