@@ -1,4 +1,3 @@
-@report
 Feature: Bugs report
 
   @manual
