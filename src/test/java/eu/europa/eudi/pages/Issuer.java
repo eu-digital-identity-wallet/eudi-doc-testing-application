@@ -40,7 +40,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 //            driver.activateApp("com.android.chrome");
-            String url = "https://tester.issuer.eudiw.dev/";
+            String url = "https://dev.issuer.eudiw.dev/credential_offer_choice";
             Map<String, Object> args = new HashMap<>();
             args.put("command", "am");
             args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
