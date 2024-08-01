@@ -1,5 +1,10 @@
 @IOS @manual @US_IAVA
 Feature: Issue age verification attestation
+  As a user of the EUDI Wallet
+  I want to request and store age verification attestations in my EUDI Wallet
+  So that I can prove that I am over 18 years old without revealing my age or any other personal information
+
+  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/41
 
   @US_IAVA_TC_01 @manual:Passed
   Scenario: Log in successfully
