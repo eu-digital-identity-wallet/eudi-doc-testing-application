@@ -1,5 +1,10 @@
 @ANDROID @manual @US_PACSD
 Feature: Pre-authorization code same device
+  As a user of the issuer service
+  I want to be able to issue a credential using a transaction code
+  So that it can be securely added to my EUDI Wallet
+
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/22
 
   @US_PACSD_TC_01 @manual:Passed
   Scenario: User selects to issue a credential
