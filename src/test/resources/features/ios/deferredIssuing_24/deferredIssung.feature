@@ -1,5 +1,10 @@
 @IOS @manual @US_DI
 Feature: Deferred Issuing
+  As a user of the issuer service
+  I want to be able to issue a credential in deferred mode
+  So that it can be securely added to my EUDI Wallet
+
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/24
 
   @US_DI_TC_01 @manual:Passed
   Scenario: User issues a credential to the wallet app

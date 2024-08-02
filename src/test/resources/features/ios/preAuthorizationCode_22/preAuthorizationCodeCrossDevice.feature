@@ -1,5 +1,10 @@
 @IOS @manual @US_PACCD
 Feature: Pre-authorization code cross device
+  As a user of the issuer service
+  I want to be able to issue a credential using a transaction code
+  So that it can be securely added to my EUDI Wallet
+
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/22
 
   @US_PACCD_TC_01 @manual:Passed
   Scenario: User visits the Issuer service
