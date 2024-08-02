@@ -2,6 +2,7 @@
 Feature: Dynamic issuance process
 
   @US_DIP_TC_01
+
   Scenario: User Initiates Credential Issuance
     Given the user visits the Issuer service
     When the user selects to issue credential
