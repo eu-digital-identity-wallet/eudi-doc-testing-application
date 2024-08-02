@@ -399,19 +399,20 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmitButton();
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
+
     }
 
     @Then("the user is redirected to the EUDI Wallet")
     public void theUserIsRedirectedToTheEUDIWallet() {
-        test.mobile().wallet().welcomePage();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
+//        test.mobile().wallet().welcomePage();
+//        test.mobile().wallet().createAPin();
+//        test.mobile().wallet().clickNextButton();
+//        test.mobile().wallet().renterThePin();
+//        test.mobile().wallet().clickConfirm();
+//        test.mobile().wallet().successMessageOfSetUpPin();
+//        test.mobile().wallet().clickContinue();
+        test.mobile().issuer().qrCodeIsDisplayed();
+        test.mobile().issuer().clickUseEudiw();
     }
 
     @And("the details of the credential to be issued are presented")
@@ -465,6 +466,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
     }
 
     @Then("the user is redirected to the EUDI Wallet app")
