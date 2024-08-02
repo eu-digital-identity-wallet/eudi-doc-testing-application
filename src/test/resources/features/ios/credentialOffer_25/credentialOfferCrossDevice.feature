@@ -6,14 +6,14 @@ Feature: Credential issuance process for cross device
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/25
 
-  @US_COCD_TC_01 @manual:Failed
+  @US_COCD_TC_01 @manual:Passed
   Scenario: Opening the EUDI Wallet and viewing the dashboard
     Given the user has the EUDI Wallet app installed
     When the user opens the EUDI Wallet app
     And the user enters their PIN correctly
     Then the dashboard page should be displayed
 
-  @US_COCD_TC_02 @manual:Failed
+  @US_COCD_TC_02 @manual:Passed
   Scenario: Navigating to the 'Add document' page
     Given the user is on the dashboard page of the EUDI Wallet app
     When the user clicks on the Add doc button
