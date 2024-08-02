@@ -1,5 +1,10 @@
 @ANDROID @manual @US_AVASD
 Feature: Age verification attestation same device
+  As a user of the EUDI Wallet
+  I want to present my Age Verification Attestation to a requestor Relying Party residing on the same device
+  So that I can prove that I am over 18 years old without revealing my age or any other personal information
+
+  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/42
 
   @US_AVASD_TC_01 @manual:Passed
   Scenario: Age Verification via EUDI Wallet

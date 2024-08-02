@@ -1,5 +1,10 @@
 @ANDROID @manual @US_DIP
 Feature: Dynamic issuance process
+  As a user of the issuer service
+  I want to be able to dynamically present attestations requested by issuers
+  So that I can securely issue credentials from trusted issuers in my EUDI Wallet
+
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/21
 
   @US_DIP_TC_01 @manual:Passed
   Scenario: User Initiates Credential Issuance
