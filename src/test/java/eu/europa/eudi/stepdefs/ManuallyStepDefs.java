@@ -1294,4 +1294,364 @@ public class ManuallyStepDefs {
     public void theUserSelectsToIssueCredential() {
         //manual
     }
+
+    @Then("the user views the dashboard screen")
+    public void theUserViewsTheDashboardScreen() {
+        //manual
+    }
+
+    @And("the user clicks the Photo ID button")
+    public void theUserClicksThePhotoIDButton() {
+        //manual
+    }
+
+    @And("the photo ID is displayed in the dashboard")
+    public void thePhotoIDIsDisplayedInTheDashboard() {
+        //manual
+    }
+
+    @Given("the user views the QR code from the Relying Party")
+    public void theUserViewsTheQRCodeFromTheRelyingParty() {
+        //manual
+    }
+
+    @When("the user initiates the EUDI Wallet app")
+    public void theUserInitiatesTheEUDIWalletApp() {
+        //manual
+    }
+
+    @When("the wallet app displays a screen informing the user about the photo ID request")
+    public void theWalletAppDisplaysAScreenInformingTheUserAboutThePhotoIDRequest() {
+        //manual
+    }
+
+    @Then("the user reads the photo ID request")
+    public void theUserReadsThePhotoIDRequest() {
+        //manual
+    }
+
+    @Then("the PhotoID should be presented in the dashboard screen")
+    public void thePhotoIDShouldBePresentedInTheDashboardScreen() {
+        //manual
+    }
+
+    @When("the user selects to issue a photo ID")
+    public void theUserSelectsToIssueAPhotoID() {
+        //manual
+    }
+
+    @Then("the photo ID is presented in the EUDI Wallet dashboard screen")
+    public void thePhotoIDIsPresentedInTheEUDIWalletDashboardScreen() {
+        //manual
+    }
+
+    @Given("the user visits the Booking Service on their desktop PC")
+    public void theUserVisitsTheBookingServiceOnTheirDesktopPC() {
+        //manual
+    }
+
+    @And("the Booking Service presents a booking reservation form")
+    public void theBookingServicePresentsABookingReservationForm() {
+        //manual
+    }
+
+    @When("the user fills in the booking reservation form fields")
+    public void theUserFillsInTheBookingReservationFormFields() {
+        //manual
+    }
+
+    @Then("it requests the user to present the needed identity attestations")
+    public void itRequestsTheUserToPresentTheNeededIdentityAttestations() {
+        //manual
+    }
+
+    @Given("the user is requested to present identity attestations")
+    public void theUserIsRequestedToPresentIdentityAttestations() {
+        //manual
+    }
+
+    @When("the user selects to present the attestations with the EUDI Wallet")
+    public void theUserSelectsToPresentTheAttestationsWithTheEUDIWallet() {
+        //manual
+    }
+
+
+    @And("clicks the corresponding button in the Booking Service")
+    public void clicksTheCorrespondingButtonInTheBookingService() {
+        //manual
+    }
+
+    @Then("the Booking Service displays a QR-code for the user to scan")
+    public void theBookingServiceDisplaysAQRCodeForTheUserToScan() {
+        //manual
+    }
+
+    @Given("the Booking Service displays a QR-code")
+    public void theBookingServiceDisplaysAQRCode() {
+        //manual
+    }
+
+    @And("the user logs in successfully")
+    public void theUserLogsInSuccessfully() {
+        //manual
+    }
+
+
+    @And("the user taps on the Scan a QR code button")
+    public void theUserTapsOnTheScanAQRCodeButton() {
+        //manual
+    }
+
+    @Then("the request of the Booking service is displayed")
+    public void theRequestOfTheBookingServiceIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user is presented with the request from the Booking service")
+    public void theUserIsPresentedWithTheRequestFromTheBookingService() {
+        //manual
+    }
+
+    @When("the user selects to consent of the release of the requested attestation")
+    public void theUserSelectsToConsentOfTheReleaseOfTheRequestedAttestation() {
+        //manual
+    }
+
+    @Then("a screen with the PIN is displayed")
+    public void aScreenWithThePINIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user has been successfully authenticated in the wallet")
+    public void theUserHasBeenSuccessfullyAuthenticatedInTheWallet() {
+        //manual
+    }
+
+    @When("the Booking Service successfully verifies the attestation")
+    public void theBookingServiceSuccessfullyVerifiesTheAttestation() {
+        //manual
+    }
+
+    @And("a success message is displayed in the wallet")
+    public void aSuccessMessageIsDisplayedInTheWallet() {
+        //manual
+    }
+
+    @Then("it presents the preview of the reservation")
+    public void itPresentsThePreviewOfTheReservation() {
+        //manual
+    }
+
+    @Given("the user receives the reservation preview")
+    public void theUserReceivesTheReservationPreview() {
+        //manual
+    }
+
+    @When("the reservation includes booking service related fields")
+    public void theReservationIncludesBookingServiceRelatedFields() {
+        //manual
+    }
+
+    @Then("the Booking Service offers the following options to the user:")
+    public void theBookingServiceOffersTheFollowingOptionsToTheUser() {
+        //manual
+    }
+
+
+    @When("the user selects Digital ID Authentication option")
+    public void theUserSelectsDigitalIDAuthenticationOption() {
+        //manual
+    }
+
+
+    @Then("the QTSP sservice presents a QR code")
+    public void theQTSPSservicePresentsAQRCode() {
+        //manual
+    }
+
+    @Given("the user visits the QTSP service")
+    public void theUserVisitsTheQTSPService() {
+        //manual
+    }
+
+    @Given("the QTSP service presents a QR code")
+    public void theQTSPServicePresentsAQRCode() {
+        //manual
+    }
+
+    @When("the Wallet presents a screen requesting to release the matching attestation")
+    public void theWalletPresentsAScreenRequestingToReleaseTheMatchingAttestation() {
+        //manual
+    }
+
+    @Then("the Wallet checks for available attestations to match the request")
+    public void theWalletChecksForAvailableAttestationsToMatchTheRequest() {
+        //manual
+    }
+
+    @Given("the Wallet checked for available attestations to match the request")
+    public void theWalletCheckedForAvailableAttestationsToMatchTheRequest() {
+        //manual
+    }
+
+
+    @Then("the Wallet presents the requested attestation to the QTSP")
+    public void theWalletPresentsTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @When("the user consents to release the requested attestation by authenticating with a six-digit PIN")
+    public void theUserConsentsToReleaseTheRequestedAttestationByAuthenticatingWithASixDigitPIN() {
+        //manual
+    }
+
+    @Given("the Wallet presented the requested attestation to the QTSP")
+    public void theWalletPresentedTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @When("the QTSP service verifies the attestation successfully")
+    public void theQTSPServiceVerifiesTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Then("the QTSP service navigates the user to the upload page")
+    public void theQTSPServiceNavigatesTheUserToTheUploadPage() {
+        //manual
+    }
+
+    @Given("the booking service offers the user the option to issue a reservation confirmation attestation to the EUDI Wallet")
+    public void theBookingServiceOffersTheUserTheOptionToIssueAReservationConfirmationAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the option to issue the reservation confirmation attestation")
+    public void theUserSelectsTheOptionToIssueTheReservationConfirmationAttestation() {
+        //manual
+    }
+
+    @Then("the booking service renders a QR code")
+    public void theBookingServiceRendersAQRCode() {
+        //manual
+    }
+
+    @Given("the booking service presents the QR code")
+    public void theBookingServicePresentsTheQRCode() {
+        //manual
+    }
+
+    @When("the user opens the EUDI Wallet")
+    public void theUserOpensTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("a modal is displayed")
+    public void aModalIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user views the modal")
+    public void theUserViewsTheModal() {
+        //manual
+    }
+
+    @When("the user clicks on the Scan a QR code option")
+    public void theUserClicksOnTheScanAQRCodeOption() {
+        //manual
+    }
+
+    @Given("the phone camera is opened")
+    public void thePhoneCameraIsOpened() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user that the Issuer offered to issue an attestation")
+    public void theEUDIWalletInformsTheUserThatTheIssuerOfferedToIssueAnAttestation() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet informed the user that the Issuer offered to issue an attestation")
+    public void theEUDIWalletInformedTheUserThatTheIssuerOfferedToIssueAnAttestation() {
+        //manual
+    }
+
+    @When("the user consents to the credential issuance")
+    public void theUserConsentsToTheCredentialIssuance() {
+        //manual
+    }
+
+    @Then("the booking service issues and sends the credential to the Wallet")
+    public void theBookingServiceIssuesAndSendsTheCredentialToTheWallet() {
+        //manual
+    }
+
+    @Given("the user views the success message")
+    public void theUserViewsTheSuccessMessage() {
+        //manual
+    }
+
+    @When("the user clicks on the OK button")
+    public void theUserClicksOnTheOKButton() {
+        //manual
+    }
+
+    @Then("the credential is added to the EUDI Wallet")
+    public void theCredentialIsAddedToTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet User opens the EUDI Wallet")
+    public void theEUDIWalletUserOpensTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user successfully authenticates in the EUDI Wallet")
+    public void theUserSuccessfullyAuthenticatesInTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user clicks on the Show QR button")
+    public void theUserClicksOnTheShowQRButton() {
+        //manual
+    }
+
+    @Given("the user views the QR code in the wallet app")
+    public void theUserViewsTheQRCodeInTheWalletApp() {
+        //manual
+    }
+
+    @When("the Relying Party device scans the QR code")
+    public void theRelyingPartyDeviceScansTheQRCode() {
+        //manual
+    }
+
+    @Then("EUDI Wallet presents a screen informing the user of the attestation request")
+    public void eudiWalletPresentsAScreenInformingTheUserOfTheAttestationRequest() {
+        //manual
+    }
+
+    @Given("the user views in the EUDI Wallet the request from the Relying Party")
+    public void theUserViewsInTheEUDIWalletTheRequestFromTheRelyingParty() {
+        //manual
+    }
+
+    @Then("a new screen with the six-digit PIN is displayed")
+    public void aNewScreenWithTheSixDigitPINIsDisplayed() {
+        //manual
+    }
+
+    @Given("the six-digit PIN field is displayed")
+    public void theSixDigitPINFieldIsDisplayed() {
+        //manual
+    }
+
+    @When("the user enters right the PIN")
+    public void theUserEntersRightThePIN() {
+        //manual
+    }
+
+    @And("the Relying Party views the requested attestation")
+    public void theRelyingPartyViewsTheRequestedAttestation() {
+        //manual
+    }
 }
