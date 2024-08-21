@@ -4,12 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>5.0.0</version>
+    <version>2024.08.13-Demo</version>
     <packaging>jar</packaging>
 
-
     <name>Eudiw automated tests</name>
-
     <properties>
         <!--suppress UnresolvedMavenProperty -->
         <tags>@ANDROID,@IOS, @manual</tags>
@@ -30,7 +28,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     </properties>
 
     <dependencies>
