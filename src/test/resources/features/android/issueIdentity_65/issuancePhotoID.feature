@@ -22,7 +22,7 @@ Feature: Issue photo ID attestation
 
   @US_IPID_TC_03 @manual:Passed
   Scenario: Select authentication method and enter data
-    Given on screen is displayed the authentication method selection
+    Given the authentication method selection screen is displayed
     When the user clicks country selection
     And the user clicks FormEU
     Then the data page is displayed
