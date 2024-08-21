@@ -1654,4 +1654,19 @@ public class ManuallyStepDefs {
     public void theRelyingPartyViewsTheRequestedAttestation() {
         //manual
     }
+
+    @Given("the authentication method selection screen is displayed")
+    public void theAuthenticationMethodSelectionScreenIsDisplayed() {
+        //manual
+    }
+
+    @Given("the requested attestation to the QTSP has presented by the Wallet")
+    public void theRequestedAttestationToTheQTSPHasPresentedByTheWallet() {
+        //manual
+    }
+
+    @Given("the QR code is presented on QTSP service")
+    public void theQRCodeIsPresentedOnQTSPService() {
+        //manual
+    }
 }

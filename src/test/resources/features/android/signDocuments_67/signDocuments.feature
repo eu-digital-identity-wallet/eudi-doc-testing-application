@@ -10,11 +10,11 @@ Feature: Sign car rental contract using EUDI Wallet
   Scenario: Successful authentication and presentation of attestation
     Given the user visits the QTSP service
     When the user selects Digital ID Authentication option
-    Then the QTSP sservice presents a QR code
+    Then the QTSP service presents a QR code
 
   @US_SD_TC_02
   Scenario: User authenticates and scans QR code
-    Given the QTSP service presents a QR code
+    Given the QR code is presented on QTSP service
     When the user initiates the wallet app
     Then the user views the dashboard screen
 
@@ -39,6 +39,6 @@ Feature: Sign car rental contract using EUDI Wallet
 
   @US_SD_TC_06
   Scenario: QTSP service verifies attestation
-    Given the Wallet presented the requested attestation to the QTSP
+    Given the requested attestation to the QTSP has presented by the Wallet
     When the QTSP service verifies the attestation successfully
     Then the QTSP service navigates the user to the upload page
