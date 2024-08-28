@@ -1743,5 +1743,6 @@ public class ManuallyStepDefs {
     @Then("the Booking Service offers the following (.+) to the user")
     public void theBookingServiceOffersTheFollowingToTheUser() {
         //manual
+        System.out.println("manual");
     }
 }
