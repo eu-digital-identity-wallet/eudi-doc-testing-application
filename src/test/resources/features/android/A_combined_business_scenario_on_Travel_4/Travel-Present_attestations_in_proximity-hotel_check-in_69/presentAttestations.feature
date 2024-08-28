@@ -14,7 +14,7 @@ Feature: EUDI Wallet Booking Reservation Presentation
 
   @US_PA_TC_02
   Scenario: Display QR code
-    Given the user is on the dashboard screen
+    Given the user is on dashboard screen
     When the user clicks on the Show QR button
     Then the QR code is displayed
 
@@ -34,5 +34,5 @@ Feature: EUDI Wallet Booking Reservation Presentation
   Scenario: Display success message and attestation to Relying Party
     Given the six-digit PIN field is displayed
     When the user enters right the PIN
-    Then a success message is displayed
+    Then a success message is displayed on screen
     And the Relying Party views the requested attestation
