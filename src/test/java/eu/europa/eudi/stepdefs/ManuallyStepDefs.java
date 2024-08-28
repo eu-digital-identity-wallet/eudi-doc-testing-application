@@ -1745,4 +1745,22 @@ public class ManuallyStepDefs {
         //manual
         System.out.println("manual");
     }
+
+    @Then("the Booking Service offers the following Proceed to the car rental contract signing to the user")
+    public void the_booking_service_offers_the_following_proceed_to_the_car_rental_contract_signing_to_the_user() {
+        System.out.println("manual");
+    }
+
+    @Then("the Booking Service offers the following Issue the reservation confirmation attestation to the user")
+    public void the_booking_service_offers_the_following_issue_the_reservation_confirmation_attestation_to_the_user() {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("manual");
+    }
+
+    @Then("the Booking Service offers the following Download the car rental contract as pdf pre-filled with the corresponding form fields to the user")
+    public void the_booking_service_offers_the_following_download_the_car_rental_contract_as_pdf_pre_filled_with_the_corresponding_form_fields_to_the_user() {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("manual");
+
+    }
 }
