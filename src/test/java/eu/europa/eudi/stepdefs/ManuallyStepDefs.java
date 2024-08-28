@@ -1739,4 +1739,9 @@ public class ManuallyStepDefs {
     public void theBookingServiceOffersThreeOption() {
         //manual
     }
+
+    @Then("the Booking Service offers the following (.+) to the user")
+    public void theBookingServiceOffersTheFollowingToTheUser(String options) {
+        //manual
+    }
 }
