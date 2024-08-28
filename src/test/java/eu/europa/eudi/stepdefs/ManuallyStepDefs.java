@@ -1734,4 +1734,9 @@ public class ManuallyStepDefs {
     public void theUserInsertsTheRequiredCredentialDetails() {
         //manual
     }
+
+    @Then("the Booking Service offers three option")
+    public void theBookingServiceOffersThreeOption() {
+        //manual
+    }
 }
