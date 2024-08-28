@@ -1744,5 +1744,6 @@ public class ManuallyStepDefs {
     public void theBookingServiceOffersTheFollowingToTheUser() {
         //manual
         System.out.println("manual");
+        throw new io.cucumber.java.PendingException();
     }
 }
