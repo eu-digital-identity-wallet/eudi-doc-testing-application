@@ -1669,4 +1669,64 @@ public class ManuallyStepDefs {
     public void theQRCodeIsPresentedOnQTSPService() {
         //manual
     }
+
+    @Then("the user is redirected to EUDI Wallet")
+    public void theUserIsRedirectedToEUDIWallet() {
+        //manual
+    }
+
+    @And("the details of the credential to be issued are presented on the screen")
+    public void theDetailsOfTheCredentialToBeIssuedArePresentedOnTheScreen() {
+        //manual
+    }
+
+    @Given("the user is presented with the credential details on EUDI Wallet")
+    public void theUserIsPresentedWithTheCredentialDetailsOnEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user is redirected back to issuer")
+    public void theUserIsRedirectedBackToIssuer() {
+        //manual
+    }
+
+    @And("the user is prompted to authenticate and consent to issuance")
+    public void theUserIsPromptedToAuthenticateAndConsentToIssuance() {
+        //manual
+    }
+
+    @Given("the user is asked to authenticate and consent on issuer service")
+    public void theUserIsAskedToAuthenticateAndConsentOnIssuerService() {
+        //manual
+    }
+
+    @When("the user authenticates and consents to issuance")
+    public void theUserAuthenticatesAndConsentsToIssuance() {
+        //manual
+    }
+
+    @And("the usser inserts the required credential details")
+    public void theUsserInsertsTheRequiredCredentialDetails() {
+        //manual
+    }
+
+    @Then("the user is redirected to EUDI Wallet app")
+    public void theUserIsRedirectedToEUDIWalletApp() {
+        //manual
+    }
+
+    @And("a success message is displayed on EUDI Wallet app")
+    public void aSuccessMessageIsDisplayedOnEUDIWalletApp() {
+        //manual
+    }
+
+    @Given("the user sees a success message in EUDI Wallet app")
+    public void theUserSeesASuccessMessageInEUDIWalletApp() {
+        //manual
+    }
+
+    @Then("the wallet app displays on screen a success message")
+    public void theWalletAppDisplaysOnScreenASuccessMessage() {
+        //manual
+    }
 }
