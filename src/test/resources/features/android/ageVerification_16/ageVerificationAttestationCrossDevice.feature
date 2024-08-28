@@ -41,5 +41,5 @@ Feature: Age verification attestation cross device
   Scenario: User re-enters correct PIN
     Given the wallet app displays a corresponding error message
     When the user re-enters the correct PIN
-    Then the wallet app displays a success message
+    Then the wallet app displays on screen a success message
 
