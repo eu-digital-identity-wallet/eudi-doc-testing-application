@@ -55,7 +55,7 @@ Feature: Booking Service Reservation with EUDI Wallet (cross device)
     Then it presents the preview of the reservation
 
   @US_BRCD_TC_08
-  Scenario Outline:: Booking Service offers additional options to the user
+  Scenario Outline: Booking Service offers additional options to the user
     Given the user receives the reservation preview
     When the reservation includes booking service related fields
 #    Then the Booking Service offers three option
