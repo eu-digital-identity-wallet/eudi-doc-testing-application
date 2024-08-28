@@ -1729,4 +1729,9 @@ public class ManuallyStepDefs {
     public void theWalletAppDisplaysOnScreenASuccessMessage() {
         //manual
     }
+
+    @And("the user inserts the required credential details")
+    public void theUserInsertsTheRequiredCredentialDetails() {
+        //manual
+    }
 }

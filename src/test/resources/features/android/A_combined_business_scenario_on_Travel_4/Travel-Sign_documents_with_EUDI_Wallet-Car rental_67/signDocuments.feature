@@ -20,7 +20,7 @@ Feature: Sign car rental contract using EUDI Wallet
 
   @US_SD_TC_03
   Scenario: User scans the QR code
-    Given the user is on the dashboard screen
+    Given the user is on dashboard screen
     When the user clicks on the options button
     And the user clicks on the scan a qr code button
     Then camera opens and the user scans the QR code
