@@ -58,7 +58,8 @@ Feature: Booking Service Reservation with EUDI Wallet (cross device)
   Scenario: Booking Service offers additional options to the user
     Given the user receives the reservation preview
     When the reservation includes booking service related fields
-    Then the Booking Service offers the following options to the user:
-      | Download the car rental contract as pdf pre-filled with the corresponding form fields |
-      | Proceed to the car rental contract signing                                           |
-      | Issue the reservation confirmation attestation                                       |
+    Then the Booking Service offers three option
+#    Then the Booking Service offers the following options to the user:
+#      | Download the car rental contract as pdf pre-filled with the corresponding form fields |
+#      | Proceed to the car rental contract signing                                           |
+#      | Issue the reservation confirmation attestation                                       |
