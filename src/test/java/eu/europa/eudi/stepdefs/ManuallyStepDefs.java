@@ -1724,4 +1724,9 @@ public class ManuallyStepDefs {
     public void theUserSeesASuccessMessageInEUDIWalletApp() {
         //manual
     }
+
+    @Then("the wallet app displays on screen a success message")
+    public void theWalletAppDisplaysOnScreenASuccessMessage() {
+        //manual
+    }
 }
