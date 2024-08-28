@@ -54,7 +54,7 @@ Feature: Booking Service Reservation with EUDI Wallet (cross device)
     And a success message is displayed in the wallet
     Then it presents the preview of the reservation
 
-  @US_BRCD_TC_08
+  @US_BRCD_TC_08 @manual:Passed
   Scenario Outline: Booking Service offers additional options to the user
     Given the user receives the reservation preview
     When the reservation includes booking service related fields
