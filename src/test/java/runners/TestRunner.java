@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/"},
+        features = {"src/preAuthorizationCodeSameDevice.feature/resources/features/"},
         monochrome = true,
         tags = "@ANDROID",
         glue = {"eu.europa.eudi.stepdefs"})

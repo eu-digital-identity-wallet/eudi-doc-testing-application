@@ -9,16 +9,16 @@ import java.nio.file.Paths;
 public class ResourcesConfig {
 
     public String getOutputDir() {
-        return getTestResourcesPath() + "\\test-data\\outputDir";
+        return getTestResourcesPath() + "\\preAuthorizationCodeSameDevice.feature-data\\outputDir";
     }
 
     public String getInputDir() {
-        return getTestResourcesPath() + "\\test-data\\inputDir";
+        return getTestResourcesPath() + "\\preAuthorizationCodeSameDevice.feature-data\\inputDir";
     }
 
 
     private String getTestResourcesPath() {
-       return System.getProperty("user.dir") + "\\test\\resources";
+       return System.getProperty("user.dir") + "\\preAuthorizationCodeSameDevice.feature\\resources";
     }
 
     private String getEnvPath() {
@@ -31,7 +31,7 @@ public class ResourcesConfig {
 
         String modulePath = this.getClass().getClassLoader().getResource(".").getPath();
         modulePath = modulePath.replace("\\", "/");
-        modulePath = modulePath.replace("/target/test-classes", "");
+        modulePath = modulePath.replace("/target/preAuthorizationCodeSameDevice.feature-classes", "");
         modulePath = modulePath.replace(absPath, "");
         modulePath = modulePath.replace("//", "/");
 
