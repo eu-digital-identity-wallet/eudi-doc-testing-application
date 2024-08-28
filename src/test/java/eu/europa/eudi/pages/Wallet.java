@@ -463,15 +463,15 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.stopAndroidDriverSession();
             boolean noReset = true;
-//            test.setNoReset(noReset);
-//            test.setSystemOperation(Literals.General.ANDROID.label.label);
+//            preAuthorizationCodeSameDevice.feature.setNoReset(noReset);
+//            preAuthorizationCodeSameDevice.feature.setSystemOperation(Literals.General.ANDROID.label.label);
             test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
             test.startAndroidDriverSession();
         } else {
             test.stopIosDriverSession();
             boolean noReset = true;
-//            test.setNoReset(noReset);
-//            test.setSystemOperation(Literals.General.IOS.label);
+//            preAuthorizationCodeSameDevice.feature.setNoReset(noReset);
+//            preAuthorizationCodeSameDevice.feature.setSystemOperation(Literals.General.IOS.label);
             test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
             test.startIosDriverSession();
         }
@@ -482,15 +482,15 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.stopAndroidDriverSession();
             boolean noReset = true;
-//            test.setNoReset(noReset);
-//            test.setSystemOperation(Literals.General.ANDROID.label.label);
+//            preAuthorizationCodeSameDevice.feature.setNoReset(noReset);
+//            preAuthorizationCodeSameDevice.feature.setSystemOperation(Literals.General.ANDROID.label.label);
             test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
             test.reInitializeDriver();
         } else {
             test.stopIosDriverSession();
             boolean noReset = true;
-//            test.setNoReset(noReset);
-//            test.setSystemOperation(Literals.General.IOS.label);
+//            preAuthorizationCodeSameDevice.feature.setNoReset(noReset);
+//            preAuthorizationCodeSameDevice.feature.setSystemOperation(Literals.General.IOS.label);
             test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
             test.startIosDriverSession();
         }

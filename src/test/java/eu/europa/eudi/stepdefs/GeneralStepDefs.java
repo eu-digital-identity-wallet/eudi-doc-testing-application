@@ -404,13 +404,13 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected to the EUDI Wallet")
     public void theUserIsRedirectedToTheEUDIWallet() {
-//        test.mobile().wallet().welcomePage();
-//        test.mobile().wallet().createAPin();
-//        test.mobile().wallet().clickNextButton();
-//        test.mobile().wallet().renterThePin();
-//        test.mobile().wallet().clickConfirm();
-//        test.mobile().wallet().successMessageOfSetUpPin();
-//        test.mobile().wallet().clickContinue();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().welcomePage();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().createAPin();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickNextButton();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().renterThePin();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickConfirm();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().successMessageOfSetUpPin();
+//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickContinue();
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -809,9 +809,9 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
-//test
-//test.startAndroidDriverSession();
-//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//preAuthorizationCodeSameDevice.feature
+//preAuthorizationCodeSameDevice.feature.startAndroidDriverSession();
+//        AndroidDriver driver = (AndroidDriver) preAuthorizationCodeSameDevice.feature.mobileWebDriverFactory().getDriverAndroid();
 //        driver.runAppInBackground(Duration.ofSeconds(10));
 //        driver.activateApp("com.android.chrome");
     }
