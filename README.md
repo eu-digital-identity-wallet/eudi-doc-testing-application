@@ -245,6 +245,16 @@ Write exactly the steps that must be followed in order to reproduce the bug.
 **Expected Behavior:**
 Describe what you expect to happen instead of the error.
 
+## Troubleshooting 
+
+If you encounter any issues while setting up or running the tests, consult the troubleshooting tips below:
+
+- Long File Path Issues
+
+On Windows, you might encounter issues with long file paths. To ensure Git can handle long paths, run the following command:
+
+`git config --system core.longpaths true`
+
 ## How to contribute
 
 We welcome contributions to this project. To ensure that the process is smooth for everyone
