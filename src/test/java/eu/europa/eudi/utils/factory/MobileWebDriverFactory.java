@@ -72,7 +72,7 @@ public class MobileWebDriverFactory {
 
     public void startIosDriverSession() {
         envDataConfig = new EnvDataConfig();
-        File apkPath1 = new File("src/preAuthorizationCodeSameDevice.feature/resources/app/iosApp.ipa");
+        File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
         apkPath1.getAbsolutePath();
         DesiredCapabilities caps1 = new DesiredCapabilities();
         caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
