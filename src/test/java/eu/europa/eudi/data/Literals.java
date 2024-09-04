@@ -22,7 +22,7 @@ public interface Literals {
         SUCCESS_MESSAGE_DRIVING_LICENCE("You can now add your Driving License"),
         ISSUANCE_DETAILS("National ID"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("Your documents from issuer.eudiw.dev have been successfully issued."),
-        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("Your documents from https://issuer.eudiw.dev have been successfully issued."),
+        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("Your documents from issuer.eudiw.dev have been successfully issued."),
         SCAN_QR("SCAN QR"),
         DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_MDL("Family Name"),
