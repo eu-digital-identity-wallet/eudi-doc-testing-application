@@ -1,4 +1,4 @@
-@IOS @US_DIP
+@IOS @manual @US_DIP
 Feature: Dynamic issuance process
 
   @US_DIP_TC_01 @manual:Passed

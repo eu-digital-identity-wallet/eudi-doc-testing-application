@@ -32,7 +32,7 @@ public class MobileWebDriverFactory {
     }
     public void startAndroidDriverSession() {
         envDataConfig = new EnvDataConfig();
-        File apkPath2 = new File("src/preAuthorizationCodeSameDevice.feature/resources/app/androidApp.apk");
+        File apkPath2 = new File("src/test/resources/app/androidApp.apk");
         apkPath2.getAbsolutePath();
         DesiredCapabilities caps2 = new DesiredCapabilities();
 //        caps2.setCapability("deviceName", "Pixel_6_API_33_1");
