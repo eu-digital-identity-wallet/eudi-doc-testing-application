@@ -382,7 +382,7 @@ public class Issuer {
     }
             public void clickAuthorize () {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.authorize)).click();
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authorize)).click();
                 } else {
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
                 }
