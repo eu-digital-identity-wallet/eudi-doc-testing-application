@@ -35,17 +35,6 @@ public class MobileWebDriverFactory {
         File apkPath2 = new File("src/test/resources/app/androidApp.apk");
         apkPath2.getAbsolutePath();
         DesiredCapabilities caps2 = new DesiredCapabilities();
-//        caps2.setCapability("deviceName", "Pixel_6_API_33_1");
-//        caps2.setCapability("udid", "emulator-5554"); //DeviceId from "adb devices" command
-//        caps2.setCapability("platformName", "Android");
-//        caps2.setCapability("platformVersion", "13.0");
-//        caps2.setCapability("automationName", "UiAutomator2");
-//        caps2.setCapability("androidInstallTimeout", 180000); // Set to 180000ms (3 minutes)
-//        caps2.setCapability("appium:uiautomator2ServerLaunchTimeout", 200000);
-//        caps2.setCapability("appium:uiautomator2ServerInstallTimeout", 200000);
-//        caps2.setCapability("appium:androidInstallTimeout", 200000);
-//        caps2.setCapability("appium:adbExecTimeout", 200000);
-//        caps2.setCapability("enforceXPath1", true);
         caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
         caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
         caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
