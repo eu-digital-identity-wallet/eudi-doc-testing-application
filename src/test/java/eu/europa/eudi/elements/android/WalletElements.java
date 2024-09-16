@@ -55,8 +55,8 @@ public class WalletElements {
     public static By clickDrivingLicenceButton = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By enterDocumentNumber = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.EditText");
     public static By documentNumberField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.EditText");
-    public static By clickIssueDate = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.widget.Spinner[1]");
-    public static By clickExpiryDate = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[1]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.widget.Spinner[2]");
+    public static By clickIssueDate = By.xpath("//android.view.View[@resource-id=\"DrivingP\"]/android.widget.Spinner[1]");
+    public static By clickExpiryDate = By.xpath("//android.view.View[@resource-id=\"DrivingP\"]/android.widget.Spinner[2]");
     public static By drivingLicenceIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You can now add your Driving License\"]");
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]");
