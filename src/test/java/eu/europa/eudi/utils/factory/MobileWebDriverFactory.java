@@ -60,7 +60,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("allowInsecure", "adb_shell");
 
         try {
-            androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrl()), caps2);
+            androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -86,7 +86,7 @@ public class MobileWebDriverFactory {
         caps1.setCapability("app", apkPath1.getAbsolutePath());
         caps1.setCapability("autoAcceptAlerts",true);
         try {
-            iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrl()), caps1);
+            iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver,     Duration.ofSeconds(80));
         } catch (Exception e) {
             System.out.println(e.toString());

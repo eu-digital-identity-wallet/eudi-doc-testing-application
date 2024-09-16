@@ -31,7 +31,8 @@ public class EnvDataConfig {
     public static final String APPIUM_IOS_AUTOMATION_NAME = "appium.ios.automationName";
     public static final String APPIUM_IOS_BUNDLE_ID = "appium.ios.bundleId";
     public static final String APPIUM_RECORDING = "appium.recording";
-    public static final String APPIUM_URL = "appium.url";
+    public static final String APPIUM_URL_ANDROID = "appium.url.android";
+    public static final String APPIUM_URL_IOS = "appium.url.ios";
     public static final String APPIUM_SHORT_WAIT_IN_MILLISECONDS = "appium.shortWaitInMilliseconds";
     public static final String APPIUM_MEDIUM_WAIT_IN_SECONDS = "appium.mediumWaitInSeconds";
     public static final String APPIUM_LONG_WAIT_IN_SECONDS = "appium.longWaitInSeconds";
@@ -101,8 +102,12 @@ public class EnvDataConfig {
         return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_RECORDING));
     }
 
-    public String getAppiumUrl() {
-        return getEnvProperties().getProperty(APPIUM_URL);
+    public String getAppiumUrlAndroid() {
+        return getEnvProperties().getProperty(APPIUM_URL_ANDROID);
+    }
+
+    public String getAppiumUrlIos() {
+        return getEnvProperties().getProperty(APPIUM_URL_IOS);
     }
 
     public String getAppiumAndroidAppActivity() {
