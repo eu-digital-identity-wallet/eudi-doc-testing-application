@@ -43,7 +43,7 @@ Feature: Age verification attestation same device
     Then the wallet app displays a success message
     And the user clicks on the Continue button
 
-  @US_AVASD_TC_06 @manual:Passed
+  @US_AVASD_TC_07 @manual:Passed
   Scenario: Relying Party receives age verification attestation
     Given the user has clicked on continue button
     When the user is redirected to the relying party

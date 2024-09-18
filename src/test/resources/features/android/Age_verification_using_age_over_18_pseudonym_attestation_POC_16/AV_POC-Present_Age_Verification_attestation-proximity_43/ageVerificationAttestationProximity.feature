@@ -19,7 +19,7 @@ Feature: Age verification attestation (proximity)
     When the user clicks on the SHOW QR button
     Then the QR code appears
 
-  @US_AVAP_TC_3 @manual:Passed
+  @US_AVAP_TC_03 @manual:Passed
   Scenario: Verifier scans the QR code for age verification
     Given the QR code is displayed
     When the verifier scans the QR code
