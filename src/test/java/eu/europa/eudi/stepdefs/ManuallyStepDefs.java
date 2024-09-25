@@ -1859,4 +1859,9 @@ public class ManuallyStepDefs {
     public void theUserCanDownloadTheSignedDocument() {
         //manual
     }
+
+    @Then("add document page is displayed on screen")
+    public void addDocumentPageIsDisplayedOnScreen() {
+        //manual
+    }
 }
