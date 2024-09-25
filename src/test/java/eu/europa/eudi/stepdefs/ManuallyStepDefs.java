@@ -1759,4 +1759,104 @@ public class ManuallyStepDefs {
     public void the_booking_service_offers_the_following_download_the_car_rental_contract_as_pdf_pre_filled_with_the_corresponding_form_fields_to_the_user() {
         //manual
     }
+
+    @Given("the user has chosen to display the attestations using the EUDI Wallet")
+    public void theUserHasChosenToDisplayTheAttestationsUsingTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user logs in successfully in the wallet app")
+    public void theUserLogsInSuccessfullyInTheWalletApp() {
+        //manual
+    }
+
+    @Given("the user views the reservation preview")
+    public void theUserViewsTheReservationPreview() {
+        //manual
+    }
+
+    @Then("the reservation document is displayed in the wallet")
+    public void theReservationDocumentIsDisplayedInTheWallet() {
+        //manual
+    }
+
+    @Given("the reservation document has been added to the wallet")
+    public void theReservationDocumentHasBeenAddedToTheWallet() {
+        //manual
+    }
+
+    @Then("it presents the preview of the reservation in the Booking Service")
+    public void itPresentsThePreviewOfTheReservationInTheBookingService() {
+        //manual
+    }
+
+    @When("the user clicks on add doc button")
+    public void theUserClicksOnAddDocButton() {
+        //manual
+    }
+
+    @Given("the user views the add document page")
+    public void theUserViewsTheAddDocumentPage() {
+        //manual
+    }
+
+    @Then("the user inserts successfully the provided OTP")
+    public void theUserInsertsSuccessfullyTheProvidedOTP() {
+        //manual
+    }
+
+    @When("the user clicks on continue button")
+    public void theUserClicksOnContinueButton() {
+        //manual
+    }
+
+    @When("the user selects PID Authentication option")
+    public void theUserSelectsPIDAuthenticationOption() {
+        //manual
+    }
+
+    @When("the EUDI Wallet displays the presentation request")
+    public void theEUDIWalletDisplaysThePresentationRequest() {
+        //manual
+    }
+
+    @Then("a success message is displayed for the successful presentation")
+    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentation() {
+        //manual
+    }
+
+    @When("the user uploads the electronic document")
+    public void theUserUploadsTheElectronicDocument() {
+        //manual
+    }
+
+    @And("the user selects the option to sign the document")
+    public void theUserSelectsTheOptionToSignTheDocument() {
+        //manual
+    }
+
+    @Then("QTSP service request the user to present an identity attestation to proceed")
+    public void qtspServiceRequestTheUserToPresentAnIdentityAttestationToProceed() {
+        //manual
+    }
+
+    @Given("the QTSP service has requested the user to present an identity attestation")
+    public void theQTSPServiceHasRequestedTheUserToPresentAnIdentityAttestation() {
+        //manual
+    }
+
+    @When("the user repeats the steps three to six")
+    public void theUserRepeatsTheStepsThreeToSix() {
+        //manual
+    }
+
+    @Then("the document has been signed")
+    public void theDocumentHasBeenSigned() {
+        //manual
+    }
+
+    @And("the user can download the signed document")
+    public void theUserCanDownloadTheSignedDocument() {
+        //manual
+    }
 }

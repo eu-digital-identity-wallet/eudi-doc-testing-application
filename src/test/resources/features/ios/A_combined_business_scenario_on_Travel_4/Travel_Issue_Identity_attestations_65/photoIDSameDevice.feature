@@ -6,21 +6,21 @@ Feature: Issue photo ID attestation (same device)
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/65
 
-  @US_IPIDSD_TC_01 @manual:Passed
+  @US_IPIDSD_TC_01
   Scenario: User selects to issue a photo ID
     Given the user is on issuer service
     When the user selects to issue a photo ID
     Then the user is redirected to EUDI Wallet
     And the details of the credential to be issued are presented on the screen
 
-  @US_IPIDSD_TC_02 @manual:Passed
+  @US_IPIDSD_TC_02
   Scenario: User proceeds with the credential issuance
     Given the user is presented with the credential details on EUDI Wallet
     When the user presses on the ISSUE button
     Then the user is redirected back to issuer
     And the user is prompted to authenticate and consent to issuance
 
-  @US_IPIDSD_TC_03 @manual:Passed
+  @US_IPIDSD_TC_03
   Scenario: User authenticates and consents to the issuance
     Given the user is asked to authenticate and consent on issuer service
     When the user authenticates and consents to issuance
@@ -28,7 +28,7 @@ Feature: Issue photo ID attestation (same device)
     Then the user is redirected to EUDI Wallet app
     And a success message is displayed on EUDI Wallet app
 
-  @US_IPIDSD_TC_04 @manual:Passed
+  @US_IPIDSD_TC_04
   Scenario: User views the issued identity in the EUDI Wallet
     Given the user sees a success message in EUDI Wallet app
     When the user presses on the CONTINUE button
