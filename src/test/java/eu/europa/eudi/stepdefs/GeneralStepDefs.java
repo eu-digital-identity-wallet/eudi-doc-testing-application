@@ -80,6 +80,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().enterGivenName();
             test.mobile().issuer().enterFamilyName();
             test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().scrollUntilSubmit();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
@@ -861,6 +862,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilFindDate();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
+        test.mobile().issuer().scrollUntilSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -884,6 +886,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();

@@ -33,7 +33,7 @@ public class WalletElements {
     public static By clickMdl = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By clickDeleteButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
-    public static By confirmsDeletion = By.xpath("//android.view.ViewGroup[@resource-id=\"android:id/content\"]/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Button");
+    public static By confirmsDeletion = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back\"]");
     public static By unselectData = By.xpath("//android.widget.CheckBox");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Your selection of data to be shared may impact the service\"]");
