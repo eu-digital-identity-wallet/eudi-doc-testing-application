@@ -397,40 +397,4 @@ public class Issuer {
                     Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
                 }
             }
-
-    public void scrollUntilSubmit() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-            int i=1;
-            while (i<5) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-        } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 5) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
         }
-    }
-}
