@@ -1,6 +1,7 @@
 ## Epic:
 
 [Issuing - Deferred issuing for delayed issuing in cases where issuance cannot be handled immediately #24](https://github.com/orgs/eu-digital-identity-wallet/projects/20/views/7?pane=issue&itemId=69579973)
+   
 
 ## User stories:
 
