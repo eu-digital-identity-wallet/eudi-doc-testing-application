@@ -22,7 +22,7 @@ Feature: Issuing reservation confirmation to EUDI Wallet
   Scenario: Display options modal
     Given the user views the dashboard screen
     When the user clicks on add doc button
-    Then add document page is displayed
+    Then the add document page is displayed on screen
 
   @US_IRC_TC_04 @manual:Passed
   Scenario: Open camera for QR code scanning
