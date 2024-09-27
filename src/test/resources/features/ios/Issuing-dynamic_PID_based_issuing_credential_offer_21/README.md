@@ -1,6 +1,7 @@
 ## Epic:
 
 [Issuing - Dynamic PID based issuing credential offer #21](https://github.com/orgs/eu-digital-identity-wallet/projects/20/views/7?pane=issue&itemId=69010018)
+      
 
 ## User stories:
 
