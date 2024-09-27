@@ -1860,8 +1860,28 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("add document page is displayed on screen")
-    public void addDocumentPageIsDisplayedOnScreen() {
+    @Given("the user visits the issuer service on their desktop PC")
+    public void theUserVisitsTheIssuerServiceOnTheirDesktopPC() {
+        //manual
+    }
+
+    @And("the user requests to issue the photo ID Attestation")
+    public void theUserRequestsToIssueThePhotoIDAttestation() {
+        //manual
+    }
+
+    @Then("the issuer service provides a QR code")
+    public void theIssuerServiceProvidesAQRCode() {
+        //manual
+    }
+
+    @Given("the issuer service has provided the QR code")
+    public void theIssuerServiceHasProvidedTheQRCode() {
+        //manual
+    }
+
+    @When("the user consents to the issuance and provides their personal details into the form")
+    public void theUserConsentsToTheIssuanceAndProvidesTheirPersonalDetailsIntoTheForm() {
         //manual
     }
 }
