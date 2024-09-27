@@ -1,7 +1,6 @@
 ## Epic:
 
 [A combined business scenario on Travel #4](https://github.com/orgs/eu-digital-identity-wallet/projects/20?pane=issue&itemId=72197280)
-   
 
 ## User stories:
 - [[Travel] Issue Identity attestations #65](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/65)

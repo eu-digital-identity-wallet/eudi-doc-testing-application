@@ -1,7 +1,6 @@
 ## Epic:
 
 [Age verification using age over 18 pseudonym attestation POC #16](https://github.com/orgs/eu-digital-identity-wallet/projects/20/views/7?pane=issue&itemId=63729938)
-   
 
 ## User stories:
 
