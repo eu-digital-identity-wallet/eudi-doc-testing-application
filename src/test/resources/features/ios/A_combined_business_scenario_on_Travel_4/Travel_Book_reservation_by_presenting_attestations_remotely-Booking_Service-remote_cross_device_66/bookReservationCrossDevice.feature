@@ -11,20 +11,6 @@ Feature: Booking Service Reservation with EUDI Wallet (cross device)
     Given the user visits the Booking Service on their desktop PC
     And the Booking Service presents a booking reservation form
     When the user fills in the booking reservation form fields
-    Then it requests the user to present the needed identity attestations
-
-  @US_BRCD_TC_02 @manual:Passed
-  Scenario: User selects to present attestations with the EUDI Wallet and scans QR-code
-    Given the user is requested to present identity attestations
-    When the user selects to present the attestations with the EUDI Wallet
-    And clicks the corresponding button in the Booking Service
-    Then the Booking Service displays a QR-code for the user to scan
-
-  @US_BRCD_TC_01 @manual:Passed
-  Scenario: User fills in the booking reservation form and presents identity attestations
-    Given the user visits the Booking Service on their desktop PC
-    And the Booking Service presents a booking reservation form
-    When the user fills in the booking reservation form fields
     Then the user selects to present the attestations with the EUDI Wallet
 
   @US_BRCD_TC_02 @manual:Passed
