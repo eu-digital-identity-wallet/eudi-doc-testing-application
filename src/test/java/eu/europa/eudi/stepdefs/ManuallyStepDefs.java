@@ -1884,4 +1884,9 @@ public class ManuallyStepDefs {
     public void theUserConsentsToTheIssuanceAndProvidesTheirPersonalDetailsIntoTheForm() {
         //manual
     }
+
+    @When("the user consents to the release of the multiple requested attestations")
+    public void theUserConsentsToTheReleaseOfTheMultipleRequestedAttestations() {
+        //manual
+    }
 }

@@ -36,7 +36,7 @@ Feature: Booking Service Reservation with EUDI Wallet (cross device)
   @US_BRCD_TC_05 @manual:Passed
   Scenario: Consent and PIN for booking service request
     Given the user is presented with the request from the Booking service
-    When the user selects to consent of the release of the requested attestation
+    When the user consents to the release of the multiple requested attestations
     Then a screen with the PIN is displayed
     And the user enters the PIN
 
