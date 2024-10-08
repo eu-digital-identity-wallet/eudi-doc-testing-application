@@ -5504,7 +5504,7 @@ div.code {
  }
 
    .container-fluid:nth-of-type(4) {
-       display: none!important; 
+       display: none!important;
    }
 
  .container-fluid:nth-of-type(3) {
@@ -5535,11 +5535,13 @@ div.code {
     display:none!important;
     }
 
-   
+
    .nav.nav-tabs li:nth-child(2)
    {
    display: none!important;
    }
 
-
-
+   .nav.nav-tabs li:nth-child(6)
+      {
+      display: none!important;
+      }

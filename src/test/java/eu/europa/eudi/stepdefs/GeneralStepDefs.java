@@ -80,6 +80,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().enterGivenName();
             test.mobile().issuer().enterFamilyName();
             test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().scrollUntilFindSubmit();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
@@ -396,8 +397,8 @@ public class GeneralStepDefs{
     @When("the user selects to issue a credential")
     public void theUserSelectsToIssueACredential() {
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().clickSubmitButton();
 
     }
@@ -465,6 +466,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -861,6 +863,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilFindDate();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
+        test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -884,6 +887,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
