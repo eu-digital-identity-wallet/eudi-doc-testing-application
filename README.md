@@ -157,7 +157,7 @@ Test cases are written in Gherkin language for both manual and automated tests a
 feature files
 " folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features). 
 
-There are two main categories: iOS and Android. Each category has several parent folders named after the respective user stories, with the id of the corresponding story next to the folder name. Inside each of these folders, you will find feature files that contain the corresponding set of test cases.
+There are two main categories: iOS and Android. Inside these folders, there are subfolders corresponding to the epics, named exactly as they appear on GitHub. Each epic folder contains subfolders named after the corresponding user stories. Finally, within the user story folders, there are the feature files that contain the relevant test cases.
 
 ## Running the tests
 
@@ -244,6 +244,16 @@ Write exactly the steps that must be followed in order to reproduce the bug.
 
 **Expected Behavior:**
 Describe what you expect to happen instead of the error.
+
+## Troubleshooting 
+
+If you encounter any issues while setting up or running the tests, consult the troubleshooting tips below:
+
+- Long File Path Issues
+
+On Windows, you might encounter issues with long file paths. To ensure Git can handle long paths, run the following command:
+
+`git config --system core.longpaths true`
 
 ## How to contribute
 

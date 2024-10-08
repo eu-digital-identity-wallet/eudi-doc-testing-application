@@ -6,7 +6,7 @@ public class IssuerElements {
     public static By issuerServicePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Testing OpenID for Verifiable Credential Issuance - draft 13\"]");
     public static By clickTestCredentialOffer = By.xpath("//XCUIElementTypeButton[@name=\"WALLET TEST Credential Offer\"]");
     public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Request Credentials for your EUDI Wallet\"]");
-    public static By clickPersonalIdentificationData = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeSwitch");
+    public static By clickPersonalIdentificationData = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[17]/XCUIElementTypeSwitch");
     public static By clickSubmitButton = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"QR Code\"]");
     public static By clickEudiwButton = By.xpath("//XCUIElementTypeStaticText[@name=\"Use EUDIW\"]");
