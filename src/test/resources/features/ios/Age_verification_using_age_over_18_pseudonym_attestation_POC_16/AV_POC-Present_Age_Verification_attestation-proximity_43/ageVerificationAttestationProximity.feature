@@ -1,4 +1,4 @@
-@ANDROID @manual @US_AVAP
+@IOS @manual @US_AVAP
 Feature: Age verification attestation (proximity)
   As a user of the EUDI Wallet
   I want to present my Age Verification Attestation to a requesting Relying Party operating a ‘reader’ device in a proximity scenario
@@ -19,7 +19,7 @@ Feature: Age verification attestation (proximity)
     When the user clicks on the SHOW QR button
     Then the QR code appears
 
-  @US_AVAP_TC_3 @manual:Passed
+  @US_AVAP_TC_03 @manual:Passed
   Scenario: Verifier scans the QR code for age verification
     Given the QR code is displayed
     When the verifier scans the QR code
