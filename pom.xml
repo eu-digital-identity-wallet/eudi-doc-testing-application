@@ -5,11 +5,10 @@
     <artifactId>eudiw-automated-tests</artifactId>
     <version>2024.08.13-Demo</version>
     <packaging>jar</packaging>
-
     <name>Eudiw automated tests</name>
+
     <properties>
-        <!--suppress UnresolvedMavenProperty -->
-        <tags>@ANDROID,@IOS, @manual</tags>
+<!--        <tags>@ANDROID,@IOS, @manual</tags>-->
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -23,13 +22,13 @@
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <assembly.phase>none</assembly.phase>
         <serenity.bdd.version>3.9.2</serenity.bdd.version>
-        <rerun.failed.scenarios>1</rerun.failed.scenarios>
+        <rerun.failed.scenarios>2</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+        <!-- Dependencies -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -40,7 +39,6 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-        <!-- Serenity Dependencies -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-spring</artifactId>
@@ -102,6 +100,7 @@
 
     <build>
         <plugins>
+            <!-- Copy custom-style.css to the target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -109,7 +108,7 @@
                 <executions>
                     <execution>
                         <id>copy-custom-css</id>
-                        <phase>post-integration-test</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -127,6 +126,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Append custom-style.css to core.css -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -146,33 +147,10 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>replace-text-in-serenity-reports</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!-- Log files to be processed -->
-                                <echo message="Listing HTML files in ${project.build.directory}/site/serenity"/>
-                                <fileset dir="${project.build.directory}/site/serenity">
-                                    <include name="**/*.html"/>
-                                </fileset>
-                                <!-- Replace text -->
-                                <replaceregexp flags="g" byline="true">
-                                    <regexp pattern="Test Outcomes for Platforms"/>
-                                    <substitution expression="Test Outcomes per Platform"/>
-                                    <fileset dir="${project.build.directory}/site/reports">
-                                        <include name="**/*.html"/>
-                                    </fileset>
-                                </replaceregexp>
-                            </target>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
 
+            <!-- Serenity Maven Plugin -->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
@@ -184,6 +162,7 @@
                 </executions>
             </plugin>
 
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -193,6 +172,8 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -200,7 +181,9 @@
                 <configuration>
                     <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
                     <skip>false</skip>
-                    <excludes><exclude>**/README.md</exclude></excludes>
+                    <excludes>
+                        <exclude>**/README.md</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>

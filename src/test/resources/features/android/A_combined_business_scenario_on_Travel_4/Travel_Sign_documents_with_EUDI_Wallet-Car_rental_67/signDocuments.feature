@@ -57,7 +57,3 @@ Feature: Sign car rental contract using EUDI Wallet
     When the user repeats the steps three to six
     Then the document has been signed
     And the user can download the signed document
-
-
-
-
