@@ -84,6 +84,7 @@
 #          path: target/site
 
 
+
 name: automation_with_emulator - 2
 
 on:
@@ -173,3 +174,4 @@ jobs:
         with:
           name: report
           path: target/site
+
