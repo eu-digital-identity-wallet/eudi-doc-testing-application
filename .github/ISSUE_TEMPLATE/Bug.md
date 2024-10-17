@@ -2,7 +2,7 @@
 name: "Bug"
 about: "Template for Bug"
 title: "[Bug] "
-labels: Bug
+labels: bug
 ---
 
 # Bug
