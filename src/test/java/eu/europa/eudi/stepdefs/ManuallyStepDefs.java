@@ -3062,4 +3062,144 @@ public class ManuallyStepDefs {
     public void theUserEntersAnIncorrectSixDigitPIN() {
         //manual
     }
+
+    @Given("the user has opened the EUDI Wallet application")
+    public void theUserHasOpenedTheEUDIWalletApplication() {
+        //manual
+    }
+
+    @When("the user navigates to the “Home” screen")
+    public void theUserNavigatesToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed")
+    public void theScreenShouldBeDisplayed(String arg0) {
+        //manual
+    }
+
+    @Then("the Home screen should be displayed")
+    public void theHomeScreenShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the “Home” screen")
+    public void theUserIsOnTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the option {string} in the {string} section")
+    public void theUserSelectsTheOptionInTheSection(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the wallet should display a predefined list of attestations that the user can issue and add to their EUDI Wallet")
+    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is viewing the predefined list of attestations")
+    public void theUserIsViewingThePredefinedListOfAttestations() {
+        //manual
+    }
+
+    @When("the user selects one attestation to be issued")
+    public void theUserSelectsOneAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the attestation is successfully issued")
+    public void theAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen")
+    public void theWalletShouldDisplayASuccessScreen() {
+        //manual
+    }
+
+    @And("the screen should inform the user about the attestation issued and the issuer who issued it")
+    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @And("the screen should display a {string} button to return to the “Home” screen")
+    public void theScreenShouldDisplayAButtonToReturnToTheHomeScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the PID attestation to be issued")
+    public void theUserSelectsThePIDAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the PID attestation is successfully issued")
+    public void thePIDAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen informing the user about the PID attestation issued and the issuer who issued it")
+    public void theWalletShouldDisplayASuccessScreenInformingTheUserAboutThePIDAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @When("the user selects an attestation to be issued")
+    public void theUserSelectsAnAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("an error occurs during the issuance process")
+    public void anErrorOccursDuringTheIssuanceProcess() {
+        //manual
+    }
+
+    @Then("the wallet should display an error screen informing the user about the unsuccessful operation")
+    public void theWalletShouldDisplayAnErrorScreenInformingTheUserAboutTheUnsuccessfulOperation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after an attestation is issued")
+    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the {string} button")
+    public void theUserClicksOnTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the user should be navigated back to the “Home” screen")
+    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user clicks on the Close button")
+    public void theUserClicksOnTheCloseButton() {
+        //manual
+    }
+
+    @Given("the user is viewing the additional success screen after the PID attestation is issued")
+    public void theUserIsViewingTheAdditionalSuccessScreenAfterThePIDAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the Go to my EUDI Wallet button")
+    public void theUserClicksOnTheGoToMyEUDIWalletButton() {
+        //manual
+    }
+
+    @When("the user selects the option Choose from list in the Add document section")
+    public void theUserSelectsTheOptionChooseFromListInTheAddDocumentSection() {
+        //manual
+    }
+
+    @And("the screen should display a Close button to return to the “Home” screen")
+    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @And("the screen should display a Go to my EUDI Wallet button to return to the “Home” screen")
+    public void theScreenShouldDisplayAGoToMyEUDIWalletButtonToReturnToTheHomeScreen() {
+        //manual
+    }
 }
