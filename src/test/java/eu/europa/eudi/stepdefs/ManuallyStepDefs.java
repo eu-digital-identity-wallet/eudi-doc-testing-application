@@ -3052,4 +3052,14 @@ public class ManuallyStepDefs {
     public void userShouldBeAbleToReviewTheRequestAndTheScreenShouldDisplayTheNameOfTheQTSP() {
         //manual
     }
+
+    @And("user authenticates using the six-digit PIN")
+    public void userAuthenticatesUsingTheSixDigitPIN() {
+        //manual
+    }
+
+    @When("the user enters an incorrect six-digit PIN")
+    public void theUserEntersAnIncorrectSixDigitPIN() {
+        //manual
+    }
 }

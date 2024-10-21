@@ -27,18 +27,18 @@ Feature: View Signatures History Menu
     And the user has not previously performed any signatures in the EUDI Wallet
     When the user views the Signatures History screen
     Then an empty list is displayed
-    And an informative message appears: No signatures have been performed through the EUDI Wallet.
+    And the informative message appears: No signatures have been performed through the EUDI Wallet
 
   @US_VSHM_TC_04
   Scenario: Sort Signatures by Date
     Given the user is on the Signatures History screen
     And there are multiple signature records available
     When the user sorts the list by date
-    Then the signatures are reordered in ascending or descending order based on the selected date.
+    Then signatures are reordered in ascending or descending order based on the selected date
 
   @US_VSHM_TC_05
   Scenario: Filter Signatures by Date
     Given the user is on the Signatures History screen
     And there are multiple signature records available
     When the user filters the list by a specific date range
-    Then only the signatures performed within the selected date range are displayed.
+    Then only signatures performed within the selected date range are displayed
