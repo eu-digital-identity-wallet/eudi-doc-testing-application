@@ -3202,4 +3202,94 @@ public class ManuallyStepDefs {
     public void theScreenShouldDisplayAGoToMyEUDIWalletButtonToReturnToTheHomeScreen() {
         //manual
     }
+
+    @Then("the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer")
+    public void theWalletShouldOpenTheScannerAllowingTheUserToScanTheQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @When("the user selects the option Scan QR to add in the Add document section")
+    public void theUserSelectsTheOptionScanQRToAddInTheAddDocumentSection() {
+        //manual
+    }
+
+    @Given("the user has scanned a valid QR code rendered by the Issuer")
+    public void theUserHasScannedAValidQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the wallet should display the credential offer which includes:")
+    public void theWalletShouldDisplayTheCredentialOfferWhichIncludes() {
+        //manual
+    }
+
+    @Given("the user is viewing the credential offer")
+    public void theUserIsViewingTheCredentialOffer() {
+        //manual
+    }
+
+    @When("the user selects the {string} button")
+    public void theUserSelectsTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the issuing process should be canceled")
+    public void theIssuingProcessShouldBeCanceled() {
+        //manual
+    }
+
+    @When("the user selects the Cancel button")
+    public void theUserSelectsTheCancelButton() {
+        //manual
+    }
+
+    @And("the user should be returned to the “Home” screen")
+    public void theUserShouldBeReturnedToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the Add document button")
+    public void theUserSelectsTheAddDocumentButton() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen providing details about the attestation issued and added to the wallet")
+    public void theWalletShouldDisplayASuccessScreenProvidingDetailsAboutTheAttestationIssuedAndAddedToTheWallet() {
+        //manual
+    }
+
+    @And("the screen should display the issuer who issued the attestation")
+    public void theScreenShouldDisplayTheIssuerWhoIssuedTheAttestation() {
+        //manual
+    }
+
+    @And("the user should be able to expand the attestation to view the attributes of the attestation")
+    public void theUserShouldBeAbleToExpandTheAttestationToViewTheAttributesOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after issuing the PID attestation")
+    public void theUserIsViewingTheSuccessScreenAfterIssuingThePIDAttestation() {
+        //manual
+    }
+
+    @When("the user is informed about the PID attestation issued")
+    public void theUserIsInformedAboutThePIDAttestationIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display an additional success screen")
+    public void theWalletShouldDisplayAnAdditionalSuccessScreen() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code")
+    public void theUserHasScannedAQRCode() {
+        //manual
+    }
+
+    @When("the issuance process encounters an error")
+    public void theIssuanceProcessEncountersAnError() {
+        //manual
+    }
 }
