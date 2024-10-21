@@ -2816,4 +2816,240 @@ public class ManuallyStepDefs {
     public void theEUDIWalletShouldDisplayAMessageIndicatingTheFailureToPresentTheAttestation() {
         //manual
     }
+
+    @Then("Relying Party should render a QR-code requesting the user to scan it to proceed to attestation presentation \\(PID)")
+    public void relyingPartyShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentationPID() {
+        //manual
+    }
+
+    @And("name of the Relying Party should be displayed")
+    public void nameOfTheRelyingPartyShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("user should be given the option to retry the authentication")
+    public void userShouldBeGivenTheOptionToRetryTheAuthentication() {
+        //manual
+
+    }
+
+    @And("the user authenticates by entering the six-digit PIN")
+    public void theUserAuthenticatesByEnteringTheSixDigitPIN() {
+        //manual
+    }
+
+    @Then("QTSP should render a QR-code requesting the user to scan it to proceed to attestation presentation")
+    public void qtspShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @And("name of the QTSP should be displayed")
+    public void nameOfTheQTSPShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to return to the main page of the Wallet")
+    public void theUserShouldBeAbleToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should release the attestation to the QTSP")
+    public void eudiWalletShouldReleaseTheAttestationToTheQTSP() {
+        //manual
+    }
+
+    @And("user should have the option to abort the operation and return to the main page of the Wallet")
+    public void userShouldHaveTheOptionToAbortTheOperationAndReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the successful presentation")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingTheSuccessfulPresentation() {
+        //manual
+    }
+
+    @Then("page should display an option to retrieve the document into the EUDI Wallet")
+    public void pageShouldDisplayAnOptionToRetrieveTheDocumentIntoTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should prompt the user to select a QTSP from a preloaded list of available QTSPs")
+    public void eudiWalletShouldPromptTheUserToSelectAQTSPFromAPreloadedListOfAvailableQTSPs() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should present the available Credential IDs to the user")
+    public void eudiWalletShouldPresentTheAvailableCredentialIDsToTheUser() {
+        //manual
+    }
+
+    @And("signing flow stops")
+    public void signingFlowStops() {
+        //manual
+    }
+
+    @And("EUDI Wallet proceeds to the next step in the signing flow")
+    public void eudiWalletProceedsToTheNextStepInTheSigningFlow() {
+        //manual
+    }
+
+    @And("user confirms to proceed with the signing operation")
+    public void userConfirmsToProceedWithTheSigningOperation() {
+        //manual
+    }
+
+    @And("EUDI Wallet should return the user to the main page")
+    public void eudiWalletShouldReturnTheUserToTheMainPage() {
+        //manual
+    }
+
+    @Then("QTSP should provide a deep link to proceed to attestation presentation")
+    public void qtspShouldProvideADeepLinkToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @Then("deep link should redirect the user back to the EUDI Wallet")
+    public void deepLinkShouldRedirectTheUserBackToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should be able to return to the main page")
+    public void theUserShouldBeAbleToReturnToTheMainPage() {
+        //manual
+    }
+
+    @And("user should be given the option to retry authentication")
+    public void userShouldBeGivenTheOptionToRetryAuthentication() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the outcome")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingTheOutcome() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a message indicating the failed presentation")
+    public void eudiWalletShouldDisplayAMessageIndicatingTheFailedPresentation() {
+        //manual
+    }
+
+    @And("signed document should be returned to the EUDI Wallet")
+    public void signedDocumentShouldBeReturnedToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should present the signed document to the user")
+    public void eudiWalletShouldPresentTheSignedDocumentToTheUser() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should send the signed document to the Relying Party service")
+    public void eudiWalletShouldSendTheSignedDocumentToTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the informative message appears: No signatures have been performed through the EUDI Wallet")
+    public void theInformativeMessageAppearsNoSignaturesHaveBeenPerformedThroughTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("signatures are reordered in ascending or descending order based on the selected date")
+    public void signaturesAreReorderedInAscendingOrDescendingOrderBasedOnTheSelectedDate() {
+        //manual
+    }
+
+    @Then("only signatures performed within the selected date range are displayed")
+    public void onlySignaturesPerformedWithinTheSelectedDateRangeAreDisplayed() {
+        //manual
+    }
+
+    @And("user should be informed of the verification outcome")
+    public void userShouldBeInformedOfTheVerificationOutcome() {
+        //manual
+    }
+
+    @And("user should have the option to return to the main page of the Wallet.")
+    public void userShouldHaveTheOptionToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @And("the user should have the option to return to the main page of the Wallet")
+    public void theUserShouldHaveTheOptionToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should release the attestation to the Relying Party")
+    public void eudiWalletShouldReleaseTheAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @And("user can return to the main page of the Wallet")
+    public void userCanReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("user should receive an error message stating that an internet connection is required for document retrieval")
+    public void userShouldReceiveAnErrorMessageStatingThatAnInternetConnectionIsRequiredForDocumentRetrieval() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should present the document details to the user for review prior to signing")
+    public void eudiWalletShouldPresentTheDocumentDetailsToTheUserForReviewPriorToSigning() {
+        //manual
+    }
+
+    @And("user should receive a confirmation that the document is being retrieved")
+    public void userShouldReceiveAConfirmationThatTheDocumentIsBeingRetrieved() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should start the process of retrieving the document from the Relying Party service")
+    public void eudiWalletShouldStartTheProcessOfRetrievingTheDocumentFromTheRelyingPartyService() {
+        //manual
+    }
+
+    @Then("user should be able to see the QR-code clearly displayed on the Relying Party's device \\(e.g. desktop or other device)")
+    public void userShouldBeAbleToSeeTheQRCodeClearlyDisplayedOnTheRelyingPartySDeviceEGDesktopOrOtherDevice() {
+        //manual
+    }
+
+    @Then("Relying Party should render a QR-code on the screen requesting the user to scan it with their mobile device")
+    public void relyingPartyShouldRenderAQRCodeOnTheScreenRequestingTheUserToScanItWithTheirMobileDevice() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should navigate the user to the selected QTSP login page using a mobile web browser on the same device")
+    public void eudiWalletShouldNavigateTheUserToTheSelectedQTSPLoginPageUsingAMobileWebBrowserOnTheSameDevice() {
+        //manual
+    }
+
+    @Then("screen should display the name of the QTSP and request the user's consent to release the attestation")
+    public void screenShouldDisplayTheNameOfTheQTSPAndRequestTheUserSConsentToReleaseTheAttestation() {
+        //manual
+    }
+
+    @And("user should be able to select Abort operation to return to the main page of the EUDI Wallet")
+    public void userShouldBeAbleToSelectAbortOperationToReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should return the user to the main page of the Wallet")
+    public void eudiWalletShouldReturnTheUserToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("QTSP should receive and verify the attestation")
+    public void qtspShouldReceiveAndVerifyTheAttestation() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the presentation outcome")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcome() {
+        //manual
+    }
+
+    @Then("user should be able to review the request, and the screen should display the name of the QTSP")
+    public void userShouldBeAbleToReviewTheRequestAndTheScreenShouldDisplayTheNameOfTheQTSP() {
+        //manual
+    }
 }
