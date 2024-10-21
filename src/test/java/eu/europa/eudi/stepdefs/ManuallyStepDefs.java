@@ -3292,4 +3292,209 @@ public class ManuallyStepDefs {
     public void theIssuanceProcessEncountersAnError() {
         //manual
     }
+
+    @And("attestations are issued in the EUDI Wallet")
+    public void attestationsAreIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen of the EUDI Wallet")
+    public void theUserIsOnTheScreenOfTheEUDIWallet(String arg0) {
+        //manual
+    }
+
+    @Given("the user is on the Home screen of the EUDI Wallet")
+    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user navigates to the {string} screen")
+    public void theUserNavigatesToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed showing a list of issued attestations")
+    public void theScreenShouldBeDisplayedShowingAListOfIssuedAttestations(String arg0) {
+        //manual
+    }
+
+    @When("the user navigates to the Documents screen")
+    public void theUserNavigatesToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the Documents screen should be displayed showing a list of issued attestations")
+    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen")
+    public void theUserIsOnTheScreen(String arg0) {
+        //manual
+    }
+
+    @Given("the user is on the Documents screen")
+    public void theUserIsOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects an attestation from the list")
+    public void theUserSelectsAnAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the details of the selected attestation should be displayed")
+    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the details should be blurred by default")
+    public void theDetailsShouldBeBlurredByDefault() {
+        //manual
+    }
+
+    @And("the user should see the {string} icon to view the details of the attestation")
+    public void theUserShouldSeeTheIconToViewTheDetailsOfTheAttestation(String arg0) {
+        //manual
+    }
+
+    @And("the user should see the eye icon to view the details of the attestation")
+    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of an attestation")
+    public void theUserIsViewingTheDetailsOfAnAttestation() {
+        //manual
+    }
+
+    @When("the user selects eye icon")
+    public void theUserSelectsEyeIcon() {
+        //manual
+    }
+
+    @Then("the attestation details should no longer be blurred")
+    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+        //manual
+    }
+
+    @And("the user should be able to view the full details of the attestation")
+    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @And("no more than {int} attestations are currently bookmarked")
+    public void noMoreThanAttestationsAreCurrentlyBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the bookmark icon")
+    public void theUserSelectsTheBookmarkIcon() {
+        //manual
+    }
+
+    @And("no more than three attestations are currently bookmarked")
+    public void noMoreThanThreeAttestationsAreCurrentlyBookmarked() {
+        //manual
+    }
+
+    @Then("the attestation should be marked as bookmarked")
+    public void theAttestationShouldBeMarkedAsBookmarked() {
+        //manual
+    }
+
+    @And("the bookmark icon should change to indicate that the attestation is bookmarked")
+    public void theBookmarkIconShouldChangeToIndicateThatTheAttestationIsBookmarked() {
+        //manual
+    }
+
+    @Given("the user has {int} bookmarked attestations")
+    public void theUserHasBookmarkedAttestations(int arg0) {
+        //manual
+    }
+
+    @Given("the user has three bookmarked attestations")
+    public void theUserHasThreeBookmarkedAttestations() {
+        //manual
+    }
+
+    @When("the user tries to bookmark another attestation")
+    public void theUserTriesToBookmarkAnotherAttestation() {
+        //manual
+    }
+
+    @Then("the bookmark icon should be disabled")
+    public void theBookmarkIconShouldBeDisabled() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to {int} attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToAttestationsCanBeBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the option to view issuer details")
+    public void theUserSelectsTheOptionToViewIssuerDetails() {
+        //manual
+    }
+
+    @Then("the details of the issuer should be displayed")
+    public void theDetailsOfTheIssuerShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to review information about the issuer")
+    public void theUserShouldBeAbleToReviewInformationAboutTheIssuer() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to three attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToThreeAttestationsCanBeBookmarked() {
+        //manual
+    }
+
+    @When("the user selects the option to view the latest transactions")
+    public void theUserSelectsTheOptionToViewTheLatestTransactions() {
+        //manual
+    }
+
+    @Then("the latest transactions involving the attestation should be displayed")
+    public void theLatestTransactionsInvolvingTheAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user selects the Delete button")
+    public void theUserSelectsTheDeleteButton() {
+        //manual
+    }
+
+    @Then("the attestation should be removed from the EUDI Wallet")
+    public void theAttestationShouldBeRemovedFromTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should be navigated back to the {string} screen")
+    public void theUserShouldBeNavigatedBackToTheScreen(String arg0) {
+        //manual
+    }
+
+    @And("the user should be navigated back to the Documents screen")
+    public void theUserShouldBeNavigatedBackToTheDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects the Close button")
+    public void theUserSelectsTheCloseButton() {
+        //manual
+    }
+
+    @Then("the user should be returned to the {string} screen")
+    public void theUserShouldBeReturnedToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the user should be returned to the Documents screen")
+    public void theUserShouldBeReturnedToTheDocumentsScreen() {
+        //manual
+    }
 }
