@@ -3497,4 +3497,169 @@ public class ManuallyStepDefs {
     public void theUserShouldBeReturnedToTheDocumentsScreen() {
         //manual
     }
+
+    @Given("the user is viewing the Documents screen")
+    public void theUserIsViewingTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the screen should list all non-expired documents")
+    public void theScreenShouldListAllNonExpiredDocuments() {
+        //manual
+    }
+
+    @And("the documents should be grouped by category")
+    public void theDocumentsShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("the search field should be empty and enabled")
+    public void theSearchFieldShouldBeEmptyAndEnabled() {
+        //manual
+    }
+
+    @And("the search field should display a search icon on the left side")
+    public void theSearchFieldShouldDisplayASearchIconOnTheLeftSide() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text {string}")
+    public void theSearchFieldShouldDisplayTheHintedSearchText(String arg0) {
+        //manual
+    }
+
+    @And("categories with no documents should not be displayed")
+    public void categoriesWithNoDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextSearchDocuments() {
+        //manual
+    }
+
+    @Given("the user is viewing the {string} screen")
+    public void theUserIsViewingTheScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user taps on the search field")
+    public void theUserTapsOnTheSearchField() {
+        //manual
+    }
+
+    @Then("the hinted search text should be removed")
+    public void theHintedSearchTextShouldBeRemoved() {
+        //manual
+    }
+
+    @And("the {string} trailing icon button \\(e.g., {string}) should be displayed inside the search field on the right side")
+    public void theTrailingIconButtonEGShouldBeDisplayedInsideTheSearchFieldOnTheRightSide(String arg0, String arg1) {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field on the right side")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchFieldOnTheRightSide() {
+        //manual
+    }
+
+    @Given("the user has previously typed search text in the search field")
+    public void theUserHasPreviouslyTypedSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the previously typed search text should be editable")
+    public void thePreviouslyTypedSearchTextShouldBeEditable() {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchField() {
+        //manual
+    }
+
+    @When("the user types text in the search field")
+    public void theUserTypesTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the search field should allow any text, including spaces")
+    public void theSearchFieldShouldAllowAnyTextIncludingSpaces() {
+        //manual
+    }
+
+    @And("the user should be able to edit the search text")
+    public void theUserShouldBeAbleToEditTheSearchText() {
+        //manual
+    }
+
+    @Given("the user has entered text in the search field")
+    public void theUserHasEnteredTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the user taps on the Clear trailing icon button \\(e.g., X)")
+    public void theUserTapsOnTheClearTrailingIconButtonEGX() {
+        //manual
+    }
+
+    @Then("the search field should be cleared of any text")
+    public void theSearchFieldShouldBeClearedOfAnyText() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should reset any previously applied search")
+    public void theEUDIWalletShouldResetAnyPreviouslyAppliedSearch() {
+        //manual
+    }
+
+    @And("the filtering and sorting should respect the current settings")
+    public void theFilteringAndSortingShouldRespectTheCurrentSettings() {
+        //manual
+    }
+
+    @Given("the user has entered an empty search text")
+    public void theUserHasEnteredAnEmptySearchText() {
+        //manual
+    }
+
+    @When("the user taps on the Search button on the device keyboard")
+    public void theUserTapsOnTheSearchButtonOnTheDeviceKeyboard() {
+        //manual
+    }
+
+    @Given("the user has entered valid search text in the search field")
+    public void theUserHasEnteredValidSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should apply the search text on the attributes of the issuer and attestation name")
+    public void theEUDIWalletShouldApplyTheSearchTextOnTheAttributesOfTheIssuerAndAttestationName() {
+        //manual
+    }
+
+    @And("the screen should display matching documents grouped by category")
+    public void theScreenShouldDisplayMatchingDocumentsGroupedByCategory() {
+        //manual
+    }
+
+    @Given("the user has entered search text in the search field")
+    public void theUserHasEnteredSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the search text does not match any documents")
+    public void theSearchTextDoesNotMatchAnyDocuments() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display an informative message in the list section")
+    public void theEUDIWalletShouldDisplayAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @And("categories with no matching documents should not be displayed")
+    public void categoriesWithNoMatchingDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
 }
