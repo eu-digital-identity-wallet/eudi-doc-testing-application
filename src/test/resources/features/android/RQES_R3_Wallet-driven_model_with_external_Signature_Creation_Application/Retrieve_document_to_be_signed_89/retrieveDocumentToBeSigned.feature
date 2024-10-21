@@ -12,7 +12,7 @@ Feature: Retrieve a document from the Relying Party to EUDI Wallet
     And the user is authenticated in the EUDI Wallet
     And the user is registered to a valid EUDI Wallet on their mobile device
     When the user navigates to the Relying Party page where the document to be signed is available
-    Then the page should display an option to retrieve the document into the EUDI Wallet.
+    Then page should display an option to retrieve the document into the EUDI Wallet
 
   @US_RDTBS_TC_02
   Scenario: Select Option to Retrieve Document to EUDI Wallet
@@ -31,24 +31,24 @@ Feature: Retrieve a document from the Relying Party to EUDI Wallet
     Given the user has the QR-code displayed on the Relying Party's device
     And the user has the EUDI Wallet open on their mobile device
     When the user scans the QR-code using the mobile device
-    Then the EUDI Wallet should start the process of retrieving the document from the Relying Party service.
+    Then EUDI Wallet should start the process of retrieving the document from the Relying Party service
 
   @US_RDTBS_TC_05
   Scenario: EUDI Wallet Fetches Document from Relying Party
     Given the user has scanned the QR-code from the Relying Party page
     When the EUDI Wallet successfully communicates with the Relying Party service
     Then the document should be fetched and transferred from the Relying Party to the EUDI Wallet
-    And the user should receive a confirmation that the document is being retrieved.
+    And user should receive a confirmation that the document is being retrieved
 
   @US_RDTBS_TC_06
   Scenario: EUDI Wallet Presents the Document to the User
     Given the document has been successfully retrieved from the Relying Party
     When the document is available in the EUDI Wallet
-    Then the EUDI Wallet should present the document details to the user for review prior to signing.
+    Then EUDI Wallet should present the document details to the user for review prior to signing
 
   @US_RDTBS_TC_07
   Scenario: Handle Internet Connectivity Issues
     Given the user attempts to scan the QR-code
     And there is no internet connection available
     When the EUDI Wallet tries to retrieve the document from the Relying Party
-    Then the user should receive an error message stating that an internet connection is required for document retrieval.
+    Then user should receive an error message stating that an internet connection is required for document retrieval
