@@ -5,10 +5,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,6 +19,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
+
 public class MobileWebDriverFactory {
     TestSetup test;
     boolean noReset;
@@ -47,10 +50,23 @@ public class MobileWebDriverFactory {
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
         caps2.setCapability("allowInsecure", "adb_shell");
+        caps2.setCapability("enableLogcatLogging", true);
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
+            Process logcatProcess = Runtime.getRuntime().exec("adb logcat");
+            new Thread(() -> {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
+                     PrintWriter logWriter = new PrintWriter(new FileWriter("android_logs.txt"))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        logWriter.println(line);  // Write logcat output to file
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
@@ -77,6 +93,18 @@ public class MobileWebDriverFactory {
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver,     Duration.ofSeconds(80));
+            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
+            new Thread(() -> {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
+                     PrintWriter logWriter = new PrintWriter(new FileWriter("ios_logs.txt"))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        logWriter.println(line);  // Write syslog output to file
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
