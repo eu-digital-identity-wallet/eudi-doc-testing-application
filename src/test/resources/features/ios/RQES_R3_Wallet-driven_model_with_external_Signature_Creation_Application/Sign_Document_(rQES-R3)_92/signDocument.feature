@@ -69,13 +69,13 @@ Feature: Sign Document through EUDI Wallet
   Scenario: User Consents to Release Attestation
     Given the EUDI Wallet has found a matching attestation for the QTSP’s request
     When the EUDI Wallet requests the user’s consent to release the attestation
-    And the user authenticates using the 6-digit PIN
+    And  user authenticates using the six-digit PIN
     Then EUDI Wallet should release the attestation to the QTSP
 
   @US_SD_TC_11
   Scenario: Unsuccessful Authentication in EUDI Wallet
     Given the EUDI Wallet requests authentication from the user
-    When the user enters an incorrect 6-digit PIN
+    When the user enters an incorrect six-digit PIN
     Then the EUDI Wallet should display an error message
     And user should be given the option to retry authentication
 
