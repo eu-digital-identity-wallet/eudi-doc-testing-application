@@ -3062,4 +3062,844 @@ public class ManuallyStepDefs {
     public void theUserEntersAnIncorrectSixDigitPIN() {
         //manual
     }
+
+    @Given("the user has opened the EUDI Wallet application")
+    public void theUserHasOpenedTheEUDIWalletApplication() {
+        //manual
+    }
+
+    @When("the user navigates to the “Home” screen")
+    public void theUserNavigatesToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed")
+    public void theScreenShouldBeDisplayed(String arg0) {
+        //manual
+    }
+
+    @Then("the Home screen should be displayed")
+    public void theHomeScreenShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the “Home” screen")
+    public void theUserIsOnTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the option {string} in the {string} section")
+    public void theUserSelectsTheOptionInTheSection(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the wallet should display a predefined list of attestations that the user can issue and add to their EUDI Wallet")
+    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is viewing the predefined list of attestations")
+    public void theUserIsViewingThePredefinedListOfAttestations() {
+        //manual
+    }
+
+    @When("the user selects one attestation to be issued")
+    public void theUserSelectsOneAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the attestation is successfully issued")
+    public void theAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen")
+    public void theWalletShouldDisplayASuccessScreen() {
+        //manual
+    }
+
+    @And("the screen should inform the user about the attestation issued and the issuer who issued it")
+    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @And("the screen should display a {string} button to return to the “Home” screen")
+    public void theScreenShouldDisplayAButtonToReturnToTheHomeScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the PID attestation to be issued")
+    public void theUserSelectsThePIDAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the PID attestation is successfully issued")
+    public void thePIDAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen informing the user about the PID attestation issued and the issuer who issued it")
+    public void theWalletShouldDisplayASuccessScreenInformingTheUserAboutThePIDAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @When("the user selects an attestation to be issued")
+    public void theUserSelectsAnAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("an error occurs during the issuance process")
+    public void anErrorOccursDuringTheIssuanceProcess() {
+        //manual
+    }
+
+    @Then("the wallet should display an error screen informing the user about the unsuccessful operation")
+    public void theWalletShouldDisplayAnErrorScreenInformingTheUserAboutTheUnsuccessfulOperation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after an attestation is issued")
+    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the {string} button")
+    public void theUserClicksOnTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the user should be navigated back to the “Home” screen")
+    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user clicks on the Close button")
+    public void theUserClicksOnTheCloseButton() {
+        //manual
+    }
+
+    @Given("the user is viewing the additional success screen after the PID attestation is issued")
+    public void theUserIsViewingTheAdditionalSuccessScreenAfterThePIDAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the Go to my EUDI Wallet button")
+    public void theUserClicksOnTheGoToMyEUDIWalletButton() {
+        //manual
+    }
+
+    @When("the user selects the option Choose from list in the Add document section")
+    public void theUserSelectsTheOptionChooseFromListInTheAddDocumentSection() {
+        //manual
+    }
+
+    @And("the screen should display a Close button to return to the “Home” screen")
+    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @And("the screen should display a Go to my EUDI Wallet button to return to the “Home” screen")
+    public void theScreenShouldDisplayAGoToMyEUDIWalletButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer")
+    public void theWalletShouldOpenTheScannerAllowingTheUserToScanTheQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @When("the user selects the option Scan QR to add in the Add document section")
+    public void theUserSelectsTheOptionScanQRToAddInTheAddDocumentSection() {
+        //manual
+    }
+
+    @Given("the user has scanned a valid QR code rendered by the Issuer")
+    public void theUserHasScannedAValidQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the wallet should display the credential offer which includes:")
+    public void theWalletShouldDisplayTheCredentialOfferWhichIncludes() {
+        //manual
+    }
+
+    @Given("the user is viewing the credential offer")
+    public void theUserIsViewingTheCredentialOffer() {
+        //manual
+    }
+
+    @When("the user selects the {string} button")
+    public void theUserSelectsTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the issuing process should be canceled")
+    public void theIssuingProcessShouldBeCanceled() {
+        //manual
+    }
+
+    @When("the user selects the Cancel button")
+    public void theUserSelectsTheCancelButton() {
+        //manual
+    }
+
+    @And("the user should be returned to the “Home” screen")
+    public void theUserShouldBeReturnedToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the Add document button")
+    public void theUserSelectsTheAddDocumentButton() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen providing details about the attestation issued and added to the wallet")
+    public void theWalletShouldDisplayASuccessScreenProvidingDetailsAboutTheAttestationIssuedAndAddedToTheWallet() {
+        //manual
+    }
+
+    @And("the screen should display the issuer who issued the attestation")
+    public void theScreenShouldDisplayTheIssuerWhoIssuedTheAttestation() {
+        //manual
+    }
+
+    @And("the user should be able to expand the attestation to view the attributes of the attestation")
+    public void theUserShouldBeAbleToExpandTheAttestationToViewTheAttributesOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after issuing the PID attestation")
+    public void theUserIsViewingTheSuccessScreenAfterIssuingThePIDAttestation() {
+        //manual
+    }
+
+    @When("the user is informed about the PID attestation issued")
+    public void theUserIsInformedAboutThePIDAttestationIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display an additional success screen")
+    public void theWalletShouldDisplayAnAdditionalSuccessScreen() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code")
+    public void theUserHasScannedAQRCode() {
+        //manual
+    }
+
+    @When("the issuance process encounters an error")
+    public void theIssuanceProcessEncountersAnError() {
+        //manual
+    }
+
+    @And("attestations are issued in the EUDI Wallet")
+    public void attestationsAreIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen of the EUDI Wallet")
+    public void theUserIsOnTheScreenOfTheEUDIWallet(String arg0) {
+        //manual
+    }
+
+    @Given("the user is on the Home screen of the EUDI Wallet")
+    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user navigates to the {string} screen")
+    public void theUserNavigatesToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed showing a list of issued attestations")
+    public void theScreenShouldBeDisplayedShowingAListOfIssuedAttestations(String arg0) {
+        //manual
+    }
+
+    @When("the user navigates to the Documents screen")
+    public void theUserNavigatesToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the Documents screen should be displayed showing a list of issued attestations")
+    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen")
+    public void theUserIsOnTheScreen(String arg0) {
+        //manual
+    }
+
+    @Given("the user is on the Documents screen")
+    public void theUserIsOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects an attestation from the list")
+    public void theUserSelectsAnAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the details of the selected attestation should be displayed")
+    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the details should be blurred by default")
+    public void theDetailsShouldBeBlurredByDefault() {
+        //manual
+    }
+
+    @And("the user should see the {string} icon to view the details of the attestation")
+    public void theUserShouldSeeTheIconToViewTheDetailsOfTheAttestation(String arg0) {
+        //manual
+    }
+
+    @And("the user should see the eye icon to view the details of the attestation")
+    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of an attestation")
+    public void theUserIsViewingTheDetailsOfAnAttestation() {
+        //manual
+    }
+
+    @When("the user selects eye icon")
+    public void theUserSelectsEyeIcon() {
+        //manual
+    }
+
+    @Then("the attestation details should no longer be blurred")
+    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+        //manual
+    }
+
+    @And("the user should be able to view the full details of the attestation")
+    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @And("no more than {int} attestations are currently bookmarked")
+    public void noMoreThanAttestationsAreCurrentlyBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the bookmark icon")
+    public void theUserSelectsTheBookmarkIcon() {
+        //manual
+    }
+
+    @And("no more than three attestations are currently bookmarked")
+    public void noMoreThanThreeAttestationsAreCurrentlyBookmarked() {
+        //manual
+    }
+
+    @Then("the attestation should be marked as bookmarked")
+    public void theAttestationShouldBeMarkedAsBookmarked() {
+        //manual
+    }
+
+    @And("the bookmark icon should change to indicate that the attestation is bookmarked")
+    public void theBookmarkIconShouldChangeToIndicateThatTheAttestationIsBookmarked() {
+        //manual
+    }
+
+    @Given("the user has {int} bookmarked attestations")
+    public void theUserHasBookmarkedAttestations(int arg0) {
+        //manual
+    }
+
+    @Given("the user has three bookmarked attestations")
+    public void theUserHasThreeBookmarkedAttestations() {
+        //manual
+    }
+
+    @When("the user tries to bookmark another attestation")
+    public void theUserTriesToBookmarkAnotherAttestation() {
+        //manual
+    }
+
+    @Then("the bookmark icon should be disabled")
+    public void theBookmarkIconShouldBeDisabled() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to {int} attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToAttestationsCanBeBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the option to view issuer details")
+    public void theUserSelectsTheOptionToViewIssuerDetails() {
+        //manual
+    }
+
+    @Then("the details of the issuer should be displayed")
+    public void theDetailsOfTheIssuerShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to review information about the issuer")
+    public void theUserShouldBeAbleToReviewInformationAboutTheIssuer() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to three attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToThreeAttestationsCanBeBookmarked() {
+        //manual
+    }
+
+    @When("the user selects the option to view the latest transactions")
+    public void theUserSelectsTheOptionToViewTheLatestTransactions() {
+        //manual
+    }
+
+    @Then("the latest transactions involving the attestation should be displayed")
+    public void theLatestTransactionsInvolvingTheAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user selects the Delete button")
+    public void theUserSelectsTheDeleteButton() {
+        //manual
+    }
+
+    @Then("the attestation should be removed from the EUDI Wallet")
+    public void theAttestationShouldBeRemovedFromTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should be navigated back to the {string} screen")
+    public void theUserShouldBeNavigatedBackToTheScreen(String arg0) {
+        //manual
+    }
+
+    @And("the user should be navigated back to the Documents screen")
+    public void theUserShouldBeNavigatedBackToTheDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects the Close button")
+    public void theUserSelectsTheCloseButton() {
+        //manual
+    }
+
+    @Then("the user should be returned to the {string} screen")
+    public void theUserShouldBeReturnedToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the user should be returned to the Documents screen")
+    public void theUserShouldBeReturnedToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Given("the user is viewing the Documents screen")
+    public void theUserIsViewingTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the screen should list all non-expired documents")
+    public void theScreenShouldListAllNonExpiredDocuments() {
+        //manual
+    }
+
+    @And("the documents should be grouped by category")
+    public void theDocumentsShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("the search field should be empty and enabled")
+    public void theSearchFieldShouldBeEmptyAndEnabled() {
+        //manual
+    }
+
+    @And("the search field should display a search icon on the left side")
+    public void theSearchFieldShouldDisplayASearchIconOnTheLeftSide() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text {string}")
+    public void theSearchFieldShouldDisplayTheHintedSearchText(String arg0) {
+        //manual
+    }
+
+    @And("categories with no documents should not be displayed")
+    public void categoriesWithNoDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextSearchDocuments() {
+        //manual
+    }
+
+    @Given("the user is viewing the {string} screen")
+    public void theUserIsViewingTheScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user taps on the search field")
+    public void theUserTapsOnTheSearchField() {
+        //manual
+    }
+
+    @Then("the hinted search text should be removed")
+    public void theHintedSearchTextShouldBeRemoved() {
+        //manual
+    }
+
+    @And("the {string} trailing icon button \\(e.g., {string}) should be displayed inside the search field on the right side")
+    public void theTrailingIconButtonEGShouldBeDisplayedInsideTheSearchFieldOnTheRightSide(String arg0, String arg1) {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field on the right side")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchFieldOnTheRightSide() {
+        //manual
+    }
+
+    @Given("the user has previously typed search text in the search field")
+    public void theUserHasPreviouslyTypedSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the previously typed search text should be editable")
+    public void thePreviouslyTypedSearchTextShouldBeEditable() {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchField() {
+        //manual
+    }
+
+    @When("the user types text in the search field")
+    public void theUserTypesTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the search field should allow any text, including spaces")
+    public void theSearchFieldShouldAllowAnyTextIncludingSpaces() {
+        //manual
+    }
+
+    @And("the user should be able to edit the search text")
+    public void theUserShouldBeAbleToEditTheSearchText() {
+        //manual
+    }
+
+    @Given("the user has entered text in the search field")
+    public void theUserHasEnteredTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the user taps on the Clear trailing icon button \\(e.g., X)")
+    public void theUserTapsOnTheClearTrailingIconButtonEGX() {
+        //manual
+    }
+
+    @Then("the search field should be cleared of any text")
+    public void theSearchFieldShouldBeClearedOfAnyText() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should reset any previously applied search")
+    public void theEUDIWalletShouldResetAnyPreviouslyAppliedSearch() {
+        //manual
+    }
+
+    @And("the filtering and sorting should respect the current settings")
+    public void theFilteringAndSortingShouldRespectTheCurrentSettings() {
+        //manual
+    }
+
+    @Given("the user has entered an empty search text")
+    public void theUserHasEnteredAnEmptySearchText() {
+        //manual
+    }
+
+    @When("the user taps on the Search button on the device keyboard")
+    public void theUserTapsOnTheSearchButtonOnTheDeviceKeyboard() {
+        //manual
+    }
+
+    @Given("the user has entered valid search text in the search field")
+    public void theUserHasEnteredValidSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should apply the search text on the attributes of the issuer and attestation name")
+    public void theEUDIWalletShouldApplyTheSearchTextOnTheAttributesOfTheIssuerAndAttestationName() {
+        //manual
+    }
+
+    @And("the screen should display matching documents grouped by category")
+    public void theScreenShouldDisplayMatchingDocumentsGroupedByCategory() {
+        //manual
+    }
+
+    @Given("the user has entered search text in the search field")
+    public void theUserHasEnteredSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the search text does not match any documents")
+    public void theSearchTextDoesNotMatchAnyDocuments() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display an informative message in the list section")
+    public void theEUDIWalletShouldDisplayAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @And("categories with no matching documents should not be displayed")
+    public void categoriesWithNoMatchingDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @Then("no filter should be applied \\(default state)")
+    public void noFilterShouldBeAppliedDefaultState() {
+        //manual
+    }
+
+    @And("documents should be sorted by the default option \\(based on category)")
+    public void documentsShouldBeSortedByTheDefaultOptionBasedOnCategory() {
+        //manual
+    }
+
+    @And("the documents should be ordered by attestation name ascending within each category")
+    public void theDocumentsShouldBeOrderedByAttestationNameAscendingWithinEachCategory() {
+        //manual
+    }
+
+    @And("the filter or sort button should have no visual indication that a filter or sort option is applied")
+    public void theFilterOrSortButtonShouldHaveNoVisualIndicationThatAFilterOrSortOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter or sort button")
+    public void theUserTapsTheFilterOrSortButton() {
+        //manual
+    }
+
+    @Then("the filter and sort bottom sheet should slide up from the bottom of the screen")
+    public void theFilterAndSortBottomSheetShouldSlideUpFromTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @And("the “Sort by” and “Filter by ..” sections should be displayed in collapsed view")
+    public void theSortByAndFilterBySectionsShouldBeDisplayedInCollapsedView() {
+        //manual
+    }
+
+    @And("each section should display the applied filter and sort options respectively")
+    public void eachSectionShouldDisplayTheAppliedFilterAndSortOptionsRespectively() {
+        //manual
+    }
+
+    @Given("the user has opened the filter or sort bottom sheet")
+    public void theUserHasOpenedTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Sort by section")
+    public void theUserTapsTheSortBySection() {
+        //manual
+    }
+
+    @Then("the section should switch between collapsed and expanded views")
+    public void theSectionShouldSwitchBetweenCollapsedAndExpandedViews() {
+        //manual
+    }
+
+    @Given("the user has expanded the {string} section")
+    public void theUserHasExpandedTheSection(String arg0) {
+        //manual
+    }
+
+    @Given("the user has expanded the Sort by section")
+    public void theUserHasExpandedTheSortBySection() {
+        //manual
+    }
+
+    @When("the user selects to sort by Date Issued")
+    public void theUserSelectsToSortByDateIssued() {
+        //manual
+    }
+
+    @And("the user selects Descending order")
+    public void theUserSelectsDescendingOrder() {
+        //manual
+    }
+
+    @And("the user taps the Apply button")
+    public void theUserTapsTheApplyButton() {
+        //manual
+    }
+
+    @Then("the bottom sheet should slide down")
+    public void theBottomSheetShouldSlideDown() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the sorting by Date Issued in descending order")
+    public void theEUDIWalletShouldApplyTheSortingByDateIssuedInDescendingOrder() {
+        //manual
+    }
+
+    @And("the documents should be listed according to the selected sorting order")
+    public void theDocumentsShouldBeListedAccordingToTheSelectedSortingOrder() {
+        //manual
+    }
+
+    @When("the user selects to sort by Default or Category")
+    public void theUserSelectsToSortByDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the documents list should be grouped by category")
+    public void theDocumentsListShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("within each category, the documents should be ordered by attestation name in ascending order")
+    public void withinEachCategoryTheDocumentsShouldBeOrderedByAttestationNameInAscendingOrder() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Category section")
+    public void theUserTapsTheFilterByCategorySection() {
+        //manual
+    }
+
+    @Given("the user has expanded the Filter by Category section")
+    public void theUserHasExpandedTheFilterByCategorySection() {
+        //manual
+    }
+
+    @When("the user selects one or more categories")
+    public void theUserSelectsOneOrMoreCategories() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected categories")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedCategories() {
+        //manual
+    }
+
+    @And("only documents within those categories should be displayed")
+    public void onlyDocumentsWithinThoseCategoriesShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user has opened the filter orsort bottom sheet")
+    public void theUserHasOpenedTheFilterOrsortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Issuer section")
+    public void theUserTapsTheFilterByIssuerSection() {
+        //manual
+    }
+
+    @And("the user selects one or more issuers from the list")
+    public void theUserSelectsOneOrMoreIssuersFromTheList() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected issuers")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedIssuers() {
+        //manual
+    }
+
+    @And("only documents issued by the selected issuers should be displayed")
+    public void onlyDocumentsIssuedByTheSelectedIssuersShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Expiry Period section")
+    public void theUserTapsTheFilterByExpiryPeriodSection() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next {int} Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextDays(int arg0) {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected expiry period")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedExpiryPeriod() {
+        //manual
+    }
+
+    @And("only documents expiring within the selected period should be displayed")
+    public void onlyDocumentsExpiringWithinTheSelectedPeriodShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next thirty Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextThirtyDays() {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sort option")
+    public void theUserHasAppliedAFilterOrSortOption() {
+        //manual
+    }
+
+    @When("the user taps the Reset all button in the filter or sort bottom sheet")
+    public void theUserTapsTheResetAllButtonInTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @Then("the filters and sort options should be reset to the default values")
+    public void theFiltersAndSortOptionsShouldBeResetToTheDefaultValues() {
+        //manual
+    }
+
+    @When("no matching documents are found based on the applied filters")
+    public void noMatchingDocumentsAreFoundBasedOnTheAppliedFilters() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name")
+    public void theEUDIWalletShouldDisplayAllNonExpiredDocumentsGroupedByCategoryInAscendingOrderByAttestationName() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to {string} or {string}")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToOr(String arg0, String arg1) {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sorting option that is different from the default")
+    public void theUserHasAppliedAFilterOrSortingOptionThatIsDifferentFromTheDefault() {
+        //manual
+    }
+
+    @When("the user returns to the Documents screen")
+    public void theUserReturnsToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) and\\/or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to Default or Category")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) either and or or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSEitherAndOrOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
 }
