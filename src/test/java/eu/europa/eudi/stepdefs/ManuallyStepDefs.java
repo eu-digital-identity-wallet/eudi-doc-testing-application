@@ -3902,4 +3902,139 @@ public class ManuallyStepDefs {
     public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSEitherAndOrOrSortingOptionsHaveBeenApplied() {
         //manual
     }
+
+    @Given("the user is on the EUDI Wallet Home screen")
+    public void theUserIsOnTheEUDIWalletHomeScreen() {
+        //manual
+    }
+
+    @Then("the bottom navigation bar should include the options Home, Documents, and Transactions")
+    public void theBottomNavigationBarShouldIncludeTheOptionsHomeDocumentsAndTransactions() {
+        //manual
+    }
+
+    @When("the user selects the Home option from the bottom navigation bar")
+    public void theUserSelectsTheHomeOptionFromTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the {string} button should be highlighted")
+    public void theHomeButtonShouldBeHighlighted() {
+        //manual
+    }
+
+    @Then("the Home screen should be scrollable")
+    public void theHomeScreenShouldBeScrollable() {
+        //manual
+    }
+
+    @And("the Home screen should display Present a document, Add a document, and Sign a document sections")
+    public void theHomeScreenShouldDisplayPresentADocumentAddADocumentAndSignADocumentSections() {
+        //manual
+    }
+
+    @When("the user clicks on the Present a document section")
+    public void theUserClicksOnThePresentADocumentSection() {
+        //manual
+    }
+
+    @Then("the Present a document section should include In Person and Online options")
+    public void thePresentADocumentSectionShouldIncludeInPersonAndOnlineOptions() {
+        //manual
+    }
+
+    @When("the user clicks on the Add a document section")
+    public void theUserClicksOnTheAddADocumentSection() {
+        //manual
+    }
+
+    @Then("the Add a document section should include Choose from list and Scan QR to add options")
+    public void theAddADocumentSectionShouldIncludeChooseFromListAndScanQRToAddOptions() {
+        //manual
+    }
+
+    @When("the user clicks on the Sign a document section")
+    public void theUserClicksOnTheSignADocumentSection() {
+        //manual
+    }
+
+    @Then("the Sign a document section should include From device and Scan QR to sign options")
+    public void theSignADocumentSectionShouldIncludeFromDeviceAndScanQRToSignOptions() {
+        //manual
+    }
+
+    @When("the user clicks the Present a document section")
+    public void theUserClicksThePresentADocumentSection() {
+        //manual
+    }
+
+    @Then("the In-Person button is displayed")
+    public void theInPersonButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Online button is displayed")
+    public void theOnlineButtonIsDisplayed() {
+        //manual
+    }
+
+    @When("the user clicks the Add a document section")
+    public void theUserClicksTheAddADocumentSection() {
+        //manual
+    }
+
+    @Then("the Choose from list button is displayed")
+    public void theChooseFromListButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Scan QR to add button is displayed")
+    public void theScanQRToAddButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the From device button is displayed")
+    public void theFromDeviceButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Scan QR to sign button is displayed")
+    public void theScanQRToSignButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Home button is highlighted")
+    public void theHomeButtonIsHighlighted() {
+        //manual
+    }
+
+    @Then("the Sign a document section include From device and Scan QR to sign options")
+    public void theSignADocumentSectionIncludeFromDeviceAndScanQRToSignOptions() {
+        //manual
+    }
+
+    @Then("the Add a document section include Choose from list and Scan QR to add options")
+    public void theAddADocumentSectionIncludeChooseFromListAndScanQRToAddOptions() {
+        //manual
+    }
+
+    @Then("the Present a document section include In Person and Online options")
+    public void thePresentADocumentSectionIncludeInPersonAndOnlineOptions() {
+        //manual
+    }
+
+    @And("the Home screen display Present a document, Add a document, and Sign a document sections")
+    public void theHomeScreenDisplayPresentADocumentAddADocumentAndSignADocumentSections() {
+        //manual
+    }
+
+    @Then("the Home screen is scrollable")
+    public void theHomeScreenIsScrollable() {
+        //manual
+    }
+
+    @Then("the bottom navigation bar includes the options Home, Documents, and Transactions")
+    public void theBottomNavigationBarIncludesTheOptionsHomeDocumentsAndTransactions() {
+        //manual
+    }
 }
