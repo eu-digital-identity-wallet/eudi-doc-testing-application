@@ -3662,4 +3662,244 @@ public class ManuallyStepDefs {
     public void categoriesWithNoMatchingDocumentsShouldNotBeDisplayed() {
         //manual
     }
+
+    @Then("no filter should be applied \\(default state)")
+    public void noFilterShouldBeAppliedDefaultState() {
+        //manual
+    }
+
+    @And("documents should be sorted by the default option \\(based on category)")
+    public void documentsShouldBeSortedByTheDefaultOptionBasedOnCategory() {
+        //manual
+    }
+
+    @And("the documents should be ordered by attestation name ascending within each category")
+    public void theDocumentsShouldBeOrderedByAttestationNameAscendingWithinEachCategory() {
+        //manual
+    }
+
+    @And("the filter or sort button should have no visual indication that a filter or sort option is applied")
+    public void theFilterOrSortButtonShouldHaveNoVisualIndicationThatAFilterOrSortOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter or sort button")
+    public void theUserTapsTheFilterOrSortButton() {
+        //manual
+    }
+
+    @Then("the filter and sort bottom sheet should slide up from the bottom of the screen")
+    public void theFilterAndSortBottomSheetShouldSlideUpFromTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @And("the “Sort by” and “Filter by ..” sections should be displayed in collapsed view")
+    public void theSortByAndFilterBySectionsShouldBeDisplayedInCollapsedView() {
+        //manual
+    }
+
+    @And("each section should display the applied filter and sort options respectively")
+    public void eachSectionShouldDisplayTheAppliedFilterAndSortOptionsRespectively() {
+        //manual
+    }
+
+    @Given("the user has opened the filter or sort bottom sheet")
+    public void theUserHasOpenedTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Sort by section")
+    public void theUserTapsTheSortBySection() {
+        //manual
+    }
+
+    @Then("the section should switch between collapsed and expanded views")
+    public void theSectionShouldSwitchBetweenCollapsedAndExpandedViews() {
+        //manual
+    }
+
+    @Given("the user has expanded the {string} section")
+    public void theUserHasExpandedTheSection(String arg0) {
+        //manual
+    }
+
+    @Given("the user has expanded the Sort by section")
+    public void theUserHasExpandedTheSortBySection() {
+        //manual
+    }
+
+    @When("the user selects to sort by Date Issued")
+    public void theUserSelectsToSortByDateIssued() {
+        //manual
+    }
+
+    @And("the user selects Descending order")
+    public void theUserSelectsDescendingOrder() {
+        //manual
+    }
+
+    @And("the user taps the Apply button")
+    public void theUserTapsTheApplyButton() {
+        //manual
+    }
+
+    @Then("the bottom sheet should slide down")
+    public void theBottomSheetShouldSlideDown() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the sorting by Date Issued in descending order")
+    public void theEUDIWalletShouldApplyTheSortingByDateIssuedInDescendingOrder() {
+        //manual
+    }
+
+    @And("the documents should be listed according to the selected sorting order")
+    public void theDocumentsShouldBeListedAccordingToTheSelectedSortingOrder() {
+        //manual
+    }
+
+    @When("the user selects to sort by Default or Category")
+    public void theUserSelectsToSortByDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the documents list should be grouped by category")
+    public void theDocumentsListShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("within each category, the documents should be ordered by attestation name in ascending order")
+    public void withinEachCategoryTheDocumentsShouldBeOrderedByAttestationNameInAscendingOrder() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Category section")
+    public void theUserTapsTheFilterByCategorySection() {
+        //manual
+    }
+
+    @Given("the user has expanded the Filter by Category section")
+    public void theUserHasExpandedTheFilterByCategorySection() {
+        //manual
+    }
+
+    @When("the user selects one or more categories")
+    public void theUserSelectsOneOrMoreCategories() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected categories")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedCategories() {
+        //manual
+    }
+
+    @And("only documents within those categories should be displayed")
+    public void onlyDocumentsWithinThoseCategoriesShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user has opened the filter orsort bottom sheet")
+    public void theUserHasOpenedTheFilterOrsortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Issuer section")
+    public void theUserTapsTheFilterByIssuerSection() {
+        //manual
+    }
+
+    @And("the user selects one or more issuers from the list")
+    public void theUserSelectsOneOrMoreIssuersFromTheList() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected issuers")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedIssuers() {
+        //manual
+    }
+
+    @And("only documents issued by the selected issuers should be displayed")
+    public void onlyDocumentsIssuedByTheSelectedIssuersShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Expiry Period section")
+    public void theUserTapsTheFilterByExpiryPeriodSection() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next {int} Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextDays(int arg0) {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected expiry period")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedExpiryPeriod() {
+        //manual
+    }
+
+    @And("only documents expiring within the selected period should be displayed")
+    public void onlyDocumentsExpiringWithinTheSelectedPeriodShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next thirty Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextThirtyDays() {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sort option")
+    public void theUserHasAppliedAFilterOrSortOption() {
+        //manual
+    }
+
+    @When("the user taps the Reset all button in the filter or sort bottom sheet")
+    public void theUserTapsTheResetAllButtonInTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @Then("the filters and sort options should be reset to the default values")
+    public void theFiltersAndSortOptionsShouldBeResetToTheDefaultValues() {
+        //manual
+    }
+
+    @When("no matching documents are found based on the applied filters")
+    public void noMatchingDocumentsAreFoundBasedOnTheAppliedFilters() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name")
+    public void theEUDIWalletShouldDisplayAllNonExpiredDocumentsGroupedByCategoryInAscendingOrderByAttestationName() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to {string} or {string}")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToOr(String arg0, String arg1) {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sorting option that is different from the default")
+    public void theUserHasAppliedAFilterOrSortingOptionThatIsDifferentFromTheDefault() {
+        //manual
+    }
+
+    @When("the user returns to the Documents screen")
+    public void theUserReturnsToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) and\\/or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to Default or Category")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) either and or or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSEitherAndOrOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
 }
