@@ -92,7 +92,7 @@ public class MobileWebDriverFactory {
         caps1.setCapability("autoAcceptAlerts",true);
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
-            wait = new WebDriverWait(iosDriver,     Duration.ofSeconds(80));
+            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
             Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
             new Thread(() -> {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
