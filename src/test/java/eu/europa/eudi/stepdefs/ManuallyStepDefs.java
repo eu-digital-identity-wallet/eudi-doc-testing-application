@@ -4123,4 +4123,161 @@ public class ManuallyStepDefs {
     public void theDocumentsScreenIncludesACarouselDisplayingUpToThreeBookmarkedDocuments() {
         //manual
     }
+
+    @When("the user taps the menu button on the upper left corner of the screen")
+    public void theUserTapsTheMenuButtonOnTheUpperLeftCornerOfTheScreen() {
+        //manual
+    }
+
+    @Then("the navigation drawer slides in from the left side of the screen")
+    public void theNavigationDrawerSlidesInFromTheLeftSideOfTheScreen() {
+        //manual
+    }
+
+    @And("the navigation drawer includes an icon button to close the drawer, and the following options:")
+    public void theNavigationDrawerIncludesAnIconButtonToCloseTheDrawerAndTheFollowingOptions() {
+        //manual
+    }
+
+    @Given("the navigation drawer is open")
+    public void theNavigationDrawerIsOpen() {
+        //manual
+    }
+
+    @When("the user taps the Go back icon button")
+    public void theUserTapsTheGoBackIconButton() {
+        //manual
+    }
+
+    @Then("the navigation drawer slides away to the left side of the screen")
+    public void theNavigationDrawerSlidesAwayToTheLeftSideOfTheScreen() {
+        //manual
+    }
+
+    @When("the user taps the Notifications option")
+    public void theUserTapsTheNotificationsOption() {
+        //manual
+    }
+
+    @Then("the Notifications screen is displayed")
+    public void theNotificationsScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Change PIN option")
+    public void theUserTapsTheChangePINOption() {
+        //manual
+    }
+
+    @Then("the Change PIN screen is displayed")
+    public void theChangePINScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Privacy Notice option")
+    public void theUserTapsThePrivacyNoticeOption() {
+        //manual
+    }
+
+    @Then("the Privacy Notice screen is displayed")
+    public void thePrivacyNoticeScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Help_FAQs option")
+    public void theUserTapsTheHelp_FAQsOption() {
+        //manual
+    }
+
+    @Then("the Help_FAQs screen is displayed")
+    public void theHelp_FAQsScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Exit option")
+    public void theUserTapsTheExitOption() {
+        //manual
+    }
+
+
+    @Then("the application is closing")
+    public void theApplicationIsClosing() {
+        //manual
+    }
+
+    @When("the user clicks on the In person option")
+    public void theUserClicksOnTheInPersonOption() {
+        //manual
+    }
+
+
+    @Then("the wallet displays a page which includes a QR code and the option to share via NFC")
+    public void theWalletDisplaysAPageWhichIncludesAQRCodeAndTheOptionToShareViaNFC() {
+        //manual
+    }
+
+    @Given("the user is on the screen displaying a QR code and the option to share via NFC")
+    public void theUserIsOnTheScreenDisplayingAQRCodeAndTheOptionToShareViaNFC() {
+        //manual
+    }
+
+    @When("the displayed QR code is scanned or the NFC option is tapped with a reader device")
+    public void theDisplayedQRCodeIsScannedOrTheNFCOptionIsTappedWithAReaderDevice() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes:")
+    public void theWalletDisplaysThePresentationRequestWhichIncludes() {
+        //manual
+    }
+
+    @Given("the wallet is displaying the presentation request")
+    public void theWalletIsDisplayingThePresentationRequest() {
+        //manual
+    }
+
+    @Then("a modal appears asking the user to confirm the cancellation")
+    public void aModalAppearsAskingTheUserToConfirmTheCancellation() {
+        //manual
+    }
+
+    @And("the user clicks on the Cancel Sharing button")
+    public void theUserClicksOnTheCancelSharingButton() {
+        //manual
+    }
+
+    @Then("the user is redirected to the Home screen")
+    public void theUserIsRedirectedToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the wallet requests the user to enter the PIN to proceed")
+    public void theWalletRequestsTheUserToEnterThePINToProceed() {
+        //manual
+    }
+
+    @Given("the user has selected the Share button in the presentation request screen")
+    public void theUserHasSelectedTheShareButtonInThePresentationRequestScreen() {
+        //manual
+    }
+
+    @When("the wallet requests the user to enter the PIN")
+    public void theWalletRequestsTheUserToEnterThePIN() {
+        //manual
+    }
+
+    @Then("the wallet displays a success screen which provides details about the data that were shared from the wallet")
+    public void theWalletDisplaysASuccessScreenWhichProvidesDetailsAboutTheDataThatWereSharedFromTheWallet() {
+        //manual
+    }
+
+    @And("the success screen includes a Close button")
+    public void theSuccessScreenIncludesACloseButton() {
+        //manual
+    }
+
+    @Given("the wallet displays the success screen with details about the data shared")
+    public void theWalletDisplaysTheSuccessScreenWithDetailsAboutTheDataShared() {
+        //manual
+    }
 }
