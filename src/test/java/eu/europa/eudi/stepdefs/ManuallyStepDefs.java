@@ -4280,4 +4280,80 @@ public class ManuallyStepDefs {
     public void theWalletDisplaysTheSuccessScreenWithDetailsAboutTheDataShared() {
         //manual
     }
+
+
+    @Given("the user is on the Home page")
+    public void theUserIsOnTheHomePage() {
+        //manual
+    }
+
+    @When("the user selects the Online option in the Present document section")
+    public void theUserSelectsTheOnlineOptionInThePresentDocumentSection() {
+        //manual
+    }
+
+    @Then("the wallet opens the scanner")
+    public void theWalletOpensTheScanner() {
+        //manual
+    }
+
+    @Given("the user has selected the Online option in the Present document section")
+    public void theUserHasSelectedTheOnlineOptionInThePresentDocumentSection() {
+        //manual
+    }
+
+    @When("the user scans a QR code rendered by a Relying Party")
+    public void theUserScansAQRCodeRenderedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request")
+    public void theWalletDisplaysThePresentationRequest() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code rendered by a Relying Party")
+    public void theUserHasScannedAQRCodeRenderedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the presentation request includes:")
+    public void thePresentationRequestIncludes() {
+        //manual
+    }
+
+    @Given("the user is viewing the presentation request")
+    public void theUserIsViewingThePresentationRequest() {
+        //manual
+    }
+
+    @Given("the user has selected the Share button")
+    public void theUserHasSelectedTheShareButton() {
+        //manual
+    }
+
+    @Given("the user has entered the correct PIN")
+    public void theUserHasEnteredTheCorrectPIN() {
+        //manual
+    }
+
+    @When("the data sharing process is successful")
+    public void theDataSharingProcessIsSuccessful() {
+        //manual
+    }
+
+    @Then("the wallet displays a success screen")
+    public void theWalletDisplaysASuccessScreen() {
+        //manual
+    }
+
+    @And("the success screen provides details about the data that were shared")
+    public void theSuccessScreenProvidesDetailsAboutTheDataThatWereShared() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after data sharing")
+    public void theUserIsViewingTheSuccessScreenAfterDataSharing() {
+        //manual
+    }
 }

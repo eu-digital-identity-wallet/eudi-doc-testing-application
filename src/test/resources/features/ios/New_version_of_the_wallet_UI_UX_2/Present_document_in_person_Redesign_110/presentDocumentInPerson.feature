@@ -21,8 +21,8 @@ Feature: Present Attestations from EUDI Wallet
       | The attestations requested by the Relying Party   |
       | The option to expand on the details for each requested attestation |
       | The option to unselect specific data elements from each requested attestation |
-      | A 'Cancel' button                                 |
-      | A 'Share' button                                  |
+      | A Cancel button                                 |
+      | A Share button                                  |
 
   @US_PDIP_TC_03
   Scenario: Cancel data sharing process
