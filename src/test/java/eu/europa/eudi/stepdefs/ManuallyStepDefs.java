@@ -4037,4 +4037,90 @@ public class ManuallyStepDefs {
     public void theBottomNavigationBarIncludesTheOptionsHomeDocumentsAndTransactions() {
         //manual
     }
+
+    @Given("the user is on the EUDI Wallet Documents screen")
+    public void theUserIsOnTheEUDIWalletDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects the Documents option from the bottom navigation bar")
+    public void theUserSelectsTheDocumentsOptionFromTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the Documents button is highlighted")
+    public void theDocumentsButtonIsHighlighted() {
+        //manual
+    }
+
+    @When("the user views the screen")
+    public void theUserViewsTheScreen() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a Search bar")
+    public void theDocumentsScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a Filter_Sort button")
+    public void theDocumentsScreenIncludesAFilter_SortButton() {
+        //manual
+    }
+
+
+    @And("each displayed document in the carousel should show the validity end date below the document if available")
+    public void eachDisplayedDocumentInTheCarouselShouldShowTheValidityEndDateBelowTheDocumentIfAvailable() {
+        //manual
+    }
+
+    @When("the user swipes right or left on the carousel")
+    public void theUserSwipesRightOrLeftOnTheCarousel() {
+        //manual
+    }
+
+    @Then("the user should be able to navigate through the bookmarked documents")
+    public void theUserShouldBeAbleToNavigateThroughTheBookmarkedDocuments() {
+        //manual
+    }
+
+    @When("the user clicks on the Document section")
+    public void theUserClicksOnTheDocumentSection() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a list of all attestations issued to the wallet")
+    public void theDocumentsScreenIncludesAListOfAllAttestationsIssuedToTheWallet() {
+        //manual
+    }
+
+    @And("the attestations are grouped by category")
+    public void theAttestationsAreGroupedByCategory() {
+        //manual
+    }
+
+    @And("for each attestation, a card is displayed including the attestation name, the issuer, and the validity end date")
+    public void forEachAttestationACardIsDisplayedIncludingTheAttestationNameTheIssuerAndTheValidityEndDate() {
+        //manual
+    }
+
+    @And("the list of attestations is visible")
+    public void theListOfAttestationsIsVisible() {
+        //manual
+    }
+
+    @When("the user selects an attestation card")
+    public void theUserSelectsAnAttestationCard() {
+        //manual
+    }
+
+    @Then("the user should be able to view the details of the attestation")
+    public void theUserShouldBeAbleToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a carousel displaying up to three bookmarked documents")
+    public void theDocumentsScreenIncludesACarouselDisplayingUpToThreeBookmarkedDocuments() {
+        //manual
+    }
 }
