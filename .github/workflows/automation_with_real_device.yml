@@ -68,13 +68,13 @@ jobs:
         run: mvn serenity:aggregate
 
       - name: Upload screenshots
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: test-screenshots
           path: artifacts/screenshots
 
       - name: Upload report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: report
           path: target/site
