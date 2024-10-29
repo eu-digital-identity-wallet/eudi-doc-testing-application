@@ -4398,4 +4398,99 @@ public class ManuallyStepDefs {
     public void anErrorMessageShouldInformTheUserOfTheVerificationFailure() {
         //manual
     }
+
+    @And("the user is authenticated in the QTSP")
+    public void theUserIsAuthenticatedInTheQTSP() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party interface")
+    public void theUserIsOnTheRelyingPartyInterface() {
+        //manual
+    }
+
+    @When("the Relying Party requests the available Credential IDs from the QTSP")
+    public void theRelyingPartyRequestsTheAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the Relying Party should retrieve the available Credential IDs for the user")
+    public void theRelyingPartyShouldRetrieveTheAvailableCredentialIDsForTheUser() {
+        //manual
+    }
+
+    @Given("the Relying Party has retrieved available Credential IDs from the QTSP")
+    public void theRelyingPartyHasRetrievedAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @When("there are no available Credential IDs for the user in the QTSP")
+    public void thereAreNoAvailableCredentialIDsForTheUserInTheQTSP() {
+        //manual
+    }
+
+    @Then("the Relying Party should inform the user to enroll a Qualified Certificate in the QTSP")
+    public void theRelyingPartyShouldInformTheUserToEnrollAQualifiedCertificateInTheQTSP() {
+        //manual
+    }
+
+    @And("the document signing process should stop")
+    public void theDocumentSigningProcessShouldStop() {
+        //manual
+    }
+
+    @Given("there are multiple Credential IDs available for the user in the QTSP")
+    public void thereAreMultipleCredentialIDsAvailableForTheUserInTheQTSP() {
+        //manual
+    }
+
+    @When("the Relying Party requests the user to select a Credential ID")
+    public void theRelyingPartyRequestsTheUserToSelectACredentialID() {
+        //manual
+    }
+
+    @Then("the user selects a preferred Credential ID for signing the document")
+    public void theUserSelectsAPreferredCredentialIDForSigningTheDocument() {
+        //manual
+    }
+
+    @Given("either the user has selected a Credential ID or there is only one available Credential ID")
+    public void eitherTheUserHasSelectedACredentialIDOrThereIsOnlyOneAvailableCredentialID() {
+        //manual
+    }
+
+    @When("the Relying Party retrieves the details of the selected Credential ID from the QTSP")
+    public void theRelyingPartyRetrievesTheDetailsOfTheSelectedCredentialIDFromTheQTSP() {
+        //manual
+    }
+
+    @And("calculates the document hash")
+    public void calculatesTheDocumentHash() {
+        //manual
+    }
+
+    @Then("the Relying Party should redirect the user to the QTSP authentication page")
+    public void theRelyingPartyShouldRedirectTheUserToTheQTSPAuthenticationPage() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP authentication page")
+    public void theUserIsOnTheQTSPAuthenticationPage() {
+        //manual
+    }
+
+    @When("the QTSP requests access to use the selected Credential ID on behalf of the user")
+    public void theQTSPRequestsAccessToUseTheSelectedCredentialIDOnBehalfOfTheUser() {
+        //manual
+    }
+
+    @Then("the QTSP should inform the user of the Relying Party’s request to use the Credential ID")
+    public void theQTSPShouldInformTheUserOfTheRelyingPartySRequestToUseTheCredentialID() {
+        //manual
+    }
+
+    @Given("the QTSP has requested access to the Credential ID on")
+    public void theQTSPHasRequestedAccessToTheCredentialIDOn() {
+        //manual
+    }
 }
