@@ -4037,4 +4037,99 @@ public class ManuallyStepDefs {
     public void theBottomNavigationBarIncludesTheOptionsHomeDocumentsAndTransactions() {
         //manual
     }
+
+    @Given("the user has a valid EUDI Wallet on their mobile device")
+    public void theUserHasAValidEUDIWalletOnTheirMobileDevice() {
+        //manual
+    }
+
+    @And("the user has issued a PID attestation to the EUDI Wallet")
+    public void theUserHasIssuedAPIDAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user has internet connectivity")
+    public void theUserHasInternetConnectivity() {
+        //manual
+    }
+
+    @When("the user visits the QTSP login page on a different device")
+    public void theUserVisitsTheQTSPLoginPageOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the QTSP should render the PID authentication option")
+    public void theQTSPShouldRenderThePIDAuthenticationOption() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP login page")
+    public void theUserIsOnTheQTSPLoginPage() {
+        //manual
+    }
+
+    @Then("the QTSP should render a QR code")
+    public void theQTSPShouldRenderAQRCode() {
+        //manual
+    }
+
+    @Given("the user has scanned the QR code")
+    public void theUserHasScannedTheQRCode() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display the attestation release request")
+    public void theEUDIWalletShouldDisplayTheAttestationReleaseRequest() {
+        //manual
+    }
+
+    @When("the user fails to authenticate in the EUDI Wallet")
+    public void theUserFailsToAuthenticateInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present an error message")
+    public void theEUDIWalletShouldPresentAnErrorMessage() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks for available attestations")
+    public void theEUDIWalletChecksForAvailableAttestations() {
+        //manual
+    }
+
+    @And("there are no matching attestations")
+    public void thereAreNoMatchingAttestations() {
+        //manual
+    }
+
+    @And("there are matching attestations available")
+    public void thereAreMatchingAttestationsAvailable() {
+        //manual
+    }
+
+    @When("the user enters their {int}-digit PIN")
+    public void theUserEntersTheirDigitPIN(int arg0) {
+        //manual
+    }
+
+    @When("the user enters their six digit PIN")
+    public void theUserEntersTheirSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the requested attestation to the QTSP")
+    public void theEUDIWalletShouldPresentTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Given("the user has presented the requested attestation to the QTSP")
+    public void theUserHasPresentedTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Then("an error message should inform the user")
+    public void anErrorMessageShouldInformTheUser() {
+        //manual
+    }
 }
