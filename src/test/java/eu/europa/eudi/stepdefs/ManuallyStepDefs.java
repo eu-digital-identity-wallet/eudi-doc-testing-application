@@ -4192,4 +4192,44 @@ public class ManuallyStepDefs {
     public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcomeFromTheRelyingParty() {
         //manual
     }
+
+    @Given("the user has a valid EUDI Wallet")
+    public void theUserHasAValidEUDIWallet() {
+        //manual
+    }
+
+    @And("the user has authenticated in the Relying Party service")
+    public void theUserHasAuthenticatedInTheRelyingPartyService() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party service page")
+    public void theUserIsOnTheRelyingPartyServicePage() {
+        //manual
+    }
+
+    @When("the user selects the option to view the document to be signed")
+    public void theUserSelectsTheOptionToViewTheDocumentToBeSigned() {
+        //manual
+    }
+
+    @Then("the Relying Party should present the document to the user for viewing")
+    public void theRelyingPartyShouldPresentTheDocumentToTheUserForViewing() {
+        //manual
+    }
+
+    @Given("the user has selected the option to view the document to be signed")
+    public void theUserHasSelectedTheOptionToViewTheDocumentToBeSigned() {
+        //manual
+    }
+
+    @When("the Relying Party presents the document")
+    public void theRelyingPartyPresentsTheDocument() {
+        //manual
+    }
+
+    @Then("the user should be able to view the details of the document in the Relying Party service")
+    public void theUserShouldBeAbleToViewTheDetailsOfTheDocumentInTheRelyingPartyService() {
+        //manual
+    }
 }
