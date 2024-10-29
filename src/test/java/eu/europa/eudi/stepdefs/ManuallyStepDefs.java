@@ -4132,4 +4132,64 @@ public class ManuallyStepDefs {
     public void anErrorMessageShouldInformTheUser() {
         //manual
     }
+
+    @When("the user visits the Relying Party login page on a different device")
+    public void theUserVisitsTheRelyingPartyLoginPageOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the Relying Party should render the PID authentication option")
+    public void theRelyingPartyShouldRenderThePIDAuthenticationOption() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party login page")
+    public void theUserIsOnTheRelyingPartyLoginPage() {
+        //manual
+    }
+
+    @Then("the Relying Party should render a QR code")
+    public void theRelyingPartyShouldRenderAQRCode() {
+        //manual
+    }
+
+    @And("the user should have the option to retry authentication")
+    public void theUserShouldHaveTheOptionToRetryAuthentication() {
+        //manual
+    }
+
+    @And("the user should return to the main page of the EUDI Wallet")
+    public void theUserShouldReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the requested attestation to the Relying Party")
+    public void theEUDIWalletShouldPresentTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @Given("the user has presented the requested attestation to the Relying Party")
+    public void theUserHasPresentedTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the Relying Party cannot verify the attestation")
+    public void theRelyingPartyCannotVerifyTheAttestation() {
+        //manual
+    }
+
+    @When("the Relying Party verifies the attestation successfully")
+    public void theRelyingPartyVerifiesTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Then("the Relying Party should inform the user of the successful verification outcome")
+    public void theRelyingPartyShouldInformTheUserOfTheSuccessfulVerificationOutcome() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a confirmation message indicating the presentation outcome from the Relying Party")
+    public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcomeFromTheRelyingParty() {
+        //manual
+    }
 }
