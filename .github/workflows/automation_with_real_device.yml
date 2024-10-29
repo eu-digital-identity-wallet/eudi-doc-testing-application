@@ -2,7 +2,7 @@ name: automation_with_real_device
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 jobs:
   build:
