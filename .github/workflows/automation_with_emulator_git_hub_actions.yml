@@ -152,7 +152,7 @@ jobs:
           avd-name: Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
-          emulator-boot-timeout: 600  # Increased timeout to 600 seconds (10 minutes)
+          emulator-boot-timeout: 1200  # Increased timeout from 600 seconds (10 minutes) to 20 minutes
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
             adb wait-for-device
