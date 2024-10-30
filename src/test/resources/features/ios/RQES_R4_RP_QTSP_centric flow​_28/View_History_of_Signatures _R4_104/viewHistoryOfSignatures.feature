@@ -1,4 +1,4 @@
-@ANDROID @manual @US_VHOS
+@IOS @manual @US_VHOS
   Feature: EUDI Wallet User Views PID Presentation History for "Sign Document" Operations
     As a EUDI Wallet User,
     I want to view the history of the PID presentations associated with the “sign document” operation
