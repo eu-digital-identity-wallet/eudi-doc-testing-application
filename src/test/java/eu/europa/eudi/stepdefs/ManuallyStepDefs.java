@@ -4493,4 +4493,89 @@ public class ManuallyStepDefs {
     public void theQTSPHasRequestedAccessToTheCredentialIDOn() {
         //manual
     }
+
+    @And("the history of PID presentations is available in the EUDI Wallet")
+    public void theHistoryOfPIDPresentationsIsAvailableInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the main page of the EUDI Wallet")
+    public void theUserIsOnTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the option “View Transactions”")
+    public void theUserSelectsTheOptionViewTransactions() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a page with all transactions associated with attestation presentations")
+    public void theEUDIWalletShouldDisplayAPageWithAllTransactionsAssociatedWithAttestationPresentations() {
+        //manual
+    }
+
+    @Given("the user is on the transactions page of the EUDI Wallet")
+    public void theUserIsOnTheTransactionsPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the predefined filter option “Signed Documents”")
+    public void theUserSelectsThePredefinedFilterOptionSignedDocuments() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display only the PID presentations associated with “sign document” operations")
+    public void theEUDIWalletShouldDisplayOnlyThePIDPresentationsAssociatedWithSignDocumentOperations() {
+        //manual
+    }
+
+    @Given("the user is viewing the filtered list of “Signed Documents” transactions")
+    public void theUserIsViewingTheFilteredListOfSignedDocumentsTransactions() {
+        //manual
+    }
+
+    @When("the user clicks on the expand button of a transaction history entry")
+    public void theUserClicksOnTheExpandButtonOfATransactionHistoryEntry() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should expand the selected transaction entry")
+    public void theEUDIWalletShouldExpandTheSelectedTransactionEntry() {
+        //manual
+    }
+
+    @And("display the details of the transaction, including the “transaction data”")
+    public void displayTheDetailsOfTheTransactionIncludingTheTransactionData() {
+        //manual
+    }
+
+    @Given("the user has filtered the transactions list by “Signed Documents”")
+    public void theUserHasFilteredTheTransactionsListBySignedDocuments() {
+        //manual
+    }
+
+    @When("there are no PID presentations associated with “sign document” operations")
+    public void thereAreNoPIDPresentationsAssociatedWithSignDocumentOperations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a message indicating no transactions are available for signed documents")
+    public void theEUDIWalletShouldDisplayAMessageIndicatingNoTransactionsAreAvailableForSignedDocuments() {
+        //manual
+    }
+
+    @Given("the user has expanded a transaction history entry to view details")
+    public void theUserHasExpandedATransactionHistoryEntryToViewDetails() {
+        //manual
+    }
+
+    @When("the user clicks the collapse button on the expanded transaction entry")
+    public void theUserClicksTheCollapseButtonOnTheExpandedTransactionEntry() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should collapse the entry and return it to the list view")
+    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView() {
+        //manual
+    }
 }
