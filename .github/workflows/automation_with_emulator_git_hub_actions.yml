@@ -130,10 +130,10 @@ jobs:
         run: curl http://127.0.0.1:4723/wd/hub/status
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3 # checking latest
-        # with:
-        #   api-level: 33
-        #   build-tools: '30.0.3'
+        uses: android-actions/setup-android@v2 # not latest
+        with:
+          api-level: 33
+          build-tools: '30.0.3'
           
 
       - name: Restart ADB server
