@@ -134,6 +134,7 @@ jobs:
         with:
           api-level: 33
           build-tools: '30.0.3'
+          
 
       - name: Restart ADB server
         run: |
@@ -148,7 +149,7 @@ jobs:
           api-level: 33
           target: google_apis
           arch: x86_64
-          avd-name: Pixel_6_API_33
+          avd-name: POCO_X5_Pro # Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
           emulator-boot-timeout: 600  # Increased timeout to 600 seconds (10 minutes)
@@ -157,7 +158,7 @@ jobs:
             adb wait-for-device
             adb shell getprop sys.boot_completed | grep -m 1 '1'
             sleep 180
-            mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_COSD'
+            mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="POCO_X5_Pro" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_COSD'
 
       - name: Produce report
         run: mvn serenity:aggregate
