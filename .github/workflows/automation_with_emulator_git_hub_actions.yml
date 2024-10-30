@@ -92,7 +92,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-13-large
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
