@@ -103,10 +103,11 @@ jobs:
           java-version: 17
           distribution: 'oracle'
 
-      - name: Set up Node JS 18.16.1
+      - name: Set up Node JS 16.20.2
         uses: actions/setup-node@v4
         with:
-          node-version: '18.16.1'
+          # node-version: '18.16.1'
+          node-version: '16.20.2'
 
       - name: Install Appium
         run: npm install -g appium
@@ -152,6 +153,7 @@ jobs:
           avd-name: Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
+          emulator-build: 11772612
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
