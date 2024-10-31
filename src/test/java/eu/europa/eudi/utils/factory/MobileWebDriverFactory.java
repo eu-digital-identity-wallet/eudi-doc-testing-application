@@ -41,7 +41,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
         caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
         caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
-        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
+        #caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
         caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
         caps2.setCapability("skipUnlock", "true");
         caps2.setCapability("appPackage", test.envDataConfig().getAppiumAndroidAppPackage());
@@ -95,7 +95,7 @@ public class MobileWebDriverFactory {
         caps1.setCapability("autoAcceptAlerts",true);
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
-            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
+            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(500));
             Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
             new Thread(() -> {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
