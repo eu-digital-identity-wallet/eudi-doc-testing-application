@@ -92,7 +92,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-13-large
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -181,7 +181,7 @@ jobs:
           avd-name: Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
-          emulator-build: 11772612
+          emulator-build: 11772612 # initially not used - added for version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
