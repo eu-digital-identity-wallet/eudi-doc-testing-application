@@ -145,20 +145,52 @@ jobs:
         continue-on-error: true
 
 
-      - name: Monitoring Start
+      # - name: Monitoring Start
+      #   run: |
+      #     echo "Starting monitoring..."
+      #     echo "---- $(date) ----" >> usage_report.txt
+      #     system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+      #     while true; do
+      #       echo "---- $(date) ----" >> usage_report.txt
+      #       echo "------CPU & Memory Usage------" >> usage_report.txt
+      #       top -l 1 | head -n 10 >> usage_report.txt
+      #       echo "" >> usage_report.txt
+      #       echo "Disk Usage:" >> usage_report.txt
+      #       df -h >> usage_report.txt
+      #       echo "" >> usage_report.txt
+      #       echo "Memory Usage (in MB):" >> usage_report.txt
+      #       vm_stat >> usage_report.txt
+      #       echo "" >> usage_report.txt
+      #       sleep 10
+      #     done & echo $! > monitor_pid.txt
+          
+      - name: Monitoring Start (Human Readable)
         run: |
-          echo "Starting monitoring..."
+          echo "Starting monitoring in the background..."
           echo "---- $(date) ----" >> usage_report.txt
+          echo "Chipset Model:" >> usage_report.txt
           system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+          echo "" >> usage_report.txt
           while true; do
             echo "---- $(date) ----" >> usage_report.txt
+            echo "------ CPU & Memory Usage ------" >> usage_report.txt
             top -l 1 | head -n 10 >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
-            vm_stat >> usage_report.txt
-            system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Memory Usage (in MB) ------" >> usage_report.txt
+            vm_stat | awk '
+            /Pages free/ { free=$3 * 4096 / 1024 / 1024 }
+            /Pages active/ { active=$3 * 4096 / 1024 / 1024 }
+            /Pages inactive/ { inactive=$3 * 4096 / 1024 / 1024 }
+            /Pages speculative/ { speculative=$3 * 4096 / 1024 / 1024 }
+            END {
+              printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
+            }' >> usage_report.txt
+            echo "" >> usage_report.txt
             sleep 10
           done & echo $! > monitor_pid.txt
-
 
       # - name: Run UI Tests
       #   uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
