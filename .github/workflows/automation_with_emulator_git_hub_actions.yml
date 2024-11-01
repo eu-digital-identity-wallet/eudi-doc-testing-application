@@ -192,6 +192,10 @@ jobs:
             sleep 10
           done & echo $! > monitor_pid.txt
 
+
+      - name: Sleep 30 secs
+        run: sleep 30
+
       # - name: Run UI Tests
       #   uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
       #   with:
