@@ -1,4 +1,4 @@
-name: automation_with_emulator - 2
+name: automation_with_emulator - 2 - Ubuntu
 
 on:
   workflow_dispatch:
