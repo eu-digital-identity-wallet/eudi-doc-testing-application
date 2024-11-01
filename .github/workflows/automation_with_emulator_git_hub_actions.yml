@@ -124,8 +124,8 @@ jobs:
       - name: Start Appium
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
-      # - name: Wait for Appium to start
-      #   run: sleep 60 # Adjust the time as needed
+      - name: Wait for Appium to start
+        run: sleep 30 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -143,26 +143,6 @@ jobs:
           adb start-server
           adb devices
         continue-on-error: true
-
-
-      # - name: Monitoring Start
-      #   run: |
-      #     echo "Starting monitoring..."
-      #     echo "---- $(date) ----" >> usage_report.txt
-      #     system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
-      #     while true; do
-      #       echo "---- $(date) ----" >> usage_report.txt
-      #       echo "------CPU & Memory Usage------" >> usage_report.txt
-      #       top -l 1 | head -n 10 >> usage_report.txt
-      #       echo "" >> usage_report.txt
-      #       echo "Disk Usage:" >> usage_report.txt
-      #       df -h >> usage_report.txt
-      #       echo "" >> usage_report.txt
-      #       echo "Memory Usage (in MB):" >> usage_report.txt
-      #       vm_stat >> usage_report.txt
-      #       echo "" >> usage_report.txt
-      #       sleep 10
-      #     done & echo $! > monitor_pid.txt
           
       - name: Monitoring Start (Human Readable)
         run: |
@@ -189,36 +169,32 @@ jobs:
               printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
             }' >> usage_report.txt
             echo "" >> usage_report.txt
-            sleep 10
+            sleep 30
           done & echo $! > monitor_pid.txt
 
-
-      - name: Sleep 30 secs
-        run: sleep 30
-
-      # - name: Run UI Tests
-      #   uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
-      #   with:
-      #     api-level: 33
-      #     target: google_apis
-      #     arch: x86_64
-      #     avd-name: Pixel_6_API_33
-      #     #headless: true # This line is marked as error
-      #     disable-animations: true
-      #     emulator-build: 11772612
-      #     emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-      #     emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-      #     script: |
-      #       echo "Waiting for Android Emulator..."
-      #       adb wait-for-device
-      #       adb devices
-      #       while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
-      #       echo "Android has booted!"
-      #       echo "***************"
-      #       echo "Checking cmd setting service availabilty..."
-      #       if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
-      #       echo "Starting maven verify..."
-      #       mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+      - name: Run UI Tests
+        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          avd-name: Pixel_6_API_33
+          #headless: true # This line is marked as error
+          disable-animations: true
+          emulator-build: 11772612
+          emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: |
+            echo "Waiting for Android Emulator..."
+            adb wait-for-device
+            adb devices
+            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+            echo "Android has booted!"
+            echo "***************"
+            echo "Checking cmd setting service availabilty..."
+            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+            echo "Starting maven verify..."
+            mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
       - name: Stop Monitoring
