@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-4core
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -75,32 +75,32 @@ jobs:
             echo "------ GPU Information ------" >> usage_report_ubuntu_4core.txt
             lspci | grep -i vga >> usage_report_ubuntu_4core.txt
             echo "" >> usage_report_ubuntu_4core.txt
-            sleep 20
+            sleep 15
             done & echo $! > monitor_pid.txt
 
-    #   - name: Run UI Tests
-    #     uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
-    #     with:
-    #       api-level: 33
-    #       target: google_apis
-    #       arch: x86_64
-    #       avd-name: Pixel_6_API_33
-    #       #headless: true # This line is marked as error
-    #       disable-animations: true
-    #       emulator-build: 11772612 # initially not used - added for version control
-    #       emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-    #       emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-    #       script: |
-    #         echo "Waiting for Android Emulator..."
-    #         adb wait-for-device
-    #         adb devices
-    #         while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
-    #         echo "Android has booted!"
-    #         echo "***************"
-    #         echo "Checking cmd setting service availabilty..."
-    #         if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
-    #         echo "Starting maven verify..."
-    #         mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+      - name: Run UI Tests
+        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          avd-name: Pixel_6_API_33
+          #headless: true # This line is marked as error
+          disable-animations: true
+          emulator-build: 11772612 # initially not used - added for version control
+          emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: |
+            echo "Waiting for Android Emulator..."
+            adb wait-for-device
+            adb devices
+            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+            echo "Android has booted!"
+            echo "***************"
+            echo "Checking cmd setting service availabilty..."
+            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+            echo "Starting maven verify..."
+            mvn verify --file pom.xml -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel_6_API_33_1" -Dappium.androidInstallTimeout=180000 -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
       - name: Stop Monitoring
