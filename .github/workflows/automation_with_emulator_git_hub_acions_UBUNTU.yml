@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest-4core
+    runs-on: 
+        labels: ubuntu-20.04-4core
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -64,7 +65,7 @@ jobs:
             sudo udevadm control --reload-rules
             sudo udevadm trigger --name-match=kvm
 
-            
+
       - name: Monitoring Start (Human Readable)
         run: |
             echo "Starting monitoring in the background..."
