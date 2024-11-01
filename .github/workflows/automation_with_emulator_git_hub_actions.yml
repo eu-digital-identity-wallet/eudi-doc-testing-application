@@ -92,7 +92,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13-large
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -159,7 +159,7 @@ jobs:
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
             echo "" >> usage_report.txt
-            echo "------ Memory Usage (in MB) ------" >> usage_report.txt
+            echo "------ Memory Usage ------" >> usage_report.txt
             vm_stat | awk '
             /Pages free/ { free=$3 * 4096 / 1024 / 1024 }
             /Pages active/ { active=$3 * 4096 / 1024 / 1024 }
@@ -169,7 +169,7 @@ jobs:
               printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
             }' >> usage_report.txt
             echo "" >> usage_report.txt
-            sleep 30
+            sleep 20
           done & echo $! > monitor_pid.txt
 
       - name: Run UI Tests
