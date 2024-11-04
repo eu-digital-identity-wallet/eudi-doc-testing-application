@@ -135,10 +135,6 @@ jobs:
         with:
           # Hide Licenses for easier logging
           log-accepted-android-sdk-licenses: false
-        # with:
-        #   api-level: 33
-        #   build-tools: '30.0.3'
-          
 
       - name: Restart ADB server
         run: |
@@ -178,13 +174,13 @@ jobs:
       - name: Run UI Tests
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
-          api-level: 31
+          api-level: 35
           target: google_apis
           arch: x86_64
           avd-name: Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
-          emulator-build: 12414864 # 11772612 # initially not used - added for emulator version control
+          emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
