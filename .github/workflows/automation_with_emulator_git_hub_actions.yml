@@ -184,9 +184,9 @@ jobs:
           avd-name: Pixel_6_API_33
           #headless: true # This line is marked as error
           disable-animations: true
-          emulator-build: 11772612 # initially not used - added for emulator version control
+          emulator-build: 12414864 # 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-          emulator-options: -gpu swiftshader -no-snapshot -noaudio -no-boot-anim
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
