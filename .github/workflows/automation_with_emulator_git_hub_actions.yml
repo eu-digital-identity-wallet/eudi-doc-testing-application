@@ -182,7 +182,7 @@ jobs:
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
