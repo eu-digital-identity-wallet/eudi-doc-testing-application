@@ -179,7 +179,7 @@ jobs:
           arch: x86_64
           avd-name: Pixel_6_API_33
           # added ram value
-          # ram-size: 2048M
+          ram-size: 2048M
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
