@@ -174,16 +174,16 @@ jobs:
       - name: Run UI Tests
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
-          api-level: 33
+          api-level: 34
           target: google_apis
           arch: x86_64
-          avd-name: Pixel_6_API_33
+          avd-name: Pixel_6a_API_34
           # added ram value
           # ram-size: 2048M
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-          emulator-port: 5556
+          emulator-port: 5554
           emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window
           script: |
             echo "Waiting for Android Emulator..."
