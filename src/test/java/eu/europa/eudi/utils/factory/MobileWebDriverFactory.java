@@ -4,7 +4,11 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import org.openqa.selenium.NoSuchSessionException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,11 +18,13 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 public class MobileWebDriverFactory {
@@ -74,9 +80,30 @@ public class MobileWebDriverFactory {
             System.out.println(e.toString());
             e.printStackTrace();
         }
-        if(test.envDataConfig().getAppiumRecording()) {
-            androidDriver.startRecordingScreen();}
-    }
+        if (test.envDataConfig().getAppiumRecording()) {
+            androidDriver.startRecordingScreen();
+        }
+
+        if (test.envDataConfig().getAppiumScreenshot()) {
+            String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+            String filename = timestamp + ".png";
+
+            // Capture the screenshot and store it in a file
+            File srcFile = ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.FILE);
+            // Define the destination file path
+            File destFile = new File("screenshots/" + filename);
+
+            // Create the destination directory if it does not exist
+            destFile.getParentFile().mkdirs();
+            try {
+                // Copy the screenshot to the destination file
+                FileHandler.copy(srcFile, destFile);
+                System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println("Failed to save screenshot: " + e.getMessage());
+            }
+        }
+        }
 
     public void startIosDriverSession() {
         envDataConfig = new EnvDataConfig();
@@ -123,31 +150,47 @@ public class MobileWebDriverFactory {
         return iosDriver;
     }
 
-    public void quitDriverAndroid(){
+    public void quitDriverAndroid() {
         if (androidDriver != null) {
-            if(test.envDataConfig().getAppiumRecording()) {
-                String base64String = androidDriver.stopRecordingScreen();
-                byte[] data = Base64.getMimeDecoder().decode(base64String);
+            try {
+                if (test.envDataConfig().getAppiumRecording()) {
+                    String base64String = androidDriver.stopRecordingScreen();
+                    byte[] data = Base64.getMimeDecoder().decode(base64String);
 
-                Path recordingsPath = Paths.get("target", "recordings");
+                    Path recordingsPath = Paths.get("target", "recordings");
+                    try {
+                        Files.createDirectories(recordingsPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                try {
-                    Files.createDirectories(recordingsPath);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    LocalDateTime timestamp = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+                    String formattedTimestamp = timestamp.format(formatter);
+                    Path path = Paths.get(System.getProperty("user.dir"), "target", "recordings",
+                            test.getSystemOperation() + "_" + test.getScenario().getName() + "_" + formattedTimestamp + ".mp4");
+
+                    try {
+                        Files.write(path, data);
+                        System.out.println("Recording saved: " + path.toAbsolutePath());
+                    } catch (IOException e) {
+                        throw new RuntimeException("Failed to save recording: " + e.getMessage(), e);
+                    }
                 }
-                LocalDateTime timestamp = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
-                String formattedTimestamp = timestamp.format(formatter);
-                Path path = Paths.get(System.getProperty("user.dir"), "target/recordings/"+ test.getSystemOperation() + "_" +test.getScenario().getName() + "_" +
-                        formattedTimestamp +  ".mp4");
+            } catch (NoSuchSessionException e) {
+                System.err.println("No session found when trying to stop recording: " + e.getMessage());
+            } catch (Exception e) {
+                System.err.println("An error occurred while stopping the recording: " + e.getMessage());
+            } finally {
                 try {
-                    Files.write(path, data);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    androidDriver.quit();
+                    System.out.println("Driver quit successfully.");
+                } catch (NoSuchSessionException e) {
+                    System.err.println("Session already closed: " + e.getMessage());
+                } catch (Exception e) {
+                    System.err.println("An error occurred while quitting the driver: " + e.getMessage());
                 }
             }
-            androidDriver.quit();
         }
     }
     public void quitDriverIos() {
