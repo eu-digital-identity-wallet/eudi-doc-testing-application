@@ -175,16 +175,17 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
           api-level: 33
-          target: google_apis_playstore
+          target: google_apis
           arch: x86_64
           avd-name: Pixel_6_API_33
           # added ram value
           ram-size: 4096M
+          heap-size: 512M
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5556
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 4096
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
@@ -212,7 +213,7 @@ jobs:
           name: usage-report
           path: usage_report.txt
  
-      - name: Produce report
+      - name: Produce Serenity report
         if: always()
         run: mvn serenity:aggregate
 
@@ -228,7 +229,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-screenshots
-          path: artifacts/screenshots
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
 
       - name: Upload recordings
         if: always()
@@ -237,8 +238,3 @@ jobs:
           name: test-recordings
           path: target/recordings
 
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: report
-          path: target/site
