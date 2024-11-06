@@ -181,7 +181,7 @@ jobs:
           # added ram value
           ram-size: 4096M
           disable-animations: true
-          emulator-build: 12414864 #Latest # 11772612 # initially not used - added for emulator version control
+          emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5554
           emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window
