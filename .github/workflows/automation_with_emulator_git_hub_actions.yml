@@ -130,11 +130,11 @@ jobs:
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3 # latest
-        with:
-          # Hide Licenses for easier logging
-          log-accepted-android-sdk-licenses: false
+      # - name: Set up Android SDK
+      #   uses: android-actions/setup-android@v3 # latest
+      #   with:
+      #     # Hide Licenses for easier logging
+      #     log-accepted-android-sdk-licenses: false
 
       - name: Restart ADB server
         run: |
@@ -178,8 +178,9 @@ jobs:
           target: google_apis
           arch: x86_64
           avd-name: Pixel_6_API_33
+          profile:  pixel_6
           # added ram value
-          ram-size: 4096M
+          ram-size: 6144M
           cores: 4
           heap-size: 512M
           disable-animations: true
