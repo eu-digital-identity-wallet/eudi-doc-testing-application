@@ -215,17 +215,17 @@ jobs:
           name: usage-report
           path: usage_report.txt
  
-       # RESET   
-      # - name: Produce Serenity report
-      #   if: always()
-      #   run: mvn serenity:aggregate
+ 
+      - name: Produce Serenity report
+        if: always()
+        run: mvn serenity:aggregate
 
-      # - name: Upload Serenity Report
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: serenity-report
-      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+      - name: Upload Serenity Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-report
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
 
       - name: Upload screenshots
         if: always()
