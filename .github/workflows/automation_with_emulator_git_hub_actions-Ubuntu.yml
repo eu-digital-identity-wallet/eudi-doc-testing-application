@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest-4-core
+    runs-on: ubuntu-latest-large
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
