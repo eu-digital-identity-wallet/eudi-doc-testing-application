@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on:
-      labels: ubuntu-latest-4core
+      labels: ubuntu-22.04-4core
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
