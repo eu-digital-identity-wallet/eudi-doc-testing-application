@@ -55,29 +55,41 @@ jobs:
         run: |
           echo "Starting monitoring in the background..."
           echo "---- $(date) ----" >> usage_report.txt
+
+          # Get chipset model
           echo "Chipset Model:" >> usage_report.txt
-          system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+          sudo lshw -class display | grep "product" >> usage_report.txt
           echo "" >> usage_report.txt
+
+          # Run monitoring loop background
           while true; do
             echo "---- $(date) ----" >> usage_report.txt
+
+            # CPU & Memory Usage
             echo "------ CPU & Memory Usage ------" >> usage_report.txt
-            top -l 1 | head -n 10 >> usage_report.txt
+            top -b -n 1 | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
+
+            # Disk Usage
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
             echo "" >> usage_report.txt
+
+            # Memory Usage
             echo "------ Memory Usage ------" >> usage_report.txt
-            vm_stat | awk '
-            /Pages free/ { free=$3 * 4096 / 1024 / 1024 }
-            /Pages active/ { active=$3 * 4096 / 1024 / 1024 }
-            /Pages inactive/ { inactive=$3 * 4096 / 1024 / 1024 }
-            /Pages speculative/ { speculative=$3 * 4096 / 1024 / 1024 }
+            vmstat -s | awk '
+            /free memory/ { free=$1 }
+            /active memory/ { active=$1 }
+            /inactive memory/ { inactive=$1 }
+            /used memory/ { used=$1 }
             END {
-              printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
+              printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Used: %.2f MB\n", free/1024, active/1024, inactive/1024, used/1024
             }' >> usage_report.txt
             echo "" >> usage_report.txt
+
             sleep 20
           done & echo $! > monitor_pid.txt
+
 
       - name: Enable KVM group perms 
         run: |
