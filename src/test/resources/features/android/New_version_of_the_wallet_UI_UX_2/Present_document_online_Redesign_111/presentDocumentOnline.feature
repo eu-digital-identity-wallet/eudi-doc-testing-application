@@ -8,7 +8,7 @@ Feature: Present Attestations from EUDI Wallet
 
   @US_PDO_TC_01
   Scenario: User selects the option ‘Online’ in the “Present document” section
-    Given the user is on the Home screen
+    Given the user is on the Home page
     When the user selects the Online option in the Present document section
     Then the wallet opens the scanner
 
