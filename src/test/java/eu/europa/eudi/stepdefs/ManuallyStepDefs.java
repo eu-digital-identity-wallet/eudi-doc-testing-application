@@ -4516,4 +4516,50 @@ public class ManuallyStepDefs {
     public void theVerifierDisplaysADeepLink() {
         //manual
     }
+
+    @Given("the user is on the Relying Party Enrolment service page")
+    public void theUserIsOnTheRelyingPartyEnrolmentServicePage() {
+        //manual
+    }
+
+
+    @When("the user presents their PID by scanning the QR code")
+    public void theUserPresentsTheirPIDByScanningTheQRCode() {
+        //manual
+    }
+
+    @Then("the user is authenticated successfully")
+    public void theUserIsAuthenticatedSuccessfully() {
+        //manual
+    }
+
+    @Given("the user is authenticated")
+    public void theUserIsAuthenticated() {
+        //manual
+    }
+
+    @When("the user fills in the required information in the form provided")
+    public void theUserFillsInTheRequiredInformationInTheFormProvided() {
+        //manual
+    }
+
+    @Then("the user previews the certificate information")
+    public void theUserPreviewsTheCertificateInformation() {
+        //manual
+    }
+
+    @Given("the user has previewed the certificate information")
+    public void theUserHasPreviewedTheCertificateInformation() {
+        //manual
+    }
+
+    @When("the user clicks on the Download button")
+    public void theUserClicksOnTheDownloadButton() {
+        //manual
+    }
+
+    @Then("the certificate is downloaded to the user's device")
+    public void theCertificateIsDownloadedToTheUserSDevice() {
+        //manual
+    }
 }
