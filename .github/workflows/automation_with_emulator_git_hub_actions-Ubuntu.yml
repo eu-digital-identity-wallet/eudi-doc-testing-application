@@ -102,7 +102,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
           api-level: 34
-          target: google_apis
+          target: google_apis_playstore
           arch: x86_64
           avd-name: Pixel_6a_API_34
           profile:  pixel_6
