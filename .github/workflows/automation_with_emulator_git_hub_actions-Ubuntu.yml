@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest-large
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -107,14 +107,14 @@ jobs:
           avd-name: Pixel_6a_API_34
           profile:  pixel_6
           # added ram value
-          ram-size: 6144M
-          cores: 4
+          # ram-size: 6144M
+          cores: 2 # 4
           heap-size: 512M
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5554
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window # -memory 6144
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
