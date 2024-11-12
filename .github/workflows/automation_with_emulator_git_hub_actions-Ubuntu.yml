@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -87,7 +87,7 @@ jobs:
             }' >> usage_report.txt
             echo "" >> usage_report.txt
 
-            sleep 20
+            sleep 15
           done & echo $! > monitor_pid.txt
 
 
@@ -144,11 +144,11 @@ jobs:
  
  
       - name: Produce Serenity report
-        if: always()
+        # if: always()
         run: mvn serenity:aggregate
 
       - name: Upload Serenity Report
-        if: always()
+        # if: always()
         uses: actions/upload-artifact@v4
         with:
           name: serenity-report
