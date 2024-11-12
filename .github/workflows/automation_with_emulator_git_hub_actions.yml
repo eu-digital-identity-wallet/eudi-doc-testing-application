@@ -88,7 +88,7 @@ name: automation_with_emulator - 2
 
 on:
   workflow_dispatch:
-  # push:
+  push:
 
 jobs:
   build:
