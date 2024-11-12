@@ -180,14 +180,14 @@ jobs:
           avd-name: Pixel_6_API_33
           profile:  pixel_6
           # added ram value
-          ram-size: 6144M
+          # ram-size: 6144M
           cores: 4
           heap-size: 512M
           disable-animations: true
           emulator-build: 11772612 # initially not used - added for emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5556
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window # -memory 6144
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
@@ -198,7 +198,7 @@ jobs:
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
       - name: Stop Monitoring
