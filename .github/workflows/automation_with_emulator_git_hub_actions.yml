@@ -203,7 +203,7 @@ jobs:
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_02'
 
 
       - name: Stop Monitoring
