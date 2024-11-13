@@ -149,6 +149,7 @@ jobs:
           echo "---- $(date) ----" >> usage_report.txt
           echo "Chipset Model:" >> usage_report.txt
           system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+          system_profiler SPHardwareDataType | grep "Total Number of Cores" >> usage_report.txt
           echo "" >> usage_report.txt
           while true; do
             echo "---- $(date) ----" >> usage_report.txt
@@ -185,8 +186,9 @@ jobs:
           profile:  pixel_2
           # added ram value
           ram-size: 6144M
-          cores: 4
-          heap-size: 1024M
+          cores: 6
+          heap-size: 512M
+          # disk-size: 8G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
@@ -222,11 +224,11 @@ jobs:
  
  
       - name: Produce Serenity report
-        if: always()
+        #if: always()
         run: mvn serenity:aggregate
 
       - name: Upload Serenity Report
-        if: always()
+        #if: always()
         uses: actions/upload-artifact@v4
         with:
           name: serenity-report
