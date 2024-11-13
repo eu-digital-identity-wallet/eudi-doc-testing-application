@@ -159,6 +159,7 @@ jobs:
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
             echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
             echo "------ Memory Usage ------" >> usage_report.txt
             vm_stat | awk '
             /Pages free/ { free=$3 * 4096 / 1024 / 1024 }
