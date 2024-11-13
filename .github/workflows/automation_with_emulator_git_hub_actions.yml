@@ -186,7 +186,7 @@ jobs:
           # added ram value
           ram-size: 6144M
           cores: 4
-          heap-size: 512M
+          heap-size: 1024M
           disable-animations: true
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
