@@ -154,7 +154,7 @@ jobs:
           while true; do
             echo "---- $(date) ----" >> usage_report.txt
             echo "------ CPU & Memory Usage ------" >> usage_report.txt
-            top -l 1 | head -n 15 >> usage_report.txt
+            top -l 1 | head -n 25 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
@@ -188,7 +188,8 @@ jobs:
           # added ram value
           ram-size: 6144M
           cores: 4
-          heap-size: 512M
+          # heap-size: 512M
+          heap-size: 1024M
           # disk-size: 8G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
