@@ -154,7 +154,7 @@ jobs:
           while true; do
             echo "---- $(date) ----" >> usage_report.txt
             echo "------ CPU & Memory Usage ------" >> usage_report.txt
-            top -l 1 | head -n 10 >> usage_report.txt
+            top -l 1 | head -n 15 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
@@ -170,7 +170,7 @@ jobs:
               printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
             }' >> usage_report.txt
             echo "" >> usage_report.txt
-            sleep 20
+            sleep 10
           done & echo $! > monitor_pid.txt
 
       - name: Run UI Tests
@@ -206,7 +206,7 @@ jobs:
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_02'
             adb logcat -d > logcat_output.txt
 
       - name: Stop Monitoring
