@@ -190,7 +190,7 @@ jobs:
           cores: 4
           # heap-size: 512M
           heap-size: 1024M
-          # disk-size: 8G
+          disk-size: 16G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
@@ -207,6 +207,8 @@ jobs:
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting maven verify..."
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_02'
             sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_03'
             adb logcat -d > logcat_output.txt
 
