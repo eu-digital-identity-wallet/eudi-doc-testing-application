@@ -186,17 +186,17 @@ jobs:
           # avd-name: Pixel_2_API_34
           # profile:  pixel_2
           # added ram value
-          ram-size: 6144M
+          ram-size: 8192M
           cores: 6
           # heap-size: 512M
-          heap-size: 1024M
+          heap-size: 2048M
           disk-size: 16G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5556
           # emulator-port: 5554
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
@@ -206,11 +206,10 @@ jobs:
             echo "***************"
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
-            echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_02'
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_03'
+            echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
+            echo "Starting maven verify..."
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
             
 
       - name: Stop Monitoring
