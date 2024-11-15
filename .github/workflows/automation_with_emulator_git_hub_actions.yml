@@ -54,15 +54,20 @@ jobs:
       - name: Monitoring Start
         run: |
           echo "Starting monitoring in the background..."
-          echo "---- $(date) ----" >> usage_report.txt
+          echo "------ $(date) ------" >> usage_report.txt
           echo "Chipset Model:" >> usage_report.txt
           system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
           system_profiler SPHardwareDataType | grep "Total Number of Cores" >> usage_report.txt
+          echo ""
+          echo "------- Detailed host Info ------"
+          system_profiler SPHardwareDataType SPSoftwareDataType SPMemoryDataType SPStorageDataType
+          echo "" >> usage_report.txt
+          echo "---------///---///---------" >> usage_report.txt
           echo "" >> usage_report.txt
           while true; do
-            echo "---- $(date) ----" >> usage_report.txt
+            echo "------ $(date) ------" >> usage_report.txt
             echo "------ CPU & Memory Usage ------" >> usage_report.txt
-            top -l 1 | head -n 25 >> usage_report.txt
+            top -l 1 | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Top CPU-Intensive Processes ------" >> usage_report.txt
@@ -87,7 +92,7 @@ jobs:
             echo "------ Disk Usage ------" >> usage_report.txt
             df -h >> usage_report.txt
             echo "" >> usage_report.txt
-            echo "" >> usage_report.txt
+            echo "---------///---///---------" >> usage_report.txt
             echo "" >> usage_report.txt
             sleep 10
           done & echo $! > monitor_pid.txt
