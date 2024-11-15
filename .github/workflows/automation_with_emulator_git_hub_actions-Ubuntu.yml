@@ -2,7 +2,7 @@ name: automation_with_emulator - UBUNTU
 
 on:
   workflow_dispatch:
-  # push:
+  push:
 
 jobs:
   build:
@@ -105,14 +105,10 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
           api-level: 33
-          # api-level: 34
           target: google_apis
-          # target: google_apis_playstore
           arch: x86_64
           avd-name: Pixel_6_API_33
           profile:  pixel_6
-          # avd-name: Pixel_2_API_34
-          # profile:  pixel_2
           # added ram value
           ram-size: 8192M
           cores: 6
@@ -122,7 +118,6 @@ jobs:
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5556
-          # emulator-port: 5554
           emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
           script: |
             echo "Waiting for Android Emulator..."
@@ -136,7 +131,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
+            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
       - name: Stop Monitoring
@@ -154,16 +149,16 @@ jobs:
           path: usage_report.txt
  
  
-      - name: Produce Serenity report
-        # if: always()
-        run: mvn serenity:aggregate
+      # - name: Produce Serenity report
+      #   if: always()
+      #   run: mvn serenity:aggregate
 
-      - name: Upload Serenity Report
-        # if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: serenity-report
-          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+      # - name: Upload Serenity Report
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: serenity-report
+      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
 
       - name: Upload screenshots
         if: always()

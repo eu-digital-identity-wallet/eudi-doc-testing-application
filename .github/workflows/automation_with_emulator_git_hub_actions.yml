@@ -2,7 +2,7 @@ name: automation_with_emulator - 2 - Standard
 
 on:
   workflow_dispatch:
-  push:
+  # push:
 
 jobs:
   build:
