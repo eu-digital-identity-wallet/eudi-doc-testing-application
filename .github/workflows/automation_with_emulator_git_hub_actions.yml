@@ -96,7 +96,7 @@ jobs:
           # added ram value
           ram-size: 8192M
           cores: 6
-          heap-size: 2048M
+          heap-size: 1024M
           disk-size: 16G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
@@ -127,12 +127,10 @@ jobs:
           rm monitor_pid.txt
 
       - name: Compress Logcat Output
-        if: always()
         run: zip logcat_output.zip logcat_output.txt
 
       - name: Upload Logcat Output
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: logcat-output
           path: logcat_output.zip
@@ -166,4 +164,3 @@ jobs:
         with:
           name: test-recordings
           path: target/recordings/*
-          
