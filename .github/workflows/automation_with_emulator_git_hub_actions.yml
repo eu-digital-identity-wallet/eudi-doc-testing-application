@@ -64,8 +64,13 @@ jobs:
             echo "------ CPU & Memory Usage ------" >> usage_report.txt
             top -l 1 | head -n 25 >> usage_report.txt
             echo "" >> usage_report.txt
-            echo "------ Disk Usage ------" >> usage_report.txt
-            df -h >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Top CPU-Intensive Processes ------" >> usage_report.txt
+            ps -Ao pid,comm,%cpu --sort=-%cpu | head -n 10 >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Top RAM-Intensive Processes ------" >> usage_report.txt
+            ps -Ao pid,comm,%mem --sort=-%mem | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Memory Usage ------" >> usage_report.txt
@@ -77,6 +82,12 @@ jobs:
             END {
               printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
             }' >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Disk Usage ------" >> usage_report.txt
+            df -h >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             sleep 10
           done & echo $! > monitor_pid.txt
