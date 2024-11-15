@@ -66,11 +66,11 @@ jobs:
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Top CPU-Intensive Processes ------" >> usage_report.txt
-            ps -Aro pid,comm,%cpu | head -n 10 >> usage_report.txt
+            ps -Aro pid,comm,args,%cpu | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Top RAM-Intensive Processes ------" >> usage_report.txt
-            ps -Amo pid,comm,%mem | head -n 10 >> usage_report.txt
+            ps -Amo pid,command,%mem | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Memory Usage ------" >> usage_report.txt
