@@ -58,9 +58,9 @@ jobs:
           echo "Chipset Model:" >> usage_report.txt
           system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
           system_profiler SPHardwareDataType | grep "Total Number of Cores" >> usage_report.txt
-          echo ""
-          echo "------- Detailed host Info ------"
-          system_profiler SPHardwareDataType SPSoftwareDataType SPMemoryDataType SPStorageDataType
+          echo "" >> usage_report.txt
+          echo "------- Detailed host Info ------" >> usage_report.txt
+          system_profiler SPHardwareDataType SPSoftwareDataType SPMemoryDataType SPStorageDataType >> usage_report.txt
           echo "" >> usage_report.txt
           echo "---------///---///---------" >> usage_report.txt
           echo "" >> usage_report.txt
