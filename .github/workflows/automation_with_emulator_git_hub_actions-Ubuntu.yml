@@ -62,6 +62,9 @@ jobs:
           # Get chipset model
           echo "Chipset Model:" >> usage_report.txt
           sudo lshw -class display | grep "product" >> usage_report.txt
+          echo ""
+          echo "----- CPU Details -----"
+          lscpu >> usage_report.txt
           echo "" >> usage_report.txt
 
           # Run monitoring loop background
