@@ -66,11 +66,11 @@ jobs:
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Top CPU-Intensive Processes ------" >> usage_report.txt
-            ps -Ao pid,comm,%cpu --sort=-%cpu | head -n 10 >> usage_report.txt
+            ps -Aro pid,comm,%cpu | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Top RAM-Intensive Processes ------" >> usage_report.txt
-            ps -Ao pid,comm,%mem --sort=-%mem | head -n 10 >> usage_report.txt
+            ps -Amo pid,comm,%mem | head -n 10 >> usage_report.txt
             echo "" >> usage_report.txt
             echo "" >> usage_report.txt
             echo "------ Memory Usage ------" >> usage_report.txt
@@ -92,42 +92,42 @@ jobs:
             sleep 10
           done & echo $! > monitor_pid.txt
 
-      - name: Run UI Tests
-        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
-        with:
-          api-level: 33
-          # api-level: 34
-          target: google_apis
-          # target: google_apis_playstore
-          arch: x86_64
-          avd-name: Pixel_6_API_33
-          profile:  pixel_6
-          # avd-name: Pixel_2_API_34
-          # profile:  pixel_2
-          # added ram value
-          ram-size: 6144M
-          cores: 6
-          heap-size: 1024M
-          disk-size: 16G
-          disable-animations: true
-          emulator-build: 11772612 # emulator version control
-          emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
-          emulator-port: 5556
-          # emulator-port: 5554
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
-          script: |
-            echo "Waiting for Android Emulator..."
-            adb wait-for-device
-            adb devices
-            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
-            echo "Android has booted!"
-            echo "***************"
-            echo "Checking cmd setting service availabilty..."
-            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
-            echo "Starting Logcat..."
-            adb logcat -d > logcat_output.txt
-            echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
+      # - name: Run UI Tests
+      #   uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
+      #   with:
+      #     api-level: 33
+      #     # api-level: 34
+      #     target: google_apis
+      #     # target: google_apis_playstore
+      #     arch: x86_64
+      #     avd-name: Pixel_6_API_33
+      #     profile:  pixel_6
+      #     # avd-name: Pixel_2_API_34
+      #     # profile:  pixel_2
+      #     # added ram value
+      #     ram-size: 6144M
+      #     cores: 6
+      #     heap-size: 1024M
+      #     disk-size: 16G
+      #     disable-animations: true
+      #     emulator-build: 11772612 # emulator version control
+      #     emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
+      #     emulator-port: 5556
+      #     # emulator-port: 5554
+      #     emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+      #     script: |
+      #       echo "Waiting for Android Emulator..."
+      #       adb wait-for-device
+      #       adb devices
+      #       while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+      #       echo "Android has booted!"
+      #       echo "***************"
+      #       echo "Checking cmd setting service availabilty..."
+      #       if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+      #       echo "Starting Logcat..."
+      #       adb logcat -d > logcat_output.txt
+      #       echo "Starting maven verify..."
+      #       sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
             
 
       - name: Stop Monitoring
@@ -137,14 +137,14 @@ jobs:
           kill $(cat monitor_pid.txt)
           rm monitor_pid.txt
 
-      - name: Compress Logcat Output
-        run: zip logcat_output.zip logcat_output.txt
+      # - name: Compress Logcat Output
+      #   run: zip logcat_output.zip logcat_output.txt
 
-      - name: Upload Logcat Output
-        uses: actions/upload-artifact@v4
-        with:
-          name: logcat-output
-          path: logcat_output.zip
+      # - name: Upload Logcat Output
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: logcat-output
+      #     path: logcat_output.zip
 
       - name: Upload Usage Report
         if: always()
@@ -153,25 +153,25 @@ jobs:
           name: usage-report
           path: usage_report.txt
  
-      - name: Produce Serenity report
-        run: mvn serenity:aggregate
+      # - name: Produce Serenity report
+      #   run: mvn serenity:aggregate
 
-      - name: Upload Serenity Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: serenity-report
-          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+      # - name: Upload Serenity Report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: serenity-report
+      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
 
-      - name: Upload screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-screenshots
-          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
+      # - name: Upload screenshots
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: test-screenshots
+      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
 
-      - name: Upload recordings
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-recordings
-          path: target/recordings/*
+      # - name: Upload recordings
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: test-recordings
+      #     path: target/recordings/*
