@@ -132,8 +132,8 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            echo "sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'"
-            (mkdir -p memory-logs && while true; do adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt"; sleep 15; done) & echo $! > memory_monitor_pid.txt && sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            mkdir -p memory-logs && (while true; do adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt"; sleep 15; done) & echo $! > memory_monitor_pid.txt
+            sleep 180 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
       - name: Stop Memory Monitoring
