@@ -131,11 +131,16 @@ jobs:
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
-            echo "Starting maven verify..."
-            sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
-            echo "checking APP package"
-            adb shell pm list packages | grep 'eu.europa.ec.euidi'
-            
+            echo "Starting maven verify && APP Mem Monitoring"
+            echo "sleep 180 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'"
+            sleep 170 && (mkdir -p memory-logs && while true; do adb shell dumpsys meminfo com.example.myapp > memory-logs/memory_logs_$(date +%s).txt; sleep 15; done) & echo $! > memory_monitor_pid.txt && sleep 10 && mvn clean verify -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+
+      - name: Stop Memory Monitoring
+        if: always()
+        run: |
+          echo "Stopping memory monitoring..."
+          kill $(cat memory_monitor_pid.txt)
+          rm memory_monitor_pid.txt
 
       - name: Stop Monitoring
         if: always()
@@ -152,6 +157,13 @@ jobs:
       #   with:
       #     name: logcat-output
       #     path: logcat_output.zip
+
+      - name: Upload Memory Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: memory-logs
+          path: memory-logs
 
       - name: Upload Usage Report
         if: always()
