@@ -97,6 +97,15 @@ jobs:
             sleep 10
           done & echo $! > monitor_pid.txt
 
+      - name: ADB Memory Monitoring
+        run: |
+          mkdir -vp memory-logs 
+          while true; do 
+            adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt" 
+            sleep 15; 
+          done & echo $! > memory_monitor_pid.txt
+          echo $(cat memory_monitor_pid)
+
       - name: Run UI Tests
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
         with:
@@ -131,21 +140,15 @@ jobs:
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
-            echo "Starting maven verify && APP Mem Monitoring"
-            mkdir -p memory-logs && (while true; do adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt"; sleep 15; done) & echo $! > memory_monitor_pid.txt
-            echo $(cat memory_monitor_pid)
+            echo "Starting maven verify"
             sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
-            echo "Stopping memory-logs Collection" 
-            kill $(cat memory_monitor_pid.txt) 
-            rm memory_monitor_pid.txt
 
-
-      # - name: Stop Memory Monitoring
-      #   if: always()
-      #   run: |
-      #     echo "Stopping memory monitoring..."
-      #     kill $(cat memory_monitor_pid.txt)
-      #     rm memory_monitor_pid.txt
+      - name: Stop Memory Monitoring
+        if: always()
+        run: |
+          echo "Stopping memory monitoring..."
+          kill $(cat memory_monitor_pid.txt)
+          rm memory_monitor_pid.txt
 
       - name: Stop Monitoring
         if: always()
