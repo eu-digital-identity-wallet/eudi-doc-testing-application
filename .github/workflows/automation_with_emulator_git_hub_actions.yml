@@ -153,14 +153,14 @@ jobs:
           kill $(cat monitor_pid.txt)
           rm monitor_pid.txt
 
-      # - name: Compress Logcat Output
-      #   run: zip logcat_output.zip logcat_output.txt
+      - name: Compress Logcat Output
+        run: zip logcat_output.zip logcat_output.txt
 
-      # - name: Upload Logcat Output
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: logcat-output
-      #     path: logcat_output.zip
+      - name: Upload Logcat Output
+        uses: actions/upload-artifact@v4
+        with:
+          name: logcat-output
+          path: logcat_output.zip
 
       - name: Upload Memory Logs
         if: always()
@@ -176,25 +176,25 @@ jobs:
           name: usage-report
           path: usage_report.txt
  
-      # - name: Produce Serenity report
-      #   run: mvn -ntp serenity:aggregate
+      - name: Produce Serenity report
+        run: mvn -ntp serenity:aggregate
 
-      # - name: Upload Serenity Report
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: serenity-report
-      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-report
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
 
-      # - name: Upload screenshots
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: test-screenshots
-      #     path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-screenshots
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
 
-      # - name: Upload recordings
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: test-recordings
-      #     path: target/recordings/*
+      - name: Upload recordings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-recordings
+          path: target/recordings/*
