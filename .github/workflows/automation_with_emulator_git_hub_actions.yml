@@ -38,8 +38,8 @@ jobs:
       - name: Start Appium
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
-      - name: Wait for Appium to start
-        run: sleep 15 # Adjust the time as needed
+      # - name: Wait for Appium to start
+      #   run: sleep 15 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -133,8 +133,11 @@ jobs:
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
             mkdir -p memory-logs && (while true; do adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt"; sleep 15; done) & echo $! > memory_monitor_pid.txt
-            sleep 180 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
-            echo "Stopping memory-logs Collection" && kill $(cat memory_monitor_pid.txt) && rm memory_monitor_pid.txt
+            echo $(cat memory_monitor_pid)
+            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            echo "Stopping memory-logs Collection" 
+            kill $(cat memory_monitor_pid.txt) 
+            rm memory_monitor_pid.txt
 
 
       # - name: Stop Memory Monitoring
