@@ -4894,7 +4894,213 @@ public class ManuallyStepDefs {
     }
 
     @Then("the EUDI Wallet should collapse the entry and return it to the list view")
-    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView() {
+    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView()   {
+        //manual
+    }
+
+    @Given("the user is on the EUDIW web verifier")
+    public void theUserIsOnTheEUDIWWebVerifier() {
+        //manual
+    }
+
+    @When("the user navigates to the presentation request section")
+    public void theUserNavigatesToThePresentationRequestSection() {
+        //manual
+    }
+
+    @Then("the user views the presentation request guide")
+    public void theUserViewsThePresentationRequestGuide() {
+        //manual
+    }
+
+    @Given("the user is on the first step")
+    public void theUserIsOnTheFirstStep() {
+        //manual
+    }
+
+    @When("the user selects one attestation option")
+    public void theUserSelectsOneAttestationOption() {
+        //manual
+    }
+
+    @Then("the verifier allows the user to proceed to the next step")
+    public void theVerifierAllowsTheUserToProceedToTheNextStep() {
+        //manual
+    }
+
+    @Given("the user has selected an attestation option")
+    public void theUserHasSelectedAnAttestationOption() {
+        //manual
+    }
+
+    @When("the user indicates that they want to choose specific attributes")
+    public void theUserIndicatesThatTheyWantToChooseSpecificAttributes() {
+        //manual
+    }
+
+    @And("the user selects the format of the attestation")
+    public void theUserSelectsTheFormatOfTheAttestation() {
+        //manual
+    }
+
+    @Then("the user clicks on the next button")
+    public void theUserClicksOnTheNextButton() {
+        //manual
+    }
+
+    @Given("the user is on the second step of the guide")
+    public void theUserIsOnTheSecondStepOfTheGuide() {
+        //manual
+    }
+
+    @When("the user selects the applicable data items to be included in the request")
+    public void theUserSelectsTheApplicableDataItemsToBeIncludedInTheRequest() {
+        //manual
+    }
+
+    @And("the user clicks the next button")
+    public void theUserClicksTheNextButton() {
+        //manual
+    }
+
+    @Then("the user navigates to the third step")
+    public void theUserNavigatesToTheThirdStep() {
+        //manual
+    }
+
+    @Given("the user is on the final step")
+    public void theUserIsOnTheFinalStep() {
+        //manual
+    }
+
+    @Then("the verifier generates a QR code")
+    public void theVerifierGeneratesAQRCode() {
+        //manual
+    }
+
+    @Given("the verifier displays the QR code")
+    public void theVerifierDisplaysTheQRCode() {
+        //manual
+    }
+
+    @Then("the user’s request made to the verifier appears in the wallet")
+    public void theUserSRequestMadeToTheVerifierAppearsInTheWallet() {
+        //manual
+    }
+
+    @Given("the user is on the verifier")
+    public void theUserIsOnTheVerifier() {
+        //manual
+    }
+
+    @When("the user selects multiple attestations option")
+    public void theUserSelectsMultipleAttestationsOption() {
+        //manual
+    }
+
+    @Then("the verifier displays the available attestations")
+    public void theVerifierDisplaysTheAvailableAttestations() {
+        //manual
+    }
+
+    @Given("the user has selected a multiple option")
+    public void theUserHasSelectedAMultipleOption() {
+        //manual
+    }
+
+    @When("the user indicates that they want to choose specific attributes in the attestations they desire")
+    public void theUserIndicatesThatTheyWantToChooseSpecificAttributesInTheAttestationsTheyDesire() {
+        //manual
+    }
+
+    @And("the user selects the format of the attestations")
+    public void theUserSelectsTheFormatOfTheAttestations() {
+        //manual
+    }
+
+    @Then("the verifier saves the selected options")
+    public void theVerifierSavesTheSelectedOptions() {
+        //manual
+    }
+
+    @Given("the user follows the steps of the guide")
+    public void theUserFollowsTheStepsOfTheGuide() {
+        //manual
+    }
+
+    @Then("the user scans the QR code with the EUDI wallet app")
+    public void theUserScansTheQRCodeWithTheEUDIWalletApp() {
+        //manual
+    }
+
+    @Then("the verifier generates a deep link")
+    public void theVerifierGeneratesADeepLink() {
+        //manual
+    }
+
+    @Given("the verifier displays the deep link")
+    public void theVerifierDisplaysTheDeepLink() {
+        //manual
+    }
+
+    @When("the user clicks on the deep link")
+    public void theUserClicksOnTheDeepLink() {
+        //manual
+    }
+
+    @And("the user is redirected to the EUDI wallet app")
+    public void theUserIsRedirectedToTheEUDIWalletApp() {
+        //manual
+    }
+
+    @When("the verifier displays a deep link")
+    public void theVerifierDisplaysADeepLink() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party Enrolment service page")
+    public void theUserIsOnTheRelyingPartyEnrolmentServicePage() {
+        //manual
+    }
+
+
+    @When("the user presents their PID by scanning the QR code")
+    public void theUserPresentsTheirPIDByScanningTheQRCode() {
+        //manual
+    }
+
+    @Then("the user is authenticated successfully")
+    public void theUserIsAuthenticatedSuccessfully() {
+        //manual
+    }
+
+    @Given("the user is authenticated")
+    public void theUserIsAuthenticated() {
+        //manual
+    }
+
+    @When("the user fills in the required information in the form provided")
+    public void theUserFillsInTheRequiredInformationInTheFormProvided() {
+        //manual
+    }
+
+    @Then("the user previews the certificate information")
+    public void theUserPreviewsTheCertificateInformation() {
+        //manual
+    }
+
+    @Given("the user has previewed the certificate information")
+    public void theUserHasPreviewedTheCertificateInformation() {
+        //manual
+    }
+
+    @When("the user clicks on the Download button")
+    public void theUserClicksOnTheDownloadButton() {
+        //manual
+    }
+
+    @Then("the certificate is downloaded to the user's device")
+    public void theCertificateIsDownloadedToTheUserSDevice() {
         //manual
     }
 }
