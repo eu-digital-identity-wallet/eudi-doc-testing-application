@@ -97,14 +97,14 @@ jobs:
             sleep 10
           done & echo $! > monitor_pid.txt
 
-      - name: ADB Memory Monitoring
-        run: |
-          mkdir -vp memory-logs 
-          while true; do 
-            adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt" 
-            sleep 15; 
-          done & echo $! > memory_monitor_pid.txt
-          echo $(cat memory_monitor_pid)
+      # - name: ADB Memory Monitoring
+      #   run: |
+      #     mkdir -vp memory-logs 
+      #     while true; do 
+      #       adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt" 
+      #       sleep 15; 
+      #     done & echo $! > memory_monitor_pid.txt
+      #     echo $(cat memory_monitor_pid)
 
       - name: Run UI Tests
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
@@ -129,6 +129,13 @@ jobs:
           emulator-port: 5556
           # emulator-port: 5554
           emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+          pre-emulator-launch-script: |
+            mkdir -vp memory-logs 
+            while true; do 
+              adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt" 
+              sleep 15; 
+            done & echo $! > memory_monitor_pid.txt
+            echo $(cat memory_monitor_pid.txt)
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
@@ -143,7 +150,7 @@ jobs:
             echo "Starting maven verify"
             sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
-      - name: Stop Memory Monitoring
+      - name: Stop Memory Monitoring (ADB)
         if: always()
         run: |
           echo "Stopping memory monitoring..."
