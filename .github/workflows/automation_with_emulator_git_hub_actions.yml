@@ -38,8 +38,8 @@ jobs:
       - name: Start Appium
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
-      # - name: Wait for Appium to start
-      #   run: sleep 15 # Adjust the time as needed
+      - name: Wait for Appium to start
+        run: sleep 20 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -111,16 +111,16 @@ jobs:
           # avd-name: Pixel_2_API_34
           # profile:  pixel_2
           # added ram value
-          ram-size: 6144M
+          ram-size: 8192M
           cores: 6
-          heap-size: 1024M
+          heap-size: 2048M
           disk-size: 16G
           disable-animations: true
           emulator-build: 11772612 # emulator version control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5556
           # emulator-port: 5554
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 6144
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
           # pre-emulator-launch-script: |
           #   mkdir -p memory-logs && (while true; do adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt"; sleep 15; done) & echo $! > memory_monitor_pid.txt 
           #   echo $(cat memory_monitor_pid.txt)
@@ -177,7 +177,7 @@ jobs:
           path: usage_report.txt
  
       # - name: Produce Serenity report
-      #   run: mvn serenity:aggregate
+      #   run: mvn -ntp serenity:aggregate
 
       # - name: Upload Serenity Report
       #   uses: actions/upload-artifact@v4
