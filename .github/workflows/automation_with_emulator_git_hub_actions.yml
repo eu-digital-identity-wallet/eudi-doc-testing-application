@@ -39,7 +39,7 @@ jobs:
         run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
 
       - name: Wait for Appium to start
-        run: sleep 20 # Adjust the time as needed
+        run: sleep 30 # Adjust the time as needed
 
       - name: Print Appium status
         run: curl http://127.0.0.1:4723/wd/hub/status
@@ -136,7 +136,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP'
+            sleep 180 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID'
 
 
       # - name: Stop Memory Monitoring
