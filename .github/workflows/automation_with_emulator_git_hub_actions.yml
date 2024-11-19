@@ -136,7 +136,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            sleep 180 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID'
+            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID'
 
 
       # - name: Stop Memory Monitoring
@@ -154,20 +154,22 @@ jobs:
           rm monitor_pid.txt
 
       - name: Compress Logcat Output
+        if: always()
         run: zip logcat_output.zip logcat_output.txt
 
       - name: Upload Logcat Output
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: logcat-output
           path: logcat_output.zip
 
-      - name: Upload Memory Logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: memory-logs
-          path: memory-logs
+      # - name: Upload Memory Logs
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: memory-logs
+      #     path: memory-logs
 
       - name: Upload Usage Report
         if: always()
@@ -177,10 +179,12 @@ jobs:
           path: usage_report.txt
  
       - name: Produce Serenity report
+        if: always()
         run: mvn -ntp serenity:aggregate
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: serenity-report
           path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
