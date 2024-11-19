@@ -133,7 +133,7 @@ jobs:
             mkdir -vp memory-logs 
             while true; do 
               adb shell dumpsys meminfo eu.europa.ec.euidi > "memory-logs/memory_logs_$(date +%s).txt" 
-              sleep 15; 
+              sleep 15 
             done & echo $! > memory_monitor_pid.txt
             echo $(cat memory_monitor_pid.txt)
           script: |
