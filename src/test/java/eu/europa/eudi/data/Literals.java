@@ -42,7 +42,7 @@ public interface Literals {
         VIEW_DATA_PAGE("Please review carefully before sharing your data. Why we need your data?"),
         VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
 
-        APP_OPEN_SUCCESSFULLY("PID authentication"),
+        APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("1");
 
