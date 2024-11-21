@@ -15,4 +15,8 @@ public class IssuerElements {
     public static By formIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Enter the data for your EUDI Wallet\"]");
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By issuanceDate = By.xpath("//android.widget.CheckBox[@text=\"Issuance date\"]");
+    public static By selectAttributes = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
+    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By secondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
 }

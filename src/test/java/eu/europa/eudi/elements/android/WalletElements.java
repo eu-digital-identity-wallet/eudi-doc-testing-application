@@ -13,17 +13,19 @@ public class WalletElements {
     public static By nextButton = By.xpath("//android.widget.TextView[@text=\"NEXT\"]");
     public static By clickConfirm = By.xpath("//android.widget.TextView[@text=\"CONFIRM\"]");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"You successfully set the quick pin\"]");
-    public static By clickShareData = By.xpath("//android.widget.RadioGroup/android.view.View[1]");
+//    public static By clickShareData = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-0\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickShareData = By.xpath("//android.view.View[@resource-id=\"cdk-step-content-0-0\"]/android.view.View[1]/android.view.View");
     public static By clickNext = By.xpath("//android.widget.Button[@text=\"NEXT\"]");
+    public static By clickNextForVerifier = By.xpath("//android.widget.Button[@text=\"Next\"]");
     public static By chooseData = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
     public static By chooseData2 = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
-    public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"AUTHENTICATE WITH WALLET\"]");
+    public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"OPEN WITH YOUR WALLET\"]");
     public static By chooseSampleData = By.xpath("//android.widget.TextView[@text=\"Load Sample Documents\"]");
     public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"Please review carefully before sharing your data. Why we need your data?\"]");
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"SHARE\"]");
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared information with EUDI Remote Verifier\"]");
     public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"CONTINUE\"]");
-    public static By appOpensSuccessfully = By.xpath("(//android.view.View[@text=\"PID authentication\"])[1]");
+    public static By appOpensSuccessfully = By.xpath("//android.widget.TextView[@text=\"Define your presentation request\"]");
     public static By loginPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Login\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Proceed to authentication\"]");
     public static By welcomePage = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
@@ -77,4 +79,16 @@ public class WalletElements {
     public static By clickExpandVerification = By.xpath("//android.widget.TextView[@text=\"Verification Data\"]");
     public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Date of issuance\"]");
     public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EUDI Remote Verifier requests the following\"]");
+    public static By clickPidAuthentication = By.xpath("//android.view.View[@resource-id=\"cdk-step-content-0-0\"]/android.view.View[2]");
+//    public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By clickAttributes = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-2\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickAttributesEmulator = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-2\"]/android.view.View/android.view.View/android.view.View/android.widget.Image");
+//    public static By clickAllAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
+    public static By clickAllAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[2]");
+
+    public static By clickFormat = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-4\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.widget.TextView");
+    public static By clickSpecificFormat = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By clickSpecificFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
 }
