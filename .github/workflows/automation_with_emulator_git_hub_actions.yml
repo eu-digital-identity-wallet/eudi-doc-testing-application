@@ -133,7 +133,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
+            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID'
 
 
       - name: Stop Monitoring
