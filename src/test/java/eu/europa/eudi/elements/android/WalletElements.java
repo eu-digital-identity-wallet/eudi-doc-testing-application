@@ -13,7 +13,8 @@ public class WalletElements {
     public static By nextButton = By.xpath("//android.widget.TextView[@text=\"NEXT\"]");
     public static By clickConfirm = By.xpath("//android.widget.TextView[@text=\"CONFIRM\"]");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"You successfully set the quick pin\"]");
-    public static By clickShareData = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-0\"]/android.view.View/android.view.View/android.widget.Image");
+//    public static By clickShareData = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-0\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickShareData = By.xpath("//android.view.View[@resource-id=\"cdk-step-content-0-0\"]/android.view.View[1]/android.view.View");
     public static By clickNext = By.xpath("//android.widget.Button[@text=\"NEXT\"]");
     public static By clickNextForVerifier = By.xpath("//android.widget.Button[@text=\"Next\"]");
     public static By chooseData = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
@@ -79,10 +80,15 @@ public class WalletElements {
     public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Date of issuance\"]");
     public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EUDI Remote Verifier requests the following\"]");
     public static By clickPidAuthentication = By.xpath("//android.view.View[@resource-id=\"cdk-step-content-0-0\"]/android.view.View[2]");
+//    public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
     public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
     public static By clickAttributes = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-2\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickAttributesEmulator = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-2\"]/android.view.View/android.view.View/android.view.View/android.widget.Image");
 //    public static By clickAllAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
     public static By clickAllAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[2]");
+
     public static By clickFormat = By.xpath("//android.widget.Spinner[@resource-id=\"mat-select-4\"]/android.view.View/android.view.View/android.widget.Image");
+    public static By clickFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.widget.TextView");
     public static By clickSpecificFormat = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By clickSpecificFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
 }
