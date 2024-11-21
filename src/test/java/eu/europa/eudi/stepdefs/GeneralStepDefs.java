@@ -129,10 +129,11 @@ public class GeneralStepDefs{
     @And("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
         test.mobile().verifier().appOpensSuccefully();
-        test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().chooseData();
-        test.mobile().verifier().clickNext();
+//        test.mobile().verifier().selectShareAttributes();
+//        test.mobile().verifier().clickNext();
+//        test.mobile().verifier().chooseData();
+//        test.mobile().verifier().clickNext();
+        theVerifierRequestsADocFromTheWalletUser();
     }
 
 
@@ -160,11 +161,7 @@ public class GeneralStepDefs{
         test.mobile().wallet().loadSampleDocuments();
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().appOpensSuccefully();
-        test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().chooseData();
-        test.mobile().verifier().clickNext();
+        theVerifierRequestsADocFromTheWalletUser();
         test.mobile().verifier().chooseWallet();
         test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
@@ -940,16 +937,19 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccefully();
         test.mobile().verifier().selectShareAttributes();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().chooseData();
-        test.mobile().verifier().chooseData2();
-        test.mobile().verifier().scrollUntilFindIssuanceDate();
-        test.mobile().verifier().clickIssuanceDate();
+        test.mobile().verifier().selectAttributes();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().chooseWallet();
+        test.mobile().verifier().clickNext();
+//        test.mobile().verifier().chooseData();
+//        test.mobile().verifier().chooseData2();
+//        test.mobile().verifier().scrollUntilFindIssuanceDate();
+//        test.mobile().verifier().clickIssuanceDate();
+//        test.mobile().verifier().clickNext();
     }
 
     @Then("the requestor of the data is displayed in the wallet")
     public void theRequestorOfTheDataIsDisplayedInTheWallet() {
+        test.mobile().verifier().chooseWallet();
         test.mobile().verifier().viewDataPage();
     }
 
@@ -1061,10 +1061,7 @@ public class GeneralStepDefs{
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().userOpensVerifier();
         test.mobile().verifier().appOpensSuccefully();
-        test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().chooseData();
-        test.mobile().verifier().clickNext();
+        theVerifierRequestsADocFromTheWalletUser();
         test.mobile().verifier().chooseWallet();
     }
 
