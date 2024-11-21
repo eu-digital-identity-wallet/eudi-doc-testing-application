@@ -136,13 +136,6 @@ jobs:
             sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='@automated and @ANDROID and @US_VP_TC_01'
 
 
-      # - name: Stop Memory Monitoring
-      #   if: always()
-      #   run: |
-      #     echo "Stopping memory monitoring..."
-      #     kill $(cat memory_monitor_pid.txt)
-      #     rm memory_monitor_pid.txt
-
       - name: Stop Monitoring
         if: always()
         run: |
@@ -160,13 +153,6 @@ jobs:
         with:
           name: logcat-output
           path: logcat_output.zip
-
-      # - name: Upload Memory Logs
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: memory-logs
-      #     path: memory-logs
 
       - name: Upload Usage Report
         if: always()
