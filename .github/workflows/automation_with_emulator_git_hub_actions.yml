@@ -1,12 +1,15 @@
-name: automation_with_emulator - 2 - Standard
+name: automation_with_emulator - Standard
 
 on:
   workflow_dispatch:
-  push:
+  # push:
+  schedule:
+    - cron: '0 3 * * 1-5'
 
 jobs:
   build:
     runs-on: macos-13-large
+    timeout-minutes: 240
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
