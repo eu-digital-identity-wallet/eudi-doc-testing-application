@@ -10,7 +10,7 @@ Feature: Select Document to be Signed
   Scenario: Display list of documents for signing
     Given the user is authenticated in the EUDI Wallet
     And the user is on the main screen of the EUDI Wallet
-    When the user selects the option "Sign a Document"
+    When the user selects the option Sign a Document
     Then the EUDI Wallet should display a list of available documents from the device
 
   @US_DLODFS_TC_02
