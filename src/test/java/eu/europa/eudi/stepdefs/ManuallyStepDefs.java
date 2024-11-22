@@ -5103,4 +5103,69 @@ public class ManuallyStepDefs {
     public void theCertificateIsDownloadedToTheUserSDevice() {
         //manual
     }
+
+    @And("the user is on the main screen of the EUDI Wallet")
+    public void theUserIsOnTheMainScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the option {string}")
+    public void theUserSelectsTheOption(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the option Sign a Document")
+    public void theUserSelectsTheOptionSignADocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a list of available documents from the device")
+    public void theEUDIWalletShouldDisplayAListOfAvailableDocumentsFromTheDevice() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet displays a list of available documents")
+    public void theEUDIWalletDisplaysAListOfAvailableDocuments() {
+        //manual
+    }
+
+    @When("the user selects a document from the list")
+    public void theUserSelectsADocumentFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should retrieve the selected document")
+    public void theEUDIWalletShouldRetrieveTheSelectedDocument() {
+        //manual
+    }
+
+    @Given("the user has selected a document from the list")
+    public void theUserHasSelectedADocumentFromTheList() {
+        //manual
+    }
+
+    @When("the EUDI Wallet retrieves the document")
+    public void theEUDIWalletRetrievesTheDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display metadata such as file name and kind of file\\(ex.pdf)")
+    public void theEUDIWalletShouldDisplayMetadataSuchAsFileNameAndKindOfFileExPdf() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display the document's content")
+    public void theEUDIWalletShouldDisplayTheDocumentSContent() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has retrieved the document")
+    public void theEUDIWalletHasRetrievedTheDocument() {
+        //manual
+    }
+
+    @When("the user clicks on the view button next to the document")
+    public void theUserClicksOnTheViewButtonNextToTheDocument() {
+        //manual
+    }
 }
