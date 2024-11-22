@@ -37,8 +37,8 @@ public class Verifier {
             if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributes)).click();
                 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -46,11 +46,12 @@ public class Verifier {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormat)).click();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormat)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
             }    else{
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributesEmulator)).click();
                 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
