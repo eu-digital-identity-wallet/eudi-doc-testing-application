@@ -2,8 +2,6 @@ name: automation_with_emulator - Standard
 
 
 on:
-  push:
-
   workflow_dispatch:
     inputs:
       branch-to-checkout:
