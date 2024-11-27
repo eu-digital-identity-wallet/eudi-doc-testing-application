@@ -1,13 +1,15 @@
 name: automation_with_emulator - Standard
 
-
 on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'The branch that will be checked-out'
-        type: string
-        default: main
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+        default: develop
       
       test-cases:
         description: 'Choose Test Cases'
@@ -16,7 +18,9 @@ on:
 
   schedule:
     # WED,SAT 03:15 UTC
-    - cron: '15 3 * * 3,6'
+    # - cron: '15 3 * * 3,6'
+    # TESTING RUNS THU-FRI 03:15 - KEEP ABOVE
+    - cron: '15 3 * * 4,5'
 
 jobs:
   build:
@@ -26,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # Checkout the code
         with:
-          ref: ${{ inputs.branch-to-checkout || 'develop' }}
+          ref: ${{ inputs.branch-to-checkout || 'main' }}
      
       - name: Set up JDK 17
         uses: actions/setup-java@v4
