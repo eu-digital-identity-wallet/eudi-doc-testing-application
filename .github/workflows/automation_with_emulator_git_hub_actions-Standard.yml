@@ -1,0 +1,200 @@
+name: automation_with_emulator - Standard
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch-to-checkout:
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+        default: develop
+      
+      test-cases:
+        description: 'Choose Test Cases'
+        type: string
+        default: "@automated and @ANDROID and @US_VP_TC_01"
+
+  schedule:
+    # WED,SAT 03:15 UTC
+    # - cron: '15 3 * * 3,6'
+    # TESTING RUNS THU-FRI 03:15 - KEEP ABOVE
+    - cron: '15 3 * * 4,5'
+
+jobs:
+  build:
+    runs-on: macos-13-large
+    timeout-minutes: 240 # increase IF needed
+
+    steps:
+      - uses: actions/checkout@v4 # Checkout the code
+        with:
+          ref: ${{ inputs.branch-to-checkout || 'main' }}
+     
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS 16.20.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.20.2'
+
+      - name: Install Appium
+        run: npm install -g appium
+
+      - name: Check Appium installation
+        run: appium -v
+
+      - name: Install Appium Automator
+        run: appium driver install uiautomator2
+
+      - name: Update Appium Automator
+        run: appium driver update uiautomator2
+
+      - name: Start Appium
+        run: appium server --address 127.0.0.1 --port 4723 --use-drivers uiautomator2 --base-path /wd/hub --allow-insecure adb_shell &
+
+      - name: Waiting to start Appium
+        run: sleep 30 # Adjust time as needed
+
+      - name: Print Appium status
+        run: curl http://127.0.0.1:4723/wd/hub/status
+
+      - name: Restart ADB server
+        run: |
+          adb kill-server
+          adb start-server
+          adb devices
+        continue-on-error: true
+          
+      - name: Runner Monitoring Start
+        run: |
+          echo "Starting monitoring in the background..."
+          echo "------ $(date) ------" >> usage_report.txt
+          echo "Chipset Model:" >> usage_report.txt
+          system_profiler SPDisplaysDataType | grep "Chipset Model" >> usage_report.txt
+          system_profiler SPHardwareDataType | grep "Total Number of Cores" >> usage_report.txt
+          echo "" >> usage_report.txt
+          echo "------- Detailed host Info ------" >> usage_report.txt
+          system_profiler SPHardwareDataType SPSoftwareDataType SPMemoryDataType SPStorageDataType >> usage_report.txt
+          echo "" >> usage_report.txt
+          echo "---------///---///---------" >> usage_report.txt
+          echo "" >> usage_report.txt
+          while true; do
+            echo "------ $(date) ------" >> usage_report.txt
+            echo "------ CPU & Memory Usage ------" >> usage_report.txt
+            top -l 1 | head -n 10 >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Top CPU-Intensive Processes ------" >> usage_report.txt
+            ps -Aro pid,comm,args,%cpu | head -n 10 >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Top RAM-Intensive Processes ------" >> usage_report.txt
+            ps -Amo pid,comm,args,%mem | head -n 10 >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Memory Usage ------" >> usage_report.txt
+            vm_stat | awk '
+            /Pages free/ { free=$3 * 4096 / 1024 / 1024 }
+            /Pages active/ { active=$3 * 4096 / 1024 / 1024 }
+            /Pages inactive/ { inactive=$3 * 4096 / 1024 / 1024 }
+            /Pages speculative/ { speculative=$3 * 4096 / 1024 / 1024 }
+            END {
+              printf "  Free: %.2f MB\n  Active: %.2f MB\n  Inactive: %.2f MB\n  Speculative: %.2f MB\n", free, active, inactive, speculative
+            }' >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "------ Disk Usage ------" >> usage_report.txt
+            df -h >> usage_report.txt
+            echo "" >> usage_report.txt
+            echo "---------///---///---------" >> usage_report.txt
+            echo "" >> usage_report.txt
+            sleep 10
+          done & echo $! > monitor_pid.txt
+
+      - name: Run UI Tests
+        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          avd-name: Pixel_6_API_33
+          profile:  pixel_6
+          ram-size: 8192M
+          cores: 6
+          heap-size: 2048M
+          disk-size: 16G
+          disable-animations: true
+          emulator-build: 11772612 # Emulator Version Control
+          emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
+          emulator-port: 5556
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
+          script: |
+            echo "Waiting for Android Emulator..."
+            adb wait-for-device
+            adb devices
+            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+            echo "Android has booted!"
+            echo "***************"
+            echo "Checking cmd setting service availabilty..."
+            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+            echo "Starting Logcat..."
+            adb logcat -d > logcat_output.txt
+            echo "Starting maven verify && APP Mem Monitoring"
+            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID and @US_VP_TC_01'}}'
+
+      - name: Stop Runner Monitoring
+        if: always()
+        run: |
+          echo "Stopping monitoring..."
+          kill $(cat monitor_pid.txt)
+          rm monitor_pid.txt
+
+      - name: Upload Usage Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: usage-report
+          path: usage_report.txt
+          retention-days: 14
+
+      - name: Compress Logcat Output
+        if: always()
+        run: zip logcat_output.zip logcat_output.txt
+
+      - name: Upload Logcat Output
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logcat-output
+          path: logcat_output.zip
+ 
+      - name: Produce Serenity report
+        if: always()
+        run: mvn -ntp serenity:aggregate
+
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: serenity-report
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-screenshots
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
+
+      - name: Upload recordings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-recordings
+          path: target/recordings/*

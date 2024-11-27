@@ -1,5 +1,7 @@
 name: Manual Workflow
-on: [push]
+on:
+  workflow_dispatch:
+  #[push]
 jobs:
   build:
     runs-on: macos-latest
