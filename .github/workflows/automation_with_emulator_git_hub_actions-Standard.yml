@@ -19,7 +19,7 @@ on:
   schedule:
     # WED,SAT 03:15 UTC
     # - cron: '15 3 * * 3,6'
-    # TESTING RUNS THU-FRI 03:15 - KEEP ABOVE
+    # TESTING RUNS THU-FRI 03:15 - ABOVE Schedule will be used
     - cron: '15 3 * * 4,5'
 
 jobs:
@@ -146,7 +146,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID and @US_VP_TC_01'}}'
+            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
 
       - name: Stop Runner Monitoring
         if: always()
