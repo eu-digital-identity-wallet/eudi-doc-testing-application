@@ -18,9 +18,7 @@ on:
 
   schedule:
     # WED,SAT 03:15 UTC
-    # - cron: '15 3 * * 3,6'
-    # TESTING RUNS THU-FRI 03:15 - ABOVE Schedule will be used
-    - cron: '15 3 * * 4,5'
+    - cron: '15 3 * * 3,6'
 
 jobs:
   build:
