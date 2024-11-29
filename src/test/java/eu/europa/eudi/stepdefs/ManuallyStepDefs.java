@@ -5168,4 +5168,59 @@ public class ManuallyStepDefs {
     public void theUserClicksOnTheViewButtonNextToTheDocument() {
         //manual
     }
+
+    @Then("the EUDI Wallet presents a screen to inform the user that the QTSP requests to release the matching attestation")
+    public void theEUDIWalletPresentsAScreenToInformTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestation() {
+        //manual
+    }
+
+    @Given("the user has selected a QTSP from the list")
+    public void theUserHasSelectedAQTSPFromTheList() {
+        //manual
+    }
+
+    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
+    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
+        //manual
+    }
+
+    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
+    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
+        //manual
+    }
+
+    @Given("the user has uploaded a document and selected a QTSP")
+    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
+        //manual
+    }
+
+    @And("a success screen is displayed with the signed document")
+    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet enables the user to share the document or close the process")
+    public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
+        //manual
+    }
+
+    @Given("the QTSP has received the success outcome from the EUDI Wallet")
+    public void theQTSPHasReceivedTheSuccessOutcomeFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user creates a qualified certificate from the QTSP")
+    public void theUserCreatesAQualifiedCertificateFromTheQTSP() {
+        //manual
+    }
+
+    @And("the user insert a name")
+    public void theUserInsertAName() {
+        //manual
+    }
+
+    @Then("the QTSP generates the qualified certificate")
+    public void theQTSPGeneratesTheQualifiedCertificate() {
+        //manual
+    }
 }
