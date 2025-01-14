@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
-    public static By pinTexfield1 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
-    public static By pinTexfield2 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
-    public static By pinTexfield3 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]");
-    public static By pinTexfield4 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]");
-    public static By pinTexfield5 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]");
-    public static By pinTexfield6 = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]");
+    public static By pinTexfield1 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
+    public static By pinTexfield2 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
+    public static By pinTexfield3 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]");
+    public static By pinTexfield4 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]");
+    public static By pinTexfield5 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]");
+    public static By pinTexfield6 = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]");
     public static By nextButton = By.xpath("//android.widget.TextView[@text=\"NEXT\"]");
     public static By clickConfirm = By.xpath("//android.widget.TextView[@text=\"CONFIRM\"]");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"You successfully set the quick pin\"]");

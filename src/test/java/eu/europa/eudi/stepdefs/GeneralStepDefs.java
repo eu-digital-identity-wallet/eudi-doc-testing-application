@@ -29,6 +29,7 @@ public class GeneralStepDefs{
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
+
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean without_data = scenario.getSourceTagNames().contains("@before_02");
@@ -38,10 +39,14 @@ public class GeneralStepDefs{
         if (android) {
             test = new TestSetup(noReset, Literals.General.ANDROID.label, scenario);
             test.startAndroidDriverSession();
+            test.setScenario(scenario);
+            test.startLogging();
         }
         if (ios) {
             test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
+            test.setScenario(scenario);
+            test.startLogging();
         }
         if (data) {
             test.mobile().wallet().checkIfPageIsTrue();
@@ -105,6 +110,7 @@ public class GeneralStepDefs{
         if (ios){
             test.stopIosDriverSession();
         }
+        test.stopLogging();
     }
 
     @Given("user sets up wallet")
@@ -266,7 +272,7 @@ public class GeneralStepDefs{
 
     @And("user clicks load sample data")
     public void userClicksLoadSampleData() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheAddDocumentPage();
         test.mobile().wallet().loadSampleDocuments();
@@ -570,11 +576,7 @@ public class GeneralStepDefs{
 
 
 
-    @Given("the user is on the Login screen")
-    public void theUserIsOnTheLoginScreen() {
-        test.mobile().wallet().startAndStopDriver();
-        test.mobile().wallet().loginPageIsDisplayed();
-    }
+
 
     @When("the user enters their PIN")
     public void theUserEntersTheirPIN() {
@@ -588,7 +590,7 @@ public class GeneralStepDefs{
 
     @Given("the user is on the dashboard screen")
     public void theUserIsOnTheDashboardScreen() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
     }
@@ -610,7 +612,7 @@ public class GeneralStepDefs{
 
     @Given("the PID is open")
     public void thePIDIsOpen() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
         theUserClicksOnThePIDDoc();
@@ -655,7 +657,7 @@ public class GeneralStepDefs{
 
     @Given("the mDL is open")
     public void theMDLIsOpen() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
         theUserClicksOnTheMDLDoc();
@@ -1093,5 +1095,10 @@ public class GeneralStepDefs{
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
+    @Given("the user is on the Login screen")
+    public void theUserIsOnTheLoginScreen() {
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+    }
 }
 

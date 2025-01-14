@@ -34,7 +34,6 @@ public class TestSetup {
         return mobileWebDriverFactory;
     }
 
-
     public EnvDataConfig envDataConfig() {
         return (envDataConfig == null) ? envDataConfig = new EnvDataConfig() : envDataConfig;
     }
@@ -44,30 +43,52 @@ public class TestSetup {
     }
 
     public void reInitializeDriver() {
-
         mobileWebDriverFactory.startAndroidDriverSession();
     }
 
     public void startIosDriverSession() {
-
         mobileWebDriverFactory.startIosDriverSession();
     }
 
     public void stopAndroidDriverSession() {
         mobileWebDriverFactory.quitDriverAndroid();
     }
+
     public void stopIosDriverSession() {
         mobileWebDriverFactory.quitDriverIos();
     }
-    public String getSystemOperation(){
+
+    public String getSystemOperation() {
         return systemOperation;
     }
+
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
     }
+
     public Scenario getScenario() {
         return scenario;
     }
 
-}
+    // Methods to start and stop logging
+    public void startLogging() {
+        String featureName = scenario.getUri().getPath().substring(scenario.getUri().getPath().lastIndexOf("/") + 1);
+        String scenarioName = scenario.getName();
+        String platformTag = "";
 
+        // Determine the platform tag based on the scenario's tags
+        if (scenario.getSourceTagNames().contains("@ANDROID")) {
+            platformTag = "ANDROID";
+        } else if (scenario.getSourceTagNames().contains("@IOS")) {
+            platformTag = "IOS";
+        } else {
+            // Handle the case where no platform tag is found
+            throw new IllegalArgumentException("Scenario does not have a valid platform tag (@ANDROID or @IOS)");
+        }
+        mobileWebDriverFactory.startLogging(featureName, scenarioName, platformTag);
+    }
+
+    public void stopLogging() {
+        mobileWebDriverFactory.stopLogging();
+    }
+}
