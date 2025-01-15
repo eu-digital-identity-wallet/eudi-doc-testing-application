@@ -80,7 +80,7 @@ public class MobileWebDriverFactory {
             }
 
             // Create a new log file path based on feature, scenario names, and platform tag
-            logFilePath = "logs/" + platformTag + "/" + featureName + "/" + scenarioName + ".log";
+            logFilePath = "logs/" + platformTag + "/" + featureName + "/" + scenarioName + ".txt";
 
             // Start logcat process
             logcatProcess = Runtime.getRuntime().exec("adb logcat");
@@ -91,9 +91,9 @@ public class MobileWebDriverFactory {
                      PrintWriter logWriter = new PrintWriter(new FileWriter(logFilePath))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        if (line.contains("@IOS")) {
+                        if (line.contains("@IOS and @automated")) {
                             writeLog(line, "logs/IOS/" + featureName + "/" + scenarioName + ".log");
-                        } else if (line.contains("@ANDROID")) {
+                        } else if (line.contains("@ANDROID and @automated")) {
                             writeLog(line, "logs/ANDROID/" + featureName + "/" + scenarioName + ".log");
                         } else {
                             writeLog(line, logFilePath);
