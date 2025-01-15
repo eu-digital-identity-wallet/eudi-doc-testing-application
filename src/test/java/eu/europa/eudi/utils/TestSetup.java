@@ -72,6 +72,10 @@ public class TestSetup {
 
     // Methods to start and stop logging
     public void startLogging() {
+        if (!scenario.getSourceTagNames().contains("@automated")) {
+            // If the @automated tag is not present, do not start logging
+            return;
+        }
         String featureName = scenario.getUri().getPath().substring(scenario.getUri().getPath().lastIndexOf("/") + 1);
         String scenarioName = scenario.getName();
         String platformTag = "";
@@ -84,6 +88,11 @@ public class TestSetup {
         } else {
             // Handle the case where no platform tag is found
             throw new IllegalArgumentException("Scenario does not have a valid platform tag (@ANDROID or @IOS)");
+        }
+
+        if (!scenario.getSourceTagNames().contains("@automated")) {
+            System.out.println("The scenario does not contain the @automated tag. Logging will not start.");
+            return;
         }
         mobileWebDriverFactory.startLogging(featureName, scenarioName, platformTag);
     }
