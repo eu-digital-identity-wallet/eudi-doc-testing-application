@@ -6,7 +6,7 @@ Feature: Retrieve a document from the Relying Party to EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/89
 
-  @US_RDTBS_TC_01
+  @US_RDTBS_TC_01 @manual:InProgress
   Scenario: Access Relying Party Page with Document Available
     Given the user is authenticated in the Relying Party service
     And the user is authenticated in the EUDI Wallet
@@ -14,39 +14,39 @@ Feature: Retrieve a document from the Relying Party to EUDI Wallet
     When the user navigates to the Relying Party page where the document to be signed is available
     Then page should display an option to retrieve the document into the EUDI Wallet
 
-  @US_RDTBS_TC_02
+  @US_RDTBS_TC_02 @manual:InProgress
   Scenario: Select Option to Retrieve Document to EUDI Wallet
     Given the user is on the Relying Party page where the document is available
     When the user selects the option to retrieve the document to the EUDI Wallet
     Then the Relying Party should render a QR-code on the screen requesting the user to scan it with their mobile device.
 
-  @US_RDTBS_TC_03
+  @US_RDTBS_TC_03 @manual:InProgress
   Scenario: Relying Party Renders QR-Code for Document Retrieval
     Given the user has selected the option to retrieve the document to the EUDI Wallet
     When the Relying Party renders the QR-code on the page
     Then the user should be able to see the QR-code clearly displayed on the Relying Party's device (e.g. desktop or other device).
 
-  @US_RDTBS_TC_04
+  @US_RDTBS_TC_04 @manual:InProgress
   Scenario: Scan QR-Code with EUDI Wallet Mobile Device
     Given the user has the QR-code displayed on the Relying Party's device
     And the user has the EUDI Wallet open on their mobile device
     When the user scans the QR-code using the mobile device
     Then EUDI Wallet should start the process of retrieving the document from the Relying Party service
 
-  @US_RDTBS_TC_05
+  @US_RDTBS_TC_05 @manual:InProgress
   Scenario: EUDI Wallet Fetches Document from Relying Party
     Given the user has scanned the QR-code from the Relying Party page
     When the EUDI Wallet successfully communicates with the Relying Party service
     Then the document should be fetched and transferred from the Relying Party to the EUDI Wallet
     And user should receive a confirmation that the document is being retrieved
 
-  @US_RDTBS_TC_06
+  @US_RDTBS_TC_06 @manual:InProgress
   Scenario: EUDI Wallet Presents the Document to the User
     Given the document has been successfully retrieved from the Relying Party
     When the document is available in the EUDI Wallet
     Then EUDI Wallet should present the document details to the user for review prior to signing
 
-  @US_RDTBS_TC_07
+  @US_RDTBS_TC_07 @manual:InProgress
   Scenario: Handle Internet Connectivity Issues
     Given the user attempts to scan the QR-code
     And there is no internet connection available

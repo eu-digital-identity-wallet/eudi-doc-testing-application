@@ -6,13 +6,13 @@ Feature: Present Attestations from EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/110
 
-  @US_PDIP_TC_01
+  @US_PDIP_TC_01 @manual:InProgress
   Scenario: Select 'In person' in "Present document" section
     Given the user is on the EUDI Wallet Home screen
     When the user clicks on the In person option
     Then the wallet displays a page which includes a QR code and the option to share via NFC
 
-  @US_PDIP_TC_02
+  @US_PDIP_TC_02 @manual:InProgress
   Scenario: Scan QR-code or tap for NFC with reader device and display presentation request
     Given the user is on the screen displaying a QR code and the option to share via NFC
     When the displayed QR code is scanned or the NFC option is tapped with a reader device
@@ -24,7 +24,7 @@ Feature: Present Attestations from EUDI Wallet
       | A Cancel button                                 |
       | A Share button                                  |
 
-  @US_PDIP_TC_03
+  @US_PDIP_TC_03 @manual:InProgress
   Scenario: Cancel data sharing process
     Given the wallet is displaying the presentation request
     When the user selects the Cancel button
@@ -32,13 +32,13 @@ Feature: Present Attestations from EUDI Wallet
     And the user clicks on the Cancel Sharing button
     Then the user is redirected to the Home screen
 
-  @US_PDIP_TC_04
+  @US_PDIP_TC_04 @manual:InProgress
   Scenario: Proceed with data sharing flow
     Given the wallet is displaying the presentation request
     When the user selects the Share button
     Then the wallet requests the user to enter the PIN to proceed
 
-  @US_PDIP_TC_05
+  @US_PDIP_TC_05 @manual:InProgress
   Scenario: Enter PIN to proceed with data sharing
     Given the user has selected the Share button in the presentation request screen
     When the wallet requests the user to enter the PIN
@@ -46,7 +46,7 @@ Feature: Present Attestations from EUDI Wallet
     Then the wallet displays a success screen which provides details about the data that were shared from the wallet
     And the success screen includes a Close button
 
-  @US_PDIP_TC_06
+  @US_PDIP_TC_06 @manual:InProgress
   Scenario: Return to "Home" screen after successful data sharing
     Given the wallet displays the success screen with details about the data shared
     When the user selects the Close button

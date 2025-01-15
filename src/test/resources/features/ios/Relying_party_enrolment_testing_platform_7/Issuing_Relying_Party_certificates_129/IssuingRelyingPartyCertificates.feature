@@ -6,19 +6,19 @@ Feature: Relying Party Trusted Certificate Creation
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/129
 
-  @US_IRPC_TC_01
+  @US_IRPC_TC_01 @manual:InProgress
   Scenario: User visits the Relying Party service and authenticates with PID
     Given the user is on the Relying Party Enrolment service page
     When the user presents their PID by scanning the QR code
     Then the user is authenticated successfully
 
-  @US_IRPC_TC_02
+  @US_IRPC_TC_02 @manual:InProgress
   Scenario: User fills in the required information for certificate creation
     Given the user is authenticated
     When the user fills in the required information in the form provided
     Then the user previews the certificate information
 
-  @US_IRPC_TC_03
+  @US_IRPC_TC_03 @manual:InProgress
   Scenario: User downloads the certificate
     Given the user has previewed the certificate information
     When the user clicks on the Download button
