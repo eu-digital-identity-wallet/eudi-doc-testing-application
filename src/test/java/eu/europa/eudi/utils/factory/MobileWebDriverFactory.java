@@ -62,9 +62,9 @@ public class MobileWebDriverFactory {
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
-            if (test.envDataConfig().getAppiumRecording()) {
-                androidDriver.startRecordingScreen();
-            }
+//            if (test.envDataConfig().getAppiumRecording()) {
+//                androidDriver.startRecordingScreen();
+//            }
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
@@ -218,52 +218,53 @@ public class MobileWebDriverFactory {
 
     public void quitDriverAndroid() {
         if (androidDriver != null) {
-            try {
-                if (test.envDataConfig().getAppiumRecording()) {
-                    String base64String = androidDriver.stopRecordingScreen();
-                    byte[] data = Base64.getMimeDecoder().decode(base64String);
-
-                    Path recordingsPath = Paths.get("target", "recordings");
-                    try {
-                        Files.createDirectories(recordingsPath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    LocalDateTime timestamp = LocalDateTime.now();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
-                    String formattedTimestamp = timestamp.format(formatter);
-                    Path path = Paths.get(System.getProperty("user.dir"), "target", "recordings",
-                            test.getSystemOperation() + "_" + test.getScenario().getName() + "_" + formattedTimestamp + ".mp4");
-
-                    try {
-                        Files.write(path, data);
-                        System.out.println("Recording saved: " + path.toAbsolutePath());
-                    } catch (IOException e) {
-                        throw new RuntimeException("Failed to save recording: " + e.getMessage(), e);
-                    }
-                }
-
-                // Stop method tracing
-                stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
-                String remoteFilePath = "/data/local/tmp/trace_file.trace";
-                String localFilePath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/trace_file.trace";
-                pullTraceFile(remoteFilePath, localFilePath);
-
-            } catch (NoSuchSessionException e) {
-                System.err.println("No session found when trying to stop recording: " + e.getMessage());
-            } catch (Exception e) {
-                System.err.println("An error occurred while stopping the recording: " + e.getMessage());
-            } finally {
-                try {
-                    androidDriver.quit();
-                    System.out.println("Driver quit successfully.");
-                } catch (NoSuchSessionException e) {
-                    System.err.println("Session already closed: " + e.getMessage());
-                } catch (Exception e) {
-                    System.err.println("An error occurred while quitting the driver: " + e.getMessage());
-                }
-            }
+            // Stop method tracing
+            stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
+            String remoteFilePath = "/data/local/tmp/trace_file.trace";
+            String localFilePath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/trace_file.trace";
+            pullTraceFile(remoteFilePath, localFilePath);
+//            try {
+//                if (test.envDataConfig().getAppiumRecording()) {
+//                    String base64String = androidDriver.stopRecordingScreen();
+//                    byte[] data = Base64.getMimeDecoder().decode(base64String);
+//
+//                    Path recordingsPath = Paths.get("target", "recordings");
+//                    try {
+//                        Files.createDirectories(recordingsPath);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    LocalDateTime timestamp = LocalDateTime.now();
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+//                    String formattedTimestamp = timestamp.format(formatter);
+//                    Path path = Paths.get(System.getProperty("user.dir"), "target", "recordings",
+//                            test.getSystemOperation() + "_" + test.getScenario().getName() + "_" + formattedTimestamp + ".mp4");
+//
+//                    try {
+//                        Files.write(path, data);
+//                        System.out.println("Recording saved: " + path.toAbsolutePath());
+//                    } catch (IOException e) {
+//                        throw new RuntimeException("Failed to save recording: " + e.getMessage(), e);
+//                    }
+//                }
+//
+//
+//
+//            } catch (NoSuchSessionException e) {
+//                System.err.println("No session found when trying to stop recording: " + e.getMessage());
+//            } catch (Exception e) {
+//                System.err.println("An error occurred while stopping the recording: " + e.getMessage());
+//            } finally {
+//                try {
+//                    androidDriver.quit();
+//                    System.out.println("Driver quit successfully.");
+//                } catch (NoSuchSessionException e) {
+//                    System.err.println("Session already closed: " + e.getMessage());
+//                } catch (Exception e) {
+//                    System.err.println("An error occurred while quitting the driver: " + e.getMessage());
+//                }
+//            }
         }
     }
 

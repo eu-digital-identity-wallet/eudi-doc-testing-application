@@ -48,7 +48,7 @@ Feature: Present Attestations from EUDI Wallet
   Scenario: User enters the PIN to proceed with data sharing
     Given the user has selected the Share button
     When the wallet requests the user to enter the PIN
-    And the user enters the correct PIN
+    And the user enters the correct PIN on screen
     Then the wallet should display a success screen
 
   @US_PDO_TC_07 @manual:InProgress

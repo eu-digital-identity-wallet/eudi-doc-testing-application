@@ -42,7 +42,7 @@ Feature: Present Attestations from EUDI Wallet
   Scenario: Enter PIN to proceed with data sharing
     Given the user has selected the Share button in the presentation request screen
     When the wallet requests the user to enter the PIN
-    And the user enters the correct PIN
+    And the user enters the correct PIN on screen
     Then the wallet displays a success screen which provides details about the data that were shared from the wallet
     And the success screen includes a Close button
 
