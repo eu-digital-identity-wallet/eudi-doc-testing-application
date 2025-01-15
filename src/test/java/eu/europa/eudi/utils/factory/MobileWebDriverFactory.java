@@ -70,25 +70,25 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
 
-        if (test.envDataConfig().getAppiumScreenshot()) {
-            String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-            String filename = timestamp + ".png";
-
-            // Capture the screenshot and store it in a file
-            File srcFile = ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.FILE);
-            // Define the destination file path
-            File destFile = new File("screenshots/" + filename);
-
-            // Create the destination directory if it does not exist
-            destFile.getParentFile().mkdirs();
-            try {
-                // Copy the screenshot to the destination file
-                FileHandler.copy(srcFile, destFile);
-                System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
-            } catch (IOException e) {
-                System.err.println("Failed to save screenshot: " + e.getMessage());
-            }
-        }
+//        if (test.envDataConfig().getAppiumScreenshot()) {
+//            String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+//            String filename = timestamp + ".png";
+//
+//            // Capture the screenshot and store it in a file
+//            File srcFile = ((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.FILE);
+//            // Define the destination file path
+//            File destFile = new File("screenshots/" + filename);
+//
+//            // Create the destination directory if it does not exist
+//            destFile.getParentFile().mkdirs();
+//            try {
+//                // Copy the screenshot to the destination file
+//                FileHandler.copy(srcFile, destFile);
+//                System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
+//            } catch (IOException e) {
+//                System.err.println("Failed to save screenshot: " + e.getMessage());
+//            }
+//        }
     }
 
     public void startLogging(String featureName, String scenarioName, String platformTag) {
