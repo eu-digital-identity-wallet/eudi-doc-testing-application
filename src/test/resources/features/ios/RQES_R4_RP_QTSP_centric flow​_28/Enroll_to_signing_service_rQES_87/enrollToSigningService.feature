@@ -11,30 +11,30 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
     And the user has issued a PID attestation to the EUDI Wallet
     And the user has internet connectivity
 
-  @US_ETSS_TC_01
+  @US_ETSS_TC_01 @manual:InProgress
   Scenario: User visits QTSP login page
     When the user visits the QTSP login page on a different device
     Then the QTSP should render the PID authentication option
 
-  @US_ETSS_TC_02
+  @US_ETSS_TC_02 @manual:InProgress
   Scenario: User scans QR code after PID selection
     Given the user is on the QTSP login page
     When the user selects the PID authentication option
     Then the QTSP should render a QR code
 
-  @US_ETSS_TC_03
+  @US_ETSS_TC_03 @manual:InProgress
   Scenario: User successfully authenticates in EUDI Wallet
     Given the user has scanned the QR code
     When the user authenticates successfully in the EUDI Wallet
     Then the EUDI Wallet should display the attestation release request
 
-  @US_ETSS_TC_04
+  @US_ETSS_TC_04 @manual:InProgress
   Scenario: User fails to authenticate in EUDI Wallet
     Given the user has scanned the QR code
     When the user fails to authenticate in the EUDI Wallet
     Then the EUDI Wallet should present an error message
 
-  @US_ETSS_TC_05
+  @US_ETSS_TC_05 @manual:InProgress
   Scenario: No matching attestations available
     Given the user has scanned the QR code
     And the user authenticates successfully in the EUDI Wallet
@@ -42,7 +42,7 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
     And there are no matching attestations
     Then the EUDI Wallet should inform the user
 
-  @US_ETSS_TC_06
+  @US_ETSS_TC_06 @manual:InProgress
   Scenario: User consents to attestation release
     Given the user has scanned the QR code
     And the user authenticates successfully in the EUDI Wallet
@@ -50,13 +50,13 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
     When the user enters their six digit PIN
     Then the EUDI Wallet should present the requested attestation to the QTSP
 
-  @US_ETSS_TC_07
+  @US_ETSS_TC_07 @manual:InProgress
   Scenario: QTSP cannot verify attestation
     Given the user has presented the requested attestation to the QTSP
     When the QTSP cannot verify the attestation
     Then an error message should inform the user
 
-  @US_ETSS_TC_08
+  @US_ETSS_TC_08 @manual:InProgress
   Scenario: Successful attestation verification
     Given the user has presented the requested attestation to the QTSP
     When the QTSP verifies the attestation successfully

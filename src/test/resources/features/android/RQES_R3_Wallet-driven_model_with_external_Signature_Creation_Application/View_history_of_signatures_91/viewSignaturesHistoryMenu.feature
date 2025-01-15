@@ -6,14 +6,14 @@ Feature: View Signatures History Menu
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/91
 
-  @US_VSHM_TC_01
+  @US_VSHM_TC_01 @manual:InProgress
   Scenario: Navigate to 'Signatures History' Menu
     Given the user is logged into the EUDI Wallet
     When the user clicks the Signatures History menu
     Then the user is navigated to the Signatures History screen
     And the page displays a list of previously executed signatures (if available)
 
-  @US_VSHM_TC_02
+  @US_VSHM_TC_02 @manual:InProgress
   Scenario: Display List of Signatures on the Signatures History menu
     Given the user is on the Signatures History screen
     And the user has previously executed signatures in the EUDI Wallet
@@ -21,7 +21,7 @@ Feature: View Signatures History Menu
     Then the list of executed signatures is displayed with the following details:
       | Signature Date | Status (Success/Fail) | Remote Signing Service (QTSP) | Relying Party (if available) | Document Hash | Credential ID | Title of the signed document |
 
-  @US_VSHM_TC_03
+  @US_VSHM_TC_03 @manual:InProgress
   Scenario: Empty List When No Signatures Exist
     Given the user is on the Signatures History screen
     And the user has not previously performed any signatures in the EUDI Wallet
@@ -29,14 +29,14 @@ Feature: View Signatures History Menu
     Then an empty list is displayed
     And the informative message appears: No signatures have been performed through the EUDI Wallet
 
-  @US_VSHM_TC_04
+  @US_VSHM_TC_04 @manual:InProgress
   Scenario: Sort Signatures by Date
     Given the user is on the Signatures History screen
     And there are multiple signature records available
     When the user sorts the list by date
     Then signatures are reordered in ascending or descending order based on the selected date
 
-  @US_VSHM_TC_05
+  @US_VSHM_TC_05 @manual:InProgress
   Scenario: Filter Signatures by Date
     Given the user is on the Signatures History screen
     And there are multiple signature records available
