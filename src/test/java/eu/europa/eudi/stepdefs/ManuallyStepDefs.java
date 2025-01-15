@@ -5223,4 +5223,9 @@ public class ManuallyStepDefs {
     public void theQTSPGeneratesTheQualifiedCertificate() {
         //manual
     }
+
+    @And("the user enters the correct PIN on screen")
+    public void theUserEntersTheCorrectPINOnScreen() {
+        //manual
+    }
 }
