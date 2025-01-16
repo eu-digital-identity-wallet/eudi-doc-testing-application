@@ -5228,4 +5228,151 @@ public class ManuallyStepDefs {
     public void theUserEntersTheCorrectPINOnScreen() {
         //manual
     }
+
+    @Then("the list of executed signatures is displayed with the following Relying Party \\(if available):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_relying_party_if_available() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Document Hash:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_document_hash() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Credential ID:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_credential_id() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Title of the signed document:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_title_of_the_signed_document() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Attestation to be issued:")
+    public void the_wallet_should_display_the_credential_offer_which_attestation_to_be_issued() {
+        // manual
+    }
+    @Then("the wallet should display the credential offer which Name of the issuer:")
+    public void the_wallet_should_display_the_credential_offer_which_name_of_the_issuer() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Cancel button:")
+    public void the_wallet_should_display_the_credential_offer_which_cancel_button() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Add document button:")
+    public void the_wallet_should_display_the_credential_offer_which_add_document_button() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Notifications:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_notifications() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Change PIN:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_change_pin() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Privacy Notice:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_privacy_notice() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Help \\/ FAQs:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_help_fa_qs() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Exit:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_exit() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The name of the requesting Relying Party:")
+    public void the_wallet_displays_the_presentation_request_which_the_name_of_the_requesting_relying_party() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The attestations requested by the Relying Party:")
+    public void the_wallet_displays_the_presentation_request_which_the_attestations_requested_by_the_relying_party() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The option to expand on the details for each requested attestation:")
+    public void the_wallet_displays_the_presentation_request_which_the_option_to_expand_on_the_details_for_each_requested_attestation() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The option to unselect specific data elements from each requested attestation:")
+    public void the_wallet_displays_the_presentation_request_which_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
+        // manual
+    }
+    @Then("the wallet displays the presentation request which A Cancel button:")
+    public void the_wallet_displays_the_presentation_request_which_a_cancel_button() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which A Share button:")
+    public void the_wallet_displays_the_presentation_request_which_a_share_button() {
+        // manual
+    }
+
+    @Then("the presentation request The name of the requesting Relying Party:")
+    public void the_presentation_request_the_name_of_the_requesting_relying_party() {
+        // manual
+    }
+
+    @Then("the presentation request The attestations requested by the Relying Party:")
+    public void the_presentation_request_the_attestations_requested_by_the_relying_party() {
+        // manual
+    }
+
+    @Then("the presentation request The option to expand on the details for each attestation:")
+    public void the_presentation_request_the_option_to_expand_on_the_details_for_each_attestation() {
+        // manual
+    }
+
+    @Then("the presentation request The option to unselect specific data elements:")
+    public void the_presentation_request_the_option_to_unselect_specific_data_elements() {
+        // manual
+    }
+
+    @Then("the presentation request A Cancel button:")
+    public void the_presentation_request_a_cancel_button() {
+        // manual
+    }
+
+    @Then("the presentation request A Share button:")
+    public void the_presentation_request_a_share_button() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Signature Date:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_signature_date() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Status \\(Success\\/Fail):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_status_success_fail() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Remote Signing Service \\(QTSP):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_remote_signing_service_qtsp() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Field:")
+    public void the_wallet_should_display_the_credential_offer_which_field() {
+        // manual
+    }
+
+    
+
+
 }
