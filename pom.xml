@@ -6,9 +6,9 @@
     <version>2024.08.13-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
-    
+
     <properties>
-<!--        <tags>@ANDROID,@IOS, @manual</tags>-->
+        <!--        <tags>@ANDROID,@IOS, @manual</tags>-->
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -25,6 +25,7 @@
         <rerun.failed.scenarios>2</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <serenity.threads>16</serenity.threads> <!-- Add this line to set the number of threads -->
     </properties>
 
     <dependencies>

@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/"},
         monochrome = true,
         tags = "@ANDROID or @IOS",
-        glue = {"eu.europa.eudi.stepdefs", "eu.europa.eudi.utils"})
+        glue = {"eu.europa.eudi.stepdefs"})
 public class TestRunner {
 }
