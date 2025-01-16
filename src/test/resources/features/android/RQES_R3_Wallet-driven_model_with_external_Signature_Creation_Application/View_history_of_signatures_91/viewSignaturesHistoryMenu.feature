@@ -27,7 +27,8 @@ Feature: View Signatures History Menu
       | Relying Party (if available)  |
       | Document Hash                 |
       | Credential ID                 |
-      | Title of the signed document
+      | Title of the signed document  |
+
   @US_VSHM_TC_03 @manual:InProgress
   Scenario: Empty List When No Signatures Exist
     Given the user is on the Signatures History screen
