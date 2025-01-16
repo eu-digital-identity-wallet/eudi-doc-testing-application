@@ -19,16 +19,18 @@ Feature: Present Attestations from EUDI Wallet
     Then the wallet displays the presentation request
 
   @US_PDO_TC_03 @manual:InProgress
-  Scenario: Wallet displays the presentation request
+  Scenario Outline: Wallet displays the presentation request
     Given the user has scanned a QR code rendered by a Relying Party
     When the wallet displays the presentation request
-    Then the presentation request includes:
+    Then the presentation request <includes>:
+    Examples:
+      | includes                                                 |
       | The name of the requesting Relying Party                 |
       | The attestations requested by the Relying Party          |
       | The option to expand on the details for each attestation |
       | The option to unselect specific data elements            |
-      | A Cancel button                                        |
-      | A Share button                                         |
+      | A Cancel button                                          |
+      | A Share button                                           |
 
   @US_PDO_TC_04 @manual:InProgress
   Scenario: User cancels the data sharing process

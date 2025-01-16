@@ -7,16 +7,18 @@ Feature: EUDI Wallet Menu Screen
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/109
 
   @US_MS_TC_01 @manual:InProgress
-  Scenario: Access EUDI Wallet menu
+  Scenario Outline: Access EUDI Wallet menu
     Given the user is on the EUDI Wallet Home screen
     When the user taps the menu button on the upper left corner of the screen
     Then the navigation drawer slides in from the left side of the screen
-    And the navigation drawer includes an icon button to close the drawer, and the following options:
-      | Notifications |
-      | Change PIN    |
-      | Privacy Notice|
-      | Help / FAQs   |
-      | Exit          |
+    And the navigation drawer includes an icon button to close the drawer, and the following <options>:
+    Examples:
+      | options        |
+      | Notifications  |
+      | Change PIN     |
+      | Privacy Notice |
+      | Help / FAQs    |
+      | Exit           |
 
   @US_MS_TC_02 @manual:InProgress
   Scenario: Close the navigation drawer using the 'Go back' icon button

@@ -14,13 +14,20 @@ Feature: View Signatures History Menu
     And the page displays a list of previously executed signatures (if available)
 
   @US_VSHM_TC_02 @manual:InProgress
-  Scenario: Display List of Signatures on the Signatures History menu
+  Scenario Outline: Display List of Signatures on the Signatures History menu
     Given the user is on the Signatures History screen
     And the user has previously executed signatures in the EUDI Wallet
     When the user views the Signatures History screen
-    Then the list of executed signatures is displayed with the following details:
-      | Signature Date | Status (Success/Fail) | Remote Signing Service (QTSP) | Relying Party (if available) | Document Hash | Credential ID | Title of the signed document |
-
+    Then the list of executed signatures is displayed with the following <details>:
+    Examples:
+      | details                       |
+      | Signature Date                |
+      | Status (Success/Fail)         |
+      | Remote Signing Service (QTSP) |
+      | Relying Party (if available)  |
+      | Document Hash                 |
+      | Credential ID                 |
+      | Title of the signed document
   @US_VSHM_TC_03 @manual:InProgress
   Scenario: Empty List When No Signatures Exist
     Given the user is on the Signatures History screen

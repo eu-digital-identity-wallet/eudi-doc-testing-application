@@ -20,9 +20,11 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
     Then the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer
 
   @US_ADBSQRC_TC_03 @manual:InProgress
-  Scenario: Displaying credential offer after scanning QR code
+  Scenario Outline: Displaying credential offer after scanning QR code
     Given the user has scanned a valid QR code rendered by the Issuer
-    Then the wallet should display the credential offer which includes:
+    Then the wallet should display the credential offer which <includes>:
+    Examples:
+      | includes                 |
       | Field                    |
       | Attestation to be issued |
       | Name of the issuer       |
