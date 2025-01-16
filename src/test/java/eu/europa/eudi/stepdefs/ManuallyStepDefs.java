@@ -1925,7 +1925,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the list of executed signatures is displayed with the following details:")
+    @Then("the list of executed signatures is displayed with the following (.+):")
     public void theListOfExecutedSignaturesIsDisplayedWithTheFollowingDetails() {
         //manual
     }
@@ -3218,7 +3218,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the wallet should display the credential offer which includes:")
+    @Then("the wallet should display the credential offer which (.+):")
     public void theWalletShouldDisplayTheCredentialOfferWhichIncludes() {
         //manual
     }
@@ -4134,7 +4134,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the navigation drawer includes an icon button to close the drawer, and the following options:")
+    @And("the navigation drawer includes an icon button to close the drawer, and the following (.+):")
     public void theNavigationDrawerIncludesAnIconButtonToCloseTheDrawerAndTheFollowingOptions() {
         //manual
     }
@@ -4226,7 +4226,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the wallet displays the presentation request which includes:")
+    @Then("the wallet displays the presentation request which (.+):")
     public void theWalletDisplaysThePresentationRequestWhichIncludes() {
         //manual
     }
@@ -4317,7 +4317,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the presentation request includes:")
+    @Then("the presentation request (.+):")
     public void thePresentationRequestIncludes() {
         //manual
     }

@@ -13,16 +13,18 @@ Feature: Present Attestations from EUDI Wallet
     Then the wallet displays a page which includes a QR code and the option to share via NFC
 
   @US_PDIP_TC_02 @manual:InProgress
-  Scenario: Scan QR-code or tap for NFC with reader device and display presentation request
+  Scenario Outline: Scan QR-code or tap for NFC with reader device and display presentation request
     Given the user is on the screen displaying a QR code and the option to share via NFC
     When the displayed QR code is scanned or the NFC option is tapped with a reader device
-    Then the wallet displays the presentation request which includes:
-      | The name of the requesting Relying Party          |
-      | The attestations requested by the Relying Party   |
-      | The option to expand on the details for each requested attestation |
+    Then the wallet displays the presentation request which <includes>:
+    Examples:
+      | includes                                                                      |
+      | The name of the requesting Relying Party                                      |
+      | The attestations requested by the Relying Party                               |
+      | The option to expand on the details for each requested attestation            |
       | The option to unselect specific data elements from each requested attestation |
-      | A Cancel button                                 |
-      | A Share button                                  |
+      | A Cancel button                                                               |
+      | A Share button                                                                |
 
   @US_PDIP_TC_03 @manual:InProgress
   Scenario: Cancel data sharing process
