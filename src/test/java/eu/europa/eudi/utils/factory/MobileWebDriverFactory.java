@@ -68,19 +68,28 @@ public class MobileWebDriverFactory {
         }
     }
 
-    public void startLogging(String featureName, String scenarioName, String platformTag) {
+    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platformTag) {
         try {
             // Stop any previous logging
             stopLogging();
 
-            // Create a directory for the feature if it doesn't exist
-            File featureDir = new File("logs/" + platformTag + "/" + featureName);
+//             Create a directory for the feature if it doesn't exist
+            File featureDir = new File( featureDirPath + "/logs");
             if (!featureDir.exists()) {
                 featureDir.mkdirs();
             }
 
-            // Create a new log file path based on feature, scenario names, and platform tag
-            logFilePath = "logs/" + platformTag + "/" + featureName + "/" + scenarioName + ".txt";
+            File newFile = new File(featureDir, featureName + ".txt");
+            try {
+                if (newFile.createNewFile()) {
+                    System.out.println("File created: " + newFile.getName());
+                } else {
+                    System.out.println("File already exists.");
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
 
             // Start logcat process
             logcatProcess = Runtime.getRuntime().exec("adb logcat");
@@ -88,7 +97,7 @@ public class MobileWebDriverFactory {
             // Start a new thread to read logcat output and write to the log file
             logcatThread = new Thread(() -> {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
-                     PrintWriter logWriter = new PrintWriter(new FileWriter(logFilePath))) {
+                     PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         if (line.contains("@IOS and @automated")) {
@@ -96,7 +105,7 @@ public class MobileWebDriverFactory {
                         } else if (line.contains("@ANDROID and @automated")) {
                             writeLog(line, "logs/ANDROID/" + featureName + "/" + scenarioName + ".log");
                         } else {
-                            writeLog(line, logFilePath);
+                            writeLog(line, newFile.getPath());
                         }
                     }
 

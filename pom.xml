@@ -25,7 +25,8 @@
         <rerun.failed.scenarios>2</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <serenity.threads>16</serenity.threads> <!-- Add this line to set the number of threads -->
+        <serenity.threads>16</serenity.threads>
+        <build-version>EUDI_Wallet_vXXX.XXX.XXX</build-version><!-- Add this line to set the number of threads -->
     </properties>
 
     <dependencies>
@@ -119,7 +120,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/site/reports/css</outputDirectory>
+                            <outputDirectory>${project.build.directory}/site/reports/${build-version}/css</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/src/test/resources</directory>
@@ -144,8 +145,8 @@
                         <phase>post-integration-test</phase>
                         <configuration>
                             <target>
-                                <concat destfile="${project.build.directory}/site/reports/css/core.css">
-                                    <fileset file="${project.build.directory}/site/reports/css/custom-style.css"/>
+                                <concat destfile="${project.build.directory}/site/reports/${build-version}/css/core.css">
+                                    <fileset file="${project.build.directory}/site/reports/${build-version}/css/custom-style.css"/>
                                 </concat>
                             </target>
                         </configuration>
@@ -164,9 +165,13 @@
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
+
 
             <!-- Maven Compiler Plugin -->
             <plugin>
@@ -190,6 +195,9 @@
                     <excludes>
                         <exclude>**/README.md</exclude>
                     </excludes>
+                    <systemPropertyVariables>
+                        <serenity.threads>16</serenity.threads>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>

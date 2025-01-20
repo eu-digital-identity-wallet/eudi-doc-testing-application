@@ -82,9 +82,14 @@ import java.util.Map;
                 if (Files.exists(backupPath)) {
                     Files.copy(backupPath, sourcePath, StandardCopyOption.REPLACE_EXISTING);
                     System.out.println("Restored README from " + backupPath + " to " + sourcePath);
+
+                    // Delete the backup file after restoring it
+                    Files.delete(backupPath);
+                    System.out.println("Deleted backup README from " + backupPath);
                 } else {
                     System.err.println("Backup file does not exist: " + backupPath);
                 }
             }
         }
+
     }
