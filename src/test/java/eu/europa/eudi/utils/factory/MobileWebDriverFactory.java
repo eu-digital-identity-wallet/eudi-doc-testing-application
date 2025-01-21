@@ -4,6 +4,7 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -57,6 +58,7 @@ public class MobileWebDriverFactory {
         caps2.setCapability("app", apkPath2.getAbsolutePath());
         caps2.setCapability("allowInsecure", "adb_shell");
         caps2.setCapability("enableLogcatLogging", true);
+
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);

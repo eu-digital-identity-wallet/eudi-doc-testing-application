@@ -6,6 +6,7 @@ Feature: View PID document
     Given the user is on the Login screen
     When the user enters their PIN
     Then the user should see the dashboard screen
+    And the user should see the add doc button
 
   @US_VP_TC_02 @before_01
   Scenario: User opens the PID document from the dashboard

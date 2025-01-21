@@ -19,4 +19,12 @@ public class IssuerElements {
     public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By secondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
+    public static By wantsToIssueTheFollowing = By.xpath("//android.widget.TextView[@text=\"issuer.eudiw.dev wants to issue the following in your wallet\"]");
+    public static By nationalID = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
+    public static By cancelIssuanceProcess = By.xpath("//android.widget.TextView[@text=\"Cancel issuance process?\"]");
+    public static By ageDataDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
+    public static By photoIDDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
+    public static By clickPID = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[8]");
+    public static By preAuthorizationCheckbox = By.xpath("//android.widget.RadioButton[@resource-id=\"check2\"]");
+    public static By transactionCode = By.className("android.widget.EditText");
 }

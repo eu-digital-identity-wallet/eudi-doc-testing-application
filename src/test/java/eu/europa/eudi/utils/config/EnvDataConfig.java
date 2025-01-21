@@ -42,6 +42,7 @@ public class EnvDataConfig {
     public static final String DRIVER_REMOTE_URL = "driver.remote.url";
     public static final String WALLET_PIN = "wallet.pin";
     public static final String DRIVER_MODE = "driver.mode";
+    private static final String TRANSACTION_CODE = "transaction.code";
     ResourcesConfig resourcesConfig;
 
     public EnvDataConfig() {
@@ -175,6 +176,9 @@ public class EnvDataConfig {
 
     public String getPin() {
         return getEnvProperties().getProperty(WALLET_PIN);
+    }
+    public String getTransactionCode() {
+        return getEnvProperties().getProperty(TRANSACTION_CODE);
     }
 
 }

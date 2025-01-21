@@ -1,6 +1,7 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.pages.Issuer;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -24,9 +25,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class GeneralStepDefs{
+public class GeneralStepDefs {
 
     TestSetup test;
+
     @Before
     public void setup(Scenario scenario) {
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
@@ -99,10 +101,10 @@ public class GeneralStepDefs{
     public void tearDown(Scenario scenario) {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
+        if (android) {
             test.stopAndroidDriverSession();
         }
-        if (ios){
+        if (ios) {
             test.stopIosDriverSession();
         }
     }
@@ -392,7 +394,8 @@ public class GeneralStepDefs{
     }
 
     @Given("the user is on the issuer service")
-    public void theUserIsOnTheIssuerService() {
+    public void theUserIsOnTheIssuerService()
+    {
         test.mobile().issuer().issuerService();
     }
 
@@ -569,7 +572,6 @@ public class GeneralStepDefs{
     }
 
 
-
     @Given("the user is on the Login screen")
     public void theUserIsOnTheLoginScreen() {
         test.mobile().wallet().startAndStopDriver();
@@ -583,7 +585,7 @@ public class GeneralStepDefs{
 
     @Then("the user should see the dashboard screen")
     public void theUserShouldSeeTheDashboardScreen() {
-      test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @Given("the user is on the dashboard screen")
@@ -675,7 +677,7 @@ public class GeneralStepDefs{
 
     @And("the add document page is displayed automated")
     public void theAddDocumentPageIsDisplayedAutomated() {
-       test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
     }
 
     @And("the user clicks the national id button")
@@ -1093,5 +1095,457 @@ public class GeneralStepDefs{
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
+    @Then("the user should click the add doc button")
+    public void theUserShouldClickTheAddDocButton() {
+        theUserClicksTheAddDocButton();
+    }
+
+    @And("the user should see the add doc button")
+    public void theUserShouldSeeTheAddDocButton() {
+        test.mobile().wallet().checkIfTheAddDocButtonIsVisible();
+    }
+
+    @When("the user clicks on the three-dot menu")
+    public void theUserShouldClickOnTheThreeDotMenu() {
+        test.mobile().wallet().theUserClicksOnTheThreeDotMenu();
+    }
+
+    @Then("the menu should open")
+    public void theMenuShouldOpen() {
+        test.mobile().wallet().isMenuOpen();
+    }
+
+    @Given("the menu is open")
+    public void theMenuIsOpen() {
+        theUserHasSuccessfullyEnteredThePIN();
+        theUserShouldClickOnTheThreeDotMenu();
+        theMenuShouldOpen();
+    }
+
+    @When("the user clicks the change quick PIN option")
+    public void theUserShouldClickTheChangeQuickPINOption() {
+        test.mobile().wallet().theUserClickstheChangeQuickPinOption();
+    }
+
+    @Then("the change quick PIN page should open")
+    public void theChangeQuickPINPageShouldOpen() {
+        test.mobile().wallet().theChangeQuickPinPageOpen();
+    }
+
+
+    @And("sees typo in retrieve logs")
+    public void seesTypoInRetrieveLogs() {
+        test.mobile().wallet().typoInRetrieveLogs();
+    }
+
+    @Given("the user is on the issuer service page")
+    public void theUserIsOnTheIssuerServicePage() {
+        test.mobile().issuer().issuerService();
+        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+    }
+
+    @When("the user chooses to issue a credential to the wallet app")
+    public void theUserChoosesToIssueACredentialToTheWalletApp() {
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickPersonalIdentificationData();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().clickUseEudiw();
+    }
+
+    @Then("the user is redirected to the wallet app")
+    public void theUserIsRedirectedToTheWalletApp() {
+        test.mobile().issuer().issuerConfirmPageIsDisplayed();
+
+
+    }
+
+    @And("the user views the details regarding the issuance")
+    public void theUserViewsTheDetailsRegardingTheIssuance() {
+        test.mobile().issuer().nationalIdIsDisplayed();
+    }
+
+    @Given("the user is on the wallet app with issuance details")
+    public void theUserIsOnTheWalletAppWithIssuanceDetails() {
+        theUserIsOnTheIssuerServicePage();
+        theUserChoosesToIssueACredentialToTheWalletApp();
+        theUserIsRedirectedToTheWalletApp();
+
+    }
+
+    @When("the user clicks the cancel button")
+    public void theUserClicksTheCancelButton() {
+        test.mobile().issuer().clickCancel();
+    }
+
+    @Then("a modal appears asking if they really want to cancel the issuance process")
+    public void aModalAppearsAskingIfTheyReallyWantToCancelTheIssuanceProcess() {
+        test.mobile().issuer().cancelIssuanceProcessIsDisplayed();
+    }
+
+    @Given("the user views the cancellation confirmation modal")
+    public void theUserViewsTheCancellationConfirmationModal() {
+        theUserIsOnTheWalletAppWithIssuanceDetails();
+        theUserClicksTheCancelButton();
+        aModalAppearsAskingIfTheyReallyWantToCancelTheIssuanceProcess();
+    }
+
+    @When("the user clicks the cancel button on the modal")
+    public void theUserClicksTheCancelButtonOnTheModal() {
+        test.mobile().issuer().clickCancelIssuanceProcess();
+
+    }
+
+    @And("the user returns to the Add Document page screen")
+    public void theUserReturnsToTheAddDocumentPageScreen() {
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+
+    }
+
+    @Then("the issuance process is canceled")
+    public void theIssuanceProcessIsCanceled() {
+        test.mobile().wallet().addDocButton();
+    }
+
+    @Given("the dashboard page is displayed on screen")
+    public void theDashboardPageIsDisplayedOnScreen() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the user clicks add doc button")
+    public void theUserClicksAddDocButton() {
+        userClicksAddDocButton();
+    }
+
+    @And("the add document page is displayed on screen")
+    public void theAddDocumentPageIsDisplayedOnScreen() {
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+    }
+
+    @And("the user clicks the Age Verification button")
+    public void theUserClicksTheAgeVerificationButton() {
+        test.mobile().wallet().clicksTheAgeVerificationButton();
+    }
+
+    @Then("on screen is displayed the authentication method selection")
+    public void onScreenIsDisplayedTheAuthenticationMethodSelection() {
+        test.mobile().issuer().authenticationMethodSelection();
+    }
+
+    @Given("on screen is displayed the authentication method selection page")
+    public void onScreenIsDisplayedTheAuthenticationMethodSelectionPage() {
+        theUserClicksAddDocButton();
+        theAddDocumentPageIsDisplayedOnScreen();
+        theUserClicksTheAgeVerificationButton();
+        onScreenIsDisplayedTheAuthenticationMethodSelection();
+    }
+
+    @When("the user clicks country selection")
+    public void theUserClicksCountrySelection() {
+        test.mobile().issuer().clickCountrySelection();
+        test.mobile().issuer().clickSubmit();
+    }
+
+    @And("the user clicks FormEU")
+    public void theUserClicksFormEU() {
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().clickSubmit();
+    }
+
+    @Then("the data page is displayed")
+    public void theDataPageIsDisplayed() {
+        test.mobile().issuer().ageDataPageIsDisplayed();
+    }
+
+    @Given("a form is displayed")
+    public void aFormIsDisplayed() {
+        onScreenIsDisplayedTheAuthenticationMethodSelectionPage();
+        theUserClicksCountrySelection();
+        theUserClicksFormEU();
+        theDataPageIsDisplayed();
+    }
+
+    @When("the user fills the form")
+    public void theUserFillsTheForm() throws InterruptedException {
+        test.mobile().issuer().checkAgeOver18();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @Then("a success message is displayed on screen")
+    public void aSuccessMessageIsDisplayedOnScreen(){
+        test.mobile().wallet().successMessageForAgeIsDisplayed();
+        test.mobile().wallet().clickNextButton();
+    }
+
+    @And("the age verification is displayed in the dashboard")
+    public void theAgeVerificationIsDisplayedInTheDashboard() {
+        test.mobile().wallet().ageVerificationIsDisplayed();
+    }
+
+    @Given("the user is on Login screen")
+    public void theUserIsOnLoginScreen() {
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+    }
+
+    @And("the user enters the PIN")
+    public void theUserEntersThePIN() {
+        test.mobile().wallet().createAPin();
+    }
+    @Then("the user see the dashboard screen")
+    public void theUserSeeTheDashboardScreen() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @And("the user clicks the Photo ID button")
+    public void theUserClicksThePhotoIDButton() {
+        test.mobile().issuer().clickPhotoIDButton();
+    }
+
+    @Given("the authentication method selection screen is displayed")
+    public void theAuthenticationMethodSelectionScreenIsDisplayed() {
+        test.mobile().issuer().authenticationPageIsDisplayed();
+    }
+
+    @Then("the Photo ID data page is displayed")
+    public void thePhotoIDDataPageIsDisplayed() {
+        test.mobile().issuer().photoIDDataPageIsDisplayed();
+    }
+
+    @Given("authentication method selection screen is displayed")
+    public void authenticationMethodSelectionScreenIsDisplayed() {
+        theDashboardPageIsDisplayedOnScreen();
+        theUserClicksAddDocButton();
+        theAddDocumentPageIsDisplayedOnScreen();
+        theUserClicksThePhotoIDButton();
+        theAuthenticationMethodSelectionScreenIsDisplayed();
+
+    }
+
+    @Given("a photo ID form is displayed")
+    public void aPhotoIDFormIsDisplayed() {
+        authenticationMethodSelectionScreenIsDisplayed();
+        theUserClicksCountrySelection();
+        theUserClicksFormEU();
+        dataPageIsDisplayed();
+    }
+
+    @When("the user fills the photo ID form")
+    public void theUserFillsThePhotoIDForm() {
+        test.mobile().issuer().userFillsThePhotoIDForm();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+
+    }
+
+    @And("the photo ID is displayed in the dashboard")
+    public void thePhotoIDIsDisplayedInTheDashboard() {
+        test.mobile().wallet().photoIDIsDisplayed();
+    }
+
+    @Given("the user is on the dashboard page of the EUDI Wallet app")
+    public void theUserIsOnTheDashboardPageOfTheEUDIWalletApp() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the user clicks on the Add doc button")
+    public void theUserClicksOnTheAddDocButton() {
+        test.mobile().wallet().addDocButton();
+    }
+
+    @Then("the Add document page should be displayed")
+    public void theAddDocumentPageShouldBeDisplayed() {
+        addDocumentPageIsDisplayed();
+    }
+
+    @Given("the user is on the Add document page")
+    public void theUserIsOnTheAddDocumentPage() {
+        theUserIsOnTheDashboardPageOfTheEUDIWalletApp();
+        theUserClicksOnTheAddDocButton();
+        theAddDocumentPageShouldBeDisplayed();
+    }
+
+    @When("the user clicks on the Scan QR option")
+    public void theUserClicksOnTheScanQROption() {
+        test.mobile().wallet().scanQrIsDisplayed();
+        test.mobile().wallet().clickQROption();
+    }
+
+    @Then("the QR code scanner should be activated")
+    public void theQRCodeScannerShouldBeActivated() {
+        test.mobile().wallet().onlyThisTimeQR();
+        test.mobile().wallet().theQRScannerIsActivated();
+    }
+
+    @Given("the QR code scanner is activated")
+    public void theQRCodeScannerIsActivated() {
+        theUserIsOnTheAddDocumentPage();
+        theUserClicksOnTheScanQROption();
+        theQRCodeScannerShouldBeActivated();
+    }
+
+    @When("the user scans a QR code from the issuer service")
+    public void theUserScansAQRCodeFromTheIssuerService() {
+        test.mobile().issuer().createQRScreenshot();
+        test.mobile().wallet().mockQRInject(test.mobile().issuer().captureScreen());
+    }
+
+    @Then("the details of the credential to be issued should be displayed including the type of credential and the issuer name")
+    public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheTypeOfCredentialAndTheIssuerName() {
+        test.mobile().wallet().nationalIdIsDisplayed();
+        test.mobile().issuer().issuerConfirmPageIsDisplayed();
+    }
+
+    @Given("the user is presented with the credential details to be issued")
+    public void theUserIsPresentedWithTheCredentialDetailsToBeIssued() {
+        theQRCodeScannerShouldBeActivated();
+        theUserScansAQRCodeFromTheIssuerService();
+        theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheTypeOfCredentialAndTheIssuerName();
+    }
+
+    @When("the user presses on the ISSUE button")
+    public void theUserPressesOnTheISSUEButton()
+    {
+        test.mobile().wallet().clickIssue();
+    }
+
+    @Then("the user should be redirected to the issuer service for authentication and consent")
+    public void theUserShouldBeRedirectedToTheIssuerServiceForAuthenticationAndConsent() {
+        test.mobile().wallet().insertTransactionCode(test.getIssuer());
+        test.mobile().wallet().successMessageIsDisplayed();
+    }
+
+    @Given("the user visits the Issuer service")
+    public void theUserVisitsTheIssuerService() {
+        test.mobile().issuer().issuerService();
+    }
+
+    @When("the user chooses to issue a doc with pre-authorization")
+    public void theUserChoosesToIssueADocWithPreAuthorization() {
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickPID();
+        test.mobile().issuer().clickPreAuthorization();
+        test.mobile().issuer().clickSubmit();
+        theUserFillsInTheForm();
+    }
+
+    @Then("the Issuer service creates a QR code and a transaction code")
+    public void theIssuerServiceCreatesAQRCodeAndATransactionCode() {
+        test.mobile().issuer().qrCodeIsDisplayed();
+    }
+
+    @Given("the issuer has displayed a QR code")
+    public void theIssuerHasDisplayedAQRCode() {
+        test.mobile().issuer().createQRScreenshot();
+    }
+
+    @When("the user initiates the wallet app")
+    public void theUserInitiatesTheWalletApp() {
+        test.mobileWebDriverFactory().startAndroidDriverSession();
+        userSetsUpWallet();
+    }
+
+    @Then("the dashboard screen is displayed")
+    public void theDashboardScreenIsDisplayed() {
+        theDashboardPageIsDisplayedOnWallet();
+    }
+
+    @Given("the waller app has been initiated")
+    public void theWallerAppHasBeenInitiated() {
+        theIssuerHasDisplayedAQRCode();
+        theUserInitiatesTheWalletApp();
+        theDashboardScreenIsDisplayed();
+    }
+
+    @When("the user clicks on the ADD DOC button on the wallet application")
+    public void theUserClicksOnTheADDDOCButtonOnTheWalletApplication() {
+        theUserClicksAddDocButton();
+    }
+
+    @Then("the user views the Add document page screen")
+    public void theUserViewsTheAddDocumentPageScreen() {
+        addDocumentPageIsDisplayed();
+    }
+
+    @Given("the Add document screen is displayed")
+    public void theAddDocumentScreenIsDisplayed() {
+        theWallerAppHasBeenInitiated();
+        theUserClicksOnTheADDDOCButtonOnTheWalletApplication();
+        theUserViewsTheAddDocumentPageScreen();
+    }
+
+    @When("the user clicks on the SCAN QR button")
+    public void theUserClicksOnTheSCANQRButton() {
+        test.mobile().wallet().clickQROption();
+        test.mobile().wallet().onlyThisTimeQR();
+    }
+
+    @Then("the phone camera opens")
+    public void thePhoneCameraOpens() {
+        test.mobile().wallet().theQRScannerIsActivated();
+    }
+
+    @Given("the phone camera has opened")
+    public void thePhoneCameraHasOpened() {
+        theAddDocumentScreenIsDisplayed();
+        theUserClicksOnTheSCANQRButton();
+        thePhoneCameraOpens();
+    }
+
+    @When("the user scans the QR code from the issuer")
+    public void theUserScansTheQRCodeFromTheIssuer() {
+        test.mobile().wallet().mockQRInject(test.getIssuer().getCapturedScreenFile());
+    }
+
+    @Then("the details of the request are displayed on the wallet app")
+    public void theDetailsOfTheRequestAreDisplayedOnTheWalletApp() {
+        theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheTypeOfCredentialAndTheIssuerName();
+    }
+
+    @Given("the user is presented with the request details to be issued")
+    public void theUserIsPresentedWithTheRequestDetailsToBeIssued() {
+        thePhoneCameraHasOpened();
+        theUserScansTheQRCodeFromTheIssuer();
+        theDetailsOfTheRequestAreDisplayedOnTheWalletApp();
+    }
+
+    @When("the user presses on the Issue button")
+    public void theUserPressesOnTheIssueButton() {
+        test.mobile().wallet().clickIssue();
+    }
+
+    @Then("the Wallet app requests the transaction code")
+    public void theWalletAppRequestsTheTransactionCode() {
+        test.mobile().wallet().transactionCodeRequest();
+    }
+
+    @And("the user enters the transaction code provided by the Issuer")
+    public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
+        test.mobile().wallet().insertTransactionCode(test.getIssuer());
+    }
+
+    @Given("that the user enters the transaction code provided by the Issuer")
+    public void thatTheUserEntersTheTransactionCodeProvidedByTheIssuer() {
+        theUserIsPresentedWithTheRequestDetailsToBeIssued();
+        theUserPressesOnTheIssueButton();
+        theWalletAppRequestsTheTransactionCode();
+        theUserEntersTheTransactionCodeProvidedByTheIssuer();
+    }
+    @When("the Wallet app displays a success message on screen")
+    public void theWalletAppDisplaysASuccessMessageOnScreen() {
+        test.mobile().wallet().successMessageForAgeIsDisplayed();
+    }
+
+    @Then("the user clicks on the CONTINUE button")
+    public void theUserClicksOnTheCONTINUEButton() {
+        test.mobile().wallet().clickContinue();
+    }
+
+    @And("the doc is displayed in the dashboard screen")
+    public void theDocIsDisplayedInTheDashboardScreen() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().secondNationalIdIsDisplayed();
+    }
 }
 

@@ -11,3 +11,8 @@ Feature: Dashboard display
   Scenario: User views issued documents on the dashboard
     Given the user is on the dashboard screen
     Then the user should see the documents they have issued so far
+
+  @US_VD_TC_03 @before_01
+    Scenario: User views add doc button
+    Given the user is on the dashboard screen
+    Then the user should click the add doc button

@@ -6,7 +6,7 @@ Feature: Credential Issuance Cancellation
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/24
 
-  @US_DIC_TC_01 @manual:Passed
+  @US_DIC_TC_01 @before_01
   Scenario: User initiates credential issuance
     Given the user is on the issuer service page
     When the user chooses to issue a credential to the wallet app

@@ -1,19 +1,41 @@
 package eu.europa.eudi.pages;
 
+import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.ios.*;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.collect.ImmutableMap;
+import com.google.zxing.*;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -338,8 +360,8 @@ public class Wallet {
 
     public void successMessageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_PID.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageForAgeIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_AGE_VERIFICATION.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.successMessageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_PID.label, pageHeader);
@@ -595,4 +617,132 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PIN_FIELD_IS_DISPLAYED.label, pageHeader);
         }
     }
+
+    public void checkIfTheAddDocButtonIsVisible() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            Boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addDoc)).isDisplayed();
+            Assert.assertTrue(pageHeader);
+        }
+    }
+
+    public void theUserClicksOnTheThreeDotMenu() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.threeDotMenu)).click();
+        }
+    }
+
+    public void isMenuOpen() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.threeDotMenuOpened)).getText();
+        Assert.assertEquals(Literals.Wallet.THREE_DOT_MENU_IS_DISPLAYED.label, pageHeader);
+    }
+
+    public void theUserClickstheChangeQuickPinOption() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.changeQuickPin)).click();
+        }
+    }
+
+    public void theChangeQuickPinPageOpen() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.changeQuickPinPage)).getText();
+        Assert.assertEquals(Literals.Wallet.CHANGE_QUICK_PIN_IS_DISPLAYED.label, pageHeader);
+    }
+
+    public void typoInRetrieveLogs() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.typoLogs)).getText();
+        Assert.assertNotEquals(Literals.Wallet.TYPO_RETRIEVE_LOGS.label, pageHeader);
+    }
+
+    public void clicksTheAgeVerificationButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.ageVerificationButton)).click();
+        }
+    }
+
+    public void successMessageForAgeIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageForAgeIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_AGE_VERIFICATION.label, pageHeader);
+    }
+
+    public void ageVerificationIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.ageVerificationIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.AGE_VERIFICATION_IS_DISPLAYED.label, pageHeader);
+    }
+
+
+    public void photoIDIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.photoIDIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.PHOTO_ID_IS_DISPLAYED.label, pageHeader);
+    }
+
+    public void clickQROption() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.scanQRButton)).click();
+        }
+    }
+
+    public void onlyThisTimeQR() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR)).click();
+        }
+    }
+
+    public void theQRScannerIsActivated() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRIsActivated)).getText();
+        Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED.label, pageHeader);
+    }
+
+    public void mockQRInject(File qrImagePath) {
+        try {
+            // Read QR code image and get its content
+            BufferedImage bufferedImage = ImageIO.read(qrImagePath);
+            LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage); //kanei convert tin image se format poy mporei na epeksergastei i ZXing
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source)); //kanei tin eikona aspromavra pixels - aparaitito gia QRcode reading
+            Result result = new MultiFormatReader().decode(bitmap); //decode ton QR code kai pernei to periexomeno kai to vazei mesa stin qrContent metavliti
+            String qrContent = result.getText();
+
+            // Inject the QR content
+            test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink", //me tin deepLink karfwnei me tin mia to periexomeno tou QR
+                    ImmutableMap.of(
+                            "url", qrContent, //to periexomeno tou qr code
+                            "package", test.envDataConfig().getAppiumAndroidAppPackage() //to package name tou app gia na stalei to ergo ekei poy prepei
+                    ));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to process QR code: " + e.getMessage());
+        }
+    }
+
+
+    public void insertTransactionCode(Issuer issuer) {
+        WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
+        String fullPin = issuer.getFullPin();
+            if (fullPin != null && fullPin.length() == 5) {
+                char firstDigit = fullPin.charAt(0);
+                char secondDigit = fullPin.charAt(1);
+                char thirdDigit = fullPin.charAt(2);
+                char fourthDigit = fullPin.charAt(3);
+                char fifthDigit = fullPin.charAt(4);
+                driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield1).sendKeys(String.valueOf(firstDigit));
+                driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
+                driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
+                driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
+                driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
+            } else {
+                System.err.println("Error: Could not find the transaction code.");
+            }
+        }
+
+    public void transactionCodeRequest() {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.transactionCodeRequest)).getText();
+            Assert.assertEquals(Literals.Wallet.TRANSACTION_CODE_REQUEST.label, pageHeader);
+        }
+
+    public void secondNationalIdIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.secondNationalIdIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.SECOND_NATIONAL_ID.label, pageHeader);
+        }
+    }
 }
+

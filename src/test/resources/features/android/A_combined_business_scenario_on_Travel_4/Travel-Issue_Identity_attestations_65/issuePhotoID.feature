@@ -6,13 +6,13 @@ Feature: Issue photo ID attestation
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/65
 
-  @US_IPID_TC_01 @manual:Passed
+  @US_IPID_TC_01 @before_01
   Scenario: Log in successfully
     Given the user is on Login screen
     When the user enters the PIN
     Then the user see the dashboard screen
 
-  @US_IPID_TC_02 @manual:Passed
+  @US_IPID_TC_02 @before_01
   Scenario: Add photo ID
     Given the dashboard page is displayed on screen
     When the user clicks add doc button
@@ -20,16 +20,16 @@ Feature: Issue photo ID attestation
     And the user clicks the Photo ID button
     Then on screen is displayed the authentication method selection
 
-  @US_IPID_TC_03 @manual:Passed
+  @US_IPID_TC_03 @before_01
   Scenario: Select authentication method and enter data
-    Given the authentication method selection screen is displayed
+    Given authentication method selection screen is displayed
     When the user clicks country selection
     And the user clicks FormEU
     Then the data page is displayed
 
-  @US_IPID_TC_04 @manual:Passed
+  @US_IPID_TC_04 @before_01
   Scenario: Register personal data and view photo ID
-    Given a form is displayed
-    When the user fills the form
+    Given a photo ID form is displayed
+    When the user fills the photo ID form
     Then a success message is displayed on screen
     And the photo ID is displayed in the dashboard

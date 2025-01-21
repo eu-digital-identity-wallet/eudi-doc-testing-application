@@ -6,13 +6,13 @@ Feature: Issue age verification attestation
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/41
 
-  @US_IAVA_TC_01 @manual:Passed
-  Scenario: Log in successfully
-    Given the user is on Login screen
-    When the user enters the PIN
-    Then the user see the dashboard screen
+#  @US_IAVA_TC_01 @manual:Passed
+#  Scenario: Log in successfully
+#    Given the user is on Login screen
+#    When the user enters the PIN
+#    Then the user see the dashboard screen
 
-  @US_IAVA_TC_02 @manual:Passed
+  @US_IAVA_TC_02 @before_01
   Scenario: Add document via Age Verification
     Given the dashboard page is displayed on screen
     When the user clicks add doc button
@@ -20,14 +20,14 @@ Feature: Issue age verification attestation
     And the user clicks the Age Verification button
     Then on screen is displayed the authentication method selection
 
-  @US_IAVA_TC_03 @manual:Passed
+  @US_IAVA_TC_03 @before_01
   Scenario: Select authentication method and enter data
-    Given on screen is displayed the authentication method selection
+    Given on screen is displayed the authentication method selection page
     When the user clicks country selection
     And the user clicks FormEU
     Then the data page is displayed
 
-  @US_IAVA_TC_04 @manual:Passed
+  @US_IAVA_TC_04 @before_01
   Scenario: Register personal data and view age verification
     Given a form is displayed
     When the user fills the form
