@@ -29,7 +29,8 @@ jobs:
       - name: Run ReadmeManager
         run: |
           #!/bin/bash
-          ./path/to/ReadmeManager # Adjust the path to where ReadmeManager is located
+          javac src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+          java -cp src/test/java eu.europa.eudi.utils.factory.ReadmeManager
 
       - name: Produce report
         run: mvn serenity:aggregate
