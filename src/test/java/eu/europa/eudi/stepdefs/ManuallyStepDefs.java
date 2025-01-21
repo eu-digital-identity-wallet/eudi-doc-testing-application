@@ -4557,11 +4557,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is viewing the document in the Relying Party service")
-    public void theUserIsViewingTheDocumentInTheRelyingPartyService() {
-        //manual
-    }
-
     @When("the user selects the option to {string}")
     public void theUserSelectsTheOptionTo(String arg0) {
         // manual
@@ -4572,10 +4567,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Relying Party should prompt the user to select a QTSP from a list of QTSPs")
-    public void theRelyingPartyShouldPromptTheUserToSelectAQTSPFromAListOfQTSPs() {
-        //manual
-    }
 
     @Given("the user is prompted to select a QTSP")
     public void theUserIsPromptedToSelectAQTSP() {
@@ -4627,11 +4618,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the EUDI Wallet should inform the user that the QTSP requests to release the matching attestation \\(PID)")
-    public void theEUDIWalletShouldInformTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestationPID() {
-        //manual
-    }
-
     @Given("the user is informed of the QTSP’s request for attestation release")
     public void theUserIsInformedOfTheQTSPSRequestForAttestationRelease() {
         //manual
@@ -4655,21 +4641,6 @@ public class ManuallyStepDefs {
 
     @And("the user should be able to return to the main page of the EUDI Wallet")
     public void theUserShouldBeAbleToReturnToTheMainPageOfTheEUDIWallet() {
-        //manual
-    }
-
-    @Given("the user is informed of the QTSP request")
-    public void theUserIsInformedOfTheQTSPRequest() {
-        //manual
-    }
-
-    @When("the user chooses to release the requested attestation by entering their {int}-digit PIN")
-    public void theUserChoosesToReleaseTheRequestedAttestationByEnteringTheirDigitPIN(int arg0) {
-        //manual
-    }
-
-    @Then("the EUDI Wallet should authenticate the user and proceed with attestation release")
-    public void theEUDIWalletShouldAuthenticateTheUserAndProceedWithAttestationRelease() {
         //manual
     }
 
@@ -4728,16 +4699,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the Relying Party requests the available Credential IDs from the QTSP")
-    public void theRelyingPartyRequestsTheAvailableCredentialIDsFromTheQTSP() {
-        //manual
-    }
-
-    @Then("the Relying Party should retrieve the available Credential IDs for the user")
-    public void theRelyingPartyShouldRetrieveTheAvailableCredentialIDsForTheUser() {
-        //manual
-    }
-
     @Given("the Relying Party has retrieved available Credential IDs from the QTSP")
     public void theRelyingPartyHasRetrievedAvailableCredentialIDsFromTheQTSP() {
         //manual
@@ -4775,21 +4736,6 @@ public class ManuallyStepDefs {
 
     @Given("either the user has selected a Credential ID or there is only one available Credential ID")
     public void eitherTheUserHasSelectedACredentialIDOrThereIsOnlyOneAvailableCredentialID() {
-        //manual
-    }
-
-    @When("the Relying Party retrieves the details of the selected Credential ID from the QTSP")
-    public void theRelyingPartyRetrievesTheDetailsOfTheSelectedCredentialIDFromTheQTSP() {
-        //manual
-    }
-
-    @And("calculates the document hash")
-    public void calculatesTheDocumentHash() {
-        //manual
-    }
-
-    @Then("the Relying Party should redirect the user to the QTSP authentication page")
-    public void theRelyingPartyShouldRedirectTheUserToTheQTSPAuthenticationPage() {
         //manual
     }
 
@@ -5372,7 +5318,145 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    
 
+    @And("the user authenticates successfully in the Wallet")
+    public void theUserAuthenticatesSuccessfullyInTheWallet() {
+        // manual
+    }
 
+    @Then("the EUDI Wallet shares the requested attestation to the QTSP")
+    public void theEUDIWalletSharesTheRequestedAttestationToTheQTSP() {
+        // manual
+    }
+
+    @Given("the user has shared the requested attestation to the QTSP")
+    public void theUserHasSharedTheRequestedAttestationToTheQTSP() {
+        // manual
+    }
+
+    @When("the user selects the option to create a qualified certificate from the QTSP")
+    public void theUserSelectsTheOptionToCreateAQualifiedCertificateFromTheQTSP() {
+        // manual
+    }
+
+    @And("specifies an alias")
+    public void specifiesAnAlias() {
+        // manual
+    }
+
+    @Then("the QTSP generates the qualified certificate")
+    public void theQTSPGeneratesTheQualifiedCertificateWithTheCorrespondingKeyPairLoggingACorrespondingEvent() {
+        // manual
+    }
+
+    @Given("the user visits the QTSP login page on a differrent device")
+    public void theUserVisitsTheQTSPLoginPageOnADifferrentDevice() {
+        // manual
+    }
+
+    @Given("the QR code in the QRSP is displayed")
+    public void theQRCodeInTheQRSPIsDisplayed() {
+        // manual
+    }
+
+    @And("the user scans the displayed QR code from the QTSP")
+    public void theUserScansTheDisplayedQRCodeFromTheQTSP() {
+
+        // manual
+    }
+
+    @When("the user selects the document in the Relying Party service")
+    public void theUserSelectsTheDocumentInTheRelyingPartyService() {
+        // manual
+    }
+
+    @Then("the QTSP renders a QR code requesting the user to scan it")
+    public void theQTSPRendersAQRCodeRequestingTheUserToScanIt() {
+        // manual
+    }
+
+    @Given("the EUDI Wallet user is informed of the QTSP request")
+    public void theEUDIWalletUserIsInformedOfTheQTSPRequest() {
+        // manual
+    }
+
+    @When("the user chooses to release the requested attestation by entering their six-digit PIN")
+    public void theUserChoosesToReleaseTheRequestedAttestationByEnteringTheirSixDigitPIN() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet authenticates the user and proceed with attestation release")
+    public void theEUDIWalletAuthenticatesTheUserAndProceedWithAttestationRelease() {
+        // manual
+    }
+
+    @And("the EUDI Wallet displays a confirmation message")
+    public void theEUDIWalletDisplaysAConfirmationMessage() {
+        // manual
+    }
+
+    @When("the QTSP informs the user of the available credential\\(s) at the QTSP")
+    public void theQTSPInformsTheUserOfTheAvailableCredentialSAtTheQTSP() {
+        // manual
+    }
+
+    @When("the user has only one available Credential ID enrolled in the QTSP")
+    public void theUserHasOnlyOneAvailableCredentialIDEnrolledInTheQTSP() {
+        // manual
+    }
+
+    @Then("the Relying Party retrieves the available User Credential IDs")
+    public void theRelyingPartyRetrievesTheAvailableUserCredentialIDs() {
+        // manual
+    }
+
+    @When("the QTSP renders a QR-code")
+    public void theQTSPRendersAQRCode() {
+        // manual
+    }
+
+    @And("the user scans the QR-code with the EUDI Wallet")
+    public void theUserScansTheQRCodeWithTheEUDIWallet() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet informs the user that the QTSP requests to release the matching attestation")
+    public void theEUDIWalletInformsTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestation() {
+        // manual
+    }
+
+    @Given("the EUDI Wallet finds available matching attestations")
+    public void theEUDIWalletFindsAvailableMatchingAttestations() {
+        // manual
+    }
+
+    @When("the EUDI Wallet requests the user to consent by authenticating with a six-digit PIN")
+    public void theEUDIWalletRequestsTheUserToConsentByAuthenticatingWithASixDigitPIN() {
+        // manual
+    }
+
+    @And("the user authenticates successfully")
+    public void theUserAuthenticatesSuccessfully() {
+        // manual
+    }
+
+    @Given("the QTSP receives the attestation")
+    public void theQTSPReceivesTheAttestation() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet displays a confirmation message indicating the presentation outcome from the QTSP")
+    public void theEUDIWalletDisplaysAConfirmationMessageIndicatingThePresentationOutcomeFromTheQTSP() {
+        // manual
+    }
+
+    @And("the user views the signed document at the Relying Party interface")
+    public void theUserViewsTheSignedDocumentAtTheRelyingPartyInterface() {
+        // manual
+    }
+
+    @Then("the user can return to the main page of the Wallet")
+    public void theUserCanReturnToTheMainPageOfTheWallet() {
+        // manual
+    }
 }
