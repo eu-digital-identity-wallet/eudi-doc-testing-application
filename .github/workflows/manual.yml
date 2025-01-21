@@ -27,7 +27,8 @@ jobs:
 #          mvn clean verify -Dcucumber.filter.tags="@manual"
       - name: Compile ReadmeManager
         run: |
-          javac -d target/classes src/main/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+            mkdir -p target/classes
+            javac -d target/classes src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
 
       - name: Produce report
         run: mvn serenity:aggregate
