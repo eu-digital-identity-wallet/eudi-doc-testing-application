@@ -87,20 +87,9 @@ public class TestSetup {
         String featureName = fullPath.substring(fullPath.lastIndexOf('/') + 1).replace(".feature", "");
         // Extract the scenario name
         String scenarioName = scenario.getName();
-        String platformTag = "";
-
-        // Determine the platform tag based on the scenario's tags
-        if (scenario.getSourceTagNames().contains("@ANDROID")) {
-            platformTag = "ANDROID";
-        } else if (scenario.getSourceTagNames().contains("@IOS")) {
-            platformTag = "IOS";
-        } else {
-            // Handle the case where no platform tag is found
-            throw new IllegalArgumentException("Scenario does not have a valid platform tag (@ANDROID or @IOS)");
-        }
 
         // Start logging with the determined parameters
-        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName, platformTag);
+        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName);
     }
 
 
