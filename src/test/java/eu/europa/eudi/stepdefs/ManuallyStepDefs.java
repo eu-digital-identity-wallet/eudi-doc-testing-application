@@ -5455,8 +5455,4 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    @Then("the user can return to the main page of the Wallet")
-    public void theUserCanReturnToTheMainPageOfTheWallet() {
-        // manual
-    }
 }
