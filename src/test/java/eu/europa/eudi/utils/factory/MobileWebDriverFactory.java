@@ -68,7 +68,7 @@ public class MobileWebDriverFactory {
         }
     }
 
-    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platformTag) {
+    public void startLogging(String featureDirPath, String featureName, String scenarioName) {
         try {
             // Stop any previous logging
             stopLogging();
