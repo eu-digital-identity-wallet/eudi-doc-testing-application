@@ -165,9 +165,6 @@
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -195,9 +192,6 @@
                     <excludes>
                         <exclude>**/README.md</exclude>
                     </excludes>
-                    <systemPropertyVariables>
-                        <serenity.threads>16</serenity.threads>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
