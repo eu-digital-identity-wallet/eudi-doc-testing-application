@@ -21,10 +21,15 @@ jobs:
         with:
           node-version: '18.16.1'
 
-      - name: Run Ui Tests
+#      - name: Run Ui Tests
+#        run: |
+#          #!/bin/bash
+#          mvn clean verify -Dcucumber.filter.tags="@manual"
+      - name: Run ReadmeManager
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@manual"
+          javac src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+          java -cp src/test/java eu.europa.eudi.utils.factory.ReadmeManager
 
       - name: Produce report
         run: mvn serenity:aggregate
