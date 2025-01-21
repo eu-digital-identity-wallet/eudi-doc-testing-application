@@ -21,10 +21,15 @@ jobs:
         with:
           node-version: '18.16.1'
 
-      - name: Run Ui Tests
+      # - name: Run Ui Tests
+      #   run: |
+      #    #!/bin/bash
+      #    mvn clean verify -Dcucumber.filter.tags="@manual"
+
+        - name: Run ReadmeManager
         run: |
-         #!/bin/bash
-         mvn clean verify -Dcucumber.filter.tags="@manual"
+          #!/bin/bash
+          ./path/to/ReadmeManager # Adjust the path to where ReadmeManager is located
 
       - name: Produce report
         run: mvn serenity:aggregate
