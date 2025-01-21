@@ -26,7 +26,7 @@ jobs:
       #    #!/bin/bash
       #    mvn clean verify -Dcucumber.filter.tags="@manual"
 
-        - name: Run ReadmeManager
+      - name: Run ReadmeManager
         run: |
           #!/bin/bash
           ./path/to/ReadmeManager # Adjust the path to where ReadmeManager is located
