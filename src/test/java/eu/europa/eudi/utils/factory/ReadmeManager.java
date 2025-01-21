@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
     public class ReadmeManager {
 
-        private static final String FEATURE_FILES_DIR = "src/test/resources/features";
-        private static final String BACKUP_DIR = "src/test/resources/backupreadme";
-        private static final String SHELL_SCRIPT = "local-execution.cmd";
-        private static List<Path> readmePaths = new ArrayList<>();
-        private static Map<Path, Path> backupPaths = new HashMap<>();
+        public static final String FEATURE_FILES_DIR = "src/test/resources/features";
+        public static final String BACKUP_DIR = "src/test/resources/backupreadme";
+        public static final String SHELL_SCRIPT = "local-execution.cmd";
+        public static List<Path> readmePaths = new ArrayList<>();
+        public static Map<Path, Path> backupPaths = new HashMap<>();
 
         public static void main(String[] args) {
             try {
@@ -28,14 +28,14 @@ import java.util.Map;
             }
         }
 
-        private static void createBackupDirIfNotExists() throws IOException {
+        public static void createBackupDirIfNotExists() throws IOException {
             Path backupDir = Paths.get(BACKUP_DIR);
             if (Files.notExists(backupDir)) {
                 Files.createDirectories(backupDir);
             }
         }
 
-        private static void removeReadmeFiles(Path dir) throws IOException {
+        public static void removeReadmeFiles(Path dir) throws IOException {
             Files.walk(dir)
                     .filter(path -> path.getFileName().toString().equalsIgnoreCase("README.md"))
                     .forEach(path -> {
@@ -62,7 +62,7 @@ import java.util.Map;
                     });
         }
 
-        private static void runShellScript() {
+        public static void runShellScript() {
             try {
                 ProcessBuilder processBuilder = new ProcessBuilder(SHELL_SCRIPT);
                 processBuilder.inheritIO();
@@ -76,7 +76,7 @@ import java.util.Map;
             }
         }
 
-        private static void restoreReadmeFiles() throws IOException {
+        public static void restoreReadmeFiles() throws IOException {
             for (Path sourcePath : readmePaths) {
                 Path backupPath = backupPaths.get(sourcePath);
                 if (Files.exists(backupPath)) {

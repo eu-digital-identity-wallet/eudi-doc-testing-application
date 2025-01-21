@@ -18,17 +18,28 @@ import org.openqa.selenium.logging.LogEntry;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import eu.europa.eudi.utils.factory.ReadmeManager;
+
+import static eu.europa.eudi.utils.factory.ReadmeManager.FEATURE_FILES_DIR;
 
 public class GeneralStepDefs{
 
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
+
+        try {
+            ReadmeManager.createBackupDirIfNotExists();
+            ReadmeManager.removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
@@ -111,6 +122,12 @@ public class GeneralStepDefs{
             test.stopIosDriverSession();
         }
         test.stopLogging();
+        try {
+            // Call ReadmeManager.restoreReadmeFiles() after the test teardown
+            ReadmeManager.restoreReadmeFiles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Given("user sets up wallet")
