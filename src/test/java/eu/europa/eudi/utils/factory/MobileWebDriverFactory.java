@@ -207,7 +207,7 @@ public class MobileWebDriverFactory {
             // Stop method tracing
             stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
             String remoteFilePath = "/data/local/tmp/trace_file.trace";
-            String localFilePath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/trace_file.trace";
+            String localFilePath = "/trace_file.trace";
             pullTraceFile(remoteFilePath, localFilePath);
         }
     }
