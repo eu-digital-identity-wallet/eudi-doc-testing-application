@@ -5344,11 +5344,6 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    @Then("the QTSP generates the qualified certificate")
-    public void theQTSPGeneratesTheQualifiedCertificateWithTheCorrespondingKeyPairLoggingACorrespondingEvent() {
-        // manual
-    }
-
     @Given("the user visits the QTSP login page on a differrent device")
     public void theUserVisitsTheQTSPLoginPageOnADifferrentDevice() {
         // manual
