@@ -34,13 +34,6 @@ public class GeneralStepDefs{
     @Before
     public void setup(Scenario scenario) {
 
-        try {
-            ReadmeManager.createBackupDirIfNotExists();
-            ReadmeManager.removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean without_data = scenario.getSourceTagNames().contains("@before_02");
@@ -122,12 +115,6 @@ public class GeneralStepDefs{
             test.stopIosDriverSession();
         }
         test.stopLogging();
-        try {
-            // Call ReadmeManager.restoreReadmeFiles() after the test teardown
-            ReadmeManager.restoreReadmeFiles();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Given("user sets up wallet")
