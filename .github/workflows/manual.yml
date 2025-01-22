@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '18.16.1'
 
+      - name: Compile ReadmeManager.java
+        run: javac src\test\java\eu\europa\eudi\utils\factory\ReadmeManager.java
+
       - name: Run Ui Tests
         run: |
           #!/bin/bash

@@ -21,8 +21,8 @@ import java.util.Map;
             try {
                 createBackupDirIfNotExists();
                 removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
-                runShellScript();
-                restoreReadmeFiles();
+//                runShellScript();
+//                restoreReadmeFiles();
             } catch (IOException e) {
                 e.printStackTrace();
             }
