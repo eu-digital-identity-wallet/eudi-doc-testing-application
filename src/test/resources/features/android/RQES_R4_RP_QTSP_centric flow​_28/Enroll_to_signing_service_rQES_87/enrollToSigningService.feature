@@ -11,53 +11,36 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
     And the user has issued a PID attestation to the EUDI Wallet
     And the user has internet connectivity
 
-  @US_ETSS_TC_01 @manual:InProgress
+  @US_ETSS_TC_01 @manual:Passed
   Scenario: User visits QTSP login page
-    When the user visits the QTSP login page on a different device
-    Then the QTSP should render the PID authentication option
-
-  @US_ETSS_TC_02 @manual:InProgress
-  Scenario: User scans QR code after PID selection
-    Given the user is on the QTSP login page
+    Given the user visits the QTSP login page on a differrent device
     When the user selects the PID authentication option
     Then the QTSP should render a QR code
 
-  @US_ETSS_TC_03 @manual:InProgress
+  @US_ETSS_TC_02 @manual:Passed
   Scenario: User successfully authenticates in EUDI Wallet
-    Given the user has scanned the QR code
+    Given the QR code in the QRSP is displayed
     When the user authenticates successfully in the EUDI Wallet
+    And the user scans the displayed QR code from the QTSP
     Then the EUDI Wallet should display the attestation release request
 
-  @US_ETSS_TC_04 @manual:InProgress
+  @US_ETSS_TC_03 @manual:Passed
   Scenario: User fails to authenticate in EUDI Wallet
     Given the user has scanned the QR code
     When the user fails to authenticate in the EUDI Wallet
     Then the EUDI Wallet should present an error message
 
-  @US_ETSS_TC_05 @manual:InProgress
-  Scenario: No matching attestations available
-    Given the user has scanned the QR code
-    And the user authenticates successfully in the EUDI Wallet
-    When the EUDI Wallet checks for available attestations
-    And there are no matching attestations
-    Then the EUDI Wallet should inform the user
+  @US_ETSS_TC_04 @manual:Passed
+  Scenario: User consents to release attestation
+    Given the EUDI Wallet has found a matching attestation for the QTSP request
+    When the EUDI Wallet requests the user’s consent to release the attestation
+    And the user authenticates by entering the six-digit PIN
+    Then EUDI Wallet should release the attestation to the QTSP
+    And EUDI Wallet should display a confirmation message indicating the successful presentation
 
-  @US_ETSS_TC_06 @manual:InProgress
-  Scenario: User consents to attestation release
-    Given the user has scanned the QR code
-    And the user authenticates successfully in the EUDI Wallet
-    And there are matching attestations available
-    When the user enters their six digit PIN
-    Then the EUDI Wallet should present the requested attestation to the QTSP
-
-  @US_ETSS_TC_07 @manual:InProgress
-  Scenario: QTSP cannot verify attestation
-    Given the user has presented the requested attestation to the QTSP
-    When the QTSP cannot verify the attestation
-    Then an error message should inform the user
-
-  @US_ETSS_TC_08 @manual:InProgress
+  @US_ETSS_TC_05 @manual:Passed
   Scenario: Successful attestation verification
-    Given the user has presented the requested attestation to the QTSP
-    When the QTSP verifies the attestation successfully
-    Then the QTSP should inform the user of the successful verification outcome
+    Given the user has shared the requested attestation to the QTSP
+    When the user selects the option to create a qualified certificate from the QTSP
+    And specifies an alias
+    Then the QTSP generates the qualified certificate
