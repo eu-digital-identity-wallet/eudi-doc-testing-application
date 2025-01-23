@@ -19,7 +19,7 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
 
   @US_ETSS_TC_02 @manual:Passed
   Scenario: User successfully authenticates in EUDI Wallet
-    Given the QR code in the QRSP is displayed
+    Given the QR code in the QTSP is displayed
     When the user authenticates successfully in the EUDI Wallet
     And the user scans the displayed QR code from the QTSP
     Then the EUDI Wallet should display the attestation release request
