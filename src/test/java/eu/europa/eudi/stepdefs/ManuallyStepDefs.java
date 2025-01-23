@@ -5349,10 +5349,6 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    @Given("the QR code in the QRSP is displayed")
-    public void theQRCodeInTheQRSPIsDisplayed() {
-        // manual
-    }
 
     @And("the user scans the displayed QR code from the QTSP")
     public void theUserScansTheDisplayedQRCodeFromTheQTSP() {
@@ -5456,4 +5452,33 @@ public class ManuallyStepDefs {
     }
 
 
+    @Given("the QR code in the QTSP is displayed")
+    public void theQRCodeInTheQTSPIsDisplayed() {
+        // manual
+    }
+
+    @Given("the user visits the Relying Party login page on a different device than EUDI Wallet")
+    public void theUserVisitsTheRelyingPartyLoginPageOnADifferentDeviceThanEUDIWallet() {
+        // manual
+    }
+
+    @When("the user enters the username & password")
+    public void theUserEntersTheUsernamePassword() {
+        // manual
+    }
+
+    @And("the user clicks on the Login button")
+    public void theUserClicksOnTheLoginButton() {
+        // manual
+    }
+
+    @Then("the user should be successfully logged in to the Relying Party")
+    public void theUserShouldBeSuccessfullyLoggedInToTheRelyingParty() {
+        // manual
+    }
+
+    @And("the user can proceed with the signature process")
+    public void theUserCanProceedWithTheSignatureProcess() {
+        // manual
+    }
 }
