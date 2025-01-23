@@ -10,6 +10,12 @@ jobs:
         with:
           ref: milestone/2024.Q4
 
+      - name: Permission to file .sh
+        run: |
+          #!/bin/bash
+          sudo chmod +x local-execution.sh
+      
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
