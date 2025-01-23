@@ -5481,4 +5481,9 @@ public class ManuallyStepDefs {
     public void theUserCanProceedWithTheSignatureProcess() {
         // manual
     }
+
+    @Given("the QR code in the QRSP is displayed")
+    public void the_qr_code_in_the_qrsp_is_displayed() {
+        // manual
+    }
 }
