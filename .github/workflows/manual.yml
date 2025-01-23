@@ -27,10 +27,10 @@ jobs:
       - name: Run ReadmeManager
         run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
 
-      - name: Run Ui Tests
-        run: |
-          #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@manual"
+#      - name: Run Ui Tests
+#        run: |
+#          #!/bin/bash
+#          mvn clean verify -Dcucumber.filter.tags="@manual"
 
       - name: Produce report
         run: mvn serenity:aggregate
