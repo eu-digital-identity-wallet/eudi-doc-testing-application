@@ -3933,18 +3933,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user clicks on the Present a document section")
-    public void theUserClicksOnThePresentADocumentSection() {
-        //manual
-    }
-
     @Then("the Present a document section should include In Person and Online options")
     public void thePresentADocumentSectionShouldIncludeInPersonAndOnlineOptions() {
-        //manual
-    }
-
-    @When("the user clicks on the Add a document section")
-    public void theUserClicksOnTheAddADocumentSection() {
         //manual
     }
 
@@ -3960,21 +3950,6 @@ public class ManuallyStepDefs {
 
     @Then("the Sign a document section should include From device and Scan QR to sign options")
     public void theSignADocumentSectionShouldIncludeFromDeviceAndScanQRToSignOptions() {
-        //manual
-    }
-
-    @When("the user clicks the Present a document section")
-    public void theUserClicksThePresentADocumentSection() {
-        //manual
-    }
-
-    @Then("the In-Person button is displayed")
-    public void theInPersonButtonIsDisplayed() {
-        //manual
-    }
-
-    @Then("the Online button is displayed")
-    public void theOnlineButtonIsDisplayed() {
         //manual
     }
 
@@ -4005,31 +3980,6 @@ public class ManuallyStepDefs {
 
     @Then("the Home button is highlighted")
     public void theHomeButtonIsHighlighted() {
-        //manual
-    }
-
-    @Then("the Sign a document section include From device and Scan QR to sign options")
-    public void theSignADocumentSectionIncludeFromDeviceAndScanQRToSignOptions() {
-        //manual
-    }
-
-    @Then("the Add a document section include Choose from list and Scan QR to add options")
-    public void theAddADocumentSectionIncludeChooseFromListAndScanQRToAddOptions() {
-        //manual
-    }
-
-    @Then("the Present a document section include In Person and Online options")
-    public void thePresentADocumentSectionIncludeInPersonAndOnlineOptions() {
-        //manual
-    }
-
-    @And("the Home screen display Present a document, Add a document, and Sign a document sections")
-    public void theHomeScreenDisplayPresentADocumentAddADocumentAndSignADocumentSections() {
-        //manual
-    }
-
-    @Then("the Home screen is scrollable")
-    public void theHomeScreenIsScrollable() {
         //manual
     }
 
@@ -5484,6 +5434,31 @@ public class ManuallyStepDefs {
 
     @Given("the QR code in the QRSP is displayed")
     public void the_qr_code_in_the_qrsp_is_displayed() {
+        // manual
+    }
+
+    @Then("the user observes the Home screen")
+    public void theUserObservesTheHomeScreen() {
+        // manual
+    }
+
+    @Then("the Sign Document screen is displayed")
+    public void theSignDocumentScreenIsDisplayed() {
+        // manual
+    }
+
+    @And("the Home screen display Authenticate and Sign a document sections")
+    public void theHomeScreenDisplayAuthenticateAndSignADocumentSections() {
+        // manual
+    }
+
+    @When("the user clicks on the Authenticate section")
+    public void theUserClicksOnTheAuthenticateSection() {
+        // manual
+    }
+
+    @Then("the Authenticate section include In Person and Online options")
+    public void theAuthenticateSectionIncludeInPersonAndOnlineOptions() {
         // manual
     }
 }
