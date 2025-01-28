@@ -5455,4 +5455,78 @@ public class ManuallyStepDefs {
     public void theUserClosesTheSuccessScreen() {
         // manual
     }
+
+    @When("the user navigates to the Home screen")
+    public void theUserNavigatesToTheHomeScreen() {
+        //manual
+    }
+
+
+    @Then("Home screen should be displayed")
+    public void homeScreenShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user has clicked the option Documents")
+    public void theUserHasClickedTheOptionDocuments() {
+        //manual
+    }
+
+    @When("the user selects to add a document \\(+) icon")
+    public void theUserSelectsToAddADocumentIcon() {
+        //manual
+
+    }
+
+
+    @When("the user selects to add the document plus icon")
+    public void theUserSelectsToAddTheDocumentPlusIcon() {
+        //manual
+
+    }
+
+    @Then("Add document screen should be displayed")
+    public void addDocumentScreenShouldBeDisplayed() {
+        //manual
+
+    }
+
+    @When("the user selects the option Scan a QR code in the Add document screen")
+    public void theUserSelectsTheOptionScanAQRCodeInTheAddDocumentScreen() {
+        //manual
+
+    }
+
+    @When("the user selects the Cancel button")
+    public void theUserSelectsTheCancelButton() {
+        //manual
+
+    }
+
+    @And("the user should be returned to the Scan QR screen")
+    public void theUserShouldBeReturnedToTheScanQRScreen() {
+        //manual
+
+    }
+
+    @Then("the user proceeds with the attestation \\(document) issuing flow")
+    public void theUserProceedsWithTheAttestationDocumentIssuingFlow() {
+        //manual
+
+    }
+
+
+    @And("the screen should display a Close button to return to Home screen")
+    public void theScreenShouldDisplayACloseButtonToReturnToHomeScreen() {
+        //manual
+
+    }
+
+    @And("the attestation should be added to the wallet")
+    public void theAttestationShouldBeAddedToTheWallet() {
+        //manual
+
+    }
 }
+
+
