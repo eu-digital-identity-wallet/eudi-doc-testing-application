@@ -3068,22 +3068,17 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user navigates to the “Home” screen")
-    public void theUserNavigatesToTheHomeScreen() {
-        //manual
-    }
-
     @Then("the {string} screen should be displayed")
     public void theScreenShouldBeDisplayed(String arg0) {
         //manual
     }
 
-    @Then("the Home screen should be displayed")
+    @Then("the Home screen is displayed")
     public void theHomeScreenShouldBeDisplayed() {
         //manual
     }
 
-    @Given("the user is on the “Home” screen")
+    @Given("the user is on the Home screen")
     public void theUserIsOnTheHomeScreen() {
         //manual
     }
@@ -3093,7 +3088,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the wallet should display a predefined list of attestations that the user can issue and add to their EUDI Wallet")
+    @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
     public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
         //manual
     }
@@ -3113,12 +3108,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the wallet should display a success screen")
-    public void theWalletShouldDisplayASuccessScreen() {
-        //manual
-    }
-
-    @And("the screen should inform the user about the attestation issued and the issuer who issued it")
+    @And("the screen informs the user about the attestation issued and the issuer who issued it")
     public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
         //manual
     }
@@ -3168,13 +3158,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the user should be navigated back to the “Home” screen")
+    @Then("the user navigates back to the Home screen")
     public void theUserShouldBeNavigatedBackToTheHomeScreen() {
-        //manual
-    }
-
-    @When("the user clicks on the Close button")
-    public void theUserClicksOnTheCloseButton() {
         //manual
     }
 
@@ -3188,12 +3173,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user selects the option Choose from list in the Add document section")
-    public void theUserSelectsTheOptionChooseFromListInTheAddDocumentSection() {
-        //manual
-    }
-
-    @And("the screen should display a Close button to return to the “Home” screen")
+    @And("the screen displays a Close button to return to the Home screen")
     public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
         //manual
     }
@@ -3235,11 +3215,6 @@ public class ManuallyStepDefs {
 
     @Then("the issuing process should be canceled")
     public void theIssuingProcessShouldBeCanceled() {
-        //manual
-    }
-
-    @When("the user selects the Cancel button")
-    public void theUserSelectsTheCancelButton() {
         //manual
     }
 
@@ -4079,11 +4054,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the navigation drawer slides in from the left side of the screen")
-    public void theNavigationDrawerSlidesInFromTheLeftSideOfTheScreen() {
-        //manual
-    }
-
     @And("the navigation drawer includes an icon button to close the drawer, and the following (.+):")
     public void theNavigationDrawerIncludesAnIconButtonToCloseTheDrawerAndTheFollowingOptions() {
         //manual
@@ -4091,16 +4061,6 @@ public class ManuallyStepDefs {
 
     @Given("the navigation drawer is open")
     public void theNavigationDrawerIsOpen() {
-        //manual
-    }
-
-    @When("the user taps the Go back icon button")
-    public void theUserTapsTheGoBackIconButton() {
-        //manual
-    }
-
-    @Then("the navigation drawer slides away to the left side of the screen")
-    public void theNavigationDrawerSlidesAwayToTheLeftSideOfTheScreen() {
         //manual
     }
 
@@ -4155,12 +4115,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user clicks on the In person option")
-    public void theUserClicksOnTheInPersonOption() {
-        //manual
-    }
-
-
     @Then("the wallet displays a page which includes a QR code and the option to share via NFC")
     public void theWalletDisplaysAPageWhichIncludesAQRCodeAndTheOptionToShareViaNFC() {
         //manual
@@ -4183,16 +4137,6 @@ public class ManuallyStepDefs {
 
     @Given("the wallet is displaying the presentation request")
     public void theWalletIsDisplayingThePresentationRequest() {
-        //manual
-    }
-
-    @Then("a modal appears asking the user to confirm the cancellation")
-    public void aModalAppearsAskingTheUserToConfirmTheCancellation() {
-        //manual
-    }
-
-    @And("the user clicks on the Cancel Sharing button")
-    public void theUserClicksOnTheCancelSharingButton() {
         //manual
     }
 
@@ -4234,11 +4178,6 @@ public class ManuallyStepDefs {
 
     @Given("the user is on the Home page")
     public void theUserIsOnTheHomePage() {
-        //manual
-    }
-
-    @When("the user selects the Online option in the Present document section")
-    public void theUserSelectsTheOnlineOptionInThePresentDocumentSection() {
         //manual
     }
 
@@ -5459,6 +5398,61 @@ public class ManuallyStepDefs {
 
     @Then("the Authenticate section include In Person and Online options")
     public void theAuthenticateSectionIncludeInPersonAndOnlineOptions() {
+        // manual
+    }
+
+    @Then("the navigation drawer slides away")
+    public void theNavigationDrawerSlidesAway() {
+        // manual
+    }
+
+    @When("the user taps the back icon button")
+    public void theUserTapsTheBackIconButton() {
+        // manual
+    }
+
+    @Then("the navigation drawer slides in from the right side of the screen")
+    public void theNavigationDrawerSlidesInFromTheRightSideOfTheScreen() {
+        // manual
+    }
+
+    @And("the user clicks on the In person option")
+    public void theUserClicksOnTheInPersonOption() {
+        // manual
+    }
+
+    @And("the reader device scans the QR code")
+    public void theReaderDeviceScansTheQRCode() {
+        // manual
+    }
+
+    @When("the user selects the back button")
+    public void theUserSelectsTheBackButton() {
+        // manual
+    }
+
+    @When("the user selects the Online option in the Authenticate section")
+    public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
+        // manual
+    }
+
+    @Then("the Documents screen is displayed")
+    public void theDocumentsScreenIsDisplayed() {
+        // manual
+    }
+
+    @When("the user selects to add a new document")
+    public void theUserSelectsToAddANewDocument() {
+        // manual
+    }
+
+    @And("the user selects to add a new document From list")
+    public void theUserSelectsToAddANewDocumentFromList() {
+        // manual
+    }
+
+    @When("the user closes the success screen")
+    public void theUserClosesTheSuccessScreen() {
         // manual
     }
 }

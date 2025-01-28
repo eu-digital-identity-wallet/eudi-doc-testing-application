@@ -6,11 +6,11 @@ Feature: EUDI Wallet Menu Screen
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/109
 
-  @US_MS_TC_01 @manual:InProgress
+  @US_MS_TC_01 @manual:Passed
   Scenario Outline: Access EUDI Wallet menu
     Given the user is on the EUDI Wallet Home screen
     When the user taps the menu button on the upper left corner of the screen
-    Then the navigation drawer slides in from the left side of the screen
+    Then the navigation drawer slides in from the right side of the screen
     And the navigation drawer includes an icon button to close the drawer, and the following <options>:
     Examples:
       | options        |
@@ -20,11 +20,11 @@ Feature: EUDI Wallet Menu Screen
       | Help / FAQs    |
       | Exit           |
 
-  @US_MS_TC_02 @manual:InProgress
-  Scenario: Close the navigation drawer using the 'Go back' icon button
+  @US_MS_TC_02 @manual:Passed
+  Scenario: Close the navigation drawer using the 'Back' icon button
     Given the navigation drawer is open
-    When the user taps the Go back icon button
-    Then the navigation drawer slides away to the left side of the screen
+    When the user taps the back icon button
+    Then the navigation drawer slides away
 
   @US_MS_TC_03 @manual:InProgress
   Scenario: Access Notifications from the navigation drawer
