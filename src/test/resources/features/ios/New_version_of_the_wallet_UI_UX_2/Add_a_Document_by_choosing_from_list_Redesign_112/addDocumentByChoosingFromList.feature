@@ -6,50 +6,37 @@ Feature: Issuing and storing attestations in the EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/112
 
-  @US_ADBCFL_TC_01 @manual:InProgress
+  @US_ADBCFL_TC_01 @manual:Passed
   Scenario: Successful navigation to "Home" screen
-    Given the user has opened the EUDI Wallet application
-    When the user navigates to the “Home” screen
-    Then the Home screen should be displayed
+    Given the user is on the Home screen
+    When the user navigates to the Documents screen
+    Then the Documents screen is displayed
 
-  @US_ADBCFL_TC_02 @manual:InProgress
+  @US_ADBCFL_TC_02 @manual:Passed
   Scenario: Selecting attestation from the predefined list
-    Given the user is on the “Home” screen
-    When the user selects the option Choose from list in the Add document section
-    Then the wallet should display a predefined list of attestations that the user can issue and add to their EUDI Wallet
+    Given the user is on the Documents screen
+    When the user selects to add a new document
+    And the user selects to add a new document From list
+    Then the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet
 
-  @US_ADBCFL_TC_03 @manual:InProgress
+  @US_ADBCFL_TC_03 @manual:Passed
   Scenario: Issuing an attestation successfully
     Given the user is viewing the predefined list of attestations
     When the user selects one attestation to be issued
     And the attestation is successfully issued
-    Then the wallet should display a success screen
-    And the screen should inform the user about the attestation issued and the issuer who issued it
-    And the screen should display a Close button to return to the “Home” screen
+    Then the wallet displays a success screen
+    And the screen informs the user about the attestation issued and the issuer who issued it
+    And the screen displays a Close button to return to the Home screen
 
   @US_ADBCFL_TC_04 @manual:InProgress
-  Scenario: Issuing a PID attestation successfully
-    Given the user is viewing the predefined list of attestations
-    When the user selects the PID attestation to be issued
-    And the PID attestation is successfully issued
-    Then the wallet should display a success screen informing the user about the PID attestation issued and the issuer who issued it
-    And the screen should display a Go to my EUDI Wallet button to return to the “Home” screen
-
-  @US_ADBCFL_TC_05 @manual:InProgress
   Scenario: Error during attestation issuance
     Given the user is viewing the predefined list of attestations
     When the user selects an attestation to be issued
     And an error occurs during the issuance process
     Then the wallet should display an error screen informing the user about the unsuccessful operation
 
-  @US_ADBCFL_TC_06 @manual:InProgress
+  @US_ADBCFL_TC_05 @manual:Passed
   Scenario: Returning to "Home" screen after success
     Given the user is viewing the success screen after an attestation is issued
-    When the user clicks on the Close button
-    Then the user should be navigated back to the “Home” screen
-
-  @US_ADBCFL_TC_07 @manual:InProgress
-  Scenario: Returning to "Home" screen after PID attestation issuance
-    Given the user is viewing the additional success screen after the PID attestation is issued
-    When the user clicks on the Go to my EUDI Wallet button
-    Then the user should be navigated back to the “Home” screen
+    When the user closes the success screen
+    Then the user navigates back to the Home screen
