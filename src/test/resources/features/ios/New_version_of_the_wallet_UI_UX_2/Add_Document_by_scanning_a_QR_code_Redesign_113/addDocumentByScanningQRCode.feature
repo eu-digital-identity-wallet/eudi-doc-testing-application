@@ -37,12 +37,12 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
       | Add document button      |
       |                          |
 
-  @US_ADBSQRC_TC_05 @manual:InProgress
+  @US_ADBSQRC_TC_05 @manual:Failed
   Scenario: Canceling the issuing process
     Given the user is viewing the credential offer
     When the user selects the Cancel button
     Then the issuing process should be canceled
-    And the user should be returned to the Scan QR screen
+    And the user should be returned to the Documents screen
 
   @US_ADBSQRC_TC_06 @manual:Passed
   Scenario: Proceeding with the attestation issuing flow
