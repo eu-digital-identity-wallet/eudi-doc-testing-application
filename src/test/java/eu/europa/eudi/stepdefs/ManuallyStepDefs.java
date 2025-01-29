@@ -5527,6 +5527,16 @@ public class ManuallyStepDefs {
         //manual
 
     }
+
+    @And("the user should be able to view the full details about the issuer")
+    public void theUserShouldBeAbleToViewTheFullDetailsAboutTheIssuer() {
+        //manual
+    }
+
+    @When("the user navigates to the issuer details")
+    public void theUserNavigatesToTheIssuerDetails() {
+        //manual
+    }
 }
 
 
