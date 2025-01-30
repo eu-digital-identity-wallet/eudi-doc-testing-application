@@ -5537,6 +5537,16 @@ public class ManuallyStepDefs {
     public void theUserNavigatesToTheIssuerDetails() {
         //manual
     }
+
+    @And("the search field should display the hinted search text for example Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextForExampleSearchDocuments() {
+        //manual
+    }
+
+    @And("no search or filters are applied")
+    public void noSearchOrFiltersAreApplied() {
+        //manual
+    }
 }
 
 
