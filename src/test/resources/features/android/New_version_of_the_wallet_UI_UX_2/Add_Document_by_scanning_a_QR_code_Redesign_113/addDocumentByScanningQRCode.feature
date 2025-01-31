@@ -20,7 +20,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
     Then Add document screen should be displayed
 
   @US_ADBSQRC_TC_03 @manual:Passed
-  Scenario: Selecting "Scan a QR code" option
+  Scenario: Selecting Scan a QR code option
     Given the user is on the Add document screen
     When the user selects the option Scan a QR code in the Add document screen
     Then the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer
@@ -37,12 +37,12 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
       | Add document button      |
       |                          |
 
-  @US_ADBSQRC_TC_05 @manual:InProgress
+  @US_ADBSQRC_TC_05 @manual:Passed
   Scenario: Canceling the issuing process
     Given the user is viewing the credential offer
     When the user selects the Cancel button
     Then the issuing process should be canceled
-    And the user should be returned to the Scan QR screen
+    And the user should be returned to the Documents screen
 
   @US_ADBSQRC_TC_06 @manual:Passed
   Scenario: Proceeding with the attestation issuing flow

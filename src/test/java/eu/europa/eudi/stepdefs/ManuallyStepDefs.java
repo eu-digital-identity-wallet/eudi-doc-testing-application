@@ -5527,6 +5527,26 @@ public class ManuallyStepDefs {
         //manual
 
     }
+
+    @And("the user should be able to view the full details about the issuer")
+    public void theUserShouldBeAbleToViewTheFullDetailsAboutTheIssuer() {
+        //manual
+    }
+
+    @When("the user navigates to the issuer details")
+    public void theUserNavigatesToTheIssuerDetails() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text for example Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextForExampleSearchDocuments() {
+        //manual
+    }
+
+    @And("no search or filters are applied")
+    public void noSearchOrFiltersAreApplied() {
+        //manual
+    }
 }
 
 
