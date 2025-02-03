@@ -11,7 +11,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is on the Documents screen
 
-  @US_FASD_TC_01 @manual:InProgress
+  @US_FASD_TC_01 @manual:Failed
   Scenario: Initial state of the filter/sort option
     Given the user is viewing the Documents screen
     Then no filter should be applied (default state)
@@ -19,7 +19,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the documents should be ordered by attestation name ascending within each category
     And the filter or sort button should have no visual indication that a filter or sort option is applied
 
-  @US_FASD_TC_02 @manual:InProgress
+  @US_FASD_TC_02 @manual:Failed
   Scenario: Opening the filter/sort bottom sheet
     Given the user is on the Documents screen
     When the user taps the filter or sort button
@@ -27,13 +27,13 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the “Sort by” and “Filter by ..” sections should be displayed in collapsed view
     And each section should display the applied filter and sort options respectively
 
-  @US_FASD_TC_03 @manual:InProgress
+  @US_FASD_TC_03 @manual:Failed
   Scenario: Expanding and collapsing the "Sort by" section
     Given the user has opened the filter or sort bottom sheet
     When the user taps the Sort by section
     Then the section should switch between collapsed and expanded views
 
-  @US_FASD_TC_04 @manual:InProgress
+  @US_FASD_TC_04 @manual:Failed
   Scenario: Sorting documents by attribute
     Given the user has expanded the Sort by section
     When the user selects to sort by Date Issued
@@ -43,7 +43,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the sorting by Date Issued in descending order
     And the documents should be listed according to the selected sorting order
 
-  @US_FASD_TC_05 @manual:InProgress
+  @US_FASD_TC_05 @manual:Failed
   Scenario: Sorting documents by default option with grouping
     Given the user has opened the filter or sort bottom sheet
     When the user selects to sort by Default or Category
@@ -51,13 +51,13 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     Then the documents list should be grouped by category
     And within each category, the documents should be ordered by attestation name in ascending order
 
-  @US_FASD_TC_06 @manual:InProgress
+  @US_FASD_TC_06 @manual:Failed
   Scenario: Expanding and collapsing the "Filter by Category" section
     Given the user has opened the filter or sort bottom sheet
     When the user taps the Filter by Category section
     Then the section should switch between collapsed and expanded views
 
-  @US_FASD_TC_07 @manual:InProgress
+  @US_FASD_TC_07 @manual:Failed
   Scenario: Filtering documents by category
     Given the user has expanded the Filter by Category section
     When the user selects one or more categories
@@ -66,7 +66,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the filter by the selected categories
     And only documents within those categories should be displayed
 
-  @US_FASD_TC_08 @manual:InProgress
+  @US_FASD_TC_08 @manual:Failed
   Scenario: Filtering documents by issuer
     Given the user has opened the filter orsort bottom sheet
     When the user taps the Filter by Issuer section
@@ -76,7 +76,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the filter by the selected issuers
     And only documents issued by the selected issuers should be displayed
 
-  @US_FASD_TC_09 @manual:InProgress
+  @US_FASD_TC_09 @manual:Passed
   Scenario: Filtering documents by expiry period
     Given the user has opened the filter or sort bottom sheet
     When the user taps the Filter by Expiry Period section
@@ -86,7 +86,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the filter by the selected expiry period
     And only documents expiring within the selected period should be displayed
 
-  @US_FASD_TC_10 @manual:InProgress
+  @US_FASD_TC_10 @manual:Failed
   Scenario: Resetting filters and sorting
     Given the user has applied a filter or sort option
     When the user taps the Reset all button in the filter or sort bottom sheet
@@ -94,14 +94,14 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the bottom sheet should slide down
     And the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name
 
-  @US_FASD_TC_11 @manual:InProgress
+  @US_FASD_TC_11 @manual:Failed
   Scenario: No matching documents found after applying filters
     Given the user has applied a filter or sort option
     When no matching documents are found based on the applied filters
     Then the EUDI Wallet should display an informative message in the list section
     And if no results are found within a category, that category should not be displayed when sorting is set to Default or Category
 
-  @US_FASD_TC_12 @manual:InProgress
+  @US_FASD_TC_12 @manual:Passed
   Scenario: Visual indication of applied filters/sorting
     Given the user has applied a filter or sorting option that is different from the default
     When the user returns to the Documents screen

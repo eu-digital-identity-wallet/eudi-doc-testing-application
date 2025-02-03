@@ -28,14 +28,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet
     And the screen informs the user about the attestation issued and the issuer who issued it
     And the screen displays a Close button to return to the Home screen
 
-  @US_ADBCFL_TC_04 @manual:InProgress
-  Scenario: Error during attestation issuance
-    Given the user is viewing the predefined list of attestations
-    When the user selects an attestation to be issued
-    And an error occurs during the issuance process
-    Then the wallet should display an error screen informing the user about the unsuccessful operation
-
-  @US_ADBCFL_TC_05 @manual:Passed
+  @US_ADBCFL_TC_04 @manual:Passed
   Scenario: Returning to "Home" screen after success
     Given the user is viewing the success screen after an attestation is issued
     When the user closes the success screen

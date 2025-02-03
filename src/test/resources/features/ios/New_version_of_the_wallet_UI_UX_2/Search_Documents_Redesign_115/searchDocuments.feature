@@ -42,7 +42,7 @@ Feature: Searching for documents in the EUDI Wallet
     Then the search field should allow any text, including spaces
     And the user should be able to edit the search text
 
-  @US_SD_TC_05 @manual:Passed
+  @US_SD_TC_05 @manual:Failed
   Scenario: Clearing the search field
     Given the user has entered text in the search field
     When the user taps on the Clear trailing icon button (e.g., X)
@@ -51,7 +51,7 @@ Feature: Searching for documents in the EUDI Wallet
     And the screen should list all non-expired documents
     And the filtering and sorting should respect the current settings
 
-  @US_SD_TC_06 @manual:Passed
+  @US_SD_TC_06 @manual:Failed
   Scenario: Performing a search with empty text
     Given the user has entered an empty search text
     When the user taps on the Search button on the device keyboard
