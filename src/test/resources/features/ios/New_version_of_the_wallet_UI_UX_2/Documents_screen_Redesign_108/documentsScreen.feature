@@ -25,7 +25,7 @@ Feature: EUDI Wallet Documents Screen
     When the user views the screen
     Then the Documents screen includes a Filter_Sort button
 
-  @US_HS_TC_04 @manualPassed
+  @US_HS_TC_04 @manual:Failed
   Scenario: Documents screen includes a list of all issued attestations
     Given the user is on the EUDI Wallet Documents screen
     When the user clicks on the Document section

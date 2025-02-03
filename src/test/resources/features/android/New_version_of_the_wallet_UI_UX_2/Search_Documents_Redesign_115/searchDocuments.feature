@@ -22,13 +22,13 @@ Feature: Searching for documents in the EUDI Wallet
     And no search or filters are applied
     And categories with no documents should not be displayed
 
-  @US_SD_TC_02 @manual:Passed
+  @US_SD_TC_02 @manual:Failed
   Scenario: Tapping on the search field for the first time
     Given the user is viewing the Documents screen
     When the user taps on the search field
     Then the Clear trailing icon button (e.g., X) should be displayed inside the search field on the right side
 
-  @US_SD_TC_03 @manual:Passed
+  @US_SD_TC_03 @manual:Failed
   Scenario: Tapping on the search field with previous search text
     Given the user has previously typed search text in the search field
     When the user taps on the search field
@@ -42,7 +42,7 @@ Feature: Searching for documents in the EUDI Wallet
     Then the search field should allow any text, including spaces
     And the user should be able to edit the search text
 
-  @US_SD_TC_05 @manual:Passed
+  @US_SD_TC_05 @manual:Failed
   Scenario: Clearing the search field
     Given the user has entered text in the search field
     When the user taps on the Clear trailing icon button (e.g., X)
@@ -51,7 +51,7 @@ Feature: Searching for documents in the EUDI Wallet
     And the screen should list all non-expired documents
     And the filtering and sorting should respect the current settings
 
-  @US_SD_TC_06 @manual:Passed
+  @US_SD_TC_06 @manual:Failed
   Scenario: Performing a search with empty text
     Given the user has entered an empty search text
     When the user taps on the Search button on the device keyboard

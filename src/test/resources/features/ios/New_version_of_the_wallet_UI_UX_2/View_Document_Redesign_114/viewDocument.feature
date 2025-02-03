@@ -69,5 +69,5 @@ Feature: Viewing and managing attestations in the EUDI Wallet
   @US_VD_TC_09 @manual:Passed
   Scenario: Returning to 'Documents' screen from attestation details
     Given the user is viewing the details of an attestation
-    When the user selects the Close button
+    When the user closes the attestation
     Then the user should be returned to the Documents screen

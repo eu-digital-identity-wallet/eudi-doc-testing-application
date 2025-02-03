@@ -50,7 +50,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
     When the user selects the Add document button
     Then the user proceeds with the attestation (document) issuing flow
 
-  @US_ADBSQRC_TC_06 @manual:Passed
+  @US_ADBSQRC_TC_07 @manual:Passed
   Scenario: Issuing a PID attestation successfully
     Given the user proceeds with the attestation (document) issuing flow
     When the user is viewing the success screen after issuing the PID attestation
@@ -60,7 +60,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
     And the screen should display a Close button to return to Home screen
     And the attestation should be added to the wallet
 
-  @US_ADBSQRC_TC_07 @manual:Passed
+  @US_ADBSQRC_TC_08 @manual:Passed
   Scenario: Error during attestation issuance
     Given the user has scanned a QR code
     When the issuance process encounters an error

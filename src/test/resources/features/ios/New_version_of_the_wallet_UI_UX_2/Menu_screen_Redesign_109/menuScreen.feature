@@ -6,7 +6,7 @@ Feature: EUDI Wallet Menu Screen
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/109
 
-  @US_MS_TC_01 @manual:Passed
+  @US_MS_TC_01 @manual:Failed
   Scenario Outline: Access EUDI Wallet menu
     Given the user is on the EUDI Wallet Home screen
     When the user taps the menu button on the upper left corner of the screen
@@ -26,31 +26,31 @@ Feature: EUDI Wallet Menu Screen
     When the user taps the back icon button
     Then the navigation drawer slides away
 
-  @US_MS_TC_03 @manual:InProgress
+  @US_MS_TC_03 @manual:Failed
   Scenario: Access Notifications from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Notifications option
     Then the Notifications screen is displayed
 
-  @US_MS_TC_04 @manual:InProgress
+  @US_MS_TC_04 @manual:Failed
   Scenario: Access Change PIN from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Change PIN option
     Then the Change PIN screen is displayed
 
-  @US_MS_TC_05 @manual:InProgress
+  @US_MS_TC_05 @manual:Failed
   Scenario: Access Privacy Notice from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Privacy Notice option
     Then the Privacy Notice screen is displayed
 
-  @US_MS_TC_06 @manual:InProgress
+  @US_MS_TC_06 @manual:Failed
   Scenario: Access Help / FAQs from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Help_FAQs option
     Then the Help_FAQs screen is displayed
 
-  @US_MS_TC_07 @manual:InProgress
+  @US_MS_TC_07 @manual:Failed
   Scenario: Exit the application from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Exit option
