@@ -5547,6 +5547,11 @@ public class ManuallyStepDefs {
     public void noSearchOrFiltersAreApplied() {
         //manual
     }
+
+    @When("the user closes the attestation")
+    public void theUserClosesTheAttestation() {
+        //manual
+    }
 }
 
 
