@@ -18,14 +18,14 @@ Feature: EUDI Wallet User Signs Document through QTSP with Explicit Consent
     When the user has only one available Credential ID enrolled in the QTSP
     Then the Relying Party retrieves the available User Credential IDs
 
-  @US_SD_TC_02 @manual:InProgress
+  @US_SD_TC_02 @manual:Failed
   Scenario: No Credential IDs enrolled for user in QTSP
     Given the Relying Party has retrieved available Credential IDs from the QTSP
     When there are no available Credential IDs for the user in the QTSP
     Then the Relying Party should inform the user to enroll a Qualified Certificate in the QTSP
     And the document signing process should stop
 
-  @US_SD_TC_03 @manual:InProgress
+  @US_SD_TC_03 @manual:Failed
   Scenario: User selects preferred Credential ID (multiple options)
     Given there are multiple Credential IDs available for the user in the QTSP
     When the Relying Party requests the user to select a Credential ID
