@@ -5,13 +5,13 @@ Feature: Request/Issue mDL
   Scenario: Log in successfully
     Given the user is on the Login screen
     When the user enters their PIN
-    Then the user should see the dashboard screen manually
+    Then the user should see the dashboard screen
 
   @US_RIM_TC_02 @before_01
   Scenario: Select document for issuance
     Given the dashboard page is displayed on wallet
-    When the user clicks the add doc button
-    And the add document page is displayed automated
+    When the user clicks on Documents
+    And the Documents page is displayed
     And the user clicks the driving license button
     Then the user is redirected to the issuer service to issue mDL
 
