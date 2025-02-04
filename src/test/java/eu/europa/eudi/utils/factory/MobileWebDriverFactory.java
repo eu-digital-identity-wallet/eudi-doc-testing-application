@@ -205,10 +205,10 @@ public class MobileWebDriverFactory {
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             // Stop method tracing
-            stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
+           // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
             String remoteFilePath = "/data/local/tmp/trace_file.trace";
             String localFilePath = "/trace_file.trace";
-            pullTraceFile(remoteFilePath, localFilePath);
+           // pullTraceFile(remoteFilePath, localFilePath);
         }
     }
 

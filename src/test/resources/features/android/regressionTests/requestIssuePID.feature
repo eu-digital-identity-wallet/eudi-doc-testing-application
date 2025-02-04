@@ -10,9 +10,9 @@ Feature: Request/Issue PID
   @US_RIP_TC_02 @before_01
   Scenario: Add document via national ID
     Given the dashboard page is displayed on wallet
-    When the user clicks the add doc button
-    And the add document page is displayed automated
-    And the user clicks the national id button
+    When the user clicks on Documents
+    And the Documents page is displayed
+    And the user clicks on the PID button
     Then the authentication method selection is displayed
 
   @US_RIP_TC_03 @before_01
