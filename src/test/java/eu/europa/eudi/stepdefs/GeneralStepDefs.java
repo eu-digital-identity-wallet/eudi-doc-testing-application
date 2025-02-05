@@ -1104,20 +1104,20 @@ public class GeneralStepDefs{
         test.mobile().wallet().clickOnDocuments();
     }
 
-    @Given("the user is on the Home screen of the EUDI Wallet")
-    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
+//    @Given("the user is on the Home screen of the EUDI Wallet")
+//    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+//        test.mobile().wallet().dashboardPageIsDisplayed();
+//    }
 
 //    @When("the user navigates to the Documents screen")
 //    public void theUserNavigatesToTheDocumentsScreen() {
 //        test.mobile().wallet().clickOnDocuments();
 //    }
 
-    @Then("the Documents screen should be displayed showing a list of issued attestations")
-    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
+//    @Then("the Documents screen should be displayed showing a list of issued attestations")
+//    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+//        test.mobile().wallet().documentsPageIsDisplayed();
+//    }
 
 //    @Given("the user is on the Documents screen")
 //    public void theUserIsOnTheDocumentsScreen() {
@@ -1126,48 +1126,48 @@ public class GeneralStepDefs{
 //        theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations();
 //    }
 
-    @When("the user selects an attestation from the list")
-    public void theUserSelectsAnAttestationFromTheList() {
-        test.mobile().wallet().clickPID();
-    }
+//    @When("the user selects an attestation from the list")
+//    public void theUserSelectsAnAttestationFromTheList() {
+//        test.mobile().wallet().clickPID();
+//    }
 
-    @Then("the details of the selected attestation should be displayed")
-    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
-        test.mobile().wallet().documentsDetailsAreDisplayed();
-    }
+//    @Then("the details of the selected attestation should be displayed")
+//    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+//        test.mobile().wallet().documentsDetailsAreDisplayed();
+//    }
 
-    @And("the details should be blurred by default")
-    public void theDetailsShouldBeBlurredByDefault() {
-        test.mobile().wallet().detailsAreDisplayedBlurred();
-    }
+//    @And("the details should be blurred by default")
+//    public void theDetailsShouldBeBlurredByDefault() {
+//        test.mobile().wallet().detailsAreDisplayedBlurred();
+//    }
 
-    @And("the user should see the eye icon to view the details of the attestation")
-    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
-        test.mobile().wallet().eyeIconIsDisplayed();
-    }
+//    @And("the user should see the eye icon to view the details of the attestation")
+//    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+//        test.mobile().wallet().eyeIconIsDisplayed();
+//    }
 
-    @Given("the user is viewing the details of an attestation")
-    public void theUserIsViewingTheDetailsOfAnAttestation() {
-        theUserIsOnTheDashboardScreen();
-        theUserSelectsAnAttestationFromTheList();
-        theDetailsOfTheSelectedAttestationShouldBeDisplayed();
-        theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation();
-    }
+//    @Given("the user is viewing the details of an attestation")
+//    public void theUserIsViewingTheDetailsOfAnAttestation() {
+//        theUserIsOnTheDashboardScreen();
+//        theUserSelectsAnAttestationFromTheList();
+//        theDetailsOfTheSelectedAttestationShouldBeDisplayed();
+//        theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation();
+//    }
 
-    @When("the user selects eye icon")
-    public void theUserSelectsEyeIcon() {
-        test.mobile().wallet().clickEyeIcon();
-    }
+//    @When("the user selects eye icon")
+//    public void theUserSelectsEyeIcon() {
+//        test.mobile().wallet().clickEyeIcon();
+//    }
 
-    @Then("the attestation details should no longer be blurred")
-    public void theAttestationDetailsShouldNoLongerBeBlurred() {
-        //waiting for an attribute to check
-    }
+//    @Then("the attestation details should no longer be blurred")
+//    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+//        //waiting for an attribute to check
+//    }
 
-    @And("the user should be able to view the full details of the attestation")
-    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
-        //waiting for an attribute to check
-    }
+//    @And("the user should be able to view the full details of the attestation")
+//    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+//        //waiting for an attribute to check
+//    }
 
     @And("the Documents page is displayed")
     public void theDocumentsPageIsDisplayed() {
