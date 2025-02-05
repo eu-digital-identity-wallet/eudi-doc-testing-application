@@ -30,14 +30,14 @@ public class Verifier {
 
     public void selectShareAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deviceName = test.envDataConfig().getAppiumIosDeviceName();
+            String deviceName = test.envDataConfig().getAppiumAndroidDeviceName();
 
 // Debugging: Print the device name to check its value
             System.out.println("Device Name: '" + deviceName + "'");
-            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
+            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("Redmi Note 12 Pro+ 5G")) {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPID)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributes)).click();

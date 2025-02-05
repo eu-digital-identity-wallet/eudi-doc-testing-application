@@ -413,7 +413,6 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickRemove();
         clickRemove();
-        clickRemove();
         clickSubmit();
         scrollUntilAuthorize();
         clickAuthorize();
