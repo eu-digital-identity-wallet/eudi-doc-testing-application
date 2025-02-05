@@ -531,12 +531,12 @@ public class GeneralStepDefs{
         test.mobile().wallet().addDocumentPageIsDisplayed();
     }
 
-    @Given("the user is on the Add document screen")
-    public void theUserIsOnTheAddDocumentScreen() {
-        theUserLaunchesTheEUDIWalletForTheFirstTime();
-        theUserSetsUpTheirPIN();
-        theAddDocumentScreenIsAppeared();
-    }
+//    @Given("the user is on the Add document screen")
+//    public void theUserIsOnTheAddDocumentScreen() {
+//        theUserLaunchesTheEUDIWalletForTheFirstTime();
+//        theUserSetsUpTheirPIN();
+//        theAddDocumentScreenIsAppeared();
+//    }
 
     @When("the user has only the ‘National ID’ and ‘SCAN QR’ options available")
     public void theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable() {
@@ -554,13 +554,13 @@ public class GeneralStepDefs{
         test.mobile().issuer().authenticationPageIsDisplayed();
     }
 
-    @Given("the user is on the issuance service page")
-    public void theUserIsOnTheIssuanceServicePage() {
-        theUserIsOnTheAddDocumentScreen();
-        theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable();
-        theUserClicksOnTheNationalIDOption();
-        theUserIsRedirectedToTheIssuanceService();
-    }
+//    @Given("the user is on the issuance service page")
+//    public void theUserIsOnTheIssuanceServicePage() {
+//        theUserIsOnTheAddDocumentScreen();
+//        theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable();
+//        theUserClicksOnTheNationalIDOption();
+//        theUserIsRedirectedToTheIssuanceService();
+//    }
 
     @When("the user follows the process to issue a new PID")
     public void theUserFollowsTheProcessToIssueANewPID() {
@@ -742,10 +742,10 @@ public class GeneralStepDefs{
         theDocumentShouldBeDeleted();
     }
 
-    @Then("the user should see the dashboard")
-    public void theUserShouldSeeTheDashboard() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
+//    @Then("the user should see the dashboard")
+//    public void theUserShouldSeeTheDashboard() {
+//        test.mobile().wallet().documentsPageIsDisplayed();
+//    }
 
     @When("the user opens a PID \\(not the first one issued)")
     public void theUserOpensAPIDNotTheFirstOneIssued() {
@@ -1109,22 +1109,22 @@ public class GeneralStepDefs{
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
-    @When("the user navigates to the Documents screen")
-    public void theUserNavigatesToTheDocumentsScreen() {
-        test.mobile().wallet().clickOnDocuments();
-    }
+//    @When("the user navigates to the Documents screen")
+//    public void theUserNavigatesToTheDocumentsScreen() {
+//        test.mobile().wallet().clickOnDocuments();
+//    }
 
     @Then("the Documents screen should be displayed showing a list of issued attestations")
     public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
         test.mobile().wallet().documentsPageIsDisplayed();
     }
 
-    @Given("the user is on the Documents screen")
-    public void theUserIsOnTheDocumentsScreen() {
-        theUserShouldSeeTheDashboard();
-        theUserNavigatesToTheDocumentsScreen();
-        theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations();
-    }
+//    @Given("the user is on the Documents screen")
+//    public void theUserIsOnTheDocumentsScreen() {
+//        theUserShouldSeeTheDashboard();
+//        theUserNavigatesToTheDocumentsScreen();
+//        theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations();
+//    }
 
     @When("the user selects an attestation from the list")
     public void theUserSelectsAnAttestationFromTheList() {

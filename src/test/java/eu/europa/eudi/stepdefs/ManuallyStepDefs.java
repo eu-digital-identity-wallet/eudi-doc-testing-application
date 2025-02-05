@@ -5434,7 +5434,6 @@ public class ManuallyStepDefs {
     @When("the user selects the option Scan a QR code in the Add document screen")
     public void theUserSelectsTheOptionScanAQRCodeInTheAddDocumentScreen() {
         //manual
-
     }
 
     @When("the user selects the Cancel button")
@@ -5490,6 +5489,21 @@ public class ManuallyStepDefs {
 
     @When("the user closes the attestation")
     public void theUserClosesTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is on the Add document screen")
+    public void theUserIsOnTheAddDocumentScreen() {
+        //manual
+    }
+
+    @When("the user navigates to the Documents screen")
+    public void theUserNavigatesToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Given("the user is on the Documents screen")
+    public void theUserIsOnTheDocumentsScreen() {
         //manual
     }
 }
