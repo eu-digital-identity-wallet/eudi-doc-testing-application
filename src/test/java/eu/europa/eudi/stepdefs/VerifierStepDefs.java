@@ -6,7 +6,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class VerifierStepDefs extends GeneralStepDefs{
+//public class VerifierStepDefs extends GeneralStepDefs{
+public class VerifierStepDefs{
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
