@@ -34,7 +34,6 @@ public class TestSetup {
         return mobileWebDriverFactory;
     }
 
-
     public EnvDataConfig envDataConfig() {
         return (envDataConfig == null) ? envDataConfig = new EnvDataConfig() : envDataConfig;
     }
@@ -44,30 +43,57 @@ public class TestSetup {
     }
 
     public void reInitializeDriver() {
-
         mobileWebDriverFactory.startAndroidDriverSession();
     }
 
     public void startIosDriverSession() {
-
         mobileWebDriverFactory.startIosDriverSession();
     }
 
     public void stopAndroidDriverSession() {
         mobileWebDriverFactory.quitDriverAndroid();
     }
+
     public void stopIosDriverSession() {
         mobileWebDriverFactory.quitDriverIos();
     }
-    public String getSystemOperation(){
+
+    public String getSystemOperation() {
         return systemOperation;
     }
+
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
     }
+
     public Scenario getScenario() {
         return scenario;
     }
 
-}
+    // Methods to start and stop logging
+    public void startLogging() {
+        if (!scenario.getSourceTagNames().contains("@automated")) {
+            // If the @automated tag is not present, do not start logging
+            return;
+        }
 
+        // Extract the full path from the URI
+        String fullPath = scenario.getUri().getPath();
+
+        // Extract the directory of the feature file
+        String featureDirPath = fullPath.substring(0, fullPath.lastIndexOf('/'));
+
+        // Extract the feature name from the path
+        String featureName = fullPath.substring(fullPath.lastIndexOf('/') + 1).replace(".feature", "");
+        // Extract the scenario name
+        String scenarioName = scenario.getName();
+
+        // Start logging with the determined parameters
+        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName);
+    }
+
+
+    public void stopLogging() {
+        mobileWebDriverFactory.stopLogging();
+    }
+}

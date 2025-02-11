@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>2024.08.13-Demo</version>
+    <version>2025.01.21-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
-    
+
     <properties>
-<!--        <tags>@ANDROID,@IOS, @manual</tags>-->
+        <!--        <tags>@ANDROID,@IOS, @manual</tags>-->
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -25,6 +25,8 @@
         <rerun.failed.scenarios>0</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <serenity.threads>16</serenity.threads>
+        <build-version>EUDI_Wallet_2025.01.21</build-version><!-- Add this line to set the number of threads -->
     </properties>
 
     <dependencies>
@@ -86,21 +88,21 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.4.4</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.assertj</groupId>-->
+<!--            <artifactId>assertj-core</artifactId>-->
+<!--            <version>${assertj.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.hamcrest</groupId>-->
+<!--            <artifactId>hamcrest</artifactId>-->
+<!--            <version>${hamcrest.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.codeborne</groupId>-->
+<!--            <artifactId>phantomjsdriver</artifactId>-->
+<!--            <version>1.4.4</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -118,7 +120,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/site/reports/css</outputDirectory>
+                            <outputDirectory>${project.build.directory}/site/reports/${build-version}/css</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/src/test/resources</directory>
@@ -143,8 +145,8 @@
                         <phase>post-integration-test</phase>
                         <configuration>
                             <target>
-                                <concat destfile="${project.build.directory}/site/reports/css/core.css">
-                                    <fileset file="${project.build.directory}/site/reports/css/custom-style.css"/>
+                                <concat destfile="${project.build.directory}/site/reports/${build-version}/css/core.css">
+                                    <fileset file="${project.build.directory}/site/reports/${build-version}/css/custom-style.css"/>
                                 </concat>
                             </target>
                         </configuration>
@@ -166,6 +168,7 @@
                     </execution>
                 </executions>
             </plugin>
+
 
             <!-- Maven Compiler Plugin -->
             <plugin>

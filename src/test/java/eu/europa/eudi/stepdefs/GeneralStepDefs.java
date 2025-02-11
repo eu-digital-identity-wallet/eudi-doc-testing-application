@@ -2,11 +2,6 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.cucumber.core.logging.Logger;
-import io.cucumber.core.logging.LoggerFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -14,34 +9,30 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.logging.LogEntry;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class GeneralStepDefs{
 
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
+
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
-        boolean without_data = scenario.getSourceTagNames().contains("@before_02");
-        boolean two_pid_data = scenario.getSourceTagNames().contains("@before_03");
+        boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
+        boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android) {
             test = new TestSetup(noReset, Literals.General.ANDROID.label, scenario);
             test.startAndroidDriverSession();
+            test.setScenario(scenario);
+            test.startLogging();
         }
         if (ios) {
             test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
+            test.setScenario(scenario);
+            test.startLogging();
         }
         if (data) {
             test.mobile().wallet().checkIfPageIsTrue();
@@ -50,19 +41,9 @@ public class GeneralStepDefs{
             test.mobile().wallet().renterThePin();
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickContinue();
-            test.mobile().wallet().loadSampleDocuments();
-            test.mobile().wallet().dashboardPageIsDisplayed();
-        }
-
-        if (without_data) {
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
         }
 
         if (two_pid_data) {
@@ -72,26 +53,52 @@ public class GeneralStepDefs{
             test.mobile().wallet().renterThePin();
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickContinue();
-            test.mobile().wallet().loadSampleDocuments();
-            test.mobile().wallet().dashboardPageIsDisplayed();
-            test.mobile().wallet().addDocButton();
-            test.mobile().wallet().clickNationalId();
-            test.mobile().issuer().authenticationMethodSelection();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().clickToAddDocument();
+            test.mobile().wallet().clickFromList();
+            test.mobile().wallet().scrollUntilPID();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
+        }
+
+        if (pid_and_mdl_data) {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().clickToAddDocument();
+            test.mobile().wallet().clickFromList();
+            test.mobile().wallet().clickMdl();
             test.mobile().issuer().clickCountrySelection();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().clickFormEu();
             test.mobile().issuer().clickSubmit();
-            test.mobile().issuer().enterGivenName();
             test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().enterGivenName();
             test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().enterDocumentNumber();
+            test.mobile().issuer().clickScreen();
+            test.mobile().issuer().scrollUntilFindDate();
+            test.mobile().issuer().chooseIssueDate();
+            test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickRemove();
+            test.mobile().issuer().clickRemove();
+            test.mobile().issuer().clickRemove();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().clickXButton();
-            test.mobile().wallet().dashboardPageIsDisplayed();
+            test.mobile().wallet().clickClose();
+            test.mobile().wallet().clickHome();
         }
     }
 
@@ -105,6 +112,7 @@ public class GeneralStepDefs{
         if (ios){
             test.stopIosDriverSession();
         }
+        test.stopLogging();
     }
 
     @Given("user sets up wallet")
@@ -266,7 +274,7 @@ public class GeneralStepDefs{
 
     @And("user clicks load sample data")
     public void userClicksLoadSampleData() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheAddDocumentPage();
         test.mobile().wallet().loadSampleDocuments();
@@ -523,12 +531,12 @@ public class GeneralStepDefs{
         test.mobile().wallet().addDocumentPageIsDisplayed();
     }
 
-    @Given("the user is on the Add document screen")
-    public void theUserIsOnTheAddDocumentScreen() {
-        theUserLaunchesTheEUDIWalletForTheFirstTime();
-        theUserSetsUpTheirPIN();
-        theAddDocumentScreenIsAppeared();
-    }
+//    @Given("the user is on the Add document screen")
+//    public void theUserIsOnTheAddDocumentScreen() {
+//        theUserLaunchesTheEUDIWalletForTheFirstTime();
+//        theUserSetsUpTheirPIN();
+//        theAddDocumentScreenIsAppeared();
+//    }
 
     @When("the user has only the ‘National ID’ and ‘SCAN QR’ options available")
     public void theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable() {
@@ -546,13 +554,13 @@ public class GeneralStepDefs{
         test.mobile().issuer().authenticationPageIsDisplayed();
     }
 
-    @Given("the user is on the issuance service page")
-    public void theUserIsOnTheIssuanceServicePage() {
-        theUserIsOnTheAddDocumentScreen();
-        theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable();
-        theUserClicksOnTheNationalIDOption();
-        theUserIsRedirectedToTheIssuanceService();
-    }
+//    @Given("the user is on the issuance service page")
+//    public void theUserIsOnTheIssuanceServicePage() {
+//        theUserIsOnTheAddDocumentScreen();
+//        theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable();
+//        theUserClicksOnTheNationalIDOption();
+//        theUserIsRedirectedToTheIssuanceService();
+//    }
 
     @When("the user follows the process to issue a new PID")
     public void theUserFollowsTheProcessToIssueANewPID() {
@@ -570,11 +578,7 @@ public class GeneralStepDefs{
 
 
 
-    @Given("the user is on the Login screen")
-    public void theUserIsOnTheLoginScreen() {
-        test.mobile().wallet().startAndStopDriver();
-        test.mobile().wallet().loginPageIsDisplayed();
-    }
+
 
     @When("the user enters their PIN")
     public void theUserEntersTheirPIN() {
@@ -588,13 +592,12 @@ public class GeneralStepDefs{
 
     @Given("the user is on the dashboard screen")
     public void theUserIsOnTheDashboardScreen() {
-        theUserIsOnTheLoginScreen();
-        theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
     }
 
     @When("the user clicks on the PID doc")
     public void theUserClicksOnThePIDDoc() {
+        test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().clickNationalId();
     }
 
@@ -610,7 +613,7 @@ public class GeneralStepDefs{
 
     @Given("the PID is open")
     public void thePIDIsOpen() {
-        theUserIsOnTheLoginScreen();
+//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
         theUserClicksOnThePIDDoc();
@@ -618,9 +621,9 @@ public class GeneralStepDefs{
         theUserShouldSeeTheDetailsOfThePID();
     }
 
-    @When("the user clicks the X button")
-    public void theUserClicksTheXButton() {
-        test.mobile().wallet().clickXButton();
+    @When("the user clicks the back button")
+    public void theUserClicksTheBackButton() {
+        test.mobile().wallet().clickBackButton();
     }
 
     @Then("the PID should close")
@@ -640,6 +643,7 @@ public class GeneralStepDefs{
 
     @When("the user clicks on the mDL doc")
     public void theUserClicksOnTheMDLDoc() {
+        test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().clickMdl();
     }
 
@@ -655,9 +659,7 @@ public class GeneralStepDefs{
 
     @Given("the mDL is open")
     public void theMDLIsOpen() {
-        theUserIsOnTheLoginScreen();
-        theUserEntersTheirPIN();
-        theUserShouldSeeTheDashboardScreen();
+        theUserIsOnTheDashboardScreen();
         theUserClicksOnTheMDLDoc();
         theMDLShouldOpen();
         theUserShouldSeeTheDetailsOfTheMDL();
@@ -702,6 +704,7 @@ public class GeneralStepDefs{
 
     @When("the user opens a mDL")
     public void theUserOpensAMDL() {
+        test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().clickMdl();
     }
 
@@ -715,11 +718,12 @@ public class GeneralStepDefs{
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAMDL();
         theUserShouldSeeTheDocumentContents();
+        test.mobile().wallet().scrollUntilYouFindDelete();
     }
 
     @When("the user presses the delete button")
     public void theUserPressesTheDeleteButton() {
-        test.mobile().wallet().clickDeleteButton();
+        test.mobile().wallet().clickDeleteDocument();
         test.mobile().wallet().confirmsDeletion();
     }
 
@@ -738,14 +742,16 @@ public class GeneralStepDefs{
         theDocumentShouldBeDeleted();
     }
 
-    @Then("the user should see the dashboard")
-    public void theUserShouldSeeTheDashboard() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
+//    @Then("the user should see the dashboard")
+//    public void theUserShouldSeeTheDashboard() {
+//        test.mobile().wallet().documentsPageIsDisplayed();
+//    }
 
     @When("the user opens a PID \\(not the first one issued)")
     public void theUserOpensAPIDNotTheFirstOneIssued() {
-        test.mobile().wallet().clickSecondNationalId();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickSecondPID();
+        test.mobile().wallet().nationalIdIsDisplayed();
     }
 
     @Then("the user should see the pid document contents")
@@ -762,8 +768,8 @@ public class GeneralStepDefs{
 
     @Given("the user has opened the first PID that was issued")
     public void theUserHasOpenedTheFirstPIDThatWasIssued() {
-        theUserHasSuccessfullyEnteredThePIN();
-        test.mobile().wallet().clickNationalId();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickPID();
         test.mobile().wallet().detailsOfDocumentIsDisplayed();
     }
 
@@ -790,29 +796,32 @@ public class GeneralStepDefs{
 
     @Given("the user has successfully entered the PIN after reboot")
     public void theUserHasSuccessfullyEnteredThePINAfterReboot() {
-        theUserHasOpenedTheFirstPIDThatWasIssued();
-        theUserPressesTheDeleteButton();
-        theApplicationShouldReboot();
+        theApplicationHasRebooted();
+        theLoginScreenAppears();
         theUserShouldEnterThePIN();
     }
 
     @When("the user is prompted to enter a PID")
     public void theUserIsPromptedToEnterAPID() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickPID();
     }
 
     @Then("the user should be able to enter a PID again")
     public void theUserShouldBeAbleToEnterAPIDAgain() {
-        test.mobile().wallet().nationalIdIsDisplayed();
+        test.mobile().issuer().issuePID();
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @And("the user clicks the driving license button")
     public void theUserClicksTheDrivingLicenseButton() {
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().clickFromList();
         test.mobile().wallet().clickDrivingLicenceButton();
     }
 
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
+        test.mobile().issuer().authenticationPageIsDisplayed();
 //preAuthorizationCodeSameDevice.feature
 //preAuthorizationCodeSameDevice.feature.startAndroidDriverSession();
 //        AndroidDriver driver = (AndroidDriver) preAuthorizationCodeSameDevice.feature.mobileWebDriverFactory().getDriverAndroid();
@@ -820,15 +829,6 @@ public class GeneralStepDefs{
 //        driver.activateApp("com.android.chrome");
     }
 
-    @Given("the issuer service -authentication method selection screen- is displayed")
-    public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
-        theDashboardPageIsDisplayedOnWallet();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayedAutomated();
-        theUserClicksTheDrivingLicenseButton();
-        theAuthenticationMethodSelectionIsDisplayed();
-
-    }
 
     @When("the user clicks on country selection and submits")
     public void theUserClicksOnCountrySelectionAndSubmits() {
@@ -866,6 +866,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
         test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickRemove();
+        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -874,22 +876,22 @@ public class GeneralStepDefs{
     @Then("a success message for mdl is displayed")
     public void aSuccessMessageForMdlIsDisplayed() {
         test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickNextButton();
+        test.mobile().wallet().clickClose();
     }
 
     @And("the driving license is displayed in the wallet")
     public void theDrivingLicenseIsDisplayedInTheWallet() {
         test.mobile().wallet().mdlIsDisplayed();
-        test.mobile().wallet().clickXButton();
-        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @When("the user fills in the form")
     public void theUserFillsInTheForm() {
-        test.mobile().issuer().enterGivenName();
         test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickRemove();
+        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -897,15 +899,13 @@ public class GeneralStepDefs{
 
     @Then("a success message for pid is displayed")
     public void aSuccessMessageForPidIsDisplayed() {
-        test.mobile().wallet().successMessageIsDisplayed();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().nationalIdIsDisplayed();
-        test.mobile().wallet().clickXButton();
+        test.mobile().wallet().successMessageForDrivingIsDisplayed();
+        test.mobile().wallet().clickClose();
     }
 
     @And("the national id is displayed in the dashboard")
     public void theNationalIdIsDisplayedInTheDashboard() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().secondPIDIsDisplayed();
     }
 
     @Then("the user should see the add document page")
@@ -1079,9 +1079,9 @@ public class GeneralStepDefs{
     @Given("the authentication method selection is displayed on screen")
     public void theAuthenticationMethodSelectionIsDisplayedOnScreen() {
         theDashboardPageIsDisplayedOnWallet();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayedAutomated();
-        theUserClicksTheNationalIdButton();
+        theUserClicksOnDocuments();
+        theDocumentsPageIsDisplayed();
+        theUserClicksOnThePIDButton();
         theAuthenticationMethodSelectionIsDisplayed();
     }
 
@@ -1093,5 +1093,118 @@ public class GeneralStepDefs{
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
+    @Given("the user is on the Login screen")
+    public void theUserIsOnTheLoginScreen() {
+        test.mobile().wallet().startAndStopDriver();
+        test.mobile().wallet().loginPageIsDisplayed();
+    }
+
+    @When("the user clicks on Documents")
+    public void theUserClicksOnDocuments() {
+        test.mobile().wallet().clickOnDocuments();
+    }
+
+//    @Given("the user is on the Home screen of the EUDI Wallet")
+//    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+//        test.mobile().wallet().dashboardPageIsDisplayed();
+//    }
+
+//    @When("the user navigates to the Documents screen")
+//    public void theUserNavigatesToTheDocumentsScreen() {
+//        test.mobile().wallet().clickOnDocuments();
+//    }
+
+//    @Then("the Documents screen should be displayed showing a list of issued attestations")
+//    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+//        test.mobile().wallet().documentsPageIsDisplayed();
+//    }
+
+//    @Given("the user is on the Documents screen")
+//    public void theUserIsOnTheDocumentsScreen() {
+//        theUserShouldSeeTheDashboard();
+//        theUserNavigatesToTheDocumentsScreen();
+//        theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations();
+//    }
+
+//    @When("the user selects an attestation from the list")
+//    public void theUserSelectsAnAttestationFromTheList() {
+//        test.mobile().wallet().clickPID();
+//    }
+
+//    @Then("the details of the selected attestation should be displayed")
+//    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+//        test.mobile().wallet().documentsDetailsAreDisplayed();
+//    }
+
+//    @And("the details should be blurred by default")
+//    public void theDetailsShouldBeBlurredByDefault() {
+//        test.mobile().wallet().detailsAreDisplayedBlurred();
+//    }
+
+//    @And("the user should see the eye icon to view the details of the attestation")
+//    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+//        test.mobile().wallet().eyeIconIsDisplayed();
+//    }
+
+//    @Given("the user is viewing the details of an attestation")
+//    public void theUserIsViewingTheDetailsOfAnAttestation() {
+//        theUserIsOnTheDashboardScreen();
+//        theUserSelectsAnAttestationFromTheList();
+//        theDetailsOfTheSelectedAttestationShouldBeDisplayed();
+//        theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation();
+//    }
+
+//    @When("the user selects eye icon")
+//    public void theUserSelectsEyeIcon() {
+//        test.mobile().wallet().clickEyeIcon();
+//    }
+
+//    @Then("the attestation details should no longer be blurred")
+//    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+//        //waiting for an attribute to check
+//    }
+
+//    @And("the user should be able to view the full details of the attestation")
+//    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+//        //waiting for an attribute to check
+//    }
+
+    @And("the Documents page is displayed")
+    public void theDocumentsPageIsDisplayed() {
+        test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @Given("the issuer service -authentication method selection screen- is displayed")
+    public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
+        theDashboardPageIsDisplayedOnWallet();
+        theUserClicksOnDocuments();
+        theDocumentsPageIsDisplayed();
+        theUserClicksTheDrivingLicenseButton();
+        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
+    }
+
+    @And("the user clicks on the PID button")
+    public void theUserClicksOnThePIDButton() {
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilPID();
+        test.mobile().wallet().clickPID();
+    }
+
+    @When("the user goes in Documents dashboard")
+    public void theUserGoesInDocumentsDashboard() {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @Then("Then the user should not see the second PID")
+    public void thenTheUserShouldNotSeeTheSecondPID() {
+        test.mobile().wallet().secondPIDIsNotDisplayed();
+    }
+
+    @Then("the user should see the Documents dashboard")
+    public void theUserShouldSeeTheDocumentsDashboard() {
+        test.mobile().wallet().documentsPageIsDisplayed();
+    }
 }
 
