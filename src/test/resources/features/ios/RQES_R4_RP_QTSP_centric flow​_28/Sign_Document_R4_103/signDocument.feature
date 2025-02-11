@@ -12,42 +12,51 @@ Feature: EUDI Wallet User Signs Document through QTSP with Explicit Consent
     And the user has internet connectivity
     And the user is authenticated in the QTSP
 
-  @US_SD_TC_01
+  @US_SD_TC_01 @manual:Passed
   Scenario: Relying Party retrieves available Credential IDs
     Given the user is on the Relying Party interface
-    When the Relying Party requests the available Credential IDs from the QTSP
-    Then the Relying Party should retrieve the available Credential IDs for the user
+    When the user has only one available Credential ID enrolled in the QTSP
+    Then the Relying Party retrieves the available User Credential IDs
 
-  @US_SD_TC_02
+  @US_SD_TC_02 @manual:Failed
   Scenario: No Credential IDs enrolled for user in QTSP
     Given the Relying Party has retrieved available Credential IDs from the QTSP
     When there are no available Credential IDs for the user in the QTSP
     Then the Relying Party should inform the user to enroll a Qualified Certificate in the QTSP
     And the document signing process should stop
 
-  @US_SD_TC_03
+  @US_SD_TC_03 @manual:Failed
   Scenario: User selects preferred Credential ID (multiple options)
     Given there are multiple Credential IDs available for the user in the QTSP
     When the Relying Party requests the user to select a Credential ID
     Then the user selects a preferred Credential ID for signing the document
 
-  @US_SD_TC_04
+  @US_SD_TC_04 @manual:Passed
   Scenario: Relying Party retrieves details of selected Credential ID (single or selected ID)
     Given either the user has selected a Credential ID or there is only one available Credential ID
-    When the Relying Party retrieves the details of the selected Credential ID from the QTSP
-    And calculates the document hash
-    Then the Relying Party should redirect the user to the QTSP authentication page
+    When the QTSP renders a QR-code
+    And the user scans the QR-code with the EUDI Wallet
+    Then the EUDI Wallet informs the user that the QTSP requests to release the matching attestation
 
+  @US_SD_TC_05 @manual:Passed
+  Scenario: User does not want to proceed
+    Given the EUDI Wallet finds available matching attestations
+    When the EUDI Wallet requests the user to consent by authenticating with a six-digit PIN
+    When the user decides not to proceed
+    Then the user can return to the main page of the Wallet
 
-  @US_SD_TC_05
-  Scenario: QTSP informs user of Relying Party’s request
-    Given the user is on the QTSP authentication page
-    When the QTSP requests access to use the selected Credential ID on behalf of the user
-    Then the QTSP should inform the user of the Relying Party’s request to use the Credential ID
+  @US_SD_TC_06 @manual:Passed
+  Scenario: User consents to release attestation
+    Given the EUDI Wallet finds available matching attestations
+    When the EUDI Wallet requests the user to consent by authenticating with a six-digit PIN
+    And the user authenticates successfully
+    Then the EUDI Wallet presents the requested attestation to the QTSP
 
-  @US_SD_TC_06
-  Scenario: QTSP renders QR code for EUDI Wallet scan
-    Given the QTSP has requested access to the Credential ID on
-
+  @US_SD_TC_07 @manual:Passed
+  Scenario: QTSP verifies the attestation successfully
+    Given the QTSP receives the attestation
+    When the QTSP verifies the attestation successfully
+    Then the EUDI Wallet displays a confirmation message indicating the presentation outcome from the QTSP
+    And the user views the signed document at the Relying Party interface
 
 

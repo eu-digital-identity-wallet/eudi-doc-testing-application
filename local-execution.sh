@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-mvn clean verify -Dappium.hub=http://127.0.0.1:4723 -Dwebdriver.driver=appium -Dappium.platformName=Android -Dappium.deviceName="Pixel 6 API 33" -Dcucumber.filter.tags="@IOS and (not @WIP)"
+call mvn clean verify -Dcucumber.filter.tags="@manual and @US_BRCD_TC_01" %*
 mvn serenity:aggregate
