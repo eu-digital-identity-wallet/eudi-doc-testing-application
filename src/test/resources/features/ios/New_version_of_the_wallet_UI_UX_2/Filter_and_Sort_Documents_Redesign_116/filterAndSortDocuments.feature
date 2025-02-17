@@ -11,7 +11,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is on the Documents screen
 
-  @US_FASD_TC_01 @manual:Failed
+  @US_FASD_TC_01 @manual:Passed
   Scenario: Initial state of the filter/sort option
     Given the user is viewing the Documents screen
     Then no filter should be applied (default state)
@@ -43,7 +43,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the sorting by Date Issued in descending order
     And the documents should be listed according to the selected sorting order
 
-  @US_FASD_TC_05 @manual:Failed
+  @US_FASD_TC_05 @manual:Passed
   Scenario: Sorting documents by default option with grouping
     Given the user has opened the filter or sort bottom sheet
     When the user selects to sort by Default or Category
@@ -66,7 +66,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the filter by the selected categories
     And only documents within those categories should be displayed
 
-  @US_FASD_TC_08 @manual:Failed
+  @US_FASD_TC_08 @manual:Passed
   Scenario: Filtering documents by issuer
     Given the user has opened the filter orsort bottom sheet
     When the user taps the Filter by Issuer section
@@ -86,7 +86,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the EUDI Wallet should apply the filter by the selected expiry period
     And only documents expiring within the selected period should be displayed
 
-  @US_FASD_TC_10 @manual:Failed
+  @US_FASD_TC_10 @manual:Passed
   Scenario: Resetting filters and sorting
     Given the user has applied a filter or sort option
     When the user taps the Reset all button in the filter or sort bottom sheet
@@ -94,7 +94,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And the bottom sheet should slide down
     And the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name
 
-  @US_FASD_TC_11 @manual:Failed
+  @US_FASD_TC_11 @manual:Passed
   Scenario: No matching documents found after applying filters
     Given the user has applied a filter or sort option
     When no matching documents are found based on the applied filters
