@@ -11,7 +11,7 @@ Feature: Searching for documents in the EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is on the Documents screen
 
-  @US_SD_TC_01 @manual:Failed
+  @US_SD_TC_01 @manual:Passed
   Scenario: Initial state of the "Documents" screen
     Given the user is viewing the Documents screen
     Then the screen should list all non-expired documents
@@ -42,7 +42,7 @@ Feature: Searching for documents in the EUDI Wallet
     Then the search field should allow any text, including spaces
     And the user should be able to edit the search text
 
-  @US_SD_TC_05 @manual:Failed
+  @US_SD_TC_05 @manual:Passed
   Scenario: Clearing the search field
     Given the user has entered text in the search field
     When the user taps on the Clear trailing icon button (e.g., X)
@@ -51,7 +51,7 @@ Feature: Searching for documents in the EUDI Wallet
     And the screen should list all non-expired documents
     And the filtering and sorting should respect the current settings
 
-  @US_SD_TC_06 @manual:Failed
+  @US_SD_TC_06 @manual:Passed
   Scenario: Performing a search with empty text
     Given the user has entered an empty search text
     When the user taps on the Search button on the device keyboard
@@ -59,7 +59,7 @@ Feature: Searching for documents in the EUDI Wallet
     And the screen should list all non-expired documents
     And the filtering and sorting should respect the current settings
 
-  @US_SD_TC_07 @manual:Failed
+  @US_SD_TC_07 @manual:Passed
   Scenario: Performing a search with valid search text
     Given the user has entered valid search text in the search field
     When the user taps on the Search button on the device keyboard
