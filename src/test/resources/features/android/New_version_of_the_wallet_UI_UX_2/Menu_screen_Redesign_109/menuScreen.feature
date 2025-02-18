@@ -32,7 +32,7 @@ Feature: EUDI Wallet Menu Screen
     When the user taps the Notifications option
     Then the Notifications screen is displayed
 
-  @US_MS_TC_04 @manual:Failed
+  @US_MS_TC_04 @manual:Passed
   Scenario: Access Change PIN from the navigation drawer
     Given the navigation drawer is open
     When the user taps the Change PIN option
