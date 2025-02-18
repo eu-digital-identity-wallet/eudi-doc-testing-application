@@ -5493,7 +5493,6 @@ div.code {
     font-weight: normal;
 }
 
-
 .nav.nav-tabs li:last-child {
     display: none!important;
 }
@@ -5541,7 +5540,22 @@ div.code {
    display: none!important;
    }
 
-   .nav.nav-tabs li:nth-child(6)
+ .nav.nav-tabs li:nth-child(4)
       {
       display: none!important;
       }
+
+ .nav.nav-tabs li:nth-child(5)
+{
+display: none!important;
+}
+
+ .nav.nav-tabs li:nth-child(6)
+{
+display: none!important;
+}
+
+.nav.nav-tabs li:nth-child(7)
+{
+display: none!important;
+}

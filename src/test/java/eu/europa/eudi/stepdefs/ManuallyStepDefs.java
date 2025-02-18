@@ -1889,4 +1889,3684 @@ public class ManuallyStepDefs {
     public void theUserConsentsToTheReleaseOfTheMultipleRequestedAttestations() {
         //manual
     }
+
+    @Given("the user is logged into the EUDI Wallet")
+    public void theUserIsLoggedIntoTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user clicks on the {string} menu")
+    public void theUserClicksOnTheSignaturesHistoryMenu() {
+        //manual
+    }
+
+    @Then("the user is navigated to the {string} page")
+    public void theUserIsNavigatedToTheSignaturesHistoryPage() {
+        //manual
+    }
+
+    @And("the page displays a list of previously executed signatures \\(if available)")
+    public void thePageDisplaysAListOfPreviouslyExecutedSignaturesIfAvailable() {
+        //manual
+    }
+
+    @Given("the user is on the {string} page")
+    public void theUserIsOnTheSignaturesHistoryPage() {
+        //manual
+    }
+
+    @And("the user has previously executed signatures in the EUDI Wallet")
+    public void theUserHasPreviouslyExecutedSignaturesInTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user views the {string} page")
+    public void theUserViewsTheSignaturesHistoryPage() {
+        //manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following (.+):")
+    public void theListOfExecutedSignaturesIsDisplayedWithTheFollowingDetails() {
+        //manual
+    }
+
+    @And("the user has not previously performed any signatures in the EUDI Wallet")
+    public void theUserHasNotPreviouslyPerformedAnySignaturesInTheEUDIWallet() {
+        //manual
+
+
+    }
+
+    @Then("an empty list is displayed")
+    public void anEmptyListIsDisplayed() {
+        //manual
+
+
+    }
+
+    @And("an informative message appears: {string}")
+    public void anInformativeMessageAppears(String arg0) {
+        //manual
+
+    }
+
+    @And("there are multiple signature records available")
+    public void thereAreMultipleSignatureRecordsAvailable() {
+
+    }
+
+    @When("the user sorts the list by date")
+    public void theUserSortsTheListByDate() {
+    }
+
+    @Then("the signatures are reordered in ascending or descending order based on the selected date.")
+    public void theSignaturesAreReorderedInAscendingOrDescendingOrderBasedOnTheSelectedDate() {
+
+    }
+
+    @When("the user filters the list by a specific date range")
+    public void theUserFiltersTheListByASpecificDateRange() {
+
+    }
+
+    @Then("only the signatures performed within the selected date range are displayed.")
+    public void onlyTheSignaturesPerformedWithinTheSelectedDateRangeAreDisplayed() {
+    }
+
+    @When("the user clicks the Signatures History menu")
+    public void theUserClicksTheSignaturesHistoryMenu() {
+        //manual
+    }
+
+    @Then("the user is navigated to the Signatures History screen")
+    public void theUserIsNavigatedToTheSignaturesHistoryScreen() {
+        //manual
+    }
+
+    @Given("the user is on the Signatures History screen")
+    public void theUserIsOnTheSignaturesHistoryScreen() {
+        //manual
+    }
+
+    @When("the user views the Signatures History screen")
+    public void theUserViewsTheSignaturesHistoryScreen() {
+        //manual
+    }
+
+    @And("an informative message appears: No signatures have been performed through the EUDI Wallet.")
+    public void anInformativeMessageAppearsNoSignaturesHaveBeenPerformedThroughTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is authenticated in the EUDI Wallet and QTSP")
+    public void theUserIsAuthenticatedInTheEUDIWalletAndQTSP() {
+        //manual
+    }
+
+    @When("the EUDI Wallet retrieves the available User Credential IDs from the QTSP")
+    public void theEUDIWalletRetrievesTheAvailableUserCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the available Credential IDs to the user.")
+    public void theEUDIWalletShouldPresentTheAvailableCredentialIDsToTheUser() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has retrieved available Credential IDs from the QTSP")
+    public void theEUDIWalletHasRetrievedAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @When("there are no Credential IDs enrolled for the user")
+    public void thereAreNoCredentialIDsEnrolledForTheUser() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should inform the user that they must enroll a Qualified Certificate to the QTSP")
+    public void theEUDIWalletShouldInformTheUserThatTheyMustEnrollAQualifiedCertificateToTheQTSP() {
+        //manual
+    }
+
+    @And("the signing flow stops.")
+    public void theSigningFlowStops() {
+        //manual
+    }
+
+    @Given("there is more than one Credential ID available for the user")
+    public void thereIsMoreThanOneCredentialIDAvailableForTheUser() {
+        //manual
+    }
+
+    @When("the EUDI Wallet prompts the user to select a preferred Credential ID")
+    public void theEUDIWalletPromptsTheUserToSelectAPreferredCredentialID() {
+        //manual
+    }
+
+    @When("the EUDI Wallet retrieves the Credential ID details from the QTSP")
+    public void theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP() {
+        //manual
+
+    }
+
+    @And("the EUDI Wallet proceeds to the next step in the signing flow.")
+    public void theEUDIWalletProceedsToTheNextStepInTheSigningFlow() {
+        //manual
+    }
+
+    @Then("the user selects the preferred Credential ID")
+    public void theUserSelectsThePreferredCredentialID() {
+        //manual
+    }
+
+    @Given("there is only one available Credential ID")
+    public void thereIsOnlyOneAvailableCredentialID() {
+        //manual
+    }
+
+    @And("the user confirms to proceed with the signing operation.")
+    public void theUserConfirmsToProceedWithTheSigningOperation() { //manual
+
+    }
+
+    @Then("the EUDI Wallet presents the Credential ID details to the user")
+    public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() { //manual
+    }
+
+    @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
+    public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user decides not to proceed")
+    public void theUserDecidesNotToProceed() {
+        //manual
+    }
+
+    @Then("the user can select the {string} option")
+    public void theUserCanSelectTheOption(String arg0) {
+        //manual
+    }
+
+    @And("the EUDI Wallet should return the user to the main page.")
+    public void theEUDIWalletShouldReturnTheUserToTheMainPage() {
+        //manual
+    }
+
+    @Given("the user has confirmed the Credential ID details")
+    public void theUserHasConfirmedTheCredentialIDDetails() {
+        //manual
+    }
+
+    @When("the EUDI Wallet navigates the user to the selected QTSP \\(Credential) authentication page in the mobile web browser")
+    public void theEUDIWalletNavigatesTheUserToTheSelectedQTSPCredentialAuthenticationPageInTheMobileWebBrowser() {
+        //manual
+    }
+
+    @Then("the QTSP should provide a deep link to proceed to attestation presentation.")
+    public void theQTSPShouldProvideADeepLinkToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @Given("the QTSP has provided a deep link for attestation presentation")
+    public void theQTSPHasProvidedADeepLinkForAttestationPresentation() {
+        //manual
+    }
+
+    @When("the user clicks the deep link")
+    public void theUserClicksTheDeepLink() {
+        //manual
+    }
+
+    @Then("the deep link should redirect the user back to the EUDI Wallet.")
+    public void theDeepLinkShouldRedirectTheUserBackToTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can select the Abort operation option")
+    public void theUserCanSelectTheAbortOperationOption() {
+        //manual
+    }
+
+    @Given("the user is redirected to the EUDI Wallet from the QTSP")
+    public void theUserIsRedirectedToTheEUDIWalletFromTheQTSP() {
+        //manual
+    }
+
+    @When("the EUDI Wallet informs the user that the QTSP requests to release the matching attestation \\(PID)")
+    public void theEUDIWalletInformsTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestationPID() {
+        //manual
+    }
+
+    @Then("the user should be able to review the request, and the screen should display the name of the QTSP.")
+    public void theUserShouldBeAbleToReviewTheRequestAndTheScreenShouldDisplayTheNameOfTheQTSP() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet checks for matching attestations")
+    public void theEUDIWalletChecksForMatchingAttestations() {
+        //manual
+    }
+
+    @When("there are no available matching attestations")
+    public void thereAreNoAvailableMatchingAttestations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should inform the user")
+    public void theEUDIWalletShouldInformTheUser() {
+        //manual
+    }
+
+    @And("the user should be able to select the {string} option to return to the main page.")
+    public void theUserShouldBeAbleToSelectTheOptionToReturnToTheMainPage(String arg0) {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has found a matching attestation for the QTSP’s request")
+    public void theEUDIWalletHasFoundAMatchingAttestationForTheQTSPSRequest() {
+        //manual
+    }
+
+    @When("the EUDI Wallet requests the user’s consent to release the attestation")
+    public void theEUDIWalletRequestsTheUserSConsentToReleaseTheAttestation() {
+        //manual
+    }
+
+    @And("the user authenticates using the {int}-digit PIN")
+    public void theUserAuthenticatesUsingTheDigitPIN(int arg0) {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should release the attestation to the QTSP.")
+    public void theEUDIWalletShouldReleaseTheAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet requests authentication from the user")
+    public void theEUDIWalletRequestsAuthenticationFromTheUser() {
+        //manual
+    }
+
+    @When("the user enters an incorrect {int}-digit PIN")
+    public void theUserEntersAnIncorrectDigitPIN(int arg0) {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display an error message")
+    public void theEUDIWalletShouldDisplayAnErrorMessage() {
+        //manual
+    }
+
+    @And("the user should be given the option to retry authentication.")
+    public void theUserShouldBeGivenTheOptionToRetryAuthentication() {
+        //manual
+    }
+
+    @Given("the user is prompted to authenticate and release the attestation")
+    public void theUserIsPromptedToAuthenticateAndReleaseTheAttestation() {
+        //manual
+    }
+
+    @Then("the user should be able to select the {string} option")
+    public void theUserShouldBeAbleToSelectTheOption(String arg0) {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has released the attestation to the QTSP")
+    public void theEUDIWalletHasReleasedTheAttestationToTheQTSP() {
+        //manual
+
+    }
+
+    @When("the QTSP verifies the attestation")
+    public void theQTSPVerifiesTheAttestation() {
+        //manual
+    }
+
+    @Then("the QTSP should inform the user of the successful verification")
+    public void theQTSPShouldInformTheUserOfTheSuccessfulVerification() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a confirmation message indicating the outcome.")
+    public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingTheOutcome() {
+        //manual
+    }
+
+    @When("the QTSP cannot verify the attestation")
+    public void theQTSPCannotVerifyTheAttestation() {
+        //manual
+    }
+
+    @Then("the QTSP should display an error message informing the user of the failure")
+    public void theQTSPShouldDisplayAnErrorMessageInformingTheUserOfTheFailure() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a message indicating the failed presentation.")
+    public void theEUDIWalletShouldDisplayAMessageIndicatingTheFailedPresentation() {
+        //manual
+    }
+
+    @Given("the QTSP has successfully verified the attestation")
+    public void theQTSPHasSuccessfullyVerifiedTheAttestation() {
+        //manual
+    }
+
+    @When("the QTSP receives the sign request and validates it")
+    public void theQTSPReceivesTheSignRequestAndValidatesIt() {
+        //manual
+    }
+
+    @Then("the QTSP should sign the document")
+    public void theQTSPShouldSignTheDocument() {
+        //manual
+    }
+
+    @And("the signed document should be returned to the EUDI Wallet.")
+    public void theSignedDocumentShouldBeReturnedToTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the QTSP has signed the document and returned it")
+    public void theQTSPHasSignedTheDocumentAndReturnedIt() {
+        //manual
+    }
+
+    @When("the EUDI Wallet receives the signed document")
+    public void theEUDIWalletReceivesTheSignedDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should store the signed document")
+    public void theEUDIWalletShouldStoreTheSignedDocument() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should present the signed document to the user.")
+    public void theEUDIWalletShouldPresentTheSignedDocumentToTheUser() {
+        //manual
+    }
+
+    @Given("the document to be signed was retrieved from the Relying Party")
+    public void theDocumentToBeSignedWasRetrievedFromTheRelyingParty() {
+        //manual
+    }
+
+    @When("the EUDI Wallet receives the signed document from the QTSP")
+    public void theEUDIWalletReceivesTheSignedDocumentFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should send the signed document to the Relying Party service.")
+    public void theEUDIWalletShouldSendTheSignedDocumentToTheRelyingPartyService() {
+        //manual
+    }
+
+    @Given("the user has a valid EUDI Wallet with the document to be signed")
+    public void theUserHasAValidEUDIWalletWithTheDocumentToBeSigned() {
+        //manual
+    }
+
+    @When("the user selects the {string} option in the EUDI Wallet")
+    public void theUserSelectsTheOptionInTheEUDIWallet(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the Sign Document option in the EUDI Wallet")
+    public void theUserSelectsTheSignDocumentOptionInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should prompt the user to select a QTSP from a preloaded list of available QTSPs.")
+    public void theEUDIWalletShouldPromptTheUserToSelectAQTSPFromAPreloadedListOfAvailableQTSPs() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet displays a list of QTSPs")
+    public void theEUDIWalletDisplaysAListOfQTSPs() {
+        //manual
+    }
+
+    @When("the user selects a preferred QTSP from the list")
+    public void theUserSelectsAPreferredQTSPFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should navigate the user to the selected QTSP login page using a mobile web browser on the same device.")
+    public void theEUDIWalletShouldNavigateTheUserToTheSelectedQTSPLoginPageUsingAMobileWebBrowserOnTheSameDevice() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP login page in the mobile web browser")
+    public void theUserIsOnTheQTSPLoginPageInTheMobileWebBrowser() {
+        //manual
+    }
+
+    @When("the QTSP provides a deep link requesting the user to proceed to attestation presentation")
+    public void theQTSPProvidesADeepLinkRequestingTheUserToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @Then("the user should be able to click the deep link")
+    public void theUserShouldBeAbleToClickTheDeepLink() {
+        //manual
+    }
+
+    @Given("the user is redirected to the EUDI Wallet via the QTSP's deep link")
+    public void theUserIsRedirectedToTheEUDIWalletViaTheQTSPSDeepLink() {
+        //manual
+    }
+
+    @When("the EUDI Wallet presents a screen informing the user that the QTSP requests to release the matching attestation \\(PID)")
+    public void theEUDIWalletPresentsAScreenInformingTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestationPID() {
+        //manual
+    }
+
+    @Then("the screen should display the name of the QTSP and request the user's consent to release the attestation.")
+    public void theScreenShouldDisplayTheNameOfTheQTSPAndRequestTheUserSConsentToReleaseTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is prompted to release the attestation to the QTSP")
+    public void theUserIsPromptedToReleaseTheAttestationToTheQTSP() {
+        //manual
+    }
+
+    @And("the EUDI Wallet checks for available matching attestations")
+    public void theEUDIWalletChecksForAvailableMatchingAttestations() {
+        //manual
+    }
+
+    @And("the user should be able to select {string} to return to the main page of the EUDI Wallet.")
+    public void theUserShouldBeAbleToSelectToReturnToTheMainPageOfTheEUDIWallet(String arg0) {
+        //manual
+    }
+
+
+
+    @Given("the user is redirected to the EUDI Wallet via the QTSPs deep link")
+    public void theUserIsRedirectedToTheEUDIWalletViaTheQTSPsDeepLink() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has found a matching attestation for the QTSPs request")
+    public void theEUDIWalletHasFoundAMatchingAttestationForTheQTSPsRequest() {
+        //manual
+    }
+
+    @And("the user should be able to select Abort operation to return to the main page of the EUDI Wallet.")
+    public void theUserShouldBeAbleToSelectAbortOperationToReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the EUDI Wallet asks for the user's consent to release the attestation")
+    public void theEUDIWalletAsksForTheUserSConsentToReleaseTheAttestation() {
+        //manual
+    }
+
+    @And("the user authenticates by entering the {int}-digit PIN")
+    public void theUserAuthenticatesByEnteringTheDigitPIN(int arg0) {
+        //manual
+    }
+
+    @Given("the user is requested to authenticate for attestation release")
+    public void theUserIsRequestedToAuthenticateForAttestationRelease() {
+        //manual
+    }
+
+    @When("the user enters an incorrect PIN")
+    public void theUserEntersAnIncorrectPIN() {
+        //manual
+    }
+
+    @And("the user should be given the option to retry the authentication.")
+    public void theUserShouldBeGivenTheOptionToRetryTheAuthentication() {
+        //manual
+    }
+
+    @Given("the user is asked to authenticate and release the requested attestation")
+    public void theUserIsAskedToAuthenticateAndReleaseTheRequestedAttestation() {
+        //manual
+    }
+
+    @Then("the user should be able to select the Abort operation option")
+    public void theUserShouldBeAbleToSelectTheAbortOperationOption() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should return the user to the main page of the Wallet.")
+    public void theEUDIWalletShouldReturnTheUserToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Given("the user has successfully authenticated and provided consent")
+    public void theUserHasSuccessfullyAuthenticatedAndProvidedConsent() {
+        //manual
+    }
+
+    @When("the EUDI Wallet presents the requested attestation to the QTSP")
+    public void theEUDIWalletPresentsTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Then("the QTSP should receive and verify the attestation.")
+    public void theQTSPShouldReceiveAndVerifyTheAttestation() {
+        //manual
+    }
+
+    @Given("the QTSP receives the attestation from the EUDI Wallet")
+    public void theQTSPReceivesTheAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the QTSP successfully verifies the attestation")
+    public void theQTSPSuccessfullyVerifiesTheAttestation() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a confirmation message indicating the presentation outcome.")
+    public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcome() {
+        //manual
+    }
+
+    @When("the QTSP fails to verify the attestation")
+    public void theQTSPFailsToVerifyTheAttestation() {
+        //manual
+    }
+
+    @Then("the QTSP should display an error message informing the user of the verification failure")
+    public void theQTSPShouldDisplayAnErrorMessageInformingTheUserOfTheVerificationFailure() {
+        //manual
+    }
+
+    @Given("the user is authenticated in the Relying Party service")
+    public void theUserIsAuthenticatedInTheRelyingPartyService() {
+        //manual
+
+    }
+
+    @And("the user is authenticated in the EUDI Wallet")
+    public void theUserIsAuthenticatedInTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user is registered to a valid EUDI Wallet on his\\/her mobile device")
+    public void theUserIsRegisteredToAValidEUDIWalletOnHisHerMobileDevice() {
+        //manual
+    }
+
+    @And("the user is registered to a valid EUDI Wallet on their mobile device")
+    public void theUserIsRegisteredToAValidEUDIWalletOnTheirMobileDevice() {
+        //manual
+    }
+
+    @When("the user navigates to the Relying Party page where the document to be signed is available")
+    public void theUserNavigatesToTheRelyingPartyPageWhereTheDocumentToBeSignedIsAvailable() {
+        //manual
+    }
+
+    @Then("the page should display an option to retrieve the document into the EUDI Wallet.")
+    public void thePageShouldDisplayAnOptionToRetrieveTheDocumentIntoTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party page where the document is available")
+    public void theUserIsOnTheRelyingPartyPageWhereTheDocumentIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the option to retrieve the document to the EUDI Wallet")
+    public void theUserSelectsTheOptionToRetrieveTheDocumentToTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Relying Party should render a QR-code on the screen requesting the user to scan it with their mobile device.")
+    public void theRelyingPartyShouldRenderAQRCodeOnTheScreenRequestingTheUserToScanItWithTheirMobileDevice() {
+        //manual
+    }
+
+    @Given("the user has selected the option to retrieve the document to the EUDI Wallet")
+    public void theUserHasSelectedTheOptionToRetrieveTheDocumentToTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the Relying Party renders the QR-code on the page")
+    public void theRelyingPartyRendersTheQRCodeOnThePage() {
+        //manual
+    }
+
+    @Then("the user should be able to see the QR-code clearly displayed on the Relying Party's device \\(e.g. desktop or other device).")
+    public void theUserShouldBeAbleToSeeTheQRCodeClearlyDisplayedOnTheRelyingPartySDeviceEGDesktopOrOtherDevice() {
+        //manual
+    }
+
+    @Given("the user has the QR-code displayed on the Relying Party's device")
+    public void theUserHasTheQRCodeDisplayedOnTheRelyingPartySDevice() {
+        //manual
+    }
+
+    @And("the user has the EUDI Wallet open on their mobile device")
+    public void theUserHasTheEUDIWalletOpenOnTheirMobileDevice() {
+        //manual
+    }
+
+    @When("the user scans the QR-code using the mobile device")
+    public void theUserScansTheQRCodeUsingTheMobileDevice() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should start the process of retrieving the document from the Relying Party service.")
+    public void theEUDIWalletShouldStartTheProcessOfRetrievingTheDocumentFromTheRelyingPartyService() {
+        //manual
+    }
+
+    @Given("the user has scanned the QR-code from the Relying Party page")
+    public void theUserHasScannedTheQRCodeFromTheRelyingPartyPage() {
+        //manual
+    }
+
+    @When("the EUDI Wallet successfully communicates with the Relying Party service")
+    public void theEUDIWalletSuccessfullyCommunicatesWithTheRelyingPartyService() {
+        //manual
+    }
+
+    @Then("the document should be fetched and transferred from the Relying Party to the EUDI Wallet")
+    public void theDocumentShouldBeFetchedAndTransferredFromTheRelyingPartyToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should receive a confirmation that the document is being retrieved.")
+    public void theUserShouldReceiveAConfirmationThatTheDocumentIsBeingRetrieved() {
+        //manual
+    }
+
+    @Given("the document has been successfully retrieved from the Relying Party")
+    public void theDocumentHasBeenSuccessfullyRetrievedFromTheRelyingParty() {
+        //manual
+    }
+
+    @When("the document is available in the EUDI Wallet")
+    public void theDocumentIsAvailableInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the document details to the user for review prior to signing.")
+    public void theEUDIWalletShouldPresentTheDocumentDetailsToTheUserForReviewPriorToSigning() {
+        //manual
+    }
+
+    @Given("the user attempts to scan the QR-code")
+    public void theUserAttemptsToScanTheQRCode() {
+        //manual
+    }
+
+    @And("there is no internet connection available")
+    public void thereIsNoInternetConnectionAvailable() {
+        //manual
+    }
+
+    @When("the EUDI Wallet tries to retrieve the document from the Relying Party")
+    public void theEUDIWalletTriesToRetrieveTheDocumentFromTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the user should receive an error message stating that an internet connection is required for document retrieval.")
+    public void theUserShouldReceiveAnErrorMessageStatingThatAnInternetConnectionIsRequiredForDocumentRetrieval() {
+        //manual
+    }
+
+    @Given("the user is registered with a valid EUDI Wallet on a mobile device")
+    public void theUserIsRegisteredWithAValidEUDIWalletOnAMobileDevice() {
+        //manual
+    }
+
+    @And("the user is on the Relying Party login page on a different device")
+    public void theUserIsOnTheRelyingPartyLoginPageOnADifferentDevice() {
+        //manual
+    }
+
+    @When("the user selects the PID authentication option")
+    public void theUserSelectsThePIDAuthenticationOption() {
+        //manual
+    }
+
+    @Then("the Relying Party should render a QR-code requesting the user to scan it to proceed to attestation presentation \\(PID).")
+    public void theRelyingPartyShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentationPID() {
+        //manual
+    }
+
+    @Given("the user has the QR-code displayed on the Relying Party login page")
+    public void theUserHasTheQRCodeDisplayedOnTheRelyingPartyLoginPage() {
+        //manual
+    }
+
+    @When("the user opens the EUDI Wallet on their mobile device")
+    public void theUserOpensTheEUDIWalletOnTheirMobileDevice() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a screen informing the user that the Relying Party requests the release of the matching attestation \\(i.e. PID)")
+    public void theEUDIWalletShouldDisplayAScreenInformingTheUserThatTheRelyingPartyRequestsTheReleaseOfTheMatchingAttestationIEPID() {
+        //manual
+    }
+
+    @And("the name of the Relying Party should be displayed.")
+    public void theNameOfTheRelyingPartyShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user opens the EUDI Wallet to scan the QR-code")
+    public void theUserOpensTheEUDIWalletToScanTheQRCode() {
+        //manual
+    }
+
+    @When("the user fails to authenticate \\(e.g., incorrect PIN)")
+    public void theUserFailsToAuthenticateEGIncorrectPIN() {
+        //manual
+    }
+
+    @Given("the user successfully scans the QR-code")
+    public void theUserSuccessfullyScansTheQRCode() {
+        //manual
+    }
+
+    @When("no matching attestations are found")
+    public void noMatchingAttestationsAreFound() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should inform the user that no matching attestations are available")
+    public void theEUDIWalletShouldInformTheUserThatNoMatchingAttestationsAreAvailable() {
+        //manual
+    }
+
+    @And("the user can return to the main page of the Wallet.")
+    public void theUserCanReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has found a matching attestation for the Relying Party's request")
+    public void theEUDIWalletHasFoundAMatchingAttestationForTheRelyingPartySRequest() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should release the attestation to the Relying Party.")
+    public void theEUDIWalletShouldReleaseTheAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet should ask the user to retry authentication")
+    public void theWalletShouldAskTheUserToRetryAuthentication() {
+        //manual
+    }
+
+    @And("the user should have the option to abort the operation and return to the main page of the Wallet.")
+    public void theUserShouldHaveTheOptionToAbortTheOperationAndReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @When("the EUDI Wallet presents the requested attestation to the Relying Party")
+    public void theEUDIWalletPresentsTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the Relying Party should receive and verify the attestation")
+    public void theRelyingPartyShouldReceiveAndVerifyTheAttestation() {
+        //manual
+    }
+
+    @And("the user should be informed of the verification outcome.")
+    public void theUserShouldBeInformedOfTheVerificationOutcome() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has presented the requested attestation to the Relying Party")
+    public void theEUDIWalletHasPresentedTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the Relying Party successfully verifies the attestation")
+    public void theRelyingPartySuccessfullyVerifiesTheAttestation() {
+        //manual
+    }
+
+    @Then("the Relying Party should inform the user of the successful verification")
+    public void theRelyingPartyShouldInformTheUserOfTheSuccessfulVerification() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a confirmation message indicating the successful presentation.")
+    public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingTheSuccessfulPresentation() {
+        //manual
+    }
+
+    @When("the Relying Party fails to verify the attestation")
+    public void theRelyingPartyFailsToVerifyTheAttestation() {
+        //manual
+    }
+
+    @Then("the Relying Party should display an error message informing the user of the verification failure")
+    public void theRelyingPartyShouldDisplayAnErrorMessageInformingTheUserOfTheVerificationFailure() {
+        //manual
+    }
+
+    @And("the user is on the QTSP login page on a separate device")
+    public void theUserIsOnTheQTSPLoginPageOnASeparateDevice() {
+        //manual
+    }
+
+    @When("the user selects the PID authentication option on the QTSP page")
+    public void theUserSelectsThePIDAuthenticationOptionOnTheQTSPPage() {
+        //manual
+    }
+
+    @Then("the QTSP should render a QR-code requesting the user to scan it to proceed to attestation presentation.")
+    public void theQTSPShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @Given("the user has the QR-code displayed on the QTSP page")
+    public void theUserHasTheQRCodeDisplayedOnTheQTSPPage() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a screen informing the user that the QTSP requests the release of the matching attestation \\(i.e. PID)")
+    public void theEUDIWalletShouldDisplayAScreenInformingTheUserThatTheQTSPRequestsTheReleaseOfTheMatchingAttestationIEPID() {
+        //manual
+    }
+
+    @And("the name of the QTSP should be displayed.")
+    public void theNameOfTheQTSPShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to select the “Abort operation” option to return to the main page of the Wallet.")
+    public void theUserShouldBeAbleToSelectTheAbortOperationOptionToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has found a matching attestation for the QTSP request")
+    public void theEUDIWalletHasFoundAMatchingAttestationForTheQTSPRequest() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has presented the requested attestation to the QTSP")
+    public void theEUDIWalletHasPresentedTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @When("the QTSP verifies the attestation successfully")
+    public void theQTSPVerifiesTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Then("the QTSP should inform the user of the successful verification outcome")
+    public void theQTSPShouldInformTheUserOfTheSuccessfulVerificationOutcome() {
+        //manual
+    }
+
+    @Then("the QTSP should display an error message informing the user about the verification failure")
+    public void theQTSPShouldDisplayAnErrorMessageInformingTheUserAboutTheVerificationFailure() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a message indicating the failure to present the attestation.")
+    public void theEUDIWalletShouldDisplayAMessageIndicatingTheFailureToPresentTheAttestation() {
+        //manual
+    }
+
+    @Then("Relying Party should render a QR-code requesting the user to scan it to proceed to attestation presentation \\(PID)")
+    public void relyingPartyShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentationPID() {
+        //manual
+    }
+
+    @And("name of the Relying Party should be displayed")
+    public void nameOfTheRelyingPartyShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("user should be given the option to retry the authentication")
+    public void userShouldBeGivenTheOptionToRetryTheAuthentication() {
+        //manual
+
+    }
+
+    @And("the user authenticates by entering the six-digit PIN")
+    public void theUserAuthenticatesByEnteringTheSixDigitPIN() {
+        //manual
+    }
+
+    @Then("QTSP should render a QR-code requesting the user to scan it to proceed to attestation presentation")
+    public void qtspShouldRenderAQRCodeRequestingTheUserToScanItToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @And("name of the QTSP should be displayed")
+    public void nameOfTheQTSPShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to return to the main page of the Wallet")
+    public void theUserShouldBeAbleToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should release the attestation to the QTSP")
+    public void eudiWalletShouldReleaseTheAttestationToTheQTSP() {
+        //manual
+    }
+
+    @And("user should have the option to abort the operation and return to the main page of the Wallet")
+    public void userShouldHaveTheOptionToAbortTheOperationAndReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the successful presentation")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingTheSuccessfulPresentation() {
+        //manual
+    }
+
+    @Then("page should display an option to retrieve the document into the EUDI Wallet")
+    public void pageShouldDisplayAnOptionToRetrieveTheDocumentIntoTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should prompt the user to select a QTSP from a preloaded list of available QTSPs")
+    public void eudiWalletShouldPromptTheUserToSelectAQTSPFromAPreloadedListOfAvailableQTSPs() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should present the available Credential IDs to the user")
+    public void eudiWalletShouldPresentTheAvailableCredentialIDsToTheUser() {
+        //manual
+    }
+
+    @And("signing flow stops")
+    public void signingFlowStops() {
+        //manual
+    }
+
+    @And("EUDI Wallet proceeds to the next step in the signing flow")
+    public void eudiWalletProceedsToTheNextStepInTheSigningFlow() {
+        //manual
+    }
+
+    @And("user confirms to proceed with the signing operation")
+    public void userConfirmsToProceedWithTheSigningOperation() {
+        //manual
+    }
+
+    @And("EUDI Wallet should return the user to the main page")
+    public void eudiWalletShouldReturnTheUserToTheMainPage() {
+        //manual
+    }
+
+    @Then("QTSP should provide a deep link to proceed to attestation presentation")
+    public void qtspShouldProvideADeepLinkToProceedToAttestationPresentation() {
+        //manual
+    }
+
+    @Then("deep link should redirect the user back to the EUDI Wallet")
+    public void deepLinkShouldRedirectTheUserBackToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should be able to return to the main page")
+    public void theUserShouldBeAbleToReturnToTheMainPage() {
+        //manual
+    }
+
+    @And("user should be given the option to retry authentication")
+    public void userShouldBeGivenTheOptionToRetryAuthentication() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the outcome")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingTheOutcome() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a message indicating the failed presentation")
+    public void eudiWalletShouldDisplayAMessageIndicatingTheFailedPresentation() {
+        //manual
+    }
+
+    @And("signed document should be returned to the EUDI Wallet")
+    public void signedDocumentShouldBeReturnedToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should present the signed document to the user")
+    public void eudiWalletShouldPresentTheSignedDocumentToTheUser() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should send the signed document to the Relying Party service")
+    public void eudiWalletShouldSendTheSignedDocumentToTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the informative message appears: No signatures have been performed through the EUDI Wallet")
+    public void theInformativeMessageAppearsNoSignaturesHaveBeenPerformedThroughTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("signatures are reordered in ascending or descending order based on the selected date")
+    public void signaturesAreReorderedInAscendingOrDescendingOrderBasedOnTheSelectedDate() {
+        //manual
+    }
+
+    @Then("only signatures performed within the selected date range are displayed")
+    public void onlySignaturesPerformedWithinTheSelectedDateRangeAreDisplayed() {
+        //manual
+    }
+
+    @And("user should be informed of the verification outcome")
+    public void userShouldBeInformedOfTheVerificationOutcome() {
+        //manual
+    }
+
+    @And("user should have the option to return to the main page of the Wallet.")
+    public void userShouldHaveTheOptionToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @And("the user should have the option to return to the main page of the Wallet")
+    public void theUserShouldHaveTheOptionToReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should release the attestation to the Relying Party")
+    public void eudiWalletShouldReleaseTheAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @And("user can return to the main page of the Wallet")
+    public void userCanReturnToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("user should receive an error message stating that an internet connection is required for document retrieval")
+    public void userShouldReceiveAnErrorMessageStatingThatAnInternetConnectionIsRequiredForDocumentRetrieval() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should present the document details to the user for review prior to signing")
+    public void eudiWalletShouldPresentTheDocumentDetailsToTheUserForReviewPriorToSigning() {
+        //manual
+    }
+
+    @And("user should receive a confirmation that the document is being retrieved")
+    public void userShouldReceiveAConfirmationThatTheDocumentIsBeingRetrieved() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should start the process of retrieving the document from the Relying Party service")
+    public void eudiWalletShouldStartTheProcessOfRetrievingTheDocumentFromTheRelyingPartyService() {
+        //manual
+    }
+
+    @Then("user should be able to see the QR-code clearly displayed on the Relying Party's device \\(e.g. desktop or other device)")
+    public void userShouldBeAbleToSeeTheQRCodeClearlyDisplayedOnTheRelyingPartySDeviceEGDesktopOrOtherDevice() {
+        //manual
+    }
+
+    @Then("Relying Party should render a QR-code on the screen requesting the user to scan it with their mobile device")
+    public void relyingPartyShouldRenderAQRCodeOnTheScreenRequestingTheUserToScanItWithTheirMobileDevice() {
+        //manual
+    }
+
+    @Then("EUDI Wallet should navigate the user to the selected QTSP login page using a mobile web browser on the same device")
+    public void eudiWalletShouldNavigateTheUserToTheSelectedQTSPLoginPageUsingAMobileWebBrowserOnTheSameDevice() {
+        //manual
+    }
+
+    @Then("screen should display the name of the QTSP and request the user's consent to release the attestation")
+    public void screenShouldDisplayTheNameOfTheQTSPAndRequestTheUserSConsentToReleaseTheAttestation() {
+        //manual
+    }
+
+    @And("user should be able to select Abort operation to return to the main page of the EUDI Wallet")
+    public void userShouldBeAbleToSelectAbortOperationToReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @And("EUDI Wallet should return the user to the main page of the Wallet")
+    public void eudiWalletShouldReturnTheUserToTheMainPageOfTheWallet() {
+        //manual
+    }
+
+    @Then("QTSP should receive and verify the attestation")
+    public void qtspShouldReceiveAndVerifyTheAttestation() {
+        //manual
+    }
+
+    @And("EUDI Wallet should display a confirmation message indicating the presentation outcome")
+    public void eudiWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcome() {
+        //manual
+    }
+
+    @Then("user should be able to review the request, and the screen should display the name of the QTSP")
+    public void userShouldBeAbleToReviewTheRequestAndTheScreenShouldDisplayTheNameOfTheQTSP() {
+        //manual
+    }
+
+    @And("user authenticates using the six-digit PIN")
+    public void userAuthenticatesUsingTheSixDigitPIN() {
+        //manual
+    }
+
+    @When("the user enters an incorrect six-digit PIN")
+    public void theUserEntersAnIncorrectSixDigitPIN() {
+        //manual
+    }
+
+    @Given("the user has opened the EUDI Wallet application")
+    public void theUserHasOpenedTheEUDIWalletApplication() {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed")
+    public void theScreenShouldBeDisplayed(String arg0) {
+        //manual
+    }
+
+    @Then("the Home screen is displayed")
+    public void theHomeScreenShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the Home screen")
+    public void theUserIsOnTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the option {string} in the {string} section")
+    public void theUserSelectsTheOptionInTheSection(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
+    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is viewing the predefined list of attestations")
+    public void theUserIsViewingThePredefinedListOfAttestations() {
+        //manual
+    }
+
+    @When("the user selects one attestation to be issued")
+    public void theUserSelectsOneAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the attestation is successfully issued")
+    public void theAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @And("the screen informs the user about the attestation issued and the issuer who issued it")
+    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @And("the screen should display a {string} button to return to the “Home” screen")
+    public void theScreenShouldDisplayAButtonToReturnToTheHomeScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the PID attestation to be issued")
+    public void theUserSelectsThePIDAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("the PID attestation is successfully issued")
+    public void thePIDAttestationIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen informing the user about the PID attestation issued and the issuer who issued it")
+    public void theWalletShouldDisplayASuccessScreenInformingTheUserAboutThePIDAttestationIssuedAndTheIssuerWhoIssuedIt() {
+        //manual
+    }
+
+    @When("the user selects an attestation to be issued")
+    public void theUserSelectsAnAttestationToBeIssued() {
+        //manual
+    }
+
+    @And("an error occurs during the issuance process")
+    public void anErrorOccursDuringTheIssuanceProcess() {
+        //manual
+    }
+
+    @Then("the wallet should display an error screen informing the user about the unsuccessful operation")
+    public void theWalletShouldDisplayAnErrorScreenInformingTheUserAboutTheUnsuccessfulOperation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after an attestation is issued")
+    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the {string} button")
+    public void theUserClicksOnTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the user navigates back to the Home screen")
+    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
+        //manual
+    }
+
+    @Given("the user is viewing the additional success screen after the PID attestation is issued")
+    public void theUserIsViewingTheAdditionalSuccessScreenAfterThePIDAttestationIsIssued() {
+        //manual
+    }
+
+    @When("the user clicks on the Go to my EUDI Wallet button")
+    public void theUserClicksOnTheGoToMyEUDIWalletButton() {
+        //manual
+    }
+
+    @And("the screen displays a Close button to return to the Home screen")
+    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @And("the screen should display a Go to my EUDI Wallet button to return to the “Home” screen")
+    public void theScreenShouldDisplayAGoToMyEUDIWalletButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer")
+    public void theWalletShouldOpenTheScannerAllowingTheUserToScanTheQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @When("the user selects the option Scan QR to add in the Add document section")
+    public void theUserSelectsTheOptionScanQRToAddInTheAddDocumentSection() {
+        //manual
+    }
+
+    @Given("the user has scanned a valid QR code rendered by the Issuer")
+    public void theUserHasScannedAValidQRCodeRenderedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the wallet should display the credential offer which (.+):")
+    public void theWalletShouldDisplayTheCredentialOfferWhichIncludes() {
+        //manual
+    }
+
+    @Given("the user is viewing the credential offer")
+    public void theUserIsViewingTheCredentialOffer() {
+        //manual
+    }
+
+    @When("the user selects the {string} button")
+    public void theUserSelectsTheButton(String arg0) {
+        //manual
+    }
+
+    @Then("the issuing process should be canceled")
+    public void theIssuingProcessShouldBeCanceled() {
+        //manual
+    }
+
+    @And("the user should be returned to the “Home” screen")
+    public void theUserShouldBeReturnedToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the Add document button")
+    public void theUserSelectsTheAddDocumentButton() {
+        //manual
+    }
+
+    @Then("the wallet should display a success screen providing details about the attestation issued and added to the wallet")
+    public void theWalletShouldDisplayASuccessScreenProvidingDetailsAboutTheAttestationIssuedAndAddedToTheWallet() {
+        //manual
+    }
+
+    @And("the screen should display the issuer who issued the attestation")
+    public void theScreenShouldDisplayTheIssuerWhoIssuedTheAttestation() {
+        //manual
+    }
+
+    @And("the user should be able to expand the attestation to view the attributes of the attestation")
+    public void theUserShouldBeAbleToExpandTheAttestationToViewTheAttributesOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after issuing the PID attestation")
+    public void theUserIsViewingTheSuccessScreenAfterIssuingThePIDAttestation() {
+        //manual
+    }
+
+    @When("the user is informed about the PID attestation issued")
+    public void theUserIsInformedAboutThePIDAttestationIssued() {
+        //manual
+    }
+
+    @Then("the wallet should display an additional success screen")
+    public void theWalletShouldDisplayAnAdditionalSuccessScreen() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code")
+    public void theUserHasScannedAQRCode() {
+        //manual
+    }
+
+    @When("the issuance process encounters an error")
+    public void theIssuanceProcessEncountersAnError() {
+        //manual
+    }
+
+    @And("attestations are issued in the EUDI Wallet")
+    public void attestationsAreIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen of the EUDI Wallet")
+    public void theUserIsOnTheScreenOfTheEUDIWallet(String arg0) {
+        //manual
+    }
+
+    @When("the user navigates to the {string} screen")
+    public void theUserNavigatesToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the {string} screen should be displayed showing a list of issued attestations")
+    public void theScreenShouldBeDisplayedShowingAListOfIssuedAttestations(String arg0) {
+        //manual
+    }
+
+    @Given("the user is on the {string} screen")
+    public void theUserIsOnTheScreen(String arg0) {
+        //manual
+    }
+
+    @And("the user should see the {string} icon to view the details of the attestation")
+    public void theUserShouldSeeTheIconToViewTheDetailsOfTheAttestation(String arg0) {
+        //manual
+    }
+
+    @And("no more than {int} attestations are currently bookmarked")
+    public void noMoreThanAttestationsAreCurrentlyBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the bookmark icon")
+    public void theUserSelectsTheBookmarkIcon() {
+        //manual
+    }
+
+    @And("no more than three attestations are currently bookmarked")
+    public void noMoreThanThreeAttestationsAreCurrentlyBookmarked() {
+        //manual
+    }
+
+    @Then("the attestation should be marked as bookmarked")
+    public void theAttestationShouldBeMarkedAsBookmarked() {
+        //manual
+    }
+
+    @And("the bookmark icon should change to indicate that the attestation is bookmarked")
+    public void theBookmarkIconShouldChangeToIndicateThatTheAttestationIsBookmarked() {
+        //manual
+    }
+
+    @Given("the user has {int} bookmarked attestations")
+    public void theUserHasBookmarkedAttestations(int arg0) {
+        //manual
+    }
+
+    @Given("the user has three bookmarked attestations")
+    public void theUserHasThreeBookmarkedAttestations() {
+        //manual
+    }
+
+    @When("the user tries to bookmark another attestation")
+    public void theUserTriesToBookmarkAnotherAttestation() {
+        //manual
+    }
+
+    @Then("the bookmark icon should be disabled")
+    public void theBookmarkIconShouldBeDisabled() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to {int} attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToAttestationsCanBeBookmarked(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the option to view issuer details")
+    public void theUserSelectsTheOptionToViewIssuerDetails() {
+        //manual
+    }
+
+    @Then("the details of the issuer should be displayed")
+    public void theDetailsOfTheIssuerShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user should be able to review information about the issuer")
+    public void theUserShouldBeAbleToReviewInformationAboutTheIssuer() {
+        //manual
+    }
+
+    @And("the user should be informed that only up to three attestations can be bookmarked")
+    public void theUserShouldBeInformedThatOnlyUpToThreeAttestationsCanBeBookmarked() {
+        //manual
+    }
+
+    @When("the user selects the option to view the latest transactions")
+    public void theUserSelectsTheOptionToViewTheLatestTransactions() {
+        //manual
+    }
+
+    @Then("the latest transactions involving the attestation should be displayed")
+    public void theLatestTransactionsInvolvingTheAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user selects the Delete button")
+    public void theUserSelectsTheDeleteButton() {
+        //manual
+    }
+
+    @Then("the attestation should be removed from the EUDI Wallet")
+    public void theAttestationShouldBeRemovedFromTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user should be navigated back to the {string} screen")
+    public void theUserShouldBeNavigatedBackToTheScreen(String arg0) {
+        //manual
+    }
+
+    @And("the user should be navigated back to the Documents screen")
+    public void theUserShouldBeNavigatedBackToTheDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects the Close button")
+    public void theUserSelectsTheCloseButton() {
+        //manual
+    }
+
+    @Then("the user should be returned to the {string} screen")
+    public void theUserShouldBeReturnedToTheScreen(String arg0) {
+        //manual
+    }
+
+    @Then("the user should be returned to the Documents screen")
+    public void theUserShouldBeReturnedToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Given("the user is viewing the Documents screen")
+    public void theUserIsViewingTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the screen should list all non-expired documents")
+    public void theScreenShouldListAllNonExpiredDocuments() {
+        //manual
+    }
+
+    @And("the documents should be grouped by category")
+    public void theDocumentsShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("the search field should be empty and enabled")
+    public void theSearchFieldShouldBeEmptyAndEnabled() {
+        //manual
+    }
+
+    @And("the search field should display a search icon on the left side")
+    public void theSearchFieldShouldDisplayASearchIconOnTheLeftSide() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text {string}")
+    public void theSearchFieldShouldDisplayTheHintedSearchText(String arg0) {
+        //manual
+    }
+
+    @And("categories with no documents should not be displayed")
+    public void categoriesWithNoDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextSearchDocuments() {
+        //manual
+    }
+
+    @Given("the user is viewing the {string} screen")
+    public void theUserIsViewingTheScreen(String arg0) {
+        //manual
+    }
+
+    @When("the user taps on the search field")
+    public void theUserTapsOnTheSearchField() {
+        //manual
+    }
+
+    @Then("the hinted search text should be removed")
+    public void theHintedSearchTextShouldBeRemoved() {
+        //manual
+    }
+
+    @And("the {string} trailing icon button \\(e.g., {string}) should be displayed inside the search field on the right side")
+    public void theTrailingIconButtonEGShouldBeDisplayedInsideTheSearchFieldOnTheRightSide(String arg0, String arg1) {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field on the right side")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchFieldOnTheRightSide() {
+        //manual
+    }
+
+    @Given("the user has previously typed search text in the search field")
+    public void theUserHasPreviouslyTypedSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the previously typed search text should be editable")
+    public void thePreviouslyTypedSearchTextShouldBeEditable() {
+        //manual
+    }
+
+    @And("the Clear trailing icon button \\(e.g., X) should be displayed inside the search field")
+    public void theClearTrailingIconButtonEGXShouldBeDisplayedInsideTheSearchField() {
+        //manual
+    }
+
+    @When("the user types text in the search field")
+    public void theUserTypesTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the search field should allow any text, including spaces")
+    public void theSearchFieldShouldAllowAnyTextIncludingSpaces() {
+        //manual
+    }
+
+    @And("the user should be able to edit the search text")
+    public void theUserShouldBeAbleToEditTheSearchText() {
+        //manual
+    }
+
+    @Given("the user has entered text in the search field")
+    public void theUserHasEnteredTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the user taps on the Clear trailing icon button \\(e.g., X)")
+    public void theUserTapsOnTheClearTrailingIconButtonEGX() {
+        //manual
+    }
+
+    @Then("the search field should be cleared of any text")
+    public void theSearchFieldShouldBeClearedOfAnyText() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should reset any previously applied search")
+    public void theEUDIWalletShouldResetAnyPreviouslyAppliedSearch() {
+        //manual
+    }
+
+    @And("the filtering and sorting should respect the current settings")
+    public void theFilteringAndSortingShouldRespectTheCurrentSettings() {
+        //manual
+    }
+
+    @Given("the user has entered an empty search text")
+    public void theUserHasEnteredAnEmptySearchText() {
+        //manual
+    }
+
+    @When("the user taps on the Search button on the device keyboard")
+    public void theUserTapsOnTheSearchButtonOnTheDeviceKeyboard() {
+        //manual
+    }
+
+    @Given("the user has entered valid search text in the search field")
+    public void theUserHasEnteredValidSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should apply the search text on the attributes of the issuer and attestation name")
+    public void theEUDIWalletShouldApplyTheSearchTextOnTheAttributesOfTheIssuerAndAttestationName() {
+        //manual
+    }
+
+    @And("the screen should display matching documents grouped by category")
+    public void theScreenShouldDisplayMatchingDocumentsGroupedByCategory() {
+        //manual
+    }
+
+    @Given("the user has entered search text in the search field")
+    public void theUserHasEnteredSearchTextInTheSearchField() {
+        //manual
+    }
+
+    @When("the search text does not match any documents")
+    public void theSearchTextDoesNotMatchAnyDocuments() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display an informative message in the list section")
+    public void theEUDIWalletShouldDisplayAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @And("categories with no matching documents should not be displayed")
+    public void categoriesWithNoMatchingDocumentsShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @Then("no filter should be applied \\(default state)")
+    public void noFilterShouldBeAppliedDefaultState() {
+        //manual
+    }
+
+    @And("documents should be sorted by the default option \\(based on category)")
+    public void documentsShouldBeSortedByTheDefaultOptionBasedOnCategory() {
+        //manual
+    }
+
+    @And("the documents should be ordered by attestation name ascending within each category")
+    public void theDocumentsShouldBeOrderedByAttestationNameAscendingWithinEachCategory() {
+        //manual
+    }
+
+    @And("the filter or sort button should have no visual indication that a filter or sort option is applied")
+    public void theFilterOrSortButtonShouldHaveNoVisualIndicationThatAFilterOrSortOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter or sort button")
+    public void theUserTapsTheFilterOrSortButton() {
+        //manual
+    }
+
+    @Then("the filter and sort bottom sheet should slide up from the bottom of the screen")
+    public void theFilterAndSortBottomSheetShouldSlideUpFromTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @And("the “Sort by” and “Filter by ..” sections should be displayed in collapsed view")
+    public void theSortByAndFilterBySectionsShouldBeDisplayedInCollapsedView() {
+        //manual
+    }
+
+    @And("each section should display the applied filter and sort options respectively")
+    public void eachSectionShouldDisplayTheAppliedFilterAndSortOptionsRespectively() {
+        //manual
+    }
+
+    @Given("the user has opened the filter or sort bottom sheet")
+    public void theUserHasOpenedTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Sort by section")
+    public void theUserTapsTheSortBySection() {
+        //manual
+    }
+
+    @Then("the section should switch between collapsed and expanded views")
+    public void theSectionShouldSwitchBetweenCollapsedAndExpandedViews() {
+        //manual
+    }
+
+    @Given("the user has expanded the {string} section")
+    public void theUserHasExpandedTheSection(String arg0) {
+        //manual
+    }
+
+    @Given("the user has expanded the Sort by section")
+    public void theUserHasExpandedTheSortBySection() {
+        //manual
+    }
+
+    @When("the user selects to sort by Date Issued")
+    public void theUserSelectsToSortByDateIssued() {
+        //manual
+    }
+
+    @And("the user selects Descending order")
+    public void theUserSelectsDescendingOrder() {
+        //manual
+    }
+
+    @And("the user taps the Apply button")
+    public void theUserTapsTheApplyButton() {
+        //manual
+    }
+
+    @Then("the bottom sheet should slide down")
+    public void theBottomSheetShouldSlideDown() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the sorting by Date Issued in descending order")
+    public void theEUDIWalletShouldApplyTheSortingByDateIssuedInDescendingOrder() {
+        //manual
+    }
+
+    @And("the documents should be listed according to the selected sorting order")
+    public void theDocumentsShouldBeListedAccordingToTheSelectedSortingOrder() {
+        //manual
+    }
+
+    @When("the user selects to sort by Default or Category")
+    public void theUserSelectsToSortByDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the documents list should be grouped by category")
+    public void theDocumentsListShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @And("within each category, the documents should be ordered by attestation name in ascending order")
+    public void withinEachCategoryTheDocumentsShouldBeOrderedByAttestationNameInAscendingOrder() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Category section")
+    public void theUserTapsTheFilterByCategorySection() {
+        //manual
+    }
+
+    @Given("the user has expanded the Filter by Category section")
+    public void theUserHasExpandedTheFilterByCategorySection() {
+        //manual
+    }
+
+    @When("the user selects one or more categories")
+    public void theUserSelectsOneOrMoreCategories() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected categories")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedCategories() {
+        //manual
+    }
+
+    @And("only documents within those categories should be displayed")
+    public void onlyDocumentsWithinThoseCategoriesShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user has opened the filter orsort bottom sheet")
+    public void theUserHasOpenedTheFilterOrsortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Issuer section")
+    public void theUserTapsTheFilterByIssuerSection() {
+        //manual
+    }
+
+    @And("the user selects one or more issuers from the list")
+    public void theUserSelectsOneOrMoreIssuersFromTheList() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected issuers")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedIssuers() {
+        //manual
+    }
+
+    @And("only documents issued by the selected issuers should be displayed")
+    public void onlyDocumentsIssuedByTheSelectedIssuersShouldBeDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Filter by Expiry Period section")
+    public void theUserTapsTheFilterByExpiryPeriodSection() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next {int} Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextDays(int arg0) {
+        //manual
+    }
+
+    @And("the EUDI Wallet should apply the filter by the selected expiry period")
+    public void theEUDIWalletShouldApplyTheFilterByTheSelectedExpiryPeriod() {
+        //manual
+    }
+
+    @And("only documents expiring within the selected period should be displayed")
+    public void onlyDocumentsExpiringWithinTheSelectedPeriodShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the user selects an expiry period \\(e.g., Next thirty Days)")
+    public void theUserSelectsAnExpiryPeriodEGNextThirtyDays() {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sort option")
+    public void theUserHasAppliedAFilterOrSortOption() {
+        //manual
+    }
+
+    @When("the user taps the Reset all button in the filter or sort bottom sheet")
+    public void theUserTapsTheResetAllButtonInTheFilterOrSortBottomSheet() {
+        //manual
+    }
+
+    @Then("the filters and sort options should be reset to the default values")
+    public void theFiltersAndSortOptionsShouldBeResetToTheDefaultValues() {
+        //manual
+    }
+
+    @When("no matching documents are found based on the applied filters")
+    public void noMatchingDocumentsAreFoundBasedOnTheAppliedFilters() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name")
+    public void theEUDIWalletShouldDisplayAllNonExpiredDocumentsGroupedByCategoryInAscendingOrderByAttestationName() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to {string} or {string}")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToOr(String arg0, String arg1) {
+        //manual
+    }
+
+    @Given("the user has applied a filter or sorting option that is different from the default")
+    public void theUserHasAppliedAFilterOrSortingOptionThatIsDifferentFromTheDefault() {
+        //manual
+    }
+
+    @When("the user returns to the Documents screen")
+    public void theUserReturnsToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) and\\/or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @And("if no results are found within a category, that category should not be displayed when sorting is set to Default or Category")
+    public void ifNoResultsAreFoundWithinACategoryThatCategoryShouldNotBeDisplayedWhenSortingIsSetToDefaultOrCategory() {
+        //manual
+    }
+
+    @Then("the filter or sort button should have a visual indication that user filter\\(s) either and or or sorting options have been applied")
+    public void theFilterOrSortButtonShouldHaveAVisualIndicationThatUserFilterSEitherAndOrOrSortingOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @Given("the user is on the EUDI Wallet Home screen")
+    public void theUserIsOnTheEUDIWalletHomeScreen() {
+        //manual
+    }
+
+    @Then("the bottom navigation bar should include the options Home, Documents, and Transactions")
+    public void theBottomNavigationBarShouldIncludeTheOptionsHomeDocumentsAndTransactions() {
+        //manual
+    }
+
+    @When("the user selects the Home option from the bottom navigation bar")
+    public void theUserSelectsTheHomeOptionFromTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the {string} button should be highlighted")
+    public void theHomeButtonShouldBeHighlighted() {
+        //manual
+    }
+
+    @Then("the Home screen should be scrollable")
+    public void theHomeScreenShouldBeScrollable() {
+        //manual
+    }
+
+    @And("the Home screen should display Present a document, Add a document, and Sign a document sections")
+    public void theHomeScreenShouldDisplayPresentADocumentAddADocumentAndSignADocumentSections() {
+        //manual
+    }
+
+    @Then("the Present a document section should include In Person and Online options")
+    public void thePresentADocumentSectionShouldIncludeInPersonAndOnlineOptions() {
+        //manual
+    }
+
+    @Then("the Add a document section should include Choose from list and Scan QR to add options")
+    public void theAddADocumentSectionShouldIncludeChooseFromListAndScanQRToAddOptions() {
+        //manual
+    }
+
+    @When("the user clicks on the Sign a document section")
+    public void theUserClicksOnTheSignADocumentSection() {
+        //manual
+    }
+
+    @Then("the Sign a document section should include From device and Scan QR to sign options")
+    public void theSignADocumentSectionShouldIncludeFromDeviceAndScanQRToSignOptions() {
+        //manual
+    }
+
+    @When("the user clicks the Add a document section")
+    public void theUserClicksTheAddADocumentSection() {
+        //manual
+    }
+
+    @Then("the Choose from list button is displayed")
+    public void theChooseFromListButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Scan QR to add button is displayed")
+    public void theScanQRToAddButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the From device button is displayed")
+    public void theFromDeviceButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Scan QR to sign button is displayed")
+    public void theScanQRToSignButtonIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Home button is highlighted")
+    public void theHomeButtonIsHighlighted() {
+        //manual
+    }
+
+    @Then("the bottom navigation bar includes the options Home, Documents, and Transactions")
+    public void theBottomNavigationBarIncludesTheOptionsHomeDocumentsAndTransactions() {
+        //manual
+    }
+
+    @Given("the user is on the EUDI Wallet Documents screen")
+    public void theUserIsOnTheEUDIWalletDocumentsScreen() {
+        //manual
+    }
+
+    @When("the user selects the Documents option from the bottom navigation bar")
+    public void theUserSelectsTheDocumentsOptionFromTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the Documents button is highlighted")
+    public void theDocumentsButtonIsHighlighted() {
+        //manual
+    }
+
+    @When("the user views the screen")
+    public void theUserViewsTheScreen() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a Search bar")
+    public void theDocumentsScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a Filter_Sort button")
+    public void theDocumentsScreenIncludesAFilter_SortButton() {
+        //manual
+    }
+
+
+    @And("each displayed document in the carousel should show the validity end date below the document if available")
+    public void eachDisplayedDocumentInTheCarouselShouldShowTheValidityEndDateBelowTheDocumentIfAvailable() {
+        //manual
+    }
+
+    @When("the user swipes right or left on the carousel")
+    public void theUserSwipesRightOrLeftOnTheCarousel() {
+        //manual
+    }
+
+    @Then("the user should be able to navigate through the bookmarked documents")
+    public void theUserShouldBeAbleToNavigateThroughTheBookmarkedDocuments() {
+        //manual
+    }
+
+    @When("the user clicks on the Document section")
+    public void theUserClicksOnTheDocumentSection() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a list of all attestations issued to the wallet")
+    public void theDocumentsScreenIncludesAListOfAllAttestationsIssuedToTheWallet() {
+        //manual
+    }
+
+    @And("the attestations are grouped by category")
+    public void theAttestationsAreGroupedByCategory() {
+        //manual
+    }
+
+    @And("for each attestation, a card is displayed including the attestation name, the issuer, and the validity end date")
+    public void forEachAttestationACardIsDisplayedIncludingTheAttestationNameTheIssuerAndTheValidityEndDate() {
+        //manual
+    }
+
+    @And("the list of attestations is visible")
+    public void theListOfAttestationsIsVisible() {
+        //manual
+    }
+
+    @When("the user selects an attestation card")
+    public void theUserSelectsAnAttestationCard() {
+        //manual
+    }
+
+    @Then("the user should be able to view the details of the attestation")
+    public void theUserShouldBeAbleToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Then("the Documents screen includes a carousel displaying up to three bookmarked documents")
+    public void theDocumentsScreenIncludesACarouselDisplayingUpToThreeBookmarkedDocuments() {
+        //manual
+    }
+
+    @When("the user taps the menu button on the upper left corner of the screen")
+    public void theUserTapsTheMenuButtonOnTheUpperLeftCornerOfTheScreen() {
+        //manual
+    }
+
+    @And("the navigation drawer includes an icon button to close the drawer, and the following (.+):")
+    public void theNavigationDrawerIncludesAnIconButtonToCloseTheDrawerAndTheFollowingOptions() {
+        //manual
+    }
+
+    @Given("the navigation drawer is open")
+    public void theNavigationDrawerIsOpen() {
+        //manual
+    }
+
+    @When("the user taps the Notifications option")
+    public void theUserTapsTheNotificationsOption() {
+        //manual
+    }
+
+    @Then("the Notifications screen is displayed")
+    public void theNotificationsScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Change PIN option")
+    public void theUserTapsTheChangePINOption() {
+        //manual
+    }
+
+    @Then("the Change PIN screen is displayed")
+    public void theChangePINScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Privacy Notice option")
+    public void theUserTapsThePrivacyNoticeOption() {
+        //manual
+    }
+
+    @Then("the Privacy Notice screen is displayed")
+    public void thePrivacyNoticeScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Help_FAQs option")
+    public void theUserTapsTheHelp_FAQsOption() {
+        //manual
+    }
+
+    @Then("the Help_FAQs screen is displayed")
+    public void theHelp_FAQsScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user taps the Exit option")
+    public void theUserTapsTheExitOption() {
+        //manual
+    }
+
+
+    @Then("the application is closing")
+    public void theApplicationIsClosing() {
+        //manual
+    }
+
+    @Then("the wallet displays a page which includes a QR code and the option to share via NFC")
+    public void theWalletDisplaysAPageWhichIncludesAQRCodeAndTheOptionToShareViaNFC() {
+        //manual
+    }
+
+    @Given("the user is on the screen displaying a QR code and the option to share via NFC")
+    public void theUserIsOnTheScreenDisplayingAQRCodeAndTheOptionToShareViaNFC() {
+        //manual
+    }
+
+    @When("the displayed QR code is scanned or the NFC option is tapped with a reader device")
+    public void theDisplayedQRCodeIsScannedOrTheNFCOptionIsTappedWithAReaderDevice() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which (.+):")
+    public void theWalletDisplaysThePresentationRequestWhichIncludes() {
+        //manual
+    }
+
+    @Given("the wallet is displaying the presentation request")
+    public void theWalletIsDisplayingThePresentationRequest() {
+        //manual
+    }
+
+    @Then("the user is redirected to the Home screen")
+    public void theUserIsRedirectedToTheHomeScreen() {
+        //manual
+    }
+
+    @Then("the wallet requests the user to enter the PIN to proceed")
+    public void theWalletRequestsTheUserToEnterThePINToProceed() {
+        //manual
+    }
+
+    @Given("the user has selected the Share button in the presentation request screen")
+    public void theUserHasSelectedTheShareButtonInThePresentationRequestScreen() {
+        //manual
+    }
+
+    @When("the wallet requests the user to enter the PIN")
+    public void theWalletRequestsTheUserToEnterThePIN() {
+        //manual
+    }
+
+    @Then("the wallet displays a success screen which provides details about the data that were shared from the wallet")
+    public void theWalletDisplaysASuccessScreenWhichProvidesDetailsAboutTheDataThatWereSharedFromTheWallet() {
+        //manual
+    }
+
+    @And("the success screen includes a Close button")
+    public void theSuccessScreenIncludesACloseButton() {
+        //manual
+    }
+
+    @Given("the wallet displays the success screen with details about the data shared")
+    public void theWalletDisplaysTheSuccessScreenWithDetailsAboutTheDataShared() {
+        //manual
+    }
+
+
+    @Given("the user is on the Home page")
+    public void theUserIsOnTheHomePage() {
+        //manual
+    }
+
+    @Then("the wallet opens the scanner")
+    public void theWalletOpensTheScanner() {
+        //manual
+    }
+
+    @Given("the user has selected the Online option in the Present document section")
+    public void theUserHasSelectedTheOnlineOptionInThePresentDocumentSection() {
+        //manual
+    }
+
+    @When("the user scans a QR code rendered by a Relying Party")
+    public void theUserScansAQRCodeRenderedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request")
+    public void theWalletDisplaysThePresentationRequest() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code rendered by a Relying Party")
+    public void theUserHasScannedAQRCodeRenderedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the presentation request (.+):")
+    public void thePresentationRequestIncludes() {
+        //manual
+    }
+
+    @Given("the user is viewing the presentation request")
+    public void theUserIsViewingThePresentationRequest() {
+        //manual
+    }
+
+    @Given("the user has selected the Share button")
+    public void theUserHasSelectedTheShareButton() {
+        //manual
+    }
+
+    @Given("the user has entered the correct PIN")
+    public void theUserHasEnteredTheCorrectPIN() {
+        //manual
+    }
+
+    @When("the data sharing process is successful")
+    public void theDataSharingProcessIsSuccessful() {
+        //manual
+    }
+
+    @Then("the wallet displays a success screen")
+    public void theWalletDisplaysASuccessScreen() {
+        //manual
+    }
+
+    @And("the success screen provides details about the data that were shared")
+    public void theSuccessScreenProvidesDetailsAboutTheDataThatWereShared() {
+        //manual
+    }
+
+    @Given("the user is viewing the success screen after data sharing")
+    public void theUserIsViewingTheSuccessScreenAfterDataSharing() {
+        //manual
+    }
+
+    @Given("the user has a valid EUDI Wallet on their mobile device")
+    public void theUserHasAValidEUDIWalletOnTheirMobileDevice() {
+        //manual
+    }
+
+    @And("the user has issued a PID attestation to the EUDI Wallet")
+    public void theUserHasIssuedAPIDAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the user has internet connectivity")
+    public void theUserHasInternetConnectivity() {
+        //manual
+    }
+
+    @When("the user visits the QTSP login page on a different device")
+    public void theUserVisitsTheQTSPLoginPageOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the QTSP should render the PID authentication option")
+    public void theQTSPShouldRenderThePIDAuthenticationOption() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP login page")
+    public void theUserIsOnTheQTSPLoginPage() {
+        //manual
+    }
+
+    @Then("the QTSP should render a QR code")
+    public void theQTSPShouldRenderAQRCode() {
+        //manual
+    }
+
+    @Given("the user has scanned the QR code")
+    public void theUserHasScannedTheQRCode() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display the attestation release request")
+    public void theEUDIWalletShouldDisplayTheAttestationReleaseRequest() {
+        //manual
+    }
+
+    @When("the user fails to authenticate in the EUDI Wallet")
+    public void theUserFailsToAuthenticateInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present an error message")
+    public void theEUDIWalletShouldPresentAnErrorMessage() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks for available attestations")
+    public void theEUDIWalletChecksForAvailableAttestations() {
+        //manual
+    }
+
+    @And("there are no matching attestations")
+    public void thereAreNoMatchingAttestations() {
+        //manual
+    }
+
+    @And("there are matching attestations available")
+    public void thereAreMatchingAttestationsAvailable() {
+        //manual
+    }
+
+    @When("the user enters their {int}-digit PIN")
+    public void theUserEntersTheirDigitPIN() {
+        //manual
+    }
+
+    @When("the user enters their six digit PIN")
+    public void theUserEntersTheirSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the requested attestation to the QTSP")
+    public void theEUDIWalletShouldPresentTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Given("the user has presented the requested attestation to the QTSP")
+    public void theUserHasPresentedTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Then("an error message should inform the user")
+    public void anErrorMessageShouldInformTheUser() {
+        //manual
+    }
+
+    @When("the user visits the Relying Party login page on a different device")
+    public void theUserVisitsTheRelyingPartyLoginPageOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the Relying Party should render the PID authentication option")
+    public void theRelyingPartyShouldRenderThePIDAuthenticationOption() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party login page")
+    public void theUserIsOnTheRelyingPartyLoginPage() {
+        //manual
+    }
+
+    @Then("the Relying Party should render a QR code")
+    public void theRelyingPartyShouldRenderAQRCode() {
+        //manual
+    }
+
+    @And("the user should have the option to retry authentication")
+    public void theUserShouldHaveTheOptionToRetryAuthentication() {
+        //manual
+    }
+
+    @And("the user should return to the main page of the EUDI Wallet")
+    public void theUserShouldReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should present the requested attestation to the Relying Party")
+    public void theEUDIWalletShouldPresentTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @Given("the user has presented the requested attestation to the Relying Party")
+    public void theUserHasPresentedTheRequestedAttestationToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the Relying Party cannot verify the attestation")
+    public void theRelyingPartyCannotVerifyTheAttestation() {
+        //manual
+    }
+
+    @When("the Relying Party verifies the attestation successfully")
+    public void theRelyingPartyVerifiesTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Then("the Relying Party should inform the user of the successful verification outcome")
+    public void theRelyingPartyShouldInformTheUserOfTheSuccessfulVerificationOutcome() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display a confirmation message indicating the presentation outcome from the Relying Party")
+    public void theEUDIWalletShouldDisplayAConfirmationMessageIndicatingThePresentationOutcomeFromTheRelyingParty() {
+        //manual
+    }
+
+    @Given("the user has a valid EUDI Wallet")
+    public void theUserHasAValidEUDIWallet() {
+        //manual
+    }
+
+    @And("the user has authenticated in the Relying Party service")
+    public void theUserHasAuthenticatedInTheRelyingPartyService() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party service page")
+    public void theUserIsOnTheRelyingPartyServicePage() {
+        //manual
+    }
+
+    @When("the user selects the option to view the document to be signed")
+    public void theUserSelectsTheOptionToViewTheDocumentToBeSigned() {
+        //manual
+    }
+
+    @Then("the Relying Party should present the document to the user for viewing")
+    public void theRelyingPartyShouldPresentTheDocumentToTheUserForViewing() {
+        //manual
+    }
+
+    @Given("the user has selected the option to view the document to be signed")
+    public void theUserHasSelectedTheOptionToViewTheDocumentToBeSigned() {
+        //manual
+    }
+
+    @When("the Relying Party presents the document")
+    public void theRelyingPartyPresentsTheDocument() {
+        //manual
+    }
+
+    @Then("the user should be able to view the details of the document in the Relying Party service")
+    public void theUserShouldBeAbleToViewTheDetailsOfTheDocumentInTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the user is viewing the document to be signed in the Relying Party service")
+    public void theUserIsViewingTheDocumentToBeSignedInTheRelyingPartyService() {
+        //manual
+    }
+
+    @When("the user selects the option to {string}")
+    public void theUserSelectsTheOptionTo(String arg0) {
+        // manual
+    }
+
+    @When("the user selects the option to Sign Document")
+    public void theUserSelectsTheOptionToSignDocument() {
+        //manual
+    }
+
+
+    @Given("the user is prompted to select a QTSP")
+    public void theUserIsPromptedToSelectAQTSP() {
+        //manual
+    }
+
+    @When("the user selects a preferred QTSP")
+    public void theUserSelectsAPreferredQTSP() {
+        //manual
+    }
+
+    @Then("the Relying Party should redirect the user to the selected QTSP login page requesting access")
+    public void theRelyingPartyShouldRedirectTheUserToTheSelectedQTSPLoginPageRequestingAccess() {
+        //manual
+    }
+
+    @When("the QTSP requests access on behalf of the Relying Party")
+    public void theQTSPRequestsAccessOnBehalfOfTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the QTSP should inform the user that the Relying Party requests access to the QTSP service")
+    public void theQTSPShouldInformTheUserThatTheRelyingPartyRequestsAccessToTheQTSPService() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP login page with a request for access")
+    public void theUserIsOnTheQTSPLoginPageWithARequestForAccess() {
+        //manual
+    }
+
+    @When("the QTSP displays a QR code for authentication")
+    public void theQTSPDisplaysAQRCodeForAuthentication() {
+        //manual
+    }
+
+    @Then("the user should be able to scan the QR code with their EUDI Wallet")
+    public void theUserShouldBeAbleToScanTheQRCodeWithTheirEUDIWallet() {
+        //manual
+    }
+
+    @Given("the QTSP has displayed a QR code")
+    public void theQTSPHasDisplayedAQRCode() {
+        //manual
+    }
+
+    @When("the user scans the QR code with their EUDI Wallet")
+    public void theUserScansTheQRCodeWithTheirEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is informed of the QTSP’s request for attestation release")
+    public void theUserIsInformedOfTheQTSPSRequestForAttestationRelease() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks for available attestations to match the request")
+    public void theEUDIWalletChecksForAvailableAttestationsToMatchTheRequest() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display available matching attestations, if any")
+    public void theEUDIWalletShouldDisplayAvailableMatchingAttestationsIfAny() {
+        //manual
+    }
+
+    @When("there are no matching attestations available")
+    public void thereAreNoMatchingAttestationsAvailable() {
+
+        //manual
+    }
+
+    @And("the user should be able to return to the main page of the EUDI Wallet")
+    public void theUserShouldBeAbleToReturnToTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user attempts to authenticate in the EUDI Wallet for attestation release")
+    public void theUserAttemptsToAuthenticateInTheEUDIWalletForAttestationRelease() {
+        //manual
+    }
+
+    @When("the authentication is unsuccessful")
+    public void theAuthenticationIsUnsuccessful() {
+        //manual
+    }
+
+    @Given("the user is informed of the QTSP request for attestation")
+    public void theUserIsInformedOfTheQTSPRequestForAttestation() {
+        //manual
+    }
+
+    @When("the user chooses not to proceed with attestation release")
+    public void theUserChoosesNotToProceedWithAttestationRelease() {
+        //manual
+    }
+
+    @Given("the user has successfully authenticated and consented to attestation release")
+    public void theUserHasSuccessfullyAuthenticatedAndConsentedToAttestationRelease() {
+        //manual
+    }
+
+    @Then("the QTSP should receive andverify the attestation")
+    public void theQTSPShouldReceiveAndverifyTheAttestation() {
+        //manual
+    }
+
+    @Given("the QTSP has received the attestation from the EUDI Wallet")
+    public void theQTSPHasReceivedTheAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display confirmation message indicating the presentation outcome")
+    public void theEUDIWalletShouldDisplayConfirmationMessageIndicatingThePresentationOutcome() {
+        //manual
+    }
+
+    @Then("an error message should inform the user of the verification failure")
+    public void anErrorMessageShouldInformTheUserOfTheVerificationFailure() {
+        //manual
+    }
+
+    @And("the user is authenticated in the QTSP")
+    public void theUserIsAuthenticatedInTheQTSP() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party interface")
+    public void theUserIsOnTheRelyingPartyInterface() {
+        //manual
+    }
+
+    @Given("the Relying Party has retrieved available Credential IDs from the QTSP")
+    public void theRelyingPartyHasRetrievedAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @When("there are no available Credential IDs for the user in the QTSP")
+    public void thereAreNoAvailableCredentialIDsForTheUserInTheQTSP() {
+        //manual
+    }
+
+    @Then("the Relying Party should inform the user to enroll a Qualified Certificate in the QTSP")
+    public void theRelyingPartyShouldInformTheUserToEnrollAQualifiedCertificateInTheQTSP() {
+        //manual
+    }
+
+    @And("the document signing process should stop")
+    public void theDocumentSigningProcessShouldStop() {
+        //manual
+    }
+
+    @Given("there are multiple Credential IDs available for the user in the QTSP")
+    public void thereAreMultipleCredentialIDsAvailableForTheUserInTheQTSP() {
+        //manual
+    }
+
+    @When("the Relying Party requests the user to select a Credential ID")
+    public void theRelyingPartyRequestsTheUserToSelectACredentialID() {
+        //manual
+    }
+
+    @Then("the user selects a preferred Credential ID for signing the document")
+    public void theUserSelectsAPreferredCredentialIDForSigningTheDocument() {
+        //manual
+    }
+
+    @Given("either the user has selected a Credential ID or there is only one available Credential ID")
+    public void eitherTheUserHasSelectedACredentialIDOrThereIsOnlyOneAvailableCredentialID() {
+        //manual
+    }
+
+    @Given("the user is on the QTSP authentication page")
+    public void theUserIsOnTheQTSPAuthenticationPage() {
+        //manual
+    }
+
+    @When("the QTSP requests access to use the selected Credential ID on behalf of the user")
+    public void theQTSPRequestsAccessToUseTheSelectedCredentialIDOnBehalfOfTheUser() {
+        //manual
+    }
+
+    @Then("the QTSP should inform the user of the Relying Party’s request to use the Credential ID")
+    public void theQTSPShouldInformTheUserOfTheRelyingPartySRequestToUseTheCredentialID() {
+        //manual
+    }
+
+    @Given("the QTSP has requested access to the Credential ID on")
+    public void theQTSPHasRequestedAccessToTheCredentialIDOn() {
+        //manual
+    }
+
+    @And("the history of PID presentations is available in the EUDI Wallet")
+    public void theHistoryOfPIDPresentationsIsAvailableInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is on the main page of the EUDI Wallet")
+    public void theUserIsOnTheMainPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the option “View Transactions”")
+    public void theUserSelectsTheOptionViewTransactions() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a page with all transactions associated with attestation presentations")
+    public void theEUDIWalletShouldDisplayAPageWithAllTransactionsAssociatedWithAttestationPresentations() {
+        //manual
+    }
+
+    @Given("the user is on the transactions page of the EUDI Wallet")
+    public void theUserIsOnTheTransactionsPageOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the predefined filter option “Signed Documents”")
+    public void theUserSelectsThePredefinedFilterOptionSignedDocuments() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display only the PID presentations associated with “sign document” operations")
+    public void theEUDIWalletShouldDisplayOnlyThePIDPresentationsAssociatedWithSignDocumentOperations() {
+        //manual
+    }
+
+    @Given("the user is viewing the filtered list of “Signed Documents” transactions")
+    public void theUserIsViewingTheFilteredListOfSignedDocumentsTransactions() {
+        //manual
+    }
+
+    @When("the user clicks on the expand button of a transaction history entry")
+    public void theUserClicksOnTheExpandButtonOfATransactionHistoryEntry() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should expand the selected transaction entry")
+    public void theEUDIWalletShouldExpandTheSelectedTransactionEntry() {
+        //manual
+    }
+
+    @And("display the details of the transaction, including the “transaction data”")
+    public void displayTheDetailsOfTheTransactionIncludingTheTransactionData() {
+        //manual
+    }
+
+    @Given("the user has filtered the transactions list by “Signed Documents”")
+    public void theUserHasFilteredTheTransactionsListBySignedDocuments() {
+        //manual
+    }
+
+    @When("there are no PID presentations associated with “sign document” operations")
+    public void thereAreNoPIDPresentationsAssociatedWithSignDocumentOperations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a message indicating no transactions are available for signed documents")
+    public void theEUDIWalletShouldDisplayAMessageIndicatingNoTransactionsAreAvailableForSignedDocuments() {
+        //manual
+    }
+
+    @Given("the user has expanded a transaction history entry to view details")
+    public void theUserHasExpandedATransactionHistoryEntryToViewDetails() {
+        //manual
+    }
+
+    @When("the user clicks the collapse button on the expanded transaction entry")
+    public void theUserClicksTheCollapseButtonOnTheExpandedTransactionEntry() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should collapse the entry and return it to the list view")
+    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView()   {
+        //manual
+    }
+
+    @Given("the user is on the EUDIW web verifier")
+    public void theUserIsOnTheEUDIWWebVerifier() {
+        //manual
+    }
+
+    @When("the user navigates to the presentation request section")
+    public void theUserNavigatesToThePresentationRequestSection() {
+        //manual
+    }
+
+    @Then("the user views the presentation request guide")
+    public void theUserViewsThePresentationRequestGuide() {
+        //manual
+    }
+
+    @Given("the user is on the first step")
+    public void theUserIsOnTheFirstStep() {
+        //manual
+    }
+
+    @When("the user selects one attestation option")
+    public void theUserSelectsOneAttestationOption() {
+        //manual
+    }
+
+    @Then("the verifier allows the user to proceed to the next step")
+    public void theVerifierAllowsTheUserToProceedToTheNextStep() {
+        //manual
+    }
+
+    @Given("the user has selected an attestation option")
+    public void theUserHasSelectedAnAttestationOption() {
+        //manual
+    }
+
+    @When("the user indicates that they want to choose specific attributes")
+    public void theUserIndicatesThatTheyWantToChooseSpecificAttributes() {
+        //manual
+    }
+
+    @And("the user selects the format of the attestation")
+    public void theUserSelectsTheFormatOfTheAttestation() {
+        //manual
+    }
+
+    @Then("the user clicks on the next button")
+    public void theUserClicksOnTheNextButton() {
+        //manual
+    }
+
+    @Given("the user is on the second step of the guide")
+    public void theUserIsOnTheSecondStepOfTheGuide() {
+        //manual
+    }
+
+    @When("the user selects the applicable data items to be included in the request")
+    public void theUserSelectsTheApplicableDataItemsToBeIncludedInTheRequest() {
+        //manual
+    }
+
+    @And("the user clicks the next button")
+    public void theUserClicksTheNextButton() {
+        //manual
+    }
+
+    @Then("the user navigates to the third step")
+    public void theUserNavigatesToTheThirdStep() {
+        //manual
+    }
+
+    @Given("the user is on the final step")
+    public void theUserIsOnTheFinalStep() {
+        //manual
+    }
+
+    @Then("the verifier generates a QR code")
+    public void theVerifierGeneratesAQRCode() {
+        //manual
+    }
+
+    @Given("the verifier displays the QR code")
+    public void theVerifierDisplaysTheQRCode() {
+        //manual
+    }
+
+    @Then("the user’s request made to the verifier appears in the wallet")
+    public void theUserSRequestMadeToTheVerifierAppearsInTheWallet() {
+        //manual
+    }
+
+    @Given("the user is on the verifier")
+    public void theUserIsOnTheVerifier() {
+        //manual
+    }
+
+    @When("the user selects multiple attestations option")
+    public void theUserSelectsMultipleAttestationsOption() {
+        //manual
+    }
+
+    @Then("the verifier displays the available attestations")
+    public void theVerifierDisplaysTheAvailableAttestations() {
+        //manual
+    }
+
+    @Given("the user has selected a multiple option")
+    public void theUserHasSelectedAMultipleOption() {
+        //manual
+    }
+
+    @When("the user indicates that they want to choose specific attributes in the attestations they desire")
+    public void theUserIndicatesThatTheyWantToChooseSpecificAttributesInTheAttestationsTheyDesire() {
+        //manual
+    }
+
+    @And("the user selects the format of the attestations")
+    public void theUserSelectsTheFormatOfTheAttestations() {
+        //manual
+    }
+
+    @Then("the verifier saves the selected options")
+    public void theVerifierSavesTheSelectedOptions() {
+        //manual
+    }
+
+    @Given("the user follows the steps of the guide")
+    public void theUserFollowsTheStepsOfTheGuide() {
+        //manual
+    }
+
+    @Then("the user scans the QR code with the EUDI wallet app")
+    public void theUserScansTheQRCodeWithTheEUDIWalletApp() {
+        //manual
+    }
+
+    @Then("the verifier generates a deep link")
+    public void theVerifierGeneratesADeepLink() {
+        //manual
+    }
+
+    @Given("the verifier displays the deep link")
+    public void theVerifierDisplaysTheDeepLink() {
+        //manual
+    }
+
+    @When("the user clicks on the deep link")
+    public void theUserClicksOnTheDeepLink() {
+        //manual
+    }
+
+    @And("the user is redirected to the EUDI wallet app")
+    public void theUserIsRedirectedToTheEUDIWalletApp() {
+        //manual
+    }
+
+    @When("the verifier displays a deep link")
+    public void theVerifierDisplaysADeepLink() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party Enrolment service page")
+    public void theUserIsOnTheRelyingPartyEnrolmentServicePage() {
+        //manual
+    }
+
+
+    @When("the user presents their PID by scanning the QR code")
+    public void theUserPresentsTheirPIDByScanningTheQRCode() {
+        //manual
+    }
+
+    @Then("the user is authenticated successfully")
+    public void theUserIsAuthenticatedSuccessfully() {
+        //manual
+    }
+
+    @Given("the user is authenticated")
+    public void theUserIsAuthenticated() {
+        //manual
+    }
+
+    @When("the user fills in the required information in the form provided")
+    public void theUserFillsInTheRequiredInformationInTheFormProvided() {
+        //manual
+    }
+
+    @Then("the user previews the certificate information")
+    public void theUserPreviewsTheCertificateInformation() {
+        //manual
+    }
+
+    @Given("the user has previewed the certificate information")
+    public void theUserHasPreviewedTheCertificateInformation() {
+        //manual
+    }
+
+    @When("the user clicks on the Download button")
+    public void theUserClicksOnTheDownloadButton() {
+        //manual
+    }
+
+    @Then("the certificate is downloaded to the user's device")
+    public void theCertificateIsDownloadedToTheUserSDevice() {
+        //manual
+    }
+
+    @And("the user is on the main screen of the EUDI Wallet")
+    public void theUserIsOnTheMainScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects the option {string}")
+    public void theUserSelectsTheOption(String arg0) {
+        //manual
+    }
+
+    @When("the user selects the option Sign a Document")
+    public void theUserSelectsTheOptionSignADocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display a list of available documents from the device")
+    public void theEUDIWalletShouldDisplayAListOfAvailableDocumentsFromTheDevice() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet displays a list of available documents")
+    public void theEUDIWalletDisplaysAListOfAvailableDocuments() {
+        //manual
+    }
+
+    @When("the user selects a document from the list")
+    public void theUserSelectsADocumentFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should retrieve the selected document")
+    public void theEUDIWalletShouldRetrieveTheSelectedDocument() {
+        //manual
+    }
+
+    @Given("the user has selected a document from the list")
+    public void theUserHasSelectedADocumentFromTheList() {
+        //manual
+    }
+
+    @When("the EUDI Wallet retrieves the document")
+    public void theEUDIWalletRetrievesTheDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet should display metadata such as file name and kind of file\\(ex.pdf)")
+    public void theEUDIWalletShouldDisplayMetadataSuchAsFileNameAndKindOfFileExPdf() {
+        //manual
+    }
+
+    @And("the EUDI Wallet should display the document's content")
+    public void theEUDIWalletShouldDisplayTheDocumentSContent() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has retrieved the document")
+    public void theEUDIWalletHasRetrievedTheDocument() {
+        //manual
+    }
+
+    @When("the user clicks on the view button next to the document")
+    public void theUserClicksOnTheViewButtonNextToTheDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents a screen to inform the user that the QTSP requests to release the matching attestation")
+    public void theEUDIWalletPresentsAScreenToInformTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestation() {
+        //manual
+    }
+
+    @Given("the user has selected a QTSP from the list")
+    public void theUserHasSelectedAQTSPFromTheList() {
+        //manual
+    }
+
+    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
+    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
+        //manual
+    }
+
+    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
+    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
+        //manual
+    }
+
+    @Given("the user has uploaded a document and selected a QTSP")
+    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
+        //manual
+    }
+
+    @And("a success screen is displayed with the signed document")
+    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet enables the user to share the document or close the process")
+    public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
+        //manual
+    }
+
+    @Given("the QTSP has received the success outcome from the EUDI Wallet")
+    public void theQTSPHasReceivedTheSuccessOutcomeFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user creates a qualified certificate from the QTSP")
+    public void theUserCreatesAQualifiedCertificateFromTheQTSP() {
+        //manual
+    }
+
+    @And("the user insert a name")
+    public void theUserInsertAName() {
+        //manual
+    }
+
+    @Then("the QTSP generates the qualified certificate")
+    public void theQTSPGeneratesTheQualifiedCertificate() {
+        //manual
+    }
+
+    @And("the user enters the correct PIN on screen")
+    public void theUserEntersTheCorrectPINOnScreen() {
+        //manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Relying Party \\(if available):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_relying_party_if_available() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Document Hash:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_document_hash() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Credential ID:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_credential_id() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Title of the signed document:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_title_of_the_signed_document() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Attestation to be issued:")
+    public void the_wallet_should_display_the_credential_offer_which_attestation_to_be_issued() {
+        // manual
+    }
+    @Then("the wallet should display the credential offer which Name of the issuer:")
+    public void the_wallet_should_display_the_credential_offer_which_name_of_the_issuer() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Cancel button:")
+    public void the_wallet_should_display_the_credential_offer_which_cancel_button() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Add document button:")
+    public void the_wallet_should_display_the_credential_offer_which_add_document_button() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Notifications:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_notifications() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Change PIN:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_change_pin() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Privacy Notice:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_privacy_notice() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Help \\/ FAQs:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_help_fa_qs() {
+        // manual
+    }
+
+    @Then("the navigation drawer includes an icon button to close the drawer, and the following Exit:")
+    public void the_navigation_drawer_includes_an_icon_button_to_close_the_drawer_and_the_following_exit() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The name of the requesting Relying Party:")
+    public void the_wallet_displays_the_presentation_request_which_the_name_of_the_requesting_relying_party() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The attestations requested by the Relying Party:")
+    public void the_wallet_displays_the_presentation_request_which_the_attestations_requested_by_the_relying_party() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The option to expand on the details for each requested attestation:")
+    public void the_wallet_displays_the_presentation_request_which_the_option_to_expand_on_the_details_for_each_requested_attestation() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which The option to unselect specific data elements from each requested attestation:")
+    public void the_wallet_displays_the_presentation_request_which_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
+        // manual
+    }
+    @Then("the wallet displays the presentation request which A Cancel button:")
+    public void the_wallet_displays_the_presentation_request_which_a_cancel_button() {
+        // manual
+    }
+
+    @Then("the wallet displays the presentation request which A Share button:")
+    public void the_wallet_displays_the_presentation_request_which_a_share_button() {
+        // manual
+    }
+
+    @Then("the presentation request The name of the requesting Relying Party:")
+    public void the_presentation_request_the_name_of_the_requesting_relying_party() {
+        // manual
+    }
+
+    @Then("the presentation request The attestations requested by the Relying Party:")
+    public void the_presentation_request_the_attestations_requested_by_the_relying_party() {
+        // manual
+    }
+
+    @Then("the presentation request The option to expand on the details for each attestation:")
+    public void the_presentation_request_the_option_to_expand_on_the_details_for_each_attestation() {
+        // manual
+    }
+
+    @Then("the presentation request The option to unselect specific data elements:")
+    public void the_presentation_request_the_option_to_unselect_specific_data_elements() {
+        // manual
+    }
+
+    @Then("the presentation request A Cancel button:")
+    public void the_presentation_request_a_cancel_button() {
+        // manual
+    }
+
+    @Then("the presentation request A Share button:")
+    public void the_presentation_request_a_share_button() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Signature Date:")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_signature_date() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Status \\(Success\\/Fail):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_status_success_fail() {
+        // manual
+    }
+
+    @Then("the list of executed signatures is displayed with the following Remote Signing Service \\(QTSP):")
+    public void the_list_of_executed_signatures_is_displayed_with_the_following_remote_signing_service_qtsp() {
+        // manual
+    }
+
+    @Then("the wallet should display the credential offer which Field:")
+    public void the_wallet_should_display_the_credential_offer_which_field() {
+        // manual
+    }
+
+
+    @And("the user authenticates successfully in the Wallet")
+    public void theUserAuthenticatesSuccessfullyInTheWallet() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet shares the requested attestation to the QTSP")
+    public void theEUDIWalletSharesTheRequestedAttestationToTheQTSP() {
+        // manual
+    }
+
+    @Given("the user has shared the requested attestation to the QTSP")
+    public void theUserHasSharedTheRequestedAttestationToTheQTSP() {
+        // manual
+    }
+
+    @When("the user selects the option to create a qualified certificate from the QTSP")
+    public void theUserSelectsTheOptionToCreateAQualifiedCertificateFromTheQTSP() {
+        // manual
+    }
+
+    @And("specifies an alias")
+    public void specifiesAnAlias() {
+        // manual
+    }
+
+    @Given("the user visits the QTSP login page on a differrent device")
+    public void theUserVisitsTheQTSPLoginPageOnADifferrentDevice() {
+        // manual
+    }
+
+
+    @And("the user scans the displayed QR code from the QTSP")
+    public void theUserScansTheDisplayedQRCodeFromTheQTSP() {
+
+        // manual
+    }
+
+    @When("the user selects the document in the Relying Party service")
+    public void theUserSelectsTheDocumentInTheRelyingPartyService() {
+        // manual
+    }
+
+    @Then("the QTSP renders a QR code requesting the user to scan it")
+    public void theQTSPRendersAQRCodeRequestingTheUserToScanIt() {
+        // manual
+    }
+
+    @Given("the EUDI Wallet user is informed of the QTSP request")
+    public void theEUDIWalletUserIsInformedOfTheQTSPRequest() {
+        // manual
+    }
+
+    @When("the user chooses to release the requested attestation by entering their six-digit PIN")
+    public void theUserChoosesToReleaseTheRequestedAttestationByEnteringTheirSixDigitPIN() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet authenticates the user and proceed with attestation release")
+    public void theEUDIWalletAuthenticatesTheUserAndProceedWithAttestationRelease() {
+        // manual
+    }
+
+    @And("the EUDI Wallet displays a confirmation message")
+    public void theEUDIWalletDisplaysAConfirmationMessage() {
+        // manual
+    }
+
+    @When("the QTSP informs the user of the available credential\\(s) at the QTSP")
+    public void theQTSPInformsTheUserOfTheAvailableCredentialSAtTheQTSP() {
+        // manual
+    }
+
+    @When("the user has only one available Credential ID enrolled in the QTSP")
+    public void theUserHasOnlyOneAvailableCredentialIDEnrolledInTheQTSP() {
+        // manual
+    }
+
+    @Then("the Relying Party retrieves the available User Credential IDs")
+    public void theRelyingPartyRetrievesTheAvailableUserCredentialIDs() {
+        // manual
+    }
+
+    @When("the QTSP renders a QR-code")
+    public void theQTSPRendersAQRCode() {
+        // manual
+    }
+
+    @And("the user scans the QR-code with the EUDI Wallet")
+    public void theUserScansTheQRCodeWithTheEUDIWallet() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet informs the user that the QTSP requests to release the matching attestation")
+    public void theEUDIWalletInformsTheUserThatTheQTSPRequestsToReleaseTheMatchingAttestation() {
+        // manual
+    }
+
+    @Given("the EUDI Wallet finds available matching attestations")
+    public void theEUDIWalletFindsAvailableMatchingAttestations() {
+        // manual
+    }
+
+    @When("the EUDI Wallet requests the user to consent by authenticating with a six-digit PIN")
+    public void theEUDIWalletRequestsTheUserToConsentByAuthenticatingWithASixDigitPIN() {
+        // manual
+    }
+
+    @And("the user authenticates successfully")
+    public void theUserAuthenticatesSuccessfully() {
+        // manual
+    }
+
+    @Given("the QTSP receives the attestation")
+    public void theQTSPReceivesTheAttestation() {
+        // manual
+    }
+
+    @Then("the EUDI Wallet displays a confirmation message indicating the presentation outcome from the QTSP")
+    public void theEUDIWalletDisplaysAConfirmationMessageIndicatingThePresentationOutcomeFromTheQTSP() {
+        // manual
+    }
+
+    @And("the user views the signed document at the Relying Party interface")
+    public void theUserViewsTheSignedDocumentAtTheRelyingPartyInterface() {
+        // manual
+    }
+
+    @Then("the user can return to the main page of the Wallet")
+    public void the_user_can_return_to_the_main_page_of_the_wallet() {
+        // manual
+    }
+
+
+    @Given("the QR code in the QTSP is displayed")
+    public void theQRCodeInTheQTSPIsDisplayed() {
+        // manual
+    }
+
+    @Given("the user visits the Relying Party login page on a different device than EUDI Wallet")
+    public void theUserVisitsTheRelyingPartyLoginPageOnADifferentDeviceThanEUDIWallet() {
+        // manual
+    }
+
+    @When("the user enters the username & password")
+    public void theUserEntersTheUsernamePassword() {
+        // manual
+    }
+
+    @And("the user clicks on the Login button")
+    public void theUserClicksOnTheLoginButton() {
+        // manual
+    }
+
+    @Then("the user should be successfully logged in to the Relying Party")
+    public void theUserShouldBeSuccessfullyLoggedInToTheRelyingParty() {
+        // manual
+    }
+
+    @And("the user can proceed with the signature process")
+    public void theUserCanProceedWithTheSignatureProcess() {
+        // manual
+    }
+
+    @Given("the QR code in the QRSP is displayed")
+    public void the_qr_code_in_the_qrsp_is_displayed() {
+        // manual
+    }
+
+    @Then("the user observes the Home screen")
+    public void theUserObservesTheHomeScreen() {
+        // manual
+    }
+
+    @Then("the Sign Document screen is displayed")
+    public void theSignDocumentScreenIsDisplayed() {
+        // manual
+    }
+
+    @And("the Home screen display Authenticate and Sign a document sections")
+    public void theHomeScreenDisplayAuthenticateAndSignADocumentSections() {
+        // manual
+    }
+
+    @When("the user clicks on the Authenticate section")
+    public void theUserClicksOnTheAuthenticateSection() {
+        // manual
+    }
+
+    @Then("the Authenticate section include In Person and Online options")
+    public void theAuthenticateSectionIncludeInPersonAndOnlineOptions() {
+        // manual
+    }
+
+    @Then("the navigation drawer slides away")
+    public void theNavigationDrawerSlidesAway() {
+        // manual
+    }
+
+    @When("the user taps the back icon button")
+    public void theUserTapsTheBackIconButton() {
+        // manual
+    }
+
+    @Then("the navigation drawer slides in from the right side of the screen")
+    public void theNavigationDrawerSlidesInFromTheRightSideOfTheScreen() {
+        // manual
+    }
+
+    @And("the user clicks on the In person option")
+    public void theUserClicksOnTheInPersonOption() {
+        // manual
+    }
+
+    @And("the reader device scans the QR code")
+    public void theReaderDeviceScansTheQRCode() {
+        // manual
+    }
+
+    @When("the user selects the back button")
+    public void theUserSelectsTheBackButton() {
+        // manual
+    }
+
+    @When("the user selects the Online option in the Authenticate section")
+    public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
+        // manual
+    }
+
+    @Then("the Documents screen is displayed")
+    public void theDocumentsScreenIsDisplayed() {
+        // manual
+    }
+
+    @When("the user selects to add a new document")
+    public void theUserSelectsToAddANewDocument() {
+        // manual
+    }
+
+    @And("the user selects to add a new document From list")
+    public void theUserSelectsToAddANewDocumentFromList() {
+        // manual
+    }
+
+    @When("the user closes the success screen")
+    public void theUserClosesTheSuccessScreen() {
+        // manual
+    }
+
+    @When("the user navigates to the Home screen")
+    public void theUserNavigatesToTheHomeScreen() {
+        //manual
+    }
+
+
+    @Then("Home screen should be displayed")
+    public void homeScreenShouldBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user has clicked the option Documents")
+    public void theUserHasClickedTheOptionDocuments() {
+        //manual
+    }
+
+    @When("the user selects to add a document \\(+) icon")
+    public void theUserSelectsToAddADocumentIcon() {
+        //manual
+
+    }
+
+
+    @When("the user selects to add the document plus icon")
+    public void theUserSelectsToAddTheDocumentPlusIcon() {
+        //manual
+
+    }
+
+    @Then("Add document screen should be displayed")
+    public void addDocumentScreenShouldBeDisplayed() {
+        //manual
+
+    }
+
+    @When("the user selects the option Scan a QR code in the Add document screen")
+    public void theUserSelectsTheOptionScanAQRCodeInTheAddDocumentScreen() {
+        //manual
+    }
+
+    @When("the user selects the Cancel button")
+    public void theUserSelectsTheCancelButton() {
+        //manual
+
+    }
+
+    @And("the user should be returned to the Scan QR screen")
+    public void theUserShouldBeReturnedToTheScanQRScreen() {
+        //manual
+
+    }
+
+    @Then("the user proceeds with the attestation \\(document) issuing flow")
+    public void theUserProceedsWithTheAttestationDocumentIssuingFlow() {
+        //manual
+
+    }
+
+
+    @And("the screen should display a Close button to return to Home screen")
+    public void theScreenShouldDisplayACloseButtonToReturnToHomeScreen() {
+        //manual
+
+    }
+
+    @And("the attestation should be added to the wallet")
+    public void theAttestationShouldBeAddedToTheWallet() {
+        //manual
+
+    }
+
+    @And("the user should be able to view the full details about the issuer")
+    public void theUserShouldBeAbleToViewTheFullDetailsAboutTheIssuer() {
+        //manual
+    }
+
+    @When("the user navigates to the issuer details")
+    public void theUserNavigatesToTheIssuerDetails() {
+        //manual
+    }
+
+    @And("the search field should display the hinted search text for example Search Documents")
+    public void theSearchFieldShouldDisplayTheHintedSearchTextForExampleSearchDocuments() {
+        //manual
+    }
+
+    @And("no search or filters are applied")
+    public void noSearchOrFiltersAreApplied() {
+        //manual
+    }
+
+    @When("the user closes the attestation")
+    public void theUserClosesTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is on the Add document screen")
+    public void theUserIsOnTheAddDocumentScreen() {
+        //manual
+    }
+
+    @When("the user navigates to the Documents screen")
+    public void theUserNavigatesToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Given("the user is on the Documents screen")
+    public void theUserIsOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which A back button:")
+    public void the_wallet_displays_the_presentation_request_which_a_back_button() {
+        //manual
+    }
+
+    @Then("the presentation request A back button:")
+    public void the_presentation_request_a_back_button() {
+        //manual
+    }
+
+
+    @Given("the user is on the Home screen of the EUDI Wallet")
+    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Documents screen should be displayed showing a list of issued attestations")
+    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+        //manual
+    }
+
+    @When("the user selects an attestation from the list")
+    public void theUserSelectsAnAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the details of the selected attestation should be displayed")
+    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the details should be blurred by default")
+    public void theDetailsShouldBeBlurredByDefault() {
+        //manual
+    }
+
+    @And("the user should see the eye icon to view the details of the attestation")
+    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of an attestation")
+    public void theUserIsViewingTheDetailsOfAnAttestation() {
+        //manual
+    }
+
+    @When("the user selects eye icon")
+    public void theUserSelectsEyeIcon() {
+        //manual
+    }
+
+    @Then("the attestation details should no longer be blurred")
+    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+        //manual
+    }
+
+    @And("the user should be able to view the full details of the attestation")
+    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+        //manual
+    }
 }
+
+
