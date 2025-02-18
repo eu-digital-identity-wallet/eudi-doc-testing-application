@@ -15,7 +15,6 @@ jobs:
         run: |
           #!/bin/bash
           sudo chmod +x local-execution.sh
-      
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
