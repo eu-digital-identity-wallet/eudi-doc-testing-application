@@ -272,7 +272,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             int i=1;
-            while (i<4) {
+            while (i<3) {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = size.height / 2;  // Start from the middle of the screen
@@ -392,4 +392,31 @@ public class Issuer {
                     Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
                 }
             }
+
+    public void clickRemove() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickRemove)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
         }
+    }
+
+    public void issuePID() {
+        authenticationMethodSelection();
+        clickCountrySelection();
+        clickSubmit();
+        clickFormEu();
+        clickSubmit();
+        enterFamilyName();
+        enterGivenName();
+        chooseBirthDate();
+        scrollUntilFindSubmit();
+        clickRemove();
+        clickRemove();
+        clickRemove();
+        clickSubmit();
+        scrollUntilAuthorize();
+        clickAuthorize();
+        test.mobile().wallet().clickClose();
+    }
+}

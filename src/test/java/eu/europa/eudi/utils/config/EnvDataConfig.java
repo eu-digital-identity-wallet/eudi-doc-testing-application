@@ -31,6 +31,7 @@ public class EnvDataConfig {
     public static final String APPIUM_IOS_AUTOMATION_NAME = "appium.ios.automationName";
     public static final String APPIUM_IOS_BUNDLE_ID = "appium.ios.bundleId";
     public static final String APPIUM_RECORDING = "appium.recording";
+    public static final String APPIUM_SCREENSHOT = "appium.screenshot";
     public static final String APPIUM_URL_ANDROID = "appium.url.android";
     public static final String APPIUM_URL_IOS = "appium.url.ios";
     public static final String APPIUM_SHORT_WAIT_IN_MILLISECONDS = "appium.shortWaitInMilliseconds";
@@ -100,6 +101,10 @@ public class EnvDataConfig {
 
     public Boolean getAppiumRecording() {
         return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_RECORDING));
+    }
+
+    public Boolean getAppiumScreenshot() {
+        return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_SCREENSHOT));
     }
 
     public String getAppiumUrlAndroid() {
