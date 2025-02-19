@@ -5567,6 +5567,346 @@ public class ManuallyStepDefs {
     public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
         //manual
     }
+
+    @And("the user has issued PID attestation to the EUDI Wallet")
+    public void theUserHasIssuedPIDAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("internet connectivity is available for connectivity and data transfer capabilities")
+    public void internetConnectivityIsAvailableForConnectivityAndDataTransferCapabilities() {
+        //manual
+    }
+
+    @And("the Issuer has included VC status check information in the attestation")
+    public void theIssuerHasIncludedVCStatusCheckInformationInTheAttestation() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has valid attestations stored")
+    public void theEUDIWalletHasValidAttestationsStored() {
+        //manual
+    }
+
+    @When("the predefined interval \\(e.g. {int} hours) has passed")
+    public void thePredefinedIntervalEGHoursHasPassed(int arg0) {
+        //manual
+    }
+
+    @Then("the EUDI Wallet checks online the revocation status of all stored valid attestations")
+    public void theEUDIWalletChecksOnlineTheRevocationStatusOfAllStoredValidAttestations() {
+        //manual
+    }
+
+    @And("the last status check datetime is updated")
+    public void theLastStatusCheckDatetimeIsUpdated() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks the revocation status")
+    public void theEUDIWalletChecksTheRevocationStatus() {
+        //manual
+    }
+
+    @And("an attestation is found to be revoked by the issuer")
+    public void anAttestationIsFoundToBeRevokedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet updates the internal attestation status as revoked")
+    public void theEUDIWalletUpdatesTheInternalAttestationStatusAsRevoked() {
+        //manual
+    }
+
+    @And("the EUDI Wallet raises a notification informing the user the attestation is revoked and cannot be presented anymore to Relying Parties")
+    public void theEUDIWalletRaisesANotificationInformingTheUserTheAttestationIsRevokedAndCannotBePresentedAnymoreToRelyingParties() {
+        //manual
+    }
+
+    @And("the EUDI Wallet displays a visual indication on the attestation to inform the user this attestation is revoked")
+    public void theEUDIWalletDisplaysAVisualIndicationOnTheAttestationToInformTheUserThisAttestationIsRevoked() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has a valid PID attestation stored")
+    public void theEUDIWalletHasAValidPIDAttestationStored() {
+        //manual
+    }
+
+    @And("the PID is found to be revoked by the issuer")
+    public void thePIDIsFoundToBeRevokedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet executes the Handle PID revocation process")
+    public void theEUDIWalletExecutesTheHandlePIDRevocationProcess() {
+        //manual
+    }
+
+    @Given("an attestation in the EUDI Wallet has been marked as revoked")
+    public void anAttestationInTheEUDIWalletHasBeenMarkedAsRevoked() {
+        //manual
+    }
+
+    @When("the user views the Documents screen")
+    public void theUserViewsTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the revoked attestation should have a clear visual indication of its revoked status")
+    public void theRevokedAttestationShouldHaveAClearVisualIndicationOfItsRevokedStatus() {
+        //manual
+    }
+
+    @When("the user selects to view the details of the revoked attestation")
+    public void theUserSelectsToViewTheDetailsOfTheRevokedAttestation() {
+        //manual
+    }
+
+    @Then("the View document screen should display a clear visual indication of the attestation's revoked status")
+    public void theViewDocumentScreenShouldDisplayAClearVisualIndicationOfTheAttestationSRevokedStatus() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet contains both valid and revoked attestations")
+    public void theEUDIWalletContainsBothValidAndRevokedAttestations() {
+        //manual
+    }
+
+    @When("the user applies filters or sorting on the Documents screen")
+    public void theUserAppliesFiltersOrSortingOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the revoked attestations should be handled correctly according to the filter and sort criteria")
+    public void theRevokedAttestationsShouldBeHandledCorrectlyAccordingToTheFilterAndSortCriteria() {
+        //manual
+    }
+
+    @And("internet is available for connectivity and data transfer capabilities")
+    public void internetIsAvailableForConnectivityAndDataTransferCapabilities() {
+        //manual
+    }
+
+    @And("the Issuer includes into VC information for online VC status check")
+    public void theIssuerIncludesIntoVCInformationForOnlineVCStatusCheck() {
+        //manual
+    }
+
+    @When("the EUDI Wallet is requested to present\\/share attestations")
+    public void theEUDIWalletIsRequestedToPresentShareAttestations() {
+        //manual
+    }
+
+    @When("the EUDI Wallet is requested to present or share attestations")
+    public void theEUDIWalletIsRequestedToPresentOrShareAttestations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet checks online the revocation status of the requested attestations")
+    public void theEUDIWalletChecksOnlineTheRevocationStatusOfTheRequestedAttestations() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks the revocation status during a presentation request")
+    public void theEUDIWalletChecksTheRevocationStatusDuringAPresentationRequest() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet makes the attestation unavailable for selection by the holder on the presentation request")
+    public void theEUDIWalletMakesTheAttestationUnavailableForSelectionByTheHolderOnThePresentationRequest() {
+        //manual
+    }
+
+    @Then("the presentation operation is interrupted with a corresponding message informing the user the operation cannot be continued due to PID revocation")
+    public void thePresentationOperationIsInterruptedWithACorrespondingMessageInformingTheUserTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @And("the internet connection is not available")
+    public void theInternetConnectionIsNotAvailable() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet stops the revocation checks")
+    public void theEUDIWalletStopsTheRevocationChecks() {
+        //manual
+    }
+
+    @And("the EUDI Wallet continues the presentation operation as normal")
+    public void theEUDIWalletContinuesThePresentationOperationAsNormal() {
+        //manual
+    }
+
+    @And("other conditions block the EUDI Wallet from checking the revocation status")
+    public void otherConditionsBlockTheEUDIWalletFromCheckingTheRevocationStatus() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet performs periodic revocation checks")
+    public void theEUDIWalletPerformsPeriodicRevocationChecks() {
+        //manual
+    }
+
+    @When("the EUDI Wallet detects that the PID is revoked")
+    public void theEUDIWalletDetectsThatThePIDIsRevoked() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet interrupts any ongoing operation with a message informing the user that the operation cannot be continued due to PID revocation")
+    public void theEUDIWalletInterruptsAnyOngoingOperationWithAMessageInformingTheUserThatTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @And("the EUDI Wallet downgrades its state back to Operational as specified in ARF {double}{double}")
+    public void theEUDIWalletDowngradesItsStateBackToOperationalAsSpecifiedInARF(int arg0, int arg1, int arg2) {
+        //manual
+    }
+
+    @And("the Operational state allows the holder to issue attestations but disallows the holder to present or share attestations or sign documents")
+    public void theOperationalStateAllowsTheHolderToIssueAttestationsButDisallowsTheHolderToPresentOrShareAttestationsOrSignDocuments() {
+        //manual
+    }
+
+    @And("the EUDI Wallet requires the holder to re-issue a valid PID to access the EUDI Wallet")
+    public void theEUDIWalletRequiresTheHolderToReIssueAValidPIDToAccessTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet performs revocation checks on presentation request")
+    public void theEUDIWalletPerformsRevocationChecksOnPresentationRequest() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet is performing an operation")
+    public void theEUDIWalletIsPerformingAnOperation() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet interrupts the ongoing operation with a message informing the user that the operation cannot be continued due to PID revocation")
+    public void theEUDIWalletInterruptsTheOngoingOperationWithAMessageInformingTheUserThatTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @Given("the PID is revoked and the EUDI Wallet is in Operational state")
+    public void thePIDIsRevokedAndTheEUDIWalletIsInOperationalState() {
+        //manual
+    }
+
+    @When("the user attempts to access the EUDI Wallet")
+    public void theUserAttemptsToAccessTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the issuer maintains an Attestation status list or Attestation revocation list")
+    public void theIssuerMaintainsAnAttestationStatusListOrAttestationRevocationList() {
+        //manual
+    }
+
+    @And("the issuer's Attestation status list or Attestation revocation list is publicly available")
+    public void theIssuerSAttestationStatusListOrAttestationRevocationListIsPubliclyAvailable() {
+        //manual
+    }
+
+    @And("the PID or Attestation issuer includes revocation information in the issued PID or attestations")
+    public void thePIDOrAttestationIssuerIncludesRevocationInformationInTheIssuedPIDOrAttestations() {
+        //manual
+    }
+
+    @And("the revocation information includes a URL indicating the location where the status list or revocation list can be obtained, and an identifier or index for this specific certificate or attestation within that list")
+    public void theRevocationInformationIncludesAURLIndicatingTheLocationWhereTheStatusListOrRevocationListCanBeObtainedAndAnIdentifierOrIndexForThisSpecificCertificateOrAttestationWithinThatList() {
+        //manual
+    }
+
+    @And("the issuer can revoke only its own issued PID or attestations")
+    public void theIssuerCanRevokeOnlyItsOwnIssuedPIDOrAttestations() {
+        //manual
+    }
+
+    @Given("the issuer has issued a PID to an EUDI Wallet instance holder")
+    public void theIssuerHasIssuedAPIDToAnEUDIWalletInstanceHolder() {
+        //manual
+    }
+
+    @When("the issuer decides to revoke the PID according to ARF Annex {int} VCR_{int}, VCR_{int} and VCR_{int}")
+    public void theIssuerDecidesToRevokeThePIDAccordingToARFAnnexVCR_VCR_AndVCR_(int arg0, int arg1, int arg2, int arg3) {
+        //manual
+    }
+
+    @Then("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the PID to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToThePIDToBeRevoked() {
+        //manual
+    }
+
+    @And("the PID cannot be misused")
+    public void thePIDCannotBeMisused() {
+        //manual
+    }
+
+    @Given("the issuer has issued an attestation to an EUDI Wallet instance holder")
+    public void theIssuerHasIssuedAnAttestationToAnEUDIWalletInstanceHolder() {
+        //manual
+    }
+
+    @When("the issuer decides to revoke the attestation according to ARF Annex {int} VCR_{int}, VCR_{int} and VCR_{int}")
+    public void theIssuerDecidesToRevokeTheAttestationAccordingToARFAnnexVCR_VCR_AndVCR_(int arg0, int arg1, int arg2, int arg3) {
+        //manual
+    }
+
+    @Then("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the attestation to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToTheAttestationToBeRevoked() {
+        //manual
+    }
+
+    @And("the attestation cannot be misused")
+    public void theAttestationCannotBeMisused() {
+        //manual
+    }
+
+    @Given("the issuer has decided to revoke a PID or attestation")
+    public void theIssuerHasDecidedToRevokeAPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the issuer accesses the provided user interface")
+    public void theIssuerAccessesTheProvidedUserInterface() {
+        //manual
+    }
+
+    @And("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the PID or attestation to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToThePIDOrAttestationToBeRevoked() {
+        //manual
+    }
+
+    @Then("the PID or attestation is marked as revoked in the list")
+    public void thePIDOrAttestationIsMarkedAsRevokedInTheList() {
+        //manual
+    }
+
+    @And("the revocation is publicly available")
+    public void theRevocationIsPubliclyAvailable() {
+        //manual
+    }
+
+    @Given("the issuer has revoked a PID or attestation")
+    public void theIssuerHasRevokedAPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the issuer attempts to reverse the revocation")
+    public void theIssuerAttemptsToReverseTheRevocation() {
+        //manual
+    }
+
+    @Then("the system prevents the issuer from reversing the revocation")
+    public void theSystemPreventsTheIssuerFromReversingTheRevocation() {
+        //manual
+    }
+
+    @And("the PID or attestation remains revoked")
+    public void thePIDOrAttestationRemainsRevoked() {
+        //manual
+    }
 }
 
 
