@@ -5434,7 +5434,6 @@ public class ManuallyStepDefs {
     @When("the user selects the option Scan a QR code in the Add document screen")
     public void theUserSelectsTheOptionScanAQRCodeInTheAddDocumentScreen() {
         //manual
-
     }
 
     @When("the user selects the Cancel button")
@@ -5490,6 +5489,82 @@ public class ManuallyStepDefs {
 
     @When("the user closes the attestation")
     public void theUserClosesTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is on the Add document screen")
+    public void theUserIsOnTheAddDocumentScreen() {
+        //manual
+    }
+
+    @When("the user navigates to the Documents screen")
+    public void theUserNavigatesToTheDocumentsScreen() {
+        //manual
+    }
+
+    @Given("the user is on the Documents screen")
+    public void theUserIsOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which A back button:")
+    public void the_wallet_displays_the_presentation_request_which_a_back_button() {
+        //manual
+    }
+
+    @Then("the presentation request A back button:")
+    public void the_presentation_request_a_back_button() {
+        //manual
+    }
+
+
+    @Given("the user is on the Home screen of the EUDI Wallet")
+    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Documents screen should be displayed showing a list of issued attestations")
+    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
+        //manual
+    }
+
+    @When("the user selects an attestation from the list")
+    public void theUserSelectsAnAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the details of the selected attestation should be displayed")
+    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the details should be blurred by default")
+    public void theDetailsShouldBeBlurredByDefault() {
+        //manual
+    }
+
+    @And("the user should see the eye icon to view the details of the attestation")
+    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of an attestation")
+    public void theUserIsViewingTheDetailsOfAnAttestation() {
+        //manual
+    }
+
+    @When("the user selects eye icon")
+    public void theUserSelectsEyeIcon() {
+        //manual
+    }
+
+    @Then("the attestation details should no longer be blurred")
+    public void theAttestationDetailsShouldNoLongerBeBlurred() {
+        //manual
+    }
+
+    @And("the user should be able to view the full details of the attestation")
+    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
         //manual
     }
 }
