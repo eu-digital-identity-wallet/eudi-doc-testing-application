@@ -33,6 +33,11 @@ jobs:
       - name: Run ReadmeManager
         run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
 
+      - name: Clean old reports
+        run: |
+         mvn clean
+         rm -rf target/site
+
       - name: Run Ui Tests
         run: |
           #!/bin/bash
