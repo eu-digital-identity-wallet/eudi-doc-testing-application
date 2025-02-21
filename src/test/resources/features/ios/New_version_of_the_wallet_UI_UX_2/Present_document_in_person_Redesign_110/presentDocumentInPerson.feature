@@ -1,4 +1,4 @@
-@IOS @manual @US_PDIP
+@IOS @manual @US_PDIP @Q4_2024
 Feature: Present Attestations from EUDI Wallet
   As a EUDI Wallet User
   I want to be able to present attestations from my EUDI Wallet

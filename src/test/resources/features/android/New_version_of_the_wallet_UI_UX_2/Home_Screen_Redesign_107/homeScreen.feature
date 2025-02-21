@@ -1,4 +1,4 @@
-@ANDROID @manual @US_HS
+@ANDROID @manual @US_HS @Q4_2024
 Feature: EUDI Wallet Home Screen
   As a EUDI Wallet User
   I want to have a ‘Home’ screen as the main screen of the EUDI Wallet

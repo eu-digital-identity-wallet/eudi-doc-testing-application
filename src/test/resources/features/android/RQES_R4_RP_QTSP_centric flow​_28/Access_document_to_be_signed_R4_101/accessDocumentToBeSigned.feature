@@ -1,4 +1,4 @@
-@ANDROID @manual @US_ADTBS
+@ANDROID @manual @US_ADTBS @Q4_2024
 Feature: EUDI Wallet User Views Document in Relying Party Service
   As a EUDI Wallet User,
   I want to access a document provided by the Relying Party
