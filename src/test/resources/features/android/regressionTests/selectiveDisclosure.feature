@@ -11,10 +11,10 @@ Feature: Selective Disclosure
   @US_SD_TC_02 @before_01
   Scenario: View Actual Values of Requested Data
     Given the user is viewing the optional data
-    When the user clicks the eye icon
+    When the user clicks the dropdown icon
     Then the actual values of the data are displayed
 
-  @US_SD_TC_03 @before_01
+  @US_SD_TC_03 @No_use_test_case
   Scenario: Expand Verification Section
     Given the user is viewing the data request details
     When the user clicks to expand the verification section

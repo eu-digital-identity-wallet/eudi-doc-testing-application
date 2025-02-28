@@ -1,11 +1,11 @@
 @ANDROID @automated @US_OIASD
 Feature: Online Identification & Authentication (same-device)
 
-  @US_OIASD_TC_01 @before_02
+  @US_OIASD_TC_01 @before_01
   Scenario: User successfully logs in and sees the dashboard
     Given the user is on the Login screen
     When the user enters their PIN
-    Then the user should see the add document page
+    Then the user should see the Home page
 
   @US_OIASD_TC_02 @before_02
   Scenario: Dashboard page is displayed
@@ -13,7 +13,7 @@ Feature: Online Identification & Authentication (same-device)
     When the dashboard page is displayed on wallet
     Then user opens Verifier App
 
-  @US_OIASD_TC_03
+  @US_OIASD_TC_03 @before_01
   Scenario: User selects data to share
     Given user opens Verifier Application
     When user selects specific data to share

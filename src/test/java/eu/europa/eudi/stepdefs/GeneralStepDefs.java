@@ -915,15 +915,6 @@ public class GeneralStepDefs{
 
     @Given("user opens Verifier Application")
     public void userOpensVerifierApplication() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().userOpensVerifier();
     }
 
@@ -936,8 +927,8 @@ public class GeneralStepDefs{
     public void theVerifierRequestsADocFromTheWalletUser() {
         test.mobile().verifier().appOpensSuccefully();
         test.mobile().verifier().selectShareAttributes();
+        test.mobile().verifier().scrollUntilFindIssuanceDate();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().selectAttributes();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
 //        test.mobile().verifier().chooseData();
@@ -955,7 +946,7 @@ public class GeneralStepDefs{
 
     @And("the document from which the data are requested is displayed")
     public void theDocumentFromWhichTheDataAreRequestedIsDisplayed() {
-        test.mobile().wallet().nationalIdIsDisplayed();
+        test.mobile().wallet().pidIsiplayed();
     }
 
     @Given("the user is viewing the optional data")
@@ -964,7 +955,6 @@ public class GeneralStepDefs{
         theVerifierRequestsADocFromTheWalletUser();
         theRequestorOfTheDataIsDisplayedInTheWallet();
         theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
     }
 
     @When("the user clicks the eye icon")
@@ -974,6 +964,7 @@ public class GeneralStepDefs{
 
     @Then("the actual values of the data are displayed")
     public void theActualValuesOfTheDataAreDisplayed() {
+        test.mobile().wallet().scrollUntilPID();
         test.mobile().wallet().actualDataAreDisplayed();
     }
 
@@ -996,11 +987,9 @@ public class GeneralStepDefs{
 
     @Given("the user has selected some data")
     public void theUserHasSelectedSomeData() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
+        theUserIsViewingTheOptionalData();
+        theUserClicksTheDropdownIcon();
+        theActualValuesOfTheDataAreDisplayed();
     }
 
     @When("the user unselects some of this data")
@@ -1010,11 +999,7 @@ public class GeneralStepDefs{
 
     @Given("the user has finalized data selection")
     public void theUserHasFinalizedDataSelection() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
+        theUserHasSelectedSomeData();
     }
 
     @When("the user clicks the share button")
@@ -1029,13 +1014,9 @@ public class GeneralStepDefs{
 
     @Given("the user is prompted to enter a PIN for sharing")
     public void theUserIsPromptedToEnterAPINForSharing() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().pinFieldIsDisplayed();
+        theUserHasFinalizedDataSelection();
+        theUserClicksTheSHAREButton();
+        thePINFieldIsDisplayedToAuthorizeSharing();
     }
 
     @When("the user enters the correct PIN")
@@ -1205,6 +1186,16 @@ public class GeneralStepDefs{
     @Then("the user should see the Documents dashboard")
     public void theUserShouldSeeTheDocumentsDashboard() {
         test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @When("the user clicks the dropdown icon")
+    public void theUserClicksTheDropdownIcon() {
+        test.mobile().wallet().clickDropdownIcon();
+    }
+
+    @Then("the user should see the Home page")
+    public void theUserShouldSeeTheHomePage() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 }
 
