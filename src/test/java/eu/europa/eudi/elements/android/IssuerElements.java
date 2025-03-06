@@ -19,4 +19,10 @@ public class IssuerElements {
     public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By secondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
-}
+    public static By birthPlaceField = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[4]/android.widget.EditText");
+
+    public static By countryCodeField = By.xpath("//android.view.View[@resource-id=\"nationality--container\"]/android.widget.EditText");
+    public static By thirdAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-3\"]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By fourthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-4\"]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By fifthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-5\"]/android.view.View/android.view.View/android.widget.TextView[3]");
+    public static By clickScreen = By.xpath("//android.view.View[@text=\"Portrait:\"]");}

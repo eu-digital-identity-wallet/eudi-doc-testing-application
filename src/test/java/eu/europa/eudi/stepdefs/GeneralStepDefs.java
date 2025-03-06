@@ -77,6 +77,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
+            test.mobile().wallet().scrollUntilPID();
             test.mobile().wallet().clickMdl();
             test.mobile().issuer().clickCountrySelection();
             test.mobile().issuer().clickSubmit();
@@ -91,9 +92,6 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().scrollUntilFindSubmit();
-            test.mobile().issuer().clickRemove();
-            test.mobile().issuer().clickRemove();
-            test.mobile().issuer().clickRemove();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
@@ -136,11 +134,6 @@ public class GeneralStepDefs{
 
     @And("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
-        test.mobile().verifier().appOpensSuccefully();
-//        test.mobile().verifier().selectShareAttributes();
-//        test.mobile().verifier().clickNext();
-//        test.mobile().verifier().chooseData();
-//        test.mobile().verifier().clickNext();
         theVerifierRequestsADocFromTheWalletUser();
     }
 
@@ -154,25 +147,15 @@ public class GeneralStepDefs{
     @And("user views the data and can unselect any of them")
     public void userViewsTheDataAndCanUnselectAnyOfThem() {
         test.mobile().verifier().viewDataPage();
+        test.mobile().wallet().clickExpandVerification();
     }
 
 
     @And("user presses the share button")
     public void userPressesTheShareButton() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
-        theVerifierRequestsADocFromTheWalletUser();
-        test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickShareButton();
+        userSelectsToBeIdentifiedUsingTheEUDIWallet();
+        userViewsTheDataAndCanUnselectAnyOfThem();
+        userPressesTheShareButtonOnWallet();
     }
 
     @And("user authorizes the discolsure of the data")
@@ -272,12 +255,11 @@ public class GeneralStepDefs{
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
-    @And("user clicks load sample data")
-    public void userClicksLoadSampleData() {
-//        theUserIsOnTheLoginScreen();
+    @Given("user sees the home page")
+    public void userSeesTheHomePage() {
+        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
-        theUserShouldSeeTheAddDocumentPage();
-        test.mobile().wallet().loadSampleDocuments();
+        theUserShouldSeeTheHomePage();
     }
 
     @And("user clicks continue button")
@@ -293,6 +275,7 @@ public class GeneralStepDefs{
     @And("a corresponding message is displayed")
     public void aCorrespondingMessageIsDisplayed() {
         test.mobile().wallet().correspondingMessageIsDisplayed();
+        test.mobile().wallet().clickScreen();
     }
 
     @And("user clicks again the data")
@@ -692,7 +675,7 @@ public class GeneralStepDefs{
 
     @When("the dashboard page is displayed on wallet")
     public void theDashboardPageIsDisplayedOnWallet() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().homePageIsDisplayed();
     }
 
     @Given("the user has successfully entered the PIN")
@@ -866,8 +849,6 @@ public class GeneralStepDefs{
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickRemove();
-        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -890,8 +871,6 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickRemove();
-        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -915,16 +894,7 @@ public class GeneralStepDefs{
 
     @Given("user opens Verifier Application")
     public void userOpensVerifierApplication() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
+        userOpensVerifierApp();
     }
 
     @Given("the user is in the verifier app")
@@ -964,7 +934,6 @@ public class GeneralStepDefs{
         theVerifierRequestsADocFromTheWalletUser();
         theRequestorOfTheDataIsDisplayedInTheWallet();
         theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
     }
 
     @When("the user clicks the eye icon")
@@ -979,9 +948,10 @@ public class GeneralStepDefs{
 
     @Given("the user is viewing the data request details")
     public void theUserIsViewingTheDataRequestDetails() {
-        theUserIsViewingTheOptionalData();
-        theUserClicksTheEyeIcon();
-        theActualValuesOfTheDataAreDisplayed();
+        theUserIsInTheVerifierApp();
+        theVerifierRequestsADocFromTheWalletUser();
+        theRequestorOfTheDataIsDisplayedInTheWallet();
+        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
     }
 
     @When("the user clicks to expand the verification section")
@@ -996,11 +966,9 @@ public class GeneralStepDefs{
 
     @Given("the user has selected some data")
     public void theUserHasSelectedSomeData() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
+        theUserIsViewingTheDataRequestDetails();
+        theUserClicksToExpandTheVerificationSection();
+        theExpandedVerificationDetailsAreDisplayed();
     }
 
     @When("the user unselects some of this data")
@@ -1010,11 +978,9 @@ public class GeneralStepDefs{
 
     @Given("the user has finalized data selection")
     public void theUserHasFinalizedDataSelection() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
+        theUserHasSelectedSomeData();
+        theUserUnselectsSomeOfThisData();
+        aCorrespondingMessageIsDisplayed();
     }
 
     @When("the user clicks the share button")
@@ -1029,13 +995,9 @@ public class GeneralStepDefs{
 
     @Given("the user is prompted to enter a PIN for sharing")
     public void theUserIsPromptedToEnterAPINForSharing() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().pinFieldIsDisplayed();
+        theUserHasFinalizedDataSelection();
+        theUserClicksTheSHAREButton();
+        thePINFieldIsDisplayedToAuthorizeSharing();
     }
 
     @When("the user enters the correct PIN")
@@ -1050,19 +1012,9 @@ public class GeneralStepDefs{
 
     @Given("user selects to be identified using the EUDI Wallet")
     public void userSelectsToBeIdentifiedUsingTheEUDIWallet() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().appOpensSuccefully();
-        theVerifierRequestsADocFromTheWalletUser();
-        test.mobile().verifier().chooseWallet();
+        userOpensVerifierApp();
+        userSelectSpecificDataToShare();
+        userSelectsToBeIdentifiedUsingEUDIWallet();
     }
 
     @When("user authorizes the disclosure of the data")
@@ -1205,6 +1157,11 @@ public class GeneralStepDefs{
     @Then("the user should see the Documents dashboard")
     public void theUserShouldSeeTheDocumentsDashboard() {
         test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @Then("the user should see the home page")
+    public void theUserShouldSeeTheHomePage() {
+        test.mobile().wallet().homePageIsDisplayed();
     }
 }
 

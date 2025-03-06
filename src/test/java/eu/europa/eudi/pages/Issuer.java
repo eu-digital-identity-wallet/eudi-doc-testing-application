@@ -249,9 +249,9 @@ public class Issuer {
 
     public void clickScreen() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickScreen)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickScreen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickScreen)).click();
         }
     }
 
@@ -393,14 +393,6 @@ public class Issuer {
                 }
             }
 
-    public void clickRemove() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickRemove)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
-        }
-    }
-
     public void issuePID() {
         authenticationMethodSelection();
         clickCountrySelection();
@@ -410,12 +402,46 @@ public class Issuer {
         enterFamilyName();
         enterGivenName();
         chooseBirthDate();
+        enterBirthPlace();
+        enterCountryCode();
         scrollUntilFindSubmit();
-        clickRemove();
-        clickRemove();
         clickSubmit();
         scrollUntilAuthorize();
         clickAuthorize();
         test.mobile().wallet().clickClose();
+    }
+
+    private void enterCountryCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.countryCodeField)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement countryCode = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.countryCodeField);
+            countryCode.clear();
+            countryCode.sendKeys("12345");
+        }
+//        else {
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.birthPlaceField)).click();
+//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            WebElement birthPlace = driver.findElement(IssuerElements.birthPlaceField);
+//            birthPlace.clear();
+//            birthPlace.sendKeys("Foteini");
+
+    }
+
+    private void enterBirthPlace() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.birthPlaceField)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.birthPlaceField);
+            birthPlace.clear();
+            birthPlace.sendKeys("Thessaloniki");
+        }
+//        else {
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.birthPlaceField)).click();
+//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            WebElement birthPlace = driver.findElement(IssuerElements.birthPlaceField);
+//            birthPlace.clear();
+//            birthPlace.sendKeys("Foteini");
+
     }
 }

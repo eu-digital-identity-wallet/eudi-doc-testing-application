@@ -396,7 +396,7 @@ public class Wallet {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 //            driver.activateApp("com.android.chrome");
-            String url = "https://dev.verifier.eudiw.dev/home";
+            String url = "https://verifier.eudiw.dev/home";
             Map<String, Object> args = new HashMap<>();
             args.put("command", "am");
             args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
@@ -709,7 +709,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             int i = 1;
-            while (i < 3) {
+            while (i < 4) {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = size.height / 2;  // Start from the middle of the screen
@@ -764,20 +764,16 @@ public class Wallet {
     public void scrollUntilYouFindDelete() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-            int i=1;
-            while (i<2) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = size.height / 2;  // Start from the middle of the screen
+            int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+            new TouchAction<>((PerformsTouchActions) driver)
+                    .press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
         } else {
             WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
@@ -794,6 +790,21 @@ public class Wallet {
                         .perform();
                 i++;
             }
+        }
+    }
+
+    public void clickScreen() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
+        }
+    }
+
+    public void homePageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE.label, pageHeader);
         }
     }
 }
