@@ -1,4 +1,4 @@
-@IOS @manual @US_ETSS
+@IOS @manual @US_ETSS @Q4_2024
 Feature: EUDI Wallet User Engagement with Trusted Issuers
   As a EUDI Wallet User
   I want to be able to engage with trusted issuers offering the option to issue attestations (i.e. issuer-initiated issuance flows)
