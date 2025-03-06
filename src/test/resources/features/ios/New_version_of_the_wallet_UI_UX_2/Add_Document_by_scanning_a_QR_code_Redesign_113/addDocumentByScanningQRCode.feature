@@ -1,4 +1,4 @@
-@IOS @manual @US_ADBSQRC
+@IOS @manual @US_ADBSQRC @Q4_2024
 Feature: Issuing and storing attestations in the EUDI Wallet via QR code
 
   As a EUDI Wallet User
