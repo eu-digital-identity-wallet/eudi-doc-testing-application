@@ -1,4 +1,4 @@
-@IOS @manual @US_SAATQ
+@IOS @manual @US_SAATQ @Q4_2024
 Feature: EUDI Wallet User Authenticates to QTSP for Document Signing
   As a EUDI Wallet User,
   I want to use my EUDI Wallet to authenticate to QTSPs

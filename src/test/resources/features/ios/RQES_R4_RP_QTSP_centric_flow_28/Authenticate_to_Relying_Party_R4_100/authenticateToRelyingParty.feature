@@ -1,4 +1,4 @@
-@IOS @manual @US_ATRP
+@IOS @manual @US_ATRP @Q4_2024
 Feature: EUDI Wallet User Logs into a Relying Party
   As a EUDI Wallet User
   I want to use my EUDI Wallet to log in to a Relying Party

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features/"},
         monochrome = true,
-        tags = "@ANDROID or @IOS",
+        tags = "@Q4_2024",
         glue = {"eu.europa.eudi.stepdefs"})
 public class TestRunner {
 }

@@ -1,4 +1,4 @@
-@IOS @manual @US_MS
+@IOS @manual @US_MS @Q4_2024
 Feature: EUDI Wallet Menu Screen
   As a EUDI Wallet User
   I want to access the additional secondary options of the EUDI Wallet

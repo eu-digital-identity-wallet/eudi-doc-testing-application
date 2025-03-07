@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>2025.01.21-Demo</version>
+    <version>EUDI_Wallet_2025.01.21-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
 
@@ -26,7 +26,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
-        <build-version>EUDI_Wallet_2025.01.21</build-version><!-- Add this line to set the number of threads -->
+        <build-version>EUDI_Wallet_2025.01.21-Demo</build-version><!-- Add this line to set the number of threads -->
     </properties>
 
     <dependencies>

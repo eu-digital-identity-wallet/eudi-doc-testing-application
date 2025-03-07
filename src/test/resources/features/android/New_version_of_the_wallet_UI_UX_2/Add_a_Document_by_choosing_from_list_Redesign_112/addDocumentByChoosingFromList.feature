@@ -1,4 +1,4 @@
-@ANDROID @manual @US_ADBCFL
+@ANDROID @manual @US_ADBCFL @Q4_2024
 Feature: Issuing and storing attestations in the EUDI Wallet
   As a EUDI Wallet User
   I want to issue and store attestations in my EUDI Wallet
