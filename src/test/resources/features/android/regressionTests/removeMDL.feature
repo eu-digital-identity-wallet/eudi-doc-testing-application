@@ -11,6 +11,6 @@ Feature: Deleting a mDL document
   Scenario: User deletes the document
     Given the user has opened the selected mDL
     When the user presses the delete button
-    Then the user should see the dashboard
+    Then the user should see the dashboard screen
 
 

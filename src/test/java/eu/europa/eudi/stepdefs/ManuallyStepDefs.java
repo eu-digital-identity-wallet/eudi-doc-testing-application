@@ -5492,20 +5492,20 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is on the Add document screen")
-    public void theUserIsOnTheAddDocumentScreen() {
-        //manual
-    }
-
-    @When("the user navigates to the Documents screen")
-    public void theUserNavigatesToTheDocumentsScreen() {
-        //manual
-    }
-
-    @Given("the user is on the Documents screen")
-    public void theUserIsOnTheDocumentsScreen() {
-        //manual
-    }
+//    @Given("the user is on the Add document screen")
+//    public void theUserIsOnTheAddDocumentScreen() {
+//        //manual
+//    }
+//
+//    @When("the user navigates to the Documents screen")
+//    public void theUserNavigatesToTheDocumentsScreen() {
+//        //manual
+//    }
+//
+//    @Given("the user is on the Documents screen")
+//    public void theUserIsOnTheDocumentsScreen() {
+//        //manual
+//    }
 
     @Then("the wallet displays the presentation request which A back button:")
     public void the_wallet_displays_the_presentation_request_which_a_back_button() {
