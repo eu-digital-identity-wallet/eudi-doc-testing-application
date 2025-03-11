@@ -39,7 +39,9 @@ public class TestSetup {
     }
 
     public void startAndroidDriverSession() {
-        mobileWebDriverFactory.startAndroidDriverSession();
+        if (!scenario.getSourceTagNames().contains("@manual")) {
+            mobileWebDriverFactory.startAndroidDriverSession();
+        }
     }
 
     public void reInitializeDriver() {
@@ -47,7 +49,9 @@ public class TestSetup {
     }
 
     public void startIosDriverSession() {
-        mobileWebDriverFactory.startIosDriverSession();
+       if (!scenario.getSourceTagNames().contains("@manual")) {
+           mobileWebDriverFactory.startIosDriverSession();
+        }
     }
 
     public void stopAndroidDriverSession() {

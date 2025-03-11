@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -654,19 +655,13 @@ public class Wallet {
     }
 
     public void detailsAreDisplayedBlurred() {
-//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            try {
-//                WebElement element = test.mobileWebDriverFactory().getWait()
-//                        .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.familyNameIsBlurred));
-//
-//                Assert.assertEquals("Element should be hidden", "false", element.getAttribute("displayed"));
-//
-//            } catch (Exception e) {
-//                throw new AssertionError("Failed to verify blur effect: " + e.getMessage());
-//            }
-//        }
-    }
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement blurredElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsAreBlurred));
+            String actualContentDesc = blurredElement.getAttribute("content-desc");
+            Assert.assertEquals("Hide", actualContentDesc);
 
+        }
+    }
 
     public void eyeIconIsDisplayed() {
         WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.eyeIcon));
@@ -805,6 +800,15 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE.label, pageHeader);
+        }
+    }
+
+    public void detailsAreNotBlurred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement blurredElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsAreNotBlurred));
+            String actualContentDesc = blurredElement.getAttribute("content-desc");
+            Assert.assertEquals("Show", actualContentDesc);
+
         }
     }
 }

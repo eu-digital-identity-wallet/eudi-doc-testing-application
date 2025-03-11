@@ -1089,7 +1089,7 @@ public class GeneralStepDefs{
     }
 
     @And("the details should be blurred by default")
-    public void theDetailsShouldBeBlurredByDefault() {
+    public void theDetailsShouldBeBlurredByDefault(){
         test.mobile().wallet().detailsAreDisplayedBlurred();
     }
 
@@ -1100,9 +1100,10 @@ public class GeneralStepDefs{
 
     @Given("the user is viewing the details of an attestation")
     public void theUserIsViewingTheDetailsOfAnAttestation() {
-        theUserIsOnTheDashboardScreen();
+        theUserIsOnTheDocumentsScreen();
         theUserSelectsAnAttestationFromTheList();
         theDetailsOfTheSelectedAttestationShouldBeDisplayed();
+        theDetailsShouldBeBlurredByDefault();
         theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation();
     }
 
@@ -1113,13 +1114,13 @@ public class GeneralStepDefs{
 
     @Then("the attestation details should no longer be blurred")
     public void theAttestationDetailsShouldNoLongerBeBlurred() {
-        //waiting for an attribute to check
+        test.mobile().wallet().detailsAreNotBlurred();
     }
 
-    @And("the user should be able to view the full details of the attestation")
-    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
-        //waiting for an attribute to check
-    }
+//    @And("the user should be able to view the full details of the attestation")
+//    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
+//
+//    }
 
     @And("the Documents page is displayed")
     public void theDocumentsPageIsDisplayed() {

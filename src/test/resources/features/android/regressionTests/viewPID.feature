@@ -20,5 +20,4 @@ Feature: View PID document
     Given the user is viewing the details of an attestation
     When the user selects eye icon
     Then the attestation details should no longer be blurred
-    And the user should be able to view the full details of the attestation
 
