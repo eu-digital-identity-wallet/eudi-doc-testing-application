@@ -5907,6 +5907,281 @@ public class ManuallyStepDefs {
     public void thePIDOrAttestationRemainsRevoked() {
         //manual
     }
+
+    @Given("the user has been authenticated in the Relying Party service")
+    public void theUserHasBeenAuthenticatedInTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the user has been authenticated in the EUDI Wallet")
+    public void theUserHasBeenAuthenticatedInTheEUDIWallet() {
+        //manual
+    }
+
+    @And("internet is available for connectivity and data transfer")
+    public void internetIsAvailableForConnectivityAndDataTransfer() {
+        //manual
+    }
+
+    @And("the Wallet and the Relying Party User Interface reside on different devices")
+    public void theWalletAndTheRelyingPartyUserInterfaceResideOnDifferentDevices() {
+        //manual
+    }
+
+    @Given("the user accesses the Relying Party page where the document to be signed is available")
+    public void theUserAccessesTheRelyingPartyPageWhereTheDocumentToBeSignedIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the option to retrieve the document in their EUDI Wallet")
+    public void theUserSelectsTheOptionToRetrieveTheDocumentInTheirEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Relying Party renders a QR-code requesting the user to scan the QR-code to retrieve the document")
+    public void theRelyingPartyRendersAQRCodeRequestingTheUserToScanTheQRCodeToRetrieveTheDocument() {
+        //manual
+    }
+
+    @When("the user selects the option to Sign a Document through Scan QR")
+    public void theUserSelectsTheOptionToSignADocumentThroughScanQR() {
+        //manual
+    }
+
+    @And("the user scans the displayed QR-code with the EUDI Wallet")
+    public void theUserScansTheDisplayedQRCodeWithTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet retrieves the document from the Relying Party service")
+    public void theEUDIWalletRetrievesTheDocumentFromTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the EUDI Wallet presents the document to the user")
+    public void theEUDIWalletPresentsTheDocumentToTheUser() {
+        //manual
+    }
+
+    @Given("the signing process has been completed as per the R{int} or R{int} flow")
+    public void theSigningProcessHasBeenCompletedAsPerTheROrRFlow(int arg0, int arg1) {
+        //manual
+    }
+
+    @Given("the signing process has been completed as per the Rthree or Rfive flow")
+    public void theSigningProcessHasBeenCompletedAsPerTheRthreeOrRfiveFlow() {
+        //manual
+    }
+
+    @And("the Wallet and the Relying Party User Interface reside on different devices \\(e.g. mobile device and a desktop respectively)")
+    public void theWalletAndTheRelyingPartyUserInterfaceResideOnDifferentDevicesEGMobileDeviceAndADesktopRespectively() {
+        //manual
+    }
+
+    @Given("the user views the signed document in the EUDI Wallet")
+    public void theUserViewsTheSignedDocumentInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user is prompted to return the signed document to the Relying Party")
+    public void theUserIsPromptedToReturnTheSignedDocumentToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the user confirms the sharing of the document")
+    public void theUserConfirmsTheSharingOfTheDocument() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet shares the signed document with the Relying Party")
+    public void theEUDIWalletSharesTheSignedDocumentWithTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the user views a confirmation message that the signed document has been successfully shared")
+    public void theUserViewsAConfirmationMessageThatTheSignedDocumentHasBeenSuccessfullyShared() {
+        //manual
+    }
+
+    @And("the user has received a presentation request from a Relying Party in either a cross or same device flow")
+    public void theUserHasReceivedAPresentationRequestFromARelyingPartyInEitherACrossOrSameDeviceFlow() {
+        //manual
+    }
+
+    @And("the user has authenticated to the Remote Signing Service")
+    public void theUserHasAuthenticatedToTheRemoteSigningService() {
+        //manual
+    }
+
+    @Given("the user views a presentation request from a Relying Party")
+    public void theUserViewsAPresentationRequestFromARelyingParty() {
+        //manual
+    }
+
+    @Then("the user is returned to the Home screen")
+    public void theUserIsReturnedToTheHomeScreen() {
+        //manual
+    }
+
+    @Given("the user has entered the PIN to proceed with the data sharing flow")
+    public void theUserHasEnteredThePINToProceedWithTheDataSharingFlow() {
+        //manual
+    }
+
+    @And("the wallet displays a Close button to return to the Home screen")
+    public void theWalletDisplaysACloseButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @Given("the PDA{int} attestation adheres to the existing functionalities of the EUDI Wallet")
+    public void thePDAAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet(int arg0) {
+        //manual
+    }
+
+    @Given("the user initiates the process to add a document by choosing from the list")
+    public void theUserInitiatesTheProcessToAddADocumentByChoosingFromTheList() {
+        //manual
+    }
+
+    @When("the user selects PDA{int} attestation from the list")
+    public void theUserSelectsPDAAttestationFromTheList(int arg0) {
+        //manual
+    }
+
+    @Then("the PDA{int} attestation is successfully issued in the EUDI Wallet")
+    public void thePDAAttestationIsSuccessfullyIssuedInTheEUDIWallet(int arg0) {
+        //manual
+    }
+
+    @Given("the user initiates the process to add a document by scanning a QR code")
+    public void theUserInitiatesTheProcessToAddADocumentByScanningAQRCode() {
+        //manual
+    }
+
+    @When("the user scans the QR code provided by the issuer")
+    public void theUserScansTheQRCodeProvidedByTheIssuer() {
+        //manual
+    }
+
+    @Given("the user has a PDA{int} attestation issued in the EUDI Wallet")
+    public void theUserHasAPDAAttestationIssuedInTheEUDIWallet(int arg0) {
+        //manual
+    }
+
+    @Then("the user can view the PDA{int} attestation details")
+    public void theUserCanViewThePDAAttestationDetails(int arg0) {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in Portable Document A{int} \\(PDA{int}) attestation")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInPortableDocumentAPDAAttestation(int arg0, int arg1) {
+        //manual
+    }
+
+    @Given("the user initiates the process to present a document online")
+    public void theUserInitiatesTheProcessToPresentADocumentOnline() {
+        //manual
+    }
+
+    @When("the user selects the PDA{int} attestation for presentation")
+    public void theUserSelectsThePDAAttestationForPresentation(int arg0) {
+        //manual
+    }
+
+    @Then("the PDA{int} attestation is successfully presented in the remote scenario")
+    public void thePDAAttestationIsSuccessfullyPresentedInTheRemoteScenario(int arg0) {
+        //manual
+    }
+
+    @Given("the EHIC attestation adheres to the existing functionalities of the EUDI Wallet")
+    public void theEHICAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects EHIC attestation from the list")
+    public void theUserSelectsEHICAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the EHIC attestation is successfully issued in the EUDI Wallet")
+    public void theEHICAttestationIsSuccessfullyIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user has an EHIC attestation issued in the EUDI Wallet")
+    public void theUserHasAnEHICAttestationIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can view the EHIC attestation details")
+    public void theUserCanViewTheEHICAttestationDetails() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in European Health Insurance Card \\(EHIC) attestation")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInEuropeanHealthInsuranceCardEHICAttestation() {
+        //manual
+    }
+
+    @When("the user selects the EHIC attestation for presentation")
+    public void theUserSelectsTheEHICAttestationForPresentation() {
+        //manual
+    }
+
+    @Then("the EHIC attestation is successfully presented in the remote scenario")
+    public void theEHICAttestationIsSuccessfullyPresentedInTheRemoteScenario() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet supports the latest version of the PID")
+    public void theEUDIWalletSupportsTheLatestVersionOfThePID() {
+        //manual
+    }
+
+    @When("the user selects PID from the list")
+    public void theUserSelectsPIDFromTheList() {
+        //manual
+    }
+
+    @Then("the PID is successfully issued in the EUDI Wallet")
+    public void thePIDIsSuccessfullyIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user has a PID issued in the EUDI Wallet")
+    public void theUserHasAPIDIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can view the PID details")
+    public void theUserCanViewThePIDDetails() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in Update PID in alignment with CIR{int}")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInUpdatePIDInAlignmentWithCIR(int arg0) {
+        //manual
+    }
+
+    @When("the user selects the PID for presentation")
+    public void theUserSelectsThePIDForPresentation() {
+        //manual
+    }
+
+    @Then("the PID is successfully presented in the remote scenario")
+    public void thePIDIsSuccessfullyPresentedInTheRemoteScenario() {
+        //manual
+    }
+
+    @Given("the user initiates the process to present a document in proximity")
+    public void theUserInitiatesTheProcessToPresentADocumentInProximity() {
+        //manual
+    }
+
+    @Then("the PID is successfully presented in the proximity scenario")
+    public void thePIDIsSuccessfullyPresentedInTheProximityScenario() {
+        //manual
+    }
 }
 
 
