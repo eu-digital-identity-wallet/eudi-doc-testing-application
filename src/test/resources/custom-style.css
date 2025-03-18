@@ -5559,3 +5559,8 @@ display: none!important;
 {
 display: none!important;
 }
+
+
+.list-group-item.node-tree .success-icon[style*="color: #99cc33"] {
+    display: none;
+  }
