@@ -5560,6 +5560,14 @@ display: none!important;
 display: none!important;
 }
  /*
+ for epic 1
 .list-group-item:nth-child(2) {
   display: none;
-}  */
+}
+
+for epic 1/story 1
+.list-group-item:nth-child(2)[data-nodeid="2"] {
+    display: none;
+}
+
+*/
