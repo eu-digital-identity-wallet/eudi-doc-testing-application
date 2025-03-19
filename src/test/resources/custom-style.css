@@ -5570,4 +5570,15 @@ for epic 1/story 1
     display: none;
 }
 
+ if stories and epics are too much, can hide all
+.list-group-item {
+    display: none;
+}
+
+and choose only the one that i want to appear on report
+.list-group-item:nth-child(2)[data-nodeid="2"] {
+    display: block;
+}
+
+
 */
