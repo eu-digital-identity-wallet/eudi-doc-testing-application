@@ -39,7 +39,7 @@ Feature: Check and update on presentation request the requested attestations rev
   Scenario: Internet connection is not available during presentation request
     Given the EUDI Wallet has valid attestations stored
     And the internet connection is not available
-    When the EUDI Wallet is requested to present/share attestations
+    When the EUDI Wallet is requested to present or share attestations
     Then the EUDI Wallet stops the revocation checks
     And the EUDI Wallet continues the presentation operation as normal
 
@@ -47,7 +47,7 @@ Feature: Check and update on presentation request the requested attestations rev
   Scenario: Other conditions block revocation status check during presentation request
     Given the EUDI Wallet has valid attestations stored
     And other conditions block the EUDI Wallet from checking the revocation status
-    When the EUDI Wallet is requested to present/share attestations
+    When the EUDI Wallet is requested to present or share attestations
     Then the EUDI Wallet stops the revocation checks
     And the EUDI Wallet continues the presentation operation as normal
 
