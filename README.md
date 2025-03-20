@@ -10,9 +10,9 @@
 * [Implemented test cases](#implemented-test-cases)
 * [How to contribute](#how-to-contribute)
 * [License](#license)
-    + [License details](#license-details)
+   + [License details](#license-details)
 
-    
+
 ## Overview
 This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the User Stories created by the Analysis team. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
 
@@ -80,10 +80,10 @@ This will allow you to run the automation scripts on the Android and iOS devices
 **-Install Appium using Node.js**
 
 1. Install Node.js
-The first step is to verify whether Node.js is already installed in the system. To do so, open the terminal and run the following command:
-`node --version`
-If Node.js is already installed in the system, it’ll return the Node version, else it throws an error stating – ‘node is not recognized’, which means Node.js is not installed in the system.
-To install Node.js, click [here](https://nodejs.org/en/download).
+   The first step is to verify whether Node.js is already installed in the system. To do so, open the terminal and run the following command:
+   `node --version`
+   If Node.js is already installed in the system, it’ll return the Node version, else it throws an error stating – ‘node is not recognized’, which means Node.js is not installed in the system.
+   To install Node.js, click [here](https://nodejs.org/en/download).
 
 Once the installation is complete, restart the terminal and run again the command:
 `node --version`
@@ -134,18 +134,18 @@ If you want to run tests on a real iPhone device, you will need to install WebDr
 Download and install the EUDIW app:
 
 - iOS:
-Minimum device requirements
+  Minimum device requirements
 
-    Any device that supports iOS 15.0
+  Any device that supports iOS 15.0
 
 Prerequisites
 
 To complete the flows described below you need to download the iOS app into your device. You can download it from App center download method (iOS app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-iOS-Dev).
 
 - Android:
-Minimum device requirements
+  Minimum device requirements
 
-    API level 26.
+  API level 26.
 
 To complete the flows described below you need to download the app. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
 
@@ -155,7 +155,7 @@ Some of the tests need to install the app from scratch for this reason the execu
 ## Implemented test cases
 Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
 feature files
-" folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features). 
+" folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features).
 
 There are two main categories: iOS and Android. Inside these folders, there are subfolders corresponding to the epics, named exactly as they appear on GitHub. Each epic folder contains subfolders named after the corresponding user stories. Finally, within the user story folders, there are the feature files that contain the relevant test cases.
 
@@ -168,7 +168,7 @@ To execute the tests, follow the steps below:
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
 2. Connect a real device through cable to the machine and find the UDID of the device. For android devices execute the 'adb devices' command. For iphone devices execute the 'xcrun simctl list'.
-   
+
    **For android devices are needed also:**
    - Step 1: Go to the settings menu and click on "about phone" icon.
    - Step 2: After clicking on the about phone icon you will be redirected to a page containing all the information related to your phone. Now click on build version for 7 times, yes you have to click 7 times on the build number. Once you will start clicking on the build version, you will get some pop-up messages stating “You are 4 steps away from being a developer“. After clicking it for 7 times, you will again get a pop-up message stating “You are now a developer“. This message means that you have enabled the developer options on your phone.
@@ -180,24 +180,21 @@ To execute the tests, follow the steps below:
    Need to change this values:
 
    **android:**
-     - appium.android.deviceName=POCO X5 Pro
-     - appium.android.platformVersion=14.0.8
-     - appium.android.udid=emulator-5554
-     - appium.android.udid=58d5b98
+   - appium.android.deviceName=POCO X5 Pro
+   - appium.android.platformVersion=14.0.8
+   - appium.android.udid=emulator-5554
+   - appium.android.udid=58d5b98
 
    **ios:**
-     - appium.ios.deviceName=iPhone 14 Plus
-     - appium.ios.platformVersion=17.3
-     - appium.ios.platformName=iOS
-     - appium.ios.udid=00008110-000470843429401E
+   - appium.ios.deviceName=iPhone 14 Plus
+   - appium.ios.platformVersion=17.3
+   - appium.ios.platformName=iOS
+   - appium.ios.udid=00008110-000470843429401E
 
 4. Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac).
 
-5. Run the tests: Depending on your system, execute the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac) to start the tests.
-   In order to run them open the terminal and run `cd C:\Projects\wallet` (replace the path with the path that you have saved the project). After you navigate to the correct directory, run the .cmd file by typing its name and pressing Enter. So, you should type: `local-execution.cmd`
-   
    Note: On tests there are some tags.
- 
+
    - @ANDROID: will run all the android tests
    - @IOS: will run all the ios tests
    - @manual: will run all the manual tests
@@ -206,22 +203,28 @@ To execute the tests, follow the steps below:
 
    Tags: @before_01, @before_02, @before_03 are used for technical reasons on automation tests and don't use them for execution.
 
-   Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh
-6. After the execution the github actions are running and you can find them [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions).
+   Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh file.
 
-7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html. Or you can find the report on github actions section, clicking the latest workflow and there you can find the report and download it.
+5. Run the tests:
+   In order to run the tests open the terminal and run `cd ./src/test/java/eu/europa/eudi/utils/factory`. After you navigate to the correct directory, run the command "javac ReadmeManager.java" and "java ReadmeManager".
+
+7. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html.
 
    Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
+6. If you want to run android tests from github actions automatically, you can do it from [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions). Click the flow you would like to run, either automated or manual. For automated tests, click the one named "automation_with_emulator - Standard", and for executing manual tests, click on the "Manual Workflow". Click the three dots on the right side and then click "View workflow file". On the redirected page, click on "Re-run all jobs" tab. The workflow will run, and a report will be generated.
+
+## Exporting Logs
+
+After running the automated tests, a new file will be created with the logs of the app. For example, if you run test cases on the feature file located at ./src/test/resources/features/android/regressionTests/viewPID.feature file, then a new file will be created at ./src/test/resources/features/android/regressionTests/logs/viewPID.txt with the same name as the feature file. Double-click this file to view the logs.
+
 ## Bug Reporting
 
-The list of reported bugs can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues). 
+The list of reported bugs can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues).
 
 The aforementioned link is also included in a feature file named bugReport.feature (which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/blob/develop/src/test/resources/features/bugReport.feature)), in order to be used by the Serenity Report.
 
-
 When opening bugs on GitHub (as issues), the following format is proposed.
-
 
 ### Bug Report Format
 
@@ -245,7 +248,7 @@ Write exactly the steps that must be followed in order to reproduce the bug.
 **Expected Behavior:**
 Describe what you expect to happen instead of the error.
 
-## Troubleshooting 
+## Troubleshooting
 
 If you encounter any issues while setting up or running the tests, consult the troubleshooting tips below:
 
