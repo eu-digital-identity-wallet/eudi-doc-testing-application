@@ -4,7 +4,7 @@ public interface Literals {
 
     enum Wallet{
 
-        WELCOME_HEADER("Welcome to your Wallet"),
+        WELCOME_HEADER("Welcome to your wallet"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back"),

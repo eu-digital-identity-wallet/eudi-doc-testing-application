@@ -83,7 +83,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.nextButton)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.nextButton)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickProceed)).click();
         }
     }
 
@@ -112,7 +112,7 @@ public class Wallet {
             char fifthDigit = fullPin.charAt(4);
             char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.findElement(WalletElements.pinTexfield1).sendKeys(String.valueOf(firstDigit));
+            driver.findElement(WalletElements.pinTexfield1).sendKeys("1");
             driver.findElement(WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
@@ -602,7 +602,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAddMyDigitalID)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickAddMyDigitalID)).click();
         }
     }
 
@@ -610,7 +610,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPID)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPID)).click();
         }
     }
 

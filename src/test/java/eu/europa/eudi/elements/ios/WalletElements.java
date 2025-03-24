@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class WalletElements {
-    public static final By welcomeScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome to the EUDI Wallet\"]");
+    public static final By welcomeScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome to your wallet\"]");
     public static By welcomePage = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome to the EUDI Wallet\"]");
     public static By pinTexfield1 = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]");
     public static By pinTexfield2 = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[2]");
@@ -13,8 +13,8 @@ public class WalletElements {
     public static By pinTexfield5 = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]");
     public static By pinTexfield6 = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]");
     public static By nextButton = By.xpath("//XCUIElementTypeButton[@name=\"NEXT\"]");
-    public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"CONFIRM\"]");
-    public static By successMessage = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully set the quick pin\"]");
+    public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
+    public static By successMessage = By.xpath("//XCUIElementTypeStaticText[@name=\"Your wallet is secured!\"]");
     public static By clickContinue = By.xpath("//XCUIElementTypeButton[@name=\"CONTINUE\"]");
     public static By chooseSampleData = By.xpath("//XCUIElementTypeStaticText[@name=\"Load Sample Data\"]");
     public static By dashboardPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back\"]");
@@ -79,4 +79,7 @@ public class WalletElements {
     public static By clickSecondNationalId = By.xpath("(//XCUIElementTypeStaticText[@name=\"National ID\"])[2]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeStaticText[@name=\"Verification Data\"]");
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Date of issuance\"]");
+    public static By clickProceed = By.xpath("//XCUIElementTypeButton[@name=\"Proceed\"]");
+    public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
+    public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
 }
