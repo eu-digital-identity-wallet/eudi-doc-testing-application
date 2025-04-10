@@ -1,10 +1,8 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -17,9 +15,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.time.Duration;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Verifier {
@@ -37,8 +33,6 @@ public class Verifier {
             if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributes)).click();
                 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -50,8 +44,6 @@ public class Verifier {
             }    else{
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareData)).click();
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidAuthentication)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributesEmulator)).click();
                 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -61,7 +53,7 @@ public class Verifier {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormatEmulator)).click();
             }
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickShareData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickShareData)).click();
         }
     }
 
@@ -69,17 +61,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickNext)).click();
-        }
-    }
-
-    public void chooseData() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.chooseData)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickNext)).click();
         }
     }
 
@@ -87,7 +69,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.chooseWallet)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.chooseWallet)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseWallet)).click();
         }
     }
 
@@ -112,12 +94,12 @@ public class Verifier {
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield6).sendKeys("1");
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.findElement(WalletElements.pinTexfield1).sendKeys("1");
-            driver.findElement(WalletElements.pinTexfield2).sendKeys("1");
-            driver.findElement(WalletElements.pinTexfield3).sendKeys("1");
-            driver.findElement(WalletElements.pinTexfield4).sendKeys("1");
-            driver.findElement(WalletElements.pinTexfield5).sendKeys("1");
-            driver.findElement(WalletElements.pinTexfield6).sendKeys("1");        }
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys("1");
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys("1");
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys("1");
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys("1");
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys("1");
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6).sendKeys("1");        }
     }
 
     public void appOpensSuccefully() {
@@ -135,7 +117,7 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Verifier.AUTHENTICATION_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.authenticationPageIsDisplayed)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticationPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Verifier.AUTHENTICATION_PAGE.label, pageHeader);
         }
     }
@@ -187,15 +169,6 @@ public class Verifier {
                 }
             }
         }
-
-
-    public void clickIssuanceDate() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.issuanceDate)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.issuanceDate)).click();
-        }
-    }
 
     public void selectAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
