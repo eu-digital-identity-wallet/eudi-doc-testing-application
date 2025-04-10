@@ -1,7 +1,6 @@
 package eu.europa.eudi.elements.ios;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class WalletElements {
     public static final By welcomeScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome to the EUDI Wallet\"]");
@@ -35,7 +34,6 @@ public class WalletElements {
     public static By addDocumentPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Add document\"]");
     public static By clickNationalIdButton = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
-    public static By countrySelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Country Selection\"]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By clickFormEu = By.xpath("//XCUIElementTypeStaticText[@name=\"FormEU\"]");
     public static By dataPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter the data for your EUDI Wallet\"]");
@@ -52,8 +50,6 @@ public class WalletElements {
     public static By enterDocumentNumber = By.xpath("//XCUIElementTypeTextField[@name=\"document_number\"]");
     public static By documentNumberField = By.xpath("//XCUIElementTypeTextField[@name=\"document_number\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait:\"]");
-    public static By expiryDateMdl = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date:\"]");
-    public static By expiryDate = By.xpath("//XCUIElementTypeStaticText[@name=\"age_over_18\"]");
     public static By clickIssueDate = By.xpath("//XCUIElementTypeOther[@name=\"Issue Date\"]");
     public static By clickExpiryDate = By.xpath("//XCUIElementTypeOther[@name=\"Expiry Date\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"You can now add your Driving License\"]");
