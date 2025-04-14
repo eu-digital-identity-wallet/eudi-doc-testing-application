@@ -6043,13 +6043,13 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user selects PDA{int} attestation from the list")
-    public void theUserSelectsPDAAttestationFromTheList(int arg0) {
+    @When("the user selects PDA1 attestation from the list")
+    public void theUserSelectsPDAAttestationFromTheList() {
         //manual
     }
 
-    @Then("the PDA{int} attestation is successfully issued in the EUDI Wallet")
-    public void thePDAAttestationIsSuccessfullyIssuedInTheEUDIWallet(int arg0) {
+    @Then("the PDA1 attestation is successfully issued in the EUDI Wallet")
+    public void thePDAAttestationIsSuccessfullyIssuedInTheEUDIWallet() {
         //manual
     }
 
@@ -6063,13 +6063,13 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user has a PDA{int} attestation issued in the EUDI Wallet")
-    public void theUserHasAPDAAttestationIssuedInTheEUDIWallet(int arg0) {
+    @Given("the user has a PDA1 attestation issued in the EUDI Wallet")
+    public void theUserHasAPDAAttestationIssuedInTheEUDIWallet() {
         //manual
     }
 
-    @Then("the user can view the PDA{int} attestation details")
-    public void theUserCanViewThePDAAttestationDetails(int arg0) {
+    @Then("the user can view the PDA1 attestation details")
+    public void theUserCanViewThePDAAttestationDetails() {
         //manual
     }
 
@@ -6083,13 +6083,13 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user selects the PDA{int} attestation for presentation")
-    public void theUserSelectsThePDAAttestationForPresentation(int arg0) {
+    @When("the user selects the PDA1 attestation for presentation")
+    public void theUserSelectsThePDAAttestationForPresentation() {
         //manual
     }
 
-    @Then("the PDA{int} attestation is successfully presented in the remote scenario")
-    public void thePDAAttestationIsSuccessfullyPresentedInTheRemoteScenario(int arg0) {
+    @Then("the PDA1 attestation is successfully presented in the remote scenario")
+    public void thePDAAttestationIsSuccessfullyPresentedInTheRemoteScenario() {
         //manual
     }
 
@@ -6158,12 +6158,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the details are aligned to the defined data model as described in Update PID in alignment with CIR{int}")
-    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInUpdatePIDInAlignmentWithCIR(int arg0) {
-        //manual
-    }
-
-    @When("the user selects the PID for presentation")
+      @When("the user selects the PID for presentation")
     public void theUserSelectsThePIDForPresentation() {
         //manual
     }
@@ -6180,6 +6175,11 @@ public class ManuallyStepDefs {
 
     @Then("the PID is successfully presented in the proximity scenario")
     public void thePIDIsSuccessfullyPresentedInTheProximityScenario() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in Update PID")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInUpdatePID() {
         //manual
     }
 }
