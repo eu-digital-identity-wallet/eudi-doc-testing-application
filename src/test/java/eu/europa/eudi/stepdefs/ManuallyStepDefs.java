@@ -6033,8 +6033,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the PDA{int} attestation adheres to the existing functionalities of the EUDI Wallet")
-    public void thePDAAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet(int arg0) {
+    @Given("the PDA1 attestation adheres to the existing functionalities of the EUDI Wallet")
+    public void thePDAAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet() {
         //manual
     }
 
@@ -6073,8 +6073,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the details are aligned to the defined data model as described in Portable Document A{int} \\(PDA{int}) attestation")
-    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInPortableDocumentAPDAAttestation(int arg0, int arg1) {
+    @And("the details are aligned to the defined data model as described in Portable Document A1 \\(PDA1) attestation")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInPortableDocumentAPDAAttestation() {
         //manual
     }
 
