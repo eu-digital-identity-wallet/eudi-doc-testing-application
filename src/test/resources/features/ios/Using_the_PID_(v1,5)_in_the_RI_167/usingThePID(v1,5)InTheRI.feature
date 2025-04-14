@@ -23,7 +23,7 @@ Feature: Support the latest version of PID in EUDI Wallet
     Given the user has a PID issued in the EUDI Wallet
     When the user navigates to the Documents screen
     Then the user can view the PID details
-    And the details are aligned to the defined data model as described in Update PID in alignment with CIR20242977
+    And the details are aligned to the defined data model as described in Update PID
 
 
   Scenario: Present PID in remote scenarios
