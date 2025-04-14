@@ -6182,6 +6182,61 @@ public class ManuallyStepDefs {
     public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInUpdatePID() {
         //manual
     }
+
+    @When("the user opens the EUDI Wallet application")
+    public void theUserOpensTheEUDIWalletApplication() {
+        //manual
+    }
+
+    @And("the user navigates to the Transactions screen")
+    public void theUserNavigatesToTheTransactionsScreen() {
+        //manual
+    }
+
+    @Then("the Transactions screen is displayed")
+    public void theTransactionsScreenIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the Transactions screen")
+    public void theUserIsOnTheTransactionsScreen() {
+        //manual
+    }
+
+    @When("the user selects an attestation presentation transaction entry from the list")
+    public void theUserSelectsAnAttestationPresentationTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details:")
+    public void theEUDIWalletPresentsTheFollowingDetails() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of a transaction entry")
+    public void theUserIsViewingTheDetailsOfATransactionEntry() {
+        //manual
+    }
+
+    @When("the user requests to delete the transaction data")
+    public void theUserRequestsToDeleteTheTransactionData() {
+        //manual
+    }
+
+    @Then("the transaction data is deleted from the EUDI Wallet")
+    public void theTransactionDataIsDeletedFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user reports a suspicious operation related to the presentation")
+    public void theUserReportsASuspiciousOperationRelatedToThePresentation() {
+        //manual
+    }
+
+    @Then("the suspicious operation is reported to DPAs as per user story #|")
+    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
+        //manual
+    }
 }
 
 
