@@ -6233,8 +6233,114 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the suspicious operation is reported to DPAs as per user story #|")
-    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
+
+    @When("the user clicks on the Transactions button")
+    public void theUserClicksOnTheTransactionsButton() {
+        //manual
+    }
+
+    @And("all transactions are displayed \\(no search or filters are applied)")
+    public void allTransactionsAreDisplayedNoSearchOrFiltersAreApplied() {
+        //manual
+    }
+
+    @When("the user observes the transactions screen")
+    public void theUserObservesTheTransactionsScreen() {
+        //manual
+    }
+
+    @And("the following are displayed {}:")
+    public void theFollowingAreDisplayed(String arg0) {
+        //manual
+    }
+
+    @And("if there are no transactions for a period group, then this group is not displayed")
+    public void ifThereAreNoTransactionsForAPeriodGroupThenThisGroupIsNotDisplayed() {
+        //manual
+    }
+
+    @When("no search has been performed previously")
+    public void noSearchHasBeenPerformedPreviously() {
+        //manual
+    }
+
+    @Then("the hinted search text is removed")
+    public void theHintedSearchTextIsRemoved() {
+        //manual
+    }
+
+    @And("the search field displays a Clear trailing icon button inside the right side of the field")
+    public void theSearchFieldDisplaysAClearTrailingIconButtonInsideTheRightSideOfTheField() {
+        //manual
+    }
+
+    @When("the user types a text")
+    public void theUserTypesAText() {
+        //manual
+    }
+
+    @Then("the search field returns the result which contains this text")
+    public void theSearchFieldReturnsTheResultWhichContainsThisText() {
+        //manual
+    }
+
+    @And("respects the applied filtering and sorting criteria")
+    public void respectsTheAppliedFilteringAndSortingCriteria() {
+        //manual
+    }
+
+    @Given("the user previously searched for a text")
+    public void theUserPreviouslySearchedForAText() {
+        //manual
+    }
+
+    @And("the user edits the text")
+    public void theUserEditsTheText() {
+        //manual
+    }
+
+    @Then("the search field contains the edited text")
+    public void theSearchFieldContainsTheEditedText() {
+        //manual
+    }
+
+    @And("returns the new results")
+    public void returnsTheNewResults() {
+        //manual
+    }
+
+    @And("the user taps on the Clear icon button")
+    public void theUserTapsOnTheClearIconButton() {
+        //manual
+    }
+
+    @Then("any existing text in the search field is cleared")
+    public void anyExistingTextInTheSearchFieldIsCleared() {
+        //manual
+    }
+
+    @And("the EUDI Wallet resets any previously applied search")
+    public void theEUDIWalletResetsAnyPreviouslyAppliedSearch() {
+        //manual
+    }
+
+    @And("the screen lists all transactions that respects the filtering and sorting already in force")
+    public void theScreenListsAllTransactionsThatRespectsTheFilteringAndSortingAlreadyInForce() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet applies the search text to the attributes of {}:")
+    public void theEUDIWalletAppliesTheSearchTextToTheAttributesOf(String arg0) {
+        //manual
+    }
+
+    @And("the transactions matching the search text are displayed")
+    public void theTransactionsMatchingTheSearchTextAreDisplayed() {
+        //manual
+    }
+
+    @And("if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section")
+    public void ifNoMatchingTransactionsAreFoundThenTheEUDIWalletDisplaysAnInformativeMessageInTheListSection() {
         //manual
     }
 }
