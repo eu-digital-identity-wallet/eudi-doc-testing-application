@@ -20,6 +20,7 @@ public class GeneralStepDefs{
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
         boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
+        boolean ignored = scenario.getSourceTagNames().contains("@ignore");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android) {
@@ -99,6 +100,9 @@ public class GeneralStepDefs{
             test.mobile().issuer().clickAuthorize();
             test.mobile().wallet().clickClose();
             test.mobile().wallet().clickHome();
+        }
+        if (ignored) {
+            test.mobile().wallet().skippedTest();
         }
     }
 
@@ -1144,6 +1148,11 @@ public class GeneralStepDefs{
     @Then("the user should see the Documents dashboard")
     public void theUserShouldSeeTheDocumentsDashboard() {
         test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @Given("the test is being ignored")
+    public void theTestIsBeingIgnored() {
+        test.mobile().wallet().skippedTest();
     }
 }
 

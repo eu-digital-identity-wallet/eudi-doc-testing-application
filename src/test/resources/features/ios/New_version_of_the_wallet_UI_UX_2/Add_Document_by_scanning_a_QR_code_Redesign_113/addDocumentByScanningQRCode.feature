@@ -1,4 +1,4 @@
-@IOS @manual @US_ADBSQRC @Q4_2024
+@IOS @US_ADBSQRC @Q4_2024
 Feature: Issuing and storing attestations in the EUDI Wallet via QR code
 
   As a EUDI Wallet User
@@ -6,6 +6,10 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
   So that I can prove to the Relying Parties that I own them when I am requested using my EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/113
+
+  @ignore
+    Scenario: Test test test test
+    Given the test is being ignored
 
   @US_ADBSQRC_TC_01 @manual:Passed
   Scenario: Successful navigation to the "Home" screen

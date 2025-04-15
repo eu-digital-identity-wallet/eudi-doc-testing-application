@@ -13,7 +13,7 @@ import java.util.Map;
 
         public static final String FEATURE_FILES_DIR = "src/test/resources/features";
         public static final String BACKUP_DIR = "src/test/resources/backupreadme";
-        public static final String SHELL_SCRIPT = "./local-execution.cmd";
+        public static final String SHELL_SCRIPT = "./local-execution-mac.sh";
         public static List<Path> readmePaths = new ArrayList<>();
         public static Map<Path, Path> backupPaths = new HashMap<>();
 
