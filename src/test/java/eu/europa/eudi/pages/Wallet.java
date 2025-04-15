@@ -9,6 +9,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -733,5 +734,11 @@ public class Wallet {
                 i++;
             }
         }
+    }
+
+    public void skippedTest() {
+        boolean shouldRunTest = false;
+        Assume.assumeTrue("Test is skipped because the required condition is not met", shouldRunTest);
+
     }
 }
