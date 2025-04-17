@@ -5978,31 +5978,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user views the signed document in the EUDI Wallet")
-    public void theUserViewsTheSignedDocumentInTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the user is prompted to return the signed document to the Relying Party")
-    public void theUserIsPromptedToReturnTheSignedDocumentToTheRelyingParty() {
-        //manual
-    }
-
-    @When("the user confirms the sharing of the document")
-    public void theUserConfirmsTheSharingOfTheDocument() {
-        //manual
-    }
-
-    @Then("the EUDI Wallet shares the signed document with the Relying Party")
-    public void theEUDIWalletSharesTheSignedDocumentWithTheRelyingParty() {
-        //manual
-    }
-
-    @Then("the user views a confirmation message that the signed document has been successfully shared")
-    public void theUserViewsAConfirmationMessageThatTheSignedDocumentHasBeenSuccessfullyShared() {
-        //manual
-    }
-
     @And("the user has received a presentation request from a Relying Party in either a cross or same device flow")
     public void theUserHasReceivedAPresentationRequestFromARelyingPartyInEitherACrossOrSameDeviceFlow() {
         //manual
@@ -6341,6 +6316,36 @@ public class ManuallyStepDefs {
 
     @And("if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section")
     public void ifNoMatchingTransactionsAreFoundThenTheEUDIWalletDisplaysAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @Given("the user has completed the signing process")
+    public void theUserHasCompletedTheSigningProcess() {
+        //manual
+    }
+
+    @Then("the user sees the success screen and the data they shared")
+    public void theUserSeesTheSuccessScreenAndTheDataTheyShared() {
+        //manual
+    }
+
+    @When("a success screen is displayed")
+    public void aSuccessScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user clicks on the Close button")
+    public void theUserClicksOnTheCloseButton() {
+        //manual
+    }
+
+    @Then("a success screen is displayed along with the signed document in the EUDI Wallet")
+    public void aSuccessScreenIsDisplayedAlongWithTheSignedDocumentInTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the signed document is passed to the Relying Party")
+    public void theSignedDocumentIsPassedToTheRelyingParty() {
         //manual
     }
 }
