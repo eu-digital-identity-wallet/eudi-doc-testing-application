@@ -10,13 +10,13 @@ Feature: Retrieve and View Document in EUDI Wallet
     And internet is available for connectivity and data transfer
     And the Wallet and the Relying Party User Interface reside on different devices
 
-  @US_RDTBS_TC_01
+  @US_RDTBS_TC_01 @manual:Passed
   Scenario: Retrieve document from Relying Party
     Given the user accesses the Relying Party page where the document to be signed is available
     When the user selects the option to retrieve the document in their EUDI Wallet
     Then the Relying Party renders a QR-code requesting the user to scan the QR-code to retrieve the document
 
-  @US_RDTBS_TC_02
+  @US_RDTBS_TC_02 @manual:Passed
   Scenario: View document to EUDI Wallet
     Given the user opens the EUDI Wallet
     When the user selects the option to Sign a Document through Scan QR
