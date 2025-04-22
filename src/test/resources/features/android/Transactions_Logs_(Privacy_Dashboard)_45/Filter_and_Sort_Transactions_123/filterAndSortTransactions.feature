@@ -22,7 +22,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     And the "Sort by" and "Filter by" sections are displayed in collapsed view
     And each section under the title displays the applied filter and sort options respectively
 
-  @US_FASD_TC_03
+  @US_FASD_TC_03 @manual:Passed
   Scenario: Sort transactions
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Sort by" section
@@ -30,9 +30,9 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the section is expanded
     Then the user can select the sort order between Ascending and Descending
     And the user can select the sorting attribute (transaction date) using a radio button
-    And the transactions are grouped by period as per user story #124
+    And the transactions are grouped by period
 
-  @US_FASD_TC_04
+  @US_FASD_TC_04 @manual:Passed
   Scenario: Filter transactions by date period
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Transaction Date Period" section

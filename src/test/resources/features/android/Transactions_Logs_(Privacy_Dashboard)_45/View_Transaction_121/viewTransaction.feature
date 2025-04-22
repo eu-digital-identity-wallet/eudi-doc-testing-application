@@ -13,7 +13,7 @@ Feature: View Transaction in EUDI Wallet
     And the user navigates to the Transactions screen
     Then the Transactions screen is displayed
 
-  @US_VT_TC_02 @manual:Ignored
+  @US_VT_TC_02 @ignore
   Scenario: User views attestation presentation transaction details
     Given the user is on the Transactions screen
     When the user selects an attestation presentation transaction entry from the list
@@ -26,13 +26,13 @@ Feature: View Transaction in EUDI Wallet
       | Visual Indication  | A visual indication e.g. signature icon                                |
       | Transaction Data   | The details and Location for the signed document                       |
 
-  @US_VT_TC_03 @manual:Ignored
+  @US_VT_TC_03 @ignore
   Scenario: User requests to delete transaction data
     Given the user is viewing the details of a transaction entry
     When the user requests to delete the transaction data
     Then the transaction data is deleted from the EUDI Wallet
 
-  @US_VT_TC_04 @manual:Ignored
+  @US_VT_TC_04 @ignore
   Scenario: User reports suspicious operations
     Given the user is viewing the details of a transaction entry
     When the user reports a suspicious operation related to the presentation
