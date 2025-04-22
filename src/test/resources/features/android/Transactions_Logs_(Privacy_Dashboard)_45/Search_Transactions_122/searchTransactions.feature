@@ -67,7 +67,7 @@ Feature: Transaction Search in EUDI Wallet
       | Relying party name      |
       | Attestation name        |
       | Attestation issuer name |
-      | Document name|
+      |                         |
     And the transactions matching the search text are displayed
     And if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section
 
