@@ -6348,6 +6348,260 @@ public class ManuallyStepDefs {
     public void theSignedDocumentIsPassedToTheRelyingParty() {
         //manual
     }
+
+    @Given("the user enters the Transactions screen")
+    public void theUserEntersTheTransactionsScreen() {
+        //manual
+    }
+
+    @Then("no filter is applied \\(default option)")
+    public void noFilterIsAppliedDefaultOption() {
+        //manual
+    }
+
+    @And("the transactions are sorted by transaction date descending \\(default sort option)")
+    public void theTransactionsAreSortedByTransactionDateDescendingDefaultSortOption() {
+        //manual
+    }
+    
+    @Then("the filter and sort bottom sheet options slide up from the bottom screen")
+    public void theFilterAndSortBottomSheetOptionsSlideUpFromTheBottomScreen() {
+        //manual
+    }
+
+    @And("the \"Sort by\" and \"Filter by\" sections are displayed in collapsed view")
+    public void theAndSectionsAreDisplayedInCollapsedView() {
+        //manual
+    }
+
+    @And("each section under the title displays the applied filter and sort options respectively")
+    public void eachSectionUnderTheTitleDisplaysTheAppliedFilterAndSortOptionsRespectively() {
+        //manual
+    }
+
+    @Given("the user is on the filter and sort bottom sheet")
+    public void theUserIsOnTheFilterAndSortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the \"Sort by\" section")
+    public void theUserTapsTheSection() {
+        //manual
+    }
+
+    @Then("the accordion section switches between collapse and expand view")
+    public void theAccordionSectionSwitchesBetweenCollapseAndExpandView() {
+        //manual
+    }
+
+    @When("the section is expanded")
+    public void theSectionIsExpanded() {
+        //manual
+    }
+
+    @And("the filter\\/sort button has no visual indication that a user filter\\/sort option is applied")
+    public void theFilterSortButtonHasNoVisualIndicationThatAUserFilterSortOptionIsApplied() {
+    }
+
+    @When("the user taps the filter\\/sort button")
+    public void theUserTapsTheFilterSortButton() {
+    }
+
+    @Then("the user can select the sort order between Ascending and Descending")
+    public void theUserCanSelectTheSortOrderBetweenAscendingAndDescending() {
+        //manual
+    }
+
+    @And("the user can select the sorting attribute \\(transaction date) using a radio button")
+    public void theUserCanSelectTheSortingAttributeTransactionDateUsingARadioButton() {
+        //manual
+    }
+
+    @And("the transactions are grouped by period as per user story 124")
+    public void theTransactionsAreGroupedByPeriodAsPerUserStory(){
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Transaction Type\" section")
+    public void theUserTapsTheFilterByTransactionTypeSection() {
+        //manual
+    }
+
+    @Then("the user can select the date range \\(date from and date to) using a calendar")
+    public void theUserCanSelectTheDateRangeDateFromAndDateToUsingACalendar() {
+        //manual
+    }
+
+    @Then("the user can select to filter the transactions by operation status \\(Completed, Failed) using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByOperationStatusCompletedFailedUsingCheckboxes() {
+     //manual
+    }
+
+    @Then("the user can select to filter the transactions by relying party name using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByRelyingPartyNameUsingCheckboxes() {
+        //manual
+    }
+
+    @And("the list of relying parties includes unique relying parties recorded in the presentation transactions in the EUDI Wallet")
+    public void theListOfRelyingPartiesIncludesUniqueRelyingPartiesRecordedInThePresentationTransactionsInTheEUDIWallet() {
+     //manual
+    }
+
+    @Then("the user can select to filter the transactions by transaction types \\(Presentation, Issuance, Signing) using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByTransactionTypesPresentationIssuanceSigningUsingCheckboxes() {
+        //manual
+    }
+
+    @When("the user taps the \"Reset all\" button")
+    public void theUserTapsTheButton() {
+        //manual
+    }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date ascending)")
+    public void theSortAndFiltersAreResetToTheDefaultValuesNoFilterAndSortByTransactionDateAscending() {
+        //manual
+    }
+
+    @Then("the bottom sheet slides down and disappears")
+    public void theBottomSheetSlidesDownAndDisappears() {
+        //manual
+    }
+
+    @And("the EUDI Wallet applies the filter and sorting options to the transactions list")
+    public void theEUDIWalletAppliesTheFilterAndSortingOptionsToTheTransactionsList() {
+        //manual
+    }
+
+    @Given("the user applies a filter and sort option")
+    public void theUserAppliesAFilterAndSortOption() {
+        //manual
+    }
+
+    @When("no matching transactions are found")
+    public void noMatchingTransactionsAreFound() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet displays an informative message in the list section")
+    public void theEUDIWalletDisplaysAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @And("if no results are found within a period group, then the period group is not displayed")
+    public void ifNoResultsAreFoundWithinAPeriodGroupThenThePeriodGroupIsNotDisplayed() {
+        //manual
+    }
+
+    @And("the transactions are grouped by period as per user story #124")
+    public void theTransactionsAreGroupedByPeriodAsPerUserStory124() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Transaction Date Period\" section")
+    public void theUserTapsTheFilterByTransactionDatePeriodSection() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Status\" section")
+    public void theUserTapsTheFilterByStatusSection() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Relying Party\" section")
+    public void theUserTapsTheFilterByRelyingPartySection() {
+        //manual
+    }
+
+    @When("the user taps the filter\\/sort button")
+    public void theUserTapsTheFilterAndSortButton() {
+        //manual
+    }
+
+    @When("the user taps the \"Apply\" button")
+    public void theUserTapsTheButtonApply() {
+        //manual
+    }
+
+
+    @And("the filter and sort button has no visual indication that a user filter and sort option is applied")
+    public void theFilterAndSortButtonHasNoVisualIndicationThatAUserFilterAndSortOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter and sort button")
+    public void theUserTapsTheFilterAndTheSortButton() {
+        //manual
+    }
+
+    @And("the filter and sort button has visual indication that user filter\\(s) and or sorting options have been applied \\(only when different than the default options)")
+    public void theFilterAndSortButtonHasVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenAppliedOnlyWhenDifferentThanTheDefaultOptions() {
+        //manual
+    }
+
+    @Given("the user is on the EUDI Wallet main screen")
+    public void theUserIsOnTheEUDIWalletMainScreen() {
+        //manual
+    }
+
+    @When("the user selects the Transactions option in the bottom navigation bar")
+    public void theUserSelectsTheTransactionsOptionInTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the Transactions button is highlighted")
+    public void theTransactionsButtonIsHighlighted() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes a Search bar")
+    public void theTransactionsScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes an Export button")
+    public void theTransactionsScreenIncludesAnExportButton() {
+        //manaul
+    }
+
+    @Then("the Transactions screen includes a Filter and Sort button")
+    public void theTransactionsScreenIncludesAFilterAndSortButton() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows:")
+    public void theTransactionsAreListedGroupedByPeriodAsFollows() {
+        //manaul
+    }
+
+    @And("the transactions are sorted in chronological order within each group")
+    public void theTransactionsAreSortedInChronologicalOrderWithinEachGroup() {
+        //manaul
+    }
+
+    @When("the user views a transaction entry")
+    public void theUserViewsATransactionEntry() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including:")
+    public void aCardIsDisplayedForEachTransactionEntryIncluding() {
+        //manaul
+    }
+
+    @When("the user selects a transaction entry")
+    public void theUserSelectsATransactionEntry() {
+        //manaul
+    }
+
+    @Then("the details of the transaction entry are displayed")
+    public void theDetailsOfTheTransactionEntryAreDisplayed() {
+        //manual
+    }
+
+    @And("the user is able to view the transaction details as per user story #121")
+    public void theUserIsAbleToViewTheTransactionDetailsAsPerUserStory() {
+        //manual
+    }
 }
 
 

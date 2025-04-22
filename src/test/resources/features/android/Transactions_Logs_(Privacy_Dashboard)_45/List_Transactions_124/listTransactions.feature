@@ -27,7 +27,7 @@ Feature: List Transactions in EUDI Wallet
   @US_LT_TC_04
   Scenario: Transactions screen includes a Filter/Sort button
     Given the user is on the Transactions screen
-    Then the Transactions screen includes a Filter/Sort button
+    Then the Transactions screen includes a Filter and Sort button
 
   @US_LT_TC_05
   Scenario: Transactions screen lists transactions grouped by period

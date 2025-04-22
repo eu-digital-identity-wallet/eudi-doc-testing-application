@@ -15,7 +15,7 @@ public class GeneralStepDefs{
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
-
+      
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
@@ -1154,5 +1154,6 @@ public class GeneralStepDefs{
     public void theTestIsBeingIgnored() {
         test.mobile().wallet().skippedTest();
     }
+
 }
 
