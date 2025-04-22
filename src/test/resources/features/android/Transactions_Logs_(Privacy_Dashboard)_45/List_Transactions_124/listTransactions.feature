@@ -39,7 +39,7 @@ Feature: List Transactions in EUDI Wallet
       | Month         | Transactions grouped by month (e.g., August 2024)|
     And the transactions are sorted in chronological order within each group
 
-  @US_LT_TC_06 @manual:Passed
+  @US_LT_TC_06 @manual:Failed
   Scenario: Transaction entry details
     Given the user is on the Transactions screen
     When the user views a transaction entry
@@ -52,7 +52,6 @@ Feature: List Transactions in EUDI Wallet
       |               | - Time (e.g., 11:07 AM) for transactions within the day               |
       |               | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
       |               |                                                                       |
-
   @US_LT_TC_07 @manual:Passed
   Scenario: User views transaction entry details
     Given the user is on the Transactions screen

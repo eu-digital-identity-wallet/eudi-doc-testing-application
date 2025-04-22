@@ -7,7 +7,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is authenticated in the EUDI Wallet
 
-  @US_FASD_TC_01
+  @US_FASD_TC_01 @ignore
   Scenario: Initial state of filter/sort option
     Given the user enters the Transactions screen
     Then no filter is applied (default option)
