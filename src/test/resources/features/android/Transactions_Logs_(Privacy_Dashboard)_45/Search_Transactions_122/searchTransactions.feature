@@ -1,4 +1,4 @@
-@ANDROID @manual @US_ST @Q5_2025
+@ANDROID @manual @US_ST @Q1_2025
 Feature: Transaction Search in EUDI Wallet
   As a EUDI Wallet User
   I want to search for transactions in the EUDI Wallet
