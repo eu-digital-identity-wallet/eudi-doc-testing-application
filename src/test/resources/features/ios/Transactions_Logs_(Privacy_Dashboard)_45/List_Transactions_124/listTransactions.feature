@@ -44,19 +44,19 @@ Feature: List Transactions in EUDI Wallet
     Given the user is on the Transactions screen
     When the user views a transaction entry
     Then a card is displayed for each transaction entry including:
-      | Detail                          | Description                                                               |
-      | Status                          | The presentation or hashing operations status (Completed or Failed)       |
-      | Relying Party/Document Name     | The relying party name or document name                                   |
-      | Datetime                        | The datetime of the transaction as follows:                               |
-      |                                 | - X minutes ago for transactions in the last 60 minutes                   |
-      |                                 | - Time (e.g., 11:07 AM) for transactions within the day                   |
-      |                                 | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today      |
-      | Visual Indication               | A visual indication (e.g., signature icon) for document hash or PID presentation |
+      | Detail        | Description                                                           |
+      | Status        | The presentation or hashing operations status (Completed or Failed)   |
+      | Relying Party | The relying party name                                                |
+      | Datetime      | The datetime of the transaction as follows:                           |
+      |               | - X minutes ago for transactions in the last 60 minutes               |
+      |               | - Time (e.g., 11:07 AM) for transactions within the day               |
+      |               | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
+      |               |                                                                       |
 
   @US_LT_TC_07
   Scenario: User views transaction entry details
     Given the user is on the Transactions screen
     When the user selects a transaction entry
     Then the details of the transaction entry are displayed
-    And the user is able to view the transaction details as per user story #121
+    And the user is able to view the transaction details
 

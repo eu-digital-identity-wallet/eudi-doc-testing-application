@@ -6,14 +6,14 @@ Feature: Transaction Search in EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/122
 
-  @US_ST_TC_01
+  @US_ST_TC_01 @manual:Passed
   Scenario: Initial state of the Transactions screen
     Given the user is on the Home screen
     When the user clicks on the Transactions button
     Then the Transactions screen is displayed
     And all transactions are displayed (no search or filters are applied)
 
-  @US_ST_TC_02
+  @US_ST_TC_02 @manual:Passed
   Scenario Outline: Transaction screen display features
     Given the user is on the Transactions screen
     When the user observes the transactions screen
@@ -33,14 +33,14 @@ Feature: Transaction Search in EUDI Wallet
     Then the hinted search text is removed
     And the search field displays a Clear trailing icon button inside the right side of the field
 
-  @US_ST_TC_04
+  @US_ST_TC_04 @manual:Passed
   Scenario: User types text in the search field
     Given the user taps on the search field
     When the user types a text
     Then the search field returns the result which contains this text
     And respects the applied filtering and sorting criteria
 
-  @US_ST_TC_05
+  @US_ST_TC_05 @manual:Passed
   Scenario: User edits previous search text
     Given the user previously searched for a text
     When the user taps on the search field
@@ -48,7 +48,7 @@ Feature: Transaction Search in EUDI Wallet
     Then the search field contains the edited text
     And returns the new results
 
-  @US_ST_TC_06
+  @US_ST_TC_06 @manual:Passed
   Scenario: User taps on the "Clear" trailing icon button
     Given the user previously searched for a text
     When the user taps on the search field
@@ -57,7 +57,7 @@ Feature: Transaction Search in EUDI Wallet
     And the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_07
+  @US_ST_TC_07 @manual:Passed
   Scenario Outline: User taps on the "Search" button with search text
     Given the user taps on the search field
     When the user types a text

@@ -7,14 +7,14 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is authenticated in the EUDI Wallet
 
-  @US_FASD_TC_01
+  @US_FASD_TC_01 @manual:Passed
   Scenario: Initial state of filter/sort option
     Given the user enters the Transactions screen
     Then no filter is applied (default option)
     And the transactions are sorted by transaction date descending (default sort option)
     And the filter and sort button has no visual indication that a user filter and sort option is applied
 
-  @US_FASD_TC_02
+  @US_FASD_TC_02 @manual:Passed
   Scenario: Display filter and sort bottom sheet
     Given the user is on the Transactions screen
     When the user taps the filter and sort button
@@ -40,7 +40,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the section is expanded
     Then the user can select the date range (date from and date to) using a calendar
 
-  @US_FASD_TC_05
+  @US_FASD_TC_05 @manual:Passed
   Scenario: Filter transactions by status
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Status" section
@@ -48,7 +48,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the section is expanded
     Then the user can select to filter the transactions by operation status (Completed, Failed) using checkboxes
 
-  @US_FASD_TC_06
+  @US_FASD_TC_06 @manual:Passed
   Scenario: Filter transactions by relying party
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Relying Party" section
@@ -57,7 +57,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Then the user can select to filter the transactions by relying party name using checkboxes
     And the list of relying parties includes unique relying parties recorded in the presentation transactions in the EUDI Wallet
 
-  @US_FASD_TC_07
+  @US_FASD_TC_07 @manual:Passed
   Scenario: Filter transactions by transaction type
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Transaction Type" section
@@ -65,14 +65,14 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the section is expanded
     Then the user can select to filter the transactions by transaction types (Presentation, Issuance, Signing) using checkboxes
 
-  @US_FASD_TC_08
+  @US_FASD_TC_08 @manual:Passed
   Scenario: Reset filter and sort options
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Reset all" button
     Then the sort and filters are reset to the default values (no filter and sort by transaction date ascending)
     And the filter and sort button has no visual indication that a user filter and sort option is applied
 
-  @US_FASD_TC_09
+  @US_FASD_TC_09 @manual:Passed
   Scenario: Apply filter and sort options
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Apply" button
@@ -80,7 +80,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     And the EUDI Wallet applies the filter and sorting options to the transactions list
     And the filter and sort button has visual indication that user filter(s) and or sorting options have been applied (only when different than the default options)
 
-  @US_FASD_TC_10
+  @US_FASD_TC_10 @manual:Passed
   Scenario: No matching transactions found
     Given the user applies a filter and sort option
     When no matching transactions are found
