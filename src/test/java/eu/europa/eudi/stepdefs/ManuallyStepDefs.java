@@ -6602,6 +6602,11 @@ public class ManuallyStepDefs {
     public void theUserIsAbleToViewTheTransactionDetailsAsPerUserStory() {
         //manual
     }
+
+    @Then("the suspicious operation is reported to DPAs as per user story #35|")
+    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
+        //manual
+    }
 }
 
 
