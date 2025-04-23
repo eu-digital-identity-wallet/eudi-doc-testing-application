@@ -18,13 +18,13 @@ Feature: Transaction Search in EUDI Wallet
     Given the user is on the Transactions screen
     When the user observes the transactions screen
     And the following are displayed <options>:
+    And if there are no transactions for a period group, then this group is not displayed
     Examples:
       | options                                                              |
       | the transactions are grouped by period                               |
       | the search field is empty and enabled                                |
       | the search field contains a search icon on the left side             |
       | the search field displays a hinted search text "Search Transactions" |
-    And if there are no transactions for a period group, then this group is not displayed
 
   @US_ST_TC_03
   Scenario: User taps on the search field with no previous search
