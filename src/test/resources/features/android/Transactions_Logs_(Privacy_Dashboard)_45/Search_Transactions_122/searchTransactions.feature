@@ -69,6 +69,5 @@ Feature: Transaction Search in EUDI Wallet
       | Relying party name      |
       | Attestation name        |
       | Attestation issuer name |
-      |                         |
 
 
