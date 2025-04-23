@@ -6403,10 +6403,6 @@ public class ManuallyStepDefs {
     public void theFilterSortButtonHasNoVisualIndicationThatAUserFilterSortOptionIsApplied() {
     }
 
-    @When("the user taps the filter\\/sort button")
-    public void theUserTapsTheFilterSortButton() {
-    }
-
     @Then("the user can select the sort order between Ascending and Descending")
     public void theUserCanSelectTheSortOrderBetweenAscendingAndDescending() {
         //manual
