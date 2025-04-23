@@ -41,7 +41,7 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@Q1_2025"
+          mvn clean verify -U -Dcucumber.filter.tags="@Q1_2025"
       - name: Produce report
         run: mvn serenity:aggregate
 
