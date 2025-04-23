@@ -38,6 +38,9 @@ jobs:
           mvn clean
           rm -rf target/site
 
+      - name: Clean Maven cache
+        run: mvn dependency:purge-local-repository -DreResolve=false
+
       - name: Run Ui Tests
         run: |
           #!/bin/bash
