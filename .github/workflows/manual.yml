@@ -42,11 +42,9 @@ jobs:
         run: |
           #!/bin/bash
           mvn clean verify -Dcucumber.filter.tags="@Q1_2025" "$@"
-          rm -rf target/site
-          mvn serenity:aggregate -Dtags=Q1_2025
 
       - name: Produce report
-        run: mvn serenity:aggregate
+        run:  mvn serenity:aggregate -Dtags=Q1_2025
 
       - name: Upload report
         uses: actions/upload-artifact@v4
