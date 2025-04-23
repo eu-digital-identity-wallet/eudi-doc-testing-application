@@ -62,12 +62,13 @@ Feature: Transaction Search in EUDI Wallet
     Given the user taps on the search field
     When the user types a text
     Then the EUDI Wallet applies the search text to the attributes of <options>:
+    And the transactions matching the search text are displayed
+    And if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section
     Examples:
       | options                 |
       | Relying party name      |
       | Attestation name        |
       | Attestation issuer name |
       |                         |
-    And the transactions matching the search text are displayed
-    And if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section
+
 
