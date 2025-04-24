@@ -6708,6 +6708,21 @@ public class ManuallyStepDefs {
         //manual
     }
 
+    @Then("a card is displayed for each transaction entry including {double} and {double} Datetime \\(e.g., {int} Feb {int} {int}:{int} AM) for transactions before today")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_datetime_e_g_feb_am_for_transactions_before_today(Double double1, Double double2, Integer int1, Integer int2, Integer int3, Integer int4) {
+        // manual
+    }
+
+    @Then("a card is displayed for each transaction entry including {double} and {double} Time \\(e.g., {int}:{int} AM) for transactions within the day")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day(Double double1, Double double2, Integer int1, Integer int2) {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including {double} and {double} X minutes ago for transactions in the last {int} minutes")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes(Double double1, Double double2, Integer int1) {
+        //manual
+    }
+
 }
 
 
