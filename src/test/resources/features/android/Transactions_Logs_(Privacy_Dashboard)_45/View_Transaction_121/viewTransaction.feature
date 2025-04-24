@@ -14,10 +14,11 @@ Feature: View Transaction in EUDI Wallet
     Then the Transactions screen is displayed
 
   @US_VT_TC_02 @ignore
-  Scenario: User views attestation presentation transaction details
+  Scenario Outline: User views attestation presentation transaction details
     Given the user is on the Transactions screen
     When the user selects an attestation presentation transaction entry from the list
-    Then the EUDI Wallet presents the following details:
+    Then the EUDI Wallet presents the following details by <Detail> and <Description>
+    Examples:
       | Detail             | Description                                                            |
       | Relying Party name | The name of the Relying Party with a verification badge if trusted     |
       | DateTime           | The datetime the presentation operation was performed                  |
