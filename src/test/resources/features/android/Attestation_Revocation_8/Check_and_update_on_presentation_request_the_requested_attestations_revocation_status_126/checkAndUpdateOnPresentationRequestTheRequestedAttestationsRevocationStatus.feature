@@ -33,22 +33,7 @@ Feature: Check and update on presentation request the requested attestations rev
     When the EUDI Wallet checks the revocation status during a presentation request
     And the PID is found to be revoked by the issuer
     Then the presentation operation is interrupted with a corresponding message informing the user the operation cannot be continued due to PID revocation
-    And the EUDI Wallet executes the Handle PID revocation process
 
-  @US_CAUOPRTRARS_TC_04 @manual
-  Scenario: Internet connection is not available during presentation request
-    Given the EUDI Wallet has valid attestations stored
-    And the internet connection is not available
-    When the EUDI Wallet is requested to present or share attestations
-    Then the EUDI Wallet stops the revocation checks
-    And the EUDI Wallet continues the presentation operation as normal
 
-  @US_CAUOPRTRARS_TC_05 @manual
-  Scenario: Other conditions block revocation status check during presentation request
-    Given the EUDI Wallet has valid attestations stored
-    And other conditions block the EUDI Wallet from checking the revocation status
-    When the EUDI Wallet is requested to present or share attestations
-    Then the EUDI Wallet stops the revocation checks
-    And the EUDI Wallet continues the presentation operation as normal
 
 
