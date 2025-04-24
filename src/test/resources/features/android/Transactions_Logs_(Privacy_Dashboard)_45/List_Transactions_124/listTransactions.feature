@@ -50,9 +50,9 @@ Feature: List Transactions in EUDI Wallet
       | Status        | The presentation or hashing operations status (Completed or Failed)   |
       | Relying Party | The relying party name                                                |
       | Datetime      | The datetime of the transaction as follows:                           |
-      |               | - X minutes ago for transactions in the last 60 minutes               |
-      |               | - Time (e.g., 11:07 AM) for transactions within the day               |
-      |               | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
+      | -             | - X minutes ago for transactions in the last 60 minutes               |
+      | -             | - Time (e.g., 11:07 AM) for transactions within the day               |
+      | -             | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
 
   @US_LT_TC_07 @manual:Passed
   Scenario: User views transaction entry details
