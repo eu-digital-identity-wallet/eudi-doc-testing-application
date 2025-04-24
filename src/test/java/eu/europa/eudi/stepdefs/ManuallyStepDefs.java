@@ -6603,6 +6603,111 @@ public class ManuallyStepDefs {
     public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
         //manual
     }
+
+    @Then("the wallet displays the presentation request which includes Name and The name of the requesting Relying Party")
+    public void the_wallet_displays_the_presentation_request_which_includes_name_and_the_name_of_the_requesting_relying_party() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Attestations and The attestation\\(s) requested by the Relying Party")
+    public void the_wallet_displays_the_presentation_request_which_includes_attestations_and_the_attestation_s_requested_by_the_relying_party() {
+      //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Expand Details Option and The option to expand on the details for each requested attestation")
+    public void the_wallet_displays_the_presentation_request_which_includes_expand_details_option_and_the_option_to_expand_on_the_details_for_each_requested_attestation() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Unselect Option and The option to unselect specific data elements from each requested attestation")
+    public void the_wallet_displays_the_presentation_request_which_includes_unselect_option_and_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
+       //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Data to be signed and Data to be signed\\/signature details \\(where {string}={string})")
+    public void the_wallet_displays_the_presentation_request_which_includes_data_to_be_signed_and_data_to_be_signed_signature_details_where(String string, String string2) {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Details Field and A {string} field \\(mapped to label; free text defined by the requestor) \\(mandatory)")
+    public void the_wallet_displays_the_presentation_request_which_includes_details_field_and_a_field_mapped_to_label_free_text_defined_by_the_requestor_mandatory(String string) {
+       //manual
+    }
+    @Then("the wallet displays the presentation request which includes Location Field and A {string} field \\(mapped to documentLocation_uri; including a URI where the file to be signed is located) \\(optional)")
+    public void the_wallet_displays_the_presentation_request_which_includes_location_field_and_a_field_mapped_to_document_location_uri_including_a_uri_where_the_file_to_be_signed_is_located_optional(String string) {
+        //manual
+    }
+
+    @Then("the transactions are grouped by period")
+    public void the_transactions_are_grouped_by_period() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes a Filter\\/Sort button")
+    public void the_transactions_screen_includes_a_filter_sort_button() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by Today and Transactions that occurred today")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_today_and_transactions_that_occurred_today() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by This Week and Transactions that occurred this week")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_this_week_and_transactions_that_occurred_this_week() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by Month and Transactions grouped by month \\(e.g., August {int})")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_month_and_transactions_grouped_by_month_e_g_august(Integer int1) {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Status and The presentation or hashing operations status \\(Completed or Failed)")
+    public void a_card_is_displayed_for_each_transaction_entry_including_status_and_the_presentation_or_hashing_operations_status_completed_or_failed() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Relying Party and The relying party name")
+    public void a_card_is_displayed_for_each_transaction_entry_including_relying_party_and_the_relying_party_name() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and The datetime of the transaction as follows:")
+    public void a_card_is_displayed_for_each_transaction_entry_including_datetime_and_the_datetime_of_the_transaction_as_follows() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including  and {double} X minutes ago for transactions in the last {int} minutes")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes(Double double1, Integer int1) {
+        //manaul
+    }
+
+    @Then("a card is displayed for each transaction entry including  and {double} Time \\(e.g., {int}:{int} AM) for transactions within the day")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day(Double double1, Integer int1, Integer int2) {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including  and {double} Datetime \\(e.g., {int} Feb {int} {int}:{int} AM) for transactions before today")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_datetime_e_g_feb_am_for_transactions_before_today(Double double1, Integer int1, Integer int2, Integer int3, Integer int4) {
+        //manual
+    }
+
+    @Then("the user is able to view the transaction details")
+    public void the_user_is_able_to_view_the_transaction_details() {
+        //manual
+    }
+
+    @When("the user presses the back button on top of the screen")
+    public void the_user_presses_the_back_button_on_top_of_the_screen() {
+        //manual
+    }
+
+    @Then("the user is returned to the Transactions page")
+    public void the_user_is_returned_to_the_transactions_page() {
+        //manual
+    }
+
 }
 
 
