@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.AssumptionViolatedException;
 
 public class GeneralStepDefs{
 
@@ -102,7 +103,9 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickHome();
         }
         if (ignored) {
+            // Logic to skip the test
             test.mobile().wallet().skippedTest();
+            throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
         }
     }
 
