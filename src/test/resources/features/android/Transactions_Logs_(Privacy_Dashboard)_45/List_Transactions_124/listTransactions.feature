@@ -19,7 +19,7 @@ Feature: List Transactions in EUDI Wallet
     Given the user is on the Transactions screen
     Then the Transactions screen includes a Search bar
 
-  @US_LT_TC_03 @manual:Ignored
+  @US_LT_TC_03 @Ignored
   Scenario: Transactions screen includes an Export button
     Given the user is on the Transactions screen
     Then the Transactions screen includes an Export button
