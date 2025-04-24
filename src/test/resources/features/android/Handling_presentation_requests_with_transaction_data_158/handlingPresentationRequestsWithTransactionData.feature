@@ -9,18 +9,19 @@ Feature: View and Authorize Transaction with EUDI Wallet
     And the user has authenticated to the Remote Signing Service
 
   @US_HPRWTD_TC_01
-  Scenario: View presentation request from Relying Party
+  Scenario Outline: View presentation request from Relying Party
     Given the user views a presentation request from a Relying Party
-    Then the wallet displays the presentation request which includes:
-      | includes              |                                                                                                                        |
-      | field                 | details                                                                                                                |  |
-      | Name                  | The name of the requesting Relying Party                                                                               |  |
-      | Attestations          | The attestation(s) requested by the Relying Party                                                                      |  |
-      | Expand Details Option | The option to expand on the details for each requested attestation                                                     |  |
-      | Unselect Option       | The option to unselect specific data elements from each requested attestation                                          |  |
-      | Data to be signed     | Data to be signed/signature details (where 'type'='qes_authorization')                                                 |  |
-      | Details Field         | A 'Details' field (mapped to label; free text defined by the requestor) (mandatory)                                    |  |
-      | Location Field        | A 'Location' field (mapped to documentLocation_uri; including a URI where the file to be signed is located) (optional) |  |
+    Then the wallet displays the presentation request which includes <Field> and <Details>
+     Examples:
+
+       | Field                 | Details                                                                                                                |
+       | Name                  | The name of the requesting Relying Party                                                                               |
+       | Attestations          | The attestation(s) requested by the Relying Party                                                                      |
+       | Expand Details Option | The option to expand on the details for each requested attestation                                                     |
+       | Unselect Option       | The option to unselect specific data elements from each requested attestation                                          |
+       | Data to be signed     | Data to be signed/signature details (where 'type'='qes_authorization')                                                 |
+       | Details Field         | A 'Details' field (mapped to label; free text defined by the requestor) (mandatory)                                    |
+       | Location Field        | A 'Location' field (mapped to documentLocation_uri; including a URI where the file to be signed is located) (optional) |
 
   @US_HPRWTD_TC_02
   Scenario: User cancels data sharing process

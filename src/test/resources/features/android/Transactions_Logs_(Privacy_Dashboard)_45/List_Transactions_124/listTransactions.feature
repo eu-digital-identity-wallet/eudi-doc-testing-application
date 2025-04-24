@@ -30,20 +30,22 @@ Feature: List Transactions in EUDI Wallet
     Then the Transactions screen includes a Filter/Sort button
 
   @US_LT_TC_05 @manual:Passed
-  Scenario: Transactions screen lists transactions grouped by period
+  Scenario Outline: Transactions screen lists transactions grouped by period
     Given the user is on the Transactions screen
-    Then the transactions are listed grouped by period as follows:
+    Then the transactions are listed grouped by period as follows by <Group> and <Description>
+    And the transactions are sorted in chronological order within each group
+     Examples:
       | Group         | Description                                     |
       | Today         | Transactions that occurred today                |
       | This Week     | Transactions that occurred this week            |
       | Month         | Transactions grouped by month (e.g., August 2024)|
-    And the transactions are sorted in chronological order within each group
 
   @US_LT_TC_06 @manual:Failed
-  Scenario: Transaction entry details
+  Scenario Outline: Transaction entry details
     Given the user is on the Transactions screen
     When the user views a transaction entry
-    Then a card is displayed for each transaction entry including:
+    Then a card is displayed for each transaction entry including <Detail> and <Description>
+    Examples:
       | Detail        | Description                                                           |
       | Status        | The presentation or hashing operations status (Completed or Failed)   |
       | Relying Party | The relying party name                                                |
@@ -51,7 +53,7 @@ Feature: List Transactions in EUDI Wallet
       |               | - X minutes ago for transactions in the last 60 minutes               |
       |               | - Time (e.g., 11:07 AM) for transactions within the day               |
       |               | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
-      |               |                                                                       |
+
   @US_LT_TC_07 @manual:Passed
   Scenario: User views transaction entry details
     Given the user is on the Transactions screen
