@@ -1,4 +1,4 @@
-@ANDROID @US_LT @Q1_2025
+@ANDROID @manual @US_LT @Q1_2025
 Feature: List Transactions in EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124
@@ -19,7 +19,7 @@ Feature: List Transactions in EUDI Wallet
     Given the user is on the Transactions screen
     Then the Transactions screen includes a Search bar
 
-  @US_LT_TC_03 @ignore
+  @US_LT_TC_03 @manual:Ignored
   Scenario: Transactions screen includes an Export button
     Given the user is on the Transactions screen
     Then the Transactions screen includes an Export button
