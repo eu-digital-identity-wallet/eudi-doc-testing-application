@@ -6688,11 +6688,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("a card is displayed for each transaction entry including  and {double} Datetime \\(e.g., {int} Feb {int} {int}:{int} AM) for transactions before today")
-    public void a_card_is_displayed_for_each_transaction_entry_including_and_datetime_e_g_feb_am_for_transactions_before_today(Double double1, Integer int1, Integer int2, Integer int3, Integer int4) {
-        //manual
-    }
-
     @Then("the user is able to view the transaction details")
     public void the_user_is_able_to_view_the_transaction_details() {
         //manual
@@ -6708,18 +6703,23 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("a card is displayed for each transaction entry including - and - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today ")
+    @Then("a card is displayed for each transaction entry including Datetime and Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today ")
     public void a_card_is_displayed_for_each_transaction_entry_including_and_datetime_e_g_feb_am_for_transactions_before_today() {
         // manual
     }
 
-    @Then("a card is displayed for each transaction entry including - and - X minutes ago for transactions in the last 60 minutes")
+    @Then("a card is displayed for each transaction entry including Datetime and X minutes ago for transactions in the last 60 minutes")
     public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day() {
         //manual
     }
 
     @Then("a card is displayed for each transaction entry including Status and The presentation or hashing operations status (Completed or Failed)")
     public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and Time (e.g., 11:07 AM) for transactions within the day ")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day(Double double1, Double double2, Integer int1, Integer int2) {
         //manual
     }
 
