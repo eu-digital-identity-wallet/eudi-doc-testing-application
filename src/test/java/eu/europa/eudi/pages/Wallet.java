@@ -739,6 +739,5 @@ public class Wallet {
     public void skippedTest() {
         boolean shouldRunTest = false;
         Assume.assumeTrue("Test is skipped because the required condition is not met", shouldRunTest);
-
     }
 }
