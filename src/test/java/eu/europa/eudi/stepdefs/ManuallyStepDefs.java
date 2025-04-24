@@ -6771,6 +6771,11 @@ public class ManuallyStepDefs {
     public void the_filter_sort_button_has_visual_indication_that_user_filter_s_and_or_sorting_options_have_been_applied_only_when_different_than_the_default_options() {
         //manual
     }
+
+    @Then("the EUDI Wallet presents the following Attestation\\(s) and Each attestation presented as a card that can be expanded or collapsed")
+    public void the_eudi_wallet_presents_the_following_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
+        //manual
+    }
 }
 
 
