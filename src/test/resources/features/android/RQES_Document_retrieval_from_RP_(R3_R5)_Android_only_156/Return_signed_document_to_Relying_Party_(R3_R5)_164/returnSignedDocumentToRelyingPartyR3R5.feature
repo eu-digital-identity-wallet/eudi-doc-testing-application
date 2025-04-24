@@ -1,4 +1,4 @@
-@ANDROID @manual @US_RSDTRP @Q1_2025
+@ANDROID @US_RSDTRP @Q1_2025
 Feature: Return Signed Document to Relying Party
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/164

@@ -1,4 +1,4 @@
-@ANDROID @manual @US_RDTBS @Q1_2025
+@ANDROID @US_RDTBS @Q1_2025
 Feature: Retrieve and View Document in EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/89
