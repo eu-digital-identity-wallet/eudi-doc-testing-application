@@ -6713,6 +6713,35 @@ public class ManuallyStepDefs {
         //manual
     }
 
+    @Then("the EUDI Wallet presents the following details by Transaction Data and The details and Location for the signed document")
+    public void the_eudi_wallet_presents_the_following_details_by_transaction_data_and_the_details_and_location_for_the_signed_document() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Visual Indication and A visual indication e.g. signature icon")
+    public void the_eudi_wallet_presents_the_following_details_by_visual_indication_and_a_visual_indication_e_g_signature_icon() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Attestation\\(s) and Each attestation presented as a card that can be expanded or collapsed")
+    public void the_eudi_wallet_presents_the_following_details_by_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Status and The presentation operation status \\(Completed or Failed)")
+    public void the_eudi_wallet_presents_the_following_details_by_status_and_the_presentation_operation_status_completed_or_failed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by DateTime and The datetime the presentation operation was performed")
+    public void the_eudi_wallet_presents_the_following_details_by_date_time_and_the_datetime_the_presentation_operation_was_performed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Relying Party name and The name of the Relying Party with a verification badge if trusted")
+    public void the_eudi_wallet_presents_the_following_details_by_relying_party_name_and_the_name_of_the_relying_party_with_a_verification_badge_if_trusted() {
+        //manual
+    }
 }
 
 
