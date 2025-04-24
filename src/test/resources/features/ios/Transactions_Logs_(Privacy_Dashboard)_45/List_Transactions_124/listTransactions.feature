@@ -46,14 +46,13 @@ Feature: List Transactions in EUDI Wallet
     When the user views a transaction entry
     Then a card is displayed for each transaction entry including <Detail> and <Description>
     Examples:
-      | Detail        | Description                                                           |
-      | Status        | The presentation or hashing operations status (Completed or Failed)   |
-      | Relying Party | The relying party name                                                |
-      | Datetime      | The datetime of the transaction as follows:                           |
-      |               | - X minutes ago for transactions in the last 60 minutes               |
-      |               | - Time (e.g., 11:07 AM) for transactions within the day               |
-      |               | - Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
-      |               |                                                                       |
+      | Detail        | Description                                                         |
+      | Status        | The presentation or hashing operations status (Completed or Failed) |
+      | Relying Party | The relying party name                                              |
+      | Datetime      | The datetime of the transaction as follows:                         |
+      | Datetime      | X minutes ago for transactions in the last 60 minutes               |
+      | Datetime      | Time (e.g., 11:07 AM) for transactions within the day               |
+      | Datetime      | Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today |
 
   @US_LT_TC_07
   Scenario: User views transaction entry details
