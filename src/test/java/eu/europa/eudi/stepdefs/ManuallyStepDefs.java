@@ -6678,16 +6678,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("a card is displayed for each transaction entry including  and {double} X minutes ago for transactions in the last {int} minutes")
-    public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes(Double double1, Integer int1) {
-        //manaul
-    }
-
-    @Then("a card is displayed for each transaction entry including  and {double} Time \\(e.g., {int}:{int} AM) for transactions within the day")
-    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day(Double double1, Integer int1, Integer int2) {
-        //manual
-    }
-
     @Then("the user is able to view the transaction details")
     public void the_user_is_able_to_view_the_transaction_details() {
         //manual
@@ -6715,11 +6705,6 @@ public class ManuallyStepDefs {
 
     @Then("a card is displayed for each transaction entry including Status and The presentation or hashing operations status (Completed or Failed)")
     public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes() {
-        //manual
-    }
-
-    @Then("a card is displayed for each transaction entry including Datetime and Time (e.g., 11:07 AM) for transactions within the day ")
-    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day(Double double1, Double double2, Integer int1, Integer int2) {
         //manual
     }
 
