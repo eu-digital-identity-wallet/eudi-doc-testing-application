@@ -1,4 +1,4 @@
-@IOS @manual @US_FASD @Q1_2025
+@IOS @US_FASD @Q1_2025
 Feature: Filter and Sort Transactions in EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/123
@@ -7,7 +7,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is authenticated in the EUDI Wallet
 
-  @US_FASD_TC_01 @ignore
+  @US_FASD_TC_01 @manual:Ignored
   Scenario: Initial state of filter/sort option
     Given the user enters the Transactions screen
     Then no filter is applied (default option)

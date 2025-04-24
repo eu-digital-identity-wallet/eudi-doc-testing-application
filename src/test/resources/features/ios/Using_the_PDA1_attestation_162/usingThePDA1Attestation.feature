@@ -1,4 +1,4 @@
-@IOS @manual @US_UTPA @Q1_2025
+@IOS @US_UTPA @Q1_2025
 Feature: Support PDA1 Attestation in EUDI Wallet
 
  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/162

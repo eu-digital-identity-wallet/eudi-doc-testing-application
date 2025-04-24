@@ -1,4 +1,4 @@
-@ANDROID @manual @US_UTEA @Q1_2025
+@ANDROID @US_UTEA @Q1_2025
 Feature: Support EHIC Attestation in EUDI Wallet
 
  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/163

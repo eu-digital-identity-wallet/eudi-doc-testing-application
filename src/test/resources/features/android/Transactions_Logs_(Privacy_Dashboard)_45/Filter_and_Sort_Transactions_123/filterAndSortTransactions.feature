@@ -1,4 +1,4 @@
-@ANDROID @manual @US_FASD @Q1_2025
+@ANDROID @US_FASD @Q1_2025
 Feature: Filter and Sort Transactions in EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/123
