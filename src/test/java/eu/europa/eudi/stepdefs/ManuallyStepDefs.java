@@ -6703,7 +6703,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("a card is displayed for each transaction entry including Datetime and Time (e.g., 11:07 AM) for transactions within the day ")
+    @Then("a card is displayed for each transaction entry including Datetime and Time \\(e.g., 11:07 AM) for transactions within the day")
     public void a_card_is_displayed_for_each_transaction_entry_including_datetime_and_time_e_g_am_for_transactions_within_the_day() {
         //manual
     }
