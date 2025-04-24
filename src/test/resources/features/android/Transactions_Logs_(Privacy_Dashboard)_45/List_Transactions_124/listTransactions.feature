@@ -1,4 +1,4 @@
-@ANDROID @manual @US_LT @Q1_2025
+@ANDROID @MANUAL @US_LT @Q1_2025
 Feature: List Transactions in EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124
