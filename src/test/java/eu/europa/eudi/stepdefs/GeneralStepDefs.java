@@ -20,7 +20,7 @@ public class GeneralStepDefs{
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
         boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
-        boolean ignored = scenario.getSourceTagNames().contains("@manual:ignored");
+        boolean ignored = scenario.getSourceTagNames().contains("@manual:Ignored");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android) {
