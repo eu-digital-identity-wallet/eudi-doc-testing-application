@@ -26,11 +26,3 @@ Feature: Check and update on presentation request the requested attestations rev
     Then the EUDI Wallet makes the attestation unavailable for selection by the holder on the presentation request
     And the EUDI Wallet updates the internal attestation status as revoked
     And the EUDI Wallet raises a notification informing the user the attestation is revoked and cannot be presented anymore to Relying Parties
-
-  @US_CAUOPRTRARS_TC_03 @manual
-  Scenario: PID is revoked during presentation request
-    Given the EUDI Wallet has a valid PID attestation stored
-    When the EUDI Wallet checks the revocation status during a presentation request
-    And the PID is found to be revoked by the issuer
-    Then the presentation operation is interrupted with a corresponding message informing the user the operation cannot be continued due to PID revocation
-
