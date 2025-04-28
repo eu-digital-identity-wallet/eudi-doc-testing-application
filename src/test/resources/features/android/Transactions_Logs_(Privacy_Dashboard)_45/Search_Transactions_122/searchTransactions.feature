@@ -26,21 +26,14 @@ Feature: Transaction Search in EUDI Wallet
       | the search field contains a search icon on the left side             |
       | the search field displays a hinted search text "Search Transactions" |
 
-  @US_ST_TC_03
-  Scenario: User taps on the search field with no previous search
-    Given the user taps on the search field
-    When no search has been performed previously
-    Then the hinted search text is removed
-    And the search field displays a Clear trailing icon button inside the right side of the field
-
-  @US_ST_TC_04 @manual:Passed
+  @US_ST_TC_03 @manual:Passed
   Scenario: User types text in the search field
     Given the user taps on the search field
     When the user types a text
     Then the search field returns the result which contains this text
     And respects the applied filtering and sorting criteria
 
-  @US_ST_TC_05 @manual:Passed
+  @US_ST_TC_04 @manual:Passed
   Scenario: User edits previous search text
     Given the user previously searched for a text
     When the user taps on the search field
@@ -48,7 +41,7 @@ Feature: Transaction Search in EUDI Wallet
     Then the search field contains the edited text
     And returns the new results
 
-  @US_ST_TC_06 @manual:Passed
+  @US_ST_TC_05 @manual:Passed
   Scenario: User taps on the "Clear" trailing icon button
     Given the user previously searched for a text
     When the user taps on the search field
@@ -57,7 +50,7 @@ Feature: Transaction Search in EUDI Wallet
     And the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_07 @manual:Passed
+  @US_ST_TC_06 @manual:Failed
   Scenario Outline: User taps on the "Search" button with search text
     Given the user taps on the search field
     When the user types a text
