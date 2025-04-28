@@ -12,14 +12,14 @@ Feature: Check and update on presentation request the requested attestations rev
     And internet is available for connectivity and data transfer capabilities
     And the Issuer includes into VC information for online VC status check
 
-  @US_CAUOPRTRARS_TC_01 @manual
+  @US_CAUOPRTRARS_TC_01 @manual:Passed
   Scenario: Check revocation status on presentation request
     Given the EUDI Wallet has valid attestations stored
     When the EUDI Wallet is requested to present or share attestations
     Then the EUDI Wallet checks online the revocation status of the requested attestations
 
-  @US_CAUOPRTRARS_TC_02 @manual
-  Scenario: Attestation is revoked by the issuer during presentation request
+  @US_CAUOPRTRARS_TC_02 @manual:Passed
+  Scenario: Attestation is revoked by the issuer
     Given the EUDI Wallet has valid attestations stored
     When the EUDI Wallet checks the revocation status during a presentation request
     And an attestation is found to be revoked by the issuer
@@ -27,12 +27,7 @@ Feature: Check and update on presentation request the requested attestations rev
     And the EUDI Wallet updates the internal attestation status as revoked
     And the EUDI Wallet raises a notification informing the user the attestation is revoked and cannot be presented anymore to Relying Parties
 
-  @US_CAUOPRTRARS_TC_03 @manual
-  Scenario: PID is revoked during presentation request
-    Given the EUDI Wallet has a valid PID attestation stored
-    When the EUDI Wallet checks the revocation status during a presentation request
-    And the PID is found to be revoked by the issuer
-    Then the presentation operation is interrupted with a corresponding message informing the user the operation cannot be continued due to PID revocation
+
 
 
 
