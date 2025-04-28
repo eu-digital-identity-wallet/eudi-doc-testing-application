@@ -12,13 +12,13 @@ Feature: Check and update on presentation request the requested attestations rev
     And internet is available for connectivity and data transfer capabilities
     And the Issuer includes into VC information for online VC status check
 
-  @US_CAUOPRTRARS_TC_01 @manual
+  @US_CAUOPRTRARS_TC_01 @manual:Passed
   Scenario: Check revocation status on presentation request
     Given the EUDI Wallet has valid attestations stored
     When the EUDI Wallet is requested to present or share attestations
     Then the EUDI Wallet checks online the revocation status of the requested attestations
 
-  @US_CAUOPRTRARS_TC_02 @manual
+  @US_CAUOPRTRARS_TC_02 @manual:Passed
   Scenario: Attestation is revoked by the issuer during presentation request
     Given the EUDI Wallet has valid attestations stored
     When the EUDI Wallet checks the revocation status during a presentation request

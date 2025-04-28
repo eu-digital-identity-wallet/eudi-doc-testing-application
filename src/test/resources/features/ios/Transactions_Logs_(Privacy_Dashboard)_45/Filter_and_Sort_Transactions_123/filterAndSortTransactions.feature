@@ -48,7 +48,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the section is expanded
     Then the user can select to filter the transactions by operation status (Completed, Failed) using checkboxes
 
-  @US_FASD_TC_06 @manual:Passed
+  @US_FASD_TC_06 @manual:Failed
   Scenario: Filter transactions by relying party
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Relying Party" section
@@ -57,7 +57,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Then the user can select to filter the transactions by relying party name using checkboxes
     And the list of relying parties includes unique relying parties recorded in the presentation transactions in the EUDI Wallet
 
-  @US_FASD_TC_07 @manual:Passed
+  @US_FASD_TC_07 @manual:Failed
   Scenario: Filter transactions by transaction type
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Filter by Transaction Type" section
