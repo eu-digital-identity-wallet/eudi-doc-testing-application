@@ -40,7 +40,7 @@ Feature: List Transactions in EUDI Wallet
       | This Week     | Transactions that occurred this week            |
       | Month         | Transactions grouped by month (e.g., August 2024)|
 
-  @US_LT_TC_06 @manual:Failed
+  @US_LT_TC_06 @manual:Passed
   Scenario Outline: Transaction entry details
     Given the user is on the Transactions screen
     When the user views a transaction entry
