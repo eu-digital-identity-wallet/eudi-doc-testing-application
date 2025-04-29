@@ -4,10 +4,10 @@ public interface Literals {
 
     enum Wallet{
 
-        WELCOME_HEADER("Welcome to your Wallet"),
+        WELCOME_HEADER("Welcome to your wallet"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared information with EUDI Remote Verifier"),
-        LOGIN("Welcome back"),
+        LOGIN("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
@@ -71,7 +71,9 @@ public interface Literals {
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet");
+        FORM("Enter the data for your EUDI Wallet"),
+        SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
+        SUCCESSFULLY_SHARED("You successfully shared the following information with");
 
         public final String label;
         Issuer(String label) {
