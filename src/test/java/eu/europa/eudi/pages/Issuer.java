@@ -277,58 +277,6 @@ public class Issuer {
     public void scrollUntilFindSubmit() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-            int i=1;
-            while (i<5) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-        } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            int i=1;
-            while (i<5) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-        }
-    }
-
-    public void scrollUntilAuthorize() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-            int i=1;
-            while (i<5) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-        } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
                 Dimension size = driver.manage().window().getSize();
@@ -343,8 +291,55 @@ public class Issuer {
                         .perform();
                 i++;
             }
+        } else {
+            // iOS implementation - CORRECTED DIRECTION
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
+            }
         }
     }
+
+
+
+
+    public void scrollUntilAuthorize() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
+            int i = 1;
+            while (i < 5) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = size.height / 2;  // Start from the middle of the screen
+                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+                new TouchAction<>((PerformsTouchActions) driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                i++;
+            }
+        } else {
+
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
+            }
+        }
+    }
+
     public void clickAuthorize () {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authorize)).click();
@@ -372,21 +367,75 @@ public class Issuer {
     }
 
     public void issuePID() {
-        authenticationMethodSelection();
-        clickCountrySelection();
-        clickSubmit();
+        selectCountryOfOrigin();
+//        clickCountrySelection();
+//        clickSubmit();
         clickFormEu();
         clickSubmit();
         enterFamilyName();
         enterGivenName();
         chooseBirthDate();
+        enterBirthPlace();
+        enterCountryCode();
         scrollUntilFindSubmit();
-        clickRemove();
-        clickRemove();
-        clickRemove();
+//        clickRemove();
+//        clickRemove();
+//        clickRemove();
         clickSubmit();
         scrollUntilAuthorize();
         clickAuthorize();
-        test.mobile().wallet().clickClose();
+        successfullySharedMessage();
+        test.mobile().wallet().clickDone();
+    }
+
+    private void successfullySharedMessage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
+            Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.successfullyShared)).getText();
+            Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
+        }
+    }
+
+    private void enterCountryCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountryCode)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement countryCode = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountryCode);
+            countryCode.clear();
+            countryCode.sendKeys("GR");
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickCountryCode)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement countryCode = driver.findElement(WalletElements.clickCountryCode);
+            countryCode.clear();
+            countryCode.sendKeys("GR");        }
+    }
+
+    private void enterBirthPlace() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace);
+            birthPlace.clear();
+            birthPlace.sendKeys("Thessaloniki");
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickBirthPlace)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement birthPlace = driver.findElement(WalletElements.clickBirthPlace);
+            birthPlace.clear();
+            birthPlace.sendKeys("Thessaloniki");        }
+
+    }
+
+    private void selectCountryOfOrigin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+        }
     }
 }

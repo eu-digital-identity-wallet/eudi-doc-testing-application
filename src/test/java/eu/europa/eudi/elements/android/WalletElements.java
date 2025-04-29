@@ -98,4 +98,7 @@ public class WalletElements {
     public static By clickHomeButton = By.xpath("//androidx.compose.ui.platform.h0/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[2]");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By clickDeleteDocument = By.xpath("//android.widget.ScrollView/android.view.View[3]/android.widget.Button");
+    public static By clickBirthPlace = By.xpath("");
+    public static By clickCountryCode = By.xpath("");
+    public static By clickDone = By.xpath("");
 }
