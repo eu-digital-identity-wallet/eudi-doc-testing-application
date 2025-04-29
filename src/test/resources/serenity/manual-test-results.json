@@ -1,0 +1,590 @@
+[
+  {
+    "testName": "User cancels data sharing process",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User proceeds with data sharing flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User completes data sharing flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Retrieve document from Relying Party",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View document to EUDI Wallet",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User views shared data on success screen in EUDI Wallet",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Confirm sharing and passing of signed document to Relying Party",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Initial state of filter/sort option",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Display filter and sort bottom sheet",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Sort transactions",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by date period",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by status",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by relying party",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by transaction type",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Reset filter and sort options",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Apply filter and sort options",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "No matching transactions found",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions button in bottom navigation bar",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes a Search bar",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes an Export button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes a Filter/Sort button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User views transaction entry details",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Initial state of the Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User taps on the search field with no previous search",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User types text in the search field",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User edits previous search text",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User taps on the \"Clear\" trailing icon button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User navigates to the Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User requests to delete transaction data",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User reports suspicious operations",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User returns to Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue EHIC attestation in wallet-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue EHIC attestation in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View EHIC attestation details in Documents screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present EHIC attestation in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PDA1 attestation in wallet-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PDA1 attestation in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View PDA1 attestation details in 'Documents' screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PDA1 attestation in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PID in wallet-initiated flow @manual:Passed",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PID in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View PID details in 'Documents' screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PID in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PID in proximity scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User cancels data sharing process",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User proceeds with data sharing flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User completes data sharing flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Initial state of filter/sort option",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Display filter and sort bottom sheet",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Sort transactions",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by date period",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by status",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by relying party",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Filter transactions by transaction type",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Reset filter and sort options",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Apply filter and sort options",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "No matching transactions found",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions button in bottom navigation bar",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes a Search bar",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes an Export button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Transactions screen includes a Filter/Sort button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User views transaction entry details",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Initial state of the Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User taps on the search field with no previous search",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User types text in the search field",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User edits previous search text",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User taps on the \"Clear\" trailing icon button",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User navigates to the Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User requests to delete transaction data",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User reports suspicious operations",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "User returns to Transactions screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue EHIC attestation in wallet-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue EHIC attestation in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View EHIC attestation details in Documents screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present EHIC attestation in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PDA1 attestation in wallet-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PDA1 attestation in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View PDA1 attestation details in 'Documents' screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PDA1 attestation in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PID in wallet-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Issue PID in issuer-initiated flow",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "View PID details in 'Documents' screen",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PID in remote scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  },
+  {
+    "testName": "Present PID in proximity scenarios",
+    "type": "manual",
+    "tags": [
+      "Q1_2025"
+    ]
+  }
+]
