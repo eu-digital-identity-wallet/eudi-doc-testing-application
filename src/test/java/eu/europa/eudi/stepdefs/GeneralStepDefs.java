@@ -560,8 +560,7 @@ public class GeneralStepDefs{
 
     @When("the user clicks on the PID doc")
     public void theUserClicksOnThePIDDoc() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickNationalId();
+        test.mobile().wallet().clickPID();
     }
 
     @Then("the PID should open")
@@ -576,11 +575,9 @@ public class GeneralStepDefs{
 
     @Given("the PID is open")
     public void thePIDIsOpen() {
-        theUserEntersTheirPIN();
-        theUserShouldSeeTheDashboardScreen();
-        theUserClicksOnThePIDDoc();
-        thePIDShouldOpen();
-        theUserShouldSeeTheDetailsOfThePID();
+        theUserIsViewingTheDetailsOfAnAttestation();
+        theUserSelectsEyeIcon();
+        theAttestationDetailsShouldNoLongerBeBlurred();
     }
 
     @When("the user clicks the back button")
@@ -590,11 +587,12 @@ public class GeneralStepDefs{
 
     @Then("the PID should close")
     public void thePIDShouldClose() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 
     @And("the user should see the dashboard screen again")
     public void theUserShouldSeeTheDashboardScreenAgain() {
+        test.mobile().wallet().clickHome();
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
@@ -1048,6 +1046,7 @@ public class GeneralStepDefs{
     @When("the user clicks on Documents")
     public void theUserClicksOnDocuments() {
         test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 
 //    @Given("the user is on the Home screen of the EUDI Wallet")
@@ -1158,5 +1157,38 @@ public class GeneralStepDefs{
         test.mobile().wallet().skippedTest();
     }
 
+    @Given("the user is on Home page")
+    public void theUserIsOnHomePage(){
+        test.mobile().wallet().homePageIsDisplayed();
+    }
+
+    @And ("the details should be blurred by default auto")
+    public void theDetailsShouldBeBlurredByDefault(){
+        test.mobile().wallet().detailsAreBlurred();
+    }
+
+    @And ("the user should see the eye icon to view the details of the attestation auto")
+    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation(){
+        test.mobile().wallet().eyeIconIsDisplayed();
+    }
+
+    @Given ("the user is viewing the details of an attestation auto")
+    public void theUserIsViewingTheDetailsOfAnAttestation(){
+        theUserIsOnHomePage();
+        theUserClicksOnDocuments();
+        theUserClicksOnThePIDDoc();
+        thePIDShouldOpen();
+        theDetailsShouldBeBlurredByDefault();
+    }
+
+    @When ("the user selects eye icon auto")
+    public void theUserSelectsEyeIcon(){
+        test.mobile().wallet().clickEyeIcon();
+    }
+
+    @Then ("the attestation details should no longer be blurred auto")
+    public void theAttestationDetailsShouldNoLongerBeBlurred(){
+        test.mobile().wallet().detailsAreNotBlurred();
+    }
 }
 

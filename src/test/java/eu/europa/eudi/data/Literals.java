@@ -35,7 +35,11 @@ public interface Literals {
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         DETAILS_FAMILY_NAME("Family Name(s)"),
         DETAILS_GIVEN_NAME("Given Name(s)"),
-        DETAILS_BIRTH_DATE("Birth Date");
+        DETAILS_BIRTH_DATE("Birth Date"),
+        HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
+        DETAILS_ARE_BLURRED("Hide"),
+        DETAILS_ARE_NOT_BLURRED("Show");
+
         public final String label;
         Wallet(String label) {
             this.label = label;
