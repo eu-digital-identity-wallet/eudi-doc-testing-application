@@ -79,27 +79,23 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
+            test.mobile().wallet().scrollUntilmDL();
             test.mobile().wallet().clickMdl();
-            test.mobile().issuer().clickCountrySelection();
-            test.mobile().issuer().clickSubmit();
             test.mobile().issuer().clickFormEu();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().enterFamilyName();
             test.mobile().issuer().enterGivenName();
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().enterDocumentNumber();
-            test.mobile().issuer().clickScreen();
             test.mobile().issuer().scrollUntilFindDate();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().scrollUntilFindSubmit();
-            test.mobile().issuer().clickRemove();
-            test.mobile().issuer().clickRemove();
-            test.mobile().issuer().clickRemove();
             test.mobile().issuer().clickSubmit();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
-            test.mobile().wallet().clickClose();
+            test.mobile().wallet().clickDone();
             test.mobile().wallet().clickHome();
         }
         if (ignored) {
@@ -619,15 +615,12 @@ public class GeneralStepDefs{
 
     @Given("the mDL is open")
     public void theMDLIsOpen() {
-        theUserIsOnTheDashboardScreen();
-        theUserClicksOnTheMDLDoc();
-        theMDLShouldOpen();
-        theUserShouldSeeTheDetailsOfTheMDL();
+        theUserIsViewingTheDetailsOfTheMDL();
     }
 
     @Then("the mDL should close")
     public void theMDLShouldClose() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 
     @When("the user clicks the add doc button")
@@ -1189,6 +1182,26 @@ public class GeneralStepDefs{
     @Then ("the attestation details should no longer be blurred auto")
     public void theAttestationDetailsShouldNoLongerBeBlurred(){
         test.mobile().wallet().detailsAreNotBlurred();
+    }
+
+    @Then ("the user should see the home screen")
+    public void theUserShouldSeeTheHomeScreen(){
+        test.mobile().wallet().homePageIsDisplayed();
+    }
+
+    @Given ("the user is on the home screen")
+    public void theUserIsOnTheHomeScreen(){
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheHomeScreen();
+    }
+
+    @Given ("the user is viewing the details of the mDL")
+    public void theUserIsViewingTheDetailsOfTheMDL(){
+        theUserIsOnTheHomeScreen();
+        theUserClicksOnTheMDLDoc();
+        theMDLShouldOpen();
+        theDetailsShouldBeBlurredByDefault();
     }
 }
 
