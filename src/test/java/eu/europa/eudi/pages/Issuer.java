@@ -368,8 +368,6 @@ public class Issuer {
 
     public void issuePID() {
         selectCountryOfOrigin();
-//        clickCountrySelection();
-//        clickSubmit();
         clickFormEu();
         clickSubmit();
         enterFamilyName();
@@ -378,9 +376,6 @@ public class Issuer {
         enterBirthPlace();
         enterCountryCode();
         scrollUntilFindSubmit();
-//        clickRemove();
-//        clickRemove();
-//        clickRemove();
         clickSubmit();
         scrollUntilAuthorize();
         clickAuthorize();

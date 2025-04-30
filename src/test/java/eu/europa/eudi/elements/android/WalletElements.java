@@ -101,4 +101,7 @@ public class WalletElements {
     public static By clickBirthPlace = By.xpath("");
     public static By clickCountryCode = By.xpath("");
     public static By clickDone = By.xpath("");
+    public static By homePageIsDisplayed = By.xpath("");
+    public static By detailsAreBlurred = By.xpath("");
+    public static By detailsAreNotBlurred = By.xpath("");
 }
