@@ -12,6 +12,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -617,7 +618,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickToAddDocument)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickToAddDocument)).click();
         }
     }
 
@@ -625,7 +626,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickFromList)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFromList)).click();
         }
     }
 
@@ -791,6 +792,26 @@ public class Wallet {
             WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsAreNotBlurred));
             String elementLabel = eyeElement.getAttribute("label");
             Assert.assertEquals(Literals.Wallet.DETAILS_ARE_NOT_BLURRED.label, elementLabel);
+        }
+    }
+
+    public void scrollUntilmDL() {
+        WebDriver driver;
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            driver = test.mobileWebDriverFactory().getDriverAndroid();
+        } else {
+            driver = test.mobileWebDriverFactory().getDriverIos();
+        }
+        int i = 1;
+        while (i < 2) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            Map<String, Object> params = new HashMap<>();
+            params.put("direction", "up");
+            js.executeScript("mobile: swipe", params);
+            i++;
+
         }
     }
 }
