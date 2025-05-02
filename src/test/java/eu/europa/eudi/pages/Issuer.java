@@ -48,6 +48,10 @@ public class Issuer {
         }
     }
 
+    public void updateTestReference(TestSetup newTest) {
+        this.test = newTest;
+    }
+
     public void requestCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
@@ -344,7 +348,7 @@ public class Issuer {
         test.mobile().wallet().clickDone();
     }
 
-    private void successfullySharedMessage() {
+    public void successfullySharedMessage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
             Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
@@ -354,7 +358,7 @@ public class Issuer {
         }
     }
 
-    private void enterCountryCode() {
+    public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountryCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -369,7 +373,7 @@ public class Issuer {
             countryCode.sendKeys("GR");        }
     }
 
-    private void enterBirthPlace() {
+    public void enterBirthPlace() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -385,7 +389,7 @@ public class Issuer {
 
     }
 
-    private void selectCountryOfOrigin() {
+    public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
