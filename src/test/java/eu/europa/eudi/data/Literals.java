@@ -20,7 +20,7 @@ public interface Literals {
         DATA_PAGE("Enter the data for your EUDI Wallet"),
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
         DRIVING_LICENCE("Driving License"),
-        SUCCESS_MESSAGE_DRIVING_LICENCE("You have successfully added the following to your wallet"),
+        SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
         ISSUANCE_DETAILS("National ID"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("Your documents from issuer.eudiw.dev have been successfully issued."),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("Your documents from issuer.eudiw.dev have been successfully issued."),

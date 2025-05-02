@@ -461,20 +461,24 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS.label, pageHeader);
         }
     }
-
     public void startAndStopDriver() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.stopAndroidDriverSession();
             boolean noReset = true;
-            test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
-            test.startAndroidDriverSession();
+            TestSetup newTest = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
+            newTest.startAndroidDriverSession();
+            test.mobile().issuer().updateTestReference(newTest);
+            test = newTest;
         } else {
             test.stopIosDriverSession();
             boolean noReset = true;
-            test = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
-            test.startIosDriverSession();
+            TestSetup newTest = new TestSetup(noReset, test.getSystemOperation(), test.getScenario());
+            newTest.startIosDriverSession();
+            test.mobile().issuer().updateTestReference(newTest);
+            test = newTest;
         }
     }
+
 
     public void detailsOfPidIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -669,6 +673,9 @@ public class Wallet {
     public void secondPIDIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.secondPidIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         }
     }

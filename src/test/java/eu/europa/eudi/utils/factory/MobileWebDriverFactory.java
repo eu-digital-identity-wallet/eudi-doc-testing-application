@@ -54,6 +54,7 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
+    
 
     public void startLogging(String featureDirPath, String featureName, String scenarioName) {
         try {
