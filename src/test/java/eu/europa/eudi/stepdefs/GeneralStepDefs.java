@@ -625,12 +625,14 @@ public class GeneralStepDefs{
 
     @When("the user clicks the add doc button")
     public void theUserClicksTheAddDocButton() {
-        test.mobile().wallet().addDocButton();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
     }
 
-    @And("the add document page is displayed automated")
-    public void theAddDocumentPageIsDisplayedAutomated() {
+    @And("the add document page is displayed")
+    public void theAddDocumentPageIsDisplayed() {
        test.mobile().wallet().addDocumentPageIsDisplayed();
+       test.mobile().wallet().clickFromList();
     }
 
     @And("the user clicks the national id button")
@@ -1202,6 +1204,33 @@ public class GeneralStepDefs{
         theUserClicksOnTheMDLDoc();
         theMDLShouldOpen();
         theDetailsShouldBeBlurredByDefault();
+    }
+
+    @Given ("the home page is displayed on wallet")
+    public void theHomePageIsDisplayedOnWallet(){
+        theUserIsOnTheLoginScreen();
+        theUserEntersTheirPIN();
+        theUserShouldSeeTheHomeScreen();
+    }
+
+    @And ("the user clicks the PID button")
+    public void theUserClicksThePidButton(){
+        test.mobile().wallet().scrollUntilPID();
+        test.mobile().wallet().clickPID();
+    }
+
+    @Then ("the credentials provider is displayed")
+    public void theCredentialsProviderIsDisplayed(){
+        test.mobile().wallet().credentialsProviderIsDisplayed();
+    }
+
+    @Given ("the credentials provider is displayed on screen")
+    public void theCredentialsProviderIsDisplayedOnScreen(){
+        theHomePageIsDisplayedOnWallet();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayed();
+        theUserClicksThePidButton();
+        theCredentialsProviderIsDisplayed();
     }
 }
 

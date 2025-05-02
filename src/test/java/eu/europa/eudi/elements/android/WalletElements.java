@@ -104,4 +104,5 @@ public class WalletElements {
     public static By homePageIsDisplayed = By.xpath("");
     public static By detailsAreBlurred = By.xpath("");
     public static By detailsAreNotBlurred = By.xpath("");
+    public static By credentialsProviderDisplayed = By.xpath("");
 }
