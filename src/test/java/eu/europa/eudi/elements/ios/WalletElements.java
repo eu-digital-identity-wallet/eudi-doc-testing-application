@@ -92,4 +92,5 @@ public class WalletElements {
     public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@name=\"house.fill\"]");
     public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
     public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose from list\"]");
+    public static By credentialsProviderDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Test Credentials Provider\"]");
 }

@@ -38,7 +38,8 @@ public interface Literals {
         DETAILS_BIRTH_DATE("Birth Date"),
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
         DETAILS_ARE_BLURRED("Hide"),
-        DETAILS_ARE_NOT_BLURRED("Show");
+        DETAILS_ARE_NOT_BLURRED("Show"),
+        CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider");
 
         public final String label;
         Wallet(String label) {
