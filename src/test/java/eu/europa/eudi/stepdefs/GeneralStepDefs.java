@@ -793,10 +793,9 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() {
-        theAuthenticationMethodSelectionIsDisplayedOnScreen();
-        theUserClicksOnCountrySelectionAndSubmits();
-        theUserClicksOnCredentialProviderFormEUAndSubmits();
-        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+    theCredentialsProviderIsDisplayedOnScreen();
+    theUserClicksOnCredentialProviderFormEUAndSubmits();
+    theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
@@ -833,9 +832,9 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterBirthPlace();
+        test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickRemove();
-        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -844,11 +843,12 @@ public class GeneralStepDefs{
     @Then("a success message for pid is displayed")
     public void aSuccessMessageForPidIsDisplayed() {
         test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickClose();
+        test.mobile().wallet().clickDone();
     }
 
     @And("the national id is displayed in the dashboard")
     public void theNationalIdIsDisplayedInTheDashboard() {
+        test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().secondPIDIsDisplayed();
     }
 
