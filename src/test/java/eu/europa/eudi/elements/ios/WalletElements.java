@@ -57,7 +57,7 @@ public class WalletElements {
     public static By drivingLicenceIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Driving License\"]");
     public static By clickXButton = By.xpath("//XCUIElementTypeButton[@name=\"Close\"]");
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("(//XCUIElementTypeStaticText[@name=\"Driving License\"])[2]");
-    public static By clickDrivingLicenceButton = By.xpath("//XCUIElementTypeStaticText[@name=\"Driving License\"]");
+    public static By clickDrivingLicenceButton = By.xpath("//XCUIElementTypeStaticText[@name=\"mDL\"]");
     public static By unselectData = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Your selection of data to be shared may impact the service\"]");
     public static By clickaAgainData = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
