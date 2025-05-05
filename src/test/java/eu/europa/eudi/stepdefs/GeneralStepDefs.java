@@ -673,13 +673,13 @@ public class GeneralStepDefs{
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAMDL();
         theUserShouldSeeTheDocumentContents();
-        test.mobile().wallet().scrollUntilYouFindDelete();
     }
 
     @When("the user presses the delete button")
     public void theUserPressesTheDeleteButton() {
+        test.mobile().wallet().scrollUntilYouFindDelete();
         test.mobile().wallet().clickDeleteDocument();
-        test.mobile().wallet().confirmsDeletion();
+//      test.mobile().wallet().confirmsDeletion();
     }
 
     @Then("the document should be deleted")
