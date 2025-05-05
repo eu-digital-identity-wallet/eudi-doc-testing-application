@@ -46,7 +46,7 @@ public class WalletElements {
     public static By chooseSet = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
     public static By successMessageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"You can now add your National ID\"]");
     public static By clickDeleteButton = By.xpath("//XCUIElementTypeButton[@name=\"Bin\"]");
-    public static By confirmsDeletion = By.xpath("//XCUIElementTypeButton[@name=\"yes\"]");
+    public static By confirmsDeletion = By.xpath("//XCUIElementTypeButton[@name=\"Delete document\"]");
     public static By loginPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Login\"]");
     public static By enterDocumentNumber = By.xpath("//XCUIElementTypeTextField[@name=\"Document Number\"]");
     public static By documentNumberField = By.xpath("//XCUIElementTypeTextField[@name=\"Document Number\"]");
@@ -65,14 +65,14 @@ public class WalletElements {
     public static By clickIssue = By.xpath("//XCUIElementTypeButton[@name=\"ISSUE\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//XCUIElementTypeStaticText[@name=\"Your documents from issuer.eudiw.dev have been successfully issued.\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
-    public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
+    public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family name\"]");
     public static By chooseData2 = By.xpath("//XCUIElementTypeSwitch[@name=\"Given name\"]");
     public static By optionalDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
     public static By actuallDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"ANDERSSON\"]");
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EUDI Remote Verifier requests the following\"]");
-    public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
+    public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name(s)\"]");
     public static By clickSecondNationalId = By.xpath("(//XCUIElementTypeStaticText[@name=\"National ID\"])[2]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeStaticText[@name=\"Verification Data\"]");
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Date of issuance\"]");
@@ -94,4 +94,6 @@ public class WalletElements {
     public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose from list\"]");
     public static By credentialsProviderDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Test Credentials Provider\"]");
     public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
+    public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
+    public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@name=\"Delete document\"]");
 }
