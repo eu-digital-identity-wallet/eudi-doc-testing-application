@@ -764,14 +764,13 @@ public class GeneralStepDefs{
 
     @And("the user clicks the driving license button")
     public void theUserClicksTheDrivingLicenseButton() {
-        test.mobile().wallet().clickToAddDocument();
-        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilmDL();
         test.mobile().wallet().clickDrivingLicenceButton();
     }
 
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
+        test.mobile().issuer().requestCredentialsPageIsDisplayed();
     }
 
     @When("the user clicks on country selection and submits")
@@ -804,13 +803,11 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().enterDocumentNumber();
-        test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindDate();
+        test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickRemove();
-        test.mobile().issuer().clickRemove();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -819,7 +816,7 @@ public class GeneralStepDefs{
     @Then("a success message for mdl is displayed")
     public void aSuccessMessageForMdlIsDisplayed() {
         test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickClose();
+        test.mobile().wallet().clickDone();
     }
 
     @And("the driving license is displayed in the wallet")
@@ -1026,8 +1023,8 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed for mdl")
     public void aProviderFormIsDisplayedForMdl() {
-        theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed();
-        theUserClicksOnCountrySelectionAndSubmits();
+        theIssuerServiceTestCredentialProviderScreenIsDisplayed();
+//        theUserClicksOnCountrySelectionAndSubmits();
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
@@ -1114,11 +1111,11 @@ public class GeneralStepDefs{
         test.mobile().wallet().documentsPageIsDisplayed();
     }
 
-    @Given("the issuer service -authentication method selection screen- is displayed")
-    public void theIssuerServiceAuthenticationMethodSelectionScreenIsDisplayed() {
-        theDashboardPageIsDisplayedOnWallet();
-        theUserClicksOnDocuments();
-        theDocumentsPageIsDisplayed();
+    @Given("the issuer service -test credential provider screen- is displayed")
+    public void theIssuerServiceTestCredentialProviderScreenIsDisplayed() {
+        theHomePageIsDisplayedOnWallet();
+        theUserClicksTheAddDocButton();
+        theAddDocumentPageIsDisplayed();
         theUserClicksTheDrivingLicenseButton();
         theUserIsRedirectedToTheIssuerServiceToIssueMDL();
     }
