@@ -370,7 +370,9 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement countryCode = driver.findElement(WalletElements.clickCountryCode);
             countryCode.clear();
-            countryCode.sendKeys("GR");        }
+            countryCode.sendKeys("GR");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.closeKeyboard)).click();
+        }
     }
 
     public void enterBirthPlace() {

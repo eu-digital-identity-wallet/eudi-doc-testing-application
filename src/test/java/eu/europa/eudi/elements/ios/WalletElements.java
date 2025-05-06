@@ -96,4 +96,5 @@ public class WalletElements {
     public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
     public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
     public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@name=\"Delete document\"]");
+    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
 }
