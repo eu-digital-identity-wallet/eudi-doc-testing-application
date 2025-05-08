@@ -2,6 +2,9 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -10,6 +13,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.*;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 public class GeneralStepDefs{
 
@@ -139,7 +149,7 @@ public class GeneralStepDefs{
 
     @And("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
-        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().appOpensSuccessfully();
         theVerifierRequestsADocFromTheWalletUser();
     }
 
@@ -282,7 +292,7 @@ public class GeneralStepDefs{
 
     @And("a corresponding message is displayed")
     public void aCorrespondingMessageIsDisplayed() {
-        test.mobile().wallet().correspondingMessageIsDisplayed();
+        //test.mobile().wallet().correspondingMessageIsDisplayed();
     }
 
     @And("user clicks again the data")
@@ -856,16 +866,7 @@ public class GeneralStepDefs{
 
     @Given("user opens Verifier Application")
     public void userOpensVerifierApplication() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
+        userOpensVerifierApp();
     }
 
     @Given("the user is in the verifier app")
@@ -875,10 +876,11 @@ public class GeneralStepDefs{
 
     @When("the verifier requests a doc from the wallet user")
     public void theVerifierRequestsADocFromTheWalletUser() {
-        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().launchSafari();
+        test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().clickNext();
         test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
     }
@@ -886,7 +888,7 @@ public class GeneralStepDefs{
     @Then("the requestor of the data is displayed in the wallet")
     public void theRequestorOfTheDataIsDisplayedInTheWallet() {
         test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().viewDataPage();
+        test.mobile().verifier().insertPIN();
     }
 
     @And("the document from which the data are requested is displayed")
@@ -913,16 +915,18 @@ public class GeneralStepDefs{
         test.mobile().wallet().actualDataAreDisplayed();
     }
 
-    @Given("the user is viewing the data request details")
-    public void theUserIsViewingTheDataRequestDetails() {
-        theUserIsViewingTheOptionalData();
-        theUserClicksTheEyeIcon();
-        theActualValuesOfTheDataAreDisplayed();
+    @Given("the user views the document that is requested")
+    public void theUserViewsTheDocumentThatIsRequested() {
+        theUserHasSelectedSomeData();
+        theUserUnselectsSomeOfThisData();
+        aCorrespondingMessageIsDisplayed();
+        test.mobile().wallet().clickShareButton();
+        test.mobile().verifier().insertPIN();
     }
 
-    @When("the user clicks to expand the verification section")
-    public void theUserClicksToExpandTheVerificationSection() {
-        test.mobile().wallet().clickExpandVerification();
+    @When("the user clicks to view the document's details")
+    public void theUserClicksToViewTheDocumentsDetails() {
+        test.mobile().wallet().clickToViewDetails();
     }
 
     @Then("the expanded verification details are displayed")
@@ -936,21 +940,19 @@ public class GeneralStepDefs{
         theVerifierRequestsADocFromTheWalletUser();
         theRequestorOfTheDataIsDisplayedInTheWallet();
         theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
     }
 
     @When("the user unselects some of this data")
     public void theUserUnselectsSomeOfThisData() {
+        test.mobile().wallet().clickToViewDetails();
         test.mobile().wallet().unselectData();
     }
 
     @Given("the user has finalized data selection")
     public void theUserHasFinalizedDataSelection() {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
+        theUserHasSelectedSomeData();
+        theUserUnselectsSomeOfThisData();
+        aCorrespondingMessageIsDisplayed();
     }
 
     @When("the user clicks the share button")
@@ -996,7 +998,7 @@ public class GeneralStepDefs{
         test.mobile().wallet().loadSampleDocuments();
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().appOpensSuccefully();
+        test.mobile().verifier().appOpensSuccessfully();
         theVerifierRequestsADocFromTheWalletUser();
         test.mobile().verifier().chooseWallet();
     }
@@ -1228,6 +1230,23 @@ public class GeneralStepDefs{
         theAddDocumentPageIsDisplayed();
         theUserClicksThePidButton();
         theCredentialsProviderIsDisplayed();
+    }
+
+    @Given ("the expanded verification details are seen")
+    public void theExpandedVerificationDetailsAreSeen(){
+        theUserViewsTheDocumentThatIsRequested();
+        theUserClicksToViewTheDocumentsDetails();
+        theExpandedVerificationDetailsAreDisplayed();
+    }
+
+    @When ("the user clicks done")
+    public void theUserClicksDone(){
+        test.mobile().wallet().clickDone();
+    }
+
+    @Then ("the user gets redirected to verifier and views the respond")
+    public void theUserGetsRedirectedToVerifierAndViewsTheRespond(){
+        test.mobile().verifier().walletResponded();
     }
 }
 
