@@ -17,8 +17,16 @@ public class IssuerElements {
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By selectAttributesBy = By.xpath("(//XCUIElementTypeButton[@name=\"-- attributes by --\"])[3]");
-    public static By firstAttribute = By.xpath("//XCUIElementTypeOther[@name=\"All attributes\"]");
+    public static By allAttributes = By.xpath("//XCUIElementTypeOther[@name=\"All attributes\"]");
     public static By clickFormat = By.xpath("(//XCUIElementTypeButton[@name=\"-- format --\"])[3]");
-    public static By secondAttribute = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
+    public static By msoMdoc = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
     public static By clickNext = By.xpath("//XCUIElementTypeButton[@name=\"Next\"]");
+    public static By selectSpecificAtt = By.xpath("//XCUIElementTypeOther[@name=\"Specific attributes\"]");
+    public static By clickShareAttributes = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
+    public static By firstAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Family name\"]");
+    public static By secondAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Given name\"]");
+    public static By thirdAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Birthdate\"]");
+    public static By fourthAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Age over 18\"]");
+    public static By fifthAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth place\"]");
+    public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
 }

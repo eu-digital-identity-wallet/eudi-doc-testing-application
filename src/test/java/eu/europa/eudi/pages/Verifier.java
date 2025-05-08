@@ -1,6 +1,7 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.elements.ios.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.PerformsTouchActions;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Verifier {
     TestSetup test;
+
     public Verifier(TestSetup test) {
         this.test = test;
     }
@@ -47,7 +49,7 @@ public class Verifier {
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormat)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
-            }    else{
+            } else {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
@@ -59,7 +61,8 @@ public class Verifier {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormatEmulator)).click();
             }
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPersonIdentificationData)).click();}
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPersonIdentificationData)).click();
+        }
     }
 
     public void clickNext() {
@@ -97,14 +100,15 @@ public class Verifier {
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield4).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield5).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield6).sendKeys("1");
-        }else{
+        } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys("1");
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6).sendKeys("1");        }
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6).sendKeys("1");
+        }
     }
 
     public void appOpensSuccessfully() {
@@ -141,8 +145,8 @@ public class Verifier {
             WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             By locator = By.xpath("//android.widget.CheckBox[@text=\"Issuance date\"]");
             WebElement element = null;
-            int i=1;
-            while (i<4) {
+            int i = 1;
+            while (i < 4) {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = size.height / 2;  // Start from the middle of the screen
@@ -158,24 +162,24 @@ public class Verifier {
 
         } else {
             WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            int i=1;
-            while (i<4) {
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = size.height / 2;  // Start from the middle of the screen
-                    int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                    new TouchAction<>((PerformsTouchActions) driver)
-                            .press(PointOption.point(startX, startY))
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                            .moveTo(PointOption.point(startX, endY))
-                            .release()
-                            .perform();
-                    i++;
-                }
+            int i = 1;
+            while (i < 4) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = size.height / 2;  // Start from the middle of the screen
+                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
+                new TouchAction<>((PerformsTouchActions) driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                i++;
             }
         }
+    }
 
-    public void selectAttributes() {
+    public void selectAllAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
@@ -185,9 +189,9 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSelect)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.selectAttributesBy)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.firstAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.allAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.secondAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.msoMdoc)).click();
             test.mobile().verifier().scrollUntilNext();
         }
     }
@@ -272,6 +276,40 @@ public class Verifier {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletResponded)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);
+        }
+    }
+
+    public void selectSpecificAttributes() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.selectAttributesBy)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.selectSpecificAtt)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickFormat)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.msoMdoc)).click();
+            test.mobile().verifier().scrollUntilNext();
+        }
+    }
+
+    public void selectAttributes() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShareAttributes)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickShareAttributes)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.firstAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.secondAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.thirdAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.fourthAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.fifthAttribute)).click();
+        }
+    }
+
+    public void clickSelect() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSelect)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickSelect)).click();
+
         }
     }
 }
