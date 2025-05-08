@@ -21,4 +21,5 @@ public class IssuerElements {
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("");
     public static By successfullyShared = By.xpath("");
+    public static By clickShareAttributes = By.xpath("");
 }
