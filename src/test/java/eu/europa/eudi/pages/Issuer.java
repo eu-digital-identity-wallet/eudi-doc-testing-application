@@ -271,7 +271,7 @@ public class Issuer {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
         int i = 1;
-        while (i < 4) {
+        while (i < 5) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
             Map<String, Object> params = new HashMap<>();
@@ -294,7 +294,7 @@ public class Issuer {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
         int i = 1;
-        while (i < 3) {
+        while (i < 5) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
             Map<String, Object> params = new HashMap<>();
