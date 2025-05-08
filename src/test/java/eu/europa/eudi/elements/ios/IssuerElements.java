@@ -16,4 +16,9 @@ public class IssuerElements {
     public static By formIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter the data for your EUDI Wallet\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
+    public static By selectAttributesBy = By.xpath("(//XCUIElementTypeButton[@name=\"-- attributes by --\"])[3]");
+    public static By firstAttribute = By.xpath("//XCUIElementTypeOther[@name=\"All attributes\"]");
+    public static By clickFormat = By.xpath("(//XCUIElementTypeButton[@name=\"-- format --\"])[3]");
+    public static By secondAttribute = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
+    public static By clickNext = By.xpath("//XCUIElementTypeButton[@name=\"Next\"]");
 }

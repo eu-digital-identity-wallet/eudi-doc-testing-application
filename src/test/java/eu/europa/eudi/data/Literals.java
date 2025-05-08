@@ -30,7 +30,7 @@ public interface Literals {
         DETAILS_DOCUMENT("Family Name(s)"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("Date of issuance"),
+        VERIFICATION_DETAILS("Birth Date"),
         PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         DETAILS_FAMILY_NAME("Family Name(s)"),
@@ -53,7 +53,8 @@ public interface Literals {
         VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
-        APP_OPEN_SUCCESSFULLY_IOS("1");
+        APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
+        WALLET_RESPONDED("eu.europa.ec.eudi.pid.1");
 
         public final String label;
         Verifier(String label) {
