@@ -107,4 +107,6 @@ public class WalletElements {
     public static By credentialsProviderDisplayed = By.xpath("");
     public static By clickDownArrow = By.xpath("");
     public static By walletResponded = By.xpath("");
+    public static By clickShareAttributes = By.xpath("");
+    public static By clickSelect = By.xpath("");
 }

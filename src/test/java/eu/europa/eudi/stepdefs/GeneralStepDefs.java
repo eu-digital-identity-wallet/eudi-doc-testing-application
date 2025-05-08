@@ -147,10 +147,17 @@ public class GeneralStepDefs{
         test.mobile().wallet().userOpensVerifier();
     }
 
-    @And("user selects specific data to share")
+    @When("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
+        test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
-        theVerifierRequestsADocFromTheWalletUser();
+        test.mobile().verifier().selectShareAttributes();
+        test.mobile().verifier().selectSpecificAttributes();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().clickSelect();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().clickNext();
     }
 
     @And("user selects to be identified using EUDI Wallet")
@@ -161,24 +168,15 @@ public class GeneralStepDefs{
     @And("user views the data and can unselect any of them")
     public void userViewsTheDataAndCanUnselectAnyOfThem() {
         test.mobile().verifier().viewDataPage();
+        test.mobile().wallet().clickExpandVerification();
+        test.mobile().wallet().unselectData();
     }
 
     @And("user presses the share button")
     public void userPressesTheShareButton() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
-        theVerifierRequestsADocFromTheWalletUser();
-        test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickShareButton();
+        userSelectsToBeIdentifiedUsingTheEUDIWallet();
+        userViewsTheDataAndCanUnselectAnyOfThem();
+        userPressesTheShareButtonOnWallet();
     }
 
     @And("user authorizes the discolsure of the data")
@@ -292,7 +290,7 @@ public class GeneralStepDefs{
 
     @And("a corresponding message is displayed")
     public void aCorrespondingMessageIsDisplayed() {
-        //test.mobile().wallet().correspondingMessageIsDisplayed();
+        test.mobile().wallet().correspondingMessageIsDisplayed();
     }
 
     @And("user clicks again the data")
@@ -879,7 +877,7 @@ public class GeneralStepDefs{
         test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
@@ -988,25 +986,16 @@ public class GeneralStepDefs{
 
     @Given("user selects to be identified using the EUDI Wallet")
     public void userSelectsToBeIdentifiedUsingTheEUDIWallet() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().appOpensSuccessfully();
-        theVerifierRequestsADocFromTheWalletUser();
-        test.mobile().verifier().chooseWallet();
+        userOpensVerifierApplication();
+        userSelectSpecificDataToShare();
+        userSelectsToBeIdentifiedUsingEUDIWallet();
+        test.mobile().verifier().insertPIN();
     }
 
     @When("user authorizes the disclosure of the data")
     public void userAuthorizesTheDisclosureOfTheData() {
         test.mobile().wallet().pinFieldIsDisplayed();
-        test.mobile().wallet().createAPin();
+        test.mobile().verifier().insertPIN();
     }
 
     @Then("user presses the share button on wallet")

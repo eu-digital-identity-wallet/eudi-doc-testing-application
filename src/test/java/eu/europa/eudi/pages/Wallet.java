@@ -287,72 +287,13 @@ public class Wallet {
 
     public void correspondingMessageIsDisplayed() {
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                // Android implementation remains unchanged
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.correspondingMessageIsDisplayed)).getText();
                 Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
             } else {
-                // iOS implementation - enhanced to handle auto-closing popup
-                try {
-                    // Use a shorter, more aggressive wait
-                    WebDriverWait shortWait = new WebDriverWait(test.mobileWebDriverFactory().getDriverIos(), Duration.ofMillis(500));
-                    shortWait.pollingEvery(Duration.ofMillis(50));
-
-                    // Try to find the element as quickly as possible
-                    String pageHeader = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
-                            eu.europa.eudi.elements.ios.WalletElements.correspondingMessageIsDisplayed)).getText();
-
-                    Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
-                } catch (TimeoutException e) {
-                    // If we couldn't find it with the quick approach, try a more thorough search
-                    System.out.println("Popup disappeared too quickly, trying alternative approach...");
-
-                    // Create a loop to aggressively search for the element
-                    long startTime = System.currentTimeMillis();
-                    long timeout = 2000; // 2 seconds max
-                    boolean found = false;
-
-                    while (System.currentTimeMillis() - startTime < timeout && !found) {
-                        try {
-                            // Try direct access without waiting
-                            WebElement element = test.mobileWebDriverFactory().getDriverIos()
-                                    .findElement(eu.europa.eudi.elements.ios.WalletElements.correspondingMessageIsDisplayed);
-
-                            if (element != null) {
-                                String text = element.getText();
-                                Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, text);
-                                found = true;
-                                break;
-                            }
-                        } catch (Exception ex) {
-                            // Continue trying
-                        }
-
-                        // Short pause between attempts
-                        try {
-                            Thread.sleep(50);
-                        } catch (InterruptedException ie) {
-                            Thread.currentThread().interrupt();
-                        }
-                    }
-
-                    if (!found) {
-                        // If we still couldn't find it, take a screenshot for evidence
-                        try {
-                            File screenshot = ((TakesScreenshot) test.mobileWebDriverFactory().getDriverIos())
-                                    .getScreenshotAs(OutputType.FILE);
-                            File destFile = new File("popup_verification_failed.png");
-                            FileUtils.copyFile(screenshot, destFile);
-                            System.out.println("Verification failed, screenshot saved to: " + destFile.getAbsolutePath());
-                        } catch (Exception ex) {
-                            System.err.println("Failed to capture screenshot: " + ex.getMessage());
-                        }
-
-                        // Fail the test with a clear message
-                        Assert.fail("Could not verify popup message: Element disappeared too quickly");
-                    }
-                }
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.correspondingMessageIsDisplayed)).getText();
+                Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
             }
-        }
+    }
 
     public void clickAgainData() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {

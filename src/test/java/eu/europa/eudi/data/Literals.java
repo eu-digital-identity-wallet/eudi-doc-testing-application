@@ -6,7 +6,7 @@ public interface Literals {
 
         WELCOME_HEADER("Welcome to your wallet"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
-        AUTHENTICATION_SUCCESS("You successfully shared information with EUDI Remote Verifier"),
+        AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
@@ -31,7 +31,7 @@ public interface Literals {
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
         VERIFICATION_DETAILS("Birth Date"),
-        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following"),
+        PIN_FIELD_IS_DISPLAYED("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         DETAILS_FAMILY_NAME("Family Name(s)"),
         DETAILS_GIVEN_NAME("Given Name(s)"),
@@ -50,7 +50,7 @@ public interface Literals {
     enum Verifier{
 
         VIEW_DATA_PAGE("Please review carefully before sharing your data. Why we need your data?"),
-        VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
+        VIEW_DATA_PAGE_IOS("The following transaction requires your permission and authentication."),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
