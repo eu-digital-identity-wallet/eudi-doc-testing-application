@@ -24,9 +24,9 @@ public class WalletElements {
     public static By chooseData = By.xpath("//XCUIElementTypeSwitch[@name=\"Family name\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Proceed to authentication\"]");
     public static By chooseWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"OPEN WITH YOUR WALLET\"]");
-    public static By viewDataPage = By.xpath("//XCUIElementTypeStaticText[@name=\"The following transaction requires your permission and authentication.\"]\"]");
+    public static By viewDataPage = By.xpath("//XCUIElementTypeStaticText[@name=\"The following transaction requires your permission and authentication.\"]");
     public static By clickShare = By.xpath("//XCUIElementTypeButton[@name=\"Share\"]");
-    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared information with EUDI Remote Verifier\"]");
+    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By clickNationalId = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By nationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
     public static By clickMdl = By.xpath("//XCUIElementTypeStaticText[@name=\"mDL\"]");
@@ -71,7 +71,7 @@ public class WalletElements {
     public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
     public static By actuallDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"ANDERSSON\"]");
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
-    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EUDI Remote Verifier requests the following\"]");
+    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter your PIN to share data\"]");
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name(s)\"]");
     public static By clickSecondNationalId = By.xpath("(//XCUIElementTypeStaticText[@name=\"National ID\"])[2]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
