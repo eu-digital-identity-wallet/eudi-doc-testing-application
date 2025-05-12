@@ -244,32 +244,51 @@ public class Issuer {
 
     public void scrollUntilFindDate() {
         WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8);
+            int endY = (int) (size.height * 0.2);
+
+            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+            touchAction.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 2) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            int i = 1;
+            while (i < 2) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
-            i++;
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
+            }
 
         }
     }
 
     public void scrollUntilFindSubmit() {
         WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8);
+            int endY = (int) (size.height * 0.2);
+
+            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+            touchAction.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
         int i = 1;
         while (i < 5) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -278,29 +297,37 @@ public class Issuer {
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
             i++;
+        }
 
         }
     }
 
-
-
-
     public void scrollUntilAuthorize() {
         WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8);
+            int endY = (int) (size.height * 0.2);
+
+            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+            touchAction.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 5) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            int i = 1;
+            while (i < 5) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
-            i++;
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
+            }
 
         }
     }
@@ -354,7 +381,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.successfullyShared)).getText();
-            Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
+            Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED_IOS.label, pageHeader);
         }
     }
 
@@ -365,6 +392,7 @@ public class Issuer {
             WebElement countryCode = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountryCode);
             countryCode.clear();
             countryCode.sendKeys("GR");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.closeKeyboard)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickCountryCode)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
