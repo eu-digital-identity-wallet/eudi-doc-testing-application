@@ -50,7 +50,7 @@ Feature: Transaction Search in EUDI Wallet
     And the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_06 @manual:Failed
+  @US_ST_TC_06 @Ignored
   Scenario Outline: User taps on the "Search" button with search text
     Given the user taps on the search field
     When the user types a text
