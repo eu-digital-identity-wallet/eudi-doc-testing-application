@@ -4,10 +4,11 @@ public interface Literals {
 
     enum Wallet{
 
-        WELCOME_HEADER("Welcome to your wallet"),
+        WELCOME_HEADER("Welcome to your Wallet"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
-        LOGIN("Login"),
+        LOGIN("Welcome back"),
+        LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
@@ -79,7 +80,8 @@ public interface Literals {
         AUTHENTICATION_PAGE("Authentication Method Selection"),
         FORM("Enter the data for your EUDI Wallet"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
-        SUCCESSFULLY_SHARED("You successfully shared the following information with");
+        SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
+        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with");
 
         public final String label;
         Issuer(String label) {

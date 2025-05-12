@@ -3,6 +3,7 @@ package eu.europa.eudi.pages;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -168,7 +169,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.loginPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.LOGIN_IOS.label, pageHeader);
         }
     }
 
@@ -721,7 +722,7 @@ public class Wallet {
 
     public void clickDone() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDone)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickClose)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDone)).click();
         }
@@ -736,11 +737,10 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.HOME_PAGE_IS_DISPLAYED.label, pageHeader);
         }
     }
-
     public void detailsAreBlurred() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsAreBlurred));
-            String elementLabel = eyeElement.getAttribute("label");
+            WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.detailsAreBlurred));
+            String elementLabel = eyeElement.getAttribute("content-desc");
             Assert.assertEquals(Literals.Wallet.DETAILS_ARE_BLURRED.label, elementLabel);
         } else {
             WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsAreBlurred));
@@ -748,6 +748,8 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DETAILS_ARE_BLURRED.label, elementLabel);
         }
     }
+
+
 
     public void eyeIconIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -761,9 +763,9 @@ public class Wallet {
 
     public void detailsAreNotBlurred() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsAreNotBlurred));
-            String elementLabel = eyeElement.getAttribute("label");
-            Assert.assertEquals(Literals.Wallet.DETAILS_ARE_NOT_BLURRED.label, elementLabel);
+            WebElement eyeElement = test.mobileWebDriverFactory().getDriverAndroid().findElement(MobileBy.AccessibilityId("Show"));
+            String contentDesc = eyeElement.getAttribute("contentDescription");
+            Assert.assertEquals(Literals.Wallet.DETAILS_ARE_NOT_BLURRED.label, contentDesc);
         } else {
             WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsAreNotBlurred));
             String elementLabel = eyeElement.getAttribute("label");
