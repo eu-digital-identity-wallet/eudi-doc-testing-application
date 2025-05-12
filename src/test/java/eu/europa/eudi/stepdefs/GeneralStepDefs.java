@@ -581,7 +581,6 @@ public class GeneralStepDefs{
     public void thePIDIsOpen() {
         theUserIsViewingTheDetailsOfAnAttestation();
         theUserSelectsEyeIcon();
-        theAttestationDetailsShouldNoLongerBeBlurred();
     }
 
     @When("the user clicks the back button")

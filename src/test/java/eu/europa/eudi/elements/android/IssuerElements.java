@@ -19,7 +19,7 @@ public class IssuerElements {
     public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By secondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View/android.view.View/android.widget.TextView[3]");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
-    public static By selectCountryOfOriginIsDisplayed = By.xpath("");
-    public static By successfullyShared = By.xpath("");
+    public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
+    public static By successfullyShared = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By clickShareAttributes = By.xpath("");
 }
