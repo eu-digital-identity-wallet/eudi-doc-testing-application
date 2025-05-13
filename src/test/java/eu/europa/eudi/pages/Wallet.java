@@ -1,5 +1,6 @@
 package eu.europa.eudi.pages;
 
+import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
@@ -18,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -531,14 +533,21 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.OPTIONAL_DATA.label, pageHeader);
         }
     }
-
     public void clickEyeIcon() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickEyeIcon)).click();
+            try {
+                Thread.sleep(500);
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickEyeIcon)).click();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickEyeIcon)).click();
         }
     }
+
+
+
 
     public void actualDataAreDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -774,22 +783,19 @@ public class Wallet {
     }
 
     public void scrollUntilmDL() {
-        WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 2) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
+            // Use UiScrollable to scroll down
+            androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
+        } else {
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
-            i++;
-
         }
     }
 
