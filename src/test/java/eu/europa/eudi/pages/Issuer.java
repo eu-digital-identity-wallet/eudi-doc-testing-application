@@ -248,7 +248,7 @@ public class Issuer {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
             Dimension size = driver.manage().window().getSize();
             int startX = size.width / 2;
-            int startY = (int) (size.height * 0.8);
+            int startY = (int) (size.height * 0.4);
             int endY = (int) (size.height * 0.2);
 
             TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
@@ -304,6 +304,7 @@ public class Issuer {
 
     public void scrollUntilAuthorize() {
         WebDriver driver;
+        try { Thread.sleep(500);} catch (InterruptedException e) {throw new RuntimeException(e);}
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
             Dimension size = driver.manage().window().getSize();
