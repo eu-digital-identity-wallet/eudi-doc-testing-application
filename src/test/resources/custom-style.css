@@ -5560,8 +5560,8 @@ display: none!important;
 display: none!important;
 }
 
-.dashboard-charts.row > div:has(h4 i.bi-graph-up) {
-    display: none !important;
+.dashboard-charts div::nth-child(3) {
+    display: none!important;
 }
  /*
  for epic 1
