@@ -5560,7 +5560,7 @@ display: none!important;
 display: none!important;
 }
 
-.dashboard-charts div::nth-child(3) {
+.dashboard-charts div:nth-child(3) {
     display: none!important;
 }
  /*
