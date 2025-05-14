@@ -710,11 +710,8 @@ public class Wallet {
     public void scrollUntilYouFindDelete() {
         WebDriver driver;
 
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
         int i = 1;
         while (i < 2) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -723,7 +720,7 @@ public class Wallet {
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
             i++;
-
+        }
         }
     }
 
@@ -819,4 +816,10 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDownArrow)).click();
         }
     }
+
+    public void scrollUntilDelete() {
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));    }
 }

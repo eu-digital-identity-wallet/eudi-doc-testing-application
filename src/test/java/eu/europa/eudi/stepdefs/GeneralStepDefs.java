@@ -685,7 +685,14 @@ public class GeneralStepDefs{
     public void theUserPressesTheDeleteButton() {
         test.mobile().wallet().scrollUntilYouFindDelete();
         test.mobile().wallet().clickDeleteDocument();
-//      test.mobile().wallet().confirmsDeletion();
+        test.mobile().wallet().confirmsDeletion();
+    }
+
+    @When ("the user presses the delete button for mDL")
+    public void theUserPressesTheDeleteButtonForMdl() {
+        test.mobile().wallet().scrollUntilDelete();
+        test.mobile().wallet().clickDeleteDocument();
+        test.mobile().wallet().confirmsDeletion();
     }
 
     @Then("the document should be deleted")

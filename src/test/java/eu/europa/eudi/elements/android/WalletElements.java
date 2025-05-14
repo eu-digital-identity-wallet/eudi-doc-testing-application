@@ -86,7 +86,7 @@ public class WalletElements {
     public static By clickSpecificFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
     public static By clickRemove = By.xpath("//android.widget.Button[@text=\"Remove\"]");
     public static By clickDocuments = By.xpath("//android.widget.TextView[@text=\"Documents\"]");
-    public static By clickClose = By.xpath("//android.widget.Button");
+    public static By clickClose = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By documentsPageIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"Documents\"])[1]");
     public static By familyNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By givenNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Given Name(s)\"]");
