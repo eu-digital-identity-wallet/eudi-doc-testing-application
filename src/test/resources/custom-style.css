@@ -5560,8 +5560,8 @@ display: none!important;
 display: none!important;
 }
 
-.dashboard-charts.row > .col-lg-4.col-md-6.col-sm-9:nth-child(5) {
-    display: none !important;
+#durationChart {
+    display: none!important;
 }
  /*
  for epic 1
