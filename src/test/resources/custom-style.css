@@ -5560,7 +5560,7 @@ display: none!important;
 display: none!important;
 }
 
-.dashboard-charts.row > .col-lg-4.col-md-6.col-sm-9:nth-child(5) {
+.dashboard-charts.row > div:has(h4 i.bi-graph-up) {
     display: none !important;
 }
  /*
