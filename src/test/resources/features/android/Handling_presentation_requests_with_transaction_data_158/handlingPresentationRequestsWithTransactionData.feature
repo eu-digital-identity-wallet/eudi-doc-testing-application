@@ -1,4 +1,4 @@
-@ANDROID @US_HPRWTD @Q1_2025
+@ANDROID @US_HPRWTD @Q2_2025
 Feature: View and Authorize Transaction with EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/158
