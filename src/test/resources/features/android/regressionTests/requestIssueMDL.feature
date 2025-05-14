@@ -5,21 +5,20 @@ Feature: Request/Issue mDL
   Scenario: Log in successfully
     Given the user is on the Login screen
     When the user enters their PIN
-    Then the user should see the dashboard screen
+    Then the user should see the home screen
 
   @US_RIM_TC_02 @before_01
   Scenario: Select document for issuance
-    Given the dashboard page is displayed on wallet
-    When the user clicks on Documents
-    And the Documents page is displayed
+    Given the home page is displayed on wallet
+    When the user clicks the add doc button
+    And the add document page is displayed
     And the user clicks the driving license button
     Then the user is redirected to the issuer service to issue mDL
 
   @US_RIM_TC_03 @before_01
   Scenario: Country and credential provider selection
-    Given the issuer service -authentication method selection screen- is displayed
-    When the user clicks on country selection and submits
-    And the user clicks on Credential Provider FormEU and submits
+    Given the issuer service -test credential provider screen- is displayed
+    When the user clicks on Credential Provider FormEU and submits
     Then the provider form is displayed for the user to register personal data
 
   @US_RIM_TC_04 @before_01
