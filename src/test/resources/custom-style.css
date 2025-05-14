@@ -5559,6 +5559,10 @@ display: none!important;
 {
 display: none!important;
 }
+
+.dashboard-charts.row .col-lg-4.col-md-6.col-sm-9:nth-of-type(3) {
+    display: none !important;
+}
  /*
  for epic 1
 .list-group-item:nth-child(2) {
