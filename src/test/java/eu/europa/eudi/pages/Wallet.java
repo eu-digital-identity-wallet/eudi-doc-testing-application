@@ -662,22 +662,25 @@ public class Wallet {
     }
 
     public void scrollUntilPID() {
-        WebDriver driver;
 
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 3) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+               for (int i = 0; i < 2; i++){
+                androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));}
+            } else {
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 3) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
             i++;
-
+            }
         }
     }
 

@@ -9,17 +9,16 @@ Feature: Request/Issue PID
 
   @US_RIP_TC_02 @before_01
   Scenario: Add document via national ID
-    Given the dashboard page is displayed on wallet
-    When the user clicks on Documents
-    And the Documents page is displayed
-    And the user clicks on the PID button
-    Then the authentication method selection is displayed
+    Given the home page is displayed on wallet
+    When the user clicks the add doc button
+    And the add document page is displayed
+    And the user clicks the PID button
+    Then the credentials provider is displayed
 
   @US_RIP_TC_03 @before_01
   Scenario: Select authentication method and enter data
-    Given the authentication method selection is displayed on screen
-    When the user clicks on country selection and submits
-    And the user clicks on Credential Provider FormEU and submits
+    Given the credentials provider is displayed on screen
+    When the user clicks on Credential Provider FormEU and submits
     Then the provider form is displayed for the user to register personal data
 
   @US_RIP_TC_04 @before_01
@@ -28,3 +27,4 @@ Feature: Request/Issue PID
     When the user fills in the form
     Then a success message for pid is displayed
     And the national id is displayed in the dashboard
+

@@ -104,7 +104,7 @@ public class WalletElements {
     public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
     public static By detailsAreBlurred = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
     public static By detailsAreNotBlurred = By.xpath("");
-    public static By credentialsProviderDisplayed = By.xpath("");
+    public static By credentialsProviderDisplayed = By.xpath("//android.widget.TextView[@text=\"Test Credentials Provider\"]");
     public static By clickDownArrow = By.xpath("");
     public static By walletResponded = By.xpath("");
     public static By clickShareAttributes = By.xpath("");
