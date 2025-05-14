@@ -41,7 +41,8 @@ public interface Literals {
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
         DETAILS_ARE_BLURRED("Hide"),
         DETAILS_ARE_NOT_BLURRED("Show"),
-        CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider");
+        CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
+        WELCOME_HEADER_IOS("Welcome to your wallet");
 
         public final String label;
         Wallet(String label) {
