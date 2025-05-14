@@ -42,7 +42,7 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.welcomeScreen)).getText();
-            Assert.assertEquals(Literals.Wallet.WELCOME_HEADER.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.WELCOME_HEADER_IOS.label, pageHeader);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
