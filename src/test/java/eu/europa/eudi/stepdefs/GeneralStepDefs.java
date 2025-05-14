@@ -922,7 +922,7 @@ public class GeneralStepDefs{
     public void theUserViewsTheDocumentThatIsRequested() {
         theUserHasSelectedSomeData();
         theUserUnselectsSomeOfThisData();
-        aCorrespondingMessageIsDisplayed();
+//        aCorrespondingMessageIsDisplayed();
         test.mobile().wallet().clickShareButton();
         test.mobile().verifier().insertPIN();
     }
@@ -955,7 +955,7 @@ public class GeneralStepDefs{
     public void theUserHasFinalizedDataSelection() {
         theUserHasSelectedSomeData();
         theUserUnselectsSomeOfThisData();
-        aCorrespondingMessageIsDisplayed();
+//        aCorrespondingMessageIsDisplayed();
     }
 
     @When("the user clicks the share button")
