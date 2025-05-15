@@ -1,5 +1,8 @@
 @IOS @US_LT @Q1_2025
 Feature: List Transactions in EUDI Wallet
+  As a EUDI Wallet User
+  I want to access the EUDI Wallet screen having organized all my transactions
+  So that I can view and search the attestation presentations and document signing operations I performed with my EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124
 
@@ -40,7 +43,7 @@ Feature: List Transactions in EUDI Wallet
       | This Week | Transactions that occurred this week              |
       | Month     | Transactions grouped by month (e.g., August 2024) |
 
-  @US_LT_TC_06 @manual:Failed
+  @US_LT_TC_06 @manual:Passed
   Scenario Outline: Transaction entry details
     Given the user is on the Transactions screen
     When the user views a transaction entry
