@@ -19,7 +19,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -663,23 +662,25 @@ public class Wallet {
 
     public void scrollUntilPID() {
 
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-               for (int i = 0; i < 2; i++){
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            for (int i = 0; i < 2; i++) {
                 androidDriver.findElement(MobileBy.AndroidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));}
-            } else {
+                ));
+            }
+        } else {
             WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 3) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+                JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
-            i++;
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
             }
         }
     }
@@ -712,6 +713,7 @@ public class Wallet {
 
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             driver = test.mobileWebDriverFactory().getDriverIos();
+
         int i = 1;
         while (i < 2) {
             JavascriptExecutor js = (JavascriptExecutor) driver;

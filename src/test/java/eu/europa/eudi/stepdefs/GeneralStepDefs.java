@@ -98,6 +98,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().enterDocumentNumber();
             test.mobile().issuer().scrollUntilFindDate();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().scrollUntilFindSubmit();
@@ -692,7 +693,7 @@ public class GeneralStepDefs{
     public void theUserPressesTheDeleteButtonForMdl() {
         test.mobile().wallet().scrollUntilDelete();
         test.mobile().wallet().clickDeleteDocument();
-        test.mobile().wallet().confirmsDeletion();
+      test.mobile().wallet().confirmsDeletion();
     }
 
     @Then("the document should be deleted")
