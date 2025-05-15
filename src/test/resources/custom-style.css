@@ -5559,6 +5559,10 @@ display: none!important;
 {
 display: none!important;
 }
+
+#durationChart {
+    display: none!important;
+}
  /*
  for epic 1
 .list-group-item:nth-child(2) {

@@ -7,7 +7,7 @@ Feature: Support the latest version of PID in EUDI Wallet
     Given the EUDI Wallet supports the latest version of the PID
 
   @US_UTPITRI_TC_01 @manual:Passed
-  Scenario: Issue PID in wallet-initiated flow @manual:Passed
+  Scenario: Issue PID in wallet-initiated flow
     Given the user initiates the process to add a document by choosing from the list
     When the user selects PID from the list
     Then the PID is successfully issued in the EUDI Wallet

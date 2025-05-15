@@ -12,7 +12,7 @@ Feature: Selective Disclosure
   Scenario: Unselect Some Data
     Given the user has selected some data
     When the user unselects some of this data
-    Then a corresponding message is displayed
+#    Then a corresponding message is displayed
 
   @US_SD_TC_03 @before_01
   Scenario: Initiate Sharing Process

@@ -1,4 +1,4 @@
-@ANDROID @manual @US_CAUPAARS
+@ANDROID @manual @US_CAUPAARS @Q1_2025
 Feature: Check and update periodically all attestations revocation status
   As an EUDI Wallet,
   I want periodically to check and update the revocation status of all attestations stored in the EUDI Wallet

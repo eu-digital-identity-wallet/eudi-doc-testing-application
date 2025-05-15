@@ -1,5 +1,8 @@
 @ANDROID @US_LT @Q1_2025
 Feature: List Transactions in EUDI Wallet
+  As a EUDI Wallet User
+  I want to access the EUDI Wallet screen having organized all my transactions
+  So that I can view and search the attestation presentations and document signing operations I performed with my EUDI Wallet
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124
 

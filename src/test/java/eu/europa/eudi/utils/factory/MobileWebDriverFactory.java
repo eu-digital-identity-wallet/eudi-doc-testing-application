@@ -56,7 +56,7 @@ public class MobileWebDriverFactory {
     }
     
 
-    public void startLogging(String featureDirPath, String featureName, String scenarioName) {
+    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) {
         try {
             // Stop any previous logging
             stopLogging();
@@ -79,8 +79,16 @@ public class MobileWebDriverFactory {
                 e.printStackTrace();
             }
 
-            // Start logcat process
-            logcatProcess = Runtime.getRuntime().exec("adb logcat");
+//            // Start logcat process
+//            logcatProcess = Runtime.getRuntime().exec("adb logcat");
+
+            if ("IOS".equalsIgnoreCase(platform)) {
+                logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
+            } else if ("ANDROID".equalsIgnoreCase(platform)) {
+                logcatProcess = Runtime.getRuntime().exec("adb logcat");
+            } else {
+                throw new IllegalArgumentException("Unsupported platform for logging: " + platform);
+            }
 
             // Start a new thread to read logcat output and write to the log file
             logcatThread = new Thread(() -> {
@@ -160,18 +168,18 @@ public class MobileWebDriverFactory {
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
-            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
-            new Thread(() -> {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
-                     PrintWriter logWriter = new PrintWriter(new FileWriter("ios_logs.txt"))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        logWriter.println(line);  // Write syslog output to file
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
+//            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
+//            new Thread(() -> {
+//                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
+//                     PrintWriter logWriter = new PrintWriter(new FileWriter("ios_logs.txt"))) {
+//                    String line;
+//                    while ((line = reader.readLine()) != null) {
+//                        logWriter.println(line);  // Write syslog output to file
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }).start();
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();

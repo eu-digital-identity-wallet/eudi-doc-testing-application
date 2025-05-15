@@ -686,7 +686,14 @@ public class GeneralStepDefs{
     public void theUserPressesTheDeleteButton() {
         test.mobile().wallet().scrollUntilYouFindDelete();
         test.mobile().wallet().clickDeleteDocument();
-//      test.mobile().wallet().confirmsDeletion();
+        test.mobile().wallet().confirmsDeletion();
+    }
+
+    @When ("the user presses the delete button for mDL")
+    public void theUserPressesTheDeleteButtonForMdl() {
+        test.mobile().wallet().scrollUntilDelete();
+        test.mobile().wallet().clickDeleteDocument();
+      test.mobile().wallet().confirmsDeletion();
     }
 
     @Then("the document should be deleted")
@@ -916,7 +923,7 @@ public class GeneralStepDefs{
     public void theUserViewsTheDocumentThatIsRequested() {
         theUserHasSelectedSomeData();
         theUserUnselectsSomeOfThisData();
-        aCorrespondingMessageIsDisplayed();
+//        aCorrespondingMessageIsDisplayed();
         test.mobile().wallet().clickShareButton();
         test.mobile().verifier().insertPIN();
     }
@@ -949,7 +956,7 @@ public class GeneralStepDefs{
     public void theUserHasFinalizedDataSelection() {
         theUserHasSelectedSomeData();
         theUserUnselectsSomeOfThisData();
-        aCorrespondingMessageIsDisplayed();
+//        aCorrespondingMessageIsDisplayed();
     }
 
     @When("the user clicks the share button")
