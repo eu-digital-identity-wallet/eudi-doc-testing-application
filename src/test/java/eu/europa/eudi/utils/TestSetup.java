@@ -77,7 +77,7 @@ public class TestSetup {
         String scenarioName = scenario.getName();
 
         // Start logging with the determined parameters
-        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName);
+        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName, systemOperation);
     }
 
 
