@@ -884,6 +884,7 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectShareAttributes();
         test.mobile().verifier().selectAllAttributes();
+        test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
@@ -892,7 +893,7 @@ public class GeneralStepDefs{
     @Then("the requestor of the data is displayed in the wallet")
     public void theRequestorOfTheDataIsDisplayedInTheWallet() {
         test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().insertPIN();
+        test.mobile().verifier().insertPIN2();
     }
 
     @And("the document from which the data are requested is displayed")
@@ -921,11 +922,10 @@ public class GeneralStepDefs{
 
     @Given("the user views the document that is requested")
     public void theUserViewsTheDocumentThatIsRequested() {
-        theUserHasSelectedSomeData();
-        theUserUnselectsSomeOfThisData();
-//        aCorrespondingMessageIsDisplayed();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().verifier().insertPIN();
+        theUserHasFinalizedDataSelection();
+        theUserClicksTheSHAREButton();
+        thePINFieldIsDisplayedToAuthorizeSharing();
+        test.mobile().wallet().createAPin();
     }
 
     @When("the user clicks to view the document's details")
@@ -956,7 +956,8 @@ public class GeneralStepDefs{
     public void theUserHasFinalizedDataSelection() {
         theUserHasSelectedSomeData();
         theUserUnselectsSomeOfThisData();
-//        aCorrespondingMessageIsDisplayed();
+        aCorrespondingMessageIsDisplayed();
+        test.mobile().wallet().closeCorrespondingMessage();
     }
 
     @When("the user clicks the share button")
