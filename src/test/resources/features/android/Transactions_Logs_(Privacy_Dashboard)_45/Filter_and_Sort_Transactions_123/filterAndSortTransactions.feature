@@ -1,5 +1,8 @@
 @ANDROID @US_FASD @Q1_2025
 Feature: Filter and Sort Transactions in EUDI Wallet
+  As a EUDI Wallet User
+  I want to filter and sort the transactions in the EUDI Wallet
+  So that I can find and view the transactions according to my needs
 
 #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/123
 

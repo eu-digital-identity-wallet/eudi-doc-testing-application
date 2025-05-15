@@ -1,5 +1,6 @@
 package eu.europa.eudi.pages;
 
+import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
@@ -40,7 +41,7 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.welcomeScreen)).getText();
-            Assert.assertEquals(Literals.Wallet.WELCOME_HEADER.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.WELCOME_HEADER_IOS.label, pageHeader);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
@@ -531,14 +532,21 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.OPTIONAL_DATA.label, pageHeader);
         }
     }
-
     public void clickEyeIcon() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickEyeIcon)).click();
+            try {
+                Thread.sleep(500);
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickEyeIcon)).click();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickEyeIcon)).click();
         }
     }
+
+
+
 
     public void actualDataAreDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -653,22 +661,27 @@ public class Wallet {
     }
 
     public void scrollUntilPID() {
-        WebDriver driver;
+
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            for (int i = 0; i < 2; i++) {
+                androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
         } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 3) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 3) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
-            i++;
-
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                js.executeScript("mobile: swipe", params);
+                i++;
+            }
         }
     }
 
@@ -698,11 +711,9 @@ public class Wallet {
     public void scrollUntilYouFindDelete() {
         WebDriver driver;
 
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
+
         int i = 1;
         while (i < 2) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -711,7 +722,7 @@ public class Wallet {
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
             i++;
-
+        }
         }
     }
 
@@ -774,22 +785,19 @@ public class Wallet {
     }
 
     public void scrollUntilmDL() {
-        WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-        }
-        int i = 1;
-        while (i < 2) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
+            // Use UiScrollable to scroll down
+            androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
+        } else {
+            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
-            i++;
-
         }
     }
 
@@ -810,4 +818,10 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDownArrow)).click();
         }
     }
+
+    public void scrollUntilDelete() {
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));    }
 }

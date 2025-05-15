@@ -1,4 +1,4 @@
-@IOS @manual @US_CAUOPRTRARS
+@IOS @manual @US_CAUOPRTRARS @Q1_2025
 Feature: Check and update on presentation request the requested attestations revocation status
   As an EUDI Wallet,
   I want when I am requested to present/share attestations, to check and update the revocation status of the requested attestations stored in the EUDI Wallet
