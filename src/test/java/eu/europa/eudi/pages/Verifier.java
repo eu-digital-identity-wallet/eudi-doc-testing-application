@@ -34,7 +34,7 @@ public class Verifier {
 
     public void selectShareAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deviceName = test.envDataConfig().getAppiumIosDeviceName();
+            String deviceName = test.envDataConfig().getAppiumAndroidDeviceName();
 
 // Debugging: Print the device name to check its value
             System.out.println("Device Name: '" + deviceName + "'");
@@ -53,12 +53,12 @@ public class Verifier {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributesEmulator)).click();
-                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAllAttributes)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormatEmulator)).click();
-                driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormatEmulator)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAttributesEmulator)).click();
+//                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAllAttributes)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormatEmulator)).click();
+//                driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSpecificFormatEmulator)).click();
             }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPersonIdentificationData)).click();
@@ -183,27 +183,34 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormat)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.secondAttribute)).click();
-            test.mobile().verifier().scrollUntilFindIssuanceDate();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.issuanceDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSelect)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.selectAttributesBy)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.allAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormat)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.msoMdoc)).click();
-            test.mobile().verifier().scrollUntilNext();
         }
     }
 
-    private void scrollUntilNext() {
+    public void scrollUntilNext() {
         WebDriver driver;
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.4);
+            int endY = (int) (size.height * 0.2);
+
+            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+            touchAction.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
-        }
         int i = 1;
         while (i < 5) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -212,11 +219,14 @@ public class Verifier {
             params.put("direction", "up");
             js.executeScript("mobile: swipe", params);
             i++;
-
+        }
         }
     }
 
     public void launchSafari() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+        }
+        else {
         IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
         String url = "https://dev.verifier.eudiw.dev/home";
 
@@ -232,6 +242,7 @@ public class Verifier {
             driver.context("NATIVE_APP");
         } catch (Exception e) {
             throw new RuntimeException("Failed to launch Safari", e);
+        }
         }
     }
 
@@ -252,6 +263,23 @@ public class Verifier {
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
             driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield6).sendKeys(String.valueOf(sixthDigit));
         } else {
+            String fullPin = test.envDataConfig().getPin();
+            char secondDigit = fullPin.charAt(1);
+            char thirdDigit = fullPin.charAt(2);
+            char fourthDigit = fullPin.charAt(3);
+            char fifthDigit = fullPin.charAt(4);
+            char sixthDigit = fullPin.charAt(5);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1Ver).click();
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2Ver).sendKeys(String.valueOf(secondDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3Ver).sendKeys(String.valueOf(thirdDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4Ver).sendKeys(String.valueOf(fourthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5Ver).sendKeys(String.valueOf(fifthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6Ver).sendKeys(String.valueOf(sixthDigit));
+        }
+    }public void insertPIN2() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             String fullPin = test.envDataConfig().getPin();
             char secondDigit = fullPin.charAt(1);
             char thirdDigit = fullPin.charAt(2);

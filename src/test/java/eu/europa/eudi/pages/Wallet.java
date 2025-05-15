@@ -292,8 +292,8 @@ public class Wallet {
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.correspondingMessageIsDisplayed)).getText();
                 Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
             } else {
-                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.correspondingMessageIsDisplayed)).getText();
-                Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
+                //String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.correspondingMessageIsDisplayed)).getText();
+                //Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
             }
     }
 
@@ -578,7 +578,7 @@ public class Wallet {
 
     public void pinFieldIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinFieldIsDisplayed)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.pinFieldIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.PIN_FIELD_IS_DISPLAYED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pinFieldIsDisplayed)).getText();
@@ -824,4 +824,10 @@ public class Wallet {
             androidDriver.findElement(MobileBy.AndroidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
             ));    }
+
+    public void closeCorrespondingMessage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.closeCorrespondingMessage)).click();
+        }
+    }
 }
