@@ -1,4 +1,4 @@
-@ANDROID @manual @US_FASD
+@ANDROID @manual @US_FASD @Q4_2024
 Feature: Filtering and sorting documents in the EUDI Wallet
 
   As a EUDI Wallet User

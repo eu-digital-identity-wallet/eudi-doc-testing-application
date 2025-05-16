@@ -1,4 +1,4 @@
-@IOS @manual @US_FASD
+@IOS @manual @US_FASD @Q4_2024
 Feature: Filtering and sorting documents in the EUDI Wallet
 
   As a EUDI Wallet User
@@ -18,6 +18,7 @@ Feature: Filtering and sorting documents in the EUDI Wallet
     And documents should be sorted by the default option (based on category)
     And the documents should be ordered by attestation name ascending within each category
     And the filter or sort button should have no visual indication that a filter or sort option is applied
+
 
   @US_FASD_TC_02 @manual:Failed
   Scenario: Opening the filter/sort bottom sheet

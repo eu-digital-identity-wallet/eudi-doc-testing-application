@@ -2,8 +2,6 @@ package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.pages.*;
 import eu.europa.eudi.utils.TestSetup;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 public class MobilePageObjectFactory {
     TestSetup test;

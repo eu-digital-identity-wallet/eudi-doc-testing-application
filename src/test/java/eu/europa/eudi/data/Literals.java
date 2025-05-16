@@ -46,7 +46,6 @@ public interface Literals {
 
         VIEW_DATA_PAGE("Please review carefully before sharing your data. Why we need your data?"),
         VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
-
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("1");
@@ -58,8 +57,8 @@ public interface Literals {
     }
 
     enum General{
-        WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE("WebDriver is not an instance of AppiumDriver"),
         ANDROID("android"),
+
         IOS("ios");
         public final String label;
         General(String label) {
@@ -72,8 +71,8 @@ public interface Literals {
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet"),
-        AUTHORIZE_PAGE("Authorize data from your EUDI Wallet");
+        FORM("Enter the data for your EUDI Wallet");
+
         public final String label;
         Issuer(String label) {
             this.label = label;
