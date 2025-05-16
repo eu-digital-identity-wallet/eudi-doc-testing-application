@@ -72,7 +72,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
   Scenario: Reset filter and sort options
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Reset all" button
-    Then the sort and filters are reset to the default values (no filter and sort by transaction date ascending)
+    Then the sort and filters are reset to the default values (no filter and sort by transaction date descending)
     And the filter/sort button has no visual indication that a user filter/sort option is applied
 
   @US_FASD_TC_09 @manual:Passed
