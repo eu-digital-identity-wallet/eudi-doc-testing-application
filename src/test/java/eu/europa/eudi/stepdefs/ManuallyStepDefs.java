@@ -6782,11 +6782,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date descending)")
-    public void the_sort_and_filters_are_reset_to_the_default_values_no_filter_and_sort_by_transaction_date_descending() {
-        //manual
-    }
-
 }
 
 
