@@ -6776,6 +6776,17 @@ public class ManuallyStepDefs {
     public void the_eudi_wallet_presents_the_following_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
         //manual
     }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date descending)")
+    public void the_sort_and_filters_are_reset_to_the_default_values_no_filter_and_sort_by_transaction_date_descending_new() {
+        //manual
+    }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date descending)")
+    public void the_sort_and_filters_are_reset_to_the_default_values_no_filter_and_sort_by_transaction_date_descending() {
+        //manual
+    }
+
 }
 
 
