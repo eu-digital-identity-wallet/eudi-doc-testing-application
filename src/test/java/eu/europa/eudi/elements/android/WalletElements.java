@@ -18,9 +18,9 @@ public class WalletElements {
     public static By chooseData2 = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
     public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"OPEN WITH YOUR WALLET\"]");
     public static By chooseSampleData = By.xpath("//android.widget.TextView[@text=\"Load Sample Documents\"]");
-    public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"Please review carefully before sharing your data. Why we need your data?\"]");
+    public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"The following transaction requires your permission and authentication.\"]");
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");
-    public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared information with EUDI Remote Verifier\"]");
+    public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"CONTINUE\"]");
     public static By appOpensSuccessfully = By.xpath("//android.widget.TextView[@text=\"Define your presentation request\"]");
     public static By loginPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back\"]");
@@ -72,7 +72,7 @@ public class WalletElements {
     public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
     public static By clickEyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
     public static By actuallDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"ANDERSSON\"]");
-    public static By clickExpandVerification = By.xpath("//android.widget.TextView[@text=\"Verification Data\"]");
+    public static By clickExpandVerification = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PIN\"]");
     public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
@@ -108,7 +108,7 @@ public class WalletElements {
     public static By clickDownArrow = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickShareAttributes = By.xpath("");
-    public static By clickSelect = By.xpath("");
+    public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
 }

@@ -52,8 +52,7 @@ public interface Literals {
 
     enum Verifier{
 
-        VIEW_DATA_PAGE("Please review carefully before sharing your data. Why we need your data?"),
-        VIEW_DATA_PAGE_IOS("The following transaction requires your permission and authentication."),
+        VIEW_DATA_PAGE("The following transaction requires your permission and authentication."),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
