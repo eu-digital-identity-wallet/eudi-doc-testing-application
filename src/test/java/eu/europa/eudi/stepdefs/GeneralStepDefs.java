@@ -996,7 +996,7 @@ public class GeneralStepDefs{
         userOpensVerifierApplication();
         userSelectSpecificDataToShare();
         userSelectsToBeIdentifiedUsingEUDIWallet();
-        test.mobile().verifier().insertPIN();
+        test.mobile().verifier().insertPIN2();
     }
 
     @When("user authorizes the disclosure of the data")
@@ -1007,6 +1007,7 @@ public class GeneralStepDefs{
 
     @Then("user presses the share button on wallet")
     public void userPressesTheShareButtonOnWallet() {
+        test.mobile().wallet().closeCorrespondingMessage();
         test.mobile().wallet().clickShareButton();
     }
 
