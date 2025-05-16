@@ -1,4 +1,4 @@
-@ANDROID @manual @US_DLODFS
+@ANDROID @manual @US_DLODFS @Q4_2024
 Feature: Select Document to be Signed
   As a EUDI Wallet User
   I want to select and open a document from my EUDI Wallet device

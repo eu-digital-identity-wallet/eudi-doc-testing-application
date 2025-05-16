@@ -8,15 +8,6 @@ import java.nio.file.Paths;
  */
 public class ResourcesConfig {
 
-    public String getOutputDir() {
-        return getTestResourcesPath() + "\\preAuthorizationCodeSameDevice.feature-data\\outputDir";
-    }
-
-    public String getInputDir() {
-        return getTestResourcesPath() + "\\preAuthorizationCodeSameDevice.feature-data\\inputDir";
-    }
-
-
     private String getTestResourcesPath() {
        return System.getProperty("user.dir") + "\\preAuthorizationCodeSameDevice.feature\\resources";
     }
@@ -56,14 +47,6 @@ public class ResourcesConfig {
             else
                 return getAbsolutePath() + System.getProperty("env.properties");
 
-    }
-
-    public String getChromeDriver() {
-        return getTestResourcesPath() + "/drivers/chromedriver.exe";
-    }
-
-    public String getFirefoxDriver() {
-        return getTestResourcesPath() + "/drivers/geckodriver.exe";
     }
 
 }

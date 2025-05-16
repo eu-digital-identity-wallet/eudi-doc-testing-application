@@ -5567,6 +5567,1221 @@ public class ManuallyStepDefs {
     public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
         //manual
     }
+
+    @And("the user has issued PID attestation to the EUDI Wallet")
+    public void theUserHasIssuedPIDAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("internet connectivity is available for connectivity and data transfer capabilities")
+    public void internetConnectivityIsAvailableForConnectivityAndDataTransferCapabilities() {
+        //manual
+    }
+
+    @And("the Issuer has included VC status check information in the attestation")
+    public void theIssuerHasIncludedVCStatusCheckInformationInTheAttestation() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has valid attestations stored")
+    public void theEUDIWalletHasValidAttestationsStored() {
+        //manual
+    }
+
+    @When("the predefined interval \\(e.g. {int} hours) has passed")
+    public void thePredefinedIntervalEGHoursHasPassed(int arg0) {
+        //manual
+    }
+
+    @Then("the EUDI Wallet checks online the revocation status of all stored valid attestations")
+    public void theEUDIWalletChecksOnlineTheRevocationStatusOfAllStoredValidAttestations() {
+        //manual
+    }
+
+    @And("the last status check datetime is updated")
+    public void theLastStatusCheckDatetimeIsUpdated() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks the revocation status")
+    public void theEUDIWalletChecksTheRevocationStatus() {
+        //manual
+    }
+
+    @And("an attestation is found to be revoked by the issuer")
+    public void anAttestationIsFoundToBeRevokedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet updates the internal attestation status as revoked")
+    public void theEUDIWalletUpdatesTheInternalAttestationStatusAsRevoked() {
+        //manual
+    }
+
+    @And("the EUDI Wallet raises a notification informing the user the attestation is revoked and cannot be presented anymore to Relying Parties")
+    public void theEUDIWalletRaisesANotificationInformingTheUserTheAttestationIsRevokedAndCannotBePresentedAnymoreToRelyingParties() {
+        //manual
+    }
+
+    @And("the EUDI Wallet displays a visual indication on the attestation to inform the user this attestation is revoked")
+    public void theEUDIWalletDisplaysAVisualIndicationOnTheAttestationToInformTheUserThisAttestationIsRevoked() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has a valid PID attestation stored")
+    public void theEUDIWalletHasAValidPIDAttestationStored() {
+        //manual
+    }
+
+    @And("the PID is found to be revoked by the issuer")
+    public void thePIDIsFoundToBeRevokedByTheIssuer() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet executes the Handle PID revocation process")
+    public void theEUDIWalletExecutesTheHandlePIDRevocationProcess() {
+        //manual
+    }
+
+    @Given("an attestation in the EUDI Wallet has been marked as revoked")
+    public void anAttestationInTheEUDIWalletHasBeenMarkedAsRevoked() {
+        //manual
+    }
+
+    @When("the user views the Documents screen")
+    public void theUserViewsTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the revoked attestation should have a clear visual indication of its revoked status")
+    public void theRevokedAttestationShouldHaveAClearVisualIndicationOfItsRevokedStatus() {
+        //manual
+    }
+
+    @When("the user selects to view the details of the revoked attestation")
+    public void theUserSelectsToViewTheDetailsOfTheRevokedAttestation() {
+        //manual
+    }
+
+    @Then("the View document screen should display a clear visual indication of the attestation's revoked status")
+    public void theViewDocumentScreenShouldDisplayAClearVisualIndicationOfTheAttestationSRevokedStatus() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet contains both valid and revoked attestations")
+    public void theEUDIWalletContainsBothValidAndRevokedAttestations() {
+        //manual
+    }
+
+    @When("the user applies filters or sorting on the Documents screen")
+    public void theUserAppliesFiltersOrSortingOnTheDocumentsScreen() {
+        //manual
+    }
+
+    @Then("the revoked attestations should be handled correctly according to the filter and sort criteria")
+    public void theRevokedAttestationsShouldBeHandledCorrectlyAccordingToTheFilterAndSortCriteria() {
+        //manual
+    }
+
+    @And("internet is available for connectivity and data transfer capabilities")
+    public void internetIsAvailableForConnectivityAndDataTransferCapabilities() {
+        //manual
+    }
+
+    @And("the Issuer includes into VC information for online VC status check")
+    public void theIssuerIncludesIntoVCInformationForOnlineVCStatusCheck() {
+        //manual
+    }
+
+    @When("the EUDI Wallet is requested to present\\/share attestations")
+    public void theEUDIWalletIsRequestedToPresentShareAttestations() {
+        //manual
+    }
+
+    @When("the EUDI Wallet is requested to present or share attestations")
+    public void theEUDIWalletIsRequestedToPresentOrShareAttestations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet checks online the revocation status of the requested attestations")
+    public void theEUDIWalletChecksOnlineTheRevocationStatusOfTheRequestedAttestations() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks the revocation status during a presentation request")
+    public void theEUDIWalletChecksTheRevocationStatusDuringAPresentationRequest() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet makes the attestation unavailable for selection by the holder on the presentation request")
+    public void theEUDIWalletMakesTheAttestationUnavailableForSelectionByTheHolderOnThePresentationRequest() {
+        //manual
+    }
+
+    @Then("the presentation operation is interrupted with a corresponding message informing the user the operation cannot be continued due to PID revocation")
+    public void thePresentationOperationIsInterruptedWithACorrespondingMessageInformingTheUserTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @And("the internet connection is not available")
+    public void theInternetConnectionIsNotAvailable() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet stops the revocation checks")
+    public void theEUDIWalletStopsTheRevocationChecks() {
+        //manual
+    }
+
+    @And("the EUDI Wallet continues the presentation operation as normal")
+    public void theEUDIWalletContinuesThePresentationOperationAsNormal() {
+        //manual
+    }
+
+    @And("other conditions block the EUDI Wallet from checking the revocation status")
+    public void otherConditionsBlockTheEUDIWalletFromCheckingTheRevocationStatus() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet performs periodic revocation checks")
+    public void theEUDIWalletPerformsPeriodicRevocationChecks() {
+        //manual
+    }
+
+    @When("the EUDI Wallet detects that the PID is revoked")
+    public void theEUDIWalletDetectsThatThePIDIsRevoked() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet interrupts any ongoing operation with a message informing the user that the operation cannot be continued due to PID revocation")
+    public void theEUDIWalletInterruptsAnyOngoingOperationWithAMessageInformingTheUserThatTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @And("the EUDI Wallet downgrades its state back to Operational as specified in ARF {double}{double}")
+    public void theEUDIWalletDowngradesItsStateBackToOperationalAsSpecifiedInARF(int arg0, int arg1, int arg2) {
+        //manual
+    }
+
+    @And("the Operational state allows the holder to issue attestations but disallows the holder to present or share attestations or sign documents")
+    public void theOperationalStateAllowsTheHolderToIssueAttestationsButDisallowsTheHolderToPresentOrShareAttestationsOrSignDocuments() {
+        //manual
+    }
+
+    @And("the EUDI Wallet requires the holder to re-issue a valid PID to access the EUDI Wallet")
+    public void theEUDIWalletRequiresTheHolderToReIssueAValidPIDToAccessTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet performs revocation checks on presentation request")
+    public void theEUDIWalletPerformsRevocationChecksOnPresentationRequest() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet is performing an operation")
+    public void theEUDIWalletIsPerformingAnOperation() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet interrupts the ongoing operation with a message informing the user that the operation cannot be continued due to PID revocation")
+    public void theEUDIWalletInterruptsTheOngoingOperationWithAMessageInformingTheUserThatTheOperationCannotBeContinuedDueToPIDRevocation() {
+        //manual
+    }
+
+    @Given("the PID is revoked and the EUDI Wallet is in Operational state")
+    public void thePIDIsRevokedAndTheEUDIWalletIsInOperationalState() {
+        //manual
+    }
+
+    @When("the user attempts to access the EUDI Wallet")
+    public void theUserAttemptsToAccessTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the issuer maintains an Attestation status list or Attestation revocation list")
+    public void theIssuerMaintainsAnAttestationStatusListOrAttestationRevocationList() {
+        //manual
+    }
+
+    @And("the issuer's Attestation status list or Attestation revocation list is publicly available")
+    public void theIssuerSAttestationStatusListOrAttestationRevocationListIsPubliclyAvailable() {
+        //manual
+    }
+
+    @And("the PID or Attestation issuer includes revocation information in the issued PID or attestations")
+    public void thePIDOrAttestationIssuerIncludesRevocationInformationInTheIssuedPIDOrAttestations() {
+        //manual
+    }
+
+    @And("the revocation information includes a URL indicating the location where the status list or revocation list can be obtained, and an identifier or index for this specific certificate or attestation within that list")
+    public void theRevocationInformationIncludesAURLIndicatingTheLocationWhereTheStatusListOrRevocationListCanBeObtainedAndAnIdentifierOrIndexForThisSpecificCertificateOrAttestationWithinThatList() {
+        //manual
+    }
+
+    @And("the issuer can revoke only its own issued PID or attestations")
+    public void theIssuerCanRevokeOnlyItsOwnIssuedPIDOrAttestations() {
+        //manual
+    }
+
+    @Given("the issuer has issued a PID to an EUDI Wallet instance holder")
+    public void theIssuerHasIssuedAPIDToAnEUDIWalletInstanceHolder() {
+        //manual
+    }
+
+    @When("the issuer decides to revoke the PID according to ARF Annex {int} VCR_{int}, VCR_{int} and VCR_{int}")
+    public void theIssuerDecidesToRevokeThePIDAccordingToARFAnnexVCR_VCR_AndVCR_(int arg0, int arg1, int arg2, int arg3) {
+        //manual
+    }
+
+    @Then("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the PID to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToThePIDToBeRevoked() {
+        //manual
+    }
+
+    @And("the PID cannot be misused")
+    public void thePIDCannotBeMisused() {
+        //manual
+    }
+
+    @Given("the issuer has issued an attestation to an EUDI Wallet instance holder")
+    public void theIssuerHasIssuedAnAttestationToAnEUDIWalletInstanceHolder() {
+        //manual
+    }
+
+    @When("the issuer decides to revoke the attestation according to ARF Annex {int} VCR_{int}, VCR_{int} and VCR_{int}")
+    public void theIssuerDecidesToRevokeTheAttestationAccordingToARFAnnexVCR_VCR_AndVCR_(int arg0, int arg1, int arg2, int arg3) {
+        //manual
+    }
+
+    @Then("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the attestation to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToTheAttestationToBeRevoked() {
+        //manual
+    }
+
+    @And("the attestation cannot be misused")
+    public void theAttestationCannotBeMisused() {
+        //manual
+    }
+
+    @Given("the issuer has decided to revoke a PID or attestation")
+    public void theIssuerHasDecidedToRevokeAPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the issuer accesses the provided user interface")
+    public void theIssuerAccessesTheProvidedUserInterface() {
+        //manual
+    }
+
+    @And("the issuer updates the index in the Attestation status list or Attestation revocation list that corresponds to the PID or attestation to be revoked")
+    public void theIssuerUpdatesTheIndexInTheAttestationStatusListOrAttestationRevocationListThatCorrespondsToThePIDOrAttestationToBeRevoked() {
+        //manual
+    }
+
+    @Then("the PID or attestation is marked as revoked in the list")
+    public void thePIDOrAttestationIsMarkedAsRevokedInTheList() {
+        //manual
+    }
+
+    @And("the revocation is publicly available")
+    public void theRevocationIsPubliclyAvailable() {
+        //manual
+    }
+
+    @Given("the issuer has revoked a PID or attestation")
+    public void theIssuerHasRevokedAPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the issuer attempts to reverse the revocation")
+    public void theIssuerAttemptsToReverseTheRevocation() {
+        //manual
+    }
+
+    @Then("the system prevents the issuer from reversing the revocation")
+    public void theSystemPreventsTheIssuerFromReversingTheRevocation() {
+        //manual
+    }
+
+    @And("the PID or attestation remains revoked")
+    public void thePIDOrAttestationRemainsRevoked() {
+        //manual
+    }
+
+    @Given("the user has been authenticated in the Relying Party service")
+    public void theUserHasBeenAuthenticatedInTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the user has been authenticated in the EUDI Wallet")
+    public void theUserHasBeenAuthenticatedInTheEUDIWallet() {
+        //manual
+    }
+
+    @And("internet is available for connectivity and data transfer")
+    public void internetIsAvailableForConnectivityAndDataTransfer() {
+        //manual
+    }
+
+    @And("the Wallet and the Relying Party User Interface reside on different devices")
+    public void theWalletAndTheRelyingPartyUserInterfaceResideOnDifferentDevices() {
+        //manual
+    }
+
+    @Given("the user accesses the Relying Party page where the document to be signed is available")
+    public void theUserAccessesTheRelyingPartyPageWhereTheDocumentToBeSignedIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the option to retrieve the document in their EUDI Wallet")
+    public void theUserSelectsTheOptionToRetrieveTheDocumentInTheirEUDIWallet() {
+        //manual
+    }
+
+    @Then("the Relying Party renders a QR-code requesting the user to scan the QR-code to retrieve the document")
+    public void theRelyingPartyRendersAQRCodeRequestingTheUserToScanTheQRCodeToRetrieveTheDocument() {
+        //manual
+    }
+
+    @When("the user selects the option to Sign a Document through Scan QR")
+    public void theUserSelectsTheOptionToSignADocumentThroughScanQR() {
+        //manual
+    }
+
+    @And("the user scans the displayed QR-code with the EUDI Wallet")
+    public void theUserScansTheDisplayedQRCodeWithTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet retrieves the document from the Relying Party service")
+    public void theEUDIWalletRetrievesTheDocumentFromTheRelyingPartyService() {
+        //manual
+    }
+
+    @And("the EUDI Wallet presents the document to the user")
+    public void theEUDIWalletPresentsTheDocumentToTheUser() {
+        //manual
+    }
+
+    @Given("the signing process has been completed as per the R{int} or R{int} flow")
+    public void theSigningProcessHasBeenCompletedAsPerTheROrRFlow(int arg0, int arg1) {
+        //manual
+    }
+
+    @Given("the signing process has been completed as per the Rthree or Rfive flow")
+    public void theSigningProcessHasBeenCompletedAsPerTheRthreeOrRfiveFlow() {
+        //manual
+    }
+
+    @And("the Wallet and the Relying Party User Interface reside on different devices \\(e.g. mobile device and a desktop respectively)")
+    public void theWalletAndTheRelyingPartyUserInterfaceResideOnDifferentDevicesEGMobileDeviceAndADesktopRespectively() {
+        //manual
+    }
+
+    @And("the user has received a presentation request from a Relying Party in either a cross or same device flow")
+    public void theUserHasReceivedAPresentationRequestFromARelyingPartyInEitherACrossOrSameDeviceFlow() {
+        //manual
+    }
+
+    @And("the user has authenticated to the Remote Signing Service")
+    public void theUserHasAuthenticatedToTheRemoteSigningService() {
+        //manual
+    }
+
+    @Given("the user views a presentation request from a Relying Party")
+    public void theUserViewsAPresentationRequestFromARelyingParty() {
+        //manual
+    }
+
+    @Then("the user is returned to the Home screen")
+    public void theUserIsReturnedToTheHomeScreen() {
+        //manual
+    }
+
+    @Given("the user has entered the PIN to proceed with the data sharing flow")
+    public void theUserHasEnteredThePINToProceedWithTheDataSharingFlow() {
+        //manual
+    }
+
+    @And("the wallet displays a Close button to return to the Home screen")
+    public void theWalletDisplaysACloseButtonToReturnToTheHomeScreen() {
+        //manual
+    }
+
+    @Given("the PDA1 attestation adheres to the existing functionalities of the EUDI Wallet")
+    public void thePDAAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user initiates the process to add a document by choosing from the list")
+    public void theUserInitiatesTheProcessToAddADocumentByChoosingFromTheList() {
+        //manual
+    }
+
+    @When("the user selects PDA1 attestation from the list")
+    public void theUserSelectsPDAAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the PDA1 attestation is successfully issued in the EUDI Wallet")
+    public void thePDAAttestationIsSuccessfullyIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user initiates the process to add a document by scanning a QR code")
+    public void theUserInitiatesTheProcessToAddADocumentByScanningAQRCode() {
+        //manual
+    }
+
+    @When("the user scans the QR code provided by the issuer")
+    public void theUserScansTheQRCodeProvidedByTheIssuer() {
+        //manual
+    }
+
+    @Given("the user has a PDA1 attestation issued in the EUDI Wallet")
+    public void theUserHasAPDAAttestationIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can view the PDA1 attestation details")
+    public void theUserCanViewThePDAAttestationDetails() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in Portable Document A1 \\(PDA1) attestation")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInPortableDocumentAPDAAttestation() {
+        //manual
+    }
+
+    @Given("the user initiates the process to present a document online")
+    public void theUserInitiatesTheProcessToPresentADocumentOnline() {
+        //manual
+    }
+
+    @When("the user selects the PDA1 attestation for presentation")
+    public void theUserSelectsThePDAAttestationForPresentation() {
+        //manual
+    }
+
+    @Then("the PDA1 attestation is successfully presented in the remote scenario")
+    public void thePDAAttestationIsSuccessfullyPresentedInTheRemoteScenario() {
+        //manual
+    }
+
+    @Given("the EHIC attestation adheres to the existing functionalities of the EUDI Wallet")
+    public void theEHICAttestationAdheresToTheExistingFunctionalitiesOfTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects EHIC attestation from the list")
+    public void theUserSelectsEHICAttestationFromTheList() {
+        //manual
+    }
+
+    @Then("the EHIC attestation is successfully issued in the EUDI Wallet")
+    public void theEHICAttestationIsSuccessfullyIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user has an EHIC attestation issued in the EUDI Wallet")
+    public void theUserHasAnEHICAttestationIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can view the EHIC attestation details")
+    public void theUserCanViewTheEHICAttestationDetails() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in European Health Insurance Card \\(EHIC) attestation")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInEuropeanHealthInsuranceCardEHICAttestation() {
+        //manual
+    }
+
+    @When("the user selects the EHIC attestation for presentation")
+    public void theUserSelectsTheEHICAttestationForPresentation() {
+        //manual
+    }
+
+    @Then("the EHIC attestation is successfully presented in the remote scenario")
+    public void theEHICAttestationIsSuccessfullyPresentedInTheRemoteScenario() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet supports the latest version of the PID")
+    public void theEUDIWalletSupportsTheLatestVersionOfThePID() {
+        //manual
+    }
+
+    @When("the user selects PID from the list")
+    public void theUserSelectsPIDFromTheList() {
+        //manual
+    }
+
+    @Then("the PID is successfully issued in the EUDI Wallet")
+    public void thePIDIsSuccessfullyIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user has a PID issued in the EUDI Wallet")
+    public void theUserHasAPIDIssuedInTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the user can view the PID details")
+    public void theUserCanViewThePIDDetails() {
+        //manual
+    }
+
+      @When("the user selects the PID for presentation")
+    public void theUserSelectsThePIDForPresentation() {
+        //manual
+    }
+
+    @Then("the PID is successfully presented in the remote scenario")
+    public void thePIDIsSuccessfullyPresentedInTheRemoteScenario() {
+        //manual
+    }
+
+    @Given("the user initiates the process to present a document in proximity")
+    public void theUserInitiatesTheProcessToPresentADocumentInProximity() {
+        //manual
+    }
+
+    @Then("the PID is successfully presented in the proximity scenario")
+    public void thePIDIsSuccessfullyPresentedInTheProximityScenario() {
+        //manual
+    }
+
+    @And("the details are aligned to the defined data model as described in Update PID")
+    public void theDetailsAreAlignedToTheDefinedDataModelAsDescribedInUpdatePID() {
+        //manual
+    }
+
+    @When("the user opens the EUDI Wallet application")
+    public void theUserOpensTheEUDIWalletApplication() {
+        //manual
+    }
+
+    @And("the user navigates to the Transactions screen")
+    public void theUserNavigatesToTheTransactionsScreen() {
+        //manual
+    }
+
+    @Then("the Transactions screen is displayed")
+    public void theTransactionsScreenIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the Transactions screen")
+    public void theUserIsOnTheTransactionsScreen() {
+        //manual
+    }
+
+    @When("the user selects an attestation presentation transaction entry from the list")
+    public void theUserSelectsAnAttestationPresentationTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details:")
+    public void theEUDIWalletPresentsTheFollowingDetails() {
+        //manual
+    }
+
+    @Given("the user is viewing the details of a transaction entry")
+    public void theUserIsViewingTheDetailsOfATransactionEntry() {
+        //manual
+    }
+
+    @When("the user requests to delete the transaction data")
+    public void theUserRequestsToDeleteTheTransactionData() {
+        //manual
+    }
+
+    @Then("the transaction data is deleted from the EUDI Wallet")
+    public void theTransactionDataIsDeletedFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user reports a suspicious operation related to the presentation")
+    public void theUserReportsASuspiciousOperationRelatedToThePresentation() {
+        //manual
+    }
+
+
+    @When("the user clicks on the Transactions button")
+    public void theUserClicksOnTheTransactionsButton() {
+        //manual
+    }
+
+    @And("all transactions are displayed \\(no search or filters are applied)")
+    public void allTransactionsAreDisplayedNoSearchOrFiltersAreApplied() {
+        //manual
+    }
+
+    @When("the user observes the transactions screen")
+    public void theUserObservesTheTransactionsScreen() {
+        //manual
+    }
+
+    @And("the following are displayed {}:")
+    public void theFollowingAreDisplayed(String arg0) {
+        //manual
+    }
+
+    @And("if there are no transactions for a period group, then this group is not displayed")
+    public void ifThereAreNoTransactionsForAPeriodGroupThenThisGroupIsNotDisplayed() {
+        //manual
+    }
+
+    @When("no search has been performed previously")
+    public void noSearchHasBeenPerformedPreviously() {
+        //manual
+    }
+
+    @Then("the hinted search text is removed")
+    public void theHintedSearchTextIsRemoved() {
+        //manual
+    }
+
+    @And("the search field displays a Clear trailing icon button inside the right side of the field")
+    public void theSearchFieldDisplaysAClearTrailingIconButtonInsideTheRightSideOfTheField() {
+        //manual
+    }
+
+    @When("the user types a text")
+    public void theUserTypesAText() {
+        //manual
+    }
+
+    @Then("the search field returns the result which contains this text")
+    public void theSearchFieldReturnsTheResultWhichContainsThisText() {
+        //manual
+    }
+
+    @And("respects the applied filtering and sorting criteria")
+    public void respectsTheAppliedFilteringAndSortingCriteria() {
+        //manual
+    }
+
+    @Given("the user previously searched for a text")
+    public void theUserPreviouslySearchedForAText() {
+        //manual
+    }
+
+    @And("the user edits the text")
+    public void theUserEditsTheText() {
+        //manual
+    }
+
+    @Then("the search field contains the edited text")
+    public void theSearchFieldContainsTheEditedText() {
+        //manual
+    }
+
+    @And("returns the new results")
+    public void returnsTheNewResults() {
+        //manual
+    }
+
+    @And("the user taps on the Clear icon button")
+    public void theUserTapsOnTheClearIconButton() {
+        //manual
+    }
+
+    @Then("any existing text in the search field is cleared")
+    public void anyExistingTextInTheSearchFieldIsCleared() {
+        //manual
+    }
+
+    @And("the EUDI Wallet resets any previously applied search")
+    public void theEUDIWalletResetsAnyPreviouslyAppliedSearch() {
+        //manual
+    }
+
+    @And("the screen lists all transactions that respects the filtering and sorting already in force")
+    public void theScreenListsAllTransactionsThatRespectsTheFilteringAndSortingAlreadyInForce() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet applies the search text to the attributes of {}:")
+    public void theEUDIWalletAppliesTheSearchTextToTheAttributesOf(String arg0) {
+        //manual
+    }
+
+    @And("the transactions matching the search text are displayed")
+    public void theTransactionsMatchingTheSearchTextAreDisplayed() {
+        //manual
+    }
+
+    @And("if no matching transactions are found, then the EUDI Wallet displays an informative message in the list section")
+    public void ifNoMatchingTransactionsAreFoundThenTheEUDIWalletDisplaysAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @Given("the user has completed the signing process")
+    public void theUserHasCompletedTheSigningProcess() {
+        //manual
+    }
+
+    @Then("the user sees the success screen and the data they shared")
+    public void theUserSeesTheSuccessScreenAndTheDataTheyShared() {
+        //manual
+    }
+
+    @When("a success screen is displayed")
+    public void aSuccessScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user clicks on the Close button")
+    public void theUserClicksOnTheCloseButton() {
+        //manual
+    }
+
+    @Then("a success screen is displayed along with the signed document in the EUDI Wallet")
+    public void aSuccessScreenIsDisplayedAlongWithTheSignedDocumentInTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the signed document is passed to the Relying Party")
+    public void theSignedDocumentIsPassedToTheRelyingParty() {
+        //manual
+    }
+
+    @Given("the user enters the Transactions screen")
+    public void theUserEntersTheTransactionsScreen() {
+        //manual
+    }
+
+    @Then("no filter is applied \\(default option)")
+    public void noFilterIsAppliedDefaultOption() {
+        //manual
+    }
+
+    @And("the transactions are sorted by transaction date descending \\(default sort option)")
+    public void theTransactionsAreSortedByTransactionDateDescendingDefaultSortOption() {
+        //manual
+    }
+    
+    @Then("the filter and sort bottom sheet options slide up from the bottom screen")
+    public void theFilterAndSortBottomSheetOptionsSlideUpFromTheBottomScreen() {
+        //manual
+    }
+
+    @And("the \"Sort by\" and \"Filter by\" sections are displayed in collapsed view")
+    public void theAndSectionsAreDisplayedInCollapsedView() {
+        //manual
+    }
+
+    @And("each section under the title displays the applied filter and sort options respectively")
+    public void eachSectionUnderTheTitleDisplaysTheAppliedFilterAndSortOptionsRespectively() {
+        //manual
+    }
+
+    @Given("the user is on the filter and sort bottom sheet")
+    public void theUserIsOnTheFilterAndSortBottomSheet() {
+        //manual
+    }
+
+    @When("the user taps the \"Sort by\" section")
+    public void theUserTapsTheSection() {
+        //manual
+    }
+
+    @Then("the accordion section switches between collapse and expand view")
+    public void theAccordionSectionSwitchesBetweenCollapseAndExpandView() {
+        //manual
+    }
+
+    @When("the section is expanded")
+    public void theSectionIsExpanded() {
+        //manual
+    }
+
+    @And("the filter\\/sort button has no visual indication that a user filter\\/sort option is applied")
+    public void theFilterSortButtonHasNoVisualIndicationThatAUserFilterSortOptionIsApplied() {
+    }
+
+    @Then("the user can select the sort order between Ascending and Descending")
+    public void theUserCanSelectTheSortOrderBetweenAscendingAndDescending() {
+        //manual
+    }
+
+    @And("the user can select the sorting attribute \\(transaction date) using a radio button")
+    public void theUserCanSelectTheSortingAttributeTransactionDateUsingARadioButton() {
+        //manual
+    }
+
+    @And("the transactions are grouped by period as per user story 124")
+    public void theTransactionsAreGroupedByPeriodAsPerUserStory(){
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Transaction Type\" section")
+    public void theUserTapsTheFilterByTransactionTypeSection() {
+        //manual
+    }
+
+    @Then("the user can select the date range \\(date from and date to) using a calendar")
+    public void theUserCanSelectTheDateRangeDateFromAndDateToUsingACalendar() {
+        //manual
+    }
+
+    @Then("the user can select to filter the transactions by operation status \\(Completed, Failed) using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByOperationStatusCompletedFailedUsingCheckboxes() {
+     //manual
+    }
+
+    @Then("the user can select to filter the transactions by relying party name using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByRelyingPartyNameUsingCheckboxes() {
+        //manual
+    }
+
+    @And("the list of relying parties includes unique relying parties recorded in the presentation transactions in the EUDI Wallet")
+    public void theListOfRelyingPartiesIncludesUniqueRelyingPartiesRecordedInThePresentationTransactionsInTheEUDIWallet() {
+     //manual
+    }
+
+    @Then("the user can select to filter the transactions by transaction types \\(Presentation, Issuance, Signing) using checkboxes")
+    public void theUserCanSelectToFilterTheTransactionsByTransactionTypesPresentationIssuanceSigningUsingCheckboxes() {
+        //manual
+    }
+
+    @When("the user taps the \"Reset all\" button")
+    public void theUserTapsTheButton() {
+        //manual
+    }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date ascending)")
+    public void theSortAndFiltersAreResetToTheDefaultValuesNoFilterAndSortByTransactionDateAscending() {
+        //manual
+    }
+
+    @Then("the bottom sheet slides down and disappears")
+    public void theBottomSheetSlidesDownAndDisappears() {
+        //manual
+    }
+
+    @And("the EUDI Wallet applies the filter and sorting options to the transactions list")
+    public void theEUDIWalletAppliesTheFilterAndSortingOptionsToTheTransactionsList() {
+        //manual
+    }
+
+    @Given("the user applies a filter and sort option")
+    public void theUserAppliesAFilterAndSortOption() {
+        //manual
+    }
+
+    @When("no matching transactions are found")
+    public void noMatchingTransactionsAreFound() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet displays an informative message in the list section")
+    public void theEUDIWalletDisplaysAnInformativeMessageInTheListSection() {
+        //manual
+    }
+
+    @And("if no results are found within a period group, then the period group is not displayed")
+    public void ifNoResultsAreFoundWithinAPeriodGroupThenThePeriodGroupIsNotDisplayed() {
+        //manual
+    }
+
+    @And("the transactions are grouped by period as per user story #124")
+    public void theTransactionsAreGroupedByPeriodAsPerUserStory124() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Transaction Date Period\" section")
+    public void theUserTapsTheFilterByTransactionDatePeriodSection() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Status\" section")
+    public void theUserTapsTheFilterByStatusSection() {
+        //manual
+    }
+
+    @When("the user taps the \"Filter by Relying Party\" section")
+    public void theUserTapsTheFilterByRelyingPartySection() {
+        //manual
+    }
+
+    @When("the user taps the filter\\/sort button")
+    public void theUserTapsTheFilterAndSortButton() {
+        //manual
+    }
+
+    @When("the user taps the \"Apply\" button")
+    public void theUserTapsTheButtonApply() {
+        //manual
+    }
+
+
+    @And("the filter and sort button has no visual indication that a user filter and sort option is applied")
+    public void theFilterAndSortButtonHasNoVisualIndicationThatAUserFilterAndSortOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter and sort button")
+    public void theUserTapsTheFilterAndTheSortButton() {
+        //manual
+    }
+
+    @And("the filter and sort button has visual indication that user filter\\(s) and or sorting options have been applied \\(only when different than the default options)")
+    public void theFilterAndSortButtonHasVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenAppliedOnlyWhenDifferentThanTheDefaultOptions() {
+        //manual
+    }
+
+    @Given("the user is on the EUDI Wallet main screen")
+    public void theUserIsOnTheEUDIWalletMainScreen() {
+        //manual
+    }
+
+    @When("the user selects the Transactions option in the bottom navigation bar")
+    public void theUserSelectsTheTransactionsOptionInTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the Transactions button is highlighted")
+    public void theTransactionsButtonIsHighlighted() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes a Search bar")
+    public void theTransactionsScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes an Export button")
+    public void theTransactionsScreenIncludesAnExportButton() {
+        //manaul
+    }
+
+    @Then("the Transactions screen includes a Filter and Sort button")
+    public void theTransactionsScreenIncludesAFilterAndSortButton() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows:")
+    public void theTransactionsAreListedGroupedByPeriodAsFollows() {
+        //manaul
+    }
+
+    @And("the transactions are sorted in chronological order within each group")
+    public void theTransactionsAreSortedInChronologicalOrderWithinEachGroup() {
+        //manaul
+    }
+
+    @When("the user views a transaction entry")
+    public void theUserViewsATransactionEntry() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including:")
+    public void aCardIsDisplayedForEachTransactionEntryIncluding() {
+        //manaul
+    }
+
+    @When("the user selects a transaction entry")
+    public void theUserSelectsATransactionEntry() {
+        //manaul
+    }
+
+    @Then("the details of the transaction entry are displayed")
+    public void theDetailsOfTheTransactionEntryAreDisplayed() {
+        //manual
+    }
+
+    @And("the user is able to view the transaction details as per user story #121")
+    public void theUserIsAbleToViewTheTransactionDetailsAsPerUserStory() {
+        //manual
+    }
+
+    @Then("the suspicious operation is reported to DPAs as per user story #35|")
+    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Name and The name of the requesting Relying Party")
+    public void the_wallet_displays_the_presentation_request_which_includes_name_and_the_name_of_the_requesting_relying_party() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Attestations and The attestation\\(s) requested by the Relying Party")
+    public void the_wallet_displays_the_presentation_request_which_includes_attestations_and_the_attestation_s_requested_by_the_relying_party() {
+      //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Expand Details Option and The option to expand on the details for each requested attestation")
+    public void the_wallet_displays_the_presentation_request_which_includes_expand_details_option_and_the_option_to_expand_on_the_details_for_each_requested_attestation() {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Unselect Option and The option to unselect specific data elements from each requested attestation")
+    public void the_wallet_displays_the_presentation_request_which_includes_unselect_option_and_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
+       //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Data to be signed and Data to be signed\\/signature details \\(where {string}={string})")
+    public void the_wallet_displays_the_presentation_request_which_includes_data_to_be_signed_and_data_to_be_signed_signature_details_where(String string, String string2) {
+        //manual
+    }
+
+    @Then("the wallet displays the presentation request which includes Details Field and A {string} field \\(mapped to label; free text defined by the requestor) \\(mandatory)")
+    public void the_wallet_displays_the_presentation_request_which_includes_details_field_and_a_field_mapped_to_label_free_text_defined_by_the_requestor_mandatory(String string) {
+       //manual
+    }
+    @Then("the wallet displays the presentation request which includes Location Field and A {string} field \\(mapped to documentLocation_uri; including a URI where the file to be signed is located) \\(optional)")
+    public void the_wallet_displays_the_presentation_request_which_includes_location_field_and_a_field_mapped_to_document_location_uri_including_a_uri_where_the_file_to_be_signed_is_located_optional(String string) {
+        //manual
+    }
+
+    @Then("the transactions are grouped by period")
+    public void the_transactions_are_grouped_by_period() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes a Filter\\/Sort button")
+    public void the_transactions_screen_includes_a_filter_sort_button() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by Today and Transactions that occurred today")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_today_and_transactions_that_occurred_today() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by This Week and Transactions that occurred this week")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_this_week_and_transactions_that_occurred_this_week() {
+        //manual
+    }
+
+    @Then("the transactions are listed grouped by period as follows by Month and Transactions grouped by month \\(e.g., August {int})")
+    public void the_transactions_are_listed_grouped_by_period_as_follows_by_month_and_transactions_grouped_by_month_e_g_august(Integer int1) {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Status and The presentation or hashing operations status \\(Completed or Failed)")
+    public void a_card_is_displayed_for_each_transaction_entry_including_status_and_the_presentation_or_hashing_operations_status_completed_or_failed() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Relying Party and The relying party name")
+    public void a_card_is_displayed_for_each_transaction_entry_including_relying_party_and_the_relying_party_name() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and The datetime of the transaction as follows:")
+    public void a_card_is_displayed_for_each_transaction_entry_including_datetime_and_the_datetime_of_the_transaction_as_follows() {
+        //manual
+    }
+
+    @Then("the user is able to view the transaction details")
+    public void the_user_is_able_to_view_the_transaction_details() {
+        //manual
+    }
+
+    @When("the user presses the back button on top of the screen")
+    public void the_user_presses_the_back_button_on_top_of_the_screen() {
+        //manual
+    }
+
+    @Then("the user is returned to the Transactions page")
+    public void the_user_is_returned_to_the_transactions_page() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and X minutes ago for transactions in the last 60 minutes")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_time_e_g_am_for_transactions_within_the_day() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Status and The presentation or hashing operations status (Completed or Failed)")
+    public void a_card_is_displayed_for_each_transaction_entry_including_and_x_minutes_ago_for_transactions_in_the_last_minutes() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and Time \\(e.g., 11:07 AM) for transactions within the day")
+    public void a_card_is_displayed_for_each_transaction_entry_including_datetime_and_time_e_g_am_for_transactions_within_the_day() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including Datetime and Datetime \\(e.g., 14 Feb 2024 11:07 AM) for transactions before today")
+    public void a_card_is_displayed_for_each_transaction_entry_including_datetime_and_datetime_e_g_feb_am_for_transactions_before_today() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Transaction Data and The details and Location for the signed document")
+    public void the_eudi_wallet_presents_the_following_details_by_transaction_data_and_the_details_and_location_for_the_signed_document() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Visual Indication and A visual indication e.g. signature icon")
+    public void the_eudi_wallet_presents_the_following_details_by_visual_indication_and_a_visual_indication_e_g_signature_icon() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Attestation\\(s) and Each attestation presented as a card that can be expanded or collapsed")
+    public void the_eudi_wallet_presents_the_following_details_by_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Status and The presentation operation status \\(Completed or Failed)")
+    public void the_eudi_wallet_presents_the_following_details_by_status_and_the_presentation_operation_status_completed_or_failed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by DateTime and The datetime the presentation operation was performed")
+    public void the_eudi_wallet_presents_the_following_details_by_date_time_and_the_datetime_the_presentation_operation_was_performed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by Relying Party name and The name of the Relying Party with a verification badge if trusted")
+    public void the_eudi_wallet_presents_the_following_details_by_relying_party_name_and_the_name_of_the_relying_party_with_a_verification_badge_if_trusted() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following Transaction Data and The details and Location for the signed document")
+    public void the_eudi_wallet_presents_the_following_transaction_data_and_the_details_and_location_for_the_signed_document() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following Visual Indication and A visual indication e.g. signature icon")
+    public void the_eudi_wallet_presents_the_following_visual_indication_and_a_visual_indication_e_g_signature_icon() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following Status and The presentation operation status \\(Completed or Failed)")
+    public void the_eudi_wallet_presents_the_following_status_and_the_presentation_operation_status_completed_or_failed() {
+        //manual
+    }
+    @Then("the EUDI Wallet presents the following DateTime and The datetime the presentation operation was performed")
+    public void the_eudi_wallet_presents_the_following_date_time_and_the_datetime_the_presentation_operation_was_performed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following Relying Party name and The name of the Relying Party with a verification badge if trusted")
+    public void the_eudi_wallet_presents_the_following_relying_party_name_and_the_name_of_the_relying_party_with_a_verification_badge_if_trusted() {
+        //manual
+    }
+
+    @Then("the filter\\/sort button has visual indication that user filter\\(s) and\\/or sorting options have been applied \\(only when different than the default options)")
+    public void the_filter_sort_button_has_visual_indication_that_user_filter_s_and_or_sorting_options_have_been_applied_only_when_different_than_the_default_options() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following Attestation\\(s) and Each attestation presented as a card that can be expanded or collapsed")
+    public void the_eudi_wallet_presents_the_following_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
+        //manual
+    }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date descending)")
+    public void the_sort_and_filters_are_reset_to_the_default_values_no_filter_and_sort_by_transaction_date_descending_new() {
+        //manual
+    }
+
 }
 
 

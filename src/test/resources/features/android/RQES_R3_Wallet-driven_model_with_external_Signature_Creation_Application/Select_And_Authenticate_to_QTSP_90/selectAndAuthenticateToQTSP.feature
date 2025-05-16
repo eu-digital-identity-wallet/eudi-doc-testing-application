@@ -1,4 +1,4 @@
-@ANDROID @manual @US_SATQTSP
+@ANDROID @manual @US_SATQTSP @Q4_2024
 Feature: Authenticate to QTSPs using EUDI Wallet
   As a EUDI Wallet User,
   I want to use my EUDI Wallet to authenticate to QTSPs,

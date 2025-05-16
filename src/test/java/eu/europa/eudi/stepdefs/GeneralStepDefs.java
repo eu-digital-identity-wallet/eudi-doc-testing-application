@@ -9,17 +9,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.AssumptionViolatedException;
 
 public class GeneralStepDefs{
 
     TestSetup test;
     @Before
     public void setup(Scenario scenario) {
-
+      
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
         boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
+        boolean ignored = scenario.getSourceTagNames().contains("@Ignored");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android) {
@@ -100,6 +102,11 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickClose();
             test.mobile().wallet().clickHome();
         }
+        if (ignored) {
+            // Logic to skip the test
+            test.mobile().wallet().skippedTest();
+            throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
+        }
     }
 
     @After
@@ -137,25 +144,18 @@ public class GeneralStepDefs{
     @And("user selects specific data to share")
     public void userSelectSpecificDataToShare() {
         test.mobile().verifier().appOpensSuccefully();
-//        test.mobile().verifier().selectShareAttributes();
-//        test.mobile().verifier().clickNext();
-//        test.mobile().verifier().chooseData();
-//        test.mobile().verifier().clickNext();
         theVerifierRequestsADocFromTheWalletUser();
     }
-
 
     @And("user selects to be identified using EUDI Wallet")
     public void userSelectsToBeIdentifiedUsingEUDIWallet() {
         test.mobile().verifier().chooseWallet();
     }
 
-
     @And("user views the data and can unselect any of them")
     public void userViewsTheDataAndCanUnselectAnyOfThem() {
         test.mobile().verifier().viewDataPage();
     }
-
 
     @And("user presses the share button")
     public void userPressesTheShareButton() {
@@ -195,12 +195,10 @@ public class GeneralStepDefs{
         test.mobile().wallet().createAPin();
     }
 
-
     @And("user clicks next button")
     public void userClicksNextButton() {
         test.mobile().wallet().clickNextButton();
     }
-
 
     @And("user re-enters pin")
     public void userReEntersPin() {
@@ -217,7 +215,6 @@ public class GeneralStepDefs{
         test.mobile().wallet().successMessageOfSetUpPin();
     }
 
-
     @And("user clicks national id")
     public void userClicksNationalId() {
         test.mobile().wallet().clickNationalId();
@@ -228,12 +225,10 @@ public class GeneralStepDefs{
         test.mobile().wallet().nationalIdIsDisplayed();
     }
 
-
     @And("user clicks mdl")
     public void userClicksMdl() {
         test.mobile().wallet().clickMdl();
     }
-
 
     @Then("mdl is displayed")
     public void mdlIsDisplayed() {
@@ -274,7 +269,6 @@ public class GeneralStepDefs{
 
     @And("user clicks load sample data")
     public void userClicksLoadSampleData() {
-//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheAddDocumentPage();
         test.mobile().wallet().loadSampleDocuments();
@@ -384,7 +378,6 @@ public class GeneralStepDefs{
     @Then("driving licence is displayed in the EUDI Wallet dashboard")
     public void drivingLicenceIsDisplayedInTheEUDIWalletDashboard() {
         test.mobile().wallet().drivingLicenceIsDisplayedInDashboard();
-
     }
 
     @And("user enters data for drivring licence for ios")
@@ -410,18 +403,10 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().clickSubmitButton();
-
     }
 
     @Then("the user is redirected to the EUDI Wallet")
     public void theUserIsRedirectedToTheEUDIWallet() {
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().welcomePage();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().createAPin();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickNextButton();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().renterThePin();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickConfirm();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().successMessageOfSetUpPin();
-//        preAuthorizationCodeSameDevice.feature.mobile().wallet().clickContinue();
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -465,7 +450,6 @@ public class GeneralStepDefs{
     public void theUserAuthenticatesAndConsentsToTheIssuance() {
         test.mobile().issuer().clickCountrySelection();
         test.mobile().wallet().clickSubmit();
-
     }
 
     @And("inserts the required credential details")
@@ -523,20 +507,12 @@ public class GeneralStepDefs{
         test.mobile().wallet().clickConfirm();
         test.mobile().wallet().successMessageOfSetUpPin();
         test.mobile().wallet().clickContinue();
-
     }
 
     @Then("the 'Add document' screen is appeared")
     public void theAddDocumentScreenIsAppeared() {
         test.mobile().wallet().addDocumentPageIsDisplayed();
     }
-
-//    @Given("the user is on the Add document screen")
-//    public void theUserIsOnTheAddDocumentScreen() {
-//        theUserLaunchesTheEUDIWalletForTheFirstTime();
-//        theUserSetsUpTheirPIN();
-//        theAddDocumentScreenIsAppeared();
-//    }
 
     @When("the user has only the ‘National ID’ and ‘SCAN QR’ options available")
     public void theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable() {
@@ -554,31 +530,18 @@ public class GeneralStepDefs{
         test.mobile().issuer().authenticationPageIsDisplayed();
     }
 
-//    @Given("the user is on the issuance service page")
-//    public void theUserIsOnTheIssuanceServicePage() {
-//        theUserIsOnTheAddDocumentScreen();
-//        theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable();
-//        theUserClicksOnTheNationalIDOption();
-//        theUserIsRedirectedToTheIssuanceService();
-//    }
-
     @When("the user follows the process to issue a new PID")
     public void theUserFollowsTheProcessToIssueANewPID() {
         theUserAuthenticatesAndConsentsToTheIssuance();
         insertsTheRequiredCredentialDetails();
         test.mobile().wallet().successMessageIsDisplayed();
         test.mobile().wallet().clickNextButton();
-
     }
 
     @Then("the user should be able to preview the PID")
     public void theUserShouldBeAbleToPreviewThePID() {
         test.mobile().wallet().previewPid();
     }
-
-
-
-
 
     @When("the user enters their PIN")
     public void theUserEntersTheirPIN() {
@@ -613,7 +576,6 @@ public class GeneralStepDefs{
 
     @Given("the PID is open")
     public void thePIDIsOpen() {
-//        theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheDashboardScreen();
         theUserClicksOnThePIDDoc();
@@ -742,11 +704,6 @@ public class GeneralStepDefs{
         theDocumentShouldBeDeleted();
     }
 
-//    @Then("the user should see the dashboard")
-//    public void theUserShouldSeeTheDashboard() {
-//        test.mobile().wallet().documentsPageIsDisplayed();
-//    }
-
     @When("the user opens a PID \\(not the first one issued)")
     public void theUserOpensAPIDNotTheFirstOneIssued() {
         test.mobile().wallet().clickOnDocuments();
@@ -822,13 +779,7 @@ public class GeneralStepDefs{
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
         test.mobile().issuer().authenticationPageIsDisplayed();
-//preAuthorizationCodeSameDevice.feature
-//preAuthorizationCodeSameDevice.feature.startAndroidDriverSession();
-//        AndroidDriver driver = (AndroidDriver) preAuthorizationCodeSameDevice.feature.mobileWebDriverFactory().getDriverAndroid();
-//        driver.runAppInBackground(Duration.ofSeconds(10));
-//        driver.activateApp("com.android.chrome");
     }
-
 
     @When("the user clicks on country selection and submits")
     public void theUserClicksOnCountrySelectionAndSubmits() {
@@ -940,11 +891,6 @@ public class GeneralStepDefs{
         test.mobile().verifier().selectAttributes();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
-//        test.mobile().verifier().chooseData();
-//        test.mobile().verifier().chooseData2();
-//        test.mobile().verifier().scrollUntilFindIssuanceDate();
-//        test.mobile().verifier().clickIssuanceDate();
-//        test.mobile().verifier().clickNext();
     }
 
     @Then("the requestor of the data is displayed in the wallet")
@@ -1206,5 +1152,11 @@ public class GeneralStepDefs{
     public void theUserShouldSeeTheDocumentsDashboard() {
         test.mobile().wallet().documentsPageIsDisplayed();
     }
+
+    @Given("the test is being ignored")
+    public void theTestIsBeingIgnored() {
+        test.mobile().wallet().skippedTest();
+    }
+
 }
 

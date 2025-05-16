@@ -1,4 +1,4 @@
-@IOS @manual @US_SD
+@IOS @manual @US_SD @Q4_2024
 Feature: Searching for documents in the EUDI Wallet
 
   As a EUDI Wallet User

@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
-call mvn clean verify -Dcucumber.filter.tags="@manual and @US_BRCD_TC_01" %*
-mvn serenity:aggregate
+#!/bin/bash
+mvn clean verify -Dcucumber.filter.tags="@Q1_2025" "$@"
+rm -rf target/site/serenity
+mvn serenity:aggregate -Dtags="Q1_2025"

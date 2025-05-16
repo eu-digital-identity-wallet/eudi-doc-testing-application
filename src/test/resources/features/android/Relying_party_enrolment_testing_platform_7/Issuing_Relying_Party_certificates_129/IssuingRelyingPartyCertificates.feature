@@ -1,4 +1,4 @@
-@ANDROID @manual @US_IRPC
+@ANDROID @manual @US_IRPC @Q4_2024
 Feature: Relying Party Trusted Certificate Creation
   As a Relying Party
   I want to be able to create a trusted certificate for my service

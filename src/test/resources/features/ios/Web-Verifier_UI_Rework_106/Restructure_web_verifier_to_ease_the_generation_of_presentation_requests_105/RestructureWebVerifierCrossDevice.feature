@@ -1,10 +1,10 @@
-@IOS @manual @US_RWVCD
+@IOS @manual @US_RWVCD @Q4_2024
 Feature: EUDIW Web Verifier
   As a User,
   I want the EUDIW web verifier to guide me through in the generation of presentation requests
   so that I can generate presentation requests as per my needs.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/105
+  #gi
 
   @US_RWVCD_TC_01 @manual:Passed
   Scenario: User accesses the presentation request

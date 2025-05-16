@@ -1,4 +1,4 @@
-@ANDROID @manual @US_PDO
+@ANDROID @manual @US_PDO @Q4_2024
 Feature: Present Attestations from EUDI Wallet
   As a EUDI Wallet User
   I want to be able to present attestations from my EUDI Wallet

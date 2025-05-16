@@ -36,8 +36,6 @@ public class EnvDataConfig {
     public static final String APPIUM_URL_IOS = "appium.url.ios";
     public static final String APPIUM_SHORT_WAIT_IN_MILLISECONDS = "appium.shortWaitInMilliseconds";
     public static final String APPIUM_MEDIUM_WAIT_IN_SECONDS = "appium.mediumWaitInSeconds";
-    public static final String APPIUM_LONG_WAIT_IN_SECONDS = "appium.longWaitInSeconds";
-    public static final String APP_ACTIVATION_CODE = "app.activationCode";
     public static final String BROWSER = "browser";
     public static final String DRIVER_REMOTE_URL = "driver.remote.url";
     public static final String WALLET_PIN = "wallet.pin";

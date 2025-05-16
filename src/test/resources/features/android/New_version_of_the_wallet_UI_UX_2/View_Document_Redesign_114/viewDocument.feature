@@ -1,4 +1,4 @@
-@ANDROID @manual @US_VD
+@ANDROID @manual @US_VD @Q4_2024
 Feature: Viewing and managing attestations in the EUDI Wallet
 
   As a EUDI Wallet User
