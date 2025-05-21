@@ -29,4 +29,5 @@ public class IssuerElements {
     public static By thirdAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View");
     public static By fourthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-3\"]/android.view.View");
     public static By fifthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-8\"]/android.view.View");
+    public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
 }

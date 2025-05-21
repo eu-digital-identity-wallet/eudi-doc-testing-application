@@ -273,9 +273,14 @@ public class Issuer {
     }
 
     public void scrollUntilFindSubmit() {
-        WebDriver driver;
+        try {
+            WebDriver driver;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            test.mobileWebDriverFactory().getDriverAndroid();
             Dimension size = driver.manage().window().getSize();
             int startX = size.width / 2;
             int startY = (int) (size.height * 0.8);
@@ -288,7 +293,8 @@ public class Issuer {
                     .release()
                     .perform();
         } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            test.mobileWebDriverFactory().getDriverIos();
         int i = 1;
         while (i < 5) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -303,10 +309,8 @@ public class Issuer {
     }
 
     public void scrollUntilAuthorize() {
-        WebDriver driver;
-        try { Thread.sleep(500);} catch (InterruptedException e) {throw new RuntimeException(e);}
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             Dimension size = driver.manage().window().getSize();
             int startX = size.width / 2;
             int startY = (int) (size.height * 0.8);
@@ -319,7 +323,7 @@ public class Issuer {
                     .release()
                     .perform();
         } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -370,10 +374,21 @@ public class Issuer {
         enterCountryCode();
         scrollUntilFindSubmit();
         clickSubmit();
+        authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
         successfullySharedMessage();
         test.mobile().wallet().clickDone();
+    }
+
+    private void authorizeIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.successfullyShared)).getText();
+            Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED_IOS.label, pageHeader);
+        }
     }
 
     public void successfullySharedMessage() {
