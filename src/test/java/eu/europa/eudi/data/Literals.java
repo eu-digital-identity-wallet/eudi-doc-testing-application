@@ -82,7 +82,8 @@ public interface Literals {
         FORM("Enter the data for your EUDI Wallet"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
-        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with");
+        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
+        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet");
 
         public final String label;
         Issuer(String label) {

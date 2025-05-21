@@ -109,6 +109,6 @@ public class WalletElements {
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickShareAttributes = By.xpath("");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
+    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
 }
