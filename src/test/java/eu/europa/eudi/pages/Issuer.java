@@ -5,6 +5,7 @@ import eu.europa.eudi.elements.ios.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -273,25 +274,14 @@ public class Issuer {
     }
 
     public void scrollUntilFindSubmit() {
-        try {
-            WebDriver driver;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            test.mobileWebDriverFactory().getDriverAndroid();
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.8);
-            int endY = (int) (size.height * 0.2);
+            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-            touchAction.press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                    .moveTo(PointOption.point(startX, endY))
-                    .release()
-                    .perform();
+            for (int i = 0; i < 5; i++) {
+                androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             test.mobileWebDriverFactory().getDriverIos();
