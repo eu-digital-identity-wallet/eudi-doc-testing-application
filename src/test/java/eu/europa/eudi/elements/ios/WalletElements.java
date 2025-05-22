@@ -62,8 +62,8 @@ public class WalletElements {
     public static By correspondingMessageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Your selection of data to be shared may impact the service\"]");
     public static By clickaAgainData = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By issuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
-    public static By clickIssue = By.xpath("//XCUIElementTypeButton[@name=\"ISSUE\"]");
-    public static By successMessageIsDisplayedForIssuer = By.xpath("//XCUIElementTypeStaticText[@name=\"Your documents from issuer.eudiw.dev have been successfully issued.\"]");
+    public static By clickIssue = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
+    public static By successMessageIsDisplayedForIssuer = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family name\"]");
     public static By chooseData2 = By.xpath("//XCUIElementTypeSwitch[@name=\"Given name\"]");
@@ -107,4 +107,5 @@ public class WalletElements {
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[7]");
     public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
     public static By walletResponded = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid.1\"]");
+    public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
 }

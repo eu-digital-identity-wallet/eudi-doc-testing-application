@@ -31,6 +31,6 @@ Feature: Credential issuance process for the same device
   @US_COSD_TC_04 @before_01
   Scenario: User views the issued credential in the EUDI Wallet
     Given the user sees a success message in the EUDI Wallet app
-    When the user presses the CONTINUE button
+    When user presses the done button
     Then the new document is presented in the EUDI Wallet dashboard screen
 

@@ -436,25 +436,23 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected back to the issuer service")
     public void theUserIsRedirectedBackToTheIssuerService() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
+     //auto accept pop up
     }
 
     @And("the user is prompted to authenticate and consent to the issuance")
     public void theUserIsPromptedToAuthenticateAndConsentToTheIssuance() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
+        //auto accept pop up
     }
 
     @And("the user is asked to authenticate and consent on the issuer service")
     public void theUserIsAskedToAuthenticateAndConsentOnTheIssuerService() {
         theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet();
         test.mobile().wallet().clickIssue();
-        test.mobile().issuer().authenticationPageIsDisplayed();
     }
 
     @When("the user authenticates and consents to the issuance")
     public void theUserAuthenticatesAndConsentsToTheIssuance() {
-        test.mobile().issuer().clickCountrySelection();
-        test.mobile().wallet().clickSubmit();
+        //auto accept pop up
     }
 
     @And("inserts the required credential details")
@@ -462,9 +460,11 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().dataPageIsDisplayed();
-        test.mobile().issuer().enterGivenName();
         test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterBirthPlace();
+        test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
@@ -483,18 +483,25 @@ public class GeneralStepDefs{
 
     @When("the user presses the CONTINUE button")
     public void theUserPressesTheCONTINUEButton() {
-        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().clickDone();
+//        test.mobile().wallet().clickContinue();
+    }
+
+    @When("user presses the done button")
+    public void theUserPressesTheDoneButton() {
+        test.mobile().wallet().clickDone();
     }
 
     @Then("the new document is presented in the EUDI Wallet dashboard screen")
     public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
+        test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().nationalIdIsDisplayed();
     }
 
     @Given("the user sees a success message in the EUDI Wallet app")
     public void theUserSeesASuccessMessageInTheEUDIWalletApp() {
         theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-        theUserAuthenticatesAndConsentsToTheIssuance();
+//        theUserAuthenticatesAndConsentsToTheIssuance();
         insertsTheRequiredCredentialDetails();
         test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
