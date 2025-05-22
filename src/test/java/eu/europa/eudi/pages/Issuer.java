@@ -244,29 +244,21 @@ public class Issuer {
     }
 
     public void scrollUntilFindDate() {
-        WebDriver driver;
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.4);
-            int endY = (int) (size.height * 0.2);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-            touchAction.press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                    .moveTo(PointOption.point(startX, endY))
-                    .release()
-                    .perform();
+            for (int i = 0; i < 2; i++) {
+                driver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
         } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 2) {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
-                js.executeScript("mobile: swipe", params);
+                driver.executeScript("mobile: swipe", params);
                 i++;
             }
 
@@ -275,23 +267,20 @@ public class Issuer {
 
     public void scrollUntilFindSubmit() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             for (int i = 0; i < 5; i++) {
-                androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                driver.findElement(MobileBy.AndroidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                 ));
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            test.mobileWebDriverFactory().getDriverIos();
         int i = 1;
         while (i < 5) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
+            driver.executeScript("mobile: swipe", params);
             i++;
         }
 
@@ -301,26 +290,20 @@ public class Issuer {
     public void scrollUntilAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.8);
-            int endY = (int) (size.height * 0.2);
 
-            TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-            touchAction.press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                    .moveTo(PointOption.point(startX, endY))
-                    .release()
-                    .perform();
+            for (int i = 0; i < 5; i++) {
+                driver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
 
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
-                js.executeScript("mobile: swipe", params);
+                driver.executeScript("mobile: swipe", params);
                 i++;
             }
 
