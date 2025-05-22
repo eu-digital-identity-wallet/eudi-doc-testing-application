@@ -661,18 +661,16 @@ public class Wallet {
     }
 
     public void scrollUntilPID() {
-
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 androidDriver.findElement(MobileBy.AndroidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                 ));
             }
         } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 3) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -709,18 +707,13 @@ public class Wallet {
     }
 
     public void scrollUntilYouFindDelete() {
-        WebDriver driver;
-
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-
         int i = 1;
-        while (i < 2) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-
+        while (i < 4) {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
+            driver.executeScript("mobile: swipe", params);
             i++;
         }
         }
@@ -788,16 +781,16 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            // Use UiScrollable to scroll down
-            androidDriver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
+            for (int i = 0; i < 2; i++) {
+                androidDriver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
         } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
-            js.executeScript("mobile: swipe", params);
+            driver.executeScript("mobile: swipe", params);
         }
     }
 
@@ -820,10 +813,14 @@ public class Wallet {
     }
 
     public void scrollUntilDelete() {
-            AndroidDriver androidDriver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            androidDriver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));    }
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            for (int i = 0; i < 5; i++) {
+                driver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
+        }
 
     public void closeCorrespondingMessage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
