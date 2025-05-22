@@ -30,4 +30,5 @@ public class IssuerElements {
     public static By fifthAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth place\"]");
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
     public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authorize data from your EUDI Wallet\"]");
+    public static By clickPID = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[22]");
 }

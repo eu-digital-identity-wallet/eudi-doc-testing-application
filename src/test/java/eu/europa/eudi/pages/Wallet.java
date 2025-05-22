@@ -419,8 +419,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.issuanceDetails)).getText();
             Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuanceDetails)).getText();
-            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuanceDetailsNew)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_NEW.label, pageHeader);
         }
     }
 
@@ -428,10 +428,8 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickIssue)).click();
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement elementToDoubleClick = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickIssue);
-            TouchAction action = new TouchAction(driver);
-            action.tap(element(elementToDoubleClick)).perform();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
+
         }
     }
 
