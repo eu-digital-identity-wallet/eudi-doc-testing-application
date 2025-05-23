@@ -197,12 +197,13 @@ public class Verifier {
     public void scrollUntilNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            for (int i = 0; i < 5; i++) {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));
-            }
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".scrollForward()" +
+                            ".setMaxSearchSwipes(10)" +
+                            ".scrollIntoView(new UiSelector().text(\"Next\"))"
+            ));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;

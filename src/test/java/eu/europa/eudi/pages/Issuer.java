@@ -243,12 +243,13 @@ public class Issuer {
     public void scrollUntilFindDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            for (int i = 0; i < 2; i++) {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));
-            }
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".scrollForward()" +
+                            ".setMaxSearchSwipes(10)" +
+                            ".scrollIntoView(new UiSelector().text(\"Issue Date:\"))"
+            ));
         } else {
             int i = 1;
             while (i < 2) {
@@ -265,12 +266,13 @@ public class Issuer {
     public void scrollUntilFindSubmit() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            for (int i = 0; i < 5; i++) {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));
-            }
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".flingForward()" +
+                            ".setMaxSearchSwipes(10)" +
+                            ".scrollIntoView(new UiSelector().text(\"Submit\"))"
+            ));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
         int i = 1;
@@ -287,12 +289,13 @@ public class Issuer {
     public void scrollUntilAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            for (int i = 0; i < 5; i++) {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));
-            }
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".flingForward()" +
+                            ".setMaxSearchSwipes(10)" +
+                            ".scrollIntoView(new UiSelector().text(\"Authorize\"))"
+            ));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;

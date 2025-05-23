@@ -16,8 +16,8 @@ public class IssuerElements {
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By issuanceDate = By.xpath("//android.widget.CheckBox[@text=\"Issuance date\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-0\"]/android.view.View");
-    public static By secondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View");
+    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"cdk-overlay-0\"]");
+    public static By secondAttribute = By.xpath("//android.widget.ListView[@resource-id='mat-select-1-panel']/*[1]");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
@@ -25,7 +25,7 @@ public class IssuerElements {
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By selectAttributesBy = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectSpecificAtt = By.xpath("//android.view.View[@resource-id=\"mat-option-0\"]");
-    public static By msoMdoc = By.xpath("//android.view.View[@resource-id=\"mat-option-2\"]");
+    public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-2-panel\"]");
     public static By thirdAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View");
     public static By fourthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-3\"]/android.view.View");
     public static By fifthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-8\"]/android.view.View");
