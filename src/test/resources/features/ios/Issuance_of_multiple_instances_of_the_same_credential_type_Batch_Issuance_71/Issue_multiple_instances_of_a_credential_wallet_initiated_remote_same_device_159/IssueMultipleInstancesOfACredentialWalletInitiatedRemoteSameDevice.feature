@@ -1,4 +1,4 @@
-@ANDROID @US_IMIOACWIRSD @Q2_2025
+@IOS @US_IMIOACWIRSD @Q2_2025
 Feature: Batch Issuance of Attestations in EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/159

@@ -1,0 +1,92 @@
+@ANDROID @US_PAIOACRPIRSD @Q2_2025
+Feature: Presentation of Batch Issued Attestations in EUDI Wallet
+
+  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/160
+
+  Background:
+    Given the user is registered to a valid EUDI Wallet on their mobile device
+    And the EUDI Wallet and the Relying Party User Interface reside on the same device
+    And there is an active internet connection
+
+  @US_PAIOACRPIRSD_TC_01
+  Scenario: Relying Party initiated presentation flow
+    Given the user visits the Relying Party service on their mobile device
+    When the user selects the option to present an attestation type
+    Then the Relying Party service redirects the user to the EUDI Wallet
+
+  @US_PAIOACRPIRSD_TC_02
+  Scenario: Successful authentication in the EUDI Wallet
+    Given the EUDI Wallet is opened
+    When the user authenticates using a 6-digit PIN or Biometrics
+    Then the authentication is successful
+
+  @US_PAIOACRPIRSD_TC_03
+  Scenario: Unsuccessful authentication in the EUDI Wallet
+    Given the EUDI Wallet is opened
+    When the user fails to authenticate using a 6-digit PIN or Biometrics
+    Then the Wallet presents an error message
+    And the user can retry the authentication
+
+  @US_PAIOACRPIRSD_TC_04
+  Scenario: Presentation of attestation request to the user
+    Given the user is successfully authenticated in the EUDI Wallet
+    Then the EUDI Wallet informs the user that the Relying Party requests an attestation
+
+  @US_PAIOACRPIRSD_TC_05
+  Scenario: Selection of attestation using Method A
+    Given Method A is configured for the attestation type
+    When the EUDI Wallet selects an available matching attestation
+    Then the Wallet uses an attestation not previously presented to any Relying Party
+
+  @US_PAIOACRPIRSD_TC_06
+  Scenario: Selection of attestation using Method C
+    Given Method C is configured for the attestation type
+    When the EUDI Wallet selects an available matching attestation
+    Then the Wallet uses an attestation from a batch in a random order
+    And the Wallet resets the batch once all attestations are used
+
+  @US_PAIOACRPIRSD_TC_07
+  Scenario: No matching attestation available
+    Given the EUDI Wallet attempts to match the attestation request
+    When no attestation matches the request
+    Then the Wallet stops the presentation flow
+    And presents an error message indicating no available attestations
+
+  @US_PAIOACRPIRSD_TC_08
+  Scenario: User consent for attestation presentation
+    Given the EUDI Wallet requests the user to consent
+    When the user consents by authenticating successfully
+    Then the authentication is successful
+
+  @US_PAIOACRPIRSD_TC_09
+  Scenario: Unsuccessful consent authentication
+    Given the EUDI Wallet requests the user to consent
+    When the user fails to authenticate using a 6-digit PIN or Biometrics
+    Then the Wallet presents an error message
+    And the user can retry the authentication
+
+  @US_PAIOACRPIRSD_TC_10
+  Scenario: Presentation of attestation to Relying Party
+    Given the user consents to the attestation presentation
+    When the EUDI Wallet presents the requested attestation to the Relying Party
+    Then the Relying Party service receives the attestation
+    And verifies it, informing the user of the successful verification outcome
+
+  @US_PAIOACRPIRSD_TC_11
+  Scenario: Verification failure by Relying Party
+    Given the EUDI Wallet presents the requested attestation
+    When the Relying Party service cannot verify the attestation
+    Then a corresponding error message is displayed to the user
+
+  @US_PAIOACRPIRSD_TC_12
+  Scenario: Confirmation of presentation outcome
+    Given the Relying Party service verifies the attestation
+    Then the EUDI Wallet displays a confirmation message indicating the outcome
+
+  @US_PAIOACRPIRSD_TC_13
+  Scenario: Method A batch attestation management
+    Given the presented attestation is part of a batch group and Method A is configured
+    When the EUDI Wallet reduces the internal counter of unused attestations
+    Then if the number of unused attestations reaches the lower limit
+    And the Wallet informs the user to issue more attestations manually
+
