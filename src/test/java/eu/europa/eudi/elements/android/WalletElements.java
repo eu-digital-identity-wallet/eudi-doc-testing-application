@@ -60,9 +60,9 @@ public class WalletElements {
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Portrait:\"]");
     public static By clickXButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Button");
-    public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
+    public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By clickIssue = By.xpath("//android.widget.TextView[@text=\"ISSUE\"]");
-    public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"Your documents from issuer.eudiw.dev have been successfully issued.\"]");
+    public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
@@ -111,4 +111,5 @@ public class WalletElements {
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
+    public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
 }

@@ -418,13 +418,13 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuanceDetailsNew)).getText();
-            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_NEW.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS.label, pageHeader);
         }
     }
 
     public void clickIssue() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickIssue)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAdd)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
 
