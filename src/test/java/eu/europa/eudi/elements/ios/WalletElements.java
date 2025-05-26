@@ -108,4 +108,5 @@ public class WalletElements {
     public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
     public static By walletResponded = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid.1\"]");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
+    public static By clickAdd = By.xpath("//XCUIElementTypeStaticText[@name=\"Add\"]");
 }

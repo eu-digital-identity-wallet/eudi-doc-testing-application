@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class IssuerElements {
     public static By clickTestCredentialOffer = By.xpath("//android.widget.Button[@text=\"WALLET TEST Credential Offer\"]") ;
     public static By requestCredentialsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Request Credentials for your EUDI Wallet\"]");
-    public static By clickPersonalIdentificationData = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[8]/android.view.View/android.widget.CheckBox");
+    public static By checkPID = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[9]");
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
     public static By clickEudiwButton = By.xpath("//android.widget.TextView[@text=\"Use EUDIW\"]");
@@ -26,8 +26,10 @@ public class IssuerElements {
     public static By selectAttributesBy = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectSpecificAtt = By.xpath("//android.view.View[@resource-id=\"mat-option-0\"]");
     public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-2-panel\"]");
-    public static By thirdAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View");
-    public static By fourthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-3\"]/android.view.View");
-    public static By fifthAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-8\"]/android.view.View");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
+    public static By familyNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
+    public static By givenNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
+    public static By birthDateAtt = By.xpath("//android.widget.CheckBox[@text=\"Birthdate\"]");
+    public static By ageOver18Att = By.xpath("//android.widget.CheckBox[@text=\"Age over 18\"]");
+    public static By birthPlaceAtt = By.xpath("//android.widget.CheckBox[@text=\"Birth place\"]");
 }

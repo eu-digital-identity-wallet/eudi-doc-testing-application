@@ -429,8 +429,8 @@ public class GeneralStepDefs{
         test.mobile().wallet().detailsArePresented();
     }
 
-    @When("the user presses the ISSUE button")
-    public void theUserPressesTheISSUEButton() {
+    @When("the user presses the Issue button")
+    public void theUserPressesTheIssueButton() {
         test.mobile().wallet().clickIssue();
     }
 
@@ -495,7 +495,7 @@ public class GeneralStepDefs{
     @Then("the new document is presented in the EUDI Wallet dashboard screen")
     public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
         test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().nationalIdIsDisplayed();
+        test.mobile().wallet().secondPIDIsDisplayed();
     }
 
     @Given("the user sees a success message in the EUDI Wallet app")

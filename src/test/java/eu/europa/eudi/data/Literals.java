@@ -22,8 +22,8 @@ public interface Literals {
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
         DRIVING_LICENCE("Driving License"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
-        ISSUANCE_DETAILS("National ID"),
-        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("Your documents from issuer.eudiw.dev have been successfully issued."),
+        ISSUANCE_DETAILS("PID"),
+        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
         SCAN_QR("SCAN QR"),
         DETAILS_NATIONAL_ID("Family Name"),
@@ -42,8 +42,7 @@ public interface Literals {
         DETAILS_ARE_BLURRED("Hide"),
         DETAILS_ARE_NOT_BLURRED("Show"),
         CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
-        WELCOME_HEADER_IOS("Welcome to your wallet"),
-        ISSUANCE_DETAILS_NEW("PID");
+        WELCOME_HEADER_IOS("Welcome to your wallet");
 
         public final String label;
         Wallet(String label) {
