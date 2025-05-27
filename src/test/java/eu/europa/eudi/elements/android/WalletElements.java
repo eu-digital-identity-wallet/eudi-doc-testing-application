@@ -112,4 +112,5 @@ public class WalletElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
+    public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
 }
