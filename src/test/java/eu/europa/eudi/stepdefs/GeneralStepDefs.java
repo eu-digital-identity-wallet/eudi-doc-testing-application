@@ -152,11 +152,9 @@ public class GeneralStepDefs{
     public void userSelectSpecificDataToShare() {
         test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectShareAttributes();
-        test.mobile().verifier().selectSpecificAttributes();
+        test.mobile().verifier().selectAllAttributes();
+        test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().selectAttributes();
-        test.mobile().verifier().clickSelect();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
     }
@@ -851,7 +849,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterBirthPlace();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
@@ -890,7 +889,6 @@ public class GeneralStepDefs{
     public void theVerifierRequestsADocFromTheWalletUser() {
         test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectShareAttributes();
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();

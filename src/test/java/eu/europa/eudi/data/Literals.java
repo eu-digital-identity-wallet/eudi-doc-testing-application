@@ -22,6 +22,7 @@ public interface Literals {
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
         DRIVING_LICENCE("Driving License"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
+        SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),
         ISSUANCE_DETAILS("PID"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),

@@ -81,7 +81,7 @@ public class WalletElements {
     public static By clickAllAttributes = By.xpath("//android.view.View[@resource-id=\"mat-option-1\"]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.widget.TextView[1]");
     public static By clickFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.widget.TextView");
-    public static By clickSpecificFormat = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By clickSpecificFormat = By.id("mat-expansion-panel-header-2");
     public static By clickAddMyDigitalID = By.xpath("//android.widget.Button");
     public static By clickSpecificFormatEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[4]");
     public static By clickRemove = By.xpath("//android.widget.Button[@text=\"Remove\"]");
@@ -113,4 +113,7 @@ public class WalletElements {
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
+    public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait:\"]");
+    public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
+    public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
 }
