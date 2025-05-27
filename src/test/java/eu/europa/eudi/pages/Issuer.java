@@ -343,7 +343,8 @@ public class Issuer {
         enterFamilyName();
         enterGivenName();
         chooseBirthDate();
-        enterBirthPlace();
+        enterCountry();
+        scrollUntilCountryCode();
         enterCountryCode();
         scrollUntilFindSubmit();
         clickSubmit();
@@ -352,6 +353,41 @@ public class Issuer {
         clickAuthorize();
         successfullySharedMessage();
         test.mobile().wallet().clickDone();
+    }
+
+    private void enterCountry() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountry)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement givenFamily = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountry);
+            givenFamily.clear();
+            givenFamily.sendKeys("Greece");
+        } else {
+           }
+    }
+
+    private void scrollUntilCountryCode() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        TouchAction<?> touchAction = new TouchAction<>(driver);
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.2);
+        int endY = (int) (size.height * 0.1);
+
+        touchAction
+                .press(PointOption.point(startX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                .moveTo(PointOption.point(startX, endY))
+                .release()
+                .perform();
+
+// Then attempt to find the element
+        try {
+            driver.findElement(By.xpath("//android.widget.TextView[@text=\"Nationality\"]")).click();
+        } catch (NoSuchElementException e) {
+            System.out.println("Element not found after single scroll");
+        }
     }
 
     public void authorizeIsDisplayed() {
@@ -395,10 +431,10 @@ public class Issuer {
     public void enterBirthPlace() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace)).click();
-            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace);
-            birthPlace.clear();
-            birthPlace.sendKeys("Thessaloniki");
+//            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickBirthPlace);
+//            birthPlace.clear();
+//            birthPlace.sendKeys("Thessaloniki");
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickBirthPlace)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
