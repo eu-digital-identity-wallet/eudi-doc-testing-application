@@ -183,6 +183,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(eu.europa.eudi.elements.android.WalletElements.documentNumberField);
             searchBar.clear();
             searchBar.sendKeys("1234");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.closeKeyboardBefore03)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.enterDocumentNumber)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -355,18 +356,19 @@ public class Issuer {
         test.mobile().wallet().clickDone();
     }
 
-    private void enterCountry() {
+    public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountry)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement givenFamily = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountry);
-            givenFamily.clear();
-            givenFamily.sendKeys("Greece");
+            WebElement country = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountry);
+            country.clear();
+            country.sendKeys("Greece");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth)).click();
         } else {
            }
     }
 
-    private void scrollUntilCountryCode() {
+    public void scrollUntilCountryCode() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         TouchAction<?> touchAction = new TouchAction<>(driver);
         Dimension size = driver.manage().window().getSize();
