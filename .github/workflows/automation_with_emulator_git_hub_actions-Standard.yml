@@ -229,3 +229,18 @@ jobs:
         with:
           name: test-recordings
           path: target/recordings/*
+
+      - name: Upload Android Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+                name: android-logs
+                path: src/test/resources/features/android/regressionTests/logs/*.txt
+
+      - name: Upload iOS Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+            name: ios-logs
+            path: src/test/resources/features/ios/regressionTests/logs/*.txt
+
