@@ -27389,6 +27389,7 @@
 05-28 14:29:01.287  2478  2790 D WM-SystemJobScheduler: Scheduling work ID dc3600e6-988c-4a1c-ad8a-880bc026b7a8Job ID 1043
 05-28 14:29:01.305  1079  1130 W HWUI    : Image decoding logging dropped!
 05-28 14:29:01.331   651  1805 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1353 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:4165 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1848 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:613 android.os.Binder.execTransactInternal:1409 
+<<<<<<< HEAD
 05-28 14:29:01.343  1462  2352 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
 05-28 14:29:01.343  1462  2352 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
 05-28 14:29:01.344  1462  2352 D LauncherApps: getActivityList: No launchable activities found forpackageName=com.google.android.gms, user=UserHandle{0}
@@ -109459,3 +109460,4 @@
 05-28 14:51:39.434  5948  5970 I appium  : channel read: GET /wd/hub/session/57fb94eb-01b0-433c-ae06-ba9eaaea1b4c/element/00000000-0000-0040-0000-009200000004/text
 05-28 14:51:39.434  5948  5970 I appium  : GetText command
 05-28 14:51:39.441  5948  5970 I appium  : AppiumResponse: {"sessionId":"57fb94eb-01b0-433c-ae06-ba9eaaea1b4c","value":"Welcome back, Foteini"}
+
