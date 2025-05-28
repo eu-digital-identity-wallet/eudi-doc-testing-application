@@ -29,8 +29,9 @@ jobs:
       - uses: actions/checkout@v4 # Checkout the code
         with:
           clean: true
-          ref: ${{ inputs.branch-to-checkout || 'main' }}
-     
+          ref: develop
+#          ref: ${{ inputs.branch-to-checkout || 'main' }}
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
