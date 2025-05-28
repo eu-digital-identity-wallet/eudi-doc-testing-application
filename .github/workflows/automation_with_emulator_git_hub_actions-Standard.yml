@@ -157,7 +157,7 @@ jobs:
             echo "Starting Logcat..."
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
-            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
+            sleep 220 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
 
 #      - name: Run UI Tests
 #        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
