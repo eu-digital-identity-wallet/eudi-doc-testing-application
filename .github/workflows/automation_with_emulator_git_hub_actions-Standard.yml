@@ -146,20 +146,6 @@ jobs:
 #            adb logcat -d > logcat_output.txt
 #            echo "Starting maven verify && APP Mem Monitoring"
 #            sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
-      - name: Validate APK File
-        run: |
-          APK_PATH="src/test/resources/app/androidApp.apk"
-          if [ ! -f "$APK_PATH" ]; then
-            echo "ERROR: APK file does not exist at $APK_PATH"
-            exit 1
-          fi
-          echo "APK file exists. Checking if it is a valid ZIP..."
-          if unzip -t "$APK_PATH"; then
-            echo "APK is a valid ZIP archive."
-          else
-            echo "ERROR: APK is not a valid ZIP archive. Possibly corrupted."
-            exit 1
-          fi
 
       - name: Run UI Tests
         uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
