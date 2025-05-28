@@ -372,7 +372,7 @@ public class Verifier {
 
     public void clickMsoMdoc() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        WebElement dropdown = driver.findElement(By.id("mat-select-1-panel"));
+        WebElement dropdown = driver.findElement(By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]"));
         Point location = dropdown.getLocation();
         Dimension size = dropdown.getSize();
 
