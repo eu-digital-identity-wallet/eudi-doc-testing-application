@@ -29,12 +29,19 @@ jobs:
       - uses: actions/checkout@v4 # Checkout the code
         with:
           clean: true
+          lfs: true
           ref: ${{ inputs.branch-to-checkout || 'main' }}
 
-      - name: Set up Git LFS
+      - name: Setup Git LFS
         run: |
-              git lfs install
-              git lfs pull
+           git lfs install
+           git lfs pull
+
+      - name: Verify APK file
+        run: |
+                ls -lh src/test/resources/app/
+                head -n 5 src/test/resources/app/androidApp.apk
+                file src/test/resources/app/androidApp.apk
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
