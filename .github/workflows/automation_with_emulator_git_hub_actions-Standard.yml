@@ -144,20 +144,55 @@ jobs:
           emulator-build: 11772612 # Emulator Version Control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5554
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192 -no-jni
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
-            adb devices
-            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+            adb device
+            # Wait for boot completed property
+            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do
+              echo "Waiting for Android to fully boot..."
+              sleep 10
+            done
             echo "Android has booted!"
-            echo "***************"
-            echo "Checking cmd setting service availabilty..."
-            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+            # Extra wait for system services to stabilize
+            echo "Waiting additional 2 minutes for system stabilization..."
+            sleep 120
+            echo "Checking 'settings' service availability..."
+            while ! adb shell service list | grep -q 'settings'; do
+              echo "Settings service not available yet, waiting 10 more seconds..."
+              sleep 10
+            done
+            echo "Disabling animations explicitly..."
+            adb shell settings put global window_animation_scale 0
+            adb shell settings put global transition_animation_scale 0
+            adb shell settings put global animator_duration_scale 0
+            echo "Checking network connectivity..."
+            until adb shell ping -c 1 google.com; do
+              echo "Waiting for network..."
+              sleep 5
+            done
             echo "Starting Logcat..."
-            adb logcat -d > logcat_output.txt
+            adb logcat > logcat_output.txt &  # Stream logs in background
+            LOGCAT_PID=$!
             echo "Starting maven verify && APP Mem Monitoring"
             sleep 520 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
+            # Kill background logcat after tests finish
+            kill $LOGCAT_PID || true
+
+      #          script: |
+#            echo "Waiting for Android Emulator..."
+#            adb wait-for-device
+#            adb devices
+#            while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
+#            echo "Android has booted!"
+#            echo "***************"
+#            echo "Checking cmd setting service availabilty..."
+#            if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
+#            echo "Starting Logcat..."
+#            adb logcat -d > logcat_output.txt
+#            echo "Starting maven verify && APP Mem Monitoring"
+#            sleep 520 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
 
 #      - name: Run UI Tests
 #        uses: reactivecircus/android-emulator-runner@v2 # Install and create the Emulator
