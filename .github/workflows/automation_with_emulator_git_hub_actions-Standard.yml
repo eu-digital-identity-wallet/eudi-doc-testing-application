@@ -184,6 +184,8 @@ jobs:
             while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
             echo "Android has booted!"
             echo "***************"
+            echo "Uninstalling old app if installed..."
+            adb uninstall eu.europa.ec.euidi.dev || echo "App not installed, skipping uninstall"
             echo "Waiting for browser activity to start..."
             while ! adb shell dumpsys activity activities | grep -q "mResumedActivity.*com.android.chrome"; do echo "Waiting for browser to be in foreground..."; sleep 10; done
             echo "Browser is in foreground!"
@@ -196,7 +198,6 @@ jobs:
             adb logcat -d > logcat_output.txt
             echo "Starting maven verify && APP Mem Monitoring"
             sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
-#
 
       - name: Stop Runner Monitoring
         if: always()
