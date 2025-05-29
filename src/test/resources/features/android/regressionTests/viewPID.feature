@@ -1,7 +1,7 @@
 @ANDROID @automated @US_VP
 Feature: View PID document
 
-  @US_VP_TC_01
+  @US_VP_TC_01 @before_01
   Scenario: User successfully logs in and sees the dashboard
     Given the user is on the Login screen
     When the user enters their PIN
