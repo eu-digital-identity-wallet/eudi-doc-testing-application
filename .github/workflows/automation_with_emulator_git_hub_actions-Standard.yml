@@ -134,8 +134,8 @@ jobs:
           api-level: 33
           target: google_apis
           arch: x86_64
-          avd-name: Pixel_6_API_33
-          profile:  pixel_6
+          avd-name: Pixel_6a_API_34
+          profile:  pixel_6a
           ram-size: 8192M
           cores: 6
           heap-size: 2048M
