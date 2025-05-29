@@ -2,14 +2,21 @@ package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Base64;
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -50,12 +57,13 @@ public class MobileWebDriverFactory {
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
+            // Start recording video
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
         }
     }
-    
+
 
     public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) {
         try {
@@ -63,7 +71,7 @@ public class MobileWebDriverFactory {
             stopLogging();
 
 //             Create a directory for the feature if it doesn't exist
-            File featureDir = new File( featureDirPath + "/logs");
+            File featureDir = new File(featureDirPath + "/logs");
             if (!featureDir.exists()) {
                 featureDir.mkdirs();
             }
@@ -169,6 +177,7 @@ public class MobileWebDriverFactory {
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
+
 //            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
 //            new Thread(() -> {
 //                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
@@ -187,60 +196,61 @@ public class MobileWebDriverFactory {
         }
     }
 
-    public WebDriverWait getWait() {
-        return wait;
-    }
+        public WebDriverWait getWait() {
+            return wait;
+        }
 
-    public WebDriver getDriverAndroid() {
-        return androidDriver;
-    }
+        public WebDriver getDriverAndroid() {
+            return androidDriver;
+        }
 
-    public WebDriver getDriverIos() {
-        return iosDriver;
-    }
+        public WebDriver getDriverIos() {
+            return iosDriver;
+        }
 
-    public void quitDriverAndroid() {
-        if (androidDriver != null) {
-            // Stop method tracing
-           // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
-            String remoteFilePath = "/data/local/tmp/trace_file.trace";
-            String localFilePath = "/trace_file.trace";
-           // pullTraceFile(remoteFilePath, localFilePath);
+        public void quitDriverAndroid() {
+            if (androidDriver != null) {
+                // Stop method tracing
+                // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
+                String remoteFilePath = "/data/local/tmp/trace_file.trace";
+                String localFilePath = "/trace_file.trace";
+                // pullTraceFile(remoteFilePath, localFilePath);
+            }
+        }
+
+        public void quitDriverIos() {
+            if (iosDriver != null) {
+
+                iosDriver.quit();
+            }
+        }
+
+        private void startMethodTracing(String packageName) {
+            try {
+                Process process = Runtime.getRuntime().exec("adb shell am profile start " + packageName + " /data/local/tmp/trace_file.trace");
+                logProcessOutput(process);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void stopMethodTracing(String packageName) {
+            try {
+                Process process = Runtime.getRuntime().exec("adb shell am profile stop " + packageName);
+                logProcessOutput(process);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void pullTraceFile(String remoteFilePath, String localFilePath) {
+            try {
+                Process process = Runtime.getRuntime().exec("adb pull " + remoteFilePath + " " + localFilePath);
+                logProcessOutput(process);
+                System.out.println("Trace file pulled to: " + localFilePath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void quitDriverIos() {
-        if (iosDriver != null) {
-
-            iosDriver.quit();
-        }
-    }
-
-    private void startMethodTracing(String packageName) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb shell am profile start " + packageName + " /data/local/tmp/trace_file.trace");
-            logProcessOutput(process);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void stopMethodTracing(String packageName) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb shell am profile stop " + packageName);
-            logProcessOutput(process);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void pullTraceFile(String remoteFilePath, String localFilePath) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb pull " + remoteFilePath + " " + localFilePath);
-            logProcessOutput(process);
-            System.out.println("Trace file pulled to: " + localFilePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}

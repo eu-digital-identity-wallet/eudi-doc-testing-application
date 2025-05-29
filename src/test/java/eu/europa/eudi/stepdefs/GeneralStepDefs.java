@@ -2,9 +2,7 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.PointOption;
+import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -13,20 +11,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
-import org.openqa.selenium.*;
 
-import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
+import java.util.Base64;
 
 public class GeneralStepDefs{
 
     TestSetup test;
     @Before
-    public void setup(Scenario scenario) {
-      
+    public void setup(Scenario scenario) throws IOException {
+        Runtime.getRuntime().exec("adb shell screenrecord /sdcard/test_recording.mp4");
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
@@ -117,10 +114,16 @@ public class GeneralStepDefs{
     }
 
     @After
-    public void tearDown(Scenario scenario) {
+    public void tearDown(Scenario scenario) throws IOException, InterruptedException {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android){
+            Process stopRecording = Runtime.getRuntime().exec("adb shell killall -2 screenrecord");
+            stopRecording.waitFor(); // Optional wait
+
+// Pull file to local
+            Process pullVideo = Runtime.getRuntime().exec("adb pull /sdcard/test_recording.mp4 C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/screenshots/test_recording.mp4");
+            pullVideo.waitFor();
             test.stopAndroidDriverSession();
         }
         if (ios){
@@ -1036,6 +1039,7 @@ public class GeneralStepDefs{
 
     @Given("the user is on the Login screen")
     public void theUserIsOnTheLoginScreen() {
+        MobileWebDriverFactory factory = new MobileWebDriverFactory(test, false);
         test.mobile().wallet().startAndStopDriver();
         test.mobile().wallet().loginPageIsDisplayed();
     }
