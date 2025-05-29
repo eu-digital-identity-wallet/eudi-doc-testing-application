@@ -365,10 +365,18 @@ public class Issuer {
             country.sendKeys("Greece");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth)).click();
         } else {
-           }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement country = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountry);
+            country.clear();
+            country.sendKeys("Greece");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickPlaceOfBirth)).click();
+
+        }
     }
 
     public void scrollUntilCountryCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         TouchAction<?> touchAction = new TouchAction<>(driver);
         Dimension size = driver.manage().window().getSize();
@@ -389,8 +397,8 @@ public class Issuer {
             driver.findElement(By.xpath("//android.widget.TextView[@text=\"Nationality\"]")).click();
         } catch (NoSuchElementException e) {
             System.out.println("Element not found after single scroll");
-        }
-    }
+           }
+    }}
 
     public void authorizeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
