@@ -52,7 +52,6 @@ public class MobileWebDriverFactory {
         caps2.setCapability("app", apkPath2.getAbsolutePath());
         caps2.setCapability("allowInsecure", "adb_shell");
         caps2.setCapability("enableLogcatLogging", true);
-        caps2.setCapability("uiautomator2ServerInstallTimeout", 120000);
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
