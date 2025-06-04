@@ -402,6 +402,7 @@ public class GeneralStepDefs{
 
     @When("the user selects to issue a credential")
     public void theUserSelectsToIssueACredential() {
+        test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickPersonalIdentificationData();
@@ -416,6 +417,7 @@ public class GeneralStepDefs{
 
     @And("the details of the credential to be issued are presented")
     public void theDetailsOfTheCredentialToBeIssuedArePresented() {
+        test.mobile().verifier().insertPIN2();
         test.mobile().wallet().detailsArePresented();
     }
 
@@ -424,7 +426,7 @@ public class GeneralStepDefs{
         theUserIsOnTheIssuerService();
         theUserSelectsToIssueACredential();
         theUserIsRedirectedToTheEUDIWallet();
-        test.mobile().wallet().detailsArePresented();
+        theDetailsOfTheCredentialToBeIssuedArePresented();
     }
 
     @When("the user presses the Issue button")
@@ -461,7 +463,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterBirthPlace();
+        test.mobile().issuer().enterCountry();
         test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();

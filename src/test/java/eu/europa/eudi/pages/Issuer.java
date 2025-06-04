@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
@@ -48,6 +49,27 @@ public class Issuer {
             driver.executeScript("mobile: launchApp", args);
         }
     }
+    public void launchSafari() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            String url = "https://issuer.eudiw.dev/credential_offer_choice";
+
+            try {
+                try {
+                    driver.terminateApp("eu.europa.ec.euidi.dev");
+                } catch (Exception e) {
+                }
+                driver.activateApp("com.apple.mobilesafari");
+                Thread.sleep(3000);
+                driver.get(url);
+                Thread.sleep(5000);
+                driver.context("NATIVE_APP");
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to launch Safari", e);
+            }
+        }
+    }
 
     public void updateTestReference(TestSetup newTest) {
         this.test = newTest;
@@ -59,7 +81,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
         }
     }
 

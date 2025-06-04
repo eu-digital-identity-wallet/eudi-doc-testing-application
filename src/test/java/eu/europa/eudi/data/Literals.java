@@ -77,6 +77,7 @@ public interface Literals {
 
     enum Issuer{
         CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
+        CREDENTIAL_PAGE_IOS("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
