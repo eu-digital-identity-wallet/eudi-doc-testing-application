@@ -1,5 +1,6 @@
 package eu.europa.eudi.stepdefs;
 
+import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.TouchAction;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class GeneralStepDefs{
 
-    TestSetup test;
+    static TestSetup test;
     @Before
     public void setup(Scenario scenario) {
       
@@ -128,6 +129,11 @@ public class GeneralStepDefs{
         }
         test.stopLogging();
     }
+
+    public static TestSetup getTest() {
+        return test;
+    }
+
 
     @Given("user sets up wallet")
     public void userSetsUpWallet() {
@@ -1252,6 +1258,10 @@ public class GeneralStepDefs{
     @Then ("the user gets redirected to verifier and views the respond")
     public void theUserGetsRedirectedToVerifierAndViewsTheRespond(){
         test.mobile().verifier().walletResponded();
+        test.mobile().verifier().clickTransactionsLogs();
+        test.mobile().verifier().clickTransactionInitialized();
+        test.mobile().verifier().getTransactionId();
+
     }
 }
 

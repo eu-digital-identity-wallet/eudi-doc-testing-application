@@ -116,4 +116,6 @@ public class WalletElements {
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait:\"]");
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
+    public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
+    public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
 }

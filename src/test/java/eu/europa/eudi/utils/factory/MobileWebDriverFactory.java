@@ -62,7 +62,7 @@ public class MobileWebDriverFactory {
             stopLogging();
 
 //             Create a directory for the feature if it doesn't exist
-            File featureDir = new File( featureDirPath + "/logs");
+            File featureDir = new File( featureDirPath + "/logs/ui");
             if (!featureDir.exists()) {
                 featureDir.mkdirs();
             }
