@@ -23,5 +23,8 @@ Feature: Online Identification & Authentication (same-device)
   Scenario: User authorizes data disclosure
     Given user presses the share button
     When user authorizes the disclosure of the data
-    Then user is authenticated successfully
+    And user is authenticated successfully
+    And the user clicks done
+    Then the user gets redirected to verifier and views the respond
+
 

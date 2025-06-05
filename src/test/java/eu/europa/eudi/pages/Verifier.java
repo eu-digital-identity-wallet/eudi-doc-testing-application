@@ -1,5 +1,6 @@
 package eu.europa.eudi.pages;
 
+import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.ios.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
@@ -11,12 +12,15 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -396,5 +400,34 @@ public class Verifier {
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, optionY))
                 .perform();
+    }
+
+    public void clickTransactionsLogs() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionsLogs)).click();
+    }
+
+    public void clickTransactionInitialized() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionInitialized)).click();
+    }
+
+    public void getTransactionId() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
+
+        // Get the text
+        String rawText = jsonElement.getText();
+
+        JSONObject jsonObject = new JSONObject(rawText);
+        JSONObject valueObject = jsonObject.getJSONObject("value");
+
+        // Step 4: Extract the transaction_id
+        String transactionId = valueObject.getString("transaction_id");
+
+        // Output the result
+        System.out.println("Transaction ID: " + transactionId);
+
+        EventsApiVerifier api = new EventsApiVerifier();
+        api.getPresentationEvents(transactionId);
     }
 }
