@@ -17,6 +17,7 @@ import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -55,8 +56,12 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
+            test.mobile().issuer().sleepMethod();
+            test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickDone();
         }
 
         if (two_pid_data) {
@@ -87,6 +92,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickAddMyDigitalID();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickDone();
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
@@ -124,11 +130,11 @@ public class GeneralStepDefs{
         if (android){
             test.stopAndroidDriverSession();
         }
-        if (ios){
-            test.stopIosDriverSession();
+        if (ios)
+        { test.stopIosDriverSession();
         }
-        test.stopLogging();
-    }
+        test.stopLogging(); }
+
 
     public static TestSetup getTest() {
         return test;
@@ -152,6 +158,7 @@ public class GeneralStepDefs{
     @Given("user opens Verifier App")
     public void userOpensVerifierApp() {
         test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().appOpensSuccessfully();
     }
 
     @When("user selects specific data to share")
@@ -162,7 +169,7 @@ public class GeneralStepDefs{
         test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNext();
+        test.mobile().verifier().assertAndClickNext();
     }
 
     @And("user selects to be identified using EUDI Wallet")
@@ -901,11 +908,12 @@ public class GeneralStepDefs{
         test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNext();
+        test.mobile().verifier().assertAndClickNext();
     }
 
     @Then("the requestor of the data is displayed in the wallet")
     public void theRequestorOfTheDataIsDisplayedInTheWallet() {
+        test.mobile().verifier().chooseWalletPageIsDisplayed();
         test.mobile().verifier().chooseWallet();
         test.mobile().verifier().insertPIN2();
     }
@@ -939,11 +947,11 @@ public class GeneralStepDefs{
         theUserHasFinalizedDataSelection();
         theUserClicksTheSHAREButton();
         thePINFieldIsDisplayedToAuthorizeSharing();
-        test.mobile().wallet().createAPin();
     }
 
-    @When("the user clicks to view the document's details")
+    @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
+        test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
 
@@ -963,6 +971,7 @@ public class GeneralStepDefs{
     @When("the user unselects some of this data")
     public void theUserUnselectsSomeOfThisData() {
         test.mobile().wallet().clickToViewDetails();
+        test.mobile().wallet().detailsOfDocumentIsDisplayed();
         test.mobile().wallet().unselectData();
     }
 
@@ -1246,6 +1255,7 @@ public class GeneralStepDefs{
     @Given ("the expanded verification details are seen")
     public void theExpandedVerificationDetailsAreSeen(){
         theUserViewsTheDocumentThatIsRequested();
+        theUserInsertsThePIN();
         theUserClicksToViewTheDocumentsDetails();
         theExpandedVerificationDetailsAreDisplayed();
     }
@@ -1262,6 +1272,11 @@ public class GeneralStepDefs{
         test.mobile().verifier().clickTransactionInitialized();
         test.mobile().verifier().getTransactionId();
 
+    }
+
+    @When ("the user inserts the PIN")
+    public void theUserInsertsThePIN() {
+        test.mobile().wallet().createAPin();
     }
 }
 
