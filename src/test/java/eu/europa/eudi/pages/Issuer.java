@@ -161,8 +161,7 @@ public class Issuer {
     public void enterGivenName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickGivenName)).click();
-            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement givenName = driver.findElement(eu.europa.eudi.elements.android.WalletElements.givenNameField);
+            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenNameField));
             givenName.clear();
             givenName.sendKeys("Foteini");
         } else {
@@ -176,8 +175,7 @@ public class Issuer {
     public void enterFamilyName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFamilyName)).click();
-            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement givenFamily = driver.findElement(eu.europa.eudi.elements.android.WalletElements.givenFamilyField);
+            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenFamilyField));
             givenFamily.clear();
             givenFamily.sendKeys("Theofilatou");
         } else {
@@ -201,7 +199,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.enterDocumentNumber)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             WebElement searchBar = driver.findElement(eu.europa.eudi.elements.android.WalletElements.documentNumberField);
             searchBar.clear();
             searchBar.sendKeys("1234");
@@ -252,8 +249,6 @@ public class Issuer {
 
     public void authenticationMethodSelection() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authenticationMethodSelection)).getText();
             Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SELECTION.label, pageHeader);
 
@@ -360,9 +355,11 @@ public class Issuer {
     }
 
     public void issuePID() {
+        issuerServiceIsDisplayed();
         selectCountryOfOrigin();
         clickFormEu();
         clickSubmit();
+        formIsDisplayed();
         enterFamilyName();
         enterGivenName();
         chooseBirthDate();
@@ -374,18 +371,31 @@ public class Issuer {
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
-        successfullySharedMessage();
-        test.mobile().wallet().clickDone();
+    }
+
+    private void providerFormIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
+        }
+    }
+
+    private void issuerServiceIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.issuerServiceIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.ISSUER_SERVICE_IS_DISPLAYED.label, pageHeader);
+        }
     }
 
     public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountry)).click();
-            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement country = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountry);
-            country.clear();
-            country.sendKeys("Greece");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth)).click();
+            WebElement countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountry));
+            countryField.click();
+            countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickCountry));
+            countryField.clear();
+            countryField.sendKeys("Greece");
+            WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth));
+            placeOfBirth.click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -393,27 +403,19 @@ public class Issuer {
             country.clear();
             country.sendKeys("Greece");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickPlaceOfBirth)).click();
-
         }
     }
 
     public void scrollUntilCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        TouchAction<?> touchAction = new TouchAction<>(driver);
-        Dimension size = driver.manage().window().getSize();
-
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.2);
-        int endY = (int) (size.height * 0.1);
-
-        touchAction
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                .moveTo(PointOption.point(startX, endY))
-                .release()
-                .perform();
-
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            driver.findElement(MobileBy.AndroidUIAutomator(
+//                    "new UiScrollable(new UiSelector().scrollable(true))" +
+//                            ".setAsVerticalList()" +
+//                            ".scrollForward()" +
+//                            ".setMaxSearchSwipes(1)" +
+//                            ".scrollIntoView(new UiSelector().text(\"Nationality\"))"
+//            ));
 // Then attempt to find the element
         try {
             driver.findElement(By.xpath("//android.widget.TextView[@text=\"Nationality\"]")).click();
@@ -426,6 +428,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
+            //test.mobileWebDriverFactory().switchToNativeView();
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
@@ -445,8 +448,7 @@ public class Issuer {
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCountryCode)).click();
-            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement countryCode = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickCountryCode);
+            WebElement countryCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickCountryCode));
             countryCode.clear();
             countryCode.sendKeys("GR");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.closeKeyboard)).click();
@@ -483,6 +485,14 @@ public class Issuer {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void sleepMethod() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
