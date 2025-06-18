@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features/"},
         monochrome = true,
+        tags = "@sakis",
         glue = {"eu.europa.eudi.stepdefs"})
 public class TestRunner {
 }

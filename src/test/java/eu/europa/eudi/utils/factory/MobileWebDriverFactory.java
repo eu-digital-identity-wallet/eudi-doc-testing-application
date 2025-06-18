@@ -2,21 +2,15 @@ package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.Base64;
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -50,13 +44,14 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
-        caps2.setCapability("allowInsecure", "adb_shell");
         caps2.setCapability("enableLogcatLogging", true);
+        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
+        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
+        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
             wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
-            // Start recording video
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
@@ -70,7 +65,7 @@ public class MobileWebDriverFactory {
             stopLogging();
 
 //             Create a directory for the feature if it doesn't exist
-            File featureDir = new File(featureDirPath + "/logs");
+            File featureDir = new File( featureDirPath + "/logs/ui");
             if (!featureDir.exists()) {
                 featureDir.mkdirs();
             }
@@ -176,7 +171,6 @@ public class MobileWebDriverFactory {
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
-
 //            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
 //            new Thread(() -> {
 //                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
@@ -195,61 +189,121 @@ public class MobileWebDriverFactory {
         }
     }
 
-        public WebDriverWait getWait() {
-            return wait;
-        }
+    public WebDriverWait getWait() {
+        return wait;
+    }
 
-        public WebDriver getDriverAndroid() {
-            return androidDriver;
-        }
+    public WebDriver getDriverAndroid() {
+        return androidDriver;
+    }
 
-        public WebDriver getDriverIos() {
-            return iosDriver;
-        }
+    public WebDriver getDriverIos() {
+        return iosDriver;
+    }
 
-        public void quitDriverAndroid() {
-            if (androidDriver != null) {
-                // Stop method tracing
-                // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
-                String remoteFilePath = "/data/local/tmp/trace_file.trace";
-                String localFilePath = "/trace_file.trace";
-                // pullTraceFile(remoteFilePath, localFilePath);
-            }
-        }
-
-        public void quitDriverIos() {
-            if (iosDriver != null) {
-
-                iosDriver.quit();
-            }
-        }
-
-        private void startMethodTracing(String packageName) {
-            try {
-                Process process = Runtime.getRuntime().exec("adb shell am profile start " + packageName + " /data/local/tmp/trace_file.trace");
-                logProcessOutput(process);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        private void stopMethodTracing(String packageName) {
-            try {
-                Process process = Runtime.getRuntime().exec("adb shell am profile stop " + packageName);
-                logProcessOutput(process);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        private void pullTraceFile(String remoteFilePath, String localFilePath) {
-            try {
-                Process process = Runtime.getRuntime().exec("adb pull " + remoteFilePath + " " + localFilePath);
-                logProcessOutput(process);
-                System.out.println("Trace file pulled to: " + localFilePath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public void quitDriverAndroid() {
+        if (androidDriver != null) {
+            // Stop method tracing
+            // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
+            String remoteFilePath = "/data/local/tmp/trace_file.trace";
+            String localFilePath = "/trace_file.trace";
+            // pullTraceFile(remoteFilePath, localFilePath);
         }
     }
 
+    public void quitDriverIos() {
+        if (iosDriver != null) {
+
+            iosDriver.quit();
+        }
+    }
+
+    private void startMethodTracing(String packageName) {
+        try {
+            Process process = Runtime.getRuntime().exec("adb shell am profile start " + packageName + " /data/local/tmp/trace_file.trace");
+            logProcessOutput(process);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void stopMethodTracing(String packageName) {
+        try {
+            Process process = Runtime.getRuntime().exec("adb shell am profile stop " + packageName);
+            logProcessOutput(process);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pullTraceFile(String remoteFilePath, String localFilePath) {
+        try {
+            Process process = Runtime.getRuntime().exec("adb pull " + remoteFilePath + " " + localFilePath);
+            logProcessOutput(process);
+            System.out.println("Trace file pulled to: " + localFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+//
+//    /**
+//     * Περιμένει αξιόπιστα μέχρι να βρεθεί ένα WebView context και κάνει switch σε αυτό.
+//     * Αυτή η μέθοδος ΑΠΑΙΤΕΙ ένα AppiumDriver instance για να λειτουργήσει.
+//     *
+//     */
+//    public static void switchToWebView(WebDriver driver) {
+//        System.out.println("Attempting to switch to WebView context...");
+//        try {
+//            for (int i = 0; i < 30; i++) { // Περιμένουμε μέχρι 15 δευτερόλεπτα
+//                if (getDriverContexts(driver).size() > 1) {
+//                    break;
+//                }
+//                Thread.sleep(500);
+//            }
+//
+//            for (String contextHandle : getDriverContexts(driver)) {
+//                if (contextHandle.contains("WEBVIEW")) {
+//                    setDriverContext(driver, contextHandle);
+//                    System.out.println("Switched successfully to context: " + contextHandle);
+//                    return;
+//                }
+//            }
+//            throw new IllegalStateException("No WebView context was found after waiting.");
+//
+//        } catch (Exception e) {
+//            System.err.println("Failed to find or switch to a WebView context.");
+//            e.printStackTrace();
+//            throw new IllegalStateException("Could not switch to WebView context.", e);
+//        }
+//    }
+//
+//    private static Set<String> getDriverContexts(WebDriver driver) {
+//        if (driver instanceof AndroidDriver) {
+//            return ((AndroidDriver) driver).getContextHandles();
+//        } else if (driver instanceof IOSDriver) {
+//            return ((IOSDriver) driver).getContextHandles();
+//        }
+//        return null;
+//    }
+//
+//    public void switchToNativeView() {
+//        System.out.println("Attempting to switch back to Native context...");
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//        try {
+//            setDriverContext(driver, "NATIVE_APP");
+//            System.out.println("Switched successfully to context: NATIVE_APP");
+//        } catch (Exception e) {
+//            System.err.println("Failed to switch back to NATIVE_APP context.");
+//            e.printStackTrace();
+//            throw new IllegalStateException("Could not switch back to NATIVE_APP context.", e);
+//        }
+//    }
+//
+//    private static void setDriverContext(WebDriver driver, String context) {
+//        if (driver instanceof AndroidDriver) {
+//            ((AndroidDriver) driver).context(context);
+//        } else if (driver instanceof IOSDriver) {
+//            ((IOSDriver) driver).context(context);
+//        }
+//    }
+}

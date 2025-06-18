@@ -1,0 +1,1081 @@
+14:11:05.305 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:11:05.306 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:11:05.515 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:11:05.516 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:08.631 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:11:08.641 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:11:08.644 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e46e2592-57ec-4a4b-9abb-60bb05ed1cf7
+14:11:08.644 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:08.766 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:11:08.771 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:10.920 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:10.929 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:11:14.450 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:11:18.787 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: dolu2p6cf2v59vvtrjcxl6f8rfutdrrltfheveeo
+14:11:18.787 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:18.787 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:11:28.778 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:11:31.697 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:11:31.698 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:32.021 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:11:32.022 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:32.071 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:11:32.072 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:32.182 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 6de921a7-def0-4279-b79a-047a040ebfc3
+14:11:32.183 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:32.405 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:11:32.411 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:32.528 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 1e01fab0-ae57-4862-a2ff-7dc2bcf9fe54
+14:11:32.529 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:32.709 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:11:32.713 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: cca49418-bf4e-4141-8176-018ccda0602f
+14:11:32.714 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:32.714 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:32.892 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:11:32.896 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:33.793 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:33.803 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:11:33.877 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:33.887 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:11:33.973 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:11:33.983 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:11:35.550 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:11:35.594 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:11:35.691 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:11:45.479 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/dolu2p6cf2v59vvtrjcxl6f8rfutdrrltfheveeo to view build report, insights, and many more debugging information all at one place!
+
+14:11:45.479 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:11:45.480 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:11:49.012 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:49.012 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:11:51.084 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e46e2592-57ec-4a4b-9abb-60bb05ed1cf7, testhub id: dolu2p6cf2v59vvtrjcxl6f8rfutdrrltfheveeo
+14:11:51.084 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:20.213 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:12:20.214 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:12:20.463 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:12:20.463 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:23.651 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:12:23.651 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:12:23.654 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 3514055d-1c71-4c58-bd70-85fa3a987c92
+14:12:23.654 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:23.768 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:12:23.771 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:24.774 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:24.783 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:12:27.525 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:12:28.957 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: qwjqlt6stadviatntcao4mnsqksemsv5sgbgigfm
+14:12:28.957 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:28.957 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:12:35.150 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:12:38.077 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:12:38.078 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:38.221 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:12:38.222 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:38.359 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:12:38.360 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:38.562 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: b1478fac-ce96-4c00-9676-051b192ee4ec
+14:12:38.562 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:38.736 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 32d867bb-e4a3-4724-b78e-6cb910cf4f3f
+14:12:38.737 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:38.774 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:12:38.781 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:38.889 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 65b7e780-d2d5-4048-abe3-057c0b622218
+14:12:38.889 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:38.909 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:12:38.912 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:39.043 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:12:39.046 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:39.909 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:39.919 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:12:39.927 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:39.935 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:12:40.027 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:12:40.036 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:12:41.639 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:12:41.691 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:12:41.769 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:12:52.242 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/qwjqlt6stadviatntcao4mnsqksemsv5sgbgigfm to view build report, insights, and many more debugging information all at one place!
+
+14:12:52.242 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:12:52.244 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:12:55.534 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:55.534 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:12:57.457 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 3514055d-1c71-4c58-bd70-85fa3a987c92, testhub id: qwjqlt6stadviatntcao4mnsqksemsv5sgbgigfm
+14:12:57.458 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:19:11.461 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:19:11.463 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:19:12.076 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:19:12.077 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:19:16.128 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:19:16.128 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:19:16.132 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 0a09b943-f2ae-4e7a-8ae1-147a5b01d8fc
+14:19:16.132 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:19:16.286 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:19:16.290 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:19:17.360 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:19:17.373 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:19:19.812 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:19:21.457 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: r76vxrbpl2vzqe9hdryva6qhuhwnzbkvjpwggvor
+14:19:21.458 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:19:21.458 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:19:27.804 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:19:29.547 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:19:29.548 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:19:29.902 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 93a5222e-7b1c-4ae2-bb35-2d3b90bd533b
+14:19:29.903 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:19:30.015 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:19:30.018 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:19:31.006 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:19:31.017 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:19:32.724 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:19:37.810 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/r76vxrbpl2vzqe9hdryva6qhuhwnzbkvjpwggvor to view build report, insights, and many more debugging information all at one place!
+
+14:19:37.810 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:19:37.812 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:19:41.135 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:19:41.135 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:19:42.757 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 0a09b943-f2ae-4e7a-8ae1-147a5b01d8fc, testhub id: r76vxrbpl2vzqe9hdryva6qhuhwnzbkvjpwggvor
+14:19:42.757 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:04.460 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:21:04.462 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:21:04.694 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:21:04.694 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:21:08.150 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:21:08.150 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:21:08.153 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 00d8a1f9-9f30-49e3-81f7-a8cf6a7a3cb3
+14:21:08.153 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:08.253 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:21:08.256 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:21:09.428 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:21:09.438 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:21:12.722 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:21:13.930 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 9ykelyebpw0cawk7i4dblxcyoae9u9xfg7ijtusj
+14:21:13.930 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:13.930 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:21:20.356 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:21:22.130 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:21:22.130 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:21:22.474 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e8a22632-0555-4370-9e63-334f4dea9aab
+14:21:22.474 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:22.588 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:21:22.591 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:21:23.378 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:21:23.387 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:21:25.128 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:21:39.650 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/9ykelyebpw0cawk7i4dblxcyoae9u9xfg7ijtusj to view build report, insights, and many more debugging information all at one place!
+
+14:21:39.659 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:39.661 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:21:43.209 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:21:43.209 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:21:45.212 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/9225b8c6ba026a6d613fcfe882c3f3c830d4c450
+14:21:45.212 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:21:45.218 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 00d8a1f9-9f30-49e3-81f7-a8cf6a7a3cb3, testhub id: 9ykelyebpw0cawk7i4dblxcyoae9u9xfg7ijtusj
+14:21:45.218 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:23:52.533 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:23:52.534 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:23:52.743 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:23:52.744 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:23:55.551 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:23:55.551 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:23:55.554 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 82d95404-b470-4ef6-8422-817e5923347f
+14:23:55.554 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:23:55.662 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:23:55.664 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:23:57.161 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:23:57.171 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:24:00.475 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:24:01.369 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: mtumresr89jvuczqqi7e7sqqrubvpi93gooiunpf
+14:24:01.369 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:24:01.369 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:24:08.358 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:24:10.171 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:24:10.173 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:24:10.581 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: c8530252-7da2-4b32-ac70-0f8c44bcaffc
+14:24:10.581 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:24:10.723 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:24:10.726 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:24:11.585 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:24:11.597 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:24:13.316 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:24:19.480 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/mtumresr89jvuczqqi7e7sqqrubvpi93gooiunpf to view build report, insights, and many more debugging information all at one place!
+
+14:24:19.481 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:24:19.482 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:24:22.875 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:24:22.875 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:24:24.522 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 82d95404-b470-4ef6-8422-817e5923347f, testhub id: mtumresr89jvuczqqi7e7sqqrubvpi93gooiunpf
+14:24:24.522 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:16.308 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:26:16.308 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:26:16.541 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:26:16.541 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:26:19.416 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://d3c89d44d83f4a4cd4ef6c953f4462e1d3629e83]
+14:26:19.416 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:26:19.418 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 0cbb8986-b7b7-4959-ae44-3f04b1f975a2
+14:26:19.418 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:19.526 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:26:19.528 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:26:20.410 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:26:20.419 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:26:23.299 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:26:24.293 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 0izhbhqkwilxyjsnlnz0ka6gwj8z7rroqg6uymhd
+14:26:24.293 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:24.294 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:26:30.554 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:26:32.512 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:26:32.514 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:26:32.899 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 329fb306-0077-4fd7-a295-9113b0006461
+14:26:32.900 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:33.044 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:26:33.047 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:26:34.133 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:26:34.143 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:26:35.949 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:26:51.797 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/0izhbhqkwilxyjsnlnz0ka6gwj8z7rroqg6uymhd to view build report, insights, and many more debugging information all at one place!
+
+14:26:51.797 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:51.798 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:26:55.584 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:26:55.584 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:26:57.657 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/87a33fc0cdf3a3a841bf6e4b401ccb77db11fe23
+14:26:57.657 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:26:57.663 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 0cbb8986-b7b7-4959-ae44-3f04b1f975a2, testhub id: 0izhbhqkwilxyjsnlnz0ka6gwj8z7rroqg6uymhd
+14:26:57.663 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:31:53.819 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:31:53.820 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:31:54.053 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:31:54.055 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:31:57.039 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://af0790e3cc0fdd99c50239f4d9b48aabd0b6e4f0]
+14:31:57.040 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:31:57.043 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 49b433c1-b53e-43e5-8148-645f3a1ba168
+14:31:57.043 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:31:57.146 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:31:57.149 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:31:58.010 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:31:58.019 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:32:01.099 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:32:02.254 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 4kyrkvneppcbksxj0hfvjob7ilouji4qskubn39c
+14:32:02.254 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:32:02.254 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:32:09.183 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:32:10.950 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:32:10.951 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:32:11.292 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 33601a3a-8793-4a5d-94f0-2d002359c633
+14:32:11.294 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:32:11.411 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:32:11.415 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:32:12.678 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:32:12.688 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:32:14.398 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:32:29.979 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/4kyrkvneppcbksxj0hfvjob7ilouji4qskubn39c to view build report, insights, and many more debugging information all at one place!
+
+14:32:29.979 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:32:29.981 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:32:33.365 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:32:33.365 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:32:35.184 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/7605e1213f0e9faf04f57b9b28ffc2635c1a3132
+14:32:35.184 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:32:35.190 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 49b433c1-b53e-43e5-8148-645f3a1ba168, testhub id: 4kyrkvneppcbksxj0hfvjob7ilouji4qskubn39c
+14:32:35.190 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:36:41.858 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:36:41.858 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:36:42.121 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:36:42.123 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:36:45.369 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://af0790e3cc0fdd99c50239f4d9b48aabd0b6e4f0]
+14:36:45.369 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:36:45.372 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 23f4c739-8d4a-4c72-b666-e74627d2bf50
+14:36:45.372 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:36:45.510 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:36:45.515 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:36:46.378 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:36:46.387 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:36:48.685 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:36:49.723 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: jae0ebzvawcsxfb59stsks9svtdhiaoqcibf3r1y
+14:36:49.723 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:36:49.724 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:36:56.299 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:36:58.021 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:36:58.021 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:36:58.344 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: a1a86bfa-981c-45af-9f86-ab7901c669d2
+14:36:58.345 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:36:58.472 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:36:58.475 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:36:59.291 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:36:59.301 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:37:01.002 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:37:16.493 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/jae0ebzvawcsxfb59stsks9svtdhiaoqcibf3r1y to view build report, insights, and many more debugging information all at one place!
+
+14:37:16.493 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:37:16.494 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:37:20.218 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:37:20.218 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:37:22.052 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/c8ec0a9541ae18f448544e5b3e9d45dc60056531
+14:37:22.053 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:37:22.059 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 23f4c739-8d4a-4c72-b666-e74627d2bf50, testhub id: jae0ebzvawcsxfb59stsks9svtdhiaoqcibf3r1y
+14:37:22.059 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:10.140 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:41:10.141 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:41:10.381 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:41:10.381 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:41:13.448 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://af0790e3cc0fdd99c50239f4d9b48aabd0b6e4f0]
+14:41:13.448 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:41:13.451 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: f3251194-3926-4245-986b-6b4c37cf13b7
+14:41:13.452 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:13.555 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:41:13.558 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:41:14.390 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:41:14.399 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:41:17.356 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:41:18.259 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: edar4eqdj3iwmjadbxds60xdz7px1eoukauzelwo
+14:41:18.259 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:18.259 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+14:41:24.564 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+14:41:26.539 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:41:26.540 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:41:26.915 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: d13d7a85-3fd4-4e86-9d89-ddb9897ad968
+14:41:26.915 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:27.063 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:41:27.066 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:41:27.889 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:41:27.898 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:41:30.355 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:41:47.313 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/edar4eqdj3iwmjadbxds60xdz7px1eoukauzelwo to view build report, insights, and many more debugging information all at one place!
+
+14:41:47.313 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:47.314 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:41:50.687 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:41:50.688 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:41:52.818 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/8c3894f6b0dd640e96350c0ff0e0652b4c4a82b4
+14:41:52.818 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:41:52.825 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: f3251194-3926-4245-986b-6b4c37cf13b7, testhub id: edar4eqdj3iwmjadbxds60xdz7px1eoukauzelwo
+14:41:52.825 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:49:36.766 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:49:36.768 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:49:37.487 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:49:37.488 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:49:42.082 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://af0790e3cc0fdd99c50239f4d9b48aabd0b6e4f0]
+14:49:42.082 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:49:42.085 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 2a1ddff0-f930-436f-aee0-aab0973beedc
+14:49:42.085 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:49:42.223 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:49:42.227 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:49:43.546 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:49:43.557 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:49:46.357 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:49:47.772 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: mvj5m2al57epp4yfr7ox1j8gdd1ykkyjlzab1f75
+14:49:47.772 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:49:49.457 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:49:49.457 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:49:49.826 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 4fb8287d-508d-4f41-a625-bf4aa7b27c5e
+14:49:49.826 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:49:49.954 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:49:49.957 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:49:50.837 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:49:50.845 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:49:52.582 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:50:12.057 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/mvj5m2al57epp4yfr7ox1j8gdd1ykkyjlzab1f75 to view build report, insights, and many more debugging information all at one place!
+
+14:50:12.058 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:50:12.059 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:50:12.374 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:50:12.375 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:50:14.599 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/76541944b246493711177b3c3516c7ba5d82d862
+14:50:14.599 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:50:14.604 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 2a1ddff0-f930-436f-aee0-aab0973beedc, testhub id: mvj5m2al57epp4yfr7ox1j8gdd1ykkyjlzab1f75
+14:50:14.604 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:10.787 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:59:10.789 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:59:11.110 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:59:11.110 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:59:15.481 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://1cca434076d13a831ab0e15f83ef04d867d9887f]
+14:59:15.481 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:59:15.485 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: b38c3a6f-76cc-40d4-b262-654b338fe4ee
+14:59:15.485 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:15.623 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:59:15.626 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:59:17.716 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:59:17.724 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:59:21.283 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:59:22.732 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: atqhee6zppyudlprjtu2l6rordkof517mneflt2q
+14:59:22.732 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:24.597 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:59:24.597 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:59:25.001 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e450ad42-90c1-4937-bef0-1574c0bae15c
+14:59:25.001 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:25.121 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:59:25.123 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:59:26.064 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:59:26.075 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:59:27.820 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:59:47.013 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/atqhee6zppyudlprjtu2l6rordkof517mneflt2q to view build report, insights, and many more debugging information all at one place!
+
+14:59:47.013 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:47.016 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:59:47.311 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:59:47.311 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:59:49.114 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/bda4e200f1d217dd3572ea07af5fa28528662b31
+14:59:49.114 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:59:49.120 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: b38c3a6f-76cc-40d4-b262-654b338fe4ee, testhub id: atqhee6zppyudlprjtu2l6rordkof517mneflt2q
+14:59:49.121 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:20:35.596 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+15:20:35.597 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+15:20:35.869 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:20:35.869 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:20:38.789 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://1cca434076d13a831ab0e15f83ef04d867d9887f]
+15:20:38.789 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+15:20:38.792 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: ab3968af-a947-402f-9807-6b483f8876ee
+15:20:38.792 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:20:38.895 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:20:38.898 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:20:40.722 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:20:40.730 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:20:45.170 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:20:46.363 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: injeucejdlpmjmz8878pmrjgbjoz4atzz593oyj4
+15:20:46.363 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:20:47.987 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:20:47.988 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:20:48.323 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: c166e878-c84a-42c4-a779-8be36d1d19fa
+15:20:48.323 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:20:48.453 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:20:48.456 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:20:49.366 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:20:49.375 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:20:51.096 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:20:56.105 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/injeucejdlpmjmz8878pmrjgbjoz4atzz593oyj4 to view build report, insights, and many more debugging information all at one place!
+
+15:20:56.105 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:20:56.106 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+15:20:56.427 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:20:56.427 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:20:58.963 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: ab3968af-a947-402f-9807-6b483f8876ee, testhub id: injeucejdlpmjmz8878pmrjgbjoz4atzz593oyj4
+15:20:58.963 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:31:49.270 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+15:31:49.271 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+15:31:49.495 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:31:49.496 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:31:52.306 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://80e17dde5c1bfc60e4025e0db4b01a106b22d867]
+15:31:52.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+15:31:52.310 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: de5da5e9-6aba-41c9-80f3-ce6c1a8e1b34
+15:31:52.310 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:31:52.412 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:31:52.416 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:31:54.249 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:31:54.259 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:31:57.517 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:31:58.829 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: z4ub2putqa3cyqblapxffqtebjc4zxaytk8pibtr
+15:31:58.829 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:32:00.505 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:32:00.506 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:32:00.826 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5c9b3ad1-da6d-4790-b417-9e9305aa1798
+15:32:00.826 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:32:00.945 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:32:00.948 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:32:01.738 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:32:01.747 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:32:03.534 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:32:08.573 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/z4ub2putqa3cyqblapxffqtebjc4zxaytk8pibtr to view build report, insights, and many more debugging information all at one place!
+
+15:32:08.573 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:32:08.574 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+15:32:08.921 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:32:08.921 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:32:11.182 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: de5da5e9-6aba-41c9-80f3-ce6c1a8e1b34, testhub id: z4ub2putqa3cyqblapxffqtebjc4zxaytk8pibtr
+15:32:11.182 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:32:58.521 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+15:32:58.522 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+15:32:58.733 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:32:58.734 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:33:01.630 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://80e17dde5c1bfc60e4025e0db4b01a106b22d867]
+15:33:01.630 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+15:33:01.634 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 1892cc26-c6de-4fae-a674-f62ab7daf3bb
+15:33:01.634 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:33:01.737 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:33:01.739 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:33:02.542 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:33:02.550 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:33:05.659 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:33:06.932 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: mnregxs3vpcbobm0vsf5y8yarfhavvoi0sa6s9uw
+15:33:06.932 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:33:08.555 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:33:08.555 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:33:08.903 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 30ecf3b5-2860-4bf9-ba99-5aec9158255a
+15:33:08.903 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:33:09.019 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:33:09.022 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:33:09.847 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:33:09.856 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+15:33:11.609 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:33:32.382 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/mnregxs3vpcbobm0vsf5y8yarfhavvoi0sa6s9uw to view build report, insights, and many more debugging information all at one place!
+
+15:33:32.383 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:33:32.384 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+15:33:32.717 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:33:32.717 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:33:34.884 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/afc988f911a7312455b6d3dbe3256a6044ffeefe
+15:33:34.884 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:33:34.890 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 1892cc26-c6de-4fae-a674-f62ab7daf3bb, testhub id: mnregxs3vpcbobm0vsf5y8yarfhavvoi0sa6s9uw
+15:33:34.890 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:17.424 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+16:24:17.426 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+16:24:17.671 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:24:17.673 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:24:20.968 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://80e17dde5c1bfc60e4025e0db4b01a106b22d867]
+16:24:20.969 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+16:24:20.972 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5f32d866-9593-49f4-a57b-023f6df7b5db
+16:24:20.972 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:21.085 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+16:24:21.088 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:24:23.410 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:24:23.423 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+16:24:27.193 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+16:24:29.014 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: lzl8qenzvvaqg9fhhdcvwfcaydtbje29mfhs6krb
+16:24:29.014 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:30.822 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:24:30.823 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:24:31.215 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5198e6d0-b97a-48b5-8f08-801b73d4f252
+16:24:31.215 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:31.335 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+16:24:31.338 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:24:32.254 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:24:32.264 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+16:24:34.426 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+16:24:55.657 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/lzl8qenzvvaqg9fhhdcvwfcaydtbje29mfhs6krb to view build report, insights, and many more debugging information all at one place!
+
+16:24:55.657 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:55.659 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+16:24:56.021 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:24:56.023 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:24:58.809 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/b878d473ba85eb592714fc05c72724da01137b18
+16:24:58.809 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+16:24:58.814 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 5f32d866-9593-49f4-a57b-023f6df7b5db, testhub id: lzl8qenzvvaqg9fhhdcvwfcaydtbje29mfhs6krb
+16:24:58.814 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+16:28:38.703 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+16:28:38.704 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+16:28:38.964 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:28:38.965 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:28:42.041 [main] INFO  c.browserstack.BrowserStackJavaAgent - uploading app ./androidApp.apk to browserstack
+16:28:52.265 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+16:28:52.268 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:28:53.374 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:28:53.405 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+16:28:53.405 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+16:28:53.405 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+16:28:53.407 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e557e30c-63e6-40dd-92d4-679d8747670f
+16:28:53.407 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:28:53.531 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+16:28:57.192 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+16:28:58.743 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 9qiy2yhmw6s21tcnfigjwmkwfnh0h1fh7cob3zvn
+16:28:58.743 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:29:00.879 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:29:00.879 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:29:01.296 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 9bd7d6de-5b9d-4f08-b013-a2d6c75489c8
+16:29:01.297 [main] INFO  c.b.config.BrowserStackConfig - INFO
+16:29:01.428 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+16:29:01.430 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:29:02.349 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+16:29:02.360 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+16:29:04.097 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+16:29:23.444 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/9qiy2yhmw6s21tcnfigjwmkwfnh0h1fh7cob3zvn to view build report, insights, and many more debugging information all at one place!
+
+16:29:23.444 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+16:29:23.446 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+16:29:23.796 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:29:23.796 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+16:29:25.593 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/e45220acaa0b9bdc1269ddb85a0b77dd53b5aa68
+16:29:25.593 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+16:29:25.598 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e557e30c-63e6-40dd-92d4-679d8747670f, testhub id: 9qiy2yhmw6s21tcnfigjwmkwfnh0h1fh7cob3zvn
+16:29:25.598 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:05:40.411 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:05:40.434 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:05:40.755 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:05:40.756 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:05:44.658 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+12:05:44.670 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:05:44.673 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:05:47.445 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:05:47.482 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+12:05:47.483 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+12:05:47.483 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+12:05:47.486 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 814e639d-e0a0-4879-bb76-2cc060d5ade8
+12:05:47.487 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:05:47.627 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+12:05:50.887 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:05:52.506 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: hmtr4j7q8vn9rcq4gdddse7o5tu2vuuaoyvsqeaj
+12:05:52.507 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:05:54.737 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:05:54.738 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:05:55.204 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 682730fd-b039-4bfa-858f-b6ef558ca671
+12:05:55.204 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:05:55.372 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:05:55.377 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:05:56.881 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:05:56.891 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+12:06:00.789 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:06:22.255 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/hmtr4j7q8vn9rcq4gdddse7o5tu2vuuaoyvsqeaj to view build report, insights, and many more debugging information all at one place!
+
+12:06:22.255 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:06:22.256 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:06:22.768 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:06:22.768 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:06:28.541 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/0888561fdcbdb11113614a9802729319307848a8
+12:06:28.542 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:06:28.551 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 814e639d-e0a0-4879-bb76-2cc060d5ade8, testhub id: hmtr4j7q8vn9rcq4gdddse7o5tu2vuuaoyvsqeaj
+12:06:28.551 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:02:41.359 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:02:41.361 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:02:41.601 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:02:41.602 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:02:44.902 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+11:02:44.910 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:02:44.913 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:02:47.280 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: 1.3.11
+11:02:47.280 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.3.12.zip
+11:03:11.653 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:03:11.657 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:03:11.690 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+11:03:11.691 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+11:03:11.691 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+11:03:11.694 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 13715523-52ca-4bf8-9ecc-53a2d932ec03
+11:03:11.694 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:03:11.847 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:03:14.771 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:03:15.932 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: gi2upgsupbtlqdxupprgx8w6inhg9sabp4yejgj0
+11:03:15.932 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:03:17.700 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:03:17.701 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:03:18.113 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: cf89d5e8-1534-410e-8375-8688b63d0af7
+11:03:18.113 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:03:18.241 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:03:18.245 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:03:20.695 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:03:20.705 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:03:23.154 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:03:46.438 [Thread-2] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/gi2upgsupbtlqdxupprgx8w6inhg9sabp4yejgj0 to view build report, insights, and many more debugging information all at one place!
+
+11:03:46.438 [Thread-2] INFO  c.b.config.BrowserStackConfig - INFO
+11:03:46.440 [Thread-2] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:03:47.250 [Thread-2] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:03:47.251 [Thread-2] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:03:53.546 [Thread-2] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/b874c841002dab0566baad40aaf21ab4bee746fb
+11:03:53.547 [Thread-2] INFO  c.b.config.BrowserStackConfig - INFO
+11:03:53.563 [Thread-2] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 13715523-52ca-4bf8-9ecc-53a2d932ec03, testhub id: gi2upgsupbtlqdxupprgx8w6inhg9sabp4yejgj0
+11:03:53.563 [Thread-2] INFO  c.b.config.BrowserStackConfig - INFO
+11:07:29.550 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:07:29.552 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:07:29.995 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:07:29.996 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:07:34.034 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+11:07:34.039 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:07:34.043 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:07:36.219 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:07:36.243 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+11:07:36.244 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+11:07:36.244 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+11:07:36.246 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 39c5031e-2906-4d1a-b515-5dbca8c57bd8
+11:07:36.246 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:07:36.340 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:07:39.216 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:07:40.186 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 6yztunpmre6ftxnqnozme5mstika10qqxut0fjy5
+11:07:40.186 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:07:41.855 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:07:41.856 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:07:42.210 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 6c5d7b1b-69eb-4976-a30b-691a1cc8de4f
+11:07:42.210 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:07:42.337 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:07:42.339 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:07:43.169 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:07:43.178 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:07:45.646 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:08:16.891 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/6yztunpmre6ftxnqnozme5mstika10qqxut0fjy5 to view build report, insights, and many more debugging information all at one place!
+
+11:08:16.891 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:08:16.892 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:08:17.243 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:08:17.243 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:08:23.168 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/2bab57ce1f4cb1dd3edac2d14f37d84dfe0c9732
+11:08:23.168 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:08:23.173 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 39c5031e-2906-4d1a-b515-5dbca8c57bd8, testhub id: 6yztunpmre6ftxnqnozme5mstika10qqxut0fjy5
+11:08:23.174 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:14:30.724 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:14:30.725 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:14:30.986 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:14:30.987 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:14:34.017 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+11:14:34.023 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:14:34.025 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:14:35.281 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:14:35.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+11:14:35.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+11:14:35.308 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+11:14:35.309 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 53644453-d8bf-47da-8e9e-72e54270ac00
+11:14:35.310 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:14:35.416 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:14:38.317 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:14:39.477 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: jmwwnywsnud8npn9zf4zuiomb2yqvw3igkv5tw1m
+11:14:39.477 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:14:41.140 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:14:41.141 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:14:41.515 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 7304b557-f0ca-4e6d-a0af-a64d607c8b50
+11:14:41.516 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:14:41.631 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:14:41.634 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:14:42.440 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:14:42.449 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:14:44.929 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:15:04.744 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/jmwwnywsnud8npn9zf4zuiomb2yqvw3igkv5tw1m to view build report, insights, and many more debugging information all at one place!
+
+11:15:04.744 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:15:04.745 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:15:05.116 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:15:05.116 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:15:11.602 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/0b3bdf4b7bc0da379531d077086d9570b97f4a4a
+11:15:11.602 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:15:11.606 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 53644453-d8bf-47da-8e9e-72e54270ac00, testhub id: jmwwnywsnud8npn9zf4zuiomb2yqvw3igkv5tw1m
+11:15:11.607 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:17:50.042 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:17:50.044 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:17:50.285 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:17:50.286 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:17:53.390 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+11:17:53.396 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:17:53.398 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:54.303 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:54.333 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+11:17:54.334 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+11:17:54.334 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+11:17:54.338 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 4af8b1ee-1530-4bb3-9c08-94ac2f5ddc44
+11:17:54.338 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:17:54.462 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:17:57.429 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:17:58.370 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 0zcssrnpd64fuuf5aicvpolre7esxddzbbmopsrc
+11:17:58.370 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:17:59.972 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:17:59.972 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:18:00.320 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5224c062-2bba-4611-a0df-6784fed43ddd
+11:18:00.320 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:18:00.437 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:18:00.440 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:18:01.343 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:18:01.353 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:18:03.791 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:18:24.567 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/0zcssrnpd64fuuf5aicvpolre7esxddzbbmopsrc to view build report, insights, and many more debugging information all at one place!
+
+11:18:24.567 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:18:24.568 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:18:24.938 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:18:24.938 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:18:31.273 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/08c3e6da78aed542d25bde10e69adb2c9c82d613
+11:18:31.274 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:18:31.280 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 4af8b1ee-1530-4bb3-9c08-94ac2f5ddc44, testhub id: 0zcssrnpd64fuuf5aicvpolre7esxddzbbmopsrc
+11:18:31.280 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:54:28.168 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:54:28.169 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:54:28.392 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:54:28.392 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:54:31.493 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+11:54:31.500 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:54:31.503 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:54:33.529 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:54:33.560 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+11:54:33.561 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+11:54:33.561 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+11:54:33.565 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5fe4cdbe-a785-45ce-8b87-8854e7e1918a
+11:54:33.565 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:54:33.686 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:54:36.965 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:54:38.134 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: giflkm3ks5ylupo4exeegqsdahnum7jm6akalgau
+11:54:38.135 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:54:39.745 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:54:39.746 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:54:40.133 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 383b90ff-d604-44ec-a887-6720820f39d7
+11:54:40.133 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:54:40.261 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:54:40.264 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:54:41.108 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:54:41.118 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+11:54:43.611 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:55:06.221 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/giflkm3ks5ylupo4exeegqsdahnum7jm6akalgau to view build report, insights, and many more debugging information all at one place!
+
+11:55:06.221 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:55:06.222 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:55:06.663 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:55:06.663 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+11:55:17.828 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/dc6eba3d813a46f6e74ab1b38670541cf4ecd78c
+11:55:17.828 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+11:55:17.834 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 5fe4cdbe-a785-45ce-8b87-8854e7e1918a, testhub id: giflkm3ks5ylupo4exeegqsdahnum7jm6akalgau
+11:55:17.834 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:56:27.669 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:56:27.671 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:56:27.898 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:56:27.899 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:56:30.987 [main] INFO  c.browserstack.BrowserStackJavaAgent - App already uploaded with md5 hash Id: bs://a3e0ef671c22c7b52caafab721b33ea347cb2623
+12:56:30.993 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:56:30.995 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:56:32.905 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:56:32.935 [main] INFO  c.browserstack.BrowserStackJavaAgent - app upload response: {"app_url":"bs:\/\/a3e0ef671c22c7b52caafab721b33ea347cb2623"}
+12:56:32.936 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://a3e0ef671c22c7b52caafab721b33ea347cb2623]
+12:56:32.936 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+12:56:32.940 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 882f6a9c-bd70-44bd-b0d1-4dae8b059aff
+12:56:32.940 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:56:33.061 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+12:56:36.302 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:56:37.850 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: pz202myuqyzj7v7vshltv3ypnhv8mowf2esabsjf
+12:56:37.850 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:56:39.802 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:56:39.802 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:56:40.195 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 9810f7a4-5933-42e2-8132-1205355105bb
+12:56:40.195 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:56:40.331 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:56:40.335 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:56:41.313 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:56:41.324 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+12:56:44.092 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:57:04.807 [Thread-1] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/pz202myuqyzj7v7vshltv3ypnhv8mowf2esabsjf to view build report, insights, and many more debugging information all at one place!
+
+12:57:04.807 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:57:04.808 [Thread-1] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:57:05.590 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:57:05.590 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+12:57:12.634 [Thread-1] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/05bfc32949ac3ddebe5f35e30d53385278f75adc
+12:57:12.634 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+12:57:12.640 [Thread-1] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 882f6a9c-bd70-44bd-b0d1-4dae8b059aff, testhub id: pz202myuqyzj7v7vshltv3ypnhv8mowf2esabsjf
+12:57:12.640 [Thread-1] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:00.535 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:02:00.536 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:02:00.772 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:02:00.772 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:02:03.667 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:02:03.667 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:02:03.670 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: dbdd36b6-1e03-4547-ab69-9f374b4beb7b
+13:02:03.670 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:03.781 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:02:03.784 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:02:04.758 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:02:04.769 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:02:07.914 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:02:09.204 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: vfzuljei3lfrl8r1xmq3aq5s3qhmmskspvhgqqy6
+13:02:09.204 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:10.786 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:02:10.786 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:02:11.110 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 16a75d81-8811-45fa-bfb5-90ea91dd1402
+13:02:11.110 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:11.223 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:02:11.225 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:02:12.076 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:02:12.084 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:02:15.157 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:02:35.062 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/vfzuljei3lfrl8r1xmq3aq5s3qhmmskspvhgqqy6 to view build report, insights, and many more debugging information all at one place!
+
+13:02:35.062 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:35.063 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:02:35.414 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:02:35.414 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:02:43.918 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/c91c72c7beb6bcfcb09a52fed79b2ca5a34e50b5
+13:02:43.918 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:02:43.925 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: dbdd36b6-1e03-4547-ab69-9f374b4beb7b, testhub id: vfzuljei3lfrl8r1xmq3aq5s3qhmmskspvhgqqy6
+13:02:43.925 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:10:23.281 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:10:23.282 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:10:23.515 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:10:23.516 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:10:26.511 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:10:26.512 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:10:26.515 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 87861b78-42e5-4d2e-b224-cf9e3df0b8ac
+13:10:26.515 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:10:26.614 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:10:26.617 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:10:28.348 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:10:28.357 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:10:31.834 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:10:33.074 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: wc3u6uvalofmgdyazztxdrqru2zwhktyegbh85jk
+13:10:33.074 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:10:34.700 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:10:34.700 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:10:35.038 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: a048bc05-4b0a-4038-be95-04f9e8204acd
+13:10:35.038 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:10:35.160 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:10:35.163 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:10:35.988 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:10:35.996 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:10:38.616 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:11:08.420 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/wc3u6uvalofmgdyazztxdrqru2zwhktyegbh85jk to view build report, insights, and many more debugging information all at one place!
+
+13:11:08.420 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:11:08.422 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:11:08.874 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:11:08.874 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:11:16.387 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/34bf043ebe45fe3b4855bc39ab951458d789416a
+13:11:16.387 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:11:16.396 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 87861b78-42e5-4d2e-b224-cf9e3df0b8ac, testhub id: wc3u6uvalofmgdyazztxdrqru2zwhktyegbh85jk
+13:11:16.396 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:13:20.862 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:13:20.863 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:13:21.076 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:13:21.076 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:13:24.189 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:13:24.189 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:13:24.191 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e03f1d76-972f-4294-bd6a-e8ae7dec56af
+13:13:24.192 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:13:24.293 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:13:24.296 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:13:25.274 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:13:25.284 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:13:28.431 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:13:29.579 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: bzcsg6x01b5oojef1saqjjjw5bhmfcuqdfiqudqk
+13:13:29.579 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:13:31.346 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:13:31.346 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:13:31.727 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: a29ee62b-6aa0-4ed7-a917-ac0d0f12b59f
+13:13:31.727 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:13:31.848 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:13:31.851 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:13:33.053 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:13:33.061 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:13:35.662 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:14:04.176 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/bzcsg6x01b5oojef1saqjjjw5bhmfcuqdfiqudqk to view build report, insights, and many more debugging information all at one place!
+
+13:14:04.176 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:14:04.178 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:14:04.579 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:14:04.580 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:14:12.583 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/f98024ada19b90c905ce3378529ec5fa1e46bfe6
+13:14:12.583 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:14:12.588 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e03f1d76-972f-4294-bd6a-e8ae7dec56af, testhub id: bzcsg6x01b5oojef1saqjjjw5bhmfcuqdfiqudqk
+13:14:12.588 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:38:48.126 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:38:48.127 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:38:48.380 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+13:38:48.382 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:38:48.740 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:38:48.740 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:38:48.744 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: ea3bff48-70d4-410b-9e3f-de5c1d917bd0
+13:38:48.744 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:38:48.757 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:38:48.761 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:38:52.045 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:38:52.055 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:39:03.504 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:39:07.605 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: m8jqwgyp4vlva8nyupagptkihvlcdwtsxhodonwn
+13:39:07.605 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:39:08.851 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+13:39:08.852 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:39:09.201 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 39d55417-65f8-413d-b5c1-7c90701ad04f
+13:39:09.201 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:39:09.217 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:39:09.220 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:39:11.196 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:39:11.206 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:39:15.710 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:47:43.835 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/m8jqwgyp4vlva8nyupagptkihvlcdwtsxhodonwn to view build report, insights, and many more debugging information all at one place!
+
+13:47:43.837 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:47:43.838 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:47:44.270 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:47:44.270 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:47:53.333 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/f6f1b182e076bf8128c04b5f4052e4c0d44e557b
+13:47:53.333 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:47:53.339 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: ea3bff48-70d4-410b-9e3f-de5c1d917bd0, testhub id: m8jqwgyp4vlva8nyupagptkihvlcdwtsxhodonwn
+13:47:53.339 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:52:25.487 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:52:25.488 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:52:25.727 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, cucumber.filter.tags=@US_VP_TC_01, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+13:52:25.728 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:52:26.059 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:52:26.059 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:52:26.062 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e0423bc4-c335-4ce8-a0bb-423c7f12df42
+13:52:26.062 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:52:26.076 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:52:26.081 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:52:28.069 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:52:28.079 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:52:31.504 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:52:33.275 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: z0zahojuhbenwwuy2rgltezyzsfohiz4hdbct68z
+13:52:33.275 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:52:34.516 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, cucumber.filter.tags=@US_VP_TC_01, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+13:52:34.517 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:52:34.837 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 6cde9a39-ba43-4d98-948c-d88729915d1a
+13:52:34.837 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:52:34.850 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:52:34.853 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:52:36.509 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:52:36.518 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:52:39.257 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:53:16.030 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/z0zahojuhbenwwuy2rgltezyzsfohiz4hdbct68z to view build report, insights, and many more debugging information all at one place!
+
+13:53:16.030 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:53:16.031 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:53:16.464 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:53:16.464 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:53:25.257 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/ee9380b7e50118a61866c2b9a3a5dd492d020907
+13:53:25.257 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:53:25.265 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e0423bc4-c335-4ce8-a0bb-423c7f12df42, testhub id: z0zahojuhbenwwuy2rgltezyzsfohiz4hdbct68z
+13:53:25.265 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:56:38.293 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+13:56:38.294 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+13:56:38.551 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:56:38.552 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:56:42.242 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+13:56:42.242 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+13:56:42.245 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 8b5ce412-b812-4f3a-a497-0c0d850c6fae
+13:56:42.246 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:56:42.377 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:56:42.381 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:56:43.383 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:56:43.394 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:56:46.580 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:56:47.979 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 7nwgphl7gz0y6ecxjgllent2iql4f9mymlheblpb
+13:56:47.979 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:56:49.887 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:56:49.888 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:56:50.297 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: bc59c295-c3fb-465b-beb7-69f215431756
+13:56:50.297 [main] INFO  c.b.config.BrowserStackConfig - INFO
+13:56:50.432 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+13:56:50.435 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:56:51.415 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+13:56:51.426 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+13:56:54.652 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+13:57:23.676 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/7nwgphl7gz0y6ecxjgllent2iql4f9mymlheblpb to view build report, insights, and many more debugging information all at one place!
+
+13:57:23.676 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:57:23.677 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+13:57:24.098 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:57:24.098 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+13:57:34.343 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/fd648b6a2028e6fde2bac3d651a5179d9b28c96e
+13:57:34.343 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+13:57:34.349 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 8b5ce412-b812-4f3a-a497-0c0d850c6fae, testhub id: 7nwgphl7gz0y6ecxjgllent2iql4f9mymlheblpb
+13:57:34.349 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:06:03.168 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+14:06:03.170 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+14:06:03.645 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:06:03.647 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:06:07.563 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://ea9dda49fa65e09f9f0423461ef2365231465515]
+14:06:07.563 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to junit4
+14:06:07.566 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 16de3b0b-c3a1-49cf-9a3d-727ce7bb403d
+14:06:07.566 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:06:07.682 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:06:07.686 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:06:09.379 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:06:09.396 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:06:12.822 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:06:14.122 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: fnqwpihbzzt5idydk9rwn8zpjxvft3vvt65uvvzz
+14:06:14.122 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:06:15.756 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:06:15.757 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:06:16.078 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 593cb7d3-f225-4085-92ff-f3528dfbf136
+14:06:16.078 [main] INFO  c.b.config.BrowserStackConfig - INFO
+14:06:16.193 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+14:06:16.196 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:06:17.395 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+14:06:17.404 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=junit4
+14:06:20.063 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+14:06:50.138 [Thread-0] INFO  c.browserstack.utils.LogReportingAPI - Visit https://observability.browserstack.com/builds/fnqwpihbzzt5idydk9rwn8zpjxvft3vvt65uvvzz to view build report, insights, and many more debugging information all at one place!
+
+14:06:50.138 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:06:50.139 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+14:06:50.629 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:06:50.630 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+14:07:00.075 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/da9163be2e1e6a2087dcda1647622bacd842301b
+14:07:00.075 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+14:07:00.082 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 16de3b0b-c3a1-49cf-9a3d-727ce7bb403d, testhub id: fnqwpihbzzt5idydk9rwn8zpjxvft3vvt65uvvzz
+14:07:00.082 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO

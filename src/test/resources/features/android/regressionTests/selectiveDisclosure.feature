@@ -1,4 +1,4 @@
-@ANDROID @automated @US_SD
+@ANDROID @automated @US_SD @sakis
 Feature: Selective Disclosure
 
   @US_SD_TC_01 @before_01
@@ -23,7 +23,8 @@ Feature: Selective Disclosure
   @US_SD_TC_04 @before_01
   Scenario: Expand Verification Section
     Given the user views the document that is requested
-    When the user clicks to view the document's details
+    When the user inserts the PIN
+    Then the user clicks to view the document's details
     Then the expanded verification details are displayed
 
   @US_SD_TC_05 @before_01
