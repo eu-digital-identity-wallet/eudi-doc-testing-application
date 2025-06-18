@@ -244,10 +244,4 @@ jobs:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
 
-      - name: Replace core.css with custom-style.css
-        run: |
-                  echo "Replacing core.css with custom-style.css..."
-                  cp src\test\resources\custom-style.css target\site\reports\EUDI_Wallet_Version_2025.02.22-Demo\css\core.css
-
-
 
