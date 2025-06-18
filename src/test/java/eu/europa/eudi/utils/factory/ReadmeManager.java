@@ -2,11 +2,6 @@ package eu.europa.eudi.utils.factory;
 
 import java.io.IOException;
 import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
     public class ReadmeManager {
 
         public static final String SHELL_SCRIPT = "./local-execution.cmd";
