@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 public class IssuerElements {
     public static By issuerServicePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Testing OpenID for Verifiable Credential Issuance - draft 13\"]");
     public static By clickTestCredentialOffer = By.xpath("//XCUIElementTypeButton[@name=\"WALLET TEST Credential Offer\"]");
-    public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Request Credentials for your EUDI Wallet\"]");
-    public static By clickPersonalIdentificationData = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[17]/XCUIElementTypeSwitch");
+    public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeOther[@name=\"Request Credentials for your EUDI Wallet\" and @value=\"1\"]");
+    public static By clickPersonIdentificationData = By.xpath("//XCUIElementTypeButton[@name=\"Person Identification Data (PID)\"]");
     public static By clickSubmitButton = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"QR Code\"]");
     public static By clickEudiwButton = By.xpath("//XCUIElementTypeStaticText[@name=\"Use EUDIW\"]");
@@ -31,4 +31,6 @@ public class IssuerElements {
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
     public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authorize data from your EUDI Wallet\"]");
     public static By clickPID = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[22]");
+    public static By clickCountry = By.xpath("//XCUIElementTypeTextField[@name=\"Country\"]");
+    public static By clickPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Place Of Birth\"]");
 }

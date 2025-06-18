@@ -1,5 +1,6 @@
 package eu.europa.eudi.pages;
 
+import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.ios.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
@@ -11,12 +12,15 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+//import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -69,6 +73,15 @@ public class Verifier {
 
     public void clickNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickNext)).click();
+        }
+    }
+    public void assertAndClickNext() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.presentationQueryTypeIsVisible)).getText();
+            Assert.assertEquals(Literals.Verifier.PRESENTATION_QUERY_TYPE.label, pageHeader);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickNext)).click();
@@ -188,15 +201,19 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormat)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.msoMdoc)).click();
                 clickMsoMdocRealDevice();
             }   else{
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributesEmulator)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
+                clickAllAttributes();
+                //test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormat)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.msoMdoc)).click();
                 clickMsoMdoc();
             }
         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.selectAttributesBy)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.allAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormat)).click();
@@ -204,13 +221,40 @@ public class Verifier {
         }
     }
 
+    private void clickAllAttributes() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        int retries = 3;
+        while (retries > 0) {
+            try {
+                WebElement dropdown = test.mobileWebDriverFactory().getWait().until(
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id='mat-select-0-panel']"))
+                );
+                Point location = dropdown.getLocation();
+                Dimension size = dropdown.getSize();
+                int optionY = location.y + (size.height - 10);
+                int centerX = location.x + (size.width / 2);
+                new TouchAction(driver)
+                        .tap(PointOption.point(centerX, optionY))
+                        .perform();
+                break;
+            } catch (Exception e) {
+                retries--;
+                if (retries == 0) throw e;
+                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+            }
+        }
+    }
+
+
+
+
     public void scrollUntilNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.findElement(MobileBy.AndroidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
-                            ".scrollForward()" +
+                            ".flingForward()" +
                             ".setMaxSearchSwipes(10)" +
                             ".scrollIntoView(new UiSelector().text(\"Next\"))"
             ));
@@ -372,17 +416,16 @@ public class Verifier {
 
     public void clickMsoMdoc() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        WebElement dropdown = driver.findElement(By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]"));
+        WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id='mat-select-1-panel']")));
         Point location = dropdown.getLocation();
         Dimension size = dropdown.getSize();
-
         int optionY = location.y + (size.height / 6);
         int centerX = location.x + (size.width / 2);
-
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, optionY))
                 .perform();
     }
+
     public void clickSpecificAttributes() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         WebElement dropdown = driver.findElement(By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]"));
@@ -395,5 +438,40 @@ public class Verifier {
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, optionY))
                 .perform();
+    }
+
+    public void clickTransactionsLogs() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionsLogs)).click();
+    }
+
+    public void clickTransactionInitialized() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionInitialized)).click();
+    }
+
+    public void getTransactionId() {
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//
+//        WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
+//
+//        // Get the text
+//        String rawText = jsonElement.getText();
+//
+//        JSONObject jsonObject = new JSONObject(rawText);
+//        JSONObject valueObject = jsonObject.getJSONObject("value");
+//
+//        // Step 4: Extract the transaction_id
+//        String transactionId = valueObject.getString("transaction_id");
+//
+//        // Output the result
+//        System.out.println("Transaction ID: " + transactionId);
+//
+//        EventsApiVerifier api = new EventsApiVerifier();
+//        api.getPresentationEvents(transactionId);
+    }
+
+    public void chooseWalletPageIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.chooseWalletPageDisplayed)).getText();
+        Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
+
     }
 }

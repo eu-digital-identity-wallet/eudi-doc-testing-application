@@ -116,4 +116,10 @@ public class WalletElements {
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait:\"]");
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
+    public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
+    public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
+    public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Presentation Query Type\"]");
+    public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
+    public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document from list\"]");
+    public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
 }
