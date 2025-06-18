@@ -113,7 +113,6 @@
 
     <build>
         <plugins>
-            <!-- Copy custom-style.css to the target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -121,7 +120,7 @@
                 <executions>
                     <execution>
                         <id>copy-custom-css</id>
-                        <phase>process-resources</phase>
+                        <phase>process-classes</phase> <!-- This phase runs before tests -->
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -140,20 +139,23 @@
                 </executions>
             </plugin>
 
-            <!-- Append custom-style.css to core.css -->
+            <!-- Maven Antrun Plugin to replace core.css after tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>append-custom-css</id>
-                        <phase>post-integration-test</phase>
+                        <id>replace-core-css</id>
+                        <phase>post-integration-test</phase> <!-- After tests and reports -->
                         <configuration>
                             <target>
-                                <concat destfile="${project.build.directory}/site/reports/${build-version}/css/core.css">
-                                    <fileset file="${project.build.directory}/site/reports/${build-version}/css/custom-style.css"/>
-                                </concat>
+                                <!-- Optional: Delete core.css before replacing it -->
+                                <delete file="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
+
+                                <!-- Copy the custom-style.css to replace core.css -->
+                                <copy file="${project.basedir}/src/test/resources/custom-style.css"
+                                      tofile="${project.build.directory}/site/reports/${build-version}/css/core.css" />
                             </target>
                         </configuration>
                         <goals>
@@ -163,20 +165,19 @@
                 </executions>
             </plugin>
 
-            <!-- Serenity Maven Plugin -->
+            <!-- Serenity Maven Plugin to run tests -->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
                 <executions>
                     <execution>
-                        <phase>integration-test</phase>
+                        <phase>integration-test</phase> <!-- Tests phase -->
                     </execution>
                 </executions>
             </plugin>
 
-
-            <!-- Maven Compiler Plugin -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -187,7 +188,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven Surefire Plugin -->
+            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -200,6 +201,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
