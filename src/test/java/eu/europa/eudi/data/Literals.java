@@ -43,7 +43,9 @@ public interface Literals {
         DETAILS_ARE_BLURRED("Hide"),
         DETAILS_ARE_NOT_BLURRED("Show"),
         CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
-        WELCOME_HEADER_IOS("Welcome to your wallet");
+        WELCOME_HEADER_IOS("Welcome to your wallet"),
+        ADD_PID_PAGE("Add document from list"),
+        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with");
 
         public final String label;
         Wallet(String label) {
@@ -57,7 +59,9 @@ public interface Literals {
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
-        WALLET_RESPONDED("eu.europa.ec.eudi.pid.1");
+        WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
+        PRESENTATION_QUERY_TYPE("Presentation Query Type"),
+        CHOOSE_WALLET_DISPLAYED("Invoke Wallet");
 
         public final String label;
         Verifier(String label) {
@@ -85,7 +89,8 @@ public interface Literals {
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
-        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet");
+        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
+        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet");
 
         public final String label;
         Issuer(String label) {

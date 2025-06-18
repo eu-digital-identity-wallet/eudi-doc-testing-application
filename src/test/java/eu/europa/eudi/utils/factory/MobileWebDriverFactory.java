@@ -2,6 +2,7 @@ package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.*;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Set;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+import java.util.Set;
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -43,8 +49,10 @@ public class MobileWebDriverFactory {
         caps2.setCapability("noReset", noReset);
         caps2.setCapability("fullReset", "false");
         caps2.setCapability("app", apkPath2.getAbsolutePath());
-        caps2.setCapability("allowInsecure", "adb_shell");
         caps2.setCapability("enableLogcatLogging", true);
+        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
+        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
+        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
 
         try {
             androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
@@ -242,4 +250,65 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
+//
+//    /**
+//     * Περιμένει αξιόπιστα μέχρι να βρεθεί ένα WebView context και κάνει switch σε αυτό.
+//     * Αυτή η μέθοδος ΑΠΑΙΤΕΙ ένα AppiumDriver instance για να λειτουργήσει.
+//     *
+//     */
+//    public static void switchToWebView(WebDriver driver) {
+//        System.out.println("Attempting to switch to WebView context...");
+//        try {
+//            for (int i = 0; i < 30; i++) { // Περιμένουμε μέχρι 15 δευτερόλεπτα
+//                if (getDriverContexts(driver).size() > 1) {
+//                    break;
+//                }
+//                Thread.sleep(500);
+//            }
+//
+//            for (String contextHandle : getDriverContexts(driver)) {
+//                if (contextHandle.contains("WEBVIEW")) {
+//                    setDriverContext(driver, contextHandle);
+//                    System.out.println("Switched successfully to context: " + contextHandle);
+//                    return;
+//                }
+//            }
+//            throw new IllegalStateException("No WebView context was found after waiting.");
+//
+//        } catch (Exception e) {
+//            System.err.println("Failed to find or switch to a WebView context.");
+//            e.printStackTrace();
+//            throw new IllegalStateException("Could not switch to WebView context.", e);
+//        }
+//    }
+//
+//    private static Set<String> getDriverContexts(WebDriver driver) {
+//        if (driver instanceof AndroidDriver) {
+//            return ((AndroidDriver) driver).getContextHandles();
+//        } else if (driver instanceof IOSDriver) {
+//            return ((IOSDriver) driver).getContextHandles();
+//        }
+//        return null;
+//    }
+//
+//    public void switchToNativeView() {
+//        System.out.println("Attempting to switch back to Native context...");
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//        try {
+//            setDriverContext(driver, "NATIVE_APP");
+//            System.out.println("Switched successfully to context: NATIVE_APP");
+//        } catch (Exception e) {
+//            System.err.println("Failed to switch back to NATIVE_APP context.");
+//            e.printStackTrace();
+//            throw new IllegalStateException("Could not switch back to NATIVE_APP context.", e);
+//        }
+//    }
+//
+//    private static void setDriverContext(WebDriver driver, String context) {
+//        if (driver instanceof AndroidDriver) {
+//            ((AndroidDriver) driver).context(context);
+//        } else if (driver instanceof IOSDriver) {
+//            ((IOSDriver) driver).context(context);
+//        }
+//    }
 }
