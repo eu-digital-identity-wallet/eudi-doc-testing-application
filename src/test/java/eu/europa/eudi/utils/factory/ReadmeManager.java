@@ -20,13 +20,13 @@ import java.util.Map;
 
         public static void main(String[] args) {
             try {
-                createBackupDirIfNotExists();
-                createBackupLogsDirIfNotExists();  // Ensure backup directory for logs exists
-                removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
-                removeLogsFiles(Paths.get(FEATURE_FILES_DIR));  // Remove and backup logs
+//                createBackupDirIfNotExists();
+//                createBackupLogsDirIfNotExists();  // Ensure backup directory for logs exists
+//                removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
+//                removeLogsFiles(Paths.get(FEATURE_FILES_DIR));  // Remove and backup logs
                 runShellScript();
-                restoreReadmeFiles();
-                restoreLogsFiles();  // Restore logs after script execution
+//                restoreReadmeFiles();
+//                restoreLogsFiles();  // Restore logs after script execution
                 replaceCoreCssWithCustomStyle();
             } catch (IOException e) {
                 e.printStackTrace();
