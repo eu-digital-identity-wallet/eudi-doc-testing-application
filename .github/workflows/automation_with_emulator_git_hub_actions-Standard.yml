@@ -175,8 +175,8 @@ jobs:
           emulator-build: 11772612 # Emulator Version Control
           emulator-boot-timeout: 1500  # Increased timeout from 600 seconds (10 minutes) to 25 minutes
           emulator-port: 5554
-          #          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
-          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -memory 8192
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -no-window -memory 8192
+#          emulator-options: -gpu swiftshader_indirect -no-snapshot -no-audio -no-boot-anim -memory 8192
           script: |
             echo "Waiting for Android Emulator..."
             adb wait-for-device
@@ -184,14 +184,14 @@ jobs:
             while [ "$(adb shell getprop sys.boot_completed)" != "1" ]; do echo "Waiting for Android to fully boot..."; sleep 10; done
             echo "Android has booted!"
             echo "***************"
-#            echo "Uninstalling old app if installed..."
-#            adb uninstall eu.europa.ec.euidi.dev || echo "App not installed, skipping uninstall"
-#            echo "Waiting for browser activity to start..."
-#            while ! adb shell dumpsys activity activities | grep -q "mResumedActivity.*com.android.chrome"; do echo "Waiting for browser to be in foreground..."; sleep 10; done
-#            echo "Browser is in foreground!"
-#            # Wait for the page to load
-#            echo "Waiting 1 minute for browser page to load..."
-#            sleep 60
+            echo "Uninstalling old app if installed..."
+            adb uninstall eu.europa.ec.euidi.dev || echo "App not installed, skipping uninstall"
+            echo "Waiting for browser activity to start..."
+            while ! adb shell dumpsys activity activities | grep -q "mResumedActivity.*com.android.chrome"; do echo "Waiting for browser to be in foreground..."; sleep 10; done
+            echo "Browser is in foreground!"
+            # Wait for the page to load
+            echo "Waiting 1 minute for browser page to load..."
+            sleep 60
             echo "Checking cmd setting service availabilty..."
             if ! adb shell service list | grep -q 'settings'; then echo "Settings service is not yet available, waiting a bit longer..."; sleep 10; fi
             echo "Starting Logcat..."
@@ -277,6 +277,3 @@ jobs:
         with:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
-
-
-
