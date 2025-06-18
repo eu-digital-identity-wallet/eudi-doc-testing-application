@@ -161,8 +161,10 @@ jobs:
 
       - name: Compile and run ReplaceCssForGithubActions.java
         run: |
-          echo "Compiling and running ReplaceCssForGithubActions.java..."
           javac src/main/java/eu/europa/eudi/utils/factory/ReplaceCssForGithubActions.java
+
+      - name: Compile and run ReplaceCssForGithubActions.java
+        run: |
           java -cp src/main/java eu.europa.eudi.utils.factory.ReplaceCssForGithubActions
 
       - name: Stop Runner Monitoring
