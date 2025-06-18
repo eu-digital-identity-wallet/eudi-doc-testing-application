@@ -159,11 +159,9 @@ jobs:
             echo "Starting maven verify && APP Mem Monitoring"
             sleep 120 && mvn clean verify -ntp -Dcucumber.filter.tags='${{ inputs.test-cases || '@automated and @ANDROID'}}'
 
-      - name: Compile ReplaceCssForGitHubActions.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
-
-      - name: Run ReplaceCssForGitHubActions
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
+      - name: Replace core.css with custom-style.css
+        run: |
+            cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
 
 
       - name: Stop Runner Monitoring
