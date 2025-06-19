@@ -190,13 +190,9 @@ jobs:
         if: always()
         run: mvn -ntp serenity:aggregate
 
-      - name: Compile ReadmeManager.java
+      - name: Build and run ReplaceCssForGitHubActions
         run: |
-          javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
-
-      - name: Run ReadmeManager
-        run: |
-          java -cp src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions
+          mvn test-compile exec:java
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
