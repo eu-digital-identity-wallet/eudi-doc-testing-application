@@ -192,7 +192,7 @@ jobs:
 
       - name: Replace core.css with custom-style.css
         run: |
-              cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
+              cp /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/src/test/resources/custom-style.css /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
