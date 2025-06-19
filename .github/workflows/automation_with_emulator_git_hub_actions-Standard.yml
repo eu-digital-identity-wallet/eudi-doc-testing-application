@@ -16,9 +16,9 @@ on:
         type: string
         default: "@automated and @ANDROID and @US_VP_TC_01"
 
-  schedule:
-    # WED,SAT 03:15 UTC
-    - cron: '15 3 * * 3,6'
+  # schedule:
+  #   # WED,SAT 03:15 UTC
+  #   - cron: '15 3 * * 3,6'
 
 jobs:
   build:
