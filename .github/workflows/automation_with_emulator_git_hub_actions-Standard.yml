@@ -192,7 +192,8 @@ jobs:
 
       - name: Build and run ReplaceCssForGitHubActions
         run: |
-          mvn test-compile exec:java
+          javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
+          java -cp src/test/java eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
