@@ -190,9 +190,13 @@ jobs:
         if: always()
         run: mvn -ntp serenity:aggregate
 
-      - name: Replace core.css with custom-style.css
+      - name: Compile ReadmeManager.java
         run: |
-              cp /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/src/test/resources/custom-style.css /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
+          javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
+
+      - name: Run ReadmeManager
+        run: |
+          java -cp src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
