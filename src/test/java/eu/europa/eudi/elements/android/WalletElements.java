@@ -43,10 +43,11 @@ public class WalletElements {
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickFormEu = By.xpath("//android.widget.RadioButton[@text=\"FormEU\"]");
     public static By dataPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Enter the data for your EUDI Wallet\"]");
-    public static By clickGivenName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText");
+    public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.widget.EditText[2]");
+//    public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[2]/android.widget.EditText");
     public static By givenNameField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText");
-    public static By clickFamilyName = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText");
-    public static By givenFamilyField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText");
+    public static By clickFamilyName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.widget.EditText[1]");
+    public static By givenFamilyField = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[1]/android.widget.EditText");
     public static By clickBirthDate = By.xpath("//android.widget.Spinner");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
     public static By successMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You can now add your National ID\"]");
@@ -109,17 +110,18 @@ public class WalletElements {
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickShareAttributes = By.xpath("");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
+    public static By closeKeyboard = By.xpath("//android.view.View[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait:\"]");
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
-    public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
+    public static By clickPlaceOfBirth = By.xpath("//android.view.View[@text=\"Place Of Birth\"]");
     public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
     public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
     public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Presentation Query Type\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document from list\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
+    public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Test Provider Form\"]");
 }

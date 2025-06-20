@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
@@ -94,21 +93,27 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.assertj</groupId>-->
-<!--            <artifactId>assertj-core</artifactId>-->
-<!--            <version>${assertj.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.hamcrest</groupId>-->
-<!--            <artifactId>hamcrest</artifactId>-->
-<!--            <version>${hamcrest.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.codeborne</groupId>-->
-<!--            <artifactId>phantomjsdriver</artifactId>-->
-<!--            <version>1.4.4</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-java-sdk</artifactId>
+            <version>LATEST</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.assertj</groupId>-->
+        <!--            <artifactId>assertj-core</artifactId>-->
+        <!--            <version>${assertj.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.hamcrest</groupId>-->
+        <!--            <artifactId>hamcrest</artifactId>-->
+        <!--            <version>${hamcrest.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.codeborne</groupId>-->
+        <!--            <artifactId>phantomjsdriver</artifactId>-->
+        <!--            <version>1.4.4</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -154,8 +159,7 @@
                                 <delete file="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
 
                                 <!-- Copy the custom-style.css to replace core.css -->
-                                <copy file="${project.basedir}/src/test/resources/custom-style.css"
-                                      tofile="${project.build.directory}/site/reports/${build-version}/css/core.css" />
+                                <copy file="${project.basedir}/src/test/resources/custom-style.css" tofile="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
                             </target>
                         </configuration>
                         <goals>
@@ -194,7 +198,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>
@@ -202,21 +206,18 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
+                        <id>getClasspathFilenames</id>
                         <goals>
-                            <goal>java</goal>
+                            <goal>properties</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions</mainClass>
-                    <classpathScope>test</classpathScope>
-                </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>

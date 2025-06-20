@@ -17,10 +17,12 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
+import static java.time.Duration.ofMillis;
 
 public class Issuer {
     TestSetup test;
@@ -142,7 +144,13 @@ public class Issuer {
 
     public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormEu)).click();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormEu)).click();
+            TouchAction<?> touchAction = new TouchAction<>(driver);
+            touchAction
+                    .tap(PointOption.point(260, 1206))
+                    .perform();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFormEu)).click();
         }
@@ -161,7 +169,8 @@ public class Issuer {
     public void enterGivenName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickGivenName)).click();
-            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenNameField));
+            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickGivenName));
+//            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenNameField));
             givenName.clear();
             givenName.sendKeys("Foteini");
         } else {
@@ -175,9 +184,11 @@ public class Issuer {
     public void enterFamilyName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFamilyName)).click();
-            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenFamilyField));
+            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickFamilyName));
+//            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenFamilyField));
             givenFamily.clear();
             givenFamily.sendKeys("Theofilatou");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.closeKeyboardForm)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickFamilyName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -291,6 +302,32 @@ public class Issuer {
                             ".setMaxSearchSwipes(10)" +
                             ".scrollIntoView(new UiSelector().text(\"Submit\"))"
             ));
+//            int maxScrolls = 10;
+//            boolean found = false;
+//
+//            for (int i = 0; i < maxScrolls; i++) {
+//                List<WebElement> elements = driver.findElements(By.xpath("//android.widget.Button[@text='Submit']"));
+//                if (!elements.isEmpty()) {
+//                    elements.get(0).click();
+//                    found = true;
+//                    break;
+//                }
+//
+//                // Get screen size
+//                Dimension size = driver.manage().window().getSize();
+//                int startX = size.width / 2;
+//                int startY = (int) (size.height * 0.8);
+//                int endY = (int) (size.height * 0.2);
+//
+//                // Swipe up
+//                new TouchAction<>(driver)
+//                        .press(PointOption.point(startX, startY))
+//                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+//                        .moveTo(PointOption.point(startX, endY))
+//                        .release()
+//                        .perform();
+//            }
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
         int i = 1;
@@ -338,6 +375,8 @@ public class Issuer {
 
     public void formIsDisplayed () {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
         } else {
@@ -355,7 +394,7 @@ public class Issuer {
     }
 
     public void issuePID() {
-        issuerServiceIsDisplayed();
+//        issuerServiceIsDisplayed();
         selectCountryOfOrigin();
         clickFormEu();
         clickSubmit();
@@ -480,6 +519,8 @@ public class Issuer {
 
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
         } else {
