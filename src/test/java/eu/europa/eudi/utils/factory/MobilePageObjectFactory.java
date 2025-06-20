@@ -1,6 +1,8 @@
 package eu.europa.eudi.utils.factory;
 
-import eu.europa.eudi.pages.*;
+import eu.europa.eudi.pages.Issuer;
+import eu.europa.eudi.pages.Verifier;
+import eu.europa.eudi.pages.Wallet;
 import eu.europa.eudi.utils.TestSetup;
 
 public class MobilePageObjectFactory {
