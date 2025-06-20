@@ -9,7 +9,7 @@ on:
         options:
           - main
           - develop
-          - workflows-browserstack
+          - workflow_browserstack
         default: develop
 
       test-cases:
