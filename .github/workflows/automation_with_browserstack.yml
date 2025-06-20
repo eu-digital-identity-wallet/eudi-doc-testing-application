@@ -52,7 +52,7 @@ jobs:
             exit 1
           fi
           echo "Downloading APK from: $apk_url"
-          curl -v -L -o app.apk "$apk_url"
+          curl -L -o app.apk "$apk_url"
 
       - name: Setup Git LFS
         run: |
