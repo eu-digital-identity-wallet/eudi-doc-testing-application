@@ -45,13 +45,15 @@ jobs:
           REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
         run: |
           latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
+          echo "Latest Release: $latest_release"  # Debug output
           apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | endswith(".apk")) | .browser_download_url')
+          echo "Extracted APK URL: $apk_url"  # Debug output
           if [ -z "$apk_url" ]; then
             echo "No APK found in the latest release."
             exit 1
           fi
           echo "Downloading APK from: $apk_url"
-          curl -L -o app.apk "$apk_url"
+          curl -v -L -o app.apk "$apk_url"
 
       - name: Setup Git LFS
         run: |
