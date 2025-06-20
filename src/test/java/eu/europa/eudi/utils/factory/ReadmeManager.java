@@ -3,7 +3,10 @@ package eu.europa.eudi.utils.factory;
 import java.io.IOException;
 import java.nio.file.*;
     public class ReadmeManager {
+<<<<<<< HEAD
 
+=======
+>>>>>>> milestone/2025.Q2
         public static final String SHELL_SCRIPT = "./local-execution.cmd";
 
         public static void main(String[] args) {
@@ -41,4 +44,8 @@ import java.nio.file.*;
                 e.printStackTrace();
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> milestone/2025.Q2
     }
