@@ -30,11 +30,11 @@ jobs:
     timeout-minutes: 240 # increase IF needed
 
     steps:
-      - uses: actions/checkout@v4 # Checkout the code
-        with:
-          clean: true
-          lfs: true
-          ref: ${{ inputs.branch-to-checkout || 'main' }}
+      # - uses: actions/checkout@v4 # Checkout the code
+      #   with:
+      #     clean: true
+      #     lfs: true
+      #     ref: ${{ inputs.branch-to-checkout || 'main' }}
           
       # - name: Download APK
       #   uses: actions/checkout@v4
