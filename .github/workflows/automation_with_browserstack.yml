@@ -110,7 +110,7 @@ jobs:
         env:
             BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
-            echo "Starting tests with app URL: $app_url"
+            echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
             mvn clean verify -Dapp.url=$BROWSERSTACK_APP_URL -Dtags="${{ inputs.test-cases }}"
 
 
@@ -119,21 +119,14 @@ jobs:
         if: always()
         run: zip logcat_output.zip logcat_output.txt
 
-      - name: Upload Logcat Output
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: logcat-output
-          path: logcat_output.zip
-
       - name: Produce Serenity report
         if: always()
         run: mvn -ntp serenity:aggregate
 
-      - name: Build and run ReplaceCssForGitHubActions
-        run: |
-          javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
-          java -cp src/test/java eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions
+      # - name: Build and run ReplaceCssForGitHubActions
+      #   run: |
+      #     javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
+      #     java -cp src/test/java eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
