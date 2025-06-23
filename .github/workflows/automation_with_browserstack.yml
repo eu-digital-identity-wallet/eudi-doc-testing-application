@@ -85,9 +85,17 @@ jobs:
           response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
           echo "BrowserStack Response: $response"
 
+      - name: Check jq Installation
+        run: |
+          if ! command -v jq &> /dev/null; then
+            echo "jq not found, installing..."
+            brew install jq
+          else
+            echo "jq is already installed."
+            jq --version
+          fi
       - name: Upload app to BrowserStack
         id: upload_app
-
         run: |
           response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
@@ -102,7 +110,7 @@ jobs:
             BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
             echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
-            npm test
+            mvn clean verify -Dapp.url=$BROWSERSTACK_APP_URL -Dtags="${{ inputs.test-cases }}"
 
 
 
