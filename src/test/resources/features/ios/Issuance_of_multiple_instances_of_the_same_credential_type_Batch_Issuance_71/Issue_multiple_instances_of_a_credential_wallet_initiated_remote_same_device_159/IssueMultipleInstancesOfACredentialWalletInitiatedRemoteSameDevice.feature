@@ -13,33 +13,33 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     And the Issuer supports batch issuance with batch size greater than one
     And the EUDI Wallet has an internal minimum number of attestations expected
 
-  @US_IMIOACWIRSD_TC_01
+  @US_IMIOACWIRSD_TC_01 @manual:Passed
   Scenario: Successful authentication in the Wallet
     When the user opens the Wallet
     And the user authenticates using a six-digit PIN or Biometrics
     Then the authentication is successful
 
-  @US_IMIOACWIRSD_TC_02
+  @US_IMIOACWIRSD_TC_02 @manual:Passed
   Scenario: Unsuccessful authentication in the Wallet
     When the user opens the Wallet
     And the user fails to authenticate using a six-digit PIN or Biometrics
     Then the Wallet presents an error message
     And the user can retry the authentication
 
-  @US_IMIOACWIRSD_TC_03
+  @US_IMIOACWIRSD_TC_03 @manual:Passed
   Scenario: Request issuance of an attestation type
     Given the user is successfully authenticated in the Wallet
     When the user requests the issuance of an attestation type by selecting to add a document from the list
     Then the user is redirected to the issuer service
 
-  @US_IMIOACWIRSD_TC_04
+  @US_IMIOACWIRSD_TC_04 @manual:Passed
   Scenario: Redirection issue to the issuer service
     Given the user is successfully authenticated in the Wallet
     When there is an issue in redirecting to the issuer service
     Then the user should be able to return back to the Wallet
     And the user can select any other option in the Wallet
 
-  @US_IMIOACWIRSD_TC_05
+  @US_IMIOACWIRSD_TC_05 @manual:Passed
   Scenario: Successful authentication and consent in the Issuer service
     Given the user is redirected to the issuer service
     When the user authenticates as per the issuer's authentication means
@@ -55,7 +55,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     Then the issuance flow proceeds using the issuer's maximum batch size
     And the Wallet stores the attestations according to the issuer's batch size
 
-  @US_IMIOACWIRSD_TC_07
+  @US_IMIOACWIRSD_TC_07 @manual:Passed
   Scenario: Successful issuance and storage of attestations
     Given the user is redirected back to the Wallet after issuance
     When the issuer has issued the attestations successfully
@@ -63,7 +63,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     And informs the user that it has been successfully issued and stored
     And a counter is displayed showing the number of credentials issued
 
-  @US_IMIOACWIRSD_TC_08
+  @US_IMIOACWIRSD_TC_08 @manual:Passed
   Scenario: Error during attestation issuance
     Given the user consents to the attestation issuance
     When there is an error in the issuance process

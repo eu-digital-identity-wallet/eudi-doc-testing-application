@@ -7178,8 +7178,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the Wallet receives the attestation offer")
-    public void theWalletReceivesTheAttestationOffer() {
+    @When("the Wallet receives the attestation")
+    public void theWalletReceivesTheAttestation() {
         //manual
     }
 
@@ -7265,6 +7265,21 @@ public class ManuallyStepDefs {
 
     @Then("the suspicious operation is reported to DPAs")
     public void theSuspiciousOperationIsReportedToDPAs() {
+        //manual
+    }
+
+    @Given("the issuer service issued multiple attestations")
+    public void theIssuerServiceIssuedMultipleAttestations() {
+        //manual
+    }
+
+    @When("the Wallet receives the attestation from the issuer service")
+    public void theWalletReceivesTheAttestationFromTheIssuerService() {
+        //manual
+    }
+
+    @Then("issuer service issues multiple attestations")
+    public void issuerServiceIssuesMultipleAttestations() {
         //manual
     }
 }
