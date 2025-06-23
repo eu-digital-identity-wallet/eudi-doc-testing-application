@@ -107,7 +107,7 @@ jobs:
         run: |
             echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
             echo "${{inputs.test-cases}}"
-      # mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="${{ inputs.test-cases }}"
+            mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="@automated and @ANDROID and @US_VP_TC_01"
 
 
       - name: Produce Serenity report
