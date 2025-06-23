@@ -1,9 +1,9 @@
 name: Automation with Browserstack - Standard
 
 on:
-  push:
-    branches: 
-      - workflow_browserstack
+  # push:
+  #   branches: 
+  #     - workflow_browserstack
   workflow_dispatch:
     inputs:
       branch-to-checkout:
@@ -12,7 +12,6 @@ on:
         options:
           - main
           - develop
-          - workflow_browserstack
         default: develop
 
       test-cases:
