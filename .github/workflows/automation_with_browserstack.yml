@@ -113,7 +113,6 @@ jobs:
           echo "Using test cases: $TEST_CASES"
           mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-
       - name: Produce Serenity report
         if: always()
         run: mvn -ntp serenity:aggregate
@@ -171,4 +170,3 @@ jobs:
         with:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
-
