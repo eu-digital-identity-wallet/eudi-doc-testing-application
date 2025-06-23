@@ -8,7 +8,7 @@
     <name>Eudiw automated tests</name>
 
     <properties>
-        <!--        <tags>@ANDROID,@IOS, @manual</tags>-->
+        <tags>@default</tags>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -162,6 +162,9 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
+                <configuration>
+                  <tags>${tags}</tags>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
