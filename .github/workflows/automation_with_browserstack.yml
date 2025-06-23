@@ -94,6 +94,7 @@ jobs:
             echo "jq is already installed."
             jq --version
           fi
+
       - name: Upload app to BrowserStack
         id: upload_app
         run: |
@@ -102,14 +103,14 @@ jobs:
             -F "file=@app.apk")
           echo "Response: $response"
           app_url=$(echo $response | jq -r '.app_url')
-          echo "app_url=$app_url" >> $GITHUB_ENV
+          echo "app_url=$app_url" >> $GITHUB_OUTPUT
   
       
       - name: Run Selenium Appium tests on BrowserStack
         env:
             BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
-            echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
+            echo "Starting tests with app URL: $app_url"
             mvn clean verify -Dapp.url=$BROWSERSTACK_APP_URL -Dtags="${{ inputs.test-cases }}"
 
 
