@@ -27,8 +27,4 @@ public class ReplaceCssForGitHubActions {
             System.err.println("Either core.css or custom-style.css doesn't exist.");
         }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> milestone/2025.Q2
 }
