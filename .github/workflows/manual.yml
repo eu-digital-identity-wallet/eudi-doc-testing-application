@@ -27,11 +27,11 @@ jobs:
         with:
           node-version: '18.16.1'
 
-      - name: Compile ReadmeManager.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
-      - name: Run ReadmeManager
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#      - name: Compile ReadmeManager.java
+#        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#
+#      - name: Run ReadmeManager
+#        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
 
       - name: Clean old reports
         run: |
@@ -44,9 +44,9 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@Q1_2025" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@US_BRCD_TC_01 and @manual" "$@"
           rm -rf target/site/serenity 
-          mvn serenity:aggregate -Dtags=Q1_2025
+          mvn serenity:aggregate -Dtags=US_BRCD_TC_01
           echo "Modifying JSON files to mark tests as manual..."
           find target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
            if grep -q "\"manual\":" "$file" 2>/dev/null; then    
@@ -56,7 +56,12 @@ jobs:
           done
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="Q1_2025"
+        run: mvn serenity:aggregate -Dtags="US_BRCD_TC_01"
+
+      - name: Inject Custom CSS into Serenity Report
+        if: always()
+        run: |
+            cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
 
       - name: Upload report
         uses: actions/upload-artifact@v4
