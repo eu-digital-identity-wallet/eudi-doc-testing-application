@@ -193,7 +193,7 @@ jobs:
       - name: Inject Custom CSS into Serenity Report
         if: always()
         run: |
-          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.05.26-Demo/css/core.css
+          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
