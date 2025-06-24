@@ -6600,8 +6600,8 @@ public class ManuallyStepDefs {
     }
 
     @Then("the suspicious operation is reported to DPAs as per user story #35|")
-    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
-        //manual
+    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() throws InterruptedException {
+         //manual
     }
 
     @Then("the wallet displays the presentation request which includes Name and The name of the requesting Relying Party")
