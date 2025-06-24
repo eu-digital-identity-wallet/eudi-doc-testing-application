@@ -55,7 +55,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     Then issuer service issues multiple attestations
     And the Wallet displays a counter showing the number of attestations issued
 
-  @US_IMIOACIIRCASD_TC_08
+  @US_IMIOACIIRCASD_TC_08 @manual:Passed
   Scenario: Attestations stored based on issuer's smaller batch size
     Given the issuer service issued multiple attestations
     When the maximum batch size advertised by the issuer is lower than the EUDI Wallet's internal minimum
