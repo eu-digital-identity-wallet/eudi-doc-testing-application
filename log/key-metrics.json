@@ -1,0 +1,15 @@
+[ {
+  "duration" : 38.76,
+  "eventName" : "sdk:driver:post-initialization",
+  "startTime" : 6.929142984962E8,
+  "success" : true,
+  "worker" : 1,
+  "failure" : null,
+  "details" : null,
+  "entryType" : "measure",
+  "platform" : 0,
+  "command" : null,
+  "testName" : null,
+  "hookType" : null,
+  "cli" : true
+} ]

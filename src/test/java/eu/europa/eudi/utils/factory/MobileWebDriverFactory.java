@@ -10,8 +10,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.Map;
 
 
@@ -41,17 +45,21 @@ public class MobileWebDriverFactory {
     public void startAndroidDriverSession() {
         envDataConfig = new EnvDataConfig();
             options = new UiAutomator2Options();
-        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
-        String username = System.getenv("BROWSERSTACK_USERNAME");
-        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-//            String username = "foteinitheofilat_OrT9j5";
-//            String accessKey = "abnr8yzxsnUcB7XtssWJ";
+//        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//        String username = System.getenv("BROWSERSTACK_USERNAME");
+//        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+            String username = "foteinitheofilat_OrT9j5";
+            String accessKey = "abnr8yzxsnUcB7XtssWJ";
             System.out.println("Username: " + username);
             System.out.println("AccessKey: " + accessKey);
-            options.setCapability("appium:app", appUrl);
+            options.setCapability("appium:app", "bs://34d000d023218a158ae1030883d84f8cbe0abbf4");
             options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
             options.setCapability("appium:platformVersion", "12.0");
             options.setCapability("browserstack.interactiveDebugging", "true");
+            options.setCapability("browserName", "Chrome");
+              options.setCapability("browserstack.debug", "true");
+              options.setCapability("browserstack.networkLogs", "true");
+              options.setCapability("browserstack.deviceLogs", "true");
             try{
                 androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
@@ -60,7 +68,6 @@ public class MobileWebDriverFactory {
                 e.printStackTrace();
             }
     }
-
 
 
 //    public void startAndroidDriverSession() {
@@ -134,9 +141,9 @@ public class MobileWebDriverFactory {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         if (line.contains("@IOS and @automated")) {
-                            writeLog(line, "logs/IOS/" + featureName + "/" + scenarioName + ".log");
+                            writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
                         } else if (line.contains("@ANDROID and @automated")) {
-                            writeLog(line, "logs/ANDROID/" + featureName + "/" + scenarioName + ".log");
+                            writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
                         } else {
                             writeLog(line, newFile.getPath());
                         }
@@ -151,6 +158,34 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
+
+
+
+//    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) throws IOException {
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//        String sessionId = driver.getSessionId().toString();
+//
+//        String logUrl = "https://api.browserstack.com/app-automate/sessions/" + sessionId + ".json";
+//        String auth = "foteinitheofilat_OrT9j5:abnr8yzxsnUcB7XtssWJ"; // replace with actual credentials
+//        String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
+//
+//        HttpURLConnection connection = (HttpURLConnection) new URL(logUrl).openConnection();
+//        connection.setRequestProperty("Authorization", "Basic " + encodedAuth);
+//
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//        StringBuilder response = new StringBuilder();
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            response.append(line).append("\n");
+//        }
+//        reader.close();
+//
+//        // Write logs to file named after feature
+//        Files.write(Paths.get("logs/" + featureName + ".txt"), response.toString().getBytes());
+//
+//    }
+
+
 
     private void writeLog(String line, String filePath) {
         try {

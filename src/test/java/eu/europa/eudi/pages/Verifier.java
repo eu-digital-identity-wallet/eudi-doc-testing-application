@@ -13,6 +13,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 //import org.json.JSONObject;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -449,24 +450,24 @@ public class Verifier {
     }
 
     public void getTransactionId() {
-//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//        WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
-//
-//        // Get the text
-//        String rawText = jsonElement.getText();
-//
-//        JSONObject jsonObject = new JSONObject(rawText);
-//        JSONObject valueObject = jsonObject.getJSONObject("value");
-//
-//        // Step 4: Extract the transaction_id
-//        String transactionId = valueObject.getString("transaction_id");
-//
-//        // Output the result
-//        System.out.println("Transaction ID: " + transactionId);
-//
-//        EventsApiVerifier api = new EventsApiVerifier();
-//        api.getPresentationEvents(transactionId);
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
+
+        // Get the text
+        String rawText = jsonElement.getText();
+
+        JSONObject jsonObject = new JSONObject(rawText);
+        JSONObject valueObject = jsonObject.getJSONObject("value");
+
+        // Step 4: Extract the transaction_id
+        String transactionId = valueObject.getString("transaction_id");
+
+        // Output the result
+        System.out.println("Transaction ID: " + transactionId);
+
+        EventsApiVerifier api = new EventsApiVerifier();
+        api.getPresentationEvents(transactionId);
     }
 
     public void chooseWalletPageIsDisplayed() {

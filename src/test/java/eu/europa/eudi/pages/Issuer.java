@@ -145,12 +145,12 @@ public class Issuer {
     public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormEu)).click();
-            TouchAction<?> touchAction = new TouchAction<>(driver);
-            touchAction
-                    .tap(PointOption.point(260, 1206))
-                    .perform();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormEu)).click();
+//            TouchAction<?> touchAction = new TouchAction<>(driver);
+//            touchAction
+//                    .tap(PointOption.point(260, 1206))
+//                    .perform();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFormEu)).click();
         }
@@ -240,6 +240,18 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseSet)).click();        }
     }
 
+    public void clickSubmitIssuer() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        }
+    }
+
     public void clickSubmit() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
@@ -249,6 +261,8 @@ public class Issuer {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
+
+
 
     public void clickScreen() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -292,41 +306,35 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindSubmit() {
+    public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".flingForward()" +
-                            ".setMaxSearchSwipes(10)" +
-                            ".scrollIntoView(new UiSelector().text(\"Submit\"))"
-            ));
-//            int maxScrolls = 10;
-//            boolean found = false;
-//
-//            for (int i = 0; i < maxScrolls; i++) {
-//                List<WebElement> elements = driver.findElements(By.xpath("//android.widget.Button[@text='Submit']"));
-//                if (!elements.isEmpty()) {
-//                    elements.get(0).click();
-//                    found = true;
-//                    break;
-//                }
-//
-//                // Get screen size
-//                Dimension size = driver.manage().window().getSize();
-//                int startX = size.width / 2;
-//                int startY = (int) (size.height * 0.8);
-//                int endY = (int) (size.height * 0.2);
-//
-//                // Swipe up
-//                new TouchAction<>(driver)
-//                        .press(PointOption.point(startX, startY))
-//                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-//                        .moveTo(PointOption.point(startX, endY))
-//                        .release()
-//                        .perform();
-//            }
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            driver.findElement(MobileBy.AndroidUIAutomator(
+//                    "new UiScrollable(new UiSelector().scrollable(true))" +
+//                            ".setAsVerticalList()" +
+//                            ".flingForward()" +
+//                            ".setMaxSearchSwipes(10)" +
+//                            ".scrollIntoView(new UiSelector().text(\"Submit\"))"
+//            ));
+            for (int i = 0; i < 6; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.8);
+                int endY = (int) (size.height * 0.2);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(500);
+            }
+
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -393,7 +401,7 @@ public class Issuer {
         }
     }
 
-    public void issuePID() {
+    public void issuePID() throws InterruptedException {
 //        issuerServiceIsDisplayed();
         selectCountryOfOrigin();
         clickFormEu();
@@ -406,8 +414,8 @@ public class Issuer {
         scrollUntilCountryCode();
         enterCountryCode();
         scrollUntilFindSubmit();
-        clickSubmit();
-        authorizeIsDisplayed();
+        clickSubmitIssuer();
+//        authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
     }
@@ -448,16 +456,15 @@ public class Issuer {
     public void scrollUntilCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.findElement(MobileBy.AndroidUIAutomator(
-//                    "new UiScrollable(new UiSelector().scrollable(true))" +
-//                            ".setAsVerticalList()" +
-//                            ".scrollForward()" +
-//                            ".setMaxSearchSwipes(1)" +
-//                            ".scrollIntoView(new UiSelector().text(\"Nationality\"))"
-//            ));
-// Then attempt to find the element
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".scrollForward()" +
+                            ".setMaxSearchSwipes(1)" +
+                            ".scrollIntoView(new UiSelector().text(\"Optional Elements\"))"
+            ));
         try {
-            driver.findElement(By.xpath("//android.widget.TextView[@text=\"Nationality\"]")).click();
+            driver.findElement(By.xpath("//android.widget.TextView[@text=\"Optional Elements\"]")).click();
         } catch (NoSuchElementException e) {
             System.out.println("Element not found after single scroll");
            }

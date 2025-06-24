@@ -1,4 +1,4 @@
-@ANDROID @automated @US_SD @sakis
+@ANDROID @automated @US_SD
 Feature: Selective Disclosure
 
   @US_SD_TC_01 @before_01
