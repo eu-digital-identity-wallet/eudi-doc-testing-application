@@ -27,11 +27,11 @@ jobs:
         with:
           node-version: '18.16.1'
 
-      - name: Compile ReadmeManager.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
-      - name: Run ReadmeManager
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#      - name: Compile ReadmeManager.java
+#        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#
+#      - name: Run ReadmeManager
+#        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
 
       - name: Clean old reports
         run: |
@@ -69,8 +69,8 @@ jobs:
           name: report
           path: target/site
 
-      - name: Compile ReadmeManager.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
-      - name: Run ReadmeManager
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#      - name: Compile ReadmeManager.java
+#        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
+#
+#      - name: Run ReadmeManager
+#        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
