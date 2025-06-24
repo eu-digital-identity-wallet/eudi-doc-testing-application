@@ -113839,3 +113839,208 @@ Driver info: driver.version: RemoteWebDriver
 
 10:17:44.441 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
 10:17:44.442 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:18.246 [main] DEBUG browserStackFileDebugger - Running SDK with properties: {java.specification.version=17, sun.cpu.isalist=amd64, sun.jnu.encoding=Cp1252, java.class.path=C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar, java.vm.vendor=Oracle Corporation, sun.arch.data.model=64, user.variant=, java.vendor.url=https://java.oracle.com/, user.timezone=Europe/Athens, java.vm.specification.version=17, os.name=Windows 11, sun.java.launcher=SUN_STANDARD, user.country=US, sun.boot.library.path=C:\Program Files\Java\jdk-17\bin, sun.java.command=C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848 2025-06-24T15-02-16_895-jvmRun1 surefire-20250624150217212_1tmp surefire_0-20250624150217212_2tmp, jdk.debug=release, sun.cpu.endian=little, user.home=C:\Users\ftheofil, user.language=en, java.specification.vendor=Oracle Corporation, java.version.date=2023-10-17, java.home=C:\Program Files\Java\jdk-17, file.separator=\, java.vm.compressedOopsMode=Zero based, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, user.script=, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.runtime.version=17.0.9+11-LTS-201, user.name=ftheofil, path.separator=;, os.version=10.0, java.runtime.name=Java(TM) SE Runtime Environment, file.encoding=Cp1252, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, java.vendor.url.bug=https://bugreport.java.com/bugreport/, java.io.tmpdir=C:\Users\ftheofil\AppData\Local\Temp\, java.version=17.0.9, user.dir=C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal, os.arch=amd64, java.vm.specification.name=Java Virtual Machine Specification, sun.os.patch.level=, native.encoding=Cp1252, java.library.path=C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Maven\apache-maven-3.9.5\bin;C:\Program Files\Java\jdk-17\bin;C:\Users\ftheofil\AppData\Local\Android\Sdk\platform-tools;C:\Users\ftheofil\AppData\Roaming\npm\node_modules\appium\build\lib\main.js;C:\Program Files\nodejs\node_modules\npm\bin;C:\Users\ftheofil\AppData\Roaming\npm;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\ftheofil\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin;C:\Users\ftheofil\AppData\Local\Programs\Python\Python39\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python39\Scripts\;C:\Program Files\nodejs\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python313\;C:\Users\ftheofil\AppData\Local\Programs\Python\Launcher\;C:\Users\ftheofil\AppData\Local\Microsoft\WindowsApps;C:\Users\ftheofil\AppData\Roaming\npm\node_modules\appium\build\lib\main.js;C:\Users\ftheofil\AppData\Local\Android\Sdk\cmdline-tools\latest\bin;C:\Users\ftheofil\AppData\Local\Programs\Git\cmd;;C:\Users\ftheofil\AppData\Local\Programs\Git LFS;., java.vm.info=mixed mode, sharing, java.vendor=Oracle Corporation, java.vm.version=17.0.9+11-LTS-201, sun.io.unicode.encoding=UnicodeLittle, java.class.version=61.0}
+15:02:18.267 [main] DEBUG browserStackFileDebugger - Running SDK with classpath: C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar
+15:02:18.283 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+15:02:18.285 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+15:02:18.563 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, cucumber.filter.tags=@US_BRCD_TC_01, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+15:02:18.564 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:02:18.994 [main] DEBUG c.b.logger.BrowserstackLoggerFactory - Log Level set to TRACE for logger com.browserstack
+15:02:18.994 [main] DEBUG c.b.logger.BrowserstackLoggerFactory - Log Level set to INFO for logger stdoutPrinter
+15:02:19.002 [main] DEBUG c.b.utils.FrameworkDetectionUtils - Found the configuration path is : surefire-20250624150217212_1tmp
+15:02:19.003 [main] DEBUG c.b.utils.FrameworkDetectionUtils - Coudln't find config path surefire-20250624150217212_1tmp
+15:02:19.003 [main] DEBUG c.browserstack.BrowserStackJavaAgent - JavaAgent Version 1.32.13
+15:02:19.004 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://34d000d023218a158ae1030883d84f8cbe0abbf4]
+15:02:19.005 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+15:02:19.008 [main] DEBUG c.b.utils.ExitSignalHandler - Registered handler for INT
+15:02:19.008 [main] DEBUG c.b.utils.ExitSignalHandler - Registered handler for TERM
+15:02:19.009 [main] DEBUG c.b.utils.ExitSignalHandler - Unable to attach signal handler for HUP Unknown signal: HUP
+15:02:19.009 [main] DEBUG c.b.utils.ExitSignalHandler - Registered handler for ABRT
+15:02:19.010 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 5f5af002-7ef9-4078-9953-aa15da6101f5
+15:02:19.010 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:02:19.029 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:02:19.034 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:02:21.521 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:02:21.530 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+15:02:21.534 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:22.224 [Thread-2] DEBUG c.browserstack.utils.UtilityMethods - NEXT HUBS ARE: ["hub-euw.browserstack.com","hub-use.browserstack.com","hub-aps.browserstack.com"]
+15:02:22.803 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-euw.browserstack.com HUB IS: 577ms
+15:02:23.844 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-use.browserstack.com HUB IS: 1038ms
+15:02:25.144 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-aps.browserstack.com HUB IS: 1300ms
+15:02:25.145 [main] DEBUG c.browserstack.utils.UtilityMethods - NEAREST HUB ALLOCATED IS - hub-euw.browserstack.com
+15:02:25.146 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:25.149 [main] WARN  c.b.config.BrowserStackConfig - Test Observability could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+15:02:25.158 [main] DEBUG c.b.utils.FrameworkDetectionUtils - Couldn't find dependency class: appium
+15:02:25.161 [main] DEBUG c.b.utils.FunnelInstrumentation - Sending funnel data for SDKTestAttempted with data: {"event_type":"SDKTestAttempted","accessKey":"[REDACTED]","userName":"[REDACTED]","event_properties":{"product":"[app-automate]","buildName":"build EUDI Wallet","os":"Windows 11","languageVersion":"17.0.9","appiumVersion":"8.6.0","frameworkDetectionInstrumentation":{},"language":"java","sdkRunId":"5f5af002-7ef9-4078-9953-aa15da6101f5","buildIdentifier":"#56","userFramework":"java","testhub_uuid":"","detectedAppiumVersion":"null","detectedDependencies":"cucumber, serenity, junit4","productMap":{"app_automate":true,"accessibility":null,"automate":false,"percy":false,"observability":false,"turboscale":false},"referrer":"java-javaagent\/1.32.13","hostname":"IIL3856","framework":"java","frameworkVersion":"","language_framework":"java_java","detectedFramework":"none","detectedSeleniumVersion":"4.13.0","automationFramework":"selenium","automationFrameworkVersion":"4.13.0","seleniumVersion":"4.13.0"}}
+15:02:25.407 [main] DEBUG c.b.utils.FunnelInstrumentation - API Event SDKTestAttempted, response: {"message":"SDK Event recorded successfully"}
+15:02:25.407 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:02:25.768 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:25.769 [main] DEBUG c.browserstack.testOps.RequestUtils - [ TESTHUB ] Processing Request Kind launchTestSession
+15:02:25.769 [main] DEBUG c.browserstack.testOps.RequestUtils - [requestToTestOps] Sending Observability request: POST api/v2/builds with request size 1383
+15:02:25.769 [main] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest] Sending request: POST https://collector-observability.browserstack.com/api/v2/builds with request size 1383
+15:02:26.506 [main] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest]: Response code: 200
+15:02:26.506 [main] DEBUG c.browserstack.testOps.RequestUtils - requestToTestOps: Response code: 200
+15:02:26.507 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5
+15:02:26.507 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:02:26.507 [main] DEBUG com.browserstack.testOps.Listener - BROWSERSTACK_TESTHUB_UUID : m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5
+15:02:26.508 [main] DEBUG com.browserstack.testOps.Listener - The 'accessibility' key was not found in the response
+15:02:26.508 [main] DEBUG com.browserstack.testOps.Listener - [ TESTHUB ] Build creation successfull
+15:02:26.508 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+15:02:26.510 [main] DEBUG com.browserstack.LocalFactory - Starting BrowserStack Local with identifier 24_Jun_152_IIL3856_nkXG
+15:02:35.678 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+15:02:35.680 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:35.694 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:35.696 [Thread-8] DEBUG c.b.utils.FrameworkDetectionUtils - Found the configuration path is : surefire-20250624150217212_1tmp
+15:02:35.696 [Thread-8] DEBUG c.b.utils.FrameworkDetectionUtils - Coudln't find config path surefire-20250624150217212_1tmp
+15:02:35.698 [Thread-8] DEBUG c.b.utils.FrameworkDetectionUtils - Found the configuration path is : surefire-20250624150217212_1tmp
+15:02:35.699 [Thread-8] DEBUG c.b.utils.FrameworkDetectionUtils - Coudln't find config path surefire-20250624150217212_1tmp
+15:02:36.625 [main] DEBUG browserStackFileDebugger - Running SDK with properties: {java.specification.version=17, sun.cpu.isalist=amd64, sun.jnu.encoding=Cp1252, java.class.path=C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar, java.vm.vendor=Oracle Corporation, sun.arch.data.model=64, user.variant=, java.vendor.url=https://java.oracle.com/, user.timezone=Europe/Athens, java.vm.specification.version=17, os.name=Windows 11, sun.java.launcher=SUN_STANDARD, user.country=US, sun.boot.library.path=C:\Program Files\Java\jdk-17\bin, sun.java.command=C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848 2025-06-24T15-02-16_895-jvmRun1 surefire-20250624150217212_1tmp surefire_0-20250624150217212_2tmp, jdk.debug=release, sun.cpu.endian=little, user.home=C:\Users\ftheofil, user.language=en, java.specification.vendor=Oracle Corporation, java.version.date=2023-10-17, java.home=C:\Program Files\Java\jdk-17, file.separator=\, java.vm.compressedOopsMode=Zero based, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, user.script=, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.runtime.version=17.0.9+11-LTS-201, user.name=ftheofil, path.separator=;, os.version=10.0, java.runtime.name=Java(TM) SE Runtime Environment, file.encoding=Cp1252, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, java.vendor.url.bug=https://bugreport.java.com/bugreport/, java.io.tmpdir=C:\Users\ftheofil\AppData\Local\Temp\, java.version=17.0.9, user.dir=C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal, os.arch=amd64, java.vm.specification.name=Java Virtual Machine Specification, sun.os.patch.level=, native.encoding=Cp1252, java.library.path=C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Maven\apache-maven-3.9.5\bin;C:\Program Files\Java\jdk-17\bin;C:\Users\ftheofil\AppData\Local\Android\Sdk\platform-tools;C:\Users\ftheofil\AppData\Roaming\npm\node_modules\appium\build\lib\main.js;C:\Program Files\nodejs\node_modules\npm\bin;C:\Users\ftheofil\AppData\Roaming\npm;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\ftheofil\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin;C:\Users\ftheofil\AppData\Local\Programs\Python\Python39\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python39\Scripts\;C:\Program Files\nodejs\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\ftheofil\AppData\Local\Programs\Python\Python313\;C:\Users\ftheofil\AppData\Local\Programs\Python\Launcher\;C:\Users\ftheofil\AppData\Local\Microsoft\WindowsApps;C:\Users\ftheofil\AppData\Roaming\npm\node_modules\appium\build\lib\main.js;C:\Users\ftheofil\AppData\Local\Android\Sdk\cmdline-tools\latest\bin;C:\Users\ftheofil\AppData\Local\Programs\Git\cmd;;C:\Users\ftheofil\AppData\Local\Programs\Git LFS;., java.vm.info=mixed mode, sharing, java.vendor=Oracle Corporation, java.vm.version=17.0.9+11-LTS-201, sun.io.unicode.encoding=UnicodeLittle, java.class.version=61.0}
+15:02:36.652 [main] DEBUG browserStackFileDebugger - Running SDK with classpath: C:\Users\ftheofil\AppData\Local\Temp\surefire3823426710666203848\surefirebooter-20250624150217212_3.jar
+15:02:36.950 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=C\:\\Users\\ftheofil\\Projects\\eu-digital-identity-walleteudi-doc-testing-application-internal, cucumber.filter.tags=@US_BRCD_TC_01, localrepository=C\:\\Users\\ftheofil\\.m2\\repository}
+15:02:36.951 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:02:37.289 [main] DEBUG c.b.logger.BrowserstackLoggerFactory - Log Level set to TRACE for logger com.browserstack
+15:02:37.289 [main] DEBUG c.b.logger.BrowserstackLoggerFactory - Log Level set to INFO for logger stdoutPrinter
+15:02:37.289 [main] DEBUG c.browserstack.BrowserStackJavaAgent - JavaAgent Version 1.32.13
+15:02:37.291 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 27b0d7d9-e0c8-4f78-9ee1-433a7ffcac59
+15:02:37.291 [main] INFO  c.b.config.BrowserStackConfig - INFO
+15:02:37.304 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+15:02:37.306 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:02:38.143 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+15:02:38.154 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+15:02:38.161 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:38.537 [Thread-2] DEBUG c.browserstack.utils.UtilityMethods - NEXT HUBS ARE: ["hub-euw.browserstack.com","hub-use.browserstack.com","hub-aps.browserstack.com"]
+15:02:38.883 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-euw.browserstack.com HUB IS: 344ms
+15:02:39.432 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-use.browserstack.com HUB IS: 547ms
+15:02:40.135 [main] DEBUG c.browserstack.utils.UtilityMethods - EXECUTION TIME OF hub-aps.browserstack.com HUB IS: 702ms
+15:02:40.136 [main] DEBUG c.browserstack.utils.UtilityMethods - NEAREST HUB ALLOCATED IS - hub-euw.browserstack.com
+15:02:40.137 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:40.138 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+15:02:40.139 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:40.174 [main] WARN  c.b.config.BrowserStackConfig - Test Observability could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+15:02:47.558 [main] DEBUG c.browserstack.utils.UtilityMethods - [Patch]: SDK enabled, patching remote server
+15:02:47.562 [main] DEBUG c.b.selenium.SeleniumHandler - beforeDriverInit: SDK enabled. Thread ID: 1
+15:02:47.565 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:47.566 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:02:47.569 [main] DEBUG c.browserstack.utils.UtilityMethods - [Patch]: SDK enabled, patching remote server
+15:03:21.539 [main] DEBUG c.b.selenium.SeleniumHandler - afterDriverInit: requested
+15:03:21.572 [main] DEBUG c.b.utils.SeleniumMethodUtils - getURLFromCommandExecutor: Getting Hub url from HttpCommandExecutor
+15:03:21.573 [main] DEBUG c.b.utils.SeleniumMethodUtils - getURLFromCommandExecutor: Found url: https://hub-euw.browserstack.com/wd/hub
+15:03:21.573 [main] DEBUG c.b.utils.SeleniumMethodUtils - getURLFromCommandExecutor: Getting Hub url from HttpCommandExecutor
+15:03:21.573 [main] DEBUG c.b.utils.SeleniumMethodUtils - getURLFromCommandExecutor: Found url: https://hub-euw.browserstack.com/wd/hub
+15:03:21.586 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:22.322 [main] DEBUG c.browserstack.utils.UtilityMethods - [Patch]: SDK enabled, patching remote server
+15:03:22.322 [main] DEBUG c.b.selenium.SeleniumHandler - beforeDriverInit: SDK enabled. Thread ID: 1
+15:03:22.322 [main] DEBUG c.b.selenium.SeleniumHandler - Quitting webdriver: com.browserstack.config.TestNgCurrentRemoteWebdriver@66e218d8
+15:03:22.324 [main] DEBUG c.b.c.TestNgCurrentRemoteWebdriver - Quit Session Processing for Framework java
+15:03:22.507 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:22.508 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:22.508 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:22.510 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:22.510 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.542 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.542 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.543 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.544 [main] DEBUG c.browserstack.utils.UtilityMethods - [Patch]: SDK enabled, patching remote server
+15:03:23.544 [main] DEBUG c.b.c.TestNgCurrentRemoteWebdriver - Quit Session Processing for Framework java
+15:03:23.545 [main] DEBUG c.browserstack.utils.LogReportingAPI - sendSync failed - driver not alive
+15:03:23.546 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.546 [main] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:23.997 [Thread-0] DEBUG c.b.u.ObservabilityUtilityMethods - Processing batch requests with type: Serenity
+15:03:23.997 [Thread-0] DEBUG c.b.u.ObservabilityUtilityMethods - Processing batch requests with type: Global
+15:03:24.085 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:24.086 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:24.087 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:24.617 [main] DEBUG c.browserstack.utils.UtilityMethods - Browserstack Gradle Config File does not exist.
+15:03:24.617 [Thread-0] DEBUG c.browserstack.BrowserStackJavaAgent - Starting final execution
+15:03:24.618 [Thread-0] DEBUG c.b.u.ObservabilityUtilityMethods - Processing batch requests with type: Global
+15:03:24.620 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [ TESTHUB ] Processing Request Kind stopBuildUpstream
+15:03:24.620 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [requestToTestOps] Sending Observability request: PUT api/v1/builds/m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5/stop with request size 65
+15:03:24.620 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest] Sending request: PUT https://collector-observability.browserstack.com/api/v1/builds/m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5/stop with request size 65
+15:03:24.748 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest]: Response code: 401
+15:03:24.748 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - requestToTestOps: Response code: 401
+15:03:24.748 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [OBSERVABILITY] Non-200 Response 401 with error 
+15:03:24.750 [Thread-0] DEBUG c.browserstack.utils.LogReportingAPI - Observability Stop request failed. Retrying.. Exception: com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy3.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+
+15:03:25.145 [Thread-0] DEBUG c.b.utils.FunnelInstrumentation - API Event Observability_Crash_Report_Upload, response: OK
+15:03:25.145 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [requestToTestOps] Sending Observability request: PUT api/v1/builds/m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5/stop with request size 65
+15:03:25.145 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest] Sending request: PUT https://collector-observability.browserstack.com/api/v1/builds/m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5/stop with request size 65
+15:03:25.272 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest]: Response code: 401
+15:03:25.272 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - requestToTestOps: Response code: 401
+15:03:25.272 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [OBSERVABILITY] Non-200 Response 401 with error 
+15:03:25.272 [Thread-0] DEBUG c.browserstack.utils.LogReportingAPI - 
+[2025-06-24T12:03:25.272263300Z][ TESTHUB ] Exception in stop build request : com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy3.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+
+
+15:03:25.657 [Thread-0] DEBUG c.b.utils.FunnelInstrumentation - API Event Observability_Crash_Report_Upload, response: OK
+15:03:25.659 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:25.660 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+15:03:25.660 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:29.360 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:29.377 [Thread-0] DEBUG c.b.utils.FrameworkDetectionUtils - Couldn't find dependency class: appium
+15:03:29.379 [Thread-0] DEBUG com.browserstack.testOps.UsageStats - getFormattedData: Collecting data for TestObservability
+15:03:29.456 [Thread-0] DEBUG c.b.utils.FunnelInstrumentation - Sending funnel data for SDKTestSuccessful with data: {"event_type":"SDKTestSuccessful","accessKey":"[REDACTED]","userName":"[REDACTED]","event_properties":{"isPercyAutoEnabled":false,"language":"java","sdkRunId":"5f5af002-7ef9-4078-9953-aa15da6101f5","buildIdentifier":"#56","testhub_uuid":"m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5","detectedAppiumVersion":"null","productMap":{"app_automate":true,"accessibility":null,"automate":false,"percy":false,"observability":false,"turboscale":false},"hostname":"IIL3856","measures":{"sdk:driver:quit":9.56,"sdk:testhub":353.8061000108719,"sdk:driver:get":38.91,"sdk:cli:on-bootstrap":12.21,"sdk:driver:post-initialization":76.41,"sdk:o11y:print-buildlink":1039.339399933815,"sdk:hook":4.84,"sdk:cli:o11ySync":93.46,"sdk:automate:idle-timeout":1294.42,"sdk:automate:local":62850.15170001984,"sdk:automate:hub-management":2368.53,"sdk:driver:pre-initialization":37.64,"sdk:setup":4917.67,"sdk:pre-test":12.347900032997131,"sdk:o11y:sync":76.79,"sdk:cli:stop":0.15079998970031738,"sdk:automate:session-annotation":95.89},"frameworkVersion":"","productUsage":{"testObservability":{"buildHashedId":"m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5","manuallySet":false,"enabled":false}},"browserStackConfig":{"browserstackLocal":true,"percy":false,"logLevel":"info","staticWebDriver":true,"autoDetectFramework":true,"percyCaptureMode":"AUTO","browserStackLocalOptions":{"localIdentifier":"24_Jun_152_IIL3856_nkXG","key":"****"},"percyOptions":null,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"serenityOverridePlugin":false},"platforms":[{"osVersion":null,"device":"Samsung Galaxy S22 Ultra","os":null,"browser":null,"browserVersion":null,"capabilities":{"platformVersion":12.0,"platformName":"android","deviceName":"Samsung Galaxy S22 Ultra"},"platformCaps":{"platformVersion":12.0,"platformName":"android","deviceName":"Samsung Galaxy S22 Ultra"},"platformString":"Samsung Galaxy S22 Ultra, 12.0","customVariables":"****"}],"parallelsPerPlatform":1,"framework":"java","accessibility":false,"accessibilityOptions":{},"turboScaleOptions":{},"disableAutoCaptureLogs":true,"testObservability":true,"browserstackAutomation":true,"turboScale":false,"testObservabilityOptions":{},"gradleMConfig":null,"proxySettings":null},"automationFrameworkVersion":"4.13.0","percyBuildId":null,"product":"[app-automate]","buildName":"build EUDI Wallet","os":"Windows 11","languageVersion":"17.0.9","appiumVersion":"8.6.0","frameworkDetectionInstrumentation":{},"userFramework":"java","detectedDependencies":"cucumber, serenity, junit4","referrer":"java-javaagent\/1.32.13","framework":"java","locationTrigger":"BSTACK_BUILD_END","accessibilityConfiguration":{"pollingTimeout":30},"language_framework":"java_java","detectedFramework":"none","testOrchestration":{"abortBuildOnFailure":{"enabled":false},"retryTestsOnFailure":{"enabled":false},"userConfig":{}},"detectedSeleniumVersion":"4.13.0","automationFramework":"selenium","seleniumVersion":"4.13.0"}}
+15:03:29.686 [Thread-0] DEBUG c.b.utils.FunnelInstrumentation - API Event SDKTestSuccessful, response: {"message":"SDK Event recorded successfully"}
+15:03:29.689 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:03:29.689 [Thread-0] DEBUG c.browserstack.utils.UtilityMethods - Browserstack yml path passed - C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:03:29.689 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\browserstack.yml
+15:03:32.226 [Thread-0] DEBUG c.browserstack.utils.UtilityMethods - unable to delete debug log: java.nio.file.FileSystemException: .\log\browserstack-javaagent.debug.log: The process cannot access the file because it is being used by another process
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.deleteIfExists(AbstractFileSystemProvider.java:110)
+	at java.base/java.nio.file.Files.deleteIfExists(Files.java:1191)
+	at com.browserstack.utils.UtilityMethods.a(Unknown Source)
+	at com.browserstack.utils.UtilityMethods.a(Unknown Source)
+	at com.browserstack.utils.UtilityMethods.sendLogs(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+
+15:03:32.227 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:32.227 [Thread-0] DEBUG c.browserstack.utils.UtilityMethods - Browserstack Gradle Config File does not exist.
+15:03:32.927 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/bec87c0f2c6a7fe7bbae57bdbd2ae0e32933f2ba
+15:03:32.927 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:03:32.928 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:32.928 [Thread-0] DEBUG c.browserstack.utils.UtilityMethods - Server side buildName(build EUDI Wallet  56) is not same as client side buildName(build EUDI Wallet #56)
+15:03:32.930 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:32.933 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 5f5af002-7ef9-4078-9953-aa15da6101f5, testhub id: m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5
+15:03:32.933 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+15:03:32.934 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Failed to append key metrics to file C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\log\key-metrics.json
+15:03:32.938 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest] Sending request: POST https://eds.browserstack.com/send_sdk_events with request size 688
+15:03:33.770 [Thread-0] DEBUG c.browserstack.testOps.RequestUtils - [makeRequest]: Response code: 200
+15:03:33.770 [Thread-0] DEBUG c.b.monitoring.PerformanceTester - Data sent successfully to https://eds.browserstack.com with status 200 {"event_type":"sdk_events","data":{"created_day":"2025-06-24T12:03:32.000937 +0000","event_name":"SDKFeaturePerformance","event_json":"{measures=[{\"duration\":38.76,\"eventName\":\"sdk:driver:post-initialization\",\"startTime\":6.929142984962E8,\"success\":true,\"worker\":1,\"failure\":null,\"details\":null,\"entryType\":\"measure\",\"platform\":0,\"command\":null,\"testName\":null,\"hookType\":null,\"cli\":true}], sdkRunId=5f5af002-7ef9-4078-9953-aa15da6101f5}","user_data":"foteinitheofilat_OrT9j5","testhub_uuid":"m60dhx0ynibeuqsidxnn04u7jsu6axnug1pyliv5","host_info":"{\"hostname\":\"IIL3856\",\"arch\":\"amd64\",\"type\":null,\"version\":\"10.0\",\"platform\":\"Windows 11\"}"}} {Content-Type=application/json}
