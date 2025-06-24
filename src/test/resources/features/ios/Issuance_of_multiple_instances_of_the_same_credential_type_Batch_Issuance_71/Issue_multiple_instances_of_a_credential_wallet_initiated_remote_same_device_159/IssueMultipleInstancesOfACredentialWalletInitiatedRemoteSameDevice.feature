@@ -48,7 +48,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     Then the issuer service issues multiple attestations of the same type
     And the user is redirected back to the Wallet
 
-  @US_IMIOACWIRSD_TC_06
+  @US_IMIOACWIRSD_TC_06 @manual:Passed
   Scenario: Attestations stored based on issuer's smaller batch size
     Given the user consents to the attestation issuance
     When the maximum batch size advertised by the issuer is lower than the EUDI Wallet's internal minimum
