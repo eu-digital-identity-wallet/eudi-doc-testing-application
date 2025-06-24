@@ -190,10 +190,10 @@ jobs:
         if: always()
         run: mvn -ntp serenity:aggregate
 
-      - name: Build and run ReplaceCssForGitHubActions
+      - name: Inject Custom CSS into Serenity Report
+        if: always()
         run: |
-          javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
-          java -cp src/test/java eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions
+            cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
