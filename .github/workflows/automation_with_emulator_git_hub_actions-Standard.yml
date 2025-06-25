@@ -188,7 +188,7 @@ jobs:
 
       - name: Produce Serenity report
         if: always()
-        run: mvn -ntp serenity:aggregate
+        run: mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
 
       - name: Inject Custom CSS into Serenity Report
         if: always()
