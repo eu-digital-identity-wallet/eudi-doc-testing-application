@@ -7282,6 +7282,312 @@ public class ManuallyStepDefs {
     public void issuerServiceIssuesMultipleAttestations() {
         //manual
     }
+
+    @Given("the wallet has a valid refresh token for a PID or attestation")
+    public void theWalletHasAValidRefreshTokenForAPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the PID or attestation is part of a batch group")
+    public void thePIDOrAttestationIsPartOfABatchGroup() {
+        //manual
+    }
+
+    @And("the technical validity of the batched PID or attestation is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfTheBatchedPIDOrAttestationIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @And("the current date is within the administrative validity period")
+    public void theCurrentDateIsWithinTheAdministrativeValidityPeriod() {
+        //manual
+    }
+
+    @When("the wallet detects the upcoming expiration")
+    public void theWalletDetectsTheUpcomingExpiration() {
+        //manual
+    }
+
+    @Then("the wallet requests the issuer to re-issue the same PID or attestation")
+    public void theWalletRequestsTheIssuerToReIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet receives the new PID or attestation")
+    public void theWalletReceivesTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet deletes all existing PIDs or attestations from the same issuer and document type")
+    public void theWalletDeletesAllExistingPIDsOrAttestationsFromTheSameIssuerAndDocumentType() {
+        //manual
+    }
+
+    @And("the wallet logs the transactions")
+    public void theWalletLogsTheTransactions() {
+        //manual
+    }
+
+    @And("the number of unused PID or attestation instances has reached the internal lower limit")
+    public void theNumberOfUnusedPIDOrAttestationInstancesHasReachedTheInternalLowerLimit() {
+        //manual
+    }
+
+    @When("the wallet detects the threshold has been reached")
+    public void theWalletDetectsTheThresholdHasBeenReached() {
+        //manual
+    }
+
+    @Given("the wallet has initiated a re-issuance request to the issuer")
+    public void theWalletHasInitiatedAReIssuanceRequestToTheIssuer() {
+        //manual
+    }
+
+    @When("the issuer refuses the re-issuance")
+    public void theIssuerRefusesTheReIssuance() {
+        //manual
+    }
+
+    @Then("the wallet attempts a retry after an appropriate delay")
+    public void theWalletAttemptsARetryAfterAnAppropriateDelay() {
+        //manual
+    }
+
+    @And("the wallet logs the refusal and retry attempt")
+    public void theWalletLogsTheRefusalAndRetryAttempt() {
+        //manual
+    }
+
+    @Given("the wallet has received re-issued attestations")
+    public void theWalletHasReceivedReIssuedAttestations() {
+        //manual
+    }
+
+    @When("the wallet compares the re-issued attestations' attribute values to the existing ones")
+    public void theWalletComparesTheReIssuedAttestationsAttributeValuesToTheExistingOnes() {
+        //manual
+    }
+
+    @And("there are differences")
+    public void thereAreDifferences() {
+        //manual
+    }
+
+    @Then("the wallet notifies the user about the differences")
+    public void theWalletNotifiesTheUserAboutTheDifferences() {
+        //manual
+    }
+
+    @And("the wallet logs the notification")
+    public void theWalletLogsTheNotification() {
+        //manual
+    }
+
+    @Given("the wallet has a valid refresh token for a single PID or attestation")
+    public void theWalletHasAValidRefreshTokenForASinglePIDOrAttestation() {
+        //manual
+    }
+
+    @And("the technical validity of the PID or attestation is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfThePIDOrAttestationIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @And("the wallet deletes the existing PID or attestation")
+    public void theWalletDeletesTheExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet logs the transaction")
+    public void theWalletLogsTheTransaction() {
+        //manual
+    }
+
+    @Given("the user opens the Wallet application")
+    public void theUserOpensTheWalletApplication() {
+        //manual
+    }
+
+    @When("the user authenticates successfully using a {int}-digit PIN or Biometrics")
+    public void theUserAuthenticatesSuccessfullyUsingADigitPINOrBiometrics(int arg0) {
+        //manual
+    }
+
+    @Then("the Wallet grants access to the user")
+    public void theWalletGrantsAccessToTheUser() {
+        //manual
+    }
+
+    @When("the user authenticates successfully using a six digit PIN or Biometrics")
+    public void theUserAuthenticatesSuccessfullyUsingASixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @When("the user fails to authenticate using the six digit PIN or Biometrics")
+    public void theUserFailsToAuthenticateUsingTheSixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @Given("the user is authenticated in the Wallet")
+    public void theUserIsAuthenticatedInTheWallet() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option from an existing PID or attestation")
+    public void theUserSelectsTheReIssuanceOptionFromAnExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @Then("the wallet checks for a valid refresh token")
+    public void theWalletChecksForAValidRefreshToken() {
+        //manual
+    }
+
+    @Given("the wallet has a valid refresh token")
+    public void theWalletHasAValidRefreshToken() {
+        //manual
+    }
+
+    @When("the wallet requests the issuer to issue the same PID or attestation")
+    public void theWalletRequestsTheIssuerToIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet received the new PID or attestation")
+    public void theWalletReceivedTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet compares the attribute values to the existing ones")
+    public void theWalletComparesTheAttributeValuesToTheExistingOnes() {
+        //manual
+    }
+
+    @Then("the wallet notifies the user")
+    public void theWalletNotifiesTheUser() {
+        //manual
+    }
+
+    @When("the wallet confirms the issuance")
+    public void theWalletConfirmsTheIssuance() {
+        //manual
+    }
+
+    @Then("the wallet presents the PID or attestation to the user")
+    public void theWalletPresentsThePIDOrAttestationToTheUser() {
+        //manual
+    }
+
+    @And("informs the user it has been stored")
+    public void informsTheUserItHasBeenStored() {
+        //manual
+    }
+
+    @Given("the wallet does not have a valid refresh token")
+    public void theWalletDoesNotHaveAValidRefreshToken() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option")
+    public void theUserSelectsTheReIssuanceOption() {
+        //manual
+    }
+
+    @Then("the user is redirected to the issuer service for authentication")
+    public void theUserIsRedirectedToTheIssuerServiceForAuthentication() {
+        //manual
+    }
+
+    @Given("the user is authenticated with the issuer service")
+    public void theUserIsAuthenticatedWithTheIssuerService() {
+        //manual
+    }
+
+    @When("the issuer displays the PID or attestation details")
+    public void theIssuerDisplaysThePIDOrAttestationDetails() {
+        //manual
+    }
+
+    @Given("the user consented to the issuance")
+    public void theUserConsentedToTheIssuance() {
+        //manual
+    }
+
+    @Then("the user clicks Agree and proceed to issuance")
+    public void theUserClicksAgreeAndProceedToIssuance() {
+        //manual
+    }
+
+    @When("the issuer service issues the PID or attestation")
+    public void theIssuerServiceIssuesThePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet attempts to redirect the user to the issuer service")
+    public void theWalletAttemptsToRedirectTheUserToTheIssuerService() {
+        //manual
+    }
+
+    @When("there is an issue in the redirection")
+    public void thereIsAnIssueInTheRedirection() {
+        //manual
+    }
+
+    @And("still be able to make any other option")
+    public void stillBeAbleToMakeAnyOtherOption() {
+        //manual
+    }
+
+    @And("the existing PID or attestations are part of a batch group")
+    public void theExistingPIDOrAttestationsArePartOfABatchGroup() {
+        //manual
+    }
+
+    @And("the technical validity of one of the batched PID or attestations is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfOneOfTheBatchedPIDOrAttestationsIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @Then("the wallet automatically requests the issuer to re-issue the same PID or attestation")
+    public void theWalletAutomaticallyRequestsTheIssuerToReIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet has triggered a re-issuance of a PID or attestation")
+    public void theWalletHasTriggeredAReIssuanceOfAPIDOrAttestation() {
+        //manual
+    }
+
+
+    @When("the wallet requests the same issuer to issue the same PID or attestations document type to the wallet unit")
+    public void theWalletRequestsTheSameIssuerToIssueTheSamePIDOrAttestationsDocumentTypeToTheWalletUnit() {
+        //manual
+    }
+
+    @Then("the wallet receives the new PID or attestation as single or batch, depending on the issuer's capabilities")
+    public void theWalletReceivesTheNewPIDOrAttestationAsSingleOrBatchDependingOnTheIssuerSCapabilities() {
+        //manual
+    }
+
+    @Given("the wallet has requested a re-issuance from the issuer")
+    public void theWalletHasRequestedAReIssuanceFromTheIssuer() {
+        //manual
+    }
+
+    @When("the wallet compares the re-issued attestations' attribute values to the attestations to be replaced")
+    public void theWalletComparesTheReIssuedAttestationsAttributeValuesToTheAttestationsToBeReplaced() {
+        //manual
+    }
+
+    @Given("the wallet has received and stored the new PID or attestation")
+    public void theWalletHasReceivedAndStoredTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet confirms the successful issuance")
+    public void theWalletConfirmsTheSuccessfulIssuance() {
+        //manual
+    }
 }
 
 
