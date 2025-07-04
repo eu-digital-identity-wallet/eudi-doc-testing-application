@@ -774,8 +774,6 @@ public class Wallet {
         }
     }
 
-
-
     public void eyeIconIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.eyeIcon)).isDisplayed();
