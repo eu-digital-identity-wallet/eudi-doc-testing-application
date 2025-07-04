@@ -109,4 +109,7 @@ public class WalletElements {
     public static By walletResponded = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid.1\"]");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
     public static By clickAdd = By.xpath("//XCUIElementTypeStaticText[@name=\"Add\"]");
+    public static By chooseWalletPageDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Invoke Wallet\"]");
+    public static By clickTransactionsLogs = By.xpath("//XCUIElementTypeStaticText[@name=\"transaction log\"]");
+    public static By clickTransactionInitialized = By.xpath("XCUIElementTypeButton[1]");
 }

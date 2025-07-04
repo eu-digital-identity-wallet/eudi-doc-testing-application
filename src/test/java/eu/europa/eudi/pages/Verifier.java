@@ -16,6 +16,9 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,10 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Verifier {
@@ -351,6 +351,8 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.walletResponded)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);
         } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletResponded)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);
         }
@@ -442,37 +444,139 @@ public class Verifier {
     }
 
     public void clickTransactionsLogs() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionsLogs)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionsLogs)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickTransactionsLogs)).click();
+        }
     }
 
     public void clickTransactionInitialized() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionInitialized)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionInitialized)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickTransactionInitialized)).click();
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
+            Sequence tap = new Sequence(finger, 1);
+
+// Move to (66, 220)
+
+            tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 66, 220));
+
+// Finger down
+
+            tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+// Finger up
+
+            tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+// Perform tap
+
+            ((RemoteWebDriver) driver).perform(Arrays.asList(tap));
+
+        }
     }
-
     public void getTransactionId() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
+            // Get the text
+            String rawText = jsonElement.getText();
 
-        WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
+            JSONObject jsonObject = new JSONObject(rawText);
+            JSONObject valueObject = jsonObject.getJSONObject("value");
 
-        // Get the text
-        String rawText = jsonElement.getText();
+            // Step 4: Extract the transaction_id
+            String transactionId = valueObject.getString("transaction_id");
 
-        JSONObject jsonObject = new JSONObject(rawText);
-        JSONObject valueObject = jsonObject.getJSONObject("value");
+            // Output the result
+            System.out.println("Transaction ID: " + transactionId);
 
-        // Step 4: Extract the transaction_id
-        String transactionId = valueObject.getString("transaction_id");
+            EventsApiVerifier api = new EventsApiVerifier();
+            api.getPresentationEvents(transactionId);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            WebElement jsonElement = driver.findElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeStaticText"));
+//            // Get the text
+//            String rawText = jsonElement.getText();
+//            System.out.println(rawText);
+//            JSONObject jsonObject = new JSONObject(rawText);
+//            JSONObject valueObject = jsonObject.getJSONObject("value");
+//
+//            // Step 4: Extract the transaction_id
+//            String transactionId = valueObject.getString("transaction_id");
+//
+//            // Output the result
+//            System.out.println("Transaction ID: " + transactionId);
+//
+//            EventsApiVerifier api = new EventsApiVerifier();
+//            api.getPresentationEvents(transactionId);
+            List<WebElement> elements = driver.findElements(By.xpath("//XCUIElementTypeStaticText"));
+            String jsonText = null;
 
-        // Output the result
-        System.out.println("Transaction ID: " + transactionId);
+            for (WebElement el : elements) {
+                int x = el.getLocation().getX();
+                int y = el.getLocation().getY();
+                int width = el.getSize().getWidth();
+                int height = el.getSize().getHeight();
 
-        EventsApiVerifier api = new EventsApiVerifier();
-        api.getPresentationEvents(transactionId);
+                // Filter element based on known size or position (optional)
+                if (width == 1442 && height == 198 && x == 90 && y == 265) {
+                    // Try getText(), label, value, name
+                    String text = el.getText();
+                    if (text == null || text.trim().isEmpty()) {
+                        text = el.getAttribute("label");
+                    }
+                    if (text == null || text.trim().isEmpty()) {
+                        text = el.getAttribute("value");
+                    }
+                    if (text == null || text.trim().isEmpty()) {
+                        text = el.getAttribute("name");
+                    }
+
+                    if (text != null && !text.trim().isEmpty()) {
+                        jsonText = text;
+                        System.out.println("Found JSON text: " + jsonText);
+                        break;
+                    }
+                }
+            }
+
+            // Validate and parse the JSON
+            if (jsonText == null || jsonText.trim().isEmpty()) {
+                throw new RuntimeException("Could not find or extract JSON text from the UI.");
+            }
+
+            try {
+                JSONObject jsonObject = new JSONObject(jsonText);
+                JSONObject valueObject = jsonObject.getJSONObject("value");
+                String transactionId = valueObject.getString("transaction_id");
+
+                System.out.println("Transaction ID: " + transactionId);
+
+                EventsApiVerifier api = new EventsApiVerifier();
+                api.getPresentationEvents(transactionId);
+
+            } catch (Exception e) {
+                System.err.println("Failed to parse JSON: " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void chooseWalletPageIsDisplayed() {
-        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.chooseWalletPageDisplayed)).getText();
-        Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
-
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.chooseWalletPageDisplayed)).getText();
+            Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
+        }else{
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.chooseWalletPageDisplayed)).getText();
+            Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
+        }
     }
 }

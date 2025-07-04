@@ -687,13 +687,23 @@ public class GeneralStepDefs{
 
     @Given("the user has successfully entered the PIN")
     public void theUserHasSuccessfullyEnteredThePIN() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //        test.mobile().wallet().startAndStopDriver();
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.terminateApp("eu.europa.ec.euidi.dev");
 // Re-launches the app from scratch
-        driver.activateApp("eu.europa.ec.euidi.dev");
-        test.mobile().wallet().loginPageIsDisplayed();
-        test.mobile().wallet().createAPin();
+            driver.activateApp("eu.europa.ec.euidi.dev");
+            test.mobile().wallet().loginPageIsDisplayed();
+            test.mobile().wallet().createAPin();
+        }else{
+            //        test.mobile().wallet().startAndStopDriver();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.terminateApp("eu.europa.ec.euidi.dev");
+// Re-launches the app from scratch
+            driver.activateApp("eu.europa.ec.euidi.dev");
+            test.mobile().wallet().loginPageIsDisplayed();
+            test.mobile().wallet().createAPin();
+        }
     }
 
     @When("the user opens a mDL")
@@ -1066,11 +1076,19 @@ public class GeneralStepDefs{
 
     @Given("the user is on the Login screen")
     public void theUserIsOnTheLoginScreen() throws InterruptedException {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.terminateApp("eu.europa.ec.euidi.dev");
 // Re-launches the app from scratch
-        driver.activateApp("eu.europa.ec.euidi.dev");
-        test.mobile().wallet().loginPageIsDisplayed();
+            driver.activateApp("eu.europa.ec.euidi.dev");
+            test.mobile().wallet().loginPageIsDisplayed();
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.terminateApp("eu.europa.ec.euidi.dev");
+// Re-launches the app from scratch
+            driver.activateApp("eu.europa.ec.euidi.dev");
+            test.mobile().wallet().loginPageIsDisplayed();
+            }
     }
 
     @When("the user clicks on Documents")
