@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class IssuerElements {
     public static By clickTestCredentialOffer = By.xpath("//android.widget.Button[@text=\"WALLET TEST Credential Offer\"]") ;
     public static By requestCredentialsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Request Credentials for your EUDI Wallet\"]");
-    public static By checkPID = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[9]");
+    public static By checkPID = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[8]");
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
     public static By clickEudiwButton = By.xpath("//android.widget.TextView[@text=\"Use EUDIW\"]");
