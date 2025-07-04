@@ -415,7 +415,7 @@ public class Issuer {
         enterCountryCode();
         scrollUntilFindSubmit();
         clickSubmitIssuer();
-//        authorizeIsDisplayed();
+        authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
     }
