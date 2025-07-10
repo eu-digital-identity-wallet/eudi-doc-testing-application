@@ -55,7 +55,7 @@ Feature: Presentation of Batch Issued Attestations in Proximity Scenario
     When the EUDI Wallet selects an available matching attestation
     Then the Wallet uses an attestation from a batch in a random order
 
-  @US_PAIOACWICDP_TC_08
+  @US_PAIOACWICDP_TC_08 @manual:Passed
   Scenario: No matching attestation available
     Given the EUDI Wallet attempts to match the attestation request
     When no attestation matches the request
