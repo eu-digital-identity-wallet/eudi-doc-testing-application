@@ -7,7 +7,6 @@
     <name>Eudiw automated tests</name>
 
     <properties>
-        <!--        <tags>@ANDROID,@IOS, @manual</tags>-->
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -25,7 +24,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
-        <build-version>EUDI_Wallet_Version_2025.02.22-Demo</build-version><!-- Add this line to set the number of threads -->
+        <build-version>EUDI_Wallet_Version_2025.02.22-Demo</build-version>
     </properties>
 
     <dependencies>
@@ -35,7 +34,6 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
-
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -93,29 +91,13 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-<dependency>
-      <groupId>com.browserstack</groupId>
-      <artifactId>browserstack-java-sdk</artifactId>
-      <version>LATEST</version>
-      <scope>compile</scope>
-    </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.assertj</groupId>-->
-<!--            <artifactId>assertj-core</artifactId>-->
-<!--            <version>${assertj.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.hamcrest</groupId>-->
-<!--            <artifactId>hamcrest</artifactId>-->
-<!--            <version>${hamcrest.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.codeborne</groupId>-->
-<!--            <artifactId>phantomjsdriver</artifactId>-->
-<!--            <version>1.4.4</version>-->
-<!--        </dependency>-->
+<!--<dependency>-->
+<!--      <groupId>com.browserstack</groupId>-->
+<!--      <artifactId>browserstack-java-sdk</artifactId>-->
+<!--      <version>LATEST</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -143,7 +125,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Maven Antrun Plugin to replace core.css after tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -157,7 +138,6 @@
                             <target>
                                 <!-- Optional: Delete core.css before replacing it -->
                                 <delete file="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
-
                                 <!-- Copy the custom-style.css to replace core.css -->
                                 <copy file="${project.basedir}/src/test/resources/custom-style.css" tofile="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
                             </target>
@@ -168,7 +148,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Serenity Maven Plugin to run tests -->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
@@ -191,14 +170,13 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
             <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+<!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>
@@ -217,7 +195,6 @@
           </execution>
         </executions>
       </plugin>
-
         </plugins>
     </build>
 </project>
