@@ -1,4 +1,4 @@
-@ANDROID @US_RIAWIA @Q2_2025
+@ANDROID @US_RIAWIA @Q3_2025
 Feature:Automatic Re-Issuance of PIDs or Attestations
   As an EUDI Wallet,
   I want to automatically re-issue a PID or attestation from the original issuer by replacing an existing PID or attestation when its technical validity is about to expire or when the number of unused attestations of the same document type and issuer falls below a defined threshold,
