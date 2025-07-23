@@ -18,7 +18,7 @@ public class WalletElements {
     public static By clickContinue = By.xpath("//XCUIElementTypeButton[@name=\"CONTINUE\"]");
     public static By chooseSampleData = By.xpath("//XCUIElementTypeStaticText[@name=\"Load Sample Data\"]");
     public static By dashboardPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
-    public static By appOpensSuccessfully = By.xpath("//XCUIElementTypeStaticText[@label=\"Define your presentation request\"]");
+    public static By appOpensSuccessfully = By.xpath("//XCUIElementTypeStaticText[@name=\"Define your presentation request\"]");
     public static By clickShareData = By.xpath("//XCUIElementTypeStaticText[@label=\"Request to share specific attributes from PID\"]");
     public static By clickNext = By.xpath("//XCUIElementTypeButton[@name=\"NEXT\"]");
     public static By chooseData = By.xpath("//XCUIElementTypeSwitch[@name=\"Family name\"]");

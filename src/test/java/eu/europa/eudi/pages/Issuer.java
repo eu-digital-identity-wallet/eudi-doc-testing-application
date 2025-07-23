@@ -14,6 +14,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.HashMap;
@@ -340,8 +341,11 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
         int i = 1;
         while (i < 5) {
+            WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+            String elementId = ((RemoteWebElement) scrollView).getId();
             Map<String, Object> params = new HashMap<>();
             params.put("direction", "up");
+            params.put("element", elementId);
             driver.executeScript("mobile: swipe", params);
             i++;
         }
@@ -363,9 +367,11 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
-
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
+                params.put("element", elementId);
                 driver.executeScript("mobile: swipe", params);
                 i++;
             }
