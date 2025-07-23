@@ -1,1 +1,2 @@
 *.apk filter=lfs diff=lfs merge=lfs -text
+src/test/resources/app/androidApp.apk filter=lfs diff=lfs merge=lfs -text
