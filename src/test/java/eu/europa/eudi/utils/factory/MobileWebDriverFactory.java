@@ -236,6 +236,13 @@ public class MobileWebDriverFactory {
         caps1.setCapability("fullReset", false);
         caps1.setCapability("app", apkPath1.getAbsolutePath());
         caps1.setCapability("autoAcceptAlerts", true);
+        caps1.setCapability("usePrebuiltWDA", true);
+        caps1.setCapability("waitForIdleTimeout", 100);
+        caps1.setCapability("autoDismissAlerts", true);
+        caps1.setCapability("newCommandTimeout", 180);
+        caps1.setCapability("includeNonModalElements", true);
+        caps1.setCapability("connectHardwareKeyboard", false);
+
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
