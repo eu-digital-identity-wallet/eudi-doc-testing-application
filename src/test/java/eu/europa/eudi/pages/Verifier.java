@@ -256,7 +256,7 @@ public class Verifier {
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".flingForward()" +
-                            ".setMaxSearchSwipes(10)" +
+                            ".setMaxSearchSwipes(50)" +
                             ".scrollIntoView(new UiSelector().text(\"Next\"))"
             ));
         } else {
@@ -275,11 +275,11 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://dev.verifier.eudiw.dev/home";
+            String url = "https://verifier.eudiw.dev/home";
 
             try {
                 try {
-                    driver.terminateApp("eu.europa.ec.euidi.dev");
+                    driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");

@@ -1,3 +1,3 @@
-call mvn clean verify -Dcucumber.filter.tags="(@Q2_2025) or (@automated and @ANDROID)"
+call mvn clean verify -Dcucumber.filter.tags="@ANDROID and @automated"
 rmdir /s /q target/site/reports
-call mvn serenity:aggregate -Dtags="Q2_2025 or automated"
+call mvn serenity:aggregate -Dtags="ANDROID or automated"
