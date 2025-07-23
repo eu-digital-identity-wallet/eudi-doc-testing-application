@@ -246,9 +246,9 @@ public class Issuer {
 
     public void clickSubmitIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -312,33 +312,26 @@ public class Issuer {
 
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.findElement(MobileBy.AndroidUIAutomator(
-//                    "new UiScrollable(new UiSelector().scrollable(true))" +
-//                            ".setAsVerticalList()" +
-//                            ".flingForward()" +
-//                            ".setMaxSearchSwipes(10)" +
-//                            ".scrollIntoView(new UiSelector().text(\"Submit\"))"
-//            ));
-            for (int i = 0; i < 6; i++) {
-                // Get screen size
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.8);
-                int endY = (int) (size.height * 0.2);
-
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-
-                // Optional: Add a short pause between swipes
-                Thread.sleep(50);
-            }
-
+//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            for (int i = 0; i < 6; i++) {
+//                // Get screen size
+//                Dimension size = driver.manage().window().getSize();
+//                int startX = size.width / 2;
+//                int startY = (int) (size.height * 0.8);
+//                int endY = (int) (size.height * 0.2);
+//
+//                // Swipe up
+//                new TouchAction<>(driver)
+//                        .press(PointOption.point(startX, startY))
+//                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+//                        .moveTo(PointOption.point(startX, endY))
+//                        .release()
+//                        .perform();
+//
+//                // Optional: Add a short pause between swipes
+//                Thread.sleep(50);
+//            }
+//
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -433,8 +426,8 @@ public class Issuer {
         enterCountry();
         scrollUntilCountryCode();
         enterCountryCode();
-//        scrollUntilFindSubmit();
-//        clickSubmitIssuer();
+        scrollUntilFindSubmit();
+        clickSubmitIssuer();
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
