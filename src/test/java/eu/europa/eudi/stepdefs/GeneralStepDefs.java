@@ -484,9 +484,10 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+//        test.mobile().issuer().scrollUntilFindSubmit();
+//        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -690,17 +691,17 @@ public class GeneralStepDefs{
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //        test.mobile().wallet().startAndStopDriver();
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.terminateApp("eu.europa.ec.euidi.dev");
+            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
-            driver.activateApp("eu.europa.ec.euidi.dev");
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
             test.mobile().wallet().loginPageIsDisplayed();
             test.mobile().wallet().createAPin();
         }else{
             //        test.mobile().wallet().startAndStopDriver();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.terminateApp("eu.europa.ec.euidi.dev");
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
 // Re-launches the app from scratch
-            driver.activateApp("eu.europa.ec.euidi.dev");
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
             test.mobile().wallet().createAPin();
         }
@@ -890,8 +891,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterCountry();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+//        test.mobile().issuer().scrollUntilFindSubmit();
+//        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -1078,15 +1079,15 @@ public class GeneralStepDefs{
     public void theUserIsOnTheLoginScreen() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.terminateApp("eu.europa.ec.euidi.dev");
+            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
-            driver.activateApp("eu.europa.ec.euidi.dev");
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
             test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.terminateApp("eu.europa.ec.euidi.dev");
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
 // Re-launches the app from scratch
-            driver.activateApp("eu.europa.ec.euidi.dev");
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
             }
     }

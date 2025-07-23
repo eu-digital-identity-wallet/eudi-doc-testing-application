@@ -15,7 +15,7 @@ public class EventsApiVerifier {
 
     public void getPresentationEvents(String transactionId) {
         // Set base URI (adjust as needed)
-        RestAssured.baseURI = "https://dev.verifier-backend.eudiw.dev"; // replace with actual host
+        RestAssured.baseURI = "https://verifier-backend.eudiw.dev"; // replace with actual host
 
         // Make the GET request with the transactionId in the path
         Response response = RestAssured

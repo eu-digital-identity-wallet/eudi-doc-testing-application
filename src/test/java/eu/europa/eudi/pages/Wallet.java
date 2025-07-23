@@ -414,7 +414,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://dev.verifier.eudiw.dev/home";
+            String url = "https://verifier.eudiw.dev/home";
             Map<String, Object> args = new HashMap<>();
             args.put("command", "am");
             args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
@@ -423,7 +423,7 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://dev.verifier.eudiw.dev/home";
+            String url = "https://verifier.eudiw.dev/home";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -601,7 +601,8 @@ public class Wallet {
 
     public void clickAddMyDigitalID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickAddMyDigitalID)).click();
+            WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickAddMyDigitalID));
+            tapAction(myDigitalIDButton);
         } else {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAddMyDigitalID));
             tapAction(myDigitalIDButton);
@@ -609,17 +610,31 @@ public class Wallet {
     }
 
     private void tapAction(WebElement myDigitalIDButton) {
-        Point center = myDigitalIDButton.getLocation();
-        int x = center.getX() + myDigitalIDButton.getSize().getWidth() / 2;
-        int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence tap = new Sequence(finger, 1);
-        tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
-                        PointerInput.Origin.viewport(),
-                        x, y))
-                .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
-                .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
-        ((AppiumDriver) test.mobileWebDriverFactory().getDriverIos()).perform(Collections.singletonList(tap));
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            Point center = myDigitalIDButton.getLocation();
+            int x = center.getX() + myDigitalIDButton.getSize().getWidth() / 2;
+            int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence tap = new Sequence(finger, 1);
+            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
+                            PointerInput.Origin.viewport(),
+                            x, y))
+                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
+                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
+            ((AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid()).perform(Collections.singletonList(tap));
+        } else {
+            Point center = myDigitalIDButton.getLocation();
+            int x = center.getX() + myDigitalIDButton.getSize().getWidth() / 2;
+            int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence tap = new Sequence(finger, 1);
+            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
+                            PointerInput.Origin.viewport(),
+                            x, y))
+                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
+                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
+            ((AppiumDriver) test.mobileWebDriverFactory().getDriverIos()).perform(Collections.singletonList(tap));
+        }
     }
 
     public void clickPID() {
@@ -697,7 +712,7 @@ public class Wallet {
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".flingForward()" +
-                            ".setMaxSearchSwipes(10)" +
+                            ".setMaxSearchSwipes(50)" +
                             ".scrollIntoView(new UiSelector().text(\"PID\"))"
             ));
         } else {
@@ -744,7 +759,7 @@ public class Wallet {
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".flingForward()" +
-                            ".setMaxSearchSwipes(10)" +
+                            ".setMaxSearchSwipes(50)" +
                             ".scrollIntoView(new UiSelector().text(\"Digital Credentials Issuer\"))"
             ));
         }
@@ -823,7 +838,7 @@ public class Wallet {
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".scrollForward()" +
-                            ".setMaxSearchSwipes(10)" +
+                            ".setMaxSearchSwipes(50)" +
                             ".scrollIntoView(new UiSelector().text(\"mDL\"))"
             ));
         } else {
