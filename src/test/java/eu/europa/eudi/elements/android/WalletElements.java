@@ -110,7 +110,7 @@ public class WalletElements {
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickShareAttributes = By.xpath("");
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Optional Elements\"]");
+    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
@@ -124,4 +124,5 @@ public class WalletElements {
     public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document from list\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By closeKeyboardForm = By.xpath("//android.widget.TextView[@text=\"Test Provider Form\"]");
+    public static By clickContinueOnPopUp = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]");
 }
