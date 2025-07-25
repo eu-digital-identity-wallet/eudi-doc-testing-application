@@ -83,6 +83,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().scrollUntilPID();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickDone();
         }
 
         if (pid_and_mdl_data) {
@@ -486,8 +487,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterCountry();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
