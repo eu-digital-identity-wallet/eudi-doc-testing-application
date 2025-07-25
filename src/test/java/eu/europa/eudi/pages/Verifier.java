@@ -390,7 +390,7 @@ public class Verifier {
                 int height = el.getSize().getHeight();
 
                 // Filter element based on known size or position (optional)
-                if (width == 1442 && height == 198 && x == 90 && y == 265) {
+                if (width == 1407 && height == 198 && x == 90 && y == 265) {
                     // Try getText(), label, value, name
                     String text = el.getText();
                     if (text == null || text.trim().isEmpty()) {

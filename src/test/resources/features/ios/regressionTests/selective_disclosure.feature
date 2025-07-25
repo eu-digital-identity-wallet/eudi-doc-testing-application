@@ -20,13 +20,13 @@ Feature: Selective Disclosure
     When the user clicks the share button
     Then the PIN field is displayed to authorize sharing
 
-  @US_SD_TC_04 @before_01
+  @US_SD_TC_04 @before_01 @test
   Scenario: Expand Verification Section
     Given the user views the document that is requested
     When the user clicks to view the document's details
     Then the expanded verification details are displayed
 
-  @US_SD_TC_05 @before_01
+  @US_SD_TC_05 @before_01 @test
   Scenario: Completion of Process
     Given the expanded verification details are seen
     When the user clicks done
