@@ -972,11 +972,11 @@ public class GeneralStepDefs{
         theUserHasFinalizedDataSelection();
         theUserClicksTheSHAREButton();
         thePINFieldIsDisplayedToAuthorizeSharing();
+        test.mobile().wallet().createAPin();
     }
 
     @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
-        test.mobile().wallet().createAPin();
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
@@ -1292,7 +1292,6 @@ public class GeneralStepDefs{
     @Given ("the expanded verification details are seen")
     public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException {
         theUserViewsTheDocumentThatIsRequested();
-        theUserInsertsThePIN();
         theUserClicksToViewTheDocumentsDetails();
         theExpandedVerificationDetailsAreDisplayed();
     }

@@ -20,7 +20,7 @@ Feature: Selective Disclosure
     When the user clicks the share button
     Then the PIN field is displayed to authorize sharing
 
-  @US_SD_TC_04 @before_01 @test
+  @US_SD_TC_04 @before_01
   Scenario: Expand Verification Section
     Given the user views the document that is requested
     When the user clicks to view the document's details
