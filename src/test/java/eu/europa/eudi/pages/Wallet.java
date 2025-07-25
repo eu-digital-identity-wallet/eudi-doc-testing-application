@@ -1,29 +1,19 @@
 package eu.europa.eudi.pages;
 
-import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
-import eu.europa.eudi.stepdefs.GeneralStepDefs;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
@@ -75,7 +65,6 @@ public class Wallet {
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
-            char firstDigit = fullPin.charAt(0);
             char secondDigit = fullPin.charAt(1);
             char thirdDigit = fullPin.charAt(2);
             char fourthDigit = fullPin.charAt(3);

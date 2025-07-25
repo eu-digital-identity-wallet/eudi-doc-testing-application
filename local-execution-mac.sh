@@ -1,5 +1,5 @@
 #!/bin/bash
-mvn clean verify -Dcucumber.filter.tags="@automated or @Q2_2025" "$@"
-rm -rf target/site/serenity
-# Clear previous report data
-mvn serenity:aggregate -Dtags="automated or Q2_2025"
+ rm -rf target/
+ mvn clean verify -Dcucumber.filter.tags="(@Q2_2025) or (@automated)"
+ mvn serenity:aggregate -Dtags="Q2_2025 or automated"
+ mvn serenity:reports

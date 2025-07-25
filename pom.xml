@@ -20,7 +20,7 @@
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <assembly.phase>none</assembly.phase>
         <serenity.bdd.version>3.9.2</serenity.bdd.version>
-        <rerun.failed.scenarios>0</rerun.failed.scenarios>
+        <rerun.failed.scenarios>1</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
@@ -156,6 +156,9 @@
                 <executions>
                     <execution>
                         <phase>integration-test</phase> <!-- Tests phase -->
+                    <goals>
+                        <goal>aggregate</goal>
+                    </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -176,7 +179,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-<!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>
