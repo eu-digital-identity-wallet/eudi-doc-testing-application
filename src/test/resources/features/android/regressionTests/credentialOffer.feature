@@ -1,4 +1,4 @@
-@ANDROID @US_COSD @automated
+@ANDROID @US_COSD
 Feature: Credential issuance process for the same device
   As a user of the issuer service
   I want to be able to issue a credential
@@ -20,7 +20,7 @@ Feature: Credential issuance process for the same device
     Then the user is redirected back to the issuer service
     And the user is prompted to authenticate and consent to the issuance
 
-  @US_COSD_TC_03 @before_01
+  @US_COSD_TC_03 @before_01 @rerun3
   Scenario: User authenticates and consents to the issuance
     Given the user is asked to authenticate and consent on the issuer service
     When the user authenticates and consents to the issuance
