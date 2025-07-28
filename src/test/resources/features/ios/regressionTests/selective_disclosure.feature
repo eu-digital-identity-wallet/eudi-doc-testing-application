@@ -26,7 +26,7 @@ Feature: Selective Disclosure
     When the user clicks to view the document's details
     Then the expanded verification details are displayed
 
-  @US_SD_TC_05 @before_01
+  @US_SD_TC_05 @before_01 @test
   Scenario: Completion of Process
     Given the expanded verification details are seen
     When the user clicks done

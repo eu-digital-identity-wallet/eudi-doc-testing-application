@@ -3,7 +3,7 @@ package eu.europa.eudi.utils.factory;
 import java.io.IOException;
 import java.nio.file.*;
     public class ReadmeManager {
-        public static final String SHELL_SCRIPT = "./local-execution.cmd";
+        public static final String SHELL_SCRIPT = "./local-execution-mac.sh";
 
         public static void main(String[] args) {
             try {
