@@ -976,8 +976,8 @@ public class GeneralStepDefs{
 
     @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
-//        test.mobile().wallet().createAPin();
-//        test.mobile().wallet().successMessageIsDisplayedForVerifier();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
 
