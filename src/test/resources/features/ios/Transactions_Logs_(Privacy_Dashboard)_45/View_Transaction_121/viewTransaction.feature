@@ -37,7 +37,7 @@ Feature: View Transaction in EUDI Wallet
   Scenario: User reports suspicious operations
     Given the user is viewing the details of a transaction entry
     When the user reports a suspicious operation related to the presentation
-    Then the suspicious operation is reported to DPAs as per user story #35|
+    Then the suspicious operation is reported to DPAs
 
   @US_VT_TC_05 @manual:Passed
   Scenario: User returns to Transactions screen

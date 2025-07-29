@@ -1,0 +1,268 @@
+{
+    "transaction_id": "-cn5C64bIaLzequYbQUmwe7G7gPzsforvTy5qbt4N080tZuVfUvmf2YmNLqJ6lU_w-TyvBYYywR-zBULG38eGg",
+    "last_updated": 1749111313950,
+    "events": [
+        {
+            "timestamp": 1749111296274,
+            "event": "Transaction initialized",
+            "actor": "Verifier",
+            "response": {
+                "transaction_id": "-cn5C64bIaLzequYbQUmwe7G7gPzsforvTy5qbt4N080tZuVfUvmf2YmNLqJ6lU_w-TyvBYYywR-zBULG38eGg",
+                "client_id": "x509_san_dns:dev.verifier-backend.eudiw.dev",
+                "request": null,
+                "request_uri": "https://dev.verifier-backend.eudiw.dev/wallet/request.jwt/sWF7sc_D3TTBZamrc5ybVB6lDe3Xy7qofdImkLsY-oYuf9l8OtjVsCkrimgnhFZLno8ZUXYzZEcmxZyP9K6IvA",
+                "request_uri_method": "get"
+            }
+        },
+        {
+            "timestamp": 1749111297823,
+            "event": "Request object retrieved",
+            "actor": "Wallet",
+            "jwt": "eyJ4NWMiOlsiTUlJREVEQ0NBcmFnQXdJQkFnSVVFMW9OMDlFdm1UaUliZ3AxK1U1ODBiSEpCK013Q2dZSUtvWkl6ajBFQXdJd1hERWVNQndHQTFVRUF3d1ZVRWxFSUVsemMzVmxjaUJEUVNBdElGVlVJREF5TVMwd0t3WURWUVFLRENSRlZVUkpJRmRoYkd4bGRDQlNaV1psY21WdVkyVWdTVzF3YkdWdFpXNTBZWFJwYjI0eEN6QUpCZ05WQkFZVEFsVlVNQjRYRFRJMU1EUXhNREEzTlRNeE5Gb1hEVEkzTURReE1EQTNOVE14TTFvd1Z6RWRNQnNHQTFVRUF3d1VSVlZFU1NCU1pXMXZkR1VnVm1WeWFXWnBaWEl4Q2pBSUJnTlZCQVVUQVRFeEhUQWJCZ05WQkFvTUZFVlZSRWtnVW1WdGIzUmxJRlpsY21sbWFXVnlNUXN3Q1FZRFZRUUdFd0pWVkRCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBQko4MmljZk1YK1RkaVV2ZEhJd3FFYjZHSzEycXZQVjV2b0lIalBhUXBzekN5eHp0ck1Lcm9EV3ZEZHZBbmY0TGNNNXBZT1N3UlBaZUJuaUNDb2dsSVZtamdnRlpNSUlCVlRBTUJnTlZIUk1CQWY4RUFqQUFNQjhHQTFVZEl3UVlNQmFBRkdMSGxFY292UStpRmlDbm1zSkpsRVR4QWRQSE1EMEdBMVVkRVFRMk1EU0JFbTV2TFhKbGNHeDVRR1YxWkdsM0xtUmxkb0llWkdWMkxuWmxjbWxtYVdWeUxXSmhZMnRsYm1RdVpYVmthWGN1WkdWMk1CSUdBMVVkSlFRTE1Ba0dCeWlCakYwRkFRWXdRd1lEVlIwZkJEd3dPakE0b0RhZ05JWXlhSFIwY0hNNkx5OXdjbVZ3Y205a0xuQnJhUzVsZFdScGR5NWtaWFl2WTNKc0wzQnBaRjlEUVY5VlZGOHdNaTVqY213d0hRWURWUjBPQkJZRUZDbWVBS3BCOHBJNWZIakw0dW4xWnM0cTNWcUVNQTRHQTFVZER3RUIvd1FFQXdJSGdEQmRCZ05WSFJJRVZqQlVobEpvZEhSd2N6b3ZMMmRwZEdoMVlpNWpiMjB2WlhVdFpHbG5hWFJoYkMxcFpHVnVkR2wwZVMxM1lXeHNaWFF2WVhKamFHbDBaV04wZFhKbExXRnVaQzF5WldabGNtVnVZMlV0Wm5KaGJXVjNiM0pyTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFDZ0FKWVFRZ3o4dzg0QXV0cDFzbEJOUERBRjFnUzgyeHl6WENVcVFsREUvUUlnVHpjY0tGNVg5ODBNMjZmc3Z5R3p5em1wMjZxdEdPd3N0MndkOWRpa3Ftaz0iXSwidHlwIjoib2F1dGgtYXV0aHotcmVxK2p3dCIsImFsZyI6IkVTMjU2In0.eyJyZXNwb25zZV91cmkiOiJodHRwczovL2Rldi52ZXJpZmllci1iYWNrZW5kLmV1ZGl3LmRldi93YWxsZXQvZGlyZWN0X3Bvc3Qvc1dGN3NjX0QzVFRCWmFtcmM1eWJWQjZsRGUzWHk3cW9mZElta0xzWS1vWXVmOWw4T3RqVnNDa3JpbWduaEZaTG5vOFpVWFl6WkVjbXhaeVA5SzZJdkEiLCJhdWQiOiJodHRwczovL3NlbGYtaXNzdWVkLm1lL3YyIiwic2NvcGUiOiIiLCJyZXNwb25zZV90eXBlIjoidnBfdG9rZW4iLCJzdGF0ZSI6InNXRjdzY19EM1RUQlphbXJjNXliVkI2bERlM1h5N3FvZmRJbWtMc1ktb1l1ZjlsOE90alZzQ2tyaW1nbmhGWkxubzhaVVhZelpFY214WnlQOUs2SXZBIiwicHJlc2VudGF0aW9uX2RlZmluaXRpb25fdXJpIjoiaHR0cHM6Ly9kZXYudmVyaWZpZXItYmFja2VuZC5ldWRpdy5kZXYvd2FsbGV0L3BkL3NXRjdzY19EM1RUQlphbXJjNXliVkI2bERlM1h5N3FvZmRJbWtMc1ktb1l1ZjlsOE90alZzQ2tyaW1nbmhGWkxubzhaVVhZelpFY214WnlQOUs2SXZBIiwiaWF0IjoxNzQ5MTExMjk3LCJub25jZSI6Ijc1ZjU2NTYxLWIzNzctNGRiMy05ODFlLTg1NzFjNzUxYmI3ZSIsImNsaWVudF9pZCI6Ing1MDlfc2FuX2RuczpkZXYudmVyaWZpZXItYmFja2VuZC5ldWRpdy5kZXYiLCJjbGllbnRfbWV0YWRhdGEiOnsiYXV0aG9yaXphdGlvbl9lbmNyeXB0ZWRfcmVzcG9uc2VfYWxnIjoiRUNESC1FUyIsImF1dGhvcml6YXRpb25fZW5jcnlwdGVkX3Jlc3BvbnNlX2VuYyI6IkExMjhDQkMtSFMyNTYiLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwidXNlIjoiZW5jIiwiY3J2IjoiUC0yNTYiLCJraWQiOiI2ODYwODk0OS1iMjNhLTRmMjYtOWQ4Ni04ODY0ZWNiMzA4YjUiLCJ4IjoiYmN5OFdfT3hGZ0wySVdaRUhnQTd3WEhjdEQxUXMzY0x0WjJ5UjFzZEx3USIsInkiOiJkVTFkNGRBOEtERWtnVFljYWp5aFhDekluU3V2X0wxV05KenhZR0JWNXk4IiwiYWxnIjoiRUNESC1FUyJ9XX0sImlkX3Rva2VuX2VuY3J5cHRlZF9yZXNwb25zZV9hbGciOiJSU0EtT0FFUC0yNTYiLCJpZF90b2tlbl9lbmNyeXB0ZWRfcmVzcG9uc2VfZW5jIjoiQTEyOENCQy1IUzI1NiIsInZwX2Zvcm1hdHMiOnsidmMrc2Qtand0Ijp7InNkLWp3dF9hbGdfdmFsdWVzIjpbIkVTMjU2IiwiRVMzODQiLCJFUzUxMiJdLCJrYi1qd3RfYWxnX3ZhbHVlcyI6WyJSUzI1NiIsIlJTMzg0IiwiUlM1MTIiLCJFUzI1NiIsIkVTMzg0IiwiRVM1MTIiXX0sImRjK3NkLWp3dCI6eyJzZC1qd3RfYWxnX3ZhbHVlcyI6WyJFUzI1NiIsIkVTMzg0IiwiRVM1MTIiXSwia2Itand0X2FsZ192YWx1ZXMiOlsiUlMyNTYiLCJSUzM4NCIsIlJTNTEyIiwiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIl19LCJtc29fbWRvYyI6eyJhbGciOlsiRVMyNTYiLCJFUzM4NCIsIkVTNTEyIiwiRWREU0EiXX19LCJzdWJqZWN0X3N5bnRheF90eXBlc19zdXBwb3J0ZWQiOlsidXJuOmlldGY6cGFyYW1zOm9hdXRoOmp3ay10aHVtYnByaW50Il0sImlkX3Rva2VuX3NpZ25lZF9yZXNwb25zZV9hbGciOiJSUzI1NiJ9LCJyZXNwb25zZV9tb2RlIjoiZGlyZWN0X3Bvc3Quand0In0.LyEWmtl1KhFL1wsnARVUtOsPajinsY89EqjBJ8ZxaY0Vkbj94_z4XyOHzKDde2uMGooE1hS36tvsMgfnsYLXgQ"
+        },
+        {
+            "timestamp": 1749111298443,
+            "event": "Presentation definition retrieved",
+            "actor": "Wallet",
+            "presentation_definition": {
+                "id": "f5948c0d-56cd-4343-a628-48cef0f2a11d",
+                "input_descriptors": [
+                    {
+                        "id": "eu.europa.ec.eudi.pid.1",
+                        "format": {
+                            "mso_mdoc": {
+                                "alg": [
+                                    "ES256",
+                                    "ES384",
+                                    "ES512",
+                                    "EdDSA"
+                                ]
+                            }
+                        },
+                        "constraints": {
+                            "fields": [
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['family_name']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['given_name']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['birth_date']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['age_over_18']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['age_in_years']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['age_birth_year']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['family_name_birth']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['given_name_birth']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['birth_place']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_address']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_country']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_state']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_city']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_postal_code']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_street']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['resident_house_number']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['sex']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['nationality']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['issuance_date']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['expiry_date']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['issuing_authority']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['document_number']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['personal_administrative_number']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['issuing_country']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['issuing_jurisdiction']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['portrait']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['email_address']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['mobile_phone_number']"
+                                    ],
+                                    "intent_to_retain": false
+                                },
+                                {
+                                    "path": [
+                                        "$['eu.europa.ec.eudi.pid.1']['trust_anchor']"
+                                    ],
+                                    "intent_to_retain": false
+                                }
+                            ],
+                            "limit_disclosure": "required"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "timestamp": 1749111308779,
+            "event": "Wallet response posted",
+            "actor": "Wallet",
+            "wallet_response": {
+                "vp_token": [
+                    "o2d2ZXJzaW9uYzEuMGlkb2N1bWVudHOBo2dkb2NUeXBld2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xbGlzc3VlclNpZ25lZKJqbmFtZVNwYWNlc6F3ZXUuZXVyb3BhLmVjLmV1ZGkucGlkLjGI2BhYbKRmcmFuZG9tWCBnnCWHxh5pisc3XvQE7hpdG-yqoeA9VUscZ8ENLi8QS2hkaWdlc3RJRARsZWxlbWVudFZhbHVl2QPsajIwMjUtMDYtMDVxZWxlbWVudElkZW50aWZpZXJqYmlydGhfZGF0ZdgYWG2kZnJhbmRvbVggzdYuLPZBZXpEQc-XtSaBbT82i7PPwHP_0DX0nYzF255oZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZdkD7GoyMDI1LTA5LTAzcWVsZW1lbnRJZGVudGlmaWVya2V4cGlyeV9kYXRl2BhYa6RmcmFuZG9tWCADc5JXnyONTfABHiaffNfl4V8VsOuw3USbEh3YokF85WhkaWdlc3RJRAVsZWxlbWVudFZhbHVla1RoZW9maWxhdG91cWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYZqRmcmFuZG9tWCBhkgoIG8NIiewI_JY_S9g8tvlATvv1ASQMs4u6vvsu-mhkaWdlc3RJRAJsZWxlbWVudFZhbHVlZ0ZvdGVpbmlxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWHWkZnJhbmRvbVggIzUjPJskHvsXX2CrKD5dtpnL-RxsePe_rTQP1JYrxitoZGlnZXN0SUQBbGVsZW1lbnRWYWx1ZW9UZXN0IFBJRCBpc3N1ZXJxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhvpGZyYW5kb21YIJ8gdDobFfPTNmYK7MIZlmsL9i7UW0G7KwQb6gXCr4YoaGRpZ2VzdElEAGxlbGVtZW50VmFsdWXZA-xqMjAyNS0wNi0wNXFlbGVtZW50SWRlbnRpZmllcm1pc3N1YW5jZV9kYXRl2BhYZqRmcmFuZG9tWCBOOOwzFkEA7fBakXLLNyCDTntWm8zjUHuELu1oRCzkC2hkaWdlc3RJRAZsZWxlbWVudFZhbHVlYkZDcWVsZW1lbnRJZGVudGlmaWVyb2lzc3VpbmdfY291bnRyedgYWGOkZnJhbmRvbVggEj5p1G22XJ7razjWgFyRoBjcRLRS2Ps5X5fJElyyQMFoZGlnZXN0SUQHbGVsZW1lbnRWYWx1ZYFiR1JxZWxlbWVudElkZW50aWZpZXJrbmF0aW9uYWxpdHlqaXNzdWVyQXV0aIRDoQEmoRghWQLmMIIC4jCCAomgAwIBAgIUDrk_vkpDwceG6SHNsoDaFxiNP0cwCgYIKoZIzj0EAwIwXDEeMBwGA1UEAwwVUElEIElzc3VlciBDQSAtIFVUIDAyMS0wKwYDVQQKDCRFVURJIFdhbGxldCBSZWZlcmVuY2UgSW1wbGVtZW50YXRpb24xCzAJBgNVBAYTAlVUMB4XDTI1MDQxMDE0NDQxMloXDTI2MDcwNDE0NDQxMVowUjEUMBIGA1UEAwwLUElEIERTIC0gMDIxLTArBgNVBAoMJEVVREkgV2FsbGV0IFJlZmVyZW5jZSBJbXBsZW1lbnRhdGlvbjELMAkGA1UEBhMCVVQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATt8K3GATw5fjI0zaO5GEOCaXrufq0LXGoajkBj0TV5YQq0mwn7fZvZrbgslMPgY45ses94bEQsu3uNb82J9Js0o4IBMTCCAS0wHwYDVR0jBBgwFoAUYseURyi9D6IWIKeawkmURPEB08cwHwYDVR0RBBgwFoIUZGV2Lmlzc3Vlci5ldWRpdy5kZXYwFgYDVR0lAQH_BAwwCgYIK4ECAgAAAQIwQwYDVR0fBDwwOjA4oDagNIYyaHR0cHM6Ly9wcmVwcm9kLnBraS5ldWRpdy5kZXYvY3JsL3BpZF9DQV9VVF8wMi5jcmwwHQYDVR0OBBYEFOZ0Vn3Bi8tWuq8lSNWKWXSkP3zDMA4GA1UdDwEB_wQEAwIHgDBdBgNVHRIEVjBUhlJodHRwczovL2dpdGh1Yi5jb20vZXUtZGlnaXRhbC1pZGVudGl0eS13YWxsZXQvYXJjaGl0ZWN0dXJlLWFuZC1yZWZlcmVuY2UtZnJhbWV3b3JrMAoGCCqGSM49BAMCA0cAMEQCIAtCpCAhTbywPQDiDy4Ut3kEmijxE025PzIrdLeAhFHYAiBo2uQrn-aS5bjQKvV-nuqGQtH5dPR00ATQQ5QmDVMFJVkDl9gYWQOSp2ZzdGF0dXOia3N0YXR1c19saXN0omNpZHgZELFjdXJpeG5odHRwczovL2Rldi5pc3N1ZXIuZXVkaXcuZGV2L3Rva2VuX3N0YXR1c19saXN0L0ZDL2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xLzQxZGVhYTAzLTNjOTItNGQ2ZC05NGIyLTk5YWZjYThiOThkYW9pZGVudGlmaWVyX2xpc3SiYmlkZDQyNzNjdXJpeGxodHRwczovL2Rldi5pc3N1ZXIuZXVkaXcuZGV2L2lkZW50aWZpZXJfbGlzdC9GQy9ldS5ldXJvcGEuZWMuZXVkaS5waWQuMS80MWRlYWEwMy0zYzkyLTRkNmQtOTRiMi05OWFmY2E4Yjk4ZGFnZG9jVHlwZXdldS5ldXJvcGEuZWMuZXVkaS5waWQuMWd2ZXJzaW9uYzEuMGx2YWxpZGl0eUluZm-jZnNpZ25lZMB0MjAyNS0wNi0wNVQwODoxNDozNFppdmFsaWRGcm9twHQyMDI1LTA2LTA1VDA4OjE0OjM0Wmp2YWxpZFVudGlswHQyMDI1LTA5LTAzVDAwOjAwOjAwWmx2YWx1ZURpZ2VzdHOhd2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xqQBYIL8I5lP0GgsFdp9fkNgRBf5a-CVp-qF0nwUHMGFKHjybAVggXfG_vETTaD-WjafUezTweYfzxOHrRxZQ4d-OBpYybE0CWCB3cSXG-mDGX-ES_TUUA9TPhrYciDPcRUBjqiKkHkGBEQNYIPDcIxpH2H2s7tLtJEL6MLOndhljogHgRHp6RAwnysVaBFggp0JPoI6dzoVITcIEeUgGSv172Y8vBZaaimYf1KehwmAFWCAZiqvTBb1eX4cK7faaPl7tXSkZ-1IUkw7qsuTFYWJuAQZYILeO62QFhhYL-Ha9D51qSNWA62f1T59yB29F_efJiiDZB1ggu9sXgSyO2Js_rgX-pUV01jqN9I15aKQtgBZHywv3LKYIWCAVv12LDTcZ5K_xEGNCESt0VOvWCT4gjKmRirGNRNYNFG1kZXZpY2VLZXlJbmZvoWlkZXZpY2VLZXmkAQIgASFYIMmmqRKsSlP0IT8pJJGPXcur7cxP0gzrVasUZRYWqcrCIlgg-xi3dNvA9k3Bc4U6QJo95LPnq4_7-kd5GKW8oxiNnYNvZGlnZXN0QWxnb3JpdGhtZ1NIQS0yNTZYQLabf61CLibRxGXYI9nlNLWuOXgh7ioT9RRQe7dbbLrQxGo3vq8yqDeCXJI-hKAlFTt8TNUo9mdu1BdOGjgRYzZsZGV2aWNlU2lnbmVkompuYW1lU3BhY2Vz2BhBoGpkZXZpY2VBdXRooW9kZXZpY2VTaWduYXR1cmWEQ6EBJqD2WEDiVrWLl62OqHkOH4qn3npNWPVTPfqahr3XRlW1b2NXeGIVgVAH5Q-3XdAqg8IuueGObXhvYL2WlPwTSXRGSW3WZnN0YXR1cwA"
+                ],
+                "presentation_submission": {
+                    "id": "34647ae1-71d2-4213-acf1-7c3bfdc420c6",
+                    "definition_id": "f5948c0d-56cd-4343-a628-48cef0f2a11d",
+                    "descriptor_map": [
+                        {
+                            "id": "eu.europa.ec.eudi.pid.1",
+                            "format": "mso_mdoc",
+                            "path": "$"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "timestamp": 1749111313950,
+            "event": "Verifier got wallet response",
+            "actor": "Verifier",
+            "wallet_response": {
+                "vp_token": [
+                    "o2d2ZXJzaW9uYzEuMGlkb2N1bWVudHOBo2dkb2NUeXBld2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xbGlzc3VlclNpZ25lZKJqbmFtZVNwYWNlc6F3ZXUuZXVyb3BhLmVjLmV1ZGkucGlkLjGI2BhYbKRmcmFuZG9tWCBnnCWHxh5pisc3XvQE7hpdG-yqoeA9VUscZ8ENLi8QS2hkaWdlc3RJRARsZWxlbWVudFZhbHVl2QPsajIwMjUtMDYtMDVxZWxlbWVudElkZW50aWZpZXJqYmlydGhfZGF0ZdgYWG2kZnJhbmRvbVggzdYuLPZBZXpEQc-XtSaBbT82i7PPwHP_0DX0nYzF255oZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZdkD7GoyMDI1LTA5LTAzcWVsZW1lbnRJZGVudGlmaWVya2V4cGlyeV9kYXRl2BhYa6RmcmFuZG9tWCADc5JXnyONTfABHiaffNfl4V8VsOuw3USbEh3YokF85WhkaWdlc3RJRAVsZWxlbWVudFZhbHVla1RoZW9maWxhdG91cWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYZqRmcmFuZG9tWCBhkgoIG8NIiewI_JY_S9g8tvlATvv1ASQMs4u6vvsu-mhkaWdlc3RJRAJsZWxlbWVudFZhbHVlZ0ZvdGVpbmlxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWHWkZnJhbmRvbVggIzUjPJskHvsXX2CrKD5dtpnL-RxsePe_rTQP1JYrxitoZGlnZXN0SUQBbGVsZW1lbnRWYWx1ZW9UZXN0IFBJRCBpc3N1ZXJxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhvpGZyYW5kb21YIJ8gdDobFfPTNmYK7MIZlmsL9i7UW0G7KwQb6gXCr4YoaGRpZ2VzdElEAGxlbGVtZW50VmFsdWXZA-xqMjAyNS0wNi0wNXFlbGVtZW50SWRlbnRpZmllcm1pc3N1YW5jZV9kYXRl2BhYZqRmcmFuZG9tWCBOOOwzFkEA7fBakXLLNyCDTntWm8zjUHuELu1oRCzkC2hkaWdlc3RJRAZsZWxlbWVudFZhbHVlYkZDcWVsZW1lbnRJZGVudGlmaWVyb2lzc3VpbmdfY291bnRyedgYWGOkZnJhbmRvbVggEj5p1G22XJ7razjWgFyRoBjcRLRS2Ps5X5fJElyyQMFoZGlnZXN0SUQHbGVsZW1lbnRWYWx1ZYFiR1JxZWxlbWVudElkZW50aWZpZXJrbmF0aW9uYWxpdHlqaXNzdWVyQXV0aIRDoQEmoRghWQLmMIIC4jCCAomgAwIBAgIUDrk_vkpDwceG6SHNsoDaFxiNP0cwCgYIKoZIzj0EAwIwXDEeMBwGA1UEAwwVUElEIElzc3VlciBDQSAtIFVUIDAyMS0wKwYDVQQKDCRFVURJIFdhbGxldCBSZWZlcmVuY2UgSW1wbGVtZW50YXRpb24xCzAJBgNVBAYTAlVUMB4XDTI1MDQxMDE0NDQxMloXDTI2MDcwNDE0NDQxMVowUjEUMBIGA1UEAwwLUElEIERTIC0gMDIxLTArBgNVBAoMJEVVREkgV2FsbGV0IFJlZmVyZW5jZSBJbXBsZW1lbnRhdGlvbjELMAkGA1UEBhMCVVQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATt8K3GATw5fjI0zaO5GEOCaXrufq0LXGoajkBj0TV5YQq0mwn7fZvZrbgslMPgY45ses94bEQsu3uNb82J9Js0o4IBMTCCAS0wHwYDVR0jBBgwFoAUYseURyi9D6IWIKeawkmURPEB08cwHwYDVR0RBBgwFoIUZGV2Lmlzc3Vlci5ldWRpdy5kZXYwFgYDVR0lAQH_BAwwCgYIK4ECAgAAAQIwQwYDVR0fBDwwOjA4oDagNIYyaHR0cHM6Ly9wcmVwcm9kLnBraS5ldWRpdy5kZXYvY3JsL3BpZF9DQV9VVF8wMi5jcmwwHQYDVR0OBBYEFOZ0Vn3Bi8tWuq8lSNWKWXSkP3zDMA4GA1UdDwEB_wQEAwIHgDBdBgNVHRIEVjBUhlJodHRwczovL2dpdGh1Yi5jb20vZXUtZGlnaXRhbC1pZGVudGl0eS13YWxsZXQvYXJjaGl0ZWN0dXJlLWFuZC1yZWZlcmVuY2UtZnJhbWV3b3JrMAoGCCqGSM49BAMCA0cAMEQCIAtCpCAhTbywPQDiDy4Ut3kEmijxE025PzIrdLeAhFHYAiBo2uQrn-aS5bjQKvV-nuqGQtH5dPR00ATQQ5QmDVMFJVkDl9gYWQOSp2ZzdGF0dXOia3N0YXR1c19saXN0omNpZHgZELFjdXJpeG5odHRwczovL2Rldi5pc3N1ZXIuZXVkaXcuZGV2L3Rva2VuX3N0YXR1c19saXN0L0ZDL2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xLzQxZGVhYTAzLTNjOTItNGQ2ZC05NGIyLTk5YWZjYThiOThkYW9pZGVudGlmaWVyX2xpc3SiYmlkZDQyNzNjdXJpeGxodHRwczovL2Rldi5pc3N1ZXIuZXVkaXcuZGV2L2lkZW50aWZpZXJfbGlzdC9GQy9ldS5ldXJvcGEuZWMuZXVkaS5waWQuMS80MWRlYWEwMy0zYzkyLTRkNmQtOTRiMi05OWFmY2E4Yjk4ZGFnZG9jVHlwZXdldS5ldXJvcGEuZWMuZXVkaS5waWQuMWd2ZXJzaW9uYzEuMGx2YWxpZGl0eUluZm-jZnNpZ25lZMB0MjAyNS0wNi0wNVQwODoxNDozNFppdmFsaWRGcm9twHQyMDI1LTA2LTA1VDA4OjE0OjM0Wmp2YWxpZFVudGlswHQyMDI1LTA5LTAzVDAwOjAwOjAwWmx2YWx1ZURpZ2VzdHOhd2V1LmV1cm9wYS5lYy5ldWRpLnBpZC4xqQBYIL8I5lP0GgsFdp9fkNgRBf5a-CVp-qF0nwUHMGFKHjybAVggXfG_vETTaD-WjafUezTweYfzxOHrRxZQ4d-OBpYybE0CWCB3cSXG-mDGX-ES_TUUA9TPhrYciDPcRUBjqiKkHkGBEQNYIPDcIxpH2H2s7tLtJEL6MLOndhljogHgRHp6RAwnysVaBFggp0JPoI6dzoVITcIEeUgGSv172Y8vBZaaimYf1KehwmAFWCAZiqvTBb1eX4cK7faaPl7tXSkZ-1IUkw7qsuTFYWJuAQZYILeO62QFhhYL-Ha9D51qSNWA62f1T59yB29F_efJiiDZB1ggu9sXgSyO2Js_rgX-pUV01jqN9I15aKQtgBZHywv3LKYIWCAVv12LDTcZ5K_xEGNCESt0VOvWCT4gjKmRirGNRNYNFG1kZXZpY2VLZXlJbmZvoWlkZXZpY2VLZXmkAQIgASFYIMmmqRKsSlP0IT8pJJGPXcur7cxP0gzrVasUZRYWqcrCIlgg-xi3dNvA9k3Bc4U6QJo95LPnq4_7-kd5GKW8oxiNnYNvZGlnZXN0QWxnb3JpdGhtZ1NIQS0yNTZYQLabf61CLibRxGXYI9nlNLWuOXgh7ioT9RRQe7dbbLrQxGo3vq8yqDeCXJI-hKAlFTt8TNUo9mdu1BdOGjgRYzZsZGV2aWNlU2lnbmVkompuYW1lU3BhY2Vz2BhBoGpkZXZpY2VBdXRooW9kZXZpY2VTaWduYXR1cmWEQ6EBJqD2WEDiVrWLl62OqHkOH4qn3npNWPVTPfqahr3XRlW1b2NXeGIVgVAH5Q-3XdAqg8IuueGObXhvYL2WlPwTSXRGSW3WZnN0YXR1cwA"
+                ],
+                "presentation_submission": {
+                    "id": "34647ae1-71d2-4213-acf1-7c3bfdc420c6",
+                    "definition_id": "f5948c0d-56cd-4343-a628-48cef0f2a11d",
+                    "descriptor_map": [
+                        {
+                            "id": "eu.europa.ec.eudi.pid.1",
+                            "format": "mso_mdoc",
+                            "path": "$"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

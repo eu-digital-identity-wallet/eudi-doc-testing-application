@@ -27,12 +27,6 @@ jobs:
         with:
           node-version: '18.16.1'
 
-      - name: Compile ReadmeManager.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
-      - name: Run ReadmeManager
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
       - name: Clean old reports
         run: |
           mvn clean
@@ -58,14 +52,13 @@ jobs:
       - name: Produce report
         run: mvn serenity:aggregate -Dtags="Q1_2025"
 
+      - name: Inject Custom CSS into Serenity Report
+        if: always()
+        run: |
+          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.05.26-Demo/css/core.css
+
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
           name: report
           path: target/site
-
-      - name: Compile ReadmeManager.java
-        run: javac -d out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java
-
-      - name: Run ReadmeManager
-        run: java -cp out src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java

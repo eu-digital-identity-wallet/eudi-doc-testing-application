@@ -1,4 +1,4 @@
-@IOS @US_COSD @automated
+@IOS @US_COSD
 Feature: Credential issuance process for the same device
   As a user of the issuer service
   I want to be able to issue a credential
@@ -16,7 +16,7 @@ Feature: Credential issuance process for the same device
   @US_COSD_TC_02 @before_01
   Scenario: User proceeds with the credential issuance
     Given the user is presented with the credential details on the EUDI Wallet
-    When the user presses the ISSUE button
+    When the user presses the Issue button
     Then the user is redirected back to the issuer service
     And the user is prompted to authenticate and consent to the issuance
 
