@@ -153,6 +153,9 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
+                <configuration>
+                  <tags>${tags}</tags>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>integration-test</phase> <!-- Tests phase -->

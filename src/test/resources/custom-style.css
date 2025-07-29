@@ -5561,6 +5561,7 @@ display: none!important;
 }
 
 #durationChart {
+
     display: none!important;
 }
 
@@ -5570,6 +5571,11 @@ display: none!important;
 
 .dashboard-charts .col-lg-4:nth-of-type(2) {
   margin-left: 150px!important;
+}
+
+
+.step-table tr > :nth-child(4) {
+    display: none!important;
 }
 
 
@@ -5584,4 +5590,3 @@ display: none!important;
      display: none;
 
  }
-
