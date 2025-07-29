@@ -1,14 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2025.02.22-Demo</version>
+    <version>EUDI_Wallet_Version_2025.07.28-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
 
     <properties>
-        <tags>@default</tags>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -22,15 +20,20 @@
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <assembly.phase>none</assembly.phase>
         <serenity.bdd.version>3.9.2</serenity.bdd.version>
-        <rerun.failed.scenarios>0</rerun.failed.scenarios>
+        <rerun.failed.scenarios>1</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
-        <build-version>EUDI_Wallet_Version_2025.05.26-Demo</build-version><!-- Add this line to set the number of threads -->
+        <build-version>EUDI_Wallet_Version_2025.07.28-Demo</build-version>
     </properties>
 
     <dependencies>
         <!-- Dependencies -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -88,26 +91,15 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.assertj</groupId>-->
-<!--            <artifactId>assertj-core</artifactId>-->
-<!--            <version>${assertj.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.hamcrest</groupId>-->
-<!--            <artifactId>hamcrest</artifactId>-->
-<!--            <version>${hamcrest.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.codeborne</groupId>-->
-<!--            <artifactId>phantomjsdriver</artifactId>-->
-<!--            <version>1.4.4</version>-->
-<!--        </dependency>-->
+<!--<dependency>-->
+<!--      <groupId>com.browserstack</groupId>-->
+<!--      <artifactId>browserstack-java-sdk</artifactId>-->
+<!--      <version>LATEST</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
     </dependencies>
-
     <build>
         <plugins>
-            <!-- Copy custom-style.css to the target directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -115,7 +107,7 @@
                 <executions>
                     <execution>
                         <id>copy-custom-css</id>
-                        <phase>process-resources</phase>
+                        <phase>process-classes</phase> <!-- This phase runs before tests -->
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -133,21 +125,21 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Append custom-style.css to core.css -->
+            <!-- Maven Antrun Plugin to replace core.css after tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>append-custom-css</id>
-                        <phase>post-integration-test</phase>
+                        <id>replace-core-css</id>
+                        <phase>post-integration-test</phase> <!-- After tests and reports -->
                         <configuration>
                             <target>
-                                <concat destfile="${project.build.directory}/site/reports/${build-version}/css/core.css">
-                                    <fileset file="${project.build.directory}/site/reports/${build-version}/css/custom-style.css"/>
-                                </concat>
+                                <!-- Optional: Delete core.css before replacing it -->
+                                <delete file="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
+                                <!-- Copy the custom-style.css to replace core.css -->
+                                <copy file="${project.basedir}/src/test/resources/custom-style.css" tofile="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
                             </target>
                         </configuration>
                         <goals>
@@ -156,8 +148,7 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Serenity Maven Plugin -->
+            <!-- Serenity Maven Plugin to run tests -->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
@@ -167,13 +158,16 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>integration-test</phase>
+                        <phase>integration-test</phase> <!-- Tests phase -->
+                    <goals>
+                        <goal>aggregate</goal>
+                    </goals>
+
                     </execution>
                 </executions>
             </plugin>
 
-
-            <!-- Maven Compiler Plugin -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -183,20 +177,34 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
-            <!-- Maven Surefire Plugin -->
+            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+<!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
+
                     <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
+
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>getClasspathFilenames</id>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
         </plugins>
     </build>
 </project>

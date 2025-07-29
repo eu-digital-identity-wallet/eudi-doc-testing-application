@@ -1,65 +1,30 @@
 package eu.europa.eudi.utils.factory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.*;
     public class ReadmeManager {
-
-        public static final String FEATURE_FILES_DIR = "src/test/resources/features";
-        public static final String BACKUP_DIR = "src/test/resources/backupreadme";
         public static final String SHELL_SCRIPT = "./local-execution-mac.sh";
-        public static List<Path> readmePaths = new ArrayList<>();
-        public static Map<Path, Path> backupPaths = new HashMap<>();
 
         public static void main(String[] args) {
             try {
-                createBackupDirIfNotExists();
-                removeReadmeFiles(Paths.get(FEATURE_FILES_DIR));
-//                runShellScript();
-                restoreReadmeFiles();
+                runShellScript();
+                replaceCoreCssWithCustomStyle();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        public static void createBackupDirIfNotExists() throws IOException {
-            Path backupDir = Paths.get(BACKUP_DIR);
-            if (Files.notExists(backupDir)) {
-                Files.createDirectories(backupDir);
+        public static void replaceCoreCssWithCustomStyle() throws IOException {
+            Path coreCssPath = Paths.get("target/site/reports/EUDI_Wallet_Version_2025.07.28-Demo/css/core.css"); // Replace with the actual path to core.css
+            Path customStyleCssPath = Paths.get("C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/custom-style.css"); // Replace with the actual path to custom-style.css
+
+            if (Files.exists(coreCssPath) && Files.exists(customStyleCssPath)) {
+                // Replace core.css with custom-style.css
+                Files.copy(customStyleCssPath, coreCssPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Replaced core.css with custom-style.css");
+            } else {
+                System.err.println("Either core.css or custom-style.css doesn't exist.");
             }
-        }
-
-        public static void removeReadmeFiles(Path dir) throws IOException {
-            Files.walk(dir)
-                    .filter(path -> path.getFileName().toString().equalsIgnoreCase("README.md"))
-                    .forEach(path -> {
-                        try {
-                            // Store the original path
-                            readmePaths.add(path);
-
-                            // Create a unique backup path relative to the FEATURE_FILES_DIR
-                            Path relativePath = dir.relativize(path);
-                            Path backupPath = Paths.get(BACKUP_DIR, relativePath.toString());
-                            backupPaths.put(path, backupPath);
-
-                            // Ensure the backup directory structure exists
-                            Files.createDirectories(backupPath.getParent());
-
-                            // Copy the README file to the backup location
-                            Files.copy(path, backupPath, StandardCopyOption.REPLACE_EXISTING);
-
-                            // Delete the original README file
-                            Files.delete(path);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
         }
 
         public static void runShellScript() {
@@ -73,22 +38,6 @@ import java.util.Map;
                 }
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
-            }
-        }
-
-        public static void restoreReadmeFiles() throws IOException {
-            for (Path sourcePath : readmePaths) {
-                Path backupPath = backupPaths.get(sourcePath);
-                if (Files.exists(backupPath)) {
-                    Files.copy(backupPath, sourcePath, StandardCopyOption.REPLACE_EXISTING);
-                    System.out.println("Restored README from " + backupPath + " to " + sourcePath);
-
-                    // Delete the backup file after restoring it
-                    Files.delete(backupPath);
-                    System.out.println("Deleted backup README from " + backupPath);
-                } else {
-                    System.err.println("Backup file does not exist: " + backupPath);
-                }
             }
         }
 

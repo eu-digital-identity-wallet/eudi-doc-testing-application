@@ -6,36 +6,47 @@ public interface Literals {
 
         WELCOME_HEADER("Welcome to your Wallet"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
-        AUTHENTICATION_SUCCESS("You successfully shared information with EUDI Remote Verifier"),
+        AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back"),
+        LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
         PID("PID"),
         MDL("mDL"),
         DASHBOARD_PAGE("Welcome back, Foteini"),
-        CORRESPONDING_MESSAGE("Your selection of data to be shared may impact the service"),
+        CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
         AUTHENTICATION_SELECTION("Authentication Method Selection"),
         DATA_PAGE("Enter the data for your EUDI Wallet"),
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
         DRIVING_LICENCE("Driving License"),
-        SUCCESS_MESSAGE_DRIVING_LICENCE("You have successfully added the following to your wallet"),
-        ISSUANCE_DETAILS("National ID"),
-        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("Your documents from issuer.eudiw.dev have been successfully issued."),
-        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("Your documents from issuer.eudiw.dev have been successfully issued."),
+        SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
+        SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),
+        ISSUANCE_DETAILS("PID"),
+        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
+        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
         SCAN_QR("SCAN QR"),
         DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_MDL("Family name"),
         DETAILS_DOCUMENT("Family Name(s)"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("Date of issuance"),
-        PIN_FIELD_IS_DISPLAYED("EUDI Remote Verifier requests the following"),
+        VERIFICATION_DETAILS("Birth Date"),
+        PIN_FIELD_IS_DISPLAYED("PIN"),
+        PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         DETAILS_FAMILY_NAME("Family Name(s)"),
         DETAILS_GIVEN_NAME("Given Name(s)"),
-        DETAILS_BIRTH_DATE("Birth Date");
+        DETAILS_BIRTH_DATE("Birth Date"),
+        HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
+        DETAILS_ARE_BLURRED("Hide"),
+        DETAILS_ARE_NOT_BLURRED("Show"),
+        CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
+        WELCOME_HEADER_IOS("Welcome to your wallet"),
+        ADD_PID_PAGE("Add document from list"),
+        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with");
+
         public final String label;
         Wallet(String label) {
             this.label = label;
@@ -44,11 +55,13 @@ public interface Literals {
 
     enum Verifier{
 
-        VIEW_DATA_PAGE("Please review carefully before sharing your data. Why we need your data?"),
-        VIEW_DATA_PAGE_IOS("Please review carefully before sharing your data. Why we need your data?"),
+        VIEW_DATA_PAGE("The following transaction requires your permission and authentication."),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         AUTHENTICATION_PAGE("Proceed to authentication"),
-        APP_OPEN_SUCCESSFULLY_IOS("1");
+        APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
+        WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
+        PRESENTATION_QUERY_TYPE("Presentation Query Type"),
+        CHOOSE_WALLET_DISPLAYED("Invoke Wallet");
 
         public final String label;
         Verifier(String label) {
@@ -68,10 +81,16 @@ public interface Literals {
 
     enum Issuer{
         CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
+        CREDENTIAL_PAGE_IOS("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet");
+        FORM("Enter the data for your EUDI Wallet"),
+        SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
+        SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
+        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
+        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
+        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet");
 
         public final String label;
         Issuer(String label) {

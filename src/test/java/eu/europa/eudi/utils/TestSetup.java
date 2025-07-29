@@ -1,7 +1,9 @@
 package eu.europa.eudi.utils;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
-import eu.europa.eudi.utils.factory.*;
+
+import eu.europa.eudi.utils.factory.MobilePageObjectFactory;
+import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import io.cucumber.java.Scenario;
 
 public class TestSetup {
@@ -77,7 +79,7 @@ public class TestSetup {
         String scenarioName = scenario.getName();
 
         // Start logging with the determined parameters
-        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName);
+        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName, systemOperation);
     }
 
 
