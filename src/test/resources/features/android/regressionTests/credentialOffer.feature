@@ -13,7 +13,7 @@ Feature: Credential issuance process for the same device
     Then the user is redirected to the EUDI Wallet
     And the details of the credential to be issued are presented
 
-  @US_COSD_TC_02 @before_01
+  @US_COSD_TC_02 @before_01 @rerun3
   Scenario: User proceeds with the credential issuance
     Given the user is presented with the credential details on the EUDI Wallet
     When the user presses the Issue button

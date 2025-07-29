@@ -23,7 +23,6 @@ public class EventsApiVerifier {
                 .when()
                 .get("/ui/presentations/" + transactionId + "/events")
                 .then().statusCode(200).log().all().extract().response();
-
         String fullPath = test.getScenario().getUri().getPath();
 
         // Extract the directory of the feature file
