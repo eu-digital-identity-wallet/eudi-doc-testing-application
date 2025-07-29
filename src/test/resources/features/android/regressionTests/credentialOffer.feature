@@ -1,4 +1,5 @@
-@ANDROID @US_COSD @automated
+@ANDROID @US_COSD
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 Feature: Credential issuance process for the same device
   As a user of the issuer service
   I want to be able to issue a credential

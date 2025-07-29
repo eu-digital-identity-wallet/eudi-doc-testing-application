@@ -12,7 +12,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+<<<<<<< HEAD
 //import org.json.JSONObject;
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -20,6 +23,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+<<<<<<< HEAD
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -28,6 +32,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +45,7 @@ public class Verifier {
         this.test = test;
     }
 
+<<<<<<< HEAD
     public void selectShareAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String deviceName = test.envDataConfig().getAppiumAndroidDeviceName();
@@ -72,6 +79,8 @@ public class Verifier {
         }
     }
 
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
     public void clickNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
@@ -137,6 +146,7 @@ public class Verifier {
         }
     }
 
+<<<<<<< HEAD
     public void AuthenticationPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationPageIsDisplayed)).getText();
@@ -155,6 +165,8 @@ public class Verifier {
         }
     }
 
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
     public void scrollUntilFindIssuanceDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -358,6 +370,7 @@ public class Verifier {
         }
     }
 
+<<<<<<< HEAD
     public void selectSpecificAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributesBy)).click();
@@ -406,6 +419,8 @@ public class Verifier {
         }
     }
 
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
     public void clickMsoMdocRealDevice() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         int centerX = 545;
@@ -429,6 +444,7 @@ public class Verifier {
                 .perform();
     }
 
+<<<<<<< HEAD
     public void clickSpecificAttributes() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         WebElement dropdown = driver.findElement(By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]"));
@@ -443,6 +459,8 @@ public class Verifier {
                 .perform();
     }
 
+=======
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
     public void clickTransactionsLogs() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -459,6 +477,7 @@ public class Verifier {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+<<<<<<< HEAD
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickTransactionInitialized)).click();
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
@@ -480,6 +499,14 @@ public class Verifier {
 
             ((RemoteWebDriver) driver).perform(Arrays.asList(tap));
 
+=======
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence tap = new Sequence(finger, 1);
+            tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 66, 220));
+            tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            ((RemoteWebDriver) driver).perform(Arrays.asList(tap));
+>>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
         }
     }
     public void getTransactionId() {

@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -28,7 +29,7 @@ public class MobileWebDriverFactory {
     private Process logcatProcess;
     private Thread logcatThread;
     private String logFilePath;
- 
+
     public UiAutomator2Options options;
     public String userName;
     public String accessKey;
@@ -103,7 +104,6 @@ public class MobileWebDriverFactory {
         try {
             // Stop any previous logging
             stopLogging();
-
 //             Create a directory for the feature if it doesn't exist
             File featureDir = new File( featureDirPath + "/logs/ui");
             if (!featureDir.exists()) {
@@ -120,10 +120,8 @@ public class MobileWebDriverFactory {
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
+                return;
             }
-
-//            // Start logcat process
-//            logcatProcess = Runtime.getRuntime().exec("adb logcat");
 
             if ("IOS".equalsIgnoreCase(platform)) {
                 logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
@@ -139,15 +137,18 @@ public class MobileWebDriverFactory {
                      PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        if (line.contains("@IOS and @automated")) {
-                            writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                        } else if (line.contains("@ANDROID and @automated")) {
-                            writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                        } else {
-                            writeLog(line, newFile.getPath());
+                        try {
+                            if (line.contains("@IOS and @automated")) {
+                                writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                            } else if (line.contains("@ANDROID and @automated")) {
+                                writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                            } else {
+                                writeLog(line, newFile.getPath());
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Error writing log line: " + e.getMessage());
                         }
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -157,8 +158,6 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
-
-
 
 //    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) throws IOException {
 //        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -199,25 +198,45 @@ public class MobileWebDriverFactory {
     }
 
     public void stopLogging() {
-        if (logcatProcess != null) {
-            logcatProcess.destroy();
-            logcatProcess = null;
-        }
+        if (logcatProcess != null)
+        {
+            try {
+                // Destroy the process
+                logcatProcess.destroy();
+                // Wait for the process to terminate gracefully (with a timeout)
+                boolean terminated = logcatProcess.waitFor(2, TimeUnit.SECONDS);
+                // If it didn't terminate, force it
+                if (!terminated) {
+                    logcatProcess.destroyForcibly();
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.err.println("Interrupted while waiting for logcat process to terminate");
+            } catch (Exception e)
+            {
+                System.err.println("Error stopping logcat process: " + e.getMessage());
+            } finally {
+                logcatProcess = null;
+            }
+        }// Then handle the thread
         if (logcatThread != null) {
-            logcatThread.interrupt();
-            logcatThread = null;
-        }
-    }
-
-    private static void logProcessOutput(Process process) throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-        }
-        BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-        while ((line = errorReader.readLine()) != null) {
-            System.err.println(line);
+            try {// Interrupt the thread
+                logcatThread.interrupt();
+                // Give the thread some time to finish its work
+                logcatThread.join(3000);
+                // Wait up to 3 seconds// If the thread is still alive after the timeout, log a warning
+                if (logcatThread.isAlive()) {
+                    System.err.println("Warning: Logging thread did not terminate within the timeout period");
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                // Preserve interrupt status
+                System.err.println("Interrupted while waiting for logging thread to terminate");
+            } catch (Exception e) {
+                System.err.println("Error stopping logging thread: " + e.getMessage());
+            } finally {
+                logcatThread = null;
+            }
         }
     }
 
@@ -246,18 +265,6 @@ public class MobileWebDriverFactory {
         try {
             iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
-//            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
-//            new Thread(() -> {
-//                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
-//                     PrintWriter logWriter = new PrintWriter(new FileWriter("ios_logs.txt"))) {
-//                    String line;
-//                    while ((line = reader.readLine()) != null) {
-//                        logWriter.println(line);  // Write syslog output to file
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }).start();
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
@@ -279,10 +286,10 @@ public class MobileWebDriverFactory {
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             // Stop method tracing
-           // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
+            // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
             String remoteFilePath = "/data/local/tmp/trace_file.trace";
             String localFilePath = "/trace_file.trace";
-           // pullTraceFile(remoteFilePath, localFilePath);
+            // pullTraceFile(remoteFilePath, localFilePath);
         }
     }
 
@@ -292,93 +299,4 @@ public class MobileWebDriverFactory {
             iosDriver.quit();
         }
     }
-
-    private void startMethodTracing(String packageName) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb shell am profile start " + packageName + " /data/local/tmp/trace_file.trace");
-            logProcessOutput(process);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void stopMethodTracing(String packageName) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb shell am profile stop " + packageName);
-            logProcessOutput(process);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void pullTraceFile(String remoteFilePath, String localFilePath) {
-        try {
-            Process process = Runtime.getRuntime().exec("adb pull " + remoteFilePath + " " + localFilePath);
-            logProcessOutput(process);
-            System.out.println("Trace file pulled to: " + localFilePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-//
-//    /**
-//     * Περιμένει αξιόπιστα μέχρι να βρεθεί ένα WebView context και κάνει switch σε αυτό.
-//     * Αυτή η μέθοδος ΑΠΑΙΤΕΙ ένα AppiumDriver instance για να λειτουργήσει.
-//     *
-//     */
-//    public static void switchToWebView(WebDriver driver) {
-//        System.out.println("Attempting to switch to WebView context...");
-//        try {
-//            for (int i = 0; i < 30; i++) { // Περιμένουμε μέχρι 15 δευτερόλεπτα
-//                if (getDriverContexts(driver).size() > 1) {
-//                    break;
-//                }
-//                Thread.sleep(500);
-//            }
-//
-//            for (String contextHandle : getDriverContexts(driver)) {
-//                if (contextHandle.contains("WEBVIEW")) {
-//                    setDriverContext(driver, contextHandle);
-//                    System.out.println("Switched successfully to context: " + contextHandle);
-//                    return;
-//                }
-//            }
-//            throw new IllegalStateException("No WebView context was found after waiting.");
-//
-//        } catch (Exception e) {
-//            System.err.println("Failed to find or switch to a WebView context.");
-//            e.printStackTrace();
-//            throw new IllegalStateException("Could not switch to WebView context.", e);
-//        }
-//    }
-//
-//    private static Set<String> getDriverContexts(WebDriver driver) {
-//        if (driver instanceof AndroidDriver) {
-//            return ((AndroidDriver) driver).getContextHandles();
-//        } else if (driver instanceof IOSDriver) {
-//            return ((IOSDriver) driver).getContextHandles();
-//        }
-//        return null;
-//    }
-//
-//    public void switchToNativeView() {
-//        System.out.println("Attempting to switch back to Native context...");
-//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//        try {
-//            setDriverContext(driver, "NATIVE_APP");
-//            System.out.println("Switched successfully to context: NATIVE_APP");
-//        } catch (Exception e) {
-//            System.err.println("Failed to switch back to NATIVE_APP context.");
-//            e.printStackTrace();
-//            throw new IllegalStateException("Could not switch back to NATIVE_APP context.", e);
-//        }
-//    }
-//
-//    private static void setDriverContext(WebDriver driver, String context) {
-//        if (driver instanceof AndroidDriver) {
-//            ((AndroidDriver) driver).context(context);
-//        } else if (driver instanceof IOSDriver) {
-//            ((IOSDriver) driver).context(context);
-//        }
-//    }
 }
