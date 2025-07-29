@@ -6772,6 +6772,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
+
     @And("the Issuer supports batch issuance with batch size greater than one")
     public void theIssuerSupportsBatchIssuanceWithBatchSizeGreaterThanOne() {
         //manual
