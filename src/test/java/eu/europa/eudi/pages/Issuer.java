@@ -28,6 +28,12 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofMillis;
 import org.openqa.selenium.Keys;
 
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static java.time.Duration.ofMillis;
+
 public class Issuer {
     TestSetup test;
 
@@ -174,7 +180,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickGivenName)).click();
             WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickGivenName));
-//            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenNameField));
             givenName.clear();
             givenName.sendKeys("Foteini");
         } else {
@@ -189,7 +194,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFamilyName)).click();
             WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickFamilyName));
-//            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.givenFamilyField));
             givenFamily.clear();
             givenFamily.sendKeys("Theofilatou");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.closeKeyboardForm)).click();
@@ -246,9 +250,9 @@ public class Issuer {
 
     public void clickSubmitIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -312,26 +316,25 @@ public class Issuer {
 
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            for (int i = 0; i < 6; i++) {
-//                // Get screen size
-//                Dimension size = driver.manage().window().getSize();
-//                int startX = size.width / 2;
-//                int startY = (int) (size.height * 0.8);
-//                int endY = (int) (size.height * 0.2);
-//
-//                // Swipe up
-//                new TouchAction<>(driver)
-//                        .press(PointOption.point(startX, startY))
-//                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-//                        .moveTo(PointOption.point(startX, endY))
-//                        .release()
-//                        .perform();
-//
-//                // Optional: Add a short pause between swipes
-//                Thread.sleep(50);
-//            }
-//
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 6; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.8);
+                int endY = (int) (size.height * 0.2);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -426,11 +429,40 @@ public class Issuer {
         enterCountry();
         scrollUntilCountryCode();
         enterCountryCode();
-        scrollUntilFindSubmit();
-        clickSubmitIssuer();
+        scrollUntilFindSubmitBefore();
+        clickSubmitIssuerBefore();
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    private void clickSubmitIssuerBefore() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        }
+    }
+
+    private void scrollUntilFindSubmitBefore() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
+
+        }
     }
 
     private void providerFormIsDisplayed() {
