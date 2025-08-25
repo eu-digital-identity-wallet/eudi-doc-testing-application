@@ -127,33 +127,45 @@ public class MobileWebDriverFactory {
                 logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
             } else if ("ANDROID".equalsIgnoreCase(platform)) {
                 logcatProcess = Runtime.getRuntime().exec("adb logcat");
+            } else if ("WEB".equalsIgnoreCase(platform)) {
+                // For web testing, we don't need device logging, just skip the process creation
+                logcatProcess = null;
             } else {
                 throw new IllegalArgumentException("Unsupported platform for logging: " + platform);
             }
 
             // Start a new thread to read logcat output and write to the log file
-            logcatThread = new Thread(() -> {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
-                     PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        try {
-                            if (line.contains("@IOS and @automated")) {
-                                writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                            } else if (line.contains("@ANDROID and @automated")) {
-                                writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                            } else {
-                                writeLog(line, newFile.getPath());
+            if (logcatProcess != null) {
+                logcatThread = new Thread(() -> {
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
+                         PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            try {
+                                if (line.contains("@IOS and @automated")) {
+                                    writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                                } else if (line.contains("@ANDROID and @automated")) {
+                                    writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                                } else {
+                                    writeLog(line, newFile.getPath());
+                                }
+                            } catch (Exception e) {
+                                System.err.println("Error writing log line: " + e.getMessage());
                             }
-                        } catch (Exception e) {
-                            System.err.println("Error writing log line: " + e.getMessage());
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                });
+                logcatThread.start();
+            } else {
+                // For web platform, just create an empty log file
+                try (PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
+                    logWriter.println("Web test logging started for: " + scenarioName);
+                } catch (IOException e) {
+                    System.err.println("Error creating web log file: " + e.getMessage());
                 }
-            });
-            logcatThread.start();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -282,7 +294,6 @@ public class MobileWebDriverFactory {
     public WebDriver getDriverIos() {
         return iosDriver;
     }
-
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             // Stop method tracing
