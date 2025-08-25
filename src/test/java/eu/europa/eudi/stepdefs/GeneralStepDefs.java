@@ -131,13 +131,18 @@ public class GeneralStepDefs{
     public void tearDown(Scenario scenario) {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
-            test.stopAndroidDriverSession();
+        boolean web = scenario.getSourceTagNames().contains("@WEB");
+        
+        if (test != null) {
+            if (android){
+                test.stopAndroidDriverSession();
+            }
+            if (ios) { 
+                test.stopIosDriverSession();
+            }
+            test.stopLogging();
         }
-        if (ios)
-        { test.stopIosDriverSession();
-        }
-        test.stopLogging(); }
+    }
 
 
     public static TestSetup getTest() {

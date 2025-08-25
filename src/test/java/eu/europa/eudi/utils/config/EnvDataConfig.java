@@ -40,6 +40,8 @@ public class EnvDataConfig {
     public static final String DRIVER_REMOTE_URL = "driver.remote.url";
     public static final String WALLET_PIN = "wallet.pin";
     public static final String DRIVER_MODE = "driver.mode";
+    public static final String WEB_APP_EMAIL = "webApp.email";
+    public static final String WEB_APP_PASSWORD = "webApp.password";
     ResourcesConfig resourcesConfig;
 
     public EnvDataConfig() {
@@ -175,4 +177,11 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(WALLET_PIN);
     }
 
+    public String getWebAppEmail() {
+        return getEnvProperties().getProperty(WEB_APP_EMAIL);
+    }
+
+    public String getWebAppPassword() {
+        return getEnvProperties().getProperty(WEB_APP_PASSWORD);
+    }
 }
