@@ -1,4 +1,4 @@
-@ANDROID @US_RPAIPE1D @Q3_2025
+@IOS @US_RPAIPE1D @Q3_2025
   Feature: Present Employee ID credential to Employer device via proximity flow
     As a EUDI Wallet User
     I want to present the employee ID from my EUDI Wallet to the requesting Relying Party (i.e., Employer's reader) in a proximity flow

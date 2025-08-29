@@ -1,4 +1,4 @@
-@ANDROID @US_RSCWEWJCRCD @Q3_2025
+@IOS @US_RSCWEWJCRCD @Q3_2025
   Feature: Sign Contract with EUDI Wallet
     As a EUDI Wallet User
     I want to be able to sign the job contract utilizing my EUDI Wallet
