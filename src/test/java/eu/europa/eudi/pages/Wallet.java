@@ -1,43 +1,30 @@
 package eu.europa.eudi.pages;
 
-<<<<<<< HEAD
 import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.stepdefs.GeneralStepDefs;
-=======
-import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.elements.android.WalletElements;
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
-<<<<<<< HEAD
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import org.apache.commons.io.FileUtils;
-=======
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-<<<<<<< HEAD
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-=======
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
@@ -46,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
 public class Wallet {
+
     TestSetup test;
 
     public Wallet(TestSetup test) {
@@ -74,21 +62,15 @@ public class Wallet {
             int retries = 3;
             while (retries > 0) {
                 try {
-<<<<<<< HEAD
+
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield1)).sendKeys(String.valueOf(firstDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield2)).sendKeys(String.valueOf(secondDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield3)).sendKeys(String.valueOf(thirdDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield4)).sendKeys(String.valueOf(fourthDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield5)).sendKeys(String.valueOf(fifthDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield6)).sendKeys(String.valueOf(sixthDigit));
-=======
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield1)).sendKeys(String.valueOf(firstDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield2)).sendKeys(String.valueOf(secondDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield3)).sendKeys(String.valueOf(thirdDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield4)).sendKeys(String.valueOf(fourthDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield5)).sendKeys(String.valueOf(fifthDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield6)).sendKeys(String.valueOf(sixthDigit));
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
+                    AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+                    driver.pressKey(new KeyEvent(AndroidKey.ENTER));
                     break;
                 } catch (Exception e) {
                     retries--;
@@ -98,10 +80,7 @@ public class Wallet {
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
-<<<<<<< HEAD
             char firstDigit = fullPin.charAt(0);
-=======
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
             char secondDigit = fullPin.charAt(1);
             char thirdDigit = fullPin.charAt(2);
             char fourthDigit = fullPin.charAt(3);
@@ -144,6 +123,8 @@ public class Wallet {
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield4)).sendKeys(String.valueOf(fourthDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield5)).sendKeys(String.valueOf(fifthDigit));
                     test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield6)).sendKeys(String.valueOf(sixthDigit));
+                    AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+                    driver.pressKey(new KeyEvent(AndroidKey.ENTER));
                     break;
                 } catch (Exception e) {
                     retries--;
@@ -814,11 +795,7 @@ public class Wallet {
 
     public void clickDone() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-<<<<<<< HEAD
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickClose)).click();
-=======
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickClose)).click();
->>>>>>> 6595c16eb888ebbdc478994c86ad898624f80945
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDone)).click();
         }
@@ -921,5 +898,204 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageForVerifier)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_VERIFIER.label, pageHeader);
         }
+    }
+
+    public void predefinedListIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
+        }
+    }
+
+    public void clickButtonIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickButtonIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.CLOSE_BUTTON.label, pageHeader);
+        }
+    }
+
+    public void sendTrasactionCode() {
+        String code = test.getTransactionCode();
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.transactionCodeField)).sendKeys(code);
+    }
+
+    public void verfiricationIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.verificationIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.VERIFICATION_IS_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void detailsOfAgeOver18IsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsOfOver18)).getText();
+            Assert.assertEquals(Literals.Wallet.DETAILS_OVER_18.label, pageHeader);
+        }
+    }
+
+    public void clickAdd() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAdd)).click();
+    }
+
+    public void detailsArePresentedForDeferred() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsOfDeferredIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.DETAILS_FOR_DEFERRED.label, pageHeader);
+    }
+
+    public void clickAuthentication() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAuthentication)).click();
+    }
+
+    public void signDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.signDocument)).click();
+    }
+
+    public void clickFromDevice() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.fromDevice)).click();
+    }
+
+    public void signDocumentPageIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.signDocumentIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
+    }
+
+    public void clickSelectDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSelectDocument)).click();
+    }
+
+    public void chooseDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.chooseDocument)).click();
+    }
+
+    public void clickSelectSigningService() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSelectSigningService)).click();
+    }
+
+    public void clickDoneOnSigningService() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickDoneOnSigningService)).click();
+    }
+
+    public void selectSigningIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.selectSigningIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.SELECT_SIGNING.label, pageHeader);
+    }
+
+    public void signingServicesIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.signingServiceIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.SIGNING_SERVICES.label, pageHeader);
+    }
+
+    public void clickAbortToSigning() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAbortToSigning)).click();
+    }
+
+    public void cancelSigningIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.cancelSigningIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.CANCEL_SIGNING_PROCESS.label, pageHeader);
+    }
+
+    public void clickCancelSigning() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickCancelSigning)).click();
+    }
+
+    public void selectSigningCertificateIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.selectSigningCertificate)).getText();
+        Assert.assertEquals(Literals.Wallet.SELECT_SIGNING_CERTIFICATE.label, pageHeader);
+    }
+
+    public void clickSelectSigningCertificate() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.selectSigningCertificate)).click();
+    }
+
+    public void clickDoneSigningCertificate() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.doneSigningCertificate)).click();
+    }
+
+    public void clickContinueSignDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickContinueSignDocument)).click();
+    }
+
+    public void successScreebWithSignedDocument() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.successScreenWithSignedDocument)).getText();
+        Assert.assertEquals(Literals.Wallet.SUCCESS_SCREEN_WITH_SIGNED_DOCUMENT.label, pageHeader);
+    }
+
+    public void clickToViewSignDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickViewSignDocument)).click();
+    }
+
+    public void clickBackWallet() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickBackWallet)).click();
+    }
+
+    public void closeIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.closeButton)).getText();
+        Assert.assertEquals(Literals.Wallet.CLOSE_BUTTON.label, pageHeader);
+    }
+
+    public void shareIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.shareButton)).getText();
+        Assert.assertEquals(Literals.Wallet.SHARE_BUTTON.label, pageHeader);
+    }
+
+    public void createAPinIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.createApinIsDsiaplyed)).getText();
+        Assert.assertEquals(Literals.Wallet.PIN_PAGE.label, pageHeader);
+    }
+
+    public void TestProviderFormIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.testProviderFormIsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.TEST_PROVIDER_FORM.label, pageHeader);
+    }
+
+    public void ageOver18IsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.ageOver18IsDisplayed)).getText();
+        Assert.assertEquals(Literals.Wallet.AGE_OVER_18.label, pageHeader);
+    }
+
+    public void isOnWallet() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.isOnWallet)).getText();
+        Assert.assertEquals(Literals.Wallet.IS_ON_WALLET.label, pageHeader);
+    }
+
+    public void requestInProgressIsDisplayed() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.messageInProgress)).getText();
+        Assert.assertEquals(Literals.Wallet.MESSAGE_IN_PROGRESS.label, pageHeader);
+    }
+
+    public void clickOk() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickOk)).click();
+    }
+
+    public void documentInPendingState() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.messageInPending)).getText();
+        Assert.assertEquals(Literals.Wallet.MESSAGE_IN_PENDING.label, pageHeader);
+    }
+
+    public void documentIsIssued() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.issuanceFailed)).getText();
+        Assert.assertEquals(Literals.Wallet.ISSUANCE_FAILED.label, pageHeader);
+    }
+
+    public void clickThreeLine() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickThreeLine)).click();
+    }
+
+    public void clickSettings() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSettings)).click();
+    }
+
+    public void enableBatchIssuance() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.enableBatchIssuance)).click();
+    }
+
+    public void openWallet() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.activateApp("eu.europa.ec.euidi");
+    }
+
+    public void instanceHasReduced() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.instance)).getText();
+        Assert.assertFalse(Literals.Wallet.ISSUANCE_FAILED.label, pageHeader.contains(Literals.Wallet.ISSUANCE_FAILED.label));
     }
 }

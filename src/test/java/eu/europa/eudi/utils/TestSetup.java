@@ -7,6 +7,7 @@ import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import io.cucumber.java.Scenario;
 
 public class TestSetup {
+    private String transactionCode;
     EnvDataConfig envDataConfig;
     MobileWebDriverFactory mobileWebDriverFactory;
     MobilePageObjectFactory mobilePageObjectFactory;
@@ -85,5 +86,13 @@ public class TestSetup {
 
     public void stopLogging() {
         mobileWebDriverFactory.stopLogging();
+    }
+
+    public void setTransactionCode(String code) {
+        this.transactionCode = code;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
     }
 }

@@ -79,11 +79,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user authenticates and consents the issuance")
-    public void theUserAuthenticatesAndConsentsTheIssuance() {
-        //manual
-    }
-
     @When("the user presses on the Issue button")
     public void theUserPressesOnTheIssueButton() {
         //manual
@@ -91,11 +86,6 @@ public class ManuallyStepDefs {
 
     @Given("the user is on issuer service")
     public void theUserIsOnIssuerService() {
-        //manual
-    }
-
-    @Then("the user registers their personal data")
-    public void theUserRegistersTheirPersonalData() {
         //manual
     }
 
@@ -193,18 +183,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user visits the Relying Party service on their mobile device")
-    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() {
-        //manual
-    }
-
     @When("the user selects to verify the age limit with the EUDI Wallet")
     public void theUserSelectsToVerifyTheAgeLimitWithTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the Relying Party service redirects the user to the EUDI Wallet")
-    public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
         //manual
     }
 
@@ -348,16 +328,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user visits the Issuer service")
-    public void theUserVisitsTheIssuerService() {
-        //manual
-    }
-
-    @When("the user chooses to issue a doc with pre-authorization")
-    public void theUserChoosesToIssueADocWithPreAuthorization() {
-        //manual
-    }
-
     @Then("the Issuer service creates a QR code and a transaction code")
     public void theIssuerServiceCreatesAQRCodeAndATransactionCode() {
         //manual
@@ -423,56 +393,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Wallet app requests the transaction code")
-    public void theWalletAppRequestsTheTransactionCode() {
-        //manual
-    }
-
-    @And("the user enters the transaction code provided by the Issuer")
-    public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
-        //manual
-    }
-
-    @And("the doc is displayed in the dashboard screen")
-    public void theDocIsDisplayedInTheDashboardScreen() {
-        //manual
-    }
-
-    @And("a transaction code has been created")
-    public void aTransactionCodeHasBeenCreated() {
-        //manual
-    }
-
-    @Given("the transaction code has been created")
-    public void theTransactionCodeHasBeenCreated() {
-        //manual
-    }
-
-    @When("the user selects to register with the EUDI wallet app")
-    public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
-        //manual
-    }
-
-    @And("the user enters the PIN")
-    public void theUserEntersThePIN() {
-        //manual
-    }
-
-    @Given("the user has entered the PIN")
-    public void theUserHasEnteredThePIN() {
-        //manual
-    }
-
-    @When("the request from the issuer is displayed on the wallet app")
-    public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
-        //manual
-    }
-
-    @Given("the user entered the transaction code provided by the Issuer")
-    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() {
-        //manual
-    }
-
     @And("the add document page is displayed on screen")
     public void theAddDocumentPageIsDisplayedOnScreen() {
         //manual
@@ -480,16 +400,6 @@ public class ManuallyStepDefs {
 
     @When("the Wallet app displays a success message on screen")
     public void theWalletAppDisplaysASuccessMessageOnScreen() {
-        //manual
-    }
-
-    @Then("the user is redirected to the EUDI wallet application")
-    public void theUserIsRedirectedToTheEUDIWalletApplication() {
-        //manual
-    }
-
-    @When("the Wallet application displays a success message")
-    public void theWalletApplicationDisplaysASuccessMessage() {
         //manual
     }
 
@@ -583,28 +493,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is on the issuer service page")
-    public void theUserIsOnTheIssuerServicePage() {
-        //manual
-    }
-
-    @When("the user chooses to issue a credential to the wallet app")
-    public void theUserChoosesToIssueACredentialToTheWalletApp() {
-        //manual
-    }
-
-    @Then("the user is redirected to the wallet app")
-    public void theUserIsRedirectedToTheWalletApp() {
-        //manual
-    }
-
     @And("the user views the details regarding the issuance")
     public void theUserViewsTheDetailsRegardingTheIssuance() {
-        //manual
-    }
-
-    @Given("the user is on the wallet app with issuance details")
-    public void theUserIsOnTheWalletAppWithIssuanceDetails() {
         //manual
     }
 
@@ -638,23 +528,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the user sees the details regarding the issuance")
-    public void theUserSeesTheDetailsRegardingTheIssuance() {
-        //manual
-    }
-
     @When("the user clicks the {string} button")
     public void theUserClicksTheISSUEButton() {
-        //manual
-    }
-
-    @Then("the user is redirected to the issuer for authentication and consent")
-    public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
-        //manual
-    }
-
-    @Given("the user is on the issuer page for authentication and consent")
-    public void theUserIsOnTheIssuerPageForAuthenticationAndConsent() {
         //manual
     }
 
@@ -663,38 +538,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("a message appears stating that the request is in progress")
-    public void aMessageAppearsStatingThatTheRequestIsInProgress() {
-        //manual
-    }
-
-    @Given("the user sees the issuance in progress message")
-    public void theUserSeesTheIssuanceInProgressMessage() {
-        //manual
-    }
-
-    @When("the user clicks OK")
-    public void theUserClicksOK() {
-        //manual
-    }
-
-    @Then("the dashboard appears with the document grayed out and in a pending state")
-    public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
-        //manual
-    }
-
-    @Given("the wallet app is polling the issuer for the credential")
-    public void theWalletAppIsPollingTheIssuerForTheCredential() {
-        //manual
-    }
-
     @When("the issuer sends the credential to the wallet app")
     public void theIssuerSendsTheCredentialToTheWalletApp() {
-        //manual
-    }
-
-    @Then("the user views a modal informing them that the document has been issued")
-    public void theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued() {
         //manual
     }
 
@@ -763,11 +608,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the user clicks on the CONTINUE button")
-    public void theUserClicksOnTheCONTINUEButton() {
-        //manual
-    }
-
     @When("the user clicks on the SCAN QR button")
     public void theUserClicksOnTheSCANQRButton() {
         //manual
@@ -785,21 +625,6 @@ public class ManuallyStepDefs {
 
     @When("the user clicks on the ADD DOC button on the wallet application")
     public void theUserClicksOnTheADDDOCButtonOnTheWalletApplication() {
-        //manual
-    }
-
-    @Then("the user clicks on the ISSUE button")
-    public void theUserClicksOnTheISSUEButton() {
-        //manual
-    }
-
-    @Given("the user has clicked on the ISSUE button")
-    public void theUserHasClickedOnTheISSUEButton() {
-        //manual
-    }
-
-    @When("the user clicks the Issue button")
-    public void theUserClicksTheIssueButton() {
         //manual
     }
 
@@ -881,102 +706,6 @@ public class ManuallyStepDefs {
 
     @When("the user presses the SHOW QR/TAP button")
     public void theUserPressesTheSHOWQRTAPButton() {
-        //manual
-    }
-
-    @Then("the user is presented with a URL to initiate the EUDI Wallet on the same device")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice() {
-        //manual
-    }
-
-    @Given("the user is presented with a URL to initiate the EUDI Wallet")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWallet() {
-        //manual
-    }
-
-    @When("the user selects the URL")
-    public void theUserSelectsTheURL() {
-        //manual
-    }
-
-    @Then("the Wallet is initiated and the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
-    public void theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
-        //manual
-    }
-
-    @Given("the user is presented with details of the credentials to be issued")
-    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssued() {
-        //manual
-    }
-
-    @When("the user selects to proceed with the issuance process")
-    public void theUserSelectsToProceedWithTheIssuanceProcess() {
-        //manual
-    }
-
-    @Then("the user is redirected to the Issuer service to present their PID")
-    public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
-        //manual
-    }
-
-    @Given("the user has been redirected to the Issuer service to present their PID")
-    public void theUserHasBeenRedirectedToTheIssuerServiceToPresentTheirPID() {
-        //manual
-    }
-
-    @When("the EUDI Wallet displays the presentation request for PID")
-    public void theEUDIWalletDisplaysThePresentationRequestForPID() {
-        //manual
-    }
-
-    @Then("the user is prompted to consent by selecting the Share button")
-    public void theUserIsPromptedToConsentBySelectingTheShareButton() {
-        //manual
-    }
-
-    @Given("the user has been prompted to consent by selecting the Share button")
-    public void theUserHasBeenPromptedToConsentBySelectingTheShareButton() {
-        //manual
-    }
-
-    @When("the user selects the Share button")
-    public void theUserSelectsTheShareButton() {
-        //manual
-    }
-
-
-    @Then("a success message is displayed for the successful presentation of the PID")
-    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
-        //manual
-    }
-
-    @When("the user clicks the Continue button")
-    public void theUserClicksTheContinueButton() {
-        //manual
-    }
-
-    @Then("the user views a success message for issuing the document")
-    public void theUserViewsASuccessMessageForIssuingTheDocument() {
-        //manual
-    }
-
-    @And("the user views the document on the dashboard which issued based on the PID")
-    public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-        //manual
-    }
-
-    @Then("the user is prompted to enter their six-digit PIN")
-    public void theUserIsPromptedToEnterTheirSixDigitPIN() {
-        //manual
-    }
-
-    @Given("the user has been prompted to enter their six-digit PIN")
-    public void theUserHasBeenPromptedToEnterTheirSixDigitPIN() {
-        //manual
-    }
-
-    @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() {
         //manual
     }
 
@@ -1287,11 +1016,6 @@ public class ManuallyStepDefs {
 
     @When("an authentication page appears")
     public void anAuthenticationPageAppears() {
-        //manual
-    }
-
-    @When("the user selects to issue credential")
-    public void theUserSelectsToIssueCredential() {
         //manual
     }
 
@@ -2043,12 +1767,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the EUDI Wallet retrieves the Credential ID details from the QTSP")
-    public void theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP() {
-        //manual
-
-    }
-
     @And("the EUDI Wallet proceeds to the next step in the signing flow.")
     public void theEUDIWalletProceedsToTheNextStepInTheSigningFlow() {
         //manual
@@ -2067,20 +1785,6 @@ public class ManuallyStepDefs {
     @And("the user confirms to proceed with the signing operation.")
     public void theUserConfirmsToProceedWithTheSigningOperation() { //manual
 
-    }
-
-    @Then("the EUDI Wallet presents the Credential ID details to the user")
-    public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() { //manual
-    }
-
-    @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
-    public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
-        //manual
-    }
-
-    @When("the user decides not to proceed")
-    public void theUserDecidesNotToProceed() {
-        //manual
     }
 
     @Then("the user can select the {string} option")
@@ -2120,11 +1824,6 @@ public class ManuallyStepDefs {
 
     @Then("the deep link should redirect the user back to the EUDI Wallet.")
     public void theDeepLinkShouldRedirectTheUserBackToTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the user can select the Abort operation option")
-    public void theUserCanSelectTheAbortOperationOption() {
         //manual
     }
 
@@ -2266,16 +1965,6 @@ public class ManuallyStepDefs {
 
     @And("the signed document should be returned to the EUDI Wallet.")
     public void theSignedDocumentShouldBeReturnedToTheEUDIWallet() {
-        //manual
-    }
-
-    @Given("the QTSP has signed the document and returned it")
-    public void theQTSPHasSignedTheDocumentAndReturnedIt() {
-        //manual
-    }
-
-    @When("the EUDI Wallet receives the signed document")
-    public void theEUDIWalletReceivesTheSignedDocument() {
         //manual
     }
 
@@ -2443,11 +2132,6 @@ public class ManuallyStepDefs {
 
     @Given("the user has successfully authenticated and provided consent")
     public void theUserHasSuccessfullyAuthenticatedAndProvidedConsent() {
-        //manual
-    }
-
-    @When("the EUDI Wallet presents the requested attestation to the QTSP")
-    public void theEUDIWalletPresentsTheRequestedAttestationToTheQTSP() {
         //manual
     }
 
@@ -2893,16 +2577,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("user confirms to proceed with the signing operation")
-    public void userConfirmsToProceedWithTheSigningOperation() {
-        //manual
-    }
-
-    @And("EUDI Wallet should return the user to the main page")
-    public void eudiWalletShouldReturnTheUserToTheMainPage() {
-        //manual
-    }
-
     @Then("QTSP should provide a deep link to proceed to attestation presentation")
     public void qtspShouldProvideADeepLinkToProceedToAttestationPresentation() {
         //manual
@@ -3078,38 +2752,18 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is on the Home screen")
-    public void theUserIsOnTheHomeScreen() {
-        //manual
-    }
+//    @Given("the user is on the Home screen")
+//    public void theUserIsOnTheHomeScreen() {
+//        //manual
+//    }
 
     @When("the user selects the option {string} in the {string} section")
     public void theUserSelectsTheOptionInTheSection(String arg0, String arg1) {
         //manual
     }
 
-    @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
-    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
-        //manual
-    }
-
-    @Given("the user is viewing the predefined list of attestations")
-    public void theUserIsViewingThePredefinedListOfAttestations() {
-        //manual
-    }
-
-    @When("the user selects one attestation to be issued")
-    public void theUserSelectsOneAttestationToBeIssued() {
-        //manual
-    }
-
     @And("the attestation is successfully issued")
     public void theAttestationIsSuccessfullyIssued() {
-        //manual
-    }
-
-    @And("the screen informs the user about the attestation issued and the issuer who issued it")
-    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
         //manual
     }
 
@@ -3148,18 +2802,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is viewing the success screen after an attestation is issued")
-    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() {
-        //manual
-    }
-
     @When("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String arg0) {
-        //manual
-    }
-
-    @Then("the user navigates back to the Home screen")
-    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
         //manual
     }
 
@@ -3170,11 +2814,6 @@ public class ManuallyStepDefs {
 
     @When("the user clicks on the Go to my EUDI Wallet button")
     public void theUserClicksOnTheGoToMyEUDIWalletButton() {
-        //manual
-    }
-
-    @And("the screen displays a Close button to return to the Home screen")
-    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
         //manual
     }
 
@@ -4115,12 +3754,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-
-    @Given("the user is on the Home page")
-    public void theUserIsOnTheHomePage() {
-        //manual
-    }
-
     @Then("the wallet opens the scanner")
     public void theWalletOpensTheScanner() {
         //manual
@@ -4168,11 +3801,6 @@ public class ManuallyStepDefs {
 
     @When("the data sharing process is successful")
     public void theDataSharingProcessIsSuccessful() {
-        //manual
-    }
-
-    @Then("the wallet displays a success screen")
-    public void theWalletDisplaysASuccessScreen() {
         //manual
     }
 
@@ -4954,31 +4582,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
-    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
-        //manual
-    }
-
-    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
-    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
-        //manual
-    }
-
-    @Given("the user has uploaded a document and selected a QTSP")
-    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
-        //manual
-    }
-
-    @And("a success screen is displayed with the signed document")
-    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
-        //manual
-    }
-
-    @Then("the EUDI Wallet enables the user to share the document or close the process")
-    public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-        //manual
-    }
-
     @Given("the QTSP has received the success outcome from the EUDI Wallet")
     public void theQTSPHasReceivedTheSuccessOutcomeFromTheEUDIWallet() {
         //manual
@@ -5371,31 +4974,6 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    @When("the user selects the Online option in the Authenticate section")
-    public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
-        // manual
-    }
-
-    @Then("the Documents screen is displayed")
-    public void theDocumentsScreenIsDisplayed() {
-        // manual
-    }
-
-    @When("the user selects to add a new document")
-    public void theUserSelectsToAddANewDocument() {
-        // manual
-    }
-
-    @And("the user selects to add a new document From list")
-    public void theUserSelectsToAddANewDocumentFromList() {
-        // manual
-    }
-
-    @When("the user closes the success screen")
-    public void theUserClosesTheSuccessScreen() {
-        // manual
-    }
-
     @When("the user navigates to the Home screen")
     public void theUserNavigatesToTheHomeScreen() {
         //manual
@@ -5494,16 +5072,6 @@ public class ManuallyStepDefs {
 
     @Given("the user is on the Add document screen")
     public void theUserIsOnTheAddDocumentScreen() {
-        //manual
-    }
-
-    @When("the user navigates to the Documents screen")
-    public void theUserNavigatesToTheDocumentsScreen() {
-        //manual
-    }
-
-    @Given("the user is on the Documents screen")
-    public void theUserIsOnTheDocumentsScreen() {
         //manual
     }
 
@@ -6804,16 +6372,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the user authenticates using a six-digit PIN or Biometrics")
-    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() {
-        //manual
-    }
-
-    @Then("the authentication is successful")
-    public void theAuthenticationIsSuccessful() {
-        //manual
-    }
-
     @And("the user fails to authenticate using a six-digit PIN or Biometrics")
     public void theUserFailsToAuthenticateUsingASixDigitPINOrBiometrics() {
         //manual
@@ -6949,11 +6507,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user selects the option to present an attestation type")
-    public void theUserSelectsTheOptionToPresentAnAttestationType() {
-        //manual
-    }
-
     @Then("the Relying Party service renders a QR code")
     public void theRelyingPartyServiceRendersAQRCode() {
         //manual
@@ -6971,21 +6524,6 @@ public class ManuallyStepDefs {
 
     @And("displays the name of the Relying Party and the attestation")
     public void displaysTheNameOfTheRelyingPartyAndTheAttestation() {
-        //manual
-    }
-
-    @Given("Method A is configured for the attestation type")
-    public void methodAIsConfiguredForTheAttestationType() {
-        //manual
-    }
-
-    @When("the EUDI Wallet selects an available matching attestation")
-    public void theEUDIWalletSelectsAnAvailableMatchingAttestation() {
-        //manual
-    }
-
-    @Then("the Wallet uses an attestation not previously presented to any Relying Party")
-    public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
         //manual
     }
 
@@ -7019,23 +6557,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the EUDI Wallet requests the user to consent")
-    public void theEUDIWalletRequestsTheUserToConsent() {
-        //manual
-    }
-
     @When("the user consents by authenticating successfully")
     public void theUserConsentsByAuthenticatingSuccessfully() {
-        //manual
-    }
-
-    @Given("the user consents to the attestation presentation")
-    public void theUserConsentsToTheAttestationPresentation() {
-        //manual
-    }
-
-    @Then("the Relying Party service receives the attestation")
-    public void theRelyingPartyServiceReceivesTheAttestation() {
         //manual
     }
 
@@ -7049,33 +6572,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the EUDI Wallet displays a confirmation message indicating the outcome")
-    public void theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome() {
-        //manual
-    }
-
-    @And("the EUDI Wallet reduces the internal counter of unused attestations")
-    public void theEUDIWalletReducesTheInternalCounterOfUnusedAttestations() {
-        //manual
-    }
-
     @And("the EUDI Wallet and the Relying Party User Interface reside on the same device")
     public void theEUDIWalletAndTheRelyingPartyUserInterfaceResideOnTheSameDevice() {
-        //manual
-    }
-
-    @Given("the EUDI Wallet is opened")
-    public void theEUDIWalletIsOpened() {
-        //manual
-    }
-
-    @Given("the user is successfully authenticated in the EUDI Wallet")
-    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the EUDI Wallet informs the user that the Relying Party requests an attestation")
-    public void theEUDIWalletInformsTheUserThatTheRelyingPartyRequestsAnAttestation() {
         //manual
     }
 
@@ -7129,11 +6627,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user requests the issuance of an attestation type")
-    public void theUserRequestsTheIssuanceOfAnAttestationType() {
-        //manual
-    }
-
     @Then("the issuer service renders a QR code")
     public void theIssuerServiceRendersAQRCode() {
         //manual
@@ -7161,21 +6654,6 @@ public class ManuallyStepDefs {
 
     @Then("the Wallet requests the user to confirm to proceed")
     public void theWalletRequestsTheUserToConfirmToProceed() {
-        //manual
-    }
-
-    @Given("the user visits the issuer service on the same device")
-    public void theUserVisitsTheIssuerServiceOnTheSameDevice() {
-        //manual
-    }
-
-    @Then("the issuer service redirects the user to the Wallet")
-    public void theIssuerServiceRedirectsTheUserToTheWallet() {
-        //manual
-    }
-
-    @Given("the EUDI Wallet opens")
-    public void theEUDIWalletOpens() {
         //manual
     }
 
