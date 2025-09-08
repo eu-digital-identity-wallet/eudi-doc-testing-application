@@ -45,7 +45,25 @@ public interface Literals {
         CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Add document from list"),
-        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with");
+        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
+        CLOSE_BUTTON("Close"),
+        VERIFICATION_IS_DISPLAYED("Digital Credentials Issuer requires verification"),
+        DETAILS_OVER_18("Age over 18 Pseudonym"),
+        DETAILS_FOR_DEFERRED("Pseudonym Deferred"),
+        SIGN_DOCUMENT("Sign Document"),
+        SELECT_SIGNING("Select signing service"),
+        SIGNING_SERVICES("Signing services"),
+        CANCEL_SIGNING_PROCESS("Cancel signing process?"),
+        SELECT_SIGNING_CERTIFICATE("Select signing certificate"),
+        SUCCESS_SCREEN_WITH_SIGNED_DOCUMENT("You have successfully signed your document."),
+        SHARE_BUTTON("Share"),
+        PIN_PAGE("To approve the transaction you need to verify your identity."),
+        TEST_PROVIDER_FORM("Test Provider Form"),
+        AGE_OVER_18("Age over 18 Pseudonym"),
+        IS_ON_WALLET("In progress!"),
+        MESSAGE_IN_PROGRESS("Your documents from Digital Credentials Issuer have been requested. You will be notified when they have been issued to your wallet."),
+        MESSAGE_IN_PENDING("Pending"),
+        ISSUANCE_FAILED("//android.widget.TextView[@text=\"10/10\"]");
 
         public final String label;
         Wallet(String label) {
@@ -85,12 +103,13 @@ public interface Literals {
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet"),
+        FORM("EUDI Wallet Credential"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
-        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet");
+        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
+        TRANSACTION_CODE_IS_DISPLAYED("Transaction Code");
 
         public final String label;
         Issuer(String label) {

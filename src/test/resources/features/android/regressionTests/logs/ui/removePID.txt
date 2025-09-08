@@ -40315,10 +40315,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:11.722 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":"Welcome to your Wallet"}
 07-25 09:49:11.754 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:11.756 12363 12418 I appium  : FindElement command
-07-25 09:49:11.760 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:49:11.760 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:49:11.760 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:11.762 12363 12418 I appium  : The following attributes will be included to the page source: []
-07-25 09:49:11.840 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:49:11.840 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:49:11.842 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-002400000004"}}
 07-25 09:49:11.858 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-002400000004/attribute/displayed
 07-25 09:49:11.858 12363 12418 I appium  : GetElementAttribute command
@@ -40351,7 +40351,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:11.956  7375  8108 D MirrorManager:  sendAcceptInput 1 0
 07-25 09:49:11.956 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:11.957 12363 12418 I appium  : FindElement command
-07-25 09:49:11.958 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:49:11.958 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:49:11.958 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:11.993 12435 12435 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1475 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:49:11.993  2436  5247 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@aa607d4
@@ -40508,7 +40508,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:12.642 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:12.674 12363 12367 I tomator2.serve: Method exceeds compiler instruction limit: 20042 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
 07-25 09:49:12.695  2436  2606 E DeviceIdleController: Unknown configuration key: max_temp_app_whitelist_duration
-07-25 09:49:12.716 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:49:12.716 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:49:12.718 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-002d00000004"}}
 07-25 09:49:12.739 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-002d00000004/attribute/displayed
 07-25 09:49:12.740 12363 12418 I appium  : GetElementAttribute command
@@ -40531,7 +40531,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:12.852 12435 12435 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 09:49:12.854 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:12.856 12363 12418 I appium  : FindElement command
-07-25 09:49:12.858 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:49:12.858 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:49:12.858 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:12.859 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:12.859  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
@@ -40664,7 +40664,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:12.910 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:12.912  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:12.913  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:12.942 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:49:12.942 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:49:12.944 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-003600000004"}}
 07-25 09:49:12.950  3638  4356 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:49:12.959 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-003600000004/attribute/displayed
@@ -40700,7 +40700,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:13.598 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:13.600 12363 12418 I appium  : FindElement command
 07-25 09:49:13.603  4644  4795 I SyncManager: (REDACTED) Executing sync(type=%s%s)
-07-25 09:49:13.604 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:49:13.604 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:49:13.604 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:13.604  4644  4795 I SyncManager: (REDACTED) Executing sync(type=%s) finished in %s
 07-25 09:49:13.605  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
@@ -40831,7 +40831,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:13.649 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:13.653  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:13.653  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:13.671 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:49:13.671 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:49:13.673 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-003f00000004"}}
 07-25 09:49:13.674  3638  3662 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:49:13.691 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-003f00000004/attribute/displayed
@@ -40863,7 +40863,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:14.339 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:14.341 12363 12418 I appium  : FindElement command
 07-25 09:49:14.343 12435 12435 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
-07-25 09:49:14.344 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:49:14.344 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:49:14.345 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:14.347  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:49:14.347 12363 12418 I appium  : The following attributes will be included to the page source: []
@@ -40996,7 +40996,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:14.395 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:14.396  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:14.396  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:14.420 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:49:14.420 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:49:14.422 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-004800000004"}}
 07-25 09:49:14.441 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-004800000004/attribute/displayed
 07-25 09:49:14.442  3638  3662 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
@@ -41074,7 +41074,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:15.074  3864 12505 W alrv    : 	at gghe.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):44)
 07-25 09:49:15.074  3864 12505 W alrv    : 	at ggkt.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):68)
 07-25 09:49:15.074  3864 12505 W alrv    : 	... 6 more
-07-25 09:49:15.077 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:49:15.077 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:49:15.077 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:15.079 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:15.082 12435 12435 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -41157,7 +41157,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:15.122 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:15.126  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:15.126  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:15.151 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:49:15.151 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:49:15.153 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-005100000004"}}
 07-25 09:49:15.157  3638  4356 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:49:15.168 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-005100000004/attribute/displayed
@@ -41344,10 +41344,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:16.746 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":null}
 07-25 09:49:16.771 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:16.773 12363 12418 I appium  : FindElement command
-07-25 09:49:16.777 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:49:16.777 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:49:16.777 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:16.779 12363 12418 I appium  : The following attributes will be included to the page source: []
-07-25 09:49:16.865 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:49:16.865 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:49:16.867 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-002400000004"}}
 07-25 09:49:16.880 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-002400000004/attribute/displayed
 07-25 09:49:16.882 12363 12418 I appium  : GetElementAttribute command
@@ -41378,7 +41378,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:16.979 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:16.980 12435 12435 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 09:49:16.981 12363 12418 I appium  : FindElement command
-07-25 09:49:16.984 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:49:16.984 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:49:16.984 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:16.985 12435 12435 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F....ID 0,0-1080,1495 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:49:16.985  2436  5247 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@c18ec6
@@ -41546,7 +41546,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:17.580  8204  8270 I Finsky:background: [41] Stats for Executor: bgExecutor tjj@d1f4217[Running, pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 38]
 07-25 09:49:17.636 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:17.644  8204  8270 I Finsky:background: [41] Stats for Executor: BlockingExecutor tjj@13c5604[Running, pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1]
-07-25 09:49:17.730 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:49:17.730 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:49:17.732 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-002d00000004"}}
 07-25 09:49:17.744 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-002d00000004/attribute/displayed
 07-25 09:49:17.745 12363 12418 I appium  : GetElementAttribute command
@@ -41622,7 +41622,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:17.841  3864 12513 W alrv    : 	at gghe.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):44)
 07-25 09:49:17.841  3864 12513 W alrv    : 	at ggkt.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):68)
 07-25 09:49:17.841  3864 12513 W alrv    : 	... 6 more
-07-25 09:49:17.843 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:49:17.843 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:49:17.843 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:17.844  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:49:17.845 12363 12418 I appium  : The following attributes will be included to the page source: []
@@ -41703,7 +41703,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:17.881 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:17.883  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:17.883  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:17.905 12363 12418 I appium  : Took 1ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:49:17.905 12363 12418 I appium  : Took 1ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:49:17.906 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-003600000004"}}
 07-25 09:49:17.919  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:49:17.924 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-003600000004/attribute/displayed
@@ -41733,7 +41733,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:18.562 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:18.564 12363 12418 I appium  : FindElement command
 07-25 09:49:18.565  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
-07-25 09:49:18.568 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:49:18.568 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:49:18.568 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:18.571 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:18.573 12435 12435 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -41866,7 +41866,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:18.607  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:18.607  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
 07-25 09:49:18.607 12435 12435 D InsetsController: show(ime(), fromIme=true)
-07-25 09:49:18.633 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:49:18.633 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:49:18.635 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-003f00000004"}}
 07-25 09:49:18.658 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-003f00000004/attribute/displayed
 07-25 09:49:18.658 12363 12418 I appium  : GetElementAttribute command
@@ -41987,7 +41987,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:19.294 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:19.294  2436  5247 I AssistStructure: Flattened final assist data: 744 bytes, containing 1 windows, 8 views
 07-25 09:49:19.296 12363 12418 I appium  : FindElement command
-07-25 09:49:19.299 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:49:19.299 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:49:19.300 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:19.300  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:49:19.301 12363 12418 I appium  : The following attributes will be included to the page source: []
@@ -42119,7 +42119,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:19.339 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:19.341  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:19.341  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:19.356 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:49:19.356 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:49:19.358 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-004800000004"}}
 07-25 09:49:19.373 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-004800000004/attribute/displayed
 07-25 09:49:19.374 12363 12418 I appium  : GetElementAttribute command
@@ -42158,7 +42158,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:20.029 12363 12418 I appium  : FindElement command
 07-25 09:49:20.029  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:49:20.033  7022  7344 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
-07-25 09:49:20.033 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:49:20.033 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:49:20.033 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:20.034 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:49:20.038  5557  5557 W SessionManager: SessionManager.endSession():88 Try to end a not begun session [IME_SESSION].
@@ -42228,7 +42228,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:20.067 12435 12435 D InsetsController: show(ime(), fromIme=true)
 07-25 09:49:20.067  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:49:20.067  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:49:20.078 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:49:20.078 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:49:20.079 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-005100000004"}}
 07-25 09:49:20.091   999  3775 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
 07-25 09:49:20.097 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-005100000004/attribute/displayed
@@ -46424,10 +46424,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:49:52.366  5231  5581 W MiuiPerfServiceClient: interceptAndQueuing:12435|eu.europa.ec.euidi|123|74|372761200898|Slow handle animation|4
 07-25 09:49:52.386 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:49:52.390 12363 12418 I appium  : FindElement command
-07-25 09:49:52.395 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
+07-25 09:49:52.395 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
 07-25 09:49:52.395 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:49:52.398 12363 12418 I appium  : The following attributes will be included to the page source: []
-07-25 09:49:52.447 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
+07-25 09:49:52.447 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
 07-25 09:49:52.448 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-000b-0000-013700000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-000b-0000-013700000004"}}
 07-25 09:49:52.460 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-000b-0000-013700000004/attribute/displayed
 07-25 09:49:52.461 12363 12418 I appium  : GetElementAttribute command
@@ -50585,10 +50585,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:26.227 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":"Welcome back"}
 07-25 09:50:26.240 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:50:26.242 12363 12418 I appium  : FindElement command
-07-25 09:50:26.245 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:50:26.245 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:50:26.245 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:26.248 12363 12418 I appium  : The following attributes will be included to the page source: []
-07-25 09:50:26.317 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:50:26.317 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:50:26.319 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-0014-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0014-0000-002400000004"}}
 07-25 09:50:26.332 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-0014-0000-002400000004/attribute/displayed
 07-25 09:50:26.333 12363 12418 I appium  : GetElementAttribute command
@@ -50609,7 +50609,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:26.420  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.calculateMaxKeyboardBodyHeight():50 leave 267 height for app when ime window height:2176, header height:121 and isFullscreenMode:false, so the max keyboard body height is:1788
 07-25 09:50:26.422 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:50:26.423 12363 12418 I appium  : FindElement command
-07-25 09:50:26.427 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:50:26.427 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:50:26.428 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:26.435 13222 13222 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:50:26.436  2436  2591 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -50772,7 +50772,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:26.973  5231  5581 W MiuiPerfServiceClient: interceptAndQueuing:13222|eu.europa.ec.euidi|118|49|407086171823|Slow handle animation|4
 07-25 09:50:27.105 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:50:27.134 12363 12367 I tomator2.serve: Method exceeds compiler instruction limit: 20042 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
-07-25 09:50:27.188 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:50:27.188 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:50:27.190 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-0014-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0014-0000-002d00000004"}}
 07-25 09:50:27.201 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-0014-0000-002d00000004/attribute/displayed
 07-25 09:50:27.202 12363 12418 I appium  : GetElementAttribute command
@@ -50794,7 +50794,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:27.293  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [IME_SESSION] is not ended while ending session [{INPUT_SESSION=1753426226437, INPUT_VIEW_SESSION=1753426226463, IME_SESSION=1753426226472}], ending it now.
 07-25 09:50:27.293  7375  7551 D MirrorManager:  sendAcceptInput 1 0
 07-25 09:50:27.294 12363 12418 I appium  : FindElement command
-07-25 09:50:27.298 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:50:27.298 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:50:27.299 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:27.302 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:50:27.302 13222 13222 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
@@ -50928,7 +50928,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:27.351 13222 13222 D InsetsController: show(ime(), fromIme=true)
 07-25 09:50:27.354  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:50:27.354  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:50:27.385 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:50:27.385 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:50:27.387 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-0014-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0014-0000-003600000004"}}
 07-25 09:50:27.391  3638  4356 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:50:27.400 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-0014-0000-003600000004/attribute/displayed
@@ -50953,7 +50953,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:28.019  5557  5557 W SessionManager: SessionManager.beginSession():53 Try to begin an already begun session [INPUT_SESSION], end it first
 07-25 09:50:28.019  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [INPUT_VIEW_SESSION] is not ended while ending session [{INPUT_SESSION=1753426227293, INPUT_VIEW_SESSION=1753426227321, IME_SESSION=1753426227328}], ending it now.
 07-25 09:50:28.019  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [IME_SESSION] is not ended while ending session [{INPUT_SESSION=1753426227293, INPUT_VIEW_SESSION=1753426227321, IME_SESSION=1753426227328}], ending it now.
-07-25 09:50:28.024 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:50:28.024 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:50:28.025 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:28.026 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:50:28.029 13222 13222 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
@@ -51080,7 +51080,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:28.084  2436  2497 D MULTI_WINDOW_SWITCH_ENABLED: false
 07-25 09:50:28.085  2436  2497 D IS_CTS_MODE: false
 07-25 09:50:28.085  2436  2497 D MULTI_WINDOW_SWITCH_ENABLED: false
-07-25 09:50:28.085 12363 12418 I appium  : Took 1ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:50:28.085 12363 12418 I appium  : Took 1ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:50:28.085  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:50:28.085  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
 07-25 09:50:28.088  2436  2497 I ImeInsetsSourceProvider: ImeInsetsSourceProvider.scheduleShowImePostLayout() Run showImeRunner.
@@ -51101,7 +51101,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:28.744 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:50:28.746 12363 12418 I appium  : FindElement command
 07-25 09:50:28.748 13222 13222 I HandWritingStubImpl: getCurrentKeyboardType: 1
-07-25 09:50:28.749 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:50:28.749 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:50:28.749 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:28.750  2436  5426 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
 07-25 09:50:28.750  2436  5426 D SmartPower.com.google.android.inputmethod.latin/10176(5557): show input method
@@ -51244,7 +51244,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:28.810 13222 13222 D InsetsController: show(ime(), fromIme=true)
 07-25 09:50:28.812  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:50:28.812  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:50:28.813 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:50:28.813 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:50:28.815 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-0014-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0014-0000-004800000004"}}
 07-25 09:50:28.825 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-0014-0000-004800000004/attribute/displayed
 07-25 09:50:28.825 12363 12418 I appium  : GetElementAttribute command
@@ -51268,7 +51268,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:29.475  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [IME_SESSION] is not ended while ending session [{INPUT_SESSION=1753426228757, INPUT_VIEW_SESSION=1753426228780, IME_SESSION=1753426228788}], ending it now.
 07-25 09:50:29.477 12363 12418 I appium  : channel read: POST /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element
 07-25 09:50:29.479 12363 12418 I appium  : FindElement command
-07-25 09:50:29.480 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:50:29.480 12363 12418 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:50:29.480 12363 12418 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:50:29.481 12363 12418 I appium  : The following attributes will be included to the page source: []
 07-25 09:50:29.486 13222 13222 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
@@ -51402,7 +51402,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:50:29.537 13222 13222 D InsetsController: show(ime(), fromIme=true)
 07-25 09:50:29.539  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:50:29.539  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:50:29.557 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:50:29.557 12363 12418 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:50:29.558 12363 12418 I appium  : AppiumResponse: {"sessionId":"c384fe32-ac0e-4270-bdfa-49972ee23d34","value":{"ELEMENT":"00000000-0000-0014-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0014-0000-005100000004"}}
 07-25 09:50:29.569 12363 12418 I appium  : channel read: GET /wd/hub/session/c384fe32-ac0e-4270-bdfa-49972ee23d34/element/00000000-0000-0014-0000-005100000004/attribute/displayed
 07-25 09:50:29.570 12363 12418 I appium  : GetElementAttribute command
@@ -56840,11 +56840,11 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:16.932 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":"Welcome to your Wallet"}
 07-25 09:54:16.953 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:16.955 13996 14020 I appium  : FindElement command
-07-25 09:54:16.957 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:54:16.957 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:54:16.958 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:16.959 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:54:16.976  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
-07-25 09:54:17.006 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:54:17.006 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:54:17.008 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-002400000004"}}
 07-25 09:54:17.022 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-002400000004/attribute/displayed
 07-25 09:54:17.022 13996 14020 I appium  : GetElementAttribute command
@@ -56880,7 +56880,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:17.121 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:17.122  7375  8108 D MirrorManager:  sendAcceptInput 1 0
 07-25 09:54:17.123 13996 14020 I appium  : FindElement command
-07-25 09:54:17.126 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:54:17.126 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:54:17.127 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:17.138  2436  3390 I AssistStructure: Flattened final assist data: 744 bytes, containing 1 windows, 8 views
 07-25 09:54:17.143  4644  4795 I SyncManager: (REDACTED) Executing sync(type=%s%s)
@@ -57024,7 +57024,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:17.818 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:54:17.841  7022  7344 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
 07-25 09:54:17.850 13996 14000 I tomator2.serve: Method exceeds compiler instruction limit: 20042 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
-07-25 09:54:17.918 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:54:17.918 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:54:17.919 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-002d00000004"}}
 07-25 09:54:17.934 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-002d00000004/attribute/displayed
 07-25 09:54:17.934 13996 14020 I appium  : GetElementAttribute command
@@ -57099,7 +57099,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:18.035  3864 14097 W alrv    : 	... 6 more
 07-25 09:54:18.035 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:18.037 13996 14020 I appium  : FindElement command
-07-25 09:54:18.040 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:54:18.040 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:54:18.040 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:18.042  4644  4795 I SyncManager: (REDACTED) Executing sync(type=%s%s)
 07-25 09:54:18.043 13996 14020 I appium  : The following attributes will be included to the page source: []
@@ -57180,7 +57180,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:18.074  2436  2497 I ImeInsetsSourceProvider: ImeInsetsSourceProvider.scheduleShowImePostLayout() Run showImeRunner.
 07-25 09:54:18.074  2436  2497 I ImeInsetsSourceProvider: ImeInsetsSourceProvider.scheduleShowImePostLayout() isReadyToShowIme.
 07-25 09:54:18.074 14032 14032 D InsetsController: show(ime(), fromIme=true)
-07-25 09:54:18.094 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:54:18.094 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:54:18.095 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-003600000004"}}
 07-25 09:54:18.103  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:54:18.110 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-003600000004/attribute/displayed
@@ -57195,7 +57195,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:18.750 14032 14032 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:54:18.763 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:18.765 13996 14020 I appium  : FindElement command
-07-25 09:54:18.769 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:54:18.769 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:54:18.769 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:18.771 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:54:18.783  2436  3666 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -57340,7 +57340,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:18.843 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:18.846  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:18.846  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:18.871 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:54:18.871 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:54:18.874 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-003f00000004"}}
 07-25 09:54:18.885  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:54:18.893 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-003f00000004/attribute/displayed
@@ -57512,7 +57512,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:19.542  2436  3390 D SmartPower.com.google.android.inputmethod.latin/10176(5557): show input method
 07-25 09:54:19.542  2436  3390 I InputMethodManagerService: IMMS.showCurrentInputLocked request ims to show inputMethod.
 07-25 09:54:19.542 13996 14020 I appium  : FindElement command
-07-25 09:54:19.544 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:54:19.544 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:54:19.544 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:19.545 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:54:19.546  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
@@ -57590,7 +57590,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:19.586  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
 07-25 09:54:19.590  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:19.590  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:19.606 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:54:19.606 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:54:19.608 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-004800000004"}}
 07-25 09:54:19.613  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:54:19.623 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-004800000004/attribute/displayed
@@ -57700,7 +57700,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:20.500 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:20.501  7375  8108 D MirrorManager:  sendAcceptInput 1 0
 07-25 09:54:20.502 13996 14020 I appium  : FindElement command
-07-25 09:54:20.506 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:54:20.506 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:54:20.506  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:54:20.506 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:20.507  4644  6369 I SyncManager: (REDACTED) Executing sync(type=%s%s)
@@ -57780,7 +57780,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:20.550  3652  3652 D Tile.MiuiCellularTile: data usage callback null
 07-25 09:54:20.550  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:20.550  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:20.571 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:54:20.571 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:54:20.572 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-005100000004"}}
 07-25 09:54:20.585 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-005100000004/attribute/displayed
 07-25 09:54:20.585 13996 14020 I appium  : GetElementAttribute command
@@ -58482,10 +58482,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:22.144 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":null}
 07-25 09:54:22.174 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:22.178 13996 14020 I appium  : FindElement command
-07-25 09:54:22.183 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:54:22.183 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:54:22.184 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:22.185 13996 14020 I appium  : The following attributes will be included to the page source: []
-07-25 09:54:22.243 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:54:22.243 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:54:22.244 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-002400000004"}}
 07-25 09:54:22.261 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-002400000004/attribute/displayed
 07-25 09:54:22.261 13996 14020 I appium  : GetElementAttribute command
@@ -58526,7 +58526,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:22.357  5557  5567 W putmethod.lati: Missing inline cache for android.view.inputmethod.InlineSuggestionsRequest eaz.d(android.content.Context)
 07-25 09:54:22.361 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:22.362 13996 14020 I appium  : FindElement command
-07-25 09:54:22.364 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:54:22.364 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:54:22.364 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:22.365  2436  3666 I AssistStructure: Flattened final assist data: 744 bytes, containing 1 windows, 8 views
 07-25 09:54:22.369 14032 14032 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1495 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -58675,7 +58675,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:22.878  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:54:22.969  4644  4644 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.backup.GMS_MODULE_RESTORE dat=chimera-action: cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
 07-25 09:54:23.011 13996 14020 I appium  : The following attributes will be included to the page source: []
-07-25 09:54:23.107 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:54:23.107 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:54:23.109 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-002d00000004"}}
 07-25 09:54:23.122 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-002d00000004/attribute/displayed
 07-25 09:54:23.122 13996 14020 I appium  : GetElementAttribute command
@@ -58753,7 +58753,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:23.225 13996 14020 I appium  : FindElement command
 07-25 09:54:23.229 14032 14032 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:54:23.230  2436  4135 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@bed400c
-07-25 09:54:23.230 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:54:23.230 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:54:23.230  2436  4135 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
 07-25 09:54:23.230 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:23.230  5557  5557 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes = 1, locked = false
@@ -58832,7 +58832,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:23.260 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:23.260 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:23.275  2436  2658 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=255
-07-25 09:54:23.283 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:54:23.283 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:54:23.285 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-003600000004"}}
 07-25 09:54:23.290  3638  4264 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:54:23.300 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-003600000004/attribute/displayed
@@ -58925,7 +58925,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:23.949 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:54:23.949 13996 14020 I appium  : FindElement command
 07-25 09:54:23.949  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
-07-25 09:54:23.950 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:54:23.950 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:54:23.951 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:23.953 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:54:23.957  5557  5557 W SessionManager: SessionManager.endSession():88 Try to end a not begun session [IME_SESSION].
@@ -58996,7 +58996,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:23.980 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:23.981  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:23.981  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:24.003 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:54:24.003 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:54:24.004 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-003f00000004"}}
 07-25 09:54:24.021  3638  4264 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:54:24.022 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-003f00000004/attribute/displayed
@@ -59073,7 +59073,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:24.664  3864 14090 W alrv    : 	at gghe.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):44)
 07-25 09:54:24.664  3864 14090 W alrv    : 	at ggkt.run(:com.google.android.gms@252635029@25.26.35 (190400-783060121):68)
 07-25 09:54:24.664  3864 14090 W alrv    : 	... 6 more
-07-25 09:54:24.665 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:54:24.665 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:54:24.665 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:24.666 14032 14032 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:54:24.666  2436  4135 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@3743941
@@ -59156,7 +59156,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:24.697 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:24.699  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:24.699  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:24.720 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:54:24.720 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:54:24.721 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-004800000004"}}
 07-25 09:54:24.736 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-004800000004/attribute/displayed
 07-25 09:54:24.737 13996 14020 I appium  : GetElementAttribute command
@@ -59191,7 +59191,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:25.382  5557  5557 I GoogleInputMethodService: GoogleInputMethodService.onStartInputView():1406 onStartInputView(EditorInfo{EditorInfo{packageName=eu.europa.ec.euidi, inputType=12, inputTypeString=NumberPassword, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=2000006, privateImeOptions=null, actionName=DONE, actionLabel=null, initialSelStart=0, initialSelEnd=0, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=11, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=false, android.support.text.emoji.emojiCompat_replaceAll=false, hand_writing_keyboard_type=1}], hintText=null, hintLocales=[]}}, true)
 07-25 09:54:25.382  5557  5557 W ModuleManager: ModuleManager.loadModule():516 Module mxs is not available
 07-25 09:54:25.382  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.getOemKeyboardHeightRatio():108 systemKeyboardHeightRatio:1.000000.
-07-25 09:54:25.384 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:54:25.384 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:54:25.384 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:54:25.387  5557  5557 W SessionManager: SessionManager.endSession():88 Try to end a not begun session [IME_SESSION].
 07-25 09:54:25.387 13996 14020 I appium  : The following attributes will be included to the page source: []
@@ -59261,7 +59261,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:54:25.406 14032 14032 D InsetsController: show(ime(), fromIme=true)
 07-25 09:54:25.408  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:54:25.408  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:54:25.436 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:54:25.436 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:54:25.438 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-005100000004"}}
 07-25 09:54:25.457 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-005100000004/attribute/displayed
 07-25 09:54:25.458 13996 14020 I appium  : GetElementAttribute command
@@ -62994,10 +62994,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:55:18.060 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":null}
 07-25 09:55:18.082 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:55:18.083 13996 14020 I appium  : FindElement command
-07-25 09:55:18.088 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
+07-25 09:55:18.088 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
 07-25 09:55:18.088 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:55:18.090 13996 14020 I appium  : The following attributes will be included to the page source: []
-07-25 09:55:18.171 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
+07-25 09:55:18.171 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
 07-25 09:55:18.173 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0022-0000-013700000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0022-0000-013700000004"}}
 07-25 09:55:18.190 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0022-0000-013700000004/attribute/displayed
 07-25 09:55:18.192 13996 14020 I appium  : GetElementAttribute command
@@ -66900,10 +66900,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:18.395 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":"Welcome back"}
 07-25 09:56:18.410 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:56:18.412 13996 14020 I appium  : FindElement command
-07-25 09:56:18.416 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:56:18.416 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:56:18.417 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:18.419 13996 14020 I appium  : The following attributes will be included to the page source: []
-07-25 09:56:18.491 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:56:18.491 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:56:18.493 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-002400000004"}}
 07-25 09:56:18.505 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-002400000004/attribute/displayed
 07-25 09:56:18.506 13996 14020 I appium  : GetElementAttribute command
@@ -66923,7 +66923,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:18.591  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.calculateMaxKeyboardBodyHeight():50 leave 267 height for app when ime window height:2176, header height:121 and isFullscreenMode:false, so the max keyboard body height is:1788
 07-25 09:56:18.594 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:56:18.595 13996 14020 I appium  : FindElement command
-07-25 09:56:18.597 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:56:18.597 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:56:18.597 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:18.602 14798 14798 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:56:18.604  2436  5380 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -67176,7 +67176,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:19.156   999  4027 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
 07-25 09:56:19.222  7022  7344 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
 07-25 09:56:19.270 13996 14020 I appium  : The following attributes will be included to the page source: []
-07-25 09:56:19.347 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:56:19.347 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:56:19.349 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-002d00000004"}}
 07-25 09:56:19.359 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-002d00000004/attribute/displayed
 07-25 09:56:19.360 13996 14020 I appium  : GetElementAttribute command
@@ -67187,7 +67187,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:19.421 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":null}
 07-25 09:56:19.433 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:56:19.435 13996 14020 I appium  : FindElement command
-07-25 09:56:19.439 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:56:19.439 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:56:19.439 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:19.441 14798 14798 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:56:19.441 13996 14020 I appium  : The following attributes will be included to the page source: []
@@ -67333,7 +67333,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:19.501 14798 14798 D InsetsController: show(ime(), fromIme=true)
 07-25 09:56:19.501  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:56:19.501  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:56:19.524 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:56:19.524 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:56:19.525 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-003600000004"}}
 07-25 09:56:19.536 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-003600000004/attribute/displayed
 07-25 09:56:19.537 13996 14020 I appium  : GetElementAttribute command
@@ -67392,7 +67392,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:20.462 14798 14798 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 09:56:20.471 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:56:20.472 13996 14020 I appium  : FindElement command
-07-25 09:56:20.475 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:56:20.475 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:56:20.475 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:20.477 14798 14798 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:56:20.479  2436  3920 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -67536,7 +67536,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:20.538 14798 14798 D InsetsController: show(ime(), fromIme=true)
 07-25 09:56:20.540  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:56:20.540  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:56:20.568 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:56:20.568 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:56:20.570 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-003f00000004"}}
 07-25 09:56:20.575  3638  3662 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:56:20.579 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-003f00000004/attribute/displayed
@@ -67562,7 +67562,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:21.201 14798 14798 D InsetsController: show(ime(), fromIme=false)
 07-25 09:56:21.201  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [INPUT_VIEW_SESSION] is not ended while ending session [{INPUT_SESSION=1753426580481, INPUT_VIEW_SESSION=1753426580508, IME_SESSION=1753426580519}], ending it now.
 07-25 09:56:21.201  5557  5557 W SessionManager: SessionManager.endSession():96 Child session [IME_SESSION] is not ended while ending session [{INPUT_SESSION=1753426580481, INPUT_VIEW_SESSION=1753426580508, IME_SESSION=1753426580519}], ending it now.
-07-25 09:56:21.201 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:56:21.201 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:56:21.201 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:21.204 13996 14020 I appium  : The following attributes will be included to the page source: []
 07-25 09:56:21.214  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
@@ -67685,7 +67685,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:21.250 14798 14798 D InsetsController: show(ime(), fromIme=true)
 07-25 09:56:21.253  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:56:21.253  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:56:21.255 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:56:21.255 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:56:21.257 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-004800000004"}}
 07-25 09:56:21.269 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-004800000004/attribute/displayed
 07-25 09:56:21.270 13996 14020 I appium  : GetElementAttribute command
@@ -67699,7 +67699,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:21.901 14798 14798 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 09:56:21.909 13996 14020 I appium  : channel read: POST /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element
 07-25 09:56:21.910 13996 14020 I appium  : FindElement command
-07-25 09:56:21.914 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:56:21.914 13996 14020 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:56:21.914 13996 14020 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:56:21.915 14798 14798 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 09:56:21.916 13996 14020 I appium  : The following attributes will be included to the page source: []
@@ -67843,7 +67843,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:56:21.981 14798 14798 D InsetsController: show(ime(), fromIme=true)
 07-25 09:56:21.984  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:56:21.984  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:56:22.003 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:56:22.003 13996 14020 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:56:22.005 13996 14020 I appium  : AppiumResponse: {"sessionId":"7e9b15e0-5c00-4fb1-ad11-52cd90586078","value":{"ELEMENT":"00000000-0000-0029-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0029-0000-005100000004"}}
 07-25 09:56:22.015 13996 14020 I appium  : channel read: GET /wd/hub/session/7e9b15e0-5c00-4fb1-ad11-52cd90586078/element/00000000-0000-0029-0000-005100000004/attribute/displayed
 07-25 09:56:22.016 13996 14020 I appium  : GetElementAttribute command
@@ -74045,11 +74045,11 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:41.314  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:41.334 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:41.336 15369 15393 I appium  : FindElement command
-07-25 09:59:41.339 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:59:41.339 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:59:41.339 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:41.341 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:41.344  3864  3864 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
-07-25 09:59:41.410 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:59:41.410 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:59:41.412 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-002400000004"}}
 07-25 09:59:41.461 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-002400000004/attribute/displayed
 07-25 09:59:41.461 15369 15393 I appium  : GetElementAttribute command
@@ -74133,7 +74133,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:41.588  4644  6369 I SyncManager: (REDACTED) Executing sync(type=%s) finished in %s
 07-25 09:59:41.592 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:41.592 15369 15393 I appium  : FindElement command
-07-25 09:59:41.594 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:59:41.594 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:59:41.595 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:41.617 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1495 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:59:41.617  2436  5252 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@fe33bbd
@@ -74234,7 +74234,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:42.139  6002  9649 I earchbox:searc: oneway function results for code 2 on binder at 0xb40000762a6829c0 will be dropped but finished with status UNKNOWN_TRANSACTION
 07-25 09:59:42.258 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:42.290 15369 15373 I tomator2.serve: Method exceeds compiler instruction limit: 20042 in java_cup.runtime.Symbol org.eclipse.wst.xml.xpath2.processor.internal.CUP$XPathCup$actions.CUP$XPathCup$do_action(int, java_cup.runtime.lr_parser, java.util.Stack, int)
-07-25 09:59:42.367 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:59:42.367 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:59:42.369 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-002d00000004"}}
 07-25 09:59:42.390 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-002d00000004/attribute/displayed
 07-25 09:59:42.390 15369 15393 I appium  : GetElementAttribute command
@@ -74258,7 +74258,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:42.499 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:42.501  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:42.502 15369 15393 I appium  : FindElement command
-07-25 09:59:42.505 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:59:42.505 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:59:42.506 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:42.508 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:42.509  2436  5252 W ProcessStats: Tracking association SourceState{7dee623 com.android.systemui/1000 BTopFgs #7276} whose proc state 2 is better than process ProcessState{93a0ae3 com.miui.securitycenter.remote/1000 pkg=com.miui.securitycenter} proc state 3 (115 skipped)
@@ -74391,7 +74391,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:42.543 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:42.544  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:42.544  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:42.570 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:59:42.570 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:59:42.572 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-003600000004"}}
 07-25 09:59:42.588 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-003600000004/attribute/displayed
 07-25 09:59:42.588 15369 15393 I appium  : GetElementAttribute command
@@ -74431,7 +74431,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:43.251  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.getOemKeyboardHeightRatio():108 systemKeyboardHeightRatio:1.000000.
 07-25 09:59:43.253 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:43.254 15369 15393 I appium  : FindElement command
-07-25 09:59:43.256 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:59:43.256 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:59:43.256 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:43.257 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:43.257  5557  5557 W SessionManager: SessionManager.endSession():88 Try to end a not begun session [IME_SESSION].
@@ -74553,7 +74553,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:43.276 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:43.278  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:43.278  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:43.318 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:59:43.318 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:59:43.320 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-003f00000004"}}
 07-25 09:59:43.328  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 09:59:43.347 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-003f00000004/attribute/displayed
@@ -74580,7 +74580,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:43.985  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:43.989 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:43.991 15369 15393 I appium  : FindElement command
-07-25 09:59:43.992 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:59:43.992 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:59:43.992 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:43.994 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:43.998 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -74712,7 +74712,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:44.031  5557  5557 I NewLanguagePromptExtension: NewLanguagePromptExtension$1.onKeyboardViewShown():88 Not show new language banner: not prime keyboard, or the extension not activated.
 07-25 09:59:44.033  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:44.033  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:44.054 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:59:44.054 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:59:44.056 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-004800000004"}}
 07-25 09:59:44.074  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 1
 07-25 09:59:44.075 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-004800000004/attribute/displayed
@@ -74738,7 +74738,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:44.727  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:44.728 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:44.729 15369 15393 I appium  : FindElement command
-07-25 09:59:44.733 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:59:44.733 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:59:44.733 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:44.736 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:44.741 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -74871,7 +74871,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:44.775 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:44.777  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:44.778  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:44.798 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:59:44.798 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:59:44.800 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-005100000004"}}
 07-25 09:59:44.819 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-005100000004/attribute/displayed
 07-25 09:59:44.820 15369 15393 I appium  : GetElementAttribute command
@@ -75033,10 +75033,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:46.365 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":null}
 07-25 09:59:46.392 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:46.394 15369 15393 I appium  : FindElement command
-07-25 09:59:46.397 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 09:59:46.397 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 09:59:46.397 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:46.399 15369 15393 I appium  : The following attributes will be included to the page source: []
-07-25 09:59:46.488 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 09:59:46.488 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 09:59:46.490 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-002400000004"}}
 07-25 09:59:46.507 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-002400000004/attribute/displayed
 07-25 09:59:46.508 15369 15393 I appium  : GetElementAttribute command
@@ -75067,7 +75067,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:46.608 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:46.610 15369 15393 I appium  : FindElement command
 07-25 09:59:46.611 15405 15405 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
-07-25 09:59:46.614 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 09:59:46.614 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 09:59:46.614 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:46.623 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1495 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:59:46.623  2436  5422 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@f429034
@@ -75215,7 +75215,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:46.810  3703  3703 V InlineSuggestionRenderService: Removed the inline suggestion from the cache, current size=0
 07-25 09:59:47.133  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:47.261 15369 15393 I appium  : The following attributes will be included to the page source: []
-07-25 09:59:47.365 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 09:59:47.365 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 09:59:47.367 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-002d00000004"}}
 07-25 09:59:47.386 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-002d00000004/attribute/displayed
 07-25 09:59:47.387 15369 15393 I appium  : GetElementAttribute command
@@ -75250,7 +75250,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:47.479  5557  5557 I GoogleInputMethodService: GoogleInputMethodService.onStartInputView():1406 onStartInputView(EditorInfo{EditorInfo{packageName=eu.europa.ec.euidi, inputType=12, inputTypeString=NumberPassword, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=2000005, privateImeOptions=null, actionName=NEXT, actionLabel=null, initialSelStart=0, initialSelEnd=0, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=11, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=false, android.support.text.emoji.emojiCompat_replaceAll=false, hand_writing_keyboard_type=1}], hintText=null, hintLocales=[]}}, true)
 07-25 09:59:47.479  5557  5557 W ModuleManager: ModuleManager.loadModule():516 Module mxs is not available
 07-25 09:59:47.479  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.getOemKeyboardHeightRatio():108 systemKeyboardHeightRatio:1.000000.
-07-25 09:59:47.482 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 09:59:47.482 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 09:59:47.483 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:47.485 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:47.489  2436 10874 I AssistStructure: Flattened final assist data: 744 bytes, containing 1 windows, 8 views
@@ -75372,7 +75372,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:47.517 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:47.520  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:47.521  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:47.544 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 09:59:47.544 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 09:59:47.546 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-003600000004"}}
 07-25 09:59:47.560 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-003600000004/attribute/displayed
 07-25 09:59:47.561  3638  3662 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
@@ -75406,7 +75406,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:48.207  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 09:59:48.208 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:48.210 15369 15393 I appium  : FindElement command
-07-25 09:59:48.214 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 09:59:48.214 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 09:59:48.214 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:48.215 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
 07-25 09:59:48.215  2436  5422 I InputMethodManagerService: IMMS.showSoftInput(), client = com.android.internal.view.IInputMethodClient$Stub$Proxy@da1130b
@@ -75539,7 +75539,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:48.248 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:48.251  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:48.252  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:48.256 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 09:59:48.256 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 09:59:48.257 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-003f00000004"}}
 07-25 09:59:48.278 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-003f00000004/attribute/displayed
 07-25 09:59:48.278 15369 15393 I appium  : GetElementAttribute command
@@ -75567,7 +75567,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:48.930 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:48.932 15369 15393 I appium  : FindElement command
 07-25 09:59:48.933  4644 14776 I SyncManager: (REDACTED) Executing sync(type=%s%s)
-07-25 09:59:48.934 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 09:59:48.934 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 09:59:48.934 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:48.934  3864 14859 W alrv    : Failed to retrieve prediction data. [CONTEXT service_id=177 ]
 07-25 09:59:48.934  3864 14859 W alrv    : java.util.concurrent.ExecutionException: fftz: No data was found for the table autofill-domain-predictions-prod-spanner.
@@ -75698,7 +75698,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:48.973 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:48.974  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:48.974  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:48.997 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 09:59:48.997 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 09:59:48.999 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-004800000004"}}
 07-25 09:59:49.013 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-004800000004/attribute/displayed
 07-25 09:59:49.013 15369 15393 I appium  : GetElementAttribute command
@@ -75723,7 +75723,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:49.655 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 09:59:49.657 15369 15393 I appium  : FindElement command
 07-25 09:59:49.658  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
-07-25 09:59:49.662 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 09:59:49.662 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 09:59:49.662 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 09:59:49.663 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 09:59:49.663 15405 15405 D InputMethodManager: showSoftInput() view=androidx.compose.ui.platform.AndroidComposeView{b270035 VFED..... .F...... 0,0-1080,1616 aid=1073741824} flags=0 reason=SHOW_SOFT_INPUT
@@ -75803,7 +75803,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 09:59:49.695 15405 15405 D InsetsController: show(ime(), fromIme=true)
 07-25 09:59:49.697  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 09:59:49.697  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 09:59:49.714 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 09:59:49.714 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 09:59:49.716 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-005100000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-005100000004"}}
 07-25 09:59:49.730 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-005100000004/attribute/displayed
 07-25 09:59:49.731 15369 15393 I appium  : GetElementAttribute command
@@ -79664,10 +79664,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:00:49.759  5231 11990 W MiuiPerfServiceClient: interceptAndQueuing:15405|eu.europa.ec.euidi|147|96|1030127455752|Slow handle animation|4
 07-25 10:00:49.777 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:00:49.779 15369 15393 I appium  : FindElement command
-07-25 10:00:49.785 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
+07-25 10:00:49.785 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]'
 07-25 10:00:49.785 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:00:49.788 15369 15393 I appium  : The following attributes will be included to the page source: []
-07-25 10:00:49.850 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
+07-25 10:00:49.850 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]' XPath query
 07-25 10:00:49.852 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-0038-0000-013700000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-0038-0000-013700000004"}}
 07-25 10:00:49.862 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-0038-0000-013700000004/attribute/displayed
 07-25 10:00:49.863 15369 15393 I appium  : GetElementAttribute command
@@ -83215,10 +83215,10 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:36.852 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":"Welcome back"}
 07-25 10:01:36.865 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:36.866 15369 15393 I appium  : FindElement command
-07-25 10:01:36.869 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
+07-25 10:01:36.869 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'
 07-25 10:01:36.870 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:36.872 15369 15393 I appium  : The following attributes will be included to the page source: []
-07-25 10:01:36.938 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
+07-25 10:01:36.938 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]' XPath query
 07-25 10:01:36.940 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-003f-0000-002400000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-003f-0000-002400000004"}}
 07-25 10:01:36.949 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-003f-0000-002400000004/attribute/displayed
 07-25 10:01:36.949 15369 15393 I appium  : GetElementAttribute command
@@ -83239,7 +83239,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:37.026  5557  5557 I KeyboardHeightUtil: KeyboardHeightUtil.calculateMaxKeyboardBodyHeight():50 leave 267 height for app when ime window height:2176, header height:121 and isFullscreenMode:false, so the max keyboard body height is:1788
 07-25 10:01:37.033 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:37.035 15369 15393 I appium  : FindElement command
-07-25 10:01:37.036 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
+07-25 10:01:37.036 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'
 07-25 10:01:37.036 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:37.040 16123 16123 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 10:01:37.042  2436  3920 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -83392,7 +83392,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:37.430  2436  2464 W System  : A resource failed to call release. 
 07-25 10:01:37.567  1049  1049 E vendor.qti.hardware.perf@2.2-service: Unknown params
 07-25 10:01:37.703 15369 15393 I appium  : The following attributes will be included to the page source: []
-07-25 10:01:37.772 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
+07-25 10:01:37.772 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]' XPath query
 07-25 10:01:37.774 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-003f-0000-002d00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-003f-0000-002d00000004"}}
 07-25 10:01:37.784 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-003f-0000-002d00000004/attribute/displayed
 07-25 10:01:37.785 15369 15393 I appium  : GetElementAttribute command
@@ -83404,7 +83404,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:37.844 16123 16123 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 10:01:37.856 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:37.857 15369 15393 I appium  : FindElement command
-07-25 10:01:37.858 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
+07-25 10:01:37.858 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]'
 07-25 10:01:37.858 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:37.859 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 10:01:37.860 16123 16123 I HandWritingStubImpl: getCurrentKeyboardType: 1
@@ -83549,7 +83549,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:37.918 16123 16123 D InsetsController: show(ime(), fromIme=true)
 07-25 10:01:37.920  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 10:01:37.920  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 10:01:37.939 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
+07-25 10:01:37.939 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]' XPath query
 07-25 10:01:37.940 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-003f-0000-003600000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-003f-0000-003600000004"}}
 07-25 10:01:37.947  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 10:01:37.951 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-003f-0000-003600000004/attribute/displayed
@@ -83564,7 +83564,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:38.574 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":null}
 07-25 10:01:38.586 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:38.587 15369 15393 I appium  : FindElement command
-07-25 10:01:38.590 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
+07-25 10:01:38.590 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]'
 07-25 10:01:38.591 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:38.592 16123 16123 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 10:01:38.593 15369 15393 I appium  : The following attributes will be included to the page source: []
@@ -83710,7 +83710,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:38.653  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 10:01:38.653  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
 07-25 10:01:38.665 16123 16198 D ProfileInstaller: Skipping profile installation for eu.europa.ec.euidi
-07-25 10:01:38.674 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
+07-25 10:01:38.674 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]' XPath query
 07-25 10:01:38.676 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-003f-0000-003f00000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-003f-0000-003f00000004"}}
 07-25 10:01:38.685 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-003f-0000-003f00000004/attribute/displayed
 07-25 10:01:38.685 15369 15393 I appium  : GetElementAttribute command
@@ -83724,7 +83724,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:39.299 16123 16123 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 10:01:39.307 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:39.309 15369 15393 I appium  : FindElement command
-07-25 10:01:39.312 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
+07-25 10:01:39.312 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]'
 07-25 10:01:39.313 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:39.314 16123 16123 I HandWritingStubImpl: getCurrentKeyboardType: 1
 07-25 10:01:39.316  2436  5422 I InputMethodManagerService: IMMS.showCurrentInputLocked(), curMethod = com.android.internal.view.IInputMethod$Stub$Proxy@dfc1351, flags = 0
@@ -83868,7 +83868,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:39.367 16123 16123 D InsetsController: show(ime(), fromIme=true)
 07-25 10:01:39.370  3652  3652 I OneHandedController: stopOneHanded mState=STATE_NONE, uiEvent=ONE_HANDED_TRIGGER_POP_IME_OUT
 07-25 10:01:39.370  3652  3652 D OneHandedController: stopOneHanded state isTransitioning or STATE_NONE, mState = 0
-07-25 10:01:39.394 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
+07-25 10:01:39.394 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]' XPath query
 07-25 10:01:39.395 15369 15393 I appium  : AppiumResponse: {"sessionId":"ee51a3c8-fcdc-48c7-b3f3-c6795377335f","value":{"ELEMENT":"00000000-0000-003f-0000-004800000004","element-6066-11e4-a52e-4f735466cecf":"00000000-0000-003f-0000-004800000004"}}
 07-25 10:01:39.402  3638  4359 V MmsSmsUtils: checkPrivateMsgWhiteList time is 0
 07-25 10:01:39.408 15369 15393 I appium  : channel read: GET /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element/00000000-0000-003f-0000-004800000004/attribute/displayed
@@ -83883,7 +83883,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:40.020 16123 16123 I AssistStructure: Flattened final assist data: 1240 bytes, containing 1 windows, 8 views
 07-25 10:01:40.028 15369 15393 I appium  : channel read: POST /wd/hub/session/ee51a3c8-fcdc-48c7-b3f3-c6795377335f/element
 07-25 10:01:40.029 15369 15393 I appium  : FindElement command
-07-25 10:01:40.032 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
+07-25 10:01:40.032 15369 15393 I appium  : method: 'xpath', selector: '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]'
 07-25 10:01:40.032 15369 15393 I appium  : Waiting up to 10000ms for the device to idle
 07-25 10:01:40.034 15369 15393 I appium  : The following attributes will be included to the page source: []
 07-25 10:01:40.035 16123 16123 I HandWritingStubImpl: getCurrentKeyboardType: 1
@@ -84007,7 +84007,7 @@ version=65546commonData=0appsData=AQIEgw==
 07-25 10:01:40.090  5557  5557 I GlobeKeyExtension: GlobeKeyExtension$1.onKeyboardViewShown():72 maybeDisableLanguageSwitchKeyPref when the keyboard is shown
 07-25 10:01:40.090  5557  5557 I GlobeKeyExtension: GlobeKeyExtension.maybeDisableLanguageSwitchKeyPref():203 maybeDisableLanguageSwitchKeyPref hasGlobeKeyBeenDisabled: false, alwaysDisableLanguageSwitchKey: false, shouldDisableLanguageSwitchKey: false
 07-25 10:01:40.090  5557  5557 I NewLanguagePromptExtension: NewLanguagePromptExtension$1.onKeyboardViewShown():88 Not show new language banner: not prime keyboard, or the extension not activated.
-07-25 10:01:40.091 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
+07-25 10:01:40.091 15369 15393 I appium  : Took 0ms to retrieve 1 matches for '//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]' XPath query
 07-25 10:01:40.092  2436 10874 I WindowManager: WMS.showImePostLayout(), imeTarget = Window{ad41934 u0 eu.europa.ec.euidi/eu.europa.ec.assemblylogic.ui.MainActivity}
 07-25 10:01:40.093  2436  2497 D IS_CTS_MODE: false
 07-25 10:01:40.093  2436  2497 D MULTI_WINDOW_SWITCH_ENABLED: false

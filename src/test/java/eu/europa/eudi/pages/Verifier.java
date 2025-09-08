@@ -565,4 +565,8 @@ public class Verifier {
             Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
         }
     }
+
+    public void urlToWalletIsDisplayed() {
+        test.mobile().verifier().chooseWallet();
+    }
 }
