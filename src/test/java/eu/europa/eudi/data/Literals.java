@@ -103,7 +103,7 @@ public interface Literals {
     }
 
     enum WebApp {
-        TEST_PLAN("OpenID for Verifiable Credential Issuance ID2: Test an issuer (alpha version - may be incomplete or incorrect, please email certification@oidf.org)"),
+        TEST_PLAN("OpenID for Verifiable Credential Issuance draft 16: Test an issuer (alpha version - may be incomplete or incorrect, please email certification@oidf.org)"),
         SENDER_CONSTRAINT("dpop"),
         CLIENT_AUTH_TYPE("private_key_jwt"),
         AUTH_CODE_FLOW("wallet_initiated"),
