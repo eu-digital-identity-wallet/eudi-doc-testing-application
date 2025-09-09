@@ -19,19 +19,13 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
     Then the issuer service redirects the user to the Wallet
 
   @US_IMIOACIIRCASD_TC_02 @before_01
-  Scenario: User authenticates successfully in Wallet on same device
-    Given the EUDI Wallet opens
-    When the user authenticates using a six-digit PIN or Biometrics
-    Then the authentication is successful
-
-  @US_IMIOACIIRCASD_TC_03 @before_01
   Scenario: Wallet receives offer and prompts confirmation
     Given the authentication is successful
     When the Wallet receives the attestation from the issuer service
     Then issuer service issues multiple attestations
     And the Wallet displays a counter showing the number of attestations issued
 
-  @US_IMIOACIIRCASD_TC_04 @before_01
+  @US_IMIOACIIRCASD_TC_03 @before_01
   Scenario: Attestations stored based on issuer's smaller batch size
     Given the issuer service issued multiple attestations
     When the maximum batch size advertised by the issuer is lower than the EUDI Wallet's internal minimum
