@@ -123,7 +123,7 @@ public class ConformanceStepDefs {
         test.web().conformance().selectAuthRequestType();
         test.web().conformance().selectRequestMethod();
         test.web().conformance().selectGrantType();
-        test.web().conformance().selectCredentialOfferParameter();
+//        test.web().conformance().selectCredentialOfferParameter();
         test.web().conformance().selectMetadataDiscovery();
         test.web().conformance().selectFAPIProfile();
         test.web().conformance().selectFAPIResponseMode();
