@@ -64,9 +64,9 @@ public class GeneralStepDefs{
             test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
-            test.mobile().wallet().clickThreeLine();
-            test.mobile().wallet().clickSettings();
-            test.mobile().wallet().enableBatchIssuance();
+//            test.mobile().wallet().clickThreeLine();
+//            test.mobile().wallet().clickSettings();
+//            test.mobile().wallet().enableBatchIssuance();
         }
 
         if (two_pid_data) {
@@ -116,7 +116,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().scrollUntilFindSubmit();
-            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().clickConfirm();
             test.mobile().issuer().authorizeIsDisplayed();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
@@ -1429,11 +1429,17 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmitBefore();
-        test.mobile().issuer().clickSubmitIssuerBefore();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().addOptionalAttributes();
+        test.mobile().issuer().clickAgeOver18OnIssuer();
+        test.mobile().issuer().clickAddAttributes();
+        test.mobile().issuer().enableAgeOver18();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1442,7 +1448,7 @@ public class GeneralStepDefs{
     @And("a transaction code has been created")
     public void aTransactionCodeHasBeenCreated() {
        test.mobile().issuer().transactionCodeIsDisplayed();
-       test.mobile().issuer().getTransactionCode();
+//       test.mobile().issuer().getTransactionCode();
        String code = test.mobile().issuer().getTransactionCode();
        test.setTransactionCode(code); // <-- store it for later steps
 
