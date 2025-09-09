@@ -115,8 +115,8 @@ public interface Literals {
         FAPI_RESPONSE_MODE("plain_response"),
         ALIAS("niscy"),
         PUBLISH("No"),
-        CREDENTIAL_ISSUER_URL("https://dev.issuer-backend.eudiw.dev"),
-        CREDENTIAL_CONF_ID("eu.europa.ec.eudi.pid_vc_sd_jwt"),
+        CREDENTIAL_ISSUER_URL(getEnvOrDefault("CREDENTIAL_ISSUER_URL", "https://dev.issuer-backend.eudiw.dev")),
+        CREDENTIAL_CONF_ID(getEnvOrDefault("CREDENTIAL_CONF_ID", "eu.europa.ec.eudi.pid_vc_sd_jwt")),
         CREDENTIAL_ISSUER_METADATA_URL("https://dev.issuer-backend.eudiw.dev/.well-known/openid-credential-issuer"),
         AUTH_SERVER_URL_OVERRIDE("https://dev.authenticate.eudiw.dev/realms/pid-issuer-realm"),
         CLIENT_ID("wallet-dev-2"),
@@ -150,5 +150,9 @@ public interface Literals {
         WebApp(String label) {
             this.label = label;
         }
+    }
+    private static String getEnvOrDefault(String envVarName, String defaultValue) {
+        String value = System.getenv(envVarName);
+        return (value != null && !value.isEmpty()) ? value : defaultValue;
     }
 }
