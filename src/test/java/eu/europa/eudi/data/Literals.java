@@ -107,7 +107,7 @@ public interface Literals {
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
-        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
+        AUTHORIZE_IS_DISPLAYED("Review & Send"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code");
 

@@ -28,7 +28,7 @@ public class IssuerElements {
     public static By selectSpecificAtt = By.xpath("//android.view.View[@resource-id=\"mat-option-0\"]");
     public static By msoMdoc = By.xpath("//android.view.View[@resource-id=\"mat-option-2\"]");
 //    public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
-    public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
+    public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Review & Send\"]");
     public static By familyNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
     public static By givenNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
     public static By birthDateAtt = By.xpath("//android.widget.CheckBox[@text=\"Birthdate\"]");

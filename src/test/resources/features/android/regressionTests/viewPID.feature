@@ -21,7 +21,6 @@ Feature: View PID document
     Given the user is viewing the details of an attestation auto
     When the user selects eye icon auto
     Then the attestation details should no longer be blurred auto
-   # And the user should be able to view the full details of the attestation
 
   @US_VP_TC_04 @before_01
   Scenario: User closes the PID document and returns to the dashboard
