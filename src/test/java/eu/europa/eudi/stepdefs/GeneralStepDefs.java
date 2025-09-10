@@ -100,8 +100,9 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().wallet().clickDone();
+            test.mobile().wallet().dashboardPageIsDisplayed();
             test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().clickToAddDocument();
+            test.mobile().wallet().clickToAddDocumentOnDocuments();
             test.mobile().wallet().clickFromList();
             test.mobile().wallet().scrollUntilmDL();
             test.mobile().wallet().clickMdl();
@@ -483,15 +484,22 @@ public class GeneralStepDefs{
     public void insertsTheRequiredCredentialDetails() throws InterruptedException {
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().dataPageIsDisplayed();
+        test.mobile().issuer().formIsDisplayed();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmitBefore();
-        test.mobile().issuer().clickSubmitIssuerBefore();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().addOptionalAttributes();
+        test.mobile().issuer().clickAgeOver18OnIssuer();
+        test.mobile().issuer().clickAddAttributes();
+        test.mobile().issuer().enableAgeOver18();
+        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -870,8 +878,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -892,11 +899,15 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().clickNationality();
 //        test.mobile().issuer().scrollUntilFindSubmit();
 //        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -975,12 +986,11 @@ public class GeneralStepDefs{
         theUserHasFinalizedDataSelection();
         theUserClicksTheSHAREButton();
         thePINFieldIsDisplayedToAuthorizeSharing();
-        test.mobile().wallet().createAPin();
     }
 
     @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
-        test.mobile().wallet().createAPin();
+//        test.mobile().wallet().createAPin();
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
@@ -1065,7 +1075,7 @@ public class GeneralStepDefs{
     }
 
     @Given("the authentication method selection is displayed on screen")
-    public void theAuthenticationMethodSelectionIsDisplayedOnScreen() {
+    public void theAuthenticationMethodSelectionIsDisplayedOnScreen() throws InterruptedException {
         theDashboardPageIsDisplayedOnWallet();
         theUserClicksOnDocuments();
         theDocumentsPageIsDisplayed();
@@ -1184,7 +1194,7 @@ public class GeneralStepDefs{
     }
 
     @And("the user clicks on the PID button")
-    public void theUserClicksOnThePIDButton() {
+    public void theUserClicksOnThePIDButton() throws InterruptedException {
         test.mobile().wallet().clickToAddDocument();
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilPID();
@@ -1274,7 +1284,7 @@ public class GeneralStepDefs{
     }
 
     @And ("the user clicks the PID button")
-    public void theUserClicksThePidButton(){
+    public void theUserClicksThePidButton() throws InterruptedException {
         test.mobile().wallet().scrollUntilPID();
         test.mobile().wallet().clickPID();
     }
@@ -1840,7 +1850,9 @@ public class GeneralStepDefs{
     public void theUserAuthenticatesAndConsentsTheIssuance() throws InterruptedException {
         test.mobile().issuer().clickCountrySelection();
         test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().enableAgeOver18OnDeffered();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -2015,6 +2027,83 @@ public class GeneralStepDefs{
     @And("the EUDI Wallet reduces the internal counter of unused attestations")
     public void theEUDIWalletReducesTheInternalCounterOfUnusedAttestations() {
         test.mobile().wallet().instanceHasReduced();
+    }
+
+    @Given("the authentication is successful and continue")
+    public void theAuthenticationIsSuccessfulAndContinue() throws InterruptedException {
+        theUserVisitsTheIssuerServiceOnTheSameDevice();
+        theUserRequestsTheIssuanceOfAnAttestationType();
+        theIssuerServiceRedirectsTheUserToTheWallet();
+    }
+
+    @When("the Wallet receives the attestation from the issuer service")
+    public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
+        test.mobile().wallet().detailsArePresented();
+        test.mobile().wallet().clickAdd();
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().scrollUntilCountryCode();
+        test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().addOptionalAttributes();
+        test.mobile().issuer().clickAgeOver18OnIssuer();
+        test.mobile().issuer().clickAddAttributes();
+        test.mobile().issuer().enableAgeOver18();
+        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+        test.mobile().wallet().clickClose();
+    }
+
+    @Then("issuer service issues multiple attestations")
+    public void issuerServiceIssuesMultipleAttestations() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().nationalIdIsDisplayed();
+    }
+
+    @Then("the Wallet displays a counter showing the number of attestations issued")
+    public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
+        test.mobile().wallet().counterOfIssuedAttestation();
+    }
+
+    @Given("the user views the issuance confirmation modal")
+    public void theUserViewsTheIssuanceConfirmationModal() throws InterruptedException {
+        theWalletAppIsPollingTheIssuerForTheCredential();
+        theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued();
+    }
+
+    @When("the user clicks to view the document information")
+    public void theUserClicksToViewTheDocumentInformation() {
+        test.mobile().wallet().clickToSeeDocument();
+    }
+
+    @Then("the document is open")
+    public void theDocumentIsOpen() {
+        test.mobile().wallet().documentOpened();
+    }
+
+    @When("the user clicks on the X button")
+    public void theUserClicksOnTheXButton() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the document should close")
+    public void theDocumentShouldClose() {
+        //manual
+    }
+
+    @Then("the document appears on the dashboard screen")
+    public void theDocumentAppearsOnTheDashboardScreen() {
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 }
 

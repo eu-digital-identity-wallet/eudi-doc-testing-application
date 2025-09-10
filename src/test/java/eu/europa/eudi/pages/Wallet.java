@@ -10,6 +10,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -31,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
+import static java.time.Duration.ofMillis;
 
 public class Wallet {
 
@@ -624,7 +627,7 @@ public class Wallet {
             int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
+            tap.addAction(finger.createPointerMove(ofMillis(0),
                             PointerInput.Origin.viewport(),
                             x, y))
                     .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
@@ -636,7 +639,7 @@ public class Wallet {
             int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
+            tap.addAction(finger.createPointerMove(ofMillis(0),
                             PointerInput.Origin.viewport(),
                             x, y))
                     .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
@@ -682,7 +685,7 @@ public class Wallet {
 
     public void clickToAddDocument() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickToAddDocument)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAddDocument)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickToAddDocument)).click();
         }
@@ -713,17 +716,34 @@ public class Wallet {
         }
     }
 
-    public void scrollUntilPID() {
+    public void scrollUntilPID() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".flingForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"PID\"))"
-            ));
+            By pidLocator = By.xpath("//android.widget.TextView[@text=\"PID\"]");
+            int maxSwipes = 15;
+
+            for (int i = 0; i < maxSwipes; i++) {
+
+                if (!driver.findElements(pidLocator).isEmpty()) {
+                    System.out.println("Βρέθηκε το στοιχείο PID!");
+                    break;
+                }
+                
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.7);
+                int endY = (int) (size.height * 0.3);
+
+
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(800)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                Thread.sleep(50);
+            }
         } else {
             int i = 1;
             while (i < 3) {
@@ -1073,8 +1093,8 @@ public class Wallet {
     }
 
     public void documentIsIssued() {
-        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.issuanceFailed)).getText();
-        Assert.assertEquals(Literals.Wallet.ISSUANCE_FAILED.label, pageHeader);
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.documentIssued)).getText();
+        Assert.assertEquals(Literals.Wallet.DOCUMENT_ISSUED.label, pageHeader);
     }
 
     public void clickThreeLine() {
@@ -1091,11 +1111,29 @@ public class Wallet {
 
     public void openWallet() {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.activateApp("eu.europa.ec.euidi");
+        driver.activateApp("eu.europa.ec.euidi.dev");
     }
 
     public void instanceHasReduced() {
         String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.instance)).getText();
         Assert.assertFalse(Literals.Wallet.ISSUANCE_FAILED.label, pageHeader.contains(Literals.Wallet.ISSUANCE_FAILED.label));
+    }
+
+    public void counterOfIssuedAttestation() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.instanceInitial)).getText();
+        Assert.assertEquals(Literals.Wallet.INSTANCE_INITIAL.label, pageHeader);
+    }
+
+    public void clickToAddDocumentOnDocuments() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAddDocument)).click();
+    }
+
+    public void clickToSeeDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickToSeeDocument)).click();
+    }
+
+    public void documentOpened() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.documentOpened)).getText();
+        Assert.assertEquals(Literals.Wallet.DOCUMENT_OPENED.label, pageHeader);
     }
 }

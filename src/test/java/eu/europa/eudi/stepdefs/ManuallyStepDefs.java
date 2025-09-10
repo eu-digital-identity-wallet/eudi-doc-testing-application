@@ -59,11 +59,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user clicks on the X button")
-    public void theUserClicksOnTheXButton() {
-        //manual
-    }
-
     @When("the user presses on the ISSUE button")
     public void theUserPressesOnTheISSUEButton() {
         //manual
@@ -538,16 +533,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the issuer sends the credential to the wallet app")
-    public void theIssuerSendsTheCredentialToTheWalletApp() {
-        //manual
-    }
-
-    @Given("the user views the issuance confirmation modal")
-    public void theUserViewsTheIssuanceConfirmationModal() {
-        //manual
-    }
-
     @When("the user clicks the view button")
     public void theUserClicksTheViewButton() {
         //manual
@@ -560,11 +545,6 @@ public class ManuallyStepDefs {
 
     @And("the user clicks the ADD button")
     public void theUserClicksTheADDButton() {
-        //manual
-    }
-
-    @Then("the document appears on the dashboard screen")
-    public void theDocumentAppearsOnTheDashboardScreen() {
         //manual
     }
 
@@ -996,21 +976,6 @@ public class ManuallyStepDefs {
 
     @When("a success message is displayed manually")
     public void aSuccessMessageIsDisplayedManually() {
-        //manual
-    }
-
-    @When("the user clicks to view the document information")
-    public void theUserClicksToViewTheDocumentInformation() {
-        //manual
-    }
-
-    @Then("the document is open")
-    public void theDocumentIsOpen() {
-        //manual
-    }
-
-    @Then("the document should close")
-    public void theDocumentShouldClose() {
         //manual
     }
 
@@ -6712,11 +6677,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Wallet displays a counter showing the number of attestations issued")
-    public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
-        //manual
-    }
-
     @When("an error occurs in the issuance process")
     public void anErrorOccursInTheIssuanceProcess() {
         //manual
@@ -6749,16 +6709,6 @@ public class ManuallyStepDefs {
 
     @Given("the issuer service issued multiple attestations")
     public void theIssuerServiceIssuedMultipleAttestations() {
-        //manual
-    }
-
-    @When("the Wallet receives the attestation from the issuer service")
-    public void theWalletReceivesTheAttestationFromTheIssuerService() {
-        //manual
-    }
-
-    @Then("issuer service issues multiple attestations")
-    public void issuerServiceIssuesMultipleAttestations() {
         //manual
     }
 
@@ -7860,6 +7810,11 @@ public class ManuallyStepDefs {
 
     @Then("the Wallet shows an error message to the user")
     public void theWalletShowsAnErrorMessageToTheUser() {
+        //manual
+    }
+
+    @When("the issuer sends the credential to the wallet app")
+    public void theIssuerSendsTheCredentialToTheWalletApp() {
         //manual
     }
 }

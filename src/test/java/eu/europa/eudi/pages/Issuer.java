@@ -47,7 +47,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://dev.issuer.eudiw.dev/credential_offer_choice";
+            String url = "https://issuer.eudiw.dev/credential_offer_choice";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -714,6 +714,10 @@ public class Issuer {
 
     public void clickRequestButton() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickRequest)).click();
+    }
+
+    public void enableAgeOver18OnDeffered() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.enableAgeOver18OnDeferred)).click();
     }
 }
 

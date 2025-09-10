@@ -38,12 +38,12 @@ Feature: Deferred Issuing
     When the issuer sends the credential to the wallet app
     Then the user views a modal informing them that the document has been issued
 
-#  @US_DI_TC_06 @before_01
-#  Scenario: User views and adds issued document
-#    Given the user views the issuance confirmation modal
-#    When the user clicks to view the document information
-#    Then the document is open
-#    And the user clicks on the X button
-#    Then the document should close
-#    And the document appears on the dashboard screen
+  @US_DI_TC_06 @before_01
+  Scenario: User views and adds issued document
+    Given the user views the issuance confirmation modal
+    When the user clicks to view the document information
+    Then the document is open
+    And the user clicks on the X button
+    Then the document should close
+    And the document appears on the dashboard screen
 
