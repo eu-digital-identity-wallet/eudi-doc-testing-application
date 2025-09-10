@@ -23,14 +23,14 @@ Feature: Presentation of Batch Issued Attestations in EUDI Wallet
     When the user authenticates using a six-digit PIN or Biometrics
     Then the authentication is successful
 
-  @US_PAIOACRPIRSD_TC_04 @before_01
+  @US_PAIOACRPIRSD_TC_03 @before_01
   Scenario: Presentation of attestation to Relying Party
     Given the user consents to the attestation presentation
     When the EUDI Wallet displays a confirmation message indicating the outcome
     Then the Relying Party service receives the attestation
     And verifies it, informing the user of the successful verification outcome
 
-  @US_PAIOACRPIRSD_TC_05 @before_01
+  @US_PAIOACRPIRSD_TC_04 @before_01
   Scenario: Selection of attestation using Method A
     Given Method A is configured for the attestation type
     When the EUDI Wallet selects an available matching attestation

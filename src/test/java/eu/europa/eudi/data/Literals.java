@@ -63,7 +63,10 @@ public interface Literals {
         IS_ON_WALLET("In progress!"),
         MESSAGE_IN_PROGRESS("Your documents from Digital Credentials Issuer have been requested. You will be notified when they have been issued to your wallet."),
         MESSAGE_IN_PENDING("Pending"),
-        ISSUANCE_FAILED("//android.widget.TextView[@text=\"10/10\"]");
+        ISSUANCE_FAILED("//android.widget.TextView[@text=\"10/10\"]"),
+        INSTANCE_INITIAL("10/10"),
+        DOCUMENT_ISSUED("Documents issued"),
+        DOCUMENT_OPENED("Pseudonym Deferred");
 
         public final String label;
         Wallet(String label) {
