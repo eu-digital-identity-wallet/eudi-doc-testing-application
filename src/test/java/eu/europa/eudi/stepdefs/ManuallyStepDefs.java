@@ -7813,8 +7813,204 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the issuer sends the credential to the wallet app")
-    public void theIssuerSendsTheCredentialToTheWalletApp() {
+    @Given("the EUDI Wallet displays a list of QTSPs to the user")
+    public void theEUDIWalletDisplaysAListOfQTSPsToTheUser() {
+        //manual
+    }
+
+    @When("the user selects the Sign Document option")
+    public void theUserSelectsTheSignDocumentOption() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet prompts the user to select a QTSP")
+    public void theEUDIWalletPromptsTheUserToSelectAQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet navigates the user to the selected QTSP login page in the mobile browser")
+    public void theEUDIWalletNavigatesTheUserToTheSelectedQTSPLoginPageInTheMobileBrowser() {
+        //manual
+    }
+
+    @Given("the QTSP login page is displayed to the user")
+    public void theQTSPLoginPageIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @When("the QTSP provides a deep link for attestation presentation of the PID")
+    public void theQTSPProvidesADeepLinkForAttestationPresentationOfThePID() {
+        //manual
+    }
+
+    @Then("the deep link redirects the user to the EUDI Wallet")
+    public void theDeepLinkRedirectsTheUserToTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is redirected to the EUDI Wallet from the QTSP deep link")
+    public void theUserIsRedirectedToTheEUDIWalletFromTheQTSPDeepLink() {
+        //manual
+    }
+
+    @When("the EUDI Wallet receives a PID attestation request from the QTSP")
+    public void theEUDIWalletReceivesAPIDAttestationRequestFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user about the request and asks for consent")
+    public void theEUDIWalletInformsTheUserAboutTheRequestAndAsksForConsent() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet requests the user to authenticate for attestation release")
+    public void theEUDIWalletRequestsTheUserToAuthenticateForAttestationRelease() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the PID attestation to the QTSP")
+    public void theEUDIWalletPresentsThePIDAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet receives a PID attestation presentation request from the QTSP")
+    public void theEUDIWalletReceivesAPIDAttestationPresentationRequestFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user that no matching attestation is available")
+    public void theEUDIWalletInformsTheUserThatNoMatchingAttestationIsAvailable() {
+        //manual
+    }
+
+    @Given("the QTSP receives the PID attestation from the EUDI Wallet")
+    public void theQTSPReceivesThePIDAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the QTSP informs the user of successful verification")
+    public void theQTSPInformsTheUserOfSuccessfulVerification() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet prompts the user for attestation release and authentication")
+    public void theEUDIWalletPromptsTheUserForAttestationReleaseAndAuthentication() {
+        //manual
+    }
+
+    @When("the user chooses to cancel or return to the main page")
+    public void theUserChoosesToCancelOrReturnToTheMainPage() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet returns the user to the main page")
+    public void theEUDIWalletReturnsTheUserToTheMainPage() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet prompts the user for PIN authentication")
+    public void theEUDIWalletPromptsTheUserForPINAuthentication() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet prompts the user to retry authentication")
+    public void theEUDIWalletPromptsTheUserToRetryAuthentication() {
+        //manual
+    }
+
+    @Given("the QTSP has multiple Credential IDs enrolled for the user")
+    public void theQTSPHasMultipleCredentialIDsEnrolledForTheUser() {
+        //manual
+    }
+
+    @When("the EUDI Wallet requests available Credential IDs from the QTSP")
+    public void theEUDIWalletRequestsAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet asks the user to select a preferred Credential ID")
+    public void theEUDIWalletAsksTheUserToSelectAPreferredCredentialID() {
+        //manual
+    }
+
+    @Given("the QTSP has one Credential ID enrolled for the user")
+    public void theQTSPHasOneCredentialIDEnrolledForTheUser() {
+        //manual
+    }
+
+    @Then("the flow continues to retrieve Credential ID details and calculate the document hash")
+    public void theFlowContinuesToRetrieveCredentialIDDetailsAndCalculateTheDocumentHash() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has redirected the user to the QTSP authentication page")
+    public void theEUDIWalletHasRedirectedTheUserToTheQTSPAuthenticationPage() {
+        //manual
+    }
+
+    @When("the QTSP provides a deep link for attestation presentation")
+    public void theQTSPProvidesADeepLinkForAttestationPresentation() {
+        //manual
+    }
+
+
+    @Then("the EUDI Wallet opens and displays the request for PID attestation and transaction data")
+    public void theEUDIWalletOpensAndDisplaysTheRequestForPIDAttestationAndTransactionData() {
+        //manual
+    }
+
+    @Given("the QTSP requests a PID attestation from the EUDI Wallet")
+    public void theQTSPRequestsAPIDAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks available attestations")
+    public void theEUDIWalletChecksAvailableAttestations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user that no matching attestations are available and returns to the main page")
+    public void theEUDIWalletInformsTheUserThatNoMatchingAttestationsAreAvailableAndReturnsToTheMainPage() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet requests the user to authenticate with a six-digit PIN")
+    public void theEUDIWalletRequestsTheUserToAuthenticateWithASixDigitPIN() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet asks the user to retry authentication")
+    public void theEUDIWalletAsksTheUserToRetryAuthentication() {
+        //manual
+    }
+
+    @When("the user chooses not to proceed")
+    public void theUserChoosesNotToProceed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet returns to the main page without releasing the attestation")
+    public void theEUDIWalletReturnsToTheMainPageWithoutReleasingTheAttestation() {
+        //manual
+    }
+
+    @Given("the QTSP has successfully verified the PID attestation")
+    public void theQTSPHasSuccessfullyVerifiedThePIDAttestation() {
+        //manual
+    }
+
+    @When("the QTSP signs the document")
+    public void theQTSPSignsTheDocument() {
+        //manual
+    }
+
+    @Then("the QTSP returns the signed document to the EUDI Wallet where the user can view it")
+    public void theQTSPReturnsTheSignedDocumentToTheEUDIWalletWhereTheUserCanViewIt() {
+        //manual
+    }
+
+    @Given("the user has logged in to the EUDI Wallet application")
+    public void theUserHasLoggedInToTheEUDIWalletApplication() {
         //manual
     }
 }
