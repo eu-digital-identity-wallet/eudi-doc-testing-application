@@ -66,9 +66,14 @@ jobs:
           CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
           CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
         run: |
-          echo "Starting tests with credentials..."
-          if [ "$TEST_CASES" = "ALL" ]; then
-            ./run_tests.sh
-          else
-            ./run_tests.sh --tests "$TEST_CASES"
-          fi
+          #!/bin/bash
+          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" "$@"
+
+      - name: Produce report
+        run: mvn serenity:aggregate -Dtags="CONFORMANCE"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report
+          path: target/site
