@@ -1,0 +1,79 @@
+name: automation_with_emulator - Standard
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch-to-checkout:
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+        default: develop
+
+      test-cases:
+        description: 'Choose Test Cases (Leave empty to run all tests)'
+        type: string
+        required: false
+        default: ''
+
+      CREDENTIAL_ISSUER_URL:
+        description: 'Enter the CREDENTIAL_ISSUER_URL value'
+        type: string
+        required: false
+
+      CREDENTIAL_CONF_ID:
+        description: 'Enter the CREDENTIAL_CONF_ID value'
+        type: string
+        required: false
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs['branch-to-checkout'] }}
+
+      - name: Set Environment Variables
+        run: |
+          echo "Exporting credentials to environment variables..."
+          echo "CREDENTIAL_ISSUER_URL=${{ github.event.inputs.CREDENTIAL_ISSUER_URL }}" >> $GITHUB_ENV
+          echo "CREDENTIAL_CONF_ID=${{ github.event.inputs.CREDENTIAL_CONF_ID }}" >> $GITHUB_ENV
+
+      - name: Determine Test Cases
+        id: determine-tests
+        run: |
+          if [ -z "${{ github.event.inputs.test-cases }}" ]; then
+            echo "No test cases provided. Running ALL tests."
+            echo "TEST_CASES=ALL" >> $GITHUB_ENV
+          else
+            echo "Test cases provided: ${{ github.event.inputs.test-cases }}"
+            echo "TEST_CASES=${{ github.event.inputs.test-cases }}" >> $GITHUB_ENV
+          fi
+
+      - name: Show Inputs
+        run: |
+          echo "Branch: ${{ github.event.inputs['branch-to-checkout'] }}"
+          echo "CREDENTIAL_ISSUER_URL: $CREDENTIAL_ISSUER_URL"
+          echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
+          echo "Tests to run: $TEST_CASES"
+
+      - name: Run Automation Tests
+        env:
+          CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
+          CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
+        run: |
+          #!/bin/bash
+          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" "$@"
+
+      - name: Produce report
+        run: mvn serenity:aggregate -Dtags="CONFORMANCE"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report
+          path: target/site
