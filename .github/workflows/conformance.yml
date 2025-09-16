@@ -63,16 +63,20 @@ jobs:
 
       - name: Install Google Chrome
         run: |
-         sudo apt update
-         sudo apt install -y wget unzip xvfb libxi6 fonts-liberation libnss3
-         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-         sudo apt install -y ./google-chrome-stable_current_amd64.deb
+           sudo apt update
+           sudo apt install -y wget unzip xvfb libxi6 fonts-liberation libnss3
+           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+           sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
-      - name: Set up ChromeDriver
-        uses: actions/setup-chromedriver@v1
-        with:
-         chromedriver-version: latest
-         
+      - name: Install ChromeDriver
+        run: |
+         CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1-3)
+         DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION" || curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+         wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
+         unzip ~/chromedriver_linux64.zip -d ~/
+         sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
+         sudo chmod +x /usr/local/bin/chromedriver
+
       - name: Run Automation Tests
         env:
           CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
