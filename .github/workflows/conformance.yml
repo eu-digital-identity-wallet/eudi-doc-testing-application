@@ -60,7 +60,19 @@ jobs:
           echo "CREDENTIAL_ISSUER_URL: $CREDENTIAL_ISSUER_URL"
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
-         
+
+      - name: Install Google Chrome
+        run: |
+         sudo apt-get update
+         sudo apt-get install -y wget unzip gnupg2
+         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+         sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+         chromedriver-version: latest
+ 
       - name: Run Automation Tests
         env:
           CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
