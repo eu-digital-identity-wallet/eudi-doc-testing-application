@@ -1,4 +1,4 @@
-name: automation_with_emulator - Standard
+name: automation_with_emulator - New Suite
 
 on:
   workflow_dispatch:
