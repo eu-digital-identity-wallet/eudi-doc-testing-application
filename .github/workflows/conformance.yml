@@ -61,20 +61,24 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
-      - name: Install Stable Google Chrome
+      - name: Install Specific Stable Google Chrome
         run: |
          sudo apt-get update
          sudo apt-get install -y wget unzip gnupg2
          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-         CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
+         CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1,2)
          echo "Installed Chrome version: $CHROME_VERSION"
 
       - name: Install Matching ChromeDriver
         run: |
-         CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
+         CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1,2)
          echo "Detected Chrome major version: $CHROME_VERSION"
          DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+         if [ -z "$DRIVER_VERSION" ]; then
+         echo "No matching ChromeDriver version found for Chrome version $CHROME_VERSION"
+         exit 1
+         fi
          echo "Matching ChromeDriver version: $DRIVER_VERSION"
          wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
          unzip ~/chromedriver_linux64.zip -d ~/
