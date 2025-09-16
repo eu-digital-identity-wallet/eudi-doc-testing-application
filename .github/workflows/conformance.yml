@@ -67,10 +67,10 @@ jobs:
           CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE_01" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" "$@"
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="CONFORMANCE_01"
+        run: mvn serenity:aggregate -Dtags="CONFORMANCE"
 
       - name: Upload report
         uses: actions/upload-artifact@v4
