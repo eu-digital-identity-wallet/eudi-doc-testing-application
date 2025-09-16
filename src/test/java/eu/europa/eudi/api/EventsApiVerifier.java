@@ -15,7 +15,7 @@ public class EventsApiVerifier {
 
     public void getPresentationEvents(String transactionId) {
         // Set base URI (adjust as needed)
-        RestAssured.baseURI = "https://dev.verifier-backend.eudiw.dev"; // replace with actual host
+        RestAssured.baseURI = "https://verifier-backend.eudiw.dev"; // replace with actual host
 
         // Make the GET request with the transactionId in the path
         Response response = RestAssured
@@ -23,7 +23,6 @@ public class EventsApiVerifier {
                 .when()
                 .get("/ui/presentations/" + transactionId + "/events")
                 .then().statusCode(200).log().all().extract().response();
-
         String fullPath = test.getScenario().getUri().getPath();
 
         // Extract the directory of the feature file

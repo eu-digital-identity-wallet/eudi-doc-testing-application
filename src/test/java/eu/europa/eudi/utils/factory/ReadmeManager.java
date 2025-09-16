@@ -3,7 +3,7 @@ package eu.europa.eudi.utils.factory;
 import java.io.IOException;
 import java.nio.file.*;
     public class ReadmeManager {
-        public static final String SHELL_SCRIPT = "./local-execution.cmd";
+        public static final String SHELL_SCRIPT = "./local-execution-mac.sh";
 
         public static void main(String[] args) {
             try {
@@ -15,7 +15,7 @@ import java.nio.file.*;
         }
 
         public static void replaceCoreCssWithCustomStyle() throws IOException {
-            Path coreCssPath = Paths.get("target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo/css/core.css"); // Replace with the actual path to core.css
+            Path coreCssPath = Paths.get("target/site/reports/EUDI_Wallet_Version_2025.07.28-Demo/css/core.css"); // Replace with the actual path to core.css
             Path customStyleCssPath = Paths.get("C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/custom-style.css"); // Replace with the actual path to custom-style.css
 
             if (Files.exists(coreCssPath) && Files.exists(customStyleCssPath)) {
