@@ -65,25 +65,15 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
-      # 5. Install Google Chrome for browser-based automation
-      - name: Install Google Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget unzip
-          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_139.0.6050.2-1_amd64.deb
-          sudo apt install -y ./google-chrome-stable_139.0.6050.2-1_amd64.deb  
-          google-chrome --version
+      - name: Setup Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+         chrome-version: stable
 
-      # 6. Install matching ChromeDriver version
-      - name: Install ChromeDriver
+      - name: Verify Chrome and ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-          DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
-          unzip -o ~/chromedriver_linux64.zip -d ~/
-          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
-          chromedriver --version
+               google-chrome --version
+               chromedriver --version
 
       # 7. Run the automation tests using Maven
       - name: Run Automation Tests
