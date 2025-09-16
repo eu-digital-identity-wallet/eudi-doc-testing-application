@@ -46,7 +46,7 @@ public class Conformance {
         waitForPageToLoad();
         waitForPageToLoad();
         try{
-            Thread.sleep(2000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
