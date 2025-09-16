@@ -32,21 +32,21 @@ public class WebDriverFactory {
         envDataConfig = new EnvDataConfig();
         try {
             ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--remote-allow-origins=*");
-//            options.addArguments("--disable-web-security");
-//            options.addArguments("--no-sandbox");
-//            options.addArguments("--disable-dev-shm-usage");
-//            options.addArguments("--disable-blink-features=AutomationControlled");
-//            options.addArguments("--headless=new"); // headless for CI
-//            options.addArguments("--window-size=1920,1080"); // ensure responsive layout
-//            options.addArguments("--force-device-scale-factor=1"); // helps with visibility
-//            options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
-//            options.addArguments("--disable-gpu");
-
-            options.addArguments("--user-data-dir=/home/runner/work/chrome-profile");
-            options.addArguments("--profile-directory=Default");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--disable-web-security");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-blink-features=AutomationControlled");
-            options.addArguments("--start-maximized");
+            options.addArguments("--headless=new"); // headless for CI
+            options.addArguments("--window-size=1920,1080"); // ensure responsive layout
+            options.addArguments("--force-device-scale-factor=1"); // helps with visibility
+            options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
+            options.addArguments("--disable-gpu");
+
+//            options.addArguments("--user-data-dir=/home/runner/work/chrome-profile");
+//            options.addArguments("--profile-directory=Default");
+//            options.addArguments("--disable-blink-features=AutomationControlled");
+//            options.addArguments("--start-maximized");
 
             webDriver = new ChromeDriver(options);
             webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
