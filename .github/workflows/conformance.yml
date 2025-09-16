@@ -63,10 +63,10 @@ jobs:
 
       - name: Install Google Chrome
         run: |
-          sudo apt update
-          sudo apt install -y wget unzip xvfb libxi6 libgconf-2-4
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+         sudo apt update
+         sudo apt install -y wget unzip xvfb libxi6 fonts-liberation libnss3
+         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+         sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
       - name: Install ChromeDriver
         run: |
@@ -85,7 +85,7 @@ jobs:
           mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE_01" "$@"
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="CONFORMANCE"
+        run: mvn serenity:aggregate -Dtags="CONFORMANCE_01"
 
       - name: Upload report
         uses: actions/upload-artifact@v4
