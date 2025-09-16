@@ -61,7 +61,7 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
-      - name: Install Latest Stable Google Chrome
+      - name: Install Specific Stable Google Chrome
         run: |
           sudo apt-get update
           sudo apt-get install -y wget unzip gnupg2
