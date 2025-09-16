@@ -31,13 +31,14 @@ public class WebDriverFactory {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-blink-features=AutomationControlled");
-            options.addArguments("--headless=new"); // or "--headless" for older Chrome
-            options.addArguments("--window-size=1920,1080"); // ensure consistent layout
+            options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
             options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
             options.addArguments("--disable-gpu");
             webDriver = new ChromeDriver(options);
             webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
             webDriver.manage().window().maximize();
+
         } catch (Exception e) {
             e.printStackTrace();
             webDriver = null;

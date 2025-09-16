@@ -61,21 +61,6 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
-      - name: Install Google Chrome
-        run: |
-          sudo apt update
-          sudo apt install -y wget unzip xvfb libxi6 libgconf-2-4
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-
-      - name: Install ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          wget -N https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip -P ~/
-          unzip ~/chromedriver_linux64.zip -d ~/
-          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
-
       - name: Run Automation Tests
         env:
           CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
@@ -85,7 +70,7 @@ jobs:
           mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE_01" "$@"
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="CONFORMANCE"
+        run: mvn serenity:aggregate -Dtags="CONFORMANCE_01"
 
       - name: Upload report
         uses: actions/upload-artifact@v4
