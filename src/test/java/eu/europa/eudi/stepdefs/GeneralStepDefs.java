@@ -82,6 +82,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().scrollUntilPID();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickDone();
         }
 
         if (pid_and_mdl_data) {
@@ -126,22 +127,21 @@ public class GeneralStepDefs{
     }
 
     @After
-    public void tearDown(Scenario scenario) throws IOException, InterruptedException {
+    public void tearDown(Scenario scenario) {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
-            Process stopRecording = Runtime.getRuntime().exec("adb shell killall -2 screenrecord");
-            stopRecording.waitFor(); // Optional wait
+        boolean web = scenario.getSourceTagNames().contains("@WEB");
 
-// Pull file to local
-            Process pullVideo = Runtime.getRuntime().exec("adb pull /sdcard/test_recording.mp4 C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/screenshots/test_recording.mp4");
-            pullVideo.waitFor();
-            test.stopAndroidDriverSession();
+        if (test != null) {
+            if (android){
+                test.stopAndroidDriverSession();
+            }
+            if (ios) {
+                test.stopIosDriverSession();
+            }
+            test.stopLogging();
         }
-        if (ios)
-        { test.stopIosDriverSession();
-        }
-        test.stopLogging(); }
+    }
 
 
     public static TestSetup getTest() {
@@ -461,7 +461,7 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected back to the issuer service")
     public void theUserIsRedirectedBackToTheIssuerService() {
-     //auto accept pop up
+        //auto accept pop up
     }
 
     @And("the user is prompted to authenticate and consent to the issuance")
@@ -489,6 +489,7 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
@@ -587,7 +588,7 @@ public class GeneralStepDefs{
 
     @Then("the user should see the dashboard screen")
     public void theUserShouldSeeTheDashboardScreen() {
-      test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @Given("the user is on the dashboard screen")
@@ -671,8 +672,8 @@ public class GeneralStepDefs{
 
     @And("the add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
-       test.mobile().wallet().addDocumentPageIsDisplayed();
-       test.mobile().wallet().clickFromList();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
     }
 
     @And("the user clicks the national id button")
@@ -692,13 +693,23 @@ public class GeneralStepDefs{
 
     @Given("the user has successfully entered the PIN")
     public void theUserHasSuccessfullyEnteredThePIN() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //        test.mobile().wallet().startAndStopDriver();
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
-        driver.activateApp("eu.europa.ec.euidi.dev");
-        test.mobile().wallet().loginPageIsDisplayed();
-        test.mobile().wallet().createAPin();
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            test.mobile().wallet().loginPageIsDisplayed();
+            test.mobile().wallet().createAPin();
+        }else{
+            //        test.mobile().wallet().startAndStopDriver();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+// Re-launches the app from scratch
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+            test.mobile().wallet().loginPageIsDisplayed();
+            test.mobile().wallet().createAPin();
+        }
     }
 
     @When("the user opens a mDL")
@@ -845,9 +856,9 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
-    theCredentialsProviderIsDisplayedOnScreen();
-    theUserClicksOnCredentialProviderFormEUAndSubmits();
-    theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+        theCredentialsProviderIsDisplayedOnScreen();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
@@ -885,8 +896,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().enterCountry();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+//        test.mobile().issuer().scrollUntilFindSubmit();
+//        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -965,10 +976,12 @@ public class GeneralStepDefs{
         theUserHasFinalizedDataSelection();
         theUserClicksTheSHAREButton();
         thePINFieldIsDisplayedToAuthorizeSharing();
+        test.mobile().wallet().createAPin();
     }
 
     @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
+        test.mobile().wallet().createAPin();
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
@@ -1071,11 +1084,19 @@ public class GeneralStepDefs{
 
     @Given("the user is on the Login screen")
     public void theUserIsOnTheLoginScreen() throws InterruptedException {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
-        driver.activateApp("eu.europa.ec.euidi.dev");
-        test.mobile().wallet().loginPageIsDisplayed();
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            test.mobile().wallet().loginPageIsDisplayed();
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+// Re-launches the app from scratch
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+            test.mobile().wallet().loginPageIsDisplayed();
+        }
     }
 
     @When("the user clicks on Documents")

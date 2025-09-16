@@ -3,6 +3,7 @@ package eu.europa.eudi.utils.factory;
 import eu.europa.eudi.pages.Issuer;
 import eu.europa.eudi.pages.Verifier;
 import eu.europa.eudi.pages.Wallet;
+import eu.europa.eudi.pages.Conformance;
 import eu.europa.eudi.utils.TestSetup;
 
 public class MobilePageObjectFactory {
@@ -10,6 +11,7 @@ public class MobilePageObjectFactory {
     Wallet wallet;
     Verifier verifier;
     Issuer issuer;
+    Conformance conformance;
 
     public MobilePageObjectFactory(TestSetup test) {
         this.test = test;
@@ -25,5 +27,8 @@ public class MobilePageObjectFactory {
 
     public Issuer issuer() {
         return (issuer == null) ? issuer = new Issuer(test) : issuer;
+    }
+
+    public Conformance conformance() {return (conformance == null) ? conformance = new Conformance(test) : conformance;
     }
 }

@@ -1,5 +1,2 @@
-#!/bin/bash
-mvn clean verify -Dcucumber.filter.tags="@sakis" "$@"
-rm -rf target/site/serenity
-# Clear previous report data
-mvn serenity:aggregate -Dtags=sakis
+mvn serenity:aggregate -Dtags="Q2_2025 or automated"
+
