@@ -70,7 +70,7 @@ jobs:
 
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v1
-         with:
+        with:
          chrome-version: latest
 
       - name: Run Automation Tests
