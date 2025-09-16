@@ -4,11 +4,10 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.conformance.ConformanceElements;
 import eu.europa.eudi.utils.TestSetup;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Conformance {
     TestSetup test;
@@ -41,18 +40,24 @@ public class Conformance {
     public void clickGoogleNext() {
         test.webDriverFactory().getWebWait().until(ExpectedConditions.elementToBeClickable(ConformanceElements.EMAIL_NEXT_BUTTON)).click();
     }
-    
+
     public void enterGooglePassword() {
         waitForPageToLoad();
-        waitForPageToLoad();
-        try{
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        WebDriverWait wait = test.webDriverFactory().getWebWait();
+
+        WebElement passwordField = wait.until(
+                ExpectedConditions.elementToBeClickable(ConformanceElements.PASSWORD_INPUT)
+        );
+
+        try {
+            passwordField.sendKeys(test.envDataConfig().getWebAppPassword());
+        } catch (ElementNotInteractableException e) {
+            ((JavascriptExecutor) test.webDriverFactory().getWebDriver())
+                    .executeScript("arguments[0].value=arguments[1];", passwordField, test.envDataConfig().getWebAppPassword());
         }
-        test.webDriverFactory().getWebWait().until(ExpectedConditions.presenceOfElementLocated(ConformanceElements.PASSWORD_INPUT)).sendKeys(test.envDataConfig().getWebAppPassword());
     }
-    
+
+
     public void clickGooglePasswordNext() {
         waitForPageToLoad();
         test.webDriverFactory().getWebWait().until(ExpectedConditions.elementToBeClickable(ConformanceElements.PASSWORD_NEXT_BTN)).click();

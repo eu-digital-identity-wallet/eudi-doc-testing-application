@@ -31,9 +31,9 @@ public class WebDriverFactory {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-blink-features=AutomationControlled");
-            options.addArguments("--headless=new"); // headless mode for CI
-            options.addArguments("--window-size=1920,1080"); // ensures responsive layout
-            options.addArguments("--force-device-scale-factor=1"); // helps with element visibility
+            options.addArguments("--headless=new"); // headless for CI
+            options.addArguments("--window-size=1920,1080"); // ensure responsive layout
+            options.addArguments("--force-device-scale-factor=1"); // helps with visibility
             options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
             options.addArguments("--disable-gpu");
             webDriver = new ChromeDriver(options);
