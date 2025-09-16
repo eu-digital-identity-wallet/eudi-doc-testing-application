@@ -61,29 +61,23 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
-      - name: Install Latest Stable Google Chrome
+      - name: Install Google Chrome
         run: |
-            sudo apt-get update
-            sudo apt-get install -y wget unzip gnupg2
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo apt install -y ./google-chrome-stable_current_amd64.deb
-            CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-            echo "Installed Chrome major version: $CHROME_VERSION"
+              sudo apt-get update
+              sudo apt-get install -y wget unzip
+              wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+              sudo apt install -y ./google-chrome-stable_current_amd64.deb
+              google-chrome --version
 
-      - name: Install Matching ChromeDriver
+      - name: Install ChromeDriver
         run: |
-                CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-                DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-                if [ -z "$DRIVER_VERSION" ]; then
-                  echo "No matching ChromeDriver version found for Chrome version $CHROME_VERSION"
-                  exit 1
-                fi
-                echo "Matching ChromeDriver version: $DRIVER_VERSION"
-                sudo rm -f /usr/local/bin/chromedriver
-                wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
-                unzip -o ~/chromedriver_linux64.zip -d ~/
-                sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-                sudo chmod +x /usr/local/bin/chromedriver
+              CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
+              DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+              wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
+              unzip -o ~/chromedriver_linux64.zip -d ~/
+              sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
+              sudo chmod +x /usr/local/bin/chromedriver
+              chromedriver --version
  
       - name: Run Automation Tests
         env:
