@@ -70,20 +70,14 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-        # Get major.minor Chrome version (e.g., 140.0)
-         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+')
-         echo "Detected Chrome version: $CHROME_VERSION"
-    
-        # Get the latest compatible ChromeDriver for that version
-         LATEST_DRIVER=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-         echo "Latest compatible ChromeDriver version: $LATEST_DRIVER"
-    
-        # Download and install ChromeDriver
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+')
+          echo "Detected Chrome version: $CHROME_VERSION"
+          LATEST_DRIVER=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+          echo "Latest compatible ChromeDriver version: $LATEST_DRIVER"
           wget -N "https://chromedriver.storage.googleapis.com/$LATEST_DRIVER/chromedriver_linux64.zip" -P ~/
           unzip ~/chromedriver_linux64.zip -d ~/
           sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-
 
       - name: Run Automation Tests
         env:
