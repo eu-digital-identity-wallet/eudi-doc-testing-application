@@ -78,7 +78,8 @@ jobs:
       # 7. Run the automation tests using Maven
       - name: Run Automation Tests
         run: |
-          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" -DtestCases="$TEST_CASES"
+         xvfb-run mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" -DtestCases="$TEST_CASES"
+
 
       # 8. Generate Serenity report
       - name: Produce report
