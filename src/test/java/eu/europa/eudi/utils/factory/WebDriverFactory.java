@@ -40,13 +40,13 @@ public class WebDriverFactory {
             options.addArguments("--headless=new"); // headless for CI
             options.addArguments("--window-size=1920,1080"); // ensure responsive layout
             options.addArguments("--force-device-scale-factor=1"); // helps with visibility
-            options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
+            options.addArguments("user-data-dir=/tmp/selenium-profile");
             options.addArguments("--disable-gpu");
+            options.addArguments("--single-process"); // sometimes helps in CI containers
+            options.addArguments("--disable-extensions"); // faster startup
+            options.addArguments("--no-first-run"); // skip first run
 
-//            options.addArguments("--user-data-dir=/home/runner/work/chrome-profile");
-//            options.addArguments("--profile-directory=Default");
-//            options.addArguments("--disable-blink-features=AutomationControlled");
-//            options.addArguments("--start-maximized");
+
 
             webDriver = new ChromeDriver(options);
             webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
