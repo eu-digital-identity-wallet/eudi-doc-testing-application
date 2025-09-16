@@ -72,7 +72,7 @@ jobs:
 
       - name: Install Matching ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+')
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
           echo "Detected Chrome major version: $CHROME_VERSION"
           DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
           echo "Matching ChromeDriver version: $DRIVER_VERSION"
