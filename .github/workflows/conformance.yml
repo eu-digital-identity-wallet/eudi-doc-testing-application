@@ -69,10 +69,10 @@ jobs:
          sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
       - name: Set up ChromeDriver
-        uses: nanasess/setup-chromedriver@v1
+        uses: actions/setup-chromedriver@v1
         with:
-         chrome-version: latest
-
+         chromedriver-version: latest
+         
       - name: Run Automation Tests
         env:
           CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
