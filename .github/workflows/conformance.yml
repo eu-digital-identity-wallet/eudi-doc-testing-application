@@ -68,14 +68,10 @@ jobs:
          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
          sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
-      - name: Install ChromeDriver
-        run: |
-         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+' | head -n1)
-         LATEST_DRIVER=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-         wget -N "https://chromedriver.storage.googleapis.com/$LATEST_DRIVER/chromedriver_linux64.zip" -P ~/
-         unzip ~/chromedriver_linux64.zip -d ~/
-         sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-         sudo chmod +x /usr/local/bin/chromedriver
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1
+         with:
+         chrome-version: latest
 
       - name: Run Automation Tests
         env:
