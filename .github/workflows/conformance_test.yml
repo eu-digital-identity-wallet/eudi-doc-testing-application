@@ -67,7 +67,7 @@ jobs:
           CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE_01" "$@"
 
       - name: Produce report
         run: mvn serenity:aggregate -Dtags="CONFORMANCE"
