@@ -1,4 +1,4 @@
-name: automation_with_emulator - Standard
+name: automation_with_browser - Standard
 
 on:
   workflow_dispatch:
@@ -28,21 +28,24 @@ on:
         required: false
 
 jobs:
-  run-automation:
+  run-browser-tests:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the specified branch
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs['branch-to-checkout'] }}
 
+      # 2. Set environment variables from inputs
       - name: Set Environment Variables
         run: |
           echo "Exporting credentials to environment variables..."
           echo "CREDENTIAL_ISSUER_URL=${{ github.event.inputs.CREDENTIAL_ISSUER_URL }}" >> $GITHUB_ENV
           echo "CREDENTIAL_CONF_ID=${{ github.event.inputs.CREDENTIAL_CONF_ID }}" >> $GITHUB_ENV
 
+      # 3. Decide which test cases to run
       - name: Determine Test Cases
         id: determine-tests
         run: |
@@ -54,6 +57,7 @@ jobs:
             echo "TEST_CASES=${{ github.event.inputs.test-cases }}" >> $GITHUB_ENV
           fi
 
+      # 4. Display the received inputs for debugging
       - name: Show Inputs
         run: |
           echo "Branch: ${{ github.event.inputs['branch-to-checkout'] }}"
@@ -61,36 +65,40 @@ jobs:
           echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
           echo "Tests to run: $TEST_CASES"
 
+      # 5. Install Google Chrome for browser-based automation
       - name: Install Google Chrome
         run: |
-              sudo apt-get update
-              sudo apt-get install -y wget unzip
-              wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-              sudo apt install -y ./google-chrome-stable_current_amd64.deb
-              google-chrome --version
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          google-chrome --version
 
+      # 6. Install matching ChromeDriver version
       - name: Install ChromeDriver
         run: |
-              CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-              DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-              wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
-              unzip -o ~/chromedriver_linux64.zip -d ~/
-              sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-              sudo chmod +x /usr/local/bin/chromedriver
-              chromedriver --version
- 
-      - name: Run Automation Tests
-        env:
-          CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
-          CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
-        run: |
-           mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" "$@"
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
+          DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+          wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P ~/
+          unzip -o ~/chromedriver_linux64.zip -d ~/
+          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+          chromedriver --version
 
+      # 7. Run the automation tests using Maven
+      - name: Run Automation Tests
+        run: |
+          mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE" -DtestCases="$TEST_CASES"
+
+      # 8. Generate Serenity report
       - name: Produce report
+        if: always()
         run: mvn serenity:aggregate -Dtags="CONFORMANCE"
 
+      # 9. Upload report for review
       - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: report
+          name: serenity-report
           path: target/site
