@@ -1,91 +1,43 @@
-name: automation_with_emulator - Standard
+@WEB @automated @CONFORMANCE
+Feature: OpenID Foundation Conformance Suite
 
-on:
-workflow_dispatch:
-inputs:
-branch-to-checkout:
-description: 'Branch to checkout'
-type: choice
-options:
-- main
-- develop
-default: develop
+  @CONFORMANCE_01
+  Scenario: User opens the conformance suite and sees the login page
+    Given the user opens the conformance suite
+    When the page loads
+    Then the login page should be displayed
 
-test-cases:
-description: 'Choose Test Cases (Leave empty to run all tests)'
-type: string
-required: false
-default: ''
+  @CONFORMANCE_02
+  Scenario: User logs in with Google account
+    Given the conformance suite login page is displayed
+    When the user proceeds with Google
+    And the user enters email
+    And the user enters password
+    Then the user should be logged in successfully
 
-CREDENTIAL_ISSUER_URL:
-description: 'Enter the CREDENTIAL_ISSUER_URL value'
-type: string
-required: false
+  @CONFORMANCE_03
+  Scenario: User creates new test plan
+    Given the user logged in successfully
+    When the user checks the show early version tests box
+    Then the user selects a test plan
 
-CREDENTIAL_CONF_ID:
-description: 'Enter the CREDENTIAL_CONF_ID value'
-type: string
-required: false
+  @CONFORMANCE_04
+  Scenario: User fills in the required fields
+    Given the user has selected a test plan
+    When the correct fields are displayed
+    Then the user fills in the required fields
+    Then configure test section appears
 
-jobs:
-run-automation:
-runs-on: ubuntu-latest
+  @CONFORMANCE_05
+  Scenario: User fills configure test form and starts the test
+    Given configure test form is displayed
+    When the user fills the configure test form
+    And the user scrolls until the create test plan button
+    And the user executes the test plan
 
-steps:
-- name: Checkout repository
-uses: actions/checkout@v4
-with:
-ref: ${{ github.event.inputs['branch-to-checkout'] }}
-
-- name: Set Environment Variables
-run: |
-echo "Exporting credentials to environment variables..."
-echo "CREDENTIAL_ISSUER_URL=${{ github.event.inputs.CREDENTIAL_ISSUER_URL }}" >> $GITHUB_ENV
-echo "CREDENTIAL_CONF_ID=${{ github.event.inputs.CREDENTIAL_CONF_ID }}" >> $GITHUB_ENV
-
-- name: Determine Test Cases
-id: determine-tests
-run: |
-if [ -z "${{ github.event.inputs.test-cases }}" ]; then
-echo "No test cases provided. Running ALL tests."
-echo "TEST_CASES=ALL" >> $GITHUB_ENV
-else
-echo "Test cases provided: ${{ github.event.inputs.test-cases }}"
-echo "TEST_CASES=${{ github.event.inputs.test-cases }}" >> $GITHUB_ENV
-fi
-
-- name: Show Inputs
-run: |
-echo "Branch: ${{ github.event.inputs['branch-to-checkout'] }}"
-echo "CREDENTIAL_ISSUER_URL: $CREDENTIAL_ISSUER_URL"
-echo "CREDENTIAL_CONF_ID: $CREDENTIAL_CONF_ID"
-echo "Tests to run: $TEST_CASES"
-
-- name: Install Google Chrome
-run: |
-sudo apt update
-sudo apt install -y wget unzip xvfb libxi6 fonts-liberation libnss3
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-
-- name: Set up ChromeDriver
-uses: nanasess/setup-chromedriver@v1
-with:
-chrome-version: latest
-
-- name: Run Automation Tests
-env:
-CREDENTIAL_ISSUER_URL: ${{ env.CREDENTIAL_ISSUER_URL }}
-CREDENTIAL_CONF_ID: ${{ env.CREDENTIAL_CONF_ID }}
-run: |
-          #!/bin/bash
-mvn clean verify -Dcucumber.filter.tags="@CONFORMANCE_01" "$@"
-
-- name: Produce report
-run: mvn serenity:aggregate -Dtags="CONFORMANCE_01"
-
-- name: Upload report
-uses: actions/upload-artifact@v4
-with:
-name: report
-path: target/site
+  @CONFORMANCE_06
+  Scenario: User verifies tests executed successfully
+    Given the user executed the test plan
+    When the test plan results page is displayed
+    And the user runs the first test
+    Then the user verifies test's success
