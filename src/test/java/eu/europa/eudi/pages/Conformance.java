@@ -42,8 +42,11 @@ public class Conformance {
     }
 
     public void enterGooglePassword() {
+        test.webDriverFactory().takeScreenshot("target/screenshots/login_page.png");
         waitForPageToLoad();
+        test.webDriverFactory().takeScreenshot("target/screenshots/login_page.png");
         WebDriverWait wait = test.webDriverFactory().getWebWait();
+        test.webDriverFactory().takeScreenshot("target/screenshots/login_page.png");
 
         WebElement passwordField = wait.until(
                 ExpectedConditions.elementToBeClickable(ConformanceElements.PASSWORD_INPUT)
