@@ -32,17 +32,33 @@ public class WebDriverFactory {
         envDataConfig = new EnvDataConfig();
         try {
             ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--remote-allow-origins=*");
+//            options.addArguments("--disable-web-security");
+//            options.addArguments("--no-sandbox");
+//            options.addArguments("--disable-dev-shm-usage");
+//            options.addArguments("--disable-blink-features=AutomationControlled");
+//            options.addArguments("--window-size=1920,1080"); // ensure responsive layout
+//            options.addArguments("--force-device-scale-factor=1"); // helps with visibility
+//            options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
+//            options.addArguments("--disable-gpu");
+//
+//
+//            webDriver = new ChromeDriver(options);
+//            webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
             options.addArguments("--remote-allow-origins=*");
             options.addArguments("--disable-web-security");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-blink-features=AutomationControlled");
-            options.addArguments("--headless=new"); // headless for CI
-            options.addArguments("--window-size=1920,1080"); // ensure responsive layout
-            options.addArguments("--force-device-scale-factor=1"); // helps with visibility
-            options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
-            options.addArguments("--disable-gpu");
+            options.addArguments("--headless=new");           // headless required for CI
+            options.addArguments("--window-size=1920,1080");  // ensures proper layout
+            options.addArguments("--disable-gpu");           // required for headless
+            options.addArguments("--disable-software-rasterizer");
+            options.addArguments("--force-device-scale-factor=1");
 
+// Optional: prevent websites from detecting automation
+            options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+            options.setExperimentalOption("useAutomationExtension", false);
 
             webDriver = new ChromeDriver(options);
             webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
