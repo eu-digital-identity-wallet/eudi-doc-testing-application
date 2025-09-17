@@ -62,7 +62,7 @@ public class WebDriverFactory {
 
             webDriver = new ChromeDriver(options);
             webWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
-            webDriver.manage().window().maximize();
+//            webDriver.manage().window().maximize();
 
         } catch (Exception e) {
             e.printStackTrace();
