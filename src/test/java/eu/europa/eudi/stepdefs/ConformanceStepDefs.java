@@ -1,6 +1,14 @@
 package eu.europa.eudi.stepdefs;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.HttpResponse;
+import com.google.api.client.http.javanet.NetHttpTransport;
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.utils.GoogleAuthHelper;
 import eu.europa.eudi.utils.TestSetup;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,6 +17,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ConformanceStepDefs {
     TestSetup test;
@@ -51,19 +68,34 @@ public class ConformanceStepDefs {
     }
 
     @Given("the conformance suite login page is displayed")
-    public void theConformanceSuiteLoginPageIsDisplayed() {
+    public void theConformanceSuiteLoginPageIsDisplayed() throws Exception {
         theUserOpensTheConformanceSuite();
         thePageLoads();
         theLoginPageShouldBeDisplayed();
+
+
     }
 
     @When("the user proceeds with Google")
-    public void theUserProceedsWithGoogle() {
+    public void theUserProceedsWithGoogle() throws IOException, ClassNotFoundException {
         test.web().conformance().clickProceedWithGoogle();
     }
 
     @When("the user enters email")
-    public void theUserEntersEmail() {
+    public void theUserEntersEmail() throws Exception {
+
+        NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+        Credential credential = GoogleAuthHelper.getCredentials(HTTP_TRANSPORT);
+
+        HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(credential);
+        GenericUrl url = new GenericUrl("https://www.googleapis.com/oauth2/v2/userinfo");
+
+        HttpRequest request = requestFactory.buildGetRequest(url);
+        HttpResponse response = request.execute();
+
+        String userInfoJson = response.parseAsString();
+        System.out.println("User info: " + userInfoJson);
+
         test.web().conformance().enterGoogleEmail();
         test.web().conformance().clickGoogleNext();
     }
@@ -81,7 +113,7 @@ public class ConformanceStepDefs {
     }
 
     @Given("the user logged in successfully")
-    public void theUserLoggedInSuccessfully() {
+    public void theUserLoggedInSuccessfully() throws Exception {
         theConformanceSuiteLoginPageIsDisplayed();
         theUserProceedsWithGoogle();
         theUserEntersEmail();
@@ -102,7 +134,7 @@ public class ConformanceStepDefs {
     }
 
     @Given("the user has selected a test plan")
-    public void theUserHasSelectedATestPlan() {
+    public void theUserHasSelectedATestPlan() throws Exception {
         theUserLoggedInSuccessfully();
         theUserChecksTheShowEarlyVersionTestsBox();
         theUserSelectsATestPlan();
@@ -135,7 +167,7 @@ public class ConformanceStepDefs {
     }
 
     @Given("configure test form is displayed")
-    public void configureTestFormIsDisplayed() {
+    public void configureTestFormIsDisplayed() throws Exception {
         theUserHasSelectedATestPlan();
         theCorrectFieldsAreDisplayed();
         theUserFillsInTheRequiredFields();
@@ -166,7 +198,7 @@ public class ConformanceStepDefs {
     }
 
     @Given("the user executed the test plan")
-    public void theUserExecutedTheTestPlan() {
+    public void theUserExecutedTheTestPlan() throws Exception {
         configureTestFormIsDisplayed();
         theUserFillsTheConfigureTestForm();
         theUserScrollsUntilTheCreateTestPlanButton();

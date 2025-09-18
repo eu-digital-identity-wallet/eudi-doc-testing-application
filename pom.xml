@@ -27,6 +27,18 @@
         <build-version>EUDI_Wallet_Version_2025.07.28-Demo</build-version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>google-maven-central</id>
+            <url>https://maven.google.com/</url>
+        </repository>
+
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Dependencies -->
         <dependency>
@@ -34,6 +46,31 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
+        <!-- Maven dependency -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.33.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.33.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-gson</artifactId>
+            <version>1.39.2</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.google.apis</groupId>-->
+<!--            <artifactId>google-api-services-oauth2</artifactId>-->
+<!--            <version>v2-rev20220804-1.32.1</version>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -154,6 +191,7 @@
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
                 <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
                     <tags>${tags}</tags>
                 </configuration>
                 <executions>
