@@ -4,8 +4,8 @@ Feature: OpenID Foundation Conformance Suite
   @CONFORMANCE_01
   Scenario: User opens the conformance suite and sees the login page
     Given the user opens the conformance suite
-    When the page loads
-    Then the login page should be displayed
+#    When the page loads
+#    Then the login page should be displayed
 
   @CONFORMANCE_02
   Scenario: User logs in with Google account

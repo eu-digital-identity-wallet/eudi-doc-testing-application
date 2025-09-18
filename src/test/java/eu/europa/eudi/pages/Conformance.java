@@ -9,6 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Conformance {
     TestSetup test;
 
@@ -29,7 +35,7 @@ public class Conformance {
         Assert.assertTrue("Login page title should be displayed!", test.webDriverFactory().getWebWait().until(ExpectedConditions.presenceOfElementLocated(ConformanceElements.LOGIN_PAGE_TITLE)).isDisplayed());
     }
     
-    public void clickProceedWithGoogle() {
+    public void clickProceedWithGoogle() throws IOException, ClassNotFoundException {
         test.webDriverFactory().getWebWait().until(ExpectedConditions.elementToBeClickable(ConformanceElements.PROCEED_WITH_GOOGLE_BUTTON)).click();
     }
     
