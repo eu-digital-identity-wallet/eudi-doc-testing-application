@@ -13,7 +13,7 @@ public class IssuerElements {
     public static By authenticationPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Country Selection\"]");
     public static By issuanceDate = By.xpath("//XCUIElementTypeSwitch[@name=\"Issuance date\"]");
-    public static By formIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter the data for your EUDI Wallet\"]");
+    public static By formIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"demo application.\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By selectAttributesBy = By.xpath("(//XCUIElementTypeButton[@name=\"-- attributes by --\"])[3]");
@@ -29,8 +29,10 @@ public class IssuerElements {
     public static By fourthAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Age over 18\"]");
     public static By fifthAttribute = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth place\"]");
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
-    public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authorize data from your EUDI Wallet\"]");
+    public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Review & Send\"]");
     public static By clickPID = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[23]");
-    public static By clickCountry = By.xpath("//XCUIElementTypeTextField[@name=\"Country\"]");
+    public static By clickCountry = By.xpath("//XCUIElementTypeOther[@name=\"Country Region Locality\"]/XCUIElementTypeTextField[1]");
     public static By clickPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Place Of Birth\"]");
+    public static By clickLocality = By.xpath("//XCUIElementTypeOther[@name=\"Country Region Locality\"]/XCUIElementTypeTextField[3]");
+    public static By clickRegion = By.xpath("//XCUIElementTypeOther[@name=\"Country Region Locality\"]/XCUIElementTypeTextField[2]");
 }
