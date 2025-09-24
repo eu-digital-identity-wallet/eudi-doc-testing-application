@@ -7,20 +7,20 @@ Feature: Issuing and storing attestations in the EUDI Wallet
 
   #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/112
 
-  @US_ADBCFL_TC_01
+  @US_ADBCFL_TC_01 @before_01
   Scenario: Successful navigation to "Home" screen
-    Given the user is on the Home screen
+    Given the user is on the home screen
     When the user navigates to the Documents screen
     Then the Documents screen is displayed
 
-  @US_ADBCFL_TC_02
+  @US_ADBCFL_TC_02 @before_01
   Scenario: Selecting attestation from the predefined list
     Given the user is on the Documents screen
     When the user selects to add a new document
     And the user selects to add a new document From list
     Then the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet
 
-  @US_ADBCFL_TC_03
+  @US_ADBCFL_TC_03 @before_01
   Scenario: Issuing an attestation successfully
     Given the user is viewing the predefined list of attestations
     When the user selects one attestation to be issued
@@ -29,7 +29,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet
     And the screen informs the user about the attestation issued and the issuer who issued it
     And the screen displays a Close button to return to the Home screen
 
-  @US_ADBCFL_TC_04
+  @US_ADBCFL_TC_04 @before_01
   Scenario: Returning to "Home" screen after success
     Given the user is viewing the success screen after an attestation is issued
     When the user closes the success screen

@@ -1,25 +1,35 @@
-@IOS @US_RDTBS @automated @Q1_2025
-Feature: Retrieve and View Document in EUDI Wallet
+@IOS @automated @US_SD @Q4_2024
+Feature: Sign Document through EUDI Wallet
+  As a EUDI Wallet User,
+  I want to provide my explicit consent on signing a document through my EUDI Wallet and sing the document
+  So that I can ensure that I am the sole signer of the specific document.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/89
+  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/92
 
-  Background:
-    Given the user has been authenticated in the Relying Party service
-    And the user has been authenticated in the EUDI Wallet
-    And the user is registered to a valid EUDI Wallet on their mobile device
-    And internet is available for connectivity and data transfer
-    And the Wallet and the Relying Party User Interface reside on different devices
+  @US_SD_TC_01 @before_01
+  Scenario: Single Credential ID Available
+    Given the user has uploaded a document and selected a QTSP
+    When the EUDI Wallet retrieves the Credential ID details from the QTSP
+    Then the EUDI Wallet presents the Credential ID details to the user
+    And user confirms to proceed with the signing operation
 
-  @US_RDTBS_TC_01
-  Scenario: Retrieve document from Relying Party
-    Given the user accesses the Relying Party page where the document to be signed is available
-    When the user selects the option to retrieve the document in their EUDI Wallet
-    Then the Relying Party renders a QR-code requesting the user to scan the QR-code to retrieve the document
+  @US_SD_TC_02 @before_01
+  Scenario: User Aborts the Signing Operation
+    Given the user is reviewing the Credential ID details in the EUDI Wallet
+    When the user decides not to proceed
+    Then the user can select the Abort operation option
+    And EUDI Wallet should return the user to the main page
 
-  @US_RDTBS_TC_02
-  Scenario: View document to EUDI Wallet
-    Given the user opens the EUDI Wallet
-    When the user selects the option to Sign a Document through Scan QR
-    And the user scans the displayed QR-code with the EUDI Wallet
-    Then the EUDI Wallet retrieves the document from the Relying Party service
-    And the EUDI Wallet presents the document to the user
+  @US_SD_TC_03 @before_01
+  Scenario: User consents to release attestation
+    Given the user is reviewing the Credential ID details in the EUDI Wallet
+    When the EUDI Wallet requests the user to consent to the release of the requested attestation
+    And the user authenticates successfully in the Wallet, e.x. Share and PIN
+    Then the EUDI Wallet presents the requested attestation to the QTSP
+    And a success screen is displayed with the signed document
+
+  @US_SD_TC_04 @before_01
+  Scenario: EUDI Wallet Stores the Signed Document
+    Given the QTSP has signed the document and returned it
+    When the EUDI Wallet receives the signed document
+    Then the EUDI Wallet enables the user to share the document or close the process
