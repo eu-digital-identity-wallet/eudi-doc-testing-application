@@ -114,8 +114,12 @@ public class GeneralStepDefs{
             test.mobile().issuer().enterDocumentNumber();
             test.mobile().issuer().scrollUntilFindDate();
             test.mobile().issuer().clickScreen();
+            test.mobile().issuer().enterVehicleCategoryCode();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
+            test.mobile().issuer().enterCodeFieldIssuer();
+            test.mobile().issuer().enterSignFieldIssuer();
+            test.mobile().issuer().enterValueFieldIssuer();
             test.mobile().issuer().scrollUntilFindSubmit();
             test.mobile().issuer().clickConfirm();
             test.mobile().issuer().authorizeIsDisplayed();

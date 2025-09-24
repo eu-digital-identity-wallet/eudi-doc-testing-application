@@ -182,4 +182,10 @@ public class WalletElements {
     public static By documentIssued = By.xpath("//android.widget.TextView[@text=\"Documents issued\"]");
     public static By clickToSeeDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
     public static By documentOpened = By.xpath("//android.widget.TextView[@text=\"Pseudonym Deferred\"]");
+    public static By vehicleCategoryCode;
+    public static By clickLocality;
+    public static By clickRegion;
+    public static By codeFieldIssuer;
+    public static By signFieldIssuer;
+    public static By valueFieldIssuer;
 }
