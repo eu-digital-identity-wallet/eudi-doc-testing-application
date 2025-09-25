@@ -59,11 +59,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user clicks on the X button")
-    public void theUserClicksOnTheXButton() {
-        //manual
-    }
-
     @When("the user presses on the ISSUE button")
     public void theUserPressesOnTheISSUEButton() {
         //manual
@@ -79,11 +74,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user authenticates and consents the issuance")
-    public void theUserAuthenticatesAndConsentsTheIssuance() {
-        //manual
-    }
-
     @When("the user presses on the Issue button")
     public void theUserPressesOnTheIssueButton() {
         //manual
@@ -91,11 +81,6 @@ public class ManuallyStepDefs {
 
     @Given("the user is on issuer service")
     public void theUserIsOnIssuerService() {
-        //manual
-    }
-
-    @Then("the user registers their personal data")
-    public void theUserRegistersTheirPersonalData() {
         //manual
     }
 
@@ -193,18 +178,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user visits the Relying Party service on their mobile device")
-    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() {
-        //manual
-    }
-
     @When("the user selects to verify the age limit with the EUDI Wallet")
     public void theUserSelectsToVerifyTheAgeLimitWithTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the Relying Party service redirects the user to the EUDI Wallet")
-    public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
         //manual
     }
 
@@ -348,16 +323,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user visits the Issuer service")
-    public void theUserVisitsTheIssuerService() {
-        //manual
-    }
-
-    @When("the user chooses to issue a doc with pre-authorization")
-    public void theUserChoosesToIssueADocWithPreAuthorization() {
-        //manual
-    }
-
     @Then("the Issuer service creates a QR code and a transaction code")
     public void theIssuerServiceCreatesAQRCodeAndATransactionCode() {
         //manual
@@ -423,56 +388,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Wallet app requests the transaction code")
-    public void theWalletAppRequestsTheTransactionCode() {
-        //manual
-    }
-
-    @And("the user enters the transaction code provided by the Issuer")
-    public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
-        //manual
-    }
-
-    @And("the doc is displayed in the dashboard screen")
-    public void theDocIsDisplayedInTheDashboardScreen() {
-        //manual
-    }
-
-    @And("a transaction code has been created")
-    public void aTransactionCodeHasBeenCreated() {
-        //manual
-    }
-
-    @Given("the transaction code has been created")
-    public void theTransactionCodeHasBeenCreated() {
-        //manual
-    }
-
-    @When("the user selects to register with the EUDI wallet app")
-    public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
-        //manual
-    }
-
-    @And("the user enters the PIN")
-    public void theUserEntersThePIN() {
-        //manual
-    }
-
-    @Given("the user has entered the PIN")
-    public void theUserHasEnteredThePIN() {
-        //manual
-    }
-
-    @When("the request from the issuer is displayed on the wallet app")
-    public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
-        //manual
-    }
-
-    @Given("the user entered the transaction code provided by the Issuer")
-    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() {
-        //manual
-    }
-
     @And("the add document page is displayed on screen")
     public void theAddDocumentPageIsDisplayedOnScreen() {
         //manual
@@ -480,16 +395,6 @@ public class ManuallyStepDefs {
 
     @When("the Wallet app displays a success message on screen")
     public void theWalletAppDisplaysASuccessMessageOnScreen() {
-        //manual
-    }
-
-    @Then("the user is redirected to the EUDI wallet application")
-    public void theUserIsRedirectedToTheEUDIWalletApplication() {
-        //manual
-    }
-
-    @When("the Wallet application displays a success message")
-    public void theWalletApplicationDisplaysASuccessMessage() {
         //manual
     }
 
@@ -583,28 +488,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is on the issuer service page")
-    public void theUserIsOnTheIssuerServicePage() {
-        //manual
-    }
-
-    @When("the user chooses to issue a credential to the wallet app")
-    public void theUserChoosesToIssueACredentialToTheWalletApp() {
-        //manual
-    }
-
-    @Then("the user is redirected to the wallet app")
-    public void theUserIsRedirectedToTheWalletApp() {
-        //manual
-    }
-
     @And("the user views the details regarding the issuance")
     public void theUserViewsTheDetailsRegardingTheIssuance() {
-        //manual
-    }
-
-    @Given("the user is on the wallet app with issuance details")
-    public void theUserIsOnTheWalletAppWithIssuanceDetails() {
         //manual
     }
 
@@ -638,68 +523,13 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the user sees the details regarding the issuance")
-    public void theUserSeesTheDetailsRegardingTheIssuance() {
-        //manual
-    }
-
     @When("the user clicks the {string} button")
     public void theUserClicksTheISSUEButton() {
         //manual
     }
 
-    @Then("the user is redirected to the issuer for authentication and consent")
-    public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
-        //manual
-    }
-
-    @Given("the user is on the issuer page for authentication and consent")
-    public void theUserIsOnTheIssuerPageForAuthenticationAndConsent() {
-        //manual
-    }
-
     @When("the user authenticates and consents to the issuance manually")
     public void theUserAuthenticatesAndConsentsToTheIssuanceManually() {
-        //manual
-    }
-
-    @And("a message appears stating that the request is in progress")
-    public void aMessageAppearsStatingThatTheRequestIsInProgress() {
-        //manual
-    }
-
-    @Given("the user sees the issuance in progress message")
-    public void theUserSeesTheIssuanceInProgressMessage() {
-        //manual
-    }
-
-    @When("the user clicks OK")
-    public void theUserClicksOK() {
-        //manual
-    }
-
-    @Then("the dashboard appears with the document grayed out and in a pending state")
-    public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
-        //manual
-    }
-
-    @Given("the wallet app is polling the issuer for the credential")
-    public void theWalletAppIsPollingTheIssuerForTheCredential() {
-        //manual
-    }
-
-    @When("the issuer sends the credential to the wallet app")
-    public void theIssuerSendsTheCredentialToTheWalletApp() {
-        //manual
-    }
-
-    @Then("the user views a modal informing them that the document has been issued")
-    public void theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued() {
-        //manual
-    }
-
-    @Given("the user views the issuance confirmation modal")
-    public void theUserViewsTheIssuanceConfirmationModal() {
         //manual
     }
 
@@ -715,11 +545,6 @@ public class ManuallyStepDefs {
 
     @And("the user clicks the ADD button")
     public void theUserClicksTheADDButton() {
-        //manual
-    }
-
-    @Then("the document appears on the dashboard screen")
-    public void theDocumentAppearsOnTheDashboardScreen() {
         //manual
     }
 
@@ -763,11 +588,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the user clicks on the CONTINUE button")
-    public void theUserClicksOnTheCONTINUEButton() {
-        //manual
-    }
-
     @When("the user clicks on the SCAN QR button")
     public void theUserClicksOnTheSCANQRButton() {
         //manual
@@ -785,21 +605,6 @@ public class ManuallyStepDefs {
 
     @When("the user clicks on the ADD DOC button on the wallet application")
     public void theUserClicksOnTheADDDOCButtonOnTheWalletApplication() {
-        //manual
-    }
-
-    @Then("the user clicks on the ISSUE button")
-    public void theUserClicksOnTheISSUEButton() {
-        //manual
-    }
-
-    @Given("the user has clicked on the ISSUE button")
-    public void theUserHasClickedOnTheISSUEButton() {
-        //manual
-    }
-
-    @When("the user clicks the Issue button")
-    public void theUserClicksTheIssueButton() {
         //manual
     }
 
@@ -881,102 +686,6 @@ public class ManuallyStepDefs {
 
     @When("the user presses the SHOW QR/TAP button")
     public void theUserPressesTheSHOWQRTAPButton() {
-        //manual
-    }
-
-    @Then("the user is presented with a URL to initiate the EUDI Wallet on the same device")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice() {
-        //manual
-    }
-
-    @Given("the user is presented with a URL to initiate the EUDI Wallet")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWallet() {
-        //manual
-    }
-
-    @When("the user selects the URL")
-    public void theUserSelectsTheURL() {
-        //manual
-    }
-
-    @Then("the Wallet is initiated and the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
-    public void theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
-        //manual
-    }
-
-    @Given("the user is presented with details of the credentials to be issued")
-    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssued() {
-        //manual
-    }
-
-    @When("the user selects to proceed with the issuance process")
-    public void theUserSelectsToProceedWithTheIssuanceProcess() {
-        //manual
-    }
-
-    @Then("the user is redirected to the Issuer service to present their PID")
-    public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
-        //manual
-    }
-
-    @Given("the user has been redirected to the Issuer service to present their PID")
-    public void theUserHasBeenRedirectedToTheIssuerServiceToPresentTheirPID() {
-        //manual
-    }
-
-    @When("the EUDI Wallet displays the presentation request for PID")
-    public void theEUDIWalletDisplaysThePresentationRequestForPID() {
-        //manual
-    }
-
-    @Then("the user is prompted to consent by selecting the Share button")
-    public void theUserIsPromptedToConsentBySelectingTheShareButton() {
-        //manual
-    }
-
-    @Given("the user has been prompted to consent by selecting the Share button")
-    public void theUserHasBeenPromptedToConsentBySelectingTheShareButton() {
-        //manual
-    }
-
-    @When("the user selects the Share button")
-    public void theUserSelectsTheShareButton() {
-        //manual
-    }
-
-
-    @Then("a success message is displayed for the successful presentation of the PID")
-    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
-        //manual
-    }
-
-    @When("the user clicks the Continue button")
-    public void theUserClicksTheContinueButton() {
-        //manual
-    }
-
-    @Then("the user views a success message for issuing the document")
-    public void theUserViewsASuccessMessageForIssuingTheDocument() {
-        //manual
-    }
-
-    @And("the user views the document on the dashboard which issued based on the PID")
-    public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-        //manual
-    }
-
-    @Then("the user is prompted to enter their six-digit PIN")
-    public void theUserIsPromptedToEnterTheirSixDigitPIN() {
-        //manual
-    }
-
-    @Given("the user has been prompted to enter their six-digit PIN")
-    public void theUserHasBeenPromptedToEnterTheirSixDigitPIN() {
-        //manual
-    }
-
-    @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() {
         //manual
     }
 
@@ -1270,28 +979,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the user clicks to view the document information")
-    public void theUserClicksToViewTheDocumentInformation() {
-        //manual
-    }
-
-    @Then("the document is open")
-    public void theDocumentIsOpen() {
-        //manual
-    }
-
-    @Then("the document should close")
-    public void theDocumentShouldClose() {
-        //manual
-    }
-
     @When("an authentication page appears")
     public void anAuthenticationPageAppears() {
-        //manual
-    }
-
-    @When("the user selects to issue credential")
-    public void theUserSelectsToIssueCredential() {
         //manual
     }
 
@@ -2043,12 +1732,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the EUDI Wallet retrieves the Credential ID details from the QTSP")
-    public void theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP() {
-        //manual
-
-    }
-
     @And("the EUDI Wallet proceeds to the next step in the signing flow.")
     public void theEUDIWalletProceedsToTheNextStepInTheSigningFlow() {
         //manual
@@ -2067,20 +1750,6 @@ public class ManuallyStepDefs {
     @And("the user confirms to proceed with the signing operation.")
     public void theUserConfirmsToProceedWithTheSigningOperation() { //manual
 
-    }
-
-    @Then("the EUDI Wallet presents the Credential ID details to the user")
-    public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() { //manual
-    }
-
-    @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
-    public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
-        //manual
-    }
-
-    @When("the user decides not to proceed")
-    public void theUserDecidesNotToProceed() {
-        //manual
     }
 
     @Then("the user can select the {string} option")
@@ -2120,11 +1789,6 @@ public class ManuallyStepDefs {
 
     @Then("the deep link should redirect the user back to the EUDI Wallet.")
     public void theDeepLinkShouldRedirectTheUserBackToTheEUDIWallet() {
-        //manual
-    }
-
-    @Then("the user can select the Abort operation option")
-    public void theUserCanSelectTheAbortOperationOption() {
         //manual
     }
 
@@ -2266,16 +1930,6 @@ public class ManuallyStepDefs {
 
     @And("the signed document should be returned to the EUDI Wallet.")
     public void theSignedDocumentShouldBeReturnedToTheEUDIWallet() {
-        //manual
-    }
-
-    @Given("the QTSP has signed the document and returned it")
-    public void theQTSPHasSignedTheDocumentAndReturnedIt() {
-        //manual
-    }
-
-    @When("the EUDI Wallet receives the signed document")
-    public void theEUDIWalletReceivesTheSignedDocument() {
         //manual
     }
 
@@ -2443,11 +2097,6 @@ public class ManuallyStepDefs {
 
     @Given("the user has successfully authenticated and provided consent")
     public void theUserHasSuccessfullyAuthenticatedAndProvidedConsent() {
-        //manual
-    }
-
-    @When("the EUDI Wallet presents the requested attestation to the QTSP")
-    public void theEUDIWalletPresentsTheRequestedAttestationToTheQTSP() {
         //manual
     }
 
@@ -2893,16 +2542,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("user confirms to proceed with the signing operation")
-    public void userConfirmsToProceedWithTheSigningOperation() {
-        //manual
-    }
-
-    @And("EUDI Wallet should return the user to the main page")
-    public void eudiWalletShouldReturnTheUserToTheMainPage() {
-        //manual
-    }
-
     @Then("QTSP should provide a deep link to proceed to attestation presentation")
     public void qtspShouldProvideADeepLinkToProceedToAttestationPresentation() {
         //manual
@@ -3078,38 +2717,18 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is on the Home screen")
-    public void theUserIsOnTheHomeScreen() {
-        //manual
-    }
+//    @Given("the user is on the Home screen")
+//    public void theUserIsOnTheHomeScreen() {
+//        //manual
+//    }
 
     @When("the user selects the option {string} in the {string} section")
     public void theUserSelectsTheOptionInTheSection(String arg0, String arg1) {
         //manual
     }
 
-    @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
-    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
-        //manual
-    }
-
-    @Given("the user is viewing the predefined list of attestations")
-    public void theUserIsViewingThePredefinedListOfAttestations() {
-        //manual
-    }
-
-    @When("the user selects one attestation to be issued")
-    public void theUserSelectsOneAttestationToBeIssued() {
-        //manual
-    }
-
     @And("the attestation is successfully issued")
     public void theAttestationIsSuccessfullyIssued() {
-        //manual
-    }
-
-    @And("the screen informs the user about the attestation issued and the issuer who issued it")
-    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
         //manual
     }
 
@@ -3148,18 +2767,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the user is viewing the success screen after an attestation is issued")
-    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() {
-        //manual
-    }
-
     @When("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String arg0) {
-        //manual
-    }
-
-    @Then("the user navigates back to the Home screen")
-    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
         //manual
     }
 
@@ -3170,11 +2779,6 @@ public class ManuallyStepDefs {
 
     @When("the user clicks on the Go to my EUDI Wallet button")
     public void theUserClicksOnTheGoToMyEUDIWalletButton() {
-        //manual
-    }
-
-    @And("the screen displays a Close button to return to the Home screen")
-    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
         //manual
     }
 
@@ -4115,12 +3719,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-
-    @Given("the user is on the Home page")
-    public void theUserIsOnTheHomePage() {
-        //manual
-    }
-
     @Then("the wallet opens the scanner")
     public void theWalletOpensTheScanner() {
         //manual
@@ -4168,11 +3766,6 @@ public class ManuallyStepDefs {
 
     @When("the data sharing process is successful")
     public void theDataSharingProcessIsSuccessful() {
-        //manual
-    }
-
-    @Then("the wallet displays a success screen")
-    public void theWalletDisplaysASuccessScreen() {
         //manual
     }
 
@@ -4954,31 +4547,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
-    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
-        //manual
-    }
-
-    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
-    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
-        //manual
-    }
-
-    @Given("the user has uploaded a document and selected a QTSP")
-    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
-        //manual
-    }
-
-    @And("a success screen is displayed with the signed document")
-    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
-        //manual
-    }
-
-    @Then("the EUDI Wallet enables the user to share the document or close the process")
-    public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-        //manual
-    }
-
     @Given("the QTSP has received the success outcome from the EUDI Wallet")
     public void theQTSPHasReceivedTheSuccessOutcomeFromTheEUDIWallet() {
         //manual
@@ -5371,31 +4939,6 @@ public class ManuallyStepDefs {
         // manual
     }
 
-    @When("the user selects the Online option in the Authenticate section")
-    public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
-        // manual
-    }
-
-    @Then("the Documents screen is displayed")
-    public void theDocumentsScreenIsDisplayed() {
-        // manual
-    }
-
-    @When("the user selects to add a new document")
-    public void theUserSelectsToAddANewDocument() {
-        // manual
-    }
-
-    @And("the user selects to add a new document From list")
-    public void theUserSelectsToAddANewDocumentFromList() {
-        // manual
-    }
-
-    @When("the user closes the success screen")
-    public void theUserClosesTheSuccessScreen() {
-        // manual
-    }
-
     @When("the user navigates to the Home screen")
     public void theUserNavigatesToTheHomeScreen() {
         //manual
@@ -5494,16 +5037,6 @@ public class ManuallyStepDefs {
 
     @Given("the user is on the Add document screen")
     public void theUserIsOnTheAddDocumentScreen() {
-        //manual
-    }
-
-    @When("the user navigates to the Documents screen")
-    public void theUserNavigatesToTheDocumentsScreen() {
-        //manual
-    }
-
-    @Given("the user is on the Documents screen")
-    public void theUserIsOnTheDocumentsScreen() {
         //manual
     }
 
@@ -6599,11 +6132,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the suspicious operation is reported to DPAs as per user story #35|")
-    public void theSuspiciousOperationIsReportedToDPAsAsPerUserStory() {
-        //manual
-    }
-
     @Then("the wallet displays the presentation request which includes Name and The name of the requesting Relying Party")
     public void the_wallet_displays_the_presentation_request_which_includes_name_and_the_name_of_the_requesting_relying_party() {
         //manual
@@ -6774,6 +6302,1715 @@ public class ManuallyStepDefs {
 
     @Then("the EUDI Wallet presents the following Attestation\\(s) and Each attestation presented as a card that can be expanded or collapsed")
     public void the_eudi_wallet_presents_the_following_attestation_s_and_each_attestation_presented_as_a_card_that_can_be_expanded_or_collapsed() {
+        //manual
+    }
+
+
+    @And("the Issuer supports batch issuance with batch size greater than one")
+    public void theIssuerSupportsBatchIssuanceWithBatchSizeGreaterThanOne() {
+        //manual
+    }
+
+    @And("the EUDI Wallet has an internal minimum number of attestations expected")
+    public void theEUDIWalletHasAnInternalMinimumNumberOfAttestationsExpected() {
+        //manual
+    }
+
+    @And("there is an active internet connection")
+    public void thereIsAnActiveInternetConnection() {
+        //manual
+    }
+
+    @And("the EUDI Wallet and the Issuer User Interface reside on the same device")
+    public void theEUDIWalletAndTheIssuerUserInterfaceResideOnTheSameDevice() {
+        //manual
+    }
+
+    @And("the user has an active internet connection")
+    public void theUserHasAnActiveInternetConnection() {
+        //manual
+    }
+
+
+    @When("the user opens the Wallet")
+    public void theUserOpensTheWallet() {
+        //manual
+    }
+
+    @And("the user fails to authenticate using a six-digit PIN or Biometrics")
+    public void theUserFailsToAuthenticateUsingASixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @Then("the Wallet presents an error message")
+    public void theWalletPresentsAnErrorMessage() {
+        //manual
+    }
+
+    @And("the user can retry the authentication")
+    public void theUserCanRetryTheAuthentication() {
+        //manual
+    }
+
+    @Given("the user is successfully authenticated in the Wallet")
+    public void theUserIsSuccessfullyAuthenticatedInTheWallet() {
+        //manual
+    }
+
+    @When("the user requests the issuance of an attestation type by selecting to add a document from the list")
+    public void theUserRequestsTheIssuanceOfAnAttestationTypeBySelectingToAddADocumentFromTheList() {
+        //manual
+    }
+
+    @When("there is an issue in redirecting to the issuer service")
+    public void thereIsAnIssueInRedirectingToTheIssuerService() {
+        //manual
+    }
+
+    @Then("the user should be able to return back to the Wallet")
+    public void theUserShouldBeAbleToReturnBackToTheWallet() {
+        //manual
+    }
+
+    @And("the user can select any other option in the Wallet")
+    public void theUserCanSelectAnyOtherOptionInTheWallet() {
+        //manual
+    }
+
+    @When("the user authenticates as per the issuer's authentication means")
+    public void theUserAuthenticatesAsPerTheIssuerSAuthenticationMeans() {
+        //manual
+    }
+
+    @And("the issuer service displays the attestation details to be issued")
+    public void theIssuerServiceDisplaysTheAttestationDetailsToBeIssued() {
+        //manual
+    }
+
+    @And("the user consents to the issuance")
+    public void theUserConsentsToTheIssuance() {
+        //manual
+    }
+
+    @And("the user is redirected back to the Wallet")
+    public void theUserIsRedirectedBackToTheWallet() {
+        //manual
+    }
+
+    @Then("the issuer service issues multiple attestations of the same type")
+    public void theIssuerServiceIssuesMultipleAttestationsOfTheSameType() {
+        //manual
+    }
+
+    @Given("the user consents to the attestation issuance")
+    public void theUserConsentsToTheAttestationIssuance() {
+        //manual
+    }
+
+    @When("the maximum batch size advertised by the issuer is lower than the EUDI Wallet's internal minimum")
+    public void theMaximumBatchSizeAdvertisedByTheIssuerIsLowerThanTheEUDIWalletSInternalMinimum() {
+        //manual
+    }
+
+    @Then("the issuance flow proceeds using the issuer's maximum batch size")
+    public void theIssuanceFlowProceedsUsingTheIssuerSMaximumBatchSize() {
+        //manual
+    }
+
+    @And("the Wallet stores the attestations according to the issuer's batch size")
+    public void theWalletStoresTheAttestationsAccordingToTheIssuerSBatchSize() {
+        //manual
+    }
+
+    @Given("the user is redirected back to the Wallet after issuance")
+    public void theUserIsRedirectedBackToTheWalletAfterIssuance() {
+        //manual
+    }
+
+    @When("the issuer has issued the attestations successfully")
+    public void theIssuerHasIssuedTheAttestationsSuccessfully() {
+        //manual
+    }
+
+    @Then("the Wallet presents the attestation to the user")
+    public void theWalletPresentsTheAttestationToTheUser() {
+        //manual
+    }
+
+    @And("informs the user that it has been successfully issued and stored")
+    public void informsTheUserThatItHasBeenSuccessfullyIssuedAndStored() {
+        //manual
+    }
+
+    @And("a counter is displayed showing the number of credentials issued")
+    public void aCounterIsDisplayedShowingTheNumberOfCredentialsIssued() {
+        //manual
+    }
+
+    @When("there is an error in the issuance process")
+    public void thereIsAnErrorInTheIssuanceProcess() {
+        //manual
+    }
+
+    @Then("the Wallet informs the user about the error")
+    public void theWalletInformsTheUserAboutTheError() {
+        //manual
+    }
+
+    @And("the operation stops without storing any attestations in the Wallet")
+    public void theOperationStopsWithoutStoringAnyAttestationsInTheWallet() {
+        //manual
+    }
+
+    @And("the EUDI Wallet and the Relying Party User Interface reside on separate devices")
+    public void theEUDIWalletAndTheRelyingPartyUserInterfaceResideOnSeparateDevices() {
+        //manual
+    }
+
+    @Given("the user visits the Relying Party service on a different device")
+    public void theUserVisitsTheRelyingPartyServiceOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the Relying Party service renders a QR code")
+    public void theRelyingPartyServiceRendersAQRCode() {
+        //manual
+    }
+
+    @When("the user scans the QR code with the EUDI Wallet device")
+    public void theUserScansTheQRCodeWithTheEUDIWalletDevice() {
+        //manual
+    }
+
+    @Then("the Wallet presents a screen informing the user of the attestation request")
+    public void theWalletPresentsAScreenInformingTheUserOfTheAttestationRequest() {
+        //manual
+    }
+
+    @And("displays the name of the Relying Party and the attestation")
+    public void displaysTheNameOfTheRelyingPartyAndTheAttestation() {
+        //manual
+    }
+
+    @Given("Method C is configured for the attestation type")
+    public void methodCIsConfiguredForTheAttestationType() {
+        //manual
+    }
+
+    @Then("the Wallet uses an attestation from a batch in a random order")
+    public void theWalletUsesAnAttestationFromABatchInARandomOrder() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet attempts to match the attestation request")
+    public void theEUDIWalletAttemptsToMatchTheAttestationRequest() {
+        //manual
+    }
+
+    @When("no attestation matches the request")
+    public void noAttestationMatchesTheRequest() {
+        //manual
+    }
+
+    @Then("the Wallet stops the presentation flow")
+    public void theWalletStopsThePresentationFlow() {
+        //manual
+    }
+
+    @And("presents an error message indicating no available attestations")
+    public void presentsAnErrorMessageIndicatingNoAvailableAttestations() {
+        //manual
+    }
+
+    @When("the user consents by authenticating successfully")
+    public void theUserConsentsByAuthenticatingSuccessfully() {
+        //manual
+    }
+
+    @And("verifies it, informing the user of the successful verification outcome")
+    public void verifiesItInformingTheUserOfTheSuccessfulVerificationOutcome() {
+        //manual
+    }
+
+    @Given("the Relying Party service verifies the attestation")
+    public void theRelyingPartyServiceVerifiesTheAttestation() {
+        //manual
+    }
+
+    @And("the EUDI Wallet and the Relying Party User Interface reside on the same device")
+    public void theEUDIWalletAndTheRelyingPartyUserInterfaceResideOnTheSameDevice() {
+        //manual
+    }
+
+    @And("the EUDI Wallet and Relying Party User Interface reside on separate devices")
+    public void theEUDIWalletAndRelyingPartyUserInterfaceResideOnSeparateDevices() {
+        //manual
+    }
+
+    @And("QR & BLE protocols are available for connectivity in proximity sharing scenarios")
+    public void qrBLEProtocolsAreAvailableForConnectivityInProximitySharingScenarios() {
+        //manual
+    }
+
+    @When("the user selects the option Show QR Code")
+    public void theUserSelectsTheOptionShowQRCode() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet renders a QR code on the device screen")
+    public void theEUDIWalletRendersAQRCodeOnTheDeviceScreen() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet User presents the QR code to the Relying Party device")
+    public void theEUDIWalletUserPresentsTheQRCodeToTheRelyingPartyDevice() {
+        //manual
+    }
+
+    @Then("the connection is established between the two devices")
+    public void theConnectionIsEstablishedBetweenTheTwoDevices() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet receives the attestation request")
+    public void theEUDIWalletReceivesTheAttestationRequest() {
+        //manual
+    }
+
+    @When("the request is successfully validated")
+    public void theRequestIsSuccessfullyValidated() {
+        //manual
+    }
+
+    @Then("the Wallet presents a screen informing the user of the request details")
+    public void theWalletPresentsAScreenInformingTheUserOfTheRequestDetails() {
+        //manual
+    }
+
+    @Given("the user visits the issuer service on a different device")
+    public void theUserVisitsTheIssuerServiceOnADifferentDevice() {
+        //manual
+    }
+
+    @Then("the issuer service renders a QR code")
+    public void theIssuerServiceRendersAQRCode() {
+        //manual
+    }
+
+    @Given("the user scans the QR code with the Wallet device")
+    public void theUserScansTheQRCodeWithTheWalletDevice() {
+        //manual
+    }
+
+    @When("the QR code is valid")
+    public void theQRCodeIsValid() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the attestation")
+    public void theEUDIWalletPresentsTheAttestation() {
+        //manual
+    }
+
+    @When("the user views the attestation")
+    public void theUserViewsTheAttestation() {
+        //manual
+    }
+
+    @Then("the Wallet requests the user to confirm to proceed")
+    public void theWalletRequestsTheUserToConfirmToProceed() {
+        //manual
+    }
+
+    @When("the Wallet receives the attestation")
+    public void theWalletReceivesTheAttestation() {
+        //manual
+    }
+
+    @When("the user accepts to proceed")
+    public void theUserAcceptsToProceed() {
+        //manual
+    }
+
+    @Then("the user is redirected to the issuer service in the mobile browser -----")
+    public void theUserIsRedirectedToTheIssuerServiceInTheMobileBrowser() {
+        //manual
+    }
+
+    @When("the user authenticates via the issuer's authentication method")
+    public void theUserAuthenticatesViaTheIssuerSAuthenticationMethod() {
+        //manual
+    }
+
+    @Given("the issuer displays the attestation details")
+    public void theIssuerDisplaysTheAttestationDetails() {
+        //manual
+    }
+
+    @Then("the issuer service issues multiple attestations")
+    public void theIssuerServiceIssuesMultipleAttestations() {
+        //manual
+    }
+
+    @Given("the issuance is successful")
+    public void theIssuanceIsSuccessful() {
+        //manual
+    }
+
+    @When("the process is completed")
+    public void theProcessIsCompleted() {
+        //manual
+    }
+
+    @Then("the user is redirected back to the EUDI Wallet")
+    public void theUserIsRedirectedBackToTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the attestation is presented in the Wallet")
+    public void theAttestationIsPresentedInTheWallet() {
+        //manual
+    }
+
+    @When("the Wallet confirms issuance and storage")
+    public void theWalletConfirmsIssuanceAndStorage() {
+        //manual
+    }
+
+    @When("an error occurs in the issuance process")
+    public void anErrorOccursInTheIssuanceProcess() {
+        //manual
+    }
+
+    @And("no attestations are stored in the Wallet")
+    public void noAttestationsAreStoredInTheWallet() {
+        //manual
+    }
+
+    @Given("the user accepts to proceed with the attestation issuance")
+    public void theUserAcceptsToProceedWithTheAttestationIssuance() {
+        //manual
+    }
+
+    @When("there is an issue redirecting to the issuer service")
+    public void thereIsAnIssueRedirectingToTheIssuerService() {
+        //manual
+    }
+
+    @Then("the user should be able to return to the EUDI Wallet")
+    public void theUserShouldBeAbleToReturnToTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the suspicious operation is reported to DPAs")
+    public void theSuspiciousOperationIsReportedToDPAs() {
+        //manual
+    }
+
+    @Given("the issuer service issued multiple attestations")
+    public void theIssuerServiceIssuedMultipleAttestations() {
+        //manual
+    }
+
+    @Given("the wallet has a valid refresh token for a PID or attestation")
+    public void theWalletHasAValidRefreshTokenForAPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the PID or attestation is part of a batch group")
+    public void thePIDOrAttestationIsPartOfABatchGroup() {
+        //manual
+    }
+
+    @And("the technical validity of the batched PID or attestation is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfTheBatchedPIDOrAttestationIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @And("the current date is within the administrative validity period")
+    public void theCurrentDateIsWithinTheAdministrativeValidityPeriod() {
+        //manual
+    }
+
+    @When("the wallet detects the upcoming expiration")
+    public void theWalletDetectsTheUpcomingExpiration() {
+        //manual
+    }
+
+    @Then("the wallet requests the issuer to re-issue the same PID or attestation")
+    public void theWalletRequestsTheIssuerToReIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet receives the new PID or attestation")
+    public void theWalletReceivesTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet deletes all existing PIDs or attestations from the same issuer and document type")
+    public void theWalletDeletesAllExistingPIDsOrAttestationsFromTheSameIssuerAndDocumentType() {
+        //manual
+    }
+
+    @And("the wallet logs the transactions")
+    public void theWalletLogsTheTransactions() {
+        //manual
+    }
+
+    @And("the number of unused PID or attestation instances has reached the internal lower limit")
+    public void theNumberOfUnusedPIDOrAttestationInstancesHasReachedTheInternalLowerLimit() {
+        //manual
+    }
+
+    @When("the wallet detects the threshold has been reached")
+    public void theWalletDetectsTheThresholdHasBeenReached() {
+        //manual
+    }
+
+    @Given("the wallet has initiated a re-issuance request to the issuer")
+    public void theWalletHasInitiatedAReIssuanceRequestToTheIssuer() {
+        //manual
+    }
+
+    @When("the issuer refuses the re-issuance")
+    public void theIssuerRefusesTheReIssuance() {
+        //manual
+    }
+
+    @Then("the wallet attempts a retry after an appropriate delay")
+    public void theWalletAttemptsARetryAfterAnAppropriateDelay() {
+        //manual
+    }
+
+    @And("the wallet logs the refusal and retry attempt")
+    public void theWalletLogsTheRefusalAndRetryAttempt() {
+        //manual
+    }
+
+    @Given("the wallet has received re-issued attestations")
+    public void theWalletHasReceivedReIssuedAttestations() {
+        //manual
+    }
+
+    @When("the wallet compares the re-issued attestations' attribute values to the existing ones")
+    public void theWalletComparesTheReIssuedAttestationsAttributeValuesToTheExistingOnes() {
+        //manual
+    }
+
+    @And("there are differences")
+    public void thereAreDifferences() {
+        //manual
+    }
+
+    @Then("the wallet notifies the user about the differences")
+    public void theWalletNotifiesTheUserAboutTheDifferences() {
+        //manual
+    }
+
+    @And("the wallet logs the notification")
+    public void theWalletLogsTheNotification() {
+        //manual
+    }
+
+    @Given("the wallet has a valid refresh token for a single PID or attestation")
+    public void theWalletHasAValidRefreshTokenForASinglePIDOrAttestation() {
+        //manual
+    }
+
+    @And("the technical validity of the PID or attestation is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfThePIDOrAttestationIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @And("the wallet deletes the existing PID or attestation")
+    public void theWalletDeletesTheExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the wallet logs the transaction")
+    public void theWalletLogsTheTransaction() {
+        //manual
+    }
+
+    @Given("the user opens the Wallet application")
+    public void theUserOpensTheWalletApplication() {
+        //manual
+    }
+
+    @When("the user authenticates successfully using a {int}-digit PIN or Biometrics")
+    public void theUserAuthenticatesSuccessfullyUsingADigitPINOrBiometrics(int arg0) {
+        //manual
+    }
+
+    @Then("the Wallet grants access to the user")
+    public void theWalletGrantsAccessToTheUser() {
+        //manual
+    }
+
+    @When("the user authenticates successfully using a six digit PIN or Biometrics")
+    public void theUserAuthenticatesSuccessfullyUsingASixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @When("the user fails to authenticate using the six digit PIN or Biometrics")
+    public void theUserFailsToAuthenticateUsingTheSixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @Given("the user is authenticated in the Wallet")
+    public void theUserIsAuthenticatedInTheWallet() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option from an existing PID or attestation")
+    public void theUserSelectsTheReIssuanceOptionFromAnExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @Then("the wallet checks for a valid refresh token")
+    public void theWalletChecksForAValidRefreshToken() {
+        //manual
+    }
+
+    @Given("the wallet has a valid refresh token")
+    public void theWalletHasAValidRefreshToken() {
+        //manual
+    }
+
+    @When("the wallet requests the issuer to issue the same PID or attestation")
+    public void theWalletRequestsTheIssuerToIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet received the new PID or attestation")
+    public void theWalletReceivedTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet compares the attribute values to the existing ones")
+    public void theWalletComparesTheAttributeValuesToTheExistingOnes() {
+        //manual
+    }
+
+    @Then("the wallet notifies the user")
+    public void theWalletNotifiesTheUser() {
+        //manual
+    }
+
+    @When("the wallet confirms the issuance")
+    public void theWalletConfirmsTheIssuance() {
+        //manual
+    }
+
+    @Then("the wallet presents the PID or attestation to the user")
+    public void theWalletPresentsThePIDOrAttestationToTheUser() {
+        //manual
+    }
+
+    @And("informs the user it has been stored")
+    public void informsTheUserItHasBeenStored() {
+        //manual
+    }
+
+    @Given("the wallet does not have a valid refresh token")
+    public void theWalletDoesNotHaveAValidRefreshToken() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option")
+    public void theUserSelectsTheReIssuanceOption() {
+        //manual
+    }
+
+    @Then("the user is redirected to the issuer service for authentication")
+    public void theUserIsRedirectedToTheIssuerServiceForAuthentication() {
+        //manual
+    }
+
+    @Given("the user is authenticated with the issuer service")
+    public void theUserIsAuthenticatedWithTheIssuerService() {
+        //manual
+    }
+
+    @When("the issuer displays the PID or attestation details")
+    public void theIssuerDisplaysThePIDOrAttestationDetails() {
+        //manual
+    }
+
+    @Given("the user consented to the issuance")
+    public void theUserConsentedToTheIssuance() {
+        //manual
+    }
+
+    @Then("the user clicks Agree and proceed to issuance")
+    public void theUserClicksAgreeAndProceedToIssuance() {
+        //manual
+    }
+
+    @When("the issuer service issues the PID or attestation")
+    public void theIssuerServiceIssuesThePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet attempts to redirect the user to the issuer service")
+    public void theWalletAttemptsToRedirectTheUserToTheIssuerService() {
+        //manual
+    }
+
+    @When("there is an issue in the redirection")
+    public void thereIsAnIssueInTheRedirection() {
+        //manual
+    }
+
+    @And("still be able to make any other option")
+    public void stillBeAbleToMakeAnyOtherOption() {
+        //manual
+    }
+
+    @And("the existing PID or attestations are part of a batch group")
+    public void theExistingPIDOrAttestationsArePartOfABatchGroup() {
+        //manual
+    }
+
+    @And("the technical validity of one of the batched PID or attestations is about to expire within the internal minimum expiration limit")
+    public void theTechnicalValidityOfOneOfTheBatchedPIDOrAttestationsIsAboutToExpireWithinTheInternalMinimumExpirationLimit() {
+        //manual
+    }
+
+    @Then("the wallet automatically requests the issuer to re-issue the same PID or attestation")
+    public void theWalletAutomaticallyRequestsTheIssuerToReIssueTheSamePIDOrAttestation() {
+        //manual
+    }
+
+    @Given("the wallet has triggered a re-issuance of a PID or attestation")
+    public void theWalletHasTriggeredAReIssuanceOfAPIDOrAttestation() {
+        //manual
+    }
+
+
+    @When("the wallet requests the same issuer to issue the same PID or attestations document type to the wallet unit")
+    public void theWalletRequestsTheSameIssuerToIssueTheSamePIDOrAttestationsDocumentTypeToTheWalletUnit() {
+        //manual
+    }
+
+    @Then("the wallet receives the new PID or attestation as single or batch, depending on the issuer's capabilities")
+    public void theWalletReceivesTheNewPIDOrAttestationAsSingleOrBatchDependingOnTheIssuerSCapabilities() {
+        //manual
+    }
+
+    @Given("the wallet has requested a re-issuance from the issuer")
+    public void theWalletHasRequestedAReIssuanceFromTheIssuer() {
+        //manual
+    }
+
+    @When("the wallet compares the re-issued attestations' attribute values to the attestations to be replaced")
+    public void theWalletComparesTheReIssuedAttestationsAttributeValuesToTheAttestationsToBeReplaced() {
+        //manual
+    }
+
+    @Given("the wallet has received and stored the new PID or attestation")
+    public void theWalletHasReceivedAndStoredTheNewPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet confirms the successful issuance")
+    public void theWalletConfirmsTheSuccessfulIssuance() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet is registered and connected to internet")
+    public void theEUDIWalletIsRegisteredAndConnectedToInternet() {
+        //manual
+    }
+
+    @And("a presentation request is received from a relying party")
+    public void aPresentationRequestIsReceivedFromARelyingParty() {
+        //manual
+    }
+
+    @Given("an existing batch PID_attestation matches the request")
+    public void anExistingBatchPID_attestationMatchesTheRequest() {
+        //manual
+    }
+
+    @And("the batch PID_attestation is expired but within administrative validity")
+    public void theBatchPID_attestationIsExpiredButWithinAdministrativeValidity() {
+        //manual
+    }
+
+    @When("the wallet checks the credential status")
+    public void theWalletChecksTheCredentialStatus() {
+        //manual
+    }
+
+    @Then("the wallet re-issues the PID_attestation automatically")
+    public void theWalletReIssuesThePID_attestationAutomatically() {
+        //manual
+    }
+
+    @And("resumes the presentation operation")
+    public void resumesThePresentationOperation() {
+        //manual
+    }
+
+    @And("there are no unused instances in the batch")
+    public void thereAreNoUnusedInstancesInTheBatch() {
+        //manual
+    }
+
+    @Given("an existing single PID_attestation matches the request")
+    public void anExistingSinglePID_attestationMatchesTheRequest() {
+        //manual
+    }
+
+    @And("the PID_attestation is expired but within administrative validity")
+    public void thePID_attestationIsExpiredButWithinAdministrativeValidity() {
+        //manual
+    }
+
+    @Given("an existing PID_attestation matches the request")
+    public void anExistingPID_attestationMatchesTheRequest() {
+        //manual
+    }
+
+    @And("the PID_attestation is valid with unused instances available")
+    public void thePID_attestationIsValidWithUnusedInstancesAvailable() {
+        //manual
+    }
+
+    @Then("the wallet proceeds with normal presentation")
+    public void theWalletProceedsWithNormalPresentation() {
+        //manual
+    }
+
+    @And("no re-issuance is triggered")
+    public void noReIssuanceIsTriggered() {
+        //manual
+    }
+
+    @Given("no existing PID_attestation matches the request")
+    public void noExistingPID_attestationMatchesTheRequest() {
+        //manual
+    }
+
+    @When("the wallet checks for matching credentials")
+    public void theWalletChecksForMatchingCredentials() {
+        //manual
+    }
+
+    @And("the wallet handles the missing credential normally")
+    public void theWalletHandlesTheMissingCredentialNormally() {
+        //manual
+    }
+
+    @And("internet connectivity is available between the issuer and EUDI Wallet")
+    public void internetConnectivityIsAvailableBetweenTheIssuerAndEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user visits the issuer service on a different device than the EUDI Wallet")
+    public void theUserVisitsTheIssuerServiceOnADifferentDeviceThanTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects attestation type Diploma and provides personal details")
+    public void theUserSelectsAttestationTypeDiplomaAndProvidesPersonalDetails() {
+        //manual
+    }
+
+    @And("the user authenticates successfully with six digit PIN")
+    public void theUserAuthenticatesSuccessfullyWithSixDigitPIN() {
+        //manual
+    }
+
+    @And("the user confirms the attestation offer")
+    public void theUserConfirmsTheAttestationOffer() {
+        //manual
+    }
+
+    @Then("the issuer issues and sends the attestation to the EUDI Wallet")
+    public void theIssuerIssuesAndSendsTheAttestationToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the EUDI Wallet stores and displays the attestation successfully")
+    public void theEUDIWalletStoresAndDisplaysTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Given("the user visits the issuer service on the same device as the EUDI Wallet")
+    public void theUserVisitsTheIssuerServiceOnTheSameDeviceAsTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects attestation type Seafarer Certificate and provides personal details")
+    public void theUserSelectsAttestationTypeSeafarerCertificateAndProvidesPersonalDetails() {
+        //manual
+    }
+
+    @And("the user clicks the DeepLink button")
+    public void theUserClicksTheDeepLinkButton() {
+        //manual
+    }
+
+    @Then("the user is taken automatically to the issuer request in EUDI wallet")
+    public void theUserIsTakenAutomaticallyToTheIssuerRequestInEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user opens and authenticates successfully in the EUDI Wallet")
+    public void theUserOpensAndAuthenticatesSuccessfullyInTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the user selects Add document and chooses Digital ID")
+    public void theUserSelectsAddDocumentAndChoosesDigitalID() {
+        //manual
+    }
+
+    @And("the user is redirected to the issuer web page")
+    public void theUserIsRedirectedToTheIssuerWebPage() {
+        //manual
+    }
+
+    @And("the user provides personal details and clicks Authorise")
+    public void theUserProvidesPersonalDetailsAndClicksAuthorise() {
+        //manual
+    }
+
+    @Then("the issuer issues the attestation and redirects to EUDI Wallet")
+    public void theIssuerIssuesTheAttestationAndRedirectsToEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user has scanned a QR code for attestation issuance")
+    public void theUserHasScannedAQRCodeForAttestationIssuance() {
+        //manual
+    }
+
+    @When("the user enters incorrect six digit PIN")
+    public void theUserEntersIncorrectSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents an error message")
+    public void theEUDIWalletPresentsAnErrorMessage() {
+        //manual
+    }
+
+    @And("the user can retry authentication")
+    public void theUserCanRetryAuthentication() {
+        //manual
+    }
+
+    @Given("the user has confirmed an attestation offer")
+    public void theUserHasConfirmedAnAttestationOffer() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user about the error")
+    public void theEUDIWalletInformsTheUserAboutTheError() {
+        //manual
+    }
+
+    @And("the operation stops without storing the attestation")
+    public void theOperationStopsWithoutStoringTheAttestation() {
+        //manual
+    }
+
+    @Given("the user has selected Add document for Tax residency")
+    public void theUserHasSelectedAddDocumentForTaxResidency() {
+        //manual
+    }
+
+    @When("the redirected web page does not provide the correct issuer page")
+    public void theRedirectedWebPageDoesNotProvideTheCorrectIssuerPage() {
+        //manual
+    }
+
+    @Then("the user can return back to the EUDI Wallet")
+    public void theUserCanReturnBackToTheEUDIWallet() {
+        //manual
+    }
+
+    @And("the EUDI Wallet remains responsive for other operations")
+    public void theEUDIWalletRemainsResponsiveForOtherOperations() {
+        //manual
+    }
+
+    @Given("the user is on the issuer consent page")
+    public void theUserIsOnTheIssuerConsentPage() {
+        //manual
+    }
+
+    @When("the user decides not to consent to attestation issuance")
+    public void theUserDecidesNotToConsentToAttestationIssuance() {
+        //manual
+    }
+
+    @Given("the user has a registered EUDI Wallet with issued attestations")
+    public void theUserHasARegisteredEUDIWalletWithIssuedAttestations() {
+        //manual
+    }
+
+    @And("internet connectivity is available between Employer Service and EUDI Wallet")
+    public void internetConnectivityIsAvailableBetweenEmployerServiceAndEUDIWallet() {
+        //manual
+    }
+
+    @And("the user visits Employer Service on desktop PC")
+    public void theUserVisitsEmployerServiceOnDesktopPC() {
+        //manual
+    }
+
+    @Given("the user selects cruise ship position and Apply with EUDI Wallet")
+    public void theUserSelectsCruiseShipPositionAndApplyWithEUDIWallet() {
+        //manual
+    }
+
+    @When("the user scans QR code and authenticates with PIN")
+    public void theUserScansQRCodeAndAuthenticatesWithPIN() {
+        //manual
+    }
+
+    @And("the user consents to release PID attestation")
+    public void theUserConsentsToReleasePIDAttestation() {
+        //manual
+    }
+
+    @Then("the PID attestation is verified by Employer Service")
+    public void thePIDAttestationIsVerifiedByEmployerService() {
+        //manual
+    }
+
+    @And("the job application is pre-filled with PID data \\(name, nationality, email, etc.)")
+    public void theJobApplicationIsPreFilledWithPIDDataNameNationalityEmailEtc() {
+        //manual
+    }
+
+    @Given("the user has completed PID presentation")
+    public void theUserHasCompletedPIDPresentation() {
+        //manual
+    }
+
+    @When("the user selects Provide additional information")
+    public void theUserSelectsProvideAdditionalInformation() {
+        //manual
+    }
+
+    @And("the user scans QR code for Seafarer Certificate and Diploma")
+    public void theUserScansQRCodeForSeafarerCertificateAndDiploma() {
+        //manual
+    }
+
+    @And("the user selects specific fields to share and authenticates")
+    public void theUserSelectsSpecificFieldsToShareAndAuthenticates() {
+        //manual
+    }
+
+    @Then("the additional attestations are verified")
+    public void theAdditionalAttestationsAreVerified() {
+        //manual
+    }
+
+    @And("the user can finalize the job application")
+    public void theUserCanFinalizeTheJobApplication() {
+        //manual
+    }
+
+    @Given("the user has completed PID presentation on same device")
+    public void theUserHasCompletedPIDPresentationOnSameDevice() {
+        //manual
+    }
+
+    @And("the user clicks DeepLink button")
+    public void theUserClicksDeepLinkButton() {
+        //manual
+    }
+
+    @And("the user selects specific fields and authenticates")
+    public void theUserSelectsSpecificFieldsAndAuthenticates() {
+        //manual
+    }
+
+    @Given("the user attempts to present attestations")
+    public void theUserAttemptsToPresentAttestations() {
+        //manual
+    }
+
+    @When("the user enters incorrect PIN")
+    public void theUserEntersIncorrectPIN() {
+        //manual
+    }
+
+    @Then("an error message is displayed")
+    public void anErrorMessageIsDisplayed() {
+        //manual
+    }
+
+    @Given("the Employer Service requests specific attestations")
+    public void theEmployerServiceRequestsSpecificAttestations() {
+        //manual
+    }
+
+    @When("the wallet checks for matching attestations and finds none")
+    public void theWalletChecksForMatchingAttestationsAndFindsNone() {
+        //manual
+    }
+
+    @Then("the wallet informs the user about missing attestations")
+    public void theWalletInformsTheUserAboutMissingAttestations() {
+        //manual
+    }
+
+    @And("the user can return to wallet main page")
+    public void theUserCanReturnToWalletMainPage() {
+        //manual
+    }
+
+    @Given("the user has presented attestations to Employer Service")
+    public void theUserHasPresentedAttestationsToEmployerService() {
+        //manual
+    }
+
+    @When("the Employer Service cannot verify the attestation")
+    public void theEmployerServiceCannotVerifyTheAttestation() {
+        //manual
+    }
+
+    @Then("an error message is displayed to the user")
+    public void anErrorMessageIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @And("the wallet displays the verification failure outcome")
+    public void theWalletDisplaysTheVerificationFailureOutcome() {
+        //manual
+    }
+
+    @Given("the wallet requests user consent for attestation release")
+    public void theWalletRequestsUserConsentForAttestationRelease() {
+        //manual
+    }
+
+    @Then("the user can return to wallet main screen")
+    public void theUserCanReturnToWalletMainScreen() {
+        //manual
+    }
+
+    @And("the presentation process is cancelled")
+    public void thePresentationProcessIsCancelled() {
+        //manual
+    }
+
+    @And("internet connectivity is available")
+    public void internetConnectivityIsAvailable() {
+        //manual
+    }
+
+    @Given("the user opens the Employer Service")
+    public void theUserOpensTheEmployerService() {
+        //manual
+    }
+
+    @When("the user selects Login with PID")
+    public void theUserSelectsLoginWithPID() {
+        //manual
+    }
+
+    @Then("the user is logged in successfully")
+    public void theUserIsLoggedInSuccessfully() {
+        //manual
+    }
+
+    @Given("the user is logged in to the Employer Service")
+    public void theUserIsLoggedInToTheEmployerService() {
+        //manual
+    }
+
+    @When("the user selects Sign job contract")
+    public void theUserSelectsSignJobContract() {
+        //manual
+    }
+
+    @Then("a QR code is displayed for the user to scan")
+    public void aQRCodeIsDisplayedForTheUserToScan() {
+        //manual
+    }
+
+    @Given("a QR code is displayed on Employer Service")
+    public void aQRCodeIsDisplayedOnEmployerService() {
+        //manual
+    }
+
+    @When("the user opens the Wallet and selects Scan QR")
+    public void theUserOpensTheWalletAndSelectsScanQR() {
+        //manual
+    }
+
+    @Then("the contract is retrieved and displayed in the Wallet")
+    public void theContractIsRetrievedAndDisplayedInTheWallet() {
+        //manual
+    }
+
+    @Given("the contract is displayed in the Wallet")
+    public void theContractIsDisplayedInTheWallet() {
+        //manual
+    }
+
+    @When("the Wallet prompts for QTSP selection")
+    public void theWalletPromptsForQTSPSelection() {
+        //manual
+    }
+
+    @Then("the user selects a QTSP from the list")
+    public void theUserSelectsAQTSPFromTheList() {
+        //manual
+    }
+
+    @Given("a QTSP is selected")
+    public void aQTSPIsSelected() {
+        //manual
+    }
+
+    @When("the Wallet prompts for signing certificate")
+    public void theWalletPromptsForSigningCertificate() {
+        //manual
+    }
+
+    @Then("the user selects a certificate from the list")
+    public void theUserSelectsACertificateFromTheList() {
+        //manual
+    }
+
+    @Given("the Wallet requests PID consent")
+    public void theWalletRequestsPIDConsent() {
+        //manual
+    }
+
+    @When("the user agrees to share PID")
+    public void theUserAgreesToSharePID() {
+        //manual
+    }
+
+    @Then("the Wallet requests PIN authentication")
+    public void theWalletRequestsPINAuthentication() {
+        //manual
+    }
+
+    @Given("the Wallet requests a six-digit PIN")
+    public void theWalletRequestsASixDigitPIN() {
+        //manual
+    }
+
+    @Then("authentication is successful")
+    public void authenticationIsSuccessful() {
+        //manual
+    }
+
+    @Then("the Wallet prompts the user to retry")
+    public void theWalletPromptsTheUserToRetry() {
+        //manual
+    }
+
+    @When("the user cancels the process")
+    public void theUserCancelsTheProcess() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the main screen")
+    public void theWalletReturnsToTheMainScreen() {
+        //manual
+    }
+
+    @When("the user selects Sign document")
+    public void theUserSelectsSignDocument() {
+        //manual
+    }
+
+    @Then("the Wallet confirms the contract is signed")
+    public void theWalletConfirmsTheContractIsSigned() {
+        //manual
+    }
+
+    @Given("the Wallet has signed the contract")
+    public void theWalletHasSignedTheContract() {
+        //manual
+    }
+
+    @When("the document is passed to the Employer Service")
+    public void theDocumentIsPassedToTheEmployerService() {
+        //manual
+    }
+
+    @Then("the Employer Service shows confirmation with a timestamp")
+    public void theEmployerServiceShowsConfirmationWithATimestamp() {
+        //manual
+    }
+
+    @Given("the user has a valid EUDI Wallet on a mobile device")
+    public void theUserHasAValidEUDIWalletOnAMobileDevice() {
+        //manual
+    }
+
+    @When("the user selects Issue Employee ID")
+    public void theUserSelectsIssueEmployeeID() {
+        //manual
+    }
+
+    @Then("the Employer Service notifies that PDA1 and Tax residency attestations are required")
+    public void theEmployerServiceNotifiesThatPDA1AndTaxResidencyAttestationsAreRequired() {
+        //manual
+    }
+
+    @Given("the Employer Service displays a QR code")
+    public void theEmployerServiceDisplaysAQRCode() {
+        //manual
+    }
+
+    @When("the user scans the QR code with the Wallet")
+    public void theUserScansTheQRCodeWithTheWallet() {
+        //manual
+    }
+
+    @Then("the Wallet opens and prompts for authentication")
+    public void theWalletOpensAndPromptsForAuthentication() {
+        //manual
+    }
+
+    @Given("the Wallet prompts for a six-digit PIN")
+    public void theWalletPromptsForASixDigitPIN() {
+        //manual
+    }
+
+    @Then("the Wallet is unlocked")
+    public void theWalletIsUnlocked() {
+        //manual
+    }
+
+    @Then("the Wallet displays an error and asks to retry")
+    public void theWalletDisplaysAnErrorAndAsksToRetry() {
+        //manual
+    }
+
+    @Given("the Wallet informs about Employer Service request for PDA1 and Tax residency")
+    public void theWalletInformsAboutEmployerServiceRequestForPDA1AndTaxResidency() {
+        //manual
+    }
+
+    @When("the user agrees to share the requested attestations")
+    public void theUserAgreesToShareTheRequestedAttestations() {
+        //manual
+    }
+
+    @Then("the Wallet presents the attestations to the Employer Service")
+    public void theWalletPresentsTheAttestationsToTheEmployerService() {
+        //manual
+    }
+
+    @Given("the Employer Service has received the attestations")
+    public void theEmployerServiceHasReceivedTheAttestations() {
+        //manual
+    }
+
+    @Then("the Employer Service confirms successful verification")
+    public void theEmployerServiceConfirmsSuccessfulVerification() {
+        //manual
+    }
+
+    @Then("the Employer Service displays an error message to the user")
+    public void theEmployerServiceDisplaysAnErrorMessageToTheUser() {
+        //manual
+    }
+
+    @Given("attestations are verified successfully")
+    public void attestationsAreVerifiedSuccessfully() {
+        //manual
+    }
+
+    @Then("the Employer Service displays a QR code to proceed")
+    public void theEmployerServiceDisplaysAQRCodeToProceed() {
+        //manual
+    }
+
+    @Given("the Wallet scans the issuance QR code")
+    public void theWalletScansTheIssuanceQRCode() {
+        //manual
+    }
+
+    @When("the Employer Service offers to issue the Employee ID")
+    public void theEmployerServiceOffersToIssueTheEmployeeID() {
+        //manual
+    }
+
+    @Then("the user confirms the issuance")
+    public void theUserConfirmsTheIssuance() {
+        //manual
+    }
+
+    @Given("the Employer Service issues the Employee ID credential")
+    public void theEmployerServiceIssuesTheEmployeeIDCredential() {
+        //manual
+    }
+
+    @When("the Wallet receives the credential")
+    public void theWalletReceivesTheCredential() {
+        //manual
+    }
+
+    @Then("the Wallet confirms successful issuance and storage")
+    public void theWalletConfirmsSuccessfulIssuanceAndStorage() {
+        //manual
+    }
+
+    @Given("the Employer Service sends Employee ID credential")
+    public void theEmployerServiceSendsEmployeeIDCredential() {
+        //manual
+    }
+
+    @When("an error occurs in Wallet")
+    public void anErrorOccursInWallet() {
+        //manual
+    }
+
+    @Then("the Wallet informs the user and does not store the credential")
+    public void theWalletInformsTheUserAndDoesNotStoreTheCredential() {
+        //manual
+    }
+
+    @Given("the user has a valid EUDI Wallet with an Employee ID credential issued")
+    public void theUserHasAValidEUDIWalletWithAnEmployeeIDCredentialIssued() {
+        //manual
+    }
+
+    @When("the user enters the correct six-digit PIN")
+    public void theUserEntersTheCorrectSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the Wallet unlocks successfully")
+    public void theWalletUnlocksSuccessfully() {
+        //manual
+    }
+
+    @Then("the Wallet shows an error and asks the user to retry")
+    public void theWalletShowsAnErrorAndAsksTheUserToRetry() {
+        //manual
+    }
+
+    @When("the user selects Show QR Code")
+    public void theUserSelectsShowQRCode() {
+        //manual
+    }
+
+    @Then("the QR code is displayed on the Wallet screen")
+    public void theQRCodeIsDisplayedOnTheWalletScreen() {
+        //manual
+    }
+
+    @Given("the QR code is displayed on the Wallet")
+    public void theQRCodeIsDisplayedOnTheWallet() {
+        //manual
+    }
+
+    @When("the Employer device scans the QR code")
+    public void theEmployerDeviceScansTheQRCode() {
+        //manual
+    }
+
+    @Then("a secure connection is established between the two devices")
+    public void aSecureConnectionIsEstablishedBetweenTheTwoDevices() {
+        //manual
+    }
+
+    @Given("the Employer device requests Employee ID attestation")
+    public void theEmployerDeviceRequestsEmployeeIDAttestation() {
+        //manual
+    }
+
+    @When("the Wallet validates the request")
+    public void theWalletValidatesTheRequest() {
+        //manual
+    }
+
+    @Then("the Wallet informs the user of the Employer Service request")
+    public void theWalletInformsTheUserOfTheEmployerServiceRequest() {
+        //manual
+    }
+
+    @Given("the Employer device sends an invalid request")
+    public void theEmployerDeviceSendsAnInvalidRequest() {
+        //manual
+    }
+
+    @Then("the Wallet shows an error and stops the process")
+    public void theWalletShowsAnErrorAndStopsTheProcess() {
+        //manual
+    }
+
+    @Given("the Wallet informs the user about the Employer request")
+    public void theWalletInformsTheUserAboutTheEmployerRequest() {
+        //manual
+    }
+
+    @When("the user agrees to share the Employee ID")
+    public void theUserAgreesToShareTheEmployeeID() {
+        //manual
+    }
+
+    @Then("the Wallet asks the user to authenticate with PIN")
+    public void theWalletAsksTheUserToAuthenticateWithPIN() {
+        //manual
+    }
+
+    @Given("the Wallet displays Employee ID attestation fields")
+    public void theWalletDisplaysEmployeeIDAttestationFields() {
+        //manual
+    }
+
+    @When("the user selects specific fields")
+    public void theUserSelectsSpecificFields() {
+        //manual
+    }
+
+    @Then("only the chosen fields are prepared for sharing")
+    public void onlyTheChosenFieldsArePreparedForSharing() {
+        //manual
+    }
+
+    @Given("the Wallet requests PIN for releasing Employee ID")
+    public void theWalletRequestsPINForReleasingEmployeeID() {
+        //manual
+    }
+
+    @Then("the Employee ID attestation is shared with the Employer device")
+    public void theEmployeeIDAttestationIsSharedWithTheEmployerDevice() {
+        //manual
+    }
+
+    @Given("the Employer device received the Employee ID")
+    public void theEmployerDeviceReceivedTheEmployeeID() {
+        //manual
+    }
+
+    @When("the attestation is verified")
+    public void theAttestationIsVerified() {
+        //manual
+    }
+
+    @Then("the Wallet shows a success message to the user")
+    public void theWalletShowsASuccessMessageToTheUser() {
+        //manual
+    }
+
+    @When("the verification fails")
+    public void theVerificationFails() {
+        //manual
+    }
+
+    @Then("the Wallet shows an error message to the user")
+    public void theWalletShowsAnErrorMessageToTheUser() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet displays a list of QTSPs to the user")
+    public void theEUDIWalletDisplaysAListOfQTSPsToTheUser() {
+        //manual
+    }
+
+    @When("the user selects the Sign Document option")
+    public void theUserSelectsTheSignDocumentOption() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet prompts the user to select a QTSP")
+    public void theEUDIWalletPromptsTheUserToSelectAQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet navigates the user to the selected QTSP login page in the mobile browser")
+    public void theEUDIWalletNavigatesTheUserToTheSelectedQTSPLoginPageInTheMobileBrowser() {
+        //manual
+    }
+
+    @Given("the QTSP login page is displayed to the user")
+    public void theQTSPLoginPageIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @When("the QTSP provides a deep link for attestation presentation of the PID")
+    public void theQTSPProvidesADeepLinkForAttestationPresentationOfThePID() {
+        //manual
+    }
+
+    @Then("the deep link redirects the user to the EUDI Wallet")
+    public void theDeepLinkRedirectsTheUserToTheEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is redirected to the EUDI Wallet from the QTSP deep link")
+    public void theUserIsRedirectedToTheEUDIWalletFromTheQTSPDeepLink() {
+        //manual
+    }
+
+    @When("the EUDI Wallet receives a PID attestation request from the QTSP")
+    public void theEUDIWalletReceivesAPIDAttestationRequestFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user about the request and asks for consent")
+    public void theEUDIWalletInformsTheUserAboutTheRequestAndAsksForConsent() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet requests the user to authenticate for attestation release")
+    public void theEUDIWalletRequestsTheUserToAuthenticateForAttestationRelease() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the PID attestation to the QTSP")
+    public void theEUDIWalletPresentsThePIDAttestationToTheQTSP() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet receives a PID attestation presentation request from the QTSP")
+    public void theEUDIWalletReceivesAPIDAttestationPresentationRequestFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user that no matching attestation is available")
+    public void theEUDIWalletInformsTheUserThatNoMatchingAttestationIsAvailable() {
+        //manual
+    }
+
+    @Given("the QTSP receives the PID attestation from the EUDI Wallet")
+    public void theQTSPReceivesThePIDAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @Then("the QTSP informs the user of successful verification")
+    public void theQTSPInformsTheUserOfSuccessfulVerification() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet prompts the user for attestation release and authentication")
+    public void theEUDIWalletPromptsTheUserForAttestationReleaseAndAuthentication() {
+        //manual
+    }
+
+    @When("the user chooses to cancel or return to the main page")
+    public void theUserChoosesToCancelOrReturnToTheMainPage() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet returns the user to the main page")
+    public void theEUDIWalletReturnsTheUserToTheMainPage() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet prompts the user for PIN authentication")
+    public void theEUDIWalletPromptsTheUserForPINAuthentication() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet prompts the user to retry authentication")
+    public void theEUDIWalletPromptsTheUserToRetryAuthentication() {
+        //manual
+    }
+
+    @Given("the QTSP has multiple Credential IDs enrolled for the user")
+    public void theQTSPHasMultipleCredentialIDsEnrolledForTheUser() {
+        //manual
+    }
+
+    @When("the EUDI Wallet requests available Credential IDs from the QTSP")
+    public void theEUDIWalletRequestsAvailableCredentialIDsFromTheQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet asks the user to select a preferred Credential ID")
+    public void theEUDIWalletAsksTheUserToSelectAPreferredCredentialID() {
+        //manual
+    }
+
+    @Given("the QTSP has one Credential ID enrolled for the user")
+    public void theQTSPHasOneCredentialIDEnrolledForTheUser() {
+        //manual
+    }
+
+    @Then("the flow continues to retrieve Credential ID details and calculate the document hash")
+    public void theFlowContinuesToRetrieveCredentialIDDetailsAndCalculateTheDocumentHash() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet has redirected the user to the QTSP authentication page")
+    public void theEUDIWalletHasRedirectedTheUserToTheQTSPAuthenticationPage() {
+        //manual
+    }
+
+    @When("the QTSP provides a deep link for attestation presentation")
+    public void theQTSPProvidesADeepLinkForAttestationPresentation() {
+        //manual
+    }
+
+
+    @Then("the EUDI Wallet opens and displays the request for PID attestation and transaction data")
+    public void theEUDIWalletOpensAndDisplaysTheRequestForPIDAttestationAndTransactionData() {
+        //manual
+    }
+
+    @Given("the QTSP requests a PID attestation from the EUDI Wallet")
+    public void theQTSPRequestsAPIDAttestationFromTheEUDIWallet() {
+        //manual
+    }
+
+    @When("the EUDI Wallet checks available attestations")
+    public void theEUDIWalletChecksAvailableAttestations() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet informs the user that no matching attestations are available and returns to the main page")
+    public void theEUDIWalletInformsTheUserThatNoMatchingAttestationsAreAvailableAndReturnsToTheMainPage() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet requests the user to authenticate with a six-digit PIN")
+    public void theEUDIWalletRequestsTheUserToAuthenticateWithASixDigitPIN() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet asks the user to retry authentication")
+    public void theEUDIWalletAsksTheUserToRetryAuthentication() {
+        //manual
+    }
+
+    @When("the user chooses not to proceed")
+    public void theUserChoosesNotToProceed() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet returns to the main page without releasing the attestation")
+    public void theEUDIWalletReturnsToTheMainPageWithoutReleasingTheAttestation() {
+        //manual
+    }
+
+    @Given("the QTSP has successfully verified the PID attestation")
+    public void theQTSPHasSuccessfullyVerifiedThePIDAttestation() {
+        //manual
+    }
+
+    @When("the QTSP signs the document")
+    public void theQTSPSignsTheDocument() {
+        //manual
+    }
+
+    @Then("the QTSP returns the signed document to the EUDI Wallet where the user can view it")
+    public void theQTSPReturnsTheSignedDocumentToTheEUDIWalletWhereTheUserCanViewIt() {
+        //manual
+    }
+
+    @Given("the user has logged in to the EUDI Wallet application")
+    public void theUserHasLoggedInToTheEUDIWalletApplication() {
         //manual
     }
 }
