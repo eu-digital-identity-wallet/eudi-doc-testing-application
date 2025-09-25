@@ -1369,7 +1369,7 @@ public class GeneralStepDefs{
 
     @And("the user selects to add a new document From list")
     public void theUserSelectsToAddANewDocumentFromList() {
-        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().clickFromList();
 
     }
 
