@@ -86,4 +86,9 @@ public class TestSetup {
     public void stopLogging() {
         mobileWebDriverFactory.stopLogging();
     }
+
+    public String getTransactionCode() {
+        return getTransactionCode();
+
+    }
 }
