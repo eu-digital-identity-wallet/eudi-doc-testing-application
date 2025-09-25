@@ -27,7 +27,7 @@ public class WalletElements {
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Proceed to authentication\"]");
     public static By welcomePage = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
     public static By userProfil = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
-    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID\"]");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid_mdoc\"]");
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By clickMdl = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
@@ -113,7 +113,7 @@ public class WalletElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
-    public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]");
+    public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[1]");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait\"]");
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
@@ -130,9 +130,9 @@ public class WalletElements {
     public static By verificationIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer requires verification\"]");
     public static By transactionCodeField = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText");
     public static By clickAgeOver18 = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[3]");
-    public static By detailsOfOver18 = By.xpath("//android.widget.TextView[@text=\"Age over 18 Pseudonym\"]");
+    public static By detailsOfOver18 = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pseudonym.age_over_18.1\"]");
     public static By clickPseudonymDeferred = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[7]");
-    public static By detailsOfDeferredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Pseudonym Deferred\"]");
+    public static By detailsOfDeferredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pseudonym.age_over_18.deferred_endpoint\"]");
     public static By clickAuthentication = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By signDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
     public static By fromDevice = By.xpath("//android.widget.TextView[@text=\"From device\"]");
@@ -173,7 +173,7 @@ public class WalletElements {
     public static By clickAddAttributes = By.xpath("//android.widget.Button[@resource-id=\"modal-add-btn\"]");
     public static By clickConfirmOnIssuer = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By enableAgeOver18 = By.xpath("//android.view.View[@resource-id=\"visible-optional-attributes\"]/android.view.View[2]");
-    public static By enterCountry = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText");
+    public static By enterCountry = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
     public static By enterCountryCode = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText");
     public static By clickNationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By instanceInitial = By.xpath("(//android.widget.TextView[@text=\"10/10\"])[2]");
@@ -183,9 +183,13 @@ public class WalletElements {
     public static By clickToSeeDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
     public static By documentOpened = By.xpath("//android.widget.TextView[@text=\"Pseudonym Deferred\"]");
     public static By vehicleCategoryCode;
-    public static By clickLocality;
-    public static By clickRegion;
+    public static By clickLocality = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[3]");
+    public static By clickRegion = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[2]");
     public static By codeFieldIssuer;
     public static By signFieldIssuer;
     public static By valueFieldIssuer;
+    public static By enterRegion = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View/android.widget.EditText[2]");
+    public static By enterLocality = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View/android.widget.EditText[3]");
+    public static By informUserAboutAttestation = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
+    public static By PIDIsDisplayedOnDocument = By.xpath("(//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"])[1]");
 }

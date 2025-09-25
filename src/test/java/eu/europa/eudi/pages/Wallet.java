@@ -256,7 +256,7 @@ public class Wallet {
 
     public void nationalIdIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.PIDIsDisplayed)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.PIDIsDisplayedOnDocument)).getText();
             Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.PIDIsDisplayed)).getText();
@@ -335,7 +335,8 @@ public class Wallet {
 
     public void addDocButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addDoc)).click();
+            WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.addDoc));
+            tapAction(myDigitalIDButton);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.addDoc)).click();
         }
@@ -685,7 +686,8 @@ public class Wallet {
 
     public void clickToAddDocument() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAddDocument)).click();
+            WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickFromList));
+            tapAction(myDigitalIDButton);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickToAddDocument)).click();
         }
@@ -720,7 +722,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            By pidLocator = By.xpath("//android.widget.TextView[@text=\"PID\"]");
+            By pidLocator = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid_mdoc\"]");
             int maxSwipes = 15;
 
             for (int i = 0; i < maxSwipes; i++) {
@@ -1139,5 +1141,10 @@ public class Wallet {
     public void documentOpened() {
         String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.documentOpened)).getText();
         Assert.assertEquals(Literals.Wallet.DOCUMENT_OPENED.label, pageHeader);
+    }
+
+    public void informUserAboutAttestation() {
+        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.informUserAboutAttestation)).getText();
+        Assert.assertEquals(Literals.Wallet.INFORM_ATTESTATION.label, pageHeader);
     }
 }

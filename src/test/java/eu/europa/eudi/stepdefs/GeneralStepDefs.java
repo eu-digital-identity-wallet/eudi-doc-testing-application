@@ -1400,7 +1400,7 @@ public class GeneralStepDefs{
 
     @And("the screen informs the user about the attestation issued and the issuer who issued it")
     public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
-        test.mobile().wallet().clickPID();
+        test.mobile().wallet().informUserAboutAttestation();
     }
 
     @And("the screen displays a Close button to return to the Home screen")
@@ -1445,6 +1445,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().enterRegion();
+        test.mobile().issuer().enterLocality();
         test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
@@ -2042,7 +2044,7 @@ public class GeneralStepDefs{
 
     @When("the Wallet receives the attestation from the issuer service")
     public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
-        test.mobile().wallet().detailsArePresented();
+        test.mobile().wallet().informUserAboutAttestation();
         test.mobile().wallet().clickAdd();
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().clickSubmit();
@@ -2052,6 +2054,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().enterRegion();
+        test.mobile().issuer().enterLocality();
         test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
@@ -2108,6 +2112,11 @@ public class GeneralStepDefs{
     @Then("the document appears on the dashboard screen")
     public void theDocumentAppearsOnTheDashboardScreen() {
         test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @When("the issuer sends the credential to the wallet app")
+    public void theIssuerSendsTheCredentialToTheWalletApp() {
+        //donothing
     }
 }
 
