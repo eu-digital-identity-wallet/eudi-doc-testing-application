@@ -12,6 +12,7 @@ public class TestSetup {
     MobilePageObjectFactory mobilePageObjectFactory;
     String systemOperation;
     Scenario scenario;
+    private String transactionCode;
 
     public TestSetup(boolean noReset, String systemOperation, Scenario scenario) {
         this.systemOperation = systemOperation;
@@ -87,8 +88,11 @@ public class TestSetup {
         mobileWebDriverFactory.stopLogging();
     }
 
-    public String getTransactionCode() {
-        return getTransactionCode();
+    public void setTransactionCode(String code) {
+        this.transactionCode = code;
+    }
 
+    public String getTransactionCode() {
+        return transactionCode;
     }
 }
