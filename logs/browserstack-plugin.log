@@ -281,3 +281,15 @@
 13:00:15.324 [ApplicationImpl pooled thread 848] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
 13:00:15.325 [ApplicationImpl pooled thread 848] INFO  com.browserstack.sdk.utils.Helpers - true
 13:00:15.327 [ApplicationImpl pooled thread 848] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: null
+13:28:10.275 [ApplicationImpl pooled thread 927] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:28:10.275 [ApplicationImpl pooled thread 927] INFO  com.browserstack.sdk.utils.Helpers - true
+13:28:10.276 [ApplicationImpl pooled thread 927] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.40.7/browserstack-java-sdk-1.40.7.jar
+13:28:10.276 [ApplicationImpl pooled thread 927] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.40.7/browserstack-java-sdk-1.40.7.jar
+13:28:10.276 [ApplicationImpl pooled thread 927] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:28:10.276 [ApplicationImpl pooled thread 927] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:29:39.977 [ApplicationImpl pooled thread 957] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:29:39.977 [ApplicationImpl pooled thread 957] INFO  com.browserstack.sdk.utils.Helpers - true
+13:29:39.979 [ApplicationImpl pooled thread 957] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.40.7/browserstack-java-sdk-1.40.7.jar
+13:29:39.980 [ApplicationImpl pooled thread 957] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.40.7/browserstack-java-sdk-1.40.7.jar
+13:29:39.980 [ApplicationImpl pooled thread 957] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:29:39.980 [ApplicationImpl pooled thread 957] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
