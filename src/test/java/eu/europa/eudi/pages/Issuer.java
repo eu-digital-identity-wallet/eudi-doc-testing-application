@@ -47,7 +47,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer.eudiw.dev/credential_offer_choice";
+            String url = "https://dev.issuer.eudiw.dev/credential_offer_choice";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -434,6 +434,7 @@ public class Issuer {
         scrollUntilCountryCode();
         enterCountryCode();
         clickNationality();
+        scrollUntilAddOptional();
         addOptionalAttributes();
         clickAgeOver18OnIssuer();
         clickAddAttributes();
@@ -442,6 +443,37 @@ public class Issuer {
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    public void scrollUntilAddOptional() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            driver.findElement(MobileBy.AndroidUIAutomator(
+//                    "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
+//                            ".scrollForward()" +
+//                            ".setMaxSearchSwipes(150)" +
+//                            ".scrollIntoView(new UiSelector().resourceId(\"nationality--container\").childSelector(new UiSelector().className(\"android.widget.EditText\")))"
+//            ));
+
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.4);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }
     }
 
     public void clickNationality() {
@@ -472,15 +504,13 @@ public class Issuer {
         }}
     }
 
-    private void enterLocality() {
+    public void enterLocality() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement localityField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickLocality));
             localityField.click();
-            localityField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickLocality));
+            localityField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.enterLocality));
             localityField.clear();
             localityField.sendKeys("Thessaloniki");
-            WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth));
-            placeOfBirth.click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickLocality)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -490,11 +520,11 @@ public class Issuer {
         }
     }
 
-    private void enterRegion() {
+    public void enterRegion() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement regionField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickRegion));
             regionField.click();
-            regionField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickRegion));
+            regionField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.enterRegion));
             regionField.clear();
             regionField.sendKeys("Central Macedonia");
             WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPlaceOfBirth));

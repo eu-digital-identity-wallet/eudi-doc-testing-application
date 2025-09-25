@@ -12,7 +12,7 @@ public interface Literals {
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
-        PID("PID"),
+        PID("eu.europa.ec.eudi.pid.1"),
         MDL("mDL"),
         DASHBOARD_PAGE("Welcome back, Foteini"),
         CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
@@ -48,8 +48,8 @@ public interface Literals {
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
         CLOSE_BUTTON("Close"),
         VERIFICATION_IS_DISPLAYED("Digital Credentials Issuer requires verification"),
-        DETAILS_OVER_18("Age over 18 Pseudonym"),
-        DETAILS_FOR_DEFERRED("Pseudonym Deferred"),
+        DETAILS_OVER_18("eu.europa.ec.eudi.pseudonym.age_over_18.1"),
+        DETAILS_FOR_DEFERRED("eu.europa.ec.eudi.pseudonym.age_over_18.deferred_endpoint"),
         SIGN_DOCUMENT("Sign Document"),
         SELECT_SIGNING("Select signing service"),
         SIGNING_SERVICES("Signing services"),
@@ -66,7 +66,8 @@ public interface Literals {
         ISSUANCE_FAILED("//android.widget.TextView[@text=\"10/10\"]"),
         INSTANCE_INITIAL("10/10"),
         DOCUMENT_ISSUED("Documents issued"),
-        DOCUMENT_OPENED("Pseudonym Deferred");
+        DOCUMENT_OPENED("Pseudonym Deferred"),
+        INFORM_ATTESTATION("eu.europa.ec.eudi.pid.1");
 
         public final String label;
         Wallet(String label) {
@@ -112,7 +113,8 @@ public interface Literals {
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Review & Send"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
-        TRANSACTION_CODE_IS_DISPLAYED("Transaction Code");
+        TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
+        FORM_ANDROID("EUDI Wallet Credential");
 
         public final String label;
         Issuer(String label) {
