@@ -44,13 +44,14 @@ public interface Literals {
         DETAILS_ARE_NOT_BLURRED("Show"),
         CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
-        ADD_PID_PAGE("Add document from list"),
+        ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
         CLOSE_BUTTON("Close"),
         VERIFICATION_IS_DISPLAYED("Digital Credentials Issuer requires verification"),
         DETAILS_OVER_18("eu.europa.ec.eudi.pseudonym.age_over_18.1"),
         DETAILS_FOR_DEFERRED("eu.europa.ec.eudi.pseudonym.age_over_18.deferred_endpoint"),
         SIGN_DOCUMENT("Sign Document"),
+        SIGN_DOCUMENT_IOS("Sign document"),
         SELECT_SIGNING("Select signing service"),
         SIGNING_SERVICES("Signing services"),
         CANCEL_SIGNING_PROCESS("Cancel signing process?"),
@@ -67,7 +68,9 @@ public interface Literals {
         INSTANCE_INITIAL("10/10"),
         DOCUMENT_ISSUED("Documents issued"),
         DOCUMENT_OPENED("Pseudonym Deferred"),
-        INFORM_ATTESTATION("eu.europa.ec.eudi.pid.1");
+        INFORM_ATTESTATION("eu.europa.ec.eudi.pid.1"),
+        INFORM_ATTESTATION_IOS("eu_pid_doctype_name"),
+        DONE_BUTTON("Done");
 
         public final String label;
         Wallet(String label) {
@@ -103,7 +106,6 @@ public interface Literals {
 
     enum Issuer{
         CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
-        CREDENTIAL_PAGE_IOS("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),

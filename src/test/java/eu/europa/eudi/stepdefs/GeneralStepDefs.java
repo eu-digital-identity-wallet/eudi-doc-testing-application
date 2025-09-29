@@ -170,6 +170,7 @@ public class GeneralStepDefs{
     @Given("user opens Verifier App")
     public void userOpensVerifierApp() throws MalformedURLException {
         test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
     }
 
@@ -1370,7 +1371,6 @@ public class GeneralStepDefs{
     @And("the user selects to add a new document From list")
     public void theUserSelectsToAddANewDocumentFromList() {
         test.mobile().wallet().clickFromList();
-
     }
 
     @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
@@ -1682,6 +1682,7 @@ public class GeneralStepDefs{
     @And("user confirms to proceed with the signing operation")
     public void userConfirmsToProceedWithTheSigningOperation() {
         test.mobile().wallet().signingServicesIsDisplayed();
+        test.mobile().wallet().selectWalletCentric();
         test.mobile().wallet().clickDoneOnSigningService();
     }
 
@@ -1691,6 +1692,7 @@ public class GeneralStepDefs{
         theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP();
         theEUDIWalletPresentsTheCredentialIDDetailsToTheUser();
         userConfirmsToProceedWithTheSigningOperation();
+        test.mobile().verifier().insertPIN2();
         test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -1699,6 +1701,7 @@ public class GeneralStepDefs{
 
     @When("the user decides not to proceed")
     public void theUserDecidesNotToProceed() {
+        test.mobile().verifier().insertPIN2();
         test.mobile().wallet().selectSigningCertificateIsDisplayed();
         test.mobile().wallet().clickAbortToSigning();
     }

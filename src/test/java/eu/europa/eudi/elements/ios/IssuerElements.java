@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class IssuerElements {
     public static By issuerServicePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Testing OpenID for Verifiable Credential Issuance - draft 13\"]");
     public static By clickTestCredentialOffer = By.xpath("//XCUIElementTypeButton[@name=\"WALLET TEST Credential Offer\"]");
-    public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeOther[@name=\"Request Credentials for your EUDI Wallet\" and @value=\"1\"]");
+    public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Request Credentials for your EUDI Wallet\"]");
     public static By clickPersonIdentificationData = By.xpath("//XCUIElementTypeButton[@name=\"Person Identification Data (PID)\"]");
     public static By clickSubmitButton = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"QR Code\"]");
