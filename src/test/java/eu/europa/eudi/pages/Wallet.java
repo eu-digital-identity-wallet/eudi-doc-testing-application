@@ -688,7 +688,6 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickFromListNew));
             tapAction(myDigitalIDButton);
-            
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickToAddDocument)).click();
         }
@@ -732,7 +731,7 @@ public class Wallet {
                     System.out.println("Βρέθηκε το στοιχείο PID!");
                     break;
                 }
-                
+
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.7);
@@ -927,6 +926,9 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.addPIDPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
         }
     }
 
@@ -934,7 +936,11 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickButtonIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CLOSE_BUTTON.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickButtonIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.DONE_BUTTON.label, pageHeader);
         }
+
     }
 
     public void sendTrasactionCode() {
@@ -1145,7 +1151,20 @@ public class Wallet {
     }
 
     public void informUserAboutAttestation() {
-        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.informUserAboutAttestation)).getText();
-        Assert.assertEquals(Literals.Wallet.INFORM_ATTESTATION.label, pageHeader);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.informUserAboutAttestation)).getText();
+            Assert.assertEquals(Literals.Wallet.INFORM_ATTESTATION.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.informUserAboutAttestation)).getText();
+            Assert.assertEquals(Literals.Wallet.INFORM_ATTESTATION_IOS.label, pageHeader);
+        }
+    }
+
+    public void selectWalletCentric() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.walletCentric)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.selectWalletCentric)).click();
+        }
     }
 }

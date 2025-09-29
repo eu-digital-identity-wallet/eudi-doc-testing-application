@@ -102,7 +102,7 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.viewDataPage)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         }
     }
@@ -213,7 +213,7 @@ public class Verifier {
                 clickMsoMdoc();
             }
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickPersonIdentificationData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(IssuerElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.selectAttributesBy)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.allAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormat)).click();

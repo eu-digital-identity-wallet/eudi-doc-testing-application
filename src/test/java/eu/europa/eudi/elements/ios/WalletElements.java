@@ -29,9 +29,9 @@ public class WalletElements {
     public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By clickNationalId = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By nationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
-    public static By clickMdl = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"mDL\") or contains(@name, \"eu.europa.ec.eudi.mdl_mdoc\")]");
+    public static By clickMdl = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"mDL\") or contains(@name, \"eu.europa.ec.eudi.mdl_mdoc\") or contains(@name, \"mdl_doctype_name\")]");
     public static By mdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"mDL\") or contains(@name, \"mdl_doctype_name\")]");
-    public static By addDoc = By.xpath("//XCUIElementTypeStaticText[@name=\"ADD DOC\"]");
+    public static By addDoc = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
     public static By addDocumentPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Add document\"]");
     public static By clickNationalIdButton = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
@@ -123,4 +123,16 @@ public class WalletElements {
     public static By codeFieldIssuer = By.xpath("//XCUIElementTypeOther[@name=\"Code Sign Value\"]/XCUIElementTypeTextField[1]");
     public static By signFieldIssuer = By.xpath("//XCUIElementTypeOther[@name=\"Code Sign Value\"]/XCUIElementTypeTextField[2]");
     public static By valueFieldIssuer = By.xpath("//XCUIElementTypeOther[@name=\"Code Sign Value\"]/XCUIElementTypeTextField[3]");
+    public static By clickAgeOver18 = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[19]");
+    public static By signDocument = By.xpath("//XCUIElementTypeButton[@name=\"Sign document\"]");
+    public static By signDocumentIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign document\"]");
+    public static By clickSelectDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Select document\"]");
+    public static By chooseDocument = By.xpath("//XCUIElementTypeCell[@name=\"pdf-sample_0, pdf\"]/XCUIElementTypeOther[2]");
+    public static By selectSigningIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Select signing service\"]");
+    public static By clickSelectSigningService = By.xpath("//XCUIElementTypeStaticText[@name=\"Select signing service\"]");
+    public static By selectWalletCentric = By.xpath("//XCUIElementTypeStaticText[@name=\"Wallet-Centric\"]");
+    public static By clickProceedOnSigningService = By.xpath("//XCUIElementTypeButton[@name=\"Proceed\"]");
+    public static By addPIDPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose a digital document from the list below to add to your wallet.\"]");
+    public static By informUserAboutAttestation = By.xpath("//XCUIElementTypeStaticText[@name=\"eu_pid_doctype_name\"]");
+    public static By clickButtonIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
 }

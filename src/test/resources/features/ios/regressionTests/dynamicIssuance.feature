@@ -6,10 +6,10 @@ Feature: Dynamic issuance process
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/21
 
-  @US_DIP_TC_01 @before_01
+  @US_DIP_TC_01
   Scenario: User Initiates Credential Issuance
     Given the user visits the Issuer service
-    When the user selects to issue credential
+     When the user selects to issue credential
     Then the user is presented with a URL to initiate the EUDI Wallet on the same device
 
   @US_DIP_TC_02 @before_01

@@ -121,7 +121,7 @@ public class WalletElements {
     public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
     public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Presentation Query Type\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
-    public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document from list\"]");
+    public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choose a digital document from the list below to add to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By closeKeyboardForm = By.xpath("//android.widget.TextView[@text=\"Mandatory Information\"]");
     public static By clickContinueOnPopUp = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]");
@@ -192,4 +192,5 @@ public class WalletElements {
     public static By enterLocality = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View/android.widget.EditText[3]");
     public static By informUserAboutAttestation = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By PIDIsDisplayedOnDocument = By.xpath("(//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"])[1]");
+    public static By walletCentric;
 }
