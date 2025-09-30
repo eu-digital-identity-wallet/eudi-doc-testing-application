@@ -113,13 +113,13 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().enterDocumentNumber();
             test.mobile().issuer().scrollUntilFindDate();
-            test.mobile().issuer().clickScreen();
             test.mobile().issuer().enterVehicleCategoryCode();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().enterCodeFieldIssuer();
             test.mobile().issuer().enterSignFieldIssuer();
             test.mobile().issuer().enterValueFieldIssuer();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().scrollUntilFindSubmit();
             test.mobile().issuer().clickConfirm();
             test.mobile().issuer().authorizeIsDisplayed();
@@ -883,6 +883,11 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
+        test.mobile().issuer().enterCodeFieldIssuer();
+        test.mobile().issuer().enterSignFieldIssuer();
+        test.mobile().issuer().enterValueFieldIssuer();
+        test.mobile().issuer().clickScreen();
+        test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1560,7 +1565,7 @@ public class GeneralStepDefs{
 
     @When("the user selects to issue credential")
     public void theUserSelectsToIssueCredential() throws InterruptedException {
-        test.mobile().verifier().launchSafari();
+        test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickAgeOver18();

@@ -89,7 +89,7 @@ public class Issuer {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         }
     }
@@ -237,7 +237,7 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickIssueDate)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.chooseSet)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssueDate)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickIssueDate)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.chooseSet)).click();
         }
     }
@@ -279,7 +279,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             //test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
         } else {
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
         }
     }
 
@@ -305,14 +305,14 @@ public class Issuer {
                             ".scrollIntoView(new UiSelector().text(\"Issue Date:\"))"
             ));
         } else {
-//            int i = 1;
-//            while (i < 2) {
-//                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-//                Map<String, Object> params = new HashMap<>();
-//                params.put("direction", "up");
-//                driver.executeScript("mobile: swipe", params);
-//                i++;
-//            }
+            int i = 1;
+            while (i < 2) {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
 
         }
     }
@@ -351,7 +351,6 @@ public class Issuer {
                 driver.executeScript("mobile: swipe", params);
                 i++;
             }
-
         }
     }
 
@@ -831,11 +830,11 @@ public class Issuer {
             vehicleCategoryCode.clear();
             vehicleCategoryCode.sendKeys("123");
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.vehicleCategoryCode)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement vehicleCategoryCode = driver.findElement(WalletElements.vehicleCategoryCode);
-            vehicleCategoryCode.clear();
-            vehicleCategoryCode.sendKeys("123");
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.vehicleCategoryCode)).click();
+//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            WebElement vehicleCategoryCode = driver.findElement(WalletElements.vehicleCategoryCode);
+//            vehicleCategoryCode.clear();
+//            vehicleCategoryCode.sendKeys("123");
         }
     }
 

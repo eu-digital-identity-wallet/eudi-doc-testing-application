@@ -260,7 +260,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.PIDIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_IOS.label, pageHeader);
         }
     }
 
@@ -279,7 +279,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.MDL.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.mdlIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.MDL.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.MDL_IOS.label, pageHeader);
         }
     }
 
@@ -516,7 +516,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DETAILS_NATIONAL_ID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsOfNationalIdIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.DETAILS_NATIONAL_ID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.DETAILS_NATIONAL_ID_IOS.label, pageHeader);
         }
     }
 
@@ -526,7 +526,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DETAILS_MDL.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsOfMdlIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.DETAILS_MDL.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.DETAILS_MDL_IOS.label, pageHeader);
         }
     }
 
@@ -621,7 +621,7 @@ public class Wallet {
         }
     }
 
-    private void tapAction(WebElement myDigitalIDButton) {
+    public void tapAction(WebElement myDigitalIDButton) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             Point center = myDigitalIDButton.getLocation();
             int x = center.getX() + myDigitalIDButton.getSize().getWidth() / 2;
@@ -767,7 +767,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_IOS.label, pageHeader);
         }
     }
 
