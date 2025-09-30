@@ -658,6 +658,15 @@ public class Wallet {
         }
     }
 
+    public void clickPIDOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPIDOnDocuments)).click();
+        } else {
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
+            tapAction(button);
+        }
+    }
+
     public void clickOnDocuments() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickDocuments)).click();
@@ -686,7 +695,7 @@ public class Wallet {
 
     public void clickToAddDocument() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickFromListNew));
+            WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickAdd));
             tapAction(myDigitalIDButton);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickToAddDocument)).click();
@@ -866,16 +875,33 @@ public class Wallet {
         }
     }
 
-    public void scrollUntilmDL() {
+    public void scrollUntilmDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".scrollForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"mDL\"))"
-            ));
+            By pidLocator = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.mdl_mdoc\"]");
+            int maxSwipes = 15;
+
+            for (int i = 0; i < maxSwipes; i++) {
+
+                if (!driver.findElements(pidLocator).isEmpty()) {
+                    System.out.println("Βρέθηκε το στοιχείο PID!");
+                    break;
+                }
+
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.7);
+                int endY = (int) (size.height * 0.3);
+
+
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(800)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+                Thread.sleep(50);
+            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Map<String, Object> params = new HashMap<>();
@@ -910,6 +936,13 @@ public class Wallet {
 
     public void addPIDPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            new WebDriverWait(driver, Duration.ofSeconds(15))
+                    .until(ExpectedConditions.textToBePresentInElementLocated(
+                            eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed,
+                            Literals.Wallet.ADD_PID_PAGE.label
+                    ));
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
         }

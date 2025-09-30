@@ -80,6 +80,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().wallet().clickDone();
+            test.mobile().wallet().documentsPageIsDisplayed();
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
@@ -113,8 +114,8 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().enterDocumentNumber();
             test.mobile().issuer().scrollUntilFindDate();
-            test.mobile().issuer().clickScreen();
-            test.mobile().issuer().enterVehicleCategoryCode();
+//            test.mobile().issuer().clickScreen();
+//            test.mobile().issuer().enterVehicleCategoryCode();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().enterCodeFieldIssuer();
@@ -495,10 +496,13 @@ public class GeneralStepDefs{
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
+        test.mobile().issuer().enterRegion();
+        test.mobile().issuer().enterLocality();
         test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
         test.mobile().issuer().clickNationality();
+        test.mobile().issuer().scrollUntilAddOptional();
         test.mobile().issuer().addOptionalAttributes();
         test.mobile().issuer().clickAgeOver18OnIssuer();
         test.mobile().issuer().clickAddAttributes();
@@ -610,7 +614,7 @@ public class GeneralStepDefs{
 
     @When("the user clicks on the PID doc")
     public void theUserClicksOnThePIDDoc() {
-        test.mobile().wallet().clickPID();
+        test.mobile().wallet().clickPIDOnDocuments();
     }
 
     @Then("the PID should open")
@@ -839,7 +843,7 @@ public class GeneralStepDefs{
     }
 
     @And("the user clicks the driving license button")
-    public void theUserClicksTheDrivingLicenseButton() {
+    public void theUserClicksTheDrivingLicenseButton() throws InterruptedException {
         test.mobile().wallet().scrollUntilmDL();
         test.mobile().wallet().clickDrivingLicenceButton();
     }
