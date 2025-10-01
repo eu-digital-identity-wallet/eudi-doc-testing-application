@@ -839,7 +839,7 @@ public class GeneralStepDefs{
     }
 
     @And("the user clicks the driving license button")
-    public void theUserClicksTheDrivingLicenseButton() {
+    public void theUserClicksTheDrivingLicenseButton() throws InterruptedException {
         test.mobile().wallet().scrollUntilmDL();
         test.mobile().wallet().clickDrivingLicenceButton();
     }
