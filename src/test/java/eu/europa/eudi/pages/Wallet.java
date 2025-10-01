@@ -426,7 +426,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://verifier.eudiw.dev/home";
+            String url = "https://dev.verifier.eudiw.dev/home";
             Map<String, Object> args = new HashMap<>();
             args.put("command", "am");
             args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});

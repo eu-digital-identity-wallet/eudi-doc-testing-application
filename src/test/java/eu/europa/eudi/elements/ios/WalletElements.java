@@ -64,8 +64,8 @@ public class WalletElements {
     public static By issuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"National ID\"]");
     public static By clickIssue = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
-    public static By detailsOfNationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
-    public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family name\"]");
+    public static By detailsOfNationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"family_name\"]");
+    public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"family_name\"]");
     public static By chooseData2 = By.xpath("//XCUIElementTypeSwitch[@name=\"Given name\"]");
     public static By optionalDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"family_name\"]");
     public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
