@@ -154,7 +154,7 @@ public class Issuer {
     public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickFormEu)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFormEu)).click();
@@ -750,15 +750,40 @@ public class Issuer {
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+            String visibleText = "Please select your country of origin";
+            int attempts = 0;
+            boolean found = false;
 
-            try {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true))" +
-                                ".scrollIntoView(new UiSelector().text(\"Please select your country of origin\"));"
-                ));
-            } catch (Exception ignored) {
-                // ignore if already visible
+            while (!found && attempts < 10) {
+                try {
+                    WebElement element = driver.findElement(MobileBy.AndroidUIAutomator(
+                            "new UiSelector().text(\"" + visibleText + "\")"
+                    ));
+                    if (element.isDisplayed()) {
+                        found = true;
+                        System.out.println("Found visible text: " + visibleText);
+                        break;
+                    }
+                } catch (Exception e) {
+                    // Element not found yet
+                }
+
+                // Pull-to-refresh gesture
+                new TouchAction(driver)
+                        .press(PointOption.point(200, 300))
+                        .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                        .moveTo(PointOption.point(200, 1000))
+                        .release()
+                        .perform();
+
+                // Wait for content to load
+                try { Thread.sleep(1000); } catch (InterruptedException ex) { ex.printStackTrace(); }
+
+                attempts++;
+            }
+
+            if (!found) {
+                throw new RuntimeException("Text '" + visibleText + "' not visible after " + 10 + " attempts");
             }
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);

@@ -24,13 +24,13 @@ Feature: Credential issuance process for the same device
   Scenario: User authenticates and consents to the issuance
     Given the user is asked to authenticate and consent on the issuer service
     When the user authenticates and consents to the issuance
-    And inserts the required credential details
+    And inserts the required of credential details
     Then the user is redirected to the EUDI Wallet app
     And a success message is displayed on the EUDI Wallet app
 
   @US_COSD_TC_04 @before_01
   Scenario: User views the issued credential in the EUDI Wallet
-    Given the user sees a success message in the EUDI Wallet app
+    Given the user sees success message in the EUDI Wallet app
     When the user presses the CONTINUE button
     Then the new document is presented in the EUDI Wallet dashboard screen
 

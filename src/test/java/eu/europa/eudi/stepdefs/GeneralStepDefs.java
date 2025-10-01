@@ -839,7 +839,7 @@ public class GeneralStepDefs{
     }
 
     @And("the user clicks the driving license button")
-    public void theUserClicksTheDrivingLicenseButton() {
+    public void theUserClicksTheDrivingLicenseButton() throws InterruptedException {
         test.mobile().wallet().scrollUntilmDL();
         test.mobile().wallet().clickDrivingLicenceButton();
     }
@@ -2125,6 +2125,64 @@ public class GeneralStepDefs{
     @When("the issuer sends the credential to the wallet app")
     public void theIssuerSendsTheCredentialToTheWalletApp() {
         //donothing
+    }
+
+    @And("the user clicks on the PID doc on documents")
+    public void theUserClicksOnThePIDDocOnDocuments() {
+        test.mobile().wallet().clickPIDOnDocuments();
+    }
+
+    @Given("the user is viewing the details of attestation auto")
+    public void theUserIsViewingTheDetailsOfAttestationAuto() {
+        theUserIsOnHomePage();
+        theUserClicksOnDocuments();
+        theUserClicksOnThePIDDocument();
+        thePIDShouldOpen();
+        theDetailsShouldBeBlurredByDefault();
+    }
+
+    private void theUserClicksOnThePIDDocument() {
+        test.mobile().wallet().clickPIDOnDocuments();
+    }
+
+    @Given("the PID is now open")
+    public void thePIDIsNowOpen() {
+        theUserIsViewingTheDetailsOfAttestationAuto();
+        theUserSelectsEyeIcon();
+    }
+
+    @And("inserts the required of credential details")
+    public void insertsTheRequiredOfCredentialDetails() throws InterruptedException {
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().enterRegion();
+        test.mobile().issuer().enterLocality();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().scrollUntilCountryCode();
+        test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().addOptionalAttributes();
+        test.mobile().issuer().clickAgeOver18OnIssuer();
+        test.mobile().issuer().clickAddAttributes();
+        test.mobile().issuer().enableAgeOver18();
+        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @Given("the user sees success message in the EUDI Wallet app")
+    public void theUserSeesSuccessMessageInTheEUDIWalletApp() throws InterruptedException {
+        theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
+        insertsTheRequiredOfCredentialDetails();
+//        theUserAuthenticatesAndConsentsToTheIssuance();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
 }
 

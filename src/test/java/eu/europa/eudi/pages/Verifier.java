@@ -274,7 +274,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://verifier.eudiw.dev/home";
+            String url = "https://dev.verifier.eudiw.dev/home";
 
             try {
                 try {
