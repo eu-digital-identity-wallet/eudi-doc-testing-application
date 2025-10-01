@@ -536,7 +536,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DETAILS_DOCUMENT.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsOfDocument)).getText();
-            Assert.assertEquals(Literals.Wallet.DETAILS_DOCUMENT.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.DETAILS_DOCUMENT_IOS.label, pageHeader);
         }
     }
 
