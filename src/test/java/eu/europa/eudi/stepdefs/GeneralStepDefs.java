@@ -113,7 +113,7 @@ public class GeneralStepDefs{
             test.mobile().issuer().chooseBirthDate();
             test.mobile().issuer().enterDocumentNumber();
             test.mobile().issuer().scrollUntilFindDate();
-            test.mobile().issuer().enterVehicleCategoryCode();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
             test.mobile().issuer().enterCodeFieldIssuer();
