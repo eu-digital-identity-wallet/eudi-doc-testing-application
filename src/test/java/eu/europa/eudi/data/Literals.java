@@ -33,11 +33,11 @@ public interface Literals {
         DETAILS_NATIONAL_ID_IOS("family_name"),
         DETAILS_MDL("Family name"),
         DETAILS_MDL_IOS("Family name"),
-        DETAILS_DOCUMENT("Family Name(s)"),
+        DETAILS_DOCUMENT("family_name"),
         DETAILS_DOCUMENT_IOS("family_name"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("Birth Date"),
+        VERIFICATION_DETAILS("birth_date"),
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
@@ -90,7 +90,7 @@ public interface Literals {
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
         WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
-        PRESENTATION_QUERY_TYPE("Presentation Query Type"),
+        PRESENTATION_QUERY_TYPE("Request URI Method"),
         CHOOSE_WALLET_DISPLAYED("Invoke Wallet");
 
         public final String label;

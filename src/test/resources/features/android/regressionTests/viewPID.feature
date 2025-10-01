@@ -11,20 +11,20 @@ Feature: View PID document
   Scenario: User opens the PID document from the dashboard
     Given the user is on Home page
     When the user clicks on Documents
-    And the user clicks on the PID doc
+    And the user clicks on the PID doc on documents
     Then the PID should open
     And the details should be blurred by default auto
     And the user should see the eye icon to view the details of the attestation auto
 
   @US_VP_TC_03 @before_01
   Scenario: Viewing attestation details after selecting the 'eye' icon
-    Given the user is viewing the details of an attestation auto
+    Given the user is viewing the details of attestation auto
     When the user selects eye icon auto
     Then the attestation details should no longer be blurred auto
 
   @US_VP_TC_04 @before_01
   Scenario: User closes the PID document and returns to the dashboard
-    Given the PID is open
+    Given the PID is now open
     When the user clicks the back button
     Then the PID should close
     And the user should see the dashboard screen again
