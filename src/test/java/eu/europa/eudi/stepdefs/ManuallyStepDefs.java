@@ -8013,6 +8013,58 @@ public class ManuallyStepDefs {
     public void theUserHasLoggedInToTheEUDIWalletApplication() {
         //manual
     }
+
+    @When("the EUDI Wallet retrieves the Credential ID details from the QTSP")
+    public void theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP() {
+        //manual
+    }
+
+    @Given("the user has uploaded a document and selected a QTSP")
+    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the Credential ID details to the user")
+    public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() {
+       //manual
+    }
+
+    @And("user confirms to proceed with the signing operation")
+    public void userConfirmsToProceedWithTheSigningOperation() {
+      //manual
+    }
+
+    @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
+    public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
+    //manual
+    }
+
+    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
+    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
+       //manual
+    }
+
+    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
+    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
+       //manual
+    }
+
+    @When("the EUDI Wallet presents the requested attestation to the QTSP")
+    public void theEUDIWalletPresentsTheRequestedAttestationToTheQTSP() {
+        //manual
+    }
+
+    @And("a success screen is displayed with the signed document")
+    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
+          //manual
+    }
+
+    @Given("the QTSP has signed the document and returned it")
+    public void theQTSPHasSignedTheDocumentAndReturnedIt() {
+     //manual
+    }
+
+
 }
 
 
