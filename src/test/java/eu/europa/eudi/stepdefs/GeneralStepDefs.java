@@ -1668,44 +1668,12 @@ public class GeneralStepDefs{
          test.mobile().wallet().clickAuthentication();
     }
 
-    @Given("the user has uploaded a document and selected a QTSP")
-    public void theUserHasUploadedADocumentAndSelectedAQTSP() {
-        test.mobile().wallet().signDocument();
-        test.mobile().wallet().clickFromDevice();
-        test.mobile().wallet().signDocumentPageIsDisplayed();
-        test.mobile().wallet().clickSelectDocument();
-        test.mobile().wallet().chooseDocument();
-    }
 
-    @When("the EUDI Wallet retrieves the Credential ID details from the QTSP")
-    public void theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP() {
-        test.mobile().wallet().selectSigningIsDisplayed();
-    }
 
-    @Then("the EUDI Wallet presents the Credential ID details to the user")
-    public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() {
-        test.mobile().wallet().clickSelectSigningService();
-    }
 
-    @And("user confirms to proceed with the signing operation")
-    public void userConfirmsToProceedWithTheSigningOperation() {
-        test.mobile().wallet().signingServicesIsDisplayed();
-        test.mobile().wallet().selectWalletCentric();
-        test.mobile().wallet().clickDoneOnSigningService();
-    }
 
-    @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
-    public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
-        theUserHasUploadedADocumentAndSelectedAQTSP();
-        theEUDIWalletRetrievesTheCredentialIDDetailsFromTheQTSP();
-        theEUDIWalletPresentsTheCredentialIDDetailsToTheUser();
-        userConfirmsToProceedWithTheSigningOperation();
-        test.mobile().verifier().insertPIN2();
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickDone();
-    }
+
+
 
     @When("the user decides not to proceed")
     public void theUserDecidesNotToProceed() {
@@ -1723,41 +1691,6 @@ public class GeneralStepDefs{
     @And("EUDI Wallet should return the user to the main page")
     public void eudiWalletShouldReturnTheUserToTheMainPage() {
         test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
-    public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
-        test.mobile().wallet().selectSigningCertificateIsDisplayed();
-        test.mobile().wallet().clickSelectSigningCertificate();
-        test.mobile().wallet().clickDoneSigningCertificate();
-        test.mobile().wallet().clickContinueSignDocument();
-    }
-
-    @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
-    public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().createAPin();
-    }
-
-    @When("the EUDI Wallet presents the requested attestation to the QTSP")
-    public void theEUDIWalletPresentsTheRequestedAttestationToTheQTSP() {
-        test.mobile().wallet().authenticationSuccessfully();
-        test.mobile().wallet().clickDone();
-    }
-
-    @And("a success screen is displayed with the signed document")
-    public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
-        test.mobile().wallet().successScreebWithSignedDocument();
-    }
-
-    @Given("the QTSP has signed the document and returned it")
-    public void theQTSPHasSignedTheDocumentAndReturnedIt() {
-        theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet();
-        theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation();
-        theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN();
-        theEUDIWalletPresentsTheRequestedAttestationToTheQTSP();
-        aSuccessScreenIsDisplayedWithTheSignedDocument();
     }
 
     @When("the EUDI Wallet receives the signed document")
