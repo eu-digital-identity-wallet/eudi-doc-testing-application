@@ -29,7 +29,7 @@ public class WalletElements {
     public static By userProfil = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
     public static By clickPID = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid_mdoc\"]");
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\"]");
-    public static By clickMdl = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.mdl_mdoc\"]");
+    public static By clickMdl = By.xpath("//android.widget.TextView[@text='eu.europa.ec.eudi.mdl_mdoc' or @text='org.iso.18013.5.1.mDL' or contains(@text,'mDL')]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
     public static By clickDeleteButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By confirmsDeletion = By.xpath("//android.widget.TextView[@text=\"Delete\"]");
@@ -67,7 +67,7 @@ public class WalletElements {
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
-    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name\"]");
+    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"family_name\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"family_name\"]");;
     public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
@@ -112,7 +112,7 @@ public class WalletElements {
     public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
-    public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
+    public static By clickAdd = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[1]");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Portrait\"]");
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");

@@ -116,8 +116,11 @@ public class GeneralStepDefs{
             test.mobile().issuer().clickScreen();
             test.mobile().issuer().chooseIssueDate();
             test.mobile().issuer().chooseExpiryDate();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().enterCodeFieldIssuer();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().enterSignFieldIssuer();
+            test.mobile().issuer().clickScreen();
             test.mobile().issuer().enterValueFieldIssuer();
             test.mobile().issuer().clickScreen();
             test.mobile().issuer().scrollUntilFindSubmit();
