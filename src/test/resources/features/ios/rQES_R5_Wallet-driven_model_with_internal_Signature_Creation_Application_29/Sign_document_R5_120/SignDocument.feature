@@ -13,17 +13,18 @@ Feature: Signing a document with EUDI Wallet
     Then the EUDI Wallet presents the Credential ID details to the user
     And user confirms to proceed with the signing operation
 
-  @US_SD_TC_02 @manual:Passed
+  @US_SD_TC_02 @manual:Ignored
   Scenario: Multiple Credential IDs available
     Given the QTSP has multiple Credential IDs enrolled for the user
     When the EUDI Wallet requests available Credential IDs from the QTSP
     Then the EUDI Wallet asks the user to select a preferred Credential ID
 
-  @US_SD_TC_03 @manual:Passed
-  Scenario: Single Credential ID available
-    Given the QTSP has one Credential ID enrolled for the user
-    When the EUDI Wallet requests available Credential IDs from the QTSP
-    Then the flow continues to retrieve Credential ID details and calculate the document hash
+  @US_SD_TC_03 @manual:Ignored
+  Scenario: No Credential IDs enrolled for user in QTSP
+    Given the Relying Party has retrieved available Credential IDs from the QTSP
+    When there are no available Credential IDs for the user in the QTSP
+    Then the Relying Party should inform the user to enroll a Qualified Certificate in the QTSP
+    And the document signing process should stop
 
   @US_SD_TC_04 @manual:Passed
   Scenario: QTSP redirects user to attestation request
