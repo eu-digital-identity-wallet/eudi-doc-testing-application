@@ -31,7 +31,7 @@ Feature: View and Authorize Transaction with EUDI Wallet
   @US_HPRWTD_TC_03
   Scenario: User proceeds with data sharing flow
     Given the user views a presentation request from a Relying Party
-    When the user selects the Share button
+    When the user selects the Share buttin
     Then the wallet requests the user to enter the PIN to proceed
 
   @US_HPRWTD_TC_04

@@ -1,4 +1,4 @@
-@ANDROID @US_RAFAJBPAR @Q3_2025
+@ANDROID @US_RAFAJBPAR
 Feature: Apply for Cruise Ship Position Using EUDI Wallet
   As a EUDI Wallet User
   I want to apply for a cruise ship position by presenting attestations to the Employer Service
