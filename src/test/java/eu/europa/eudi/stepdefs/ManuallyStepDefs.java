@@ -8065,6 +8065,10 @@ public class ManuallyStepDefs {
     }
 
 
+    @When("the user selects the Share buttin")
+    public void theUserSelectsTheShareButtin() {
+        //manual
+    }
 }
 
 
