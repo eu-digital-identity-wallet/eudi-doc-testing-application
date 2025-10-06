@@ -1,4 +1,4 @@
-name: automation_with_emulator - Standard
+name: conformance
 
 on:
   workflow_dispatch:
