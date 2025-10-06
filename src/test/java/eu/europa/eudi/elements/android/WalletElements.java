@@ -27,7 +27,7 @@ public class WalletElements {
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Proceed to authentication\"]");
     public static By welcomePage = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
     public static By userProfil = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
-    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid_mdoc\"]");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By clickMdl = By.xpath("//android.widget.TextView[@text='eu.europa.ec.eudi.mdl_mdoc' or @text='org.iso.18013.5.1.mDL' or contains(@text,'mDL')]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
@@ -43,10 +43,10 @@ public class WalletElements {
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickFormEu = By.xpath("//android.widget.RadioButton[@resource-id=\"FC\"]");
     public static By dataPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Enter the data for your EUDI Wallet\"]");
-    public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
+    public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[2]/android.widget.EditText");
 //    public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[2]/android.widget.EditText");
     public static By givenNameField = By.xpath("//android.webkit.WebView[@text=\"Form for your EUDI Wallet\"]/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText");
-    public static By clickFamilyName = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
+    public static By clickFamilyName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[1]/android.widget.EditText");
     public static By givenFamilyField = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[1]/android.widget.EditText");
     public static By clickBirthDate = By.xpath("//android.widget.Spinner");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
