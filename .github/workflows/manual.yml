@@ -1,4 +1,4 @@
-name: Manual Workflow
+name: Manual Tests Execution
 on:
   workflow_dispatch:
   #[push]
