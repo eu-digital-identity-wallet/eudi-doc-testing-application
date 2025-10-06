@@ -1,4 +1,4 @@
-name: Automation with Browserstack - Standard
+name: Automation Tests Execution with Browserstack Farm
 
 on:
   # push:
