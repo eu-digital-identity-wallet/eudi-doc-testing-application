@@ -405,8 +405,7 @@ public class Issuer {
 
             new WebDriverWait(driver, Duration.ofSeconds(50))
                     .until(ExpectedConditions.textToBePresentInElementLocated(
-                            eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed,
-                            Literals.Issuer.FORM.label
+                            eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed, Literals.Issuer.FORM.label
                     ));
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
