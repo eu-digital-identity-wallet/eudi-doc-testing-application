@@ -1758,6 +1758,28 @@
 2025-06-24T07:04:55.227Z CLI debug [appautomate:service]     loaded module: appautomate:module
 2025-06-24T07:04:55.297Z CLI debug [main]     Starting main function execution
 2025-06-24T07:04:55.298Z CLI debug [main]     Executing CLI
+<<<<<<< HEAD
+2025-06-24T12:02:20.817Z CLI debug [testhub:service]     loaded module: _0x846cd6
+2025-06-24T12:02:20.818Z CLI debug [instrumentation:service]     loaded module: instrumentation:module
+2025-06-24T12:02:20.818Z CLI debug [observability:service]     loaded module: observability:module
+2025-06-24T12:02:20.819Z CLI debug [accessibility:service]     loaded module: accessibility:module
+2025-06-24T12:02:20.819Z CLI debug [ai:service]     loaded module: _0x1ace72
+2025-06-24T12:02:20.820Z CLI debug [percy:service]     loaded module: _0x5d817a
+2025-06-24T12:02:20.820Z CLI debug [local:service]     loaded module: _0x5b26eb
+2025-06-24T12:02:20.821Z CLI debug [appautomate:service]     loaded module: appautomate:module
+2025-06-24T12:02:20.891Z CLI debug [main]     Starting main function execution
+2025-06-24T12:02:20.892Z CLI debug [main]     Executing CLI
+2025-06-24T12:02:37.620Z CLI debug [testhub:service]     loaded module: _0x846cd6
+2025-06-24T12:02:37.621Z CLI debug [instrumentation:service]     loaded module: instrumentation:module
+2025-06-24T12:02:37.621Z CLI debug [observability:service]     loaded module: observability:module
+2025-06-24T12:02:37.621Z CLI debug [accessibility:service]     loaded module: accessibility:module
+2025-06-24T12:02:37.622Z CLI debug [ai:service]     loaded module: _0x1ace72
+2025-06-24T12:02:37.622Z CLI debug [percy:service]     loaded module: _0x5d817a
+2025-06-24T12:02:37.623Z CLI debug [local:service]     loaded module: _0x5b26eb
+2025-06-24T12:02:37.623Z CLI debug [appautomate:service]     loaded module: appautomate:module
+2025-06-24T12:02:37.688Z CLI debug [main]     Starting main function execution
+2025-06-24T12:02:37.689Z CLI debug [main]     Executing CLI
+=======
 2025-07-08T13:48:21.135Z CLI debug [testhub:service]     loaded module: _0x15acac
 2025-07-08T13:48:21.136Z CLI debug [instrumentation:service]     loaded module: instrumentation:module
 2025-07-08T13:48:21.136Z CLI debug [observability:service]     loaded module: observability:module
@@ -1878,3 +1900,4 @@
 2025-07-09T08:10:53.427Z CLI debug [appautomate:service]     loaded module: appautomate:module
 2025-07-09T08:10:53.499Z CLI debug [main]     Starting main function execution
 2025-07-09T08:10:53.500Z CLI debug [main]     Executing CLI
+>>>>>>> conformance_testing
