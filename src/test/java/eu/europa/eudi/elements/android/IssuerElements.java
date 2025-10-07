@@ -12,7 +12,7 @@ public class IssuerElements {
     public static By issuerServicePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Testing OpenID for Verifiable Credential Issuance - draft 13\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
-    public static By formIsDisplayed = By.xpath("//android.widget.TextView[@text=\" demo application.\"]");
+    public static By formIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Enter the data for your EUDI Wallet\"]");
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By issuanceDate = By.xpath("//android.widget.CheckBox[@text=\"Issuance date\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
