@@ -12,7 +12,7 @@ public interface Literals {
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
-        PID("eu.europa.ec.eudi.pid.1"),
+        PID("PID"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
         MDL_IOS("mdl_doctype_name"),
@@ -25,7 +25,7 @@ public interface Literals {
         DRIVING_LICENCE("Driving License"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
         SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),
-        ISSUANCE_DETAILS("eu.europa.ec.eudi.pid.1"),
+        ISSUANCE_DETAILS("PID"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
         SCAN_QR("SCAN QR"),
@@ -33,7 +33,7 @@ public interface Literals {
         DETAILS_NATIONAL_ID_IOS("family_name"),
         DETAILS_MDL("family_name"),
         DETAILS_MDL_IOS("family_name"),
-        DETAILS_DOCUMENT("family_name"),
+        DETAILS_DOCUMENT("Family Name(s)"),
 
         DETAILS_DOCUMENT_IOS("family_name"),
         OPTIONAL_DATA("Family Name"),
@@ -111,18 +111,19 @@ public interface Literals {
     }
 
     enum Issuer{
-        CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
+        CREDENTIAL_PAGE("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM(" demo application."),
+        FORM("Test Provider Form"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
-        AUTHORIZE_IS_DISPLAYED("Review & Send"),
+        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
-        FORM_ANDROID("EUDI Wallet Credential");
+        FORM_ANDROID("EUDI Wallet Credential"),
+        FORM_IOS("Enter the data for your EUDI Wallet");
 
         public final String label;
         Issuer(String label) {
