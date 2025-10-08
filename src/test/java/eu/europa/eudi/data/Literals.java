@@ -115,11 +115,11 @@ public interface Literals {
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM(" demo application."),
+        FORM("Test Provider Form"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
-        AUTHORIZE_IS_DISPLAYED("Review & Send"),
+        AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
         FORM_ANDROID("EUDI Wallet Credential");
