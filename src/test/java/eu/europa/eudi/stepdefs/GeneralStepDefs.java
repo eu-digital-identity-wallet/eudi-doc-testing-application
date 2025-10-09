@@ -496,12 +496,8 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().clickAddAttributes();
 //        test.mobile().issuer().enableAgeOver18();
 //        test.mobile().issuer().clickConfirm();
-<<<<<<< HEAD
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
-
-=======
->>>>>>> 30d727907d34b230961938bfec69794e742f07ba
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -881,12 +877,10 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
-//        test.mobile().issuer().enterCodeFieldIssuer();
-//        test.mobile().issuer().enterSignFieldIssuer();
-//        test.mobile().issuer().enterValueFieldIssuer();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -913,9 +907,10 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
 //        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
 //        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -2060,11 +2055,7 @@ public class GeneralStepDefs{
 
     @And("the user clicks on the PID doc on documents")
     public void theUserClicksOnThePIDDocOnDocuments() {
-<<<<<<< HEAD
-//        test.mobile().wallet().clickPIDOnDocuments();
-=======
         test.mobile().wallet().clickPID();
->>>>>>> 30d727907d34b230961938bfec69794e742f07ba
     }
 
     @Given("the user is viewing the details of attestation auto")
@@ -2077,11 +2068,7 @@ public class GeneralStepDefs{
     }
 
     private void theUserClicksOnThePIDDocument() {
-<<<<<<< HEAD
-//        test.mobile().wallet().clickPIDOnDocuments();
-=======
         test.mobile().wallet().clickPID();
->>>>>>> 30d727907d34b230961938bfec69794e742f07ba
     }
 
     @Given("the PID is now open")

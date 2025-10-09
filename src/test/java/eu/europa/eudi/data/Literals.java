@@ -31,7 +31,7 @@ public interface Literals {
         SCAN_QR("SCAN QR"),
         DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_NATIONAL_ID_IOS("family_name"),
-        DETAILS_MDL("family_name"),
+        DETAILS_MDL("Family name"),
         DETAILS_MDL_IOS("family_name"),
         DETAILS_DOCUMENT("Family Name(s)"),
 
