@@ -111,7 +111,7 @@ public interface Literals {
     }
 
     enum Issuer{
-        CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
+        CREDENTIAL_PAGE("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
@@ -122,7 +122,8 @@ public interface Literals {
         AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
-        FORM_ANDROID("EUDI Wallet Credential");
+        FORM_ANDROID("EUDI Wallet Credential"),
+        FORM_IOS("Enter the data for your EUDI Wallet");
 
         public final String label;
         Issuer(String label) {

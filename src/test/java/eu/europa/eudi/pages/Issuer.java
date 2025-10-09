@@ -403,7 +403,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
+            Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
     }
 

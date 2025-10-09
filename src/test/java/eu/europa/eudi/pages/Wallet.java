@@ -720,6 +720,15 @@ public class Wallet {
     public void scrollUntilPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+<<<<<<< HEAD
+            driver.findElement(MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".flingForward()" +
+                            ".setMaxSearchSwipes(50)" +
+                            ".scrollIntoView(new UiSelector().text(\"PID\"))"
+            ));
+=======
             driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
             
             for (int i = 0; i < 5; i++) {
@@ -736,6 +745,7 @@ public class Wallet {
             }
             
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+>>>>>>> 30d727907d34b230961938bfec69794e742f07ba
         } else {
             int i = 1;
             while (i < 3) {
