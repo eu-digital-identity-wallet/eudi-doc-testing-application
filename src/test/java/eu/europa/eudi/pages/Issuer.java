@@ -225,7 +225,9 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement searchBar = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.documentNumberField);
             searchBar.clear();
-            searchBar.sendKeys("1234");        }
+            searchBar.sendKeys("1234");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.closeKeyboardBefore03)).click();
+        }
     }
 
     public void chooseIssueDate() {
