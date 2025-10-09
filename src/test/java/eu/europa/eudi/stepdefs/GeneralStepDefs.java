@@ -496,11 +496,9 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().clickAddAttributes();
 //        test.mobile().issuer().enableAgeOver18();
 //        test.mobile().issuer().clickConfirm();
-<<<<<<< HEAD
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
-=======
->>>>>>> bc64dbb8abf18724089ed5e1c018453cdc2ef5f6
+
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
