@@ -877,10 +877,12 @@ public class GeneralStepDefs{
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
+//        test.mobile().issuer().enterCodeFieldIssuer();
+//        test.mobile().issuer().enterSignFieldIssuer();
+//        test.mobile().issuer().enterValueFieldIssuer();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().authorizeIsDisplayed();
+//        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
