@@ -196,7 +196,7 @@ public class Verifier {
 
     public void selectAllAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
+            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro") || test.envDataConfig().getAppiumAndroidDeviceName().equals("Redmi Note 12 Pro+ 5G")) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.selectAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.firstAttribute)).click();
@@ -274,7 +274,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://dev.verifier.eudiw.dev/home";
+            String url = "https://verifier.eudiw.dev/home";
 
             try {
                 try {

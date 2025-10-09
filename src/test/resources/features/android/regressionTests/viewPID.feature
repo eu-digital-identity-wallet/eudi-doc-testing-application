@@ -11,7 +11,7 @@ Feature: View PID document
   Scenario: User opens the PID document from the dashboard
     Given the user is on Home page
     When the user clicks on Documents
-    And the user clicks on the PID doc on documents
+    And the user clicks on the PID doc
     Then the PID should open
     And the details should be blurred by default auto
     And the user should see the eye icon to view the details of the attestation auto
