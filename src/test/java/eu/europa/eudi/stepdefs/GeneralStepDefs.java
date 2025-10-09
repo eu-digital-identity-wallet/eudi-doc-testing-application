@@ -496,6 +496,8 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().clickAddAttributes();
 //        test.mobile().issuer().enableAgeOver18();
 //        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -880,7 +882,7 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().enterValueFieldIssuer();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -907,9 +909,12 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
 //        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickSubmit();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmit();
+        }
 //        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -2054,7 +2059,7 @@ public class GeneralStepDefs{
 
     @And("the user clicks on the PID doc on documents")
     public void theUserClicksOnThePIDDocOnDocuments() {
-//        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().wallet().clickPID();
     }
 
     @Given("the user is viewing the details of attestation auto")
@@ -2067,7 +2072,7 @@ public class GeneralStepDefs{
     }
 
     private void theUserClicksOnThePIDDocument() {
-//        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().wallet().clickPID();
     }
 
     @Given("the PID is now open")

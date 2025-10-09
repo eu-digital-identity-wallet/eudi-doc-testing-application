@@ -719,15 +719,23 @@ public class Wallet {
 
     public void scrollUntilPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".flingForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"PID\"))"
-            ));
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            
+            for (int i = 0; i < 5; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPID);
+                    if (pidElement.isDisplayed()) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    driver.findElement(MobileBy.AndroidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
+                }
+            }
+            
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
             int i = 1;
             while (i < 3) {
