@@ -252,3 +252,9 @@ sdk:driver:get|4.518100023269653
 sdk:setup|3650.392299890518
 sdk:cli:on-bootstrap|0.18350005149841309
 sdk:driver:post-initialization|60.52769994735718
+sdk:automate:hub-management|1821.5350999832153
+sdk:driver:pre-initialization|4.657000005245209
+sdk:driver:get|5.795799970626831
+sdk:setup|3985.677199959755
+sdk:cli:on-bootstrap|11.515399992465973
+sdk:driver:post-initialization|89.7470999956131
