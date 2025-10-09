@@ -882,7 +882,7 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().enterValueFieldIssuer();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -909,8 +909,10 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
 //        test.mobile().issuer().clickNationality();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmit();
+        }
 //        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
