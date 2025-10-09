@@ -1,4 +1,4 @@
-@IOS @US_RIEIDCIIRCD @Q3_2025
+@IOS @US_RIEIDCIIRCD
   Feature: Issuance of Employee ID Credential in EUDI Wallet
     As a EUDI Wallet User
     I want the employer to issue an employee ID credential and store it in my EUDI Wallet
