@@ -66,11 +66,16 @@ public class WalletElements {
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
+<<<<<<< HEAD
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name\"]");
+=======
+    public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
+    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name(s)\"]");
+>>>>>>> 30d727907d34b230961938bfec69794e742f07ba
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");;
     public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
-    public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name\"]");
+    public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By clickEyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
     public static By actuallDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"ANDERSSON\"]");
     public static By clickExpandVerification = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
@@ -93,9 +98,15 @@ public class WalletElements {
     public static By givenNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Given Name(s)\"]");
     public static By birthDateIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.widget.Button");
+<<<<<<< HEAD
     public static By clickToAddDocument = By.xpath("//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]");
     public static By clickFromList = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By clickBackButton = By.xpath("//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button");
+=======
+    public static By clickToAddDocument = By.xpath("//android.view.View[@content-desc=\"Add\"]");
+    public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
+    public static By clickBackButton = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button");
+>>>>>>> 30d727907d34b230961938bfec69794e742f07ba
     public static By clickHomeButton = By.xpath("//android.widget.TextView[@text=\"Home\"]");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By clickDeleteDocument = By.xpath("//android.widget.ScrollView/android.view.View[3]/android.widget.Button");

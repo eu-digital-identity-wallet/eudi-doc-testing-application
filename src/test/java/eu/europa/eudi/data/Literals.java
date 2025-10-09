@@ -38,7 +38,7 @@ public interface Literals {
         DETAILS_DOCUMENT_IOS("family_name"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("birth_date"),
+        VERIFICATION_DETAILS("Birth Date"),
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
