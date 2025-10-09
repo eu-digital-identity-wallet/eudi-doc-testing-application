@@ -32,7 +32,7 @@ public class WalletElements {
     public static By clickMdl = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
     public static By clickDeleteButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
-    public static By confirmsDeletion = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.widget.Button");
+    public static By confirmsDeletion = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
     public static By unselectData = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
@@ -67,7 +67,7 @@ public class WalletElements {
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
-    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name(s)\"]");
+    public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");;
     public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
@@ -96,7 +96,6 @@ public class WalletElements {
     public static By clickToAddDocument = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button");
-
     public static By clickHomeButton = By.xpath("//android.widget.TextView[@text=\"Home\"]");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By clickDeleteDocument = By.xpath("//android.widget.ScrollView/android.view.View[3]/android.widget.Button");
@@ -119,8 +118,8 @@ public class WalletElements {
     public static By FormatIsDisplayed = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
-    public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
-    public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Presentation Query Type\"]");
+    public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
+    public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Request URI Method\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choose a digital document from the list below to add to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
