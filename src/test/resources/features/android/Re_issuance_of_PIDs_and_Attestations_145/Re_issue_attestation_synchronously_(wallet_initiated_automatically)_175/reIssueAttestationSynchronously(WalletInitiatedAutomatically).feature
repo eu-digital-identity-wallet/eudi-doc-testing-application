@@ -1,4 +1,4 @@
-@ANDROID @US_RIASWIA @Q3_2025
+@ANDROID @US_RIASWIA
 Feature:Automatic PID/Attestation Re-issuance During Presentation
   As an EUDI Wallet,
   I want to synchronously and automatically re-issue a PID/attestation from the original issuer by replacing an existing PID/attestation that was revoked, expired or reached unused limit during a PID/attestation presentation,

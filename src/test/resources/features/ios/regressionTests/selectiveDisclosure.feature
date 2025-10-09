@@ -1,7 +1,7 @@
 @IOS @automated @US_SD
 Feature: Selective Disclosure
 
-  @US_SD_TC_01 @before_01
+  @US_SD_TC_01 @
   Scenario: View Requested Data from Verifier
     Given the user is in the verifier app
     When the verifier requests a doc from the wallet user
