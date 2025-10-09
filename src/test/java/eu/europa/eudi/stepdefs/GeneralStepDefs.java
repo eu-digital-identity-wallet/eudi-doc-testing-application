@@ -2102,7 +2102,9 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().clickAddAttributes();
 //        test.mobile().issuer().enableAgeOver18();
 //        test.mobile().issuer().clickConfirm();
-        test.mobile().issuer().authorizeIsDisplayed();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().authorizeIsDisplayed();
+        }
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
