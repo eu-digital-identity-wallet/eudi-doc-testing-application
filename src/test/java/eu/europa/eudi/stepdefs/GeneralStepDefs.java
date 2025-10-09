@@ -2054,7 +2054,7 @@ public class GeneralStepDefs{
 
     @And("the user clicks on the PID doc on documents")
     public void theUserClicksOnThePIDDocOnDocuments() {
-//        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().wallet().clickPID();
     }
 
     @Given("the user is viewing the details of attestation auto")
@@ -2067,7 +2067,7 @@ public class GeneralStepDefs{
     }
 
     private void theUserClicksOnThePIDDocument() {
-//        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().wallet().clickPID();
     }
 
     @Given("the PID is now open")

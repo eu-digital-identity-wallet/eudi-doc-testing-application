@@ -12,7 +12,7 @@ public interface Literals {
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
-        PID("eu.europa.ec.eudi.pid.1"),
+        PID("PID"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
         MDL_IOS("mdl_doctype_name"),
@@ -33,12 +33,12 @@ public interface Literals {
         DETAILS_NATIONAL_ID_IOS("family_name"),
         DETAILS_MDL("family_name"),
         DETAILS_MDL_IOS("family_name"),
-        DETAILS_DOCUMENT("family_name"),
+        DETAILS_DOCUMENT("Family Name(s)"),
 
         DETAILS_DOCUMENT_IOS("family_name"),
         OPTIONAL_DATA("Family Name"),
         ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("birth_date"),
+        VERIFICATION_DETAILS("Birth Date"),
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
