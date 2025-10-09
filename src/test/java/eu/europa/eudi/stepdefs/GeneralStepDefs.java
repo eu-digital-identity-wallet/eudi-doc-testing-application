@@ -880,7 +880,7 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().enterValueFieldIssuer();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
