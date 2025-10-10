@@ -3,6 +3,7 @@ package eu.europa.eudi.stepdefs;
 import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -132,10 +133,29 @@ public class GeneralStepDefs{
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android){
-            test.stopAndroidDriverSession();
+           test.stopAndroidDriverSession();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
         }
         if (ios)
-        { test.stopIosDriverSession();
+        {
+            test.stopIosDriverSession();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
         }
         test.stopLogging(); }
 
