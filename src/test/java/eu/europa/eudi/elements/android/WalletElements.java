@@ -59,7 +59,7 @@ public class WalletElements {
     public static By drivingLicenceIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Driving License\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]");
-    public static By clickScreen = By.xpath("//android.view.View[@text=\"Portrait:\"]");
+    public static By clickScreen = By.xpath("//android.view.View[@text=\"Driving Privileges\"]");
     public static By clickXButton = By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Button");
     public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By clickIssue = By.xpath("//android.widget.TextView[@text=\"ISSUE\"]");
