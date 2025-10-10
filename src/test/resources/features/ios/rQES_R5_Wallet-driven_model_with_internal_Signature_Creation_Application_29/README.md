@@ -6,3 +6,4 @@
 
 - [Select and authenticate to QTSP (R5) #119](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/119)
 - [Sign document (R5) #120](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/120)
+- [Select document to be signed (R3/R5) #118](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/118)
