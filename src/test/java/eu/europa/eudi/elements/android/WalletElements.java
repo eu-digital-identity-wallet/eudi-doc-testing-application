@@ -92,7 +92,7 @@ public class WalletElements {
     public static By familyNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By givenNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Given Name(s)\"]");
     public static By birthDateIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.k0/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.widget.Button");
+    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button");
     public static By clickToAddDocument = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button");
