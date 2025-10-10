@@ -293,6 +293,17 @@ public class MobileWebDriverFactory {
             String remoteFilePath = "/data/local/tmp/trace_file.trace";
             String localFilePath = "/trace_file.trace";
             // pullTraceFile(remoteFilePath, localFilePath);
+            androidDriver.quit();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
+
         }
     }
 
@@ -300,6 +311,16 @@ public class MobileWebDriverFactory {
         if (iosDriver != null) {
 
             iosDriver.quit();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
+
         }
     }
 }
