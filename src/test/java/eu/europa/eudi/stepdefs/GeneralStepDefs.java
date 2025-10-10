@@ -61,7 +61,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().addPIDPageIsDisplayed();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
+//            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
         }
@@ -2114,9 +2114,11 @@ public class GeneralStepDefs{
     @Given("the user sees success message in the EUDI Wallet app")
     public void theUserSeesSuccessMessageInTheEUDIWalletApp() throws InterruptedException {
         theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
+        theUserAuthenticatesAndConsentsToTheIssuance();
         insertsTheRequiredOfCredentialDetails();
-//        theUserAuthenticatesAndConsentsToTheIssuance();
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        theUserIsRedirectedToTheEUDIWalletApp();
+        aSuccessMessageIsDisplayedOnTheEUDIWalletApp();
+//        test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
 }
 
