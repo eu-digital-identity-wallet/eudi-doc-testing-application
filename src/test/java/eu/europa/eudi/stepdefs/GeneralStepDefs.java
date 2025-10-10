@@ -953,6 +953,7 @@ public class GeneralStepDefs{
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
         test.mobile().verifier().clickNext();
+        test.mobile().verifier().clickNextForAndroid();
         test.mobile().verifier().clickNext();
         test.mobile().verifier().assertAndClickNext();
     }

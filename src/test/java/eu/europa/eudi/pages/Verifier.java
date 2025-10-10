@@ -569,4 +569,10 @@ public class Verifier {
     public void urlToWalletIsDisplayed() {
         test.mobile().verifier().chooseWallet();
     }
+
+    public void clickNextForAndroid() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickNextForVerifier)).click();
+        }
+    }
 }
