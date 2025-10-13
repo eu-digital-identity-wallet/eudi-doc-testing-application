@@ -3,7 +3,6 @@ package eu.europa.eudi.stepdefs;
 import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -31,7 +30,7 @@ public class GeneralStepDefs{
     static TestSetup test;
     @Before
     public void setup(Scenario scenario) throws InterruptedException {
-      
+
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
@@ -62,7 +61,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().addPIDPageIsDisplayed();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-//            test.mobile().issuer().sleepMethod();
+            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
         }
@@ -133,29 +132,10 @@ public class GeneralStepDefs{
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
         if (android){
-           test.stopAndroidDriverSession();
-            try {
-
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-            }
+            test.stopAndroidDriverSession();
         }
         if (ios)
-        {
-            test.stopIosDriverSession();
-            try {
-
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-            }
+        { test.stopIosDriverSession();
         }
         test.stopLogging(); }
 
@@ -2134,11 +2114,9 @@ public class GeneralStepDefs{
     @Given("the user sees success message in the EUDI Wallet app")
     public void theUserSeesSuccessMessageInTheEUDIWalletApp() throws InterruptedException {
         theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-        theUserAuthenticatesAndConsentsToTheIssuance();
         insertsTheRequiredOfCredentialDetails();
-        theUserIsRedirectedToTheEUDIWalletApp();
-        aSuccessMessageIsDisplayedOnTheEUDIWalletApp();
-//        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+//        theUserAuthenticatesAndConsentsToTheIssuance();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
 }
 
