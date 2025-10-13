@@ -5,6 +5,7 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.ios.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
@@ -457,15 +458,8 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickTransactionInitialized)).click();
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 66, 220));
-            tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-            ((RemoteWebDriver) driver).perform(Arrays.asList(tap));
+            WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickTransactionInitialized));
+            test.mobile().wallet().tapActionLeft(element);
         }
     }
     public void getTransactionId() {
