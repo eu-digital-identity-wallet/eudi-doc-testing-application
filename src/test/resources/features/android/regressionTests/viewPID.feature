@@ -18,13 +18,13 @@ Feature: View PID document
 
   @US_VP_TC_03 @before_01
   Scenario: Viewing attestation details after selecting the 'eye' icon
-    Given the user is viewing the details of an attestation auto
+    Given the user is viewing the details of attestation auto
     When the user selects eye icon auto
     Then the attestation details should no longer be blurred auto
 
   @US_VP_TC_04 @before_01
   Scenario: User closes the PID document and returns to the dashboard
-    Given the PID is open
+    Given the PID is now open
     When the user clicks the back button
     Then the PID should close
     And the user should see the dashboard screen again
