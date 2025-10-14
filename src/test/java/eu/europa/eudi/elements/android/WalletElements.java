@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.xpath("//android.widget.TextView[@text=\"Welcome to your Wallet\"]");
-    public static By pinTexfield1 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
-    public static By pinTexfield2 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
-    public static By pinTexfield3 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]");
-    public static By pinTexfield4 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[4]");
-    public static By pinTexfield5 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[5]");
-    public static By pinTexfield6 = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[6]");
+    public static By pinTexfield1 = By.xpath("//android.widget.ScrollView/android.widget.EditText[1]");
+    public static By pinTexfield2 = By.xpath("//android.widget.ScrollView/android.widget.EditText[2]");
+    public static By pinTexfield3 = By.xpath("//android.widget.ScrollView/android.widget.EditText[3]");
+    public static By pinTexfield4 = By.xpath("//android.widget.ScrollView/android.widget.EditText[4]");
+    public static By pinTexfield5 = By.xpath("//android.widget.ScrollView/android.widget.EditText[5]");
+    public static By pinTexfield6 = By.xpath("//android.widget.ScrollView/android.widget.EditText[6]");
     public static By nextButton = By.xpath("//android.widget.TextView[@text=\"NEXT\"]");
     public static By clickConfirm = By.xpath("//android.widget.TextView[@text=\"CONFIRM\"]");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"Your wallet is secured!\"]");
@@ -92,7 +92,7 @@ public class WalletElements {
     public static By familyNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By givenNameIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Given Name(s)\"]");
     public static By birthDateIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button");
+    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.e0/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button");
     public static By clickToAddDocument = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
@@ -128,7 +128,7 @@ public class WalletElements {
     public static By clickButtonIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By clickPreAuthorizationCode = By.xpath("//android.widget.RadioButton[@resource-id=\"check2\"]");
     public static By verificationIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer requires verification\"]");
-    public static By transactionCodeField = By.xpath("//androidx.compose.ui.platform.i0/android.view.View/android.view.View/android.view.View/android.widget.EditText");
+    public static By transactionCodeField = By.xpath("//androidx.compose.ui.platform.e0/android.view.View/android.view.View/android.view.View/android.widget.EditText");
     public static By clickAgeOver18 = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[3]");
     public static By detailsOfOver18 = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pseudonym.age_over_18.1\"]");
     public static By clickPseudonymDeferred = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[7]");

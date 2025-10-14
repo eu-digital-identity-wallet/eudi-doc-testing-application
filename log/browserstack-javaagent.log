@@ -5668,3 +5668,526 @@ com.browserstack.testOps.RequestException: Non 200 response
 13:17:16.138 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
 13:17:16.145 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 7c943b97-433a-4135-9988-34ae9f96d5ae, testhub id: 4fgstcoh70q5bhbm6gfgwedaynplhuvczn0ycwv6
 13:17:16.145 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+10:33:07.255 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:33:08.443 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+10:33:08.445 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+10:33:09.035 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:33:09.136 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+10:33:17.304 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://0343b812519505ea21f35c3b7f2dd1b8a026b308]
+10:33:17.304 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+10:33:17.309 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: d1c49a17-f44c-4b7e-a2cd-0a233a400d1b
+10:33:17.310 [main] INFO  c.b.config.BrowserStackConfig - INFO
+10:33:17.616 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+10:33:17.622 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:33:24.313 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:19664) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+10:33:24.313 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+10:33:29.336 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+10:33:29.344 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:33:29.369 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+10:33:32.541 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+10:33:32.945 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+10:33:35.000 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: qp4x6hfwcmi3shm1s4ednpqnc6jagqg35uc4qsbe
+10:33:35.001 [main] INFO  c.b.config.BrowserStackConfig - INFO
+10:33:35.031 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+10:33:49.683 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+10:33:51.764 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:33:53.022 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:33:53.122 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+10:33:53.673 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: a866663f-5925-405f-9ce3-b95f7efcb3a7
+10:33:53.674 [main] INFO  c.b.config.BrowserStackConfig - INFO
+10:33:54.038 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+10:33:54.045 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:34:00.636 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:33496) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+10:34:00.636 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+10:34:02.926 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+10:34:02.934 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:34:02.963 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+10:34:05.058 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+10:34:05.241 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+10:42:02.711 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+10:42:03.640 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+10:42:09.418 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/06154cd43a613974c865fdc21225363392a6d5ab
+10:42:09.418 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+10:42:09.424 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: d1c49a17-f44c-4b7e-a2cd-0a233a400d1b, testhub id: qp4x6hfwcmi3shm1s4ednpqnc6jagqg35uc4qsbe
+10:42:09.424 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+10:59:25.797 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:59:27.143 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+10:59:27.145 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+10:59:27.701 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:59:27.801 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+10:59:35.912 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://0343b812519505ea21f35c3b7f2dd1b8a026b308]
+10:59:35.912 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+10:59:35.918 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 04db390b-77d8-4ca8-b86b-2140fb5f2b2c
+10:59:35.918 [main] INFO  c.b.config.BrowserStackConfig - INFO
+10:59:36.264 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+10:59:36.271 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:59:44.046 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:32864) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+10:59:44.047 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+10:59:47.154 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+10:59:47.162 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+10:59:47.192 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+10:59:50.625 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+10:59:51.403 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+10:59:53.614 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: pofnkbmdxyhqan9qlpccjlpfkrlqiqkdda9why4j
+10:59:53.614 [main] INFO  c.b.config.BrowserStackConfig - INFO
+10:59:53.654 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+11:00:11.015 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+11:00:12.603 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:00:14.201 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:00:14.307 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:00:14.867 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 217ff07f-94fb-4290-a8f9-7e9021016444
+11:00:14.867 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:00:15.204 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:00:15.210 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:00:21.290 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:28732) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:00:21.291 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:00:23.619 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:00:23.628 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:00:23.653 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:00:25.547 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:00:25.707 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:10:37.405 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+11:10:38.391 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:10:44.080 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 04db390b-77d8-4ca8-b86b-2140fb5f2b2c, testhub id: pofnkbmdxyhqan9qlpccjlpfkrlqiqkdda9why4j
+11:10:44.080 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+11:16:33.323 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:16:34.939 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:16:34.940 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:16:35.551 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:16:35.670 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:16:52.709 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://sample.app]
+11:16:52.710 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+11:16:52.743 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: fe1f1cca-5483-49ac-b47d-e9b7e3e16867
+11:16:52.743 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:16:53.217 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:16:53.225 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:02.355 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:23920) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:17:02.356 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:17:06.266 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:17:06.273 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:06.294 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:17:10.012 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:17:10.785 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:17:12.915 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: mmuc5guwmndp8w5hibtx3wmdihodndywad3fzh9b
+11:17:12.915 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:17:12.961 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+11:17:36.416 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+11:17:37.651 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:17:38.260 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:17:38.294 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:17:38.536 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: c7973fb7-8180-44ff-9ba9-34364b2b73b4
+11:17:38.536 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:17:38.659 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:17:38.661 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:41.526 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:32560) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:17:41.526 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:17:43.172 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:17:43.175 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:17:43.184 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:17:44.934 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:17:45.014 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:20:50.157 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+11:20:51.091 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:20:57.933 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/492fdbc0c2ea2baeb7ac3e52cfa21de0a509e5c8
+11:20:57.933 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+11:20:57.940 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: fe1f1cca-5483-49ac-b47d-e9b7e3e16867, testhub id: mmuc5guwmndp8w5hibtx3wmdihodndywad3fzh9b
+11:20:57.940 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+11:21:56.169 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:21:57.464 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:21:57.466 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:21:58.685 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:21:58.890 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:22:10.659 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://sample.app]
+11:22:10.660 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+11:22:10.668 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e634235e-c165-4366-969c-3188d138334c
+11:22:10.668 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:22:10.997 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:22:11.004 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:22:18.953 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:10576) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:22:18.953 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:22:22.271 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:22:22.280 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:22:22.310 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:22:25.094 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:22:25.492 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:22:27.819 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 0aho2jgkhfl0ihl9vijvicmuvywbi9ilswui9juj
+11:22:27.819 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:22:27.856 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+11:22:47.661 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+11:22:50.037 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:22:51.547 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:22:51.678 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:22:52.305 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e9ca4aeb-6b64-49b4-b45b-fa9ffb0b762c
+11:22:52.306 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:22:52.677 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:22:52.685 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:22:59.149 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:29432) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:22:59.150 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:23:01.840 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:23:01.850 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:23:01.878 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:23:03.777 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:23:03.951 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:33:16.669 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+11:33:17.589 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:33:23.537 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e634235e-c165-4366-969c-3188d138334c, testhub id: 0aho2jgkhfl0ihl9vijvicmuvywbi9ilswui9juj
+11:33:23.538 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+11:40:43.636 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:40:44.880 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:40:44.881 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:40:45.429 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:40:45.526 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:40:53.622 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://sample.app]
+11:40:53.623 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+11:40:53.628 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e3b1273d-d756-4b0b-a826-76ee86890bf9
+11:40:53.630 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:40:53.965 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:40:53.971 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:41:01.588 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:31840) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:41:01.589 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:41:04.866 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:41:04.874 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:41:04.899 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:41:07.609 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:41:08.020 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:41:09.782 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: a8opc9j8izuoesm25ileczfntdg9na1iv5fdsutn
+11:41:09.782 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:41:09.819 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+11:41:24.734 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+11:41:27.073 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:41:28.835 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:41:28.907 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:41:29.320 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: e2dd8d0a-385d-4ca2-ad05-4042815bf84e
+11:41:29.320 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:41:29.515 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:41:29.519 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:41:35.759 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:31352) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:41:35.760 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:41:38.569 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:41:38.577 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:41:38.593 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:41:40.826 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:41:40.993 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:51:53.146 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+11:51:54.057 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+11:52:01.429 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: e3b1273d-d756-4b0b-a826-76ee86890bf9, testhub id: a8opc9j8izuoesm25ileczfntdg9na1iv5fdsutn
+11:52:01.429 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+11:55:15.659 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:55:17.682 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+11:55:17.697 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+11:55:18.499 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:55:18.549 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:55:34.802 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://41139b1f29e9a8d4194c076940c544a7f71edcda]
+11:55:34.802 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+11:55:34.808 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: d3b7b7e6-7a5b-4614-bb36-6032d836a8fb
+11:55:34.809 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:55:35.136 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:55:35.144 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:55:41.694 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:29052) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:55:41.695 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:55:44.763 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:55:44.773 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:55:44.798 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:55:48.184 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+11:55:48.617 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:55:50.648 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: ksxfirpweznrkcpp1nqffghwcepnhneuxygmdxnt
+11:55:50.649 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:55:50.683 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+11:56:01.696 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+11:56:02.784 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:56:03.383 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:56:03.417 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+11:56:03.687 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 6aed3c07-bfe8-4d8e-b2ae-b44167abb791
+11:56:03.687 [main] INFO  c.b.config.BrowserStackConfig - INFO
+11:56:03.811 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+11:56:03.814 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:56:06.417 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:32900) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+11:56:06.417 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+11:56:07.934 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+11:56:07.937 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+11:56:07.948 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+11:56:09.686 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+11:56:09.766 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:04:22.046 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+12:04:23.110 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:04:30.067 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/951dce514034bedda565189b79e0c05ee3fab414
+12:04:30.067 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:04:30.073 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: d3b7b7e6-7a5b-4614-bb36-6032d836a8fb, testhub id: ksxfirpweznrkcpp1nqffghwcepnhneuxygmdxnt
+12:04:30.073 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:07:33.884 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:07:35.218 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:07:35.220 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:07:36.427 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:07:36.559 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:07:55.124 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://41139b1f29e9a8d4194c076940c544a7f71edcda]
+12:07:55.124 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+12:07:55.128 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 8a0d696d-1031-46ea-b023-dd84fa5d0a08
+12:07:55.128 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:07:55.276 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:07:55.279 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:08:04.687 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:15116) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:08:04.687 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+12:08:09.067 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:08:09.135 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:08:09.172 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:08:11.736 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:08:12.266 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:08:15.262 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: hkygv4vyvbnjwcrqu9g9nsksukatcto0ek7lvaws
+12:08:15.262 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:08:15.298 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+12:08:27.853 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+12:08:29.074 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:08:29.730 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:08:29.764 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:08:30.023 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 079b7cf8-80e1-4ed7-aeb9-014ee4e06113
+12:08:30.023 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:08:30.151 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:08:30.155 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:08:32.677 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:12072) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:08:32.678 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.0.zip
+12:08:34.165 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:08:34.168 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:08:34.179 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:08:35.859 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:08:35.918 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:18:43.490 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+12:18:44.456 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:18:50.214 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: 8a0d696d-1031-46ea-b023-dd84fa5d0a08, testhub id: hkygv4vyvbnjwcrqu9g9nsksukatcto0ek7lvaws
+12:18:50.214 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:21:28.155 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:21:30.216 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:21:30.218 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:21:31.182 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:21:31.465 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:21:51.659 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://sample.app]
+12:21:51.660 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+12:21:51.662 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: d0d2eda2-a6e8-47f4-95d4-28096c3fa5e3
+12:21:51.664 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:21:51.795 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:21:51.799 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:21:57.673 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:27088) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:21:57.674 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.1.zip
+12:22:04.173 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:22:04.221 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:22:04.256 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:22:07.903 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:22:08.287 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:22:11.369 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: 9l435plhtcshid0rbyrwwq11uwpgn0hil2u6vava
+12:22:11.369 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:22:11.413 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+12:22:25.636 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+12:22:26.834 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:22:27.488 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:22:27.523 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:22:27.783 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: 6c399e51-f2b3-4fd5-bb0e-edbcee2b72ef
+12:22:27.784 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:22:27.918 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:22:27.921 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:22:30.480 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:8696) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:22:30.480 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.1.zip
+12:22:32.016 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:22:32.019 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:22:32.028 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:22:33.814 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:22:33.882 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:25:38.529 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+12:25:39.469 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:25:45.435 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/ea0a1d0fc93293d7f69c5fb08b7f26fee043052b
+12:25:45.436 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:25:45.441 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: d0d2eda2-a6e8-47f4-95d4-28096c3fa5e3, testhub id: 9l435plhtcshid0rbyrwwq11uwpgn0hil2u6vava
+12:25:45.441 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:31:57.687 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:31:59.573 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:31:59.575 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:32:00.198 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:32:00.358 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:32:22.202 [main] INFO  c.browserstack.BrowserStackJavaAgent - Using app: [-bs://41139b1f29e9a8d4194c076940c544a7f71edcda]
+12:32:22.202 [main] INFO  c.browserstack.BrowserStackJavaAgent - Framework set to java
+12:32:22.207 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: bacc3663-fbb5-4e30-83b1-864bf44864d8
+12:32:22.207 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:32:22.370 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:32:22.374 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:32:32.180 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:23444) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:32:32.181 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.1.zip
+12:32:38.302 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:32:38.314 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:32:38.357 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:32:41.448 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:32:41.925 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:32:45.309 [main] INFO  com.browserstack.testOps.Listener - Testhub started with id: rbyszaqlcjmlvztqt3jnhrjsh0ra50vnkicf9vbm
+12:32:45.309 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:32:45.328 [main] INFO  c.browserstack.BrowserStackJavaAgent - Starting BrowserStack Local......
+12:32:54.953 [main] INFO  com.browserstack.LocalFactory - BrowserStack Local Started Successfully.
+12:32:56.093 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:32:56.750 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:32:56.788 [main] INFO  c.b.config.BrowserStackConfig - Setting value of testReporting as specified in your browserstack.yml to true
+12:32:57.053 [main] INFO  c.browserstack.BrowserStackJavaAgent - SDK run started with id: c4f57d37-321d-44c7-9712-6aaaa8cbdbc7
+12:32:57.053 [main] INFO  c.b.config.BrowserStackConfig - INFO
+12:32:57.185 [main] DEBUG com.browserstack.v2.SdkCliUtils - File C:\Users\ftheofil\.browserstack already exist
+12:32:57.188 [main] DEBUG com.browserstack.v2.SdkCliUtils - Current CLI Path Found: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:32:59.663 [main] DEBUG com.browserstack.v2.SdkCliUtils - Need to update binary, current binary version: (node:32656) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.(Use `binary-win-x64 --trace-deprecation ...` to show where the warning was created)
+12:32:59.663 [main] DEBUG com.browserstack.v2.SdkCliUtils - Downloading SDK binary from: https://sdk-assets.browserstack.com/binary-win-x64-1.10.1.zip
+12:33:01.520 [main] DEBUG com.browserstack.v2.SdkCliUtils - Files successfully extracted to: C:\Users\ftheofil\.browserstack\cli
+12:33:01.524 [main] DEBUG com.browserstack.v2.SdkCliUtils - Resolved binary path: C:\Users\ftheofil\.browserstack\cli\binary-win-x64.exe
+12:33:01.534 [main] INFO  com.browserstack.v2.SdkCLI - Disabling Cli for framework=java
+12:33:03.282 [main] INFO  c.browserstack.BrowserStackJavaAgent - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+12:33:03.356 [main] WARN  c.b.config.BrowserStackConfig - TEST REPORTING AND ANALYTICS could not be enabled because framework detected is java. We currently support frameworks testng, cucumber-testng & serenity
+12:37:06.719 [Thread-0] ERROR c.browserstack.testOps.RequestUtils - [RequestUtils] Error in stop: Non 200 response
+com.browserstack.testOps.RequestException: Non 200 response
+	at com.browserstack.testOps.RequestException.non200(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOps(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.requestToTestOpsString(Unknown Source)
+	at com.browserstack.testOps.RequestUtils.stop(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.a(Unknown Source)
+	at com.browserstack.testOps.Listener.onComplete(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.browserstack.utils.ConditionalInvocationHandler.invoke(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy8.onComplete(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent$FinalExecution.run(Unknown Source)
+12:37:07.702 [Thread-0] INFO  com.browserstack.v2.SdkCLI - stop: cli is not running.
+12:37:17.652 [Thread-0] INFO  c.browserstack.utils.UtilityMethods - View build on BrowserStack dashboard: https://app-automate.browserstack.com/dashboard/v2/builds/d421d7643322382845c2564f6e2e1f6231aa1afd
+12:37:17.652 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO
+12:37:17.665 [Thread-0] INFO  c.browserstack.BrowserStackJavaAgent - SDK run ended for id: bacc3663-fbb5-4e30-83b1-864bf44864d8, testhub id: rbyszaqlcjmlvztqt3jnhrjsh0ra50vnkicf9vbm
+12:37:17.666 [Thread-0] INFO  c.b.config.BrowserStackConfig - INFO

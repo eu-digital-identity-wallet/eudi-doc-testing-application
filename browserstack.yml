@@ -13,7 +13,7 @@ accessKey: abnr8yzxsnUcB7XtssWJ
 # Set 'projectName' to the name of your project. Example, Marketing Website
 projectName: EUDI Wallet
 # Set `buildName` as the name of the job / testsuite being run
-buildName: build EUDI Wallet
+buildName: EUDI Wallet build
 # `buildIdentifier` is a unique id to differentiate every execution that gets appended to
 # buildName. Choose your buildIdentifier format from the available expressions:
 # ${BUILD_NUMBER} (Default): Generates an incremental counter with every execution
@@ -29,7 +29,7 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # OR
 # app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
 # Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
-app: bs://0343b812519505ea21f35c3b7f2dd1b8a026b308
+app: bs://41139b1f29e9a8d4194c076940c544a7f71edcda
 
 # =======================================
 # Platforms (Browsers / Devices to test)
@@ -58,7 +58,7 @@ platforms:
 # Example 2 - If you have configured 1 platform and set `parallelsPerPlatform` as 5, a total of 5 (1 * 5) parallel threads will be used on BrowserStack
 parallelsPerPlatform: 1
 
-source: java:appium-intellij:v1.1.6
+source: java:appium-intellij:2.0.0-IC
 
 # ==========================================
 # BrowserStack Local
@@ -82,6 +82,10 @@ debug: false # <boolean> # Set to true if you need screenshots for every seleniu
 networkLogs: false # <boolean> Set to true to enable HAR logs capturing
 consoleLogs: errors # <string> Remote browser's console debug levels to be printed (Default: errors)
 # Available options are `disable`, `errors`, `warnings`, `info`, `verbose` (Default: errors)
+# Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
+# Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
+# Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
+# Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 testObservability: true
 interactiveDebugging: true
 video: true

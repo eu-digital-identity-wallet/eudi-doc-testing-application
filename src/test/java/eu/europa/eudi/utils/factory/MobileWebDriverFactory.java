@@ -49,7 +49,7 @@ public class MobileWebDriverFactory {
             System.out.println("Username: " + username);
             System.out.println("AccessKey: " + accessKey);
 //            options.setCapability("appium:app", appUrl);
-            options.setCapability("appium:app", "bs://0343b812519505ea21f35c3b7f2dd1b8a026b308");
+            options.setCapability("appium:app", "bs://41139b1f29e9a8d4194c076940c544a7f71edcda");
             options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
             options.setCapability("appium:platformVersion", "12.0");
             options.setCapability("browserstack.interactiveDebugging", "true");
