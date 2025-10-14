@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [connected:00008110-0009042014D9401E]
 Oct 13 13:44:51 AppPredictionIntentsHelperService(libxpc.dylib)[565] <Notice>: [0x7930b0a80] activating connection: mach=false listener=false peer=true name=com.apple.proactive.AppPredictionIntentsHelperService.peer[468].0x7930b0a80
 Oct 13 13:44:51 SetStoreUpdateService(CascadeEngine)[267] <Notice>: Donate request <private> handling complete
@@ -58465,3 +58466,5 @@ Oct 13 13:47:27 symptomsd(SymptomEvaluator)[139] <Notice>: Data Usage for remote
 Oct 13 13:47:27 symptomsd(SymptomEvaluator)[139] <Notice>: Data Usage for mobile_assertion_agent on flow 17723 - WiFi in/out: 479641/56558, WiFi delta_in/delta_out: 0/0, Cell in/out: 0/0, Cell delta_in/delta_out: 0/0, RNF: 0, subscriber tag: 0, total duration: 50.756
 Oct 13 13:47:27 symptomsd(SymptomEvaluator)[139] <Notice>: Data Usage for eu.europa.ec.euidi.dev.xctrunner on flow 17581 - WiFi in/out: 3837189/34332344, WiFi delta_in/delta_out: 347/587, Cell in/out: 0/0, Cell delta_in/delta_out: 0/0, RNF: 0, subscriber tag: 0, total duration: 157.812
 Oct 13 13:47:27 symptomsd(SymptomEvaluator)[139] <Notice>: Data Usage for remoted on flow 5670 - WiFi in/out: 33127761/5216944875, WiFi delta_in/delta_out: 0/0, Cell in/out: 0/0, Cell delta_in/delta_out: 0/0, RNF: 0, subscriber tag: 0, total duration: 7679.002
+=======
+>>>>>>> origin/main

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [connected:00008110-0009042014D9401E]
 Oct 13 13:35:25 EudiWallet(HangTracer)[1116] <Notice>: HTAssertion: HTBeginAssertion: track assertionId=3 assertionname=(<private>) starttime=199086853939 expirationTime=199326853920
 Oct 13 13:35:25 duetexpertd(AppPredictionClient)[468] <Notice>: <private> - Setting title for serialization for language code: <private>.
@@ -53756,3 +53757,5 @@ Oct 13 13:37:50 SafariViewService(HangTracer)[1123] <Notice>: HTAssertion: HTBeg
 Oct 13 13:37:50 SafariViewService(HangTracer)[1123] <Notice>: HTAssertions: HTEndAssertion: update assertionId=372 assertionname=(<private>) endTime is now=202577676345
 Oct 13 13:37:50 testmanagerd(XCTAutomationSupport)[662] <Notice>: Got snapshot for <private>
 Oct 13 13:37:50 testmanagerd(XCTAutomationSupport)[662] <Notice>: Restored original AX timeout 60
+=======
+>>>>>>> origin/main
