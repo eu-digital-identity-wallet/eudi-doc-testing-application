@@ -1,1 +1,0 @@
-Web test logging started for: User logs in with Google account
