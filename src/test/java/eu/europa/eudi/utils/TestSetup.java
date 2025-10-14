@@ -4,6 +4,7 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 
 import eu.europa.eudi.utils.factory.MobilePageObjectFactory;
 import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
+import eu.europa.eudi.utils.factory.WebDriverFactory;
 import io.cucumber.java.Scenario;
 
 public class TestSetup {
@@ -11,6 +12,7 @@ public class TestSetup {
     EnvDataConfig envDataConfig;
     MobileWebDriverFactory mobileWebDriverFactory;
     MobilePageObjectFactory mobilePageObjectFactory;
+    WebDriverFactory webDriverFactory;
     String systemOperation;
     Scenario scenario;
 
@@ -19,9 +21,16 @@ public class TestSetup {
         this.scenario = scenario;
         mobileWebDriverFactory = new MobileWebDriverFactory(TestSetup.this, noReset);
         mobilePageObjectFactory = new MobilePageObjectFactory(TestSetup.this);
+        if ("web".equals(systemOperation)) {
+            webDriverFactory = new WebDriverFactory(TestSetup.this);
+        }
     }
 
     public MobilePageObjectFactory mobile() {
+        return mobilePageObjectFactory;
+    }
+
+    public MobilePageObjectFactory web() {
         return mobilePageObjectFactory;
     }
 
@@ -47,6 +56,22 @@ public class TestSetup {
 
     public void stopIosDriverSession() {
         mobileWebDriverFactory.quitDriverIos();
+    }
+
+    public void startWebDriverSession() {
+        if (webDriverFactory != null) {
+            webDriverFactory.startWebDriverSession();
+        }
+    }
+
+    public void stopWebDriverSession() {
+        if (webDriverFactory != null) {
+            webDriverFactory.quitWebDriver();
+        }
+    }
+
+    public WebDriverFactory webDriverFactory() {
+        return webDriverFactory;
     }
 
     public String getSystemOperation() {
