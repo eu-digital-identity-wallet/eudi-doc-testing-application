@@ -10,7 +10,6 @@ public class MobilePageObjectFactory {
     Wallet wallet;
     Verifier verifier;
     Issuer issuer;
-    Conformance conformance;
 
     public MobilePageObjectFactory(TestSetup test) {
         this.test = test;
@@ -28,6 +27,5 @@ public class MobilePageObjectFactory {
         return (issuer == null) ? issuer = new Issuer(test) : issuer;
     }
 
-    public Conformance conformance() {return (conformance == null) ? conformance = new Conformance(test) : conformance;
     }
-}
+
