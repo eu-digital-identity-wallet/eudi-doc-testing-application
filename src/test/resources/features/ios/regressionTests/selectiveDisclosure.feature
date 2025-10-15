@@ -12,7 +12,7 @@ Feature: Selective Disclosure
   Scenario: Unselect Some Data
     Given the user has selected some data
     When the user unselects some of this data
-#    Then a corresponding message is displayed
+    Then a corresponding message is displayed
 
   @US_SD_TC_03 @before_01
   Scenario: Initiate Sharing Process
@@ -23,10 +23,11 @@ Feature: Selective Disclosure
   @US_SD_TC_04 @before_01
   Scenario: Expand Verification Section
     Given the user views the document that is requested
-    When the user clicks to view the document's details
+    When the user inserts the PIN
+    Then the user clicks to view the document's details
     Then the expanded verification details are displayed
 
-  @US_SD_TC_05 @before_01 @test
+  @US_SD_TC_05 @before_01
   Scenario: Completion of Process
     Given the expanded verification details are seen
     When the user clicks done

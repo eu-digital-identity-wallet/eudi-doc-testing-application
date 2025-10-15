@@ -5,7 +5,7 @@ Feature: Request/Issue PID
   Scenario: User successfully logs in and sees the dashboard
     Given the user is on the Login screen
     When the user enters their PIN
-    Then the user should see the home screen
+    Then the user should see the dashboard screen
 
   @US_RIP_TC_02 @before_01
   Scenario: Add document via national ID
@@ -27,3 +27,4 @@ Feature: Request/Issue PID
     When the user fills in the form
     Then a success message for pid is displayed
     And the national id is displayed in the dashboard
+

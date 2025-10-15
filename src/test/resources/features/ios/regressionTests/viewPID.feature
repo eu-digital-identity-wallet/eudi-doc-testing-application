@@ -28,4 +28,3 @@ Feature: View PID document
     When the user clicks the back button
     Then the PID should close
     And the user should see the dashboard screen again
-

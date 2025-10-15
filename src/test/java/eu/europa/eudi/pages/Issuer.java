@@ -1,12 +1,11 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.elements.ios.IssuerElements;
+import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.ios.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -16,8 +15,11 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
@@ -26,13 +28,9 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofMillis;
-import org.openqa.selenium.Keys;
 
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
-import static java.time.Duration.ofMillis;
 
 public class Issuer {
     TestSetup test;
@@ -227,7 +225,9 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement searchBar = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.documentNumberField);
             searchBar.clear();
-            searchBar.sendKeys("1234");        }
+            searchBar.sendKeys("1234");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.closeKeyboardBefore03)).click();
+        }
     }
 
     public void chooseIssueDate() {
@@ -251,8 +251,8 @@ public class Issuer {
     public void clickSubmitIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-          test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSubmit)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -274,7 +274,7 @@ public class Issuer {
 
     public void clickScreen() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
         }
@@ -316,7 +316,7 @@ public class Issuer {
 
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 6; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
@@ -338,16 +338,16 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        int i = 1;
-        while (i < 5) {
-            WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
-            String elementId = ((RemoteWebElement) scrollView).getId();
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            params.put("element", elementId);
-            driver.executeScript("mobile: swipe", params);
-            i++;
-        }
+            int i = 1;
+            while (i < 5) {
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
 
         }
     }
@@ -405,7 +405,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
+            Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
     }
 
@@ -526,7 +526,7 @@ public class Issuer {
                 // Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-    }}
+        }}
 
     public void authorizeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -602,4 +602,22 @@ public class Issuer {
             throw new RuntimeException(e);
         }
     }
+
+    public void transactionCodeIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.runAppInBackground(Duration.ofSeconds(30));
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.qrCodeIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.QR_CODE.label, pageHeader);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
+        }
+    }
+
+//    public String getTransactionCode() {
+////        String transactionCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.getTransactionCode)).getText();
+////        System.out.println("Page Header Text: " + transactionCode);
+////        return transactionCode;
+//    }
 }
+

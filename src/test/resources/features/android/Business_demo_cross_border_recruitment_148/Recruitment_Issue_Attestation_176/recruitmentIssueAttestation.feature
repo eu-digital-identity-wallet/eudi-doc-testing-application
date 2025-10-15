@@ -1,4 +1,4 @@
-@ANDROID @US_RIA @Q3_2025
+@ANDROID @US_RIA
 Feature: Request and Store Attestations in EUDI Wallet
   As a EUDI Wallet User
   I want to request my Attestations from a trusted issuer and store them in my EUDI Wallet

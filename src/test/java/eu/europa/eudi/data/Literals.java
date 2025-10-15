@@ -13,7 +13,9 @@ public interface Literals {
         USER_PROFIL("National ID"),
 
         PID("PID"),
+        PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
+        MDL_IOS("mdl_doctype_name"),
         DASHBOARD_PAGE("Welcome back, Foteini"),
         CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
@@ -36,16 +38,37 @@ public interface Literals {
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN to share data"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
-        DETAILS_FAMILY_NAME("Family Name(s)"),
-        DETAILS_GIVEN_NAME("Given Name(s)"),
-        DETAILS_BIRTH_DATE("Birth Date"),
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
         DETAILS_ARE_BLURRED("Hide"),
         DETAILS_ARE_NOT_BLURRED("Show"),
         CREDENTIALS_PROVIDER_DISPLAYED("Test Credentials Provider"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
-        ADD_PID_PAGE("Add document from list"),
-        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with");
+        ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
+        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
+        VERIFICATION_IS_DISPLAYED("Digital Credentials Issuer requires verification"),
+        DETAILS_OVER_18("eu.europa.ec.eudi.pseudonym.age_over_18.1"),
+        DETAILS_FOR_DEFERRED("eu.europa.ec.eudi.pseudonym.age_over_18.deferred_endpoint"),
+        SIGN_DOCUMENT("Sign Document"),
+        SIGN_DOCUMENT_IOS("Sign document"),
+        SELECT_SIGNING("Select signing service"),
+        SIGNING_SERVICES("Signing services"),
+        CANCEL_SIGNING_PROCESS("Cancel signing process?"),
+        SELECT_SIGNING_CERTIFICATE("Select signing certificate"),
+        SUCCESS_SCREEN_WITH_SIGNED_DOCUMENT("You have successfully signed your document."),
+        SHARE_BUTTON("Share"),
+        PIN_PAGE("To approve the transaction you need to verify your identity."),
+        TEST_PROVIDER_FORM("Test Provider Form"),
+        AGE_OVER_18("Age over 18 Pseudonym"),
+        IS_ON_WALLET("In progress!"),
+        MESSAGE_IN_PROGRESS("Your documents from Digital Credentials Issuer have been requested. You will be notified when they have been issued to your wallet."),
+        MESSAGE_IN_PENDING("Pending"),
+        ISSUANCE_FAILED("//android.widget.TextView[@text=\"10/10\"]"),
+        INSTANCE_INITIAL("10/10"),
+        DOCUMENT_ISSUED("Documents issued"),
+        DOCUMENT_OPENED("Pseudonym Deferred"),
+        INFORM_ATTESTATION("eu.europa.ec.eudi.pid.1"),
+        INFORM_ATTESTATION_IOS("eu_pid_doctype_name"),
+        DONE_BUTTON("Done");
 
         public final String label;
 
@@ -61,7 +84,7 @@ public interface Literals {
         AUTHENTICATION_PAGE("Proceed to authentication"),
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
         WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
-        PRESENTATION_QUERY_TYPE("Presentation Query Type"),
+        PRESENTATION_QUERY_TYPE("Request URI Method"),
         CHOOSE_WALLET_DISPLAYED("Invoke Wallet");
 
         public final String label;
@@ -82,18 +105,21 @@ public interface Literals {
         }
     }
 
-    enum Issuer {
+    enum Issuer{
+
         CREDENTIAL_PAGE("Request Credentials for your EUDI Wallet"),
-        CREDENTIAL_PAGE_IOS("1"),
         QR_CODE("QR Code"),
         ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("Enter the data for your EUDI Wallet"),
+        FORM("Test Provider Form"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
-        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet");
+        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
+        TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
+        FORM_ANDROID("EUDI Wallet Credential"),
+        FORM_IOS("Enter the data for your EUDI Wallet");
 
         public final String label;
 
