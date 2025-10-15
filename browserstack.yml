@@ -29,7 +29,7 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # OR
 # app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
 # Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
-app: bs://41139b1f29e9a8d4194c076940c544a7f71edcda
+#app: bs://41139b1f29e9a8d4194c076940c544a7f71edcda
 
 # =======================================
 # Platforms (Browsers / Devices to test)
@@ -40,8 +40,8 @@ platforms:
 #  - deviceName: Samsung Galaxy S22 Ultra
 #    platformVersion: 12.0
 #    platformName: android
-  - deviceName: iPhone 14 Pro
-    platformVersion: 16.0
+  - deviceName: iPhone 15 Pro
+    platformVersion: 17.0
     platformName: ios
 #  - deviceName: Samsung Galaxy S21
 #    platformVersion: 11.0

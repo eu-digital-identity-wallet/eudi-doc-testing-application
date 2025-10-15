@@ -198,15 +198,16 @@ public class MobileWebDriverFactory {
         String accessKey = "abnr8yzxsnUcB7XtssWJ";
         System.out.println("Username: " + username);
         System.out.println("AccessKey: " + accessKey);
-//            options.setCapability("appium:app", appUrl);
         XCUITestOptions options = new XCUITestOptions();
-        options.setCapability("appium:app", "bs://41139b1f29e9a8d4194c076940c544a7f71edcda");
-        options.setCapability("appium:deviceName", "iPhone 14 Pro");
-        options.setCapability("appium:platformVersion", "16");
+        options.setCapability("appium:app", "bs://a0fa684e4954d5c9f5126449fdbb1f4b6a924a15");
+        options.setCapability("appium:deviceName", "iPhone 15 Pro");
+        options.setCapability("appium:platformVersion", "17");
         options.setCapability("browserstack.interactiveDebugging", "true");
+        options.setCapability("platformName", "iOS");
+        options.setCapability("appium:automationName", "XCUITest");
         try{
             iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
