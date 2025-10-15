@@ -5,6 +5,7 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -190,34 +191,22 @@ public class MobileWebDriverFactory {
 
     public void startIosDriverSession() {
         envDataConfig = new EnvDataConfig();
-        File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
-        apkPath1.getAbsolutePath();
-        DesiredCapabilities caps1 = new DesiredCapabilities();
-        caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
-        caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
-        caps1.setCapability("platformVersion", test.envDataConfig().getAppiumIosPlatformVersion()); // your iOS version
-        caps1.setCapability("udid", test.envDataConfig().getAppiumIosUdid()); // your device udid
-        caps1.setCapability("automationName", test.envDataConfig().getAppiumIosAutomationName());
-        caps1.setCapability("bundleId", test.envDataConfig().getAppiumIosBundleId()); // your app's bundle id
-        caps1.setCapability("noReset", noReset);
-        caps1.setCapability("fullReset", false);
-        caps1.setCapability("app", apkPath1.getAbsolutePath());
-        caps1.setCapability("autoAcceptAlerts", true);
-        try {
-            iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
-            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
-//            Process syslogProcess = Runtime.getRuntime().exec("idevicesyslog");
-//            new Thread(() -> {
-//                try (BufferedReader reader = new BufferedReader(new InputStreamReader(syslogProcess.getInputStream()));
-//                     PrintWriter logWriter = new PrintWriter(new FileWriter("ios_logs.txt"))) {
-//                    String line;
-//                    while ((line = reader.readLine()) != null) {
-//                        logWriter.println(line);  // Write syslog output to file
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }).start();
+        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//        String username = System.getenv("BROWSERSTACK_USERNAME");
+//        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        String username = "foteinitheofilat_OrT9j5";
+        String accessKey = "abnr8yzxsnUcB7XtssWJ";
+        System.out.println("Username: " + username);
+        System.out.println("AccessKey: " + accessKey);
+//            options.setCapability("appium:app", appUrl);
+        XCUITestOptions options = new XCUITestOptions();
+        options.setCapability("appium:app", "bs://41139b1f29e9a8d4194c076940c544a7f71edcda");
+        options.setCapability("appium:deviceName", "iPhone 14 Pro");
+        options.setCapability("appium:platformVersion", "16");
+        options.setCapability("browserstack.interactiveDebugging", "true");
+        try{
+            iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
