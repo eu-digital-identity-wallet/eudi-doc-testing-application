@@ -45,29 +45,35 @@ public class MobileWebDriverFactory {
 
     public void startAndroidDriverSession() {
         envDataConfig = new EnvDataConfig();
-            options = new UiAutomator2Options();
-//        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
-//        String username = System.getenv("BROWSERSTACK_USERNAME");
-//        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-            String username = "foteinitheofilat_OrT9j5";
-            String accessKey = "abnr8yzxsnUcB7XtssWJ";
-            System.out.println("Username: " + username);
-            System.out.println("AccessKey: " + accessKey);
-            options.setCapability("appium:app", "bs://34d000d023218a158ae1030883d84f8cbe0abbf4");
-            options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
-            options.setCapability("appium:platformVersion", "12.0");
-            options.setCapability("browserstack.interactiveDebugging", "true");
-            options.setCapability("browserName", "Chrome");
-              options.setCapability("browserstack.debug", "true");
-              options.setCapability("browserstack.networkLogs", "true");
-              options.setCapability("browserstack.deviceLogs", "true");
-            try{
-                androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-                wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
-            } catch (Exception e) {
-                System.out.println(e.toString());
-                e.printStackTrace();
-            }
+        File apkPath2 = new File("src/test/resources/app/androidApp.apk");
+        apkPath2.getAbsolutePath();
+        DesiredCapabilities caps2 = new DesiredCapabilities();
+        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
+        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
+        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
+        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
+        caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
+        caps2.setCapability("skipUnlock", "true");
+        caps2.setCapability("appPackage", test.envDataConfig().getAppiumAndroidAppPackage());
+        caps2.setCapability("appActivity", test.envDataConfig().getAppiumAndroidAppActivity());
+        caps2.setCapability("noReset", false);
+        caps2.setCapability("fullReset", false);
+        caps2.setCapability("app", apkPath2.getAbsolutePath());
+        caps2.setCapability("enableLogcatLogging", true);
+        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
+        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
+        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
+        caps2.setCapability("waitForIdleTimeout", 900);      //Prevents UI hang during transitions
+        caps2.setCapability("ignoreUnimportantViews", false); // Optional: makes hierarchy cleaner/faster
+
+
+        try {
+            androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
+            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            e.printStackTrace();
+        }
     }
 
 
@@ -302,6 +308,17 @@ public class MobileWebDriverFactory {
             String remoteFilePath = "/data/local/tmp/trace_file.trace";
             String localFilePath = "/trace_file.trace";
             // pullTraceFile(remoteFilePath, localFilePath);
+            androidDriver.quit();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
+
         }
     }
 
@@ -309,6 +326,16 @@ public class MobileWebDriverFactory {
         if (iosDriver != null) {
 
             iosDriver.quit();
+            try {
+
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+
+            } catch (InterruptedException e) {
+
+                Thread.currentThread().interrupt();
+
+            }
+
         }
     }
 }
