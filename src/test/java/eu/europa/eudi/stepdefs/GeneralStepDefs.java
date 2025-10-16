@@ -1110,8 +1110,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-// Re-launches the app from scratch
+            driver.resetApp();// Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
             }

@@ -95,6 +95,18 @@ consoleLogs: errors # <string> Remote browser's console debug levels to be print
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 # Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
+# Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
+# Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 testObservability: true
 interactiveDebugging: true
 video: true
+# =======================================
+# App
+# =======================================
+# Set `app` to use the appliction under test for Appium sessions.
+# Available options:
+# app: '/path/to/local/app.apk'
+# OR
+# app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
+# Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
+#app: bs://sample.app

@@ -50,7 +50,7 @@ public class MobileWebDriverFactory {
             System.out.println("Username: " + username);
             System.out.println("AccessKey: " + accessKey);
 //            options.setCapability("appium:app", appUrl);
-            options.setCapability("appium:app", "bs://41139b1f29e9a8d4194c076940c544a7f71edcda");
+            options.setCapability("appium:app", "bs://c42a76fe61dbcf8bbf1a9640ab8047856b240ec9");
             options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
             options.setCapability("appium:platformVersion", "12.0");
             options.setCapability("browserstack.interactiveDebugging", "true");
@@ -199,13 +199,13 @@ public class MobileWebDriverFactory {
         System.out.println("Username: " + username);
         System.out.println("AccessKey: " + accessKey);
         XCUITestOptions options = new XCUITestOptions();
-        options.setCapability("appium:app", "bs://a0fa684e4954d5c9f5126449fdbb1f4b6a924a15");
+        options.setCapability("appium:app", "bs://e3e16e03f1cafa4398de8c2423cd7d3d1dbdb6a2");
         options.setCapability("appium:deviceName", "iPhone 15 Pro");
         options.setCapability("appium:platformVersion", "17");
         options.setCapability("browserstack.interactiveDebugging", "true");
         options.setCapability("platformName", "iOS");
         options.setCapability("appium:automationName", "XCUITest");
-        try{
+        options.setCapability("autoAcceptAlerts", true);        try{
             iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
             wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
         } catch (Exception e) {
