@@ -87,9 +87,9 @@ public class MobileWebDriverFactory {
         caps2.setCapability("fullReset", false);
         caps2.setCapability("app", apkPath2.getAbsolutePath());
         caps2.setCapability("enableLogcatLogging", true);
-        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
-        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
-        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
+        caps2.setCapability("autoGrantPermissions", true);
+        caps2.setCapability("newCommandTimeout", 120);
+        caps2.setCapability("disableWindowAnimation", true);
         caps2.setCapability("waitForIdleTimeout", 900);      //Prevents UI hang during transitions
         caps2.setCapability("ignoreUnimportantViews", false); // Optional: makes hierarchy cleaner/faster
 

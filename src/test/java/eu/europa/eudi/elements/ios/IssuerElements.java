@@ -33,4 +33,23 @@ public class IssuerElements {
     public static By clickPID = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[23]");
     public static By clickCountry = By.xpath("//XCUIElementTypeTextField[@name=\"Country\"]");
     public static By clickPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Place Of Birth\"]");
+    public static By clickFormEu = By.xpath("//XCUIElementTypeStaticText[@name=\"FormEU\"]");
+    public static By clickGivenName = By.xpath("//XCUIElementTypeTextField[@name=\"Given Name\"]");
+    public static By givenNameField = By.xpath("//XCUIElementTypeTextField[@name=\"Given Name\"]");
+    public static By clickFamilyName = By.xpath("//XCUIElementTypeTextField[@name=\"Family Name\"]");
+    public static By givenFamilyField = By.xpath("//XCUIElementTypeTextField[@name=\"Family Name\"]");
+    public static By clickBirthDate = By.xpath("//XCUIElementTypeOther[@name=\"Birth Date\"]");
+    public static By chooseSet = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
+    public static By enterDocumentNumber = By.xpath("//XCUIElementTypeTextField[@name=\"Document Number\"]");
+    public static By documentNumberField = By.xpath("//XCUIElementTypeTextField[@name=\"Document Number\"]");
+    public static By closeKeyboardBefore03 = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait:\"]");
+    public static By clickIssueDate = By.xpath("//XCUIElementTypeOther[@name=\"Issue Date\"]");
+    public static By clickExpiryDate = By.xpath("//XCUIElementTypeOther[@name=\"Expiry Date\"]");
+    public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
+    public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Driving Privileges\"]");
+    public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
+    public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
+    public static By clickCountryCode = By.xpath("//XCUIElementTypeTextField[@name=\"Country Code\"]");
+    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
+    public static By clickBirthPlace = By.xpath("//XCUIElementTypeTextField[@name=\"Birth Place\"]");
 }

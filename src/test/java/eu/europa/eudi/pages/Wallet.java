@@ -270,7 +270,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickMdl)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
-            tapAction(button);
+            tapAction(button, false);
         }
     }
 
@@ -614,18 +614,27 @@ public class Wallet {
     public void clickAddMyDigitalID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickAddMyDigitalID));
-            tapAction(myDigitalIDButton);
+            tapAction(myDigitalIDButton, false);
         } else {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAddMyDigitalID));
-            tapAction(myDigitalIDButton);
+            tapAction(myDigitalIDButton, false);
         }
     }
 
-    private void tapAction(WebElement myDigitalIDButton) {
+    public void tapAction(WebElement myDigitalIDButton, boolean clickLeft) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            Point center = myDigitalIDButton.getLocation();
-            int x = center.getX() + myDigitalIDButton.getSize().getWidth() / 2;
-            int y = center.getY() + myDigitalIDButton.getSize().getHeight() / 2;
+            Point location = myDigitalIDButton.getLocation();
+            int x,y;
+            if (clickLeft) {
+                // Getting left border + 10px location of element
+                x = location.getX() + 10;
+                y = location.getY() + myDigitalIDButton.getSize().getHeight() / 2;
+            } else {
+                // Getting center location of element
+                x = location.getX() + myDigitalIDButton.getSize().getWidth() / 2;
+                y = location.getY() + myDigitalIDButton.getSize().getHeight() / 2;
+            }
+
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence tap = new Sequence(finger, 1);
             tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
@@ -643,32 +652,6 @@ public class Wallet {
             tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
                             PointerInput.Origin.viewport(),
                             x, y))
-                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
-                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
-            ((AppiumDriver) test.mobileWebDriverFactory().getDriverIos()).perform(Collections.singletonList(tap));
-        }
-    }
-
-    public void tapActionLeft(WebElement element) {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            Point location = element.getLocation();
-            int leftX = location.getX() + 10;
-            int centerY = location.getY() + element.getSize().getHeight() / 2;
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), leftX, centerY))
-                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
-                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
-            ((AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid()).perform(Collections.singletonList(tap));
-        } else {
-            Point location = element.getLocation();
-            int leftX = location.getX() + 10;
-            int centerY = location.getY() + element.getSize().getHeight() / 2;
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), leftX, centerY))
                     .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
                     .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
             ((AppiumDriver) test.mobileWebDriverFactory().getDriverIos()).perform(Collections.singletonList(tap));
@@ -680,7 +663,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPID)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
-            tapAction(button);
+            tapAction(button, false);
         }
     }
 
@@ -723,7 +706,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickFromList)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFromList));
-            tapAction(button);
+            tapAction(button, false);
         }
     }
 
