@@ -1,7 +1,7 @@
 [ {
-  "duration" : 12.133099913597107,
-  "eventName" : "sdk:cli:on-bootstrap",
-  "startTime" : 6.85222195603E8,
+  "duration" : 1239.081200003624,
+  "eventName" : "sdk:automate:session-annotation",
+  "startTime" : 6.867081757265E8,
   "success" : true,
   "worker" : 1,
   "failure" : null,
