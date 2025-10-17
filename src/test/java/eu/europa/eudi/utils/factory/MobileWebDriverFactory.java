@@ -40,7 +40,7 @@ public class MobileWebDriverFactory {
     public void startAndroidDriverSession() {
         envDataConfig = new EnvDataConfig();
         options = new UiAutomator2Options();
-        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
         String username = System.getenv("BROWSERSTACK_USERNAME");
         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 //        String username = "foteinitheofilat_OrT9j5";
@@ -48,7 +48,7 @@ public class MobileWebDriverFactory {
         System.out.println("Username: " + username);
         System.out.println("AccessKey: " + accessKey);
 //            options.setCapability("appium:app", appUrl);
-//        options.setCapability("appium:app", "bs://c42a76fe61dbcf8bbf1a9640ab8047856b240ec9");
+        options.setCapability("appium:app", "bs://c42a76fe61dbcf8bbf1a9640ab8047856b240ec9");
         options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
         options.setCapability("appium:platformVersion", "12.0");
         options.setCapability("browserstack.interactiveDebugging", "true");
@@ -189,7 +189,7 @@ public class MobileWebDriverFactory {
 
     public void startIosDriverSession() {
         envDataConfig = new EnvDataConfig();
-        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
         String username = System.getenv("BROWSERSTACK_USERNAME");
         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 //        String username = "foteinitheofilat_OrT9j5";
@@ -197,7 +197,7 @@ public class MobileWebDriverFactory {
         System.out.println("Username: " + username);
         System.out.println("AccessKey: " + accessKey);
         XCUITestOptions options = new XCUITestOptions();
-//        options.setCapability("appium:app", "bs://e3e16e03f1cafa4398de8c2423cd7d3d1dbdb6a2");
+        options.setCapability("appium:app", "bs://e3e16e03f1cafa4398de8c2423cd7d3d1dbdb6a2");
         options.setCapability("appium:deviceName", "iPhone 15 Pro");
         options.setCapability("appium:platformVersion", "17");
         options.setCapability("browserstack.interactiveDebugging", "true");

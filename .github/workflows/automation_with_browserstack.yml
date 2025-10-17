@@ -35,34 +35,34 @@ jobs:
       - uses: actions/checkout@v4 # Checkout the code
         with:
           clean: true
-          lfs: false
+          lfs: true
           ref: ${{ inputs.branch-to-checkout || 'main' }}
 
-
-      - name: Download Latest Release APK
-        env:
-          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
-        run: |
-          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
-          echo "Latest Release JSON: $latest_release"
-          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
-          if [ -z "$apk_url" ]; then
-            echo "No APK found in the latest release."
-            exit 1
-          fi
-          echo "Downloading APK from: $apk_url"
-          curl -L -o app.apk "$apk_url"
-
-      - name: Setup Git LFS
-        run: |
-          git lfs install
-          git lfs pull
-
-      - name: Verify APK file
-        run: |
-          ls -lh app.apk
-          file app.apk
-          zipinfo -1 app.apk | head -n 10
+#
+#      - name: Download Latest Release APK
+#        env:
+#          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
+#        run: |
+#          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
+#          echo "Latest Release JSON: $latest_release"
+#          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
+#          if [ -z "$apk_url" ]; then
+#            echo "No APK found in the latest release."
+#            exit 1
+#          fi
+#          echo "Downloading APK from: $apk_url"
+#          curl -L -o app.apk "$apk_url"
+#
+#      - name: Setup Git LFS
+#        run: |
+#          git lfs install
+#          git lfs pull
+#
+#      - name: Verify APK file
+#        run: |
+#          ls -lh app.apk
+#          file app.apk
+#          zipinfo -1 app.apk | head -n 10
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -89,20 +89,20 @@ jobs:
             jq --version
           fi
 
-      - name: Upload app to BrowserStack
-        id: upload_app
-        run: |
-          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-            -F "file=@app.apk")
-          echo "Response: $response"
-          app_url=$(echo $response | jq -r '.app_url')
-          echo "app_url=$app_url" >> $GITHUB_OUTPUT
+#      - name: Upload app to BrowserStack
+#        id: upload_app
+#        run: |
+#          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+#            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+#            -F "file=@app.apk")
+#          echo "Response: $response"
+#          app_url=$(echo $response | jq -r '.app_url')
+#          echo "app_url=$app_url" >> $GITHUB_OUTPUT
 
 
       - name: Run Selenium Appium tests on BrowserStack
-        env:
-          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+#        env:
+#          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
           echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
           TEST_CASES="${{ inputs.test-cases }}"
