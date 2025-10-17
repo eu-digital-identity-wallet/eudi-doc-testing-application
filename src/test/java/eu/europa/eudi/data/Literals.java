@@ -12,7 +12,7 @@ public interface Literals {
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
 
-        PID("PID"),
+        PID("eu.europa.ec.eudi.pid.1"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
         MDL_IOS("mdl_doctype_name"),
@@ -87,10 +87,13 @@ public interface Literals {
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Authorize data from your EUDI Wallet"),
+        AUTHORIZE_IS_DISPLAYED_DEV("Review & Send"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
         FORM_ANDROID("EUDI Wallet Credential"),
-        FORM_IOS("Enter the data for your EUDI Wallet");
+        FORM_IOS("Enter the data for your EUDI Wallet"),
+        FORM_DEV("For testing purposes only."),
+        SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin");
 
         public final String label;
         Issuer(String label) {

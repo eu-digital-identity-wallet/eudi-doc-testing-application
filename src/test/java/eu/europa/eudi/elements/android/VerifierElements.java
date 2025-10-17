@@ -16,4 +16,16 @@ public class VerifierElements {
     public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
     public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
+    public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
+    public static By selectAttributesEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
+    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-option-1\"]");
+    public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
+    public static By msoMdoc = By.xpath("//android.view.View[@resource-id=\"mat-option-2\"]");
+    public static By selectAttributesBy = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
+    public static By clickShareAttributes = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
+    public static By familyNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
+    public static By givenNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
+    public static By birthDateAtt = By.xpath("//android.widget.CheckBox[@text=\"Birthdate\"]");
+    public static By ageOver18Att = By.xpath("//android.widget.CheckBox[@text=\"Age over 18\"]");
+    public static By birthPlaceAtt = By.xpath("//android.widget.CheckBox[@text=\"Birth place\"]");
 }
