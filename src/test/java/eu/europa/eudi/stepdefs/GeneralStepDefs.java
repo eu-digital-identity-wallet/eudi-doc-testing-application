@@ -59,8 +59,8 @@ public class GeneralStepDefs{
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
             test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickPIDDev();
+            test.mobile().issuer().issuePIDDev();
             test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
@@ -94,8 +94,8 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
+            test.mobile().wallet().clickPIDDev();
+            test.mobile().issuer().issuePIDDev();
             test.mobile().wallet().clickDone();
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();

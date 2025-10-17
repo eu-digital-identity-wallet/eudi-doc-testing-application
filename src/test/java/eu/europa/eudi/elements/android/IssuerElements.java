@@ -12,23 +12,10 @@ public class IssuerElements {
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
     public static By formIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Test Provider Form\"]");
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
-    public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By selectAttributesEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-option-1\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
-    public static By clickShareAttributes = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
-    public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
-    public static By selectAttributesBy = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By msoMdoc = By.xpath("//android.view.View[@resource-id=\"mat-option-2\"]");
     //    public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
-    public static By familyNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Family name\"]");
-    public static By givenNameAtt = By.xpath("//android.widget.CheckBox[@text=\"Given name\"]");
-    public static By birthDateAtt = By.xpath("//android.widget.CheckBox[@text=\"Birthdate\"]");
-    public static By ageOver18Att = By.xpath("//android.widget.CheckBox[@text=\"Age over 18\"]");
-    public static By birthPlaceAtt = By.xpath("//android.widget.CheckBox[@text=\"Birth place\"]");
-    public static By issuerServiceIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Request Credentials for your EUDI Wallet\"]");
     public static By clickFormEu = By.xpath("//android.widget.RadioButton[@resource-id=\"FC\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[2]/android.widget.EditText");
     public static By clickFamilyName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[1]/android.widget.EditText");
@@ -49,4 +36,13 @@ public class IssuerElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By clickBirthPlace = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[4]/android.widget.EditText");
     public static By closeKeyboardForm = By.xpath("//android.widget.TextView[@text=\"Test Provider Form\"]");
+    public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
+    public static By formIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"For testing purposes only.\"]");
+    public static By clickFamilyNameDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
+    public static By givenNameFieldDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
+    public static By clickCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[1]");
+    public static By clickCountryCodeDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText");
+    public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
+    public static By authorizePageIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Review & Send\"]");
+    public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
 }
