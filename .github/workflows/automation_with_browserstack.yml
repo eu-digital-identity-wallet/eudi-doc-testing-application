@@ -36,8 +36,9 @@ jobs:
         with:
           clean: true
           lfs: true
-          ref: workflow_browserstack
+          ref: ${{ inputs.branch-to-checkout }}
           # ref: ${{ inputs.branch-to-checkout || 'main' }}
+
 
       - name: Download Latest Release APK
         env:
