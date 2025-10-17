@@ -1,0 +1,171 @@
+name: Automation Tests Execution with Browserstack Farm
+
+on:
+  # push:
+  #   branches:
+  #     - workflow_browserstack
+  workflow_dispatch:
+    inputs:
+      branch-to-checkout:
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+        default: develop
+
+      test-cases:
+        description: 'Choose Test Cases'
+        type: string
+        default: "@automated and @ANDROID and @US_VP_TC_01"
+
+  # schedule:
+  #   # WED,SAT 03:15 UTC
+  #   - cron: '15 3 * * 3,6'
+
+jobs:
+  build:
+    runs-on: macos-13-large
+    timeout-minutes: 240 # increase IF needed
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4 # Checkout the code
+        with:
+          clean: true
+          lfs: true
+          ref: workflow_browserstack
+          # ref: ${{ inputs.branch-to-checkout || 'main' }}
+
+      - name: Download Latest Release APK
+        env:
+          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
+        run: |
+          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
+          echo "Latest Release JSON: $latest_release"
+          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
+          if [ -z "$apk_url" ]; then
+            echo "No APK found in the latest release."
+            exit 1
+          fi
+          echo "Downloading APK from: $apk_url"
+          curl -L -o app.apk "$apk_url"
+
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+
+      - name: Verify APK file
+        run: |
+          ls -lh app.apk
+          file app.apk
+          zipinfo -1 app.apk | head -n 10
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS 16.20.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.20.2'
+      - name: Check BrowserStack Credentials
+        run: |
+          response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
+          echo "BrowserStack Response: $response"
+
+      - name: Check jq Installation
+        run: |
+          if ! command -v jq &> /dev/null; then
+            echo "jq not found, installing..."
+            brew install jq
+          else
+            echo "jq is already installed."
+            jq --version
+          fi
+
+      - name: Upload app to BrowserStack
+        id: upload_app
+        run: |
+          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+            -F "file=@app.apk")
+          echo "Response: $response"
+          app_url=$(echo $response | jq -r '.app_url')
+          echo "app_url=$app_url" >> $GITHUB_OUTPUT
+
+
+      - name: Run Selenium Appium tests on BrowserStack
+        env:
+          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        run: |
+          echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
+          TEST_CASES="${{ inputs.test-cases }}"
+          if [ -z "$TEST_CASES" ]; then
+            TEST_CASES="@automated and @ANDROID and @US_VP_TC_01"
+          fi
+          echo "Using test cases: $TEST_CASES"
+          mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+
+      - name: Produce Serenity report
+        if: always()
+        run: mvn -ntp serenity:aggregate
+
+      # - name: Build and run ReplaceCssForGitHubActions
+      #   run: |
+      #     javac src/test/java/eu/europa/eudi/utils/factory/ReplaceCssForGitHubActions.java
+      #     java -cp src/test/java eu.europa.eudi.utils.factory.ReplaceCssForGitHubActions
+
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: serenity-report
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-screenshots
+          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/screenshots/*
+
+      - name: Upload recordings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-recordings
+          path: /screenshots/*
+
+      - name: Upload Android UI Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-logs-ui
+          path: src/test/resources/features/android/regressionTests/logs/ui/*.txt
+
+      - name: Upload iOS UI Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-logs-ui
+          path: src/test/resources/features/ios/regressionTests/logs/ui/*.txt
+
+      - name: Upload android API Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-logs-api
+          path: src/test/resources/features/android/regressionTests/logs/api/*.txt
+
+      - name: Upload iOS API Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-logs-api
+          path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
