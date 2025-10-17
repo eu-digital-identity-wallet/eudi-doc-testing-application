@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2025.07.28-Demo</version>
+    <version>EUDI_Wallet_Version_2025.10.31-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
 
@@ -24,7 +24,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
-        <build-version>EUDI_Wallet_Version_2025.07.28-Demo</build-version>
+        <build-version>EUDI_Wallet_Version_2025.10.31-Demo</build-version>
     </properties>
 
     <repositories>
@@ -64,11 +64,11 @@
             <version>1.39.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.google.apis</groupId>-->
-<!--            <artifactId>google-api-services-oauth2</artifactId>-->
-<!--            <version>v2-rev20220804-1.32.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.google.apis</groupId>-->
+        <!--            <artifactId>google-api-services-oauth2</artifactId>-->
+        <!--            <version>v2-rev20220804-1.32.1</version>-->
+        <!--        </dependency>-->
 
 
         <dependency>
@@ -128,6 +128,12 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+        <dependency>
+      <groupId>com.browserstack</groupId>
+      <artifactId>browserstack-java-sdk</artifactId>
+      <version>LATEST</version>
+      <scope>compile</scope>
+    </dependency>
         <!--<dependency>-->
         <!--      <groupId>com.browserstack</groupId>-->
         <!--      <artifactId>browserstack-java-sdk</artifactId>-->
@@ -223,7 +229,7 @@
                 <configuration>
                     <!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
 
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
 
                     <skip>false</skip>
                     <excludes>

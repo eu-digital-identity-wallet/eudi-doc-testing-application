@@ -111,5 +111,6 @@ public class WalletElements {
     public static By clickAdd = By.xpath("//XCUIElementTypeStaticText[@name=\"Add\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Invoke Wallet\"]");
     public static By clickTransactionsLogs = By.xpath("//XCUIElementTypeStaticText[@name=\"transaction log\"]");
-    public static By clickTransactionInitialized = By.xpath("XCUIElementTypeButton[1]");
+    public static By clickTransactionInitialized = By.xpath("//XCUIElementTypeButton[contains(@name, \"Transaction initializedVerifier\")]");
+    public static By closeKeyboardBefore03 = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait:\"]");
 }
