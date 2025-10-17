@@ -1,0 +1,15 @@
+[ {
+  "duration" : 12.133099913597107,
+  "eventName" : "sdk:cli:on-bootstrap",
+  "startTime" : 6.85222195603E8,
+  "success" : true,
+  "worker" : 1,
+  "failure" : null,
+  "details" : null,
+  "entryType" : "measure",
+  "platform" : 0,
+  "command" : null,
+  "testName" : null,
+  "hookType" : "",
+  "cli" : true
+} ]

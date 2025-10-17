@@ -13,7 +13,7 @@ accessKey: abnr8yzxsnUcB7XtssWJ
 # Set 'projectName' to the name of your project. Example, Marketing Website
 projectName: EUDI Wallet
 # Set `buildName` as the name of the job / testsuite being run
-buildName: EUDI Wallet build
+buildName: EUDI Walletbuild
 # `buildIdentifier` is a unique id to differentiate every execution that gets appended to
 # buildName. Choose your buildIdentifier format from the available expressions:
 # ${BUILD_NUMBER} (Default): Generates an incremental counter with every execution
@@ -43,9 +43,9 @@ platforms:
   - deviceName: iPhone 15 Pro
     platformVersion: 17.0
     platformName: ios
-#  - deviceName: Samsung Galaxy S21
-#    platformVersion: 11.0
-#    platformName: android
+  - deviceName: Samsung Galaxy S22 Ultra
+    platformVersion: 12.0
+    platformName: android
 #  - deviceName: Google Pixel 6 Pro
 #    platformVersion: 12.0
 #    platformName: android
@@ -99,9 +99,21 @@ consoleLogs: errors # <string> Remote browser's console debug levels to be print
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 # Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
+# Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
+# Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 testObservability: true
 interactiveDebugging: true
 video: true
+# =======================================
+# App
+# =======================================
+# Set `app` to use the appliction under test for Appium sessions.
+# Available options:
+# app: '/path/to/local/app.apk'
+# OR
+# app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
+# Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
+#app: bs://sample.app
 # =======================================
 # App
 # =======================================
