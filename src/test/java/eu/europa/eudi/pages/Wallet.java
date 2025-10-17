@@ -10,8 +10,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -20,12 +18,7 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Collections;
@@ -65,13 +58,13 @@ public class Wallet {
             int retries = 3;
             while (retries > 0) {
                 try {
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield1)).sendKeys(String.valueOf(firstDigit));
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield2)).sendKeys(String.valueOf(secondDigit));
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield3)).sendKeys(String.valueOf(thirdDigit));
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield4)).sendKeys(String.valueOf(fourthDigit));
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield5)).sendKeys(String.valueOf(fifthDigit));
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield6)).sendKeys(String.valueOf(sixthDigit));
 
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield1)).sendKeys(String.valueOf(firstDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield2)).sendKeys(String.valueOf(secondDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield3)).sendKeys(String.valueOf(thirdDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield4)).sendKeys(String.valueOf(fourthDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield5)).sendKeys(String.valueOf(fifthDigit));
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pinTexfield6)).sendKeys(String.valueOf(sixthDigit));
                     break;
                 } catch (Exception e) {
                     retries--;
@@ -747,7 +740,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-            
+
             for (int i = 0; i < 5; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPID);
@@ -760,7 +753,7 @@ public class Wallet {
                     ));
                 }
             }
-            
+
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
             int i = 1;

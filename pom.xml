@@ -2,12 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2025.02.22-Demo</version>
+    <version>EUDI_Wallet_Version_2025.10.31-Demo</version>
     <packaging>jar</packaging>
     <name>Eudiw automated tests</name>
 
     <properties>
-        <tags>@default</tags> 
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -21,12 +20,24 @@
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <assembly.phase>none</assembly.phase>
         <serenity.bdd.version>3.9.2</serenity.bdd.version>
-        <rerun.failed.scenarios>0</rerun.failed.scenarios>
+        <rerun.failed.scenarios>1</rerun.failed.scenarios>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <serenity.threads>16</serenity.threads>
-        <build-version>EUDI_Wallet_Version_2025.02.22-Demo</build-version><!-- Add this line to set the number of threads -->
+        <build-version>EUDI_Wallet_Version_2025.10.31-Demo</build-version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>google-maven-central</id>
+            <url>https://maven.google.com/</url>
+        </repository>
+
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <!-- Dependencies -->
@@ -35,6 +46,30 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
+        <!-- Maven dependency -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.33.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.33.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-gson</artifactId>
+            <version>1.39.2</version>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.google.apis</groupId>-->
+        <!--            <artifactId>google-api-services-oauth2</artifactId>-->
+        <!--            <version>v2-rev20220804-1.32.1</version>-->
+        <!--        </dependency>-->
+
 
         <dependency>
             <groupId>io.appium</groupId>
@@ -44,7 +79,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.11.0</version>
+            <version>4.13.0</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -94,28 +129,18 @@
             <version>${junit.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.browserstack</groupId>
-            <artifactId>browserstack-java-sdk</artifactId>
-            <version>LATEST</version>
-            <scope>compile</scope>
-        </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.assertj</groupId>-->
-        <!--            <artifactId>assertj-core</artifactId>-->
-        <!--            <version>${assertj.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.hamcrest</groupId>-->
-        <!--            <artifactId>hamcrest</artifactId>-->
-        <!--            <version>${hamcrest.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.codeborne</groupId>-->
-        <!--            <artifactId>phantomjsdriver</artifactId>-->
-        <!--            <version>1.4.4</version>-->
-        <!--        </dependency>-->
+      <groupId>com.browserstack</groupId>
+      <artifactId>browserstack-java-sdk</artifactId>
+      <version>LATEST</version>
+      <scope>compile</scope>
+    </dependency>
+        <!--<dependency>-->
+        <!--      <groupId>com.browserstack</groupId>-->
+        <!--      <artifactId>browserstack-java-sdk</artifactId>-->
+        <!--      <version>LATEST</version>-->
+        <!--      <scope>compile</scope>-->
+        <!--    </dependency>-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -143,7 +168,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Maven Antrun Plugin to replace core.css after tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -157,7 +181,6 @@
                             <target>
                                 <!-- Optional: Delete core.css before replacing it -->
                                 <delete file="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
-
                                 <!-- Copy the custom-style.css to replace core.css -->
                                 <copy file="${project.basedir}/src/test/resources/custom-style.css" tofile="${project.build.directory}/site/reports/${build-version}/css/core.css"/>
                             </target>
@@ -168,18 +191,22 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Serenity Maven Plugin to run tests -->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
-                 <configuration>
-        <tags>${tags}</tags> 
-    </configuration>
+                <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <tags>${tags}</tags>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>integration-test</phase> <!-- Tests phase -->
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+
                     </execution>
                 </executions>
             </plugin>
@@ -194,14 +221,16 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
             <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+                    <!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
+
                     <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>
@@ -211,6 +240,7 @@
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.3.0</version>
+
                 <executions>
                     <execution>
                         <id>getClasspathFilenames</id>
@@ -220,7 +250,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>

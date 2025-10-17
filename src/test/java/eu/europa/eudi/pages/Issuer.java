@@ -91,7 +91,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         }
     }
 

@@ -3,6 +3,7 @@ package eu.europa.eudi.stepdefs;
 import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -15,15 +16,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
-import org.openqa.selenium.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
+import java.util.Base64;
 
 public class GeneralStepDefs{
 
@@ -131,13 +130,18 @@ public class GeneralStepDefs{
     public void tearDown(Scenario scenario) {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
-            test.stopAndroidDriverSession();
+        boolean web = scenario.getSourceTagNames().contains("@WEB");
+
+        if (test != null) {
+            if (android){
+                test.stopAndroidDriverSession();
+            }
+            if (ios) {
+                test.stopIosDriverSession();
+            }
+            test.stopLogging();
         }
-        if (ios)
-        { test.stopIosDriverSession();
-        }
-        test.stopLogging(); }
+    }
 
 
     public static TestSetup getTest() {
@@ -459,7 +463,7 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected back to the issuer service")
     public void theUserIsRedirectedBackToTheIssuerService() {
-     //auto accept pop up
+        //auto accept pop up
     }
 
     @And("the user is prompted to authenticate and consent to the issuance")
@@ -595,7 +599,7 @@ public class GeneralStepDefs{
 
     @Then("the user should see the dashboard screen")
     public void theUserShouldSeeTheDashboardScreen() {
-      test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @Given("the user is on the dashboard screen")
@@ -679,8 +683,8 @@ public class GeneralStepDefs{
 
     @And("the add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
-       test.mobile().wallet().addDocumentPageIsDisplayed();
-       test.mobile().wallet().clickFromList();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
     }
 
     @And("the user clicks the national id button")
@@ -863,9 +867,9 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
-    theCredentialsProviderIsDisplayedOnScreen();
-    theUserClicksOnCredentialProviderFormEUAndSubmits();
-    theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+        theCredentialsProviderIsDisplayedOnScreen();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
@@ -1110,10 +1114,11 @@ public class GeneralStepDefs{
             test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.resetApp();// Re-launches the app from scratch
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+// Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
-            }
+        }
     }
 
     @When("the user clicks on Documents")
@@ -1466,7 +1471,7 @@ public class GeneralStepDefs{
 
     @And("a transaction code has been created")
     public void aTransactionCodeHasBeenCreated() {
-       test.mobile().issuer().transactionCodeIsDisplayed();
+        test.mobile().issuer().transactionCodeIsDisplayed();
 //       test.mobile().issuer().getTransactionCode();
 //       String code = test.mobile().issuer().getTransactionCode();
 //       test.setTransactionCode(code); // <-- store it for later steps
@@ -1696,7 +1701,7 @@ public class GeneralStepDefs{
 
     @Then("the EUDI Wallet enables the user to share the document or close the process")
     public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-       test.mobile().wallet().clickDone();
+        test.mobile().wallet().clickDone();
 //       test.mobile().wallet().closeIsDisplayed();
 //       test.mobile().wallet().shareIsDisplayed();
     }
@@ -1779,8 +1784,8 @@ public class GeneralStepDefs{
 
     @And("the user views the document on the dashboard which issued based on the PID")
     public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-       test.mobile().wallet().dashboardPageIsDisplayed();
-       test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().clickOnDocuments();
 //       test.mobile().wallet().ageOver18IsDisplayed();
     }
 
@@ -1965,8 +1970,8 @@ public class GeneralStepDefs{
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
     public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
-       test.mobile().wallet().dashboardPageIsDisplayed();
-       test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().clickOnDocuments();
     }
 
     @And("the EUDI Wallet reduces the internal counter of unused attestations")
@@ -2118,4 +2123,3 @@ public class GeneralStepDefs{
         test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
 }
-

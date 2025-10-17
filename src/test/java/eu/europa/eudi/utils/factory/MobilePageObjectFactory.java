@@ -26,4 +26,6 @@ public class MobilePageObjectFactory {
     public Issuer issuer() {
         return (issuer == null) ? issuer = new Issuer(test) : issuer;
     }
-}
+
+    }
+

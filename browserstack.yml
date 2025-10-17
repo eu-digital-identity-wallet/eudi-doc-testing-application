@@ -37,9 +37,9 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Platforms object contains all the browser / device combinations you want to test on.
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
-#  - deviceName: Samsung Galaxy S22 Ultra
-#    platformVersion: 12.0
-#    platformName: android
+#    - deviceName: Samsung Galaxy S22 Ultra
+#      platformVersion: 12.0
+#      platformName: android
   - deviceName: iPhone 15 Pro
     platformVersion: 17.0
     platformName: ios
@@ -71,13 +71,13 @@ source: java:appium-intellij:2.0.0-IC
 # Learn more about how BrowserStack Local works here -> https://www.browserstack.com/docs/automate/selenium/local-testing-introduction
 browserstackLocal: true # <boolean> (Default false)
 
-# Options to be passed to BrowserStack local in-case of advanced configurations
-# browserStackLocalOptions:
+  # Options to be passed to BrowserStack local in-case of advanced configurations
+  # browserStackLocalOptions:
   # localIdentifier: # <string> (Default: null) Needed if you need to run multiple instances of local.
   # forceLocal: true  # <boolean> (Default: false) Set to true if you need to resolve all your traffic via BrowserStack Local tunnel.
   # skipBinaryInitialisation: true # <boolean> (Default: false) Set to true if you need to skip the Local Binary initialisation through SDK.
   # Entire list of arguments available here -> https://www.browserstack.com/docs/automate/selenium/manage-incoming-connections
-  
+
 # ===================
 # Debugging features
 # ===================
@@ -97,9 +97,21 @@ consoleLogs: errors # <string> Remote browser's console debug levels to be print
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 # Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
+# Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
+# Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
 testObservability: true
 interactiveDebugging: true
 video: true
+# =======================================
+# App
+# =======================================
+# Set `app` to use the appliction under test for Appium sessions.
+# Available options:
+# app: '/path/to/local/app.apk'
+# OR
+# app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
+# Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
+#app: bs://sample.app
 # =======================================
 # App
 # =======================================

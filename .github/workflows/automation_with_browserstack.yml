@@ -2,7 +2,7 @@ name: Automation Tests Execution with Browserstack Farm
 
 on:
   # push:
-  #   branches: 
+  #   branches:
   #     - workflow_browserstack
   workflow_dispatch:
     inputs:
@@ -28,8 +28,8 @@ jobs:
     runs-on: macos-13-large
     timeout-minutes: 240 # increase IF needed
     env:
-        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
     steps:
       - uses: actions/checkout@v4 # Checkout the code
@@ -37,8 +37,8 @@ jobs:
           clean: true
           lfs: true
           ref: workflow_browserstack
-        # ref: ${{ inputs.branch-to-checkout || 'main' }}
-          
+          # ref: ${{ inputs.branch-to-checkout || 'main' }}
+
       - name: Download Latest Release APK
         env:
           REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
@@ -98,11 +98,11 @@ jobs:
           echo "Response: $response"
           app_url=$(echo $response | jq -r '.app_url')
           echo "app_url=$app_url" >> $GITHUB_OUTPUT
-  
-      
+
+
       - name: Run Selenium Appium tests on BrowserStack
         env:
-            BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
           echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
           TEST_CASES="${{ inputs.test-cases }}"

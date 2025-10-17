@@ -7,14 +7,12 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Map;
-
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -26,7 +24,7 @@ public class MobileWebDriverFactory {
     private Process logcatProcess;
     private Thread logcatThread;
     private String logFilePath;
- 
+
     public UiAutomator2Options options;
     public String userName;
     public String accessKey;
@@ -41,26 +39,26 @@ public class MobileWebDriverFactory {
 
     public void startAndroidDriverSession() {
         envDataConfig = new EnvDataConfig();
-            options = new UiAutomator2Options();
+        options = new UiAutomator2Options();
         String appUrl = System.getenv("BROWSERSTACK_APP_URL");
 //        String username = System.getenv("BROWSERSTACK_USERNAME");
 //        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-            String username = "foteinitheofilat_OrT9j5";
-            String accessKey = "abnr8yzxsnUcB7XtssWJ";
-            System.out.println("Username: " + username);
-            System.out.println("AccessKey: " + accessKey);
+        String username = "foteinitheofilat_OrT9j5";
+        String accessKey = "abnr8yzxsnUcB7XtssWJ";
+        System.out.println("Username: " + username);
+        System.out.println("AccessKey: " + accessKey);
 //            options.setCapability("appium:app", appUrl);
-            options.setCapability("appium:app", "bs://c42a76fe61dbcf8bbf1a9640ab8047856b240ec9");
-            options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
-            options.setCapability("appium:platformVersion", "12.0");
-            options.setCapability("browserstack.interactiveDebugging", "true");
-            try{
-                androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-                wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
-            } catch (Exception e) {
-                System.out.println(e.toString());
-                e.printStackTrace();
-            }
+        options.setCapability("appium:app", "bs://c42a76fe61dbcf8bbf1a9640ab8047856b240ec9");
+        options.setCapability("appium:deviceName", "Samsung Galaxy S22 Ultra");
+        options.setCapability("appium:platformVersion", "12.0");
+        options.setCapability("browserstack.interactiveDebugging", "true");
+        try{
+            androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            e.printStackTrace();
+        }
     }
 
 
