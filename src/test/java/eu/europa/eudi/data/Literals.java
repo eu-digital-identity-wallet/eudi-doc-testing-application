@@ -13,6 +13,7 @@ public interface Literals {
         USER_PROFIL("National ID"),
 
         PID("eu.europa.ec.eudi.pid.1"),
+        PID_demo("PID"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
         MDL_IOS("mdl_doctype_name"),

@@ -616,10 +616,17 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNextForAndroid();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().assertAndClickNext();
+
+        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+    }      else{
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNextForAndroid();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().assertAndClickNext();
+        }
     }
 
     @Then("the requestor of the data is displayed in the wallet")
