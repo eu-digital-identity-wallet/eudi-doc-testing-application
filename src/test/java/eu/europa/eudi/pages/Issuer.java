@@ -14,7 +14,6 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -146,10 +145,6 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormEu)).click();
-//            TouchAction<?> touchAction = new TouchAction<>(driver);
-//            touchAction
-//                    .tap(PointOption.point(260, 1206))
-//                    .perform();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
         }
@@ -238,8 +233,6 @@ public class Issuer {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
-
-
 
     public void clickScreen() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -377,8 +370,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
     }
-
-
+    
     public void issuePID() throws InterruptedException {
         selectCountryOfOrigin();
         clickFormEu();
@@ -428,7 +420,6 @@ public class Issuer {
 
     private void authorizeIsDisplayedDev() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayedDev)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
         } else {
@@ -506,7 +497,6 @@ public class Issuer {
             WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyNameDev));
             givenFamily.clear();
             givenFamily.sendKeys("Theofilatou");
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.familyNameFieldDev)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -526,7 +516,6 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM_DEV.label, pageHeader);
         }
     }
-
 
     private void selectCountryOfOriginDev() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -581,13 +570,6 @@ public class Issuer {
     public void scrollUntilCountryCode() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.findElement(MobileBy.AndroidUIAutomator(
-//                    "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-//                            ".scrollForward()" +
-//                            ".setMaxSearchSwipes(150)" +
-//                            ".scrollIntoView(new UiSelector().resourceId(\"nationality--container\").childSelector(new UiSelector().className(\"android.widget.EditText\")))"
-//            ));
-
             for (int i = 0; i < 1; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
@@ -610,7 +592,6 @@ public class Issuer {
 
     public void authorizeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
         } else {
@@ -644,22 +625,6 @@ public class Issuer {
             countryCode.sendKeys("GR");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.closeKeyboard)).click();
         }
-    }
-
-    public void enterBirthPlace() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickBirthPlace)).click();
-//            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickBirthPlace);
-//            birthPlace.clear();
-//            birthPlace.sendKeys("Thessaloniki");
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickBirthPlace)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement birthPlace = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickBirthPlace);
-            birthPlace.clear();
-            birthPlace.sendKeys("Thessaloniki");        }
-
     }
 
     public void selectCountryOfOrigin() {

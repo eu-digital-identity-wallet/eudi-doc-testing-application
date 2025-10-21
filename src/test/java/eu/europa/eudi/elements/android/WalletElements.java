@@ -20,7 +20,7 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back\"]");
     public static By welcomePage = By.xpath("//android.widget.TextView[@text=\"Welcome to the EUDI Wallet\"]");
     public static By userProfil = By.xpath("//android.widget.TextView[@text=\"National ID\"]");
-    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\" or @text=\"eu.europa.ec.eudi.pid_mdoc\"]");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text='eu.europa.ec.eudi.pid.1' or " + "@text='eu.europa.ec.eudi.pid_mdoc' or " + "@text='PID']");
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickMdl = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.mdl_mdoc\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL\"]");
