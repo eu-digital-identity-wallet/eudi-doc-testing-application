@@ -532,9 +532,9 @@ public class Issuer {
     public void issueMDL() throws InterruptedException {
         clickFormEu();
         clickSubmit();
-        enterFamilyNameDev();
-        enterGivenNameDev();
-        chooseBirthDateDev();
+        enterFamilyName();
+        enterGivenName();
+        chooseBirthDate();
         enterDocumentNumber();
         scrollUntilFindDate();
         clickScreen();
