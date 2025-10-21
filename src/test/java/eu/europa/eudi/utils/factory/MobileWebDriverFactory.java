@@ -49,6 +49,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
                 options.setCapability("browserstack.debug", "true");
                 options.setCapability("browserstack.deviceLogs", "true");
+                options.setCapability("orientation", "PORTRAIT");
 
                 try {
                 androidDriver = new AndroidDriver(

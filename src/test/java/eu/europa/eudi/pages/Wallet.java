@@ -192,7 +192,7 @@ public class Wallet {
     public void nationalIdIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.PIDIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_demo.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.PIDIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.PID_IOS.label, pageHeader);
@@ -299,11 +299,23 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
+
             String url = "https://verifier.eudiw.dev/home";
-            Map<String, Object> args = new HashMap<>();
-            args.put("command", "am");
-            args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
-            driver.executeScript("mobile:shell", args);
+            String env = test.envDataConfig().getExecutionEnvironment();
+
+            if ("browserstack".equalsIgnoreCase(env)) {
+                // Safe for BrowserStack
+                Map<String, Object> deepLinkArgs = new HashMap<>();
+                deepLinkArgs.put("url", "https://verifier.eudiw.dev/home");
+                deepLinkArgs.put("package", "com.android.chrome");
+                driver.executeScript("mobile:deepLink", deepLinkArgs);
+            } else {
+                // Works locally via ADB
+                Map<String, Object> args = new HashMap<>();
+                args.put("command", "am");
+                args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
+                driver.executeScript("mobile:shell", args);
+            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
@@ -699,6 +711,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.credentialsProviderDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.credentialsProviderDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
