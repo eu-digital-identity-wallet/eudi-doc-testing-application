@@ -354,8 +354,14 @@ public class Verifier {
     public void getTransactionId() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement jsonElement = driver.findElement(By.className("android.widget.TextView"));
-            // Get the text
+            WebElement jsonElement;
+            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                 jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
+            }else{
+                 jsonElement = driver.findElement(By.className("android.widget.TextView"));
+
+            }
+                // Get the text
             String rawText = jsonElement.getText();
 
             JSONObject jsonObject = new JSONObject(rawText);
