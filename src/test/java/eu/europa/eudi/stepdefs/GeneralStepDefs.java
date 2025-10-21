@@ -1,12 +1,9 @@
 package eu.europa.eudi.stepdefs;
 
-import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -15,21 +12,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
-import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
 
 public class GeneralStepDefs{
 
     static TestSetup test;
     @Before
-    public void setup(Scenario scenario) throws InterruptedException {
+    public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
 
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
@@ -59,8 +50,8 @@ public class GeneralStepDefs{
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
             test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().clickPIDDev();
-            test.mobile().issuer().issuePIDDev();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
             test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
@@ -114,16 +105,19 @@ public class GeneralStepDefs{
     }
 
     @After
-    public void tearDown(Scenario scenario) {
+    public void tearDown(Scenario scenario) throws InterruptedException {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        if (android){
-            test.stopAndroidDriverSession();
+        String env = test.envDataConfig().getExecutionEnvironment();
+        String outputPath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/android/regressionTests/logs/ui-browserstack";
+        if (android) {
+                test.stopAndroidDriverSession();
         }
         if (ios)
         { test.stopIosDriverSession();
         }
-        test.stopLogging(); }
+        test.stopLogging();
+    }
 
 
     public static TestSetup getTest() {

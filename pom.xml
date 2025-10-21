@@ -91,6 +91,12 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+<dependency>
+      <groupId>com.browserstack</groupId>
+      <artifactId>browserstack-java-sdk</artifactId>
+      <version>LATEST</version>
+      <scope>compile</scope>
+    </dependency>
 <!--<dependency>-->
 <!--      <groupId>com.browserstack</groupId>-->
 <!--      <artifactId>browserstack-java-sdk</artifactId>-->
@@ -185,7 +191,7 @@
                 <configuration>
 <!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
 
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
 
                     <skip>false</skip>
                     <excludes>

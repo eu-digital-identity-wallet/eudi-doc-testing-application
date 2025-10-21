@@ -14,7 +14,6 @@ public class IssuerElements {
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
-    //    public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authorize data from your EUDI Wallet\"]");
     public static By clickFormEu = By.xpath("//android.widget.RadioButton[@resource-id=\"FC\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[2]/android.widget.EditText");
@@ -28,8 +27,8 @@ public class IssuerElements {
     public static By clickExpiryDate = By.xpath("//android.view.View[@resource-id=\"DrivingP\"]/android.widget.Spinner[2]");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Driving Privileges\"]");
+
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-    public static By clickRemove = By.xpath("//android.widget.Button[@text=\"Remove\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@resource-id=\"nationality--container\"]/android.widget.EditText");
