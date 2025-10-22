@@ -4,7 +4,7 @@ Feature: Sign Document through EUDI Wallet
  I want to provide my explicit consent on signing a document through my EUDI Wallet and sing the document
  So that I can ensure that I am the sole signer of the specific document.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/92
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/212
 
   @US_SD_TC_01 @manual:Passed
   Scenario: Single Credential ID Available

@@ -4,7 +4,7 @@ Feature: List Transactions in EUDI Wallet
   I want to access the EUDI Wallet screen having organized all my transactions
   So that I can view and search the attestation presentations and document signing operations I performed with my EUDI Wallet
 
-#https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124
+#https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/189
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device

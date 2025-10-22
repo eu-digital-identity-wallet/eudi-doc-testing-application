@@ -4,7 +4,7 @@ Feature: EUDI Wallet User Signs Document through QTSP with Explicit Consent
   I want to provide my explicit consent on signing a document through my EUDI Wallet and sign the document
   so that I can ensure that I sign the document as the sole signer of the specific document.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/103
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/207
 
   Background:
     Given the user has a valid EUDI Wallet on their mobile device

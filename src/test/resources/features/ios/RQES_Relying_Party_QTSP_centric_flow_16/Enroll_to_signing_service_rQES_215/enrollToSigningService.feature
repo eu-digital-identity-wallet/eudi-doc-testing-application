@@ -4,7 +4,7 @@ Feature: EUDI Wallet User Engagement with Trusted Issuers
   I want to be able to engage with trusted issuers offering the option to issue attestations (i.e. issuer-initiated issuance flows)
   So that I can issue attestations from trusted issuers in my EUDI Wallet
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/87
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/215
 
   Background:
     Given the user has a valid EUDI Wallet on their mobile device
