@@ -34,7 +34,7 @@ public class WalletElements {
     public static By clickXButton = By.xpath("//XCUIElementTypeButton[@name=\"Close\"]");
     public static By drivingLicenceIsDisplayedInDashboard = By.xpath("(//XCUIElementTypeStaticText[@name=\"Driving License\"])[2]");
     public static By clickDrivingLicenceButton = By.xpath("//XCUIElementTypeStaticText[@name=\"mDL\"]");
-    public static By unselectData = By.xpath("(//XCUIElementTypeButton[@name=\"checkmark.square.fill\"])[1]");
+    public static By unselectData = By.xpath("(//XCUIElementTypeButton[@name='checkmark.square.fill'])[1] | (//XCUIElementTypeButton[@name='Selected'])[1]");
     public static By clickaAgainData = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By clickIssue = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
@@ -73,7 +73,7 @@ public class WalletElements {
     public static By pinTexfield4Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]");
     public static By pinTexfield5Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[6]");
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[7]");
-    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
+    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@name='Go Down']");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
 
 }
