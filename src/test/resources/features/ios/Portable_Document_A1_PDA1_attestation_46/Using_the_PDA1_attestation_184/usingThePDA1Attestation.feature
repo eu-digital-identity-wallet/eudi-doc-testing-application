@@ -1,7 +1,7 @@
 @IOS @US_UTPA @Q1_2025
 Feature: Support PDA1 Attestation in EUDI Wallet
 
- #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/162
+ #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/184
 
   Background:
     Given the PDA1 attestation adheres to the existing functionalities of the EUDI Wallet
