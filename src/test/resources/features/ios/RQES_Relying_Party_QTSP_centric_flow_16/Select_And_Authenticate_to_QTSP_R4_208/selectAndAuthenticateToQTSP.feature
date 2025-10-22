@@ -4,7 +4,7 @@ Feature: EUDI Wallet User Authenticates to QTSP for Document Signing
   I want to use my EUDI Wallet to authenticate to QTSPs
   so that I can be securely authenticated and authorized by the QTSP which provides the signing service.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/102
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/208
 
   Background:
     Given the user has a valid EUDI Wallet on their mobile device

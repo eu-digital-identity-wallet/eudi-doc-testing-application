@@ -4,7 +4,7 @@ Feature: Transaction Search in EUDI Wallet
   I want to search for transactions in the EUDI Wallet
   So that I can find the transactions to match my search request
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/122
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/191
 
   @US_ST_TC_01 @manual:Passed
   Scenario: Initial state of the Transactions screen

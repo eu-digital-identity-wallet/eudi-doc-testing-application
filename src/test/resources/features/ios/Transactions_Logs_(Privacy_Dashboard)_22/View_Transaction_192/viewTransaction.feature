@@ -1,7 +1,7 @@
 @IOS @US_VT @Q1_2025
 Feature: View Transaction in EUDI Wallet
 
- #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/121
+ #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/192
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device

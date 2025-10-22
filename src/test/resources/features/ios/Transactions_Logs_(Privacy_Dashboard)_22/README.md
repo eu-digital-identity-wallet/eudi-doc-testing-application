@@ -1,11 +1,10 @@
 ## Epic:
 
-[Transactions Logs (Privacy Dashboard) [1st iteration]
-#45](https://github.com/orgs/eu-digital-identity-wallet/projects/20/views/7?pane=issue&itemId=93262405&issue=eu-digital-identity-wallet%7Ceudi-wallet-product-roadmap%7C45)
+[Transactions Logs (Privacy Dashboard)#22](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/22)
 
 ## User stories:
 
-- [List Transactions #124](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/124)
-- [View Transaction #121](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/121)
-- [Search Transactions #122](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/122)
-- [Filter and Sort Transactions #123](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/123)
+- [List Transactions #189](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/189)
+- [View Transaction #192](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/192)
+- [Search Transactions #191](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/191)
+- [Filter and Sort Transactions #190](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/190)

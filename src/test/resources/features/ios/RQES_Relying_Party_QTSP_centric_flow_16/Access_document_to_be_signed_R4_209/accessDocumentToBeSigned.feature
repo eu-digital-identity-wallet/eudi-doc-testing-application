@@ -4,7 +4,7 @@ Feature: EUDI Wallet User Views Document in Relying Party Service
   I want to access a document provided by the Relying Party
   so that that I can view the details of the document to be signed.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/101
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/209
 
   Background:
     Given the user has a valid EUDI Wallet

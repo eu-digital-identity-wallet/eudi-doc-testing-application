@@ -4,7 +4,7 @@ Feature: EUDI Wallet User Logs into a Relying Party
   I want to use my EUDI Wallet to log in to a Relying Party
   so that I can access the services provided by the Relying Party.
 
-#https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/100
+#https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/210
 
   Background:
     Given the user has a valid EUDI Wallet on their mobile device

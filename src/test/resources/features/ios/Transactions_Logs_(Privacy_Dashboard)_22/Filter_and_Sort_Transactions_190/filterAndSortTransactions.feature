@@ -4,7 +4,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
   I want to filter and sort the transactions in the EUDI Wallet
   So that I can find and view the transactions according to my needs
 
-#https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/123
+#https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/190
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device
@@ -15,12 +15,12 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Given the user enters the Transactions screen
     Then no filter is applied (default option)
     And the transactions are sorted by transaction date descending (default sort option)
-    And the filter/sort button has no visual indication that a user filter/sort option is applied
+    And the filter or sort button has no visual indication that a user filter or sort option is applied
 
   @US_FASD_TC_02 @Ignored
   Scenario: Display filter and sort bottom sheet
     Given the user is on the Transactions screen
-    When the user taps the filter/sort button
+    When the user taps the filter or sort button
     Then the filter and sort bottom sheet options slide up from the bottom screen
     And the "Sort by" and "Filter by" sections are displayed in collapsed view
     And each section under the title displays the applied filter and sort options respectively
@@ -73,7 +73,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     Given the user is on the filter and sort bottom sheet
     When the user taps the "Reset all" button
     Then the sort and filters are reset to the default values (no filter and sort by transaction date descending)
-    And the filter/sort button has no visual indication that a user filter/sort option is applied
+    And the filter or sort button has no visual indication that a user filter or sort option is applied
 
   @US_FASD_TC_09 @manual:Passed
   Scenario: Apply filter and sort options
@@ -81,7 +81,7 @@ Feature: Filter and Sort Transactions in EUDI Wallet
     When the user taps the "Apply" button
     Then the bottom sheet slides down and disappears
     And the EUDI Wallet applies the filter and sorting options to the transactions list
-    And the filter/sort button has visual indication that user filter(s) and/or sorting options have been applied (only when different than the default options)
+    And the filter or sort button has visual indication that user filter(s) and or sorting options have been applied (only when different than the default options)
 
   @US_FASD_TC_10 @manual:Passed
   Scenario: No matching transactions found
