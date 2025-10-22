@@ -206,7 +206,7 @@ To execute the tests, follow the steps below:
 
 5. Run the tests:
 
-   On ReadmeManager.java file on line 6 write ./local-execution-mac.sh for running on Mac or local-execution.cmd for running on Windows.
+   On ReadmeManager.java file on line 6 write ./local-execution-mac.sh for running on Mac or ./local-execution.cmd for running on Windows.
    Then in order to run the tests open the terminal and run `cd ./src/test/java/eu/europa/eudi/utils/factory`. After you navigate to the correct directory, run the command "javac ReadmeManager.java" and "java ReadmeManager".
 
 6. Export Test Report - Locally
