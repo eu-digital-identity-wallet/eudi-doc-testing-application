@@ -52,7 +52,7 @@ public class WalletElements {
     public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\"]");
     public static By clickDone = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
-    public static By clickOnDocuments = By.xpath("//XCUIElementTypeButton[@name=\"doc.fill\"]");
+    public static By clickOnDocuments = By.xpath("//XCUIElementTypeButton[@name='doc.fill' or @name='Documents']");
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\"]");

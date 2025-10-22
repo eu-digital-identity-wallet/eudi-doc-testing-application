@@ -12,6 +12,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -138,10 +139,16 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNextForAndroid();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().assertAndClickNext();
+        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+        }      else{
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNextForAndroid();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().assertAndClickNext();
+        }
     }
 
     @And("user selects to be identified using EUDI Wallet")
