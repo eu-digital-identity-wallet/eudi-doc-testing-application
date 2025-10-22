@@ -1,7 +1,6 @@
 ## Epic:
 
-[Attestation revocation
-#8](https://github.com/orgs/eu-digital-identity-wallet/projects/20?pane=issue&itemId=93256547&issue=eu-digital-identity-wallet%7Ceudi-wallet-product-roadmap%7C8)
+[Attestation revocation #8](https://github.com/orgs/eu-digital-identity-wallet/projects/20?pane=issue&itemId=93256547&issue=eu-digital-identity-wallet%7Ceudi-wallet-product-roadmap%7C8)
 
 ## User stories:
 
