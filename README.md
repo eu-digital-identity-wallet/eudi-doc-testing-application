@@ -136,7 +136,7 @@ Download and install the EUDIW app:
 - iOS:
   Minimum device requirements
 
-  Any device that supports iOS 15.0
+  Any device that supports iOS 15.0 or newer
 
 Prerequisites
 
@@ -145,7 +145,7 @@ To complete the flows described below you need to download the iOS app into your
 - Android:
   Minimum device requirements
 
-  API level 26.
+  API level 26 or newer.
 
 To complete the flows described below you need to download the app. You can download it from Firebase [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
 
