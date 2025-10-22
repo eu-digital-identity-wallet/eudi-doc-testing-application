@@ -697,7 +697,7 @@ public class Wallet {
                             ".setAsVerticalList()" +
                             ".scrollForward()" +
                             ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"eu.europa.ec.eudi.mdl_mdoc\"))"
+                            ".scrollIntoView(new UiSelector().text(\"mDL\"))"
             ));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
