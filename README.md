@@ -264,6 +264,10 @@ On Windows, you might encounter issues with long file paths. To ensure Git can h
 
 `git config --system core.longpaths true`
 
+## Note
+
+In the future, all of these tests will run through Device Farm (BrowserStack) and be fully integrated with GitHub Actions, allowing you to run any test with a single click and view the report directly. This is currently in progress.
+
 ## How to contribute
 
 We welcome contributions to this project. To ensure that the process is smooth for everyone
