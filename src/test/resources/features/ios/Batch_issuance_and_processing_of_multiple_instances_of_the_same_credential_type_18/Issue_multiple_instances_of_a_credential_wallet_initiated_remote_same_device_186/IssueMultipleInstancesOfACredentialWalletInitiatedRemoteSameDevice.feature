@@ -1,4 +1,4 @@
-@ANDROID @US_IMIOACWIRSD @Q2_2025
+@IOS @US_IMIOACWIRSD @Q2_2025
 Feature: Batch Issuance of Attestations in EUDI Wallet
   As a EUDI Wallet User,
   I want to request the issuance of multiple attestations of the same attestation type, attribute values and technical validity period (batch issuance)
