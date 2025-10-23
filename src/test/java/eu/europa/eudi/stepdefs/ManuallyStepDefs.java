@@ -8069,6 +8069,21 @@ public class ManuallyStepDefs {
     public void theUserSelectsTheShareButtin() {
         //manual
     }
+
+    @And("the filter or sort button has no visual indication that a user filter or sort option is applied")
+    public void theFilterOrSortButtonHasNoVisualIndicationThatAUserFilterOrSortOptionIsApplied() {
+        //manual
+    }
+
+    @Then("the sort and filters are reset to the default values \\(no filter and sort by transaction date descending)")
+    public void theSortAndFiltersAreResetToTheDefaultValuesNoFilterAndSortByTransactionDateDescending() {
+        //manual
+    }
+
+    @And("the filter or sort button has visual indication that user filter\\(s) and or sorting options have been applied \\(only when different than the default options)")
+    public void theFilterOrSortButtonHasVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenAppliedOnlyWhenDifferentThanTheDefaultOptions() {
+        //manual
+    }
 }
 
 
