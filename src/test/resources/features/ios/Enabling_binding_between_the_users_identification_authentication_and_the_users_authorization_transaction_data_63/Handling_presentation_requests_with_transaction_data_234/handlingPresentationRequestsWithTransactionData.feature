@@ -1,7 +1,7 @@
 @IOS @manual @US_HPRWTD
 Feature: View and Authorize Transaction with EUDI Wallet
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/234
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/234
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device

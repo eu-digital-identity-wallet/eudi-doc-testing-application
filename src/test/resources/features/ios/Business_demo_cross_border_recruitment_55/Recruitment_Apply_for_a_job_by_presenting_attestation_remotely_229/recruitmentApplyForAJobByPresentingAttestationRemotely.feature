@@ -4,7 +4,7 @@ Feature: Apply for Cruise Ship Position Using EUDI Wallet
   I want to apply for a cruise ship position by presenting attestations to the Employer Service
   So that I can be authenticated and considered for the job
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/229
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/229
 
   Background:
     Given the user has a registered EUDI Wallet with issued attestations

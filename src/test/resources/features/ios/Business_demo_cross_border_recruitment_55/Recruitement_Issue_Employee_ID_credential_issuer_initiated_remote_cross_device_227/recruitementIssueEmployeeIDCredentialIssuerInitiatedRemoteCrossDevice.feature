@@ -4,7 +4,7 @@
     I want the employer to issue an employee ID credential and store it in my EUDI Wallet
     So that I can have a verifiable record of my employment status
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/227
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227
 
     Background:
       Given the user has a valid EUDI Wallet on a mobile device

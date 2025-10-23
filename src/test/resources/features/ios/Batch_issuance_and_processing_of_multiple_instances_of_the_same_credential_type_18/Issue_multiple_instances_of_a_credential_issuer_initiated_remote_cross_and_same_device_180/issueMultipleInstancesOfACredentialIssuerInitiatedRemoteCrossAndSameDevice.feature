@@ -4,7 +4,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
   I want to request the issuance of multiple attestations of the same attestation type, attribute values and technical validity period (batch issuance)
   so that my privacy is protected when presenting attributes from an attestation multiple times to the same Relying Party or colluding Relying Parties (Relying Party linkability)
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/180
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/180
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device

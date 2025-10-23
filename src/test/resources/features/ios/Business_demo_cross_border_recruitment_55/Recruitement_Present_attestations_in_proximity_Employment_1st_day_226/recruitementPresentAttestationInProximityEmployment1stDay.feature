@@ -4,7 +4,7 @@
     I want to present the employee ID from my EUDI Wallet to the requesting Relying Party (i.e., Employer's reader) in a proximity flow
     So that I can prove my employment status during the onboarding process and get my physical company badge.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/226
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226
 
     Background:
       Given the user has a valid EUDI Wallet with an Employee ID credential issued
