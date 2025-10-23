@@ -13,7 +13,7 @@
 
 
 ## Overview
-This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the User Stories created by the Analysis team. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
+This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
 
 ## Requirements
 To run the automated tests, ensure your system meets the following requirements:
@@ -140,7 +140,7 @@ If you want to run tests on a real iPhone device, you will need to install WebDr
 
 - If the build is successful, WebDriverAgent is installed on your iPhone.
 
-## Implemented test cases
+## Test Case Overview
 Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
 feature files
 " folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/main/src/test/resources/features).
@@ -214,35 +214,6 @@ To execute the tests, follow the steps below:
 
 After running the automated tests, a new file will be created with the logs of the app. For example, if you run test cases on the feature file located at ./src/test/resources/features/android/regressionTests/viewPID.feature file, then a new file will be created at ./src/test/resources/features/android/regressionTests/logs/viewPID.txt with the same name as the feature file. Double-click this file to view the logs.
 
-## Bug Reporting
-
-The list of reported bugs can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues).
-
-The aforementioned link is also included in a feature file named bugReport.feature (which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/blob/develop/src/test/resources/features/bugReport.feature)), in order to be used by the Serenity Report.
-
-When opening bugs on GitHub (as issues), the following format is proposed.
-
-### Bug Report Format
-
-**Smartphone attributes**
-
-- **Device:** e.g., Samsung A54
-
-- **OS:** e.g., Android 14
-
-**Application attributes**
-
-- **Version:** e.g., 2024.07.29
-
-**Description:**
-Provide a brief and clear description of the issue.  
-Insert image here if applicable.
-
-**Steps to Reproduce:**
-Write exactly the steps that must be followed in order to reproduce the bug.
-
-**Expected Behavior:**
-Describe what you expect to happen instead of the error.
 
 ## Troubleshooting
 
