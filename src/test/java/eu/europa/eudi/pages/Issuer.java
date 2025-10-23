@@ -33,11 +33,23 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
+
             String url = "https://issuer.eudiw.dev/credential_offer_choice";
-            Map<String, Object> args = new HashMap<>();
-            args.put("command", "am");
-            args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
-            driver.executeScript("mobile:shell", args);
+            String env = test.envDataConfig().getExecutionEnvironment();
+
+            if ("browserstack".equalsIgnoreCase(env)) {
+                // Safe for BrowserStack
+                Map<String, Object> deepLinkArgs = new HashMap<>();
+                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer_choice");
+                deepLinkArgs.put("package", "com.android.chrome");
+                driver.executeScript("mobile:deepLink", deepLinkArgs);
+            } else {
+                // Works locally via ADB
+                Map<String, Object> args = new HashMap<>();
+                args.put("command", "am");
+                args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
+                driver.executeScript("mobile:shell", args);
+            }
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
@@ -77,6 +89,7 @@ public class Issuer {
 
     public void requestCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
         } else {
