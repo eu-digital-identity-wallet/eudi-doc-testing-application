@@ -4,7 +4,7 @@ Feature:Automatic Re-Issuance of PIDs or Attestations
   I want to automatically re-issue a PID or attestation from the original issuer by replacing an existing PID or attestation when its technical validity is about to expire or when the number of unused attestations of the same document type and issuer falls below a defined threshold,
   so that a sufficient number of valid attestations are available in the EUDI Wallet.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/161
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/233
 
   @US_RIAWIA_TC_01
   Scenario: Trigger re-issuance due to expiration in batch
