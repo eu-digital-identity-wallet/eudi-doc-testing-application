@@ -134,19 +134,23 @@ If you want to run tests on a real iPhone device, you will need to install WebDr
 Download and install the EUDIW app:
 
 - iOS:
+
   Minimum device requirements
 
   Any device that supports iOS 15.0 or newer
 
 Prerequisites
 
-To complete the flows described below you need to download the iOS app into your device. You can download it from TestFlight (need to add you to the testing team first).
-- Android:
-  Minimum device requirements
+To complete the flows described below you need to build the iOS app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
+- Android:
+
+  Minimum device requirements
   API level 26 or newer.
 
-To complete the flows described below you need to download the app. You can download it from Firebase (need to add you to the testing team first).
+Prerequisites
+
+To complete the flows described below you need to build the iOS app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
 After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
 Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
