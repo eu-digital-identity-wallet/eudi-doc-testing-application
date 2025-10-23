@@ -41,13 +41,13 @@ public class WalletElements {
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family name\"]");
     public static By optionalDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name\"]");
-    public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
+    public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
     public static By actuallDataIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"ANDERSSON\"]");
 
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter your PIN to share data\"]");
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name(s)\"]");
-    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
+    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Date\"]");
     public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\"]");
@@ -56,11 +56,11 @@ public class WalletElements {
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\"]");
-    public static By detailsAreBlurred = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
+    public static By detailsAreBlurred = By.xpath("//XCUIElementTypeOther[@name=\"Hide\"]"); //XCUIElementTypeOther[@name=\"eye.slash\"]
     public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
     public static By detailsAreNotBlurred = By.xpath("//XCUIElementTypeButton[@name=\"eye\"]");
-    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@name=\"chevron.left\"]");
-    public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@name=\"house.fill\"]");
+    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@name=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
+    public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@name=\"Home\"]");//"//XCUIElementTypeButton[@name=\"house.fill\"]"
     public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
     public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose from list\"]");
     public static By credentialsProviderDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Test Credentials Provider\"]");
@@ -75,5 +75,5 @@ public class WalletElements {
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[7]");
     public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@name='Go Down']");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\"]");
-
+    public static By confirmsDeletion = By.xpath("(//XCUIElementTypeButton[@name=\"Delete document\"])[2]");
 }
