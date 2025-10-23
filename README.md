@@ -152,7 +152,8 @@ There are two main categories: iOS and Android. Inside these folders, there are 
 To execute the tests, follow the steps below:
 
 **<b>Note</b>: If you want to run only the manual tests start from the step 4.**
-**To run both iOS and Android tests, you’ll need a Mac. However, Android tests can also be executed on Windows.**
+
+**To run both iOS and Android automated tests, you’ll need a Mac. However, Android tests can also be executed on Windows.**
 
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
