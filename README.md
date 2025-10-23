@@ -114,13 +114,13 @@ This will return the latest Appium version that have installed in your system.
 To start the Appium server from the terminal run the following command (keep this terminal open while tests run):
 `appium`
 
-- Install Android Debug Bridge (ADB) : ADB is a versatile command-line tool that allows you to communicate with an emulator or connected Android device. It facilitates a variety of device actions, such as installing and debugging apps, and it provides access to a Unix shell to run various commands on a device.
+- <b>Install Android Debug Bridge (ADB)</b> : ADB is a versatile command-line tool that allows you to communicate with an emulator or connected Android device. It facilitates a variety of device actions, such as installing and debugging apps, and it provides access to a Unix shell to run various commands on a device.
   Why is it necessary? ADB is essential for controlling your device over USB from a computer, copying files back and forth, installing and uninstalling apps, running shell commands, and more. It is particularly vital for automation testing as it allows the test scripts to communicate with the device.
 
-- Install UIAutomator: UIAutomator is a UI testing framework that allows you to test your user interface (UI) efficiently by creating automated functional UI test cases that can be run against your app on one or more devices.
+- <b>Install UIAutomator</b>: UIAutomator is a UI testing framework that allows you to test your user interface (UI) efficiently by creating automated functional UI test cases that can be run against your app on one or more devices.
   Why is it necessary? UIAutomator can interact with all Android software and hardware across different devices and Android versions. It is necessary for E2E testing as it allows the scripts to simulate user interactions and verify the correct behavior of your application's user interface.
 
-- Install XCUITest : XCUITest is Apple's UI testing framework that allows you to write UI tests for iOS apps. It provides a robust way to simulate user interaction with your app and validate the results.
+- <b>Install XCUITest</b> : XCUITest is Apple's UI testing framework that allows you to write UI tests for iOS apps. It provides a robust way to simulate user interaction with your app and validate the results.
   Why is it necessary? XCUITest is used for automated testing of the app's user interface. It allows the tests to simulate user interactions and check that the application behaves correctly. This is extremely important for ensuring the quality of the app before it is released to the users.
 
 ### 6. AppiumWebDriverAgent (for real iPhone devices)
