@@ -6,7 +6,7 @@ Feature: Support PDA1 Attestation in EUDI Wallet
   Background:
     Given the PDA1 attestation adheres to the existing functionalities of the EUDI Wallet
 
-  @US_UTPA_TC_01 @manual:Passed @check
+  @US_UTPA_TC_01 @manual:Passed
   Scenario: Issue PDA1 attestation in wallet-initiated flow
     Given the user initiates the process to add a document by choosing from the list
     When the user selects PDA1 attestation from the list

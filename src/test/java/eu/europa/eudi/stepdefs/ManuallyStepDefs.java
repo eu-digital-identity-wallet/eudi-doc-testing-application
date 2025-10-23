@@ -8084,6 +8084,11 @@ public class ManuallyStepDefs {
     public void theFilterOrSortButtonHasVisualIndicationThatUserFilterSAndOrSortingOptionsHaveBeenAppliedOnlyWhenDifferentThanTheDefaultOptions() {
         //manual
     }
+
+    @Given("the user is on the Home screen")
+    public void theUserIsOnTheHomeScreen() {
+        //manual
+    }
 }
 
 
