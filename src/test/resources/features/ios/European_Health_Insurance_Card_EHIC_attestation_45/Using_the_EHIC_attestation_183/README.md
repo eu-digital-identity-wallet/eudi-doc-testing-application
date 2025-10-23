@@ -4,4 +4,4 @@
 
 ## User stories:
 
-- [Using the EHIC attestation #183](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/183)
+- [Using the EHIC attestation #183](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/183)

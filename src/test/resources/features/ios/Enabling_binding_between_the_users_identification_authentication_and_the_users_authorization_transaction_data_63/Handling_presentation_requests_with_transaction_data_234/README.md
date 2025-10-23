@@ -4,4 +4,4 @@
 
 ## User stories:
 
-- [Handling presentation requests with 'transaction_data' #234](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/234)
+- [Handling presentation requests with 'transaction_data' #234](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/234)

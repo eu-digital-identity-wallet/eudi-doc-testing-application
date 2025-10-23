@@ -4,7 +4,7 @@
     I want to be able to sign the job contract utilizing my EUDI Wallet
     So that I can easily complete a digital signing process remotely and securely
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/228
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228
 
     Background:
       Given the user has a valid EUDI Wallet

@@ -1,7 +1,7 @@
 @ANDROID @US_UTEA @Q1_2025
 Feature: Support EHIC Attestation in EUDI Wallet
 
- #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/183
+ #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/183
 
   Background:
     Given the EHIC attestation adheres to the existing functionalities of the EUDI Wallet

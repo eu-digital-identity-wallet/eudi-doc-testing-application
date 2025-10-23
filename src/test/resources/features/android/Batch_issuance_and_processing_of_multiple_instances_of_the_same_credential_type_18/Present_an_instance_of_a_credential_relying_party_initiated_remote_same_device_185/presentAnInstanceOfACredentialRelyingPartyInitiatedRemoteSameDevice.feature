@@ -4,7 +4,7 @@ Feature: Presentation of Batch Issued Attestations in EUDI Wallet
   I want to present attributes of a batch issued attestation to a requestor Relying Party residing on the same device as my EUDI Wallet
   so that my privacy is protected when presenting attributes from an attestation multiple times to the same Relying Party or colluding Relying Parties (Relying Party linkability)
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/185
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/185
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device

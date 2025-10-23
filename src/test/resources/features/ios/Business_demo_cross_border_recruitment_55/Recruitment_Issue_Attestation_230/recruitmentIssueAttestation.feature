@@ -4,7 +4,7 @@ Feature: Request and Store Attestations in EUDI Wallet
   I want to request my Attestations from a trusted issuer and store them in my EUDI Wallet
   So that I can identify myself and present employment documents in cross-border journeys
 
- #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues/230
+ #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/230
 
   Background:
     Given the user is registered to a valid EUDI Wallet on their mobile device
