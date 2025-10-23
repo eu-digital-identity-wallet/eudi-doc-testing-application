@@ -140,14 +140,13 @@ Download and install the EUDIW app:
 
 Prerequisites
 
-To complete the flows described below you need to download the iOS app into your device. You can download it from TestFlight [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-iOS-Dev).
-
+To complete the flows described below you need to download the iOS app into your device. You can download it from TestFlight (need to add you to the testing team first).
 - Android:
   Minimum device requirements
 
   API level 26 or newer.
 
-To complete the flows described below you need to download the app. You can download it from Firebase [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
+To complete the flows described below you need to download the app. You can download it from Firebase (need to add you to the testing team first).
 
 After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
 Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
@@ -164,6 +163,7 @@ There are two main categories: iOS and Android. Inside these folders, there are 
 To execute the tests, follow the steps below:
 
 **Note: If you want to run only the manual tests start from the step 4.**
+**To run both iOS and Android tests, you’ll need a Mac. However, Android tests can also be executed on Windows.**
 
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
@@ -215,9 +215,9 @@ To execute the tests, follow the steps below:
 
    Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
 
-7. Export Test Report - GithubActions 
+7. Export Test Report - GitHub Actions 
 
-   If you want to run manual tests from github actions without doing the setup steps, you can do it from [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions). Click the flow you would like to run on the left, specifically for manual tests choose "Manual Tests Execution" on the left side. Click the "Run workflow" tab, then in the pop-up, click the "Run workflow" button again. The workflow will run, and a report will be generated after executing.
+   If you want to run manual tests from GitHub Actions without doing the setup steps, you can do it from [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions). Click the flow you would like to run on the left, specifically for manual tests choose "Manual Tests Execution" on the left side. Click the "Run workflow" tab, then in the pop-up, click the "Run workflow" button again. The workflow will run, and a report will be generated after executing.
    After the workflow finishes, click on the workflow run, and you will see a download button — click it to download the report. Once the report is downloaded, open the folder and look for the index.html file to view the detailed test report.
 
 ## Exporting Logs
