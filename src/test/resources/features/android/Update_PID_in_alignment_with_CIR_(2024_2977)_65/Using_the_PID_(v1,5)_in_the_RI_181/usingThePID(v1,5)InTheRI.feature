@@ -1,7 +1,7 @@
 @ANDROID @US_UTPITRI @Q1_2025
 Feature: Support the latest version of PID in EUDI Wallet
 
-#https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/167
+#https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/181
 
   Background:
     Given the EUDI Wallet supports the latest version of the PID
