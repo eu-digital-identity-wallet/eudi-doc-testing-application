@@ -57,8 +57,8 @@ public class WalletElements {
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\"]");
     public static By detailsAreBlurred = By.xpath("//XCUIElementTypeOther[@name=\"Hide\"]"); //XCUIElementTypeOther[@name=\"eye.slash\"]
-    public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"eye.slash\"]");
-    public static By detailsAreNotBlurred = By.xpath("//XCUIElementTypeButton[@name=\"eye\"]");
+    public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
+    public static By detailsAreNotBlurred = By.xpath("//XCUIElementTypeButton[@name=\"Show\"]"); //XCUIElementTypeButton[@name="Hide"]
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@name=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
     public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@name=\"Home\"]");//"//XCUIElementTypeButton[@name=\"house.fill\"]"
     public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
