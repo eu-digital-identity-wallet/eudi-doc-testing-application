@@ -30,9 +30,9 @@ Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may no
 
 | **Resource** | **Reason for Limited Impact** |
 |---------------|-------------------------------|
-| **Network Usage** | Data is already loaded locally; operations may not require additional network calls. |
+| **Network Usage** | All Data is already loaded locally, these opereations might not require additional network calls. This is typical in apps that load data initially and perform client-side manipulations.
 | **CPU Usage** | Operations are lightweight and dataset sizes are small; CPU impact is negligible. |
-| **Memory Usage** | Existing data structures are reused; minimal new allocation leads to stable memory usage. |
+| **Memory Usage** | Opereations modify existing data structures without significant allocation of new resources, memory usage may remain stable.
 
 ---
 
