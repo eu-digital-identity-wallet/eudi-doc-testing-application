@@ -44,9 +44,9 @@ The goal is to determine the maximum user load each scenario can sustain before 
 ### Example Device Matrix
 
 | **Platform** | **Device** | **OS Version** | **Purpose** |
-|---------------|-------------|----------------|--------------|
+|---------------|-------------|----------------|-------------|
 | Android | POCO X5 Pro 5G | Android 14 | Real-device performance validation |
-| iOS | iPhone 14 Plus | iOS 18 | Real-device validation on iOS |
+| iOS | iPhone 14 Plus | iOS 18 | Real-device performance validation
 
 
 ## Load Test
