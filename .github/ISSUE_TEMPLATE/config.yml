@@ -2,3 +2,9 @@ issue_templates:
   - name: Bug
     description: "Create a new user Bug"
     labels: ["bug"]
+  - name: Story
+    description: "Create a new user story"
+    labels: ["Story"]
+  - name: Epic
+    description: "Create a new Epic"
+    labels: ["Epic"]

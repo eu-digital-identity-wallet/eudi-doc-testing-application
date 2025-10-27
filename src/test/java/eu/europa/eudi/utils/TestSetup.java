@@ -7,6 +7,8 @@ import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import eu.europa.eudi.utils.factory.WebDriverFactory;
 import io.cucumber.java.Scenario;
 
+import java.net.MalformedURLException;
+
 public class TestSetup {
     private String transactionCode;
     EnvDataConfig envDataConfig;
@@ -42,11 +44,11 @@ public class TestSetup {
         return (envDataConfig == null) ? envDataConfig = new EnvDataConfig() : envDataConfig;
     }
 
-    public void startAndroidDriverSession() {
+    public void startAndroidDriverSession() throws MalformedURLException {
         mobileWebDriverFactory.startAndroidDriverSession();
     }
 
-    public void startIosDriverSession() {
+    public void startIosDriverSession() throws MalformedURLException {
         mobileWebDriverFactory.startIosDriverSession();
     }
 

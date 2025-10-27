@@ -1,13 +1,9 @@
 package eu.europa.eudi.stepdefs;
 
-import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -16,19 +12,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
 
 public class GeneralStepDefs{
 
     static TestSetup test;
     @Before
-    public void setup(Scenario scenario) throws InterruptedException {
+    public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
 
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
@@ -101,21 +94,7 @@ public class GeneralStepDefs{
             test.mobile().wallet().clickFromList();
             test.mobile().wallet().scrollUntilmDL();
             test.mobile().wallet().clickMdl();
-            test.mobile().issuer().clickFormEu();
-            test.mobile().issuer().clickSubmit();
-            test.mobile().issuer().enterFamilyName();
-            test.mobile().issuer().enterGivenName();
-            test.mobile().issuer().chooseBirthDate();
-            test.mobile().issuer().enterDocumentNumber();
-            test.mobile().issuer().scrollUntilFindDate();
-            test.mobile().issuer().clickScreen();
-            test.mobile().issuer().chooseIssueDate();
-            test.mobile().issuer().chooseExpiryDate();
-            test.mobile().issuer().scrollUntilFindSubmit();
-            test.mobile().issuer().clickSubmit();
-            test.mobile().issuer().authorizeIsDisplayed();
-            test.mobile().issuer().scrollUntilAuthorize();
-            test.mobile().issuer().clickAuthorize();
+            test.mobile().issuer().issueMDL();
             test.mobile().wallet().clickDone();
             test.mobile().wallet().clickHome();
         }
@@ -127,39 +106,23 @@ public class GeneralStepDefs{
     }
 
     @After
-    public void tearDown(Scenario scenario) {
+    public void tearDown(Scenario scenario) throws InterruptedException {
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        boolean web = scenario.getSourceTagNames().contains("@WEB");
-
-        if (test != null) {
-            if (android){
+        String env = test.envDataConfig().getExecutionEnvironment();
+        String outputPath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/android/regressionTests/logs/ui-browserstack";
+        if (android) {
                 test.stopAndroidDriverSession();
-            }
-            if (ios) {
-                test.stopIosDriverSession();
-            }
-            test.stopLogging();
         }
+        if (ios)
+        { test.stopIosDriverSession();
+        }
+        test.stopLogging();
     }
 
 
     public static TestSetup getTest() {
         return test;
-    }
-
-
-    @Given("user sets up wallet")
-    public void userSetsUpWallet() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().userProfilIsDisplayed();
     }
 
 
@@ -176,10 +139,16 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNextForAndroid();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().assertAndClickNext();
+        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+        }      else{
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNextForAndroid();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().assertAndClickNext();
+        }
     }
 
     @And("user selects to be identified using EUDI Wallet")
@@ -201,225 +170,14 @@ public class GeneralStepDefs{
         userPressesTheShareButtonOnWallet();
     }
 
-    @And("user authorizes the discolsure of the data")
-    public void userAuthorizesTheDiscolsureOfTheData() {
-        test.mobile().verifier().authorizeData();
-    }
-
     @And("user is authenticated successfully")
     public void userIsAuthenticatedSuccessfully() {
         test.mobile().wallet().authenticationSuccessfully();
     }
 
-    @Given("welcome to EUDI page is displayed")
-    public void welcomeToEUDIPageIsDisplayed() {
-        test.mobile().wallet().welcomePage();
-    }
-
-    @And("user sets up a quick pin")
-    public void userSetsUpAQuickPin() {
-        test.mobile().wallet().createAPin();
-    }
-
-    @And("user clicks next button")
-    public void userClicksNextButton() {
-        test.mobile().wallet().clickNextButton();
-    }
-
-    @And("user re-enters pin")
-    public void userReEntersPin() {
-        test.mobile().wallet().renterThePin();
-    }
-
-    @And("user clicks confirm button")
-    public void userClicksConfirmButton() {
-        test.mobile().wallet().clickConfirm();
-    }
-
-    @Then("a successfull message is appeared")
-    public void aSuccsfullMessageIsAppeared() {
-        test.mobile().wallet().successMessageOfSetUpPin();
-    }
-
-    @And("user clicks national id")
-    public void userClicksNationalId() {
-        test.mobile().wallet().clickNationalId();
-    }
-
-    @Then("national id is displayed")
-    public void nationalIdIsDisplayed() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @And("user clicks mdl")
-    public void userClicksMdl() {
-        test.mobile().wallet().clickMdl();
-    }
-
-    @Then("mdl is displayed")
-    public void mdlIsDisplayed() {
-        test.mobile().wallet().mdlIsDisplayed();
-    }
-
-    @And("user clicks delete button")
-    public void userClicksDeleteButton() {
-        test.mobile().wallet().clickDeleteButton();
-    }
-
-    @And("user confirms deletion")
-    public void userConfirmsDeletion() {
-        test.mobile().wallet().confirmsDeletion();
-    }
-
-    @Then("the login page is displayed")
-    public void theLoginPageIsDisplayed() {
-        test.mobile().wallet().loginPageIsDisplayed();
-    }
-
-    @Then("the dashboard page is displayed")
-    public void theDashboardPageIsDisplayed() {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().loadSampleDocuments();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.terminateApp("eu.europa.ec.euidi.dev");
-// Re-launches the app from scratch
-        driver.activateApp("eu.europa.ec.euidi.dev");
-//        test.mobile().wallet().startAndStopDriver();
-        test.mobile().wallet().loginPageIsDisplayed();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @And("user clicks load sample data")
-    public void userClicksLoadSampleData() {
-        theUserEntersTheirPIN();
-        theUserShouldSeeTheAddDocumentPage();
-        test.mobile().wallet().loadSampleDocuments();
-    }
-
-    @And("user clicks continue button")
-    public void userClicksContinueButton() {
-        test.mobile().wallet().clickContinue();
-    }
-
-    @And("user views the data and unselect any of them")
-    public void userViewsTheDataAndUnselectAnyOfThem() {
-        test.mobile().wallet().unselectData();
-    }
-
     @And("a corresponding message is displayed")
     public void aCorrespondingMessageIsDisplayed() {
         test.mobile().wallet().correspondingMessageIsDisplayed();
-    }
-
-    @And("user clicks again the data")
-    public void userClicksAgainTheData() {
-        test.mobile().wallet().clickAgainData();
-    }
-
-    @And("user clicks add doc button")
-    public void userClicksAddDocButton() {
-        test.mobile().wallet().addDocButton();
-    }
-
-    @And("add document page is displayed")
-    public void addDocumentPageIsDisplayed() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-    }
-
-    @And("user clicks national id button")
-    public void userClicksNationalIdButton() {
-        test.mobile().wallet().clickNationalIdButton();
-    }
-
-    @And("authentication method selection is displayed")
-    public void authenticationMethodSelectionIsDisplayed() {
-        test.mobile().issuer().authenticationMethodSelection();
-    }
-
-    @And("user clicks country selection")
-    public void userClicksCountrySelection() {
-        test.mobile().issuer().clickCountrySelection();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @And("user clicks FormEU")
-    public void userClicksFormEU() {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @And("data page is displayed")
-    public void dataPageIsDisplayed() {
-        test.mobile().issuer().dataPageIsDisplayed();
-    }
-
-    @And("user enters data")
-    public void userEntersData() {
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @And("a success message is displayed")
-    public void aSuccessMessageIsDisplayed() {
-        test.mobile().wallet().successMessageIsDisplayed();
-        test.mobile().wallet().clickNextButton();
-    }
-
-    @And("user clicks driving licence button")
-    public void userClicksDrivingLicenceButton() {
-        test.mobile().wallet().clickDrivingLicenceButton();
-    }
-
-    @And("user enters data for drivring licence")
-    public void userEntersDataForDrivringLicence() {
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterDocumentNumber();
-        test.mobile().issuer().clickScreen();
-        test.mobile().issuer().scrollUntilFindDate();
-        test.mobile().issuer().chooseIssueDate();
-        test.mobile().issuer().chooseExpiryDate();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @Then("driving licence is displayed")
-    public void drivingLicenceIsDisplayed() {
-        test.mobile().wallet().drivingLicenceIsDisplayed();
-        test.mobile().wallet().clickXButton();
-    }
-
-    @And("a success message for driving licence is displayed")
-    public void aSuccessMessageForDrivingLicenceIsDisplayed() {
-        test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickNextButton();
-    }
-
-    @Then("driving licence is displayed in the EUDI Wallet dashboard")
-    public void drivingLicenceIsDisplayedInTheEUDIWalletDashboard() {
-        test.mobile().wallet().drivingLicenceIsDisplayedInDashboard();
-    }
-
-    @And("user enters data for drivring licence for ios")
-    public void userEntersDataForDrivringLicenceForIos() {
-        test.mobile().issuer().chooseIssueDate();
-        test.mobile().issuer().chooseExpiryDate();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterDocumentNumber();
-        test.mobile().issuer().clickScreen();
-        test.mobile().issuer().clickSubmit();
     }
 
     @Given("the user is on the issuer service")
@@ -463,7 +221,7 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected back to the issuer service")
     public void theUserIsRedirectedBackToTheIssuerService() {
-        //auto accept pop up
+     //auto accept pop up
     }
 
     @And("the user is prompted to authenticate and consent to the issuance")
@@ -521,13 +279,8 @@ public class GeneralStepDefs{
     @When("the user presses the CONTINUE button")
     public void theUserPressesTheCONTINUEButton() {
         test.mobile().wallet().clickDone();
-//        test.mobile().wallet().clickContinue();
     }
 
-    @When("user presses the done button")
-    public void theUserPressesTheDoneButton() {
-        test.mobile().wallet().clickDone();
-    }
 
     @Then("the new document is presented in the EUDI Wallet dashboard screen")
     public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
@@ -538,58 +291,8 @@ public class GeneralStepDefs{
     @Given("the user sees a success message in the EUDI Wallet app")
     public void theUserSeesASuccessMessageInTheEUDIWalletApp() throws InterruptedException {
         theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-//        theUserAuthenticatesAndConsentsToTheIssuance();
         insertsTheRequiredCredentialDetails();
         test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
-    @Given("the user launches the EUDI Wallet for the first time")
-    public void theUserLaunchesTheEUDIWalletForTheFirstTime() {
-        test.mobile().wallet().welcomePage();
-    }
-
-    @When("the user sets up their PIN")
-    public void theUserSetsUpTheirPIN() {
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickContinue();
-    }
-
-    @Then("the 'Add document' screen is appeared")
-    public void theAddDocumentScreenIsAppeared() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-    }
-
-    @When("the user has only the ‘National ID’ and ‘SCAN QR’ options available")
-    public void theUserHasOnlyTheNationalIDAndSCANQROptionsAvailable() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-        test.mobile().wallet().scanQrIsDisplayed();
-    }
-
-    @And("the user clicks on the 'National ID' option")
-    public void theUserClicksOnTheNationalIDOption() {
-        test.mobile().wallet().clickNationalId();
-    }
-
-    @Then("the user is redirected to the issuance service")
-    public void theUserIsRedirectedToTheIssuanceService() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
-    }
-
-    @When("the user follows the process to issue a new PID")
-    public void theUserFollowsTheProcessToIssueANewPID() throws InterruptedException {
-        theUserAuthenticatesAndConsentsToTheIssuance();
-        insertsTheRequiredCredentialDetails();
-        test.mobile().wallet().successMessageIsDisplayed();
-        test.mobile().wallet().clickNextButton();
-    }
-
-    @Then("the user should be able to preview the PID")
-    public void theUserShouldBeAbleToPreviewThePID() {
-        test.mobile().wallet().previewPid();
     }
 
     @When("the user enters their PIN")
@@ -599,7 +302,7 @@ public class GeneralStepDefs{
 
     @Then("the user should see the dashboard screen")
     public void theUserShouldSeeTheDashboardScreen() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+      test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @Given("the user is on the dashboard screen")
@@ -615,11 +318,6 @@ public class GeneralStepDefs{
     @Then("the PID should open")
     public void thePIDShouldOpen() {
         test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @And("the user should see the details of the PID")
-    public void theUserShouldSeeTheDetailsOfThePID() {
-        test.mobile().wallet().detailsOfPidIsDisplayed();
     }
 
     @Given("the PID is open")
@@ -660,11 +358,6 @@ public class GeneralStepDefs{
         test.mobile().wallet().mdlIsDisplayed();
     }
 
-    @And("the user should see the details of the mDL")
-    public void theUserShouldSeeTheDetailsOfTheMDL() {
-        test.mobile().wallet().mdlDetailsAreDisplayed();
-    }
-
     @Given("the mDL is open")
     public void theMDLIsOpen() throws InterruptedException {
         theUserIsViewingTheDetailsOfTheMDL();
@@ -683,13 +376,8 @@ public class GeneralStepDefs{
 
     @And("the add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-        test.mobile().wallet().clickFromList();
-    }
-
-    @And("the user clicks the national id button")
-    public void theUserClicksTheNationalIdButton() {
-        test.mobile().wallet().clickNationalId();
+       test.mobile().wallet().addDocumentPageIsDisplayed();
+       test.mobile().wallet().clickFromList();
     }
 
     @Then("the authentication method selection is displayed")
@@ -759,15 +447,6 @@ public class GeneralStepDefs{
     public void theDocumentShouldBeDeleted() {
         test.mobile().wallet().confirmsDeletion();
         test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @Given("the document has been deleted")
-    public void theDocumentHasBeenDeleted() {
-        theUserHasSuccessfullyEnteredThePIN();
-        theUserOpensAMDL();
-        theUserShouldSeeTheDocumentContents();
-        theUserPressesTheDeleteButton();
-        theDocumentShouldBeDeleted();
     }
 
     @When("the user opens a PID \\(not the first one issued)")
@@ -848,12 +527,6 @@ public class GeneralStepDefs{
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
     }
 
-    @When("the user clicks on country selection and submits")
-    public void theUserClicksOnCountrySelectionAndSubmits() {
-        test.mobile().issuer().clickCountrySelection();
-        test.mobile().issuer().clickSubmit();
-    }
-
     @And("the user clicks on Credential Provider FormEU and submits")
     public void theUserClicksOnCredentialProviderFormEUAndSubmits() {
         test.mobile().issuer().clickFormEu();
@@ -867,9 +540,9 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
-        theCredentialsProviderIsDisplayedOnScreen();
-        theUserClicksOnCredentialProviderFormEUAndSubmits();
-        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+    theCredentialsProviderIsDisplayedOnScreen();
+    theUserClicksOnCredentialProviderFormEUAndSubmits();
+    theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
@@ -914,10 +587,8 @@ public class GeneralStepDefs{
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
 //        test.mobile().issuer().clickNationality();
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            test.mobile().issuer().scrollUntilFindSubmit();
-            test.mobile().issuer().clickSubmit();
-        }
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
 //        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
@@ -936,11 +607,6 @@ public class GeneralStepDefs{
         test.mobile().wallet().secondPIDIsDisplayed();
     }
 
-    @Then("the user should see the add document page")
-    public void theUserShouldSeeTheAddDocumentPage() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-    }
-
     @Given("user opens Verifier Application")
     public void userOpensVerifierApplication() throws MalformedURLException {
         userOpensVerifierApp();
@@ -957,10 +623,17 @@ public class GeneralStepDefs{
         test.mobile().verifier().appOpensSuccessfully();
         test.mobile().verifier().selectAllAttributes();
         test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNextForAndroid();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().assertAndClickNext();
+
+        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNext();
+    }      else{
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickNextForAndroid();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().assertAndClickNext();
+        }
     }
 
     @Then("the requestor of the data is displayed in the wallet")
@@ -975,25 +648,6 @@ public class GeneralStepDefs{
         test.mobile().wallet().nationalIdIsDisplayed();
     }
 
-    @Given("the user is viewing the optional data")
-    public void theUserIsViewingTheOptionalData() throws MalformedURLException {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
-    }
-
-    @When("the user clicks the eye icon")
-    public void theUserClicksTheEyeIcon() {
-        test.mobile().wallet().clickEyeIcon();
-    }
-
-    @Then("the actual values of the data are displayed")
-    public void theActualValuesOfTheDataAreDisplayed() {
-        test.mobile().wallet().actualDataAreDisplayed();
-    }
-
     @Given("the user views the document that is requested")
     public void theUserViewsTheDocumentThatIsRequested() throws MalformedURLException {
         theUserHasFinalizedDataSelection();
@@ -1003,7 +657,6 @@ public class GeneralStepDefs{
 
     @Then("the user clicks to view the document's details")
     public void theUserClicksToViewTheDocumentsDetails() {
-//        test.mobile().wallet().createAPin();
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
         test.mobile().wallet().clickToViewDetails();
     }
@@ -1046,25 +699,9 @@ public class GeneralStepDefs{
         test.mobile().wallet().pinFieldIsDisplayed();
     }
 
-    @Given("the user is prompted to enter a PIN for sharing")
-    public void theUserIsPromptedToEnterAPINForSharing() throws MalformedURLException {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-        test.mobile().wallet().optionalDataIsDisplayed();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().pinFieldIsDisplayed();
-    }
-
     @When("the user enters the correct PIN")
     public void theUserEntersTheCorrectPIN() {
         test.mobile().wallet().createAPin();
-    }
-
-    @Then("a successful message is displayed indicating the data has been authorized for sharing")
-    public void aSuccessfulMessageIsDisplayedIndicatingTheDataHasBeenAuthorizedForSharing() {
-        test.mobile().wallet().authenticationSuccessfully();
     }
 
     @Given("user selects to be identified using the EUDI Wallet")
@@ -1087,19 +724,9 @@ public class GeneralStepDefs{
         test.mobile().wallet().clickShareButton();
     }
 
-    @Given("the authentication method selection is displayed on screen")
-    public void theAuthenticationMethodSelectionIsDisplayedOnScreen() throws InterruptedException {
-        theDashboardPageIsDisplayedOnWallet();
-        theUserClicksOnDocuments();
-        theDocumentsPageIsDisplayed();
-        theUserClicksOnThePIDButton();
-        theAuthenticationMethodSelectionIsDisplayed();
-    }
-
     @Given("a provider form is displayed for mdl")
     public void aProviderFormIsDisplayedForMdl() throws InterruptedException {
         theIssuerServiceTestCredentialProviderScreenIsDisplayed();
-//        theUserClicksOnCountrySelectionAndSubmits();
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
@@ -1118,7 +745,7 @@ public class GeneralStepDefs{
 // Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
-        }
+            }
     }
 
     @When("the user clicks on Documents")
@@ -1192,11 +819,6 @@ public class GeneralStepDefs{
 //        //waiting for an attribute to check
 //    }
 
-    @And("the Documents page is displayed")
-    public void theDocumentsPageIsDisplayed() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
     @Given("the issuer service -test credential provider screen- is displayed")
     public void theIssuerServiceTestCredentialProviderScreenIsDisplayed() throws InterruptedException {
         theHomePageIsDisplayedOnWallet();
@@ -1204,25 +826,6 @@ public class GeneralStepDefs{
         theAddDocumentPageIsDisplayed();
         theUserClicksTheDrivingLicenseButton();
         theUserIsRedirectedToTheIssuerServiceToIssueMDL();
-    }
-
-    @And("the user clicks on the PID button")
-    public void theUserClicksOnThePIDButton() throws InterruptedException {
-        test.mobile().wallet().clickToAddDocument();
-        test.mobile().wallet().clickFromList();
-        test.mobile().wallet().scrollUntilPID();
-        test.mobile().wallet().clickPID();
-    }
-
-    @When("the user goes in Documents dashboard")
-    public void theUserGoesInDocumentsDashboard() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @Then("Then the user should not see the second PID")
-    public void thenTheUserShouldNotSeeTheSecondPID() {
-        test.mobile().wallet().secondPIDIsNotDisplayed();
     }
 
     @Then("the user should see the Documents dashboard")
@@ -1464,6 +1067,8 @@ public class GeneralStepDefs{
 //        test.mobile().issuer().clickAddAttributes();
 //        test.mobile().issuer().enableAgeOver18();
 //        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1471,7 +1076,7 @@ public class GeneralStepDefs{
 
     @And("a transaction code has been created")
     public void aTransactionCodeHasBeenCreated() {
-        test.mobile().issuer().transactionCodeIsDisplayed();
+       test.mobile().issuer().transactionCodeIsDisplayed();
 //       test.mobile().issuer().getTransactionCode();
 //       String code = test.mobile().issuer().getTransactionCode();
 //       test.setTransactionCode(code); // <-- store it for later steps
@@ -1668,13 +1273,6 @@ public class GeneralStepDefs{
 //         test.mobile().wallet().clickAuthentication();
     }
 
-
-
-
-
-
-
-
     @When("the user decides not to proceed")
     public void theUserDecidesNotToProceed() {
         test.mobile().verifier().insertPIN2();
@@ -1701,7 +1299,7 @@ public class GeneralStepDefs{
 
     @Then("the EUDI Wallet enables the user to share the document or close the process")
     public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-        test.mobile().wallet().clickDone();
+       test.mobile().wallet().clickDone();
 //       test.mobile().wallet().closeIsDisplayed();
 //       test.mobile().wallet().shareIsDisplayed();
     }
@@ -1784,8 +1382,8 @@ public class GeneralStepDefs{
 
     @And("the user views the document on the dashboard which issued based on the PID")
     public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
+       test.mobile().wallet().dashboardPageIsDisplayed();
+       test.mobile().wallet().clickOnDocuments();
 //       test.mobile().wallet().ageOver18IsDisplayed();
     }
 
@@ -1970,8 +1568,8 @@ public class GeneralStepDefs{
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
     public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
+       test.mobile().wallet().dashboardPageIsDisplayed();
+       test.mobile().wallet().clickOnDocuments();
     }
 
     @And("the EUDI Wallet reduces the internal counter of unused attestations")
@@ -2086,40 +1684,5 @@ public class GeneralStepDefs{
         theUserIsViewingTheDetailsOfAttestationAuto();
         theUserSelectsEyeIcon();
     }
-
-    @And("inserts the required of credential details")
-    public void insertsTheRequiredOfCredentialDetails() throws InterruptedException {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().chooseBirthDate();
-//        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-//        test.mobile().issuer().enterRegion();
-//        test.mobile().issuer().enterLocality();
-//        test.mobile().issuer().clickNationality();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().addOptionalAttributes();
-//        test.mobile().issuer().clickAgeOver18OnIssuer();
-//        test.mobile().issuer().clickAddAttributes();
-//        test.mobile().issuer().enableAgeOver18();
-//        test.mobile().issuer().clickConfirm();
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            test.mobile().issuer().authorizeIsDisplayed();
-        }
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Given("the user sees success message in the EUDI Wallet app")
-    public void theUserSeesSuccessMessageInTheEUDIWalletApp() throws InterruptedException {
-        theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-        insertsTheRequiredOfCredentialDetails();
-//        theUserAuthenticatesAndConsentsToTheIssuance();
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
 }
+

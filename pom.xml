@@ -27,18 +27,6 @@
         <build-version>EUDI_Wallet_Version_2025.10.31-Demo</build-version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>google-maven-central</id>
-            <url>https://maven.google.com/</url>
-        </repository>
-
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <!-- Dependencies -->
         <dependency>
@@ -46,31 +34,6 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
-        <!-- Maven dependency -->
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>1.33.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.oauth-client</groupId>
-            <artifactId>google-oauth-client-jetty</artifactId>
-            <version>1.33.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-gson</artifactId>
-            <version>1.39.2</version>
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.google.apis</groupId>-->
-        <!--            <artifactId>google-api-services-oauth2</artifactId>-->
-        <!--            <version>v2-rev20220804-1.32.1</version>-->
-        <!--        </dependency>-->
-
-
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -79,7 +42,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.13.0</version>
+            <version>4.11.0</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -128,18 +91,18 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-        <dependency>
+<dependency>
       <groupId>com.browserstack</groupId>
       <artifactId>browserstack-java-sdk</artifactId>
       <version>LATEST</version>
       <scope>compile</scope>
     </dependency>
-        <!--<dependency>-->
-        <!--      <groupId>com.browserstack</groupId>-->
-        <!--      <artifactId>browserstack-java-sdk</artifactId>-->
-        <!--      <version>LATEST</version>-->
-        <!--      <scope>compile</scope>-->
-        <!--    </dependency>-->
+<!--<dependency>-->
+<!--      <groupId>com.browserstack</groupId>-->
+<!--      <artifactId>browserstack-java-sdk</artifactId>-->
+<!--      <version>LATEST</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
     </dependencies>
     <build>
         <plugins>
@@ -197,15 +160,14 @@
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.bdd.version}</version>
                 <configuration>
-                    <!--suppress UnresolvedMavenProperty -->
-                    <tags>${tags}</tags>
+                  <tags>${tags}</tags>
                 </configuration>
                 <executions>
                     <execution>
                         <phase>integration-test</phase> <!-- Tests phase -->
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
+                    <goals>
+                        <goal>aggregate</goal>
+                    </goals>
 
                     </execution>
                 </executions>
@@ -227,7 +189,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
+<!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
 
                     <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
 
@@ -238,18 +200,18 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
 
-                <executions>
-                    <execution>
-                        <id>getClasspathFilenames</id>
-                        <goals>
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+        <executions>
+          <execution>
+            <id>getClasspathFilenames</id>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
         </plugins>
     </build>
 </project>
