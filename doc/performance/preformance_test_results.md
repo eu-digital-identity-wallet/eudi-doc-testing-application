@@ -344,4 +344,3 @@ No significant performance issues were detected during testing.
 ## References
 - [requirements.md](requirements.md)
 - [specifications.md](specifications.md)
-- [Performance Test Report (Figures 1–29)](https://github.com/eu-digital-identity-wallet/eudi-doc-developers-hub-site/blob/doc_update/docs/Reference%20Implementation/Quality%20Assurance.md#-reporting)
