@@ -48,11 +48,6 @@ The goal is to determine the maximum user load each scenario can sustain before 
 | Android | POCO X5 Pro 5G | Android 14 | Real-device performance validation |
 | iOS | iPhone 14 Plus | iOS 18 | Real-device validation on iOS |
 
-### Virtual User Model
-- Simulate real-world usage by reproducing user journeys (e.g., credential issuance, attestation, signing).
-- Collect detailed metrics on CPU, memory, response time, and error rates.
-
----
 
 ## Load Test
 
@@ -122,31 +117,5 @@ The following credentials will be loaded to simulate diverse user datasets:
 | Photo ID | 1 | Image-based credential |
 | EHIC | 1 | European Health Insurance Card |
 | EHIC | 1 | sd-jwt-vc format |
-
----
-
-## Test Environment
-
-The following specifications describe the environment in which performance testing was conducted.
-
-### Android Environment
-- **Device Used:** POCO X5 Pro 5G
-- **Connection:** Connected to PC with IDE
-- **Tools Used:** Android Studio Profiler and App Inspection
-- **Network:** Wi-Fi
-- **Test Data:**
-    - Simulated EUDI Wallet application with 10 documents
-    - Production Issuer: [https://issuer.eudiw.dev/credential_offer_choice](https://issuer.eudiw.dev/credential_offer_choice)
-    - Production Verifier: [https://verifier.eudiw.dev/home](https://verifier.eudiw.dev/home)
-
-### iOS Environment
-- **Device Used:** iPhone 14 Plus
-- **Connection:** Connected to PC with IDE
-- **Tools Used:** Xcode Instruments
-- **Network:** Wi-Fi
-- **Test Data:**
-    - Simulated EUDI Wallet application with 10 documents
-    - Production Issuer: [https://issuer.eudiw.dev/credential_offer_choice](https://issuer.eudiw.dev/credential_offer_choice)
-    - Production Verifier: [https://verifier.eudiw.dev/home](https://verifier.eudiw.dev/home)
 
 ---
