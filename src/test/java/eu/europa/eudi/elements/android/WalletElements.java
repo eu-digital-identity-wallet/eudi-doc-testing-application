@@ -60,7 +60,7 @@ public class WalletElements {
     public static By clickDocuments = By.xpath("//android.widget.TextView[@text=\"Documents\"]");
     public static By clickClose = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By documentsPageIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"Documents\"])[1]");
-    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button");
+    public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]"); //androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button
     public static By clickToAddDocument = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
