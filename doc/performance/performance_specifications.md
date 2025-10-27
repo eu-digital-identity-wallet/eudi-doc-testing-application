@@ -51,18 +51,7 @@ The goal is to determine the maximum user load each scenario can sustain before 
 
 ## Load Test
 
-The **Load Test** aims to assess system response time, CPU and memory utilization, network activity, and application stability under various traffic conditions.
-
-### Objectives
-- Measure system behavior under load conditions.
-- Identify bottlenecks and performance degradation patterns.
-- Ensure stability within defined thresholds.
-
-### Metrics Collected
-- Average response times
-- CPU and memory consumption per device
-- Network throughput
-- Application crash or instability indicators
+The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of a system when it is subjected to varying  levels of traffic or load.
 
 ---
 
