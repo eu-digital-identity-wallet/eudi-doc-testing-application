@@ -107,27 +107,25 @@ jobs:
 #          echo "app_url=$app_url" >> $GITHUB_OUTPUT
 
 
-      - name: Run Selenium Appium tests on BrowserStack
+      - name: Run Android Selenium Appium tests on BrowserStack
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
-          TEST_CASES="${{ inputs.test-cases }}"
+          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
           echo "Using Cucumber tags: $TEST_CASES"
           export CUCUMBER_FILTER_TAGS="$TEST_CASES"
           mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
-#          echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
-#          TEST_CASES="${{ inputs.test-cases }}"
-#          if [ -z "$TEST_CASES" ]; then
-#            TEST_CASES="@automated and @US_VP_TC_01"
-#          fi
-#          echo "Using test cases: $TEST_CASES"
-#          mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-#      - name: Produce Serenity report
-#        if: always()
-#        run: mvn -ntp serenity:aggregate
+      - name: Run iOS Selenium Appium tests on BrowserStack
+        #        env:
+        #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        run: |
+          TEST_CASES="${{ inputs.test-cases }} and @IOS"
+          echo "Using Cucumber tags: $TEST_CASES"
+          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+          mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-      - name: Generate Serenity Report (same flags as local)
+      - name: Generate Serenity Report
         if: always()
         run: |
             mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
