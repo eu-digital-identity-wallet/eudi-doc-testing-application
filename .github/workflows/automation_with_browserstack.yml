@@ -126,7 +126,8 @@ jobs:
         if: always()
         with:
           name: serenity-report
-          path: /Users/runner/work/eudi-doc-testing-application-internal/eudi-doc-testing-application-internal/target/site/reports/*
+          path: target/site/reports/*
+
 
       - name: Upload screenshots
         if: always()
