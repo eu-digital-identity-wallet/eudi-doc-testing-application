@@ -124,8 +124,7 @@ jobs:
          TEST_CASES="${{ inputs.test-cases }} and @android"
          echo "Running Android tests with tags: $TEST_CASES"
          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-         mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
-
+           mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Run iOS Selenium Appium tests on BrowserStack
         #        env:
@@ -135,7 +134,7 @@ jobs:
             TEST_CASES="${{ inputs.test-cases }} and @ios"
             echo "Running iOS tests with tags: $TEST_CASES"
             export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-            mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+          mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Generate Serenity Report
         if: always()
