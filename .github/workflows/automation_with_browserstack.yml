@@ -124,7 +124,7 @@ jobs:
          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
          echo "Running Android tests with tags: $TEST_CASES"
          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-         mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+         mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Run iOS Selenium Appium tests on BrowserStack
         #        env:
@@ -134,12 +134,12 @@ jobs:
             TEST_CASES="${{ inputs.test-cases }} and @IOS"
             echo "Running iOS tests with tags: $TEST_CASES"
             export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-            mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+            mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Generate Serenity Report
         if: always()
         run: |
-            mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
+           mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
