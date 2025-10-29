@@ -74,6 +74,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '16.20.2'
+
+      - name: Clean Old Results
+        run: |
+         rm -rf target/serenity
+         rm -rf target/site/reports
+         rm -rf target/site/serenity
+
       - name: Check BrowserStack Credentials
         run: |
           response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
@@ -111,10 +118,6 @@ jobs:
           fi
           echo "Using test cases: $TEST_CASES"
           mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
-
-      - name: Clean old Serenity results
-        if: always()
-        run: rm -rf target/serenity target/site/reports
 
       - name: Produce Serenity report
         if: always()
