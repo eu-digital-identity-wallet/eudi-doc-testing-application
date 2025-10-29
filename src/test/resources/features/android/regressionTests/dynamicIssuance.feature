@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DIP
+@ANDROID @US_DIP
 Feature: Dynamic issuance process
   As a user of the issuer service
   I want to be able to dynamically present attestations requested by issuers

@@ -1,4 +1,4 @@
-@IOS @automated @US_PACSD
+@IOS @US_PACSD
 Feature: Pre-authorization code same device
   As a user of the issuer service
   I want to be able to issue a credential using a transaction code

@@ -1,4 +1,4 @@
-@IOS @automated @US_DI
+@IOS @US_DI
 Feature: Deferred Issuing
   As a user of the issuer service
   I want to be able to issue a credential in deferred mode

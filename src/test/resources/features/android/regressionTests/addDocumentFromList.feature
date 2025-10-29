@@ -1,4 +1,4 @@
-@ANDROID @automated @US_ADBCFL
+@ANDROID @US_ADBCFL
 
 Feature: Issuing and storing attestations in the EUDI Wallet
   As a EUDI Wallet User
