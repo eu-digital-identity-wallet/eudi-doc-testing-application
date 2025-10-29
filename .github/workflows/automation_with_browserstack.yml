@@ -19,6 +19,15 @@ on:
         type: string
         default: "@automated and @US_VP_TC_01"
 
+      platform:
+        description: 'Which platform to test (android, ios or both)'
+        type: choice
+        options:
+          - both
+          - android
+          - ios
+        default: both
+
   # schedule:
   #   # WED,SAT 03:15 UTC
   #   - cron: '15 3 * * 3,6'
@@ -110,20 +119,23 @@ jobs:
       - name: Run Android Selenium Appium tests on BrowserStack
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        if: ${{ inputs.platform == 'android' || inputs.platform == 'both' }}
         run: |
-          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
-          echo "Using Cucumber tags: $TEST_CASES"
-          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-          mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+         TEST_CASES="${{ inputs.test-cases }} and @android"
+         echo "Running Android tests with tags: $TEST_CASES"
+         export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+         mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+
 
       - name: Run iOS Selenium Appium tests on BrowserStack
         #        env:
         #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        if: ${{ inputs.platform == 'ios' || inputs.platform == 'both' }}
         run: |
-          TEST_CASES="${{ inputs.test-cases }} and @IOS"
-          echo "Using Cucumber tags: $TEST_CASES"
-          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-          mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+            TEST_CASES="${{ inputs.test-cases }} and @ios"
+            echo "Running iOS tests with tags: $TEST_CASES"
+            export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+            mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Generate Serenity Report
         if: always()
