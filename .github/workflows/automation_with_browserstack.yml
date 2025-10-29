@@ -24,8 +24,8 @@ on:
         type: choice
         options:
           - both
-          - android
-          - ios
+          - ANDROID
+          - IOS
         default: both
 
   # schedule:
@@ -119,7 +119,7 @@ jobs:
       - name: Run Android Selenium Appium tests on BrowserStack
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
-        if: ${{ inputs.platform == 'android' || inputs.platform == 'both' }}
+        if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
         run: |
          TEST_CASES="${{ inputs.test-cases }} and @android"
          echo "Running Android tests with tags: $TEST_CASES"
@@ -129,7 +129,7 @@ jobs:
       - name: Run iOS Selenium Appium tests on BrowserStack
         #        env:
         #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
-        if: ${{ inputs.platform == 'ios' || inputs.platform == 'both' }}
+        if: ${{ inputs.platform == 'IOS' || inputs.platform == 'both' }}
         run: |
             TEST_CASES="${{ inputs.test-cases }} and @ios"
             echo "Running iOS tests with tags: $TEST_CASES"
