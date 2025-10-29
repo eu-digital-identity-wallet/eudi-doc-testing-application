@@ -112,9 +112,9 @@ jobs:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
           TEST_CASES="${{ inputs.test-cases }}"
-           echo "Using Cucumber tags: $TEST_CASES"
-           export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-           mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+          echo "Using Cucumber tags: $TEST_CASES"
+          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+          mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 #          echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
 #          TEST_CASES="${{ inputs.test-cases }}"
 #          if [ -z "$TEST_CASES" ]; then
@@ -130,7 +130,6 @@ jobs:
       - name: Generate Serenity Report (same flags as local)
         if: always()
         run: |
-#            rm -rf target/site/serenity
             mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
 
       - name: Upload Serenity Report
