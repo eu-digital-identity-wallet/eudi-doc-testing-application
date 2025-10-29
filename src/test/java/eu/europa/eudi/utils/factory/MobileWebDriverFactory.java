@@ -40,9 +40,15 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
+
+                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String username = System.getenv("BROWSERSTACK_USERNAME");
+                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
                 // --- BrowserStack setup ---
                 DesiredCapabilities options = new DesiredCapabilities();
-                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
+//                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
+                options.setCapability("appium:app", appUrl);
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
@@ -52,12 +58,10 @@ public class MobileWebDriverFactory {
                 options.setCapability("autoRotate", false);
                 options.setCapability("orientation", "PORTRAIT");
                 try {
-                androidDriver = new AndroidDriver(
-                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub",
-                                envDataConfig.getAppiumBrowserstackGeneralUsername(),
-                                envDataConfig.getAppiumBrowserstackGeneralAccesskey())),
-                        options
-                );
+                    androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+                    //            envDataConfig.getAppiumBrowserstackGeneralUsername(),
+//                                envDataConfig.getAppiumBrowserstackGeneralAccesskey())),
+
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
 
@@ -112,12 +116,16 @@ public class MobileWebDriverFactory {
         envDataConfig = new EnvDataConfig();
         String env = envDataConfig.getExecutionEnvironment();
         System.out.println("Running environment: " + env);
+        String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
-                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
+                options.setCapability("appium:app", appUrl);
+//                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackIosDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
@@ -127,8 +135,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.deviceLogs", "true");
 
                 try {
-                iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(),
-                        envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
                 wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                 } catch (Exception e) {
                     System.out.println(e.toString());
