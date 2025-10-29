@@ -384,7 +384,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
     }
-    
+
     public void issuePID() throws InterruptedException {
         selectCountryOfOrigin();
         clickFormEu();
