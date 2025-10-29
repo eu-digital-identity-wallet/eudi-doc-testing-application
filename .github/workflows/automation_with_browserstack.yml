@@ -111,17 +111,27 @@ jobs:
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
-          echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
           TEST_CASES="${{ inputs.test-cases }}"
-          if [ -z "$TEST_CASES" ]; then
-            TEST_CASES="@automated and @US_VP_TC_01"
-          fi
-          echo "Using test cases: $TEST_CASES"
-          mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+           echo "Using Cucumber tags: $TEST_CASES"
+           export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+           mvn clean test -Dtest=TestRunner -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+#          echo "Starting tests with app URL: $BROWSERSTACK_APP_URL"
+#          TEST_CASES="${{ inputs.test-cases }}"
+#          if [ -z "$TEST_CASES" ]; then
+#            TEST_CASES="@automated and @US_VP_TC_01"
+#          fi
+#          echo "Using test cases: $TEST_CASES"
+#          mvn clean verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-      - name: Produce Serenity report
+#      - name: Produce Serenity report
+#        if: always()
+#        run: mvn -ntp serenity:aggregate
+
+      - name: Generate Serenity Report (same flags as local)
         if: always()
-        run: mvn -ntp serenity:aggregate
+        run: |
+            rm -rf target/site/serenity
+            mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
