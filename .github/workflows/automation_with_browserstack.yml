@@ -130,7 +130,7 @@ jobs:
       - name: Generate Serenity Report (same flags as local)
         if: always()
         run: |
-            rm -rf target/site/serenity
+#            rm -rf target/site/serenity
             mvn serenity:aggregate -Dtags="${{ inputs.test-cases }}"
 
       - name: Upload Serenity Report
