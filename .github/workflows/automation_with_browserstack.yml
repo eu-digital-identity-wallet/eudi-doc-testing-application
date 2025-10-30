@@ -196,22 +196,22 @@ jobs:
       - name: Download BrowserStack Device Logs by Feature
         if: always()
         run: |
-           mkdir -p browserstack-device-logs
+         mkdir -p browserstack-device-logs
   
-           curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             "https://api-cloud.browserstack.com/app-automate/sessions.json" \
             -o sessions.json
   
-           jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
+         jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
             echo "🔍 Fetching device logs for session: $session"
 
-           metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+         metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
 
-           feature=$(echo "$metadata" | jq -r '.automation_session.name // "UnknownFeature"')
-           safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+         feature=$(echo "$metadata" | jq -r '.automation_session.name // "UnknownFeature"')
+         safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
 
-           curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             "https://api-cloud.browserstack.com/app-automate/sessions/$session/device_logs" \
             -o "browserstack-device-logs/${safe_feature}_${session}.log"
   
