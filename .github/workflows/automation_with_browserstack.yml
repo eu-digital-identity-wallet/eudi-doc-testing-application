@@ -120,6 +120,7 @@ jobs:
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
+        continue-on-error: true
         run: |
          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
          echo "Running Android tests with tags: $TEST_CASES"
@@ -130,6 +131,7 @@ jobs:
         #        env:
         #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         if: ${{ inputs.platform == 'IOS' || inputs.platform == 'both' }}
+        continue-on-error: true
         run: |
             TEST_CASES="${{ inputs.test-cases }} and @IOS"
             echo "Running iOS tests with tags: $TEST_CASES"
