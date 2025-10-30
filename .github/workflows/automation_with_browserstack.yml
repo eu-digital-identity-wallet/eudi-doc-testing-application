@@ -223,6 +223,10 @@ jobs:
           "https://api-cloud.browserstack.com/app-automate/sessions/$session/$log_endpoint" \
           -o "browserstack-device-logs/${safe_feature}_${session}.log"
          done
+          
+         if [ ! "$(ls -A browserstack-device-logs)" ]; then
+             echo "No logs fetched from BrowserStack." > browserstack-device-logs/empty.txt
+         fi
 
       - name: Upload BrowserStack Device Logs
         if: always()

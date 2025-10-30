@@ -56,10 +56,15 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.deviceLogs", "true");
                 options.setCapability("autoRotate", false);
                 options.setCapability("orientation", "PORTRAIT");
-                String featureName = System.getProperty("FEATURE_NAME", "UnknownFeature");
-                options.setCapability("name", featureName + " - Android"); // shows in BS Dashboard
-                options.setCapability("featureName", featureName); // ✅ Used later for logs mapping
-                
+                String featureName = test.getScenario().getUri().getPath()
+                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+
+                options.setCapability("name", featureName + " - Android Test");
+                options.setCapability("feature_name", featureName); // ✅ used for logs mapping
+                options.setCapability("sessionName", featureName);  // ✅ fallback key also recognized by BS
+
+
 
                 try {
                     androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
@@ -98,6 +103,13 @@ public class MobileWebDriverFactory {
                 caps.setCapability("newCommandTimeout", 120);
                 caps.setCapability("disableWindowAnimation", true);
                 caps.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
+                String featureName = test.getScenario().getUri().getPath()
+                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+
+                options.setCapability("name", featureName + " - iOS Test");
+                options.setCapability("feature_name", featureName);
+                options.setCapability("sessionName", featureName);
 
 
                 try {
