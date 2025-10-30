@@ -221,10 +221,9 @@ jobs:
           echo "⚠️ No device logs found for any session." > browserstack-device-logs/empty.txt
          fi
 
-
       - name: Upload BrowserStack Device Logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-            name: browserstack-device-logs
-            path: browserstack-device-logs/*
+          name: browserstack-device-logs
+          path: browserstack-device-logs/*
