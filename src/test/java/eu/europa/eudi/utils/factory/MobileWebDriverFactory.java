@@ -52,8 +52,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
-                options.setCapability("browserstack.debug", "true");
-                options.setCapability("browserstack.deviceLogs", "true");
+                options.setCapability("browserstack.debug", true);
+                options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", false);
                 options.setCapability("orientation", "PORTRAIT");
                 String featureName = test.getScenario().getUri().getPath()
