@@ -196,16 +196,16 @@ jobs:
       - name: Download BrowserStack Device Logs by Feature
         if: always()
         run: |
-        mkdir -p browserstack-device-logs
-        # Get all sessions from the build
-        curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-        "https://api-cloud.browserstack.com/app-automate/sessions.json" \
-        -o sessions.json
-        jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
-        echo "🔍 Processing session: $session"
-        # Grab metadata
-        metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-        "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
+         mkdir -p browserstack-device-logs
+         # Get all sessions from the build
+         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+         "https://api-cloud.browserstack.com/app-automate/sessions.json" \
+         -o sessions.json
+         jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
+         echo "🔍 Processing session: $session"
+         # Grab metadata
+         metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+         "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
          # Extract OS + Feature Name
          os=$(echo "$metadata" | jq -r '.automation_session.os // "unknown"')
          feature=$(echo "$metadata" | jq -r '.automation_session.featureName // "UnknownFeature"')
