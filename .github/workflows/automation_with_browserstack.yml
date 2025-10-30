@@ -227,5 +227,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-                name: browserstack-device-logs
-                path: browserstack-device-logs/*
+            name: browserstack-device-logs
+            path: src/test/resources/features/android/regressionTests/logs/browserstack-device-logs
