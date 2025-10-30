@@ -227,3 +227,4 @@ jobs:
         with:
           name: browserstack-device-logs
           path: browserstack-device-logs/*
+
