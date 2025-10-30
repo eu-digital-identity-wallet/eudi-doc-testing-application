@@ -196,37 +196,31 @@ jobs:
       - name: Download BrowserStack Device Logs by Feature
         if: always()
         run: |
-         mkdir -p browserstack-device-logs
-          
-         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-          "https://api-cloud.browserstack.com/app-automate/sessions.json" \
+          mkdir -p browserstack-device-logs
+  
+          curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+           "https://api-cloud.browserstack.com/app-automate/sessions.json" \
            -o sessions.json
-         
-         jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
-           echo "🔍 Processing session: $session"
-         
+  
+          jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
+           echo "🔍 Fetching device logs for session: $session"
+
            metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
-         
-         os=$(echo "$metadata" | jq -r '.automation_session.os // "unknown"')
-         feature=$(echo "$metadata" | jq -r '.automation_session.featureName // "UnknownFeature"')
-         
-         safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
-         
-         if [ "$os" = "android" ]; then
-           log_endpoint="device-logs"
-         else
-           log_endpoint="devicelogs"
-         fi
-          
-         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-          "https://api-cloud.browserstack.com/app-automate/sessions/$session/$log_endpoint" \
-          -o "browserstack-device-logs/${safe_feature}_${session}.log"
+
+           feature=$(echo "$metadata" | jq -r '.automation_session.name // "UnknownFeature"')
+           safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+
+           curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            "https://api-cloud.browserstack.com/app-automate/sessions/$session/device_logs" \
+            -o "browserstack-device-logs/${safe_feature}_${session}.log"
+  
          done
-          
+  
          if [ ! "$(ls -A browserstack-device-logs)" ]; then
-             echo "No logs fetched from BrowserStack." > browserstack-device-logs/empty.txt
+          echo "⚠️ No device logs found for any session." > browserstack-device-logs/empty.txt
          fi
+
 
       - name: Upload BrowserStack Device Logs
         if: always()
