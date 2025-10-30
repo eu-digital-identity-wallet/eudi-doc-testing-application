@@ -193,38 +193,36 @@ jobs:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
 
-      - name: Download BrowserStack Device Logs by Feature
-        if: always()
+
+
+      - name: Get BrowserStack Build ID
+        id: fetch-build
         run: |
-         mkdir -p browserstack-device-logs
-  
-         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            "https://api-cloud.browserstack.com/app-automate/sessions.json" \
-            -o sessions.json
-  
-         jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
-            echo "🔍 Fetching device logs for session: $session"
+            BUILD_ID=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            -X GET "https://api-cloud.browserstack.com/app-automate/builds.json" \
+            | jq -r '.[0].automation_build.hashed_id')
+            echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-         metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
+            - name: Get BrowserStack Sessions of Build
+              id: fetch-sessions
+              run: |
+                SESSIONS=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+                -X GET "https://api-cloud.browserstack.com/app-automate/builds/${{ steps.fetch-build.outputs.buildid }}/sessions.json" \
+                | jq -r '.[] | .automation_session.hashed_id')
+                echo "$SESSIONS" > sessions.txt
 
-         feature=$(echo "$metadata" | jq -r '.automation_session.name // "UnknownFeature"')
-         safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+      - name: Download Device Logs for Each Session
+        run: |
+                mkdir -p logs
+                while read SESSION_ID; do
+                  echo "Fetching logs for $SESSION_ID"
+                  curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+                  -X GET "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/devicelogs" \
+                  -o "logs/devicelogs-$SESSION_ID.txt"
+                done < sessions.txt
 
-         curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            "https://api-cloud.browserstack.com/app-automate/sessions/$session/device_logs" \
-            -o "browserstack-device-logs/${safe_feature}_${session}.log"
-  
-         done
-  
-         if [ ! "$(ls -A browserstack-device-logs)" ]; then
-          echo "⚠️ No device logs found for any session." > browserstack-device-logs/empty.txt
-         fi
-
-      - name: Upload BrowserStack Device Logs
-        if: always()
+      - name: Upload Logs Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: browserstack-device-logs
-          path: browserstack-device-logs/*
-
+                name: browserstack-device-logs
+                path: logs/
