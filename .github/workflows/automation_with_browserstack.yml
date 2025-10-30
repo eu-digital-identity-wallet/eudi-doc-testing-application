@@ -196,14 +196,14 @@ jobs:
       - name: Download BrowserStack Device Logs by Feature
         if: always()
         run: |
-          mkdir -p browserstack-device-logs
+           mkdir -p browserstack-device-logs
   
-          curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-           "https://api-cloud.browserstack.com/app-automate/sessions.json" \
-           -o sessions.json
+           curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            "https://api-cloud.browserstack.com/app-automate/sessions.json" \
+            -o sessions.json
   
-          jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
-           echo "🔍 Fetching device logs for session: $session"
+           jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
+            echo "🔍 Fetching device logs for session: $session"
 
            metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
