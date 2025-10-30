@@ -32,7 +32,7 @@ public class Verifier {
             // Debugging: Print the device name to check its value
             System.out.println("Device Name: '" + deviceName + "'");
             if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
-              //nothing
+                //nothing
             } else {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
                 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
@@ -150,11 +150,11 @@ public class Verifier {
             if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")
                     || test.envDataConfig().getAppiumAndroidDeviceName().equals("Redmi Note 12 Pro+ 5G")
                     || test.envDataConfig().getAppiumAndroidDeviceName().equals("Samsung Galaxy S22 Ultra"))  {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
                 clickMsoMdocRealDevice();
             }   else{
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
@@ -356,12 +356,12 @@ public class Verifier {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement jsonElement;
             if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                 jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
+                jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
             }else{
-                 jsonElement = driver.findElement(By.className("android.widget.TextView"));
+                jsonElement = driver.findElement(By.className("android.widget.TextView"));
 
             }
-                // Get the text
+            // Get the text
             String rawText = jsonElement.getText();
 
             JSONObject jsonObject = new JSONObject(rawText);
@@ -419,7 +419,7 @@ public class Verifier {
                     throw new RuntimeException(e);
                 }
 
-        }    else{
+            }    else{
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 List<WebElement> elements = driver.findElements(By.xpath("//XCUIElementTypeStaticText"));
                 String jsonText = null;
@@ -471,7 +471,7 @@ public class Verifier {
                     System.err.println("Failed to parse JSON: " + e.getMessage());
                     throw new RuntimeException(e);
                 }    }
-            }
+        }
     }
 
     public void chooseWalletPageIsDisplayed() {

@@ -45,11 +45,11 @@ public class WalletElements {
     public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"SCAN QR\"]");
-    
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfNationalIdIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family name\"]");
-    public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");;
+    public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
+    ;
     public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
     public static By optionalDataIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");
     public static By clickEyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
@@ -61,7 +61,7 @@ public class WalletElements {
     public static By clickDocuments = By.xpath("//android.widget.TextView[@text=\"Documents\"]");
     public static By clickClose = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By documentsPageIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"Documents\"])[1]");
-    public static By eyeIcon = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button");
+    public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]"); //androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button
     public static By clickToAddDocument = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");

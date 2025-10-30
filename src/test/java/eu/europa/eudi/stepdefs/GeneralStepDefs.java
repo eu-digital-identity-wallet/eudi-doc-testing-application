@@ -112,7 +112,7 @@ public class GeneralStepDefs{
         String env = test.envDataConfig().getExecutionEnvironment();
         String outputPath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/android/regressionTests/logs/ui-browserstack";
         if (android) {
-                test.stopAndroidDriverSession();
+            test.stopAndroidDriverSession();
         }
         if (ios)
         { test.stopIosDriverSession();
@@ -221,7 +221,7 @@ public class GeneralStepDefs{
 
     @Then("the user is redirected back to the issuer service")
     public void theUserIsRedirectedBackToTheIssuerService() {
-     //auto accept pop up
+        //auto accept pop up
     }
 
     @And("the user is prompted to authenticate and consent to the issuance")
@@ -302,7 +302,7 @@ public class GeneralStepDefs{
 
     @Then("the user should see the dashboard screen")
     public void theUserShouldSeeTheDashboardScreen() {
-      test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
     @Given("the user is on the dashboard screen")
@@ -376,8 +376,8 @@ public class GeneralStepDefs{
 
     @And("the add document page is displayed")
     public void theAddDocumentPageIsDisplayed() {
-       test.mobile().wallet().addDocumentPageIsDisplayed();
-       test.mobile().wallet().clickFromList();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
     }
 
     @Then("the authentication method selection is displayed")
@@ -540,9 +540,9 @@ public class GeneralStepDefs{
 
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
-    theCredentialsProviderIsDisplayedOnScreen();
-    theUserClicksOnCredentialProviderFormEUAndSubmits();
-    theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+        theCredentialsProviderIsDisplayedOnScreen();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
@@ -628,7 +628,7 @@ public class GeneralStepDefs{
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNext();
-    }      else{
+        }      else{
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNextForAndroid();
             test.mobile().verifier().clickNext();
@@ -745,7 +745,7 @@ public class GeneralStepDefs{
 // Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
-            }
+        }
     }
 
     @When("the user clicks on Documents")
@@ -1076,7 +1076,7 @@ public class GeneralStepDefs{
 
     @And("a transaction code has been created")
     public void aTransactionCodeHasBeenCreated() {
-       test.mobile().issuer().transactionCodeIsDisplayed();
+        test.mobile().issuer().transactionCodeIsDisplayed();
 //       test.mobile().issuer().getTransactionCode();
 //       String code = test.mobile().issuer().getTransactionCode();
 //       test.setTransactionCode(code); // <-- store it for later steps
@@ -1299,7 +1299,7 @@ public class GeneralStepDefs{
 
     @Then("the EUDI Wallet enables the user to share the document or close the process")
     public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-       test.mobile().wallet().clickDone();
+        test.mobile().wallet().clickDone();
 //       test.mobile().wallet().closeIsDisplayed();
 //       test.mobile().wallet().shareIsDisplayed();
     }
@@ -1382,8 +1382,8 @@ public class GeneralStepDefs{
 
     @And("the user views the document on the dashboard which issued based on the PID")
     public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-       test.mobile().wallet().dashboardPageIsDisplayed();
-       test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().clickOnDocuments();
 //       test.mobile().wallet().ageOver18IsDisplayed();
     }
 
@@ -1568,8 +1568,8 @@ public class GeneralStepDefs{
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
     public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
-       test.mobile().wallet().dashboardPageIsDisplayed();
-       test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().clickOnDocuments();
     }
 
     @And("the EUDI Wallet reduces the internal counter of unused attestations")
