@@ -192,3 +192,50 @@ jobs:
         with:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
+
+      - name: Download BrowserStack Device Logs by Feature
+        if: always()
+        run: |
+            mkdir -p browserstack-device-logs
+            
+            # Get all sessions from the build
+            curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            "https://api-cloud.browserstack.com/app-automate/sessions.json" \
+            -o sessions.json
+            
+            jq -r '.[].automation_session.hashed_id' sessions.json | while read session; do
+            echo "🔍 Processing session: $session"
+            
+            # Grab metadata
+            metadata=$(curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+             "https://api-cloud.browserstack.com/app-automate/sessions/$session.json")
+            
+            # Extract OS + Feature Name
+            os=$(echo "$metadata" | jq -r '.automation_session.os // "unknown"')
+            feature=$(echo "$metadata" | jq -r '.automation_session.featureName // "UnknownFeature"')
+            
+            # Clean filenames (remove spaces + special chars)
+            safe_feature=$(echo "$feature" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+            
+            # Pick correct download endpoint
+            if [ "$os" = "android" ]; then
+             log_endpoint="device-logs"
+            else
+             log_endpoint="devicelogs"
+            fi
+            
+            echo "📌 Feature: $safe_feature | OS: $os"
+            
+            # Download actual device logs
+            curl -s -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+             "https://api-cloud.browserstack.com/app-automate/sessions/$session/$log_endpoint" \
+             -o "browserstack-device-logs/${safe_feature}_${session}.log"
+            done
+
+
+         - name: Upload BrowserStack Device Logs
+           if: always()
+            uses: actions/upload-artifact@v4
+              with:
+                name: browserstack-device-logs
+                path: browserstack-device-logs/*

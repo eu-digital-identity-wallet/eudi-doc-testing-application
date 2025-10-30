@@ -22,6 +22,14 @@ public class GeneralStepDefs{
     static TestSetup test;
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
+        String featureUri = scenario.getUri().toString();
+        String featureName =
+                featureUri.substring(featureUri.lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+        
+// Store globally so the driver factory can use it
+        System.setProperty("FEATURE_NAME", featureName);
+        System.out.println("Feature Name Set: " + featureName);
 
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");

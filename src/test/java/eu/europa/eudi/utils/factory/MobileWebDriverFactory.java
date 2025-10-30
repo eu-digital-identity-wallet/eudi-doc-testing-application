@@ -56,6 +56,11 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.deviceLogs", "true");
                 options.setCapability("autoRotate", false);
                 options.setCapability("orientation", "PORTRAIT");
+                String featureName = System.getProperty("FEATURE_NAME", "UnknownFeature");
+                options.setCapability("name", featureName + " - Android"); // shows in BS Dashboard
+                options.setCapability("featureName", featureName); // ✅ Used later for logs mapping
+                
+
                 try {
                     androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
                     //            envDataConfig.getAppiumBrowserstackGeneralUsername(),
