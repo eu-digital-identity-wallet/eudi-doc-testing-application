@@ -194,41 +194,57 @@ jobs:
             -o "ios-logs/${FEATURE_CLEAN}.txt"
           done < session_map.txt
 
-      - name: Download BrowserStack Session Recordings per Feature (Android)
+      - name: Download BrowserStack Android Videos
         if: always() && (inputs.platform == 'ANDROID' || inputs.platform == 'both')
         run: |
           BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
-          mkdir -p android-videos
+          mkdir -p browserstack-videos/android
 
-          while IFS='=' read FEATURE SESSION_ID; do
-            [[ "$FEATURE" != *"_Android" ]] && continue
+          # Get all sessions for the build
+          curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+            "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions.json" \
+            -o sessions.json
 
-            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
-            echo "🎬 Fetching video for: $FEATURE_CLEAN ($SESSION_ID)"
+          # Loop through each session
+          jq -c '.[]' sessions.json | while read row; do
+            SESSION_ID=$(echo "$row" | jq -r '.automation_session.hashed_id')
+            DEVICE=$(echo "$row" | jq -r '.automation_session.device')
 
-            for i in {1..15}; do
-              RESPONSE=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
-                "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/video")
+            #Only Android sessions
+            if echo "$DEVICE" | grep -viq "iphone\|ipad"; then
 
-              # Check if response is JSON
-              if echo "$RESPONSE" | jq empty &>/dev/null; then
-                VIDEO_URL=$(echo "$RESPONSE" | jq -r '.video_url')
-              else
-                echo "Video API returned non-JSON (still processing)... retry $i/15"
+              # Fetch session info JSON
+              SESSION_INFO=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+                "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID.json")
+
+              NAME=$(echo "$SESSION_INFO" | jq -r '.automation_session.name')
+              FILE_NAME=$(echo "$NAME" | tr ' ' '_' | tr -cd 'A-Za-z0-9_-')
+
+              echo "Android → $FILE_NAME ($DEVICE | $SESSION_ID)"
+
+              for i in {1..20}; do
+                VIDEO_RESP=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+                  "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/video")
+
+                if echo "$VIDEO_RESP" | jq empty >/dev/null 2>&1; then
+                  MP4_URL=$(echo "$VIDEO_RESP" | jq -r '.video_url')
+                else
+                  echo "Preparing video… retry $i/20"
+                  sleep 10
+                  continue
+                fi
+
+                if [[ "$MP4_URL" != "null" && -n "$MP4_URL" ]]; then
+                  curl -L "$MP4_URL" -o "browserstack-videos/android/${FILE_NAME}.mp4"
+                  echo "Saved: ${FILE_NAME}.mp4"
+                  break
+                fi
+
+                echo "⏳ MP4 not ready… retry $i/20"
                 sleep 10
-                continue
-              fi
-
-              if [[ "$VIDEO_URL" != "null" && -n "$VIDEO_URL" ]]; then
-                curl -L "$VIDEO_URL" -o "android-videos/${FEATURE_CLEAN}.mp4"
-                echo "Downloaded: android-videos/${FEATURE_CLEAN}.mp4"
-                break
-              else
-                echo "⏳ Video not ready yet… retry $i/15"
-                sleep 10
-              fi
-            done
-          done < session_map.txt
+              done
+            fi
+          done
 
       - name: Download BrowserStack Session Recordings per Feature (iOS)
         if: always() && (inputs.platform == 'IOS' || inputs.platform == 'both')
