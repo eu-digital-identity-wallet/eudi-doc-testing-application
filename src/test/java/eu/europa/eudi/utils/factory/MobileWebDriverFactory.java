@@ -28,7 +28,6 @@ public class MobileWebDriverFactory {
     private Process logcatProcess;
     private Thread logcatThread;
 
-
     public MobileWebDriverFactory(TestSetup test, boolean noReset) {
         this.test = test;
         this.noReset = noReset;
@@ -41,7 +40,7 @@ public class MobileWebDriverFactory {
         try {
             if (env.equalsIgnoreCase("browserstack")) {
 
-//                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//              String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 String username = System.getenv("BROWSERSTACK_USERNAME");
                 String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 
@@ -61,10 +60,8 @@ public class MobileWebDriverFactory {
                         .replace(".feature", "");
 
                 options.setCapability("name", featureName + " - Android Test");
-                options.setCapability("feature_name", featureName); // ✅ used for logs mapping
-                options.setCapability("sessionName", featureName);  // ✅ fallback key also recognized by BS
-
-
+                options.setCapability("feature_name", featureName); // used for logs mapping
+                options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
 
                 try {
                     androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
@@ -73,16 +70,13 @@ public class MobileWebDriverFactory {
 
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
-
-                    String sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
-                    System.out.println("Session ID: " + sessionId);
+                String sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
+                System.out.println("Session ID: " + sessionId);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     e.printStackTrace();
                 }
-            }
-
-            else {
+            } else {
                 // --- Real device setup ---
                 File apkPath = new File("src/test/resources/app/androidApp.apk");
 
@@ -103,14 +97,6 @@ public class MobileWebDriverFactory {
                 caps.setCapability("newCommandTimeout", 120);
                 caps.setCapability("disableWindowAnimation", true);
                 caps.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
-                String featureName = test.getScenario().getUri().getPath()
-                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
-                        .replace(".feature", "");
-
-                options.setCapability("name", featureName + " - iOS Test");
-                options.setCapability("feature_name", featureName);
-                options.setCapability("sessionName", featureName);
-
 
                 try {
                     androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps);
@@ -125,8 +111,6 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
-
-
 
     public void startIosDriverSession() throws MalformedURLException {
         envDataConfig = new EnvDataConfig();
@@ -149,6 +133,12 @@ public class MobileWebDriverFactory {
                 options.setCapability("autoAcceptAlerts", true);
                 options.setCapability("browserstack.debug", "true");
                 options.setCapability("browserstack.deviceLogs", "true");
+                String featureName = test.getScenario().getUri().getPath()
+                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+                options.setCapability("name", featureName + " - iOS Test");
+                options.setCapability("feature_name", featureName);
+                options.setCapability("sessionName", featureName);
 
                 try {
                     iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
