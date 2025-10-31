@@ -116,7 +116,7 @@ jobs:
 #          echo "app_url=$app_url" >> $GITHUB_OUTPUT
 
 
-      - name: Run Android Selenium Appium tests on BrowserStack
+      - name: Run Android Selenium Appium tests on BrowserStack Farm
 #        env:
 #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
@@ -127,7 +127,7 @@ jobs:
          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
          mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-      - name: Run iOS Selenium Appium tests on BrowserStack
+      - name: Run iOS Selenium Appium tests on BrowserStack Farm
         #        env:
         #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         if: ${{ inputs.platform == 'IOS' || inputs.platform == 'both' }}
@@ -163,7 +163,7 @@ jobs:
               -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
               -o "ios-logs/${FEATURE_CLEAN}.txt"
             else
-              echo "⚠️ Unknown platform for feature: $FEATURE_CLEAN"
+              echo "Unknown platform for feature: $FEATURE_CLEAN"
             fi
           done < session_map.txt
 
@@ -187,7 +187,7 @@ jobs:
               -L -o "ios-videos/${FEATURE_CLEAN}.mp4" \
               "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/video"
             else
-              echo "⚠️ Unknown platform for: $FEATURE_CLEAN"
+              echo "Unknown platform for: $FEATURE_CLEAN"
             fi
 
           done < session_map.txt
@@ -199,16 +199,31 @@ jobs:
           name: serenity-report
           path: target/site/reports/*
 
-      - name: Upload Android Logs Artifact
+      - name: Upload Android Logs 
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: android-device-logs
           path: android-logs/
 
-      - name: Upload iOS Logs Artifact
+      - name: Upload iOS Logs
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: iOS-device-logs
           path: ios-logs/
+
+      - name: Upload Android Session Videos Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-tests-recordings
+          path: android-videos/
+
+      - name: Upload iOS Session Videos Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iOS-tests-recordings
+          path: ios-videos/
+
