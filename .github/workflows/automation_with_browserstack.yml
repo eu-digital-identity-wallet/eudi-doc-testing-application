@@ -143,13 +143,6 @@ jobs:
         run: |
            mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
-      - name: Upload Serenity Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: serenity-report
-          path: target/site/reports/*
-
       - name: Download BrowserStack Device Logs per Feature
         if: always()
         run: |
@@ -172,8 +165,39 @@ jobs:
             else
               echo "⚠️ Unknown platform for feature: $FEATURE_CLEAN"
             fi
-          
           done < session_map.txt
+
+      - name: Download BrowserStack Session Videos per Feature
+        if: always()
+        run: |
+          BUILD_ID="f8052dce64c7f52336d2791c5e056b0233f522e0"
+          mkdir -p android-videos
+          mkdir -p ios-videos
+
+          while IFS='=' read FEATURE SESSION_ID; do
+            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            echo "Downloading video for: $FEATURE_CLEAN | Session: $SESSION_ID"
+
+            if [[ "$FEATURE_CLEAN" == *"_Android" ]]; then
+              curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+              -L -o "android-videos/${FEATURE_CLEAN}.mp4" \
+              "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/video"
+            elif [[ "$FEATURE_CLEAN" == *"_IOS" ]] || [[ "$FEATURE_CLEAN" == *"_iOS" ]]; then
+              curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+              -L -o "ios-videos/${FEATURE_CLEAN}.mp4" \
+              "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/video"
+            else
+              echo "⚠️ Unknown platform for: $FEATURE_CLEAN"
+            fi
+
+          done < session_map.txt
+
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: serenity-report
+          path: target/site/reports/*
 
       - name: Upload Android Logs Artifact
         uses: actions/upload-artifact@v4
