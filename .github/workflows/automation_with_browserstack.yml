@@ -137,7 +137,7 @@ jobs:
          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
          echo "Running Android tests with tags: $TEST_CASES"
          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-         mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+         mvn clean test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Run iOS Selenium Appium tests on BrowserStack Farm
         #        env:
