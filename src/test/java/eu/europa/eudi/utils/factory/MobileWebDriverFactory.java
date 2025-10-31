@@ -37,15 +37,10 @@ public class MobileWebDriverFactory {
     public void startAndroidDriverSession() throws MalformedURLException {
         envDataConfig = new EnvDataConfig();
         String env = envDataConfig.getExecutionEnvironment();
+        String envCI = envDataConfig.getExecutionCIEnvironment();
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                //for githubactions
-                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
-                String username = System.getenv("BROWSERSTACK_USERNAME");
-                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-
-
                 // --- BrowserStack setup ---
                 DesiredCapabilities options = new DesiredCapabilities();
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
@@ -65,17 +60,15 @@ public class MobileWebDriverFactory {
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
                 try {
-
-                    //for githubactions
-                    androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-
-                    //for local
-//                androidDriver = new AndroidDriver(
-//                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub",
-//                                envDataConfig.getAppiumBrowserstackGeneralUsername(),
-//                                envDataConfig.getAppiumBrowserstackGeneralAccesskey())),
-//                        options
-//                );
+                    if (envCI.equalsIgnoreCase("githubactions")) {
+                        //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                        String username = System.getenv("BROWSERSTACK_USERNAME");
+                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+                    }else{
+                        androidDriver = new AndroidDriver(
+                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    }
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                     String sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
@@ -128,15 +121,11 @@ public class MobileWebDriverFactory {
     public void startIosDriverSession() throws MalformedURLException {
         envDataConfig = new EnvDataConfig();
         String env = envDataConfig.getExecutionEnvironment();
+        String envCI = envDataConfig.getExecutionCIEnvironment();
         System.out.println("Running environment: " + env);
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-
-                //for githubactions
-                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
-                String username = System.getenv("BROWSERSTACK_USERNAME");
-                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
@@ -158,10 +147,16 @@ public class MobileWebDriverFactory {
 
 
                 try {
-                    //for githubactions
-                    iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-//                iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(),
-//                        envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    if (envCI.equalsIgnoreCase("githubactions")) {
+                        //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                        String username = System.getenv("BROWSERSTACK_USERNAME");
+                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+                    }else{
+                        iosDriver = new IOSDriver(
+                                new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    }
+
                 wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                 } catch (Exception e) {
                     System.out.println(e.toString());
