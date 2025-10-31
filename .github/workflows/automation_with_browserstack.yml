@@ -202,24 +202,31 @@ jobs:
 
           while IFS='=' read FEATURE SESSION_ID; do
             [[ "$FEATURE" != *"_Android" ]] && continue
+
             FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            echo "🎬 Fetching video for: $FEATURE_CLEAN ($SESSION_ID)"
 
-            echo "Fetching video for: $FEATURE_CLEAN ($SESSION_ID)"
-
-            for i in {1..12}; do
+            for i in {1..15}; do
               RESPONSE=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
                 "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/video")
 
-              VIDEO_URL=$(echo "$RESPONSE" | jq -r '.video_url')
+              # Check if response is JSON
+              if echo "$RESPONSE" | jq empty &>/dev/null; then
+                VIDEO_URL=$(echo "$RESPONSE" | jq -r '.video_url')
+              else
+                echo "Video API returned non-JSON (still processing)... retry $i/15"
+                sleep 10
+                continue
+              fi
 
               if [[ "$VIDEO_URL" != "null" && -n "$VIDEO_URL" ]]; then
                 curl -L "$VIDEO_URL" -o "android-videos/${FEATURE_CLEAN}.mp4"
                 echo "Downloaded: android-videos/${FEATURE_CLEAN}.mp4"
                 break
+              else
+                echo "⏳ Video not ready yet… retry $i/15"
+                sleep 10
               fi
-
-              echo "Video not ready… retry $i/12"
-              sleep 10
             done
           done < session_map.txt
 
