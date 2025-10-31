@@ -216,17 +216,5 @@ jobs:
           name: iOS-device-logs
           path: ios-logs/
 
-      - name: Upload Android Session Recordings
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: android-tests-recordings
-          path: android-videos/
 
-      - name: Upload iOS Session Recordings
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: iOS-tests-recordings
-          path: ios-videos/
 
