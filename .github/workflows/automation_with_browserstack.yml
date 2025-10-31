@@ -193,36 +193,19 @@ jobs:
           name: ios-logs-api
           path: src/test/resources/features/ios/regressionTests/logs/api/*.txt
 
-
-
-      - name: Get BrowserStack Build ID
-        id: fetch-build
+      - name: Download BrowserStack Device Logs per Feature
         run: |
-            BUILD_ID=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            -X GET "https://api-cloud.browserstack.com/app-automate/builds.json" \
-            | jq -r '.[0].automation_build.hashed_id')
-            echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
-
-            - name: Get BrowserStack Sessions of Build
-              id: fetch-sessions
-              run: |
-                SESSIONS=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-                -X GET "https://api-cloud.browserstack.com/app-automate/builds/${{ steps.fetch-build.outputs.buildid }}/sessions.json" \
-                | jq -r '.[] | .automation_session.hashed_id')
-                echo "$SESSIONS" > sessions.txt
-
-      - name: Download Device Logs for Each Session
-        run: |
-                mkdir -p logs
-                while read SESSION_ID; do
-                  echo "Fetching logs for $SESSION_ID"
-                  curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-                  -X GET "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/devicelogs" \
-                  -o "logs/devicelogs-$SESSION_ID.txt"
-                done < sessions.txt
+         mkdir -p logs
+         while IFS='=' read FEATURE SESSION_ID; do
+          FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+          echo "Downloading logs for Feature: $FEATURE_CLEAN"
+          curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+          -X GET "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/devicelogs" \
+          -o "logs/${FEATURE_CLEAN}.txt"
+         done < session_map.txt
 
       - name: Upload Logs Artifact
         uses: actions/upload-artifact@v4
         with:
-                name: browserstack-device-logs
-                path: logs/
+         name: browserstack-device-logs
+         path: logs/

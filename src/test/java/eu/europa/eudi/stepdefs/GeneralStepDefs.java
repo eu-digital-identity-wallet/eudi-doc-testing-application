@@ -15,6 +15,7 @@ import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.FileWriter;
 import java.net.MalformedURLException;
 
 public class GeneralStepDefs{
@@ -22,15 +23,6 @@ public class GeneralStepDefs{
     static TestSetup test;
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
-        String featureUri = scenario.getUri().toString();
-        String featureName =
-                featureUri.substring(featureUri.lastIndexOf('/') + 1)
-                        .replace(".feature", "");
-        
-// Store globally so the driver factory can use it
-        System.setProperty("FEATURE_NAME", featureName);
-        System.out.println("Feature Name Set: " + featureName);
-
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
@@ -120,6 +112,18 @@ public class GeneralStepDefs{
         String env = test.envDataConfig().getExecutionEnvironment();
         String outputPath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/android/regressionTests/logs/ui-browserstack";
         if (android) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
+            String featureName = test.getScenario().getUri().getPath()
+                    .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                    .replace(".feature", "")
+                    .replace(" ", "_");
+
+            try (FileWriter fw = new FileWriter("session_map.txt", true)) {
+                fw.write(featureName + "=" + sessionId + "\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             test.stopAndroidDriverSession();
         }
         if (ios)
