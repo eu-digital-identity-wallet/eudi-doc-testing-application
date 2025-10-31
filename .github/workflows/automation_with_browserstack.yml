@@ -148,7 +148,14 @@ jobs:
             TEST_CASES="${{ inputs.test-cases }} and @IOS"
             echo "Running iOS tests with tags: $TEST_CASES"
             export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-            mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+            mvn clean test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+         REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.10.31-Demo"
+         echo "Replacing core.css using custom-style.css..."
+         cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
 
       - name: Generate Serenity Report
         if: always()
