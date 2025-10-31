@@ -12,6 +12,7 @@ on:
         options:
           - main
           - develop
+          - milestone/2025.Q4
         default: develop
 
       test-cases:
