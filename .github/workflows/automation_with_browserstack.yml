@@ -203,20 +203,29 @@ jobs:
           while IFS='=' read FEATURE SESSION_ID; do
             [[ "$FEATURE" != *"_Android" ]] && continue
             FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            echo "Fetching video info for Android: $FEATURE_CLEAN | Session: $SESSION_ID"
 
-            echo "Fetching video URL for Android: $FEATURE_CLEAN"
+            RESPONSE=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+              "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/video")
 
-            VIDEO_URL=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
-              "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/video" \
-              | jq -r '.video_url')
+            if ! echo "$RESPONSE" | jq empty 2>/dev/null; then
+              echo "Not JSON response for $SESSION_ID:"
+              echo "$RESPONSE"
+              continue
+            fi
+
+            VIDEO_URL=$(echo "$RESPONSE" | jq -r '.video_url')
 
             if [ -n "$VIDEO_URL" ] && [ "$VIDEO_URL" != "null" ]; then
               curl -L "$VIDEO_URL" -o "android-videos/${FEATURE_CLEAN}.mp4"
-              echo "Downloaded Android video: ${FEATURE_CLEAN}.mp4"
+              echo "Downloaded: android-videos/${FEATURE_CLEAN}.mp4"
             else
-              echo "No video available for session: $SESSION_ID"
+              echo "No video for: $SESSION_ID"
             fi
+          
+            sleep 2
           done < session_map.txt
+
 
       - name: Download BrowserStack Session Recordings per Feature (iOS)
         if: always() && (inputs.platform == 'IOS' || inputs.platform == 'both')
@@ -227,19 +236,27 @@ jobs:
           while IFS='=' read FEATURE SESSION_ID; do
             [[ "$FEATURE" != *"_IOS" && "$FEATURE" != *"_iOS" ]] && continue
             FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            echo "Fetching video info for iOS: $FEATURE_CLEAN | Session: $SESSION_ID"
 
-            echo "Fetching video URL for iOS: $FEATURE_CLEAN"
+            RESPONSE=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+              "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/video")
 
-            VIDEO_URL=$(curl -s -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
-              "https://api-cloud.browserstack.com/app-automate/sessions/$SESSION_ID/video" \
-              | jq -r '.video_url')
+            if ! echo "$RESPONSE" | jq empty 2>/dev/null; then
+              echo "Not JSON response for $SESSION_ID:"
+              echo "$RESPONSE"
+              continue
+            fi
+
+            VIDEO_URL=$(echo "$RESPONSE" | jq -r '.video_url')
 
             if [ -n "$VIDEO_URL" ] && [ "$VIDEO_URL" != "null" ]; then
               curl -L "$VIDEO_URL" -o "ios-videos/${FEATURE_CLEAN}.mp4"
-              echo "Downloaded iOS video: ${FEATURE_CLEAN}.mp4"
+              echo "Downloaded: ios-videos/${FEATURE_CLEAN}.mp4"
             else
-              echo "No video available for session: $SESSION_ID"
+              echo "No video for: $SESSION_ID"
             fi
+          
+            sleep 2
           done < session_map.txt
 
       - name: Upload Android Logs 
