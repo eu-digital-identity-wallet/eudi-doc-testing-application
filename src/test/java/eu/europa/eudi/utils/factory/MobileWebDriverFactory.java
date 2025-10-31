@@ -40,6 +40,12 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
+                //for githubactions
+                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String username = System.getenv("BROWSERSTACK_USERNAME");
+                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
+
                 // --- BrowserStack setup ---
                 DesiredCapabilities options = new DesiredCapabilities();
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
@@ -59,12 +65,17 @@ public class MobileWebDriverFactory {
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
                 try {
-                androidDriver = new AndroidDriver(
-                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub",
-                                envDataConfig.getAppiumBrowserstackGeneralUsername(),
-                                envDataConfig.getAppiumBrowserstackGeneralAccesskey())),
-                        options
-                );
+
+                    //for githubactions
+                    androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+
+                    //for local
+//                androidDriver = new AndroidDriver(
+//                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub",
+//                                envDataConfig.getAppiumBrowserstackGeneralUsername(),
+//                                envDataConfig.getAppiumBrowserstackGeneralAccesskey())),
+//                        options
+//                );
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                     String sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
@@ -121,6 +132,12 @@ public class MobileWebDriverFactory {
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
+
+                //for githubactions
+                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String username = System.getenv("BROWSERSTACK_USERNAME");
+                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
 //                options.setCapability("appium:app", appUrl);
@@ -141,8 +158,10 @@ public class MobileWebDriverFactory {
 
 
                 try {
-                iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(),
-                        envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    //for githubactions
+                    iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+//                iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(),
+//                        envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
                 wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                 } catch (Exception e) {
                     System.out.println(e.toString());
