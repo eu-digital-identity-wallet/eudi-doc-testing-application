@@ -41,8 +41,10 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
+                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 DesiredCapabilities options = new DesiredCapabilities();
+                //options.setCapability("appium:app", appUrl);
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
@@ -61,7 +63,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
-                        //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
                         androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
@@ -126,10 +127,10 @@ public class MobileWebDriverFactory {
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-
+                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
-//                options.setCapability("appium:app", appUrl);
+//              options.setCapability("appium:app", appUrl);
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackIosDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
@@ -148,7 +149,6 @@ public class MobileWebDriverFactory {
 
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
-                        //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
                         iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
