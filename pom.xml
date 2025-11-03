@@ -191,7 +191,7 @@
                 <configuration>
 <!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
 
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
 
                     <skip>false</skip>
                     <excludes>
