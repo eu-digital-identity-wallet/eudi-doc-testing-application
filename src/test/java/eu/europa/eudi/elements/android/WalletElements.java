@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.xpath("//android.widget.TextView[@text=\"Welcome to your Wallet\"]");
-    public static By pinTexfield1 = By.xpath("//android.widget.ScrollView/android.widget.EditText[1]");
+ public static By pinTexfield1 = By.xpath("//android.widget.ScrollView/android.widget.EditText[1]");
     public static By pinTexfield2 = By.xpath("//android.widget.ScrollView/android.widget.EditText[2]");
     public static By pinTexfield3 = By.xpath("//android.widget.ScrollView/android.widget.EditText[3]");
     public static By pinTexfield4 = By.xpath("//android.widget.ScrollView/android.widget.EditText[4]");
