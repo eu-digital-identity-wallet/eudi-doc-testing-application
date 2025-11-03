@@ -17,7 +17,7 @@ public interface Literals {
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL"),
         MDL_IOS("mdl_doctype_name"),
-        DASHBOARD_PAGE("Welcome back, Foteiniiii"),
+        DASHBOARD_PAGE("Welcome back, Foteini"),
         CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
