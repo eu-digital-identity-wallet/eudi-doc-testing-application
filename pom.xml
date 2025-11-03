@@ -189,10 +189,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-<!--                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
-
-                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount><argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>
-
+                    <rerunFailingTestsCount>${rerun.failed.scenarios}</rerunFailingTestsCount>
+                    <argLine>-javaagent:${com.browserstack:browserstack-java-sdk:jar.path}</argLine>
                     <skip>false</skip>
                     <excludes>
                         <exclude>**/README.md</exclude>

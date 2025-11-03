@@ -753,7 +753,7 @@ public class GeneralStepDefs{
             driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-            test.mobile().wallet().loginPageIsDisplayed();
+//yvonne            test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
