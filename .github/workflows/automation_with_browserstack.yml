@@ -1,9 +1,6 @@
 name: Automation Tests Execution
 
 on:
-  # push:
-  #   branches:
-  #     - workflow_browserstack
   workflow_dispatch:
     inputs:
       branch-to-checkout:
