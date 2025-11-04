@@ -380,6 +380,8 @@ public class Issuer {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
         } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
