@@ -3502,3 +3502,24 @@
 	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
 	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
 
+12:32:05.180 [main] DEBUG browserStackFileDebugger - Running SDK with properties: {java.specification.version=23, sun.jnu.encoding=UTF-8, java.class.path=/Users/ftheofil/Documents/eudi-doc-testing-application-internal/target/surefire/surefirebooter-20251027123204804_3.jar, java.vm.vendor=Homebrew, sun.arch.data.model=64, java.vendor.url=https://github.com/Homebrew/homebrew-core/issues, user.timezone=Europe/Athens, java.vm.specification.version=23, os.name=Mac OS X, sun.java.launcher=SUN_STANDARD, user.country=US, BROWSERSTACK_LOG_DIR=/Users/ftheofil/Documents/eudi-doc-testing-application-internal/log, sun.boot.library.path=/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home/lib, sun.java.command=/Users/ftheofil/Documents/eudi-doc-testing-application-internal/target/surefire/surefirebooter-20251027123204804_3.jar /Users/ftheofil/Documents/eudi-doc-testing-application-internal/target/surefire 2025-10-27T12-32-04_701-jvmRun1 surefire-20251027123204804_1tmp surefire_0-20251027123204804_2tmp, jdk.debug=release, sun.cpu.endian=little, user.home=/Users/ftheofil, user.language=en, java.specification.vendor=Oracle Corporation, java.version.date=2024-10-15, java.home=/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home, file.separator=/, java.vm.compressedOopsMode=Zero based, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.runtime.version=23.0.1, user.name=ftheofil, stdout.encoding=UTF-8, path.separator=:, os.version=15.7.1, java.runtime.name=OpenJDK Runtime Environment, file.encoding=UTF-8, java.vm.name=OpenJDK 64-Bit Server VM, java.vendor.version=Homebrew, java.vendor.url.bug=https://github.com/Homebrew/homebrew-core/issues, java.io.tmpdir=/var/folders/vb/b669bqzn0b3_smzkv10l66pw0000gn/T/, java.version=23.0.1, user.dir=/Users/ftheofil/Documents/eudi-doc-testing-application-internal, os.arch=aarch64, java.vm.specification.name=Java Virtual Machine Specification, native.encoding=UTF-8, java.library.path=/Users/ftheofil/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:., java.vm.info=mixed mode, sharing, stderr.encoding=UTF-8, java.vendor=Homebrew, java.vm.version=23.0.1, sun.io.unicode.encoding=UnicodeBig, java.class.version=67.0}
+12:32:05.181 [main] DEBUG browserStackFileDebugger - Running SDK with classpath: /Users/ftheofil/Documents/eudi-doc-testing-application-internal/target/surefire/surefirebooter-20251027123204804_3.jar
+12:32:05.181 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:32:05.186 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.13.0
+12:32:05.186 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 8.6.0
+12:32:05.268 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {basedir=/Users/ftheofil/Documents/eudi-doc-testing-application-internal, test=TestRunner, cucumber.filter.tags=@automated, localrepository=/Users/ftheofil/.m2/repository}
+12:32:05.268 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of /Users/ftheofil/Documents/eudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:32:05.268 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of /Users/ftheofil/Documents/eudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:560)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:572)
+
