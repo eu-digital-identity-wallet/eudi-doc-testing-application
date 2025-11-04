@@ -12,13 +12,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
-import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.FileWriter;
 import java.net.MalformedURLException;
 
-public class GeneralStepDefs{
+public class AutomatedStepDefs {
 
     static TestSetup test;
     @Before

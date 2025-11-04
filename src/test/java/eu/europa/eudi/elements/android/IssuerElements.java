@@ -27,13 +27,11 @@ public class IssuerElements {
     public static By clickExpiryDate = By.xpath("//android.view.View[@resource-id=\"DrivingP\"]/android.widget.Spinner[2]");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Driving Privileges\"]");
-
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By clickCountry = By.xpath("//android.view.View[@resource-id=\"place_of_birth--container\"]/android.widget.EditText[1]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@resource-id=\"nationality--container\"]/android.widget.EditText");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
-    public static By clickBirthPlace = By.xpath("//android.view.View[@resource-id=\"eidasCountries\"]/android.view.View[4]/android.widget.EditText");
     public static By closeKeyboardForm = By.xpath("//android.widget.TextView[@text=\"Test Provider Form\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By formIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"For testing purposes only.\"]");

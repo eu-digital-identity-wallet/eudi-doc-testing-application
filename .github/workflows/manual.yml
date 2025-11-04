@@ -39,20 +39,6 @@ jobs:
       - name: Clean Maven cache
         run: mvn dependency:purge-local-repository -DreResolve=false
 
-      #      - name: Run Ui Tests
-      #        run: |
-      #          #!/bin/bash
-      #          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.tagName }}" "$@"
-      #          rm -rf target/site/serenity
-      #          mvn serenity:aggregate -Dtags=Q3_2025
-      #          echo "Modifying JSON files to mark tests as manual..."
-      #          find target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do
-      #           if grep -q "\"manual\":" "$file" 2>/dev/null; then
-      #          sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"
-      #          sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"
-      #          fi
-      #          done
-
       - name: Run Ui Tests
         run: |
           #!/bin/bash
