@@ -38,6 +38,7 @@ public class EnvDataConfig {
     public static final String BROWSERSTACK_GENERAL_USERNAME = "browserstack.general.username";
     public static final String BROWSERSTACK_GENERAL_ACCESS_KEY = "browserstack.general.accessKey";
     public static final String GET_EXECUTION_ENVIRONMENT = "execution.environment";
+    public static final String GET_EXECUTION_CIENVIRONMENT = "ci.environment";
     public static final String BROWSERSTACK_IOS_APP_URL = "browserstack.ios.appUrl";
     public static final String BROWSERSTACK_IOS_DEVICE_NAME = "browserstack.ios.deviceName";
     public static final String BROWSERSTACK_IOS_PLATFORM_VERSION = "browserstack.ios.platformVersion";
@@ -150,6 +151,8 @@ public class EnvDataConfig {
 
     public String getExecutionEnvironment() {
         return getEnvProperties().getProperty(GET_EXECUTION_ENVIRONMENT);
+    } public String getExecutionCIEnvironment() {
+        return getEnvProperties().getProperty(GET_EXECUTION_CIENVIRONMENT);
     }
 
     public String getAppiumBrowserstackIosAppUrl() {
