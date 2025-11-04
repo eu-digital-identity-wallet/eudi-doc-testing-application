@@ -15,6 +15,7 @@ import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.FileWriter;
 import java.net.MalformedURLException;
 
 public class GeneralStepDefs{
@@ -107,18 +108,34 @@ public class GeneralStepDefs{
 
     @After
     public void tearDown(Scenario scenario) throws InterruptedException {
+
+        String featureName = test.getScenario().getUri().getPath()
+                .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                .replace(".feature", "")
+                .replace(" ", "_");
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        String env = test.envDataConfig().getExecutionEnvironment();
-        String outputPath = "C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/android/regressionTests/logs/ui-browserstack";
-        if (android) {
+        try (FileWriter fw = new FileWriter("session_map.txt", true)) {
+
+            if (android) {
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+                String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
+                fw.write(featureName + "_Android=" + sessionId + "\n");
                 test.stopAndroidDriverSession();
-        }
-        if (ios)
-        { test.stopIosDriverSession();
+            }
+            if (ios)
+            {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
+                fw.write(featureName + "_IOS=" + sessionId + "\n");
+                test.stopIosDriverSession();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         test.stopLogging();
     }
+
 
 
     public static TestSetup getTest() {
