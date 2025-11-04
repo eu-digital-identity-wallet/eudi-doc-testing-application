@@ -1,4 +1,12 @@
 viewPID_Android=faacc17c-f811-4772-ac5f-0a218d6a0fee
 viewPID_Android=08108ceb-3f4e-4d88-861e-b0be2d1467c0
 viewMDL_Android=f308aa2cdb9f4bbc4fd3a1dc6df26ad9f526bf65
+<<<<<<< HEAD
 viewMDL_Android=4b43b7631cc9600472514e49b2af22250e8b6c25
+=======
+selectiveDisclosure_IOS=156f96950ca0373ed46df3f97373ea44f7983eb9
+onlineIdentificationAuthenticationSameDevice_IOS=306f94bbe22072ccbfe8e87752ea5c862e1354bf
+requestIssueMDL_IOS=d9d94b7db7bbdc0b70ac72a85f7efe7bad02da01
+requestIssuePID_IOS=e374b9e0cc13ecdac01b12e477edd3a81fcd1ab1
+>>>>>>> a89b686c6014964cc3e66b3222db4e8b23b74b44
+viewPID_Android=62461f2c10ee2d7d15c03a58b2073a63be31de75
