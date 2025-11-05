@@ -17,6 +17,7 @@ import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
@@ -708,9 +709,9 @@ public class Wallet {
 //            params.put("direction", "up");
 //            driver.executeScript("mobile: swipe", params);
 
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
-            while (i < 3) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            while (i < 2) {
                 WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
