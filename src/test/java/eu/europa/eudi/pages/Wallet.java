@@ -703,10 +703,22 @@ public class Wallet {
                             ".scrollIntoView(new UiSelector().text(\"mDL\"))"
             ));
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            driver.executeScript("mobile: swipe", params);
+//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            Map<String, Object> params = new HashMap<>();
+//            params.put("direction", "up");
+//            driver.executeScript("mobile: swipe", params);
+
+            int i = 1;
+            while (i < 3) {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
         }
     }
 
