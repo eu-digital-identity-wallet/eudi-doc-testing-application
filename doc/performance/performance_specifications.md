@@ -20,11 +20,12 @@ By aligning the test scenarios with business test cases, we aim to validate that
 5. Pre-authorization Code (Same Device)
 6. Present Attestation from EUDI Wallet
 7. Sign Document
-8. Filter, Sort, and Sort Documents/Transactions
+8. Batch Issuance Through Issuer and Wallet Same/Cross Device (10 instances)
+9. Filter, Sort, and Sort Documents/Transactions  
 
 ---
 
-### Disclaimer for Scenario 8 and Reason for Non-Execution
+### Disclaimer for Scenario 9 and Reason for Non-Execution
 
 Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may not significantly affect performance metrics. The reasons are outlined below:
 
