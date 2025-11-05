@@ -693,7 +693,7 @@ public class Wallet {
         }
     }
 
-    public void scrollUntilmDL() {
+    public void scrollUntilmDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.findElement(MobileBy.AndroidUIAutomator(
@@ -710,16 +710,35 @@ public class Wallet {
 //            driver.executeScript("mobile: swipe", params);
 
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 2) {
+
+// Temporarily lower implicit wait
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+            By target = By.xpath("//XCUIElementTypeStaticText[@name='mDL']");
+
+            for (int i = 0; i < 10; i++) {
+                try {
+                    List<WebElement> elements = driver.findElements(target);
+                    if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
+                        System.out.println("Found mDL element — stop scrolling");
+                        break;
+                    }
+                } catch (Exception ignored) {}
+
+                //Your working scroll
                 WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
+
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
                 params.put("element", elementId);
                 driver.executeScript("mobile: swipe", params);
-                i++;
+
+                Thread.sleep(400); // small delay to allow scroll animation
             }
+
+// Restore implicit wait
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
     }
 
