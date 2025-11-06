@@ -209,8 +209,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC-001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
 #### FSRQ-002
@@ -222,8 +222,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
 #### FSRQ-003
@@ -235,8 +235,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
 #### FSRQ-004
@@ -248,8 +248,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
 #### FSRQ-005
@@ -261,8 +261,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | In Progress                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
 #### FSRQ-006
@@ -274,9 +274,9 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                              |
 | Source             | ARF \[R02\]                                                                                                            |
 | Priority           | Must                                                                                                                   |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                      |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280) |
-| Security Test Case | US06.STC001, US06.STC002, US06.STC003, US06.STC004, US07.STC001, US07.STC002, US07.STC003, US07.STC004                 |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                 |
 
 #### FSRQ-007
 
@@ -287,8 +287,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | In progress                                                                                                                                                                                                                                   |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                   |
 | Priority           | Shall                                                                                                                                                                                                                                         |
-| Epic               | [Update PID in alignment with ARF v1.8 (Rulebook v3.01) \#186](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/1586)                                                                                          |
-| User Story         | Users should be able to issue a PID in SD-JWT-VC format as per the normal issuance flow (e.g. as described in \#[Using the PID (v1.5) in the RI \#167](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/1567)) |
+| Epic               | [Update PID in alignment with ARF v1.8 (Rulebook v3.01) \#186](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/186)                                                                                          |
+| User Story         | Users should be able to issue a PID in SD-JWT-VC format as per the normal issuance flow (e.g. as described in \#[Using the PID (v1.5) in the RI \#167](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/167)) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                        |
 
 #### FSRQ-008
@@ -300,8 +300,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                                                                                                                                                  |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                |
 | Priority           | Must                                                                                                                                                                                                                                                                                       |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                          |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                     |
 
 #### FSRQ-009
@@ -313,8 +313,8 @@ identified by the Architecture Reference Framework \[R02\].
 | Status             | Completed                                                                                                                                                  |
 | Source             | ARF \[R02\]                                                                                                                                                |
 | Priority           | Must                                                                                                                                                       |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                          |
-| User Story         | [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269)                                             |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200)                                             |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                     |
 
 ### (Q)EAA
@@ -345,8 +345,8 @@ Reference Implementation and its ecosystem.
 | Status             | Completed                                                                                                              |
 | Source             | ARF \[R02\]                                                                                                            |
 | Priority           | Must                                                                                                                   |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                      |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280) |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Pending.                                                                                                               |
 
 #### FSRQ-011
@@ -358,8 +358,8 @@ Reference Implementation and its ecosystem.
 | Status             | Completed                                                                                                                                                                                                                                                                                        |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                      |
 | Priority           | Should                                                                                                                                                                                                                                                                                           |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                                                                                                                                                                                                |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280)                                                                                                                                                                           |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Pending.                                                                                                                                                                                                                                                                                         |
 
 #### FSRQ-012
@@ -371,8 +371,8 @@ Reference Implementation and its ecosystem.
 | Status             | In Progress                                                                                                                                                                                                                                  |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                  |
 | Priority           | Should                                                                                                                                                                                                                                       |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                                                                                                                                            |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280)                                                                                                                       |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202)                                                                                                                      |
 | Security Test Case | Pending.                                                                                                                                                                                                                                     |
 
 ### Proximity Use Case
@@ -492,17 +492,15 @@ time in memory only and then should be destroyed.</td>
 </tr>
 <tr class="even">
 <td>Epic</td>
-<td>EPIC 002 - Proximity Data Sharing</td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10">New version of the wallet UI</a></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
-<td><a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-279">US-006</a>, <a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-280">US-007</a></td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202">Present document in person (Redesign)#202</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>US06.STC005, US07.STC005</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -546,18 +544,15 @@ IACA root public key.</td>
 </tr>
 <tr class="even">
 <td>Epic</td>
-<td>EPIC 002 - Proximity Data Sharing</td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10">New version of the wallet UI</a></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
-<td><a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-279">US-006</a>, <a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-280">US-007</a></td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202">Present document in person (Redesign)#202</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td><p>US06.STC001, US06.STC002, US06.STC003,</p>
-<p>US07.STC001, US07.STC002, US07.STC003</p></td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -571,9 +566,9 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-280">US-007</a></td>
 | Status             | Completed                                                                                                                                                                                                           |
 | Source             | ISO/IEC 18013-5 \[R01\]                                                                                                                                                                                             |
 | Priority           | Must                                                                                                                                                                                                                |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                                                                                                                   |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280)                                                                                              |
-| Security Test Case | US06.STC004, US07.STC004                                                                                                                                                                                            |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                            |
 
 #### FSRQ-016
 
@@ -584,9 +579,10 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-280">US-007</a></td>
 | Status             | Completed                                                                                                                                                                                                                                                                                                                            |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                          |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                 |
-| Epic               | EPIC 002 - Proximity Data Sharing                                                                                                                                                                                                                                                                                                    |
-| User Story         | [US-006](https://jira.intrasoft-intl.com/browse/EUDIW-279?jql=project%20%3D%20EUDIW%20AND%20issuetype%20%3D%20Story%20AND%20fixVersion%20%3D%20%22R0.1%20(M3)%22), [US-007](https://jira.intrasoft-intl.com/browse/EUDIW-280?jql=project%20%3D%20EUDIW%20AND%20issuetype%20%3D%20Story%20AND%20fixVersion%20%3D%20%22R0.1%20(M3)%22) |
-| Security Test Case | US006, US007.STC001, US006, US007.STC006, US015.STC002, US015.STC002                                                                                                                                                                                                                                                                 |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                                                                                       |
 
 ### Online Identification and Authentication Use Case
 
@@ -607,9 +603,10 @@ in different devices.
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                                                                                                                                                                                                                                     |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                                                                                                                                                                                                                           |
-| User Story         | [[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-274)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-008](https://jira.intrasoft-intl.com/browse/EUDIW-518), [[US-009](https://jira.intrasoft-intl.com/browse/EUDIW-269)](https://jira.intrasoft-intl.com/browse/EUDIW-269), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-342)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
-| Security Test Case | US03.STC001, US008.STC001, US015.STC001, US015.STC004                                                                                                                                                                                                                                                                                                                                                       |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                                                                                                                                                                           |
 
 #### FSRQ-018
 
@@ -654,18 +651,15 @@ sent by value or by reference.</td>
 </tr>
 <tr class="even">
 <td>Epic</td>
-<td>EPIC 001 - Online Identification &amp; Authentication</td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10">New version of the wallet UI</a></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
-<td><a
-href="https://jira.intrasoft-intl.com/issues/?jql=labels+%3D+US-003">US-003</a>,
-<a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a></td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201">Present document online (Redesign)#201</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>US03.STC002, US03.STC003, US015.STC002, US015.STC003</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -679,9 +673,9 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a>
 | Status             | Completed                                                                                                                                                                                 |
 | Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                   |
 | Priority           | Must                                                                                                                                                                                      |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                         |
-| User Story         | [US-003](https://jira.intrasoft-intl.com/issues/?jql=labels+%3D+US-003), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-1261)](https://jira.intrasoft-intl.com/browse/EUDIW-1261) |
-| Security Test Case | US03.STC002, US03.STC003, US03.STC004, US015.STC002, US015.STC003, US015.STC004                                                                                                           |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                               |
 
 #### FSRQ-020
 
@@ -692,9 +686,9 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a>
 | Status             | Completed                                                                                                                                                                                                |
 | Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                                  |
 | Priority           | Must                                                                                                                                                                                                     |
-| Epic               | EPIC 001 - Online Identification & Authentication                                                                                                                                                        |
-| User Story         | [US-003](https://jira.intrasoft-intl.com/issues/?jql=labels+%3D+US-003), [[US-015](https://jira.intrasoft-intl.com/browse/EUDIW-1261)](https://jira.intrasoft-intl.com/browse/EUDIW-1261)                |
-| Security Test Case | US03.STC005, US015.STC004, US015.STC005                                                                                                                                                                  |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                       |
 
 #### FSRQ-021
 
@@ -705,9 +699,10 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a>
 | Status             | Completed                                                                                                                                                                                                                      |
 | Source             | ARF \[R02\]                                                                                                                                                                                                                    |
 | Priority           | Must                                                                                                                                                                                                                           |
-| Epic               | EPIC 001 -- Online Identification & Authentication                                                                                                                                                                             |
-| User Story         | [[[US-003](https://jira.intrasoft-intl.com/browse/EUDIW-943)](https://jira.intrasoft-intl.com/browse/EUDIW-943), [US-017](https://jira.intrasoft-intl.com/browse/EUDIW-460)](https://jira.intrasoft-intl.com/browse/EUDIW-460) |
-| Security Test Case | US03.STC002, US03.STC003                                                                                                                                                                                                       |
+| Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
+| User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
+
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                           |
 
 ### Verifiable Credentials Issuance
 
@@ -746,7 +741,7 @@ number.
 | Priority           | Must                                                                                                                                                                  |
 | Epic               | [Issuing - Support for credential offer - Issuer initiated scenario](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/42) |
 | User Story         | [Issuing - Support for credential offer - Issuer initiated scenario \#216](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/216)        |
-| Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                            |
+| Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                          |
 
 #### FSRQ-023
 
@@ -804,8 +799,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -864,8 +858,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -922,8 +915,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -979,8 +971,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1044,8 +1035,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1111,8 +1101,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1175,8 +1164,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1243,8 +1231,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1306,8 +1293,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1360,8 +1346,7 @@ signature.</p></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1423,8 +1408,7 @@ same device) #180</a></p></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1489,8 +1473,7 @@ an instance of a credential (wallet initiated, cross device/proximity)
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1603,8 +1586,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1816,8 +1798,7 @@ Sign document (R5) #193</a></p></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1881,8 +1862,7 @@ Sign document (R5) #193</a></p></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -1962,8 +1942,7 @@ the EHIC attestation #183</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2021,8 +2000,7 @@ the EHIC attestation #183</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2080,8 +2058,7 @@ the EHIC attestation #183</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2158,8 +2135,7 @@ the PDA1 attestation #184</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2217,8 +2193,7 @@ the PDA1 attestation #184</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2276,8 +2251,7 @@ the PDA1 attestation #184</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -2902,8 +2876,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -3247,8 +3220,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -3306,8 +3278,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
@@ -3368,8 +3339,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
-<td>Testing will be covered in the Mobile Application Security Testing
-activity based on MSTG.</td>
+<td>Testing has been covered in the Mobile Application Security Testing activity based on MSTG.</td>
 </tr>
 </tbody>
 </table>
