@@ -15,7 +15,7 @@
 
 
 ## Overview
-This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally or though GitHub Actions and generate test results for further analysis and debugging.
+This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally or through GitHub Actions and generate test results for further analysis and debugging.
 
 ## Requirements
 Ensure your system meets the following requirements to run the automated tests:
