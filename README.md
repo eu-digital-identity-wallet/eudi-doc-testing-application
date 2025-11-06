@@ -15,7 +15,7 @@
 
 
 ## Overview
-This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
+This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally or though GitHub Actions and generate test results for further analysis and debugging.
 
 ## Requirements
 Ensure your system meets the following requirements to run the automated tests:
@@ -46,7 +46,7 @@ Before running tests locally, make sure to install and configure the required to
 1. `brew install maven`
 2. `mvn -v`
 
-### 3. Install Appium
+### 3. Install Appium and Drivers
 
 This will allow you to run the automation scripts on the Android and iOS devices. Appium is an open-source tool for automating native, mobile web, and hybrid applications on both iOS and Android platforms. Here are the steps to download and install Appium and additional instructions for setting up ADB, UIAutomator and XCUITest.
 
@@ -94,7 +94,7 @@ Install the necessary drivers for Android (UIAutomator2) and iOS (XCUITest).
 
   `appium driver install xcuitest`
 
-### 4. Android Studio (setup emulator and/or physical device for android tests)
+### 4.Setup Android Environment
 Install Android Studio from the [official Android website](https://developer.android.com/studio). Once installed, create a virtual device named "Pixel_6_API_33_1" using the AVD Manager.
 If you want to execute the tests on a real device, you need to enable developer mode on an Android device. Follow these steps:
 
@@ -118,7 +118,7 @@ If you want to execute the tests on a real device, you need to enable developer 
 
 To complete the flows described below you need to build the android app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
-### 5. Xcode (setup physical device for iOS tests)
+### 5.Setup iOS Environment (macOS only)
 Install Xcode from the [Mac App Store](https://apps.apple.com/app/xcode/id497799835). After installation, connect your iPhone to your Mac.
 
 - Open Xcode.
