@@ -788,6 +788,8 @@ public class Wallet {
 
     public void addPIDPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
         }
