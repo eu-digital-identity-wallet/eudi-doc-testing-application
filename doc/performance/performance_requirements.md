@@ -1,4 +1,4 @@
-# Performance Testing – Overview and Acceptance Criteria
+# Performance Requirements
 
 To evaluate the performance of the **EUDI Wallet application** under average user load, mobile performance testing will be conducted across a variety of mobile devices.  
 This testing will focus on **CPU and memory usage**, as well as **network activity** during common user scenarios.
@@ -8,7 +8,7 @@ The following acceptance criteria define the minimum expected standards for syst
 
 ---
 
-## Acceptance Criteria
+## Requirements
 The following acceptance criteria will be applied for the different test scenarios.
 
 | **Criteria** | **Notes** |
