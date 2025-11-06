@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.*;
@@ -384,9 +385,10 @@ public class Verifier {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
 // Locate the element that contains the JSON text
-                WebElement jsonElement = driver.findElement(
-                        By.xpath("//XCUIElementTypeOther[contains(@name, 'Transaction initialized')]/XCUIElementTypeOther/XCUIElementTypeStaticText")
-                );
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+                WebElement jsonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//XCUIElementTypeStaticText[contains(@value, 'value')]")
+                ));
 
 // Try to extract text from multiple possible attributes
                 String jsonText = jsonElement.getText();
