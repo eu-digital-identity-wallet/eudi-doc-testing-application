@@ -1,4 +1,4 @@
-# Specifications
+# Performance Test Specifications
 
 > This document supports the requirements defined in [requirements.md](requirements.md).  
 > It describes *how* the performance testing for the EUDI Wallet application will be executed, detailing workloads, tools, data input, and environment specifications.
@@ -33,7 +33,7 @@ Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may no
 |---------------|-------------------------------|
 | **Network Usage** | All Data is already loaded locally, these opereations might not require additional network calls. This is typical in apps that load data initially and perform client-side manipulations.
 | **CPU Usage** | Operations are lightweight and dataset sizes are small; CPU impact is negligible. |
-| **Memory Usage** | Opereations modify existing data structures without significant allocation of new resources, memory usage may remain stable.
+| **Memory Usage** | Operations modify existing data structures without significant allocation of new resources, memory usage may remain stable.
 
 ---
 
