@@ -1,9 +1,11 @@
-# Purpose of this document
+# Security Requirements
+
+## Purpose of this document
 
 The purpose of this document is to outline the consolidated Security
 Requirements and Controls for the EUDI Wallet Reference Implementation,
-as those are defined by the ARF \[R02\], the corresponding ISO Standards
-\[R01\], \[R04\] and Specifications \[R05\], \[R06\]. This document is
+as those are defined by the ARF [R01](#reference-documents), the corresponding ISO Standards
+[R05](#reference-documents), [R02](#reference-documents) and Specifications [R03](#reference-documents), [R04](#reference-documents). This document is
 an extension of the Security Requirements and Controls developed under
 Specific Contract 01 and it has been updated to reflect the development
 progress under the Specific Contract 03.
@@ -23,16 +25,16 @@ technical protocols.
 
 Finally, it is advised that the document is read in conjunction with
 other relevant EUDI Wallet material, such as the 'Architectural
-Reference Framework' \[R02\] which provides the technical framework
+Reference Framework' [R01](#reference-documents) which provides the technical framework
 needed to develop an interoperable EUDI Wallet Reference Implementation
-based on common standards and best practices, ISO/IEC 18013-5 \[R01\],
-ISO/IEC 23220-4 \[R04\], the open specifications \[R05\], \[R06\] and
+based on common standards and best practices, ISO/IEC 18013-5 [R05](#reference-documents),
+ISO/IEC 23220-4 [R02](#reference-documents), the open specifications [R03](#reference-documents), [R04](#reference-documents) and
 the EUDI Wallet -- Reference Implementation Roadmap hosted in GitHub
-\[R08\].
+[R06](#reference-documents).
 
-# Reference and applicable documents
+## Reference and applicable documents
 
-## Reference documents
+### Reference documents
 
 <table>
 <colgroup>
@@ -51,58 +53,43 @@ Title</span></strong></em></td>
 <td><em><strong><span
 class="smallcaps">Version</span></strong></em></td>
 </tr>
-<tr class="even">
-<td>R01</td>
-<td>ISO/IEC 18013-5</td>
-<td>Personal identification - ISO-compliant driving licence - Part 5:
-Mobile driving licence (mDL) application</td>
-<td>1.00</td>
-</tr>
 <tr class="odd">
-<td>R02</td>
+<td>R01</td>
 <td>ARF</td>
-<td>EUDI Architecture and Reference Framework</td>
+<td><a href="https://eudi.dev/2.5.0/architecture-and-reference-framework-main/">EUDI Architecture and Reference Framework</a></td>
 <td>2.5</td>
 </tr>
 <tr class="even">
-<td>R03</td>
-<td>ISO/IEC 27001:2022</td>
-<td>ISO/IEC 27001:2022 Information Security Management Systems</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>R04</td>
+<td>R02</td>
 <td>ISO/IEC 23220-4</td>
-<td><p>ISO/IEC 23220-4: Building blocks for identity</p>
-<p>management via mobile devices - Part 4: Protocols and services
-for</p>
-<p>operational phase</p></td>
+<td><a href="https://www.iso.org/standard/86785.html">ISO/IEC 23220-4: Building blocks for identity management via mobile devices - Part 4: Protocols and services
+for perational phase</a></td>
 <td>DRAFT</td>
 </tr>
-<tr class="even">
-<td>R05</td>
+<tr class="odd">
+<td>R03</td>
 <td>OpenID4VP</td>
-<td>OpenID for Verifiable Presentations – draft 20</td>
+<td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations</a></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>R04</td>
+<td>OpenID4VCI</td>
+<td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID for Verifiable Credential Issuance</a></td>
 <td>1.0</td>
 </tr>
 <tr class="odd">
-<td>R06</td>
-<td>OpenID4VCI</td>
-<td>OpenID for Verifiable Credential Issuance</td>
-<td>1.0</td>
-</tr>
-<tr class="even">
-<td>R07</td>
+<td>R05</td>
 <td>ISO/IEC 18013 series</td>
-<td><p>ISO/IEC 18013-1:2018</p>
-<p>ISO/IEC 18013-2:2020</p>
-<p>ISO/IEC 18013-3:2017</p>
-<p>ISO/IEC 18013-4:2019</p>
-<p>ISO/IEC 18013-5:2021</p></td>
+<td><p><a href="https://www.iso.org/standard/63798.html">ISO/IEC 18013-1:2018</a></p>
+<p><a href="https://www.iso.org/standard/70486.html">ISO/IEC 18013-2:2020</a></p>
+<p><a href="https://www.iso.org/standard/72366.html">ISO/IEC 18013-3:2017</a></p>
+<p><a href="https://www.iso.org/standard/74961.html">ISO/IEC 18013-4:2019</a></p>
+<p><a href="https://www.iso.org/standard/69084.html">ISO/IEC 18013-5:2021</a></p></td>
 <td>N/A</td>
 </tr>
-<tr class="odd">
-<td>R08</td>
+<tr class="even">
+<td>R06</td>
 <td>EUDI Wallet – Reference Implementation Roadmap</td>
 <td><a
 href="https://github.com/orgs/eu-digital-identity-wallet/projects/24">EUDIW
@@ -110,34 +97,26 @@ href="https://github.com/orgs/eu-digital-identity-wallet/projects/24">EUDIW
 (github.com)</a></td>
 <td>N/A</td>
 </tr>
-<tr class="even">
-<td>R09</td>
+<tr class="odd">
+<td>R07</td>
 <td>Cloud Signature Consortium</td>
-<td>Architectures and protocols for remote signature applications</td>
+<td><a href="https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf">Architectures and protocols for remote signature applications</a></td>
 <td>2.0.0.1</td>
 </tr>
-<tr class="odd">
-<td>R10</td>
-<td>DC4EU_BBP</td>
-<td>DC4EU – Business Blueprint (BBP)</td>
-<td>5.1</td>
-</tr>
 <tr class="even">
-<td>R11</td>
-<td>Security Requirements</td>
-<td><a
-href="https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-architecture/blob/main/security-requirements.md">security-requirements.md
-(GitHub)</a></td>
-<td></td>
+<td>R08</td>
+<td>DC4EU_BBP</td>
+<td><a href="https://dm158x9fyyzgp.cloudfront.net/wp-content/uploads/2024/06/DC4EU_D6.1_Business_Blueprint_V2.1.pdf">DC4EU – Business Blueprint (BBP)</a></td>
+<td>2.1</td>
 </tr>
 </tbody>
 </table>
 
 Table 2‑1: Reference Documents
 
-# Terminology
+## Terminology
 
-## Abbreviations and acronyms
+### Abbreviations and acronyms
 
 A list of the principal abbreviations and acronyms used is nonetheless
 provided here for a better understanding of this document:
@@ -173,20 +152,20 @@ provided here for a better understanding of this document:
 
 Table 3‑1: List of Abbreviations and Acronyms
 
-# Audience
+## Audience
 
 This document is intended to be used by all stakeholders involved in the
 EUDI Wallet Reference Implementation development lifecycle.
 
-# Security Requirements
+## Security Requirements
 
-## Functional Requirements
+### Functional Requirements
 
-### PID and mDL
+#### PID and mDL
 
 The EUDI Wallet Reference Implementation meets the security and privacy
-recommendations as described in the ARF \[R02\] by ensuring compliance
-with the ISO/IEC 18013 international standard series \[R07\].
+recommendations as described in the ARF [R01](#reference-documents) by ensuring compliance
+with the ISO/IEC 18013 international standard series [R05](#reference-documents).
 
 Mobile Driving Licence (mDL) is a driving licence that fulfils at least
 the same function as an Identification Licence (IDL) but, instead of
@@ -198,126 +177,126 @@ receive, store and share attestations like PIDs.
 
 Below, the minimum acceptable set of security requirements to maintain a
 level of assurance along with interoperability, as those have been
-identified by the Architecture Reference Framework \[R02\].
+identified by the Architecture Reference Framework [R01](#reference-documents).
 
-#### FSRQ-001
+##### FSRQ-001
 
 | Requirement ID     | FSRQ-001                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Data Integrity and Authenticity                                                                                                                                                                                                                                                                                                                                                             |
 | Description        | PID attestation must include necessary information for performing a data integrity check.                                                                                                                                                                                                                                                                                                                   |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
-#### FSRQ-002
+##### FSRQ-002
 
 | Requirement ID     | FSRQ-002                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Validity                                                                                                                                                                                                                                                                                                                                                                                    |
 | Description        | PID attestation must include all necessary information for performing validity status checks.                                                                                                                                                                                                                                                                                                               |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
-#### FSRQ-003
+##### FSRQ-003
 
 | Requirement ID     | FSRQ-003                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Encoding                                                                                                                                                                                                                                                                                                                                                                                    |
 | Description        | PID attestation must use signatures and encryption formats as detailed in JOSE (JSON Object Signing and Encryption) RFCs and COSE (CBOR Object Signing and Encryption) RFCs.                                                                                                                                                                                                                                |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
-#### FSRQ-004
+##### FSRQ-004
 
 | Requirement ID     | FSRQ-004                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Holder Verification                                                                                                                                                                                                                                                                                                                                                                         |
 | Description        | PID attestation must include all necessary information for verifying the holder binding by a Relying Party.                                                                                                                                                                                                                                                                                                 |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
-#### FSRQ-005
+##### FSRQ-005
 
 | Requirement ID     | FSRQ-005                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation SOG-IS ACM Compliance                                                                                                                                                                                                                                                                                                                                                                       |
 | Description        | PID attestation must use signature and encryption algorithms in accordance with SOG-IS ACM (Smartcard Operating System Common Criteria Application Software Protection Profile).                                                                                                                                                                                                                            |
 | Status             | In Progress                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                      |
 
-#### FSRQ-006
+##### FSRQ-006
 
 | Requirement ID     | FSRQ-006                                                                                                               |
 |--------------------|------------------------------------------------------------------------------------------------------------------------|
 | Name               | mDL Data Integrity and Authenticity                                                                                    |
 | Description        | mDL must contain the necessary information for performing a data integrity check.                                      |
 | Status             | Completed                                                                                                              |
-| Source             | ARF \[R02\]                                                                                                            |
+| Source             | ARF [R01](#reference-documents)                                                                                                            |
 | Priority           | Must                                                                                                                   |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                 |
 
-#### FSRQ-007
+##### FSRQ-007
 
 | Requirement ID     | FSRQ-007                                                                                                                                                                                                                                      |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Encoding                                                                                                                                                                                                                                  |
 | Description        | PID shall be encoded as SD-JWT-VC.                                                                                                                                                                                                            |
 | Status             | In progress                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                   |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                   |
 | Priority           | Shall                                                                                                                                                                                                                                         |
 | Epic               | [Update PID in alignment with ARF v1.8 (Rulebook v3.01) \#186](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/186)                                                                                          |
 | User Story         | Users should be able to issue a PID in SD-JWT-VC format as per the normal issuance flow (e.g. as described in \#[Using the PID (v1.5) in the RI \#167](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/167)) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                        |
 
-#### FSRQ-008
+##### FSRQ-008
 
 | Requirement ID     | FSRQ-008                                                                                                                                                                                                                                                                                   |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Provider Information                                                                                                                                                                                                                                                                   |
 | Description        | PID attestation must contain the necessary information to identify the PID Provider.                                                                                                                                                                                                       |
 | Status             | Completed                                                                                                                                                                                                                                                                                  |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                |
 | Priority           | Must                                                                                                                                                                                                                                                                                       |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200), [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                     |
 
-#### FSRQ-009
+##### FSRQ-009
 
 | Requirement ID     | FSRQ-009                                                                                                                                                   |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Holder Data Model Compatibility                                                                                                            |
 | Description        | PID attestation must be issued in accordance with both the data model specified in ISO/IEC 18013-5:2021 and the W3C Verifiable Credentials Data Model 1.1. |
 | Status             | Completed                                                                                                                                                  |
-| Source             | ARF \[R02\]                                                                                                                                                |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                |
 | Priority           | Must                                                                                                                                                       |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Add a Document by choosing from list (Redesign)#200](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200)                                             |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                     |
 
-### (Q)EAA
+#### (Q)EAA
 
 Electronic Attestation of Attributes (EAA) is an attestation in
 electronic form that allows the authentication of features,
@@ -336,50 +315,50 @@ Below, the minimum acceptable set of security requirements recorded for
 the (Q)EAA as those are aligned with the EU Digital Identity Wallet
 Reference Implementation and its ecosystem.
 
-#### FSRQ-010
+##### FSRQ-010
 
 | Requirement ID     | FSRQ-010                                                                                                               |
 |--------------------|------------------------------------------------------------------------------------------------------------------------|
 | Name               | (Q)EAA Attestation Validity                                                                                            |
 | Description        | mDL must contain all the information required to perform validity status checks on the (Q)EAA.                         |
 | Status             | Completed                                                                                                              |
-| Source             | ARF \[R02\]                                                                                                            |
+| Source             | ARF [R01](#reference-documents)                                                                                                            |
 | Priority           | Must                                                                                                                   |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Pending.                                                                                                               |
 
-#### FSRQ-011
+##### FSRQ-011
 
 | Requirement ID     | \(Q\) FSRQ-011                                                                                                                                                                                                                                                                                   |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | (Q)EAA Signature and Encryption Formats                                                                                                                                                                                                                                                          |
 | Description        | (Q)EAA (Qualified and Non-Qualified Electronic Attestation of Attributes) should use one of the signature and encryption formats detailed in JOSE (JSON Object Signing and Encryption) RFCs or COSE (CBOR Object Signing and Encryption) RFCs, based on the data model used for the attestation. |
 | Status             | Completed                                                                                                                                                                                                                                                                                        |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                      |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                      |
 | Priority           | Should                                                                                                                                                                                                                                                                                           |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Pending.                                                                                                                                                                                                                                                                                         |
 
-#### FSRQ-012
+##### FSRQ-012
 
 | Requirement ID     | FSRQ-012                                                                                                                                                                                                                                     |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | (Q)EAA SOG-IS ACM Compliance                                                                                                                                                                                                                 |
 | Description        | (Q)EAA (Qualified and Non-Qualified Electronic Attestation of Attributes) should use signature and encryption algorithms in accordance with SOG-IS ACM (Smartcard Operating System Common Criteria Application Software Protection Profile). |
 | Status             | In Progress                                                                                                                                                                                                                                  |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                  |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                  |
 | Priority           | Should                                                                                                                                                                                                                                       |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202)                                                                                                                      |
 | Security Test Case | Pending.                                                                                                                                                                                                                                     |
 
-### Proximity Use Case
+#### Proximity Use Case
 
-EUDI Wallet Reference Implementation meets the ISO/IEC 18013-5 \[R01\]
+EUDI Wallet Reference Implementation meets the ISO/IEC 18013-5 [R05](#reference-documents)
 Standard security and privacy recommendations as mentioned in the ARF
-\[R02\]. Compliance with the ISO/IEC 18013-5 \[R01\] international
+[R01](#reference-documents). Compliance with the ISO/IEC 18013-5 [R05](#reference-documents) international
 standard ensures mobile IDs are secure and accepted globally as a legal
 form of identification. The standard provides mechanisms to obtain and
 trust the data of a Mobile Driving License (mDL). It uses Public Key
@@ -409,10 +388,10 @@ can be shared over Bluetooth. The ID information exchange is based
 entirely on no-contact and without the Holder ever ceding possession of
 their phone.
 
-ISO/IEC 18013-5 \[R01\] was developed based on privacy-by-design
+ISO/IEC 18013-5 [R05](#reference-documents) was developed based on privacy-by-design
 principles (See Appendix A-Annex E- E.2 Achieving privacy for the mDL
 holder). Single-use encryption and security mechanisms within ISO/IEC
-18013-5 \[R01\] ensure that nobody can eavesdrop transaction sessions.
+18013-5 [R05](#reference-documents) ensure that nobody can eavesdrop transaction sessions.
 The reader and mDL exchange key material ensure that only they can
 participate in the conversation, and the conversation can only happen
 once.
@@ -446,13 +425,13 @@ attributes of a specific Holder are not linkable to any previous
 transactions. In addition to that, anonymity remains to any Verifier
 (See Appendix A-Annex E- E.6 Anonymity and unlikability).
 
-Finally, the use of ISO/IEC 18013-5 \[R01\] security and privacy
+Finally, the use of ISO/IEC 18013-5 [R05](#reference-documents) security and privacy
 recommendations in the implementation of the EUDI Wallet prototype
 stands for international use and mutual recognition of the ISO-compliant
 driving licence without impeding individual countries/states in applying
 their privacy rules.
 
-#### FSRQ-013
+##### FSRQ-013
 
 <table>
 <colgroup>
@@ -484,7 +463,7 @@ time in memory only and then should be destroyed.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -505,7 +484,7 @@ time in memory only and then should be destroyed.</td>
 </tbody>
 </table>
 
-#### FSRQ-014
+##### FSRQ-014
 
 <table>
 <colgroup>
@@ -536,7 +515,7 @@ IACA root public key.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -557,58 +536,58 @@ IACA root public key.</td>
 </tbody>
 </table>
 
-#### FSRQ-015
+##### FSRQ-015
 
 | Requirement ID     | FSRQ-015                                                                                                                                                                                                            |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | EUDIW Authentication                                                                                                                                                                                                |
 | Description        | Perform EUDIW authentication using ECDSA/EdSA signature. To authenticate the EUDIW with EUDIW ECDSA/EdDSA authentication, the EUDIW signs the device authentication data with the EUDIW authentication private key. |
 | Status             | Completed                                                                                                                                                                                                           |
-| Source             | ISO/IEC 18013-5 \[R01\]                                                                                                                                                                                             |
+| Source             | ISO/IEC 18013-5 [R05](#reference-documents)                                                                                                                                                                                             |
 | Priority           | Must                                                                                                                                                                                                                |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                            |
 
-#### FSRQ-016
+##### FSRQ-016
 
 | Requirement ID     | FSRQ-016                                                                                                                                                                                                                                                                                                                             |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | mDL Selective Disclosure                                                                                                                                                                                                                                                                                                             |
-| Description        | mDL should enable Selective Disclosure of attributes, either through SD-JWT or Mobile Security Object (ISO/IEC 18013-5) \[R01\] scheme, based on the data model used for the attestation.                                                                                                                                            |
+| Description        | mDL should enable Selective Disclosure of attributes, either through SD-JWT or Mobile Security Object (ISO/IEC 18013-5) [R05](#reference-documents) scheme, based on the data model used for the attestation.                                                                                                                                            |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                            |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                          |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                          |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                 |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                                                                                       |
 
-### Online Identification and Authentication Use Case
+#### Online Identification and Authentication Use Case
 
 The implementation of remote presentation flows, i.e. Identification and
-Authentication, is based on the OpenID4VP \[R05\] specification (draft
+Authentication, is based on the OpenID4VP [R03](#reference-documents) specification (draft
 24 as of Q1 2025) which defines the interactions between the User, the
 Verifiers and the Wallet in two different flows. The first flow is the
 Same device, where the wallet and the verifier are located in the same
 device, and the Cross Device where the Wallet and Verifier are located
 in different devices.
 
-#### FSRQ-017
+##### FSRQ-017
 
 | Requirement ID     | FSRQ-017                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Secure Communication                                                                                                                                                                                                                                                                                                                                                                                        |
 | Description        | EUDIW must use secure communication protocols for all communications. Ensure that EUDIW does not establish any communication channels which do not use TLS and HTPS protocols.                                                                                                                                                                                                                              |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                                                                                                                                                                                                                                     |
+| Source             | ISO/IEC 23220-4 [R02](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                     |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                                                                                                                                                                           |
 
-#### FSRQ-018
+##### FSRQ-018
 
 <table>
 <colgroup>
@@ -643,7 +622,7 @@ sent by value or by reference.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 23220-4 [R04]</td>
+<td>ISO/IEC 23220-4 [R02]</td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -664,47 +643,47 @@ sent by value or by reference.</td>
 </tbody>
 </table>
 
-#### FSRQ-019
+##### FSRQ-019
 
 | Requirement ID     | FSRQ-019                                                                                                                                                                                  |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Secured Authorization Response                                                                                                                                                            |
 | Description        | EUDIW must sign, or sign and encrypt the Authorization Response. The implementations may use JWT Secured Authorization Response Mode for OAuth 2.0 (JARM).                                |
 | Status             | Completed                                                                                                                                                                                 |
-| Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                   |
+| Source             | ISO/IEC 23220-4 [R02](#reference-documents)                                                                                                                                                                   |
 | Priority           | Must                                                                                                                                                                                      |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                               |
 
-#### FSRQ-020
+##### FSRQ-020
 
 | Requirement ID     | FSRQ-020                                                                                                                                                                                                 |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Secured VP Token                                                                                                                                                                                         |
 | Description        | EUDIW must link every Verifiable Presentation returned to the Verifier in the VP Token with a cryptographically random number with sufficient entropy which was received with the authorization request. |
 | Status             | Completed                                                                                                                                                                                                |
-| Source             | ISO/IEC 23220-4 \[R04\]                                                                                                                                                                                  |
+| Source             | ISO/IEC 23220-4 [R02](#reference-documents)                                                                                                                                                                                  |
 | Priority           | Must                                                                                                                                                                                                     |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                       |
 
-#### FSRQ-021
+##### FSRQ-021
 
 | Requirement ID     | FSRQ-021                                                                                                                                                                                                                       |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Selective Disclosure                                                                                                                                                                                           |
-| Description        | PID attestation must enable Selective Disclosure of attributes using SD-JWT and Mobile Security Object (ISO/IEC 18013-5) \[R01\] scheme.                                                                                       |
+| Description        | PID attestation must enable Selective Disclosure of attributes using SD-JWT and Mobile Security Object (ISO/IEC 18013-5) [R05](#reference-documents) scheme.                                                                                       |
 | Status             | Completed                                                                                                                                                                                                                      |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                    |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                    |
 | Priority           | Must                                                                                                                                                                                                                           |
 | Epic               | [New version of the wallet UI](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10) |
 | User Story         | [Present document online (Redesign)#201](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201), [Present document in person (Redesign)#202](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202) |
 
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                           |
 
-### Verifiable Credentials Issuance
+#### Verifiable Credentials Issuance
 
 The Verifiable Credentials Issuance is the process of issuing digital
 credentials through an OAuth-protected API. These credentials can take
@@ -722,7 +701,7 @@ established security protocols of OAuth 2.0 and extending the
 capabilities of existing OpenID Connect deployments.
 
 Below, the minimum acceptable set of security requirements recorded for
-issuing verifiable credentials based on the OpenID specification \[R06\]
+issuing verifiable credentials based on the OpenID specification [R04](#reference-documents)
 and aligned with the EU Digital Identity Wallet Reference Implementation
 and its ecosystem. In order to differentiate the epics and user stories
 hosted in
@@ -730,20 +709,20 @@ hosted in
 the epics are recorded only by name and the user stories by name and
 number.
 
-#### FSRQ-022
+##### FSRQ-022
 
 | Requirement ID     | FSRQ-022                                                                                                                                                              |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Key Attestation                                                                                                                                                       |
 | Description        | Utilize key attestation mechanisms to validate the key management policies of EUDIW, e.g., use of certificates.                                                       |
 | Status             | It will be revised                                                                                                                                                    |
-| Source             | OpenID4VCI \[R06\]                                                                                                                                                    |
+| Source             | OpenID4VCI [R04](#reference-documents)                                                                                                                                                    |
 | Priority           | Must                                                                                                                                                                  |
 | Epic               | [Issuing - Support for credential offer - Issuer initiated scenario](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/42) |
 | User Story         | [Issuing - Support for credential offer - Issuer initiated scenario \#216](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/216)        |
 | Security Test Case | Testing has been covered in the Mobile Application Security Testing activity based on MSTG.                                                          |
 
-#### FSRQ-023
+##### FSRQ-023
 
 <table>
 <colgroup>
@@ -774,7 +753,7 @@ internal integrity of the EUDIW.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -804,7 +783,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-024
+##### FSRQ-024
 
 <table>
 <colgroup>
@@ -833,7 +812,7 @@ attestation services to verify the security status of the device.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -863,7 +842,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-025
+##### FSRQ-025
 
 <table>
 <colgroup>
@@ -895,7 +874,7 @@ Wallet and the Credential Issuer.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -920,7 +899,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-026
+##### FSRQ-026
 
 <table>
 <colgroup>
@@ -952,7 +931,7 @@ the origin of the offer.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -976,7 +955,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-027
+##### FSRQ-027
 
 <table>
 <colgroup>
@@ -1010,7 +989,7 @@ Credential.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1040,7 +1019,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-028
+##### FSRQ-028
 
 <table>
 <colgroup>
@@ -1069,7 +1048,7 @@ server certificate check is performed.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1106,7 +1085,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-029
+##### FSRQ-029
 
 <table>
 <colgroup>
@@ -1138,7 +1117,7 @@ key store.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1169,7 +1148,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-030
+##### FSRQ-030
 
 <table>
 <colgroup>
@@ -1199,7 +1178,7 @@ use hardware-backed encryption.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1236,7 +1215,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-031
+##### FSRQ-031
 
 <table>
 <colgroup>
@@ -1267,7 +1246,7 @@ confidentiality properties of the authorization request. </td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1298,7 +1277,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-#### FSRQ-032
+##### FSRQ-032
 
 <table>
 <colgroup>
@@ -1330,7 +1309,7 @@ signature.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1351,7 +1330,7 @@ signature.</p></td>
 </tbody>
 </table>
 
-#### FSRQ-034
+##### FSRQ-034
 
 <table>
 <colgroup>
@@ -1382,7 +1361,7 @@ linkability.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF [R01]</td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1413,7 +1392,7 @@ same device) #180</a></p></td>
 </tbody>
 </table>
 
-#### FSRQ-035  {#fsrq-035}
+##### FSRQ-035
 
 <table>
 <colgroup>
@@ -1443,7 +1422,7 @@ preventing linkability across multiple presentations.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF [R01]</td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1469,7 +1448,7 @@ device) #179</a></p>
 <p><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/178">Present
 an instance of a credential (wallet initiated, cross device/proximity)
-#178</a></p></td>
+##178</a></p></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -1478,7 +1457,7 @@ an instance of a credential (wallet initiated, cross device/proximity)
 </tbody>
 </table>
 
-### Deferred Credential Issuance
+#### Deferred Credential Issuance
 
 Deferred Credential Issuance is a process used when a Credential Issuer
 is unable to immediately issue a credential after a request has been
@@ -1489,53 +1468,53 @@ a specific endpoint called the Deferred Credential Endpoint.
 
 Below, the minimum acceptable set of security requirements recorded for
 the deferred issuance of verifiable credentials according to OpenID4VCI
-\[R06\] in alignment with the EU Digital Identity Wallet Reference
+[R04](#reference-documents) in alignment with the EU Digital Identity Wallet Reference
 Implementation and its ecosystem. In order to differentiate the epics
 and user stories hosted in
 [GitHub](https://github.com/orgs/eu-digital-identity-wallet/projects/24/views/2),
 the epics are recorded only by name and the user stories by name and
 number.
 
-#### FSRQ-036
+##### FSRQ-036
 
 | Requirement ID     | FSRQ-036                                                                                                                                                                                                |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Secure communication                                                                                                                                                                                    |
 | Description        | The communication with the Deferred Credential Endpoint must be in a secure manner. Utilize TLS protocol to ensure secure communication with the Credential Endpoint.                                   |
 | Status             | Completed                                                                                                                                                                                               |
-| Source             | OpenID4VCI \[R06\]                                                                                                                                                                                      |
+| Source             | OpenID4VCI [R04](#reference-documents)                                                                                                                                                                                      |
 | Priority           | Must                                                                                                                                                                                                    |
 | Epic               | [Issuing - Deferred issuance (OID4VCI)](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/40) |
 | User Story         | [Issuing - Deferred issuance \#217](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/217)                                                                                 |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                              |
 
-#### FSRQ-037
+##### FSRQ-037
 
 | Requirement ID     | FSRQ-0357                                                                                                                                                                                               |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Deferred Credential Endpoint Access Token Validation                                                                                                                                                    |
 | Description        | The EUDIW must be authenticated and authorized for Credential Issuance. Ensure that the EUDIW presents a valid Access Token when making requests to the Deferred Credential Endpoint.                   |
 | Status             | Completed                                                                                                                                                                                               |
-| Source             | OpenID4VCI \[R06\]                                                                                                                                                                                      |
+| Source             | OpenID4VCI [R04](#reference-documents)                                                                                                                                                                                      |
 | Priority           | Must                                                                                                                                                                                                    |
 | Epic               | [Issuing - Deferred issuance (OID4VCI)](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/40) |
 | User Story         | [Issuing - Deferred issuance \#217](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/217)                                                                                 |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                              |
 
-#### FSRQ-038
+##### FSRQ-038
 
 | Requirement ID     | FSRQ-038                                                                                                                                                                                                |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Deferred Credential Endpoint Access Token Refresh                                                                                                                                                       |
 | Description        | Access Token upon the expiration of its validity time should be refreshed, to the request of the wallet to be completed.                                                                                |
 | Status             | Completed                                                                                                                                                                                               |
-| Source             | OpenID4VCI \[R06\]                                                                                                                                                                                      |
+| Source             | OpenID4VCI [R04](#reference-documents)                                                                                                                                                                                      |
 | Priority           | Should                                                                                                                                                                                                  |
 | Epic               | [Issuing - Deferred issuance (OID4VCI)](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/40) |
 | User Story         | [Issuing - Deferred issuance \#217](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/217)                                                                                 |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                              |
 
-#### FSRQ-039
+##### FSRQ-039
 
 <table>
 <colgroup>
@@ -1565,7 +1544,7 @@ by the EUDIW to prevent reuse.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1591,7 +1570,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 </tbody>
 </table>
 
-### rQES
+#### rQES
 
 A Remote Qualified Electronic Signature (rQES) is a key component in the
 context of the EU Digital Identity Wallet Reference Implementation,
@@ -1609,137 +1588,137 @@ authentication methods, such as multi-factor authentication (MFA) or
 biometrics, binding the signing process to their verified digital
 identity.
 
-#### rQES FSRQ-040  {#rqes-fsrq-040}
+##### rQES FSRQ-040 
 
 | Requirement ID     | FSRQ-040                                                                                                                                                        |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Document Encoding                                                                                                                                               |
 | Description        | Documents must be securely encoded (e.g., Base64) before signing.                                                                                               |
 | Status             | Completed                                                                                                                                                       |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                           |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                           |
 | Priority           | MUST                                                                                                                                                            |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15) |
 | User Story         | [Select document to be signed (R3/R5) \#195](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/195)                              |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                      |
 
-#### rQES FSRQ-041  {#rqes-fsrq-041}
+##### rQES FSRQ-041
 
 | Requirement ID     | FSRQ-041                                                                                                                                                        |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Hash Generation                                                                                                                                                 |
 | Description        | The document hash must be generated using a secure algorithm (e.g., SHA-256), while the hashAlgorithmOID parameter specifies the algorithm used.                |
 | Status             | Completed                                                                                                                                                       |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                           |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                           |
 | Priority           | MUST                                                                                                                                                            |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15) |
 | User Story         | [Select and Authenticate to QTSP \#213](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/213)                                     |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                      |
 
-#### rQES FSRQ-042  {#rqes-fsrq-042}
+##### rQES FSRQ-042
 
 | Requirement ID     | FSRQ-042                                                                                                                                                        |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Hash Verification                                                                                                                                               |
 | Description        | The document hash should be verified against the authorized hash, rejecting signing requests if the hashes do not match to prevent tampering.                   |
 | Status             | Completed                                                                                                                                                       |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                           |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                           |
 | Priority           | MUST                                                                                                                                                            |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15) |
 | User Story         | [Select and Authenticate to QTSP \#213](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/213)                                     |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                      |
 
-#### rQES FSRQ-043
+##### rQES FSRQ-043
 
 | Requirement ID     | FSRQ-043                                                                                                                                                                                         |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Document Signature -- Before Signing                                                                                                                                                             |
 | Description        | The document must be signed with the correct signature format (e.g., PAdES, XAdES, or JAdES) and the correct signature properties (e.g., time-stamps) based on user and regulatory requirements. |
 | Status             | Completed                                                                                                                                                                                        |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                                            |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                                            |
 | Priority           | MUST                                                                                                                                                                                             |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15)                                  |
 | User Story         | [Sign Document (rQES - R3) \#212](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/212)                                                                            |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                       |
 
-#### rQES FSRQ-044
+##### rQES FSRQ-044
 
 | Requirement ID     | FSRQ-044                                                                                                                                                        |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Document Signature -- During Signing                                                                                                                            |
 | Description        | A specified *signature_format* and *signed_envelope_property* must be applied to control the signing process.                                                   |
 | Status             | Completed                                                                                                                                                       |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                           |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                           |
 | Priority           | MUST                                                                                                                                                            |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15) |
 | User Story         | [Sign Document (rQES - R3) \#212](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/212)                                           |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                      |
 
-#### rQES FSRQ-045
+##### rQES FSRQ-045
 
 | Requirement ID     | FSRQ-045                                                                                                                                                                  |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Document Signature -- After Signing                                                                                                                                       |
 | Description        | The system should confirm that the final document is compliant with the format and encoding requirements to avoid vulnerabilities associated with format inconsistencies. |
 | Status             | To be implemented                                                                                                                                                         |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                     |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                     |
 | Priority           | MUST                                                                                                                                                                      |
 | Epic               | [rQES R5: Wallet-driven model with internal Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/27)     |
 | User Story         | [\[Story\] Sign document (R5) \#193](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/193)                                                |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                |
 
-#### rQES FSRQ-046
+##### rQES FSRQ-046
 
 | Requirement ID     | FSRQ-046                                                                                                                                                              |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Batch Processing                                                                                                                                                      |
 | Description        | Only the specified number of signatures should be permitted within a single session, and the service must limit the transaction to authorized hash values.            |
 | Status             | To be implemented                                                                                                                                                     |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                 |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                 |
 | Priority           | MUST                                                                                                                                                                  |
 | Epic               | [rQES R5: Wallet-driven model with internal Signature Creation Application \#29](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/27) |
 | User Story         | [\[Story\] Sign document (R5) \#193](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/193)                                            |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                            |
 
-#### rQES FSRQ-047
+##### rQES FSRQ-047
 
 | Requirement ID     | FSRQ-047                                                                                                                                                              |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Document Signing Authorization                                                                                                                                        |
 | Description        | Authorization for document signing must involve a valid Signature Activation Data (SAD) or Access Token. This binds the session to authorized users and documents.    |
 | Status             | To be implemented                                                                                                                                                     |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                 |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                 |
 | Priority           | MUST                                                                                                                                                                  |
 | Epic               | [rQES R5: Wallet-driven model with internal Signature Creation Application \#29](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/27) |
 | User Story         | [\[Story\] Sign document (R5) \#193](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/193)                                            |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                            |
 
-#### rQES FSRQ-048
+##### rQES FSRQ-048
 
 | Requirement ID     | FSRQ-048                                                                                                                                                                                                              |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Signature Activation Data (SAD) Binding                                                                                                                                                                               |
 | Description        | Ensure that the SAD remains valid and bound to 1) The Document Hashes, 2) The User, and 3) The Session, to prevent unauthorized use. Each new session or document requires a fresh SAD to maintain session integrity. |
 | Status             | Completed                                                                                                                                                                                                             |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                                                                 |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                                                                 |
 | Priority           | MUST                                                                                                                                                                                                                  |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15)                                                       |
 | User Story         | [Sign Document (rQES - R3) \#212](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/212)                                                                                                 |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                            |
 
-#### rQES FSRQ-049
+##### rQES FSRQ-049
 
 | Requirement ID     | FSRQ-049                                                                                                                                                                                            |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Signature Activation Data (SAD) Expiration                                                                                                                                                          |
 | Description        | SAD should expire after each transaction. Each new session (e.g., a new document batch) requires re-authorization with a new SAD to prevent unauthorized reuse of SAD across multiple transactions. |
 | Status             | Completed                                                                                                                                                                                           |
-| Source             | Architectures and protocols for remote signature applications \[R09\]                                                                                                                               |
+| Source             | Architectures and protocols for remote signature applications [R07](#reference-documents)                                                                                                                               |
 | Priority           | MUST                                                                                                                                                                                                |
 | Epic               | [rQES R3: Wallet-driven model with external Signature Creation Application](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/15)                                     |
 | User Story         | [Sign Document (rQES - R3) \#212](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/212)                                                                               |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                          |
 
-#### rQES FSRQ-050
+##### rQES FSRQ-050
 
 <table>
 <colgroup>
@@ -1770,7 +1749,7 @@ HTTP error codes to prevent leakage.</td>
 <tr class="even">
 <td>Source</td>
 <td>Architectures and protocols for remote signature applications
-[R09]</td>
+[R07]</td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1785,7 +1764,7 @@ Application</a></p>
 <p><a
 href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/27">rQES
 R5: Wallet-driven model with internal Signature Creation Application
-#29</a></p></td>
+##29</a></p></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
@@ -1803,7 +1782,7 @@ Sign document (R5) #193</a></p></td>
 </tbody>
 </table>
 
-#### rQES FSRQ-051
+##### rQES FSRQ-051
 
 <table>
 <colgroup>
@@ -1834,7 +1813,7 @@ way.</td>
 <tr class="even">
 <td>Source</td>
 <td>Architectures and protocols for remote signature applications
-[R09]</td>
+[R07]</td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1849,7 +1828,7 @@ Application</a></p>
 <p><a
 href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/27">rQES
 R5: Wallet-driven model with internal Signature Creation Application
-#29</a></p></td>
+##29</a></p></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
@@ -1867,7 +1846,7 @@ Sign document (R5) #193</a></p></td>
 </tbody>
 </table>
 
-###  EHIC {#ehic}
+####  EHIC 
 
 The European Health Insurance Card (EHIC) allows EU citizens to access
 medically necessary healthcare in another EU or EEA country under the
@@ -1889,7 +1868,7 @@ must be implemented. Compliance with EU data protection and social
 security regulations ensures its interoperability and acceptance across
 member states.
 
-#### EHIC FSRQ-052
+##### EHIC FSRQ-052
 
 <table>
 <colgroup>
@@ -1922,7 +1901,7 @@ data integrity and authenticity.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -1947,7 +1926,7 @@ the EHIC attestation #183</a></td>
 </tbody>
 </table>
 
-#### EHIC FSRQ-053
+##### EHIC FSRQ-053
 
 <table>
 <colgroup>
@@ -1980,7 +1959,7 @@ compromised or outdated credentials are no longer valid.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2005,7 +1984,7 @@ the EHIC attestation #183</a></td>
 </tbody>
 </table>
 
-#### EHIC FSRQ-054
+##### EHIC FSRQ-054
 
 <table>
 <colgroup>
@@ -2038,7 +2017,7 @@ without requiring real-time network access.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2063,7 +2042,7 @@ the EHIC attestation #183</a></td>
 </tbody>
 </table>
 
-###  PDA1 {#pda1}
+####  PDA1 
 
 The Portable Document A1 (PDA1) certifies that a worker remains covered
 by social security in their home country while working in another EU
@@ -2081,7 +2060,7 @@ real-time online verification is expected. It must comply with EU social
 security coordination rules, ensuring seamless cross-border recognition
 and trust framework alignment between institutions.
 
-#### PDA1 FSRQ-55
+##### PDA1 FSRQ-55
 
 <table>
 <colgroup>
@@ -2115,7 +2094,7 @@ theft.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2140,7 +2119,7 @@ the PDA1 attestation #184</a></td>
 </tbody>
 </table>
 
-#### PDA1 FSRQ-56
+##### PDA1 FSRQ-56
 
 <table>
 <colgroup>
@@ -2173,7 +2152,7 @@ data integrity and authenticity.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2198,7 +2177,7 @@ the PDA1 attestation #184</a></td>
 </tbody>
 </table>
 
-#### PDA1 FSRQ-57
+##### PDA1 FSRQ-57
 
 <table>
 <colgroup>
@@ -2231,7 +2210,7 @@ compromised or outdated credentials are no longer valid.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>DC4EU_BBP [R10]</td>
+<td>DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2256,7 +2235,7 @@ the PDA1 attestation #184</a></td>
 </tbody>
 </table>
 
-### Cross-Border Recruitment
+#### Cross-Border Recruitment
 
 The Cross-Border Recruitment Use Case showcases how the European Digital
 Identity Wallet (EUDI Wallet) can be applied in digital recruitment
@@ -2281,12 +2260,12 @@ issuer trust validation. The goal is to demonstrate the secure and
 privacy-preserving use of the EUDI Wallet in a real-world, cross-border
 employment scenario.
 
-#### Seafarer Certificate
+##### Seafarer Certificate
 
 Verifiable credential issued by a maritime authority certifying the
 seafarer\'s qualification and right to work at sea.
 
-##### FSRQ-058
+###### FSRQ-058
 
 <table>
 <colgroup>
@@ -2318,7 +2297,7 @@ authenticity are critical.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02], DC4EU_BBP [R10]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2347,7 +2326,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-059
+###### FSRQ-059
 
 <table>
 <colgroup>
@@ -2379,7 +2358,7 @@ authenticity are critical.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02], DC4EU_BBP [R10]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2408,7 +2387,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-060
+###### FSRQ-060
 
 <table>
 <colgroup>
@@ -2440,7 +2419,7 @@ authenticity are critical.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02], DC4EU_BBP [R10]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2469,7 +2448,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-061
+###### FSRQ-061
 
 <table>
 <colgroup>
@@ -2503,7 +2482,7 @@ authenticity are critical.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01], DC4EU_BBP [R10]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2533,7 +2512,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-062
+###### FSRQ-062
 
 <table>
 <colgroup>
@@ -2554,7 +2533,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 <tr class="even">
 <td>Description</td>
 <td>Attestation must enable Selective Disclosure of attributes using
-SD-JWT and Mobile Security Object (ISO/IEC 18013-5) [R01] scheme.<br />
+SD-JWT and Mobile Security Object (ISO/IEC 18013-5) <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a> scheme.<br />
 <br />
 User should disclose only the necessary parts (e.g., license number, not
 full record).</td>
@@ -2565,7 +2544,7 @@ full record).</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2592,51 +2571,51 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-#### Diploma
+##### Diploma
 
 Digital credential issued by an educational institution confirming the
 completion of a degree or qualification.
 
-##### FSRQ-063
+###### FSRQ-063
 
 | Requirement ID     | FSRQ-063                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Attestation Validity                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Description        | Must contain all the information required to perform validity status checks on the (Q)EAA.                                                                                                                                                                                                                                                                                                                                                                                |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Source             | ARF \[R02\], DC4EU_BBP \[R10\]                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Source             | ARF [R01](#reference-documents), DC4EU_BBP [R08](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Epic               | [Business demo: cross-border recruitment](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/55)                                                                                                                                                                                                                                                                                  |
 | User Story         | [\[Recruitment\] Issue attestations \#230](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/230), [\[Recruitment\] Apply for a job by presenting attestations remotely \#229](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/229), [\[Recruitment\] Present attestations in proximity (Employment 1st day) \#226](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226) |
 | Security Test Case | Pending                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
-##### FSRQ-064
+###### FSRQ-064
 
 | Requirement ID     | FSRQ-064                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Signature and Encryption Formats                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Description        | (Q)EAA (Qualified and Non-Qualified Electronic Attestation of Attributes) should use one of the signature and encryption formats detailed in JOSE (JSON Object Signing and Encryption) RFCs or COSE (CBOR Object Signing and Encryption) RFCs, based on the data model used for the attestation.                                                                                                                                                                          |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Source             | ARF \[R02\], DC4EU_BBP \[R10\]                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Source             | ARF [R01](#reference-documents), DC4EU_BBP [R08](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Priority           | Should                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Epic               | [Business demo: cross-border recruitment](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/55)                                                                                                                                                                                                                                                                                  |
 | User Story         | [\[Recruitment\] Issue attestations \#230](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/230), [\[Recruitment\] Apply for a job by presenting attestations remotely \#229](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/229), [\[Recruitment\] Present attestations in proximity (Employment 1st day) \#226](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226) |
 | Security Test Case | Pending.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-##### FSRQ-065
+###### FSRQ-065
 
 | Requirement ID     | FSRQ-065                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | (Q)EAA SOG-IS ACM Compliance                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Description        | (Q)EAA (Qualified and Non-Qualified Electronic Attestation of Attributes) should use signature and encryption algorithms in accordance with SOG-IS ACM (Smartcard Operating System Common Criteria Application Software Protection Profile).                                                                                                                                                                                                                              |
 | Status             | In Progress                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Source             | ARF \[R02\], DC4EU_BBP \[R10\]                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Source             | ARF [R01](#reference-documents), DC4EU_BBP [R08](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Priority           | Should                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Epic               | [Business demo: cross-border recruitment](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/55)                                                                                                                                                                                                                                                                                  |
 | User Story         | [\[Recruitment\] Issue attestations \#230](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/230), [\[Recruitment\] Apply for a job by presenting attestations remotely \#229](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/229), [\[Recruitment\] Present attestations in proximity (Employment 1st day) \#226](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226) |
 | Security Test Case | Pending                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
-##### FSRQ-066
+###### FSRQ-066
 
 <table>
 <colgroup>
@@ -2668,7 +2647,7 @@ Ensures the diploma is issued to the correct student
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2676,17 +2655,13 @@ Ensures the diploma is issued to the correct student
 </tr>
 <tr class="even">
 <td>Epic</td>
-<td>EPIC 001 - Online Identification &amp; Authentication</td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/10">New version of the wallet UI</a></td>
 </tr>
 <tr class="odd">
 <td>User Story</td>
-<td><a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-943"><span>US-003</span></a>,
-<a href="https://jira.intrasoft-intl.com/browse/EUDIW-518">US-008</a>,
-<a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-269"><span>US-009</span></a>,
-<a
-href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a></td>
+<td><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/200">Add a Document by choosing from list (Redesign) #200</a>,
+<a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201">Present document online (Redesign) #201</a>,
+<a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/202">Present document in person (Redesign) #202</a>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -2695,12 +2670,12 @@ href="https://jira.intrasoft-intl.com/browse/EUDIW-1261"><span>US-015</span></a>
 </tbody>
 </table>
 
-#### Tax Residency
+##### Tax Residency
 
 A Digital Credential issued by a tax authority confirming a person's
 residency for tax purposes.
 
-##### FSRQ-067
+###### FSRQ-067
 
 <table>
 <colgroup>
@@ -2731,7 +2706,7 @@ Proof of tax residency must be verifiable and tamper-proof.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2750,7 +2725,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 Issue attestations #230</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -2759,7 +2734,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-##### FSRQ-068
+###### FSRQ-068
 
 <table>
 <colgroup>
@@ -2790,7 +2765,7 @@ Proof of tax residency must be verifiable and tamper-proof.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2809,7 +2784,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 Issue attestations #230</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -2818,7 +2793,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-##### FSRQ-069
+###### FSRQ-069
 
 <table>
 <colgroup>
@@ -2853,7 +2828,7 @@ credential.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06], DC4EU_BBP [R10]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2872,7 +2847,7 @@ href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application
 Issue attestations #230</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -2881,12 +2856,12 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-#### Employee ID
+##### Employee ID
 
 A Digital Credential issued by an employer, used to confirm the
 employment relationship.
 
-##### FSRQ-070
+###### FSRQ-070
 
 <table>
 <colgroup>
@@ -2918,7 +2893,7 @@ holder (employee)</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2935,10 +2910,10 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228">[Recruitment]
 Sign contract with EUDI Wallet (Job Contract) (remote/cross-device)
-#228</a>, <a
+##228</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a>, <a
+##227</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226">[Recruitment]
 Present attestations in proximity (Employment 1st day) #226</a></td>
 </tr>
@@ -2949,7 +2924,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-071
+###### FSRQ-071
 
 <table>
 <colgroup>
@@ -2981,7 +2956,7 @@ holder (employee)</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -2998,10 +2973,10 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228">[Recruitment]
 Sign contract with EUDI Wallet (Job Contract) (remote/cross-device)
-#228</a>, <a
+##228</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a>, <a
+##227</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226">[Recruitment]
 Present attestations in proximity (Employment 1st day) #226</a></td>
 </tr>
@@ -3012,7 +2987,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-072
+###### FSRQ-072
 
 <table>
 <colgroup>
@@ -3045,7 +3020,7 @@ holder (employee)</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3062,10 +3037,10 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228">[Recruitment]
 Sign contract with EUDI Wallet (Job Contract) (remote/cross-device)
-#228</a>, <a
+##228</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a>, <a
+##227</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226">[Recruitment]
 Present attestations in proximity (Employment 1st day) #226</a></td>
 </tr>
@@ -3076,7 +3051,7 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-073
+###### FSRQ-073
 
 <table>
 <colgroup>
@@ -3108,7 +3083,7 @@ holder (employee)</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3125,10 +3100,10 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228">[Recruitment]
 Sign contract with EUDI Wallet (Job Contract) (remote/cross-device)
-#228</a>, <a
+##228</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a>, <a
+##227</a>, <a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226">[Recruitment]
 Present attestations in proximity (Employment 1st day) #226</a></td>
 </tr>
@@ -3139,33 +3114,33 @@ Present attestations in proximity (Employment 1st day) #226</a></td>
 </tbody>
 </table>
 
-##### FSRQ-074
+###### FSRQ-074
 
 | Requirement ID     | FSRQ-074                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | PID Attestation Holder Data Model Compatibility                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Description        | PID attestation must be issued in accordance with both the data model specified in ISO/IEC 18013-5:2021 and the W3C Verifiable Credentials Data Model 1.1.                                                                                                                                                                                                                                                                                                                                                                                  |
 | Status             | Completed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Source             | ARF \[R02\]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Source             | ARF [R01](#reference-documents)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Epic               | [Business demo: cross-border recruitment](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/55)                                                                                                                                                                                                                                                                                                                                                    |
 | User Story         | [\[Recruitment\] Sign contract with EUDI Wallet (Job Contract) (remote/cross-device) \#228](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228), [\[Recruitment\] Issue Employee ID credential (issuer initiated, remote/cross-device) \#227](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227), [\[Recruitment\] Present attestations in proximity (Employment 1st day) \#226](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226) |
 | Security Test Case | Testing has been covered by the functional test cases.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-##### FSRQ-075
+###### FSRQ-075
 
 | Requirement ID     | FSRQ-075                                                                                                                                                                                                                                                                                                                                                |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name               | Key Attestation                                                                                                                                                                                                                                                                                                                                         |
 | Description        | Utilize key attestation mechanisms to validate the key management policies of EUDIW, e.g., use of certificates.                                                                                                                                                                                                                                         |
 | Status             | It will be revised                                                                                                                                                                                                                                                                                                                                      |
-| Source             | OpenID4VCI \[R06\]                                                                                                                                                                                                                                                                                                                                      |
+| Source             | OpenID4VCI [R04](#reference-documents)                                                                                                                                                                                                                                                                                                                                      |
 | Priority           | Must                                                                                                                                                                                                                                                                                                                                                    |
 | Epic               | [Business demo: cross-border recruitment](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/55)                                                                                                                                                                |
 | User Story         | [\[Recruitment\] Sign contract with EUDI Wallet (Job Contract) (remote/cross-device) \#228](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/228), [\[Recruitment\] Present attestations in proximity (Employment 1st day) \#226](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/226) |
 | Security Test Case | Testing will be covered in the Mobile Application Security Testing activity based on MSTG.                                                                                                                                                                                                                                                              |
 
-##### FSRQ-076
+###### FSRQ-076
 
 <table>
 <colgroup>
@@ -3199,7 +3174,7 @@ issuer.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3216,7 +3191,7 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -3225,7 +3200,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-##### FSRQ-077
+###### FSRQ-077
 
 <table>
 <colgroup>
@@ -3257,7 +3232,7 @@ issuer.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3274,7 +3249,7 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -3283,7 +3258,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-##### FSRQ-078
+###### FSRQ-078
 
 <table>
 <colgroup>
@@ -3318,7 +3293,7 @@ issuer.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3335,7 +3310,7 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -3344,7 +3319,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-##### FSRQ-079
+###### FSRQ-079
 
 <table>
 <colgroup>
@@ -3365,7 +3340,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 <tr class="even">
 <td>Description</td>
 <td>PID attestation must enable Selective Disclosure of attributes using
-SD-JWT and Mobile Security Object (ISO/IEC 18013-5) [R01] scheme.<br />
+SD-JWT and Mobile Security Object (ISO/IEC 18013-5) <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a> scheme.<br />
 <br />
 User should share only necessary info (e.g., job title, not full
 contract details).</td>
@@ -3376,7 +3351,7 @@ contract details).</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ARF [R02]</td>
+<td>ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3393,7 +3368,7 @@ demo: cross-border recruitment</a></td>
 <td><a
 href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/227">[Recruitment]
 Issue Employee ID credential (issuer initiated, remote/cross-device)
-#227</a></td>
+##227</a></td>
 </tr>
 <tr class="even">
 <td>Security Test Case</td>
@@ -3402,7 +3377,7 @@ Issue Employee ID credential (issuer initiated, remote/cross-device)
 </tbody>
 </table>
 
-### Combined Business Scenario on Travel
+#### Combined Business Scenario on Travel
 
 The combined business scenario on Travel covered in epic [A combined
 business scenario on
@@ -3410,20 +3385,20 @@ Travel](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-impl
 utilizes the previously analysed use cases and thus no separate analysis
 is needed.
 
-## Non-Functional Requirements
+### Non-Functional Requirements
 
-### NFSRQ-001
+#### NFSRQ-001
 
 | Requirement ID                | NFSRQ-001                                                                                                                                                                                                                                                                                              |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Data minimization                                                                                                                                                                                                                                                                                      |
 | Description                   | Processing of data should be minimized to that specifically necessary for the purpose specified.                                                                                                                                                                                                       |
 | Status                        | Completed                                                                                                                                                                                                                                                                                              |
-| Source                        | ISO/IEC 18013-5 \[R01\]                                                                                                                                                                                                                                                                                |
+| Source                        | ISO/IEC 18013-5 [R05](#reference-documents)                                                                                                                                                                                                                                                                                |
 | Priority                      | Must                                                                                                                                                                                                                                                                                                   |
 | Acceptance criteria guideline | Fields (data groups) have been separated into individual data elements to support privacy-preserving attribute queries. Selective Disclosure: Credential verifiers must request data elements individually and should ask for only those necessary for the specific use case (e.g., PD A1, EHIC, mDL). |
 
-### NFSRQ-002
+#### NFSRQ-002
 
 <table>
 <colgroup>
@@ -3452,7 +3427,7 @@ data.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3472,7 +3447,7 @@ using the pre-defined authentication means.</p></li>
 </tbody>
 </table>
 
-### NFSRQ-003
+#### NFSRQ-003
 
 <table>
 <colgroup>
@@ -3502,7 +3477,7 @@ modification, or disclosure.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01], DC4EU_BBP [R10]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3518,13 +3493,13 @@ and authenticity of mDL data.</p></li>
 <li><p>Implement anonymization, pseudonymization, and secure multi-party
 computation to protect personal data from unnecessary exposure.</p></li>
 </ul>
-<p>(For more technical details, please see ISO 18013-5 [R01], section
+<p>(For more technical details, please see ISO 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a>, section
 “9.3 Validation and Inspection Procedures” and Annex C).</p></td>
 </tr>
 </tbody>
 </table>
 
-### NFSRQ-004
+#### NFSRQ-004
 
 <table>
 <colgroup>
@@ -3553,7 +3528,7 @@ processing, and storage management of their personal data.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3572,7 +3547,7 @@ using the pre-defined authentication means.</p></li>
 </tbody>
 </table>
 
-### NFSRQ-005
+#### NFSRQ-005
 
 <table>
 <colgroup>
@@ -3602,7 +3577,7 @@ modification, or disclosure.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3619,7 +3594,7 @@ modification, or disclosure.</td>
 </tbody>
 </table>
 
-### NFSRQ-006
+#### NFSRQ-006
 
 <table>
 <colgroup>
@@ -3649,7 +3624,7 @@ ensure accuracy.</td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3673,7 +3648,7 @@ risks.</p></li>
 </tbody>
 </table>
 
-### NFSRQ-007
+#### NFSRQ-007
 
 <table>
 <colgroup>
@@ -3698,7 +3673,7 @@ Trusted List. Trusted Lists cover Wallet Providers, PID Providers, QEAA
 Providers, PuB-EAA Providers, Access Certificate Authorities, and QESRC
 Providers, with validation performed via the IACA root
 certificate.<br />
-(see ISO 18013-5 [R01] Annex C &amp; ARF).</td>
+(see ISO 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a> Annex C &amp; ARF).</td>
 </tr>
 <tr class="odd">
 <td>Status</td>
@@ -3706,7 +3681,7 @@ certificate.<br />
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>ISO/IEC 18013-5 [R01], ARF [R02], DC4EU_BBP [R10]</td>
+<td>ISO/IEC 18013-5 <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R05]</a>, ARF <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R01]</a>, DC4EU_BBP <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R08]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3720,18 +3695,18 @@ Trusted List.</td>
 </tbody>
 </table>
 
-### NFSRQ-008
+#### NFSRQ-008
 
 | Requirement ID                | NFSRQ-008                                                                                                                                                                                                                                                            |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Secure Data at rest                                                                                                                                                                                                                                                  |
 | Description                   | Data should be securely stored while saved in the device. Cryptographic algorithms should be applied based on current industry best practices for Android (such as Android Credential API or the implementors may use NiScy interface for custom solutions) and iOS. |
 | Status                        | Completed                                                                                                                                                                                                                                                            |
-| Source                        | ISO/IEC 27001:2022 \[R04\]                                                                                                                                                                                                                                           |
+| Source                        | ISO/IEC 27001:2022 [R02](#reference-documents)                                                                                                                                                                                                                                           |
 | Priority                      | Must                                                                                                                                                                                                                                                                 |
 | Acceptance criteria guideline | Implementation of the Interface allowing the development of custom solutions.                                                                                                                                                                                        |
 
-### NFSRQ-009
+#### NFSRQ-009
 
 <table>
 <colgroup>
@@ -3766,7 +3741,7 @@ scheme.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3788,7 +3763,7 @@ Authentication)</p></li>
 </tbody>
 </table>
 
-### NFSRQ-010
+#### NFSRQ-010
 
 | Requirement ID                | NFSRQ-010                                                                                                                        |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
@@ -3799,18 +3774,18 @@ Authentication)</p></li>
 | Priority                      | Must                                                                                                                             |
 | Acceptance criteria guideline | Compliance with the current at any time minimum requirements on hardware and software.                                           |
 
-### NFSRQ-011
+#### NFSRQ-011
 
 | Requirement ID                | NFSRQ-011                                                                                                   |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Name                          | User Consent                                                                                                |
 | Description                   | Ensure transparency. Clearly communicate to the End-User what data will be included and seek their consent. |
 | Status                        | Completed                                                                                                   |
-| Source                        | OpenID4VCI \[R06\]                                                                                          |
+| Source                        | OpenID4VCI [R04](#reference-documents)                                                                                          |
 | Priority                      | Must                                                                                                        |
 | Acceptance criteria guideline | Credential Issuers must obtain clear and explicit consent from the End-User before issuing credentials.     |
 
-### NSFRQ-012
+#### NSFRQ-012
 
 <table>
 <colgroup>
@@ -3842,7 +3817,7 @@ logs are retained for should be minimized.</p>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3856,18 +3831,18 @@ authorities or industry best practices according to GDPR.</td>
 </tbody>
 </table>
 
-### NFSRQ-013
+#### NFSRQ-013
 
 | Requirement ID                | NFSRQ-013                                                                                     |
 |-------------------------------|-----------------------------------------------------------------------------------------------|
 | Name                          | Minimum Disclosure                                                                            |
 | Description                   | The amount of information disclosed to Verifier should be minimized.                          |
 | Status                        | Completed                                                                                     |
-| Source                        | OpenID4VCI \[R06\],                                                                           |
+| Source                        | OpenID4VCI [R04](#reference-documents),                                                                           |
 | Priority                      | Must                                                                                          |
 | Acceptance criteria guideline | The use credential formats that support selective disclosure to reveal only necessary claims. |
 
-### NFSRQ-014
+#### NFSRQ-014
 
 <table>
 <colgroup>
@@ -3899,7 +3874,7 @@ parties.</p></td>
 </tr>
 <tr class="even">
 <td>Source</td>
-<td>OpenID4VCI [R06]</td>
+<td>OpenID4VCI <a href="./EUDI-Wallet-NiScy_Security_Requirements_and_Controls_Documentation.md#reference-documents">[R04]</a></td>
 </tr>
 <tr class="odd">
 <td>Priority</td>
@@ -3912,75 +3887,75 @@ parties.</p></td>
 </tbody>
 </table>
 
-### NFSRQ-015
+#### NFSRQ-015
 
 | Requirement ID                | NFSRQ-015                                                                                                                                                    |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Issuer Identification Prevention                                                                                                                             |
 | Description                   | Information disclosure that identifies a particular Credential Issuer and consequently reveals sensitive information about the End-User should be prevented. |
 | Status                        | In Progress                                                                                                                                                  |
-| Source                        | OpenID4VCI \[R06\]                                                                                                                                           |
+| Source                        | OpenID4VCI [R04](#reference-documents)                                                                                                                                           |
 | Priority                      | Must                                                                                                                                                         |
 | Acceptance criteria guideline | N/A                                                                                                                                                          |
 
-### NFSRQ-016
+#### NFSRQ-016
 
 | Requirement ID                | NFSRQ-016                                                                                                   |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Name                          | Wallet Identification Prevention                                                                            |
 | Description                   | Identification of the EUDIW through its reaction to credential offers should be prevented.                  |
 | Status                        | In Progress                                                                                                 |
-| Source                        | OpenID4VCI \[R06\]                                                                                          |
+| Source                        | OpenID4VCI [R04](#reference-documents)                                                                                          |
 | Priority                      | Must                                                                                                        |
 | Acceptance criteria guideline | Implement user interaction or establish trust with the Issuer before the EUDIW processes credential offers. |
 
-### NFSRQ-017
+#### NFSRQ-017
 
 | Requirement ID                | NFSRQ-017                                                                                                                                 |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Non-Traceability                                                                                                                          |
 | Description                   | Credential issuers should not be allowed to track how and where users use their credentials, ensuring privacy.                            |
 | Status                        | In Progress                                                                                                                               |
-| Source                        | DC4EU_BBP \[R10\]                                                                                                                         |
+| Source                        | DC4EU_BBP [R08](#reference-documents)                                                                                                                         |
 | Priority                      | Must                                                                                                                                      |
 | Acceptance criteria guideline | Use blockchain or distributed ledger-based identifiers that prevent third parties from tracking identity usage across different services. |
 
-### NFSRQ-018
+#### NFSRQ-018
 
 | Requirement ID                | NFSRQ-018                                                                                                                                    |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Trust Framework Alignment                                                                                                                    |
 | Description                   | Compatibility should be ensured between different trust frameworks (eIDAS 2.0, social security coordination) for seamless interoperability.  |
 | Status                        | In Progress                                                                                                                                  |
-| Source                        | DC4EU_BBP \[R10\]                                                                                                                            |
+| Source                        | DC4EU_BBP [R08](#reference-documents)                                                                                                                            |
 | Priority                      | Must                                                                                                                                         |
 | Acceptance criteria guideline | Implement recognized authentication and credential verification protocols to facilitate interoperability between different identity systems. |
 
-### NFSRQ-019
+#### NFSRQ-019
 
 | Requirement ID                | NFSRQ-019                                                                                                    |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------|
 | Name                          | Compliance with Social Security Regulations                                                                  |
 | Description                   | EUDIW should be aligned with existing social security laws and back-office procedures.                       |
 | Status                        | In Progress                                                                                                  |
-| Source                        | DC4EU_BBP \[R10\]                                                                                            |
+| Source                        | DC4EU_BBP [R08](#reference-documents)                                                                                            |
 | Priority                      | Must                                                                                                         |
 | Acceptance criteria guideline | Implement periodic compliance audits to assess adherence to social security and data protection regulations. |
 
-### NFSRQ-020
+#### NFSRQ-020
 
 | Requirement ID                | NFSRQ-020                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name                          | Self-Sovereignty                                                                                                                                                              |
 | Description                   | Individuals should have control over their digital identities and the data they share, balancing security, usability, and compliance.                                         |
 | Status                        | Completed                                                                                                                                                                     |
-| Source                        | DC4EU_BBP \[R10\]                                                                                                                                                             |
+| Source                        | DC4EU_BBP [R08](#reference-documents)                                                                                                                                                             |
 | Priority                      | MUST                                                                                                                                                                          |
 | Acceptance criteria guideline | User Consent Management should be in place: Provide users with mechanisms to explicitly consent to data sharing, ensuring transparency and control over personal information. |
 
-# Appendix A
+## Appendix A
 
-## **ISO/IEC 18013-5** - Annex E  {#isoiec-18013-5---annex-e}
+### **ISO/IEC 18013-5** - Annex E 
 
 **Annex E**
 
@@ -4295,7 +4270,7 @@ enrolling a child fingerprint to unlock a device in order to play
 games). mDL holder authentication should tie the present user to the mDL
 holder to whom the mDL was originally issued.
 
-ISO18013-5 \[R01\] provides a method for identity verification performed
+ISO18013-5 [R05](#reference-documents) provides a method for identity verification performed
 by the mDL verifier by comparing the portrait received by the mDL reader
 to the person presenting the mDL. If this is not sufficient to meet the
 risk requirements of the transaction, the mDL reader may implement
@@ -4348,7 +4323,7 @@ Transaction-time consent is just-in-time informed notice and consent
 gathering during the processing of the request and before the response
 is provided to the mDL reader.
 
-## **ISO/IEC 18013-5** - Annex F
+### **ISO/IEC 18013-5** - Annex F
 
 **Annex F**
 
