@@ -26,14 +26,13 @@ Ensure your system meets the following requirements to run the automated tests:
 - [Xcode 15](https://developer.apple.com/xcode/) or newer: An IDE for developing software on Mac OS, including iOS applications.
 - [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent) (for real iPhone devices): WebDriverAgent is a WebDriver server implementation for iOS that can be used to remote control iOS devices. It allows you to launch & kill applications, tap & scroll views or confirm view presence on a screen. This is needed for running tests on real iOS devices.
 
-**Note: To run only the manual tests you need only maven 3.9.6 and java 17**
+**Note: To run the manual tests you need only maven 3.9.6 and java 17**
 
 **Note: A physical device or an emulator will be needed to run the tests locally (for automation tests only).**
 
 ## Local Environment Setup
 
-Before running tests locally, install and configure the required tools.
-
+Before running tests locally, make sure to install and configure the required tools. If you want to run the tests through GitHub Actions, you do not need to pre-install anything. Simply proceed to the Running Tests via GitHub Actions and Device Farm (BrowserStack) section.
 ### 1. Install Java 17
 <b>Windows</b>: Download from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) and follow the installation guide.
 
