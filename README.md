@@ -94,7 +94,7 @@ Install the necessary drivers for Android (UIAutomator2) and iOS (XCUITest).
 
   `appium driver install xcuitest`
 
-### 4.Setup Android Environment
+### 4. Setup Android Environment
 Install Android Studio from the [official Android website](https://developer.android.com/studio). Once installed, create a virtual device named "Pixel_6_API_33_1" using the AVD Manager.
 If you want to execute the tests on a real device, you need to enable developer mode on an Android device. Follow these steps:
 
@@ -118,7 +118,7 @@ If you want to execute the tests on a real device, you need to enable developer 
 
 To complete the flows described below you need to build the android app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
-### 5.Setup iOS Environment (macOS only)
+### 5. Setup iOS Environment (macOS only)
 Install Xcode from the [Mac App Store](https://apps.apple.com/app/xcode/id497799835). After installation, connect your iPhone to your Mac.
 
 - Open Xcode.
