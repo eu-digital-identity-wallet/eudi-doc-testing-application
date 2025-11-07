@@ -9,11 +9,11 @@ The goal is to ensure that the application performs efficiently, remains stable 
 ## Performance Requirements Traceability Matrix
 The following performance requirements define the expected operational thresholds for the system during testing.
 
-| **Requirement**                   | **Description / Target**  | **Test Type / Scenario**               | **Measurement Method** | **Success Criteria**  |
-|-----------------------------------|---------------------------|----------------------------------------|------------------------|-----------------------|
-| **Response Time**                 | 1.6 – 2.0 seconds         | Load Test (Performance Test Scenarios) | Android Studio Profiler / Xcode Instruments (Performance Profiling) | Average ≤ 2.0s per scenario 
-| **CPU / Memory Usage**            | Must not exceed 40% CPU utilization and 250 MB of memory on any device | Load Test (Performance Test Scenarios) | Android Studio Profiler / Xcode Instruments (Performance Profiling) | CPU ≤ 40%, Memory ≤ 250MB per scenario 
-| **App Stability (No Crashes)**    | No crashes or unexpected terminations during testing | Load Test (Performance Test Scenarios) | Android Studio Profiler / Xcode Instruments (Performance Profiling) | 0 Crashes or Unexpected Terminations per scenario 
+| **Requirement**                   | **Description / Target**  | **Test Type / Scenario**                  | **Measurement Method** | **Success Criteria**  |
+|-----------------------------------|---------------------------|-------------------------------------------|------------------------|-----------------------|
+| **Response Time**                 | 1.6 – 2.0 seconds         | Load Test (Performance Test Scenarios)    | Android Studio Profiler / Xcode Instruments (Performance Profiling) | Average ≤ 2.0s per scenario 
+| **CPU / Memory Usage**            | Must not exceed 40% CPU utilization and 250 MB of memory on any device | Load Test (Performance Test Scenarios)    | Android Studio Profiler / Xcode Instruments (Performance Profiling) | CPU ≤ 40%, Memory ≤ 250MB per scenario 
+| **App Stability (No Crashes)**    | No crashes or unexpected terminations during testing | Load Test (Performance Test Scenarios)    | Android Studio Profiler / Xcode Instruments (Performance Profiling) | 0 Crashes or Unexpected Terminations per scenario 
 
 ---
 
