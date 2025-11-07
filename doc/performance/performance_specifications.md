@@ -61,8 +61,7 @@ By linking each test to the corresponding requirement, we ensure full traceabili
 
 ## Test Prioritization
 
-All test activities defined in this document will be executed within the scheduled test period.  
-The primary test execution type is **Load Testing**, conducted on real mobile devices to simulate true user conditions.
+All test activities outlined in this document will be executed during the defined test period. The primary execution focus is **Load Testing**, performed on real mobile devices to accurately replicate end-user conditions.
 
 ### Priority Matrix
 
@@ -117,7 +116,7 @@ Each device is preloaded with the following attestations to simulate a diverse u
 
 ## Execution Methodology
 
-All 10 performance scenarios were executed manually on each of the two real devices listed above.
+All performance test scenarios were executed manually on each of the two real devices listed above.
 This manual approach ensured consistent execution flow and accurate measurement of each metric.
 
 After every test execution:
