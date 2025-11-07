@@ -49,7 +49,7 @@ The goal is to verify consistent performance across different OS versions and de
 
 ## Load Test
 
-The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of a system when it is subjected to varying  levels of traffic or load.
+The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of the EUDI Wallet app.
 
 | **Test Type** | **Purpose** | **Linked Performance Requirement(s)** | **Devices** |
 |---------------|-------------|----------------|-------------|
