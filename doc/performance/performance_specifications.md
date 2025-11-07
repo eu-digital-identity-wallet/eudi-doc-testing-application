@@ -44,8 +44,8 @@ The goal is to verify consistent performance across different OS versions and de
 
 | **Platform** | **Device** | **OS Version** | **Purpose** |
 |---------------|-------------|----------------|-------------|
-| Android | POCO X5 Pro 5G | Android 14 | Real-device performance validation |
-| iOS | iPhone 14 Plus | iOS 18 | Real-device performance validation
+| Android | POCO X5 Pro 5G | Android 14 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability |
+| iOS | iPhone 14 Plus | iOS 18 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability
 
 ## Virtual User Distribution
 
