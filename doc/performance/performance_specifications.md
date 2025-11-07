@@ -50,7 +50,7 @@ The goal is to verify consistent performance across different OS versions and de
 ## Virtual User Distribution
 
 Performance testing will be executed on various **mobile devices** across both **iOS** and **Android** platforms.  
-The goal is to determine the maximum user load each scenario can sustain before performance degrades or failures occur.
+The goal is to determine the maximum load each scenario can sustain before performance degrades or failures occur.
 
 ## Load Test
 
