@@ -20,4 +20,4 @@ The following performance requirements define the expected operational threshold
 ## Notes
 - These thresholds are based on baseline performance expectations for average user load conditions.
 - Any deviation beyond these limits should be analyzed and documented, with recommendations for optimization. 
-- Detailed Performance Test Scenarios are provided in [performance_specifications.md](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\performance_specifications.md), which defines the individual test cases, workloads, and measurement approaches supporting the Performance Requirements.
+- Detailed Performance Test Scenarios are provided in [performance_specifications.md](performance_specifications.md), which defines the individual test cases, workloads, and measurement approaches supporting the Performance Requirements.
