@@ -1,7 +1,6 @@
 # Performance Requirements
 
-To evaluate the performance of the **EUDI Wallet application** under average user load, mobile performance testing will be conducted across a variety of mobile devices.  
-This testing will focus on **CPU and memory usage**, as well as **network activity** during common user scenarios.
+To evaluate the performance of the **EUDI Wallet application** under average user load, mobile performance testing will be conducted across a variety of mobile devices. This testing will focus on **CPU and memory usage**, as well as **network activity** during common user scenarios.
 
 The goal is to ensure that the application performs efficiently, remains stable under expected workloads, and provides a consistent user experience across devices and conditions.  
 The following Performance Requirements define the minimum expected standards for system performance during testing.
