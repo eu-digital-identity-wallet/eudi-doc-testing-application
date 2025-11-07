@@ -40,7 +40,7 @@ Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may no
 ## Device and Environment Configuration
 
 Performance tests are conducted on two real devices across Android and iOS platforms.
-The goal is to verify consistent performance across different OS versions and device classes.
+The goal is to verify consistent performance across different OS versions and devices.
 
 | **Platform** | **Device** | **OS Version** | **Purpose** |
 |---------------|-------------|----------------|-------------|
