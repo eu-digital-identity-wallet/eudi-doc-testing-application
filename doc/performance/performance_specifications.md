@@ -121,7 +121,7 @@ This manual approach ensured consistent execution flow and accurate measurement 
 
 After every test execution:
 
-- CPU/memory, Network activity, Response times and app stability usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
+- CPU/memory, Network activity, Response time and app stability usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
 
 Results were documented immediately after each scenario to ensure precision and traceability.
 
