@@ -103,7 +103,7 @@ To ensure accuracy and reliability of performance test results, a defined set of
 
 ### Attestations Pre-loaded in the EUDI Wallet Application
 
-Each device is preloaded with the following credentials to simulate a diverse user dataset:
+Each device is preloaded with the following attestations to simulate a diverse user dataset:
 
 | **Document Type** | **Quantity** |
 |--------------------|-------------|
