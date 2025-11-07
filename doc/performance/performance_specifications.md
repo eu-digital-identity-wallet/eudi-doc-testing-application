@@ -47,11 +47,6 @@ The goal is to verify consistent performance across different OS versions and de
 | Android | POCO X5 Pro 5G | Android 14 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability |
 | iOS | iPhone 14 Plus | iOS 18 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability
 
-## Virtual User Distribution
-
-Performance testing will be executed on various **mobile devices** across both **iOS** and **Android** platforms.  
-The goal is to determine the maximum load each scenario can sustain before performance degrades or failures occur.
-
 ## Load Test
 
 The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of a system when it is subjected to varying  levels of traffic or load.
