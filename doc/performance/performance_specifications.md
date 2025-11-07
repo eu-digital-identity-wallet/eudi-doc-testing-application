@@ -129,5 +129,5 @@ After every test execution:
 
 Results were documented immediately after each scenario to ensure precision and traceability.
 
-The detailed results and graphs for each test execution are available in the document: [performance_tests_results.md](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\preformance_test_results.md)
+The detailed results and graphs for each test execution are available in the document: [performance_tests_results.md](preformance_test_results.md)
 
