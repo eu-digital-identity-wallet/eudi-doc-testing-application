@@ -1,16 +1,16 @@
 # Performance Test Specifications
 
-> This document supports the requirements defined in [requirements.md](requirements.md).  
+> This section supports the requirements defined in [requirements.md](requirements.md).  
 > It describes *how* the performance testing for the EUDI Wallet application will be executed, detailing workloads, tools, data input, and environment specifications.
 
 ---
 
 ## Workload Profiles
 
-The following section provides an overall perspective of all the functionalities offered by the **EUDI Wallet** application.  
-Performance test scenarios are closely aligned with business test cases to ensure that the application meets all critical business requirements and operational goals.
+The following section provides an overall perspective of the functionalities offered by the EUDI Wallet application.
+Performance test scenarios are closely aligned with business test cases to ensure that the application meets all critical business and operational requirements.
 
-By aligning the test scenarios with business test cases, we aim to validate that the application performs efficiently under expected workloads and supports all necessary business processes effectively.
+By aligning the test scenarios with business cases, we validate that the application performs efficiently under expected workloads and supports all necessary business processes effectively.
 
 ### Functional Scenarios
 1. Add a Document from List
@@ -32,27 +32,35 @@ Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may no
 | **Resource** | **Reason for Limited Impact** |
 |---------------|-------------------------------|
 | **Network Usage** | All Data is already loaded locally, these opereations might not require additional network calls. This is typical in apps that load data initially and perform client-side manipulations.
-| **CPU Usage** | Operations are lightweight and dataset sizes are small; CPU impact is negligible. |
-| **Memory Usage** | Operations modify existing data structures without significant allocation of new resources, memory usage may remain stable.
+| **CPU Usage** | Operations are lightweight and dataset sizes are small, resulting in negligible CPU impact. |
+| **Memory Usage** | Operations modify existing data structures without significant allocation of new resources, so memory usage remains stable.
 
 ---
 
-## Virtual User Distribution
+## Device and Environment Configuration
 
-Performance testing will be executed on various **mobile devices** across both **iOS** and **Android** platforms.  
-The goal is to determine the maximum user load each scenario can sustain before performance degrades or failures occur.
-
-### Example Device Matrix
+Performance tests are conducted on two real devices across Android and iOS platforms.
+The goal is to verify consistent performance across different OS versions and device classes.
 
 | **Platform** | **Device** | **OS Version** | **Purpose** |
 |---------------|-------------|----------------|-------------|
 | Android | POCO X5 Pro 5G | Android 14 | Real-device performance validation |
 | iOS | iPhone 14 Plus | iOS 18 | Real-device performance validation
 
+## Virtual User Distribution
+
+Performance testing will be executed on various **mobile devices** across both **iOS** and **Android** platforms.  
+The goal is to determine the maximum user load each scenario can sustain before performance degrades or failures occur.
 
 ## Load Test
 
 The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of a system when it is subjected to varying  levels of traffic or load.
+
+| **Test Type** | **Purpose** | **Linked Performance Requirement(s)** | **Devices** |
+|---------------|-------------|----------------|-------------|
+| Load Test | Measures system behavior under expected and peak workloads, focusing on responsiveness, stability, and resource usage. | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability | POCO X5 Pro 5G(Android) & iPhone 14 Plus(iOS)
+
+By linking each test to the corresponding requirement, we ensure full traceability between Performance Requirements, Test Execution, and Measured Results. 	
 
 ---
 
@@ -93,19 +101,39 @@ Testing can be considered complete when:
 
 To ensure accuracy and reliability of performance test results, a defined set of test data is used across all devices.
 
-### Document Addition to the EUDI Wallet Application
+### Attestations Pre-loaded in the EUDI Wallet Application
 
-The following credentials will be loaded to simulate diverse user datasets:
+Each device is preloaded with the following credentials to simulate a diverse user dataset:
 
-| **Document Type** | **Quantity** | **Format / Notes** |
-|--------------------|--------------|--------------------|
-| PID | 2 | Personal ID |
-| PID (test) | 1 | sd-jwt-vc format |
-| MDL | 2 | Mobile Driving License |
-| Age Over 18 Pseudonym | 1 | Standard |
-| Age Over 18 Pseudonym | 1 | sd-jwt-vc format |
-| Photo ID | 1 | Image-based credential |
-| EHIC | 1 | European Health Insurance Card |
-| EHIC | 1 | sd-jwt-vc format |
+| **Document Type** | **Quantity** |
+|--------------------|-------------|
+| PID | 2 |
+| PID (test) | 1 | 
+| MDL | 2 |
+| Age Over 18 Pseudonym | 1 |
+| Age Over 18 Pseudonym | 1 |
+| Photo ID | 1 |
+| EHIC | 1 | 
+| EHIC | 1 |
+
+**Note: 10 attestations per device preloaded prior to test execution.**
 
 ---
+
+## Execution Methodology
+
+All 10 performance scenarios were executed manually on each of the two real devices listed above.
+This manual approach ensured consistent execution flow and accurate measurement of each metric.
+
+After every test execution:
+
+- CPU and memory usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
+
+- Network activity (requests, data sent/received, and latency) was captured using the same tools.
+
+- Response times and app stability were observed in real-time and validated through profiler outputs.
+
+Results were documented immediately after each scenario to ensure precision and traceability.
+
+The detailed results and graphs for each test execution are available in the document: [performance_tests_results.md](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\preformance_test_results.md)
+

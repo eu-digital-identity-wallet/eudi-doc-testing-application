@@ -9,9 +9,9 @@ The following acceptance criteria define the minimum expected standards for syst
 ---
 
 ## Requirements
-The following acceptance criteria will be applied for the different test scenarios.
+The following performance requirements define the expected operational thresholds for the system during testing.
 
-| **Criteria** | **Notes** |
+| **Requirement** | **Description / Target** |
 |---------------|-----------|
 | **Response Time** | 1.6 – 2.0 seconds |
 | **CPU / Memory Usage** | Must not exceed 40% CPU utilization and 250 MB of memory on any device |
