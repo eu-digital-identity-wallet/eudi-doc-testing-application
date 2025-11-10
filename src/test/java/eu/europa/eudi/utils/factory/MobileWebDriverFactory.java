@@ -41,11 +41,12 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 DesiredCapabilities options = new DesiredCapabilities();
                 //options.setCapability("appium:app", appUrl);
-                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
+                options.setCapability("appium:app", appUrl);
+//                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
@@ -127,11 +128,11 @@ public class MobileWebDriverFactory {
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                //String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
-//              options.setCapability("appium:app", appUrl);
-                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
+              options.setCapability("appium:app", appUrl);
+//                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackIosDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
