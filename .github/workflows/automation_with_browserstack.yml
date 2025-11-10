@@ -45,7 +45,6 @@ jobs:
           lfs: false
           ref: ${{ inputs.branch-to-checkout || 'main' }}
 
-
       - name: Download Latest Release APK
         env:
           REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
