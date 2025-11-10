@@ -18,17 +18,19 @@
 This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally or through GitHub Actions and generate test results for further analysis and debugging.
 
 ## Requirements
-Ensure your system meets the following requirements to run the automated tests:
+Ensure your system meets the following requirements to run the tests:
+
+**Note: To run the manual tests you need only maven 3.9.6 and java 17 to run the tests locally.**
+
+**Note: A physical device or an emulator will be needed to run the tests locally (for automation tests only).**
+
+
 - [Maven 3.9.6](https://maven.apache.org/download.cgi) or newer: Apache Maven is a software project management tool. It manages the project's build, reporting, and documentation.
 - [Java 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html): The programming language used for the automation scripts.
 - [Appium 2.4.1](https://github.com/appium/appium/releases/tag/v2.4.1) or newer: An open-source tool for automating mobile applications. Required for Android testing (emulators).
 - [Android Studio 2023.1.1](https://developer.android.com/studio) or newer: An integrated development environment (IDE) for Android app development.
 - [Xcode 15](https://developer.apple.com/xcode/) or newer: An IDE for developing software on Mac OS, including iOS applications.
 - [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent) (for real iPhone devices): WebDriverAgent is a WebDriver server implementation for iOS that can be used to remote control iOS devices. It allows you to launch & kill applications, tap & scroll views or confirm view presence on a screen. This is needed for running tests on real iOS devices.
-
-**Note: To run the manual tests you need only maven 3.9.6 and java 17**
-
-**Note: A physical device or an emulator will be needed to run the tests locally (for automation tests only).**
 
 ## Local Environment Setup
 
