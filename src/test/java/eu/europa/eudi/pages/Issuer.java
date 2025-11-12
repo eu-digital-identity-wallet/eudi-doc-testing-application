@@ -34,13 +34,13 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "https://issuer.eudiw.dev/credential_offer_choice";
+            String url = "https://ec.issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer_choice");
+                deepLinkArgs.put("url", "https://ec.issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -54,7 +54,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer.eudiw.dev/credential_offer_choice";
+            String url = "https://ec.issuer.eudiw.dev/";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -65,7 +65,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://issuer.eudiw.dev/credential_offer_choice";
+            String url = "https://ec.issuer.eudiw.dev/credential_offer";
 
             try {
                 try {
@@ -89,9 +89,9 @@ public class Issuer {
 
     public void requestCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
@@ -206,7 +206,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.enterDocumentNumber)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement searchBar = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.documentNumberField);
+            WebElement searchBar = driver.findElement(IssuerElements.enterDocumentNumber);
             searchBar.clear();
             searchBar.sendKeys("1234");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardBefore03)).click();
@@ -275,7 +275,7 @@ public class Issuer {
                             ".setAsVerticalList()" +
                             ".scrollForward()" +
                             ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"Issue Date:\"))"
+                            ".scrollIntoView(new UiSelector().text(\"Issue Date\"))"
             ));
         } else {
             int i = 1;
@@ -390,16 +390,18 @@ public class Issuer {
     public void issuePID() throws InterruptedException {
         selectCountryOfOrigin();
         clickFormEu();
-        clickSubmit();
-        formIsDisplayed();
-        enterFamilyName();
-        enterGivenName();
-        chooseBirthDate();
-        enterCountry();
-        scrollUntilCountryCode();
-        enterCountryCode();
         scrollUntilFindSubmit();
         clickSubmit();
+        formIsDisplayed();
+        chooseBirthDate();
+        enterFamilyName();
+        enterGivenName();
+        scrollUntilCountryCode();
+        enterCountryCode();
+        scrollUntilCountry();
+        enterCountry();
+        scrollUntilFindSubmit();
+        clickConfirm();
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
@@ -444,7 +446,7 @@ public class Issuer {
         }
     }
 
-    private void clickConfirm() {
+    public void clickConfirm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickConfirm)).click();
         } else {
@@ -548,19 +550,79 @@ public class Issuer {
     public void issueMDL() throws InterruptedException {
         clickFormEu();
         clickSubmit();
-        enterFamilyName();
-        enterGivenName();
+        formIsDisplayed();
         chooseBirthDate();
         enterDocumentNumber();
+        scrollUntilFindSign();
+        enterCode();
         scrollUntilFindDate();
         clickScreen();
         chooseIssueDate();
         chooseExpiryDate();
         scrollUntilFindSubmit();
-        clickSubmit();
+        clickConfirm();
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    public void enterCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.enterCode)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement searchBar = driver.findElement(IssuerElements.enterCode);
+            searchBar.clear();
+            searchBar.sendKeys("1234");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
+        }
+    }
+
+    public void scrollUntilFindSign() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }
+    }
+
+    private void scrollUntilFindDocumentNumber() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }
     }
 
 
@@ -568,11 +630,11 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountry));
             countryField.click();
-            countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountry));
+            countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickCountry));
             countryField.clear();
             countryField.sendKeys("Greece");
             WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
-            placeOfBirth.click();
+            test.mobile().wallet().tapAction(placeOfBirth, true);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -584,6 +646,29 @@ public class Issuer {
     }
 
     public void scrollUntilCountryCode() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }}
+
+    public void scrollUntilCountry() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 1; i++) {
@@ -629,10 +714,12 @@ public class Issuer {
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode)).click();
-            WebElement countryCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode));
+            WebElement countryCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickCountryCode));
             countryCode.clear();
             countryCode.sendKeys("GR");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboard)).click();
+            WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.closeKeyboard));
+            test.mobile().wallet().tapAction(element, true);
+
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();

@@ -720,7 +720,7 @@ public class Wallet {
                             ".setAsVerticalList()" +
                             ".scrollForward()" +
                             ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"mDL\"))"
+                            ".scrollIntoView(new UiSelector().text(\"mDL (MSO Mdoc)\"))"
             ));
         } else {
 //            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -763,9 +763,9 @@ public class Wallet {
 
     public void credentialsProviderIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.credentialsProviderDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.credentialsProviderDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
