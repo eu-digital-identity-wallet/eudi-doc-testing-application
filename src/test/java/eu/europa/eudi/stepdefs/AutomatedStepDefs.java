@@ -205,7 +205,7 @@ public class AutomatedStepDefs {
     public void theUserSelectsToIssueACredential() throws InterruptedException {
         test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().wallet().scrollUntilPID();
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().clickSubmitButton();
     }
@@ -544,7 +544,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the user clicks on Credential Provider FormEU and submits")
-    public void theUserClicksOnCredentialProviderFormEUAndSubmits() {
+    public void theUserClicksOnCredentialProviderFormEUAndSubmits() throws InterruptedException {
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().clickSubmit();
     }
@@ -557,26 +557,23 @@ public class AutomatedStepDefs {
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
     theCredentialsProviderIsDisplayedOnScreen();
-    theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theUserClicksOnCredentialProviderFormEUAndSubmitsForPid();
     theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @When("the user registers personal data")
     public void theUserRegistersPersonalData() throws InterruptedException {
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().enterDocumentNumber();
+        test.mobile().issuer().scrollUntilFindSign();
+        test.mobile().issuer().enterCode();
         test.mobile().issuer().scrollUntilFindDate();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
-//        test.mobile().issuer().enterCodeFieldIssuer();
-//        test.mobile().issuer().enterSignFieldIssuer();
-//        test.mobile().issuer().enterValueFieldIssuer();
-        test.mobile().issuer().clickScreen();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -594,18 +591,15 @@ public class AutomatedStepDefs {
 
     @When("the user fills in the form")
     public void theUserFillsInTheForm() throws InterruptedException {
+        test.mobile().issuer().chooseBirthDate();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().chooseBirthDate();
-//        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-//        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().clickNationality();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
         test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-//        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1699,6 +1693,13 @@ public class AutomatedStepDefs {
     public void thePIDIsNowOpen() {
         theUserIsViewingTheDetailsOfAttestationAuto();
         theUserSelectsEyeIcon();
+    }
+
+    @When("the user clicks on Credential Provider FormEU and submits for pid")
+    public void theUserClicksOnCredentialProviderFormEUAndSubmitsForPid() throws InterruptedException {
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
     }
 }
 
