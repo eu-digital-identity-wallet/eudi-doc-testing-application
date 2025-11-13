@@ -50,7 +50,7 @@ public class WalletElements {
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Date\"]");
     public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
-    public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\"]");
+    public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\" or @name=\" PID (MSO Mdoc)\"]");
     public static By clickDone = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
     public static By clickOnDocuments = By.xpath("//XCUIElementTypeButton[@name='doc.fill' or @name='Documents']");
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
