@@ -22,8 +22,8 @@ public class IssuerElements {
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
     public static By enterDocumentNumber = By.xpath("//android.view.View[@text=\"Document Number\"]/following-sibling::android.widget.EditText[1]\n");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Document Number\"]");
-    public static By clickIssueDate = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[1]/android.widget.Spinner[2]");
-    public static By clickExpiryDate = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[1]/android.widget.Spinner[1]");
+    public static By clickIssueDate = By.xpath("//android.view.View[@text='Issue Date']/following-sibling::android.widget.Spinner[1]\n");
+    public static By clickExpiryDate = By.xpath("//android.view.View[@text='Expiry Date']/following-sibling::android.widget.Spinner[1]\n");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Expiry Date\"]");
 

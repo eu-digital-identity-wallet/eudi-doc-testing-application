@@ -15,10 +15,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
@@ -567,13 +564,9 @@ public class Wallet {
             for (int i = 0; i < 5; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPID);
-                    if (pidElement.isDisplayed()) {
-                        break;
-                    }
+                    if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    driver.findElement(MobileBy.AndroidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
                 }
             }
 
@@ -610,6 +603,22 @@ public class Wallet {
 // Restore implicit wait
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
+    }
+
+    private void slowScroll(AndroidDriver driver) {
+        int startX = driver.manage().window().getSize().width / 2;
+        int startY = (int) (driver.manage().window().getSize().height * 0.8);
+        int endY   = (int) (driver.manage().window().getSize().height * 0.4);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY)); // slow scroll
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(swipe));
     }
 
     public void secondPIDIsDisplayed() {
@@ -715,13 +724,22 @@ public class Wallet {
     public void scrollUntilmDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".scrollForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"mDL (MSO Mdoc)\"))"
-            ));
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+            for (int i = 0; i < 5; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlDemo);
+                    if (pidElement.isDisplayed()) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    driver.findElement(MobileBy.AndroidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
+                }
+            }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
 //            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 //            Map<String, Object> params = new HashMap<>();

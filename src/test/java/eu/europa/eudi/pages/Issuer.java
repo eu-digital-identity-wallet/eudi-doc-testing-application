@@ -12,9 +12,12 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -268,16 +271,27 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindDate() {
+    public void scrollUntilFindDate() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".scrollForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"Issue Date\"))"
-            ));
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.4);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
         } else {
             int i = 1;
             while (i < 2) {
@@ -558,8 +572,8 @@ public class Issuer {
         enterCode();
         scrollUntilFindDate();
         clickScreen();
-        chooseIssueDate();
         chooseExpiryDate();
+        chooseIssueDate();
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
@@ -737,6 +751,7 @@ public class Issuer {
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
@@ -780,6 +795,41 @@ public class Issuer {
         }
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
+
+    public void requestCredentialsPageIsDisplayedForMdl() {
+    }
+
+    public void scrollUntilFindIssue() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickIssueDate);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScroll(driver);  // ← slow scroll instead of UiScrollable
+            }
+        }
+
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
+
+    private void slowScroll(AndroidDriver driver) {
+        int startX = driver.manage().window().getSize().width / 2;
+        int startY = (int) (driver.manage().window().getSize().height * 0.8);
+        int endY   = (int) (driver.manage().window().getSize().height * 0.4);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY)); // slow scroll
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(swipe));
     }
 
 //    public String getTransactionCode() {
