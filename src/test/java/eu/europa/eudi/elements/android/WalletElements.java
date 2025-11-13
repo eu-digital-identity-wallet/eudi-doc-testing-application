@@ -61,4 +61,5 @@ public class WalletElements {
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By pidDev = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]/android.view.View");
     public static By scrollUntilSubmit;
+    public static By vehicleCategoryCode = By.xpath("//android.view.View[@text=\"Vehicle Category Code\"]");
 }

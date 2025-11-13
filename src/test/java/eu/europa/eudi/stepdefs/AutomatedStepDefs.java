@@ -536,7 +536,7 @@ public class AutomatedStepDefs {
 
     @Then("the user is redirected to the issuer service to issue mDL")
     public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+        test.mobile().issuer().selectCountryOfOrigin();
     }
 
     @And("the user clicks on Credential Provider FormEU and submits")
@@ -565,8 +565,9 @@ public class AutomatedStepDefs {
         test.mobile().issuer().enterCode();
         test.mobile().issuer().scrollUntilFindDate();
         test.mobile().issuer().clickScreen();
-        test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().chooseExpiryDate();
+        test.mobile().issuer().scrollUntilFindIssue();
+        test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
