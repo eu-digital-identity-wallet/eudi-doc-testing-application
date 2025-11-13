@@ -207,6 +207,7 @@ public class AutomatedStepDefs {
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().wallet().scrollUntilPID();
         test.mobile().issuer().clickPersonalIdentificationData();
+        test.mobile().issuer().scrollUntilFindSubmitIssuer();
         test.mobile().issuer().clickSubmitButton();
     }
 
@@ -258,25 +259,20 @@ public class AutomatedStepDefs {
 
     @And("inserts the required credential details")
     public void insertsTheRequiredCredentialDetails() throws InterruptedException {
+        test.mobile().issuer().selectCountryOfOrigin();
         test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().chooseBirthDate();
-//        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-//        test.mobile().issuer().clickNationality();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().addOptionalAttributes();
-//        test.mobile().issuer().clickAgeOver18OnIssuer();
-//        test.mobile().issuer().clickAddAttributes();
-//        test.mobile().issuer().enableAgeOver18();
-//        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().scrollUntilCountryCode();
+        test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();

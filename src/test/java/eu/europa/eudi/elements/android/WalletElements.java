@@ -16,7 +16,7 @@ public class WalletElements {
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By loginPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back\"]");
-    public static By clickPID = By.xpath("//android.widget.TextView[@text='eu.europa.ec.eudi.pid.1' or " + "@text='eu.europa.ec.eudi.pid_mdoc' or " + "@text='PID' or " + "@text='PID (MSO Mdoc)']");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text='eu.europa.ec.eudi.pid.1' or " + "@text='eu.europa.ec.eudi.pid_mdoc' or " + "@text='PID' or " + "@text='PID (MSO Mdoc)' or " + "@text=' PID (MSO Mdoc)']");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlDemo = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
@@ -29,7 +29,7 @@ public class WalletElements {
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickDrivingLicenceButton = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
-    public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID\"]");
+    public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
 
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
@@ -60,4 +60,5 @@ public class WalletElements {
     public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choose a digital document from the list below to add to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By pidDev = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]/android.view.View");
+    public static By scrollUntilSubmit;
 }

@@ -584,7 +584,7 @@ public class Wallet {
 // Temporarily lower implicit wait
             driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-            By target = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\"]");
+            By target = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
 
             for (int i = 0; i < 10; i++) {
                 try {
