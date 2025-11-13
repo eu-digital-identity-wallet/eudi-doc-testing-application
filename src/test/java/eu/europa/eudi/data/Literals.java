@@ -23,7 +23,7 @@ public interface Literals {
         DRIVING_LICENCE("Driving License"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
         SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),
-        ISSUANCE_DETAILS("PID"),
+        ISSUANCE_DETAILS("PID (MSO Mdoc)"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
         SCAN_QR("SCAN QR"),

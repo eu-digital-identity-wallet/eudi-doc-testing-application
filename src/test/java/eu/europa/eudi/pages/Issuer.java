@@ -170,6 +170,7 @@ public class Issuer {
             WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName));
             givenName.clear();
             givenName.sendKeys("Foteini");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -376,7 +377,7 @@ public class Issuer {
     public void formIsDisplayed () {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
         } else {
@@ -759,6 +760,26 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.authorize)).click();
         }
+    }
+
+    public void scrollUntilFindSubmitIssuer() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
+                if (pidElement.isDisplayed()) {
+                    break;
+                }
+            } catch (Exception e) {
+                driver.findElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
+            }
+        }
+
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
 //    public String getTransactionCode() {

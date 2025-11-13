@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class IssuerElements {
     public static By requestCredentialsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select credentials\"]");
-    public static By checkPID = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[7]"); //(//android.widget.CheckBox[@resource-id="check"])[8]
+    public static By checkPID = By.xpath("//android.widget.TextView[@text=\" PID (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox"); //(//android.widget.CheckBox[@resource-id="check"])[8]
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
     public static By clickEudiwButton = By.xpath("//android.widget.TextView[@text=\"Use EUDIW\"]");
