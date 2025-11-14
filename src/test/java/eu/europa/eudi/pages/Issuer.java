@@ -119,6 +119,8 @@ public class Issuer {
 
     public void qrCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.QR_CODE.label, pageHeader);
         } else {
@@ -401,7 +403,7 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
         }
     }
-    
+
     public void issuePID() throws InterruptedException {
         selectCountryOfOrigin();
         clickFormEu();
@@ -748,7 +750,7 @@ public class Issuer {
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);

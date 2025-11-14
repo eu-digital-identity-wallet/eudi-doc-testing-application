@@ -17,7 +17,7 @@ public class VerifierElements {
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectAttributesEmulator = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By firstAttribute = By.xpath("//android.view.View[@resource-id='mat-option-1'] | //android.widget.ListView[@resource-id='mat-select-0-panel'][1] //android.view.View[@resource-id=\"mat-option-2\"] //android.view.View[@text='mso_mdoc']\n");
+    public static By firstAttribute = By.xpath("//android.view.View[@resource-id='mat-option-1'] | //android.widget.ListView[@resource-id='mat-select-0-panel'][1]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By msoMdoc = By.xpath("//android.view.View[@resource-id='mat-option-2'] | //android.widget.ListView[@resource-id='mat-select-1-panel'][1]");
 }

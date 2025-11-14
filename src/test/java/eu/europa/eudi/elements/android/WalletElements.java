@@ -35,7 +35,7 @@ public class WalletElements {
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Date of birth\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");;
-    public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID\"])[2]");
+    public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID (MSO Mdoc)\"])[2]");
     public static By clickEyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
     public static By clickExpandVerification = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
