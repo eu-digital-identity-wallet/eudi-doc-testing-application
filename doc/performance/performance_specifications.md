@@ -1,7 +1,7 @@
 # Performance Test Specifications
 
 > This section supports the requirements defined in [requirements.md](requirements.md).  
-> It describes *how* the performance testing for the EUDI Wallet application will be executed, detailing workloads, tools, data input, and environment specifications.
+It describes the performance testing for the EUDI Wallet application, including the workloads, tools, data input, and environment specifications.
 
 ---
 
@@ -11,7 +11,7 @@ This document outlines how we test the performance of EUDI Wallet app to make su
 
 It includes:
 
-- The main test scenarios and how we test them
+- The main test scenarios
 - The devices and tools we use to measure performance
 - The data and setup needed before testing
 - What needs to happen before testing starts and when testing is complete
