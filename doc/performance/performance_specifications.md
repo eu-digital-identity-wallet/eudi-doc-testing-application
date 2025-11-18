@@ -5,12 +5,18 @@
 
 ---
 
-## Workload Profiles
+## Performance Testing Overview
 
-The following section provides an overall perspective of the functionalities offered by the EUDI Wallet application.
-Performance test scenarios are closely aligned with business test cases to ensure that the application meets all critical business and operational requirements.
+This document outlines how we test the performance of EUDI Wallet app to make sure it works efficiently and reliably in real-world use.
 
-By aligning the test scenarios with business cases, we validate that the application performs efficiently under expected workloads and supports all necessary business processes effectively.
+It includes:
+
+- The main test scenarios and how we test them
+- The devices and tools we use to measure performance
+- The data and setup needed before testing
+- What needs to happen before testing starts and when testing is complete
+
+By using real scenarios and real devices, we check that the app is stable, and works as expected on both Android and iOS.
 
 ### Functional Scenarios
 1. Add a Document from List
@@ -97,17 +103,4 @@ Each device is preloaded with the following attestations to simulate a diverse u
 **Note: 10 attestations per device preloaded prior to test execution.**
 
 ---
-
-## Execution Methodology
-
-All performance test scenarios were executed manually on each of the two real devices listed above.
-This manual approach ensured consistent execution flow and accurate measurement of each metric.
-
-After every test execution:
-
-- CPU/memory, Network activity, Response time and app stability usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
-
-Results were documented immediately after each scenario to ensure precision and traceability.
-
-The detailed results and graphs for each test execution are available in the document: [performance_tests_results.md](preformance_test_results.md)
 
