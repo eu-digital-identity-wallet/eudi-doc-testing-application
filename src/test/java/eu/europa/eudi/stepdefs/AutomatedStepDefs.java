@@ -566,7 +566,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().scrollUntilFindDate();
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseExpiryDate();
-        test.mobile().issuer().scrollUntilFindIssue();
         test.mobile().issuer().chooseIssueDate();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickConfirm();
@@ -1697,6 +1696,25 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
+    }
+
+    @Then("the user is redirected to the issuer service to issue mDL \\(MSO Mdoc)")
+    public void theUserIsRedirectedToTheIssuerServiceToIssueMDLMSOMdoc() {
+        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+    }
+
+    @Given("a provider form is displayed for mDL \\(MSO Mdoc)")
+    public void aProviderFormIsDisplayedForMDLMSOMdoc() throws InterruptedException {
+        theIssuerServiceTestCredentialProviderScreenIsDisplayed();
+        //        theUserClicksOnCountrySelectionAndSubmits();
+        theUserClicksOnCredentialProviderFormEUAndSubmits();
+        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
+    }
+
+    @Then("a success message for mDL \\(MSO Mdoc) is displayed")
+    public void aSuccessMessageForMDLMSOMdocIsDisplayed() {
+        test.mobile().wallet().successMessageForDrivingIsDisplayed();
+        test.mobile().wallet().clickDone();
     }
 }
 

@@ -1,5 +1,5 @@
 @IOS @automated @US_RIM
-Feature: Request/Issue mDL
+Feature: Request/Issue mDL (MSO Mdoc)
 
   @US_RIM_TC_01 @before_01
   Scenario: Log in successfully
@@ -13,7 +13,7 @@ Feature: Request/Issue mDL
     When the user clicks the add doc button
     And the add document page is displayed
     And the user clicks the driving license button
-    Then the user is redirected to the issuer service to issue mDL
+    Then the user is redirected to the issuer service to issue mDL (MSO Mdoc)
 
   @US_RIM_TC_03 @before_01
   Scenario: Country and credential provider selection
@@ -23,9 +23,9 @@ Feature: Request/Issue mDL
 
   @US_RIM_TC_04 @before_01
   Scenario: Register personal data and view driving license
-    Given a provider form is displayed for mdl
+    Given a provider form is displayed for mDL (MSO Mdoc)
     When the user registers personal data
-    Then a success message for mdl is displayed
+    Then a success message for mDL (MSO Mdoc) is displayed
     And the driving license is displayed in the wallet
 
 
