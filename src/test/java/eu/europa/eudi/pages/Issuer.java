@@ -296,7 +296,7 @@ public class Issuer {
             }
         } else {
             int i = 1;
-            while (i < 2) {
+            while (i < 1) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -591,12 +591,39 @@ public class Issuer {
             searchBar.clear();
             searchBar.sendKeys("1234");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
+        }else{
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterCode)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement searchBar = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.enterCode);
+            searchBar.clear();
+            searchBar.sendKeys("1234");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCode)).click();
         }
     }
 
     public void scrollUntilFindSign() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
@@ -683,7 +710,29 @@ public class Issuer {
                 // Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-        }}
+        }
+    else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+    }
+    }
 
     public void scrollUntilCountry() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -706,7 +755,27 @@ public class Issuer {
                 // Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-        }}
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 1; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.4);
+
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
+
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }}
+    }
 
     public void authorizeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -780,26 +849,37 @@ public class Issuer {
     }
 
     public void scrollUntilFindSubmitIssuer() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-        for (int i = 0; i < 5; i++) {
-            try {
-                WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
-                if (pidElement.isDisplayed()) {
-                    break;
+            for (int i = 0; i < 5; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
+                    if (pidElement.isDisplayed()) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    driver.findElement(MobileBy.AndroidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
                 }
-            } catch (Exception e) {
-                driver.findElement(MobileBy.AndroidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                ));
+            }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 8) {
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
             }
         }
-
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    }
-
-    public void requestCredentialsPageIsDisplayedForMdl() {
     }
 
     public void scrollUntilFindIssue() {

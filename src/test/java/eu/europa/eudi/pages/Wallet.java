@@ -6,6 +6,8 @@ import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -18,6 +20,7 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
+import static java.time.Duration.ofMillis;
 
 public class Wallet {
 
@@ -282,8 +285,8 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickDrivingLicenceButton)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDrivingLicenceButton)).click();
-        }
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
+            tapAction(button, false);        }
     }
 
     public void successMessageForDrivingIsDisplayed() {
@@ -573,35 +576,24 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 7; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.4);
 
-// Temporarily lower implicit wait
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
 
-            By target = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
-
-            for (int i = 0; i < 10; i++) {
-                try {
-                    List<WebElement> elements = driver.findElements(target);
-                    if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
-                        System.out.println("Found mDL element — stop scrolling");
-                        break;
-                    }
-                } catch (Exception ignored) {}
-
-                //Your working scroll
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
-                String elementId = ((RemoteWebElement) scrollView).getId();
-
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                params.put("element", elementId);
-                driver.executeScript("mobile: swipe", params);
-
-                Thread.sleep(400); // small delay to allow scroll animation
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
             }
-
-// Restore implicit wait
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
     }
 
@@ -741,41 +733,25 @@ public class Wallet {
 
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
-//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-//            Map<String, Object> params = new HashMap<>();
-//            params.put("direction", "up");
-//            driver.executeScript("mobile: swipe", params);
-
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 3; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.4);
 
-// Temporarily lower implicit wait
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+                // Swipe up
+                new TouchAction<>(driver)
+                        .press(PointOption.point(startX, startY))
+                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
+                        .moveTo(PointOption.point(startX, endY))
+                        .release()
+                        .perform();
 
-            By target = By.xpath("//XCUIElementTypeStaticText[@name='mDL']");
-
-            for (int i = 0; i < 10; i++) {
-                try {
-                    List<WebElement> elements = driver.findElements(target);
-                    if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
-                        System.out.println("Found mDL element — stop scrolling");
-                        break;
-                    }
-                } catch (Exception ignored) {}
-
-                //Your working scroll
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
-                String elementId = ((RemoteWebElement) scrollView).getId();
-
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                params.put("element", elementId);
-                driver.executeScript("mobile: swipe", params);
-
-                Thread.sleep(400); // small delay to allow scroll animation
+                // Optional: Add a short pause between swipes
+                Thread.sleep(50);
             }
-
-// Restore implicit wait
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
     }
 
