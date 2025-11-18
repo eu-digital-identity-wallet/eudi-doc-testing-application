@@ -42,7 +42,8 @@ public interface Literals {
         CREDENTIALS_PROVIDER_DISPLAYED("TEST CREDENTIALS PROVIDER"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
-        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with");
+        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
+        DETAILS_ARE_BLURRED_REAL("eye.slash");
 
         public final String label;
         Wallet(String label) {
