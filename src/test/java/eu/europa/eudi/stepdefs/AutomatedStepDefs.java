@@ -553,7 +553,7 @@ public class AutomatedStepDefs {
     @Given("a provider form is displayed")
     public void aProviderFormIsDisplayed() throws InterruptedException {
     theCredentialsProviderIsDisplayedOnScreen();
-        theUserClicksOnCredentialProviderFormEUAndSubmitsForPid();
+    theUserClicksOnCredentialProviderFormEUAndSubmitsForPid();
     theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 

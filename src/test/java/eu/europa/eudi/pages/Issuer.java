@@ -12,12 +12,14 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -630,16 +632,19 @@ public class Issuer {
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
         }
@@ -719,17 +724,20 @@ public class Issuer {
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                 Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
-                Thread.sleep(50);
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                 Thread.sleep(50);
             }
     }
     }
@@ -762,17 +770,20 @@ public class Issuer {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.4);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }}
     }
