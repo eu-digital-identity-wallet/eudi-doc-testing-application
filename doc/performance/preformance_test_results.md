@@ -32,8 +32,6 @@ During test execution:
 - CPU usage, memory usage, response time, and app stability were monitored in real time.
 - Screenshots of performance metrics were captured during execution for documentation and analysis.
 
-Results were recorded immediately after each scenario to maintain accuracy and traceability.
-
 Detailed results and screenshot-based reports for each test execution are available below.
 
 ## Test Environment
