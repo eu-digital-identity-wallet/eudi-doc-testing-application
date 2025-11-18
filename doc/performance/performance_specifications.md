@@ -47,22 +47,6 @@ The goal is to verify consistent performance across different OS versions and de
 | Android | POCO X5 Pro 5G | Android 14 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability |
 | iOS | iPhone 14 Plus | iOS 18 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability
 
-## Load Test
-
-The main goal of this test is to check response time, CPU/memory usage, network activity and overall stability of the EUDI Wallet app.
-
-| **Test Type**     | **Purpose**    | **Linked Performance Requirement(s)**     | **Devices** |
-|-------------------|----------------|-------------------------------------------|-------------|
-| Load Test         | Measures system behavior under expected and peak workloads, focusing on responsiveness, stability, and resource usage. | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability | POCO X5 Pro 5G(Android) & iPhone 14 Plus(iOS)
-
-By linking each test to the corresponding requirement, we ensure full traceability between Performance Requirements, Test Execution, and Measured Results. 	
-
----
-
-## Test Prioritization
-
-All test activities outlined in this document will be executed during the defined test period. The primary execution focus is **Load Testing**, performed on real mobile devices to accurately replicate end-user conditions.
-
 ### Priority Matrix
 
 | **Priority** | **Test Type** | **Description** |
