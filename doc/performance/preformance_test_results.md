@@ -14,6 +14,19 @@ These terms are aligned with the **EUDI Architecture and Reference Framework [R0
 | **PID Provider** | A Member State or legal entity providing Person Identification Data to Users. |
 | **Relying Party** | Private or Public party providing online services, intending to utilize the EUDI Wallet for user identification and authentication purposes. |
 
+## Performance Test Execution Summary
+
+All performance test scenarios were executed manually on each of the two real devices listed below.
+This manual approach ensured consistent execution flow and accurate measurement of each metric.
+
+After each test execution:
+
+- CPU/memory, Network activity, Response time and app stability usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
+
+Results were documented immediately after each scenario to ensure precision and traceability.
+
+The detailed results and graphs for each test execution are available below.
+
 ## Test Environment
 
 The following specifications describe the environment in which performance testing was conducted.
