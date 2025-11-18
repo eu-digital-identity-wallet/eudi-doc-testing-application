@@ -1,24 +1,9 @@
 # Performance Test Specifications
 
-> This section supports the requirements defined in [requirements.md](requirements.md).  
-It describes the performance testing for the EUDI Wallet application, including the workloads, tools, data input, and environment specifications.
+This section supports the requirements defined in [requirements.md](requirements.md).  
+It describes the performance testing for the EUDI Wallet application, including the performance test scenarios, the required test environment and devices configuration, entry and exit criteria and input data.
 
----
-
-## Performance Testing Overview
-
-This document outlines how we test the performance of EUDI Wallet app to make sure it works efficiently and reliably in real-world use.
-
-It includes:
-
-- The main test scenarios
-- The devices and tools we use to measure performance
-- The data and setup needed before testing
-- What needs to happen before testing starts and when testing is complete
-
-By using real scenarios and real devices, we check that the app is stable, and works as expected on both Android and iOS.
-
-### Functional Scenarios
+## Performance Test Scenarios
 1. Add a Document from List
 2. Deferred Issuing
 3. Credential Issuance (Same Device)
@@ -37,7 +22,7 @@ Some operations, such as *Filter, Sort, and Sort Documents/Transactions*, may no
 
 | **Resource** | **Reason for Limited Impact** |
 |---------------|-------------------------------|
-| **Network Usage** | All Data is already loaded locally, these opereations might not require additional network calls. This is typical in apps that load data initially and perform client-side manipulations.
+| **Network Usage** | All Data is already loaded locally, these operations might not require additional network calls. This is typical in apps that load data initially and perform client-side manipulations.
 | **CPU Usage** | Operations are lightweight and dataset sizes are small, resulting in negligible CPU impact. |
 | **Memory Usage** | Operations modify existing data structures without significant allocation of new resources, so memory usage remains stable.
 
@@ -52,12 +37,6 @@ The goal is to verify consistent performance across different OS versions and de
 |---------------|-------------|----------------|-------------|
 | Android | POCO X5 Pro 5G | Android 14 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability |
 | iOS | iPhone 14 Plus | iOS 18 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability
-
-### Priority Matrix
-
-| **Priority** | **Test Type** | **Description** |
-|---------------|---------------|-----------------|
-| **High** | Load Test | Measure app performance under expected workloads. |
 
 ---
 
