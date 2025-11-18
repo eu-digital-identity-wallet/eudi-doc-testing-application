@@ -16,16 +16,25 @@ These terms are aligned with the **EUDI Architecture and Reference Framework [R0
 
 ## Performance Test Execution Summary
 
-All performance test scenarios were executed manually on each of the two real devices listed below.
-This manual approach ensured consistent execution flow and accurate measurement of each metric.
+All performance test scenarios were executed manually on two real devices (one Android and one iOS), connected directly to a laptop using USB cables. This setup allowed live monitoring of performance metrics through platform-specific profiling tools.
 
-After each test execution:
+### Execution Process
 
-- CPU/memory, Network activity, Response time and app stability usage were recorded using Android Studio Profiler (Android) and Xcode Instruments (iOS).
+Before each test:
 
-Results were documented immediately after each scenario to ensure precision and traceability.
+- Both devices were connected to the laptop via USB.
+- Android Studio Profiler (for Android) and Xcode Instruments (for iOS) were launched and configured for live performance tracking.
+- The application was launched on each device.
 
-The detailed results and graphs for each test execution are available below.
+During test execution:
+
+- Each scenario was performed manually on the devices.
+- CPU usage, memory usage, response time, and app stability were monitored in real time.
+- Screenshots of performance metrics were captured during execution for documentation and analysis.
+
+Results were recorded immediately after each scenario to maintain accuracy and traceability.
+
+Detailed results and screenshot-based reports for each test execution are available below.
 
 ## Test Environment
 
