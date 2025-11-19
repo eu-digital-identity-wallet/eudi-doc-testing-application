@@ -34,7 +34,6 @@ public class IssuerElements {
     public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeTextField");
     public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
-    public static By clickBirthPlace = By.xpath("//XCUIElementTypeTextField[@name=\"Birth Place\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By formIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"For testing purposes only.\"]");
     public static By familyNameFieldDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");

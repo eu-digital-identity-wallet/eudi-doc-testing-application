@@ -908,7 +908,7 @@ public class AutomatedStepDefs {
     @And ("the user clicks the PID button")
     public void theUserClicksThePidButton() throws InterruptedException {
         test.mobile().wallet().scrollUntilPID();
-        test.mobile().wallet().clickPID();
+        test.mobile().wallet().clickPIDOnDocuments();
     }
 
     @Then ("the credentials provider is displayed")

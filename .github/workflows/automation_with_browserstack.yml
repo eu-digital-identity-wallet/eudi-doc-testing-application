@@ -18,7 +18,7 @@ on:
         default: "@automated and @US_VP_TC_01"
 
       platform:
-        description: 'Which platform to test (android, ios or both)'
+        description: 'Which platform to test (android, ios_execution_with_browserstack.yml or both)'
         type: choice
         options:
           - both
@@ -210,7 +210,7 @@ jobs:
         if: always()
         with:
           name: iOS-device-logs
-          path: ios-logs/
+          path: ios_execution_with_browserstack.yml-logs/
 
 
 
