@@ -205,7 +205,7 @@ public class AutomatedStepDefs {
     public void theUserSelectsToIssueACredential() throws InterruptedException {
         test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().wallet().scrollUntilPID();
+        test.mobile().wallet().scrollUntilPIDIssuer();
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().scrollUntilFindSubmitIssuer();
         test.mobile().issuer().clickSubmitButton();

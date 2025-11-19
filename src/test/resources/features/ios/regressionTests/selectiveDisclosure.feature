@@ -32,3 +32,4 @@ Feature: Selective Disclosure
     Given the expanded verification details are seen
     When the user clicks done
     Then the user gets redirected to verifier and views the respond
+

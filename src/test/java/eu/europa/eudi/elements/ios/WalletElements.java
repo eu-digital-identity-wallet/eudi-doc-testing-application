@@ -47,7 +47,7 @@ public class WalletElements {
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter your PIN to share data\"]");
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Family Name(s)\"]");
-    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
+    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Date\"]");
     public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\" or @name=\" PID (MSO Mdoc)\"]");

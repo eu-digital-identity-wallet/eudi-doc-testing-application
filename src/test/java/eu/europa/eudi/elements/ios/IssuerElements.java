@@ -13,7 +13,7 @@ public class IssuerElements {
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By successfullyShared = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
     public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
-    public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]/preceding-sibling::*[1]\n");
+    public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"]/preceding-sibling::*[1]\n");
     public static By clickCountry = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[13]/XCUIElementTypeTextField[1]");
     public static By clickPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Place Of Birth\"]");
     public static By clickFormEu = By.xpath("//XCUIElementTypeStaticText[@name=\"FormEU\"]");
