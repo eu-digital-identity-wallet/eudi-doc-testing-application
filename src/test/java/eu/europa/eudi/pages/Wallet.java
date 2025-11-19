@@ -1,8 +1,10 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
@@ -169,8 +171,11 @@ public class Wallet {
             driver.terminateApp("com.android.chrome");
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickShare)).click();
+            WaitsUtils.waitAndClick(
+                    eu.europa.eudi.elements.ios.WalletElements.clickShare,
+                    driver,
+                    25
+            );
         }
     }
 
@@ -287,7 +292,8 @@ public class Wallet {
 
     public void clickDrivingLicenceButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickDrivingLicenceButton)).click();
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickDrivingLicenceButtonOnDocuments));
+            tapAction(button, false);
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
             tapAction(button, false);        }
@@ -497,7 +503,7 @@ public class Wallet {
 
     public void clickPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPID)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPID)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
             tapAction(button, false);
@@ -855,9 +861,13 @@ public class Wallet {
     public void addPIDPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, pageHeader);
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed,
+                    Literals.Wallet.ADD_PID_PAGE.label,
+                    driver,
+                    50
+            );
+            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, header.getText().trim());
         }
     }
 
@@ -942,6 +952,16 @@ public class Wallet {
                     Thread.sleep(50);
                 }
             }
+        }
+    }
+
+    public void clickPIDOnDocuments() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPIDOnDocuments));
+                tapAction(button, false);
+            } else {
+                WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
+                tapAction(button, false);
         }
     }
 }

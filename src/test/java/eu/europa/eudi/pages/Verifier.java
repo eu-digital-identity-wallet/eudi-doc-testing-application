@@ -3,6 +3,7 @@ package eu.europa.eudi.pages;
 import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
@@ -22,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Verifier {
     TestSetup test;
+    EnvDataConfig envDataConfig;
+
 
     public Verifier(TestSetup test) {
         this.test = test;
@@ -148,9 +151,9 @@ public class Verifier {
 
     public void selectAllAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")
-                    || test.envDataConfig().getAppiumAndroidDeviceName().equals("Redmi Note 12 Pro+ 5G")
-                    || test.envDataConfig().getAppiumAndroidDeviceName().equals("Samsung Galaxy S22 Ultra"))  {
+            envDataConfig = new EnvDataConfig();
+            String env = envDataConfig.getExecutionEnvironment();
+            if (env.equalsIgnoreCase("browserstack")) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
@@ -159,12 +162,11 @@ public class Verifier {
                 clickMsoMdocRealDevice();
             }   else{
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesEmulator)).click();
-                clickAllAttributes();
-                //test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
-                clickMsoMdoc();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocReal)).click();
+                clickMsoMdocRealDevice();
             }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();

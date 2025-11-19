@@ -3,6 +3,7 @@ package eu.europa.eudi.pages;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.WaitsUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
@@ -17,6 +18,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
@@ -122,9 +124,16 @@ public class Issuer {
     public void qrCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.QR_CODE.label, pageHeader);
+
+            WebElement header = WaitsUtils.waitForExactText(
+                    IssuerElements.qrCodeIsDisplayed,
+                    Literals.Issuer.QR_CODE.label,
+                    driver,
+                    50
+            );
+
+            Assert.assertEquals(Literals.Issuer.QR_CODE.label, header.getText().trim());
+
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.qrCodeIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.QR_CODE.label, pageHeader);
@@ -163,8 +172,11 @@ public class Issuer {
     public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormEu)).click();
+            WaitsUtils.waitAndClick(
+                    IssuerElements.clickFormEu,
+                    driver,
+                    15
+            );
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
         }
@@ -283,17 +295,20 @@ public class Issuer {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.4);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
         } else {
@@ -316,18 +331,21 @@ public class Issuer {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
-                int startY = (int) (size.height * 0.8);
-                int endY = (int) (size.height * 0.2);
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
 
@@ -395,9 +413,13 @@ public class Issuer {
     public void formIsDisplayed () {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM.label, pageHeader);
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed,
+                    Literals.Issuer.FORM.label,
+                    driver,
+                    30
+            );
+            Assert.assertEquals(Literals.Issuer.FORM.label, header.getText().trim());
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
@@ -545,9 +567,15 @@ public class Issuer {
     private void formIsDisplayedDev() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, pageHeader);
+
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedDev,
+                    Literals.Issuer.FORM_DEV.label,
+                    driver,
+                    30
+            );
+
+            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, header.getText().trim());
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev)).getText();
             Assert.assertEquals(Literals.Issuer.FORM_DEV.label, pageHeader);
@@ -557,9 +585,15 @@ public class Issuer {
     private void selectCountryOfOriginDev() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, pageHeader);
+
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev,
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
+                    driver,
+                    30
+            );
+
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, header.getText().trim());
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev)).getText();
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, pageHeader);
@@ -587,7 +621,7 @@ public class Issuer {
 
     public void enterCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.enterCode)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.enterCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement searchBar = driver.findElement(IssuerElements.enterCode);
             searchBar.clear();
@@ -612,16 +646,19 @@ public class Issuer {
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
         }else{
@@ -698,21 +735,21 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 1; i++) {
-                // Get screen size
+                Duration duration = Duration.ofMillis(500);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
-                int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.5);
+                int startY = (int) (size.height * 0.75);
+                int endY = (int) (size.height * 0.25);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(finger.createPointerMove(duration, PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
                 Thread.sleep(50);
             }
         }
@@ -750,17 +787,20 @@ public class Issuer {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.4);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
         }else{
@@ -830,9 +870,15 @@ public class Issuer {
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                    driver,
+                    30
+            );
+
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, header.getText().trim());
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
@@ -851,9 +897,15 @@ public class Issuer {
     public void transactionCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.runAppInBackground(Duration.ofSeconds(30));
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.qrCodeIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.QR_CODE.label, pageHeader);
+
+            WebElement header = WaitsUtils.waitForExactText(
+                    IssuerElements.qrCodeIsDisplayed,
+                    Literals.Issuer.QR_CODE.label,
+                    driver,
+                    30
+            );
+
+            Assert.assertEquals(Literals.Issuer.QR_CODE.label, header.getText().trim());
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.authorize)).click();
         }

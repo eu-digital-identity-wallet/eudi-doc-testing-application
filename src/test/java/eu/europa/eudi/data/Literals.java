@@ -70,7 +70,7 @@ public interface Literals {
     enum General{
         ANDROID("android"),
 
-        IOS("ios");
+        IOS("ios_execution_with_browserstack.yml");
         public final String label;
         General(String label) {
             this.label = label;

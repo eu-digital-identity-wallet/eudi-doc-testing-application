@@ -1,0 +1,180 @@
+name: Android Automation Tests Execution
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch-to-checkout:
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+          - milestone/2025.Q4
+        default: develop
+
+      test-cases:
+        description: 'Choose Test Cases'
+        type: string
+        default: "@automated and @US_VP_TC_01"
+
+      platform:
+        description: 'Which platform to test (android, ios_execution_with_browserstack.yml or both)'
+        type: choice
+        options:
+          - ANDROID
+        default: ANDROID
+
+  # schedule:
+  #   # WED,SAT 03:15 UTC
+  #   - cron: '15 3 * * 3,6'
+
+jobs:
+  build:
+    runs-on: macos-13-large
+    timeout-minutes: 240 # increase IF needed
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4 # Checkout the code
+        with:
+          clean: true
+          lfs: false
+          ref: ${{ inputs.branch-to-checkout || 'main' }}
+
+      - name: Download Latest Release APK
+        env:
+          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
+        run: |
+          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
+          echo "Latest Release JSON: $latest_release"
+          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
+          if [ -z "$apk_url" ]; then
+            echo "No APK found in the latest release."
+            exit 1
+          fi
+          echo "Downloading APK from: $apk_url"
+          curl -L -o app.apk "$apk_url"
+
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+
+      - name: Verify APK file
+        run: |
+          ls -lh app.apk
+          file app.apk
+          zipinfo -1 app.apk | head -n 10
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS 16.20.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.20.2'
+
+      - name: Clean Old Results
+        run: |
+          rm -rf target/serenity
+          rm -rf target/site/reports
+          rm -rf target/site/serenity
+
+      - name: Initialize Session Map
+        run: echo "" > session_map.txt
+
+      - name: Check jq Installation
+        run: |
+          if ! command -v jq &> /dev/null; then
+            echo "jq not found, installing..."
+            brew install jq
+          else
+            echo "jq is already installed."
+            jq --version
+          fi
+
+      - name: Check BrowserStack Credentials
+        run: |
+          response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
+          echo "BrowserStack Response: $response"
+
+      - name: Upload app to BrowserStack
+        id: upload_app
+        run: |
+          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+            -F "file=@app.apk")
+          echo "Response: $response"
+          app_url=$(echo $response | jq -r '.app_url')
+          echo "app_url=$app_url" >> $GITHUB_OUTPUT
+
+      - name: Get Latest BrowserStack Build ID
+        id: fetch-build
+        if: always()
+        run: |
+          BUILD_ID=$(curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+            -X GET "https://api-cloud.browserstack.com/app-automate/builds.json" \
+            | jq -r '.[0].automation_build.hashed_id')
+          echo "BUILD_ID=$BUILD_ID"
+          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+
+      - name: Run Android Selenium Appium tests on BrowserStack Farm
+        env:
+          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
+        continue-on-error: true
+        run: |
+          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
+          echo "Running Android tests with tags: $TEST_CASES"
+          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+          mvn test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.10.31-Demo"
+          echo "Replacing core.css using custom-style.css..."
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+
+      - name: Generate Serenity Report
+        if: always()
+        run: |
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-serenity-report
+          path: target/site/reports/*
+
+      - name: Download BrowserStack Device Logs per Feature (Android)
+        if: always() && (inputs.platform == 'ANDROID' || inputs.platform == 'both')
+        run: |
+          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
+          mkdir -p android-logs
+
+          while IFS='=' read FEATURE SESSION_ID; do
+            [[ "$FEATURE" != *"_Android" ]] && continue
+            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            echo "Downloading logs for Android: $FEATURE_CLEAN | Session: $SESSION_ID"
+
+            curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+            -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
+            -o "android-logs/${FEATURE_CLEAN}.txt"
+          done < session_map.txt
+
+      - name: Upload Android Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-device-logs
+          path: android-logs/
+
+
+

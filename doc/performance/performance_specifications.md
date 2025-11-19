@@ -4,6 +4,9 @@ This section supports the requirements defined in [requirements.md](requirements
 It describes the performance testing for the EUDI Wallet application, including the performance test scenarios, the required test environment and devices configuration, entry and exit criteria and input data.
 
 ## Performance Test Scenarios
+
+Performance testing was conducted using end-to-end functional test flows executed across multiple real devices. The scenarios utilized to produce the results are the following:
+
 1. Add a Document from List
 2. Deferred Issuing
 3. Credential Issuance (Same Device)
