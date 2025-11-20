@@ -16,7 +16,7 @@ public class IssuerElements {
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"]/preceding-sibling::*[1]\n");
     public static By clickCountry = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[13]/XCUIElementTypeTextField[1]");
     public static By clickPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Place Of Birth\"]");
-    public static By clickFormEu = By.xpath("//XCUIElementTypeStaticText[@name=\"FormEU\"]");
+    public static By clickFormEu = By.xpath("//XCUIElementTypeStaticText[@label=\"FormEU\"]");
     public static By clickGivenName = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[2]");
     public static By givenNameField = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[2]");
     public static By clickFamilyName = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[1]");

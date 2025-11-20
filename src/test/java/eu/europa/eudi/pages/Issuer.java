@@ -126,7 +126,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             WebElement header = WaitsUtils.waitForExactText(
-                    IssuerElements.qrCodeIsDisplayed,
+                    eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayed,
                     Literals.Issuer.QR_CODE.label,
                     driver,
                     50
@@ -175,10 +175,15 @@ public class Issuer {
             WaitsUtils.waitAndClick(
                     IssuerElements.clickFormEu,
                     driver,
-                    15
+                    25
             );
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WaitsUtils.waitAndClick(
+                    eu.europa.eudi.elements.ios.IssuerElements.clickFormEu,
+                    driver,
+                    25
+            );
         }
     }
 
@@ -372,18 +377,21 @@ public class Issuer {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
-                int startY = (int) (size.height * 0.8);
-                int endY = (int) (size.height * 0.2);
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                // Optional: Add a short pause between swipes
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
         } else {

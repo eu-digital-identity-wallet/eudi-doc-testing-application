@@ -53,33 +53,47 @@ public class WaitsUtils {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 
-        WebElement target = wait.until(d -> {
+        WebElement target = null;
+
+        // Try up to 3 times (soft refresh between attempts)
+        for (int attempt = 1; attempt <= 3; attempt++) {
+
             try {
-                WebElement el = d.findElement(locator);
+                // Wait only for existence (visibility is unreliable on iOS)
+                target = wait.until(d -> {
+                    try {
+                        return d.findElement(locator);
+                    } catch (Exception ignored) {
+                        return null;
+                    }
+                });
 
-                if (!el.isDisplayed()) return null;   // not visible yet
+                // Try native click
+                target.click();
+                return target; // SUCCESS
 
-                // Get element bounds (Compose sometimes returns temporary 0,0)
-                Point p = el.getLocation();
-                Dimension s = el.getSize();
+            } catch (Exception clickError) {
+                // --- REFRESH LOGIC ---
+                try {
+                    Thread.sleep(500);  // allow UI to stabilize
+                } catch (InterruptedException ignored) {}
 
-                if (s.getHeight() == 0 || s.getWidth() == 0) return null; // still rendering
-
-                return el;
-            } catch (Exception ignored) {
-                return null;
+                // Try to re-find element after small refresh
+                try {
+                    target = driver.findElement(locator);
+                } catch (Exception ignored) {
+                    // ignore, next retry will handle it
+                }
             }
-        });
-
-        // Now actually click (more reliable than expectedConditions)
-        try {
-            target.click();   // use native click first
-        } catch (Exception e) {
-            // Fallback to your tapAction
-            tapCenter(driver, target);
         }
 
-        return target;
+        // Final fallback: tap the center of the element
+        if (target != null) {
+            tapCenter(driver, target);
+            return target;
+        }
+
+        throw new TimeoutException("Element not clickable after retries: " + locator);
     }
 
     private static void tapCenter(AppiumDriver driver, WebElement target) {
