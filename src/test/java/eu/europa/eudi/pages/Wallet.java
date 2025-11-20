@@ -170,12 +170,14 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShare)).click();
             driver.terminateApp("com.android.chrome");
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WaitsUtils.waitAndClick(
-                    eu.europa.eudi.elements.ios.WalletElements.clickShare,
-                    driver,
-                    25
-            );
+//            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+//            WaitsUtils.waitAndClick(
+//                    eu.europa.eudi.elements.ios.WalletElements.clickShare,
+//                    driver,
+//                    55
+//            );
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickShare)).click();
+
         }
     }
 
@@ -589,7 +591,7 @@ public class Wallet {
             String env = envDataConfig.getExecutionEnvironment();
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 15; i++) {
                     // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
@@ -785,7 +787,7 @@ public class Wallet {
             String env = envDataConfig.getExecutionEnvironment();
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 7; i++) {
                     // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
@@ -808,7 +810,7 @@ public class Wallet {
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
