@@ -43,20 +43,6 @@ jobs:
           lfs: false
           ref: ${{ inputs.branch-to-checkout || 'main' }}
 
-      - name: Download Latest Release APK
-        env:
-          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
-        run: |
-          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
-          echo "Latest Release JSON: $latest_release"
-          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
-          if [ -z "$apk_url" ]; then
-            echo "No APK found in the latest release."
-            exit 1
-          fi
-          echo "Downloading APK from: $apk_url"
-          curl -L -o app.apk "$apk_url"
-
       - name: Setup Git LFS
         run: |
           git lfs install
