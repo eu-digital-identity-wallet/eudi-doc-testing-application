@@ -48,12 +48,6 @@ jobs:
           git lfs install
           git lfs pull
 
-      - name: Verify APK file
-        run: |
-          ls -lh app.apk
-          file app.apk
-          zipinfo -1 app.apk | head -n 10
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
