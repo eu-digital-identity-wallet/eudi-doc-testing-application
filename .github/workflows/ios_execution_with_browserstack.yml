@@ -83,16 +83,6 @@ jobs:
           response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
           echo "BrowserStack Response: $response"
 
-      - name: Upload app to BrowserStack
-        id: upload_app
-        run: |
-          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-            -F "file=@app.apk")
-          echo "Response: $response"
-          app_url=$(echo $response | jq -r '.app_url')
-          echo "app_url=$app_url" >> $GITHUB_OUTPUT
-
       - name: Get Latest BrowserStack Build ID
         id: fetch-build
         if: always()
