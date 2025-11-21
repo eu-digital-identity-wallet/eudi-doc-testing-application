@@ -30,7 +30,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13-large
+    runs-on: macos-latest
     timeout-minutes: 240 # increase IF needed
     env:
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
