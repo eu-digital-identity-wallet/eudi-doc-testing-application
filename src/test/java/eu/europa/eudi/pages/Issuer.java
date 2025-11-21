@@ -2,6 +2,7 @@ package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.IssuerElements;
+import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
 import io.appium.java_client.AppiumDriver;
@@ -9,8 +10,6 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
@@ -18,7 +17,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
-import static java.time.Duration.ofMillis;
 
 
 public class Issuer {
@@ -36,7 +34,7 @@ public class Issuer {
         this.test = test;
     }
 
-    public void issuerService(){
+    public void issuerService() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
@@ -57,7 +55,7 @@ public class Issuer {
                 args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
                 driver.executeScript("mobile:shell", args);
             }
-        }else{
+        } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
@@ -68,6 +66,7 @@ public class Issuer {
             driver.executeScript("mobile: launchApp", args);
         }
     }
+
     public void launchSafari() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
@@ -200,7 +199,8 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.givenNameField);
             givenName.clear();
-            givenName.sendKeys("Foteini");        }
+            givenName.sendKeys("Foteini");
+        }
     }
 
     public void enterFamilyName() {
@@ -215,7 +215,8 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenFamily = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.familyNameField);
             givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");        }
+            givenFamily.sendKeys("Theofilatou");
+        }
     }
 
     public void chooseBirthDate() {
@@ -224,7 +225,8 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();        }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+        }
     }
 
     public void enterDocumentNumber() {
@@ -251,7 +253,8 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();        }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+        }
     }
 
     public void chooseExpiryDate() {
@@ -260,7 +263,8 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();        }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+        }
     }
 
     public void clickSubmit() {
@@ -332,28 +336,18 @@ public class Issuer {
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 6; i++) {
-                // Get screen size
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(WalletElements.clickSubmit);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
             }
 
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
@@ -366,34 +360,26 @@ public class Issuer {
                 driver.executeScript("mobile: swipe", params);
                 i++;
             }
-
         }
     }
+
 
     public void scrollUntilAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 6; i++) {
-                // Get screen size
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(IssuerElements.authorize);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
             }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
@@ -695,31 +681,6 @@ public class Issuer {
         }
     }
 
-    private void scrollUntilFindDocumentNumber() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 1; i++) {
-                // Get screen size
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.5);
-
-                // Swipe up
-                new TouchAction<>(driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(ofMillis(500)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-
-                // Optional: Add a short pause between swipes
-                Thread.sleep(50);
-            }
-        }
-    }
-
-
     public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountry));
@@ -728,7 +689,7 @@ public class Issuer {
             countryField.clear();
             countryField.sendKeys("Greece");
             WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
-            test.mobile().wallet().tapAction(placeOfBirth, true);
+            test.mobile().wallet().tapAction(placeOfBirth, false);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -742,24 +703,18 @@ public class Issuer {
     public void scrollUntilCountryCode() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 1; i++) {
-                Duration duration = Duration.ofMillis(500);
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.25);
-
-                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(finger.createPointerMove(duration, PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                driver.perform(Collections.singletonList(swipe));
-                Thread.sleep(50);
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
             }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
     else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -790,27 +745,18 @@ public class Issuer {
     public void scrollUntilCountry() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 1; i++) {
-                // Get screen size
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.6);
-                int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickLocality);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
             }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
@@ -863,7 +809,7 @@ public class Issuer {
             countryCode.clear();
             countryCode.sendKeys("GR");
             WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.closeKeyboard));
-            test.mobile().wallet().tapAction(element, true);
+            test.mobile().wallet().tapAction(element, false);
 
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode)).click();
@@ -971,7 +917,7 @@ public class Issuer {
 
     private void slowScroll(AndroidDriver driver) {
         int startX = driver.manage().window().getSize().width / 2;
-        int startY = (int) (driver.manage().window().getSize().height * 0.8);
+        int startY = (int) (driver.manage().window().getSize().height * 0.6);
         int endY   = (int) (driver.manage().window().getSize().height * 0.4);
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");

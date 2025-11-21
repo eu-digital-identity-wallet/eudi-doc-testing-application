@@ -44,4 +44,5 @@ public class IssuerElements {
     public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following::*[contains(@class,'EditText')][1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
+    public static By clickLocality = By.xpath("//android.widget.TextView[@text=\"Locality\"]");
 }
