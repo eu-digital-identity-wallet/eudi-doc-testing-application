@@ -618,16 +618,18 @@ public class Issuer {
     }
 
     private void codeIsVisible() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-        WebElement header = WaitsUtils.waitForExactText(
-                eu.europa.eudi.elements.android.IssuerElements.codeIsVisible,
-                Literals.Issuer.CODEISVISIBLE.label,
-                driver,
-                30
-        );
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.codeIsVisible,
+                    Literals.Issuer.CODEISVISIBLE.label,
+                    driver,
+                    30
+            );
 
-        Assert.assertEquals(Literals.Issuer.CODEISVISIBLE.label, header.getText().trim());
+            Assert.assertEquals(Literals.Issuer.CODEISVISIBLE.label, header.getText().trim());
+        }
     }
 
     public void enterCode() {
