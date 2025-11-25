@@ -39,7 +39,7 @@ public interface Literals {
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
         DETAILS_ARE_BLURRED("Hide"),
         DETAILS_ARE_NOT_BLURRED("Show"),
-        CREDENTIALS_PROVIDER_DISPLAYED("TEST CREDENTIALS PROVIDER"),
+        CREDENTIALS_PROVIDER_DISPLAYED("Issue attributes for your EUDI Wallet demo application."),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
@@ -94,7 +94,9 @@ public interface Literals {
         FORM_ANDROID("EUDI Wallet Credential"),
         FORM_IOS("1"),
         FORM_DEV("For testing purposes only."),
-        SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin");
+        SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
+        CODEISVISIBLE("Code"),
+        COUNTRY("Country");
 
         public final String label;
         Issuer(String label) {

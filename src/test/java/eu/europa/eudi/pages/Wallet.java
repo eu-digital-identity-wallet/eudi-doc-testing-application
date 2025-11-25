@@ -837,9 +837,17 @@ public class Wallet {
 
     public void credentialsProviderIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.credentialsProviderDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.WalletElements.credentialsProviderDisplayed,
+                    Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label,
+                    driver,
+                    50
+            );
+
+            Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, header.getText().trim());
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.credentialsProviderDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.CREDENTIALS_PROVIDER_DISPLAYED.label, pageHeader);
@@ -964,6 +972,74 @@ public class Wallet {
             } else {
                 WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
                 tapAction(button, false);
+        }
+    }
+
+    public void scrollUntilPIDOnDocuments() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPIDOnDocumentsSecond);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
+            }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        } else {
+            envDataConfig = new EnvDataConfig();
+            String env = envDataConfig.getExecutionEnvironment();
+            if (env.equalsIgnoreCase("browserstack")) {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                for (int i = 0; i < 15; i++) {
+                    // Get screen size
+                    Dimension size = driver.manage().window().getSize();
+                    int startX = size.width / 2;
+                    int startY = (int) (size.height * 0.6);
+                    int endY = (int) (size.height * 0.5);
+                    // --- START: REPLACEMENT FOR TouchAction ---
+                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                    Sequence swipe = new Sequence(finger, 1);
+
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                    // This replaces your waitAction
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                    driver.perform(Collections.singletonList(swipe));
+                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    Thread.sleep(50);
+                }
+            } else {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                for (int i = 0; i < 12; i++) {
+                    // Get screen size
+                    Dimension size = driver.manage().window().getSize();
+                    int startX = size.width / 2;
+                    int startY = (int) (size.height * 0.6);
+                    int endY = (int) (size.height * 0.5);
+                    // --- START: REPLACEMENT FOR TouchAction ---
+                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                    Sequence swipe = new Sequence(finger, 1);
+
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                    // This replaces your waitAction
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                    driver.perform(Collections.singletonList(swipe));
+                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    Thread.sleep(50);
+                }
+            }
         }
     }
 }
