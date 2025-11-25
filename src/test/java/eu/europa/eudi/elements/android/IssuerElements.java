@@ -44,8 +44,6 @@ public class IssuerElements {
     public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::*[1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
-    public static By clickLocality = By.xpath("//android.widget.TextView[@text=\"Locality\"]");
     public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
-    public static By countryIsVisible = By.xpath("//android.widget.TextView[@text=\"Country\"]");
-    public static By clickRegion = By.xpath("//android.widget.TextView[@text=\"Region\"]");;
+
 }

@@ -63,5 +63,4 @@ public class WalletElements {
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.xpath("(//XCUIElementTypeButton[@name=\"Delete document\"])[2]");
     public static By detailsAreBlurredReal = By.xpath("//XCUIElementTypeOther[@name=\"eye.slash\"]");
-    public static By correspondingMessageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
 }

@@ -936,22 +936,6 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindIssue() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-        for (int i = 0; i < 5; i++) {
-            try {
-                WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickIssueDate);
-                if (pidElement.isDisplayed()) break;
-            } catch (Exception e) {
-                slowScroll(driver);  // ← slow scroll instead of UiScrollable
-            }
-        }
-
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    }
-
     private void slowScroll(AndroidDriver driver) {
         String originalContext = driver.getContext();
 
@@ -990,11 +974,5 @@ public class Issuer {
             driver.context(originalContext);
         }
     }
-
-//    public String getTransactionCode() {
-////        String transactionCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.getTransactionCode)).getText();
-////        System.out.println("Page Header Text: " + transactionCode);
-////        return transactionCode;
-//    }
 }
 

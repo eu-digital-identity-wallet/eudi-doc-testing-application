@@ -13,7 +13,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.io.FileWriter;
 import java.net.MalformedURLException;
 
@@ -107,7 +106,6 @@ public class AutomatedStepDefs {
 
     @After
     public void tearDown(Scenario scenario) throws InterruptedException {
-
         String featureName = test.getScenario().getUri().getPath()
                 .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                 .replace(".feature", "")
@@ -760,71 +758,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().documentsPageIsDisplayed();
     }
 
-//    @Given("the user is on the Home screen of the EUDI Wallet")
-//    public void theUserIsOnTheHomeScreenOfTheEUDIWallet() {
-//        test.mobile().wallet().dashboardPageIsDisplayed();
-//    }
-
-//    @When("the user navigates to the Documents screen")
-//    public void theUserNavigatesToTheDocumentsScreen() {
-//        test.mobile().wallet().clickOnDocuments();
-//    }
-
-//    @Then("the Documents screen should be displayed showing a list of issued attestations")
-//    public void theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations() {
-//        test.mobile().wallet().documentsPageIsDisplayed();
-//    }
-
-//    @Given("the user is on the Documents screen")
-//    public void theUserIsOnTheDocumentsScreen() {
-//        theUserShouldSeeTheDashboard();
-//        theUserNavigatesToTheDocumentsScreen();
-//        theDocumentsScreenShouldBeDisplayedShowingAListOfIssuedAttestations();
-//    }
-
-//    @When("the user selects an attestation from the list")
-//    public void theUserSelectsAnAttestationFromTheList() {
-//        test.mobile().wallet().clickPID();
-//    }
-
-//    @Then("the details of the selected attestation should be displayed")
-//    public void theDetailsOfTheSelectedAttestationShouldBeDisplayed() {
-//        test.mobile().wallet().documentsDetailsAreDisplayed();
-//    }
-
-//    @And("the details should be blurred by default")
-//    public void theDetailsShouldBeBlurredByDefault() {
-//        test.mobile().wallet().detailsAreDisplayedBlurred();
-//    }
-
-//    @And("the user should see the eye icon to view the details of the attestation")
-//    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
-//        test.mobile().wallet().eyeIconIsDisplayed();
-//    }
-
-//    @Given("the user is viewing the details of an attestation")
-//    public void theUserIsViewingTheDetailsOfAnAttestation() {
-//        theUserIsOnTheDashboardScreen();
-//        theUserSelectsAnAttestationFromTheList();
-//        theDetailsOfTheSelectedAttestationShouldBeDisplayed();
-//        theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation();
-//    }
-
-//    @When("the user selects eye icon")
-//    public void theUserSelectsEyeIcon() {
-//        test.mobile().wallet().clickEyeIcon();
-//    }
-
-//    @Then("the attestation details should no longer be blurred")
-//    public void theAttestationDetailsShouldNoLongerBeBlurred() {
-//        //waiting for an attribute to check
-//    }
-
-//    @And("the user should be able to view the full details of the attestation")
-//    public void theUserShouldBeAbleToViewTheFullDetailsOfTheAttestation() {
-//        //waiting for an attribute to check
-//    }
-
     @Given("the issuer service -test credential provider screen- is displayed")
     public void theIssuerServiceTestCredentialProviderScreenIsDisplayed() throws InterruptedException {
         theHomePageIsDisplayedOnWallet();
@@ -1060,19 +993,9 @@ public class AutomatedStepDefs {
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
-//        test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
-//        test.mobile().issuer().enterRegion();
-//        test.mobile().issuer().enterLocality();
-//        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().addOptionalAttributes();
-//        test.mobile().issuer().clickAgeOver18OnIssuer();
-//        test.mobile().issuer().clickAddAttributes();
-//        test.mobile().issuer().enableAgeOver18();
-//        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().authorizeIsDisplayed();
@@ -1083,11 +1006,6 @@ public class AutomatedStepDefs {
     @And("a transaction code has been created")
     public void aTransactionCodeHasBeenCreated() {
        test.mobile().issuer().transactionCodeIsDisplayed();
-//       test.mobile().issuer().getTransactionCode();
-//       String code = test.mobile().issuer().getTransactionCode();
-//       test.setTransactionCode(code); // <-- store it for later steps
-
-//        System.out.println("Stored transaction code: " + code);
     }
 
     @Given("the transaction code has been created")
@@ -1236,7 +1154,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickPseudonymDeferred();
         test.mobile().issuer().clickSubmitButton();
     }
 
@@ -1282,8 +1199,6 @@ public class AutomatedStepDefs {
     @When("the user decides not to proceed")
     public void theUserDecidesNotToProceed() {
         test.mobile().verifier().insertPIN2();
-//        test.mobile().wallet().selectSigningCertificateIsDisplayed();
-//        test.mobile().wallet().clickAbortToSigning();
     }
 
     @Then("the user can select the Abort operation option")
@@ -1319,10 +1234,8 @@ public class AutomatedStepDefs {
 
     @When("the EUDI Wallet displays the presentation request for PID")
     public void theEUDIWalletDisplaysThePresentationRequestForPID() {
-//        test.mobile().issuer().clickPidAuthentication();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().qrCodeIsDisplayed();
-//        test.mobile().issuer().clickRequestButton();
     }
 
     @Then("the user is prompted to consent by selecting the Share button")
@@ -1374,7 +1287,6 @@ public class AutomatedStepDefs {
     @When("the user clicks the Continue button")
     public void theUserClicksTheContinueButton() throws InterruptedException {
         test.mobile().wallet().clickDone();
-//        test.mobile().wallet().TestProviderFormIsDisplayed();
         test.mobile().wallet().clickSubmit();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1390,7 +1302,6 @@ public class AutomatedStepDefs {
     public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
        test.mobile().wallet().dashboardPageIsDisplayed();
        test.mobile().wallet().clickOnDocuments();
-//       test.mobile().wallet().ageOver18IsDisplayed();
     }
 
     @Given("the user is on the issuer page for authentication and consent")
@@ -1405,8 +1316,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickCountrySelection();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().formIsDisplayed();
-//        test.mobile().issuer().enableAgeOver18OnDeffered();
-//        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
     }
@@ -1592,27 +1501,15 @@ public class AutomatedStepDefs {
 
     @When("the Wallet receives the attestation from the issuer service")
     public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
-//        test.mobile().wallet().informUserAboutAttestation();
-//        test.mobile().wallet().clickAdd();
         test.mobile().issuer().clickFormEu();
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().formIsDisplayed();
         test.mobile().issuer().enterFamilyName();
         test.mobile().issuer().enterGivenName();
         test.mobile().issuer().chooseBirthDate();
-//        test.mobile().issuer().scrollUntilCountry();
         test.mobile().issuer().enterCountry();
-//        test.mobile().issuer().enterRegion();
-//        test.mobile().issuer().enterLocality();
-//        test.mobile().issuer().clickNationality();
         test.mobile().issuer().scrollUntilCountryCode();
         test.mobile().issuer().enterCountryCode();
-//        test.mobile().issuer().clickNationality();
-//        test.mobile().issuer().addOptionalAttributes();
-//        test.mobile().issuer().clickAgeOver18OnIssuer();
-//        test.mobile().issuer().clickAddAttributes();
-//        test.mobile().issuer().enableAgeOver18();
-//        test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
         test.mobile().issuer().clickAuthorize();
@@ -1706,7 +1603,6 @@ public class AutomatedStepDefs {
     @Given("a provider form is displayed for mDL \\(MSO Mdoc)")
     public void aProviderFormIsDisplayedForMDLMSOMdoc() throws InterruptedException {
         theIssuerServiceTestCredentialProviderScreenIsDisplayed();
-        //        theUserClicksOnCountrySelectionAndSubmits();
         theUserClicksOnCredentialProviderFormEUAndSubmits();
         theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }

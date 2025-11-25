@@ -30,6 +30,7 @@ public class IssuerElements {
     public static By clickExpiryDate = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[10]/XCUIElementTypeOther[4]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date\"]");
+
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeTextField");
