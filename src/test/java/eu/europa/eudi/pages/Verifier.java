@@ -92,63 +92,6 @@ public class Verifier {
         }
     }
 
-    public void AuthenticationPageIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.authenticationPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Verifier.AUTHENTICATION_PAGE.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.authenticationPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Verifier.AUTHENTICATION_PAGE.label, pageHeader);
-        }
-    }
-
-    public void chooseData2() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.chooseData2)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.chooseData2)).click();
-        }
-    }
-    public void scrollUntilFindIssuanceDate() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
-            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-            By locator = By.xpath("//android.widget.CheckBox[@text=\"Issuance date\"]");
-            WebElement element = null;
-            int i = 1;
-            while (i < 4) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-
-        } else {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 4) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = size.height / 2;  // Start from the middle of the screen
-                int endY = (int) (size.height * 0.2);  // Adjust the endY as needed
-                new TouchAction<>((PerformsTouchActions) driver)
-                        .press(PointOption.point(startX, startY))
-                        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                        .moveTo(PointOption.point(startX, endY))
-                        .release()
-                        .perform();
-                i++;
-            }
-        }
-    }
-
     public void selectAllAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             envDataConfig = new EnvDataConfig();
@@ -176,33 +119,6 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
         }
     }
-
-    private void clickAllAttributes() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        int retries = 3;
-        while (retries > 0) {
-            try {
-                WebElement dropdown = test.mobileWebDriverFactory().getWait().until(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id='mat-select-0-panel']"))
-                );
-                Point location = dropdown.getLocation();
-                Dimension size = dropdown.getSize();
-                int optionY = location.y + (size.height - 10);
-                int centerX = location.x + (size.width / 2);
-                new TouchAction(driver)
-                        .tap(PointOption.point(centerX, optionY))
-                        .perform();
-                break;
-            } catch (Exception e) {
-                retries--;
-                if (retries == 0) throw e;
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
-            }
-        }
-    }
-
-
-
 
     public void scrollUntilNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -321,18 +237,6 @@ public class Verifier {
         // Perform tap on center of bounds
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, centerY))
-                .perform();
-    }
-
-    public void clickMsoMdoc() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id='mat-select-1-panel']")));
-        Point location = dropdown.getLocation();
-        Dimension size = dropdown.getSize();
-        int optionY = location.y + (size.height / 6);
-        int centerX = location.x + (size.width / 2);
-        new TouchAction(driver)
-                .tap(PointOption.point(centerX, optionY))
                 .perform();
     }
 
