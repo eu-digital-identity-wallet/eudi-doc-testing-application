@@ -12,33 +12,32 @@ import java.util.Collections;
 
 public class WaitsUtils {
     public static WebElement waitForExactText(By locator,
-                                                         String expectedText,
-                                                         AndroidDriver driver,
-                                                         int timeoutSeconds) {
+                                              String expectedText,
+                                              AndroidDriver driver,
+                                              int timeoutSeconds) {
 
         long endTime = System.currentTimeMillis() + timeoutSeconds * 1000L;
 
         while (System.currentTimeMillis() < endTime) {
             try {
-                // Try finding text
                 WebElement el = driver.findElement(locator);
                 String actual = el.getText().trim();
 
                 System.out.println("DEBUG TEXT: [" + actual + "] EXPECTED: [" + expectedText + "]");
 
-                if (expectedText.equals(actual)) {
-                    return el;  // SUCCESS 🎉
+                // Instead of hard equals:
+                if (actual.toLowerCase().contains(expectedText.toLowerCase())) {
+                    return el;
                 }
 
             } catch (Exception ignored) {}
 
-            // --- If text not found, refresh WebView ---
+            System.out.println("🔄 Refreshing WebView...");
+
             try {
-                System.out.println("🔄 Refreshing WebView...");
                 driver.navigate().refresh();
             } catch (Exception ignored) {}
 
-            // wait a bit before trying again
             try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
         }
 

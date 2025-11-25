@@ -52,13 +52,15 @@ public class WalletElements {
     public static By clickDeleteDocument = By.xpath("//android.widget.ScrollView/android.view.View[3]/android.widget.Button");
     public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
     public static By detailsAreBlurred = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
-    public static By credentialsProviderDisplayed = By.xpath("//android.widget.TextView[@text=\"TEST CREDENTIALS PROVIDER\"]");
+    public static By credentialsProviderDisplayed = By.xpath("//android.widget.TextView[@text=\"Issue attributes for your EUDI Wallet demo application.\"]");
     public static By clickDownArrow = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By addPIDPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choose a digital document from the list below to add to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By pidDev = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]/android.view.View");
-    public static By clickPIDOnDocuments = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[6]/android.view.View");
+    public static By clickPIDOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
+//    public static By clickPIDOnDocuments = By.xpath("//androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[6]/android.view.View");
     public static By clickDrivingLicenceButtonOnDocuments = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/ancestor::*[@clickable='true'][1]\n");
+    public static By clickPIDOnDocumentsSecond = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
 }

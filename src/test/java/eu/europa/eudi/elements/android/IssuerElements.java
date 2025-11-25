@@ -31,7 +31,7 @@ public class IssuerElements {
     public static By clickCountry = By.xpath("//android.view.View[@text=\"Country\"]/following-sibling::android.widget.EditText[1]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text=\"Country Code\"]/following-sibling::android.widget.EditText[1]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
+    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By formIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"For testing purposes only.\"]");
@@ -42,7 +42,10 @@ public class IssuerElements {
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By authorizePageIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Review & Send\"]");
     public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
-    public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following::*[contains(@class,'EditText')][1]");
+    public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::*[1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By clickLocality = By.xpath("//android.widget.TextView[@text=\"Locality\"]");
+    public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
+    public static By countryIsVisible = By.xpath("//android.widget.TextView[@text=\"Country\"]");
+    public static By clickRegion = By.xpath("//android.widget.TextView[@text=\"Region\"]");;
 }
