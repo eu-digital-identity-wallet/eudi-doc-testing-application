@@ -131,10 +131,8 @@ public class MobileWebDriverFactory {
 
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 XCUITestOptions options = new XCUITestOptions();
-//              options.setCapability("appium:app", appUrl);
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackIosDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
