@@ -161,11 +161,38 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountrySelection)).click();
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement elementToDoubleClick = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountrySelection);
-            TouchAction action = new TouchAction(driver);
-            action.tap(element(elementToDoubleClick)).perform();
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickCountrySelection));
+            tapAction(button, false);
         }
+    }
+
+    public void tapAction(WebElement myDigitalIDButton, boolean clickLeft) {
+        Point location = myDigitalIDButton.getLocation();
+        Dimension size = myDigitalIDButton.getSize();
+
+        int x, y;
+        if (clickLeft) {
+            x = location.getX() + 10;
+            y = location.getY() + size.getHeight() / 2;
+        } else {
+            x = location.getX() + size.getWidth() / 2;
+            y = location.getY() + size.getHeight() / 2;
+        }
+
+// FIX 1: Respect viewportRect on BrowserStack (top offset = 75)
+        int viewportTop = 75;   // from capabilities
+        y = Math.max(y, viewportTop + 1);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1);
+
+        tap.addAction(finger.createPointerMove(Duration.ZERO,
+                PointerInput.Origin.viewport(), x, y));
+        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));     // FIX 2
+        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        ((AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid())
+                .perform(Collections.singletonList(tap));
     }
 
     public void clickFormEu() {

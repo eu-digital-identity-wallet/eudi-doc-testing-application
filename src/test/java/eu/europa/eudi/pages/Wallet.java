@@ -445,36 +445,44 @@ public class Wallet {
     }
 
     public void tapAction(WebElement myDigitalIDButton, boolean clickLeft) {
-        Point location = myDigitalIDButton.getLocation();
-        int x, y;
-        if (clickLeft) {
-            // Getting left border + 10px location of element
-            x = location.getX() + 10;
-            y = location.getY() + myDigitalIDButton.getSize().getHeight() / 2;
-        } else {
-            // Getting center location of element
-            x = location.getX() + myDigitalIDButton.getSize().getWidth() / 2;
-            y = location.getY() + myDigitalIDButton.getSize().getHeight() / 2;
-        }
+        AppiumDriver driver;
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
-                            PointerInput.Origin.viewport(),
-                            x, y))
-                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
-                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
-            ((AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid()).perform(Collections.singletonList(tap));
+            driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
         } else {
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence tap = new Sequence(finger, 1);
-            tap.addAction(finger.createPointerMove(Duration.ofMillis(0),
-                            PointerInput.Origin.viewport(),
-                            x, y))
-                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.ordinal()))
-                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.ordinal()));
-            ((AppiumDriver) test.mobileWebDriverFactory().getDriverIos()).perform(Collections.singletonList(tap));
+            driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
         }
+
+        Point location = myDigitalIDButton.getLocation();
+        Dimension size = myDigitalIDButton.getSize();
+
+        int x, y;
+
+        if (clickLeft) {
+            x = location.getX() + 10;
+            y = location.getY() + size.getHeight() / 2;
+        } else {
+            x = location.getX() + size.getWidth() / 2;
+            y = location.getY() + size.getHeight() / 2;
+        }
+
+        // ---- ANDROID-ONLY FIX ----
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            int viewportTop = 75;  // BrowserStack top offset
+            y = Math.max(y, viewportTop + 1);
+        }
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1);
+
+        tap.addAction(finger.createPointerMove(Duration.ZERO,
+                PointerInput.Origin.viewport(), x, y));
+
+        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));  // FIXED
+
+        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));    // FIXED
+
+        driver.perform(Collections.singletonList(tap));
     }
 
     public void clickPID() {

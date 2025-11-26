@@ -12,6 +12,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
@@ -34,12 +35,14 @@ public class AutomatedStepDefs {
             test.startAndroidDriverSession();
             test.setScenario(scenario);
             test.startLogging();
+            waitForBrowserStackToBeReadyAndroid(test.mobileWebDriverFactory().getDriverAndroid());
         }
         if (ios) {
             test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
             test.setScenario(scenario);
             test.startLogging();
+            waitForBrowserStackToBeReadyIos(test.mobileWebDriverFactory().getDriverIos());
         }
         if (data) {
             test.mobile().wallet().checkIfPageIsTrue();
@@ -101,6 +104,28 @@ public class AutomatedStepDefs {
             // Logic to skip the test
             test.mobile().wallet().skippedTest();
             throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
+        }
+    }
+
+    private void waitForBrowserStackToBeReadyAndroid(WebDriver driverAndroid) throws InterruptedException {
+        for (int i = 0; i < 10; i++) {
+            try {
+                driverAndroid.getPageSource();   // forces first Appium command
+                return;
+            } catch (Exception e) {
+                Thread.sleep(1500);       // wait for Appium/Device to finish connecting
+            }
+        }
+    }
+
+    private void waitForBrowserStackToBeReadyIos(WebDriver driverIos) throws InterruptedException {
+        for (int i = 0; i < 10; i++) {
+            try {
+                driverIos.getPageSource();   // forces first Appium command
+                return;
+            } catch (Exception e) {
+                Thread.sleep(1500);       // wait for Appium/Device to finish connecting
+            }
         }
     }
 
