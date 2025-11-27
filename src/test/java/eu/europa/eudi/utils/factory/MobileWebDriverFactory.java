@@ -27,6 +27,7 @@ public class MobileWebDriverFactory {
     public UiAutomator2Options options;
     private Process logcatProcess;
     private Thread logcatThread;
+    private String sessionId;
 
 
     public MobileWebDriverFactory(TestSetup test, boolean noReset) {
@@ -76,8 +77,9 @@ public class MobileWebDriverFactory {
                     }
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
-                    String sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
-                    System.out.println("Session ID: " + sessionId);
+                    this.sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
+                    System.out.println("Session ID: " + this.sessionId);
+
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     e.printStackTrace();
@@ -164,8 +166,9 @@ public class MobileWebDriverFactory {
                     System.out.println(e.toString());
                     e.printStackTrace();
                 }
-                String sessionId = ((RemoteWebDriver) iosDriver).getSessionId().toString();
-                System.out.println("Session ID: " + sessionId);
+                this.sessionId = ((RemoteWebDriver) iosDriver).getSessionId().toString();
+                System.out.println("Session ID: " + this.sessionId);
+
             } else {
                 // --- Real device setup ---
                 envDataConfig = new EnvDataConfig();
@@ -218,6 +221,12 @@ public class MobileWebDriverFactory {
     public void quitDriverIos() {
         if (iosDriver != null) {
             iosDriver.quit();
+            String env = envDataConfig.getExecutionEnvironment();
+            if (env.equalsIgnoreCase("browserstack")) {
+                waitForBrowserStackSessionToClose(sessionId);
+            }
+            iosDriver = null;
+            sessionId = null;
             try {
                 Thread.sleep(1500); // wait 1.5s before next scenario starts
             } catch (InterruptedException e) {
@@ -226,9 +235,55 @@ public class MobileWebDriverFactory {
         }
     }
 
+    private void waitForBrowserStackSessionToClose(String sessionId) {
+        if (sessionId == null) return;
+
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
+        System.out.println("Waiting for BrowserStack session to close: " + sessionId);
+
+        for (int i = 0; i < 1000; i++) {  // 20 seconds max
+            try {
+                URL url = new URL("https://" + username + ":" + accessKey +
+                        "@api.browserstack.com/app-automate/sessions/" + sessionId + ".json");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+                StringBuilder response = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+
+                String json = response.toString();
+
+                if (json.contains("\"status\":\"completed\"")) {
+                    System.out.println("BrowserStack session ended: " + sessionId);
+                    return;
+                }
+
+                Thread.sleep(1000);
+
+            } catch (Exception e) {
+                System.err.println("Error while polling BrowserStack API: " + e.getMessage());
+                break;
+            }
+        }
+
+        System.out.println("Warning: BrowserStack session did not report completion in time.");
+    }
+
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             androidDriver.quit();
+            String env = envDataConfig.getExecutionEnvironment();
+            if (env.equalsIgnoreCase("browserstack")) {
+                waitForBrowserStackSessionToClose(sessionId);
+            }
+            androidDriver = null;
+            sessionId = null;
             try {
                 Thread.sleep(1500); // wait 1.5s before next scenario starts
             } catch (InterruptedException e) {
