@@ -30,7 +30,6 @@ public class EnvDataConfig {
     public static final String APPIUM_URL_IOS = "appium.url.ios";
     public static final String APPIUM_MEDIUM_WAIT_IN_SECONDS = "appium.mediumWaitInSeconds";
     public static final String WALLET_PIN = "wallet.pin";
-
     public static final String BROWSERSTACK_ANDROID_APP_URL = "browserstack.android.appUrl";
     public static final String BROWSERSTACK_ANDROID_DEVICE_NAME = "browserstack.android.deviceName";
     public static final String BROWSERSTACK_ANDROID_PLATFORM_VERSION = "browserstack.android.platformVersion";

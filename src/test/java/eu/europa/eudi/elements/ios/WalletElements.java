@@ -1,7 +1,6 @@
 package eu.europa.eudi.elements.ios;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class WalletElements {
     public static final By welcomeScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome to your wallet\"]");
@@ -49,7 +48,6 @@ public class WalletElements {
     public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@label=\"Home\"]");//"//XCUIElementTypeButton[@name=\"house.fill\"]"
     public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
     public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose from list\"]");
-    public static By credentialsProviderDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"TEST CREDENTIALS PROVIDER\"]");
     public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[2]");
     public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
     public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@name=\"Delete document\"]");
