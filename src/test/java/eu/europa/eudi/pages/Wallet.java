@@ -840,7 +840,10 @@ public class Wallet {
                     driver,
                     50
             );
-            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, header.getText().trim());
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.android.WalletElements.addPIDPageIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Wallet.ADD_PID_PAGE.label, headerText);
         }
     }
 
