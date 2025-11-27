@@ -2,6 +2,7 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
@@ -20,9 +21,12 @@ import java.net.MalformedURLException;
 public class AutomatedStepDefs {
 
     static TestSetup test;
+    EnvDataConfig envDataConfig;
+
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
-
+        envDataConfig = new EnvDataConfig();
+        String env = envDataConfig.getExecutionEnvironment();
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
@@ -35,14 +39,18 @@ public class AutomatedStepDefs {
             test.startAndroidDriverSession();
             test.setScenario(scenario);
             test.startLogging();
-            waitForBrowserStackToBeReadyAndroid(test.mobileWebDriverFactory().getDriverAndroid());
+            if (env.equalsIgnoreCase("browserstack")) {
+                waitForBrowserStackToBeReadyAndroid(test.mobileWebDriverFactory().getDriverAndroid());
+            }
         }
         if (ios) {
             test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
             test.setScenario(scenario);
             test.startLogging();
-            waitForBrowserStackToBeReadyIos(test.mobileWebDriverFactory().getDriverIos());
+            if (env.equalsIgnoreCase("browserstack")) {
+                waitForBrowserStackToBeReadyIos(test.mobileWebDriverFactory().getDriverIos());
+            }
         }
         if (data) {
             test.mobile().wallet().checkIfPageIsTrue();
