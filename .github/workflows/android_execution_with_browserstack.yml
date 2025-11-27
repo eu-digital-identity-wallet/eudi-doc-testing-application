@@ -47,7 +47,6 @@ jobs:
         env:
           REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
         run: |
-#          latest_release=$(curl -s https://api.github.com/repos/$REPO/releases/latest)
           GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           # authenticated request
           latest_release=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \"https://api.github.com/repos/$REPO/releases/latest")
