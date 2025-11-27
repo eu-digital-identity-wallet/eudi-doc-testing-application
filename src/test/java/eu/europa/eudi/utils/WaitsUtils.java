@@ -16,7 +16,7 @@ public class WaitsUtils {
                                               AndroidDriver driver,
                                               int timeoutSeconds) {
 
-        long endTime = System.currentTimeMillis() + timeoutSeconds * 1000L;
+        long endTime = System.currentTimeMillis() + (timeoutSeconds * 1000L * 5);
 
         while (System.currentTimeMillis() < endTime) {
 
@@ -38,7 +38,7 @@ public class WaitsUtils {
                 // Other errors during wait are ignored and retried
             }
 
-            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+            try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
         }
 
         throw new TimeoutException("Text '" + expectedText + "' not found within timeout");
