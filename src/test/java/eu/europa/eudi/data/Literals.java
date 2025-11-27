@@ -91,7 +91,7 @@ public interface Literals {
         AUTHORIZE_IS_DISPLAYED_DEV("Review & Send"),
         ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
         TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
-        FORM_ANDROID("EUDI Wallet Credential"),
+        FORM_ANDROID("Issue attributes for your EUDI Wallet demo application."),
         FORM_IOS("1"),
         FORM_DEV("For testing purposes only."),
         SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
