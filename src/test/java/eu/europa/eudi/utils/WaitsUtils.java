@@ -19,29 +19,29 @@ public class WaitsUtils {
         long endTime = System.currentTimeMillis() + timeoutSeconds * 1000L;
 
         while (System.currentTimeMillis() < endTime) {
+
             try {
+                // Always get a fresh element
                 WebElement el = driver.findElement(locator);
                 String actual = el.getText().trim();
 
                 System.out.println("DEBUG TEXT: [" + actual + "] EXPECTED: [" + expectedText + "]");
 
-                // Instead of hard equals:
-                if (actual.toLowerCase().contains(expectedText.toLowerCase())) {
-                    return el;
+                if (actual.equalsIgnoreCase(expectedText)) {
+                    // Return a fresh element reference
+                    return driver.findElement(locator);
                 }
 
-            } catch (Exception ignored) {}
+            } catch (StaleElementReferenceException stale) {
+                System.out.println("⚠️ Stale element detected — retrying...");
+            } catch (Exception ignored) {
+                // Other errors during wait are ignored and retried
+            }
 
-            System.out.println("🔄 Refreshing WebView...");
-
-            try {
-                driver.navigate().refresh();
-            } catch (Exception ignored) {}
-
-            try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
+            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
         }
 
-        throw new TimeoutException("Text '" + expectedText + "' not found after refresh attempts");
+        throw new TimeoutException("Text '" + expectedText + "' not found within timeout");
     }
 
 
