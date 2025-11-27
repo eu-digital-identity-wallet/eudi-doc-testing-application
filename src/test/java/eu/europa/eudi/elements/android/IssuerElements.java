@@ -46,4 +46,5 @@ public class IssuerElements {
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
 
+    public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[@text=\"Issue attributes for your EUDI Wallet demo application.\"]");
 }

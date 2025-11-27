@@ -426,16 +426,16 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed,
-                    Literals.Issuer.FORM.label,
+                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid,
+                    Literals.Issuer.FORM_ANDROID.label,
                     driver,
                     30
             );
             String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayed
+                    IssuerElements.formIsDisplayedAndroid
             ).getText().trim();
 
-            Assert.assertEquals(Literals.Issuer.FORM.label, headerText);
+            Assert.assertEquals(Literals.Issuer.FORM_ANDROID.label, headerText);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
