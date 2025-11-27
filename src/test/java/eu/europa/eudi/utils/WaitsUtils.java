@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -42,5 +43,24 @@ public class WaitsUtils {
         }
 
         throw new TimeoutException("Text '" + expectedText + "' not found within timeout");
+    }
+
+    public static WebElement waitVisibleThenClickable(By locator,
+                                                      AndroidDriver driver,
+                                                      int timeoutSeconds) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+
+        // 1️⃣ Wait for visibility
+        WebElement visibleElement = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(locator)
+        );
+
+        // 2️⃣ Wait for clickability
+        WebElement clickableElement = wait.until(
+                ExpectedConditions.elementToBeClickable(locator)
+        );
+
+        return clickableElement;
     }
 }
