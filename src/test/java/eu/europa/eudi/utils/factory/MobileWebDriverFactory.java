@@ -221,12 +221,6 @@ public class MobileWebDriverFactory {
     public void quitDriverIos() {
         if (iosDriver != null) {
             iosDriver.quit();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
-                waitForBrowserStackSessionToClose(sessionId);
-            }
-            iosDriver = null;
-            sessionId = null;
             try {
                 Thread.sleep(1500); // wait 1.5s before next scenario starts
             } catch (InterruptedException e) {
@@ -235,55 +229,10 @@ public class MobileWebDriverFactory {
         }
     }
 
-    private void waitForBrowserStackSessionToClose(String sessionId) {
-        if (sessionId == null) return;
-
-        String username = System.getenv("BROWSERSTACK_USERNAME");
-        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-
-        System.out.println("Waiting for BrowserStack session to close: " + sessionId);
-
-        for (int i = 0; i < 1000; i++) {  // 20 seconds max
-            try {
-                URL url = new URL(String.format("https://%s:%s@api.browserstack.com/app-automate/sessions/" + sessionId + ".json", username, accessKey));
-
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-                StringBuilder response = new StringBuilder();
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                reader.close();
-
-                String json = response.toString();
-
-                if (json.contains("\"status\":\"completed\"")) {
-                    System.out.println("BrowserStack session ended: " + sessionId);
-                    return;
-                }
-
-                Thread.sleep(1000);
-
-            } catch (Exception e) {
-                System.err.println("Error while polling BrowserStack API: " + e.getMessage());
-                break;
-            }
-        }
-
-        System.out.println("Warning: BrowserStack session did not report completion in time.");
-    }
 
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             androidDriver.quit();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
-                waitForBrowserStackSessionToClose(sessionId);
-            }
-            androidDriver = null;
-            sessionId = null;
             try {
                 Thread.sleep(1500); // wait 1.5s before next scenario starts
             } catch (InterruptedException e) {
