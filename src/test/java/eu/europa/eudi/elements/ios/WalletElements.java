@@ -49,7 +49,7 @@ public class WalletElements {
     public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@label=\"plus\"]");
     public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@label=\"Choose from list\"]");
     public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"])[2]");
-    public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID\"])[2]");
+    public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"])[2]");
     public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@label=\"Delete document\"]");
     public static By pinTexfield1Ver = By.xpath("//XCUIElementTypeKey[@name=\"1\"]");
     public static By pinTexfield2Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[3]");
