@@ -15,10 +15,10 @@ on:
       test-cases:
         description: 'Choose Test Cases'
         type: string
-        default: "@automated and @US_VP_TC_01"
+        default: "@automated"
 
       platform:
-        description: 'Which platform to test (android, ios_execution_with_browserstack.yml or both)'
+        description: 'Platform to test - android'
         type: choice
         options:
           - ANDROID
@@ -57,11 +57,6 @@ jobs:
           fi
           echo "Downloading APK from: $apk_url"
           curl -L -o app.apk "$apk_url"
-
-#      - name: Setup Git LFS
-      ##        run: |
-      ##          git lfs install
-      ##          git lfs pull
 
       - name: Verify APK file
         run: |

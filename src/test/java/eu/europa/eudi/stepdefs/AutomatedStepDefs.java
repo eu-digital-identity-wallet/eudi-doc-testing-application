@@ -1645,5 +1645,12 @@ public class AutomatedStepDefs {
         test.mobile().wallet().successMessageForDrivingIsDisplayed();
         test.mobile().wallet().clickDone();
     }
+
+    @When("the user clicks on Credential Provider FormEU PID and submits")
+    public void theUserClicksOnCredentialProviderFormEUPIDAndSubmits() throws InterruptedException {
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
+    }
 }
 
