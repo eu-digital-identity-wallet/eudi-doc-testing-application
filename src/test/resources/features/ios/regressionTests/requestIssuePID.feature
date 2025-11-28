@@ -18,7 +18,7 @@ Feature: Request/Issue PID
   @US_RIP_TC_03 @before_01
   Scenario: Select authentication method and enter data
     Given the credentials provider is displayed on screen
-    When the user clicks on Credential Provider FormEU and submits
+    When the user clicks on Credential Provider FormEU and submits for pid
     Then the provider form is displayed for the user to register personal data
 
   @US_RIP_TC_04 @before_01

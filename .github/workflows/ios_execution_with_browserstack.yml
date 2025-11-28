@@ -15,10 +15,10 @@ on:
       test-cases:
         description: 'Choose Test Cases'
         type: string
-        default: "@automated and @US_VP_TC_01"
+        default: "@automated"
 
       platform:
-        description: 'Which platform to test (android, ios or both)'
+        description: 'Platform to test - iOS'
         type: choice
         options:
           - IOS
@@ -42,11 +42,6 @@ jobs:
           clean: true
           lfs: false
           ref: ${{ inputs.branch-to-checkout || 'main' }}
-
-#      - name: Setup Git LFS
-#        run: |
-#          git lfs install
-#          git lfs pull
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -94,8 +89,6 @@ jobs:
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
       - name: Run iOS Selenium Appium tests on BrowserStack Farm
-        #        env:
-        #          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
         if: ${{ inputs.platform == 'IOS' || inputs.platform == 'both' }}
         continue-on-error: true
         run: |

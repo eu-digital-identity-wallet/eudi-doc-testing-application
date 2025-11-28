@@ -13,7 +13,7 @@ Feature: Request/Issue mDL (MSO Mdoc)
     When the user clicks the add doc button
     And the add document page is displayed
     And the user clicks the driving license button
-    Then the user is redirected to the issuer service to issue mDL (MSO Mdoc)
+    Then the user is redirected to the issuer service to issue mDL
 
   @US_RIM_TC_03 @before_01
   Scenario: Country and credential provider selection
