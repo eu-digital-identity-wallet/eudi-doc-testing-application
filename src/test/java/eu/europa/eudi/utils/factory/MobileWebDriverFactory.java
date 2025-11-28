@@ -245,8 +245,8 @@ public class MobileWebDriverFactory {
 
         for (int i = 0; i < 1000; i++) {  // 20 seconds max
             try {
-                URL url = new URL("https://" + username + ":" + accessKey +
-                        "@api.browserstack.com/app-automate/sessions/" + sessionId + ".json");
+                URL url = new URL(String.format("https://%s:%s@api.browserstack.com/app-automate/sessions/" + sessionId + ".json", username, accessKey));
+
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
                 StringBuilder response = new StringBuilder();

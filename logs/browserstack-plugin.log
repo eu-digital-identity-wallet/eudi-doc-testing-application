@@ -5605,3 +5605,15 @@
 17:10:03.653 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
 17:10:03.653 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
 17:10:03.653 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:55:59.860 [ApplicationImpl pooled thread 528] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:55:59.860 [ApplicationImpl pooled thread 528] INFO  com.browserstack.sdk.utils.Helpers - true
+09:55:59.861 [ApplicationImpl pooled thread 528] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:55:59.861 [ApplicationImpl pooled thread 528] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:55:59.861 [ApplicationImpl pooled thread 528] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:55:59.861 [ApplicationImpl pooled thread 528] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:56:45.917 [ApplicationImpl pooled thread 530] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:56:45.917 [ApplicationImpl pooled thread 530] INFO  com.browserstack.sdk.utils.Helpers - true
+09:56:45.919 [ApplicationImpl pooled thread 530] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:56:45.919 [ApplicationImpl pooled thread 530] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:56:45.919 [ApplicationImpl pooled thread 530] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:56:45.920 [ApplicationImpl pooled thread 530] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
