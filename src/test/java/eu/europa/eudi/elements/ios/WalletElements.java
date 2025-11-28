@@ -34,23 +34,23 @@ public class WalletElements {
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@label=\"Family Name(s)\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@label=\"Birth Date\"]");
-    public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@name=\"Add my Digital ID\"]");
+    public static By clickAddMyDigitalID = By.xpath("//XCUIElementTypeButton[@label=\"Add my Digital ID\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu.europa.ec.eudi.pid_mdoc\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\" or @name=\" PID (MSO Mdoc)\"]");
-    public static By clickDone = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
+    public static By clickDone = By.xpath("//XCUIElementTypeButton[@label=\"Done\"]");
     public static By clickOnDocuments = By.xpath("//XCUIElementTypeButton[@name='doc.fill' or @label='Documents']");
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
-    public static By detailsAreBlurred = By.xpath("//XCUIElementTypeOther[@name=\"Hide\"]");
-    public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
-    public static By detailsAreNotBlurred = By.xpath("//XCUIElementTypeButton[@name=\"Show\"]"); //XCUIElementTypeButton[@name="Hide"]
+    public static By detailsAreBlurred = By.xpath("//XCUIElementTypeOther[@label=\"Hide\"]");
+    public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@label=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
+    public static By detailsAreNotBlurred = By.xpath("//XCUIElementTypeButton[@label=\"Show\"]"); //XCUIElementTypeButton[@name="Hide"]
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
     public static By clickHomeButton = By.xpath("//XCUIElementTypeButton[@label=\"Home\"]");//"//XCUIElementTypeButton[@name=\"house.fill\"]"
-    public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@name=\"plus\"]");
-    public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose from list\"]");
-    public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[2]");
-    public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID\"])[2]");
-    public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@name=\"Delete document\"]");
+    public static By clickToAddDocument = By.xpath("//XCUIElementTypeOther[@label=\"plus\"]");
+    public static By clickFromList = By.xpath("//XCUIElementTypeStaticText[@label=\"Choose from list\"]");
+    public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"])[2]");
+    public static By clickSecondPID = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID\"])[2]");
+    public static By clickDeleteDocument = By.xpath("//XCUIElementTypeButton[@label=\"Delete document\"]");
     public static By pinTexfield1Ver = By.xpath("//XCUIElementTypeKey[@name=\"1\"]");
     public static By pinTexfield2Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[3]");
     public static By pinTexfield3Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[4]");

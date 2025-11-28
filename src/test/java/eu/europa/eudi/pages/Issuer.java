@@ -432,15 +432,22 @@ public class Issuer {
                     30
             );
             String headerText = driver.findElement(
-                    IssuerElements.formIsDisplayedAndroid
+                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid
             ).getText().trim();
 
             Assert.assertEquals(Literals.Issuer.FORM_ANDROID.label, headerText);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM_IOS.label, pageHeader);
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed,
+                    Literals.Issuer.FORM_IOS.label,
+                    driver,
+                    30
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.FORM_IOS.label, headerText);
         }
     }
 
@@ -598,8 +605,17 @@ public class Issuer {
 
             Assert.assertEquals(Literals.Issuer.FORM_DEV.label, headerText);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, pageHeader);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev,
+                    Literals.Issuer.FORM_DEV.label,
+                    driver,
+                    30
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, headerText);
         }
     }
 
@@ -619,8 +635,17 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, pageHeader);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev,
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
+                    driver,
+                    30
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
         }
     }
 
@@ -903,8 +928,17 @@ public class Issuer {
             Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, headerText);
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, pageHeader);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed,
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                    driver,
+                    30
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, headerText);
         }
     }
 

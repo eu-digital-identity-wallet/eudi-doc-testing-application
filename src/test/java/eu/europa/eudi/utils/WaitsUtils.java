@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,35 +15,45 @@ import java.util.Collections;
 public class WaitsUtils {
     public static WebElement waitForExactText(By locator,
                                               String expectedText,
-                                              AndroidDriver driver,
+                                              AppiumDriver driver,
                                               int timeoutSeconds) {
 
-        long endTime = System.currentTimeMillis() + (timeoutSeconds * 1000L * 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 
-        while (System.currentTimeMillis() < endTime) {
+        // Define a custom ExpectedCondition that returns a WebElement
+        ExpectedCondition<WebElement> textMatches = new ExpectedCondition<WebElement>() {
+            @Override
+            public WebElement apply(WebDriver driver) {
+                try {
+                    // Find the element on each check to avoid staleness
+                    WebElement element = driver.findElement(locator);
+                    String actualText = element.getText().trim();
 
-            try {
-                // Always get a fresh element
-                WebElement el = driver.findElement(locator);
-                String actual = el.getText().trim();
-
-                System.out.println("DEBUG TEXT: [" + actual + "] EXPECTED: [" + expectedText + "]");
-
-                if (actual.equalsIgnoreCase(expectedText)) {
-                    // Return a fresh element reference
-                    return driver.findElement(locator);
+                    // If text matches, return the element. WebDriverWait will stop waiting.
+                    if (actualText.equalsIgnoreCase(expectedText)) {
+                        return element;
+                    }
+                } catch (NoSuchElementException | StaleElementReferenceException e) {
+                    // Element not found or stale, wait will continue polling.
                 }
-
-            } catch (StaleElementReferenceException stale) {
-                System.out.println("⚠️ Stale element detected — retrying...");
-            } catch (Exception ignored) {
-                // Other errors during wait are ignored and retried
+                // If text does not match or an exception occurred, return null.
+                // WebDriverWait will continue polling until timeout.
+                return null;
             }
 
-            try { Thread.sleep(1000); } catch (InterruptedException ignored) {}
-        }
+            @Override
+            public String toString() {
+                return "element with locator '" + locator + "' to have exact text '" + expectedText + "'";
+            }
+        };
 
-        throw new TimeoutException("Text '" + expectedText + "' not found within timeout");
+        // Use the custom condition with wait.until()
+        try {
+            return wait.until(textMatches);
+        } catch (TimeoutException e) {
+            // Throw a more informative exception
+            throw new TimeoutException("Timeout: Text '" + expectedText + "' not found for locator '" + locator + "' within " + timeoutSeconds + " seconds.", e);
+        }
     }
 
     public static WebElement waitVisibleThenClickable(By locator,
