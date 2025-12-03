@@ -1,5 +1,5 @@
-@IOS @automated @US_RIM
-Feature: Request/Issue mDL (MSO Mdoc)
+@ANDROID @automated @US_RIM
+Feature: Add mDL By Choosing From List
 
   @US_RIM_TC_01 @before_01
   Scenario: Log in successfully
@@ -23,9 +23,9 @@ Feature: Request/Issue mDL (MSO Mdoc)
 
   @US_RIM_TC_04 @before_01
   Scenario: Register personal data and view driving license
-    Given a provider form is displayed for mDL (MSO Mdoc)
+    Given a provider form is displayed for mdl
     When the user registers personal data
-    Then a success message for mDL (MSO Mdoc) is displayed
+    Then a success message for mdl is displayed
     And the driving license is displayed in the wallet
 
 
