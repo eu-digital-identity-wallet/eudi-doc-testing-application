@@ -1,5 +1,5 @@
 @IOS @automated @US_RIP
-Feature: Request/Issue PID
+Feature: Add Pid By Choosing From List
 
   @US_RIP_TC_01 @before_01
   Scenario: User successfully logs in and sees the dashboard
