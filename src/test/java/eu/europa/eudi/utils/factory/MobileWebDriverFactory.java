@@ -105,6 +105,7 @@ public class MobileWebDriverFactory {
                 caps.setCapability("enableLogcatLogging", true);
                 caps.setCapability("autoGrantPermissions", true);
                 caps.setCapability("newCommandTimeout", 120);
+                caps.setCapability("waitForIdleTimeout", 150);
                 caps.setCapability("disableWindowAnimation", true);
                 caps.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
 
@@ -186,7 +187,7 @@ public class MobileWebDriverFactory {
                 caps1.setCapability("app", apkPath1.getAbsolutePath());
                 caps1.setCapability("autoAcceptAlerts", true);
                 caps1.setCapability("usePrebuiltWDA", true);
-                caps1.setCapability("waitForIdleTimeout", 100);
+                caps1.setCapability("waitForIdleTimeout", 150);
                 caps1.setCapability("autoDismissAlerts", true);
                 caps1.setCapability("newCommandTimeout", 180);
                 caps1.setCapability("includeNonModalElements", true);

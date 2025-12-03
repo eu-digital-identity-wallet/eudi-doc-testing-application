@@ -214,12 +214,12 @@ Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac an
 
 5. Run the tests:
 
-   1. First, ensure ReadmeManager.java is configured for your OS. Open the file at src/test/java/eu/europa/eudi/utils/factory/ReadmeManager.java and set the script name on line 6 to either ./local-execution-mac.sh for running iOS and android test or local-execution.cmd. for running android tests.
+   1. First, ensure locallyTestExecution.java is configured for your OS. Open the file at src/test/java/eu/europa/eudi/utils/factory/locallyTestExecution.java and set the script name on line 6 to either ./local-execution-mac.sh for running iOS and android test or local-execution.cmd. for running android tests.
    2. Open a terminal, navigate to the correct directory, compile, and run the Java file:
 
       1. `cd ./src/test/java/eu/europa/eudi/utils/factory`
-      2. `javac ReadmeManager.java`
-      3. `java ReadmeManager`
+      2. `javac locallyTestExecution.java`
+      3. `java locallyTestExecution`
                           
 
 6. Export Test Report - Locally
