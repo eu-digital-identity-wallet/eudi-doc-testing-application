@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2025.10.31-Demo</version>
+    <version>EUDI_Wallet_Version_2025.12.34-Demo</version>
     <packaging>jar</packaging>
 
     <properties>

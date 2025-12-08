@@ -60,4 +60,5 @@ public class WalletElements {
     public static By clickPIDOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickDrivingLicenceButtonOnDocuments = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/ancestor::*[@clickable='true'][1]\n");
     public static By clickPIDOnDocumentsSecond = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
+    public static By findConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
 }

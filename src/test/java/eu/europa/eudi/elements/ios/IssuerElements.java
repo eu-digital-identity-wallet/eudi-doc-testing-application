@@ -46,4 +46,7 @@ public class IssuerElements {
     public static By clickBirthDateDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[5]");
     public static By enterCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]/XCUIElementTypeTextField[1]");
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");
+    public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
+    public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
+    public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
 }
