@@ -35,13 +35,13 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "https://ec.issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://ec.issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -55,7 +55,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://ec.issuer.eudiw.dev/";
+            String url = "https://ec.dev.issuer.eudiw.dev";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -67,7 +67,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://ec.issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
 
             try {
                 try {
@@ -414,7 +414,7 @@ public class Issuer {
         }
     }
 
-    public void clickAuthorize () {
+    public void clickAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
         } else {
@@ -422,14 +422,14 @@ public class Issuer {
         }
     }
 
-    public void formIsDisplayed () {
+    public void formIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement header = WaitsUtils.waitForExactText(
                     eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid,
                     Literals.Issuer.FORM_ANDROID.label,
                     driver,
-                    30
+                    50
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid
@@ -470,7 +470,6 @@ public class Issuer {
         scrollUntilAuthorize();
         clickAuthorize();
     }
-
 
 
     public void issuePIDDev() throws InterruptedException {
@@ -586,7 +585,8 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenFamily = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.familyNameFieldDev);
             givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");        }
+            givenFamily.sendKeys("Theofilatou");
+        }
     }
 
     private void formIsDisplayedDev() {
@@ -662,11 +662,47 @@ public class Issuer {
         clickScreen();
         chooseExpiryDate();
         chooseIssueDate();
+        scrollUntilFindName();
+        enterFamilyNameOnMdl();
+        enterGivenNameOnMdl();
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    public void enterGivenNameOnMdl() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickGivenName)).click();
+            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName));
+            givenName.clear();
+            givenName.sendKeys("Foteini");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameOnMdl)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameOnMdl);
+            givenName.clear();
+            givenName.sendKeys("Foteini");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameText)).click();
+        }
+    }
+
+    public void enterFamilyNameOnMdl() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName)).click();
+            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName));
+            givenFamily.clear();
+            givenFamily.sendKeys("Theofilatou");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyNameOnMdl)).click();
+            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyNameOnMdl));
+            givenFamily.clear();
+            givenFamily.sendKeys("Theofilatou");
+        }
     }
 
     private void codeIsVisible() {
@@ -694,7 +730,7 @@ public class Issuer {
             searchBar.clear();
             searchBar.sendKeys("1234");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
-        }else{
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement searchBar = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.enterCode);
@@ -728,7 +764,7 @@ public class Issuer {
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-        }else{
+        } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
                 // Get screen size
@@ -797,8 +833,7 @@ public class Issuer {
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-        }
-    else{
+        } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
                 // Get screen size
@@ -807,21 +842,21 @@ public class Issuer {
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
                 // --- START: REPLACEMENT FOR TouchAction ---
-                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                 Sequence swipe = new Sequence(finger, 1);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 // This replaces your waitAction
-                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                 Thread.sleep(50);
+                Thread.sleep(50);
             }
-    }
+        }
     }
 
     public void scrollUntilCountry() throws InterruptedException {
@@ -848,7 +883,7 @@ public class Issuer {
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
             }
-        }else{
+        } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
                 // Get screen size
@@ -870,7 +905,8 @@ public class Issuer {
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
-            }}
+            }
+        }
     }
 
     public void authorizeIsDisplayed() {
@@ -1012,12 +1048,12 @@ public class Issuer {
         }
 
         // === Your exact scroll values ===
-        int width  = driver.manage().window().getSize().width;
+        int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
 
         int startX = width / 2;
         int startY = (int) (height * 0.6);
-        int endY   = (int) (height * 0.4);
+        int endY = (int) (height * 0.4);
 
         // === Your exact PointerInput scroll ===
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -1041,5 +1077,84 @@ public class Issuer {
             driver.context(originalContext);
         }
     }
-}
 
+    public void scrollUntilFindConfirm() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(WalletElements.findConfirm);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                }
+            }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
+        }
+    }
+
+    public void scrollUntilFindName() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 4; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 5; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                Thread.sleep(50);
+            }
+        }
+        }
+    }

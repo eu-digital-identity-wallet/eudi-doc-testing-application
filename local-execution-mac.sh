@@ -6,7 +6,7 @@ rm -rf target/site/serenity
 mvn serenity:aggregate -Dtags="US_VP_TC_01 or US_VP_TC_02"
 echo "--- Applying custom CSS ---"
 
-REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.10.31-Demo/css"
+REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/css"
 CUSTOM_CSS="src/test/resources/custom-style.css"
 
 if [ -f "$CUSTOM_CSS" ]; then

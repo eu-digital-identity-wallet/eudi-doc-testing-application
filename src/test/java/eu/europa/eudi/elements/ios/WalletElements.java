@@ -61,4 +61,5 @@ public class WalletElements {
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.xpath("(//XCUIElementTypeButton[@name=\"Delete document\"])[2]");
     public static By detailsAreBlurredReal = By.xpath("//XCUIElementTypeOther[@name=\"eye.slash\"]");
+    public static By addPIDPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose a digital document from the list below to add to your wallet.\"]");
 }

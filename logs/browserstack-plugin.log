@@ -5779,3 +5779,623 @@
 11:22:35.213 [ApplicationImpl pooled thread 145] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
 11:22:35.213 [ApplicationImpl pooled thread 145] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
 11:22:35.213 [ApplicationImpl pooled thread 145] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:30:38.191 [ApplicationImpl pooled thread 61] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:30:38.192 [ApplicationImpl pooled thread 61] INFO  com.browserstack.sdk.utils.Helpers - true
+09:30:38.195 [ApplicationImpl pooled thread 61] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:30:38.196 [ApplicationImpl pooled thread 61] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:30:38.196 [ApplicationImpl pooled thread 61] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:30:38.196 [ApplicationImpl pooled thread 61] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:34:01.485 [ApplicationImpl pooled thread 72] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:34:01.485 [ApplicationImpl pooled thread 72] INFO  com.browserstack.sdk.utils.Helpers - true
+09:34:01.488 [ApplicationImpl pooled thread 72] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:34:01.488 [ApplicationImpl pooled thread 72] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:34:01.488 [ApplicationImpl pooled thread 72] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:34:01.488 [ApplicationImpl pooled thread 72] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:22:29.068 [ApplicationImpl pooled thread 229] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:22:29.068 [ApplicationImpl pooled thread 229] INFO  com.browserstack.sdk.utils.Helpers - true
+16:22:29.070 [ApplicationImpl pooled thread 229] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:22:29.070 [ApplicationImpl pooled thread 229] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:22:29.070 [ApplicationImpl pooled thread 229] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:22:29.070 [ApplicationImpl pooled thread 229] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:27:59.888 [ApplicationImpl pooled thread 242] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:27:59.888 [ApplicationImpl pooled thread 242] INFO  com.browserstack.sdk.utils.Helpers - true
+16:27:59.890 [ApplicationImpl pooled thread 242] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:27:59.890 [ApplicationImpl pooled thread 242] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:27:59.891 [ApplicationImpl pooled thread 242] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:27:59.891 [ApplicationImpl pooled thread 242] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:41:48.256 [ApplicationImpl pooled thread 257] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:41:48.257 [ApplicationImpl pooled thread 257] INFO  com.browserstack.sdk.utils.Helpers - true
+16:41:48.259 [ApplicationImpl pooled thread 257] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:41:48.259 [ApplicationImpl pooled thread 257] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:41:48.259 [ApplicationImpl pooled thread 257] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:41:48.259 [ApplicationImpl pooled thread 257] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:53:00.861 [ApplicationImpl pooled thread 341] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:53:00.861 [ApplicationImpl pooled thread 341] INFO  com.browserstack.sdk.utils.Helpers - true
+11:53:00.864 [ApplicationImpl pooled thread 341] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:53:00.865 [ApplicationImpl pooled thread 341] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:53:00.865 [ApplicationImpl pooled thread 341] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:53:00.865 [ApplicationImpl pooled thread 341] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:56:07.365 [ApplicationImpl pooled thread 349] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:56:07.365 [ApplicationImpl pooled thread 349] INFO  com.browserstack.sdk.utils.Helpers - true
+11:56:07.366 [ApplicationImpl pooled thread 349] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:56:07.366 [ApplicationImpl pooled thread 349] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:56:07.367 [ApplicationImpl pooled thread 349] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:56:07.367 [ApplicationImpl pooled thread 349] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:01:40.144 [ApplicationImpl pooled thread 353] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:01:40.144 [ApplicationImpl pooled thread 353] INFO  com.browserstack.sdk.utils.Helpers - true
+12:01:40.146 [ApplicationImpl pooled thread 353] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:01:40.146 [ApplicationImpl pooled thread 353] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:01:40.146 [ApplicationImpl pooled thread 353] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:01:40.146 [ApplicationImpl pooled thread 353] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:11:57.034 [ApplicationImpl pooled thread 362] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:11:57.034 [ApplicationImpl pooled thread 362] INFO  com.browserstack.sdk.utils.Helpers - true
+12:11:57.045 [ApplicationImpl pooled thread 362] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:11:57.045 [ApplicationImpl pooled thread 362] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:11:57.045 [ApplicationImpl pooled thread 362] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:11:57.045 [ApplicationImpl pooled thread 362] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:24:15.381 [ApplicationImpl pooled thread 374] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:24:15.381 [ApplicationImpl pooled thread 374] INFO  com.browserstack.sdk.utils.Helpers - true
+12:24:15.388 [ApplicationImpl pooled thread 374] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:24:15.388 [ApplicationImpl pooled thread 374] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:24:15.388 [ApplicationImpl pooled thread 374] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:24:15.388 [ApplicationImpl pooled thread 374] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:28:01.962 [ApplicationImpl pooled thread 377] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:28:01.962 [ApplicationImpl pooled thread 377] INFO  com.browserstack.sdk.utils.Helpers - true
+12:28:01.963 [ApplicationImpl pooled thread 377] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:28:01.964 [ApplicationImpl pooled thread 377] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:28:01.964 [ApplicationImpl pooled thread 377] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:28:01.964 [ApplicationImpl pooled thread 377] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:33:02.111 [ApplicationImpl pooled thread 385] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:33:02.111 [ApplicationImpl pooled thread 385] INFO  com.browserstack.sdk.utils.Helpers - true
+12:33:02.112 [ApplicationImpl pooled thread 385] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:33:02.112 [ApplicationImpl pooled thread 385] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:33:02.112 [ApplicationImpl pooled thread 385] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:33:02.112 [ApplicationImpl pooled thread 385] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:36:25.748 [ApplicationImpl pooled thread 388] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:36:25.748 [ApplicationImpl pooled thread 388] INFO  com.browserstack.sdk.utils.Helpers - true
+12:36:25.749 [ApplicationImpl pooled thread 388] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:36:25.749 [ApplicationImpl pooled thread 388] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:36:25.749 [ApplicationImpl pooled thread 388] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:36:25.749 [ApplicationImpl pooled thread 388] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:51:01.386 [ApplicationImpl pooled thread 395] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:51:01.386 [ApplicationImpl pooled thread 395] INFO  com.browserstack.sdk.utils.Helpers - true
+12:51:01.388 [ApplicationImpl pooled thread 395] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:51:01.388 [ApplicationImpl pooled thread 395] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:51:01.389 [ApplicationImpl pooled thread 395] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:51:01.389 [ApplicationImpl pooled thread 395] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:58:05.563 [ApplicationImpl pooled thread 401] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:58:05.564 [ApplicationImpl pooled thread 401] INFO  com.browserstack.sdk.utils.Helpers - true
+12:58:05.566 [ApplicationImpl pooled thread 401] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:58:05.566 [ApplicationImpl pooled thread 401] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:58:05.567 [ApplicationImpl pooled thread 401] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:58:05.567 [ApplicationImpl pooled thread 401] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:03:31.137 [ApplicationImpl pooled thread 404] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:03:31.137 [ApplicationImpl pooled thread 404] INFO  com.browserstack.sdk.utils.Helpers - true
+13:03:31.139 [ApplicationImpl pooled thread 404] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:03:31.139 [ApplicationImpl pooled thread 404] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:03:31.139 [ApplicationImpl pooled thread 404] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:03:31.139 [ApplicationImpl pooled thread 404] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:08:10.265 [ApplicationImpl pooled thread 423] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:08:10.265 [ApplicationImpl pooled thread 423] INFO  com.browserstack.sdk.utils.Helpers - true
+13:08:10.266 [ApplicationImpl pooled thread 423] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:08:10.266 [ApplicationImpl pooled thread 423] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:08:10.266 [ApplicationImpl pooled thread 423] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:08:10.266 [ApplicationImpl pooled thread 423] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:18:12.653 [ApplicationImpl pooled thread 428] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:18:12.654 [ApplicationImpl pooled thread 428] INFO  com.browserstack.sdk.utils.Helpers - true
+13:18:12.654 [ApplicationImpl pooled thread 428] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:18:12.654 [ApplicationImpl pooled thread 428] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:18:12.654 [ApplicationImpl pooled thread 428] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:18:12.654 [ApplicationImpl pooled thread 428] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:23:48.506 [ApplicationImpl pooled thread 442] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:23:48.506 [ApplicationImpl pooled thread 442] INFO  com.browserstack.sdk.utils.Helpers - true
+13:23:48.508 [ApplicationImpl pooled thread 442] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:23:48.508 [ApplicationImpl pooled thread 442] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:23:48.508 [ApplicationImpl pooled thread 442] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:23:48.508 [ApplicationImpl pooled thread 442] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:29:08.110 [ApplicationImpl pooled thread 448] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:29:08.112 [ApplicationImpl pooled thread 448] INFO  com.browserstack.sdk.utils.Helpers - true
+13:29:08.113 [ApplicationImpl pooled thread 448] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:29:08.113 [ApplicationImpl pooled thread 448] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:29:08.113 [ApplicationImpl pooled thread 448] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:29:08.114 [ApplicationImpl pooled thread 448] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:14:53.406 [ApplicationImpl pooled thread 467] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:14:53.407 [ApplicationImpl pooled thread 467] INFO  com.browserstack.sdk.utils.Helpers - true
+14:14:53.408 [ApplicationImpl pooled thread 467] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:14:53.409 [ApplicationImpl pooled thread 467] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:14:53.409 [ApplicationImpl pooled thread 467] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:14:53.409 [ApplicationImpl pooled thread 467] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:48:58.175 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:48:58.175 [ApplicationImpl pooled thread 496] INFO  com.browserstack.sdk.utils.Helpers - true
+14:48:58.176 [ApplicationImpl pooled thread 496] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:48:58.176 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:48:58.176 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:48:58.176 [ApplicationImpl pooled thread 496] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:00:32.051 [ApplicationImpl pooled thread 499] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:00:32.051 [ApplicationImpl pooled thread 499] INFO  com.browserstack.sdk.utils.Helpers - true
+15:00:32.052 [ApplicationImpl pooled thread 499] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:00:32.052 [ApplicationImpl pooled thread 499] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:00:32.052 [ApplicationImpl pooled thread 499] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:00:32.052 [ApplicationImpl pooled thread 499] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:55:03.320 [ApplicationImpl pooled thread 538] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:55:03.320 [ApplicationImpl pooled thread 538] INFO  com.browserstack.sdk.utils.Helpers - true
+15:55:03.322 [ApplicationImpl pooled thread 538] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:55:03.322 [ApplicationImpl pooled thread 538] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:55:03.323 [ApplicationImpl pooled thread 538] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:55:03.323 [ApplicationImpl pooled thread 538] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:07:25.150 [ApplicationImpl pooled thread 549] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:07:25.150 [ApplicationImpl pooled thread 549] INFO  com.browserstack.sdk.utils.Helpers - true
+16:07:25.151 [ApplicationImpl pooled thread 549] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:07:25.151 [ApplicationImpl pooled thread 549] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:07:25.151 [ApplicationImpl pooled thread 549] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:07:25.151 [ApplicationImpl pooled thread 549] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:10:30.049 [ApplicationImpl pooled thread 554] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:10:30.049 [ApplicationImpl pooled thread 554] INFO  com.browserstack.sdk.utils.Helpers - true
+16:10:30.064 [ApplicationImpl pooled thread 554] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:10:30.064 [ApplicationImpl pooled thread 554] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:10:30.064 [ApplicationImpl pooled thread 554] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:10:30.064 [ApplicationImpl pooled thread 554] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:16:50.521 [ApplicationImpl pooled thread 558] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:16:50.521 [ApplicationImpl pooled thread 558] INFO  com.browserstack.sdk.utils.Helpers - true
+16:16:50.523 [ApplicationImpl pooled thread 558] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:16:50.523 [ApplicationImpl pooled thread 558] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:16:50.523 [ApplicationImpl pooled thread 558] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:16:50.523 [ApplicationImpl pooled thread 558] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:26:58.583 [ApplicationImpl pooled thread 570] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:26:58.584 [ApplicationImpl pooled thread 570] INFO  com.browserstack.sdk.utils.Helpers - true
+16:26:58.585 [ApplicationImpl pooled thread 570] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:26:58.585 [ApplicationImpl pooled thread 570] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:26:58.585 [ApplicationImpl pooled thread 570] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:26:58.585 [ApplicationImpl pooled thread 570] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:34:18.903 [ApplicationImpl pooled thread 577] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:34:18.903 [ApplicationImpl pooled thread 577] INFO  com.browserstack.sdk.utils.Helpers - true
+16:34:18.904 [ApplicationImpl pooled thread 577] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:34:18.904 [ApplicationImpl pooled thread 577] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:34:18.904 [ApplicationImpl pooled thread 577] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:34:18.904 [ApplicationImpl pooled thread 577] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:45:49.862 [ApplicationImpl pooled thread 568] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:45:49.862 [ApplicationImpl pooled thread 568] INFO  com.browserstack.sdk.utils.Helpers - true
+16:45:49.864 [ApplicationImpl pooled thread 568] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:45:49.864 [ApplicationImpl pooled thread 568] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:45:49.864 [ApplicationImpl pooled thread 568] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:45:49.864 [ApplicationImpl pooled thread 568] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:52:16.745 [ApplicationImpl pooled thread 589] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:52:16.745 [ApplicationImpl pooled thread 589] INFO  com.browserstack.sdk.utils.Helpers - true
+16:52:16.746 [ApplicationImpl pooled thread 589] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:52:16.746 [ApplicationImpl pooled thread 589] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:52:16.746 [ApplicationImpl pooled thread 589] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:52:16.746 [ApplicationImpl pooled thread 589] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:10:27.040 [ApplicationImpl pooled thread 623] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:10:27.040 [ApplicationImpl pooled thread 623] INFO  com.browserstack.sdk.utils.Helpers - true
+09:10:27.042 [ApplicationImpl pooled thread 623] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:10:27.042 [ApplicationImpl pooled thread 623] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:10:27.042 [ApplicationImpl pooled thread 623] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:10:27.042 [ApplicationImpl pooled thread 623] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:13:32.796 [ApplicationImpl pooled thread 637] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:13:32.796 [ApplicationImpl pooled thread 637] INFO  com.browserstack.sdk.utils.Helpers - true
+09:13:32.798 [ApplicationImpl pooled thread 637] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:13:32.798 [ApplicationImpl pooled thread 637] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:13:32.798 [ApplicationImpl pooled thread 637] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:13:32.798 [ApplicationImpl pooled thread 637] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:22:43.646 [ApplicationImpl pooled thread 642] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:22:43.646 [ApplicationImpl pooled thread 642] INFO  com.browserstack.sdk.utils.Helpers - true
+09:22:43.647 [ApplicationImpl pooled thread 642] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:22:43.647 [ApplicationImpl pooled thread 642] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:22:43.647 [ApplicationImpl pooled thread 642] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:22:43.647 [ApplicationImpl pooled thread 642] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:25:23.742 [ApplicationImpl pooled thread 646] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:25:23.743 [ApplicationImpl pooled thread 646] INFO  com.browserstack.sdk.utils.Helpers - true
+09:25:23.746 [ApplicationImpl pooled thread 646] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:25:23.746 [ApplicationImpl pooled thread 646] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:25:23.746 [ApplicationImpl pooled thread 646] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:25:23.746 [ApplicationImpl pooled thread 646] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:29:25.046 [ApplicationImpl pooled thread 658] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:29:25.046 [ApplicationImpl pooled thread 658] INFO  com.browserstack.sdk.utils.Helpers - true
+09:29:25.047 [ApplicationImpl pooled thread 658] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:29:25.047 [ApplicationImpl pooled thread 658] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:29:25.047 [ApplicationImpl pooled thread 658] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:29:25.047 [ApplicationImpl pooled thread 658] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:37:00.412 [ApplicationImpl pooled thread 670] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:37:00.412 [ApplicationImpl pooled thread 670] INFO  com.browserstack.sdk.utils.Helpers - true
+09:37:00.413 [ApplicationImpl pooled thread 670] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:37:00.413 [ApplicationImpl pooled thread 670] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:37:00.413 [ApplicationImpl pooled thread 670] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:37:00.413 [ApplicationImpl pooled thread 670] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:54:21.155 [ApplicationImpl pooled thread 693] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:54:21.155 [ApplicationImpl pooled thread 693] INFO  com.browserstack.sdk.utils.Helpers - true
+09:54:21.156 [ApplicationImpl pooled thread 693] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:54:21.156 [ApplicationImpl pooled thread 693] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:54:21.156 [ApplicationImpl pooled thread 693] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:54:21.156 [ApplicationImpl pooled thread 693] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+09:58:21.741 [ApplicationImpl pooled thread 704] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+09:58:21.742 [ApplicationImpl pooled thread 704] INFO  com.browserstack.sdk.utils.Helpers - true
+09:58:21.743 [ApplicationImpl pooled thread 704] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:58:21.743 [ApplicationImpl pooled thread 704] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+09:58:21.743 [ApplicationImpl pooled thread 704] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+09:58:21.743 [ApplicationImpl pooled thread 704] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:11:23.271 [ApplicationImpl pooled thread 715] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:11:23.272 [ApplicationImpl pooled thread 715] INFO  com.browserstack.sdk.utils.Helpers - true
+10:11:23.274 [ApplicationImpl pooled thread 715] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:11:23.274 [ApplicationImpl pooled thread 715] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:11:23.274 [ApplicationImpl pooled thread 715] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:11:23.274 [ApplicationImpl pooled thread 715] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:27:46.094 [ApplicationImpl pooled thread 766] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:27:46.094 [ApplicationImpl pooled thread 766] INFO  com.browserstack.sdk.utils.Helpers - true
+10:27:46.095 [ApplicationImpl pooled thread 766] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:27:46.095 [ApplicationImpl pooled thread 766] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:27:46.095 [ApplicationImpl pooled thread 766] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:27:46.095 [ApplicationImpl pooled thread 766] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:32:28.916 [ApplicationImpl pooled thread 774] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:32:28.916 [ApplicationImpl pooled thread 774] INFO  com.browserstack.sdk.utils.Helpers - true
+10:32:28.917 [ApplicationImpl pooled thread 774] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:32:28.917 [ApplicationImpl pooled thread 774] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:32:28.917 [ApplicationImpl pooled thread 774] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:32:28.917 [ApplicationImpl pooled thread 774] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:40:28.248 [ApplicationImpl pooled thread 793] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:40:28.248 [ApplicationImpl pooled thread 793] INFO  com.browserstack.sdk.utils.Helpers - true
+10:40:28.250 [ApplicationImpl pooled thread 793] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:40:28.250 [ApplicationImpl pooled thread 793] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:40:28.250 [ApplicationImpl pooled thread 793] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:40:28.250 [ApplicationImpl pooled thread 793] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:45:26.728 [ApplicationImpl pooled thread 802] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:45:26.728 [ApplicationImpl pooled thread 802] INFO  com.browserstack.sdk.utils.Helpers - true
+10:45:26.729 [ApplicationImpl pooled thread 802] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:45:26.730 [ApplicationImpl pooled thread 802] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:45:26.730 [ApplicationImpl pooled thread 802] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:45:26.730 [ApplicationImpl pooled thread 802] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:50:23.681 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:50:23.681 [ApplicationImpl pooled thread 817] INFO  com.browserstack.sdk.utils.Helpers - true
+10:50:23.683 [ApplicationImpl pooled thread 817] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:50:23.683 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:50:23.683 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:50:23.683 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:56:07.869 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:56:07.869 [ApplicationImpl pooled thread 817] INFO  com.browserstack.sdk.utils.Helpers - true
+10:56:07.871 [ApplicationImpl pooled thread 817] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:56:07.871 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:56:07.871 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:56:07.871 [ApplicationImpl pooled thread 817] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+10:59:47.983 [ApplicationImpl pooled thread 825] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+10:59:47.984 [ApplicationImpl pooled thread 825] INFO  com.browserstack.sdk.utils.Helpers - true
+10:59:47.986 [ApplicationImpl pooled thread 825] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:59:47.986 [ApplicationImpl pooled thread 825] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+10:59:47.986 [ApplicationImpl pooled thread 825] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+10:59:47.986 [ApplicationImpl pooled thread 825] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:08:58.687 [ApplicationImpl pooled thread 844] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:08:58.687 [ApplicationImpl pooled thread 844] INFO  com.browserstack.sdk.utils.Helpers - true
+11:08:58.688 [ApplicationImpl pooled thread 844] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:08:58.688 [ApplicationImpl pooled thread 844] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:08:58.688 [ApplicationImpl pooled thread 844] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:08:58.688 [ApplicationImpl pooled thread 844] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:10:07.044 [ApplicationImpl pooled thread 835] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:10:07.044 [ApplicationImpl pooled thread 835] INFO  com.browserstack.sdk.utils.Helpers - true
+11:10:07.045 [ApplicationImpl pooled thread 835] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:10:07.045 [ApplicationImpl pooled thread 835] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:10:07.045 [ApplicationImpl pooled thread 835] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:10:07.045 [ApplicationImpl pooled thread 835] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:15:01.319 [ApplicationImpl pooled thread 872] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:15:01.320 [ApplicationImpl pooled thread 872] INFO  com.browserstack.sdk.utils.Helpers - true
+11:15:01.322 [ApplicationImpl pooled thread 872] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:15:01.323 [ApplicationImpl pooled thread 872] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:15:01.323 [ApplicationImpl pooled thread 872] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:15:01.323 [ApplicationImpl pooled thread 872] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:21:11.879 [ApplicationImpl pooled thread 897] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:21:11.879 [ApplicationImpl pooled thread 897] INFO  com.browserstack.sdk.utils.Helpers - true
+11:21:11.887 [ApplicationImpl pooled thread 897] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:21:11.887 [ApplicationImpl pooled thread 897] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:21:11.887 [ApplicationImpl pooled thread 897] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:21:11.887 [ApplicationImpl pooled thread 897] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:24:16.461 [ApplicationImpl pooled thread 880] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:24:16.461 [ApplicationImpl pooled thread 880] INFO  com.browserstack.sdk.utils.Helpers - true
+11:24:16.462 [ApplicationImpl pooled thread 880] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:24:16.462 [ApplicationImpl pooled thread 880] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:24:16.462 [ApplicationImpl pooled thread 880] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:24:16.462 [ApplicationImpl pooled thread 880] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:28:50.037 [ApplicationImpl pooled thread 900] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:28:50.037 [ApplicationImpl pooled thread 900] INFO  com.browserstack.sdk.utils.Helpers - true
+11:28:50.039 [ApplicationImpl pooled thread 900] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:28:50.039 [ApplicationImpl pooled thread 900] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:28:50.040 [ApplicationImpl pooled thread 900] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:28:50.040 [ApplicationImpl pooled thread 900] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:33:02.770 [ApplicationImpl pooled thread 909] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:33:02.771 [ApplicationImpl pooled thread 909] INFO  com.browserstack.sdk.utils.Helpers - true
+11:33:02.773 [ApplicationImpl pooled thread 909] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:33:02.773 [ApplicationImpl pooled thread 909] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:33:02.773 [ApplicationImpl pooled thread 909] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:33:02.773 [ApplicationImpl pooled thread 909] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:36:04.515 [ApplicationImpl pooled thread 914] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:36:04.516 [ApplicationImpl pooled thread 914] INFO  com.browserstack.sdk.utils.Helpers - true
+11:36:04.517 [ApplicationImpl pooled thread 914] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:36:04.517 [ApplicationImpl pooled thread 914] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:36:04.517 [ApplicationImpl pooled thread 914] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:36:04.517 [ApplicationImpl pooled thread 914] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:38:11.824 [ApplicationImpl pooled thread 915] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:38:11.824 [ApplicationImpl pooled thread 915] INFO  com.browserstack.sdk.utils.Helpers - true
+11:38:11.825 [ApplicationImpl pooled thread 915] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:38:11.826 [ApplicationImpl pooled thread 915] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:38:11.826 [ApplicationImpl pooled thread 915] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:38:11.826 [ApplicationImpl pooled thread 915] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:42:13.029 [ApplicationImpl pooled thread 896] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:42:13.029 [ApplicationImpl pooled thread 896] INFO  com.browserstack.sdk.utils.Helpers - true
+11:42:13.031 [ApplicationImpl pooled thread 896] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:42:13.031 [ApplicationImpl pooled thread 896] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:42:13.031 [ApplicationImpl pooled thread 896] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:42:13.031 [ApplicationImpl pooled thread 896] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:46:25.243 [ApplicationImpl pooled thread 923] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:46:25.243 [ApplicationImpl pooled thread 923] INFO  com.browserstack.sdk.utils.Helpers - true
+11:46:25.244 [ApplicationImpl pooled thread 923] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:46:25.244 [ApplicationImpl pooled thread 923] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:46:25.244 [ApplicationImpl pooled thread 923] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:46:25.244 [ApplicationImpl pooled thread 923] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:52:13.561 [ApplicationImpl pooled thread 932] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:52:13.561 [ApplicationImpl pooled thread 932] INFO  com.browserstack.sdk.utils.Helpers - true
+11:52:13.562 [ApplicationImpl pooled thread 932] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:52:13.562 [ApplicationImpl pooled thread 932] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:52:13.562 [ApplicationImpl pooled thread 932] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:52:13.562 [ApplicationImpl pooled thread 932] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+11:56:23.809 [ApplicationImpl pooled thread 945] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+11:56:23.809 [ApplicationImpl pooled thread 945] INFO  com.browserstack.sdk.utils.Helpers - true
+11:56:23.811 [ApplicationImpl pooled thread 945] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:56:23.811 [ApplicationImpl pooled thread 945] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+11:56:23.812 [ApplicationImpl pooled thread 945] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+11:56:23.812 [ApplicationImpl pooled thread 945] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:05:47.836 [ApplicationImpl pooled thread 973] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:05:47.837 [ApplicationImpl pooled thread 973] INFO  com.browserstack.sdk.utils.Helpers - true
+12:05:47.838 [ApplicationImpl pooled thread 973] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:05:47.838 [ApplicationImpl pooled thread 973] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:05:47.838 [ApplicationImpl pooled thread 973] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:05:47.838 [ApplicationImpl pooled thread 973] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:10:51.489 [ApplicationImpl pooled thread 980] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:10:51.490 [ApplicationImpl pooled thread 980] INFO  com.browserstack.sdk.utils.Helpers - true
+12:10:51.492 [ApplicationImpl pooled thread 980] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:10:51.492 [ApplicationImpl pooled thread 980] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:10:51.492 [ApplicationImpl pooled thread 980] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:10:51.492 [ApplicationImpl pooled thread 980] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:16:18.557 [ApplicationImpl pooled thread 990] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:16:18.557 [ApplicationImpl pooled thread 990] INFO  com.browserstack.sdk.utils.Helpers - true
+12:16:18.558 [ApplicationImpl pooled thread 990] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:16:18.558 [ApplicationImpl pooled thread 990] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:16:18.558 [ApplicationImpl pooled thread 990] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:16:18.558 [ApplicationImpl pooled thread 990] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:20:57.185 [ApplicationImpl pooled thread 993] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:20:57.186 [ApplicationImpl pooled thread 993] INFO  com.browserstack.sdk.utils.Helpers - true
+12:20:57.187 [ApplicationImpl pooled thread 993] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:20:57.187 [ApplicationImpl pooled thread 993] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:20:57.187 [ApplicationImpl pooled thread 993] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:20:57.187 [ApplicationImpl pooled thread 993] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:24:33.392 [ApplicationImpl pooled thread 997] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:24:33.393 [ApplicationImpl pooled thread 997] INFO  com.browserstack.sdk.utils.Helpers - true
+12:24:33.394 [ApplicationImpl pooled thread 997] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:24:33.394 [ApplicationImpl pooled thread 997] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:24:33.395 [ApplicationImpl pooled thread 997] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:24:33.395 [ApplicationImpl pooled thread 997] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:29:49.783 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:29:49.783 [ApplicationImpl pooled thread 996] INFO  com.browserstack.sdk.utils.Helpers - true
+12:29:49.784 [ApplicationImpl pooled thread 996] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:29:49.784 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:29:49.784 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:29:49.784 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:34:57.280 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:34:57.280 [ApplicationImpl pooled thread 996] INFO  com.browserstack.sdk.utils.Helpers - true
+12:34:57.282 [ApplicationImpl pooled thread 996] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:34:57.282 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:34:57.282 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:34:57.282 [ApplicationImpl pooled thread 996] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:39:57.216 [ApplicationImpl pooled thread 1023] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:39:57.217 [ApplicationImpl pooled thread 1023] INFO  com.browserstack.sdk.utils.Helpers - true
+12:39:57.218 [ApplicationImpl pooled thread 1023] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:39:57.218 [ApplicationImpl pooled thread 1023] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:39:57.218 [ApplicationImpl pooled thread 1023] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:39:57.218 [ApplicationImpl pooled thread 1023] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:45:17.824 [ApplicationImpl pooled thread 1040] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:45:17.825 [ApplicationImpl pooled thread 1040] INFO  com.browserstack.sdk.utils.Helpers - true
+12:45:17.826 [ApplicationImpl pooled thread 1040] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:45:17.826 [ApplicationImpl pooled thread 1040] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:45:17.826 [ApplicationImpl pooled thread 1040] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:45:17.826 [ApplicationImpl pooled thread 1040] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:49:09.626 [ApplicationImpl pooled thread 1027] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:49:09.627 [ApplicationImpl pooled thread 1027] INFO  com.browserstack.sdk.utils.Helpers - true
+12:49:09.629 [ApplicationImpl pooled thread 1027] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:49:09.629 [ApplicationImpl pooled thread 1027] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:49:09.629 [ApplicationImpl pooled thread 1027] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:49:09.629 [ApplicationImpl pooled thread 1027] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:53:27.227 [ApplicationImpl pooled thread 1066] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:53:27.227 [ApplicationImpl pooled thread 1066] INFO  com.browserstack.sdk.utils.Helpers - true
+12:53:27.229 [ApplicationImpl pooled thread 1066] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:53:27.229 [ApplicationImpl pooled thread 1066] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:53:27.229 [ApplicationImpl pooled thread 1066] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:53:27.229 [ApplicationImpl pooled thread 1066] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+12:58:36.448 [ApplicationImpl pooled thread 1069] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+12:58:36.448 [ApplicationImpl pooled thread 1069] INFO  com.browserstack.sdk.utils.Helpers - true
+12:58:36.449 [ApplicationImpl pooled thread 1069] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:58:36.449 [ApplicationImpl pooled thread 1069] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+12:58:36.449 [ApplicationImpl pooled thread 1069] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+12:58:36.449 [ApplicationImpl pooled thread 1069] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:03:00.894 [ApplicationImpl pooled thread 1084] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:03:00.894 [ApplicationImpl pooled thread 1084] INFO  com.browserstack.sdk.utils.Helpers - true
+13:03:00.895 [ApplicationImpl pooled thread 1084] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:03:00.895 [ApplicationImpl pooled thread 1084] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:03:00.895 [ApplicationImpl pooled thread 1084] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:03:00.895 [ApplicationImpl pooled thread 1084] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:10:30.923 [ApplicationImpl pooled thread 1076] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:10:30.923 [ApplicationImpl pooled thread 1076] INFO  com.browserstack.sdk.utils.Helpers - true
+13:10:30.924 [ApplicationImpl pooled thread 1076] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:10:30.924 [ApplicationImpl pooled thread 1076] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:10:30.924 [ApplicationImpl pooled thread 1076] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:10:30.924 [ApplicationImpl pooled thread 1076] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:16:57.496 [ApplicationImpl pooled thread 1101] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:16:57.496 [ApplicationImpl pooled thread 1101] INFO  com.browserstack.sdk.utils.Helpers - true
+13:16:57.498 [ApplicationImpl pooled thread 1101] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:16:57.498 [ApplicationImpl pooled thread 1101] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:16:57.498 [ApplicationImpl pooled thread 1101] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:16:57.498 [ApplicationImpl pooled thread 1101] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:22:57.599 [ApplicationImpl pooled thread 1115] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:22:57.599 [ApplicationImpl pooled thread 1115] INFO  com.browserstack.sdk.utils.Helpers - true
+13:22:57.600 [ApplicationImpl pooled thread 1115] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:22:57.600 [ApplicationImpl pooled thread 1115] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:22:57.600 [ApplicationImpl pooled thread 1115] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:22:57.600 [ApplicationImpl pooled thread 1115] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:36:09.630 [ApplicationImpl pooled thread 1151] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:36:09.630 [ApplicationImpl pooled thread 1151] INFO  com.browserstack.sdk.utils.Helpers - true
+13:36:09.633 [ApplicationImpl pooled thread 1151] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:36:09.633 [ApplicationImpl pooled thread 1151] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:36:09.633 [ApplicationImpl pooled thread 1151] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:36:09.633 [ApplicationImpl pooled thread 1151] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:41:17.336 [ApplicationImpl pooled thread 1164] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:41:17.337 [ApplicationImpl pooled thread 1164] INFO  com.browserstack.sdk.utils.Helpers - true
+13:41:17.338 [ApplicationImpl pooled thread 1164] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:41:17.339 [ApplicationImpl pooled thread 1164] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:41:17.339 [ApplicationImpl pooled thread 1164] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:41:17.339 [ApplicationImpl pooled thread 1164] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+13:47:26.316 [ApplicationImpl pooled thread 1176] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+13:47:26.316 [ApplicationImpl pooled thread 1176] INFO  com.browserstack.sdk.utils.Helpers - true
+13:47:26.317 [ApplicationImpl pooled thread 1176] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:47:26.317 [ApplicationImpl pooled thread 1176] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+13:47:26.317 [ApplicationImpl pooled thread 1176] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+13:47:26.317 [ApplicationImpl pooled thread 1176] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:00:31.537 [ApplicationImpl pooled thread 1192] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:00:31.537 [ApplicationImpl pooled thread 1192] INFO  com.browserstack.sdk.utils.Helpers - true
+14:00:31.539 [ApplicationImpl pooled thread 1192] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:00:31.539 [ApplicationImpl pooled thread 1192] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:00:31.539 [ApplicationImpl pooled thread 1192] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:00:31.539 [ApplicationImpl pooled thread 1192] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:06:38.290 [ApplicationImpl pooled thread 1210] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:06:38.290 [ApplicationImpl pooled thread 1210] INFO  com.browserstack.sdk.utils.Helpers - true
+14:06:38.292 [ApplicationImpl pooled thread 1210] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:06:38.292 [ApplicationImpl pooled thread 1210] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:06:38.292 [ApplicationImpl pooled thread 1210] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:06:38.292 [ApplicationImpl pooled thread 1210] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:10:33.043 [ApplicationImpl pooled thread 1227] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:10:33.043 [ApplicationImpl pooled thread 1227] INFO  com.browserstack.sdk.utils.Helpers - true
+14:10:33.044 [ApplicationImpl pooled thread 1227] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:10:33.044 [ApplicationImpl pooled thread 1227] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:10:33.044 [ApplicationImpl pooled thread 1227] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:10:33.044 [ApplicationImpl pooled thread 1227] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:14:52.262 [ApplicationImpl pooled thread 1226] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:14:52.262 [ApplicationImpl pooled thread 1226] INFO  com.browserstack.sdk.utils.Helpers - true
+14:14:52.263 [ApplicationImpl pooled thread 1226] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:14:52.263 [ApplicationImpl pooled thread 1226] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:14:52.263 [ApplicationImpl pooled thread 1226] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:14:52.263 [ApplicationImpl pooled thread 1226] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:18:29.080 [ApplicationImpl pooled thread 1241] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:18:29.081 [ApplicationImpl pooled thread 1241] INFO  com.browserstack.sdk.utils.Helpers - true
+14:18:29.082 [ApplicationImpl pooled thread 1241] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:18:29.082 [ApplicationImpl pooled thread 1241] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:18:29.082 [ApplicationImpl pooled thread 1241] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:18:29.082 [ApplicationImpl pooled thread 1241] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:22:51.088 [ApplicationImpl pooled thread 1253] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:22:51.088 [ApplicationImpl pooled thread 1253] INFO  com.browserstack.sdk.utils.Helpers - true
+14:22:51.090 [ApplicationImpl pooled thread 1253] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:22:51.090 [ApplicationImpl pooled thread 1253] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:22:51.090 [ApplicationImpl pooled thread 1253] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:22:51.090 [ApplicationImpl pooled thread 1253] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:27:22.488 [ApplicationImpl pooled thread 1250] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:27:22.488 [ApplicationImpl pooled thread 1250] INFO  com.browserstack.sdk.utils.Helpers - true
+14:27:22.491 [ApplicationImpl pooled thread 1250] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:27:22.492 [ApplicationImpl pooled thread 1250] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:27:22.492 [ApplicationImpl pooled thread 1250] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:27:22.492 [ApplicationImpl pooled thread 1250] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:33:03.643 [ApplicationImpl pooled thread 1271] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:33:03.644 [ApplicationImpl pooled thread 1271] INFO  com.browserstack.sdk.utils.Helpers - true
+14:33:03.645 [ApplicationImpl pooled thread 1271] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:33:03.645 [ApplicationImpl pooled thread 1271] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:33:03.645 [ApplicationImpl pooled thread 1271] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:33:03.645 [ApplicationImpl pooled thread 1271] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:37:22.743 [ApplicationImpl pooled thread 1278] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:37:22.743 [ApplicationImpl pooled thread 1278] INFO  com.browserstack.sdk.utils.Helpers - true
+14:37:22.745 [ApplicationImpl pooled thread 1278] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:37:22.745 [ApplicationImpl pooled thread 1278] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:37:22.745 [ApplicationImpl pooled thread 1278] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:37:22.745 [ApplicationImpl pooled thread 1278] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:41:46.199 [ApplicationImpl pooled thread 1294] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:41:46.199 [ApplicationImpl pooled thread 1294] INFO  com.browserstack.sdk.utils.Helpers - true
+14:41:46.200 [ApplicationImpl pooled thread 1294] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:41:46.200 [ApplicationImpl pooled thread 1294] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:41:46.200 [ApplicationImpl pooled thread 1294] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:41:46.200 [ApplicationImpl pooled thread 1294] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:46:19.392 [ApplicationImpl pooled thread 1301] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:46:19.392 [ApplicationImpl pooled thread 1301] INFO  com.browserstack.sdk.utils.Helpers - true
+14:46:19.393 [ApplicationImpl pooled thread 1301] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:46:19.393 [ApplicationImpl pooled thread 1301] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:46:19.393 [ApplicationImpl pooled thread 1301] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:46:19.393 [ApplicationImpl pooled thread 1301] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:51:38.096 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:51:38.097 [ApplicationImpl pooled thread 1298] INFO  com.browserstack.sdk.utils.Helpers - true
+14:51:38.098 [ApplicationImpl pooled thread 1298] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:51:38.098 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:51:38.098 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:51:38.098 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+14:54:29.953 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+14:54:29.953 [ApplicationImpl pooled thread 1298] INFO  com.browserstack.sdk.utils.Helpers - true
+14:54:29.955 [ApplicationImpl pooled thread 1298] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:54:29.955 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+14:54:29.955 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+14:54:29.955 [ApplicationImpl pooled thread 1298] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:17:09.206 [ApplicationImpl pooled thread 1347] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:17:09.206 [ApplicationImpl pooled thread 1347] INFO  com.browserstack.sdk.utils.Helpers - true
+15:17:09.207 [ApplicationImpl pooled thread 1347] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:17:09.208 [ApplicationImpl pooled thread 1347] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:17:09.208 [ApplicationImpl pooled thread 1347] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:17:09.208 [ApplicationImpl pooled thread 1347] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:20:08.215 [ApplicationImpl pooled thread 1360] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:20:08.216 [ApplicationImpl pooled thread 1360] INFO  com.browserstack.sdk.utils.Helpers - true
+15:20:08.218 [ApplicationImpl pooled thread 1360] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:20:08.218 [ApplicationImpl pooled thread 1360] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:20:08.218 [ApplicationImpl pooled thread 1360] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:20:08.218 [ApplicationImpl pooled thread 1360] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:32:40.614 [ApplicationImpl pooled thread 1378] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:32:40.615 [ApplicationImpl pooled thread 1378] INFO  com.browserstack.sdk.utils.Helpers - true
+15:32:40.618 [ApplicationImpl pooled thread 1378] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:32:40.618 [ApplicationImpl pooled thread 1378] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:32:40.618 [ApplicationImpl pooled thread 1378] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:32:40.619 [ApplicationImpl pooled thread 1378] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:52:24.166 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:52:24.166 [ApplicationImpl pooled thread 1419] INFO  com.browserstack.sdk.utils.Helpers - true
+15:52:24.167 [ApplicationImpl pooled thread 1419] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:52:24.167 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:52:24.167 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:52:24.167 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+15:58:13.286 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+15:58:13.286 [ApplicationImpl pooled thread 1419] INFO  com.browserstack.sdk.utils.Helpers - true
+15:58:13.288 [ApplicationImpl pooled thread 1419] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:58:13.288 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+15:58:13.288 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+15:58:13.289 [ApplicationImpl pooled thread 1419] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:03:02.451 [ApplicationImpl pooled thread 1440] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:03:02.451 [ApplicationImpl pooled thread 1440] INFO  com.browserstack.sdk.utils.Helpers - true
+16:03:02.452 [ApplicationImpl pooled thread 1440] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:03:02.452 [ApplicationImpl pooled thread 1440] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:03:02.452 [ApplicationImpl pooled thread 1440] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:03:02.452 [ApplicationImpl pooled thread 1440] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:08:58.155 [ApplicationImpl pooled thread 1459] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:08:58.155 [ApplicationImpl pooled thread 1459] INFO  com.browserstack.sdk.utils.Helpers - true
+16:08:58.156 [ApplicationImpl pooled thread 1459] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:08:58.156 [ApplicationImpl pooled thread 1459] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:08:58.156 [ApplicationImpl pooled thread 1459] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:08:58.156 [ApplicationImpl pooled thread 1459] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:15:40.924 [ApplicationImpl pooled thread 1464] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:15:40.924 [ApplicationImpl pooled thread 1464] INFO  com.browserstack.sdk.utils.Helpers - true
+16:15:40.926 [ApplicationImpl pooled thread 1464] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:15:40.926 [ApplicationImpl pooled thread 1464] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:15:40.926 [ApplicationImpl pooled thread 1464] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:15:40.926 [ApplicationImpl pooled thread 1464] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:20:19.427 [ApplicationImpl pooled thread 1463] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:20:19.428 [ApplicationImpl pooled thread 1463] INFO  com.browserstack.sdk.utils.Helpers - true
+16:20:19.430 [ApplicationImpl pooled thread 1463] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:20:19.430 [ApplicationImpl pooled thread 1463] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:20:19.430 [ApplicationImpl pooled thread 1463] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:20:19.430 [ApplicationImpl pooled thread 1463] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:24:10.859 [ApplicationImpl pooled thread 1479] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:24:10.859 [ApplicationImpl pooled thread 1479] INFO  com.browserstack.sdk.utils.Helpers - true
+16:24:10.862 [ApplicationImpl pooled thread 1479] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:24:10.862 [ApplicationImpl pooled thread 1479] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:24:10.862 [ApplicationImpl pooled thread 1479] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:24:10.862 [ApplicationImpl pooled thread 1479] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:30:04.313 [ApplicationImpl pooled thread 1486] INFO  c.b.s.l.BrowserStackRunExtension - cucumber java
+16:30:04.313 [ApplicationImpl pooled thread 1486] INFO  com.browserstack.sdk.utils.Helpers - true
+16:30:04.314 [ApplicationImpl pooled thread 1486] INFO  com.browserstack.sdk.utils.Helpers - C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:30:04.314 [ApplicationImpl pooled thread 1486] INFO  c.b.s.l.BrowserStackRunExtension - Agent path: C:/Users/ftheofil/.m2/repository/com/browserstack/browserstack-java-sdk/1.27.1/browserstack-java-sdk-1.27.1.jar
+16:30:04.314 [ApplicationImpl pooled thread 1486] INFO  c.b.s.l.BrowserStackRunExtension - Adding Browserstack SDK javaagent argline
+16:30:04.314 [ApplicationImpl pooled thread 1486] INFO  c.b.s.l.BrowserStackRunExtension - Plugin version: 2.0.0-IC
+16:37:02.567 [ApplicationImpl pooled thread 1510] INFO  c.b.s.l.BrowserStackRunExtension - application
+16:37:02.567 [ApplicationImpl pooled thread 1510] INFO  com.browserstack.sdk.utils.Helpers - true

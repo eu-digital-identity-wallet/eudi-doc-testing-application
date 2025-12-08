@@ -61,6 +61,7 @@ public class AutomatedStepDefs {
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
             test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().issuer().sleepMethod();
@@ -76,6 +77,8 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().wallet().clickDone();
@@ -96,13 +99,15 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickConfirm();
             test.mobile().wallet().successMessageOfSetUpPin();
             test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().wallet().clickDone();
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
-            test.mobile().wallet().scrollUntilmDL();
+            test.mobile().wallet().scrollUntilmDLOnDocuments();
             test.mobile().wallet().clickMdl();
             test.mobile().issuer().issueMDL();
             test.mobile().wallet().clickDone();
@@ -547,7 +552,8 @@ public class AutomatedStepDefs {
     }
 
     @When("the user is prompted to enter a PID")
-    public void theUserIsPromptedToEnterAPID() {
+    public void theUserIsPromptedToEnterAPID() throws InterruptedException {
+        test.mobile().wallet().scrollUntilPIDFirst();
         test.mobile().wallet().clickPID();
     }
 
@@ -598,7 +604,10 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickScreen();
         test.mobile().issuer().chooseExpiryDate();
         test.mobile().issuer().chooseIssueDate();
-        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().scrollUntilFindName();
+        test.mobile().issuer().enterFamilyNameOnMdl();
+        test.mobile().issuer().enterGivenNameOnMdl();
+        test.mobile().issuer().scrollUntilFindConfirm();
         test.mobile().issuer().clickConfirm();
         test.mobile().issuer().authorizeIsDisplayed();
         test.mobile().issuer().scrollUntilAuthorize();
