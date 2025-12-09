@@ -85,7 +85,7 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().clickToAddDocument();
             test.mobile().wallet().clickFromList();
-            test.mobile().wallet().scrollUntilPID();
+            test.mobile().wallet().scrollUntilPIDTwoPid();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
             test.mobile().wallet().clickDone();
