@@ -380,3 +380,5 @@
 11:51:01.802 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
 11:56:25.792 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
 12:00:20.085 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:28:47.607 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:33:48.729 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}

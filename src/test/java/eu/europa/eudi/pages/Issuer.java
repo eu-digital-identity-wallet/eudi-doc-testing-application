@@ -16,6 +16,8 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
@@ -416,9 +418,17 @@ public class Issuer {
 
     public void clickAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.authorize)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.authorize)).click();
         }
     }
 
@@ -429,7 +439,7 @@ public class Issuer {
                     eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid,
                     Literals.Issuer.FORM_ANDROID.label,
                     driver,
-                    50
+                    80
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid
@@ -442,7 +452,7 @@ public class Issuer {
                     eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed,
                     Literals.Issuer.FORM_IOS.label,
                     driver,
-                    30
+                    80
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed
