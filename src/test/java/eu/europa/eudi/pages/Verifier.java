@@ -27,23 +27,6 @@ public class Verifier {
         this.test = test;
     }
 
-    public void selectShareAttributes() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deviceName = test.envDataConfig().getAppiumAndroidDeviceName();
-            // Debugging: Print the device name to check its value
-            System.out.println("Device Name: '" + deviceName + "'");
-            if (test.envDataConfig().getAppiumAndroidDeviceName().equals("POCO X5 Pro")) {
-              //nothing
-            } else {
-                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-                driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            }
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
-        }
-    }
-
     public void clickNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickNextForVerifier)).click();

@@ -87,10 +87,6 @@ public class Issuer {
         }
     }
 
-    public void updateTestReference(TestSetup newTest) {
-        this.test = newTest;
-    }
-
     public void requestCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
