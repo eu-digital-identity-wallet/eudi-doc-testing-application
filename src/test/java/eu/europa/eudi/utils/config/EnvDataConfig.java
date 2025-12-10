@@ -6,17 +6,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.SKIP_UNLOCK;
 import static org.apache.http.HttpHeaders.TIMEOUT;
 
 /**
  * The {@link EnvDataConfig} exposes all properties contained in env.properties derived from {@link ResourcesConfig} to the tests.
  */
 public class EnvDataConfig {
-    public static final String VERIFIER_URL = "verifier.url";
-    public static final String CREDENTIAL_URL = "credential.url";
-    public static final String OPENID_URL = "openid.url";
-    public static final String URL = "app.url";
-    public static final String HEADLESS_MODE = "HEADLESS.MODE";
     public static final String APPIUM_ANDROID_DEVICE_NAME = "appium.android.deviceName";
     public static final String APPIUM_ANDROID_PLATFORM_NAME = "appium.android.platformName";
     public static final String APPIUM_ANDROID_PLATFORM_VERSION = "appium.android.platformVersion";
@@ -30,18 +26,22 @@ public class EnvDataConfig {
     public static final String APPIUM_IOS_UDID = "appium.ios.udid";
     public static final String APPIUM_IOS_AUTOMATION_NAME = "appium.ios.automationName";
     public static final String APPIUM_IOS_BUNDLE_ID = "appium.ios.bundleId";
-    public static final String APPIUM_RECORDING = "appium.recording";
-    public static final String APPIUM_SCREENSHOT = "appium.screenshot";
     public static final String APPIUM_URL_ANDROID = "appium.url.android";
     public static final String APPIUM_URL_IOS = "appium.url.ios";
-    public static final String APPIUM_SHORT_WAIT_IN_MILLISECONDS = "appium.shortWaitInMilliseconds";
     public static final String APPIUM_MEDIUM_WAIT_IN_SECONDS = "appium.mediumWaitInSeconds";
-    public static final String BROWSER = "browser";
-    public static final String DRIVER_REMOTE_URL = "driver.remote.url";
     public static final String WALLET_PIN = "wallet.pin";
-    public static final String DRIVER_MODE = "driver.mode";
-    public static final String WEB_APP_EMAIL = "webApp.email";
-    public static final String WEB_APP_PASSWORD = "webApp.password";
+    public static final String BROWSERSTACK_ANDROID_APP_URL = "browserstack.android.appUrl";
+    public static final String BROWSERSTACK_ANDROID_DEVICE_NAME = "browserstack.android.deviceName";
+    public static final String BROWSERSTACK_ANDROID_PLATFORM_VERSION = "browserstack.android.platformVersion";
+    public static final String BROWSERSTACK_INTERACTIVE_DEBUGGING = "browserstack.interactiveDebugging";
+    public static final String BROWSERSTACK_GENERAL_USERNAME = "browserstack.general.username";
+    public static final String BROWSERSTACK_GENERAL_ACCESS_KEY = "browserstack.general.accessKey";
+    public static final String GET_EXECUTION_ENVIRONMENT = "execution.environment";
+    public static final String GET_EXECUTION_CIENVIRONMENT = "ci.environment";
+    public static final String BROWSERSTACK_IOS_APP_URL = "browserstack.ios.appUrl";
+    public static final String BROWSERSTACK_IOS_DEVICE_NAME = "browserstack.ios.deviceName";
+    public static final String BROWSERSTACK_IOS_PLATFORM_VERSION = "browserstack.ios.platformVersion";
+    public static final String BROWSERSTACK_IOS_AUTOMATION_NAME = "browserstack.ios.automationName";
     ResourcesConfig resourcesConfig;
 
     public EnvDataConfig() {
@@ -91,20 +91,9 @@ public class EnvDataConfig {
     public String getAppiumAndroidAppPackage() {
         return getEnvProperties().getProperty(APPIUM_ANDROID_APP_PACKAGE);
     }
-    public int getAppiumShortWaitInMilliseconds() {
-        return Integer.parseInt(getEnvProperties().getProperty(APPIUM_SHORT_WAIT_IN_MILLISECONDS));
-    }
 
     public int getAppiumLongWaitInSeconds() {
         return Integer.parseInt(getEnvProperties().getProperty(APPIUM_MEDIUM_WAIT_IN_SECONDS));
-    }
-
-    public Boolean getAppiumRecording() {
-        return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_RECORDING));
-    }
-
-    public Boolean getAppiumScreenshot() {
-        return Boolean.parseBoolean(getEnvProperties().getProperty(APPIUM_SCREENSHOT));
     }
 
     public String getAppiumUrlAndroid() {
@@ -132,56 +121,53 @@ public class EnvDataConfig {
         return properties;
     }
 
-    private static String removeTrailingSlash(String url) {
-        return StringUtils.removeEnd(url, "/");
-    }
-    public String getBrowser() {
-        return getEnvProperties().getProperty(BROWSER);
-    }
-
-    public String getDriverRemoteURL() {
-        return removeTrailingSlash(getEnvProperties().getProperty(DRIVER_REMOTE_URL));
-    }
-
-    public String getURL() {
-        return getEnvProperties().getProperty(URL);
-    }
-
-    public String getURLVerifier() {
-        return getEnvProperties().getProperty(VERIFIER_URL);
-    }
-    public String getURLCredential() {
-        return getEnvProperties().getProperty(CREDENTIAL_URL);
-    }
-    public String getURLOpenId() {
-        return getEnvProperties().getProperty(OPENID_URL);
-    }
-
-    public String getDriverMode() {
-        return getEnvProperties().getProperty(DRIVER_MODE);
-    }
-
-    public Boolean getHeadlessMode() {
-        return Boolean.parseBoolean(getEnvProperties().getProperty(HEADLESS_MODE));
-    }
-
-    public String getTimeout() {
-        return getEnvProperties().getProperty(TIMEOUT);
-    }
-
-    public String getRemoteURL() {
-        return removeTrailingSlash(getEnvProperties().getProperty(DRIVER_REMOTE_URL));
-    }
-
     public String getPin() {
         return getEnvProperties().getProperty(WALLET_PIN);
     }
 
-    public String getWebAppEmail() {
-        return getEnvProperties().getProperty(WEB_APP_EMAIL);
+    public String getAppiumBrowserstackAndroidAppUrl() {
+        return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_APP_URL);
     }
 
-    public String getWebAppPassword() {
-        return getEnvProperties().getProperty(WEB_APP_PASSWORD);
+    public String getAppiumBrowserstackAndroidDeviceName() {
+        return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_DEVICE_NAME);
+    }
+
+    public String getAppiumBrowserstackAndroidPlatformVersion() {
+        return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_PLATFORM_VERSION);
+    }
+
+    public String getAppiumBrowserstackInteractiveDebugging() {
+        return getEnvProperties().getProperty(BROWSERSTACK_INTERACTIVE_DEBUGGING);
+    }
+    public String getAppiumBrowserstackGeneralUsername() {
+        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_USERNAME);
+    }
+
+    public String getAppiumBrowserstackGeneralAccesskey() {
+        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_ACCESS_KEY);
+    }
+
+    public String getExecutionEnvironment() {
+        return getEnvProperties().getProperty(GET_EXECUTION_ENVIRONMENT);
+    } public String getExecutionCIEnvironment() {
+        return getEnvProperties().getProperty(GET_EXECUTION_CIENVIRONMENT);
+    }
+
+    public String getAppiumBrowserstackIosAppUrl() {
+        return getEnvProperties().getProperty(BROWSERSTACK_IOS_APP_URL);
+    }
+
+    public String getAppiumBrowserstackIosDeviceName() {
+        return getEnvProperties().getProperty(BROWSERSTACK_IOS_DEVICE_NAME);
+    }
+
+    public String getAppiumBrowserstackIosPlatformVersion() {
+        return getEnvProperties().getProperty(BROWSERSTACK_IOS_PLATFORM_VERSION);
+    }
+
+    public String getAppiumBrowserstackIosAutomationName() {
+        return getEnvProperties().getProperty(BROWSERSTACK_IOS_AUTOMATION_NAME);
+
     }
 }

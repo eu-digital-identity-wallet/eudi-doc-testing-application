@@ -4,7 +4,7 @@ Feature: Credential issuance process for the same device
   I want to be able to issue a credential
   So that it can be securely added to my EUDI Wallet
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-reference-implementation-epics/issues/25
+  #https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/133
 
   @US_COSD_TC_01 @before_01
   Scenario: User selects to issue a credential

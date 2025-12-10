@@ -1,5 +1,5 @@
 @ANDROID @automated @US_RIM
-Feature: Request/Issue mDL
+Feature: Add mDL By Choosing From List
 
   @US_RIM_TC_01 @before_01
   Scenario: Log in successfully
