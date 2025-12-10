@@ -1588,7 +1588,7 @@ authentication methods, such as multi-factor authentication (MFA) or
 biometrics, binding the signing process to their verified digital
 identity.
 
-##### rQES FSRQ-040 
+##### rQES FSRQ-040
 
 | Requirement ID     | FSRQ-040                                                                                                                                                        |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1846,7 +1846,7 @@ Sign document (R5) #193</a></p></td>
 </tbody>
 </table>
 
-####  EHIC 
+####  EHIC
 
 The European Health Insurance Card (EHIC) allows EU citizens to access
 medically necessary healthcare in another EU or EEA country under the
@@ -2496,7 +2496,7 @@ parties.</p></td>
 
 ## Appendix A
 
-### **ISO/IEC 18013-5** - Annex E 
+### **ISO/IEC 18013-5** - Annex E
 
 **Annex E**
 
