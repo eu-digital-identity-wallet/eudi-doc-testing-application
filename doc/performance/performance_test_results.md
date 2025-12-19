@@ -1515,7 +1515,7 @@ Based on the collected performance metrics, the **EUDI Wallet application** demo
 ### Summary of Findings
 - **Response Time:** Remained consistently under 1 second in all test scenarios (well below the 2.0s acceptance limit).
 - **Stability:** No crashes or critical errors occurred during any test runs.
-- **Network Behavior:** All network requests were limited to expected production endpoints (issuer/verifier).
+- **Network Behavior:** All network requests were limited to expected dev endpoints (issuer/verifier).
 - **Resource Usage:** CPU and memory remained within acceptable limits for all devices, even under repeated load.
 
 ### Overall Conclusion
