@@ -153,7 +153,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 1: CPU/Memory Graph
   
-![img_1.png](charts_images\img_1.png)
+![img_1.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_1.png)
 
 - Figure 2: Network Performance Graph
 
