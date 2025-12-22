@@ -401,7 +401,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 27: CPU/Memory Graph
 
-![img_27.png](charts_images/img_27.png)
+![img_27.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_27.png)
 
 - Figure 28: Network Performance Graph
 
@@ -555,7 +555,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 43: CPU/Memory Graph
 
-![img_43.png](charts_images/img_43.png)
+![img_43.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_43.png)
 
 - Figure 44: Network Performance Graph
 
@@ -709,7 +709,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 59: CPU/Memory Graph
 
-![img_59.png](charts_images/img_59.png)
+![img_59.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_59.png)
 
 - Figure 60: Network Performance Graph
 
@@ -863,7 +863,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 75: CPU/Memory Graph
 
-![img_75.png](charts_images/img_75.png)
+![img_75.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_75.png)
 
 - Figure 76: Network Performance Graph
 
@@ -1059,7 +1059,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 97: CPU/Memory Graph
 
-![img_97.png](charts_images/img_97.png)
+![img_97.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_97.png)
 
 - Figure 98: Network Performance Graph
 
@@ -1374,7 +1374,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 137: CPU/Memory Graph
 
-![img_137.png](charts_images/img_137.png)
+![img_137.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_137.png)
 
 - Figure 138: Network Performance Graph
 
@@ -1412,7 +1412,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 141: CPU/Memory Graph
 
-![img_141.png](charts_images/img_141.png)
+![img_141.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_141.png)
 
 - Figure 142: Network Performance Graph
 
