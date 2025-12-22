@@ -96,7 +96,7 @@ All of the following must be met before performance testing begins:
 Testing can be considered complete when:
 - All defined test scenarios have been executed.
 - All identified issues are resolved or have approved workarounds.
-- Results meet or exceed the defined **Requirements** in [requirements.md](requirements.md).
+- Results meet or exceed the defined **Requirements** in [requirements.md](performance_requirements.md)
 - A final test report has been produced and reviewed.
 
 ---
