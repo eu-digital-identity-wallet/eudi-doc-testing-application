@@ -147,6 +147,8 @@ The following specifications describe the environment in which performance testi
 
 ## Test Execution and Results
 
+Disclaimer: The values shown in the charts may slightly differ from the final values in the table due to BrowserStack recording variations.
+
 ### Scenario 1: Add a Document from List
 
 #### Device: Samsung Galaxy A16 5G - Android 15
