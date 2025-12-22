@@ -1414,7 +1414,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 141: CPU/Memory Graph
 
-![img_141.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_141.png)
+![img_141.png](charts_images\img_141.png)
 
 - Figure 142: Network Performance Graph
 
