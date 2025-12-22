@@ -403,7 +403,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 27: CPU/Memory Graph
 
-![img_27.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_27.png)
+![img_27.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_27.png)
 
 - Figure 28: Network Performance Graph
 
@@ -557,7 +557,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 43: CPU/Memory Graph
 
-![img_43.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_43.png)
+![img_43.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_43.png)
 
 - Figure 44: Network Performance Graph
 
@@ -711,7 +711,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 59: CPU/Memory Graph
 
-![img_59.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_59.png)
+![img_59.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_59.png)
 
 - Figure 60: Network Performance Graph
 
@@ -865,7 +865,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 75: CPU/Memory Graph
 
-![img_75.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_75.png)
+![img_75.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_75.png)
 
 - Figure 76: Network Performance Graph
 
@@ -1061,7 +1061,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 97: CPU/Memory Graph
 
-![img_97.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_97.png)
+![img_97.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_97.png)
 
 - Figure 98: Network Performance Graph
 
@@ -1080,7 +1080,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 99: CPU/Memory Graph
 
-![img_99.png](charts_images\img_99.png)
+![img_99.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_99.png)
 
 - Figure 100-01-02-03-04-05-06-07: Network Performance Graph
 
@@ -1222,7 +1222,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 120: CPU/Memory Graph
 
-![img_120.png](charts_images\img_120.png)
+![img_120.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_120.png)
 
 - Figure 121: Network Performance Graph
 
@@ -1241,7 +1241,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 122: CPU/Memory Graph
 
-![img_122.png](charts_images\img_122.png)
+![img_122.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_122.png)
 
 - Figure 123: Network Performance Graph
 
@@ -1260,7 +1260,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 124: CPU/Memory Graph
 
-![img_124.png](charts_images\img_124.png)
+![img_124.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_141.png)
 
 - Figure 125: Network Performance Graph
 
@@ -1376,7 +1376,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 137: CPU/Memory Graph
 
-![img_137.png](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\charts_images\img_137.png)
+![img_137.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_137.png)
 
 - Figure 138: Network Performance Graph
 
@@ -1414,7 +1414,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Figures:**
 - Figure 141: CPU/Memory Graph
 
-![img_141.png](charts_images\img_141.png)
+![img_141.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_141.png)
 
 - Figure 142: Network Performance Graph
 
