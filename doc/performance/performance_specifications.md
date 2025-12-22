@@ -74,10 +74,11 @@ The above scenarios were executed locally using Android Studio and Xcode on phys
 | Android | POCO X5 Pro 5G | Android 14 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability |
 | iOS | iPhone 14 Plus | iOS 18 | Response Time ≤ 2s, CPU ≤ 40%, Memory ≤ 250 MB, App Stability
 
-- Execution Environment Summary
+- Execution Environment Summary 
 
 The use of the BrowserStack device farm enables consistent and repeatable execution on real hardware, while significantly increasing platform, OS version, and vendor diversity compared to physical device-only testing.
 Local execution was selectively applied only where cross-device interaction requirements could not be met in the cloud environment.
+
 ---
 
 ## Entry & Exit Criteria
