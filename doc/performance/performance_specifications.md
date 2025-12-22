@@ -1,6 +1,6 @@
 # Performance Test Specifications
 
-This section supports the requirements defined in [requirements.md](requirements.md).  
+This section supports the requirements defined in [requirements.md](performance_requirements.md).  
 It describes the performance testing for the EUDI Wallet application, including the performance test scenarios, the required test environment and devices configuration, entry and exit criteria and input data.
 
 ## Performance Test Scenarios
