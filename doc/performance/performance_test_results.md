@@ -157,7 +157,7 @@ The following specifications describe the environment in which performance testi
 
 - Figure 2: Network Performance Graph
 
-![img_2.png](charts_images\img_2.png)
+![img_2.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_2.png)
 
 **Results:**
 | Metric | Value |
@@ -172,11 +172,11 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 3: CPU/Memory Graph
 
-![img_3.png](charts_images\img_3.png)
+![img_3.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_3.png)
 
 - Figure 4: Network Performance Graph
 
-![img_4.png](charts_images\img_4.png)
+![img_4.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_4.png)
 
 **Results:**
 | Metric | Value |
@@ -191,12 +191,11 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 5: CPU/Memory Graph
 
-![img_3.png](charts_images\img_5.png)
+![img_5.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_5.png)
 
 - Figure 6: Network Performance Graph
 
-![img_4.png](charts_images\img_6.png)
-
+![img_6.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_6.png)
 **Results:**
 | Metric | Value |
 |--------|--------|
