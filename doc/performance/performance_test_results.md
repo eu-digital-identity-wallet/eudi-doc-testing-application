@@ -153,7 +153,7 @@ The following specifications describe the environment in which performance testi
 **Figures:**
 - Figure 1: CPU/Memory Graph
   
-![img_1](charts_images\img_1.png)
+![img_1]([charts_images\img_1.png](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/blob/milestone/2025.Q4/doc/performance/charts_images/img_1.png)
 
 - Figure 2: Network Performance Graph
 
