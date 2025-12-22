@@ -1526,5 +1526,5 @@ No significant performance issues were detected during testing.
 ---
 
 ## References
-- [requirements.md](requirements.md)
-- [specifications.md](specifications.md)
+- [requirements.md](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\performance_requirements.md)
+- [specifications.md](C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal\doc\performance\performance_specifications.md)
