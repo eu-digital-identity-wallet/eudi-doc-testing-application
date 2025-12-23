@@ -14,6 +14,13 @@ These terms are aligned with the **EUDI Architecture and Reference Framework [R0
 | **PID Provider** | A Member State or legal entity providing Person Identification Data to Users. |
 | **Relying Party** | Private or Public party providing online services, intending to utilize the EUDI Wallet for user identification and authentication purposes. |
 
+## Test Run Information
+
+- **Application Under Test:** EUDI Wallet
+- **Application Version:** 2025.12.34-Demo
+- **Test Type:** Performance Testing
+- **Test Execution Environment:** BrowserStack Real Device Farm and Local Physical Devices
+
 ## Performance Test Execution Summary
 
 Performance tests are conducted on real devices hosted in the BrowserStack device farm.
