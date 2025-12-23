@@ -3,6 +3,13 @@
 This section supports the requirements defined in [requirements.md](performance_requirements.md).  
 It describes the performance testing for the EUDI Wallet application, including the performance test scenarios, the required test environment and devices configuration, entry and exit criteria and input data.
 
+## Test Run Information
+
+- **Application Under Test:** EUDI Wallet
+- **Application Version:** 2025.12.34-Demo
+- **Test Type:** Performance Testing
+- **Test Execution Environment:** BrowserStack Real Device Farm and Local Physical Devices
+
 ## Performance Test Scenarios
 
 Performance testing was conducted using end-to-end functional test flows executed across multiple real devices. The scenarios utilized to produce the results are the following:
