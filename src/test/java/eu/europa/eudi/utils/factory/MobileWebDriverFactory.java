@@ -57,6 +57,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.debug", false);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", false);
+                options.setCapability("browserstack.video", false);
+                options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
                 options.setCapability("newCommandTimeout", 320); // or longer for stability
                 String featureName = test.getScenario().getUri().getPath()
@@ -144,6 +146,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("autoAcceptAlerts", true);
                 options.setCapability("browserstack.debug", false);
                 options.setCapability("browserstack.deviceLogs", true);
+                options.setCapability("browserstack.video", false);
+                options.setCapability("browserstack.appiumLogs", false);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
