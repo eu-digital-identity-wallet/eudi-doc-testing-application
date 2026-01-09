@@ -54,7 +54,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
-                options.setCapability("browserstack.debug", true);
+                options.setCapability("browserstack.debug", false);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", false);
                 options.setCapability("orientation", "PORTRAIT");
@@ -142,8 +142,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("appium:automationName", envDataConfig.getAppiumBrowserstackIosAutomationName());
                 options.setCapability("autoAcceptAlerts", true);
-                options.setCapability("browserstack.debug", "true");
-                options.setCapability("browserstack.deviceLogs", "true");
+                options.setCapability("browserstack.debug", false);
+                options.setCapability("browserstack.deviceLogs", true);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
