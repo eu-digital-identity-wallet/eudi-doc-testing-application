@@ -8089,6 +8089,51 @@ public class ManuallyStepDefs {
     public void theUserIsOnTheHomeScreen() {
         //manual
     }
+
+    @Given("the user initiates a credential issuance using the {}")
+    public void theUserInitiatesACredentialIssuanceUsingThe(String arg0) {
+    //manual
+    }
+
+    @And("the issuance method is {}")
+    public void theIssuanceMethodIs(String arg0) {
+        //manual
+    }
+
+    @When("the issuance flow is completed")
+    public void theIssuanceFlowIsCompleted() {
+        //manual
+    }
+
+    @Then("the credential is stored in the Wallet")
+    public void theCredentialIsStoredInTheWallet() {
+        //manual
+    }
+
+    @Then("the verifier verifies the credential successfully")
+    public void theVerifierVerifiesTheCredentialSuccessfully() {
+        //manual
+    }
+
+    @And("the issuance is performed on a {}")
+    public void theIssuanceIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @When("the user presents the credential to the {}")
+    public void theUserPresentsTheCredentialToThe(String arg0) {
+        //manual
+    }
+
+    @And("the presentation is performed on a {}")
+    public void thePresentationIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @And("the user shares {}")
+    public void theUserShares(String arg0) {
+        //manual
+    }
 }
 
 
