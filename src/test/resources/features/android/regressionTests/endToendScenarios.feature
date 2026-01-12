@@ -1,4 +1,4 @@
-@ANDROID @manual @US_COCD @endtoend
+@ANDROID @manual @endtoend
 Feature: EUDI Wallet – End to End Credential Issuance and Presentation
 
   @manual:passed
