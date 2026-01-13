@@ -7,7 +7,7 @@ Feature: Dashboard display
     When the user enters their PIN
     Then the user should see the dashboard screen
 
-  @US_VD_TC_02 @before_01
+  @US_VD_TC_02 @before_01 @release
   Scenario: User views issued documents on the dashboard
     Given the user is on the dashboard screen
     When the user clicks on Documents
