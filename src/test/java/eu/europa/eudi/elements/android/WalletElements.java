@@ -61,4 +61,8 @@ public class WalletElements {
     public static By clickDrivingLicenceButtonOnDocuments = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/ancestor::*[@clickable='true'][1]\n");
     public static By clickPIDOnDocumentsSecond = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
     public static By findConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
+    public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Scan QR\"]");
+    public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
+    public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");
+    public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
 }

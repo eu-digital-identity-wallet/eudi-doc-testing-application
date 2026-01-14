@@ -26,7 +26,7 @@ public interface Literals {
         ISSUANCE_DETAILS("PID (MSO Mdoc)"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
-        SCAN_QR("SCAN QR"),
+        SCAN_QR("Scan QR"),
         DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_MDL("Date of birth"),
         DETAILS_DOCUMENT("Family Name(s)"),
@@ -43,7 +43,8 @@ public interface Literals {
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
-        DETAILS_ARE_BLURRED_REAL("eye.slash");
+        DETAILS_ARE_BLURRED_REAL("eye.slash"),
+        QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from an issuer to add a digital document to your wallet.");
 
         public final String label;
         Wallet(String label) {
