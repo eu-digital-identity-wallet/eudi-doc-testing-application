@@ -27,5 +27,18 @@ Feature: Online Identification & Authentication (same-device)
     And the user clicks done
     Then the user gets redirected to verifier and views the respond
 
+  @US_OIASD_TC_05 @before_01
+  Scenario: User adds document via QR code scanning
+    Given the issuer has generated a QR code for credential issuance
+    When the user is on the Login screen
+    And the user enters their PIN
+    Then the user should see the home screen
+    When the user clicks on Documents
+    Then the user clicks the add doc button
+    When the user clicks on the Scan QR
+    Then the QR code scan should be activated
+    When the user scans the pre-generated QR code
+    Then the details of the credential to be issued should be displayed including the credential type and the issuer name
+
 
 
