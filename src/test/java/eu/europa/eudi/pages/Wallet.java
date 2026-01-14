@@ -24,6 +24,17 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import com.google.common.collect.ImmutableMap;
+
 public class Wallet {
 
     TestSetup test;
@@ -1246,6 +1257,68 @@ public class Wallet {
                     Thread.sleep(50);
                 }
             }
+        }
+    }
+
+    public void scanQrIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.WalletElements.scanQrIsDisplayed))
+                .getText();
+            Assert.assertEquals(Literals.Wallet.SCAN_QR.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.ios.WalletElements.successMessageIsDisplayedForIssuer))
+                .getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS.label, pageHeader);
+        }
+    }
+
+    public void clickQROption() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRButton)).click();
+        }
+    }
+
+    public void onlyThisTimeQR() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR))
+                .click();
+        }
+    }
+
+    public void theQRScannerIsActivated() {
+        String pageHeader = test.mobileWebDriverFactory().getWait()
+            .until(ExpectedConditions.visibilityOfElementLocated(
+                eu.europa.eudi.elements.android.WalletElements.scanQRIsActivated))
+            .getText();
+        Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED.label, pageHeader);
+    }
+
+    public void mockQRInject(File qrImagePath) {
+        try {
+            // Read QR code image and get its content
+            BufferedImage bufferedImage = ImageIO.read(qrImagePath);
+            LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            Result result = new MultiFormatReader().decode(bitmap);
+            String qrContent = result.getText();
+
+            // Inject the QR content
+            test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
+                    ImmutableMap.of(
+                            "url", qrContent,
+                            "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                    ));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to process QR code: " + e.getMessage());
         }
     }
 }

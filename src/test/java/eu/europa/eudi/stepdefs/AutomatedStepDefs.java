@@ -1661,5 +1661,32 @@ public class AutomatedStepDefs {
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickSubmit();
     }
+
+    @Given("the issuer has generated a QR code for credential issuance")
+    public void theIssuerHasGeneratedAQRCodeForCredentialIssuance() throws InterruptedException {
+        test.mobile().issuer().createQRScreenshot();
+    }
+
+    @When("the user clicks on the Scan QR")
+    public void theUserClicksOnTheScanQR() {
+        test.mobile().wallet().scanQrIsDisplayed();
+        test.mobile().wallet().clickQROption();
+    }
+
+    @Then("the QR code scan should be activated")
+    public void theQRCodeScanShouldBeActivated() {
+        test.mobile().wallet().onlyThisTimeQR();
+        test.mobile().wallet().theQRScannerIsActivated();
+    }
+
+    @When("the user scans the pre-generated QR code")
+    public void theUserScansThePreGeneratedQRCode() {
+        test.mobile().wallet().mockQRInject(test.mobile().issuer().getCapturedScreenFile());
+    }
+
+    @Then("the details of the credential to be issued should be displayed including the credential type and the issuer name")
+    public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheCredentialTypeAndTheIssuerName() {
+        test.mobile().wallet().detailsArePresented();
+    }
 }
 
