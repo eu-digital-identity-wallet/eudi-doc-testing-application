@@ -21,7 +21,7 @@ Feature: Add mDL By Choosing From List
     When the user clicks on Credential Provider FormEU and submits
     Then the provider form is displayed for the user to register personal data
 
-  @US_RIM_TC_04 @before_01
+  @US_RIM_TC_04 @before_01 @release
   Scenario: Register personal data and view driving license
     Given a provider form is displayed for mDL (MSO Mdoc)
     When the user registers personal data

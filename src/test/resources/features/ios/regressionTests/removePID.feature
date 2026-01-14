@@ -25,7 +25,7 @@ Feature: Deleting a PID document
     When the login screen appears
     Then the user should enter the PIN
 
-  @US_RP_TC_05 @before_01
+  @US_RP_TC_05 @before_01 @release
   Scenario: User needs to enter a PID again
     Given the user has successfully entered the PIN after reboot
     When the user is prompted to enter a PID

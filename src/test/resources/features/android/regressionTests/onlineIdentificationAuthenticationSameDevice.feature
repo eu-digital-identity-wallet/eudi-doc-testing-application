@@ -19,7 +19,7 @@ Feature: Online Identification & Authentication (same-device)
     When user views the data and can unselect any of them
     Then user presses the share button on wallet
 
-  @US_OIASD_TC_04 @before_01
+  @US_OIASD_TC_04 @before_01 @release
   Scenario: User authorizes data disclosure
     Given user presses the share button
     When user authorizes the disclosure of the data
