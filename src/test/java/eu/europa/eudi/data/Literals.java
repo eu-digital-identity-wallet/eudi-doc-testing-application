@@ -44,7 +44,8 @@ public interface Literals {
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
         DETAILS_ARE_BLURRED_REAL("eye.slash"),
-        QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document.");
+        QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
+        ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)");
 
         public final String label;
         Wallet(String label) {
@@ -97,7 +98,8 @@ public interface Literals {
         FORM_DEV("For testing purposes only."),
         SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
         CODEISVISIBLE("Code"),
-        COUNTRY("Country");
+        COUNTRY("Country"),
+        CREDENTIAL_PAGE_KOTLIN("Please select the Credentials you would like to issue:");
 
         public final String label;
         Issuer(String label) {

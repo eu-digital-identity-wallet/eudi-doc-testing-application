@@ -1164,4 +1164,118 @@ public class Issuer {
         }
     }
 
+    public void kotlinIssuerService() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.runAppInBackground(Duration.ofSeconds(10));
+
+            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            String env = test.envDataConfig().getExecutionEnvironment();
+
+            if ("browserstack".equalsIgnoreCase(env)) {
+                // Safe for BrowserStack
+                Map<String, Object> deepLinkArgs = new HashMap<>();
+                deepLinkArgs.put("url", "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate");
+                deepLinkArgs.put("package", "com.android.chrome");
+                driver.executeScript("mobile:deepLink", deepLinkArgs);
+            } else {
+                // Works locally via ADB
+                Map<String, Object> args = new HashMap<>();
+                args.put("command", "am");
+                args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
+                driver.executeScript("mobile:shell", args);
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.runAppInBackground(Duration.ofSeconds(10));
+            driver.activateApp("com.apple.mobilesafari");
+            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            driver.get(url);
+            Map<String, Object> args = new HashMap<>();
+            args.put("bundleId", "com.apple.mobilesafari");
+            driver.executeScript("mobile: launchApp", args);
+        }
+    }
+
+    public void requestCredentialsKotlinIssuerPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsKotlinIssuerPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_KOTLIN.label, pageHeader);
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_KOTLIN.label, pageHeader);
+        }
+    }
+
+    public void scrollUntilGenerate() {
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+            for (int i = 0; i < 5; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickGenerateButton);
+                    if (pidElement.isDisplayed()) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    driver.findElement(MobileBy.AndroidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
+                }
+            }
+
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 8) {
+                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
+        }
+    }
+
+    public void clickWalletLink() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.walletLink)).click();
+        }
+    }
+
+    public void fillLoginForm() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
+            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
+            username.clear();
+            username.sendKeys("tneal");
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
+            WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
+            password.clear();
+            password.sendKeys("password");
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
+
+        }
+    }
+
+    public void clickGenerate() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickGenerateButton)).click();
+        }
+    }
+
+    public void selectPIDKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidMsoMdoc)).click();
+        }
+    }
 }
