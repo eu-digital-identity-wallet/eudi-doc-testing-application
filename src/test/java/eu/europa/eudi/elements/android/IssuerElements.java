@@ -45,4 +45,10 @@ public class IssuerElements {
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
     public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[@text=\"Issue attributes for your EUDI Wallet demo application.\"]");
+    public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select the Credentials you would like to issue:\"]");
+    public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
+    public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
+    public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
+    public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
+    public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
 }

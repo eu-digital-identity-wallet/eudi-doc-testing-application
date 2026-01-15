@@ -39,3 +39,21 @@ Feature: Online Identification & Authentication (same-device)
     When the user scans the pre-generated QR code
     Then the user clicks the share button
     Then the user succesfully shares the attestation
+
+    @US_OIASD_TC_06 @before_01
+    Scenario: Successful credential issuance and presentation with selective disclosure
+      Given the user is in the Kotlin issuer
+      When the user selects to issue a PID in the Kotlin issuer
+      And the user clicks the wallet link
+      And the details of the credential to be issued are presented Kotlin
+      Then the user clicks the add button
+      And the PID from Kotlin is displayed in the Documents
+
+      Then the user opens the verifier app
+      And the verifier requests a doc from the wallet user
+      Then the Relying Party service redirects the user to the EUDI Wallet
+      And the user presses share
+      When user authorizes the disclosure of the data
+      And user is authenticated successfully
+      And the user clicks done
+      Then the user gets redirected to verifier and views the respond
