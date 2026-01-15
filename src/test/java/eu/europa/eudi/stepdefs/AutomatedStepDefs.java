@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -738,6 +739,7 @@ public class AutomatedStepDefs {
     @When("the user clicks the share button")
     public void theUserClicksTheSHAREButton() {
         test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().createAPin();
     }
 
     @Then("the PIN field is displayed to authorize sharing")
@@ -1662,9 +1664,10 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickSubmit();
     }
 
-    @Given("the issuer has generated a QR code for credential issuance")
-    public void theIssuerHasGeneratedAQRCodeForCredentialIssuance() throws InterruptedException {
-        test.mobile().issuer().createQRScreenshot();
+    @Given("the verifier has generated a QR code for presentation request")
+    public void theVerifierHasGeneratedAQRCodeForPresentationRequest() throws InterruptedException, MalformedURLException {
+        test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().createVerifierQRScreenshot();
     }
 
     @When("the user clicks on the Scan QR")
@@ -1681,12 +1684,27 @@ public class AutomatedStepDefs {
 
     @When("the user scans the pre-generated QR code")
     public void theUserScansThePreGeneratedQRCode() {
-        test.mobile().wallet().mockQRInject(test.mobile().issuer().getCapturedScreenFile());
+        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
     }
 
     @Then("the details of the credential to be issued should be displayed including the credential type and the issuer name")
     public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheCredentialTypeAndTheIssuerName() {
         test.mobile().wallet().detailsArePresented();
+    }
+
+    @When("the user clicks on Αuthenticate")
+    public void theUserClicksOnΑuthenticate() {
+        test.mobile().wallet().clickAuthenticate();
+    }
+
+    @Then("the user clicks the Online option")
+    public void theUserClicksTheOnlineOption() {
+        test.mobile().wallet().clickOnline();
+    }
+
+    @Then("the user succesfully shares the attestation")
+    public void theUserSuccesfullySharesTheAttestation() {
+        test.mobile().wallet().successMessageIsDisplayedForVerifier();
     }
 }
 
