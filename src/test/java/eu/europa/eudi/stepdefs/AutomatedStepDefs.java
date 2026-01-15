@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -1708,6 +1709,21 @@ public class AutomatedStepDefs {
         }
         // Optionally, add assertion for "passed" or just let it pass
         assertTrue("Credential verification passed.", "passed".equalsIgnoreCase(status));
+    }
+
+    @When("the user clicks on Αuthenticate")
+    public void theUserClicksOnΑuthenticate() {
+        test.mobile().wallet().clickAuthenticate();
+    }
+
+    @Then("the user clicks the Online option")
+    public void theUserClicksTheOnlineOption() {
+        test.mobile().wallet().clickOnline();
+    }
+
+    @Then("the user succesfully shares the attestation")
+    public void theUserSuccesfullySharesTheAttestation() {
+        test.mobile().wallet().successMessageIsDisplayedForVerifier();
     }
 }
 
