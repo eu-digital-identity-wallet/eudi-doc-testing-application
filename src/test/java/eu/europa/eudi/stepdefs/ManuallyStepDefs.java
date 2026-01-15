@@ -6,6 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 public class ManuallyStepDefs {
     TestSetup test;
 
@@ -8088,11 +8091,6 @@ public class ManuallyStepDefs {
     @Given("the user is on the Home screen")
     public void theUserIsOnTheHomeScreen() {
         //manual
-    }
-
-    @Given("the user initiates a credential issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingThe(String arg0) {
-    //manual
     }
 
     @And("the issuance method is {}")
