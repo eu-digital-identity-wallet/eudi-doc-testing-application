@@ -13,9 +13,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.io.FileWriter;
 import java.net.MalformedURLException;
 
@@ -1726,10 +1729,60 @@ public class AutomatedStepDefs {
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
     }
 
+    @Given("the user is in the Kotlin issuer")
+    public void theUserIsInTheKotlinIssuer() {
+        test.mobile().issuer().kotlinIssuerService();
+    }
+
+    @When("the user selects to issue a PID in the Kotlin issuer")
+    public void theUserSelectsToIssueAPIDInTheKotlinIssuer() {
+        test.mobile().issuer().requestCredentialsKotlinIssuerPageIsDisplayed();
+        test.mobile().issuer().selectPIDKotlin();
+        test.mobile().issuer().scrollUntilGenerate();
+        test.mobile().issuer().clickGenerate();
+    }
+
+    @And("the user clicks the wallet link")
+    public void theUserClicksTheWalletLink() {
+        test.mobile().issuer().clickWalletLink();
+
+    }
+
+    @Then("the user clicks the add button")
+    public void theUserClicksTheAddButton() {
+        test.mobile().wallet().clickAddButton();
+        test.mobile().issuer().fillLoginForm();
+    }
+
+    @Then("the user opens the verifier app")
+    public void theUserOpensTheVerifierApp() throws MalformedURLException {
+        userOpensVerifierApp();
+    }
+
+    @And("the details of the credential to be issued are presented Kotlin")
+    public void theDetailsOfTheCredentialToBeIssuedArePresentedKotlin() {
+        test.mobile().wallet().detailsArePresentedKotlin();
+    }
+
+
+    @And("the PID from Kotlin is displayed in the Documents")
+    public void thePIDFromKotlinIsDisplayedInTheDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.kotlinIssuanceDetails)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
+        }
+    }
+
+    @And("the user presses share")
+    public void theUserPressesShare() {
+        test.mobile().wallet().clickShareButton();
+    }
+
     @Given("the verifier has generated a QR code for presentation request")
     public void theVerifierHasGeneratedAQRCodeForPresentationRequest() throws MalformedURLException, InterruptedException {
         test.mobile().wallet().userOpensVerifier();
         test.mobile().verifier().createVerifierQRScreenshot();
+
     }
 }
 
