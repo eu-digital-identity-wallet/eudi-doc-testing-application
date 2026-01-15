@@ -1335,4 +1335,18 @@ public class Wallet {
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlineOption)).click();
         }
     }
+
+    public void clickAddButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
+        }
+    }
+
+    public void detailsArePresentedKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.kotlinIssuanceDetails)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
+        }
+    }
 }
