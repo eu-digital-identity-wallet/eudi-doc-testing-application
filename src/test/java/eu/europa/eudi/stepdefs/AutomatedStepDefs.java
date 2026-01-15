@@ -1668,7 +1668,7 @@ public class AutomatedStepDefs {
 
     @Given("the issuer has generated a QR code for credential issuance")
     public void theIssuerHasGeneratedAQRCodeForCredentialIssuance() throws InterruptedException {
-        test.mobile().issuer().createQRScreenshot();
+        test.mobile().verifier().createVerifierQRScreenshot();
     }
 
     @When("the user clicks on the Scan QR")
@@ -1685,7 +1685,7 @@ public class AutomatedStepDefs {
 
     @When("the user scans the pre-generated QR code")
     public void theUserScansThePreGeneratedQRCode() {
-        test.mobile().wallet().mockQRInject(test.mobile().issuer().getCapturedScreenFile());
+        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
     }
 
     @Then("the details of the credential to be issued should be displayed including the credential type and the issuer name")
@@ -1724,6 +1724,12 @@ public class AutomatedStepDefs {
     @Then("the user succesfully shares the attestation")
     public void theUserSuccesfullySharesTheAttestation() {
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
+    }
+
+    @Given("the verifier has generated a QR code for presentation request")
+    public void theVerifierHasGeneratedAQRCodeForPresentationRequest() throws MalformedURLException, InterruptedException {
+        test.mobile().wallet().userOpensVerifier();
+        test.mobile().verifier().createVerifierQRScreenshot();
     }
 }
 
