@@ -64,5 +64,7 @@ public class WalletElements {
     public static By scanQrIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Scan QR\"]");
     public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");
-    public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
+    public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document.\"]");
+    public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
+    public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Online\"]");
 }

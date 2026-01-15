@@ -1321,4 +1321,18 @@ public class Wallet {
             throw new RuntimeException("Failed to process QR code: " + e.getMessage());
         }
     }
+
+    public void clickAuthenticate() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticateButton)).click();
+        }
+    }
+
+    public void clickOnline() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlineOption)).click();
+        }
+    }
 }
