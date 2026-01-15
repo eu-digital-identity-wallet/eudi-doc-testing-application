@@ -2,6 +2,7 @@ package eu.europa.eudi.pages;
 
 import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.MobileBy;
@@ -17,10 +18,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.openqa.selenium.io.FileHandler;
 
 public class Verifier {
     TestSetup test;
     EnvDataConfig envDataConfig;
+    private File capturedScreenFile;
 
 
     public Verifier(TestSetup test) {
@@ -34,6 +41,7 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickNext)).click();
         }
     }
+
     public void assertAndClickNext() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.presentationQueryTypeIsVisible)).getText();
@@ -77,13 +85,13 @@ public class Verifier {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
             if (env.equalsIgnoreCase("browserstack")) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
                 clickMsoMdocRealDevice();
-            }   else{
+            } else {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute)).click();
@@ -242,17 +250,18 @@ public class Verifier {
             test.mobile().wallet().tapAction(element, true);
         }
     }
+
     public void getTransactionId() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement jsonElement;
             if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                 jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
-            }else{
-                 jsonElement = driver.findElement(By.className("android.widget.TextView"));
+                jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
+            } else {
+                jsonElement = driver.findElement(By.className("android.widget.TextView"));
 
             }
-                // Get the text
+            // Get the text
             String rawText = jsonElement.getText();
 
             JSONObject jsonObject = new JSONObject(rawText);
@@ -311,7 +320,7 @@ public class Verifier {
                     throw new RuntimeException(e);
                 }
 
-        }    else{
+            } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 List<WebElement> elements = driver.findElements(By.xpath("//XCUIElementTypeStaticText"));
                 String jsonText = null;
@@ -362,15 +371,16 @@ public class Verifier {
                 } catch (Exception e) {
                     System.err.println("Failed to parse JSON: " + e.getMessage());
                     throw new RuntimeException(e);
-                }    }
+                }
             }
+        }
     }
 
     public void chooseWalletPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.chooseWalletPageDisplayed)).getText();
             Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
-        }else{
+        } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.chooseWalletPageDisplayed)).getText();
             Assert.assertEquals(Literals.Verifier.CHOOSE_WALLET_DISPLAYED.label, pageHeader);
         }
@@ -380,5 +390,76 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickNextForVerifier)).click();
         }
+    }
+
+    public void selectSpecificAttributes() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesButton)).click();
+
+            for (int i = 0; i < 5; i++) {
+                try {
+                    By attributeLocator = By.xpath("//android.view.View[@resource-id='mat-mdc-checkbox-" + i + "']/android.view.View");
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
+                } catch (Exception e) {
+                    System.out.println("Could not click attribute " + i + ", continuing...");
+                }
+            }
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSelect)).click();
+        }
+    }
+
+    public void createVerifierQRScreenshot() throws InterruptedException {
+        appOpensSuccessfully();
+        selectSpecificAttestation();
+        scrollUntilNext();
+        clickNext();
+        selectSpecificAttributes();
+        clickNext();
+        clickNext();
+
+        // Wait a bit for QR code to appear
+        Thread.sleep(3000);
+
+        // Capture screenshot
+        captureScreen();
+    }
+
+    private void selectSpecificAttestation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.specificAttributes)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickFormat)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.msoMdoc)).click();
+
+        }
+    }
+
+    public File captureScreen() {
+        WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
+
+        // Generate a unique filename based on the current timestamp
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String filename = timestamp + "_verifier.jpg";
+        File destFile = new File("screenshots/" + filename);
+        try {
+            // Wait for QR code to be stable
+            Thread.sleep(2000);
+
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+            FileHandler.copy(srcFile, destFile);
+            System.out.println("Verifier QR Screenshot saved at: " + destFile.getAbsolutePath());
+            this.capturedScreenFile = destFile;
+            return destFile;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to capture verifier QR screenshot: " + e.getMessage());
+        }
+    }
+
+    public File getCapturedScreenFile() {
+        return capturedScreenFile;
     }
 }

@@ -23,16 +23,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.openqa.selenium.io.FileHandler;
 
 
 public class Issuer {
     TestSetup test;
-    private File capturedScreenFile;
 
     public Issuer(TestSetup test) {
         this.test = test;
@@ -1170,39 +1164,4 @@ public class Issuer {
         }
     }
 
-    public void createQRScreenshot() throws InterruptedException {
-        issuerService();
-        requestCredentialsPageIsDisplayed();
-        scrollUntilFindSubmit();
-        clickPersonalIdentificationData();
-        clickSubmitButton();
-        captureScreen();
-    }
-
-    public File captureScreen() {
-        WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
-
-        // Generate a unique filename based on the current timestamp
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = timestamp + ".jpg";
-        File destFile = new File("screenshots/" + filename);
-        try {
-            // Wait for a specific amount of time or perform actions before taking the screenshot
-            Thread.sleep(3000); // Wait for 3 seconds
-
-            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-            FileHandler.copy(srcFile, destFile);
-            System.out.println("Screenshot saved on device at: " + destFile.getAbsolutePath());
-            this.capturedScreenFile = destFile;
-            return destFile;
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to capture screenshot: " + e.getMessage());
-        }
-    }
-
-    public File getCapturedScreenFile() {
-        return capturedScreenFile;
-    }
 }
