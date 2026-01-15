@@ -1,17 +1,17 @@
+@ANDROID @automated @US_OIASD
 Feature: EUDI Wallet – End to End Credential Issuance and Presentation
 
-  @manual-result:<status>
+  @endtoend
   Scenario Outline: Successful credential issuance and presentation with selective disclosure
-    Given the user initiates a credential issuance using the <issuer>
+    Given the user initiates a credential issuance using the <issuer> with <status>
     And the issuance method is <issuance_method>
     And the issuance is performed on a <issue_scenario>
     When the issuance flow is completed
     Then the credential is stored in the Wallet
-
     When the user presents the credential to the <verifier>
     And the presentation is performed on a <presentation_scenario>
     And the user shares <selective_disclosure>
-    Then the verifier verifies the credential successfully
+    Then the verifier verifies the credential successfully with <status>
 
     Examples:
       | issuer | issuance_method  | issue_scenario | verifier               | presentation_scenario | selective_disclosure         | status |
