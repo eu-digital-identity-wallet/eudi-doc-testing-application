@@ -3,7 +3,7 @@ Feature: EUDI Wallet – End to End Credential Issuance and Presentation
 
   @endtoend
   Scenario Outline: Successful credential issuance and presentation with selective disclosure
-    Given the user initiates a credential issuance using the <issuer> with <status>
+    Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
     And the issuance is performed on a <issue_scenario>
     When the issuance flow is completed
