@@ -874,6 +874,9 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageForVerifier)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_VERIFIER.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successMessageForVerifier)).getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_VERIFIER.label, pageHeader);
         }
     }
 
@@ -1286,18 +1289,22 @@ public class Wallet {
     public void onlyThisTimeQR() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
-                .until(ExpectedConditions.elementToBeClickable(
-                    eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR))
-                .click();
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR))
+                    .click();
         }
     }
 
     public void theQRScannerIsActivated() {
-        String pageHeader = test.mobileWebDriverFactory().getWait()
-            .until(ExpectedConditions.visibilityOfElementLocated(
-                eu.europa.eudi.elements.android.WalletElements.scanQRIsActivated))
-            .getText();
-        Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED.label, pageHeader);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRIsActivated)).getText();
+            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
+            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_IOS.label, pageHeader);
+        }
     }
 
     public void mockQRInject(File qrImagePath) {
@@ -1309,12 +1316,22 @@ public class Wallet {
             Result result = new MultiFormatReader().decode(bitmap);
             String qrContent = result.getText();
 
-            // Inject the QR content
-            test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
-                    ImmutableMap.of(
-                            "url", qrContent,
-                            "package", test.envDataConfig().getAppiumAndroidAppPackage()
-                    ));
+            // Inject the QR content based on platform
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                // Android deep link injection
+                test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
+                        ImmutableMap.of(
+                                "url", qrContent,
+                                "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                        ));
+            } else {
+                // iOS deep link injection
+                test.mobileWebDriverFactory().iosDriver.executeScript("mobile: deepLink",
+                        ImmutableMap.of(
+                                "url", qrContent,
+                                "bundleId", test.envDataConfig().getAppiumIosBundleId()
+                        ));
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1326,6 +1343,9 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticateButton)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticateButton)).click();
         }
     }
 
@@ -1333,6 +1353,9 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlineOption)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlineOption)).click();
         }
     }
 
@@ -1340,12 +1363,18 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
         }
     }
 
     public void detailsArePresentedKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.kotlinIssuanceDetails)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.kotlinIssuanceDetails)).getText();
             Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
         }
     }

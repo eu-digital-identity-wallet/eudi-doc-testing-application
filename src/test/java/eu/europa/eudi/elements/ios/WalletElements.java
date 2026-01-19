@@ -62,4 +62,11 @@ public class WalletElements {
     public static By confirmsDeletion = By.xpath("(//XCUIElementTypeButton[@name=\"Delete document\"])[2]");
     public static By detailsAreBlurredReal = By.xpath("//XCUIElementTypeOther[@name=\"eye.slash\"]");
     public static By addPIDPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Choose a digital document from the list below to add to your wallet.\"]");
+    public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@name=\"Authenticate\"]");
+    public static By onlineOption = By.xpath("//XCUIElementTypeButton[@name=\"Online\"]");
+    public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan a QR code provided from a Relying Party to present a digital document online.\"]");
+    public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
+    public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
+    public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
+    public static By issueButton = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
 }

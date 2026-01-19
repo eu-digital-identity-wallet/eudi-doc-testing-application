@@ -1466,6 +1466,7 @@ public class AutomatedStepDefs {
     public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
         test.mobile().verifier().chooseWalletPageIsDisplayed();
         test.mobile().verifier().chooseWallet();
+        test.mobile().verifier().insertPIN2();
     }
 
     @Given("the EUDI Wallet is opened")
@@ -1724,8 +1725,8 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickOnline();
     }
 
-    @Then("the user succesfully shares the attestation")
-    public void theUserSuccesfullySharesTheAttestation() {
+    @Then("the user successfully shares the attestation")
+    public void theUserSuccessfullySharesTheAttestation() {
         test.mobile().wallet().successMessageIsDisplayedForVerifier();
     }
 
@@ -1769,6 +1770,9 @@ public class AutomatedStepDefs {
     public void thePIDFromKotlinIsDisplayedInTheDocuments() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.kotlinIssuanceDetails)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.kotlinIssuanceDetails)).getText();
             Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
         }
     }

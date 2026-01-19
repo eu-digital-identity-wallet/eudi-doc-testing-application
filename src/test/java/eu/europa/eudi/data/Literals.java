@@ -45,7 +45,8 @@ public interface Literals {
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
         DETAILS_ARE_BLURRED_REAL("eye.slash"),
         QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
-        ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)");
+        ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)"),
+        QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document online.");
 
         public final String label;
         Wallet(String label) {
