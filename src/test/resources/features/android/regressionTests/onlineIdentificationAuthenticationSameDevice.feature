@@ -38,7 +38,7 @@ Feature: Online Identification & Authentication (same-device)
     Then the QR code scan should be activated
     When the user scans the pre-generated QR code
     Then the user clicks the share button
-    Then the user succesfully shares the attestation
+    Then the user successfully shares the attestation
 
     @US_OIASD_TC_06 @before_01
     Scenario: Successful credential issuance and presentation with selective disclosure
