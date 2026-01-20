@@ -1697,20 +1697,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().detailsArePresented();
     }
 
-    @Then("the verifier verifies the credential successfully with {}")
-    public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
-            if ("failed".equalsIgnoreCase(status)) {
-                fail("Credential verification failed as per test input.");
-            }
-            // Optionally, add assertion for "passed" or just let it pass
-            assertTrue("Credential verification passed.", "passed".equalsIgnoreCase(status));
-    }
-
-    @Given("the user initiates a credential issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingTheWith(String arg0) {
-      //manual
-    }
-
     @When("the user clicks on Αuthenticate")
     public void theUserClicksOnΑuthenticate() {
         test.mobile().wallet().clickAuthenticate();
