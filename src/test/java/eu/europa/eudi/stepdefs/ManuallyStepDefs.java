@@ -8093,11 +8093,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the issuance method is {}")
-    public void theIssuanceMethodIs(String arg0) {
-        //manual
-    }
-
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
         //manual
@@ -8113,23 +8108,80 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the issuance is performed on a {}")
-    public void theIssuanceIsPerformedOnA(String arg0) {
+    // ========== END TO END SCENARIO STEPS ==========
+
+    @Given("the user initiates a credential issuance using the Python")
+    public void theUserInitiatesACredentialIssuanceUsingThePython() {
         //manual
     }
 
-    @When("the user presents the credential to the {}")
-    public void theUserPresentsTheCredentialToThe(String arg0) {
+    @Given("the user initiates a credential issuance using the Kotlin")
+    public void theUserInitiatesACredentialIssuanceUsingTheKotlin() {
         //manual
     }
 
-    @And("the presentation is performed on a {}")
-    public void thePresentationIsPerformedOnA(String arg0) {
+    @And("the issuance method is from list")
+    public void theIssuanceMethodIsFromList() {
         //manual
     }
 
-    @And("the user shares {}")
-    public void theUserShares(String arg0) {
+    @And("the issuance method is credential offer")
+    public void theIssuanceMethodIsCredentialOffer() {
+        //manual
+    }
+
+    @And("the issuance is performed on a same device")
+    public void theIssuanceIsPerformedOnASameDevice() {
+        //manual
+    }
+
+    @And("the issuance is performed on a cross device")
+    public void theIssuanceIsPerformedOnACrossDevice() {
+        //manual
+    }
+
+    @When("the user presents the credential to the Web verifier")
+    public void theUserPresentsTheCredentialToTheWebVerifier() {
+        //manual
+    }
+
+    @When("the user presents the credential to the Proximity Verifier App")
+    public void theUserPresentsTheCredentialToTheProximityVerifierApp() {
+        //manual
+    }
+
+    @And("the presentation is performed on a same device")
+    public void thePresentationIsPerformedOnASameDevice() {
+        //manual
+    }
+
+    @And("the presentation is performed on a cross device")
+    public void thePresentationIsPerformedOnACrossDevice() {
+        //manual
+    }
+
+    @And("the presentation is performed on a proximity case")
+    public void thePresentationIsPerformedOnAProximityCase() {
+        //manual
+    }
+
+    @And("the user shares specific attributes")
+    public void theUserSharesSpecificAttributes() {
+        //manual
+    }
+
+    @And("the user shares all attributes")
+    public void theUserSharesAllAttributes() {
+        //manual
+    }
+
+    @And("the user shares specific attributes \\(custom)")
+    public void theUserSharesSpecificAttributesCustom() {
+        //manual
+    }
+
+    @And("the user shares all attributes \\(full)")
+    public void theUserSharesAllAttributesFull() {
         //manual
     }
 }
