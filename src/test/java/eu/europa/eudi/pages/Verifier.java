@@ -72,7 +72,7 @@ public class Verifier {
 
     public void appOpensSuccessfully() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfully)).getText();
+            String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfully)).getText();
             Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
@@ -484,5 +484,163 @@ public class Verifier {
 
     public File getCapturedScreenFile() {
         return capturedScreenFile;
+    }
+
+    public void appOpensSuccessfullyOnWeb() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfullyOnWeb)).getText();
+        Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
+    }
+
+    public void selectAllAttributesOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWeb)).click();
+
+
+
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWeb)).click();
+
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWeb)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWeb)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWeb)).click();
+    }
+
+    public void scrollUntilNextOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        By nextCandidates = By.xpath("//button[.//*[normalize-space(.)='Next'] or normalize-space(.)='Next']");
+
+        System.out.println("URL: " + driver.getCurrentUrl());
+        System.out.println("Title: " + driver.getTitle());
+        System.out.println("iframes: " + driver.findElements(By.tagName("iframe")).size());
+
+        try {
+            WebElement btn = wait.until(d -> {
+                List<WebElement> buttons = d.findElements(nextCandidates);
+                System.out.println("Next candidates found: " + buttons.size());
+
+                for (int i = 0; i < buttons.size(); i++) {
+                    WebElement b = buttons.get(i);
+                    try {
+                        String disabled = b.getAttribute("disabled");
+                        String ariaDisabled = b.getAttribute("aria-disabled");
+                        boolean displayed = b.isDisplayed();
+                        boolean enabled = b.isEnabled();
+
+                        String html = (String) ((JavascriptExecutor) d).executeScript(
+                                "return arguments[0].outerHTML;", b
+                        );
+                        if (html != null && html.length() > 300) html = html.substring(0, 300) + "...";
+
+                        System.out.println("[" + i + "] displayed=" + displayed
+                                + " enabled=" + enabled
+                                + " disabledAttr=" + disabled
+                                + " ariaDisabled=" + ariaDisabled
+                                + " html=" + html
+                        );
+
+                        if (displayed) {
+                            ((JavascriptExecutor) d).executeScript(
+                                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});", b
+                            );
+                        }
+
+                        // treat aria-disabled=true as disabled too
+                        boolean reallyEnabled =
+                                (disabled == null) &&
+                                        (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
+
+                        if (displayed && reallyEnabled) return b;
+
+                    } catch (StaleElementReferenceException ignored) {}
+                }
+                return null;
+            });
+
+            // Try normal click then JS click
+            try {
+                btn.click();
+            } catch (ElementClickInterceptedException e) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+            }
+
+        } catch (TimeoutException e) {
+            // final snapshot-like info (no screenshot, but key page indicators)
+            System.out.println("Timed out waiting for enabled+displayed Next.");
+            System.out.println("URL at timeout: " + driver.getCurrentUrl());
+            System.out.println("Title at timeout: " + driver.getTitle());
+            throw e;
+        }
+    }
+
+    public void clickNextOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.nextButton)).click();
+    }
+
+    public void assertQrCodeIsVisible() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        By qrCanvas = By.xpath("//qrcode//canvas");
+
+        WebElement canvas = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(qrCanvas)
+        );
+
+        Assert.assertTrue("QR Code canvas is not displayed", canvas.isDisplayed());
+    }
+
+    public void pidIsDisplayed() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.pidIdDisplayedOnWeb)).getText();
+        Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_WEB.label, pageHeader);
+    }
+
+    public void uriMethodIsDisplayed() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.uriMethodIdDisplayedOnWeb)).getText();
+        Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
+    }
+
+    public File captureScreenOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        // Generate a unique filename based on timestamp
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String filename = timestamp + "_verifier.jpg";
+        File destFile = new File("screenshots/" + filename);
+
+        try {
+            // Ensure folder exists
+            destFile.getParentFile().mkdirs();
+
+            By qrCanvas = By.cssSelector("qrcode canvas");
+
+            // Wait for canvas to be visible
+            WebElement canvas = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCanvas));
+
+            // Scroll into view (important on BrowserStack)
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});", canvas
+            );
+
+            // Wait until canvas is actually rendered (non-zero size)
+            wait.until(d -> {
+                WebElement c = d.findElement(qrCanvas);
+                Long w = (Long) ((JavascriptExecutor) d).executeScript("return arguments[0].width;", c);
+                Long h = (Long) ((JavascriptExecutor) d).executeScript("return arguments[0].height;", c);
+                return w != null && h != null && w > 0 && h > 0;
+            });
+
+            // Element screenshot (QR only)
+            File srcFile = canvas.getScreenshotAs(OutputType.FILE);
+            FileHandler.copy(srcFile, destFile);
+
+            System.out.println("Verifier QR (Web) screenshot saved at: " + destFile.getAbsolutePath());
+            this.capturedScreenFile = destFile;
+            return destFile;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to capture verifier QR (web) screenshot: " + e.getMessage());
+        }
     }
 }

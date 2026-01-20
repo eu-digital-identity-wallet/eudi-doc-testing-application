@@ -4,6 +4,8 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 
 import eu.europa.eudi.utils.factory.MobilePageObjectFactory;
 import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
+import eu.europa.eudi.utils.factory.WebPageObjectFactory;
+import eu.europa.eudi.utils.factory.WebWebDriverFactory;
 import io.cucumber.java.Scenario;
 
 import java.net.MalformedURLException;
@@ -12,7 +14,9 @@ public class TestSetup {
     private String transactionCode;
     EnvDataConfig envDataConfig;
     MobileWebDriverFactory mobileWebDriverFactory;
+    WebWebDriverFactory webWebDriverFactory;
     MobilePageObjectFactory mobilePageObjectFactory;
+    WebPageObjectFactory webPageObjectFactory;
     String systemOperation;
     Scenario scenario;
 
@@ -21,6 +25,9 @@ public class TestSetup {
         this.scenario = scenario;
         mobileWebDriverFactory = new MobileWebDriverFactory(TestSetup.this, noReset);
         mobilePageObjectFactory = new MobilePageObjectFactory(TestSetup.this);
+        
+        webWebDriverFactory = new WebWebDriverFactory(TestSetup.this);
+        webPageObjectFactory = new WebPageObjectFactory(TestSetup.this);
     }
 
     public MobilePageObjectFactory mobile() {
@@ -96,5 +103,13 @@ public class TestSetup {
 
     public String getTransactionCode() {
         return transactionCode;
+    }
+
+    public WebPageObjectFactory web() {
+        return webPageObjectFactory;
+    }
+
+    public WebWebDriverFactory webWebDriverFactory() {
+        return webWebDriverFactory;
     }
 }

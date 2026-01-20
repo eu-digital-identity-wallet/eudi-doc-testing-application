@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
     <version>EUDI_Wallet_Version_2025.12.34-Demo</version>
@@ -13,23 +14,24 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Stable, safe versions -->
-        <selenium.version>4.11.0</selenium.version>
+        <!-- IMPORTANT: Appium java-client 8.6.0 supports Selenium < 4.14 -->
+        <selenium.version>4.13.0</selenium.version>
+
         <appium.client.version>8.6.0</appium.client.version>
         <browserstack.sdk.version>1.27.1</browserstack.sdk.version>
         <serenity.version>3.9.2</serenity.version>
         <junit.version>4.13.2</junit.version>
-        <assertj.version>3.24.2</assertj.version>
-        <hamcrest.version>2.2</hamcrest.version>
     </properties>
 
-    <!-- Force Selenium 4.11.0 everywhere to avoid conflicts -->
+    <!-- Pin ALL selenium-* artifacts to the SAME version -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
+                <artifactId>selenium-bom</artifactId>
                 <version>${selenium.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -43,56 +45,46 @@
             <version>20210307</version>
         </dependency>
 
-        <!-- Appium Java Client -->
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>${appium.client.version}</version>
-        </dependency>
-
-        <!-- Selenium (forced to 4.11.0 by dependencyManagement) -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-        </dependency>
-
-        <!-- BrowserStack SDK pinned (NO LATEST!!) -->
-        <dependency>
-            <groupId>com.browserstack</groupId>
-            <artifactId>browserstack-java-sdk</artifactId>
-            <version>${browserstack.sdk.version}</version>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.14</version>
-        </dependency>
-
         <!-- Serenity -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
             <version>${serenity.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-spring</artifactId>
             <version>${serenity.version}</version>
+        </dependency>
+
+        <!-- Selenium (version comes from selenium-bom) -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+        </dependency>
+
+        <!-- Appium (uses selenium-remote-driver/api/support, pinned by selenium-bom) -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.client.version}</version>
+        </dependency>
+
+        <!-- BrowserStack -->
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-java-sdk</artifactId>
+            <version>${browserstack.sdk.version}</version>
         </dependency>
 
         <!-- JUnit -->
@@ -108,6 +100,8 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- ZXing -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
@@ -117,6 +111,13 @@
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
             <version>3.5.1</version>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
         </dependency>
 
     </dependencies>
@@ -131,6 +132,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
@@ -158,6 +160,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

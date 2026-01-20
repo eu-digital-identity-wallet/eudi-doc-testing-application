@@ -15,12 +15,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileWriter;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeoutException;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -29,6 +34,7 @@ public class AutomatedStepDefs {
 
     static TestSetup test;
     EnvDataConfig envDataConfig;
+    private WebDriver webDriver;
 
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
@@ -36,6 +42,7 @@ public class AutomatedStepDefs {
         String env = envDataConfig.getExecutionEnvironment();
         boolean noReset = scenario.getSourceTagNames().contains("@noreset");
         boolean data = scenario.getSourceTagNames().contains("@before_01");
+        boolean data_for_scan = scenario.getSourceTagNames().contains("@before_04");
         boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
         boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
         boolean ignored = scenario.getSourceTagNames().contains("@Ignored");
@@ -60,6 +67,40 @@ public class AutomatedStepDefs {
             }
         }
         if (data) {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().scrollUntilPIDFirst();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
+            test.mobile().issuer().sleepMethod();
+            test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickDone();
+        }
+
+        if (data_for_scan) {
+            test.webWebDriverFactory().startWebDriverSession();
+            try {
+                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+
+                test.web().verifier().appOpensSuccessfullyOnWeb();
+                test.web().verifier().selectAllAttributesOnWeb();
+                test.web().verifier().scrollUntilNextOnWeb();
+                test.web().verifier().pidIsDisplayed();
+                test.web().verifier().scrollUntilNextOnWeb();
+                test.web().verifier().uriMethodIsDisplayed();
+                test.web().verifier().scrollUntilNextOnWeb();
+                test.web().verifier().assertQrCodeIsVisible();
+                test.web().verifier().captureScreenOnWeb();
+            } finally {
+                test.webWebDriverFactory().quitDriverWeb();
+            }
+
             test.mobile().wallet().checkIfPageIsTrue();
             test.mobile().wallet().createAPin();
             test.mobile().wallet().clickNextButton();
@@ -125,6 +166,16 @@ public class AutomatedStepDefs {
             test.mobile().wallet().skippedTest();
             throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
         }
+    }
+
+    private boolean clickNextIfVisible() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        By nextButton = By.xpath("//button[.//span[normalize-space()='Next']]");
+
+        Boolean next = wait.until(ExpectedConditions.elementToBeClickable(nextButton)).isDisplayed();
+        return next;
     }
 
     private void waitForBrowserStackToBeReadyAndroid(WebDriver driverAndroid) throws InterruptedException {
