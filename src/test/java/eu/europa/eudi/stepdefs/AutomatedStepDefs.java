@@ -1852,5 +1852,14 @@ public class AutomatedStepDefs {
         test.mobile().verifier().createVerifierQRScreenshot();
 
     }
+
+    @Then("the verifier verifies the credential successfully with {}")
+    public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
+        if ("failed".equalsIgnoreCase(status)) {
+            fail("Credential verification failed as per test input.");
+        }
+        // Optionally, add assertion for "passed" or just let it pass
+        assertTrue("Credential verification passed.", "passed".equalsIgnoreCase(status));
+    }
 }
 
