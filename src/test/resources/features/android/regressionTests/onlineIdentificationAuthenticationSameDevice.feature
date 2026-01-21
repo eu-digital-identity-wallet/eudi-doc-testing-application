@@ -27,9 +27,8 @@ Feature: Online Identification & Authentication (same-device)
     And the user clicks done
     Then the user gets redirected to verifier and views the respond
 
-  @US_OIASD_TC_05 @before_01
+  @US_OIASD_TC_05 @before_04
   Scenario: User adds document via QR code scanning
-    Given the verifier has generated a QR code for presentation request
     When the user is on the Login screen
     And the user enters their PIN
     Then the user should see the home screen

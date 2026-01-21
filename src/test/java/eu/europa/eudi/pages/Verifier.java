@@ -473,7 +473,6 @@ public class Verifier {
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
             FileHandler.copy(srcFile, destFile);
-            System.out.println("Verifier QR Screenshot saved at: " + destFile.getAbsolutePath());
             this.capturedScreenFile = destFile;
             return destFile;
         } catch (IOException | InterruptedException e) {
@@ -509,14 +508,9 @@ public class Verifier {
 
         By nextCandidates = By.xpath("//button[.//*[normalize-space(.)='Next'] or normalize-space(.)='Next']");
 
-        System.out.println("URL: " + driver.getCurrentUrl());
-        System.out.println("Title: " + driver.getTitle());
-        System.out.println("iframes: " + driver.findElements(By.tagName("iframe")).size());
-
         try {
             WebElement btn = wait.until(d -> {
                 List<WebElement> buttons = d.findElements(nextCandidates);
-                System.out.println("Next candidates found: " + buttons.size());
 
                 for (int i = 0; i < buttons.size(); i++) {
                     WebElement b = buttons.get(i);
@@ -525,18 +519,6 @@ public class Verifier {
                         String ariaDisabled = b.getAttribute("aria-disabled");
                         boolean displayed = b.isDisplayed();
                         boolean enabled = b.isEnabled();
-
-                        String html = (String) ((JavascriptExecutor) d).executeScript(
-                                "return arguments[0].outerHTML;", b
-                        );
-                        if (html != null && html.length() > 300) html = html.substring(0, 300) + "...";
-
-                        System.out.println("[" + i + "] displayed=" + displayed
-                                + " enabled=" + enabled
-                                + " disabledAttr=" + disabled
-                                + " ariaDisabled=" + ariaDisabled
-                                + " html=" + html
-                        );
 
                         if (displayed) {
                             ((JavascriptExecutor) d).executeScript(
@@ -564,10 +546,6 @@ public class Verifier {
             }
 
         } catch (TimeoutException e) {
-            // final snapshot-like info (no screenshot, but key page indicators)
-            System.out.println("Timed out waiting for enabled+displayed Next.");
-            System.out.println("URL at timeout: " + driver.getCurrentUrl());
-            System.out.println("Title at timeout: " + driver.getTitle());
             throw e;
         }
     }
@@ -634,7 +612,6 @@ public class Verifier {
             File srcFile = canvas.getScreenshotAs(OutputType.FILE);
             FileHandler.copy(srcFile, destFile);
 
-            System.out.println("Verifier QR (Web) screenshot saved at: " + destFile.getAbsolutePath());
             this.capturedScreenFile = destFile;
             return destFile;
 
