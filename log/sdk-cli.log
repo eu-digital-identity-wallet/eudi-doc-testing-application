@@ -1,0 +1,25 @@
+2026-01-21T10:36:50.459Z CLI info [main]     Server listening on port: 5400
+2026-01-21T10:36:51.256Z CLI info     Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","projectName":"EUDI Wallet","buildName":"EUDI Wallet","buildIdentifier":"#${BUILD_NUMBER}","app":"bs://sample.app","platforms":[{"deviceName":"Samsung Galaxy S22 Ultra","platformVersion":"12.0","platformName":"android"},{"deviceName":"Samsung Galaxy S21","platformVersion":"11.0","platformName":"android"},{"deviceName":"Google Pixel 6 Pro","platformVersion":"12.0","platformName":"android"}],"parallelsPerPlatform":1,"source":"java:appium-intellij:2.0.1-IC","browserstackLocal":true,"debug":false,"networkLogs":false,"consoleLogs":"errors"}
+2026-01-21T10:36:51.354Z CLI info     Should start debug utility: undefined
+2026-01-21T10:36:51.359Z CLI info [testhub:module]  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Starting testhub from 16600:0
+2026-01-21T10:36:51.360Z CLI info  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-01-21T10:36:51.362Z CLI info  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-01-21T10:36:51.921Z CLI info  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-01-21T10:36:51.922Z CLI info  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-01-21T10:36:51.923Z CLI info  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-01-21T10:36:52.446Z CLI info [testhub:module]  [foteinitheofilat_OrT9j5]   [1ab190db-4946-45f1-8db1-2fa64125d6d6]  startBuild: response=z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf
+2026-01-21T10:36:52.448Z CLI info  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-01-21T10:36:52.820Z CLI info  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-01-21T10:36:53.114Z CLI error  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  error invoking callback for eventName: {}
+2026-01-21T10:36:53.114Z CLI error  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Error: invalid percyToken=null
+    at C:\snapshot\browserstack-binary\cli\dist\index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-01-21T10:37:00.115Z CLI info [appautomate:service]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Using app: bs://sample.app
+2026-01-21T10:37:17.003Z CLI info [sdk:service]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Driver initialized as primary driver: platformIndex=0
+2026-01-21T10:37:17.012Z CLI info [sdk:service]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Driver initialized as primary driver: platformIndex=1
+2026-01-21T10:37:17.188Z CLI info [sdk:service]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Driver initialized as primary driver: platformIndex=2
+2026-01-21T10:37:32.775Z CLI info  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-01-21T10:37:32.779Z CLI info  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-01-21T10:37:33.360Z CLI info [testhub:module]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  stopBuild: z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf request={"finished_at":"2026-01-21T10:37:32.776Z","finished_metadata":[],"custom_metadata":{}} response={"data":""}
+2026-01-21T10:37:33.361Z CLI info  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-01-21T10:37:33.712Z CLI info [TEST REPORTING AND ANALYTICS:module]  [foteinitheofilat_OrT9j5]  [z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf]  [1ab190db-4946-45f1-8db1-2fa64125d6d6]  Visit https://automation.browserstack.com/builds/z5ra9sbvy3ohenu7v4mwlqh5kyirb2ajbef4l7yf to view build report, insights, and many more debugging information all at one place!
