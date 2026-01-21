@@ -91,7 +91,7 @@ public class AutomatedStepDefs {
                 test.web().verifier().appOpensSuccessfullyOnWeb();
                 test.web().verifier().selectAllAttributesOnWeb();
                 test.web().verifier().scrollUntilNextOnWeb();
-                test.web().verifier().pidIsDisplayed();
+                test.web().verifier().pidIsDisplayedOnWeb();
                 test.web().verifier().scrollUntilNextOnWeb();
                 test.web().verifier().uriMethodIsDisplayed();
                 test.web().verifier().scrollUntilNextOnWeb();

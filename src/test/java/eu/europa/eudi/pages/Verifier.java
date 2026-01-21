@@ -589,7 +589,7 @@ public class Verifier {
         Assert.assertTrue("QR Code canvas is not displayed", canvas.isDisplayed());
     }
 
-    public void pidIsDisplayed() {
+    public void pidIsDisplayedOnWeb() {
         String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.pidIdDisplayedOnWeb)).getText();
         Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
