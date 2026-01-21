@@ -1309,6 +1309,14 @@ public class Wallet {
 
     public void mockQRInject(File qrImagePath) {
         try {
+            // Validate input file
+            if (qrImagePath == null) {
+                throw new IllegalArgumentException("QR image file path is null");
+            }
+            if (!qrImagePath.exists()) {
+                throw new IllegalArgumentException("QR image file does not exist: " + qrImagePath.getAbsolutePath());
+            }
+
             // Read QR code image and get its content
             BufferedImage bufferedImage = ImageIO.read(qrImagePath);
             LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
@@ -1325,12 +1333,7 @@ public class Wallet {
                                 "package", test.envDataConfig().getAppiumAndroidAppPackage()
                         ));
             } else {
-                // iOS deep link injection
-                test.mobileWebDriverFactory().iosDriver.executeScript("mobile: deepLink",
-                        ImmutableMap.of(
-                                "url", qrContent,
-                                "bundleId", test.envDataConfig().getAppiumIosBundleId()
-                        ));
+                test.mobileWebDriverFactory().iosDriver.get(qrContent);
             }
 
         } catch (Exception e) {

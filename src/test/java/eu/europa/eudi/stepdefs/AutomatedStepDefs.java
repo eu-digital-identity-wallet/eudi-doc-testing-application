@@ -23,6 +23,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeoutException;
@@ -226,7 +227,28 @@ public class AutomatedStepDefs {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        cleanupScreenshotsFolder();
+
         test.stopLogging();
+    }
+
+    private void cleanupScreenshotsFolder() {
+        try {
+            File screenshotsDir = new File("screenshots");
+            if (screenshotsDir.exists() && screenshotsDir.isDirectory()) {
+                File[] files = screenshotsDir.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        if (file.isFile()) {
+                            file.delete();
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            // Ignore cleanup errors
+        }
     }
 
 
@@ -796,6 +818,7 @@ public class AutomatedStepDefs {
     @When("the user clicks the share button")
     public void theUserClicksTheSHAREButton() {
         test.mobile().wallet().clickShareButton();
+        test.mobile().verifier().insertPIN2();
     }
 
     @Then("the PIN field is displayed to authorize sharing")
@@ -845,9 +868,17 @@ public class AutomatedStepDefs {
             test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-// Re-launches the app from scratch
-            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+            boolean terminated = driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+
+            if (terminated) {
+                // App was successfully terminated, now activate it
+                driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+            } else {
+                // App was not running or failed to terminate, try close+launch
+                driver.closeApp();
+                driver.launchApp();
+            }
+
             test.mobile().wallet().loginPageIsDisplayed();
             }
     }
@@ -1740,7 +1771,7 @@ public class AutomatedStepDefs {
 
     @When("the user scans the pre-generated QR code")
     public void theUserScansThePreGeneratedQRCode() {
-        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+        test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
     }
 
     @Then("the details of the credential to be issued should be displayed including the credential type and the issuer name")
