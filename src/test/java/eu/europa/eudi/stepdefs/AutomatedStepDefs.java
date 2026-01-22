@@ -868,17 +868,9 @@ public class AutomatedStepDefs {
             test.mobile().wallet().loginPageIsDisplayed();
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            boolean terminated = driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-
-            if (terminated) {
-                // App was successfully terminated, now activate it
-                driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
-            } else {
-                // App was not running or failed to terminate, try close+launch
-                driver.closeApp();
-                driver.launchApp();
-            }
-
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+// Re-launches the app from scratch
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
             }
     }

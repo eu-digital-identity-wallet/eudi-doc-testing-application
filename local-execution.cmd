@@ -1,2 +1,2 @@
-mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@endtoend"
-mvn serenity:aggregate -Dtags="@endtoend"
+mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@US_RDTBS"
+mvn serenity:aggregate -Dtags="@US_RDTBS"

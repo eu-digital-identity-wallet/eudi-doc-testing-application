@@ -44,7 +44,7 @@ public class MobileWebDriverFactory {
             if (env.equalsIgnoreCase("browserstack")) {
                 String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
-                DesiredCapabilities options = new DesiredCapabilities();
+                UiAutomator2Options options = new UiAutomator2Options();
                 if (envCI.equalsIgnoreCase("githubactions")) {
                 options.setCapability("appium:app", appUrl);
                 }else{
@@ -92,7 +92,7 @@ public class MobileWebDriverFactory {
                 // --- Real device setup ---
                 File apkPath = new File("src/test/resources/app/androidApp.apk");
 
-                DesiredCapabilities caps = new DesiredCapabilities();
+                UiAutomator2Options caps = new UiAutomator2Options();
                 caps.setCapability("deviceName", envDataConfig.getAppiumAndroidDeviceName());
                 caps.setCapability("udid", envDataConfig.getAppiumAndroidUdid());
                 caps.setCapability("platformName", envDataConfig.getAppiumAndroidPlatformName());
@@ -179,7 +179,7 @@ public class MobileWebDriverFactory {
                 envDataConfig = new EnvDataConfig();
                 File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
                 apkPath1.getAbsolutePath();
-                DesiredCapabilities caps1 = new DesiredCapabilities();
+                XCUITestOptions caps1 = new XCUITestOptions();
                 caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
                 caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
                 caps1.setCapability("platformVersion", test.envDataConfig().getAppiumIosPlatformVersion()); // your iOS version
