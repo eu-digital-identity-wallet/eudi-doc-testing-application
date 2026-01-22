@@ -1,5 +1,4 @@
-
-@ANDROID @automated @US_BRCD @report_analysis_with_status
+@ANDROID @report_analysis_with_status
 Feature: EUDI Wallet – End to End Credential Issuance and Presentation with status
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure

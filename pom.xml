@@ -150,8 +150,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.4</version>
                 <configuration>
-                    <rerunFailingTestsCount>7</rerunFailingTestsCount>
-                    <skip>false</skip>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
