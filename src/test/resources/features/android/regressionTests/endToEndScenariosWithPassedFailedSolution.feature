@@ -1,6 +1,6 @@
-@ANDROID @manual @US_BRCD @report_analysis
-Feature: EUDI Wallet – End to End Credential Issuance and Presentation
-  @manual-result:<status>
+@ANDROID @automated @US_BRCD @report_analysis_with_status
+Feature: EUDI Wallet – End to End Credential Issuance and Presentation with status
+
   Scenario Outline: Successful credential issuance and presentation with selective disclosure
     Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
