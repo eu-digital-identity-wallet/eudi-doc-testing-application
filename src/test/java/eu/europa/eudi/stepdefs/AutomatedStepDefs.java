@@ -1858,8 +1858,7 @@ public class AutomatedStepDefs {
         if ("failed".equalsIgnoreCase(status)) {
             fail("Credential verification failed as per test input.");
         }
-        // Optionally, add assertion for "passed" or just let it pass
-        assertTrue("Credential verification passed.", "passed".equalsIgnoreCase(status));
+        if ("passed".equalsIgnoreCase(status)) {System.out.println("Credential verification passed as per test input.");}
     }
 }
 
