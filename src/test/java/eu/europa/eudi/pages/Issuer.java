@@ -5,8 +5,8 @@ import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
@@ -289,7 +289,7 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickSubmit)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
     }
 
@@ -352,7 +352,7 @@ public class Issuer {
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -363,12 +363,12 @@ public class Issuer {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -383,7 +383,7 @@ public class Issuer {
     public void scrollUntilAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -394,13 +394,13 @@ public class Issuer {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -523,7 +523,7 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickConfirm)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         }
     }
@@ -1014,7 +1014,7 @@ public class Issuer {
     public void scrollUntilFindSubmitIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 5; i++) {
                 try {
@@ -1023,18 +1023,18 @@ public class Issuer {
                         break;
                     }
                 } catch (Exception e) {
-                    driver.findElement(MobileBy.AndroidUIAutomator(
+                    driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 8) {
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -1087,7 +1087,7 @@ public class Issuer {
     public void scrollUntilFindConfirm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -1098,12 +1098,12 @@ public class Issuer {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 5) {
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -1212,7 +1212,7 @@ public class Issuer {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 5; i++) {
                 try {
@@ -1221,18 +1221,18 @@ public class Issuer {
                         break;
                     }
                 } catch (Exception e) {
-                    driver.findElement(MobileBy.AndroidUIAutomator(
+                    driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
             while (i < 8) {
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");

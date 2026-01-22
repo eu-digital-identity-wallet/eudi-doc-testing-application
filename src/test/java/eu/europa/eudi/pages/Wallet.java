@@ -91,7 +91,7 @@ public class Wallet {
             char fifthDigit = fullPin.charAt(4);
             char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
@@ -567,7 +567,7 @@ public class Wallet {
     public void scrollUntilPID() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -578,7 +578,7 @@ public class Wallet {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -669,7 +669,7 @@ public class Wallet {
     public void scrollUntilYouFindDelete() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(MobileBy.AndroidUIAutomator(
+            driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".flingForward()" +
@@ -680,7 +680,7 @@ public class Wallet {
             int i = 1;
             while (i < 4) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                WebElement scrollView = driver.findElement(MobileBy.className("XCUIElementTypeScrollView"));
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
@@ -746,7 +746,7 @@ public class Wallet {
 
     public void detailsAreNotBlurred() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement eyeElement = test.mobileWebDriverFactory().getDriverAndroid().findElement(MobileBy.AccessibilityId("Show"));
+            WebElement eyeElement = test.mobileWebDriverFactory().getDriverAndroid().findElement(AppiumBy.accessibilityId("Show"));
             String contentDesc = eyeElement.getAttribute("contentDescription");
             Assert.assertEquals(Literals.Wallet.DETAILS_ARE_NOT_BLURRED.label, contentDesc);
         } else {
@@ -759,7 +759,7 @@ public class Wallet {
     public void scrollUntilmDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 5; i++) {
                 try {
@@ -768,13 +768,13 @@ public class Wallet {
                         break;
                     }
                 } catch (Exception e) {
-                    driver.findElement(MobileBy.AndroidUIAutomator(
+                    driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -883,7 +883,7 @@ public class Wallet {
     public void scrollUntilPIDIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 3; i++) {
                 try {
@@ -894,7 +894,7 @@ public class Wallet {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -961,7 +961,7 @@ public class Wallet {
     public void scrollUntilPIDOnDocuments() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -972,7 +972,7 @@ public class Wallet {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -1029,7 +1029,7 @@ public class Wallet {
     public void scrollUntilPIDFirst() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -1040,7 +1040,7 @@ public class Wallet {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -1126,7 +1126,7 @@ public class Wallet {
     public void scrollUntilmDLOnDocuments() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 5; i++) {
                 try {
@@ -1135,13 +1135,13 @@ public class Wallet {
                         break;
                     }
                 } catch (Exception e) {
-                    driver.findElement(MobileBy.AndroidUIAutomator(
+                    driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
@@ -1198,7 +1198,7 @@ public class Wallet {
     public void scrollUntilPIDTwoPid() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 10; i++) {
                 try {
@@ -1209,7 +1209,7 @@ public class Wallet {
                 }
             }
 
-            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
