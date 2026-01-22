@@ -15,7 +15,7 @@
         <selenium.version>4.40.0</selenium.version>
         <appium.client.version>10.0.0</appium.client.version>
         <browserstack.sdk.version>1.50.4</browserstack.sdk.version>
-        <serenity.version>5.1.0</serenity.version>
+        <serenity.version>4.2.22</serenity.version>
 
         <!-- JUnit 4 is still 4.13.2 -->
         <junit.version>4.13.2</junit.version>
