@@ -145,7 +145,7 @@ jobs:
         if: always()
         with:
           name: ios-serenity-json
-          path: target/site/serenity/*.json
+          path: target/site/reports/*.json
 
 
 
