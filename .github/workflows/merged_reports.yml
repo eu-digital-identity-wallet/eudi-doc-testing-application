@@ -7,13 +7,12 @@ jobs:
   merge-and-report:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 21396940477          # <-- set your Android workflow run id
+      ANDROID_RUN_ID: 21401187889           # <-- set your Android workflow run id
       ANDROID_ARTIFACT: android-serenity-json
-      IOS_RUN_ID: 21397156445       # <-- set your iOS workflow run id
+      IOS_RUN_ID: 21397156445               # <-- set your iOS workflow run id
       IOS_ARTIFACT: ios-serenity-json
 
     steps:
-      # Download Android Serenity JSON
       - name: Download Android Serenity JSON
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,7 +26,6 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
           unzip android_json.zip -d android-json
 
-      # Download iOS Serenity JSON
       - name: Download iOS Serenity JSON
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,24 +39,20 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
           unzip ios_json.zip -d ios-json
 
-      # Merge Serenity JSON files
       - name: Merge Serenity JSONs
         run: |
           mkdir merged-json
           find android-json -type f -name '*.json' -exec cp {} merged-json/ \;
           find ios-json -type f -name '*.json' -exec cp {} merged-json/ \;
 
-      # List merged JSONs for debugging
       - name: List merged-json content
         run: |
           ls -l merged-json
           head -n 20 merged-json/*.json || true
 
-      # Generate merged Serenity HTML report with Maven
       - name: Generate Merged Serenity HTML Report
         run: mvn serenity:aggregate -Dserenity.sourceDirectory=merged-json -Dserenity.outputDirectory=merged-html-report
 
-      # Upload Merged HTML Serenity Report
       - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
