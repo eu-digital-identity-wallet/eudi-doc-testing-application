@@ -70,9 +70,13 @@ jobs:
           find android-report -type f -name '*.json' -exec cp {} merged-report/ \;
           find ios-report -type f -name '*.json' -exec cp {} merged-report/ \;
 
-      # Install Serenity CLI
+            # Install Serenity CLI
       - name: Install Serenity CLI
         run: npm install -g serenity-cli
+
+      # Download Serenity BDD CLI JAR
+      - name: Download Serenity BDD CLI JAR
+        run: serenity update
 
       # Generate Merged Serenity HTML Report
       - name: Generate Merged Serenity HTML Report
