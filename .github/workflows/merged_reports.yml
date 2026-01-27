@@ -7,9 +7,9 @@ jobs:
   merge-reports:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 20066717098       # <-- replace with your android workflow run id
+      ANDROID_RUN_ID: 20066717098           # <-- set your Android workflow run id
       ANDROID_ARTIFACT: android-serenity-report
-      IOS_RUN_ID: 20062215741              # <-- replace with your ios workflow run id
+      IOS_RUN_ID: 20062215741               # <-- set your iOS workflow run id
       IOS_ARTIFACT: iOS-serenity-report
 
     steps:
@@ -55,15 +55,20 @@ jobs:
 
           unzip ios_report.zip -d ios-report
 
-      # Merge Serenity Reports (simple copy of JSON files)
+      # List files for debugging
+      - name: List files after unzip
+        run: |
+          echo "Android report contents:"
+          find android-report
+          echo "iOS report contents:"
+          find ios-report
+
+      # Merge Serenity Reports (all JSON files)
       - name: Merge Serenity Reports
         run: |
           mkdir merged-report
-          cp android-report/*.json merged-report/ || true
-          cp ios-report/*.json merged-report/ || true
-          # Optional: copy HTML/assets if needed
-          # cp -r android-report/* merged-report/
-          # cp -r ios-report/* merged-report/
+          find android-report -type f -name '*.json' -exec cp {} merged-report/ \;
+          find ios-report -type f -name '*.json' -exec cp {} merged-report/ \;
 
       # Upload Merged Serenity Report
       - name: Upload Merged Serenity Report
