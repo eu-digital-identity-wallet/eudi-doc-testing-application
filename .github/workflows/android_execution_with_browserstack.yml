@@ -177,9 +177,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android-serenity-json
-          path: target/site/reports/*.json
-
-
-
-
+          name: android-serenity-json    # or ios-serenity-json
+          path: target/site/serenity/*.json
