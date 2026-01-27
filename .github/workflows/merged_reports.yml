@@ -56,6 +56,13 @@ jobs:
       - name: Generate Merged Serenity HTML Report
         run: mvn serenity:aggregate -Dserenity.sourceDirectory=merged-json -Dserenity.outputDirectory=merged-html-report
 
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+          echo "Replacing core.css using custom-style.css..."
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+
       - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
