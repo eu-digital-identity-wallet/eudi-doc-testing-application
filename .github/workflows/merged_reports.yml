@@ -75,8 +75,8 @@ jobs:
         run: |
           echo "Listing files in merged-report:"
           ls -l merged-report
-          echo "Show first 100 lines of JSON files:"
-          head -n 100 merged-report/*.json || true
+          echo "Show first 50 lines of JSON files:"
+          head -n 50 merged-report/*.json || true
 
       # Install Serenity CLI
       - name: Install Serenity CLI
