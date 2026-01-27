@@ -2,45 +2,72 @@ name: Merge Android and iOS Serenity Reports
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Android Automation Tests Execution", "iOS Automation Tests Execution"]
-    types:
-      - completed
 
 jobs:
   merge-reports:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_RUN_ID: 20066717098       # <-- replace with your android workflow run id
+      ANDROID_ARTIFACT: android-serenity-report
+      IOS_RUN_ID: 20062215741              # <-- replace with your ios workflow run id
+      IOS_ARTIFACT: iOS-serenity-report
 
     steps:
+      # Download Android Serenity Report
       - name: Download Android Serenity Report
-        uses: devops-actions/download-artifact-cross-workflow@v2
-        with:
-          workflow: Android Automation Tests Execution
-          run_id: 20066717098 # Use the actual run id
-          name: android-serenity-report
-          path: target/site/reports/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$ANDROID_RUN_ID/artifacts > android_artifacts.json
 
+          ARTIFACT_ID=$(jq -r --arg NAME "$ANDROID_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' android_artifacts.json)
+          echo "Android Artifact id: $ARTIFACT_ID"
 
+          if [ "$ARTIFACT_ID" == "" ]; then
+            echo "Android artifact not found!" && exit 1
+          fi
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o android_report.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+
+          unzip android_report.zip -d android-report
+
+      # Download iOS Serenity Report
       - name: Download iOS Serenity Report
-        uses: devops-actions/download-artifact-cross-workflow@v2
-        with:
-          workflow: iOS Automation Tests Execution
-          run_id: 20062215741 # Use the actual run id
-          name: iOS-serenity-report
-          path: target/site/reports/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$IOS_RUN_ID/artifacts > ios_artifacts.json
 
+          ARTIFACT_ID=$(jq -r --arg NAME "$IOS_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' ios_artifacts.json)
+          echo "iOS Artifact id: $ARTIFACT_ID"
 
-      # Merge the reports (example using serenity-cli)
+          if [ "$ARTIFACT_ID" == "" ]; then
+            echo "iOS artifact not found!" && exit 1
+          fi
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o ios_report.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+
+          unzip ios_report.zip -d ios-report
+
+      # Merge Serenity Reports (simple copy of JSON files)
       - name: Merge Serenity Reports
         run: |
           mkdir merged-report
-          # If using serenity-cli:
-          # serenity merge android-report ios-report -o merged-report
-          # Or if you have a custom script:
-          # python merge_serenity.py android-report ios-report merged-report
+          cp android-report/*.json merged-report/ || true
+          cp ios-report/*.json merged-report/ || true
+          # Optional: copy HTML/assets if needed
+          # cp -r android-report/* merged-report/
+          # cp -r ios-report/* merged-report/
 
+      # Upload Merged Serenity Report
       - name: Upload Merged Serenity Report
         uses: actions/upload-artifact@v4
         with:
           name: merged-serenity-report
-          path: target/site/reports/*
+          path: merged-report
