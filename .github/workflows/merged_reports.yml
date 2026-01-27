@@ -1,0 +1,46 @@
+name: Merge Android and iOS Serenity Reports
+
+on:
+  workflow_dispatch:
+
+jobs:
+  merge-reports:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Download Android Serenity Report artifact
+      - name: Download Android Serenity Report
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: <android_execution_with_browserstack.yml>
+          run_id: 20066717098
+          name: android-serenity-report
+          path: android-serenity-report
+
+      # Download iOS Serenity Report artifact
+      - name: Download iOS Serenity Report
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: <ios_execution_with_browserstack.yml>
+          run_id: 20062215741
+          name: iOS-serenity-report
+          path: ios-serenity-report
+
+      - name: Create merged results folder
+        run: mkdir merged-serenity-results
+
+      - name: Copy JSON files from Android and iOS reports
+        run: |
+          find android-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
+          find ios-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
+
+      - name: Merge Serenity Reports
+        run: mvn serenity:aggregate -Dserenity.outputDirectory=merged-serenity-results
+
+      - name: Upload Merged Serenity Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-serenity-report
+          path: merged-serenity-results/site/serenity
