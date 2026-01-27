@@ -7,12 +7,15 @@ jobs:
   merge-and-report:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 21401187889          # <-- set your Android workflow run id
+      ANDROID_RUN_ID: 21401187889
       ANDROID_ARTIFACT: android-serenity-json
-      IOS_RUN_ID: 21401691295             # <-- set your iOS workflow run id
+      IOS_RUN_ID: 21401691295
       IOS_ARTIFACT: ios-serenity-json
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download Android Serenity JSON
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
