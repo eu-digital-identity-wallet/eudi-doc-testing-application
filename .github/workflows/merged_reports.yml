@@ -1,10 +1,10 @@
-name: Merge Android and iOS Serenity Reports
+name: Merge Android and iOS Serenity Reports and Generate HTML
 
 on:
   workflow_dispatch:
 
 jobs:
-  merge-reports:
+  merge-and-report:
     runs-on: ubuntu-latest
     env:
       ANDROID_RUN_ID: 20066717098           # <-- set your Android workflow run id
@@ -55,7 +55,7 @@ jobs:
 
           unzip ios_report.zip -d ios-report
 
-      # List files for debugging
+      # List files after unzip for debugging
       - name: List files after unzip
         run: |
           echo "Android report contents:"
@@ -70,9 +70,17 @@ jobs:
           find android-report -type f -name '*.json' -exec cp {} merged-report/ \;
           find ios-report -type f -name '*.json' -exec cp {} merged-report/ \;
 
-      # Upload Merged Serenity Report
-      - name: Upload Merged Serenity Report
+      # Install Serenity CLI
+      - name: Install Serenity CLI
+        run: npm install -g serenity-cli
+
+      # Generate Merged Serenity HTML Report
+      - name: Generate Merged Serenity HTML Report
+        run: serenity run report --source merged-report --output merged-html-report
+
+      # Upload Merged HTML Serenity Report
+      - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
-          name: merged-serenity-report
-          path: merged-report
+          name: merged-serenity-html
+          path: merged-html-report
