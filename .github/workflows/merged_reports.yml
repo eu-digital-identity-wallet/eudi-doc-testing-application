@@ -1,4 +1,4 @@
-name: Merge Android and iOS Serenity JSON reports and Generate HTML
+name: Merge All Reports
 
 on:
   workflow_dispatch:
@@ -68,4 +68,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: merged-serenity-html
-          path: merged-html-report
+          path: serenity-report
