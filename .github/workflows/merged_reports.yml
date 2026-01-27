@@ -67,5 +67,5 @@ jobs:
       - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
-          name: merged-serenity-html
-          path: serenity-report
+          name: serenity-report
+          path: merged-html-report
