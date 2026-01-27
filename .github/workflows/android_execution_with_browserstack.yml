@@ -172,5 +172,13 @@ jobs:
           name: android-device-logs
           path: android-logs/
 
+      - name: Upload Serenity JSON Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-serenity-json
+          path: target/site/serenity/*.json
+
+
 
 
