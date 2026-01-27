@@ -2,45 +2,39 @@ name: Merge Android and iOS Serenity Reports
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Android Automation Tests Execution", "iOS Automation Tests Execution"]
+    types:
+      - completed
 
 jobs:
   merge-reports:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # Download Android Serenity Report artifact
       - name: Download Android Serenity Report
-        uses: dawidd6/action-download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          workflow: <android_execution_with_browserstack.yml>
-          run_id: 20066717098
-          name: android-serenity-report
-          path: android-serenity-report
+          name: serenity-report-android
+          path: android-report
 
-      # Download iOS Serenity Report artifact
       - name: Download iOS Serenity Report
-        uses: dawidd6/action-download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          workflow: <ios_execution_with_browserstack.yml>
-          run_id: 20062215741
-          name: iOS-serenity-report
-          path: ios-serenity-report
+          name: serenity-report-ios
+          path: ios-report
 
-      - name: Create merged results folder
-        run: mkdir merged-serenity-results
-
-      - name: Copy JSON files from Android and iOS reports
-        run: |
-          find android-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
-          find ios-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
-
+      # Merge the reports (example using serenity-cli)
       - name: Merge Serenity Reports
-        run: mvn serenity:aggregate -Dserenity.outputDirectory=merged-serenity-results
+        run: |
+          mkdir merged-report
+          # If using serenity-cli:
+          # serenity merge android-report ios-report -o merged-report
+          # Or if you have a custom script:
+          # python merge_serenity.py android-report ios-report merged-report
 
       - name: Upload Merged Serenity Report
         uses: actions/upload-artifact@v4
         with:
           name: merged-serenity-report
-          path: merged-serenity-results/site/serenity
+          path: merged-report
