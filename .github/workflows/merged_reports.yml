@@ -1,46 +1,71 @@
-name: Merge Android and iOS Serenity Reports
+name: Merge All Reports
 
 on:
   workflow_dispatch:
 
 jobs:
-  merge-reports:
+  merge-and-report:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_RUN_ID: 21401187889
+      ANDROID_ARTIFACT: android-serenity-json
+      IOS_RUN_ID: 21401691295
+      IOS_ARTIFACT: ios-serenity-json
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Download Android Serenity Report artifact
-      - name: Download Android Serenity Report
-        uses: dawidd6/action-download-artifact@v3
-        with:
-          workflow: <android_execution_with_browserstack.yml>
-          run_id: 20066717098
-          name: android-serenity-report
-          path: android-serenity-report
-
-      # Download iOS Serenity Report artifact
-      - name: Download iOS Serenity Report
-        uses: dawidd6/action-download-artifact@v3
-        with:
-          workflow: <ios_execution_with_browserstack.yml>
-          run_id: 20062215741
-          name: iOS-serenity-report
-          path: ios-serenity-report
-
-      - name: Create merged results folder
-        run: mkdir merged-serenity-results
-
-      - name: Copy JSON files from Android and iOS reports
+      - name: Download Android Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          find android-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
-          find ios-serenity-report -name '*.json' -exec cp {} merged-serenity-results/ \;
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$ANDROID_RUN_ID/artifacts > android_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$ANDROID_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' android_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "Android JSON artifact not found!" && exit 1
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o android_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip android_json.zip -d android-json
 
-      - name: Merge Serenity Reports
-        run: mvn serenity:aggregate -Dserenity.outputDirectory=merged-serenity-results
+      - name: Download iOS Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$IOS_RUN_ID/artifacts > ios_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$IOS_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' ios_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "iOS JSON artifact not found!" && exit 1
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o ios_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip ios_json.zip -d ios-json
 
-      - name: Upload Merged Serenity Report
+      - name: Merge Serenity JSONs
+        run: |
+          mkdir merged-json
+          find android-json -type f -name '*.json' -exec cp {} merged-json/ \;
+          find ios-json -type f -name '*.json' -exec cp {} merged-json/ \;
+
+      - name: List merged-json content
+        run: |
+          ls -l merged-json
+          head -n 20 merged-json/*.json || true
+
+      - name: Generate Merged Serenity HTML Report
+        run: mvn serenity:aggregate -Dserenity.sourceDirectory=merged-json -Dserenity.outputDirectory=merged-html-report
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="merged-html-report"
+          echo "Replacing core.css using custom-style.css..."
+          mkdir -p "$REPORT_DIR/css"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+
+      - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
-          name: merged-serenity-report
-          path: merged-serenity-results/site/serenity
+          name: merged-serenity-html
+          path: serenity-report
