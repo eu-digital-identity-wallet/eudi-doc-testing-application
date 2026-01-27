@@ -10,6 +10,7 @@ on:
           - main
           - develop
           - milestone/2025.Q4
+          - milestone/2026.Q1
         default: develop
 
       test-cases:
