@@ -7,55 +7,38 @@ jobs:
   merge-and-report:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 20066717098           # <-- set your Android workflow run id
+      ANDROID_RUN_ID: 20066717098           # <-- Replace with actual run id
       ANDROID_ARTIFACT: android-serenity-report
-      IOS_RUN_ID: 20062215741               # <-- set your iOS workflow run id
+      IOS_RUN_ID: 20062215741               # <-- Replace with actual run id
       IOS_ARTIFACT: iOS-serenity-report
 
     steps:
-      # Download Android Serenity Report
       - name: Download Android Serenity Report
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/runs/$ANDROID_RUN_ID/artifacts > android_artifacts.json
-
           ARTIFACT_ID=$(jq -r --arg NAME "$ANDROID_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' android_artifacts.json)
-          echo "Android Artifact id: $ARTIFACT_ID"
-
-          if [ "$ARTIFACT_ID" == "" ]; then
-            echo "Android artifact not found!" && exit 1
-          fi
-
+          [ -z "$ARTIFACT_ID" ] && echo "Android artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o android_report.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-
           unzip android_report.zip -d android-report
 
-      # Download iOS Serenity Report
       - name: Download iOS Serenity Report
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/runs/$IOS_RUN_ID/artifacts > ios_artifacts.json
-
           ARTIFACT_ID=$(jq -r --arg NAME "$IOS_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' ios_artifacts.json)
-          echo "iOS Artifact id: $ARTIFACT_ID"
-
-          if [ "$ARTIFACT_ID" == "" ]; then
-            echo "iOS artifact not found!" && exit 1
-          fi
-
+          [ -z "$ARTIFACT_ID" ] && echo "iOS artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o ios_report.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-
           unzip ios_report.zip -d ios-report
 
-      # List files after unzip for debugging
       - name: List files after unzip
         run: |
           echo "Android report contents:"
@@ -63,34 +46,28 @@ jobs:
           echo "iOS report contents:"
           find ios-report
 
-      # Merge Serenity Reports (all JSON files)
-      - name: Merge Serenity Reports
+      - name: Merge Serenity Reports (all JSON files)
         run: |
           mkdir merged-report
           find android-report -type f -name '*.json' -exec cp {} merged-report/ \;
           find ios-report -type f -name '*.json' -exec cp {} merged-report/ \;
 
-      # List merged-report content and check JSONs
       - name: List merged-report content and check JSONs
         run: |
           echo "Listing files in merged-report:"
           ls -l merged-report
-          echo "Show first 50 lines of JSON files:"
-          head -n 50 merged-report/*.json || true
+          echo "Show first 20 lines of JSON files:"
+          head -n 20 merged-report/*.json || true
 
-      # Install Serenity CLI
       - name: Install Serenity CLI
         run: npm install -g serenity-cli
 
-      # Download Serenity BDD CLI JAR (required)
-      - name: Download Serenity BDD CLI JAR
+      - name: Download Serenity BDD CLI JAR (required)
         run: serenity update
 
-      # Generate Merged Serenity HTML Report
       - name: Generate Merged Serenity HTML Report
         run: serenity run report --source merged-report --output merged-html-report --log debug
 
-      # Upload Merged HTML Serenity Report
       - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
