@@ -13,14 +13,19 @@ jobs:
 
     steps:
       - name: Download Android Serenity Report
-        uses: actions/download-artifact@v4
+        uses: devops-actions/download-artifact-cross-workflow@v2
         with:
+          workflow: Android Automation Tests Execution
+          run_id: 20066717098 # Use the actual run id
           name: android-serenity-report
           path: target/site/reports/*
 
+
       - name: Download iOS Serenity Report
-        uses: actions/download-artifact@v4
+        uses: devops-actions/download-artifact-cross-workflow@v2
         with:
+          workflow: iOS Automation Tests Execution
+          run_id: 20062215741 # Use the actual run id
           name: iOS-serenity-report
           path: target/site/reports/*
 
