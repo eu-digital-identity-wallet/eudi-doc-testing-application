@@ -7,9 +7,9 @@ jobs:
   merge-and-report:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 21401187889           # <-- set your Android workflow run id
+      ANDROID_RUN_ID: 21401187889          # <-- set your Android workflow run id
       ANDROID_ARTIFACT: android-serenity-json
-      IOS_RUN_ID: 21397156445               # <-- set your iOS workflow run id
+      IOS_RUN_ID: 21401691295             # <-- set your iOS workflow run id
       IOS_ARTIFACT: ios-serenity-json
 
     steps:
