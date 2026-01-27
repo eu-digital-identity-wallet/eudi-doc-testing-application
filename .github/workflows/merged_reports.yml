@@ -15,14 +15,15 @@ jobs:
       - name: Download Android Serenity Report
         uses: actions/download-artifact@v4
         with:
-          name: serenity-report-android
-          path: android-report
+          name: android-serenity-report
+          path: target/site/reports/*
 
       - name: Download iOS Serenity Report
         uses: actions/download-artifact@v4
         with:
-          name: serenity-report-ios
-          path: ios-report
+          name: iOS-serenity-report
+          path: target/site/reports/*
+
 
       # Merge the reports (example using serenity-cli)
       - name: Merge Serenity Reports
@@ -37,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: merged-serenity-report
-          path: merged-report
+          path: target/site/reports/*
