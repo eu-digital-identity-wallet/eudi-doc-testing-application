@@ -12,7 +12,7 @@ on:
         required: true
         type: string
       manual_run_id:
-        description: 'manual Run ID'
+        description: 'iOS Run ID'
         required: true
         type: string
 
@@ -64,7 +64,7 @@ jobs:
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/runs/$MANUAL_RUN_ID/artifacts > manual_artifacts.json
           ARTIFACT_ID=$(jq -r --arg NAME "$MANUAL_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' manual_artifacts.json)
-          [ -z "$ARTIFACT_ID" ] && echo "iOS JSON artifact not found!" && exit 1
+          [ -z "$ARTIFACT_ID" ] && echo "manual JSON artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o manual_json.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
