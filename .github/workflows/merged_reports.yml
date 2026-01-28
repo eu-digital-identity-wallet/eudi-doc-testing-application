@@ -2,16 +2,20 @@ name: Merge All Reports
 
 on:
   workflow_dispatch:
-   inputs:
-    android_run_id:
-     description: 'Android Run ID'
-     required: true
-     type: string
-    ios_run_id:
-     description: 'iOS Run ID'
-     required: true
-     type: string
-     
+    inputs:
+      android_run_id:
+        description: 'Android Run ID'
+        required: true
+        type: string
+      ios_run_id:
+        description: 'iOS Run ID'
+        required: true
+        type: string
+      manual_run_id:
+        description: 'iOS Run ID'
+        required: true
+        type: string
+
 jobs:
   merge-and-report:
     runs-on: ubuntu-latest
@@ -20,6 +24,8 @@ jobs:
       ANDROID_ARTIFACT: android-serenity-json
       IOS_RUN_ID: ${{ inputs.ios_run_id }}
       IOS_ARTIFACT: ios-serenity-json
+      MANUAL_RUN_ID: ${{ inputs.manual_run_id }}
+      MANUAL_ARTIFACT: manual-serenity-json
 
     steps:
       - name: Checkout repository
@@ -51,6 +57,19 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
           unzip ios_json.zip -d ios-json
 
+      - name: Download manual Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$MANUAL_RUN_ID/artifacts > manual_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$MANUAL_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' manual_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "iOS JSON artifact not found!" && exit 1
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o manual_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip manual_json.zip -d manual-json
+
       - name: Merge Serenity JSONs
         run: |
           mkdir merged-json
@@ -76,5 +95,5 @@ jobs:
       - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
-          name: merged-serenity-html
-          path: serenity-report
+          name: serenity-report
+          path: merged-html-report
