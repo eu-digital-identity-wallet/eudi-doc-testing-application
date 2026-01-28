@@ -5,8 +5,8 @@ set "CUSTOM_CSS=src\test\resources\custom-style.css"
 set "REPORT_DIR=target\site\reports\EUDI_Wallet_Version_2025.12.34-Demo\css"
 
 REM Run tests and generate reports
-mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@US_VP_TC_02"
-mvn serenity:aggregate -Dtags="@US_VP_TC_02"
+mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@Q2_2025"
+mvn serenity:aggregate -Dtags="@Q2_2025"
 
 REM Find core.css using PowerShell
 for /f "delims=" %%f in ('powershell -NoProfile -Command "Get-ChildItem -Path \"%REPORT_DIR%\" -Filter core.css -Recurse | Select-Object -First 1 -ExpandProperty FullName"') do set "CORE_CSS=%%f"
