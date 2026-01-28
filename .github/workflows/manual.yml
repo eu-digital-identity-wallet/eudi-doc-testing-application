@@ -60,7 +60,7 @@ jobs:
           done
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="Q3_2025"
+        run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
 
       - name: Inject Custom CSS into Serenity Report
         if: always()
