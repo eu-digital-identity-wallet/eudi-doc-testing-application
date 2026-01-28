@@ -2,6 +2,15 @@ name: Merge All Reports
 
 on:
   workflow_dispatch:
+    inputs:
+      android_run_id:
+        description: 'Android Run ID'
+        required: true
+        type: string
+      ios_run_id:
+        description: 'iOS Run ID'
+        required: true
+        type: string
 
 jobs:
   merge-and-report:
@@ -11,6 +20,7 @@ jobs:
       ANDROID_ARTIFACT: android-serenity-json
       IOS_RUN_ID: ${{ inputs.ios_run_id }}
       IOS_ARTIFACT: ios-serenity-json
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
