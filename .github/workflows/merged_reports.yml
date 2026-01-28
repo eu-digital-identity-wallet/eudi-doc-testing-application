@@ -7,11 +7,10 @@ jobs:
   merge-and-report:
     runs-on: ubuntu-latest
     env:
-      ANDROID_RUN_ID: 21401187889
+      ANDROID_RUN_ID: ${{ inputs.android_run_id }}
       ANDROID_ARTIFACT: android-serenity-json
-      IOS_RUN_ID: 21401691295
+      IOS_RUN_ID: ${{ inputs.ios_run_id }}
       IOS_ARTIFACT: ios-serenity-json
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
