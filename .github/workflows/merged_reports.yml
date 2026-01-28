@@ -75,6 +75,7 @@ jobs:
           mkdir merged-json
           find android-json -type f -name '*.json' -exec cp {} merged-json/ \;
           find ios-json -type f -name '*.json' -exec cp {} merged-json/ \;
+          find manual-json -type f -name '*.json' -exec cp {} merged-json/ \;
 
       - name: List merged-json content
         run: |
