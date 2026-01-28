@@ -1,11 +1,7 @@
 name: Manual Tests Execution
 on:
   workflow_dispatch:
-    inputs:
-      tagName:
-        description: "Enter the tag to execute (example: @Q3_2025 for milestone/2025.Q3)"
-        required: true
-        default: "@Q3_2025"
+  #[push]
 jobs:
   build:
     runs-on: macos-latest
@@ -42,15 +38,15 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.tagName }}" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@Q3_2025" "$@"
           rm -rf target/site/serenity 
-          mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+          mvn serenity:aggregate -Dtags=Q3_2025
           echo "Modifying JSON files to mark tests as manual..."
-          find target/site/reports/EUDI_Wallet_Version_2025.02.22-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
-            if grep -q "\"manual\":" "$file" 2>/dev/null; then    
-              sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
-              sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
-            fi
+          find target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
+           if grep -q "\"manual\":" "$file" 2>/dev/null; then    
+          sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
+          sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
+          fi
           done
 
       - name: Produce report
@@ -64,5 +60,5 @@ jobs:
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
-          name: manual-serenity-report
+          name: report
           path: target/site
