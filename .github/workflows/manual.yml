@@ -78,4 +78,4 @@ jobs:
         if: always()
         with:
           name: manual-serenity-json    # or ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/*.json
+          path: target/site/reports/*/*.json
