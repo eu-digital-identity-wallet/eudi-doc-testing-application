@@ -2,7 +2,16 @@ name: Merge All Reports
 
 on:
   workflow_dispatch:
-
+   inputs:
+    android_run_id:
+     description: 'Android Run ID'
+     required: true
+     type: string
+    ios_run_id:
+     description: 'iOS Run ID'
+     required: true
+     type: string
+     
 jobs:
   merge-and-report:
     runs-on: ubuntu-latest
