@@ -20,8 +20,6 @@ jobs:
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
-        with:
-          ref: milestone/2025.Q3
 
       - name: Permission to file .sh
         run: |
