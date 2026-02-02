@@ -1,9 +1,9 @@
 #!/bin/bash
-export CUCUMBER_FILTER_TAGS="@report_analysis_with_status"
-mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@report_analysis_with_status" "$@"
+export CUCUMBER_FILTER_TAGS="@end2end"
+mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@end2end" "$@"
 rm -rf target/site/serenity
 # Clear previous report data
-mvn serenity:aggregate -Dtags="report_analysis_with_status"
+mvn serenity:aggregate -Dtags="end2end"
 echo "--- Applying custom CSS ---"
 
 REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/css"
