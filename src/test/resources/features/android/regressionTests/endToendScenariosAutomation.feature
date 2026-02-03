@@ -1,5 +1,5 @@
-@ANDROID @US_ETESA @automated @end2end
-Feature: EUDI Wallet – End to End Credential Issuance and Presentation with status (Automation)
+@ANDROID @US_ETESA @automated @end2end1
+Feature: Automated Regression Tests
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given the user initiates a credential issuance using the <issuer>

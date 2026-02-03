@@ -1,7 +1,6 @@
-@ANDROID @US_ETESM @manual @end2end
-Feature: EUDI Wallet – End to End Credential Issuance and Presentation with status (Manual)
+@ANDROID @US_ETESM @end2end1
+Feature: Manual Regression Tests
 
-  @manual:Passed
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -20,8 +19,7 @@ Feature: EUDI Wallet – End to End Credential Issuance and Presentation with st
       | Python | credential offer | same device    | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | specific attributes (custom) | passed |
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
-
-  @manual:Passed
+    
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer
     Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
