@@ -2746,17 +2746,6 @@ div.code {
     font-weight: normal;
 }
 
-div.code {
-    white-space: pre;
-}
-
-.icons-bar {
-    white-space: nowrap;
-}
-
-.dataTables_filter input {
-    font-weight: normal;
-}
 
 .nav.nav-tabs li:last-child {
     display: none!important;
