@@ -21,7 +21,7 @@ Feature: Manual Regression Tests
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
     
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer
-    Given user initiates a credential issuance using the <issuer>
+    Given user initiates credential issuance using the <issuer>
     And issuance method is <issuance_method>
     And issuance is performed on a <issue_scenario>
     When issuance flow is completed
