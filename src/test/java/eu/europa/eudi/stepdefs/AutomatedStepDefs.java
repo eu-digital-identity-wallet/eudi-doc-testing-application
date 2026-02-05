@@ -1845,12 +1845,72 @@ public class AutomatedStepDefs {
 
     }
 
-    @Then("the verifier verifies the credential successfully with {}")
+    @Then("verifier verifies the credential successfully with {}")
     public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
         if ("failed".equalsIgnoreCase(status)) {
             fail("Credential verification failed as per test input.");
         }
         if ("passed".equalsIgnoreCase(status)) {System.out.println("Credential verification passed as per test input.");}
+    }
+
+    @Given("the user initiates a credential issuance using the {}")
+    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) {
+        if ("Kotlin".equalsIgnoreCase(issuerType)){
+
+        } else {
+        }
+    }
+
+    @And("the issuance method is {}")
+    public void theIssuanceMethodIs(String issuanceMethod) {
+        if ("from list".equalsIgnoreCase(issuanceMethod)){
+
+        } else {
+        }
+    }
+
+    @And("the issuance is performed on a {}")
+    public void theIssuanceIsPerformedOnA(String issueScenario) {
+        if ("same device".equalsIgnoreCase(issueScenario)){
+
+        } else {
+        }
+    }
+
+    @When("the issuance flow is completed")
+    public void theIssuanceFlowIsCompleted() {
+
+    }
+
+    @Then("the credential is stored in the Wallet")
+    public void theCredentialIsStoredInTheWallet() {
+
+    }
+
+    @When("the user presents the credential to the {}")
+    public void theUserPresentsTheCredentialToThe(String VerifierType) {
+
+    }
+
+    @And("the presentation is performed on a {}")
+    public void thePresentationIsPerformedOnA(String presentationScenario) {
+        if ("same device".equalsIgnoreCase(presentationScenario)){
+
+        } else {
+        }
+    }
+
+    @And("the user shares {}")
+    public void theUserShares(String selectiveDisclosure) {
+        if ("specific attributes".equalsIgnoreCase(selectiveDisclosure)){
+
+        } else {
+        }
+    }
+
+    @Then("the verifier verifies the credential successfully")
+    public void theVerifierVerifiesTheCredentialSuccessfully() {
+        //manual
     }
 }
 

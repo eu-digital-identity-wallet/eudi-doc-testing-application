@@ -2,15 +2,15 @@
 Feature: Manual Regression Tests
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
-    Given the user initiates a credential issuance using the <issuer>
-    And the issuance method is <issuance_method>
-    And the issuance is performed on a <issue_scenario>
-    When the issuance flow is completed
-    Then the credential is stored in the Wallet
-    When the user presents the credential to the <verifier>
-    And the presentation is performed on a <presentation_scenario>
-    And the user shares <selective_disclosure>
-    Then the verifier verifies the credential successfully with <status>
+    Given user initiates credential issuance using the <issuer>
+    And issuance method is <issuance_method>
+    And issuance is performed on a <issue_scenario>
+    When issuance flow is completed
+    Then credential is stored in the Wallet
+    When user presents the credential to the <verifier>
+    And presentation is performed on a <presentation_scenario>
+    And user shares <selective_disclosure>
+    Then verifier verifies the credential successfully with <status>
     Examples:
       | issuer | issuance_method  | issue_scenario | verifier               | presentation_scenario | selective_disclosure         | status |
       | Python | from list        | same device    | Proximity Verifier App | proximity case        | specific attributes (custom) | passed |
@@ -21,15 +21,15 @@ Feature: Manual Regression Tests
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
     
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer
-    Given the user initiates a credential issuance using the <issuer>
-    And the issuance method is <issuance_method>
-    And the issuance is performed on a <issue_scenario>
-    When the issuance flow is completed
-    Then the credential is stored in the Wallet
-    When the user presents the credential to the <verifier>
-    And the presentation is performed on a <presentation_scenario>
-    And the user shares <selective_disclosure>
-    Then the verifier verifies the credential successfully with <status>
+    Given user initiates a credential issuance using the <issuer>
+    And issuance method is <issuance_method>
+    And issuance is performed on a <issue_scenario>
+    When issuance flow is completed
+    Then credential is stored in the Wallet
+    When user presents the credential to the <verifier>
+    And presentation is performed on a <presentation_scenario>
+    And user shares <selective_disclosure>
+    Then verifier verifies the credential successfully with <status>
     Examples:
       | issuer | issuance_method  | issue_scenario | verifier               | presentation_scenario | selective_disclosure         | status |
       | Kotlin | credential offer | same device    | Proximity Verifier App | proximity case        | specific attributes (custom) | passed |

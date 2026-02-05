@@ -8093,35 +8093,10 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the issuance flow is completed")
-    public void theIssuanceFlowIsCompleted() {
-        //manual
-    }
-
-    @Then("the credential is stored in the Wallet")
-    public void theCredentialIsStoredInTheWallet() {
-        //manual
-    }
-
-    @Then("the verifier verifies the credential successfully")
-    public void theVerifierVerifiesTheCredentialSuccessfully() {
-        //manual
-    }
-
     // ========== END TO END SCENARIO STEPS ==========
-
-    @Given("the user initiates a credential issuance using the Python")
-    public void theUserInitiatesACredentialIssuanceUsingThePython() {
-        //manual
-    }
 
     @Given("the user initiates a credential issuance using the Kotlin")
     public void theUserInitiatesACredentialIssuanceUsingTheKotlin() {
-        //manual
-    }
-
-    @And("the issuance method is from list")
-    public void theIssuanceMethodIsFromList() {
         //manual
     }
 
@@ -8130,28 +8105,13 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the issuance is performed on a same device")
-    public void theIssuanceIsPerformedOnASameDevice() {
-        //manual
-    }
-
     @And("the issuance is performed on a cross device")
     public void theIssuanceIsPerformedOnACrossDevice() {
         //manual
     }
 
-    @When("the user presents the credential to the Web verifier")
-    public void theUserPresentsTheCredentialToTheWebVerifier() {
-        //manual
-    }
-
     @When("the user presents the credential to the Proximity Verifier App")
     public void theUserPresentsTheCredentialToTheProximityVerifierApp() {
-        //manual
-    }
-
-    @And("the presentation is performed on a same device")
-    public void thePresentationIsPerformedOnASameDevice() {
         //manual
     }
 
@@ -8162,11 +8122,6 @@ public class ManuallyStepDefs {
 
     @And("the presentation is performed on a proximity case")
     public void thePresentationIsPerformedOnAProximityCase() {
-        //manual
-    }
-
-    @And("the user shares specific attributes")
-    public void theUserSharesSpecificAttributes() {
         //manual
     }
 
@@ -8182,6 +8137,51 @@ public class ManuallyStepDefs {
 
     @And("the user shares all attributes \\(full)")
     public void theUserSharesAllAttributesFull() {
+        //manual
+    }
+
+    @Given("the user initiates credential issuance using the {}")
+    public void theUserInitiatesCredentialIssuanceUsingThe(String arg0) {
+        //manual
+    }
+
+    @And("issuance method is {}")
+    public void issuanceMethodIs(String arg0) {
+        //manual
+    }
+
+    @And("issuance is performed on a {}")
+    public void issuanceIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @When("issuance flow is completed")
+    public void issuanceFlowIsCompleted() {
+        //manual
+    }
+
+    @Then("credential is stored in the Wallet")
+    public void credentialIsStoredInTheWallet() {
+        //manual
+    }
+
+    @When("user presents the credential to the {}")
+    public void userPresentsTheCredentialToThe(String arg0) {
+        //manual
+    }
+
+    @And("presentation is performed on a {}")
+    public void presentationIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @And("user shares {}")
+    public void userShares(String arg0) {
+        //manual
+    }
+
+    @Given("user initiates credential issuance using the {}")
+    public void userInitiatesCredentialIssuanceUsingThe(String arg0) {
         //manual
     }
 }
