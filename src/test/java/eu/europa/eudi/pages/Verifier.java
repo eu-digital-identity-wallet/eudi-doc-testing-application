@@ -72,9 +72,9 @@ public class Verifier {
 
     public void appOpensSuccessfully() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfully)).getText();
-            Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfully)).getText();
+            Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
         } else {
             //nothing
         }
@@ -265,10 +265,9 @@ public class Verifier {
             String rawText = jsonElement.getText();
 
             JSONObject jsonObject = new JSONObject(rawText);
-            JSONObject valueObject = jsonObject.getJSONObject("value");
 
-            // Step 4: Extract the transaction_id
-            String transactionId = valueObject.getString("transaction_id");
+            // Extract the transaction_id from "key" field
+            String transactionId = jsonObject.getString("key");
 
             // Output the result
             System.out.println("Transaction ID: " + transactionId);
@@ -307,8 +306,7 @@ public class Verifier {
 
                 try {
                     JSONObject jsonObject = new JSONObject(jsonText);
-                    JSONObject valueObject = jsonObject.getJSONObject("value");
-                    String transactionId = valueObject.getString("transaction_id");
+                    String transactionId = jsonObject.getString("key");
 
                     System.out.println("Transaction ID: " + transactionId);
 
@@ -360,8 +358,7 @@ public class Verifier {
 
                 try {
                     JSONObject jsonObject = new JSONObject(jsonText);
-                    JSONObject valueObject = jsonObject.getJSONObject("value");
-                    String transactionId = valueObject.getString("transaction_id");
+                    String transactionId = jsonObject.getString("key");
 
                     System.out.println("Transaction ID: " + transactionId);
 
@@ -618,6 +615,37 @@ public class Verifier {
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to capture verifier QR (web) screenshot: " + e.getMessage());
+        }
+    }
+
+    public void scrollUntilSumbit() {
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true))" +
+                            ".setAsVerticalList()" +
+                            ".flingForward()" +
+                            ".setMaxSearchSwipes(50)" +
+                            ".scrollIntoView(new UiSelector().text(\"Submit\"))"
+            ));
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
+        }
+    }
+
+    public void clickSubmit() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSubmit)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickSubmit)).click();
         }
     }
 }

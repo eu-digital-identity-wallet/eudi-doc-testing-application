@@ -20,4 +20,5 @@ public class VerifierElements {
     public static By specificAttributes = By.xpath("//XCUIElementTypeOther[@name=\"Specific attributes\"]");
     public static By selectAttributesButton = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
+    public static By clickSubmit;
 }

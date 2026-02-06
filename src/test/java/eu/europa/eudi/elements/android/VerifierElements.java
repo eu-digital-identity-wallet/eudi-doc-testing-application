@@ -30,4 +30,5 @@ public class VerifierElements {
     public static By nextButton = By.xpath("//button[.//span[normalize-space()='Next']]");
     public static By pidIdDisplayedOnWeb = By.xpath("//mat-card-title[normalize-space()='Person Identification Data (PID)']");
     public static By uriMethodIdDisplayedOnWeb = By.xpath("//div[contains(@class,'config-option-label') and normalize-space()='Request URI Method']");
+    public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
 }
