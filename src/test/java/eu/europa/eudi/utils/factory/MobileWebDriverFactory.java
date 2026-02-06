@@ -46,7 +46,7 @@ public class MobileWebDriverFactory {
                 // --- BrowserStack setup ---
                 UiAutomator2Options options = new UiAutomator2Options();
                 if (envCI.equalsIgnoreCase("githubactions")) {
-                options.setCapability("appium:app", appUrl);
+                    options.setCapability("appium:app", appUrl);
                 }else{
                     options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
                 }

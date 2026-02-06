@@ -1,7 +1,6 @@
-@ANDROID @US_ETESA @automated @tester
+@ANDROID @US_ETESA @automated
 Feature: Automated Regression Tests
 
-  @automated:Failed
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -27,7 +26,6 @@ Feature: Automated Regression Tests
       | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
       | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
-  @automated:Failed
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer
     Given the user initiates a credential issuance using the <issuer>
     And the issuance method is <issuance_method>
