@@ -8100,11 +8100,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the issuance method is credential offer")
-    public void theIssuanceMethodIsCredentialOffer() {
-        //manual
-    }
-
     @And("the issuance is performed on a cross device")
     public void theIssuanceIsPerformedOnACrossDevice() {
         //manual

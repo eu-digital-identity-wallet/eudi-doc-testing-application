@@ -16,7 +16,7 @@ public class WalletElements {
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By loginPageIsDisplayed = By.id("eu.europa.ec.euidi.dev:id/biometric_screen_title");
-    public static By clickPID = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://ec.dev.issuer.eudiw.dev_eu.europa.ec.eudi.pid_mdoc");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlDemo = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
