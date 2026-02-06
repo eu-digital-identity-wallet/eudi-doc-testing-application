@@ -599,7 +599,7 @@ public class AutomatedStepDefs {
     @Given("the user has opened the first PID that was issued")
     public void theUserHasOpenedTheFirstPIDThatWasIssued() {
         test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickPID();
+        test.mobile().wallet().openIssuedPID();
         test.mobile().wallet().detailsOfDocumentIsDisplayed();
     }
 
@@ -753,7 +753,8 @@ public class AutomatedStepDefs {
         if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNext();
+            test.mobile().verifier().scrollUntilSumbit();
+            test.mobile().verifier().clickSubmit();
     }      else{
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNextForAndroid();

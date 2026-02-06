@@ -1,6 +1,7 @@
-@ANDROID @US_ETESM @end2end1
+@ANDROID @US_ETESM @manual @tester
 Feature: Manual Regression Tests
 
+  @manual:Passed
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given user initiates credential issuance using the <issuer>
     And issuance method is <issuance_method>
@@ -19,7 +20,8 @@ Feature: Manual Regression Tests
       | Python | credential offer | same device    | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | specific attributes (custom) | passed |
       | Python | credential offer | cross device   | Proximity Verifier App | proximity case        | all attributes (full)        | passed |
-    
+
+  @manual:Passed
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer
     Given user initiates credential issuance using the <issuer>
     And issuance method is <issuance_method>
