@@ -8093,12 +8093,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    // ========== END TO END SCENARIO STEPS ==========
-
-    @Given("the user initiates a credential issuance using the Kotlin")
-    public void theUserInitiatesACredentialIssuanceUsingTheKotlin() {
-        //manual
-    }
+    // ========== END TO END SCENARIO STEPS ==========[
 
     @And("the issuance is performed on a cross device")
     public void theIssuanceIsPerformedOnACrossDevice() {
