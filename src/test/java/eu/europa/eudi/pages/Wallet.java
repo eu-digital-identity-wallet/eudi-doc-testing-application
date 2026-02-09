@@ -1390,4 +1390,11 @@ public class Wallet {
             tapAction(button, false);
         }
     }
+
+    public void clickPIDKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPIDKotlin)).click();
+        } else {
+        }
+    }
 }

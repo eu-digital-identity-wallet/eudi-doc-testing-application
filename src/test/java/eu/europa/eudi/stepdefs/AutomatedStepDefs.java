@@ -1855,17 +1855,43 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user initiates a credential issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) {
+    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) throws InterruptedException {
         if ("Kotlin".equalsIgnoreCase(issuerType)){
-
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().clickPIDKotlin();
+            test.mobile().issuer().fillLoginForm();
+            test.mobile().wallet().clickClose();
         } else {
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickNextButton();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickConfirm();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().addPIDPageIsDisplayed();
+            test.mobile().wallet().scrollUntilPIDFirst();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID();
+            test.mobile().issuer().sleepMethod();
+            test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickDone();
         }
     }
 
     @And("the issuance method is {}")
     public void theIssuanceMethodIs(String issuanceMethod) {
         if ("from list".equalsIgnoreCase(issuanceMethod)){
-
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().clickToAddDocument();
+            test.mobile().wallet().clickFromList();
         } else {
         }
     }
