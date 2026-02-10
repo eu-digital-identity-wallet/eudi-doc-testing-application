@@ -72,4 +72,5 @@ public class WalletElements {
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickPIDKotlin = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
+    public static By closeButtonOnVerifier = By.xpath("//android.widget.Button[@text=\"Close\"]");
 }

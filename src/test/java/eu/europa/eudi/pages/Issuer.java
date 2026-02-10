@@ -1,10 +1,12 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
+import eu.europa.eudi.utils.YmlLoader;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -204,12 +206,29 @@ public class Issuer {
 
     public void enterGivenName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickGivenName)).click();
-            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName));
-            givenName.clear();
-            givenName.sendKeys("Foteini");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            String givenName = getValueFromYml("Given Name");
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.clickGivenName
+                    ))
+                    .click();
+
+            WebElement givenFamily =
+                    test.mobileWebDriverFactory().getWait()
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    IssuerElements.clickGivenName
+                            ));
+
+            givenFamily.clear();
+            givenFamily.sendKeys(givenName);
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.closeKeyboardForm
+                    ))
+                    .click();
+
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -221,11 +240,29 @@ public class Issuer {
 
     public void enterFamilyName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName)).click();
-            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName));
+            String familyName = getValueFromYml("Family Name");
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.clickFamilyName
+                    ))
+                    .click();
+
+            WebElement givenFamily =
+                    test.mobileWebDriverFactory().getWait()
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    IssuerElements.clickFamilyName
+                            ));
+
             givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            givenFamily.sendKeys(familyName);
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.closeKeyboardForm
+                    ))
+                    .click();
+
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -235,14 +272,84 @@ public class Issuer {
         }
     }
 
+    private String getValueFromYml(String familyName) {
+
+        FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+
+        if (!yml.fields.containsKey(familyName)) {
+            throw new RuntimeException("Field not found in YAML: " + familyName);
+        }
+
+        return yml.fields.get(familyName).value;
+    }
+
     public void chooseBirthDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickBirthDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+            String birthDate = yml.fields.get("Birth Date").value;   // "1990-01-10"
+
+// open date picker
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickBirthDate))
+                    .click();
+
+// parse yyyy-MM-dd
+            String[] p = birthDate.split("-");
+            String year = p[0];
+            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading 0
+
+// open year selection
+            try {
+                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+            } catch (Exception e) {
+                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+            }
+
+            selectYearScrollUp(driver, year);
+
+// select day
+            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
+
+// confirm
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
+                    .click();
+
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
         }
+    }
+
+    private void selectYearScrollUp(AndroidDriver driver, String year) {
+        String uiScrollable =
+                "new UiScrollable(new UiSelector().scrollable(true))";
+
+        // Try up to 25 scrolls (enough to reach very old years)
+        for (int i = 0; i < 25; i++) {
+
+            try {
+                // Check if year is visible
+                WebElement yearEl = driver.findElement(
+                        By.xpath("//*[@text='" + year + "']")
+                );
+
+                // Found → click and exit
+                yearEl.click();
+                return;
+
+            } catch (NoSuchElementException e) {
+
+                // Not found → scroll UP
+                driver.findElement(AppiumBy.androidUIAutomator(
+                        uiScrollable + ".scrollBackward()"
+                ));
+            }
+        }
+
+        // If we reach here, year was never found
+        throw new AssertionError("Year not found in date picker (scroll up only): " + year);
     }
 
     public void enterDocumentNumber() {
@@ -463,6 +570,7 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickSubmit();
         formIsDisplayed();
+        verifyMandatoryInfoLabelsPresent();
         chooseBirthDate();
         enterFamilyName();
         enterGivenName();
@@ -473,8 +581,100 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
+        verifyMandatoryInfoLabelsPresentInAuthorizePage();
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            FormYml yml = YmlLoader.load("testdata/py_issuer_authorization.yml", FormYml.class);
+
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            // For nested like "Birth Place.country"
+            String[] labels = fieldKey.split("\\.");
+
+            // 1) Make sure each label exists (with scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 15);
+            }
+
+            // 2) If YAML has a value -> assert value under the LAST label
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                String lastLabel = labels[labels.length - 1];
+                String actual = readValueBelowLabel(driver, lastLabel);
+                org.junit.Assert.assertEquals("Wrong value for label: " + fieldKey, cfg.value.trim(), actual.trim());
+            }
+        });
+     }else {
+            //nothing now for iOS
+        }
+    }
+
+    private void dumpVisibleWebViewTextsAndroid(AndroidDriver driverAndroid) {
+        AndroidDriver driver =
+                (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();        var elements = driver.findElements(By.xpath(
+                "//android.webkit.WebView//*[string-length(@text) > 0]"
+        ));
+
+        System.out.println("=== Visible WebView texts (" + elements.size() + ") ===");
+        for (WebElement el : elements) {
+            String t = el.getText();
+            if (t != null && !t.trim().isEmpty()) {
+                System.out.println("TEXT: " + t.trim());
+            }
+        }
+        System.out.println("=== End dump ===");
+    }
+
+    private void verifyMandatoryInfoLabelsPresent() {
+        FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            // (Optional) make sure we're in a stable context
+            // driver.context("NATIVE_APP");
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
+
+                String[] labels = fieldKey.split("\\.");
+
+                for (String label : labels) {
+
+                    boolean found = false;
+
+                    for (int i = 0; i < 10; i++) {
+
+                        By labelLocator = By.xpath(
+                                "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') " +
+                                        "and contains(@text, \"" + label + "\")]"
+                        );
+
+                        if (!driver.findElements(labelLocator).isEmpty()) {
+                            found = true;
+                            break;
+                        }
+
+                        // scroll down a bit and try again
+                        slowScroll(driver);
+                    }
+
+                    if (!found) {
+                        throw new AssertionError("Mandatory label not found: " + label);
+                    }
+                }
+            });
+
+        } else {
+            //nothing now for iOS
+        }
     }
 
 
@@ -798,11 +998,23 @@ public class Issuer {
 
     public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountry));
-            countryField.click();
-            countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickCountry));
-            countryField.clear();
-            countryField.sendKeys("Greece");
+            String country = getValueFromYml("Place Of Birth.Country");
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.clickCountry
+                    ))
+                    .click();
+
+            WebElement givenFamily =
+                    test.mobileWebDriverFactory().getWait()
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    IssuerElements.clickCountry
+                            ));
+
+            givenFamily.clear();
+            givenFamily.sendKeys(country);
+
             WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
             test.mobile().wallet().tapAction(placeOfBirth, false);
         } else {
@@ -937,10 +1149,23 @@ public class Issuer {
 
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode)).click();
-            WebElement countryCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickCountryCode));
-            countryCode.clear();
-            countryCode.sendKeys("GR");
+            String countryCode = getValueFromYml("Nationality.Country Code");
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            IssuerElements.clickCountryCode
+                    ))
+                    .click();
+
+            WebElement givenFamily =
+                    test.mobileWebDriverFactory().getWait()
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    IssuerElements.clickCountryCode
+                            ));
+
+            givenFamily.clear();
+            givenFamily.sendKeys(countryCode);
+
             WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.closeKeyboard));
             test.mobile().wallet().tapAction(element, false);
 
@@ -1296,5 +1521,64 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidMsoMdoc)).click();
         }
+    }
+
+    public void ckeckFieldsOnWallet() {
+        FormYml yml = YmlLoader.load("testdata/wallet_pid_details.yml", FormYml.class);
+
+        if (!test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            return; // iOS later
+        }
+
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            // For nested like "Birth Place.country"
+            String[] labels = fieldKey.split("\\.");
+
+            // 1) Make sure each label exists (with scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 15);
+            }
+
+            // 2) If YAML has a value -> assert value under the LAST label
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                String lastLabel = labels[labels.length - 1];
+                String actual = readValueBelowLabel(driver, lastLabel);
+                org.junit.Assert.assertEquals(
+                        "Wrong value for label: " + fieldKey,
+                        cfg.value.trim(),
+                        actual.trim()
+                );
+            }
+        });
+    }
+
+    private String readValueBelowLabel(AndroidDriver driver, String lastLabel) {
+        By valueLocator = By.xpath(
+                "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]" +
+                        "/following::android.widget.TextView[1]"
+        );
+
+        // Make sure label/value is visible
+        WebElement valueEl = test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(valueLocator));
+
+        return valueEl.getText();
+    }
+
+    private void assertTextVisibleWithScroll(AndroidDriver driver, String label, int maxScrolls) {
+        By labelLocator = By.xpath(
+                "//*[@class='android.widget.TextView' and @text=\"" + label + "\"]"
+        );
+
+        for (int i = 0; i < maxScrolls; i++) {
+            if (!driver.findElements(labelLocator).isEmpty()) return;
+            slowScroll(driver); // your existing swipe
+        }
+
+        throw new AssertionError("Label not found on screen: " + label);
     }
 }

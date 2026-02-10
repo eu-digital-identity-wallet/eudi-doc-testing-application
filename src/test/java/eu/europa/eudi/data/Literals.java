@@ -64,7 +64,8 @@ public interface Literals {
         PRESENTATION_QUERY_TYPE("Request URI Method"),
         CHOOSE_WALLET_DISPLAYED("Invoke Wallet"),
         PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
-        URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method");
+        URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
+        PID_IS_DISPLAYED_ON_VERFIER("eu.europa.ec.eudi.pid.1");
 
         public final String label;
         Verifier(String label) {

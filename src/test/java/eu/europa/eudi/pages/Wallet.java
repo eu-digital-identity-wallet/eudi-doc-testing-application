@@ -1,10 +1,12 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
+import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
@@ -1396,5 +1398,138 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPIDKotlin)).click();
         } else {
         }
+    }
+
+    public void insertPidFromList() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilPIDOnDocuments();
+        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().issuer().issuePID();
+
+    }
+
+    public void checkDataOnWalletFromVerifier() {
+        FormYml yml = YmlLoader.load("testdata/share_data_on_wallet.yml", FormYml.class);
+
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            // For nested like "Birth Place.country"
+            String[] labels = fieldKey.split("\\.");
+
+            // 1) Make sure each label exists (with scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 15);
+            }
+
+            // 2) If YAML has a value -> assert value under the LAST label
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                String lastLabel = labels[labels.length - 1];
+                String actual = readValueBelowLabel(driver, lastLabel);
+                org.junit.Assert.assertEquals(
+                        "Wrong value for label: " + fieldKey,
+                        cfg.value.trim(),
+                        actual.trim()
+                );
+            }
+        });
+    }
+
+    private void assertTextVisibleWithScroll(AndroidDriver driver, String label, int maxScrolls) {
+        By labelLocator = By.xpath(
+                "//*[@class='android.widget.TextView' and @text=\"" + label + "\"]"
+        );
+
+        for (int i = 0; i < maxScrolls; i++) {
+            if (!driver.findElements(labelLocator).isEmpty()) return;
+            slowScroll(driver); // your existing swipe
+        }
+
+        throw new AssertionError("Label not found on screen: " + label);
+    }
+
+    private String readValueBelowLabel(AndroidDriver driver, String lastLabel) {
+        By valueLocator = By.xpath(
+                "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]" +
+                        "/following::android.widget.TextView[1]"
+        );
+
+        // Make sure label/value is visible
+        WebElement valueEl = test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(valueLocator));
+
+        return valueEl.getText();
+    }
+
+    public void selectDataAgain() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.unselectData)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
+        }
+    }
+
+    public void checkDataOnVerifierFromWallet() {
+            FormYml yml = YmlLoader.load("testdata/share_data_on_wallet.yml", FormYml.class);
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            yml.fields.forEach((attrKey, cfg) -> {
+                if (!cfg.required) return;
+
+                // 1) attribute key exists
+                assertAttributeVisibleWithScroll(driver, attrKey, 15);
+
+                // 2) value check
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    String actual = readValueForAttributeKey(driver, attrKey);
+                    Assert.assertEquals("Wrong value for attribute: " + attrKey,
+                            cfg.value.trim(),
+                            actual.trim());
+                }
+            });
+        }
+
+    private void assertAttributeVisibleWithScroll(AndroidDriver driver, String attrKey, int maxSwipes) {
+
+        By keyLocator = By.xpath("//android.widget.TextView[@text=\"" + attrKey + "\"]");
+
+        for (int i = 0; i < maxSwipes; i++) {
+            if (!driver.findElements(keyLocator).isEmpty()) return;
+            slowScroll(driver); // your existing helper
+        }
+
+        Assert.fail("Attribute key not found: " + attrKey);
+    }
+
+    private String readValueForAttributeKey(AndroidDriver driver, String attrKey) {
+
+        // take the first TextView after the key that is not empty and not the literal words "value" or "tag"
+        By valueLocator = By.xpath(
+                "//android.widget.TextView[@text=\"" + attrKey + "\"]" +
+                        "/following::android.widget.TextView[" +
+                        "normalize-space(@text) != '' and " +
+                        "normalize-space(@text) != 'value' and " +
+                        "normalize-space(@text) != 'tag'" +
+                        "][1]"
+        );
+
+        for (int i = 0; i < 5; i++) {
+            if (!driver.findElements(valueLocator).isEmpty()) {
+                return driver.findElement(valueLocator).getText();
+            }
+            slowScroll(driver);
+        }
+
+        throw new AssertionError("Value not found for attribute key: " + attrKey);
+    }
+
+    public void clickCloseOnVerifier() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.closeButtonOnVerifier)).click();
     }
 }

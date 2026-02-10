@@ -1,0 +1,23 @@
+screen: "PY Issuer Mandatory Information Form"
+
+fields:
+
+  "Birth Date":
+    value: "2000-01-10"
+    required: true
+
+  "Family Name":
+    value: "Papadopoulos"
+    required: true
+
+  "Given Name":
+    value: "Nikos"
+    required: true
+
+  "Nationality.Country Code":
+     value: "GR"
+     required: true
+
+  "Place Of Birth.Country":
+     value: "Athens"
+     required: true

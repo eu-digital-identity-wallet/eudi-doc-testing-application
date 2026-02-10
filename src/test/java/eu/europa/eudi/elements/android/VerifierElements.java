@@ -31,4 +31,12 @@ public class VerifierElements {
     public static By pidIdDisplayedOnWeb = By.xpath("//mat-card-title[normalize-space()='Person Identification Data (PID)']");
     public static By uriMethodIdDisplayedOnWeb = By.xpath("//div[contains(@class,'config-option-label') and normalize-space()='Request URI Method']");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
+    public static By secondAttribute = By.xpath("    public static By firstAttribute = By.xpath(\"//android.view.View[@resource-id='mat-option-1'] | //android.widget.ListView[@resource-id='mat-select-0-panel'][2]\");\n");
+    public static By selectAttributeButton = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
+    public static By selectFirstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-0\"]/android.view.View/android.view.View/android.widget.TextView[4]");
+    public static By selectSecondAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-1\"]/android.view.View/android.view.View/android.widget.TextView[4]");
+    public static By selectThirdAttribute = By.xpath("//android.view.View[@resource-id=\"mat-mdc-checkbox-2\"]/android.view.View/android.view.View/android.widget.TextView[4]");
+    public static By clickSelectAttributes = By.xpath("//android.widget.Button[@text=\"Select\"]");
+    public static By clickViewContent = By.xpath("//android.widget.Button[@text=\"View Content\"]");
+    public static By pidIdDisplayedOnVerifier = By.xpath("//android.widget.TextView[@resource-id=\"mat-mdc-dialog-title-0\"]");
 }
