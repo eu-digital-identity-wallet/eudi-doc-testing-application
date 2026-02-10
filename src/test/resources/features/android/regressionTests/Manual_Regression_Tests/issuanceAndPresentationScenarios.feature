@@ -1,7 +1,6 @@
 @ANDROID @US_ETESM
 Feature: Manual Regression Tests
-
-
+  
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given user initiates credential issuance using the <issuer>
     And issuance method is <issuance_method>

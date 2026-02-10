@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/"},
+        features = {"src/test/resources/features/regressionTests/Automated_Regression_Tests"},
         monochrome = true,
         glue = {"eu.europa.eudi.stepdefs"})
 public class TestRunner {

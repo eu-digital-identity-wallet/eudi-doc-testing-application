@@ -1,0 +1,14 @@
+screen: "Wallet Data To Verifier"
+
+fields:
+  "eu.europa.ec.eudi.pid.1:birth_date":
+    value: "2026-02-03"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:family_name":
+    value: "Papadopoulos"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:given_name":
+    value: "Nikos"
+    required: true

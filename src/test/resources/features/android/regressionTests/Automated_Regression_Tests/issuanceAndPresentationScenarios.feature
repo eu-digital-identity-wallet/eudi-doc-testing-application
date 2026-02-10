@@ -8,8 +8,8 @@ Feature: Automated Regression Tests
     When the issuance flow is completed
     Then the credential is stored in the Wallet
     When the user presents the credential to the <verifier>
-    And the presentation is performed on a <presentation_scenario>
     And the user shares <selective_disclosure>
+    And the presentation is performed on a <presentation_scenario>
     Then the verifier verifies the credential successfully
     Examples:
       | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |

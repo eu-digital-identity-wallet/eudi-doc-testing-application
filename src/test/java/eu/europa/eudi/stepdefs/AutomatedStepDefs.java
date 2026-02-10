@@ -1882,16 +1882,15 @@ public class AutomatedStepDefs {
             test.mobile().issuer().issuePID();
             test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
+            test.mobile().issuer().ckeckFieldsOnWallet();
             test.mobile().wallet().clickDone();
         }
     }
 
     @And("the issuance method is {}")
-    public void theIssuanceMethodIs(String issuanceMethod) {
+    public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
         if ("from list".equalsIgnoreCase(issuanceMethod)){
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().clickToAddDocument();
-            test.mobile().wallet().clickFromList();
+            test.mobile().wallet().insertPidFromList();
         } else {
         }
     }
@@ -1899,30 +1898,46 @@ public class AutomatedStepDefs {
     @And("the issuance is performed on a {}")
     public void theIssuanceIsPerformedOnA(String issueScenario) {
         if ("same device".equalsIgnoreCase(issueScenario)){
-
+            test.mobile().issuer().sleepMethod();
         } else {
         }
     }
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-
+        test.mobile().issuer().successfullySharedMessage();
     }
 
     @Then("the credential is stored in the Wallet")
     public void theCredentialIsStoredInTheWallet() {
-
+        test.mobile().issuer().ckeckFieldsOnWallet();
     }
 
     @When("the user presents the credential to the {}")
-    public void theUserPresentsTheCredentialToThe(String VerifierType) {
+    public void theUserPresentsTheCredentialToThe(String VerifierType) throws MalformedURLException {
+        userOpensVerifierApp();
 
     }
 
     @And("the presentation is performed on a {}")
     public void thePresentationIsPerformedOnA(String presentationScenario) {
         if ("same device".equalsIgnoreCase(presentationScenario)){
-
+            test.mobile().verifier().chooseWallet();
+            test.mobile().verifier().viewDataPage();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().checkDataOnWalletFromVerifier();
+            test.mobile().wallet().unselectData();
+            test.mobile().wallet().closeCorrespondingMessage();
+            test.mobile().wallet().selectDataAgain();
+            test.mobile().wallet().unselectData();
+            test.mobile().wallet().clickShareButton();
+            test.mobile().wallet().pinFieldIsDisplayed();
+            test.mobile().verifier().insertPIN();
+            test.mobile().wallet().authenticationSuccessfully();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().checkDataOnWalletFromVerifier();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().clickDone();
         } else {
         }
     }
@@ -1930,14 +1945,38 @@ public class AutomatedStepDefs {
     @And("the user shares {}")
     public void theUserShares(String selectiveDisclosure) {
         if ("specific attributes".equalsIgnoreCase(selectiveDisclosure)){
-
+            test.mobile().verifier().launchSafari();
+            test.mobile().verifier().appOpensSuccessfully();
+            test.mobile().verifier().selectSpecificAttributesOnVerifier();
+            test.mobile().verifier().scrollUntilNext();
+            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                test.mobile().verifier().clickNext();
+                test.mobile().verifier().selectAttributes();
+                test.mobile().verifier().clickSpecificAttributes();
+                test.mobile().verifier().clickSelect();
+                test.mobile().verifier().clickNext();
+                test.mobile().verifier().clickSubmit();
+            }      else{
+                test.mobile().verifier().clickNext();
+                test.mobile().verifier().clickNextForAndroid();
+                test.mobile().verifier().clickNext();
+                test.mobile().verifier().assertAndClickNext();
+            }
         } else {
         }
     }
 
     @Then("the verifier verifies the credential successfully")
     public void theVerifierVerifiesTheCredentialSuccessfully() {
-        //manual
+        test.mobile().verifier().walletResponded();
+        test.mobile().verifier().clickViewContent();
+        test.mobile().verifier().pidIsDisplayedOnVerifier();
+        test.mobile().verifier().clickTransactionsLogs();
+        test.mobile().verifier().clickTransactionInitialized();
+        test.mobile().verifier().getTransactionId();
+        test.mobile().wallet().checkDataOnVerifierFromWallet();
+        test.mobile().wallet().clickCloseOnVerifier();
+
     }
 }
 
