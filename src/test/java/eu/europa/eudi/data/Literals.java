@@ -11,7 +11,7 @@ public interface Literals {
         LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
-        PID("eu.europa.ec.eudi.pid.1"),
+        PID("PID (MSO MDoc)"),
         PID_demo("PID (MSO Mdoc)"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL (MSO Mdoc)"),

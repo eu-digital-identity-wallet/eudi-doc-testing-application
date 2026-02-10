@@ -1397,4 +1397,21 @@ public class Wallet {
         } else {
         }
     }
+
+    public void addDocumentRequestPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addDocumentRequestPage)).getText();
+            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
+        }
+    }
+
+    public void PIDIsStoredInWallet() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.PIDStoredinWallet)).getText();
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.kotlinIssuanceDetails)).getText();
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+        }
+    }
 }

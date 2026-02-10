@@ -1168,6 +1168,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
             String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
             String env = test.envDataConfig().getExecutionEnvironment();
@@ -1245,7 +1246,7 @@ public class Issuer {
 
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.walletLink)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletLink)).click();
         }
