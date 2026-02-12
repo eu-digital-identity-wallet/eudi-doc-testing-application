@@ -289,7 +289,8 @@ public class AutomatedStepDefs {
         if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNext();
+            test.mobile().verifier().scrollUntilSumbit();
+            test.mobile().verifier().clickSubmit();
         }      else{
             test.mobile().verifier().clickNext();
             test.mobile().verifier().clickNextForAndroid();
@@ -350,7 +351,7 @@ public class AutomatedStepDefs {
 
     @And("the details of the credential to be issued are presented")
     public void theDetailsOfTheCredentialToBeIssuedArePresented() {
-        test.mobile().verifier().insertPIN2();
+//        test.mobile().verifier().insertPIN2();
         test.mobile().wallet().detailsArePresented();
     }
 
