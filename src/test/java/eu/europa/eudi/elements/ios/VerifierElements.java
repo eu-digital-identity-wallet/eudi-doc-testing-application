@@ -6,7 +6,7 @@ public class VerifierElements {
     public static By clickPersonIdentificationData = By.xpath("//XCUIElementTypeButton[@name=\"Person Identification Data (PID)\"]");
     public static By clickNext = By.xpath("//XCUIElementTypeButton[@name=\"Next\"]");
     public static By chooseWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"OPEN WITH YOUR WALLET\"]");
-    public static By viewDataPage = By.xpath("//XCUIElementTypeStaticText[@name=\"The following transaction requires your permission and authentication.\"]");
+    public static By viewDataPage = By.id("document_offer_screen_content_header_description");
     public static By walletResponded = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid.1\"]");
     public static By clickTransactionsLogs = By.xpath("//XCUIElementTypeStaticText[@name=\"transaction log\"]");
     public static By clickTransactionInitialized = By.xpath("//XCUIElementTypeButton[contains(@name, 'Transaction initializedVerifier')] | (//XCUIElementTypeButton)[1]");
@@ -20,5 +20,5 @@ public class VerifierElements {
     public static By specificAttributes = By.xpath("//XCUIElementTypeOther[@name=\"Specific attributes\"]");
     public static By selectAttributesButton = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
-    public static By clickSubmit;
+    public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
 }
