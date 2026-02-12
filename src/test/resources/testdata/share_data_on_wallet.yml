@@ -1,9 +1,9 @@
-screen: "Wallet Data From Issuer For Sharing"
+screen: "Wallet Data From Verifier For Sharing"
 
 fields:
 
   "Birth Date":
-    value: "10 Jan 2000"
+    value: "10 Feb 2020"
     required: true
 
   "Family Name(s)":

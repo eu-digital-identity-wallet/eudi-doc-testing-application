@@ -3,7 +3,7 @@ screen: "PY Issuer Mandatory Information Form"
 fields:
 
   "Birth Date":
-    value: "2000-01-10"
+    value: "2020-02-10"
     required: true
 
   "Family Name":

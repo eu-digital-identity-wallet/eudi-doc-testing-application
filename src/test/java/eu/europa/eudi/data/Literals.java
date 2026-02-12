@@ -11,12 +11,12 @@ public interface Literals {
         LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
-        PID("eu.europa.ec.eudi.pid.1"),
-        PID_demo("PID (MSO Mdoc)"),
+
+        PID("PID (MSO MDoc)"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL (MSO Mdoc)"),
         MDL_IOS("mdl_doctype_name"),
-        DASHBOARD_PAGE("Welcome back, Foteini"),
+        DASHBOARD_PAGE("Welcome back, Nikos"),
         CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
@@ -46,7 +46,8 @@ public interface Literals {
         DETAILS_ARE_BLURRED_REAL("eye.slash"),
         QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
         ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)"),
-        QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document online.");
+        QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document online."),
+        PID_KOTLIN("PID (MSO MDoc)");
 
         public final String label;
         Wallet(String label) {
