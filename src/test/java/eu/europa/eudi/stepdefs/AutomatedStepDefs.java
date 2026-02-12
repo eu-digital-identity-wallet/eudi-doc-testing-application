@@ -16,6 +16,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,6 +37,7 @@ public class AutomatedStepDefs {
     static TestSetup test;
     EnvDataConfig envDataConfig;
     private WebDriver webDriver;
+    private String issuerType;
 
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
@@ -81,7 +83,20 @@ public class AutomatedStepDefs {
             test.mobile().issuer().issuePID();
             test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUntilNationality();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUp();
+            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
             test.mobile().wallet().clickDone();
+            theUserIsOnTheLoginScreen();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().dashboardPageIsDisplayed();
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().documentsPageIsDisplayed();
+
+
         }
 
         if (data_for_scan) {
@@ -1855,114 +1870,161 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user initiates a credential issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) throws InterruptedException {
-        if ("Kotlin".equalsIgnoreCase(issuerType)){
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().clickPIDKotlin();
-            test.mobile().issuer().fillLoginForm();
-            test.mobile().wallet().clickClose();
-        } else {
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().scrollUntilPIDFirst();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
-            test.mobile().issuer().successfullySharedMessage();
-            test.mobile().issuer().ckeckFieldsOnWallet();
-            test.mobile().wallet().clickDone();
+    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) throws InterruptedException, MalformedURLException {
+        this.issuerType = issuerType;
+        switch (issuerType.toLowerCase()) {
+            case "kotlin":
+                test.mobile().issuer().kotlinIssuerService();
+                break;
+            case "python":
+//                test.mobile().wallet().checkIfPageIsTrue();
+//                test.mobile().wallet().createAPin();
+//                test.mobile().wallet().clickNextButton();
+//                test.mobile().wallet().renterThePin();
+//                test.mobile().wallet().clickConfirm();
+//                test.mobile().wallet().successMessageOfSetUpPin();
+//                test.mobile().wallet().clickAddMyDigitalID();
+//                test.mobile().wallet().addPIDPageIsDisplayed();
+//                test.mobile().wallet().scrollUntilPIDFirst();
+//                test.mobile().wallet().clickPID();
+//                test.mobile().issuer().issuePID();
+//                test.mobile().issuer().sleepMethod();
+//                test.mobile().issuer().successfullySharedMessage();
+//                test.mobile().issuer().ckeckFieldsOnWallet();
+//                test.mobile().wallet().clickDone();
+                break;
         }
     }
 
     @And("the issuance method is {}")
     public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
-        if ("from list".equalsIgnoreCase(issuanceMethod)){
-            test.mobile().wallet().insertPidFromList();
-        } else {
+        switch (issuanceMethod.toLowerCase()) {
+            case "from list":
+                test.mobile().wallet().insertPidFromList();
+                break;
+            case "credential offer":
+                if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    test.mobile().issuer().selectPIDKotlin();
+                    test.mobile().issuer().scrollUntilGenerate();
+                    test.mobile().issuer().clickGenerate();
+                    test.mobile().issuer().clickWalletLink();
+                } else {
+
+                }
+                break;
         }
     }
 
     @And("the issuance is performed on a {}")
     public void theIssuanceIsPerformedOnA(String issueScenario) {
-        if ("same device".equalsIgnoreCase(issueScenario)){
-            test.mobile().issuer().sleepMethod();
-        } else {
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            switch (issueScenario.toLowerCase()) {
+                case "same device":
+                    test.mobile().wallet().clickAddButton();
+                    test.mobile().issuer().fillLoginForm();
+                    break;
+                case "cross device":
+                    break;
+            }
+        }else{
+                switch (issueScenario.toLowerCase()) {
+                    case "same device":
+                        test.mobile().issuer().sleepMethod();
+                        break;
+                    case "cross device":
+                        break;
+                }
+            }
         }
-    }
+
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-        test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
     }
 
     @Then("the credential is stored in the Wallet")
     public void theCredentialIsStoredInTheWallet() {
-        test.mobile().issuer().ckeckFieldsOnWallet();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
+            test.mobile().wallet().clickClose();
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        } else {
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUntilNationality();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUp();
+            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
+            test.mobile().wallet().clickClose();
+        }
     }
-
+    
     @When("the user presents the credential to the {}")
-    public void theUserPresentsTheCredentialToThe(String VerifierType) throws MalformedURLException {
-        userOpensVerifierApp();
-
+    public void theUserPresentsTheCredentialToThe(String verifierType) throws MalformedURLException {
+        switch (verifierType.toLowerCase()) {
+            case "web verifier":
+                test.mobile().wallet().userOpensVerifier();
+                break;
+        }
     }
 
     @And("the presentation is performed on a {}")
     public void thePresentationIsPerformedOnA(String presentationScenario) {
-        if ("same device".equalsIgnoreCase(presentationScenario)){
-            test.mobile().verifier().chooseWallet();
-            test.mobile().verifier().viewDataPage();
-            test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().checkDataOnWalletFromVerifier();
-            test.mobile().wallet().unselectData();
-            test.mobile().wallet().closeCorrespondingMessage();
-            test.mobile().wallet().selectDataAgain();
-            test.mobile().wallet().unselectData();
-            test.mobile().wallet().clickShareButton();
-            test.mobile().wallet().pinFieldIsDisplayed();
-            test.mobile().verifier().insertPIN();
-            test.mobile().wallet().authenticationSuccessfully();
-            test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().checkDataOnWalletFromVerifier();
-            test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().clickDone();
-        } else {
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+        switch (presentationScenario.toLowerCase()) {
+            case "same device":
+                test.mobile().verifier().chooseWallet();
+                test.mobile().verifier().viewDataPage();
+                test.mobile().wallet().clickPIDFromKotlin();
+                test.mobile().wallet().unselectData();
+                test.mobile().wallet().closeCorrespondingMessage();
+                test.mobile().wallet().selectDataAgain();
+                test.mobile().wallet().unselectData();
+                test.mobile().wallet().checkFormOnWalletFromVerifier();
+                test.mobile().wallet().clickShareButton();
+                test.mobile().wallet().pinFieldIsDisplayed();
+                test.mobile().verifier().insertPIN();
+                test.mobile().wallet().authenticationSuccessfully();
+                test.mobile().wallet().clickPIDFromKotlin();
+                test.mobile().wallet().checkFormOnWalletFromVerifierRoundTwo();
+                test.mobile().wallet().clickDone();
+                break;
+            case "cross device":
+                break;
         }
+        } else {
+
+            }
     }
 
     @And("the user shares {}")
     public void theUserShares(String selectiveDisclosure) {
-        if ("specific attributes".equalsIgnoreCase(selectiveDisclosure)){
-            test.mobile().verifier().launchSafari();
-            test.mobile().verifier().appOpensSuccessfully();
-            test.mobile().verifier().selectSpecificAttributesOnVerifier();
-            test.mobile().verifier().scrollUntilNext();
-            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                test.mobile().verifier().clickNext();
-                test.mobile().verifier().selectAttributes();
-                test.mobile().verifier().clickSpecificAttributes();
-                test.mobile().verifier().clickSelect();
-                test.mobile().verifier().clickNext();
-                test.mobile().verifier().clickSubmit();
-            }      else{
-                test.mobile().verifier().clickNext();
-                test.mobile().verifier().clickNextForAndroid();
-                test.mobile().verifier().clickNext();
-                test.mobile().verifier().assertAndClickNext();
-            }
-        } else {
+        switch (selectiveDisclosure.toLowerCase()) {
+            case "specific attributes":
+                test.mobile().verifier().launchSafari();
+                test.mobile().verifier().appOpensSuccessfully();
+                test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                test.mobile().verifier().scrollUntilNext();
+                if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                    test.mobile().verifier().clickNext();
+                    test.mobile().verifier().selectAttributes();
+                    test.mobile().verifier().clickSpecificAttributes();
+                    test.mobile().verifier().clickSelect();
+                    test.mobile().verifier().clickNext();
+                    test.mobile().verifier().clickSubmit();
+                } else {
+                    test.mobile().verifier().clickNext();
+                    test.mobile().verifier().clickNextForAndroid();
+                    test.mobile().verifier().clickNext();
+                    test.mobile().verifier().assertAndClickNext();
+                }
+                    break;
+            case "all attributes":
+                        theVerifierRequestsADocFromTheWalletUser();
+                        break;
         }
     }
 
@@ -1976,7 +2038,6 @@ public class AutomatedStepDefs {
         test.mobile().verifier().getTransactionId();
         test.mobile().wallet().checkDataOnVerifierFromWallet();
         test.mobile().wallet().clickCloseOnVerifier();
-
     }
 }
 

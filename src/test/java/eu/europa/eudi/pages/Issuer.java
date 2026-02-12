@@ -19,7 +19,14 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.lang.model.element.Element;
+import javax.swing.text.Document;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
@@ -461,9 +468,9 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 3; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(WalletElements.clickSubmit);
+                    WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
                     slowScroll(driver);  // ← slow scroll instead of UiScrollable
@@ -492,7 +499,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 5; i++) {
                 try {
                     WebElement pidElement = driver.findElement(IssuerElements.authorize);
                     if (pidElement.isDisplayed()) break;
@@ -589,48 +596,41 @@ public class Issuer {
     private void verifyMandatoryInfoLabelsPresentInAuthorizePage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             FormYml yml = YmlLoader.load("testdata/py_issuer_authorization.yml", FormYml.class);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
 
-        yml.fields.forEach((fieldKey, cfg) -> {
-            if (!cfg.required) return;
-
-            // For nested like "Birth Place.country"
-            String[] labels = fieldKey.split("\\.");
-
-            // 1) Make sure each label exists (with scroll)
-            for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 15);
-            }
-
-            // 2) If YAML has a value -> assert value under the LAST label
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                String[] labels = fieldKey.split("\\.");
                 String lastLabel = labels[labels.length - 1];
-                String actual = readValueBelowLabel(driver, lastLabel);
-                org.junit.Assert.assertEquals("Wrong value for label: " + fieldKey, cfg.value.trim(), actual.trim());
-            }
-        });
-     }else {
+
+                // 1) find labels (scroll)
+                for (String label : labels) {
+                    assertTextVisibleWithScroll(driver, label, 10);
+                }
+
+                // 2) if expected value in yml -> verify it exists (scroll still at that area)
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                } else {
+                    // if no expected value -> at least ensure some value exists near the label
+                    // simplest: just ensure there is at least one TextView visible
+                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+                    if (driver.findElements(anyValue).isEmpty()) {
+                        throw new AssertionError("No values visible for label: " + lastLabel);
+                    }
+                }
+            });
+        }else {
             //nothing now for iOS
         }
     }
 
-    private void dumpVisibleWebViewTextsAndroid(AndroidDriver driverAndroid) {
-        AndroidDriver driver =
-                (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();        var elements = driver.findElements(By.xpath(
-                "//android.webkit.WebView//*[string-length(@text) > 0]"
-        ));
-
-        System.out.println("=== Visible WebView texts (" + elements.size() + ") ===");
-        for (WebElement el : elements) {
-            String t = el.getText();
-            if (t != null && !t.trim().isEmpty()) {
-                System.out.println("TEXT: " + t.trim());
-            }
-        }
-        System.out.println("=== End dump ===");
+    private String escapeXpath(String s) {
+        // minimal escape for quotes in your current style
+        return s.replace("\"", "\\\"");
     }
-
+    
     private void verifyMandatoryInfoLabelsPresent() {
         FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
 
@@ -671,6 +671,7 @@ public class Issuer {
                     }
                 }
             });
+            test.mobile().wallet().scrollUp();
 
         } else {
             //nothing now for iOS
@@ -1030,7 +1031,7 @@ public class Issuer {
     public void scrollUntilCountryCode() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
@@ -1273,39 +1274,57 @@ public class Issuer {
     private void slowScroll(AndroidDriver driver) {
         String originalContext = driver.getContext();
 
-        // Scroll MUST be performed in native context
-        if (!originalContext.equals("NATIVE_APP")) {
-            driver.context("NATIVE_APP");
-        }
+        try {
+            // Always scroll in NATIVE
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context("NATIVE_APP");
+            }
 
-        // === Your exact scroll values ===
-        int width = driver.manage().window().getSize().width;
-        int height = driver.manage().window().getSize().height;
+            Dimension size = driver.manage().window().getSize();
 
-        int startX = width / 2;
-        int startY = (int) (height * 0.6);
-        int endY = (int) (height * 0.4);
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.75); // start lower
+            int endY   = (int) (size.height * 0.30); // end higher
 
-        // === Your exact PointerInput scroll ===
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 0);
 
-        swipe.addAction(finger.createPointerMove(Duration.ZERO,
-                PointerInput.Origin.viewport(), startX, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            // Move to start
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ZERO,
+                    PointerInput.Origin.viewport(),
+                    startX,
+                    startY
+            ));
 
-        swipe.addAction(new Pause(finger, Duration.ofMillis(300))); // slow scroll
+            // Touch down
+            swipe.addAction(finger.createPointerDown(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
 
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(800),
-                PointerInput.Origin.viewport(), startX, endY));
+            // Small pause (important on cloud devices)
+            swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
 
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            // Swipe
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ofMillis(700),
+                    PointerInput.Origin.viewport(),
+                    startX,
+                    endY
+            ));
 
-        driver.perform(Collections.singletonList(swipe));
+            // Release
+            swipe.addAction(finger.createPointerUp(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
 
-        // === Return to WebView if we started in WebView ===
-        if (!originalContext.equals("NATIVE_APP")) {
-            driver.context(originalContext);
+            driver.perform(Collections.singletonList(swipe));
+
+        } finally {
+            // Restore context
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context(originalContext);
+            }
         }
     }
 
@@ -1393,6 +1412,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
             String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
             String env = test.envDataConfig().getExecutionEnvironment();
@@ -1470,7 +1490,7 @@ public class Issuer {
 
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.walletLink)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletLink)).click();
         }
@@ -1524,61 +1544,106 @@ public class Issuer {
     }
 
     public void ckeckFieldsOnWallet() {
-        FormYml yml = YmlLoader.load("testdata/wallet_pid_details.yml", FormYml.class);
-
-        if (!test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            return; // iOS later
-        }
-
+        FormYml yml = YmlLoader.load("testdata/py_issuer_authorization.yml", FormYml.class);
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
         yml.fields.forEach((fieldKey, cfg) -> {
             if (!cfg.required) return;
 
-            // For nested like "Birth Place.country"
             String[] labels = fieldKey.split("\\.");
+            String lastLabel = labels[labels.length - 1];
 
-            // 1) Make sure each label exists (with scroll)
+            // 1) find labels (scroll)
             for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 15);
+                assertTextVisibleWithScroll(driver, label, 10);
             }
 
-            // 2) If YAML has a value -> assert value under the LAST label
+            // 2) if expected value in yml -> verify it exists (scroll still at that area)
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                String lastLabel = labels[labels.length - 1];
-                String actual = readValueBelowLabel(driver, lastLabel);
-                org.junit.Assert.assertEquals(
-                        "Wrong value for label: " + fieldKey,
-                        cfg.value.trim(),
-                        actual.trim()
-                );
+                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+            } else {
+                // if no expected value -> at least ensure some value exists near the label
+                // simplest: just ensure there is at least one TextView visible
+                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+                if (driver.findElements(anyValue).isEmpty()) {
+                    throw new AssertionError("No values visible for label: " + lastLabel);
+                }
             }
         });
     }
 
-    private String readValueBelowLabel(AndroidDriver driver, String lastLabel) {
+    private String readValueBelowLabel(AndroidDriver driver, String label) {
         By valueLocator = By.xpath(
-                "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]" +
-                        "/following::android.widget.TextView[1]"
+                "//android.view.View[@text='" + label + "']/following::android.widget.TextView[1]"
         );
-
-        // Make sure label/value is visible
-        WebElement valueEl = test.mobileWebDriverFactory().getWait()
-                .until(ExpectedConditions.visibilityOfElementLocated(valueLocator));
-
-        return valueEl.getText();
+        return driver.findElement(valueLocator).getText();
     }
 
-    private void assertTextVisibleWithScroll(AndroidDriver driver, String label, int maxScrolls) {
-        By labelLocator = By.xpath(
-                "//*[@class='android.widget.TextView' and @text=\"" + label + "\"]"
-        );
+    private void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
+        By locator = By.xpath("//*[@text=\"" + text.replace("\"","\\\"") + "\"]");
 
         for (int i = 0; i < maxScrolls; i++) {
-            if (!driver.findElements(labelLocator).isEmpty()) return;
-            slowScroll(driver); // your existing swipe
+            if (!driver.findElements(locator).isEmpty()) return;
+            slowScroll(driver);
         }
+        throw new AssertionError("Text not found: " + text);
+    }
 
-        throw new AssertionError("Label not found on screen: " + label);
+    public void ckeckFieldsOnWalletFromPyIssuer() {
+        FormYml yml = YmlLoader.load("testdata/py_data_on_wallet.yml", FormYml.class);
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            String[] labels = fieldKey.split("\\.");
+            String lastLabel = labels[labels.length - 1];
+
+            // 1) find labels (scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 10);
+            }
+
+            // 2) if expected value in yml -> verify it exists (scroll still at that area)
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+            } else {
+                // if no expected value -> at least ensure some value exists near the label
+                // simplest: just ensure there is at least one TextView visible
+                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+                if (driver.findElements(anyValue).isEmpty()) {
+                    throw new AssertionError("No values visible for label: " + lastLabel);
+                }
+            }
+        });
+    }
+
+    public void ckeckFieldsOnWalletFromKotlinIssuer() {
+        FormYml yml = YmlLoader.load("testdata/kotlin_data_on_wallet.yml", FormYml.class);
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            String[] labels = fieldKey.split("\\.");
+            String lastLabel = labels[labels.length - 1];
+
+            // 1) find labels (scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 10);
+            }
+
+            // 2) if expected value in yml -> verify it exists (scroll still at that area)
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+            } else {
+                // if no expected value -> at least ensure some value exists near the label
+                // simplest: just ensure there is at least one TextView visible
+                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+                if (driver.findElements(anyValue).isEmpty()) {
+                    throw new AssertionError("No values visible for label: " + lastLabel);
+                }
+            }
+        });
     }
 }

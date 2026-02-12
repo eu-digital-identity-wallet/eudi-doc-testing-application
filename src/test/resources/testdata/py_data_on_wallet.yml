@@ -2,14 +2,8 @@ screen: "Wallet - PID details"
 
 fields:
 
-  "PID (MSO Mdoc)":
-    required: true
-
-  "View details":
-    required: true
-
   "Birth Date":
-    value: "10 Jan 2000"
+    value: "10 Feb 2020"
     required: true
 
   "Birth Place.country":

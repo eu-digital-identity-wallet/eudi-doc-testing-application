@@ -8115,8 +8115,8 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the user shares all attributes")
-    public void theUserSharesAllAttributes() {
+    @And("the user shares all attributes2")
+    public void theUserSharesAllAttributes2() {
         //manual
     }
 

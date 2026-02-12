@@ -11,8 +11,6 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -24,7 +22,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
@@ -35,6 +32,8 @@ import com.google.zxing.common.HybridBinarizer;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.NoSuchElementException;
+
 import com.google.common.collect.ImmutableMap;
 
 public class Wallet {
@@ -209,10 +208,10 @@ public class Wallet {
     public void nationalIdIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.PIDIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_demo.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.PIDIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_demo.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         }
     }
 
@@ -321,7 +320,7 @@ public class Wallet {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "https://verifier.eudiw.dev/home";
+            String url = "tneal";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
@@ -422,6 +421,13 @@ public class Wallet {
     public void clickExpandVerification() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickExpandVerification)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
+        }
+    }
+    public void clickExpandVerificationOnSecondPIDFromKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickExpandVerificationSecond)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
         }
@@ -650,13 +656,21 @@ public class Wallet {
         driver.perform(Arrays.asList(swipe));
     }
 
-    public void secondPIDIsDisplayed() {
+    public void secondPIDKotlinIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.secondPidIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_demo.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_KOTLIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_demo.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+        }
+    } public void secondPIDIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.secondPidIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
         }
     }
 
@@ -1400,6 +1414,7 @@ public class Wallet {
         }
     }
 
+
     public void insertPidFromList() throws InterruptedException {
         test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().clickToAddDocument();
@@ -1412,7 +1427,7 @@ public class Wallet {
     }
 
     public void checkDataOnWalletFromVerifier() {
-        FormYml yml = YmlLoader.load("testdata/share_data_on_wallet.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/share_kotlin_data_on_wallet_from_verfier.yml", FormYml.class);
 
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -1454,16 +1469,43 @@ public class Wallet {
     }
 
     private String readValueBelowLabel(AndroidDriver driver, String lastLabel) {
-        By valueLocator = By.xpath(
-                "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]" +
-                        "/following::android.widget.TextView[1]"
-        );
+        WebElement valueEl = null;
 
-        // Make sure label/value is visible
-        WebElement valueEl = test.mobileWebDriverFactory().getWait()
-                .until(ExpectedConditions.visibilityOfElementLocated(valueLocator));
+        try {
+            By directSiblingLocator = By.xpath(
+                    "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]/following-sibling::android.widget.TextView[1]"
+            );
+            valueEl = test.mobileWebDriverFactory().getWait()
+                    .withTimeout(Duration.ofSeconds(5))
+                    .until(ExpectedConditions.visibilityOfElementLocated(directSiblingLocator));
+            return valueEl.getText().trim();
+        } catch (TimeoutException e) {
+            // fallback
+        }
 
-        return valueEl.getText();
+        try {
+            By flexibleLocator = By.xpath(
+                    "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]/following::android.widget.TextView[1]"
+            );
+            valueEl = test.mobileWebDriverFactory().getWait()
+                    .withTimeout(Duration.ofSeconds(10))
+                    .until(ExpectedConditions.visibilityOfElementLocated(flexibleLocator));
+            return valueEl.getText().trim();
+        } catch (TimeoutException e) {
+            // fallback
+        }
+
+        try {
+            By parentContainerLocator = By.xpath(
+                    "//*[@class='android.widget.TextView' and @text=\"" + lastLabel + "\"]/parent::*//android.widget.TextView[not(@text='" + lastLabel + "')]"
+            );
+            valueEl = test.mobileWebDriverFactory().getWait()
+                    .withTimeout(Duration.ofSeconds(10))
+                    .until(ExpectedConditions.visibilityOfElementLocated(parentContainerLocator));
+            return valueEl.getText().trim();
+        } catch (TimeoutException e) {
+            throw new NoSuchElementException("Cannot find value for label: " + lastLabel);
+        }
     }
 
     public void selectDataAgain() {
@@ -1531,5 +1573,231 @@ public class Wallet {
 
     public void clickCloseOnVerifier() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.closeButtonOnVerifier)).click();
+    }
+
+    public void clickExpandVerificationDown() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickExpandDetails)).click();
+    }
+
+    public void scrollUntilNationality() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                WebElement pidElement = driver.findElement(IssuerElements.nationality);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScroll(driver);  // ← slow scroll instead of UiScrollable
+            }
+        }
+
+    }
+    public void scrollUpUntilBirthDate() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                WebElement pidElement = driver.findElement(IssuerElements.birthDate);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScrollUp();  // ← slow scroll instead of UiScrollable
+            }
+        }
+    }
+
+    public void scrollUp() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                WebElement pidElement = driver.findElement(IssuerElements.nationality);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScrollUp();  // ← slow scroll instead of UiScrollable
+            }
+        }
+    }
+
+    public void scrollDown() {
+        AndroidDriver driver =
+                (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                WebElement element = driver.findElement(IssuerElements.birthDate);
+
+                if (element.isDisplayed()) {
+                    break;
+                }
+
+            } catch (Exception e) {
+                slowScrollDown(); // scroll to upper content
+            }
+        }
+    }
+
+    private void slowScrollDown() {
+        AndroidDriver driver =
+                (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        Dimension size = driver.manage().window().getSize();
+
+        int width = size.width;
+        int height = size.height;
+
+        int x = width / 2;
+
+        // Finger moves TOP → BOTTOM (scroll down)
+        int startY = (int) (height * 0.20); // near top
+        int endY   = (int) (height * 0.80); // near bottom
+
+        PointerInput finger =
+                new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ZERO,
+                PointerInput.Origin.viewport(),
+                x,
+                startY
+        ));
+
+        swipe.addAction(finger.createPointerDown(
+                PointerInput.MouseButton.LEFT.asArg()
+        ));
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ofMillis(900),
+                PointerInput.Origin.viewport(),
+                x,
+                endY
+        ));
+
+        swipe.addAction(finger.createPointerUp(
+                PointerInput.MouseButton.LEFT.asArg()
+        ));
+
+        driver.perform(Arrays.asList(swipe));
+
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException ignored) {}
+    }
+
+    public void slowScrollUp() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        Dimension size = driver.manage().window().getSize();
+        int width = size.width;
+        int height = size.height;
+
+        int x = width / 2;
+
+        // Finger goes DOWN to scroll page UP
+        int startY = (int) (height * 0.25);  // start near top
+        int endY   = (int) (height * 0.80);  // end near bottom
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), x, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(swipe));
+
+        // optional: tiny settle time helps some apps
+        try { Thread.sleep(150); } catch (InterruptedException ignored) {}
+    }
+
+    public void scrollUntilSex() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                WebElement pidElement = driver.findElement(WalletElements.sexButton);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScroll(driver);  // ← slow scroll instead of UiScrollable
+            }
+        }
+    }
+
+    public void checkDataOnWalletFromVerifierFromKotlin() {
+        FormYml yml = YmlLoader.load("testdata/kotlin_data_on_wallet.yml", FormYml.class);
+
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        yml.fields.forEach((fieldKey, cfg) -> {
+            if (!cfg.required) return;
+
+            // For nested like "Birth Place.country"
+            String[] labels = fieldKey.split("\\.");
+
+            // 1) Make sure each label exists (with scroll)
+            for (String label : labels) {
+                assertTextVisibleWithScroll(driver, label, 30);
+            }
+
+            // 2) If YAML has a value -> assert value under the LAST label
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                String lastLabel = labels[labels.length - 1];
+                String actual = readValueBelowLabel(driver, lastLabel);
+                org.junit.Assert.assertEquals(
+                        "Wrong value for label: " + fieldKey,
+                        cfg.value.trim(),
+                        actual.trim()
+                );
+            }
+        });
+    }
+
+    public void scrollUntilResidentStreet() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                WebElement pidElement = driver.findElement(WalletElements.residentStreet);
+                if (pidElement.isDisplayed()) break;
+            } catch (Exception e) {
+                slowScroll(driver);  // ← slow scroll instead of UiScrollable
+            }
+        }
+    }
+
+    public void clickPIDFromKotlin() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
+    }
+
+    public void checkFormOnWalletFromVerifier() {
+        test.mobile().wallet().scrollUntilResidentStreet();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().scrollDown();
+        test.mobile().wallet().checkDataOnWalletFromVerifierFromKotlin();
+    }
+
+    public void checkFormOnWalletFromVerifierRoundTwo() {
+        test.mobile().wallet().scrollUntilResidentStreet();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().scrollDown();
+        test.mobile().wallet().checkDataOnWalletFromVerifier();
+    }
+
+    public void checkFormOnWallerFromKotlinIssuer() {
+        test.mobile().wallet().scrollUntilSex();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().clickExpandVerificationDown();
+        test.mobile().wallet().scrollDown();
+        test.mobile().issuer().ckeckFieldsOnWalletFromKotlinIssuer();
     }
 }

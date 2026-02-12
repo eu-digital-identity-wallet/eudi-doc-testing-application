@@ -17,11 +17,11 @@ public class WalletElements {
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By loginPageIsDisplayed = By.id("eu.europa.ec.euidi.dev:id/biometric_screen_title");
     public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
-   public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO Mdoc)\"]");
+   public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
     public static By clickMdlDemo = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_dialogue_delete_document_positive_button");
-    public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
+    public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By unselectData = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
@@ -48,7 +48,7 @@ public class WalletElements {
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
     public static By clickHomeButton = By.id("eu.europa.ec.euidi.dev:id/dashboard_screen_bottom_navigation_item_home");
-    public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID (MSO Mdoc)\"])[2]");
+    public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID (MSO MDoc)\"])");
     public static By clickDeleteDocument = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_delete_button");
     public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
     public static By detailsAreBlurred = By.xpath("//android.view.View[@content-desc=\"Hide\"]");
@@ -72,5 +72,13 @@ public class WalletElements {
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickPIDKotlin = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
+
     public static By closeButtonOnVerifier = By.xpath("//android.widget.Button[@text=\"Close\"]");
+
+    public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
+    public static By closeButton = By.xpath("//android.widget.Button");
+    public static By sexButton = By.xpath("//android.widget.Button[@text=\"Sex\"]");
+    public static By clickExpandVerificationSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])");;
+    public static By residentStreet = By.xpath("//android.widget.TextView[@text=\"Resident Street\"]");;
+    public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
 }
