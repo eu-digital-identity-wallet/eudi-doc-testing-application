@@ -1516,7 +1516,7 @@ public class Wallet {
     }
 
     public void checkDataOnVerifierFromWallet() {
-            FormYml yml = YmlLoader.load("testdata/share_data_on_wallet.yml", FormYml.class);
+            FormYml yml = YmlLoader.load("testdata/share_py_data_on_wallet.yml", FormYml.class);
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
