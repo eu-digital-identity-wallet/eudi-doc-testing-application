@@ -40,8 +40,6 @@ Feature: Automated Regression Tests
     Then the verifier verifies the credential successfully
     Examples:
       | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
       | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
       | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
       | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |

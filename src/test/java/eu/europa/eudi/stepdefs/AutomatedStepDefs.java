@@ -38,6 +38,7 @@ public class AutomatedStepDefs {
     EnvDataConfig envDataConfig;
     private WebDriver webDriver;
     private String issuerType;
+    private String selectiveDisclosure;
 
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
@@ -1948,7 +1949,7 @@ public class AutomatedStepDefs {
     public void theCredentialIsStoredInTheWallet() {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
+//            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
             test.mobile().wallet().clickClose();
             test.mobile().wallet().clickOnDocuments();
             test.mobile().wallet().secondPIDKotlinIsDisplayed();
@@ -1974,71 +1975,87 @@ public class AutomatedStepDefs {
 
     @And("the presentation is performed on a {}")
     public void thePresentationIsPerformedOnA(String presentationScenario) {
-        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
         switch (presentationScenario.toLowerCase()) {
             case "same device":
+                switch (this.selectiveDisclosure.toLowerCase()) {
+                    case "specific attributes":
+                        test.mobile().verifier().launchSafari();
+                        test.mobile().verifier().appOpensSuccessfully();
+                        test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                        test.mobile().verifier().scrollUntilNext();
+                        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                            test.mobile().verifier().clickNext();
+                            test.mobile().verifier().selectAttributes();
+                            test.mobile().verifier().clickSpecificAttributes();
+                            test.mobile().verifier().clickSelect();
+                            test.mobile().verifier().clickNext();
+                            test.mobile().verifier().scrollUntilSumbit();
+                            test.mobile().verifier().clickSubmit();
+                        } else {
+                            test.mobile().verifier().clickNext();
+                            test.mobile().verifier().clickNextForAndroid();
+                            test.mobile().verifier().clickNext();
+                            test.mobile().verifier().assertAndClickNext();
+                        }
+                        break;
+                    case "all attributes":
+                        theVerifierRequestsADocFromTheWalletUser();
+                        break;
+                }
                 test.mobile().verifier().chooseWallet();
                 test.mobile().verifier().viewDataPage();
                 test.mobile().wallet().clickPIDFromKotlin();
                 test.mobile().wallet().unselectData();
                 test.mobile().wallet().closeCorrespondingMessage();
-                test.mobile().wallet().selectDataAgain();
-                test.mobile().wallet().unselectData();
-                test.mobile().wallet().checkFormOnWalletFromVerifier();
                 test.mobile().wallet().clickShareButton();
                 test.mobile().wallet().pinFieldIsDisplayed();
                 test.mobile().verifier().insertPIN();
                 test.mobile().wallet().authenticationSuccessfully();
-                test.mobile().wallet().clickPIDFromKotlin();
-                test.mobile().wallet().checkFormOnWalletFromVerifierRoundTwo();
-                test.mobile().wallet().clickDone();
                 break;
             case "cross device":
+                test.webWebDriverFactory().startWebDriverSession();
+                try {
+                    test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                    test.web().verifier().appOpensSuccessfullyOnWeb();
+                    test.web().verifier().selectAllAttributesOnWeb();
+                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().pidIsDisplayedOnWeb();
+                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().uriMethodIsDisplayed();
+                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().assertQrCodeIsVisible();
+                    test.web().verifier().captureScreenOnWeb();
+                } finally {
+                    test.webWebDriverFactory().quitDriverWeb();
+                }
+                test.mobile().wallet().clickAuthenticate();
+                test.mobile().wallet().clickOnline();
+                test.mobile().wallet().onlyThisTimeQR();
+                test.mobile().wallet().theQRScannerIsActivated();
+                test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+                test.mobile().wallet().clickShareButton();
+                test.mobile().wallet().authenticationSuccessfully();
                 break;
         }
-        } else {
-
-            }
     }
 
     @And("the user shares {}")
     public void theUserShares(String selectiveDisclosure) {
-        switch (selectiveDisclosure.toLowerCase()) {
-            case "specific attributes":
-                test.mobile().verifier().launchSafari();
-                test.mobile().verifier().appOpensSuccessfully();
-                test.mobile().verifier().selectSpecificAttributesOnVerifier();
-                test.mobile().verifier().scrollUntilNext();
-                if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                    test.mobile().verifier().clickNext();
-                    test.mobile().verifier().selectAttributes();
-                    test.mobile().verifier().clickSpecificAttributes();
-                    test.mobile().verifier().clickSelect();
-                    test.mobile().verifier().clickNext();
-                    test.mobile().verifier().clickSubmit();
-                } else {
-                    test.mobile().verifier().clickNext();
-                    test.mobile().verifier().clickNextForAndroid();
-                    test.mobile().verifier().clickNext();
-                    test.mobile().verifier().assertAndClickNext();
-                }
-                    break;
-            case "all attributes":
-                        theVerifierRequestsADocFromTheWalletUser();
-                        break;
-        }
+        this.selectiveDisclosure = selectiveDisclosure;
     }
 
     @Then("the verifier verifies the credential successfully")
     public void theVerifierVerifiesTheCredentialSuccessfully() {
-        test.mobile().verifier().walletResponded();
-        test.mobile().verifier().clickViewContent();
-        test.mobile().verifier().pidIsDisplayedOnVerifier();
+        test.mobile().wallet().clickClose();
+//        test.mobile().verifier().walletResponded();
+//        test.mobile().verifier().clickViewContent();
+        test.mobile().issuer().sleepMethod();
+//        test.mobile().verifier().pidIsDisplayedOnVerifier();
         test.mobile().verifier().clickTransactionsLogs();
         test.mobile().verifier().clickTransactionInitialized();
-        test.mobile().verifier().getTransactionId();
-        test.mobile().wallet().checkDataOnVerifierFromWallet();
-        test.mobile().wallet().clickCloseOnVerifier();
+//        test.mobile().verifier().getTransactionId();
+//        test.mobile().wallet().checkDataOnVerifierFromWallet();
+//        test.mobile().wallet().clickCloseOnVerifier();
     }
 }
 

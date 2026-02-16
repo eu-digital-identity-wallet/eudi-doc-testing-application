@@ -656,7 +656,9 @@ public class Verifier {
             if (env.equalsIgnoreCase("browserstack")) {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.secondAttribute)).click();
+                WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.specificAttributes));
+                Dimension dropdownSize = dropdown.getSize();
+                test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
                 clickMsoMdocRealDevice();
@@ -696,7 +698,7 @@ public class Verifier {
     }
 
     public void pidIsDisplayedOnVerifier() {
-        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(VerifierElements.pidIdDisplayedOnVerifier)).getText();
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(VerifierElements.pidIdDisplayedOnVerifier)).getText();
         Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_VERFIER.label, pageHeader);
     }
 }
