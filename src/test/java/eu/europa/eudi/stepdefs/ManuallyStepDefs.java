@@ -8105,11 +8105,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the presentation is performed on a cross device")
-    public void thePresentationIsPerformedOnACrossDevice() {
-        //manual
-    }
-
     @And("the presentation is performed on a proximity case")
     public void thePresentationIsPerformedOnAProximityCase() {
         //manual

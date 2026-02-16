@@ -1799,4 +1799,10 @@ public class Wallet {
         test.mobile().wallet().scrollDown();
         test.mobile().issuer().ckeckFieldsOnWalletFromKotlinIssuer();
     }
+
+    public void rotateScreen() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        }
+    }
 }
