@@ -1980,6 +1980,7 @@ public class AutomatedStepDefs {
                 switch (this.selectiveDisclosure.toLowerCase()) {
                     case "specific attributes":
                         test.mobile().verifier().launchSafari();
+                        test.mobile().wallet().rotateScreen();
                         test.mobile().verifier().appOpensSuccessfully();
                         test.mobile().verifier().selectSpecificAttributesOnVerifier();
                         test.mobile().verifier().scrollUntilNext();
