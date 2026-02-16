@@ -462,7 +462,7 @@ public class Wallet {
         }
     }
 
-    public void tapAction(WebElement myDigitalIDButton, boolean clickLeft) {
+    public void tapAction(WebElement element, int xOffset, int yOffset) {
         AppiumDriver driver;
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -471,18 +471,9 @@ public class Wallet {
             driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
         }
 
-        Point location = myDigitalIDButton.getLocation();
-        Dimension size = myDigitalIDButton.getSize();
-
-        int x, y;
-
-        if (clickLeft) {
-            x = location.getX() + 10;
-            y = location.getY() + size.getHeight() / 2;
-        } else {
-            x = location.getX() + size.getWidth() / 2;
-            y = location.getY() + size.getHeight() / 2;
-        }
+        Point location = element.getLocation();
+        int x = location.getX() + xOffset;
+        int y = location.getY() + yOffset;
 
         // ---- ANDROID-ONLY FIX ----
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -501,6 +492,15 @@ public class Wallet {
         tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));    // FIXED
 
         driver.perform(Collections.singletonList(tap));
+    }
+
+    public void tapAction(WebElement element, boolean clickLeft) {
+        Dimension size = element.getSize();
+        if (clickLeft) {
+            tapAction(element, 10, size.getHeight() / 2);
+        } else {
+            tapAction(element, size.getWidth() / 2, size.getHeight() / 2);
+        }
     }
 
     public void clickPID() {
