@@ -1871,14 +1871,15 @@ public class AutomatedStepDefs {
         if ("passed".equalsIgnoreCase(status)) {System.out.println("Credential verification passed as per test input.");}
     }
 
-    @Given("the user initiates a credential issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingThe(String issuerType) throws InterruptedException, MalformedURLException {
+    @Given("the user initiates a {} issuance using the {}")
+    public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) throws InterruptedException, MalformedURLException {
         this.issuerType = issuerType;
-        switch (issuerType.toLowerCase()) {
-            case "kotlin":
-                test.mobile().issuer().kotlinIssuerService();
-                break;
-            case "python":
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+            switch (issuerType.toLowerCase()) {
+                case "kotlin":
+                    test.mobile().issuer().kotlinIssuerService();
+                    break;
+                case "python":
 //                test.mobile().wallet().checkIfPageIsTrue();
 //                test.mobile().wallet().createAPin();
 //                test.mobile().wallet().clickNextButton();
@@ -1894,7 +1895,10 @@ public class AutomatedStepDefs {
 //                test.mobile().issuer().successfullySharedMessage();
 //                test.mobile().issuer().ckeckFieldsOnWallet();
 //                test.mobile().wallet().clickDone();
-                break;
+                    break;
+            }
+        }else{
+
         }
     }
 
@@ -1917,8 +1921,9 @@ public class AutomatedStepDefs {
         }
     }
 
-    @And("the issuance is performed on a {}")
-    public void theIssuanceIsPerformedOnA(String issueScenario) {
+    @And("the issuance is performed on a {} for the {}")
+    public void theIssuanceIsPerformedOnA(String issueScenario, String credential) {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
@@ -1937,6 +1942,9 @@ public class AutomatedStepDefs {
                         break;
                 }
             }
+        }else{
+
+        }
         }
 
 
@@ -1973,73 +1981,77 @@ public class AutomatedStepDefs {
         }
     }
 
-    @And("the presentation is performed on a {}")
-    public void thePresentationIsPerformedOnA(String presentationScenario) throws InterruptedException {
-        switch (presentationScenario.toLowerCase()) {
-            case "same device":
-                switch (this.selectiveDisclosure.toLowerCase()) {
-                    case "specific attributes":
-                        test.mobile().verifier().launchSafari();
-                        test.mobile().wallet().rotateScreen();
-                        test.mobile().verifier().appOpensSuccessfully();
-                        test.mobile().verifier().selectSpecificAttributesOnVerifier();
-                        test.mobile().verifier().scrollUntilNext();
-                        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                            test.mobile().verifier().clickNext();
-                            test.mobile().verifier().selectAttributes();
-                            test.mobile().verifier().clickSpecificAttributes();
-                            test.mobile().verifier().clickSelect();
-                            test.mobile().verifier().clickNext();
-                            test.mobile().verifier().scrollUntilSumbit();
-                            test.mobile().verifier().clickSubmit();
-                        } else {
-                            test.mobile().verifier().clickNext();
-                            test.mobile().verifier().clickNextForAndroid();
-                            test.mobile().verifier().clickNext();
-                            test.mobile().verifier().assertAndClickNext();
-                        }
-                        break;
-                    case "all attributes":
-                        theVerifierRequestsADocFromTheWalletUser();
-                        break;
-                }
-                test.mobile().verifier().chooseWallet();
-                test.mobile().verifier().viewDataPage();
-                test.mobile().wallet().clickPIDFromKotlin();
-                test.mobile().wallet().unselectData();
-                test.mobile().wallet().closeCorrespondingMessage();
-                test.mobile().wallet().clickShareButton();
-                test.mobile().wallet().pinFieldIsDisplayed();
-                test.mobile().verifier().insertPIN();
-                test.mobile().wallet().authenticationSuccessfully();
-                break;
-            case "cross device":
-                test.webWebDriverFactory().startWebDriverSession();
-                try {
-                    test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
-                    test.web().verifier().appOpensSuccessfullyOnWeb();
-                    test.web().verifier().selectAllAttributesOnWeb();
-                    test.web().verifier().scrollUntilNextOnWeb();
-                    test.web().verifier().pidIsDisplayedOnWeb();
-                    test.web().verifier().scrollUntilNextOnWeb();
-                    test.web().verifier().uriMethodIsDisplayed();
-                    test.web().verifier().scrollUntilSubmitOnWeb();
-                    test.web().verifier().assertQrCodeIsVisible();
-                    test.web().verifier().captureScreenOnWeb();
-                } finally {
-                    test.webWebDriverFactory().quitDriverWeb();
-                }
-                theUserIsOnTheLoginScreen();
-                test.mobile().wallet().createAPin();
-                test.mobile().wallet().clickAuthenticate();
-                test.mobile().wallet().clickOnline();
-                test.mobile().wallet().onlyThisTimeQR();
-                test.mobile().wallet().theQRScannerIsActivated();
-                test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
-                test.mobile().wallet().clickShareButton();
-                test.mobile().wallet().createAPin();
-                test.mobile().wallet().authenticationSuccessfully();
-                break;
+    @And("the presentation is performed on a {} for the {}")
+    public void thePresentationIsPerformedOnA(String presentationScenario, String credential) throws InterruptedException {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+            switch (presentationScenario.toLowerCase()) {
+                case "same device":
+                    switch (this.selectiveDisclosure.toLowerCase()) {
+                        case "specific attributes":
+                            test.mobile().verifier().launchSafari();
+                            test.mobile().wallet().rotateScreen();
+                            test.mobile().verifier().appOpensSuccessfully();
+                            test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                            test.mobile().verifier().scrollUntilNext();
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().clickSpecificAttributes();
+                                test.mobile().verifier().clickSelect();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().scrollUntilSumbit();
+                                test.mobile().verifier().clickSubmit();
+                            } else {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().clickNextForAndroid();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().assertAndClickNext();
+                            }
+                            break;
+                        case "all attributes":
+                            theVerifierRequestsADocFromTheWalletUser();
+                            break;
+                    }
+                    test.mobile().verifier().chooseWallet();
+                    test.mobile().verifier().viewDataPage();
+                    test.mobile().wallet().clickPIDFromKotlin();
+                    test.mobile().wallet().unselectData();
+                    test.mobile().wallet().closeCorrespondingMessage();
+                    test.mobile().wallet().clickShareButton();
+                    test.mobile().wallet().pinFieldIsDisplayed();
+                    test.mobile().verifier().insertPIN();
+                    test.mobile().wallet().authenticationSuccessfully();
+                    break;
+                case "cross device":
+                    test.webWebDriverFactory().startWebDriverSession();
+                    try {
+                        test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                        test.web().verifier().appOpensSuccessfullyOnWeb();
+                        test.web().verifier().selectAllAttributesOnWeb();
+                        test.web().verifier().scrollUntilNextOnWeb();
+                        test.web().verifier().pidIsDisplayedOnWeb();
+                        test.web().verifier().scrollUntilNextOnWeb();
+                        test.web().verifier().uriMethodIsDisplayed();
+                        test.web().verifier().scrollUntilSubmitOnWeb();
+                        test.web().verifier().assertQrCodeIsVisible();
+                        test.web().verifier().captureScreenOnWeb();
+                    } finally {
+                        test.webWebDriverFactory().quitDriverWeb();
+                    }
+                    theUserIsOnTheLoginScreen();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().clickAuthenticate();
+                    test.mobile().wallet().clickOnline();
+                    test.mobile().wallet().onlyThisTimeQR();
+                    test.mobile().wallet().theQRScannerIsActivated();
+                    test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+                    test.mobile().wallet().clickShareButton();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().authenticationSuccessfully();
+                    break;
+            }
+        }else{
+
         }
     }
 
