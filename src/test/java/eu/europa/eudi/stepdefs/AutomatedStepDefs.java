@@ -1974,7 +1974,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the presentation is performed on a {}")
-    public void thePresentationIsPerformedOnA(String presentationScenario) {
+    public void thePresentationIsPerformedOnA(String presentationScenario) throws InterruptedException {
         switch (presentationScenario.toLowerCase()) {
             case "same device":
                 switch (this.selectiveDisclosure.toLowerCase()) {
@@ -2023,18 +2023,21 @@ public class AutomatedStepDefs {
                     test.web().verifier().pidIsDisplayedOnWeb();
                     test.web().verifier().scrollUntilNextOnWeb();
                     test.web().verifier().uriMethodIsDisplayed();
-                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().scrollUntilSubmitOnWeb();
                     test.web().verifier().assertQrCodeIsVisible();
                     test.web().verifier().captureScreenOnWeb();
                 } finally {
                     test.webWebDriverFactory().quitDriverWeb();
                 }
+                theUserIsOnTheLoginScreen();
+                test.mobile().wallet().createAPin();
                 test.mobile().wallet().clickAuthenticate();
                 test.mobile().wallet().clickOnline();
                 test.mobile().wallet().onlyThisTimeQR();
                 test.mobile().wallet().theQRScannerIsActivated();
                 test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
                 test.mobile().wallet().clickShareButton();
+                test.mobile().wallet().createAPin();
                 test.mobile().wallet().authenticationSuccessfully();
                 break;
         }

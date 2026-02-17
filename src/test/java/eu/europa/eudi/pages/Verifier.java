@@ -547,6 +547,54 @@ public class Verifier {
         }
     }
 
+    public void scrollUntilSubmitOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        By nextCandidates = By.xpath("//button[.//*[normalize-space(.)='Submit'] or normalize-space(.)='Submit']");
+
+        try {
+            WebElement btn = wait.until(d -> {
+                List<WebElement> buttons = d.findElements(nextCandidates);
+
+                for (int i = 0; i < buttons.size(); i++) {
+                    WebElement b = buttons.get(i);
+                    try {
+                        String disabled = b.getAttribute("disabled");
+                        String ariaDisabled = b.getAttribute("aria-disabled");
+                        boolean displayed = b.isDisplayed();
+                        boolean enabled = b.isEnabled();
+
+                        if (displayed) {
+                            ((JavascriptExecutor) d).executeScript(
+                                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});", b
+                            );
+                        }
+
+                        // treat aria-disabled=true as disabled too
+                        boolean reallyEnabled =
+                                (disabled == null) &&
+                                        (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
+
+                        if (displayed && reallyEnabled) return b;
+
+                    } catch (StaleElementReferenceException ignored) {}
+                }
+                return null;
+            });
+
+            // Try normal click then JS click
+            try {
+                btn.click();
+            } catch (ElementClickInterceptedException e) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+            }
+
+        } catch (TimeoutException e) {
+            throw e;
+        }
+    }
+
     public void clickNextOnWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.nextButton)).click();
     }
