@@ -29,7 +29,7 @@ public class VerifierElements {
     public static By msoMdocOnWeb = By.xpath("//mat-option//span[normalize-space()='mso_mdoc']");
     public static By nextButton = By.xpath("//button[.//span[normalize-space()='Next']]");
     public static By pidIdDisplayedOnWeb = By.xpath("//mat-card-title[normalize-space()='Person Identification Data (PID)']");
-    public static By uriMethodIdDisplayedOnWeb = By.xpath("//div[contains(@class,'config-option-label') and normalize-space()='Request URI Method']");
+    public static By uriMethodIdDisplayedOnWeb = By.xpath("//span[normalize-space()='Request URI Method']");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By secondAttribute = By.xpath("//android.view.View[@resource-id='mat-option-1'] | //android.widget.ListView[@resource-id='mat-select-0-panel'][2]");
     public static By selectAttributeButton = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
