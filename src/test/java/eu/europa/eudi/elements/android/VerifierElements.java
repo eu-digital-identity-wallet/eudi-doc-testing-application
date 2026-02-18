@@ -39,4 +39,7 @@ public class VerifierElements {
     public static By clickSelectAttributes = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By clickViewContent = By.xpath("//android.widget.Button[@text=\"View Content\"]");
     public static By pidIdDisplayedOnVerifier = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
+    public static By walletRespondedOnWeb = By.xpath("(//mat-card-title[normalize-space()='eu.europa.ec.eudi.pid.1'])[2]");
+    public static By clickViewContentOnWeb = By.xpath("(//span[normalize-space()='View Content'])[2]");
+    public static By clickCloseOnVerifier = By.xpath("//span[normalize-space()='Close']");
 }
