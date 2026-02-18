@@ -11,7 +11,7 @@ Feature: Automated Regression Tests mDL
     When the user presents the credential to the <verifier>
     And the user shares <selective_disclosure>
     And the presentation is performed on a <presentation_scenario> for the <credential>
-    Then the verifier verifies the credential successfully
+    Then the verifier verifies the credential successfully with <presentation_scenario>
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
@@ -37,7 +37,7 @@ Feature: Automated Regression Tests mDL
     When the user presents the credential to the <verifier>
     And the user shares <selective_disclosure>
     And the presentation is performed on a <presentation_scenario> for the <credential>
-    Then the verifier verifies the credential successfully
+    Then the verifier verifies the credential successfully with <presentation_scenario>
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |

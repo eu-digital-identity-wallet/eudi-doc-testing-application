@@ -2025,18 +2025,18 @@ public class AutomatedStepDefs {
                 case "cross device":
                     test.webWebDriverFactory().startWebDriverSession();
                     try {
-                        test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
-                        test.web().verifier().appOpensSuccessfullyOnWeb();
-                        test.web().verifier().selectAllAttributesOnWeb();
-                        test.web().verifier().scrollUntilNextOnWeb();
-                        test.web().verifier().pidIsDisplayedOnWeb();
-                        test.web().verifier().scrollUntilNextOnWeb();
-                        test.web().verifier().uriMethodIsDisplayed();
-                        test.web().verifier().scrollUntilSubmitOnWeb();
-                        test.web().verifier().assertQrCodeIsVisible();
-                        test.web().verifier().captureScreenOnWeb();
-                    } finally {
-                        test.webWebDriverFactory().quitDriverWeb();
+                    test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                    test.web().verifier().appOpensSuccessfullyOnWeb();
+                    test.web().verifier().selectAllAttributesOnWeb();
+                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().pidIsDisplayedOnWeb();
+                    test.web().verifier().scrollUntilNextOnWeb();
+                    test.web().verifier().uriMethodIsDisplayed();
+                    test.web().verifier().scrollUntilSubmitOnWeb();
+                    test.web().verifier().assertQrCodeIsVisible();
+                    test.web().verifier().captureScreenOnWeb();
+                    }  catch (org.openqa.selenium.WebDriverException e) {
+                        e.printStackTrace();
                     }
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
@@ -2060,18 +2060,27 @@ public class AutomatedStepDefs {
         this.selectiveDisclosure = selectiveDisclosure;
     }
 
-    @Then("the verifier verifies the credential successfully")
-    public void theVerifierVerifiesTheCredentialSuccessfully() {
+    @Then("the verifier verifies the credential successfully with {}")
+    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario) {
+        switch (presentationScenario.toLowerCase()) {
+            case "same device":
         test.mobile().wallet().clickClose();
-//        test.mobile().verifier().walletResponded();
-//        test.mobile().verifier().clickViewContent();
+        test.mobile().verifier().walletResponded();
+        test.mobile().verifier().clickViewContent();
         test.mobile().issuer().sleepMethod();
-//        test.mobile().verifier().pidIsDisplayedOnVerifier();
-        test.mobile().verifier().clickTransactionsLogs();
-        test.mobile().verifier().clickTransactionInitialized();
-//        test.mobile().verifier().getTransactionId();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
-//        test.mobile().wallet().clickCloseOnVerifier();
+        test.mobile().wallet().clickCloseOnVerifier();
+                break;
+            case "cross device":
+                test.mobile().wallet().clickClose();
+                test.web().verifier().walletRespondedOnWeb();
+                test.web().verifier().clickViewContentOnWeb();
+//                test.web().verifier().sleepMethod();
+//        test.mobile().wallet().checkDataOnVerifierFromWallet();
+                test.web().verifier().clickCloseOnVerifier();
+                test.webWebDriverFactory().quitDriverWeb();
+                break;
+        }
     }
 }
 

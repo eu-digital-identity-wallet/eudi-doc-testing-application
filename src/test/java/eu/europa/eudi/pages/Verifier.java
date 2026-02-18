@@ -749,4 +749,16 @@ public class Verifier {
         String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(VerifierElements.pidIdDisplayedOnVerifier)).getText();
         Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_VERFIER.label, pageHeader);
     }
+
+    public void walletRespondedOnWeb() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedOnWeb)).getText();
+        Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);    }
+
+    public void clickViewContentOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickViewContentOnWeb)).click();
+    }
+
+    public void clickCloseOnVerifier() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickCloseOnVerifier)).click();
+    }
 }
