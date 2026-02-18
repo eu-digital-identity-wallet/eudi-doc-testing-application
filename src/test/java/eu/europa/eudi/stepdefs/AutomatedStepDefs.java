@@ -38,6 +38,8 @@ public class AutomatedStepDefs {
     EnvDataConfig envDataConfig;
     private WebDriver webDriver;
     private String issuerType;
+    private String credential;
+    private String issuanceMethod;
     private String selectiveDisclosure;
 
     @Before
@@ -1874,6 +1876,7 @@ public class AutomatedStepDefs {
     @Given("the user initiates a {} issuance using the {}")
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) throws InterruptedException, MalformedURLException {
         this.issuerType = issuerType;
+        this.credential = credential;
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":
@@ -1898,22 +1901,35 @@ public class AutomatedStepDefs {
                     break;
             }
         }else{
-
+            switch (issuerType.toLowerCase()) {
+                case "kotlin":
+                    test.mobile().issuer().kotlinIssuerService();
+                    break;
+                case "python":
         }
     }
+        }
 
     @And("the issuance method is {}")
     public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
+        this.issuanceMethod = issuanceMethod;
         switch (issuanceMethod.toLowerCase()) {
             case "from list":
-                test.mobile().wallet().insertPidFromList();
-                break;
+                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    test.mobile().wallet().insertPidFromList();
+                } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    test.mobile().wallet().insertMdlFromList();
+                }
+                    break;
             case "credential offer":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                    test.mobile().issuer().selectPIDKotlin();
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().selectPIDKotlin();
+                    } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().selectMDLKotlin();
+                    }
                     test.mobile().issuer().scrollUntilGenerate();
                     test.mobile().issuer().clickGenerate();
-                    test.mobile().issuer().clickWalletLink();
                 } else {
 
                 }
@@ -1922,18 +1938,29 @@ public class AutomatedStepDefs {
     }
 
     @And("the issuance is performed on a {} for the {}")
-    public void theIssuanceIsPerformedOnA(String issueScenario, String credential) {
-        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
-        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            switch (issueScenario.toLowerCase()) {
-                case "same device":
-                    test.mobile().wallet().clickAddButton();
-                    test.mobile().issuer().fillLoginForm();
-                    break;
-                case "cross device":
-                    break;
-            }
-        }else{
+    public void theIssuanceIsPerformedOnA(String issueScenario, String credential) throws InterruptedException {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                switch (issueScenario.toLowerCase()) {
+                    case "same device":
+                        test.mobile().issuer().clickWalletLink();
+                        test.mobile().wallet().clickAddButton();
+                        test.mobile().issuer().fillLoginForm();
+                        break;
+                    case "cross device":
+                        test.mobile().verifier().captureScreen();
+                        theUserIsOnTheLoginScreen();
+                        test.mobile().wallet().createAPin();
+                        test.mobile().wallet().clickOnDocuments();
+                        test.mobile().wallet().clickToAddDocument();
+                        test.mobile().wallet().clickQROption();
+                        test.mobile().wallet().onlyThisTimeQR();
+                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                        test.mobile().wallet().clickAddButton();
+                        test.mobile().issuer().fillLoginForm();
+                        break;
+                }
+            } else {
                 switch (issueScenario.toLowerCase()) {
                     case "same device":
                         test.mobile().issuer().sleepMethod();
@@ -1942,10 +1969,7 @@ public class AutomatedStepDefs {
                         break;
                 }
             }
-        }else{
-
-        }
-        }
+    }
 
 
     @When("the issuance flow is completed")
@@ -1956,21 +1980,29 @@ public class AutomatedStepDefs {
     @Then("the credential is stored in the Wallet")
     public void theCredentialIsStoredInTheWallet() {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            test.mobile().wallet().clickExpandVerification();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                test.mobile().wallet().clickExpandVerification();
 //            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
-            test.mobile().wallet().clickClose();
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().secondPIDKotlinIsDisplayed();
-        } else {
-            test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUntilNationality();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUp();
-            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
-            test.mobile().wallet().clickClose();
+                test.mobile().wallet().clickClose();
+                test.mobile().wallet().clickOnDocuments();
+                test.mobile().wallet().secondPIDKotlinIsDisplayed();
+            }else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)){
+                test.mobile().wallet().clickExpandVerification();
+//            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
+                test.mobile().wallet().clickClose();
+                test.mobile().wallet().clickOnDocuments();
+                test.mobile().wallet().mdlIsDisplayedKotlin();
+            }
+            } else {
+                test.mobile().wallet().clickExpandVerification();
+                test.mobile().wallet().clickExpandVerificationDown();
+                test.mobile().wallet().scrollUntilNationality();
+                test.mobile().wallet().clickExpandVerificationDown();
+                test.mobile().wallet().scrollUp();
+                test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
+                test.mobile().wallet().clickClose();
+            }
         }
-    }
     
     @When("the user presents the credential to the {}")
     public void theUserPresentsTheCredentialToThe(String verifierType) throws MalformedURLException {
@@ -1991,7 +2023,7 @@ public class AutomatedStepDefs {
                             test.mobile().verifier().launchSafari();
                             test.mobile().wallet().rotateScreen();
                             test.mobile().verifier().appOpensSuccessfully();
-                            test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                            test.mobile().verifier().selectSpecificAttributesOnVerifier(credential);
                             test.mobile().verifier().scrollUntilNext();
                             if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
                                 test.mobile().verifier().clickNext();
@@ -2009,7 +2041,24 @@ public class AutomatedStepDefs {
                             }
                             break;
                         case "all attributes":
-                            theVerifierRequestsADocFromTheWalletUser();
+                            test.mobile().verifier().launchSafari();
+                            test.mobile().verifier().appOpensSuccessfully();
+                            test.mobile().verifier().selectAllAttributes();
+                            test.mobile().verifier().scrollUntilNext();
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().clickSpecificAttributes();
+                                test.mobile().verifier().clickSelect();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().scrollUntilSumbit();
+                                test.mobile().verifier().clickSubmit();
+                            } else {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().clickNextForAndroid();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().assertAndClickNext();
+                            }
                             break;
                     }
                     test.mobile().verifier().chooseWallet();
@@ -2051,7 +2100,49 @@ public class AutomatedStepDefs {
                     break;
             }
         }else{
-
+            switch (presentationScenario.toLowerCase()) {
+                case "same device":
+                    switch (this.selectiveDisclosure.toLowerCase()) {
+                        case "specific attributes":
+                            test.mobile().verifier().launchSafari();
+                            test.mobile().verifier().appOpensSuccessfully();
+                            test.mobile().verifier().selectSpecificAttributesOnVerifier(credential);
+                            test.mobile().verifier().scrollUntilNext();
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().clickSpecificAttributes();
+                                test.mobile().verifier().clickSelect();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().scrollUntilSumbit();
+                                test.mobile().verifier().clickSubmit();
+                            } else {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().clickNextForAndroid();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().assertAndClickNext();
+                            }
+                            break;
+                        case "all attributes":
+                            test.mobile().verifier().launchSafari();
+                            test.mobile().verifier().appOpensSuccessfully();
+                            test.mobile().verifier().selectAllAttributesForMdl();
+                            test.mobile().verifier().scrollUntilNext();
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().clickSpecificAttributes();
+                                test.mobile().verifier().clickSelect();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().scrollUntilSumbit();
+                                test.mobile().verifier().clickSubmit();
+                            } else {
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().clickNextForAndroid();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().assertAndClickNext();
+                            }
+                    }}
         }
     }
 

@@ -70,4 +70,5 @@ public class WalletElements {
     public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
     public static By issueButton = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
     public static By issuedPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[1]");
+    public static By selectMDLKotlin;
 }

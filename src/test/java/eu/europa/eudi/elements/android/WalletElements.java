@@ -1,5 +1,6 @@
 package eu.europa.eudi.elements.android;
 
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class WalletElements {
@@ -18,7 +19,7 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.id("eu.europa.ec.euidi.dev:id/biometric_screen_title");
     public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
-    public static By clickMdlDemo = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
+    public static By clickMdlPython = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://ec.dev.issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_dialogue_delete_document_positive_button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
@@ -67,7 +68,7 @@ public class WalletElements {
     public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document.\"]");
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Online\"]");
-    public static By walletLink = By.xpath("//android.widget.TextView[@text=\"Link\"]");
+    public static By walletLink = AppiumBy.accessibilityId("Link");
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
@@ -81,4 +82,7 @@ public class WalletElements {
     public static By clickExpandVerificationSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])");;
     public static By residentStreet = By.xpath("//android.widget.TextView[@text=\"Resident Street\"]");;
     public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
+    public static By scanQRIsActivatedForIssuance = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
+    public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-4\"]");
+    public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
 }
