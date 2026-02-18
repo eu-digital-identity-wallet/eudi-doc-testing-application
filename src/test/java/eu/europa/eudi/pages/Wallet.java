@@ -1775,6 +1775,9 @@ public class Wallet {
     public void clickPIDFromKotlin() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
     }
+    public void clickMDLFromKotlin() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.mdlIsDisplayedKotlin)).click();
+    }
 
     public void checkFormOnWalletFromVerifier() {
         test.mobile().wallet().scrollUntilResidentStreet();
