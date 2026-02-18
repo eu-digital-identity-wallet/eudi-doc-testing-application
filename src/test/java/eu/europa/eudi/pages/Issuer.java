@@ -19,19 +19,11 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
-import javax.lang.model.element.Element;
-import javax.swing.text.Document;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class Issuer {
@@ -621,7 +613,7 @@ public class Issuer {
                     }
                 }
             });
-        }else {
+        } else {
             //nothing now for iOS
         }
     }
@@ -630,7 +622,7 @@ public class Issuer {
         // minimal escape for quotes in your current style
         return s.replace("\"", "\\\"");
     }
-    
+
     private void verifyMandatoryInfoLabelsPresent() {
         FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
 
@@ -1284,7 +1276,7 @@ public class Issuer {
 
             int startX = size.width / 2;
             int startY = (int) (size.height * 0.75); // start lower
-            int endY   = (int) (size.height * 0.30); // end higher
+            int endY = (int) (size.height * 0.30); // end higher
 
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence swipe = new Sequence(finger, 0);
@@ -1580,7 +1572,7 @@ public class Issuer {
     }
 
     private void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
-        By locator = By.xpath("//*[@text=\"" + text.replace("\"","\\\"") + "\"]");
+        By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
         for (int i = 0; i < maxScrolls; i++) {
             if (!driver.findElements(locator).isEmpty()) return;
@@ -1645,5 +1637,14 @@ public class Issuer {
                 }
             }
         });
+    }
+
+    public void selectMDLKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLKotlinCredential)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
+
+        }
     }
 }

@@ -42,4 +42,5 @@ public class VerifierElements {
     public static By walletRespondedOnWeb = By.xpath("(//mat-card-title[normalize-space()='eu.europa.ec.eudi.pid.1'])[2]");
     public static By clickViewContentOnWeb = By.xpath("(//span[normalize-space()='View Content'])[2]");
     public static By clickCloseOnVerifier = By.xpath("//span[normalize-space()='Close']");
+    public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
 }

@@ -217,7 +217,7 @@ public class Wallet {
 
     public void clickMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlDemo)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlPython)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
             tapAction(button, false);
@@ -778,7 +778,7 @@ public class Wallet {
 
             for (int i = 0; i < 5; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlDemo);
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlPython);
                     if (pidElement.isDisplayed()) {
                         break;
                     }
@@ -1145,7 +1145,7 @@ public class Wallet {
 
             for (int i = 0; i < 5; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlDemo);
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlPython);
                     if (pidElement.isDisplayed()) {
                         break;
                     }
@@ -1803,6 +1803,36 @@ public class Wallet {
     public void rotateScreen() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        }
+    }
+
+    public void theQRScannerIsActivatedForIssuance() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRIsActivatedForIssuance)).getText();
+            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE.label, pageHeader);
+        } else {
+//            String pageHeader = test.mobileWebDriverFactory().getWait()
+//                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
+//            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_IOS.label, pageHeader);
+        }
+    }
+
+    public void insertMdlFromList() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilmDLOnDocuments();
+        test.mobile().wallet().clickMdl();
+        test.mobile().issuer().issueMDL();
+    }
+
+    public void mdlIsDisplayedKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayedKotlin)).getText();
+            Assert.assertEquals(Literals.Wallet.MDL_KOTLIN.label, pageHeader);
+        } else {
         }
     }
 }

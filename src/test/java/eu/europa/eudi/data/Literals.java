@@ -47,7 +47,9 @@ public interface Literals {
         QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
         ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document online."),
-        PID_KOTLIN("PID (MSO MDoc)");
+        PID_KOTLIN("PID (MSO MDoc)"),
+        QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
+        MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
 
         public final String label;
         Wallet(String label) {
