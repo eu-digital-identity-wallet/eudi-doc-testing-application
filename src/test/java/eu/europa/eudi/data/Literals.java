@@ -68,7 +68,8 @@ public interface Literals {
         CHOOSE_WALLET_DISPLAYED("Invoke Wallet"),
         PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
-        PID_IS_DISPLAYED_ON_VERFIER("eu.europa.ec.eudi.pid.1");
+        PID_IS_DISPLAYED_ON_VERFIER("eu.europa.ec.eudi.pid.1"),
+        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL");
 
         public final String label;
         Verifier(String label) {
