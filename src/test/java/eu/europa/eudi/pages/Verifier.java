@@ -17,7 +17,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -618,6 +617,11 @@ public class Verifier {
         Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
 
+    public void mdlIsDisplayedOnWeb() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.mdlIdDisplayedOnWeb)).getText();
+        Assert.assertEquals(Literals.Verifier.MDL_IS_DISPLAYED_ON_WEB_KOTLIN.label, pageHeader);
+    }
+
     public void uriMethodIsDisplayed() {
         String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.uriMethodIdDisplayedOnWeb)).getText();
         Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
@@ -748,7 +752,7 @@ public class Verifier {
 
     public void pidIsDisplayedOnVerifier() {
         String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(VerifierElements.pidIdDisplayedOnVerifier)).getText();
-        Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_VERFIER.label, pageHeader);
+        Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_VERIFIER.label, pageHeader);
     }
 
     public void walletRespondedOnWeb() {
@@ -757,7 +761,7 @@ public class Verifier {
     }
 
     public void clickViewContentOnWeb() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickViewContentOnWeb)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(VerifierElements.clickViewContentOnWeb)).click();
     }
 
     public void clickCloseOnVerifier() {
@@ -793,5 +797,48 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedMdlKotlin)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
         }
+    }
+
+    public void selectAllAttributesOnWebForMdl() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForMdl)).click();
+    }
+
+    public void selectSpecificAttributesOnWebForMdl() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeSpecificOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWebForMdl)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForMdl)).click();
+    }
+
+    public void clickSpecificAttributesButtonForMdl() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSpecificAttributesButtonForMdlOnWeb)).click();
+    }
+
+    public void selectSpecificAttributesOnWeb() {
+        for (int i = 0; i < 5; i++) {
+            try {
+                By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
+                test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
+            } catch (Exception e) {
+                System.out.println("Could not click attribute " + i + ", continuing...");
+            }
+        }
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
+    }
+
+    public void walletRespondedOnWebforMdlKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin)).getText();
+            Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
+        }
+    }
+
+    public void clickCloseOnVerifierWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickCloseVerifierOnWeb)).click();
     }
 }
