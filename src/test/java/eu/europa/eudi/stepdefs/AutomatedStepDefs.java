@@ -2128,9 +2128,6 @@ public class AutomatedStepDefs {
                             test.mobile().verifier().scrollUntilNext();
                             if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
                                 test.mobile().verifier().clickNext();
-                                test.mobile().verifier().selectAttributes();
-                                test.mobile().verifier().clickSpecificAttributes();
-                                test.mobile().verifier().clickSelect();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().scrollUntilSumbit();
                                 test.mobile().verifier().clickSubmit();
@@ -2144,7 +2141,7 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().chooseWallet();
                     test.mobile().verifier().viewDataPage();
                     test.mobile().wallet().clickMDLFromKotlin();
-                    test.mobile().wallet().unselectData();
+                    test.mobile().wallet().unselectDataForMdl();
                     test.mobile().wallet().closeCorrespondingMessage();
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().pinFieldIsDisplayed();
