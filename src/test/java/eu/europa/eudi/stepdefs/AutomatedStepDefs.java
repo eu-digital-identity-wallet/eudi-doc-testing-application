@@ -2104,7 +2104,7 @@ public class AutomatedStepDefs {
                         case "specific attributes":
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
-                            test.mobile().verifier().selectSpecificAttributes();
+                            test.mobile().verifier().selectSpecificAttributesForMdl();
                             test.mobile().verifier().scrollUntilNext();
                             if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
                                 test.mobile().verifier().clickNext();
@@ -2203,6 +2203,7 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().theQRScannerIsActivated();
                             test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
                             test.mobile().wallet().clickShareButton();
+                            test.mobile().wallet().createAPin();
                             test.mobile().wallet().authenticationSuccessfully();
                             break;
                     }

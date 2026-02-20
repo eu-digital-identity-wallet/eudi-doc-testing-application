@@ -46,7 +46,7 @@ public class VerifierElements {
     public static By clickViewContent = By.xpath("//android.widget.Button[@text=\"View Content\"]");
     public static By pidIdDisplayedOnVerifier = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By walletRespondedOnWeb = By.xpath("(//mat-card-title[normalize-space()='eu.europa.ec.eudi.pid.1'])[2]");
-    public static By clickViewContentOnWeb = By.xpath("(//span[normalize-space()='View Content'])[2]");
+    public static By clickViewContentOnWeb = By.xpath("//button[contains(@class, 'mat-mdc-outlined-button') and .//span[normalize-space(.)='View Content']]");
     public static By clickCloseOnVerifier = By.xpath("//span[normalize-space()='Close']");
     public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
     public static By walletRespondedMdlKotlin = By.xpath("//android.widget.TextView[@text=\"org.iso.18013.5.1.mDL\"]");
