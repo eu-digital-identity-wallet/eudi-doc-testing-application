@@ -24,7 +24,7 @@ public class WalletElements {
     public static By confirmsDeletion = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_dialogue_delete_document_positive_button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By unselectData = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-    public static By unselectDataForMdl = By.xpath("//android.widget.TextView[@text=\"Age in Years\"]");
+    public static By unselectDataForMdl = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
