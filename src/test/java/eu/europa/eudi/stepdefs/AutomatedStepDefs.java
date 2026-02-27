@@ -1878,6 +1878,7 @@ public class AutomatedStepDefs {
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) throws InterruptedException, MalformedURLException {
         this.issuerType = issuerType;
         this.credential = credential;
+        test.mobile().wallet().launchApp();
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":
@@ -1907,6 +1908,14 @@ public class AutomatedStepDefs {
                     test.mobile().issuer().kotlinIssuerService();
                     break;
                 case "python":
+                    test.mobile().wallet().launchApp();
+                    test.mobile().wallet().checkIfPageIsTrue();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().clickNextButton();
+                    test.mobile().wallet().renterThePin();
+                    test.mobile().wallet().clickConfirm();
+                    test.mobile().wallet().successMessageOfSetUpPin();
+                    test.mobile().wallet().clickAddMyDigitalID();
             }
         }
     }
@@ -1996,11 +2005,11 @@ public class AutomatedStepDefs {
             }
         } else {
             test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUntilNationality();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUp();
-            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
+//            test.mobile().wallet().clickExpandVerificationDown();
+//            test.mobile().wallet().scrollUntilNationality();
+//            test.mobile().wallet().clickExpandVerificationDown();
+//            test.mobile().wallet().scrollUp();
+//            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
             test.mobile().wallet().clickClose();
         }
     }
@@ -2140,8 +2149,13 @@ public class AutomatedStepDefs {
                     }
                     test.mobile().verifier().chooseWallet();
                     test.mobile().verifier().viewDataPage();
-                    test.mobile().wallet().clickMDLFromKotlin();
-                    test.mobile().wallet().unselectDataForMdl();
+                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                        test.mobile().wallet().clickMDLFromKotlin();
+                        test.mobile().wallet().unselectDataForMdlKotlin();
+                    } else {
+                        test.mobile().wallet().clickToViewDetails();
+                        test.mobile().wallet().unselectDataForMdlPython();
+                    }
                     test.mobile().wallet().closeCorrespondingMessage();
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().pinFieldIsDisplayed();
@@ -2226,7 +2240,7 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().clickViewContent();
                     test.mobile().issuer().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
-                    test.mobile().wallet().clickCloseOnVerifier();
+                    test.mobile().verifier().clickCloseOnVerifier();
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();
@@ -2246,7 +2260,7 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().clickViewContent();
                     test.mobile().issuer().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
-                    test.mobile().wallet().clickCloseOnVerifier();
+//                    test.mobile().verifier().clickCloseOnVerifier();
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();

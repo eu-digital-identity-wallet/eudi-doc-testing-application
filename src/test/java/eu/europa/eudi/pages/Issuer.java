@@ -849,6 +849,7 @@ public class Issuer {
     }
 
     public void issueMDL() throws InterruptedException {
+        test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         clickFormEu();
         clickSubmit();
         formIsDisplayed();

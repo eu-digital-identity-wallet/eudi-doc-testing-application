@@ -23,7 +23,9 @@ import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
 
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
@@ -44,6 +46,14 @@ public class Wallet {
 
     public Wallet(TestSetup test) {
         this.test = test;
+    }
+
+    public void launchApp() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+        } else {
+            test.mobileWebDriverFactory().iosDriver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+        }
     }
 
     public void checkIfPageIsTrue() {
@@ -217,7 +227,7 @@ public class Wallet {
 
     public void clickMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlPython)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickMdlPython)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
             tapAction(button, false);
@@ -1336,7 +1346,9 @@ public class Wallet {
             BufferedImage bufferedImage = ImageIO.read(qrImagePath);
             LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            Result result = new MultiFormatReader().decode(bitmap);
+            Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
+            hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
+            Result result = new MultiFormatReader().decode(bitmap, hints);
             String qrContent = result.getText();
 
             // Inject the QR content based on platform
@@ -1380,10 +1392,10 @@ public class Wallet {
     public void clickAddButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
+                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
         } else {
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
+                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
         }
     }
 
@@ -1570,9 +1582,6 @@ public class Wallet {
         throw new AssertionError("Value not found for attribute key: " + attrKey);
     }
 
-    public void clickCloseOnVerifier() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.closeButtonOnVerifier)).click();
-    }
 
     public void clickExpandVerificationDown() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickExpandDetails)).click();
@@ -1839,11 +1848,19 @@ public class Wallet {
         }
     }
 
-    public void unselectDataForMdl() {
+    public void unselectDataForMdlPython() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.unselectDataForMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.unselectDataForMdlPython)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
+        }
+    }
+
+    public void unselectDataForMdlKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.unselectDataForMdlKotlin)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
         }
     }
 }
