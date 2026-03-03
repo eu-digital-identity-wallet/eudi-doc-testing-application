@@ -7,7 +7,7 @@ public class IssuerElements {
     public static By checkPID = By.xpath("//android.widget.TextView[@text=\" PID (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox"); //(//android.widget.CheckBox[@resource-id="check"])[8]
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
-    public static By clickEudiwButton = By.xpath("//android.widget.TextView[@text=\"Use EUDIW\"]");
+    public static By clickEudiwButton = By.xpath("//android.view.View[@content-desc=\"Use EUDIW\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
