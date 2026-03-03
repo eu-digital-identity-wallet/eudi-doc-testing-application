@@ -1998,7 +1998,7 @@ public class AutomatedStepDefs {
                         test.mobile().issuer().issuerService();
                         test.mobile().issuer().sleepMethod();
                         test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                        test.mobile().issuer().scrollUntilPIDIssuer();
+                        test.mobile().issuer().scrollUntilMdlIssuer();
                         test.mobile().issuer().selectMdlPythonIssuer();
                         test.mobile().issuer().scrollUntilFindSubmitIssuer();
                         test.mobile().issuer().clickSubmitButton();
