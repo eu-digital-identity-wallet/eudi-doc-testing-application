@@ -1,5 +1,6 @@
 package eu.europa.eudi.elements.android;
 
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class IssuerElements {
@@ -53,4 +54,6 @@ public class IssuerElements {
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By birthDate = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
+    public static By issueCredentalsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
+    public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
 }

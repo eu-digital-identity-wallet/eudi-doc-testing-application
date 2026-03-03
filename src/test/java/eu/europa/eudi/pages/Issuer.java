@@ -642,7 +642,7 @@ public class Issuer {
 
                     boolean found = false;
 
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 5; i++) {
 
                         By labelLocator = By.xpath(
                                 "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') " +
@@ -663,7 +663,7 @@ public class Issuer {
                     }
                 }
             });
-            test.mobile().wallet().scrollUp();
+            test.mobile().wallet().scrollUpForBirthDate();
 
         } else {
             //nothing now for iOS
@@ -1646,6 +1646,26 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
 
+        }
+    }
+
+    public void issueCredentialsPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
+            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
+        }
+    }
+
+    public void signInUsser() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
+            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
         }
     }
 }
