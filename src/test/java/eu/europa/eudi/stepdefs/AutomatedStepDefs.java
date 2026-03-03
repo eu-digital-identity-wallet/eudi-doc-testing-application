@@ -338,7 +338,7 @@ public class AutomatedStepDefs {
     public void theUserSelectsToIssueACredential() throws InterruptedException {
         test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().wallet().scrollUntilPIDIssuer();
+        test.mobile().issuer().scrollUntilPIDIssuer();
         test.mobile().issuer().clickPersonalIdentificationData();
         test.mobile().issuer().scrollUntilFindSubmitIssuer();
         test.mobile().issuer().clickSubmitButton();
@@ -1953,7 +1953,11 @@ public class AutomatedStepDefs {
                     test.mobile().issuer().scrollUntilGenerate();
                     test.mobile().issuer().clickGenerate();
                 } else {
-
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().issuerService();
+                    } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().issuerService();
+                    }
                 }
                 break;
         }
@@ -1988,7 +1992,20 @@ public class AutomatedStepDefs {
         } else {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
-                    test.mobile().issuer().sleepMethod();
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().issuerService();
+                    }else {
+                        test.mobile().issuer().issuerService();
+                        test.mobile().issuer().sleepMethod();
+                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                        test.mobile().issuer().scrollUntilPIDIssuer();
+                        test.mobile().issuer().selectMdlPythonIssuer();
+                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                        test.mobile().issuer().clickSubmitButton();
+                        test.mobile().issuer().clickUseEudiw();
+                        test.mobile().wallet().clickAddButton();
+                        test.mobile().issuer().issueMDL();
+                    }
                     break;
                 case "cross device":
 
