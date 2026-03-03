@@ -87,5 +87,6 @@ public class WalletElements {
     public static By scanQRIsActivatedForIssuance = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-4\"]");
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
- public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
+    public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
+    public static By selectMDLPythonCredential = By.xpath("(//android.widget.CheckBox[@resource-id=\"check\"])[3]");
 }
