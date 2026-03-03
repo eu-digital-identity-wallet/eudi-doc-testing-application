@@ -108,7 +108,9 @@ public interface Literals {
         SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
         CODEISVISIBLE("Code"),
         COUNTRY("Country"),
-        CREDENTIAL_PAGE_KOTLIN("Please select the Credentials you would like to issue:");
+        CREDENTIAL_PAGE_KOTLIN("Please select the Credentials you would like to issue:"),
+        ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
+        SIGN_IN_USER_PAGE("Sign in to your account");
 
         public final String label;
         Issuer(String label) {

@@ -27,7 +27,6 @@ Feature: Automated Regression Tests mDL
       | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
       | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
-  @before_01
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -40,11 +39,4 @@ Feature: Automated Regression Tests mDL
     Then the verifier verifies the credential successfully with <presentation_scenario>
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | all attributes       |

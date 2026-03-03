@@ -1863,4 +1863,38 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
         }
     }
+
+    public void viewDataPage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+        }
+    }
+
+    public void scrollUpForBirthDate() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        int maxScrolls = 10;     // safety limit
+        int count = 0;
+        By locator = By.xpath("//android.widget.TextView[@text=\"Mandatory Information\"]");
+        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
+            slowScrollUp();
+            count++;
+        }
+
+        if (driver.findElements(locator).isEmpty()) {
+            throw new RuntimeException("Mandatory Information not found after scrolling up");
+        }
+    }
+
+    public void unselectDataForMdlKotlinAllAttributes() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.unselectDataForMdlKotlinAllAttributes)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
+        }
+    }
 }

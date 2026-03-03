@@ -1905,6 +1905,18 @@ public class AutomatedStepDefs {
         } else {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":
+                    test.mobile().wallet().launchApp();
+                    test.mobile().wallet().checkIfPageIsTrue();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().clickNextButton();
+                    test.mobile().wallet().renterThePin();
+                    test.mobile().wallet().clickConfirm();
+                    test.mobile().wallet().successMessageOfSetUpPin();
+                    test.mobile().wallet().clickAddMyDigitalID();
+                    test.mobile().wallet().insertPidFromList();
+                    test.mobile().issuer().sleepMethod();
+                    test.mobile().wallet().successMessageIsDisplayedForIssuer();
+                    test.mobile().wallet().clickClose();
                     test.mobile().issuer().kotlinIssuerService();
                     break;
                 case "python":
@@ -1952,8 +1964,11 @@ public class AutomatedStepDefs {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
+                    test.mobile().issuer().issueCredentialsPageIsDisplayed();
                     test.mobile().issuer().clickWalletLink();
+                    test.mobile().wallet().viewDataPage();
                     test.mobile().wallet().clickAddButton();
+                    test.mobile().issuer().signInUsser();
                     test.mobile().issuer().fillLoginForm();
                     break;
                 case "cross device":
@@ -1976,6 +1991,7 @@ public class AutomatedStepDefs {
                     test.mobile().issuer().sleepMethod();
                     break;
                 case "cross device":
+
                     break;
             }
         }
@@ -2151,7 +2167,14 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().viewDataPage();
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                         test.mobile().wallet().clickMDLFromKotlin();
-                        test.mobile().wallet().unselectDataForMdlKotlin();
+                        switch (selectiveDisclosure.toLowerCase()) {
+                            case "specific attributes":
+                                test.mobile().wallet().unselectDataForMdlKotlin();
+                                break;
+                            case "all attributes":
+                                test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
+                                break;
+                        }
                     } else {
                         test.mobile().wallet().clickToViewDetails();
                         test.mobile().wallet().unselectDataForMdlPython();
