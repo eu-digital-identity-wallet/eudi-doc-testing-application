@@ -20,6 +20,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,6 +30,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
+
 import java.time.Duration;
 import java.util.Collections;
 
@@ -2542,6 +2546,11 @@ public class AutomatedStepDefs {
                     break;
             }
         }
+    }
+
+    @When("the user clicks the Verify with EUDI Wallet button")
+    public void theUserClicksTheVerifyWithEUDIWalletButton() {
+        //nothing
     }
 }
 
