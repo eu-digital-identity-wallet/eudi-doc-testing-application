@@ -4,6 +4,7 @@ import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.config.EnvDataConfig;;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
@@ -61,8 +62,19 @@ public class Verifier {
 
     public void viewDataPage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
+                    Literals.Verifier.VIEW_DATA_PAGE.label,
+                    driver,
+                    50
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage
+            ).getText().trim();
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
+//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
+//            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
@@ -864,5 +876,49 @@ public class Verifier {
 
     public void clickCloseOnVerifierWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickCloseVerifierOnWeb)).click();
+    }
+
+    public File captureScreenIssuerOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String filename = timestamp + "_verifier.jpg";
+        File destFile = new File("screenshots/" + filename);
+
+        try {
+            destFile.getParentFile().mkdirs();
+
+            // Locate the QR <img> (adjust selector if needed)
+            By qrImage = By.cssSelector("img[src^='data:image']");
+
+            // Wait until visible
+            WebElement img = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(qrImage)
+            );
+
+            // Scroll into view (important for remote drivers like BrowserStack)
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", img
+            );
+
+            // Wait until image is fully loaded
+            wait.until(d -> (Boolean) ((JavascriptExecutor) d).executeScript(
+                    "return arguments[0].complete && arguments[0].naturalWidth > 0;",
+                    img
+            ));
+
+            // Screenshot only the image element
+            File srcFile = img.getScreenshotAs(OutputType.FILE);
+            FileHandler.copy(srcFile, destFile);
+
+            this.capturedScreenFile = destFile;
+            return destFile;
+
+        } catch (IOException e) {
+            throw new RuntimeException(
+                    "Failed to capture verifier QR (web img) screenshot: " + e.getMessage(), e
+            );
+        }
     }
 }

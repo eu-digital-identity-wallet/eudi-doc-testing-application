@@ -1,0 +1,49 @@
+screen: "Wallet - PID details"
+
+fields:
+
+  Date of birth:
+    required: true
+    value: "10 Mar 2020"
+
+  code:
+    required: true
+    value: "1234"
+
+  expiry_date:
+    required: true
+    value: "10 Mar 2020"
+
+  issue_date:
+    required: true
+    value: "10 Mar 2020"
+
+  vehicle_category_code:
+    value: "AM"
+    required: true
+
+  Family name:
+    value: "Foteini"
+    required: true
+
+  Given name:
+    value: "Theofilatou"
+    required: true
+
+  Issuing authority:
+    value: "Test mDL Issuer"
+    required: true
+
+  Licence number:
+    value: "1234"
+    required: true
+
+  Portrait:
+    value: "de6jmbIxpjfyyAflPYg+D79vwVzoiIqSTnHsfP2XWj5SzlxGGtHFq7Q8KUREREREUHwpRE"
+    required: false
+
+  UN distinguishing sign:
+    value: "FC"
+    required: true
+
+

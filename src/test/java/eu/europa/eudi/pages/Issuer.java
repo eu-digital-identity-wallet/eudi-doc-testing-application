@@ -14,17 +14,20 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileInputStream;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class Issuer {
@@ -276,7 +279,7 @@ public class Issuer {
 
     private String getValueFromYml(String familyName) {
 
-        FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
 
         if (!yml.fields.containsKey(familyName)) {
             throw new RuntimeException("Field not found in YAML: " + familyName);
@@ -288,7 +291,7 @@ public class Issuer {
     public void chooseBirthDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+            FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
             String birthDate = yml.fields.get("Birth Date").value;   // "1990-01-10"
 
 // open date picker
@@ -374,21 +377,112 @@ public class Issuer {
 
     public void chooseIssueDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssueDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            // Load YAML
+            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
+
+            // Get Issue Date value (example: 2024-03-01)
+            String issueDate = yml.fields.get("Issue Date").value;
+
+            // Open date picker
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.android.IssuerElements.clickIssueDate))
+                    .click();
+
+            // Parse yyyy-MM-dd
+            String[] p = issueDate.split("-");
+            String year = p[0];
+            String day = String.valueOf(Integer.parseInt(p[2]));
+
+            // Open year selector
+            try {
+                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+            } catch (Exception e) {
+                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+            }
+
+            // Scroll to year
+            selectYearScrollUp(driver, year);
+
+            // Select day
+            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
+
+            // Confirm
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.android.IssuerElements.chooseSet))
+                    .click();
+
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate))
+                    .click();
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.ios.IssuerElements.chooseSet))
+                    .click();
         }
     }
 
     public void chooseExpiryDate() {
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            // Load YAML
+            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
+
+            // Get Expiry Date value (example: 2030-05-15)
+            String expiryDate = yml.fields.get("Expiry Date").value;
+
+            // Open date picker
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate))
+                    .click();
+
+            // Parse yyyy-MM-dd
+            String[] p = expiryDate.split("-");
+            String year = p[0];
+            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading 0
+
+            // Open year selector
+            try {
+                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+            } catch (Exception e) {
+                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+            }
+
+            // Scroll to year
+            selectYearScrollUp(driver, year);
+
+            // Select day
+            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
+
+            // Confirm
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.android.IssuerElements.chooseSet))
+                    .click();
+
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate))
+                    .click();
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.ios.IssuerElements.chooseSet))
+                    .click();
         }
     }
 
@@ -424,7 +518,7 @@ public class Issuer {
     public void scrollUntilFindDate() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 4; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
@@ -524,10 +618,13 @@ public class Issuer {
     public void clickAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(70));
             By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
-            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+//            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(theButtonToClick));
+            tapAction(button, false);
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
@@ -572,7 +669,7 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickSubmit();
         formIsDisplayed();
-        verifyMandatoryInfoLabelsPresent();
+        verifyMandatoryInfoLabelsPresent("py_issuer_form.yml");
         chooseBirthDate();
         enterFamilyName();
         enterGivenName();
@@ -588,36 +685,30 @@ public class Issuer {
         clickAuthorize();
     }
 
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePage() {
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            FormYml yml = YmlLoader.load("testdata/py_issuer_authorization.yml", FormYml.class);
+
+            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             yml.fields.forEach((fieldKey, cfg) -> {
+
                 if (!cfg.required) return;
 
-                String[] labels = fieldKey.split("\\.");
-                String lastLabel = labels[labels.length - 1];
+                // Search label directly (no split)
+                assertTextVisibleWithScroll(driver, fieldKey, 2);
 
-                // 1) find labels (scroll)
-                for (String label : labels) {
-                    assertTextVisibleWithScroll(driver, label, 10);
-                }
-
-                // 2) if expected value in yml -> verify it exists (scroll still at that area)
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 1);
                 } else {
-                    // if no expected value -> at least ensure some value exists near the label
-                    // simplest: just ensure there is at least one TextView visible
+
                     By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+
                     if (driver.findElements(anyValue).isEmpty()) {
-                        throw new AssertionError("No values visible for label: " + lastLabel);
+                        throw new AssertionError("No values visible for label: " + fieldKey);
                     }
                 }
             });
-        } else {
-            //nothing now for iOS
         }
     }
 
@@ -626,15 +717,12 @@ public class Issuer {
         return s.replace("\"", "\\\"");
     }
 
-    private void verifyMandatoryInfoLabelsPresent() {
-        FormYml yml = YmlLoader.load("testdata/py_issuer_form.yml", FormYml.class);
+    private void verifyMandatoryInfoLabelsPresent(String yamlPath) {
+        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            // (Optional) make sure we're in a stable context
-            // driver.context("NATIVE_APP");
 
             yml.fields.forEach((fieldKey, cfg) -> {
                 if (!cfg.required) return;
@@ -657,7 +745,6 @@ public class Issuer {
                             break;
                         }
 
-                        // scroll down a bit and try again
                         slowScroll(driver);
                     }
 
@@ -666,13 +753,10 @@ public class Issuer {
                     }
                 }
             });
-            test.mobile().wallet().scrollUpForBirthDate();
 
-        } else {
-            //nothing now for iOS
+            test.mobile().wallet().scrollUpForBirthDate();
         }
     }
-
 
     public void issuePIDDev() throws InterruptedException {
 //        issuerServiceIsDisplayed();
@@ -924,6 +1008,7 @@ public class Issuer {
         clickFormEu();
         clickSubmit();
         formIsDisplayed();
+        verifyMandatoryInfoLabelsPresent("testdata/mDL/py_issuer_form.yml");
         chooseBirthDate();
         enterDocumentNumber();
         scrollUntilFindSign();
@@ -939,8 +1024,187 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
+        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_issuer_authorization.yml");
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    private void validateScreenFields() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        try {
+            for (String context : driver.getContextHandles()) {
+                if (context.contains("WEBVIEW")) {
+                    driver.context(context);
+                    break;
+                }
+            }
+
+            String yamlPath = "src/test/resources/testdata/mDL/py_issuer_form.yml";
+            List<String> yamlFields = loadYamlFields(yamlPath);
+
+            int maxScrolls = 8;
+
+            for (int i = 0; i < maxScrolls; i++) {
+
+                Thread.sleep(1500);
+
+                String dom = driver.getPageSource();
+
+                List<String> missingFields = findMissingFields(dom, yamlFields);
+
+                if (missingFields.isEmpty()) {
+                    System.out.println("All fields found on screen");
+                    return;
+                }
+
+                System.out.println("Scrolling... Missing fields: " + missingFields);
+
+                swipeUp(driver);
+
+            }
+
+            throw new RuntimeException("Some fields not found after scrolling.");
+
+        } catch (Exception e) {
+            throw new RuntimeException("Validation failed: " + e.getMessage(), e);
+        }
+    }
+
+    private void swipeUp(AppiumDriver driver) {
+
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.75);
+        int endY = (int) (size.height * 0.30);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 0);
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ZERO,
+                PointerInput.Origin.viewport(),
+                startX,
+                startY));
+
+        swipe.addAction(finger.createPointerDown(
+                PointerInput.MouseButton.LEFT.asArg()));
+
+        swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ofMillis(600),
+                PointerInput.Origin.viewport(),
+                startX,
+                endY));
+
+        swipe.addAction(finger.createPointerUp(
+                PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
+    }
+
+    private List<String> findMissingFields(String dom, List<String> yamlFields) {
+
+        List<String> missing = new ArrayList<>();
+
+        for (String field : yamlFields) {
+
+            if (!dom.contains(field)) {
+                missing.add(field);
+            }
+        }
+
+        return missing;
+    }
+
+    private List<String> loadYamlFields(String yamlPath) throws Exception {
+
+        Yaml yaml = new Yaml();
+
+        Map<String, Object> data =
+                yaml.load(new FileInputStream(yamlPath));
+
+        Map<String, Object> fields =
+                (Map<String, Object>) data.get("fields");
+
+        return new ArrayList<>(fields.keySet());
+    }
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePageForMdl() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
+                String[] labels = fieldKey.split("\\.");
+                String lastLabel = labels[labels.length - 1];
+                // 1) find labels (scroll)
+                for (String label : labels) {
+                    assertTextVisibleWithScroll(driver, label, 10);
+                }
+                // 2) if expected value in yml -> verify it exists (scroll still at that area)
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                } else {
+                    // if no expected value -> at least ensure some value exists near the label
+                    // simplest: just ensure there is at least one TextView visible
+                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+                    if (driver.findElements(anyValue).isEmpty()) {
+                        throw new AssertionError("No values visible for label: " + lastLabel);
+                    }
+                }
+            });
+        } else {
+            //nothing now for iOS
+        }
+
+    }
+
+    private void verifyMandatoryInfoLabelsPresentForMdl() {
+        FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_form.yml", FormYml.class);
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            // (Optional) make sure we're in a stable context
+            // driver.context("NATIVE_APP");
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
+
+                String[] labels = fieldKey.split("\\.");
+
+                for (String label : labels) {
+
+                    boolean found = false;
+
+                    for (int i = 0; i < 5; i++) {
+
+                        By labelLocator = By.xpath(
+                                "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') " +
+                                        "and contains(@text, \"" + label + "\")]"
+                        );
+
+                        if (!driver.findElements(labelLocator).isEmpty()) {
+                            found = true;
+                            break;
+                        }
+
+                        // scroll down a bit and try again
+                        slowScroll(driver);
+                    }
+
+                    if (!found) {
+                        throw new AssertionError("Mandatory label not found: " + label);
+                    }
+                }
+            });
+            test.mobile().wallet().scrollUpForBirthDate();
+
+        } else {
+            //nothing now for iOS
+        }
     }
 
     public void enterGivenNameOnMdl() {
@@ -1371,7 +1635,7 @@ public class Issuer {
 
             // Swipe
             swipe.addAction(finger.createPointerMove(
-                    Duration.ofMillis(700),
+                    Duration.ofMillis(350),
                     PointerInput.Origin.viewport(),
                     startX,
                     endY
@@ -1608,7 +1872,7 @@ public class Issuer {
     }
 
     public void ckeckFieldsOnWallet() {
-        FormYml yml = YmlLoader.load("testdata/py_issuer_authorization.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/py_issuer_authorization.yml", FormYml.class);
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
         yml.fields.forEach((fieldKey, cfg) -> {
@@ -1643,10 +1907,10 @@ public class Issuer {
         return driver.findElement(valueLocator).getText();
     }
 
-    private void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
+    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
         By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
-        for (int i = 0; i < maxScrolls; i++) {
+        for (int i = 0; i < 2; i++) {
             if (!driver.findElements(locator).isEmpty()) return;
             slowScroll(driver);
         }
@@ -1654,7 +1918,7 @@ public class Issuer {
     }
 
     public void ckeckFieldsOnWalletFromPyIssuer() {
-        FormYml yml = YmlLoader.load("testdata/py_data_on_wallet.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/py_data_on_wallet.yml", FormYml.class);
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
         yml.fields.forEach((fieldKey, cfg) -> {
@@ -1683,7 +1947,7 @@ public class Issuer {
     }
 
     public void ckeckFieldsOnWalletFromKotlinIssuer() {
-        FormYml yml = YmlLoader.load("testdata/kotlin_data_on_wallet.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/kotlin_data_on_wallet.yml", FormYml.class);
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
         yml.fields.forEach((fieldKey, cfg) -> {
@@ -1722,8 +1986,17 @@ public class Issuer {
 
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed,
+                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
+                    driver,
+                    50
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
@@ -1815,5 +2088,73 @@ public class Issuer {
                 }
             }
         }
+    }
+
+    public void requestCredentialsPageIsDisplayedOnWeb() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.requestCredentialOnIssuer)).getText();
+        Assert.assertEquals(Literals.Verifier.SELECT_CREDENTIALS.label, pageHeader);
+    }
+
+    public void scrollUntilMdlIssuerOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement mdlCheckbox = wait.until(
+                ExpectedConditions.presenceOfElementLocated(
+                        By.name("eu.europa.ec.eudi.mdl_mdoc")
+                )
+        );
+
+// Scroll to element
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});",
+                mdlCheckbox
+        );
+
+// Wait until clickable
+        wait.until(ExpectedConditions.elementToBeClickable(mdlCheckbox));
+
+// Click it
+        mdlCheckbox.click();
+    }
+
+    public void selectMdlPythonIssuerOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickMdlOnWeb)).click();
+    }
+
+    public WebElement scrollUntilFindSubmitIssuerOnWeb() {
+        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+        WebDriverWait wait = test.webWebDriverFactory().getWait();
+
+        By nextCandidates = By.id("btncheck");
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Use a custom ExpectedCondition with a lambda expression
+        return wait.until(d -> {
+            try {
+                // First, try to find the element without scrolling
+                WebElement element = driver.findElement(nextCandidates);
+                if (element.isDisplayed()) {
+                    // If found and visible, scroll it into the center of the view for interaction
+                    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+                    return element;
+                }
+            } catch (Exception e) {
+                // Element not found or not visible, so we scroll down and try again
+                js.executeScript("window.scrollBy(0, 300);"); // Scroll down by 300 pixels
+            }
+            // Return null to tell the wait to continue polling
+            return null;
+        });
+    }
+
+    public void clickSubmitButtonOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSubmitButtonOnWeb)).click();
+    }
+
+    public void qrIsDisplayedOnIssuer() {
+        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.requestCredentialOnIssuerForQR)).getText();
+        Assert.assertEquals(Literals.Issuer.ISSUER_SERVICE_IS_DISPLAYED.label, pageHeader);
     }
 }
