@@ -1,13 +1,14 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.utils.TestSetup;
+import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,11 +16,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Pause;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,7 +27,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
-import java.util.concurrent.TimeoutException;
+import java.time.Duration;
+import java.util.Collections;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -1913,10 +1914,6 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
-                    test.mobile().wallet().insertPidFromList();
-                    test.mobile().issuer().sleepMethod();
-                    test.mobile().wallet().successMessageIsDisplayedForIssuer();
-                    test.mobile().wallet().clickClose();
                     test.mobile().issuer().kotlinIssuerService();
                     break;
                 case "python":
@@ -1956,7 +1953,7 @@ public class AutomatedStepDefs {
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().issuerService();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().issuer().issuerService();
+                        //nothing
                     }
                 }
                 break;
@@ -1994,22 +1991,50 @@ public class AutomatedStepDefs {
                 case "same device":
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().issuerService();
-                    }else {
-                        test.mobile().issuer().issuerService();
-                        test.mobile().issuer().sleepMethod();
-                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                        test.mobile().issuer().scrollUntilMdlIssuer();
-                        test.mobile().issuer().selectMdlPythonIssuer();
-                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                        test.mobile().issuer().clickSubmitButton();
-                        test.mobile().issuer().clickUseEudiw();
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().issueMDL();
+                    } else {
+//                        test.mobile().issuer().issuerService();
+//                        test.mobile().issuer().sleepMethod();
+//                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+//                        test.mobile().issuer().scrollUntilMdlIssuer();
+//                        test.mobile().issuer().selectMdlPythonIssuer();
+//                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
+//                        test.mobile().issuer().clickSubmitButton();
+//                        test.mobile().issuer().clickUseEudiw();
+//                        test.mobile().wallet().clickAddButton();
+//                        test.mobile().issuer().issueMDL();
                     }
                     break;
                 case "cross device":
-
-                    break;
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().issuerService();
+                    } else {
+                        test.webWebDriverFactory().startWebDriverSession();
+                        try {
+                            test.webWebDriverFactory().getDriverWeb().get("https://ec.dev.issuer.eudiw.dev/credential_offer");
+                            test.web().issuer().requestCredentialsPageIsDisplayedOnWeb();
+                            test.web().issuer().scrollUntilMdlIssuerOnWeb();
+//                            test.web().issuer().selectMdlPythonIssuerOnWeb();
+                            test.web().issuer().scrollUntilFindSubmitIssuerOnWeb();
+                            test.web().issuer().qrIsDisplayedOnIssuer();
+                            test.web().issuer().clickSubmitButtonOnWeb();
+                            test.web().verifier().captureScreenIssuerOnWeb();
+                        } catch (org.openqa.selenium.WebDriverException e) {
+                            e.printStackTrace();
+                        }
+                        theUserIsOnTheLoginScreen();
+                        test.mobile().wallet().createAPin();
+                        test.mobile().wallet().clickOnDocuments();
+                        test.mobile().wallet().clickToAddDocument();
+                        test.mobile().wallet().clickQROption();
+                        test.mobile().wallet().onlyThisTimeQR();
+                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        test.mobile().wallet().mockQRInject(test.web().verifier().captureScreenIssuerOnWeb());
+                        test.mobile().wallet().clickAddButton();
+                        test.webWebDriverFactory().quitDriverWeb();
+                        test.webWebDriverFactory().quitDriverWeb();
+                        test.mobile().issuer().issueMDL();
+                        break;
+                    }
             }
         }
     }
@@ -2018,6 +2043,11 @@ public class AutomatedStepDefs {
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
         test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickExpandVerification();
+            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
+
+        }
     }
 
     @Then("the credential is stored in the Wallet")
@@ -2030,7 +2060,6 @@ public class AutomatedStepDefs {
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
             } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                test.mobile().wallet().clickExpandVerification();
 //            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
@@ -2038,6 +2067,10 @@ public class AutomatedStepDefs {
             }
         } else {
             test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().clickToViewDetails();
+            test.mobile().wallet().clickToViewDetails();
+            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_data_on_wallet.yml");
+
 //            test.mobile().wallet().clickExpandVerificationDown();
 //            test.mobile().wallet().scrollUntilNationality();
 //            test.mobile().wallet().clickExpandVerificationDown();
@@ -2047,6 +2080,40 @@ public class AutomatedStepDefs {
         }
     }
 
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
+
+                // search full label
+                assertTextVisibleWithScroll(driver, fieldKey, 12);
+
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 5);
+                } else {
+                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+
+                    if (driver.findElements(anyValue).isEmpty()) {
+                        throw new AssertionError("No values visible for label: " + fieldKey);
+                    }
+                }
+            });
+        }
+    }
+
+    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
+        By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
+
+        for (int i = 0; i < 2; i++) {
+            if (!driver.findElements(locator).isEmpty()) return;
+            slowScroll(driver);
+        }
+        throw new AssertionError("Text not found: " + text);
+    }
     @When("the user presents the credential to the {}")
     public void theUserPresentsTheCredentialToThe(String verifierType) throws MalformedURLException {
         switch (verifierType.toLowerCase()) {
@@ -2056,19 +2123,85 @@ public class AutomatedStepDefs {
         }
     }
 
+    private void slowScroll(AndroidDriver driver) {
+        String originalContext = driver.getContext();
+
+        try {
+            // Always scroll in NATIVE
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context("NATIVE_APP");
+            }
+
+            Dimension size = driver.manage().window().getSize();
+
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.75); // start lower
+            int endY = (int) (size.height * 0.30); // end higher
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 0);
+
+            // Move to start
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ZERO,
+                    PointerInput.Origin.viewport(),
+                    startX,
+                    startY
+            ));
+
+            // Touch down
+            swipe.addAction(finger.createPointerDown(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
+
+            // Small pause (important on cloud devices)
+            swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+
+            // Swipe
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ofMillis(800),
+                    PointerInput.Origin.viewport(),
+                    startX,
+                    endY
+            ));
+
+            // Release
+            swipe.addAction(finger.createPointerUp(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
+
+            driver.perform(Collections.singletonList(swipe));
+
+        } finally {
+            // Restore context
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context(originalContext);
+            }
+        }
+    }
+
     @And("the presentation is performed on a {} for the {}")
     public void thePresentationIsPerformedOnA(String presentationScenario, String credential) throws InterruptedException {
+
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+
             switch (presentationScenario.toLowerCase()) {
+
                 case "same device":
+
                     switch (this.selectiveDisclosure.toLowerCase()) {
+
                         case "specific attributes":
+
                             test.mobile().verifier().launchSafari();
                             test.mobile().wallet().rotateScreen();
                             test.mobile().verifier().appOpensSuccessfully();
                             test.mobile().verifier().selectSpecificAttributesOnVerifier(credential);
                             test.mobile().verifier().scrollUntilNext();
-                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
+                                    || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().selectAttributes();
                                 test.mobile().verifier().clickSpecificAttributes();
@@ -2076,31 +2209,43 @@ public class AutomatedStepDefs {
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().scrollUntilSumbit();
                                 test.mobile().verifier().clickSubmit();
+
                             } else {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNextForAndroid();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().assertAndClickNext();
                             }
+
                             break;
+
                         case "all attributes":
+
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
                             test.mobile().verifier().selectAllAttributes();
                             test.mobile().verifier().scrollUntilNext();
-                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
+                                    || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().scrollUntilSumbit();
                                 test.mobile().verifier().clickSubmit();
+
                             } else {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNextForAndroid();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().assertAndClickNext();
                             }
+
                             break;
                     }
+
                     test.mobile().verifier().chooseWallet();
                     test.mobile().verifier().viewDataPage();
                     test.mobile().wallet().clickPIDFromKotlin();
@@ -2110,10 +2255,15 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().pinFieldIsDisplayed();
                     test.mobile().verifier().insertPIN();
                     test.mobile().wallet().authenticationSuccessfully();
+
                     break;
+
                 case "cross device":
+
                     test.webWebDriverFactory().startWebDriverSession();
+
                     try {
+
                         test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
                         test.web().verifier().appOpensSuccessfullyOnWeb();
                         test.web().verifier().selectAllAttributesOnWeb();
@@ -2124,9 +2274,12 @@ public class AutomatedStepDefs {
                         test.web().verifier().scrollUntilSubmitOnWeb();
                         test.web().verifier().assertQrCodeIsVisible();
                         test.web().verifier().captureScreenOnWeb();
+
                     } catch (org.openqa.selenium.WebDriverException e) {
+
                         e.printStackTrace();
                     }
+
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().clickAuthenticate();
@@ -2137,18 +2290,28 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().authenticationSuccessfully();
+
                     break;
             }
+
         } else {
+
             switch (presentationScenario.toLowerCase()) {
+
                 case "same device":
+
                     switch (this.selectiveDisclosure.toLowerCase()) {
+
                         case "specific attributes":
+
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
                             test.mobile().verifier().selectSpecificAttributesForMdl();
                             test.mobile().verifier().scrollUntilNext();
-                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
+                                    || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().selectAttributes();
                                 test.mobile().verifier().clickSpecificAttributes();
@@ -2156,57 +2319,114 @@ public class AutomatedStepDefs {
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().scrollUntilSumbit();
                                 test.mobile().verifier().clickSubmit();
+
                             } else {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNextForAndroid();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().assertAndClickNext();
                             }
+
                             break;
+
                         case "all attributes":
+
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
                             test.mobile().verifier().selectAllAttributesForMdl();
                             test.mobile().verifier().scrollUntilNext();
-                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
+                                    || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().scrollUntilSumbit();
                                 test.mobile().verifier().clickSubmit();
+
                             } else {
+
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().clickNextForAndroid();
                                 test.mobile().verifier().clickNext();
                                 test.mobile().verifier().assertAndClickNext();
                             }
+
+                            break;
                     }
+
                     test.mobile().verifier().chooseWallet();
                     test.mobile().verifier().viewDataPage();
+
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+
                         test.mobile().wallet().clickMDLFromKotlin();
-                        switch (selectiveDisclosure.toLowerCase()) {
-                            case "specific attributes":
-                                test.mobile().wallet().unselectDataForMdlKotlin();
-                                break;
-                            case "all attributes":
-                                test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
-                                break;
+
+                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+                            test.mobile().wallet().unselectDataForMdlKotlin();
+                        } else {
+                            test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
+
                     } else {
+
                         test.mobile().wallet().clickToViewDetails();
                         test.mobile().wallet().unselectDataForMdlPython();
                     }
+
                     test.mobile().wallet().closeCorrespondingMessage();
+
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+
+                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/mDL/pre_final_shared_data_on_wallet.yml");
+
+                        } else {
+
+                            test.mobile().wallet().clickExpandVerification();
+                            test.mobile().wallet().clickToViewDetails();
+
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/mDL/pre_final_shared_data_on_wallet_all_attributes.yml");
+                        }
+
+                    } else {
+
+                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
+
+                        } else {
+
+//                            test.mobile().wallet().clickExpandVerification();
+//                            test.mobile().wallet().clickToViewDetails();
+
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                        }
+                    }
+
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().pinFieldIsDisplayed();
                     test.mobile().verifier().insertPIN();
                     test.mobile().wallet().authenticationSuccessfully();
+
                     break;
+
                 case "cross device":
+
                     switch (this.selectiveDisclosure.toLowerCase()) {
+
                         case "specific attributes":
+
                             test.webWebDriverFactory().startWebDriverSession();
+
                             try {
+
                                 test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().selectSpecificAttributesOnWebForMdl();
@@ -2219,23 +2439,20 @@ public class AutomatedStepDefs {
                                 test.web().verifier().scrollUntilSubmitOnWeb();
                                 test.web().verifier().assertQrCodeIsVisible();
                                 test.web().verifier().captureScreenOnWeb();
+
                             } catch (org.openqa.selenium.WebDriverException e) {
+
                                 e.printStackTrace();
                             }
-                            theUserIsOnTheLoginScreen();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().clickAuthenticate();
-                            test.mobile().wallet().clickOnline();
-                            test.mobile().wallet().onlyThisTimeQR();
-                            test.mobile().wallet().theQRScannerIsActivated();
-                            test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
-                            test.mobile().wallet().clickShareButton();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().authenticationSuccessfully();
+
                             break;
+
                         case "all attributes":
+
                             test.webWebDriverFactory().startWebDriverSession();
+
                             try {
+
                                 test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().selectAllAttributesOnWebForMdl();
@@ -2246,21 +2463,27 @@ public class AutomatedStepDefs {
                                 test.web().verifier().scrollUntilSubmitOnWeb();
                                 test.web().verifier().assertQrCodeIsVisible();
                                 test.web().verifier().captureScreenOnWeb();
+
                             } catch (org.openqa.selenium.WebDriverException e) {
+
                                 e.printStackTrace();
                             }
-                            theUserIsOnTheLoginScreen();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().clickAuthenticate();
-                            test.mobile().wallet().clickOnline();
-                            test.mobile().wallet().onlyThisTimeQR();
-                            test.mobile().wallet().theQRScannerIsActivated();
-                            test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
-                            test.mobile().wallet().clickShareButton();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().authenticationSuccessfully();
+
                             break;
                     }
+
+                    theUserIsOnTheLoginScreen();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().clickAuthenticate();
+                    test.mobile().wallet().clickOnline();
+                    test.mobile().wallet().onlyThisTimeQR();
+                    test.mobile().wallet().theQRScannerIsActivated();
+                    test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+                    test.mobile().wallet().clickShareButton();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().authenticationSuccessfully();
+
+                    break;
             }
         }
     }
@@ -2298,6 +2521,11 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickClose();
                     test.mobile().verifier().walletRespondedMdlKotlin();
                     test.mobile().verifier().clickViewContent();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
+                    } else{
+                        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                    }
                     test.mobile().issuer().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
 //                    test.mobile().verifier().clickCloseOnVerifier();
@@ -2306,6 +2534,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickClose();
 //                    test.web().verifier().walletRespondedOnWebforMdlKotlin();
                     test.web().verifier().clickViewContentOnWeb();
+                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
 //                test.web().verifier().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
                     test.web().verifier().clickCloseOnVerifierWeb();

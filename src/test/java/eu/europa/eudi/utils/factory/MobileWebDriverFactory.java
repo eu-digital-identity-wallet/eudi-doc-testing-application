@@ -60,7 +60,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.video", true);
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
-                options.setCapability("newCommandTimeout", 320); // or longer for stability
+                options.setCapability("newCommandTimeout", 320);
+                options.setCapability("appium:waitForIdleTimeout", 100);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");

@@ -58,4 +58,9 @@ public class VerifierElements {
     public static By clickSpecificAttributesButtonForMdlOnWeb = By.xpath("//mat-card[.//mat-card-title[contains(.,'Mobile Driving Licence')]]//button[.//span[normalize-space(.)='Select Attributes']]");
     public static By walletRespondedWebMdlKotlin = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(., 'query_0')]]//mat-card-title[normalize-space(.)='org.iso.18013.5.1.mDL']");
     public static By clickCloseVerifierOnWeb = By.xpath("//button[.//span[normalize-space(.)='Close']]");
+    public static By requestCredentialOnIssuer = By.xpath("//h2[text()='Please select credentials']");
+    public static By clickMdlOnWeb = By.xpath("//input[@name='eu.europa.ec.eudi.mdl_mdoc']/parent::label");
+    public static By clickSubmitButtonOnWeb = By.id("btncheck");
+    public static By requestCredentialOnIssuerForQR = By.xpath("//h1[text()='Request Credentials for your EUDI Wallet']");;
+    ;
 }

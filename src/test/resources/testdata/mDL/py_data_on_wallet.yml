@@ -1,0 +1,51 @@
+screen: "Wallet - PID details"
+
+fields:
+
+  mDL (MSO Mdoc):
+    required: true
+    value: "mDL (MSO Mdoc)"
+
+  Date of birth:
+    required: true
+    value: "10 Mar 2020"
+
+  code:
+    required: true
+    value: "1234"
+
+  expiry_date:
+    required: true
+    value: "10 Mar 2020"
+
+  issue_date:
+    required: true
+    value: "10 Mar 2020"
+
+  vehicle_category_code:
+    required: true
+    value: "AM"
+
+  Family name:
+    required: true
+    value: "Theofilatou"
+
+  Given name:
+    required: true
+    value: "Foteini"
+
+  Issuing authority:
+    required: true
+    value: "Test mDL Issuer"
+
+  Issuing country:
+    required: true
+    value: "FC"
+
+  Licence number:
+    required: true
+    value: "1234"
+
+  UN distinguishing sign:
+    required: true
+    value: "FC"

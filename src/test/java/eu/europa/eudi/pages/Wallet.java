@@ -37,6 +37,7 @@ import java.io.File;
 import java.util.NoSuchElementException;
 
 import com.google.common.collect.ImmutableMap;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Wallet {
 
@@ -1371,7 +1372,7 @@ public class Wallet {
     }
 
     public void checkDataOnWalletFromVerifier() {
-        FormYml yml = YmlLoader.load("testdata/share_kotlin_data_on_wallet_from_verfier.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/share_kotlin_data_on_wallet_from_verfier.yml", FormYml.class);
 
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -1461,7 +1462,7 @@ public class Wallet {
     }
 
     public void checkDataOnVerifierFromWallet() {
-            FormYml yml = YmlLoader.load("testdata/share_py_data_on_wallet.yml", FormYml.class);
+            FormYml yml = YmlLoader.load("testdata/PID/share_py_data_on_wallet.yml", FormYml.class);
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -1672,7 +1673,7 @@ public class Wallet {
     }
 
     public void checkDataOnWalletFromVerifierFromKotlin() {
-        FormYml yml = YmlLoader.load("testdata/kotlin_data_on_wallet.yml", FormYml.class);
+        FormYml yml = YmlLoader.load("testdata/PID/kotlin_data_on_wallet.yml", FormYml.class);
 
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -1718,7 +1719,23 @@ public class Wallet {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
     }
     public void clickMDLFromKotlin() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.mdlIsDisplayedKotlin)).click();
+        safeClick(WalletElements.mdlIsDisplayedKotlin);
+//        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.mdlIsDisplayedKotlin)).click();
+    }
+
+    private void safeClick(By locator) {
+        for (int i = 0; i < 3; i++) {
+            try {
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.elementToBeClickable(locator))
+                        .click();
+                return;
+            } catch (StaleElementReferenceException e) {
+                // retry
+            }
+        }
+
+        throw new RuntimeException("Could not click element: " + locator);
     }
 
     public void checkFormOnWalletFromVerifier() {
@@ -1799,8 +1816,18 @@ public class Wallet {
 
     public void viewDataPage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(
+                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
+                    Literals.Verifier.VIEW_DATA_PAGE.label
+            ));
+
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage).getText().trim();
+
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
@@ -1829,5 +1856,9 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
         }
+    }
+
+    public void clickToViewDetailsSecond() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickToViewDetailsSecond)).click();
     }
 }

@@ -88,5 +88,6 @@ public class WalletElements {
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-4\"]");
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
     public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
-    public static By selectMDLPythonCredential = By.xpath("\"//mat-checkbox[.//label[normalize-space(.)='mDL (MSO Mdoc)']]");
+    public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
+ public static By clickToViewDetailsSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[3]");
 }
