@@ -2128,7 +2128,7 @@ public class AutomatedStepDefs {
 
     public void assertTextVisibleWithScroll(String text, int maxScrolls) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverIos();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
@@ -2463,7 +2463,7 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().clickMDLFromKotlin();
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
+                            test.mobile().wallet().unselectDataForMdlPython();
                         } else {
                             test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
@@ -2478,10 +2478,13 @@ public class AutomatedStepDefs {
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataForMdlKotlin();
-                        }else{
-                            test.mobile().wallet().unselectDataForMdlPython();
+                        } else {
+                            test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
+                    } else {
+                        test.mobile().wallet().unselectDataForMdlPython();
                     }
+
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
@@ -2633,13 +2636,13 @@ public class AutomatedStepDefs {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else{
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
-                            //to do
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     }
                     test.mobile().issuer().sleepMethod();
@@ -2653,13 +2656,13 @@ public class AutomatedStepDefs {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else{
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     }
                     test.web().verifier().clickCloseOnVerifierWeb();
@@ -2667,6 +2670,92 @@ public class AutomatedStepDefs {
                     break;
             }
         }
+    }
+
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes(String yamlPath) {
+
+        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+            switchToWebView(driver);
+
+            String pageText = getPageText(driver);
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+
+                if (!cfg.required) return;
+
+                if (!pageText.contains(fieldKey)) {
+                    throw new AssertionError("Label not found: " + fieldKey);
+                }
+
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+
+                    if (!pageText.contains(cfg.value.trim())) {
+                        throw new AssertionError(
+                                "Wrong value for " + fieldKey +
+                                        " expected: " + cfg.value
+                        );
+                    }
+                }
+            });
+
+        } else {
+
+//            // iOS
+//            yml.fields.forEach((fieldKey, cfg) -> {
+//
+//                if (!cfg.required) return;
+//
+//                assertTextVisibleWithScroll(fieldKey, 10);
+//
+//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+//                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
+//                }
+//            });
+            // For iOS, get the full page/source text
+            String pageText = driver.getPageSource();
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+
+                // Skip non-required fields
+                if (!cfg.required) return;
+
+                // Check if the field label exists on the page
+                if (!pageText.contains(fieldKey)) {
+                    throw new AssertionError("Label not found: " + fieldKey);
+                }
+
+                // Check if the field value exists on the page
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+
+                    if (!pageText.contains(cfg.value.trim())) {
+                        throw new AssertionError(
+                                "Wrong value for " + fieldKey +
+                                        " expected: " + cfg.value
+                        );
+                    }
+                }
+            });
+        }
+    }
+
+    private String getPageText(AndroidDriver driver) {
+        return driver.findElement(By.tagName("body")).getText();
+    }
+
+    private void switchToWebView(AndroidDriver driver) {
+
+        for (String context : driver.getContextHandles()) {
+            if (context.contains("WEBVIEW")) {
+                driver.context(context);
+                return;
+            }
+        }
+
+        throw new RuntimeException("WEBVIEW context not found");
     }
 
     @When("the user clicks the Verify with EUDI Wallet button")

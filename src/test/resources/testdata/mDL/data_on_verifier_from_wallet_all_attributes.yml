@@ -2,42 +2,50 @@ screen: "mDL details on Verifier"
 
 fields:
 
-  Date of birth:
+  "org.iso.18013.5.1:birth_date":
+    value: "2020-03-10"
     required: true
-    value: "10 Mar 2026"
 
-  code:
+  "org.iso.18013.5.1:issue_date":
+    value: "2026-03-12"
     required: true
-    value: "1234"
 
-  Date of issue:
+  "org.iso.18013.5.1:expiry_date":
+    value: "2026-06-10"
     required: true
-    value: "10 Mar 2026"
 
-  vehicle_category_code:
-    required: true
-    value: "AM"
-
-  Family name:
-    required: true
+  "org.iso.18013.5.1:family_name":
     value: "Theofilatou"
-
-  Given name:
     required: true
+
+  "org.iso.18013.5.1:given_name":
     value: "Foteini"
-
-  Issuing authority:
     required: true
+
+  "org.iso.18013.5.1:issuing_authority":
     value: "Test mDL Issuer"
-
-  Issuing country:
     required: true
+
+  "org.iso.18013.5.1:issuing_country":
     value: "FC"
-
-  Licence number:
     required: true
+
+  "org.iso.18013.5.1:document_number":
     value: "1234"
-
-  UN distinguishing sign:
     required: true
-    value: "FC"
+
+  "code":
+    value: "1234"
+    required: true
+
+  "issue_date":
+    value: "2020-03-10"
+    required: true
+
+  "expiry_date":
+    value: "2020-03-10"
+    required: true
+
+  "vehicle_category_code":
+    value: "AM"
+    required: true
