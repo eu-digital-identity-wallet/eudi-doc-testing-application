@@ -1,4 +1,4 @@
-screen: "Wallet - mDL details"
+screen: "mDL details on Verifier"
 
 fields:
 
@@ -6,9 +6,17 @@ fields:
     required: true
     value: "10 Mar 2026"
 
+  code:
+    required: true
+    value: "1234"
+
   Date of issue:
     required: true
     value: "10 Mar 2026"
+
+  vehicle_category_code:
+    required: true
+    value: "AM"
 
   Family name:
     required: true

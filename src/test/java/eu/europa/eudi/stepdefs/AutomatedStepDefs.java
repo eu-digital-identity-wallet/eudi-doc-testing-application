@@ -1816,7 +1816,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user selects to issue a PID in the Kotlin issuer")
-    public void theUserSelectsToIssueAPIDInTheKotlinIssuer() {
+    public void theUserSelectsToIssueAPIDInTheKotlinIssuer() throws InterruptedException {
         test.mobile().issuer().requestCredentialsKotlinIssuerPageIsDisplayed();
         test.mobile().issuer().selectPIDKotlin();
         test.mobile().issuer().scrollUntilGenerate();
@@ -1957,7 +1957,7 @@ public class AutomatedStepDefs {
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().issuerService();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                        //nothing
+                        test.mobile().issuer().issuerService();
                     }
                 }
                 break;
@@ -1996,16 +1996,18 @@ public class AutomatedStepDefs {
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().issuerService();
                     } else {
-//                        test.mobile().issuer().issuerService();
-//                        test.mobile().issuer().sleepMethod();
-//                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-//                        test.mobile().issuer().scrollUntilMdlIssuer();
-//                        test.mobile().issuer().selectMdlPythonIssuer();
-//                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-//                        test.mobile().issuer().clickSubmitButton();
-//                        test.mobile().issuer().clickUseEudiw();
-//                        test.mobile().wallet().clickAddButton();
-//                        test.mobile().issuer().issueMDL();
+                        if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                            test.mobile().issuer().issuerService();
+                            test.mobile().issuer().sleepMethod();
+                            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                            test.mobile().issuer().scrollUntilMdlIssuer();
+                            test.mobile().issuer().selectMdlPythonIssuer();
+                            test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                            test.mobile().issuer().clickSubmitButton();
+                            test.mobile().issuer().clickUseEudiw();
+                            test.mobile().wallet().clickAddButton();
+                            test.mobile().issuer().issueMDL();
+                        }
                     }
                     break;
                 case "cross device":
@@ -2049,8 +2051,11 @@ public class AutomatedStepDefs {
         test.mobile().wallet().successMessageIsDisplayedForIssuer();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().clickExpandVerification();
-            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
-
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
+            } else {
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
+            }
         }
     }
 
@@ -2059,12 +2064,10 @@ public class AutomatedStepDefs {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickExpandVerification();
-//            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
             } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-//            test.mobile().wallet().checkFormOnWallerFromKotlinIssuer();
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().mdlIsDisplayedKotlin();
@@ -2074,12 +2077,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickToViewDetails();
             test.mobile().wallet().clickToViewDetails();
             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_data_on_wallet.yml");
-
-//            test.mobile().wallet().clickExpandVerificationDown();
-//            test.mobile().wallet().scrollUntilNationality();
-//            test.mobile().wallet().clickExpandVerificationDown();
-//            test.mobile().wallet().scrollUp();
-//            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
             test.mobile().wallet().clickClose();
         }
     }
@@ -2094,12 +2091,32 @@ public class AutomatedStepDefs {
                 if (!cfg.required) return;
 
                 // search full label
-                assertTextVisibleWithScroll(driver, fieldKey, 12);
+                assertTextVisibleWithScroll(fieldKey, 10);
 
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 5);
+                    assertTextVisibleWithScroll(cfg.value.trim(), 5);
                 } else {
                     By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+
+                    if (driver.findElements(anyValue).isEmpty()) {
+                        throw new AssertionError("No values visible for label: " + fieldKey);
+                    }
+                }
+            });
+        }else{
+            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+                if (!cfg.required) return;
+
+                // search full label
+                assertTextVisibleWithScroll(fieldKey, 10);
+
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
+                } else {
+                    By anyValue = By.xpath("//XCUIElementTypeStaticText[@name!='']");
 
                     if (driver.findElements(anyValue).isEmpty()) {
                         throw new AssertionError("No values visible for label: " + fieldKey);
@@ -2109,14 +2126,34 @@ public class AutomatedStepDefs {
         }
     }
 
-    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
-        By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
+    public void assertTextVisibleWithScroll(String text, int maxScrolls) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverIos();
 
-        for (int i = 0; i < 2; i++) {
-            if (!driver.findElements(locator).isEmpty()) return;
-            slowScroll(driver);
+            By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
+
+            for (int i = 0; i < 2; i++) {
+                if (!driver.findElements(locator).isEmpty()) return;
+                slowScroll();
+            }
+            throw new AssertionError("Text not found: " + text);
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            By locator = By.xpath(
+                    "//*[@name=\"" + text.replace("\"", "\\\"") + "\" or " +
+                            "@label=\"" + text.replace("\"", "\\\"") + "\" or " +
+                            "@value=\"" + text.replace("\"", "\\\"") + "\"]"
+            );
+            for (int i = 0; i < maxScrolls; i++) {
+
+                if (!driver.findElements(locator).isEmpty()) {
+                    return;
+                }
+
+                slowScroll();
+            }
+            throw new AssertionError("Text not found: " + text);
         }
-        throw new AssertionError("Text not found: " + text);
     }
     @When("the user presents the credential to the {}")
     public void theUserPresentsTheCredentialToThe(String verifierType) throws MalformedURLException {
@@ -2127,59 +2164,117 @@ public class AutomatedStepDefs {
         }
     }
 
-    private void slowScroll(AndroidDriver driver) {
-        String originalContext = driver.getContext();
+    private void slowScroll() {
 
-        try {
-            // Always scroll in NATIVE
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context("NATIVE_APP");
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            String originalContext = driver.getContext();
+
+            try {
+                // Always scroll in NATIVE
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context("NATIVE_APP");
+                }
+
+                Dimension size = driver.manage().window().getSize();
+
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.75); // start lower
+                int endY = (int) (size.height * 0.30); // end higher
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 0);
+
+                // Move to start
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                // Touch down
+                swipe.addAction(finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
+
+                // Small pause (important on cloud devices)
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+
+                // Swipe
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(800),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                // Release
+                swipe.addAction(finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
+
+                driver.perform(Collections.singletonList(swipe));
+
+            } finally {
+                // Restore context
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context(originalContext);
+                }
             }
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-            Dimension size = driver.manage().window().getSize();
+            String originalContext = driver.getContext();
 
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.75); // start lower
-            int endY = (int) (size.height * 0.30); // end higher
+            try {
 
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 0);
+                // Always scroll in NATIVE context
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context("NATIVE_APP");
+                }
 
-            // Move to start
-            swipe.addAction(finger.createPointerMove(
-                    Duration.ZERO,
-                    PointerInput.Origin.viewport(),
-                    startX,
-                    startY
-            ));
+                Dimension size = driver.manage().window().getSize();
 
-            // Touch down
-            swipe.addAction(finger.createPointerDown(
-                    PointerInput.MouseButton.LEFT.asArg()
-            ));
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.75);
+                int endY = (int) (size.height * 0.30);
 
-            // Small pause (important on cloud devices)
-            swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 0);
 
-            // Swipe
-            swipe.addAction(finger.createPointerMove(
-                    Duration.ofMillis(800),
-                    PointerInput.Origin.viewport(),
-                    startX,
-                    endY
-            ));
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
 
-            // Release
-            swipe.addAction(finger.createPointerUp(
-                    PointerInput.MouseButton.LEFT.asArg()
-            ));
+                swipe.addAction(finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
 
-            driver.perform(Collections.singletonList(swipe));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
 
-        } finally {
-            // Restore context
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context(originalContext);
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(800),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                swipe.addAction(finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
+
+                driver.perform(Collections.singletonList(swipe));
+
+            } finally {
+
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context(originalContext);
+                }
             }
         }
     }
@@ -2380,11 +2475,17 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().wallet().closeCorrespondingMessage();
-
+                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+                            test.mobile().wallet().unselectDataForMdlKotlin();
+                        }else{
+                            test.mobile().wallet().unselectDataForMdlPython();
+                        }
+                    }
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-
+                            test.mobile().wallet().unselectDataForMdlPython();
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet.yml");
 
@@ -2478,7 +2579,10 @@ public class AutomatedStepDefs {
 
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickAuthenticate();
+//                    test.mobile().wallet().clickAuthenticate();
+                    test.mobile().wallet().clickOnDocuments();
+                    test.mobile().wallet().clickToAddDocument();
+                    test.mobile().wallet().addDocumentPageIsDisplayed();
                     test.mobile().wallet().clickOnline();
                     test.mobile().wallet().onlyThisTimeQR();
                     test.mobile().wallet().theQRScannerIsActivated();
@@ -2497,8 +2601,8 @@ public class AutomatedStepDefs {
         this.selectiveDisclosure = selectiveDisclosure;
     }
 
-    @Then("the verifier verifies the credential successfully with {}")
-    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario) {
+    @Then("the verifier verifies the credential successfully with {} for {}")
+    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":
@@ -2526,21 +2630,38 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().walletRespondedMdlKotlin();
                     test.mobile().verifier().clickViewContent();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
-                        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
-                    } else{
-                        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
+                        }else{
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            //to do
+                        }
                     }
                     test.mobile().issuer().sleepMethod();
-//        test.mobile().wallet().checkDataOnVerifierFromWallet();
-//                    test.mobile().verifier().clickCloseOnVerifier();
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();
-//                    test.web().verifier().walletRespondedOnWebforMdlKotlin();
-                    test.web().verifier().clickViewContentOnWeb();
-                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
-//                test.web().verifier().sleepMethod();
-//        test.mobile().wallet().checkDataOnVerifierFromWallet();
+
+                        test.web().verifier().walletRespondedOnWebforMdlKotlin();
+                        test.web().verifier().clickViewContentOnWeb();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
+                        }else{
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                        }
+                    }
                     test.web().verifier().clickCloseOnVerifierWeb();
                     test.webWebDriverFactory().quitDriverWeb();
                     break;

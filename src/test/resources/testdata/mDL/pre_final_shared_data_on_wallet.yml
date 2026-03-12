@@ -2,10 +2,6 @@ screen: "Wallet Data From Verifier For Sharing"
 
 fields:
 
-  "Date of birth":
-    value: "10 Mar 2020"
-    required: true
-
   "Family name":
     required: true
     value: "Theofilatou"

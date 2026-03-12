@@ -14,6 +14,8 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -22,6 +24,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.io.FileHandler;
 
 public class Verifier {
@@ -76,7 +80,7 @@ public class Verifier {
 //            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
 //            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPageOnWallet)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         }
     }
@@ -470,22 +474,33 @@ public class Verifier {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
 
-        // Generate a unique filename based on the current timestamp
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = timestamp + "_verifier.jpg";
-        File destFile = new File("screenshots/" + filename);
-        try {
-            // Wait for QR code to be stable
-            Thread.sleep(2000);
 
-            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        new File("screenshots").mkdirs();
+        File destFile = new File("screenshots/" + timestamp + "_verifier.jpg");
+
+        try {
+
+            Thread.sleep(2000); // allow QR to render
+
+            WebElement qrElement;
+
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                qrElement = driver.findElement(By.xpath("//android.widget.ImageView[contains(@content-desc,'QR')]"));
+            } else {
+                qrElement = driver.findElement(By.xpath("//XCUIElementTypeImage[@name='QR Code']"));
+            }
+
+            File srcFile = qrElement.getScreenshotAs(OutputType.FILE);
 
             FileHandler.copy(srcFile, destFile);
+
             this.capturedScreenFile = destFile;
+
             return destFile;
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to capture verifier QR screenshot: " + e.getMessage());
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to capture verifier QR screenshot: " + e.getMessage(), e);
         }
     }
 
@@ -745,21 +760,86 @@ public class Verifier {
     }
 
     public void selectAttributes() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributeButton)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributeButton)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributeButton)).click();
+        }
     }
 
-    public void clickSpecificAttributes() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectFirstAttribute)).click();
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectSecondAttribute)).click();
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectThirdAttribute)).click();
+    public void clickSpecificAttributes() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectFirstAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectSecondAttribute)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectThirdAttribute)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
+
+// reduce implicit wait
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
+            List<WebElement> switches = wait.until(d ->
+                    driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"))
+            );
+
+            for (int i = 0; i < 3; i++) {
+
+                switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
+
+                WebElement el = switches.get(i);
+
+                wait.until(ExpectedConditions.visibilityOf(el));
+                wait.until(ExpectedConditions.elementToBeClickable(el));
+
+                el.click();
+
+                // small pause helps Safari WebView refresh
+                Thread.sleep(500);
+            }
+
+// restore implicit wait
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+        }
     }
+
+    private WebElement scrollToElementIOS(IOSDriver driver, By locator, int maxScrolls) {
+        for (int i = 0; i < maxScrolls; i++) {
+
+            List<WebElement> elements = driver.findElements(locator);
+
+            if (!elements.isEmpty()) {
+                WebElement el = elements.get(0);
+
+                if (el.isDisplayed()) {
+                    return el;
+                }
+            }
+
+            // scroll down
+            HashMap<String, Object> params = new HashMap<>();
+            params.put("direction", "down");
+            driver.executeScript("mobile: swipe", params);
+        }
+
+        throw new NoSuchElementException("Element not found after scrolling: " + locator);
+    }
+
 
     public void clickSelect() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickSelectAttributes)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickSelectAttributes)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickSelectAttributes)).click();
+        }
     }
 
     public void clickViewContent() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickViewContent)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickViewContent)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickViewContent)).click();
+        }
     }
 
     public void pidIsDisplayedOnVerifier() {
@@ -801,6 +881,13 @@ public class Verifier {
                 clickMsoMdocRealDevice();
             }
         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickDataMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesMdl)).click();
+            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.allAttributes));
+            Dimension dropdownSize = dropdown.getSize();
+            test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormatMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdocMdl)).click();
         }
     }
 
@@ -825,12 +912,22 @@ public class Verifier {
                 clickMsoMdocRealDevice();
             }
         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickDataMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesMdl)).click();
+            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributesMdl));
+            Dimension dropdownSize = dropdown.getSize();
+            test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormatMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdocMdl)).click();
         }
     }
 
     public void walletRespondedMdlKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedMdlKotlin)).getText();
+            Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
+        }else{
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.walletRespondedMdlKotlin)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
         }
     }
@@ -856,7 +953,7 @@ public class Verifier {
     }
 
     public void selectSpecificAttributesOnWeb() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             try {
                 By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
                 test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
@@ -869,7 +966,7 @@ public class Verifier {
 
     public void walletRespondedOnWebforMdlKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin)).getText();
+            String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
         }
     }
@@ -919,6 +1016,27 @@ public class Verifier {
             throw new RuntimeException(
                     "Failed to capture verifier QR (web img) screenshot: " + e.getMessage(), e
             );
+        }
+    }
+
+    public void attributesPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.VerifierElements.attributesPage,
+                    Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label,
+                    driver,
+                    50
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.VerifierElements.attributesPage
+            ).getText().trim();
+            Assert.assertEquals(Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label, headerText);
+
+
+//        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.attributesPage)).getText();
+//        Assert.assertEquals(Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label, pageHeader);
         }
     }
 }

@@ -535,7 +535,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickClose)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authorize)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDone)).click();
         }
     }
 
@@ -865,6 +865,8 @@ public class Wallet {
     public void closeCorrespondingMessage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.closeCorrespondingMessage)).click();
+        }else{
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.closeCorrespondingMessage)).click();
         }
     }
 
@@ -1242,6 +1244,9 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
                 .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRButton)).click();
+        }else{
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQR)).click();
         }
     }
 
@@ -1262,7 +1267,7 @@ public class Wallet {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
-            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_IOS.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE.label, pageHeader);
         }
     }
 
@@ -1319,7 +1324,9 @@ public class Wallet {
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlineOption)).click();
         } else {
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlineOption)).click();
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQR)).click();
+//            test.mobileWebDriverFactory().getWait()
+//                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlineOption)).click();
         }
     }
 
@@ -1633,29 +1640,63 @@ public class Wallet {
     }
 
     public void slowScrollUp() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        Dimension size = driver.manage().window().getSize();
-        int width = size.width;
-        int height = size.height;
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-        int x = width / 2;
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            Dimension size = driver.manage().window().getSize();
+            int width = size.width;
+            int height = size.height;
 
-        // Finger goes DOWN to scroll page UP
-        int startY = (int) (height * 0.25);  // start near top
-        int endY   = (int) (height * 0.80);  // end near bottom
+            int x = width / 2;
 
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
+            // Finger goes DOWN to scroll page UP
+            int startY = (int) (height * 0.25);  // start near top
+            int endY = (int) (height * 0.80);  // end near bottom
 
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), x, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
 
-        driver.perform(Arrays.asList(swipe));
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), x, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-        // optional: tiny settle time helps some apps
-        try { Thread.sleep(150); } catch (InterruptedException ignored) {}
+            driver.perform(Arrays.asList(swipe));
+
+            // optional: tiny settle time helps some apps
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException ignored) {
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            Dimension size = driver.manage().window().getSize();
+            int width = size.width;
+            int height = size.height;
+
+            int x = width / 2;
+
+// Finger goes DOWN to scroll page UP
+            int startY = (int) (height * 0.25);  // start near top
+            int endY = (int) (height * 0.80);    // end near bottom
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
+
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), x, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            driver.perform(Arrays.asList(swipe));
+
+// optional: small pause helps UI settle
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException ignored) {
+            }
+        }
     }
 
     public void scrollUntilSex() {
@@ -1719,8 +1760,11 @@ public class Wallet {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
     }
     public void clickMDLFromKotlin() {
-        safeClick(WalletElements.mdlIsDisplayedKotlin);
-//        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.mdlIsDisplayedKotlin)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            safeClick(WalletElements.mdlIsDisplayedKotlin);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlin)).click();
+        }
     }
 
     private void safeClick(By locator) {
@@ -1774,9 +1818,9 @@ public class Wallet {
                     .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRIsActivatedForIssuance)).getText();
             Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE.label, pageHeader);
         } else {
-//            String pageHeader = test.mobileWebDriverFactory().getWait()
-//                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
-//            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_IOS.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
+            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE.label, pageHeader);
         }
     }
 
@@ -1795,6 +1839,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayedKotlin)).getText();
             Assert.assertEquals(Literals.Wallet.MDL_KOTLIN.label, pageHeader);
         } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.mdlIsDisplayedKotlin)).getText();
+            Assert.assertEquals(Literals.Wallet.MDL_KOTLIN.label, pageHeader);
         }
     }
 
@@ -1810,7 +1856,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.unselectDataForMdlKotlin)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.unselectDataForMdlKotlin)).click();
         }
     }
 
@@ -1835,18 +1881,41 @@ public class Wallet {
     }
 
     public void scrollUpForBirthDate() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-        int maxScrolls = 10;     // safety limit
-        int count = 0;
-        By locator = By.xpath("//android.widget.TextView[@text=\"Mandatory Information\"]");
-        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            slowScrollUp();
-            count++;
-        }
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            int maxScrolls = 10;     // safety limit
+            int count = 0;
+            By locator = By.xpath("//android.widget.TextView[@text=\"Mandatory Information\"]");
+            while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
+                slowScrollUp();
+                count++;
+            }
 
-        if (driver.findElements(locator).isEmpty()) {
-            throw new RuntimeException("Mandatory Information not found after scrolling up");
+            if (driver.findElements(locator).isEmpty()) {
+                throw new RuntimeException("Mandatory Information not found after scrolling up");
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            By locator = By.xpath(
+                    "//XCUIElementTypeStaticText[@name='Mandatory Information' " +
+                            "or @label='Mandatory Information' " +
+                            "or @value='Mandatory Information']"
+            );
+
+            while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
+                slowScrollUp();
+                count++;
+            }
+
+            if (driver.findElements(locator).isEmpty()) {
+                throw new RuntimeException("Mandatory Information not found after scrolling up");
+            }
         }
     }
 

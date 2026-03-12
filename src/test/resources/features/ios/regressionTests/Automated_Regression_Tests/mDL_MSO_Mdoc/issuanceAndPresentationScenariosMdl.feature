@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated
+@IOS @US_ETESA @automated
 Feature: Automated Regression Tests mDL
 
 
