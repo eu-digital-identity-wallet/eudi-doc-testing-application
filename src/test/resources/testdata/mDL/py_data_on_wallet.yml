@@ -4,11 +4,7 @@ fields:
 
   Date of birth:
     required: true
-    value: "10 Mar 2026"
-
-  Date of issue:
-    required: true
-    value: "10 Mar 2026"
+    value: "10 Mar 2020"
 
   Family name:
     required: true
