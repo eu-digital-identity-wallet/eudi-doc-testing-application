@@ -15,12 +15,12 @@ public class WalletElements {
     public static By successMessage = By.id("success_screen_title");
     public static By dashboardPageIsDisplayed = By.id("home_tab_screen_username_text");
     public static By clickShare = By.xpath("//XCUIElementTypeButton[@label=\"Share\"]");
-    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
+    public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By clickMdl = By.id("mDL (MSO Mdoc)");
-    public static By mdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"mDL (MSO Mdoc)\"]");
-    public static By addDoc = By.xpath("//XCUIElementTypeStaticText[@name=\"ADD DOC\"]");
-    public static By addDocumentPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Add document\"]");
-    public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
+    public static By mdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"mDL (MSO Mdoc)\"]");
+    public static By addDoc = By.xpath("//XCUIElementTypeStaticText[@label=\"ADD DOC\"]");
+    public static By addDocumentPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Add document\"]");
+    public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@label=\"Submit\"]");
     public static By loginPageIsDisplayed = By.id("biometric_screen_pin_title");
     public static By successMessageForDrivingIsDisplayed = By.id("document_success_screen_content_header_description");
     public static By unselectData = By.xpath("(//XCUIElementTypeButton[@name='checkmark.square.fill'])[1] | (//XCUIElementTypeButton[@name='Selected'])[1]");
@@ -30,11 +30,11 @@ public class WalletElements {
     public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@label=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
 
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
-    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Enter your PIN to share data\"]");
+    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN to share data\"]");
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@label=\"Family Name(s)\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By verificationDetails = By.xpath("//XCUIElementTypeStaticText[@label=\"Birth Date\"]");
-    public static By clickAddMyDigitalID = By.id("Add my Digital ID");
+    public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID (MSO Mdoc)");
     public static By clickDone = By.id("Done");
     public static By clickOnDocuments = By.id("documents_tab");
@@ -64,11 +64,16 @@ public class WalletElements {
     public static By addPIDPageIsDisplayed = By.id("add_document_screen_subtitle");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@name=\"Authenticate\"]");
     public static By onlineOption = By.xpath("//XCUIElementTypeButton[@name=\"Online\"]");
-    public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan a QR code provided from a Relying Party to present a digital document online.\"]");
-    public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
+    public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
+    public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
     public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
-    public static By issueButton = By.xpath("//XCUIElementTypeButton[@name=\"Issue\"]");
+    public static By issueButton = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
     public static By issuedPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[1]");
-    public static By selectMDLKotlin;
+    public static By selectMDLKotlin = By.xpath("//XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
+    public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
+    public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
+    public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
+    public static By closeCorrespondingMessage = By.id("Close");
+    public static By scanQR = By.id("Scan QR");
 }

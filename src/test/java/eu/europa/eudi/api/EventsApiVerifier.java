@@ -1,5 +1,6 @@
 package eu.europa.eudi.api;
 
+import eu.europa.eudi.stepdefs.AutomatedStepDefs;
 import eu.europa.eudi.utils.TestSetup;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;

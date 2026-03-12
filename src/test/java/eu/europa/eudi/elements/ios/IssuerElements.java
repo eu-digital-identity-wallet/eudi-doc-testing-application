@@ -51,8 +51,10 @@ public class IssuerElements {
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
     public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select the Credentials you would like to issue:\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
-    public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@name=\"Generate\"]");
+    public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
     public static By clickUsername = By.xpath("//XCUIElementTypeTextField");
     public static By clickPassword = By.xpath("//XCUIElementTypeSecureTextField");
     public static By clickSignIn = By.xpath("//XCUIElementTypeButton[@name=\"Sign In\"]");
+    public static By issueCredentialPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
+    public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
 }

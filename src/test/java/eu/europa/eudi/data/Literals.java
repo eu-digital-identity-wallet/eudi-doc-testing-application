@@ -71,7 +71,8 @@ public interface Literals {
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
         PID_IS_DISPLAYED_ON_VERIFIER("eu.europa.ec.eudi.pid.1"),
         WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
-        SELECT_CREDENTIALS("Please select credentials");
+        SELECT_CREDENTIALS("Please select credentials"),
+        SPECIFIC_ATTRIBUTES_PAGE("Mobile Driving Licence (MDL)");
 
         public final String label;
         Verifier(String label) {

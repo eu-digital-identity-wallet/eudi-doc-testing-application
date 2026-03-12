@@ -64,7 +64,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://ec.dev.issuer.eudiw.dev";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -322,8 +322,50 @@ public class Issuer {
                     .click();
 
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
+
+// Load YAML
+            FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
+            String birthDate = yml.fields.get("Birth Date").value;   // e.g., "1990-01-10"
+
+// Open date picker
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
+
+// Parse yyyy-MM-dd
+            String[] p = birthDate.split("-");
+            String year = p[0];
+            String month = p[1];
+            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading zero
+
+// Convert month number → name
+            String[] months = {
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+            };
+            String monthName = months[Integer.parseInt(month) - 1];
+
+// Try picker wheels
+            List<WebElement> wheels = driver.findElements(
+                    By.xpath("//XCUIElementTypeDatePicker//XCUIElementTypePickerWheel")
+            );
+
+            if (wheels.size() >= 3) {
+                // Wheel picker: Month, Day, Year
+                wheels.get(0).sendKeys(monthName);
+                wheels.get(1).sendKeys(day);
+                wheels.get(2).sendKeys(year);
+            } else {
+                // Fallback: calendar picker
+                // Use XCUIElementTypeStaticText instead of Button
+                String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
+            }
+
+// Confirm
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
         }
     }
 
@@ -418,15 +460,66 @@ public class Issuer {
 
         } else {
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
+
+// Load YAML
+            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
+            String issueDate = yml.fields.get("Issue Date").value; // "yyyy-MM-dd"
+
+// Open date picker
+            wait.until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate))
                     .click();
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.ios.IssuerElements.chooseSet))
-                    .click();
+// Parse date
+            String[] parts = issueDate.split("-");
+            String year = parts[0];
+            String month = parts[1];
+            String day = String.valueOf(Integer.parseInt(parts[2])); // remove leading 0
+
+// Convert month number → month name
+            String[] months = {
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+            };
+            String monthName = months[Integer.parseInt(month) - 1];
+
+// Attempt wheel picker first
+            List<WebElement> wheels = driver.findElements(By.className("XCUIElementTypePickerWheel"));
+            if (wheels.size() >= 3) {
+                // Typical order: Month / Day / Year
+                wheels.get(0).sendKeys(monthName);
+                wheels.get(1).sendKeys(day);
+                wheels.get(2).sendKeys(year);
+            } else {
+                // Fallback: calendar-style picker
+                try {
+                    // Try to select year if wheel exists
+                    List<WebElement> yearWheel = driver.findElements(
+                            By.xpath("//XCUIElementTypePickerWheel[contains(@value,'" + year + "')]"));
+                    if (!yearWheel.isEmpty()) yearWheel.get(0).sendKeys(year);
+
+                    // Try to select month if wheel exists
+                    List<WebElement> monthWheel = driver.findElements(
+                            By.xpath("//XCUIElementTypePickerWheel[contains(@value,'" + monthName + "')]"));
+                    if (!monthWheel.isEmpty()) monthWheel.get(0).sendKeys(monthName);
+
+                    // Select day button or static text
+                    By dayLocator = By.xpath(
+                            "//XCUIElementTypeButton[@name='" + day + "'] | " +
+                                    "//XCUIElementTypeStaticText[@name='" + day + "']"
+                    );
+                    wait.until(ExpectedConditions.elementToBeClickable(dayLocator)).click();
+
+                } catch (TimeoutException e) {
+                    throw new RuntimeException("Could not select Issue Date on iOS picker: " + issueDate, e);
+                }
+            }
+
+// Confirm
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
         }
     }
 
@@ -473,16 +566,55 @@ public class Issuer {
                     .click();
 
         } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate))
-                    .click();
+// Load YAML
+            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
+            String expiryDate = yml.fields.get("Expiry Date").value; // e.g., "2030-05-15"
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.ios.IssuerElements.chooseSet))
-                    .click();
+// Open date picker
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
+
+// Parse yyyy-MM-dd
+            String[] p = expiryDate.split("-");
+            String year = p[0];
+            String month = p[1];
+            String day = String.valueOf(Integer.parseInt(p[2]));
+
+// Convert month number → month name (iOS uses text months)
+            String[] months = {
+                    "January","February","March","April","May","June",
+                    "July","August","September","October","November","December"
+            };
+            String monthName = months[Integer.parseInt(month) - 1];
+
+// Try to find picker wheels
+            List<WebElement> wheels = driver.findElements(By.className("XCUIElementTypePickerWheel"));
+
+            if (wheels.size() >= 3) {
+                // Wheel picker: month, day, year
+                wheels.get(0).sendKeys(monthName);
+                wheels.get(1).sendKeys(day);
+                wheels.get(2).sendKeys(year);
+            } else {
+                // Fallback: calendar-style picker (static text)
+                String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
+                } catch (TimeoutException e) {
+                    throw new RuntimeException("Could not find day '" + day + "' on iOS calendar picker", e);
+                }
+
+                // Optionally handle month/year selection if calendar shows multiple months
+                // You may need to swipe the calendar until the correct month/year is visible
+            }
+
+// Confirm
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
         }
     }
 
@@ -562,7 +694,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                    slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
 
@@ -593,7 +725,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(IssuerElements.authorize);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                    slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
 
@@ -718,6 +850,8 @@ public class Issuer {
     }
 
     private void verifyMandatoryInfoLabelsPresent(String yamlPath) {
+
+
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -745,7 +879,43 @@ public class Issuer {
                             break;
                         }
 
-                        slowScroll(driver);
+                        slowScroll();
+                    }
+
+                    if (!found) {
+                        throw new AssertionError("Mandatory label not found: " + label);
+                    }
+                }
+            });
+
+            test.mobile().wallet().scrollUpForBirthDate();
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            yml.fields.forEach((fieldKey, cfg) -> {
+
+                if (!cfg.required) return;
+
+                String[] labels = fieldKey.split("\\.");
+
+                for (String label : labels) {
+
+                    boolean found = false;
+
+                    for (int i = 0; i < 5; i++) {
+
+                        By labelLocator = By.xpath(
+                                "//XCUIElementTypeStaticText[contains(@name,'" + label + "') " +
+                                        "or contains(@label,'" + label + "') " +
+                                        "or contains(@value,'" + label + "')]"
+                        );
+
+                        if (!driver.findElements(labelLocator).isEmpty()) {
+                            found = true;
+                            break;
+                        }
+
+                        slowScroll();
                     }
 
                     if (!found) {
@@ -915,7 +1085,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPID);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                    slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
 
@@ -1004,7 +1174,9 @@ public class Issuer {
     }
 
     public void issueMDL() throws InterruptedException {
-        test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        }
         clickFormEu();
         clickSubmit();
         formIsDisplayed();
@@ -1192,7 +1364,7 @@ public class Issuer {
                         }
 
                         // scroll down a bit and try again
-                        slowScroll(driver);
+                        slowScroll();
                     }
 
                     if (!found) {
@@ -1599,59 +1771,119 @@ public class Issuer {
         }
     }
 
-    private void slowScroll(AndroidDriver driver) {
-        String originalContext = driver.getContext();
+    private void slowScroll() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-        try {
-            // Always scroll in NATIVE
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context("NATIVE_APP");
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String originalContext = driver.getContext();
+
+            try {
+                // Always scroll in NATIVE
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context("NATIVE_APP");
+                }
+
+                Dimension size = driver.manage().window().getSize();
+
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.75); // start lower
+                int endY = (int) (size.height * 0.30); // end higher
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 0);
+
+                // Move to start
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                // Touch down
+                swipe.addAction(finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
+
+                // Small pause (important on cloud devices)
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+
+                // Swipe
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                // Release
+                swipe.addAction(finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
+
+                driver.perform(Collections.singletonList(swipe));
+
+            } finally {
+                // Restore context
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context(originalContext);
+                }
             }
+        }else{
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            String originalContext = driver.getContext();
 
-            Dimension size = driver.manage().window().getSize();
+            try {
+                // Always scroll in NATIVE
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context("NATIVE_APP");
+                }
 
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.75); // start lower
-            int endY = (int) (size.height * 0.30); // end higher
+                Dimension size = driver.manage().window().getSize();
 
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 0);
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.75);
+                int endY = (int) (size.height * 0.30);
 
-            // Move to start
-            swipe.addAction(finger.createPointerMove(
-                    Duration.ZERO,
-                    PointerInput.Origin.viewport(),
-                    startX,
-                    startY
-            ));
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 0);
 
-            // Touch down
-            swipe.addAction(finger.createPointerDown(
-                    PointerInput.MouseButton.LEFT.asArg()
-            ));
+                // Move to start
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
 
-            // Small pause (important on cloud devices)
-            swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
+                // Touch down
+                swipe.addAction(finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
 
-            // Swipe
-            swipe.addAction(finger.createPointerMove(
-                    Duration.ofMillis(350),
-                    PointerInput.Origin.viewport(),
-                    startX,
-                    endY
-            ));
+                // Pause (important for real devices / BrowserStack)
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
 
-            // Release
-            swipe.addAction(finger.createPointerUp(
-                    PointerInput.MouseButton.LEFT.asArg()
-            ));
+                // Swipe
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
 
-            driver.perform(Collections.singletonList(swipe));
+                // Release
+                swipe.addAction(finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                ));
 
-        } finally {
-            // Restore context
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context(originalContext);
+                driver.perform(Collections.singletonList(swipe));
+
+            } finally {
+                // Restore context
+                if (!"NATIVE_APP".equals(originalContext)) {
+                    driver.context(originalContext);
+                }
             }
         }
     }
@@ -1666,7 +1898,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(WalletElements.findConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                    slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
 
@@ -1781,7 +2013,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilGenerate() {
+    public void scrollUntilGenerate() throws InterruptedException {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1803,15 +2035,26 @@ public class Issuer {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 8) {
-                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
-                String elementId = ((RemoteWebElement) scrollView).getId();
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                params.put("element", elementId);
-                driver.executeScript("mobile: swipe", params);
-                i++;
+            for (int i = 0; i < 5; i++) {
+                // Get screen size
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                // --- START: REPLACEMENT FOR TouchAction ---
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                // This replaces your waitAction
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                Thread.sleep(50);
             }
         }
     }
@@ -1912,7 +2155,7 @@ public class Issuer {
 
         for (int i = 0; i < 2; i++) {
             if (!driver.findElements(locator).isEmpty()) return;
-            slowScroll(driver);
+            slowScroll();
         }
         throw new AssertionError("Text not found: " + text);
     }
@@ -1998,8 +2241,8 @@ public class Issuer {
             ).getText().trim();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
         }
     }
 
@@ -2008,8 +2251,8 @@ public class Issuer {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
         }
     }
 
@@ -2032,7 +2275,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
+                    slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
 

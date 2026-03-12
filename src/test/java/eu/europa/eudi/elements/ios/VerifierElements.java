@@ -21,4 +21,19 @@ public class VerifierElements {
     public static By selectAttributesButton = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
     public static By clickSelect = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
+    public static By clickDataMdl = By.xpath("//XCUIElementTypeButton[@label=\"Mobile Driving Licence (MDL)\"]");
+    public static By selectAttributesMdl = By.xpath("(//XCUIElementTypeOther[@label=\"-- attributes by --\"])[2]");
+    public static By specificAttributesMdl = By.xpath("//XCUIElementTypeOther[@name=\"Specific attributes\"]");
+    public static By clickFormatMdl = By.xpath("(//XCUIElementTypeOther[@label=\"-- format --\"])[2]");
+    public static By msoMdocMdl = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
+    public static By selectAttributeButton = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
+    public static By selectFirstAttribute = By.xpath("//XCUIElementTypeOther[@label=\"Mobile Driving Licence (MDL), web dialog\"]/XCUIElementTypeOther[3]");
+    public static By selectSecondAttribute = By.xpath("//XCUIElementTypeOther[@label=\"Mobile Driving Licence (MDL), web dialog\"]/XCUIElementTypeOther[4]");
+    public static By selectThirdAttribute = By.xpath("//XCUIElementTypeOther[@label=\"Mobile Driving Licence (MDL), web dialog\"]/XCUIElementTypeOther[5]");
+    public static By clickSelectAttributes = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");
+    public static By specificAttributesPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Mobile Driving Licence (MDL)\"]");;
+    public static By viewDataPageOnWallet = By.id("request_screen_description");
+    public static By walletRespondedMdlKotlin = By.id("org.iso.18013.5.1.mDL");
+    public static By clickViewContent = By.id("View Content");
+    public static By attributesPage = By.xpath("//XCUIElementTypeStaticText[@label=\"Mobile Driving Licence (MDL)\"]");
 }
