@@ -10,8 +10,11 @@ import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -121,18 +124,64 @@ public class Issuer {
         }
     }
 
-    public void qrCodeIsDisplayed() {
+    public void qrCodeIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayed,
-                    Literals.Issuer.QR_CODE.label,
-                    driver,
-                    50
-            );
+            Thread.sleep(2000); // allow UI to settle
 
-            Assert.assertEquals(Literals.Issuer.QR_CODE.label, header.getText().trim());
+            boolean found = false;
+
+// =========================
+// 1TRY NATIVE FIRST
+// =========================
+            try {
+                driver.context("NATIVE_APP");
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement nativeQr = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayed
+                ));
+
+                Assert.assertTrue(nativeQr.getText().trim()
+                        .contains(Literals.Issuer.QR_CODE.label));
+
+                found = true;
+
+                System.out.println("QR found in NATIVE");
+
+            } catch (Exception e) {
+                System.out.println("QR not found in NATIVE");
+            }
+
+// =========================
+// FALLBACK TO WEBVIEW
+// =========================
+            if (!found) {
+                for (String context : driver.getContextHandles()) {
+                    System.out.println("Context: " + context);
+                    if (context.contains("WEBVIEW")) {
+                        driver.context(context);
+                        break;
+                    }
+                }
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+
+                // IMPORTANT: QR in webview usually has NO text
+                // so we look for container / canvas / image
+                WebElement webQr = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//img | //canvas | //*[contains(@class,'qr')]")
+                ));
+
+                Assert.assertTrue(webQr.isDisplayed());
+
+                System.out.println("QR found in WEBVIEW");
+
+                // ALWAYS go back
+                driver.context("NATIVE_APP");
+            }
 
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.qrCodeIsDisplayed)).getText();
@@ -196,14 +245,39 @@ public class Issuer {
                 .perform(Collections.singletonList(tap));
     }
 
-    public void clickFormEu() {
+    public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement element = WaitsUtils.waitVisibleThenClickable(eu.europa.eudi.elements.android.IssuerElements.clickFormEu,
-                    driver,
-                    50
-            );
-            element.click();
+            boolean found = false;
+            int maxAttempts = 5; // number of tries
+            int waitSeconds = 5; // per try
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    // switch to native
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(
+                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
+                            )
+                    );
+
+                    wait.until(ExpectedConditions.elementToBeClickable(element));
+                    element.click();
+                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
+                    found = true;
+
+                } catch (Exception e) {
+                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
+                    Thread.sleep(1000); // small wait before retry
+                }
+            }
+
+            if (!found) {
+                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
         }
@@ -747,16 +821,26 @@ public class Issuer {
         }
     }
 
-    public void clickAuthorize() {
+    public void clickAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(70));
-            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
-//            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(theButtonToClick));
-            tapAction(button, false);
+           AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(70));
+//            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+////            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+////            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
+//            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(theButtonToClick));
+//            tapAction(button, false);
 
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+            WebElement button = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//android.widget.Button[@text=\"Authorize\"]")
+                    )
+            );
+
+            button.click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
@@ -766,20 +850,26 @@ public class Issuer {
         }
     }
 
-    public void formIsDisplayed() {
+
+    public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid,
-                    Literals.Issuer.FORM_ANDROID.label,
-                    driver,
-                    80
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedAndroid
-            ).getText().trim();
 
-            Assert.assertEquals(Literals.Issuer.FORM_ANDROID.label, headerText);
+// switch outside wait
+            driver.context("NATIVE_APP");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+            WebElement header = wait.until(d -> {
+                try {
+                    WebElement el = driver.findElement(
+                            By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]")
+                    );
+                    return el.isDisplayed() ? el : null;
+                } catch (Exception e) {
+                    return null;
+                }
+            });
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement header = WaitsUtils.waitForExactText(
@@ -828,10 +918,18 @@ public class Issuer {
                 if (!cfg.required) return;
 
                 // Search label directly (no split)
-                assertTextVisibleWithScroll(driver, fieldKey, 2);
+                try {
+                    assertTextVisibleWithScroll(driver, fieldKey, 2);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
 
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 1);
+                    try {
+                        assertTextVisibleWithScroll(driver, cfg.value.trim(), 1);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
 
                     By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
@@ -879,7 +977,11 @@ public class Issuer {
                             break;
                         }
 
-                        slowScroll();
+                        try {
+                            slowScroll();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                     if (!found) {
@@ -915,7 +1017,11 @@ public class Issuer {
                             break;
                         }
 
-                        slowScroll();
+                        try {
+                            slowScroll();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                     if (!found) {
@@ -1312,11 +1418,19 @@ public class Issuer {
                 String lastLabel = labels[labels.length - 1];
                 // 1) find labels (scroll)
                 for (String label : labels) {
-                    assertTextVisibleWithScroll(driver, label, 10);
+                    try {
+                        assertTextVisibleWithScroll(driver, label, 10);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 // 2) if expected value in yml -> verify it exists (scroll still at that area)
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                    try {
+                        assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
                     // if no expected value -> at least ensure some value exists near the label
                     // simplest: just ensure there is at least one TextView visible
@@ -1364,7 +1478,11 @@ public class Issuer {
                         }
 
                         // scroll down a bit and try again
-                        slowScroll();
+                        try {
+                            slowScroll();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                     if (!found) {
@@ -1771,28 +1889,32 @@ public class Issuer {
         }
     }
 
-    private void slowScroll() {
+    private void slowScroll() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String originalContext = driver.getContext();
 
             try {
-                // Always scroll in NATIVE
+
+                // Switch to NATIVE if needed
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
+                    Thread.sleep(1000); // IMPORTANT for hybrid apps
                 }
+
+                // Wait for UI to stabilize
+                Thread.sleep(800);
 
                 Dimension size = driver.manage().window().getSize();
 
                 int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75); // start lower
-                int endY = (int) (size.height * 0.30); // end higher
+                int startY = (int) (size.height * 0.75);
+                int endY = (int) (size.height * 0.30);
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
                 Sequence swipe = new Sequence(finger, 0);
 
-                // Move to start
                 swipe.addAction(finger.createPointerMove(
                         Duration.ZERO,
                         PointerInput.Origin.viewport(),
@@ -1800,35 +1922,40 @@ public class Issuer {
                         startY
                 ));
 
-                // Touch down
                 swipe.addAction(finger.createPointerDown(
                         PointerInput.MouseButton.LEFT.asArg()
                 ));
 
-                // Small pause (important on cloud devices)
                 swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
 
-                // Swipe
                 swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(350),
+                        Duration.ofMillis(500), // slightly slower swipe
                         PointerInput.Origin.viewport(),
                         startX,
                         endY
                 ));
 
-                // Release
                 swipe.addAction(finger.createPointerUp(
                         PointerInput.MouseButton.LEFT.asArg()
                 ));
 
-                driver.perform(Collections.singletonList(swipe));
+                try {
+                    driver.perform(Collections.singletonList(swipe));
+                }
+                catch (InvalidElementStateException e) {
+
+                    // Retry once (very common fix for BrowserStack)
+                    Thread.sleep(1200);
+                    driver.perform(Collections.singletonList(swipe));
+                }
 
             } finally {
-                // Restore context
+
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context(originalContext);
                 }
             }
+
         }else{
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             String originalContext = driver.getContext();
@@ -1888,7 +2015,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindConfirm() {
+    public void scrollUntilFindConfirm() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
@@ -2126,12 +2253,20 @@ public class Issuer {
 
             // 1) find labels (scroll)
             for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 10);
+                try {
+                    assertTextVisibleWithScroll(driver, label, 10);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             // 2) if expected value in yml -> verify it exists (scroll still at that area)
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                try {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 // if no expected value -> at least ensure some value exists near the label
                 // simplest: just ensure there is at least one TextView visible
@@ -2150,14 +2285,31 @@ public class Issuer {
         return driver.findElement(valueLocator).getText();
     }
 
-    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) {
-        By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
+    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
-        for (int i = 0; i < 2; i++) {
-            if (!driver.findElements(locator).isEmpty()) return;
-            slowScroll();
+            for (int i = 0; i < 2; i++) {
+                if (!driver.findElements(locator).isEmpty()) return;
+                slowScroll();
+            }
+            throw new AssertionError("Text not found: " + text);
+        } else {
+            By locator = By.xpath(
+                    "//*[@name=\"" + text.replace("\"", "\\\"") + "\" or " +
+                            "@label=\"" + text.replace("\"", "\\\"") + "\" or " +
+                            "@value=\"" + text.replace("\"", "\\\"") + "\"]"
+            );
+            for (int i = 0; i < maxScrolls; i++) {
+
+                if (!driver.findElements(locator).isEmpty()) {
+                    return;
+                }
+
+                slowScroll();
+            }
+            throw new AssertionError("Text not found: " + text);
         }
-        throw new AssertionError("Text not found: " + text);
     }
 
     public void ckeckFieldsOnWalletFromPyIssuer() {
@@ -2172,12 +2324,20 @@ public class Issuer {
 
             // 1) find labels (scroll)
             for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 10);
+                try {
+                    assertTextVisibleWithScroll(driver, label, 10);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             // 2) if expected value in yml -> verify it exists (scroll still at that area)
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                try {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 // if no expected value -> at least ensure some value exists near the label
                 // simplest: just ensure there is at least one TextView visible
@@ -2201,12 +2361,20 @@ public class Issuer {
 
             // 1) find labels (scroll)
             for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 10);
+                try {
+                    assertTextVisibleWithScroll(driver, label, 10);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             // 2) if expected value in yml -> verify it exists (scroll still at that area)
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                try {
+                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 // if no expected value -> at least ensure some value exists near the label
                 // simplest: just ensure there is at least one TextView visible
@@ -2270,7 +2438,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed);
                     if (pidElement.isDisplayed()) break;

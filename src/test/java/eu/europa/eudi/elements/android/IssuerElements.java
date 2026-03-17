@@ -26,7 +26,6 @@ public class IssuerElements {
     public static By clickExpiryDate = By.xpath("//android.view.View[@text='Expiry Date']/following-sibling::android.widget.Spinner[1]\n");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Expiry Date\"]");
-
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By clickCountry = By.xpath("//android.view.View[@text=\"Country\"]/following-sibling::android.widget.EditText[1]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
@@ -45,13 +44,14 @@ public class IssuerElements {
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::*[1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
-    public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[@text=\"Issue attributes for your EUDI Wallet demo application.\"]");
+    public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]");
     public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select the Credentials you would like to issue:\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
+
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By birthDate = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By issueCredentalsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");

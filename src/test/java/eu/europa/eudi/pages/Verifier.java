@@ -7,6 +7,7 @@ import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.config.EnvDataConfig;;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -18,6 +19,9 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.image.BufferedImage;
+import java.awt.image.RasterFormatException;
 import java.time.Duration;
 import java.util.*;
 import java.io.File;
@@ -27,6 +31,8 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.io.FileHandler;
+
+import javax.imageio.ImageIO;
 
 public class Verifier {
     TestSetup test;
@@ -467,40 +473,68 @@ public class Verifier {
 
     public File captureScreen() {
         WebDriver driver;
+        By qrCodeLocatorAndroid = By.xpath("//android.webkit.WebView[@text=\"EU Digital Identity Wallet :: Issue Credentials\"]/android.view.View");
+        By qrCodeLocatorIos = By.xpath("//XCUIElementTypeImage[@name='QR Code']");
+        By qrCodeLocator;
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
+            qrCodeLocator = qrCodeLocatorAndroid;
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
+            qrCodeLocator = qrCodeLocatorIos;
         }
 
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File screenshotsDir = new File("screenshots");
+        screenshotsDir.mkdirs();
 
-        new File("screenshots").mkdirs();
-        File destFile = new File("screenshots/" + timestamp + "_verifier.jpg");
+        // --- SOLUTION: Change file extension to .png ---
+        File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            WebElement qrElement = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCodeLocator));
 
-            Thread.sleep(2000); // allow QR to render
+            File fullScreenFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            BufferedImage fullImg = ImageIO.read(fullScreenFile);
 
-            WebElement qrElement;
+            org.openqa.selenium.Point point = qrElement.getLocation();
+            int elementWidth = qrElement.getSize().getWidth();
+            int elementHeight = qrElement.getSize().getHeight();
 
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                qrElement = driver.findElement(By.xpath("//android.widget.ImageView[contains(@content-desc,'QR')]"));
-            } else {
-                qrElement = driver.findElement(By.xpath("//XCUIElementTypeImage[@name='QR Code']"));
+            int cropX = Math.max(0, point.getX());
+            int cropY = Math.max(0, point.getY());
+
+            int availableWidth = fullImg.getWidth() - cropX;
+            int availableHeight = fullImg.getHeight() - cropY;
+
+            elementWidth = Math.min(elementWidth, availableWidth);
+            elementHeight = Math.min(elementHeight, availableHeight);
+
+            if (elementWidth <= 0 || elementHeight <= 0) {
+                throw new RuntimeException("Element dimensions for cropping are invalid (zero or negative).");
             }
 
-            File srcFile = qrElement.getScreenshotAs(OutputType.FILE);
+            BufferedImage qrImage = fullImg.getSubimage(cropX, cropY, elementWidth, elementHeight);
 
-            FileHandler.copy(srcFile, destFile);
+            // --- SOLUTION: Write the file as a "png" ---
+            boolean success = ImageIO.write(qrImage, "png", destFile);
+
+            if (!success || !destFile.exists() || destFile.length() == 0) {
+                throw new RuntimeException("Failed to save screenshot or file is empty: " + destFile.getAbsolutePath());
+            }
 
             this.capturedScreenFile = destFile;
-
             return destFile;
 
+        } catch (RasterFormatException e) {
+            throw new RuntimeException("Error cropping screenshot: The element's coordinates are likely outside the screenshot bounds.", e);
+        } catch (org.openqa.selenium.TimeoutException e) {
+            throw new RuntimeException("Timed out waiting for the QR Code element to become visible.", e);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to capture verifier QR screenshot: " + e.getMessage(), e);
+            String filePath = (destFile != null) ? destFile.getAbsolutePath() : "unknown";
+            throw new RuntimeException("Failed to capture verifier QR screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
         }
     }
 
@@ -1037,6 +1071,73 @@ public class Verifier {
 
 //        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.attributesPage)).getText();
 //        Assert.assertEquals(Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label, pageHeader);
+        }
+    }
+
+    public File captureScreenPythonIssuer() {
+        WebDriver driver;
+        By qrCodeLocatorAndroid = By.xpath("//android.view.View[@resource-id=\"content\"]/android.view.View[1]");
+        By qrCodeLocatorIos = By.xpath("//XCUIElementTypeImage[@name='QR Code']");
+        By qrCodeLocator;
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            driver = test.mobileWebDriverFactory().getDriverAndroid();
+            qrCodeLocator = qrCodeLocatorAndroid;
+        } else {
+            driver = test.mobileWebDriverFactory().getDriverIos();
+            qrCodeLocator = qrCodeLocatorIos;
+        }
+
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File screenshotsDir = new File("screenshots");
+        screenshotsDir.mkdirs();
+
+        // --- SOLUTION: Change file extension to .png ---
+        File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
+
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            WebElement qrElement = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCodeLocator));
+
+            File fullScreenFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            BufferedImage fullImg = ImageIO.read(fullScreenFile);
+
+            org.openqa.selenium.Point point = qrElement.getLocation();
+            int elementWidth = qrElement.getSize().getWidth();
+            int elementHeight = qrElement.getSize().getHeight();
+
+            int cropX = Math.max(0, point.getX());
+            int cropY = Math.max(0, point.getY());
+
+            int availableWidth = fullImg.getWidth() - cropX;
+            int availableHeight = fullImg.getHeight() - cropY;
+
+            elementWidth = Math.min(elementWidth, availableWidth);
+            elementHeight = Math.min(elementHeight, availableHeight);
+
+            if (elementWidth <= 0 || elementHeight <= 0) {
+                throw new RuntimeException("Element dimensions for cropping are invalid (zero or negative).");
+            }
+
+            BufferedImage qrImage = fullImg.getSubimage(cropX, cropY, elementWidth, elementHeight);
+
+            // --- SOLUTION: Write the file as a "png" ---
+            boolean success = ImageIO.write(qrImage, "png", destFile);
+
+            if (!success || !destFile.exists() || destFile.length() == 0) {
+                throw new RuntimeException("Failed to save screenshot or file is empty: " + destFile.getAbsolutePath());
+            }
+
+            this.capturedScreenFile = destFile;
+            return destFile;
+
+        } catch (RasterFormatException e) {
+            throw new RuntimeException("Error cropping screenshot: The element's coordinates are likely outside the screenshot bounds.", e);
+        } catch (org.openqa.selenium.TimeoutException e) {
+            throw new RuntimeException("Timed out waiting for the QR Code element to become visible.", e);
+        } catch (Exception e) {
+            String filePath = (destFile != null) ? destFile.getAbsolutePath() : "unknown";
+            throw new RuntimeException("Failed to capture verifier QR screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
         }
     }
 }

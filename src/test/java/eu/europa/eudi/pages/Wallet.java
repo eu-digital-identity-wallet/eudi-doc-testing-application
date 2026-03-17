@@ -1096,9 +1096,7 @@ public class Wallet {
                         break;
                     }
                 } catch (Exception e) {
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
+                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
                 }
             }
 
