@@ -19,7 +19,7 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.id("eu.europa.ec.euidi.dev:id/biometric_screen_title");
     public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
-    public static By clickMdlPython = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://ec.dev.issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc");
+    public static By clickMdlPython = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_dialogue_delete_document_positive_button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
@@ -69,7 +69,7 @@ public class WalletElements {
     public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");
     public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document.\"]");
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
-    public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Online\"]");
+    public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Scan QR\"]");
     public static By walletLink = AppiumBy.accessibilityId("Link");
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
