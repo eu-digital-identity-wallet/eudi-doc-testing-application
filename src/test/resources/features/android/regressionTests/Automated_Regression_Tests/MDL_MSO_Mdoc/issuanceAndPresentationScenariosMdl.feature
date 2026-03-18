@@ -1,5 +1,5 @@
 @ANDROID @US_ETESA @automated
-Feature: Automated Regression Tests mDL
+Feature: Issuance and presentation - mDL
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
