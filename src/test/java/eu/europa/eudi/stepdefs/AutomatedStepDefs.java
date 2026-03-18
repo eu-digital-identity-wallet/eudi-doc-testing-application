@@ -2656,6 +2656,7 @@ public class AutomatedStepDefs {
         }
     }
 
+
     @And("the user shares {}")
     public void theUserShares(String selectiveDisclosure) {
         this.selectiveDisclosure = selectiveDisclosure;
@@ -2789,19 +2790,6 @@ public class AutomatedStepDefs {
             });
 
         } else {
-
-//            // iOS
-//            yml.fields.forEach((fieldKey, cfg) -> {
-//
-//                if (!cfg.required) return;
-//
-//                assertTextVisibleWithScroll(fieldKey, 10);
-//
-//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-//                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
-//                }
-//            });
-            // For iOS, get the full page/source text
             String pageText = driver.getPageSource();
 
             yml.fields.forEach((fieldKey, cfg) -> {
