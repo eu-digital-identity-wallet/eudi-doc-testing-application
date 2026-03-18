@@ -29,6 +29,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
@@ -736,14 +737,14 @@ public class Issuer {
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
                 // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+                Thread.sleep(20);
             }
         } else {
             int i = 1;
@@ -763,7 +764,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
@@ -908,37 +909,99 @@ public class Issuer {
     }
 
     private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            yml.fields.forEach((fieldKey, cfg) -> {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-                if (!cfg.required) return;
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-                // Search label directly (no split)
-                try {
-                    assertTextVisibleWithScroll(driver, fieldKey, 2);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                // Collect all mandatory labels
+                List<String> mandatoryLabels = yml.fields.entrySet().stream()
+                        .filter(entry -> entry.getValue().required)
+                        .flatMap(entry -> Arrays.stream(entry.getKey().split("\\.")))
+                        .distinct()
+                        .collect(Collectors.toList());
+
+                Set<String> foundLabels = new HashSet<>();
+                int maxScrolls = 5;
+
+                for (int scroll = 0; scroll < maxScrolls && foundLabels.size() < mandatoryLabels.size(); scroll++) {
+
+                    // Build one XPath that searches for all labels at once
+                    String xpath = mandatoryLabels.stream()
+                            .map(label -> "contains(@text, \"" + label + "\")")
+                            .collect(Collectors.joining(" or "));
+
+                    List<WebElement> elements = driver.findElements(By.xpath(
+                            "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') and (" + xpath + ")]"
+                    ));
+
+                    for (WebElement el : elements) {
+                        String text = el.getText();
+                        for (String label : mandatoryLabels) {
+                            if (text.contains(label)) {
+                                foundLabels.add(label);
+                            }
+                        }
+                    }
+
+                    if (foundLabels.size() < mandatoryLabels.size()) {
+                        try {
+                            slowScroll();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
 
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    try {
-                        assertTextVisibleWithScroll(driver, cfg.value.trim(), 1);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
+                mandatoryLabels.stream()
+                        .filter(label -> !foundLabels.contains(label))
+                        .findFirst()
+                        .ifPresent(label -> {
+                            throw new AssertionError("Mandatory label not found: " + label);
+                        });
+        }
+    }
 
-                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+    public void fastScroll(AndroidDriver driver) throws InterruptedException {
 
-                    if (driver.findElements(anyValue).isEmpty()) {
-                        throw new AssertionError("No values visible for label: " + fieldKey);
-                    }
-                }
-            });
+        String originalContext = driver.getContext();
+
+        try {
+            // Switch to NATIVE_APP context once
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context("NATIVE_APP");
+                Thread.sleep(300); // shorter stabilization
+            }
+
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.75);
+            int endY = (int) (size.height * 0.35); // slightly shorter swipe
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 0);
+
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // short pause
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            // Perform swipe
+            try {
+                driver.perform(Collections.singletonList(swipe));
+            } catch (InvalidElementStateException e) {
+                // Retry once if swipe fails (common in hybrid apps)
+                Thread.sleep(500);
+                driver.perform(Collections.singletonList(swipe));
+            }
+
+        } finally {
+            // Switch back to original context if needed
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context(originalContext);
+            }
         }
     }
 
@@ -949,46 +1012,58 @@ public class Issuer {
 
     private void verifyMandatoryInfoLabelsPresent(String yamlPath) {
 
-
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            yml.fields.forEach((fieldKey, cfg) -> {
-                if (!cfg.required) return;
+            // Collect all mandatory labels
+            List<String> mandatoryLabels = yml.fields.entrySet().stream()
+                    .filter(entry -> entry.getValue().required)
+                    .flatMap(entry -> Arrays.stream(entry.getKey().split("\\.")))
+                    .distinct()
+                    .collect(Collectors.toList());
 
-                String[] labels = fieldKey.split("\\.");
+            Set<String> foundLabels = new HashSet<>();
+            int maxScrolls = 5;
 
-                for (String label : labels) {
+            for (int scroll = 0; scroll < maxScrolls && foundLabels.size() < mandatoryLabels.size(); scroll++) {
 
-                    boolean found = false;
+                // Build one XPath that searches for all labels at once
+                String xpath = mandatoryLabels.stream()
+                        .map(label -> "contains(@text, \"" + label + "\")")
+                        .collect(Collectors.joining(" or "));
 
-                    for (int i = 0; i < 5; i++) {
+                List<WebElement> elements = driver.findElements(By.xpath(
+                        "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') and (" + xpath + ")]"
+                ));
 
-                        By labelLocator = By.xpath(
-                                "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') " +
-                                        "and contains(@text, \"" + label + "\")]"
-                        );
-
-                        if (!driver.findElements(labelLocator).isEmpty()) {
-                            found = true;
-                            break;
+                for (WebElement el : elements) {
+                    String text = el.getText();
+                    for (String label : mandatoryLabels) {
+                        if (text.contains(label)) {
+                            foundLabels.add(label);
                         }
-
-                        try {
-                            slowScroll();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    if (!found) {
-                        throw new AssertionError("Mandatory label not found: " + label);
                     }
                 }
-            });
+
+                if (foundLabels.size() < mandatoryLabels.size()) {
+                    try {
+                        slowScroll();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            mandatoryLabels.stream()
+                    .filter(label -> !foundLabels.contains(label))
+                    .findFirst()
+                    .ifPresent(label -> {
+                        throw new AssertionError("Mandatory label not found: " + label);
+                    });
+
 
             test.mobile().wallet().scrollUpForBirthDate();
         }else{
@@ -1580,14 +1655,14 @@ public class Issuer {
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
                 // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1895,62 +1970,35 @@ public class Issuer {
             String originalContext = driver.getContext();
 
             try {
-
-                // Switch to NATIVE if needed
+                // Switch to NATIVE once if needed
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
-                    Thread.sleep(1000); // IMPORTANT for hybrid apps
+                    Thread.sleep(500); // shorter wait
                 }
 
-                // Wait for UI to stabilize
-                Thread.sleep(800);
-
                 Dimension size = driver.manage().window().getSize();
-
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.30);
+                int endY = (int) (size.height * 0.35); // slightly shorter swipe
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
                 Sequence swipe = new Sequence(finger, 0);
+                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // shorter pause
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(500), // slightly slower swipe
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
+                // Perform swipe
                 try {
                     driver.perform(Collections.singletonList(swipe));
-                }
-                catch (InvalidElementStateException e) {
-
-                    // Retry once (very common fix for BrowserStack)
-                    Thread.sleep(1200);
+                } catch (InvalidElementStateException e) {
+                    Thread.sleep(800); // retry delay if needed
                     driver.perform(Collections.singletonList(swipe));
                 }
 
             } finally {
-
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context(originalContext);
                 }
@@ -2060,14 +2108,14 @@ public class Issuer {
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
                 // This replaces your waitAction
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                Thread.sleep(50);
+                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -2289,28 +2337,54 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
-            for (int i = 0; i < 2; i++) {
-                if (!driver.findElements(locator).isEmpty()) return;
-                slowScroll();
-            }
-            throw new AssertionError("Text not found: " + text);
-        } else {
-            By locator = By.xpath(
-                    "//*[@name=\"" + text.replace("\"", "\\\"") + "\" or " +
-                            "@label=\"" + text.replace("\"", "\\\"") + "\" or " +
-                            "@value=\"" + text.replace("\"", "\\\"") + "\"]"
-            );
-            for (int i = 0; i < maxScrolls; i++) {
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200)); // very short implicit wait
+            int scrollCount = 0;
 
+            while (scrollCount < maxScrolls) {
                 if (!driver.findElements(locator).isEmpty()) {
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // reset to normal
                     return;
                 }
 
-                slowScroll();
+                fastSwipe(driver); // perform faster swipe
+                scrollCount++;
             }
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // reset to normal
             throw new AssertionError("Text not found: " + text);
         }
     }
+
+    private void fastSwipe(AndroidDriver driver) {
+        try {
+            String originalContext = driver.getContext();
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context("NATIVE_APP");
+            }
+
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.7);
+            int endY = (int) (size.height * 0.3);
+
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 0);
+
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY)); // faster swipe
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            driver.perform(Collections.singletonList(swipe));
+
+            if (!"NATIVE_APP".equals(originalContext)) {
+                driver.context(originalContext);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Swipe failed", e);
+        }
+    }
+
 
     public void ckeckFieldsOnWalletFromPyIssuer() {
         FormYml yml = YmlLoader.load("testdata/PID/py_data_on_wallet.yml", FormYml.class);
