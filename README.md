@@ -4,41 +4,99 @@
 
 * [Overview](#overview)
 * [Requirements](#requirements)
-* [Installation](#installation)
-* [EUDI Wallet Application](#eudi-wallet-application)
-* [Running the tests](#running-the-tests)
-* [Implemented test cases](#implemented-test-cases)
+* [Local Environment Setup](#local-environment-setup)
+* [Test Case Overview](#test-case-overview)
+* [Running Tests Locally](#running-tests-locally)
+* [Running Tests via GitHub Actions and Device Farm (Browserstack)](#running-tests-via-github-actions-and-device-farm-browserstack)
+* [Troubleshooting](#troubleshooting)
 * [How to contribute](#how-to-contribute)
 * [License](#license)
    + [License details](#license-details)
 
 
 ## Overview
-This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the User Stories created by the Analysis team. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally and generate test results for further analysis and debugging.
+This repository is dedicated to managing the test procedures for the EUDI Wallet project. Both manual and automated functional (UI) tests are conducted, following the agreed specifications in each Release. Any additional testing requests are evaluated on a case-by-case basis, and relevant tests are conducted accordingly. Following the instructions below, you can execute these tests locally or through GitHub Actions and generate test results for further analysis and debugging.
 
 ## Requirements
-To run the automated tests, ensure your system meets the following requirements:
+Ensure your system meets the following requirements to run the tests:
+
+**Note: To run the manual tests you need only maven 3.9.6 and java 17 to run the tests locally.**
+
+**Note: A physical device or an emulator will be needed to run the tests locally (for automation tests only).**
+
 
 - [Maven 3.9.6](https://maven.apache.org/download.cgi) or newer: Apache Maven is a software project management tool. It manages the project's build, reporting, and documentation.
-- [Java 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html): The programming language used for writing the automation scripts.
-- [Appium 2.4.1](https://github.com/appium/appium/releases/tag/v2.4.1) or newer: An open-source automation testing tool for mobile applications.
+- [Java 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html): The programming language used for the automation scripts.
+- [Appium 2.4.1](https://github.com/appium/appium/releases/tag/v2.4.1) or newer: An open-source tool for automating mobile applications. Required for Android testing (emulators).
 - [Android Studio 2023.1.1](https://developer.android.com/studio) or newer: An integrated development environment (IDE) for Android app development.
 - [Xcode 15](https://developer.apple.com/xcode/) or newer: An IDE for developing software on Mac OS, including iOS applications.
-- [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent) (for real iPhone devices): WebDriverAgent is a WebDriver server implementation for iOS that can be used to remote control iOS devices. It allows you to launch & kill applications, tap & scroll views or confirm view presence on a screen. This is needed for running tests on real iPhone devices.
+- [WebDriverAgent](https://github.com/facebookarchive/WebDriverAgent) (for real iPhone devices): WebDriverAgent is a WebDriver server implementation for iOS that can be used to remote control iOS devices. It allows you to launch & kill applications, tap & scroll views or confirm view presence on a screen. This is needed for running tests on real iOS devices.
 
-**Note: If you want to run only the manual tests you need only maven 3.9.6 and java 17**
+## Local Environment Setup
 
-A physical device or an emulator will be needed to run the tests (for automation tests only).
+Before running tests locally, make sure to install and configure the required tools. If you want to run the tests through GitHub Actions, you do not need to pre-install anything. Simply proceed to the Running Tests via GitHub Actions and Device Farm (BrowserStack) section.
+### 1. Install Java 17
+<b>Windows</b>: Download from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) and follow the installation guide.
 
-## Installation
+<b>Mac</b>: Use Homebrew
+1. `brew install openjdk@17`
+2. `java -version`
+### 2. Install Maven
+<b>Windows</b>: Download from the [official Apache Maven website](https://maven.apache.org/download.cgi) and follow the installation guide.
 
-Before running the tests, install the required tools:
+<b>Mac</b>: Use Homebrew
+1. `brew install maven`
+2. `mvn -v`
 
-### 1. Java
-Download the Java 17 SDK from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) and follow the installation instructions.
-### 2. Maven
-Download the Maven binaries from the [official Apache Maven website](https://maven.apache.org/download.cgi) and follow the installation guide.
-### 3. Android Studio (setup emulator and/or physical device)
+### 3. Install Appium and Drivers
+
+This will allow you to run the automation scripts on the Android and iOS devices. Appium is an open-source tool for automating native, mobile web, and hybrid applications on both iOS and Android platforms. Here are the steps to download and install Appium and additional instructions for setting up ADB, UIAutomator and XCUITest.
+
+**- Install Appium using Node.js**
+
+1. Install Node.js
+   The first step is to verify whether Node.js is already installed in the system. To do so, open the terminal and run the following command: `node --version`
+
+   If Node.js is already installed in the system, it’ll return the Node version, else it throws an error stating – ‘node is not recognized’, which means Node.js is not installed in the system.
+   To install Node.js, click [here](https://nodejs.org/en/download).
+
+Once the installation is complete, restart the terminal and run again the command:
+`node --version`
+
+The Node.js installation also covers the installation of npm (node package manager).
+
+2. Install Appium
+
+To install Appium, run the following command:
+1. `npm install -g appium`
+2. `appium --version`
+
+The command above will download and install Appium. Once done, verify the Appium installation on macOS or Windows by running the command below:
+appium --version
+
+This will return the latest Appium version that have installed in your system.
+
+To start the Appium server from the terminal run the following command (keep this terminal open while tests run):
+`appium`
+
+3. Install Appium Drivers:
+
+Install the necessary drivers for Android (UIAutomator2) and iOS (XCUITest).
+
+- <b>Install Android Debug Bridge (ADB)</b> : ADB is a versatile command-line tool that allows you to communicate with an emulator or connected Android device. It facilitates a variety of device actions, such as installing and debugging apps, and it provides access to a Unix shell to run various commands on a device.
+  Why is it necessary? ADB is essential for controlling your device over USB from a computer, copying files back and forth, installing and uninstalling apps, running shell commands, and more. It is particularly vital for automation testing as it allows the test scripts to communicate with the device.
+
+- <b>Install UIAutomator</b>: UIAutomator is a UI testing framework that allows you to test your user interface (UI) efficiently by creating automated functional UI test cases that can be run against your app on one or more devices.
+  Why is it necessary? UIAutomator can interact with all Android software and hardware across different devices and Android versions. It is necessary for E2E testing as it allows the scripts to simulate user interactions and verify the correct behavior of your application's user interface.
+
+  `appium driver install uiautomator2`
+
+- <b>Install XCUITest</b> : XCUITest is Apple's UI testing framework that allows you to write UI tests for iOS apps. It provides a robust way to simulate user interaction with your app and validate the results.
+  Why is it necessary? XCUITest is used for automated testing of the app's user interface. It allows the tests to simulate user interactions and check that the application behaves correctly. This is extremely important for ensuring the quality of the app before it is released to the users.
+
+  `appium driver install xcuitest`
+
+### 4. Setup Android Environment
 Install Android Studio from the [official Android website](https://developer.android.com/studio). Once installed, create a virtual device named "Pixel_6_API_33_1" using the AVD Manager.
 If you want to execute the tests on a real device, you need to enable developer mode on an Android device. Follow these steps:
 
@@ -60,8 +118,9 @@ If you want to execute the tests on a real device, you need to enable developer 
 
 - Scroll down and enable 'USB Debugging', 'revoke USB debugging authorizations', 'install via USB' and 'USB debugging(Security settings)'
 
+To complete the flows described below you need to build the android app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
-### 4. Xcode (setup physical device)
+### 5. Setup iOS Environment (macOS only)
 Install Xcode from the [Mac App Store](https://apps.apple.com/app/xcode/id497799835). After installation, connect your iPhone to your Mac.
 
 - Open Xcode.
@@ -74,45 +133,9 @@ Install Xcode from the [Mac App Store](https://apps.apple.com/app/xcode/id497799
 
 Remember, to access the Developer options in iOS, your device must be connected to your Mac and recognized by Xcode.
 
-### 5. Appium
-This will allow you to run the automation scripts on the Android and iOS devices. Appium is an open-source tool for automating native, mobile web, and hybrid applications on both iOS and Android platforms. Here are the steps to download and install Appium and additional instructions for setting up ADB, UIAutomator and XCUITest.
+To complete the flows described below you need to build the iOS app into your device. You can build it from this repository [here](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) by following the instructions in the README file under the “How to build – Quick start guide” section.
 
-**-Install Appium using Node.js**
-
-1. Install Node.js
-   The first step is to verify whether Node.js is already installed in the system. To do so, open the terminal and run the following command:
-   `node --version`
-   If Node.js is already installed in the system, it’ll return the Node version, else it throws an error stating – ‘node is not recognized’, which means Node.js is not installed in the system.
-   To install Node.js, click [here](https://nodejs.org/en/download).
-
-Once the installation is complete, restart the terminal and run again the command:
-`node --version`
-
-The Node.js installation also covers the installation of npm (node package manager).
-
-2. Install Appium
-
-To install Appium, run the following command:
-`npm install -g appium`
-
-The command above will download and install Appium. Once done, verify the Appium installation on macOS or Windows by running the command below:
-appium --version
-
-This will return the latest Appium version that have installed in your system.
-
-To start the Appium server from the terminal run the following command:
-`appium`
-
-- Install Android Debug Bridge (ADB) : ADB is a versatile command-line tool that allows you to communicate with an emulator or connected Android device. It facilitates a variety of device actions, such as installing and debugging apps, and it provides access to a Unix shell to run various commands on a device.
-  Why is it necessary? ADB is essential for controlling your device over USB from a computer, copying files back and forth, installing and uninstalling apps, running shell commands, and more. It is particularly vital for automation testing as it allows the test scripts to communicate with the device.
-
-- Install UIAutomator: UIAutomator is a UI testing framework that allows you to test your user interface (UI) efficiently by creating automated functional UI test cases that can be run against your app on one or more devices.
-  Why is it necessary? UIAutomator can interact with all Android software and hardware across different devices and Android versions. It is necessary for E2E testing as it allows the scripts to simulate user interactions and verify the correct behavior of your application's user interface.
-
-- Install XCUITest : XCUITest is Apple's UI testing framework that allows you to write UI tests for iOS apps. It provides a robust way to simulate user interaction with your app and validate the results.
-  Why is it necessary? XCUITest is used for automated testing of the app's user interface. It allows the tests to simulate user interactions and check that the application behaves correctly. This is extremely important for ensuring the quality of the app before it is released to the users.
-
-### 6. AppiumWebDriverAgent (for iPhone devices)
+### 6. AppiumWebDriverAgent (for real iPhone devices)
 If you want to run tests on a real iPhone device, you will need to install WebDriverAgent on the device. WebDriverAgent is a WebDriver server implementation for iOS that allows you to control iOS devices remotely. Follow the steps below to install it:
 
 - Clone the WebDriverAgent project from GitHub.
@@ -129,45 +152,26 @@ If you want to run tests on a real iPhone device, you will need to install WebDr
 
 - If the build is successful, WebDriverAgent is installed on your iPhone.
 
-## EUDI Wallet Application
-
-Download and install the EUDIW app:
-
-- iOS:
-  Minimum device requirements
-
-  Any device that supports iOS 15.0
-
-Prerequisites
-
-To complete the flows described below you need to download the iOS app into your device. You can download it from App center download method (iOS app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-iOS-Dev).
-
-- Android:
-  Minimum device requirements
-
-  API level 26.
-
-To complete the flows described below you need to download the app. You can download it from App center download method (android app) [here](https://install.appcenter.ms/orgs/eu-digital-identity-wallet/apps/EUDI-Reference-Android-Dev).
-
-After downloading, you can drag and drop it inside the device that created before on android studio or let automated tests install them automatically.
-Some of the tests need to install the app from scratch for this reason the executable files of the app should be also exist in \src\test\resources\app folder with the name androidApp.apk and iosApp.ipa
-
-## Implemented test cases
+## Test Case Overview
 Test cases are written in Gherkin language for both manual and automated tests and can be found in the "
 feature files
-" folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/tree/develop/src/test/resources/features).
+" folder [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/main/src/test/resources/features).
 
 There are two main categories: iOS and Android. Inside these folders, there are subfolders corresponding to the epics, named exactly as they appear on GitHub. Each epic folder contains subfolders named after the corresponding user stories. Finally, within the user story folders, there are the feature files that contain the relevant test cases.
 
-## Running the tests
+## Running Tests Locally
 
 To execute the tests, follow the steps below:
 
-**Note: If you want to run only the manual tests start from the step 4.**
+**<b>Note</b>: If you want to run only the manual tests start from the step 4.**
+
+**To run both iOS and Android automated tests, you’ll need a Mac. However, Android tests can also be executed on Windows.**
 
 1. Launch Appium: Open a command line terminal, type "appium", and press Enter. This will start the Appium server.
 
-2. Connect a real device through cable to the machine and find the UDID of the device. For android devices execute the 'adb devices' command. For iphone devices execute the 'xcrun simctl list'.
+2. Connect a real device through cable to the machine and find the UDID of the device. 
+   - For android devices execute the 'adb devices' command. 
+   - For iphone devices execute the 'xcrun simctl list'.
 
    **For android devices are needed also:**
    - Step 1: Go to the settings menu and click on "about phone" icon.
@@ -179,19 +183,22 @@ To execute the tests, follow the steps below:
 
    Need to change this values:
 
-   **android:**
+   **<b>android</b>:**
    - appium.android.deviceName=POCO X5 Pro
-   - appium.android.platformVersion=14.0.8
-   - appium.android.udid=emulator-5554
+   - appium.android.platformVersion=14.0
+   - appium.android.platformName=Android
    - appium.android.udid=58d5b98
 
-   **ios:**
+   **<b>ios</b>:**
    - appium.ios.deviceName=iPhone 14 Plus
-   - appium.ios.platformVersion=17.3
+   - appium.ios.platformVersion=18.0.1
    - appium.ios.platformName=iOS
    - appium.ios.udid=00008110-000470843429401E
+ 
 
-4. Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac).
+4. Configure the Execution Script 
+
+Find the local-execution.cmd (for Windows) or local-execution-mac.sh (for Mac and Android).
 
    Note: On tests there are some tags.
 
@@ -206,53 +213,62 @@ To execute the tests, follow the steps below:
    Depending on which tests you want to run, you will include the corresponding tag in the local-execution.cmd or local-execution-mac.sh file.
 
 5. Run the tests:
-   In order to run the tests open the terminal and run `cd ./src/test/java/eu/europa/eudi/utils/factory`. After you navigate to the correct directory, run the command "javac ReadmeManager.java" and "java ReadmeManager".
 
-6. After the execution a report will be created and can be open by opening the index.html file in the path ./target/site/reports/index.html.
+   1. First, ensure locallyTestExecution.java is configured for your OS. Open the file at src/test/java/eu/europa/eudi/utils/factory/locallyTestExecution.java and set the script name on line 6 to either ./local-execution-mac.sh for running iOS and android test or local-execution.cmd. for running android tests.
+   2. Open a terminal, navigate to the correct directory, compile, and run the Java file:
 
-   Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.
-   
-Disclaimer
+      1. `cd ./src/test/java/eu/europa/eudi/utils/factory`
+      2. `javac locallyTestExecution.java`
+      3. `java locallyTestExecution`
+                          
 
-   The Test Performance Chart included in report is generated by Serenity and is intended solely for informational purposes. This chart provides a visual representation of the execution time of test cases during automated testing. 
+6. Export Test Report - Locally
 
-This chart do not reflect the performance results or efficiency of the application being tested. They are not intended to provide insights into application performance, load testing, or other performance metrics.
+After the test run completes, a Serenity report will be generated. Open the following file in your browser to view the results:
+./target/site/serenity/index.html
 
-7. If you want to run android tests from github actions automatically, you can do it from [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/actions). Click the flow you would like to run, either automated or manual. For automated tests, click the one named "automation_with_emulator - Standard", and for executing manual tests, click on the "Manual Workflow". Click the three dots on the right side and then click "View workflow file". On the redirected page, click on "Re-run all jobs" tab. The workflow will run, and a report will be generated.
+**Note: Serenity Report is the same for both manual and automated tests, with clear distinctions among them if both types are present. The test results include comprehensive insights such as Passed/Failed test cases, specific test steps involved and any other critical information.**
 
-## Exporting Logs
+7. Export Logs - Locally
 
 After running the automated tests, a new file will be created with the logs of the app. For example, if you run test cases on the feature file located at ./src/test/resources/features/android/regressionTests/viewPID.feature file, then a new file will be created at ./src/test/resources/features/android/regressionTests/logs/viewPID.txt with the same name as the feature file. Double-click this file to view the logs.
 
-## Bug Reporting
+## Running Tests via GitHub Actions and Device Farm (Browserstack)
+You can also trigger test runs directly from the project's GitHub Actions [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
+ 
+1. <b>Manual Tests</b>
+   1. Step 1: Navigate to GitHub Actions - Go the project's GitHub Actions [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
+   2. Step 2: Select and Run the Workflow
 
-The list of reported bugs can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/issues).
+      1. From the workflow list on the left, select the test suite you wish to run (e.g., "Manual Tests Execution").
+      2. On the right side, you will see the “Run workflow” tab. Click it, then select the desired branch or tag.
+      3. Confirm by clicking the green "Run workflow" button in the dropdown. 
 
-The aforementioned link is also included in a feature file named bugReport.feature (which can be found [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application-internal/blob/develop/src/test/resources/features/bugReport.feature)), in order to be used by the Serenity Report.
+   3. Step 3: Download the Test Report
 
-When opening bugs on GitHub (as issues), the following format is proposed.
+      1. Once the workflow run is complete, click on the completed run from the list.
+      2. Under the "Artifacts" section, you will find the report. Click on it to download it as a .zip file.
+      3. Unzip the file and open index.html to view the detailed Serenity report.
 
-### Bug Report Format
+2. <b>Automated Tests</b>
+   1. Step 1: Navigate to GitHub Actions - Go the project's GitHub Actions [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
+   2. Step 2: Select and Run the Workflow
 
-**Smartphone attributes**
+      1. From the workflow list on the left, select the test suite you wish to run (e.g., "Automation Tests Execution").
+      2. On the right side, you will see the “Run workflow” tab. Click it, then select the desired workflow branch, branch to checkout and test cases.
+      3. Confirm by clicking the green "Run workflow" button in the dropdown.
 
-- **Device:** e.g., Samsung A54
+   3. Step 3: Download the Test Report
 
-- **OS:** e.g., Android 14
+      1. Once the workflow run is complete, click on the completed run from the list.
+      2. Under the "Artifacts" section, you will find the serenity-report. Click on it to download it as a .zip file.
+      3. Unzip the file and open index.html to view the detailed Serenity report.    
 
-**Application attributes**
+   4. Step 4: Download the Logs
 
-- **Version:** e.g., 2024.07.29
-
-**Description:**
-Provide a brief and clear description of the issue.  
-Insert image here if applicable.
-
-**Steps to Reproduce:**
-Write exactly the steps that must be followed in order to reproduce the bug.
-
-**Expected Behavior:**
-Describe what you expect to happen instead of the error.
+      1. Once the workflow run is complete, click on the completed run from the list.
+      2. Under the "Artifacts" section, you will find the android-device-logs or ios-device-logs depending on which tests were run. Click on it to download it as a .zip file.
+      3. Unzip the file and open the contents to view the logs for each feature file.
 
 ## Troubleshooting
 
