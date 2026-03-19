@@ -1,6 +1,6 @@
 package eu.europa.eudi.api;
 
-import eu.europa.eudi.stepdefs.GeneralStepDefs;
+import eu.europa.eudi.stepdefs.AutomatedStepDefs;
 import eu.europa.eudi.utils.TestSetup;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 public class EventsApiVerifier {
-    private final TestSetup test = GeneralStepDefs.getTest();
+    private final TestSetup test = AutomatedStepDefs.getTest();
 
     public void getPresentationEvents(String transactionId) {
         // Set base URI (adjust as needed)

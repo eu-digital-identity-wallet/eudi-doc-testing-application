@@ -2,7 +2,8 @@
 name: "Bug"
 about: "Template for Bug"
 title: "[Bug] "
-labels: bug
+type: bug
+projects: ["EUDI Wallet - Development Backlog"]
 ---
 
 # Bug

@@ -5,20 +5,16 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.*;
-import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.Base64;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 
 public class MobileWebDriverFactory {
     TestSetup test;
@@ -27,15 +23,11 @@ public class MobileWebDriverFactory {
     EnvDataConfig envDataConfig;
     public AndroidDriver androidDriver;
     public IOSDriver iosDriver;
-    private Process logcatProcess;
-    private Thread logcatThread;
-    private String logFilePath;
 
     public UiAutomator2Options options;
-    public String userName;
-    public String accessKey;
-    public static Map<String, Object> browserStackYamlMap;
-    public static final String USER_DIR = "user.dir";
+    private Process logcatProcess;
+    private Thread logcatThread;
+    private String sessionId;
 
 
     public MobileWebDriverFactory(TestSetup test, boolean noReset) {
@@ -43,166 +35,287 @@ public class MobileWebDriverFactory {
         this.noReset = noReset;
     }
 
-    public void startAndroidDriverSession() {
+    public void startAndroidDriverSession() throws MalformedURLException {
         envDataConfig = new EnvDataConfig();
-        File apkPath2 = new File("src/test/resources/app/androidApp.apk");
-        apkPath2.getAbsolutePath();
-        DesiredCapabilities caps2 = new DesiredCapabilities();
-        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
-        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
-        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
-        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
-        caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
-        caps2.setCapability("skipUnlock", "true");
-        caps2.setCapability("appPackage", test.envDataConfig().getAppiumAndroidAppPackage());
-        caps2.setCapability("appActivity", test.envDataConfig().getAppiumAndroidAppActivity());
-        caps2.setCapability("noReset", false);
-        caps2.setCapability("fullReset", false);
-        caps2.setCapability("app", apkPath2.getAbsolutePath());
-        caps2.setCapability("enableLogcatLogging", true);
-        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
-        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
-        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
-        caps2.setCapability("waitForIdleTimeout", 900);      //Prevents UI hang during transitions
-        caps2.setCapability("ignoreUnimportantViews", false); // Optional: makes hierarchy cleaner/faster
-
-
+        String env = envDataConfig.getExecutionEnvironment();
+        String envCI = envDataConfig.getExecutionCIEnvironment();
+        System.out.println("Running environment: " + env);
         try {
-            androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
-            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
+            if (env.equalsIgnoreCase("browserstack")) {
+                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                // --- BrowserStack setup ---
+                DesiredCapabilities options = new DesiredCapabilities();
+                if (envCI.equalsIgnoreCase("githubactions")) {
+                options.setCapability("appium:app", appUrl);
+                }else{
+                    options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
+                }
+                options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
+                options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
+                options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
+                options.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
+                options.setCapability("browserstack.debug", true);
+                options.setCapability("browserstack.deviceLogs", true);
+                options.setCapability("autoRotate", false);
+                options.setCapability("orientation", "PORTRAIT");
+                options.setCapability("newCommandTimeout", 320); // or longer for stability
+                String featureName = test.getScenario().getUri().getPath()
+                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+
+                options.setCapability("name", featureName + " - Android Test");
+                options.setCapability("feature_name", featureName); // used for logs mapping
+                options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
+                try {
+                    if (envCI.equalsIgnoreCase("githubactions")) {
+                        String username = System.getenv("BROWSERSTACK_USERNAME");
+                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+                    }else{
+                        androidDriver = new AndroidDriver(
+                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    }
+
+                wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+                    this.sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
+                    System.out.println("Session ID: " + this.sessionId);
+
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    e.printStackTrace();
+                }
+            }
+
+            else {
+                // --- Real device setup ---
+                File apkPath = new File("src/test/resources/app/androidApp.apk");
+
+                DesiredCapabilities caps = new DesiredCapabilities();
+                caps.setCapability("deviceName", envDataConfig.getAppiumAndroidDeviceName());
+                caps.setCapability("udid", envDataConfig.getAppiumAndroidUdid());
+                caps.setCapability("platformName", envDataConfig.getAppiumAndroidPlatformName());
+                caps.setCapability("platformVersion", envDataConfig.getAppiumAndroidPlatformVersion());
+                caps.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
+                caps.setCapability("skipUnlock", true);
+                caps.setCapability("appPackage", envDataConfig.getAppiumAndroidAppPackage());
+                caps.setCapability("appActivity", envDataConfig.getAppiumAndroidAppActivity());
+                caps.setCapability("noReset", noReset);
+                caps.setCapability("fullReset", false);
+                caps.setCapability("app", apkPath.getAbsolutePath());
+                caps.setCapability("enableLogcatLogging", true);
+                caps.setCapability("autoGrantPermissions", true);
+                caps.setCapability("newCommandTimeout", 120);
+                caps.setCapability("waitForIdleTimeout", 150);
+                caps.setCapability("disableWindowAnimation", true);
+                caps.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
+
+
+                try {
+                    androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps);
+                    wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    e.printStackTrace();
+                }
+            }
+
         } catch (Exception e) {
-            System.out.println(e.toString());
             e.printStackTrace();
         }
     }
 
 
-//    public void startAndroidDriverSession() {
-//        envDataConfig = new EnvDataConfig();
-//        File apkPath2 = new File("src/test/resources/app/androidApp.apk");
-//        apkPath2.getAbsolutePath();
-//        DesiredCapabilities caps2 = new DesiredCapabilities();
-//        caps2.setCapability("deviceName", test.envDataConfig().getAppiumAndroidDeviceName());
-//        caps2.setCapability("udid", test.envDataConfig().getAppiumAndroidUdid());
-//        caps2.setCapability("platformName", test.envDataConfig().getAppiumAndroidPlatformName());
-//        caps2.setCapability("platformVersion", test.envDataConfig().getAppiumAndroidPlatformVersion());
-//        caps2.setCapability("automationName", test.envDataConfig().getAppiumAndroidAutomationName());
-//        caps2.setCapability("skipUnlock", "true");
-//        caps2.setCapability("appPackage", test.envDataConfig().getAppiumAndroidAppPackage());
-//        caps2.setCapability("appActivity", test.envDataConfig().getAppiumAndroidAppActivity());
-//        caps2.setCapability("noReset", noReset);
-//        caps2.setCapability("fullReset", "false");
-//        caps2.setCapability("app", apkPath2.getAbsolutePath());
-//        caps2.setCapability("enableLogcatLogging", true);
-//        caps2.setCapability("autoGrantPermissions", true); // Δίνει αυτόματα permissions που ζητάει το app
-//        caps2.setCapability("newCommandTimeout", 120); // Για να μην σπάει το session αν αργήσει κάπου
-//        caps2.setCapability("disableWindowAnimation", true); // Μπορεί να βοηθήσει σε κάποιους emulators
-//
-//        try {
-//            androidDriver = new AndroidDriver(new URL(test.envDataConfig().getAppiumUrlAndroid()), caps2);
-//            wait = new WebDriverWait(androidDriver, Duration.ofSeconds(test.envDataConfig().getAppiumLongWaitInSeconds()));
-//        } catch (Exception e) {
-//            System.out.println(e.toString());
-//            e.printStackTrace();
-//        }
-//    }
+
+    public void startIosDriverSession() throws MalformedURLException {
+        envDataConfig = new EnvDataConfig();
+        String env = envDataConfig.getExecutionEnvironment();
+        String envCI = envDataConfig.getExecutionCIEnvironment();
+        System.out.println("Running environment: " + env);
+
+        try {
+            if (env.equalsIgnoreCase("browserstack")) {
+                // --- BrowserStack setup ---
+                XCUITestOptions options = new XCUITestOptions();
+                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackIosAppUrl());
+                options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackIosDeviceName());
+                options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
+                options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
+                options.setCapability("appium:automationName", envDataConfig.getAppiumBrowserstackIosAutomationName());
+                options.setCapability("autoAcceptAlerts", true);
+                options.setCapability("browserstack.debug", "true");
+                options.setCapability("browserstack.deviceLogs", "true");
+                String featureName = test.getScenario().getUri().getPath()
+                        .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
+                        .replace(".feature", "");
+                options.setCapability("name", featureName + " - iOS Test");
+                options.setCapability("feature_name", featureName);
+                options.setCapability("sessionName", featureName);
+
+
+                try {
+                    if (envCI.equalsIgnoreCase("githubactions")) {
+                        String username = System.getenv("BROWSERSTACK_USERNAME");
+                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+                    }else{
+                        iosDriver = new IOSDriver(
+                                new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                    }
+
+                wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    e.printStackTrace();
+                }
+                this.sessionId = ((RemoteWebDriver) iosDriver).getSessionId().toString();
+                System.out.println("Session ID: " + this.sessionId);
+
+            } else {
+                // --- Real device setup ---
+                envDataConfig = new EnvDataConfig();
+                File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
+                apkPath1.getAbsolutePath();
+                DesiredCapabilities caps1 = new DesiredCapabilities();
+                caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
+                caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
+                caps1.setCapability("platformVersion", test.envDataConfig().getAppiumIosPlatformVersion()); // your iOS version
+                caps1.setCapability("udid", test.envDataConfig().getAppiumIosUdid()); // your device udid
+                caps1.setCapability("automationName", test.envDataConfig().getAppiumIosAutomationName());
+                caps1.setCapability("bundleId", test.envDataConfig().getAppiumIosBundleId()); // your app's bundle id
+                caps1.setCapability("noReset", noReset);
+                caps1.setCapability("fullReset", false);
+                caps1.setCapability("app", apkPath1.getAbsolutePath());
+                caps1.setCapability("autoAcceptAlerts", true);
+                caps1.setCapability("usePrebuiltWDA", true);
+                caps1.setCapability("waitForIdleTimeout", 150);
+                caps1.setCapability("autoDismissAlerts", true);
+                caps1.setCapability("newCommandTimeout", 180);
+                caps1.setCapability("includeNonModalElements", true);
+                caps1.setCapability("connectHardwareKeyboard", false);
+
+                try {
+                    iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
+                    wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public WebDriver getDriverAndroid() {
+        return androidDriver;
+    }
+
+    public WebDriver getDriverIos() {
+        return iosDriver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
+    }
+
+    public void quitDriverIos() {
+        if (iosDriver != null) {
+            iosDriver.quit();
+            try {
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+
+    public void quitDriverAndroid() {
+        if (androidDriver != null) {
+            androidDriver.quit();
+            try {
+                Thread.sleep(1500); // wait 1.5s before next scenario starts
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
 
     public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) {
-        try {
-            // Stop any previous logging
-            stopLogging();
-//             Create a directory for the feature if it doesn't exist
-            File featureDir = new File( featureDirPath + "/logs/ui");
-            if (!featureDir.exists()) {
-                featureDir.mkdirs();
-            }
-
-            File newFile = new File(featureDir, featureName + ".txt");
+        envDataConfig = new EnvDataConfig();
+        String env = envDataConfig.getExecutionEnvironment();
+        if (env.equalsIgnoreCase("real")) {
             try {
-                if (newFile.createNewFile()) {
-                    System.out.println("File created: " + newFile.getName());
-                } else {
-                    System.out.println("File already exists.");
+                // Stop any previous logging
+                stopLogging();
+                //  Create a directory for the feature if it doesn't exist
+                File featureDir = new File(featureDirPath + "/logs/ui");
+                if (!featureDir.exists()) {
+                    featureDir.mkdirs();
                 }
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-                return;
-            }
 
-            if ("IOS".equalsIgnoreCase(platform)) {
-                logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
-            } else if ("ANDROID".equalsIgnoreCase(platform)) {
-                logcatProcess = Runtime.getRuntime().exec("adb logcat");
-            } else if ("WEB".equalsIgnoreCase(platform)) {
-                // For web testing, we don't need device logging, just skip the process creation
-                logcatProcess = null;
-            } else {
-                throw new IllegalArgumentException("Unsupported platform for logging: " + platform);
-            }
-
-            // Start a new thread to read logcat output and write to the log file
-            if (logcatProcess != null) {
-                logcatThread = new Thread(() -> {
-                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
-                         PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            try {
-                                if (line.contains("@IOS and @automated")) {
-                                    writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                                } else if (line.contains("@ANDROID and @automated")) {
-                                    writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                                } else {
-                                    writeLog(line, newFile.getPath());
-                                }
-                            } catch (Exception e) {
-                                System.err.println("Error writing log line: " + e.getMessage());
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                File newFile = new File(featureDir, featureName + ".txt");
+                try {
+                    if (newFile.createNewFile()) {
+                        System.out.println("File created: " + newFile.getName());
+                    } else {
+                        System.out.println("File already exists.");
                     }
-                });
-                logcatThread.start();
-            } else {
-                // For web platform, just create an empty log file
-                try (PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
-                    logWriter.println("Web test logging started for: " + scenarioName);
                 } catch (IOException e) {
-                    System.err.println("Error creating web log file: " + e.getMessage());
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                    return;
                 }
+
+                if ("IOS".equalsIgnoreCase(platform)) {
+                    logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
+                } else if ("ANDROID".equalsIgnoreCase(platform)) {
+                    logcatProcess = Runtime.getRuntime().exec("adb logcat");
+                } else if ("WEB".equalsIgnoreCase(platform)) {
+                    // For web testing, we don't need device logging, just skip the process creation
+                    logcatProcess = null;
+                } else {
+                    throw new IllegalArgumentException("Unsupported platform for logging: " + platform);
+                }
+
+                // Start a new thread to read logcat output and write to the log file
+                if (logcatProcess != null) {
+                    logcatThread = new Thread(() -> {
+                        try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
+                             PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+                                try {
+                                    if (line.contains("@IOS and @automated")) {
+                                        writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                                    } else if (line.contains("@ANDROID and @automated")) {
+                                        writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
+                                    } else {
+                                        writeLog(line, newFile.getPath());
+                                    }
+                                } catch (Exception e) {
+                                    System.err.println("Error writing log line: " + e.getMessage());
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    logcatThread.start();
+                } else {
+                    // For web platform, just create an empty log file
+                    try (PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
+                        logWriter.println("Web test logging started for: " + scenarioName);
+                    } catch (IOException e) {
+                        System.err.println("Error creating web log file: " + e.getMessage());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
-
-//    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) throws IOException {
-//        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//        String sessionId = driver.getSessionId().toString();
-//
-//        String logUrl = "https://api.browserstack.com/app-automate/sessions/" + sessionId + ".json";
-//        String auth = "foteinitheofilat_OrT9j5:abnr8yzxsnUcB7XtssWJ"; // replace with actual credentials
-//        String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
-//
-//        HttpURLConnection connection = (HttpURLConnection) new URL(logUrl).openConnection();
-//        connection.setRequestProperty("Authorization", "Basic " + encodedAuth);
-//
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//        StringBuilder response = new StringBuilder();
-//        String line;
-//        while ((line = reader.readLine()) != null) {
-//            response.append(line).append("\n");
-//        }
-//        reader.close();
-//
-//        // Write logs to file named after feature
-//        Files.write(Paths.get("logs/" + featureName + ".txt"), response.toString().getBytes());
-//
-//    }
-
-
 
     private void writeLog(String line, String filePath) {
         try {
@@ -259,83 +372,4 @@ public class MobileWebDriverFactory {
         }
     }
 
-    public void startIosDriverSession() {
-        envDataConfig = new EnvDataConfig();
-        File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
-        apkPath1.getAbsolutePath();
-        DesiredCapabilities caps1 = new DesiredCapabilities();
-        caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
-        caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
-        caps1.setCapability("platformVersion", test.envDataConfig().getAppiumIosPlatformVersion()); // your iOS version
-        caps1.setCapability("udid", test.envDataConfig().getAppiumIosUdid()); // your device udid
-        caps1.setCapability("automationName", test.envDataConfig().getAppiumIosAutomationName());
-        caps1.setCapability("bundleId", test.envDataConfig().getAppiumIosBundleId()); // your app's bundle id
-        caps1.setCapability("noReset", noReset);
-        caps1.setCapability("fullReset", false);
-        caps1.setCapability("app", apkPath1.getAbsolutePath());
-        caps1.setCapability("autoAcceptAlerts", true);
-        caps1.setCapability("usePrebuiltWDA", true);
-        caps1.setCapability("waitForIdleTimeout", 100);
-        caps1.setCapability("autoDismissAlerts", true);
-        caps1.setCapability("newCommandTimeout", 180);
-        caps1.setCapability("includeNonModalElements", true);
-        caps1.setCapability("connectHardwareKeyboard", false);
-
-        try {
-            iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);
-            wait = new WebDriverWait(iosDriver, Duration.ofSeconds(80));
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            e.printStackTrace();
-        }
-    }
-
-    public WebDriverWait getWait() {
-        return wait;
-    }
-
-    public WebDriver getDriverAndroid() {
-        return androidDriver;
-    }
-
-    public WebDriver getDriverIos() {
-        return iosDriver;
-    }
-    public void quitDriverAndroid() {
-        if (androidDriver != null) {
-            // Stop method tracing
-            // stopMethodTracing(test.envDataConfig().getAppiumAndroidAppPackage());
-            String remoteFilePath = "/data/local/tmp/trace_file.trace";
-            String localFilePath = "/trace_file.trace";
-            // pullTraceFile(remoteFilePath, localFilePath);
-            androidDriver.quit();
-            try {
-
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-            }
-
-        }
-    }
-
-    public void quitDriverIos() {
-        if (iosDriver != null) {
-
-            iosDriver.quit();
-            try {
-
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-            }
-
-        }
-    }
 }
