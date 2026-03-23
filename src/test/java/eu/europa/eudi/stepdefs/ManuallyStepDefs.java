@@ -8682,6 +8682,126 @@ public class ManuallyStepDefs {
         throw new PendingException();
         //manual
     }
+
+    @Given("a wallet user navigates to the Documents section and selects to add from a list")
+    public void aWalletUserNavigatesToTheDocumentsSectionAndSelectsToAddFromAList() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("the documents on the list are displayed")
+    public void theDocumentsOnTheListAreDisplayed() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("the user can see one PID option without any format indication")
+    public void theUserCanSeeOnePIDOptionWithoutAnyFormatIndication() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("a wallet user requests PID issuance")
+    public void aWalletUserRequestsPIDIssuance() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("the PID provider processes the request")
+    public void thePIDProviderProcessesTheRequest() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("both ISO mdoc and SD-JWT VC formats are generated simultaneously")
+    public void bothISOMdocAndSDJWTVCFormatsAreGeneratedSimultaneously() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("both PID formats are generated successfully")
+    public void bothPIDFormatsAreGeneratedSuccessfully() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("the PID is delivered to the user's wallet")
+    public void thePIDIsDeliveredToTheUserSWallet() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("both formats are received in a secure transaction")
+    public void bothFormatsAreReceivedInASecureTransaction() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("both PID formats are delivered to the wallet")
+    public void bothPIDFormatsAreDeliveredToTheWallet() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("they are stored in the wallet")
+    public void theyAreStoredInTheWallet() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("both formats are accessible")
+    public void bothFormatsAreAccessible() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("they appear as PID mdoc and PID sd-jwt in the user interface's documents section")
+    public void theyAppearAsPIDMdocAndPIDSdJwtInTheUserInterfaceSDocumentsSection() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("the wallet has both PID formats stored")
+    public void theWalletHasBothPIDFormatsStored() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("a service requests PID-based identity verification")
+    public void aServiceRequestsPIDBasedIdentityVerification() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("the wallet automatically selects the appropriate format")
+    public void theWalletAutomaticallySelectsTheAppropriateFormat() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("the user does not need to manually choose the format")
+    public void theUserDoesNotNeedToManuallyChooseTheFormat() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("either the mdoc or sd-jwt format fails to generate")
+    public void eitherTheMdocOrSdJwtFormatFailsToGenerate() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("the entire PID issuance process fails")
+    public void theEntirePIDIssuanceProcessFails() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("no partial PID is stored in the wallet")
+    public void noPartialPIDIsStoredInTheWallet() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
 
 
