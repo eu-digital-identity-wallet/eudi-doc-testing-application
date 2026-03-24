@@ -48,13 +48,13 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            String url = "https://issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -2512,14 +2512,12 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 2; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed);
-                    if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
                     slowScroll();  // ← slow scroll instead of UiScrollable
                 }
-            }
+
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {

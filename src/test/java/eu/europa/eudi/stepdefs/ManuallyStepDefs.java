@@ -8174,633 +8174,467 @@ public class ManuallyStepDefs {
 
     @Given("the user is on the Relying Party service page on the same device as the Wallet")
     public void theUserIsOnTheRelyingPartyServicePageOnTheSameDeviceAsTheWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a presentation request is initiated by the Relying Party")
     public void aPresentationRequestIsInitiatedByTheRelyingParty() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("a presentation request has been initiated")
     public void aPresentationRequestHasBeenInitiated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the browser processes the Digital Credentials API invocation")
     public void theBrowserProcessesTheDigitalCredentialsAPIInvocation() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the user is prompted to grant permission")
     public void theUserIsPromptedToGrantPermission() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the browser displays a permission prompt")
     public void theBrowserDisplaysAPermissionPrompt() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user grants permission")
     public void theUserGrantsPermission() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the Operating System starts searching for suitable attestations")
     public void theOperatingSystemStartsSearchingForSuitableAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user denies permission")
     public void theUserDeniesPermission() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the presentation process is terminated")
     public void thePresentationProcessIsTerminated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the Operating System searches installed Wallet Units")
     public void theOperatingSystemSearchesInstalledWalletUnits() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("suitable attestations matching the request exist")
     public void suitableAttestationsMatchingTheRequestExist() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the browser displays a selector interface with the matching attestations")
     public void theBrowserDisplaysASelectorInterfaceWithTheMatchingAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("no suitable attestations match the request")
     public void noSuitableAttestationsMatchTheRequest() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the user is notified and the process is terminated")
     public void theUserIsNotifiedAndTheProcessIsTerminated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("matching attestations are displayed in the selector interface")
     public void matchingAttestationsAreDisplayedInTheSelectorInterface() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user views the attestation list")
     public void theUserViewsTheAttestationList() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("each attestation shows issuer, credential type, and wallet name")
     public void eachAttestationShowsIssuerCredentialTypeAndWalletName() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("multiple Wallet Units contain suitable attestations")
     public void multipleWalletUnitsContainSuitableAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the selector interface is displayed")
     public void theSelectorInterfaceIsDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("each attestation indicates which Wallet Unit holds it")
     public void eachAttestationIndicatesWhichWalletUnitHoldsIt() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the selector interface displays suitable attestations")
     public void theSelectorInterfaceDisplaysSuitableAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user selects one attestation")
     public void theUserSelectsOneAttestation() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the corresponding Wallet Unit is invoked by the Operating System")
     public void theCorrespondingWalletUnitIsInvokedByTheOperatingSystem() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the Wallet Unit is opened after attestation selection")
     public void theWalletUnitIsOpenedAfterAttestationSelection() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Wallet validates the request origin and RP identity")
     public void theWalletValidatesTheRequestOriginAndRPIdentity() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the verified identity of the Relying Party is displayed to the user")
     public void theVerifiedIdentityOfTheRelyingPartyIsDisplayedToTheUser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the Wallet has verified the Relying Party")
     public void theWalletHasVerifiedTheRelyingParty() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the presentation request screen is shown")
     public void thePresentationRequestScreenIsShown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the requested attestations and related attributes are displayed")
     public void theRequestedAttestationsAndRelatedAttributesAreDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the presentation request screen is displayed in the Wallet")
     public void thePresentationRequestScreenIsDisplayedInTheWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user provides consent to share selected attributes")
     public void theUserProvidesConsentToShareSelectedAttributes() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user enters a valid six-digit PIN")
     public void theUserEntersAValidSixDigitPIN() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the attestation is presented successfully")
     public void theAttestationIsPresentedSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("an authentication error is displayed")
     public void anAuthenticationErrorIsDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the attestation has been presented to the Relying Party")
     public void theAttestationHasBeenPresentedToTheRelyingParty() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Relying Party validates the attestation successfully")
     public void theRelyingPartyValidatesTheAttestationSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a verification confirmation is displayed in the browser")
     public void aVerificationConfirmationIsDisplayedInTheBrowser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Relying Party fails to validate the attestation")
     public void theRelyingPartyFailsToValidateTheAttestation() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("an error message is displayed and retry is allowed")
     public void anErrorMessageIsDisplayedAndRetryIsAllowed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the user is on the Relying Party service page via a Desktop browser")
     public void theUserIsOnTheRelyingPartyServicePageViaADesktopBrowser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a presentation request flow is initiated")
     public void aPresentationRequestFlowIsInitiated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("a presentation request flow has been initiated")
     public void aPresentationRequestFlowHasBeenInitiated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Desktop browser invokes the Digital Credentials API")
     public void theDesktopBrowserInvokesTheDigitalCredentialsAPI() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the Desktop browser displays a permission prompt")
     public void theDesktopBrowserDisplaysAPermissionPrompt() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the Relying Party generates a presentation reques")
     public void theRelyingPartyGeneratesAPresentationReques() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("a valid presentation request has been created")
     public void aValidPresentationRequestHasBeenCreated() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Desktop browser processes the request")
     public void theDesktopBrowserProcessesTheRequest() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a QR code is displayed to the user")
     public void aQRCodeIsDisplayedToTheUser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("a QR code is displayed on the Desktop browser")
     public void aQRCodeIsDisplayedOnTheDesktopBrowser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user scans the QR code with the mobile device camera")
     public void theUserScansTheQRCodeWithTheMobileDeviceCamera() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the presentation request is transferred to the mobile device")
     public void thePresentationRequestIsTransferredToTheMobileDevice() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the mobile device has received a presentation request")
     public void theMobileDeviceHasReceivedAPresentationRequest() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Mobile Operating System evaluates installed Wallet Units")
     public void theMobileOperatingSystemEvaluatesInstalledWalletUnits() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("suitable attestations matching the request are identified")
     public void suitableAttestationsMatchingTheRequestAreIdentified() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("no installed Wallet Unit contains suitable attestations")
     public void noInstalledWalletUnitContainsSuitableAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("suitable attestations exist on the mobile device")
     public void suitableAttestationsExistOnTheMobileDevice() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Mobile Operating System prepares the selection interface")
     public void theMobileOperatingSystemPreparesTheSelectionInterface() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a list of matching attestations is displayed")
     public void aListOfMatchingAttestationsIsDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the selector interface is displayed on the mobile device")
     public void theSelectorInterfaceIsDisplayedOnTheMobileDevice() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user views the list of attestations")
     public void theUserViewsTheListOfAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("each attestation displays issuer, credential type, and wallet name")
     public void eachAttestationDisplaysIssuerCredentialTypeAndWalletName() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the selector interface is shown")
     public void theSelectorInterfaceIsShown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("each attestation indicates the Wallet Unit that holds it")
     public void eachAttestationIndicatesTheWalletUnitThatHoldsIt() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the selector interface displays matching attestations")
     public void theSelectorInterfaceDisplaysMatchingAttestations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the corresponding Wallet Unit is invoked")
     public void theCorrespondingWalletUnitIsInvoked() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the Wallet Unit has been opened on the mobile device")
     public void theWalletUnitHasBeenOpenedOnTheMobileDevice() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the Wallet validates the Relying Party identity and request origin")
     public void theWalletValidatesTheRelyingPartyIdentityAndRequestOrigin() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("the verified identity is displayed to the user")
     public void theVerifiedIdentityIsDisplayedToTheUser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user consents to share attributes and enters a valid {int}-digit PIN")
     public void theUserConsentsToShareAttributesAndEntersAValidDigitPIN(int arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @When("the user consents to share attributes and enters a valid six-digit PIN")
     public void theUserConsentsToShareAttributesAndEntersAValidSixDigitPIN() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("the attestation has been presented from the mobile Wallet")
     public void theAttestationHasBeenPresentedFromTheMobileWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Then("a verification confirmation is displayed in the Desktop browser")
     public void aVerificationConfirmationIsDisplayedInTheDesktopBrowser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
         //manual
     }
 
     @Given("a wallet user navigates to the Documents section and selects to add from a list")
     public void aWalletUserNavigatesToTheDocumentsSectionAndSelectsToAddFromAList() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @When("the documents on the list are displayed")
     public void theDocumentsOnTheListAreDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("the user can see one PID option without any format indication")
     public void theUserCanSeeOnePIDOptionWithoutAnyFormatIndication() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Given("a wallet user requests PID issuance")
     public void aWalletUserRequestsPIDIssuance() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @When("the PID provider processes the request")
     public void thePIDProviderProcessesTheRequest() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("both ISO mdoc and SD-JWT VC formats are generated simultaneously")
     public void bothISOMdocAndSDJWTVCFormatsAreGeneratedSimultaneously() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Given("both PID formats are generated successfully")
     public void bothPIDFormatsAreGeneratedSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @When("the PID is delivered to the user's wallet")
     public void thePIDIsDeliveredToTheUserSWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("both formats are received in a secure transaction")
     public void bothFormatsAreReceivedInASecureTransaction() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Given("both PID formats are delivered to the wallet")
     public void bothPIDFormatsAreDeliveredToTheWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @When("they are stored in the wallet")
     public void theyAreStoredInTheWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("both formats are accessible")
     public void bothFormatsAreAccessible() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @And("they appear as PID mdoc and PID sd-jwt in the user interface's documents section")
     public void theyAppearAsPIDMdocAndPIDSdJwtInTheUserInterfaceSDocumentsSection() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Given("the wallet has both PID formats stored")
     public void theWalletHasBothPIDFormatsStored() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @When("a service requests PID-based identity verification")
     public void aServiceRequestsPIDBasedIdentityVerification() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("the wallet automatically selects the appropriate format")
     public void theWalletAutomaticallySelectsTheAppropriateFormat() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @And("the user does not need to manually choose the format")
     public void theUserDoesNotNeedToManuallyChooseTheFormat() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Given("either the mdoc or sd-jwt format fails to generate")
     public void eitherTheMdocOrSdJwtFormatFailsToGenerate() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @Then("the entire PID issuance process fails")
     public void theEntirePIDIssuanceProcessFails() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 
     @And("no partial PID is stored in the wallet")
     public void noPartialPIDIsStoredInTheWallet() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //manual
     }
 }
 
