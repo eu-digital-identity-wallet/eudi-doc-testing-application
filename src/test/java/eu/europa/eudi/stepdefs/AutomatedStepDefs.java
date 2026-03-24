@@ -2023,7 +2023,7 @@ public class AutomatedStepDefs {
                         test.mobile().issuer().scrollUntilFindSubmitIssuer();
                         test.mobile().issuer().clickSubmitButton();
                         test.mobile().issuer().qrCodeIsDisplayed();
-                        test.mobile().verifier().captureScreenPythonIssuer();
+                        test.mobile().verifier().captureScreen();
                         theUserIsOnTheLoginScreen();
                         test.mobile().wallet().createAPin();
                         test.mobile().wallet().clickOnDocuments();
@@ -2459,7 +2459,7 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().clickMDLFromKotlin();
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlPython();
+                            test.mobile().wallet().unselectDataForMdlKotlin();
                         } else {
                             test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
@@ -2591,7 +2591,7 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().clickMDLFromKotlin();
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlPython();
+                            test.mobile().wallet().unselectDataForMdlKotlin();
                         } else {
                             test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
