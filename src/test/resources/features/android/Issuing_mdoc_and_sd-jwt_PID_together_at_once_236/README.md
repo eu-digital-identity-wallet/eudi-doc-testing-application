@@ -1,7 +1,7 @@
 ## Epic:
 
-[Issuing - Support for credential offer, issuer initiated scenario (OID4VCI) #42](https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/42)
+[Issuing mdoc and sd-jwt PID together at once #236](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/236)
 
 ## User stories:
 
-- [Issuing - Support for credential offer - Issuer initiated scenario #133](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/133)
+- [Issuing mdoc and sd-jwt PID together at once #249](https://github.com/eu-digital-identity-wallet/eudi-wallet-product-roadmap/issues/249)
