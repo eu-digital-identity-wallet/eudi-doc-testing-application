@@ -22,6 +22,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.RasterFormatException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.util.*;
 import java.io.File;
@@ -473,32 +475,62 @@ public class Verifier {
 
     public File captureScreen() {
         WebDriver driver;
+
+        // Get correct driver
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
 
+        // Safety check
+        if (driver == null) {
+            throw new RuntimeException("Driver is null. Cannot capture screenshot.");
+        }
+
+        // Small wait to avoid blank/transition screenshots
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Create filename
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File screenshotsDir = new File("screenshots");
-        screenshotsDir.mkdirs();
+
+        if (!screenshotsDir.exists()) {
+            screenshotsDir.mkdirs();
+        }
 
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
+            // Take screenshot
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(srcFile, destFile);
 
+            // Copy using stable Java NIO
+            Files.copy(
+                    srcFile.toPath(),
+                    destFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING
+            );
+
+            // Validate file
             if (!destFile.exists() || destFile.length() == 0) {
-                throw new RuntimeException("Failed to save screenshot or file is empty: " + destFile.getAbsolutePath());
+                throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
             }
+
+            System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
 
             this.capturedScreenFile = destFile;
             return destFile;
 
         } catch (Exception e) {
-            String filePath = (destFile != null) ? destFile.getAbsolutePath() : "unknown";
-            throw new RuntimeException("Failed to capture screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
+            throw new RuntimeException(
+                    "Failed to capture screenshot at: " + destFile.getAbsolutePath(),
+                    e
+            );
         }
     }
 

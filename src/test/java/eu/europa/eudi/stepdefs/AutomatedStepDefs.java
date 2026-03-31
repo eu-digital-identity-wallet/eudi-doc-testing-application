@@ -1989,6 +1989,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                     test.mobile().wallet().clickAddButton();
+                    test.mobile().issuer().signInUsser();
                     test.mobile().issuer().fillLoginForm();
                     break;
             }
