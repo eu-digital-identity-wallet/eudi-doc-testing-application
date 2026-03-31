@@ -473,68 +473,32 @@ public class Verifier {
 
     public File captureScreen() {
         WebDriver driver;
-        By qrCodeLocatorAndroid = By.xpath("//android.webkit.WebView[@text=\"EU Digital Identity Wallet :: Issue Credentials\"]/android.view.View");
-        By qrCodeLocatorIos = By.xpath("//XCUIElementTypeImage[@name='QR Code']");
-        By qrCodeLocator;
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
-            qrCodeLocator = qrCodeLocatorAndroid;
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
-            qrCodeLocator = qrCodeLocatorIos;
         }
 
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File screenshotsDir = new File("screenshots");
         screenshotsDir.mkdirs();
 
-        // --- SOLUTION: Change file extension to .png ---
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            WebElement qrElement = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCodeLocator));
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileHandler.copy(srcFile, destFile);
 
-            File fullScreenFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            BufferedImage fullImg = ImageIO.read(fullScreenFile);
-
-            org.openqa.selenium.Point point = qrElement.getLocation();
-            int elementWidth = qrElement.getSize().getWidth();
-            int elementHeight = qrElement.getSize().getHeight();
-
-            int cropX = Math.max(0, point.getX());
-            int cropY = Math.max(0, point.getY());
-
-            int availableWidth = fullImg.getWidth() - cropX;
-            int availableHeight = fullImg.getHeight() - cropY;
-
-            elementWidth = Math.min(elementWidth, availableWidth);
-            elementHeight = Math.min(elementHeight, availableHeight);
-
-            if (elementWidth <= 0 || elementHeight <= 0) {
-                throw new RuntimeException("Element dimensions for cropping are invalid (zero or negative).");
-            }
-
-            BufferedImage qrImage = fullImg.getSubimage(cropX, cropY, elementWidth, elementHeight);
-
-            // --- SOLUTION: Write the file as a "png" ---
-            boolean success = ImageIO.write(qrImage, "png", destFile);
-
-            if (!success || !destFile.exists() || destFile.length() == 0) {
+            if (!destFile.exists() || destFile.length() == 0) {
                 throw new RuntimeException("Failed to save screenshot or file is empty: " + destFile.getAbsolutePath());
             }
 
             this.capturedScreenFile = destFile;
             return destFile;
 
-        } catch (RasterFormatException e) {
-            throw new RuntimeException("Error cropping screenshot: The element's coordinates are likely outside the screenshot bounds.", e);
-        } catch (org.openqa.selenium.TimeoutException e) {
-            throw new RuntimeException("Timed out waiting for the QR Code element to become visible.", e);
         } catch (Exception e) {
             String filePath = (destFile != null) ? destFile.getAbsolutePath() : "unknown";
-            throw new RuntimeException("Failed to capture verifier QR screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
+            throw new RuntimeException("Failed to capture screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
         }
     }
 
