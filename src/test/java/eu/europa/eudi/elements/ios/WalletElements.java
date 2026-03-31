@@ -14,7 +14,7 @@ public class WalletElements {
     public static By clickConfirm = By.id("Confirm");
     public static By successMessage = By.id("success_screen_title");
     public static By dashboardPageIsDisplayed = By.id("home_tab_screen_username_text");
-    public static By clickShare = By.xpath("//XCUIElementTypeButton[@label=\"Share\"]");
+    public static By clickShare = By.id("Share");
     public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By clickMdl = By.id("mDL (MSO Mdoc)");
     public static By mdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"mDL (MSO Mdoc)\"]");
@@ -70,7 +70,7 @@ public class WalletElements {
     public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
     public static By issueButton = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
     public static By issuedPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[1]");
-    public static By selectMDLKotlin = By.xpath("//XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
+    public static By selectMDLKotlin = By.xpath("//XCUIElementTypeOther[@name=\"org.iso.18013.5.1.mDL\"] | //XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");

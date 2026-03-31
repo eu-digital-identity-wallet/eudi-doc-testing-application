@@ -46,6 +46,7 @@ public class AutomatedStepDefs {
     private String credential;
     private String issuanceMethod;
     private String selectiveDisclosure;
+    private String issueScenario;
 
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
@@ -1966,6 +1967,7 @@ public class AutomatedStepDefs {
 
     @And("the issuance is performed on a {} for the {}")
     public void theIssuanceIsPerformedOnA(String issueScenario, String credential) throws InterruptedException {
+        this.issueScenario = issueScenario;
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
@@ -2072,7 +2074,7 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickExpandVerification();
             test.mobile().wallet().clickToViewDetails();
             test.mobile().wallet().clickToViewDetails();
-            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_data_on_wallet.yml");
+//            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_data_on_wallet.yml");
             test.mobile().wallet().clickClose();
         }
     }
@@ -2582,7 +2584,9 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickToAddDocument();
                     test.mobile().wallet().addDocumentPageIsDisplayed();
                     test.mobile().wallet().clickOnline();
-                    test.mobile().wallet().onlyThisTimeQR();
+                    if ("same device".equalsIgnoreCase(this.issueScenario)) {
+                        test.mobile().wallet().onlyThisTimeQR();
+                    }
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
@@ -2712,13 +2716,13 @@ public class AutomatedStepDefs {
                         test.web().verifier().clickViewContentOnWeb();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
+//                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else{
                             verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+//                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                         }

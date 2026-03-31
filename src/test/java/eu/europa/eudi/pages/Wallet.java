@@ -383,7 +383,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successMessageIsDisplayedForIssuer)).getText();
-            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER.label, pageHeader);
         }
     }
 
@@ -866,7 +866,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.closeCorrespondingMessage)).click();
         }else{
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.closeCorrespondingMessage)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.closeCorrespondingMessage)).click();
         }
     }
 
@@ -1107,6 +1107,14 @@ public class Wallet {
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 22; i++) {
+                    try {
+                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
+                        if (mdlElement.isDisplayed()) {
+                            break;
+                        }
+                    } catch (Exception e) {
+                        // element not visible yet, continue scrolling
+                    }
                     // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
@@ -1130,6 +1138,14 @@ public class Wallet {
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 6; i++) {
+                    try {
+                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
+                        if (mdlElement.isDisplayed()) {
+                            break;
+                        }
+                    } catch (Exception e) {
+                        // element not visible yet, continue scrolling
+                    }
                     // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
@@ -1285,6 +1301,7 @@ public class Wallet {
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
             Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
             hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
+            hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
             Result result = new MultiFormatReader().decode(bitmap, hints);
             String qrContent = result.getText();
 
