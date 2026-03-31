@@ -2490,6 +2490,38 @@ public class Issuer {
 
     public void signInUsser() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+// switch outside wait
+            driver.context("NATIVE_APP");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+
+            WebElement header = wait.until(d -> {
+                try {
+                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed);
+                    return el.isDisplayed() ? el : null;
+                } catch (Exception e) {
+                    return null;
+                }
+            });
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed,
+                    Literals.Issuer.SIGN_IN_USER_PAGE.label,
+                    driver,
+                    80
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, headerText);
+        }
+
+
+
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
         } else {
