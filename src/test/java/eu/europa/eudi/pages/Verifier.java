@@ -688,43 +688,80 @@ public class Verifier {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
-        // Generate a unique filename based on timestamp
+        // Safety check
+        if (driver == null) {
+            throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
+        }
+
+        // Small wait for rendering stability (important for QR/canvas)
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Create filename
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = timestamp + "_verifier.jpg";
-        File destFile = new File("screenshots/" + filename);
+        File screenshotsDir = new File("screenshots");
+
+        if (!screenshotsDir.exists()) {
+            screenshotsDir.mkdirs();
+        }
+
+        File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
-            // Ensure folder exists
-            destFile.getParentFile().mkdirs();
-
             By qrCanvas = By.cssSelector("qrcode canvas");
 
-            // Wait for canvas to be visible
-            WebElement canvas = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCanvas));
-
-            // Scroll into view (important on BrowserStack)
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});", canvas
+            // Wait for canvas visibility
+            WebElement canvas = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(qrCanvas)
             );
 
-            // Wait until canvas is actually rendered (non-zero size)
+            // Scroll into view (VERY important on remote/cloud like BrowserStack)
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+                    canvas
+            );
+
+            // Wait until canvas is fully rendered (non-zero size)
             wait.until(d -> {
                 WebElement c = d.findElement(qrCanvas);
-                Long w = (Long) ((JavascriptExecutor) d).executeScript("return arguments[0].width;", c);
-                Long h = (Long) ((JavascriptExecutor) d).executeScript("return arguments[0].height;", c);
+                Long w = (Long) ((JavascriptExecutor) d)
+                        .executeScript("return arguments[0].width;", c);
+                Long h = (Long) ((JavascriptExecutor) d)
+                        .executeScript("return arguments[0].height;", c);
                 return w != null && h != null && w > 0 && h > 0;
             });
 
-            // Element screenshot (QR only)
+            // Small extra wait for rendering stability
+            Thread.sleep(300);
+
+            // Take ELEMENT screenshot (QR only)
             File srcFile = canvas.getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(srcFile, destFile);
+
+            // Use NIO (stable)
+            Files.copy(
+                    srcFile.toPath(),
+                    destFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING
+            );
+
+            // Validate file
+            if (!destFile.exists() || destFile.length() == 0) {
+                throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
+            }
+
+            System.out.println("Web QR screenshot saved: " + destFile.getAbsolutePath());
 
             this.capturedScreenFile = destFile;
             return destFile;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to capture verifier QR (web) screenshot: " + e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Failed to capture QR screenshot (web) at: " + destFile.getAbsolutePath(),
+                    e
+            );
         }
     }
 

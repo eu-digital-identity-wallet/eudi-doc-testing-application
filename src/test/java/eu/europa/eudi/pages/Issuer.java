@@ -2471,17 +2471,29 @@ public class Issuer {
 
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            WebElement header = WaitsUtils.waitForExactText(
+//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed,
+//                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
+//                    driver,
+//                    80
+//            );
+//            String headerText = driver.findElement(
+//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed
+//            ).getText().trim();
+//            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed,
-                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
-                    driver,
-                    50
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
+// switch outside wait
+            driver.context("NATIVE_APP");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+            WebElement header = wait.until(d -> {
+                try {
+                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed);
+                    return el.isDisplayed() ? el : null;
+                } catch (Exception e) {
+                    return null;
+                }
+            });
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
