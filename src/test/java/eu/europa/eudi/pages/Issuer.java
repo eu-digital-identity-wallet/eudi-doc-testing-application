@@ -2249,6 +2249,7 @@ public class Issuer {
             WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
             username.clear();
             username.sendKeys("tneal");
+            test.mobileWebDriverFactory().androidDriver.hideKeyboard();
 
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
             WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
@@ -2471,29 +2472,6 @@ public class Issuer {
 
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            WebElement header = WaitsUtils.waitForExactText(
-//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed,
-//                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
-//                    driver,
-//                    80
-//            );
-//            String headerText = driver.findElement(
-//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed
-//            ).getText().trim();
-//            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-// switch outside wait
-            driver.context("NATIVE_APP");
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-            WebElement header = wait.until(d -> {
-                try {
-                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed);
-                    return el.isDisplayed() ? el : null;
-                } catch (Exception e) {
-                    return null;
-                }
-            });
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
         } else {
@@ -2504,21 +2482,8 @@ public class Issuer {
 
     public void signInUsser() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-// switch outside wait
-            driver.context("NATIVE_APP");
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-
-            WebElement header = wait.until(d -> {
-                try {
-                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed);
-                    return el.isDisplayed() ? el : null;
-                } catch (Exception e) {
-                    return null;
-                }
-            });
+            String headerText = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, headerText);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement header = WaitsUtils.waitForExactText(
