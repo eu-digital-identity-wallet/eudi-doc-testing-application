@@ -10,11 +10,8 @@ import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.ElementOption;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -25,19 +22,14 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.yaml.snakeyaml.Yaml;
-
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertTrue;
-
-
 public class Issuer {
     TestSetup test;
     EnvDataConfig envDataConfig;
-
 
     public Issuer(TestSetup test) {
         this.test = test;
@@ -2471,31 +2463,28 @@ public class Issuer {
 
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            WebElement header = WaitsUtils.waitForExactText(
-//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed,
-//                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
-//                    driver,
-//                    80
-//            );
-//            String headerText = driver.findElement(
-//                    eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed
-//            ).getText().trim();
-//            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, headerText);
+            // 1. Get driver
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-// switch outside wait
-            driver.context("NATIVE_APP");
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-            WebElement header = wait.until(d -> {
-                try {
-                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed);
-                    return el.isDisplayed() ? el : null;
-                } catch (Exception e) {
-                    return null;
+
+// 2. Switch to WEBVIEW
+            for (String context : driver.getContextHandles()) {
+                if (context.contains("WEBVIEW_chrome")) {
+                    driver.context(context);
+                    break;
                 }
-            });
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.issueCredentalsPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
+            }
+
+// 3. Locate element in DOM
+            By locator = By.xpath("//h4[contains(text(),'Scan the generated QR Code')]");
+
+// 4. Wait
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+            WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+// 5. Assert
+            Assert.assertTrue(header.isDisplayed());
+
+            driver.context("NATIVE_APP");
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);

@@ -2036,7 +2036,6 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                         test.mobile().wallet().clickAddButton();
-//                        test.webWebDriverFactory().quitDriverWeb();
                         test.mobile().issuer().issueMDL();
                         break;
                     }
@@ -2075,7 +2074,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickExpandVerification();
             test.mobile().wallet().clickToViewDetails();
             test.mobile().wallet().clickToViewDetails();
-//            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_data_on_wallet.yml");
             test.mobile().wallet().clickClose();
         }
     }
@@ -2487,7 +2485,6 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-//                            test.mobile().wallet().unselectDataForMdlPython();
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet.yml");
 
@@ -2508,9 +2505,6 @@ public class AutomatedStepDefs {
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
 
                         } else {
-
-//                            test.mobile().wallet().clickExpandVerification();
-//                            test.mobile().wallet().clickToViewDetails();
 
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
@@ -2621,7 +2615,6 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-//                            test.mobile().wallet().unselectDataForMdlPython();
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet.yml");
 
@@ -2637,15 +2630,9 @@ public class AutomatedStepDefs {
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
-
                         } else {
-
-//                            test.mobile().wallet().clickExpandVerification();
-//                            test.mobile().wallet().clickToViewDetails();
-
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                         }
@@ -2686,7 +2673,6 @@ public class AutomatedStepDefs {
 //                test.web().verifier().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
                     test.web().verifier().clickCloseOnVerifier();
-                    test.webWebDriverFactory().quitDriverWeb();
                     break;
             }
         } else {
@@ -2712,20 +2698,20 @@ public class AutomatedStepDefs {
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();
-
-                        test.web().verifier().walletRespondedOnWebforMdlKotlin();
-                        test.web().verifier().clickViewContentOnWeb();
+                    test.web().verifier().checkTheResponse();
+//                        test.web().verifier().walletRespondedOnWebforMdlKotlin();
+//                        test.web().verifier().clickViewContentOnWeb();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else{
                             verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                         }
                     }
                     test.web().verifier().clickCloseOnVerifierWeb();

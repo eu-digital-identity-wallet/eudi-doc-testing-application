@@ -15,26 +15,16 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.RasterFormatException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.util.*;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.NoSuchElementException;
-
-import org.openqa.selenium.io.FileHandler;
-
-import javax.imageio.ImageIO;
 
 public class Verifier {
     TestSetup test;
@@ -85,8 +75,6 @@ public class Verifier {
                     eu.europa.eudi.elements.android.VerifierElements.viewDataPage
             ).getText().trim();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
-//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage)).getText();
-//            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPageOnWallet)).getText();
             Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
@@ -652,10 +640,6 @@ public class Verifier {
         }
     }
 
-    public void clickNextOnWeb() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.nextButton)).click();
-    }
-
     public void assertQrCodeIsVisible() {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
@@ -688,19 +672,17 @@ public class Verifier {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
-        // Safety check
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
         }
 
-        // Small wait for rendering stability (important for QR/canvas)
+        // Small stability wait (important for dynamic rendering)
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
-        // Create filename
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File screenshotsDir = new File("screenshots");
 
@@ -711,36 +693,54 @@ public class Verifier {
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
-            By qrCanvas = By.cssSelector("qrcode canvas");
+            // CORRECT selector
+            By qrContainer = By.cssSelector(".vc-verifiable-credential");
 
-            // Wait for canvas visibility
-            WebElement canvas = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(qrCanvas)
+            // Wait for container first (more stable than canvas)
+            WebElement container = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(qrContainer)
             );
 
-            // Scroll into view (VERY important on remote/cloud like BrowserStack)
+            // Scroll into view
             ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
-                    canvas
+                    "arguments[0].scrollIntoView({block:'center'});",
+                    container
             );
 
-            // Wait until canvas is fully rendered (non-zero size)
+            // Find canvas INSIDE container (not globally)
+            WebElement canvas = wait.until(d -> {
+                try {
+                    WebElement c = container.findElement(By.cssSelector("qrcode canvas"));
+                    return c.isDisplayed() ? c : null;
+                } catch (Exception e) {
+                    return null;
+                }
+            });
+
+            // Wait until canvas is actually rendered (CRITICAL FIX)
             wait.until(d -> {
-                WebElement c = d.findElement(qrCanvas);
                 Long w = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].width;", c);
+                        .executeScript("return arguments[0].getBoundingClientRect().width;", canvas);
+
                 Long h = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].height;", c);
+                        .executeScript("return arguments[0].getBoundingClientRect().height;", canvas);
+
                 return w != null && h != null && w > 0 && h > 0;
             });
 
-            // Small extra wait for rendering stability
-            Thread.sleep(300);
+            // Extra buffer for rendering (BrowserStack safe)
+            Thread.sleep(500);
 
-            // Take ELEMENT screenshot (QR only)
-            File srcFile = canvas.getScreenshotAs(OutputType.FILE);
+            // Try canvas screenshot first
+            File srcFile;
+            try {
+                srcFile = canvas.getScreenshotAs(OutputType.FILE);
+            } catch (Exception e) {
+                // 🔥 Fallback: container screenshot (VERY important)
+                srcFile = container.getScreenshotAs(OutputType.FILE);
+            }
 
-            // Use NIO (stable)
+            // Save using NIO
             Files.copy(
                     srcFile.toPath(),
                     destFile.toPath(),
@@ -870,29 +870,6 @@ public class Verifier {
         }
     }
 
-    private WebElement scrollToElementIOS(IOSDriver driver, By locator, int maxScrolls) {
-        for (int i = 0; i < maxScrolls; i++) {
-
-            List<WebElement> elements = driver.findElements(locator);
-
-            if (!elements.isEmpty()) {
-                WebElement el = elements.get(0);
-
-                if (el.isDisplayed()) {
-                    return el;
-                }
-            }
-
-            // scroll down
-            HashMap<String, Object> params = new HashMap<>();
-            params.put("direction", "down");
-            driver.executeScript("mobile: swipe", params);
-        }
-
-        throw new NoSuchElementException("Element not found after scrolling: " + locator);
-    }
-
-
     public void clickSelect() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickSelectAttributes)).click();
@@ -907,16 +884,6 @@ public class Verifier {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickViewContent)).click();
         }
-    }
-
-    public void pidIsDisplayedOnVerifier() {
-        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(VerifierElements.pidIdDisplayedOnVerifier)).getText();
-        Assert.assertEquals(Literals.Verifier.PID_IS_DISPLAYED_ON_VERIFIER.label, pageHeader);
-    }
-
-    public void walletRespondedOnWeb() {
-        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedOnWeb)).getText();
-        Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);
     }
 
     public void clickViewContentOnWeb() {
@@ -1042,135 +1009,25 @@ public class Verifier {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickCloseVerifierOnWeb)).click();
     }
 
-    public File captureScreenIssuerOnWeb() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+    public void checkTheResponse() {
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = timestamp + "_verifier.jpg";
-        File destFile = new File("screenshots/" + filename);
-
         try {
-            destFile.getParentFile().mkdirs();
-
-            // Locate the QR <img> (adjust selector if needed)
-            By qrImage = By.cssSelector("img[src^='data:image']");
-
-            // Wait until visible
-            WebElement img = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(qrImage)
-            );
-
-            // Scroll into view (important for remote drivers like BrowserStack)
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block:'center'});", img
-            );
-
-            // Wait until image is fully loaded
-            wait.until(d -> (Boolean) ((JavascriptExecutor) d).executeScript(
-                    "return arguments[0].complete && arguments[0].naturalWidth > 0;",
-                    img
+            // Wait for header to be visible
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin
             ));
 
-            // Screenshot only the image element
-            File srcFile = img.getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(srcFile, destFile);
+            // If visible → click View Content
+            wait.until(ExpectedConditions.elementToBeClickable(
+                    eu.europa.eudi.elements.android.VerifierElements.clickViewContentOnWeb
+            )).click();
 
-            this.capturedScreenFile = destFile;
-            return destFile;
-
-        } catch (IOException e) {
-            throw new RuntimeException(
-                    "Failed to capture verifier QR (web img) screenshot: " + e.getMessage(), e
-            );
-        }
-    }
-
-    public void attributesPageIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.VerifierElements.attributesPage,
-                    Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label,
-                    driver,
-                    50
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.VerifierElements.attributesPage
-            ).getText().trim();
-            Assert.assertEquals(Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label, headerText);
-
-
-//        String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.attributesPage)).getText();
-//        Assert.assertEquals(Literals.Verifier.SPECIFIC_ATTRIBUTES_PAGE.label, pageHeader);
-        }
-    }
-
-    public File captureScreenPythonIssuer() {
-        WebDriver driver;
-        By qrCodeLocatorAndroid = By.xpath("//android.view.View[@resource-id=\"content\"]/android.view.View[1]");
-        By qrCodeLocatorIos = By.xpath("//XCUIElementTypeImage[@name='QR Code']");
-        By qrCodeLocator;
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = test.mobileWebDriverFactory().getDriverAndroid();
-            qrCodeLocator = qrCodeLocatorAndroid;
-        } else {
-            driver = test.mobileWebDriverFactory().getDriverIos();
-            qrCodeLocator = qrCodeLocatorIos;
-        }
-
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File screenshotsDir = new File("screenshots");
-        screenshotsDir.mkdirs();
-
-        // --- SOLUTION: Change file extension to .png ---
-        File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            WebElement qrElement = wait.until(ExpectedConditions.visibilityOfElementLocated(qrCodeLocator));
-
-            File fullScreenFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            BufferedImage fullImg = ImageIO.read(fullScreenFile);
-
-            org.openqa.selenium.Point point = qrElement.getLocation();
-            int elementWidth = qrElement.getSize().getWidth();
-            int elementHeight = qrElement.getSize().getHeight();
-
-            int cropX = Math.max(0, point.getX());
-            int cropY = Math.max(0, point.getY());
-
-            int availableWidth = fullImg.getWidth() - cropX;
-            int availableHeight = fullImg.getHeight() - cropY;
-
-            elementWidth = Math.min(elementWidth, availableWidth);
-            elementHeight = Math.min(elementHeight, availableHeight);
-
-            if (elementWidth <= 0 || elementHeight <= 0) {
-                throw new RuntimeException("Element dimensions for cropping are invalid (zero or negative).");
-            }
-
-            BufferedImage qrImage = fullImg.getSubimage(cropX, cropY, elementWidth, elementHeight);
-
-            // --- SOLUTION: Write the file as a "png" ---
-            boolean success = ImageIO.write(qrImage, "png", destFile);
-
-            if (!success || !destFile.exists() || destFile.length() == 0) {
-                throw new RuntimeException("Failed to save screenshot or file is empty: " + destFile.getAbsolutePath());
-            }
-
-            this.capturedScreenFile = destFile;
-            return destFile;
-
-        } catch (RasterFormatException e) {
-            throw new RuntimeException("Error cropping screenshot: The element's coordinates are likely outside the screenshot bounds.", e);
-        } catch (org.openqa.selenium.TimeoutException e) {
-            throw new RuntimeException("Timed out waiting for the QR Code element to become visible.", e);
-        } catch (Exception e) {
-            String filePath = (destFile != null) ? destFile.getAbsolutePath() : "unknown";
-            throw new RuntimeException("Failed to capture verifier QR screenshot at " + filePath + ". Cause: " + e.getMessage(), e);
+        } catch (TimeoutException e) {
+            // Header not visible → refresh
+            test.webWebDriverFactory().getDriverWeb().navigate().refresh();
+            test.web().verifier().walletRespondedOnWebforMdlKotlin();
+            test.web().verifier().clickViewContentOnWeb();
         }
     }
 }
