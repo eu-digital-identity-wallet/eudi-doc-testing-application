@@ -97,14 +97,6 @@ public class TestSetup {
         mobileWebDriverFactory.stopLogging();
     }
 
-    public void setTransactionCode(String code) {
-        this.transactionCode = code;
-    }
-
-    public String getTransactionCode() {
-        return transactionCode;
-    }
-
     public WebPageObjectFactory web() {
         return webPageObjectFactory;
     }
