@@ -816,24 +816,10 @@ public class Issuer {
 
     public void clickAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-           AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(70));
-//            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
-////            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
-////            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.authorize)).click();
-//            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(theButtonToClick));
-//            tapAction(button, false);
-
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-            WebElement button = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("//android.widget.Button[@text=\"Authorize\"]")
-                    )
-            );
-
-            button.click();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));

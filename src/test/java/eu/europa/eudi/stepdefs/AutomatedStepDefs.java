@@ -5,6 +5,7 @@ import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
@@ -33,6 +34,9 @@ import java.net.MalformedURLException;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -886,12 +890,14 @@ public class AutomatedStepDefs {
     public void theUserIsOnTheLoginScreen() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
 // Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
             test.mobile().wallet().loginPageIsDisplayed();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
 // Re-launches the app from scratch
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
@@ -2078,49 +2084,149 @@ public class AutomatedStepDefs {
         }
     }
 
+//    private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
+//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+//
+//            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//
+//            yml.fields.forEach((fieldKey, cfg) -> {
+//                if (!cfg.required) return;
+//
+//                // search full label
+//                assertTextVisibleWithScroll(fieldKey, 10);
+//
+//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+//                    assertTextVisibleWithScroll(cfg.value.trim(), 5);
+//                } else {
+//                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
+//
+//                    if (driver.findElements(anyValue).isEmpty()) {
+//                        throw new AssertionError("No values visible for label: " + fieldKey);
+//                    }
+//                }
+//            });
+//        }else{
+//            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//
+//            yml.fields.forEach((fieldKey, cfg) -> {
+//                if (!cfg.required) return;
+//
+//                // search full label
+//                assertTextVisibleWithScroll(fieldKey, 10);
+//
+//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+//                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
+//                } else {
+//                    By anyValue = By.xpath("//XCUIElementTypeStaticText[@name!='']");
+//
+//                    if (driver.findElements(anyValue).isEmpty()) {
+//                        throw new AssertionError("No values visible for label: " + fieldKey);
+//                    }
+//                }
+//            });
+//        }
+//    }
+
     private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
+
+        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
+
+        boolean isAndroid = test.getSystemOperation().equals(Literals.General.ANDROID.label);
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
-            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
+            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 5);
             yml.fields.forEach((fieldKey, cfg) -> {
+
                 if (!cfg.required) return;
 
-                // search full label
-                assertTextVisibleWithScroll(fieldKey, 10);
+                if (!screenTexts.contains(fieldKey)) {
+                    throw new AssertionError("Missing label: " + fieldKey);
+                }
 
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(cfg.value.trim(), 5);
-                } else {
-                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-
-                    if (driver.findElements(anyValue).isEmpty()) {
-                        throw new AssertionError("No values visible for label: " + fieldKey);
+                    if (!screenTexts.contains(cfg.value.trim())) {
+                        throw new AssertionError("Missing value: " + cfg.value);
                     }
                 }
             });
         }else{
-            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 5);
             yml.fields.forEach((fieldKey, cfg) -> {
+
                 if (!cfg.required) return;
 
-                // search full label
-                assertTextVisibleWithScroll(fieldKey, 10);
+                if (!screenTexts.contains(fieldKey)) {
+                    throw new AssertionError("Missing label: " + fieldKey);
+                }
 
                 if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
-                } else {
-                    By anyValue = By.xpath("//XCUIElementTypeStaticText[@name!='']");
-
-                    if (driver.findElements(anyValue).isEmpty()) {
-                        throw new AssertionError("No values visible for label: " + fieldKey);
+                    if (!screenTexts.contains(cfg.value.trim())) {
+                        throw new AssertionError("Missing value: " + cfg.value);
                     }
                 }
             });
         }
+    }
+
+    private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
+
+        Set<String> allTexts = new HashSet<>();
+
+        By locator = isAndroid
+                ? By.className("android.widget.TextView")
+                : By.className("XCUIElementTypeStaticText");
+
+        for (int i = 0; i < maxScrolls; i++) {
+
+            List<WebElement> elements = driver.findElements(locator);
+
+            for (WebElement el : elements) {
+                String txt = el.getText();
+                if (txt != null && !txt.trim().isEmpty()) {
+                    allTexts.add(txt.trim());
+                }
+            }
+
+            scrollFast(driver, isAndroid);
+        }
+
+        return allTexts;
+    }
+
+    private void scrollFast(AppiumDriver driver, boolean isAndroid) {
+
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.7);
+        int endY = (int) (size.height * 0.3);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ZERO,
+                PointerInput.Origin.viewport(),
+                startX,
+                startY
+        ));
+
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+        swipe.addAction(finger.createPointerMove(
+                Duration.ofMillis(250), // 🔥 MUCH faster
+                PointerInput.Origin.viewport(),
+                startX,
+                endY
+        ));
+
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
     }
 
     public void assertTextVisibleWithScroll(String text, int maxScrolls) {
