@@ -2542,24 +2542,38 @@ public class AutomatedStepDefs {
 
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
-                            test.mobile().verifier().selectAllAttributesForMdl();
-                            test.mobile().verifier().scrollUntilNext();
 
-                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
-                                    || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
+                                test.mobile().verifier().selectAllAttributesForMdl();
+                                test.mobile().verifier().scrollUntilNext();
                                 test.mobile().verifier().clickNext();
-                                test.mobile().verifier().clickNext();
-                                test.mobile().verifier().scrollUntilSumbit();
-                                test.mobile().verifier().clickSubmit();
 
                             } else {
+                                test.mobile().verifier().selectSpecificAttributesForMdl();
+                                test.mobile().verifier().scrollUntilNext();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().selectTheMandatoryAttributes();
+                                test.mobile().verifier().clickSelect();
 
-                                test.mobile().verifier().clickNext();
-                                test.mobile().verifier().clickNextForAndroid();
-                                test.mobile().verifier().clickNext();
-                                test.mobile().verifier().assertAndClickNext();
                             }
+
+
+                            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra")
+                                        || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
+
+
+                                    test.mobile().verifier().clickNext();
+                                    test.mobile().verifier().scrollUntilSumbit();
+                                    test.mobile().verifier().clickSubmit();
+
+                                } else {
+
+                                    test.mobile().verifier().clickNextForAndroid();
+                                    test.mobile().verifier().clickNext();
+                                    test.mobile().verifier().assertAndClickNext();
+                                }
 
                             break;
                     }
