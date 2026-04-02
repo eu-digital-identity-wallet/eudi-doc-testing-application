@@ -40,13 +40,13 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -787,7 +787,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 7; i++) {
                 try {
                     WebElement pidElement = driver.findElement(IssuerElements.authorize);
                     if (pidElement.isDisplayed()) break;
@@ -1964,8 +1964,8 @@ public class Issuer {
                 Sequence swipe = new Sequence(finger, 0);
                 swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // shorter pause
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(150))); // shorter pause
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(270), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 // Perform swipe
@@ -2214,7 +2214,10 @@ public class Issuer {
 
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink)).click();
+            driver.context("NATIVE_APP");
+
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletLink)).click();
         }
@@ -2471,7 +2474,7 @@ public class Issuer {
 // 5. Assert
             Assert.assertTrue(header.isDisplayed());
 
-            driver.context("NATIVE_APP");
+//            driver.context("NATIVE_APP");
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
