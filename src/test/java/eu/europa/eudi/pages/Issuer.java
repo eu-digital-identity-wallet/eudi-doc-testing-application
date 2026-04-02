@@ -2227,6 +2227,7 @@ public class Issuer {
             WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
             username.clear();
             username.sendKeys("tneal");
+            test.mobileWebDriverFactory().androidDriver.hideKeyboard();
 
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
             WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
