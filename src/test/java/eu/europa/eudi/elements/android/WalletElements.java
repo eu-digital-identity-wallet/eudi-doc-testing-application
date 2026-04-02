@@ -70,7 +70,8 @@ public class WalletElements {
     public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document.\"]");
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Scan QR\"]");
-    public static By walletLink = AppiumBy.accessibilityId("Link");
+    public static By walletLink = By.linkText("Link");
+//    public static By walletLink = AppiumBy.accessibilityId("Link");
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");

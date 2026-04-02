@@ -2041,6 +2041,7 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().onlyThisTimeQR();
                         test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                        test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
                         test.mobile().issuer().issueMDL();
                         break;
@@ -2051,9 +2052,14 @@ public class AutomatedStepDefs {
 
 
     @When("the issuance flow is completed")
-    public void theIssuanceFlowIsCompleted() {
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+    public void theIssuanceFlowIsCompleted() throws InterruptedException {
+        if ("Python".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickAddButton();
+            test.mobile().issuer().issueMDL();
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
             test.mobile().wallet().clickExpandVerification();
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
@@ -2137,7 +2143,7 @@ public class AutomatedStepDefs {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 5);
+            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 6);
             yml.fields.forEach((fieldKey, cfg) -> {
 
                 if (!cfg.required) return;
@@ -2685,9 +2691,9 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickToAddDocument();
                     test.mobile().wallet().addDocumentPageIsDisplayed();
                     test.mobile().wallet().clickOnline();
-                    if ("same device".equalsIgnoreCase(this.issueScenario)) {
+//                    if ("same device".equalsIgnoreCase(this.issueScenario)) {
                         test.mobile().wallet().onlyThisTimeQR();
-                    }
+                    //}
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
