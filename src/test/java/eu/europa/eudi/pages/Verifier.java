@@ -1036,6 +1036,19 @@ public class Verifier {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
     }
 
+    public void selectMandatoryAttributesOnWeb() {
+        int[] mandatoryIndices = {0, 1, 2, 3, 4, 9, 11, 12, 13, 14, 15};
+        for (int i : mandatoryIndices) {
+            try {
+                By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
+                test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
+            } catch (Exception e) {
+                System.out.println("Could not click attribute " + i + ", continuing...");
+            }
+        }
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
+    }
+
     public void walletRespondedOnWebforMdlKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin)).getText();

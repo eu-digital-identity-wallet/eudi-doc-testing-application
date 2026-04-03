@@ -2682,10 +2682,24 @@ public class AutomatedStepDefs {
 
                                 test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
-                                test.web().verifier().selectAllAttributesOnWebForMdl();
-                                test.web().verifier().scrollUntilNextOnWeb();
-                                test.web().verifier().mdlIsDisplayedOnWeb();
-                                test.web().verifier().scrollUntilNextOnWeb();
+
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                                    test.web().verifier().selectAllAttributesOnWebForMdl();
+                                    test.web().verifier().scrollUntilNextOnWeb();
+                                    test.web().verifier().mdlIsDisplayedOnWeb();
+                                    test.web().verifier().scrollUntilNextOnWeb();
+
+                                } else {
+
+                                    test.web().verifier().selectSpecificAttributesOnWebForMdl();
+                                    test.web().verifier().scrollUntilNextOnWeb();
+                                    test.web().verifier().mdlIsDisplayedOnWeb();
+                                    test.web().verifier().clickSpecificAttributesButtonForMdl();
+                                    test.web().verifier().selectMandatoryAttributesOnWeb();
+                                    test.web().verifier().scrollUntilNextOnWeb();
+                                }
+
                                 test.web().verifier().uriMethodIsDisplayed();
                                 test.web().verifier().scrollUntilSubmitOnWeb();
                                 test.web().verifier().assertQrCodeIsVisible();
