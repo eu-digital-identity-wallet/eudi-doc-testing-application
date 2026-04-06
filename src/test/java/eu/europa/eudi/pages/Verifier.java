@@ -15,6 +15,8 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.file.Files;
@@ -870,6 +872,42 @@ public class Verifier {
         }
     }
 
+    public void selectTheMandatoryAttributes() throws InterruptedException {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        WebDriverWait wait = test.mobileWebDriverFactory().getWait();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
+        int[] mandatoryIndices = {0, 1, 2, 3, 4, 9, 11, 12, 13, 14, 15};
+
+        for (int index : mandatoryIndices) {
+
+            if (index == 11) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.65);
+                int endY = (int) (size.height * 0.35);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
+                Thread.sleep(500);
+            }
+
+            List<WebElement> switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
+            WebElement el = switches.get(index);
+            wait.until(ExpectedConditions.visibilityOf(el));
+            wait.until(ExpectedConditions.elementToBeClickable(el));
+            el.click();
+            Thread.sleep(500);
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+    }
+
     public void clickSelect() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickSelectAttributes)).click();
@@ -988,6 +1026,19 @@ public class Verifier {
 
     public void selectSpecificAttributesOnWeb() {
         for (int i = 0; i < 3; i++) {
+            try {
+                By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
+                test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
+            } catch (Exception e) {
+                System.out.println("Could not click attribute " + i + ", continuing...");
+            }
+        }
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
+    }
+
+    public void selectMandatoryAttributesOnWeb() {
+        int[] mandatoryIndices = {0, 1, 2, 3, 4, 9, 11, 12, 13, 14, 15};
+        for (int i : mandatoryIndices) {
             try {
                 By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
                 test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
