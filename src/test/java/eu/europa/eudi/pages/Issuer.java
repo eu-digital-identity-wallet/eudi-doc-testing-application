@@ -24,6 +24,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -369,7 +373,8 @@ public class Issuer {
 // parse yyyy-MM-dd
             String[] p = birthDate.split("-");
             String year = p[0];
-            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading 0
+            int targetMonth = Integer.parseInt(p[1]);
+            String day = String.valueOf(Integer.parseInt(p[2]));
 
 // open year selection
             try {
@@ -379,7 +384,32 @@ public class Issuer {
             }
 
             selectYearScrollUp(driver, year);
+            //month
 
+            By nextBtn = By.id("android:id/next");
+            By prevBtn = By.id("android:id/prev");
+
+// Target month from birthDate
+
+// System current month (your picker starts here)
+            int currentMonth = LocalDate.now().getMonthValue();
+
+// Calculate difference
+            int diff = 3 - currentMonth;
+
+// Navigate
+            for (int i = 0; i < Math.abs(diff); i++) {
+                if (diff > 0) {
+                    driver.findElement(nextBtn).click();
+                } else {
+                    driver.findElement(prevBtn).click();
+                }
+
+                try {
+                    Thread.sleep(200); // allow UI to update
+                } catch (InterruptedException ignored) {
+                }
+            }
 // select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
@@ -394,41 +424,55 @@ public class Issuer {
 
 // Load YAML
             FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
-            String birthDate = yml.fields.get("Birth Date").value;   // e.g., "1990-01-10"
+            String birthDate = yml.fields.get("Birth Date").value; // "1990-01-10"
 
 // Open date picker
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
 
-// Parse yyyy-MM-dd
+// Parse date
             String[] p = birthDate.split("-");
             String year = p[0];
-            String month = p[1];
-            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading zero
+            int targetMonth = Integer.parseInt(p[1]);
+            String day = String.valueOf(Integer.parseInt(p[2]));
 
 // Convert month number → name
             String[] months = {
                     "January", "February", "March", "April", "May", "June",
                     "July", "August", "September", "October", "November", "December"
             };
-            String monthName = months[Integer.parseInt(month) - 1];
+            String targetMonthName = months[targetMonth - 1];
 
-// Try picker wheels
-            List<WebElement> wheels = driver.findElements(
-                    By.xpath("//XCUIElementTypeDatePicker//XCUIElementTypePickerWheel")
-            );
-
-            if (wheels.size() >= 3) {
-                // Wheel picker: Month, Day, Year
-                wheels.get(0).sendKeys(monthName);
-                wheels.get(1).sendKeys(day);
-                wheels.get(2).sendKeys(year);
-            } else {
-                // Fallback: calendar picker
-                // Use XCUIElementTypeStaticText instead of Button
-                String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
-                wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
+// 🔹 Step 1: Select year (tap header → choose year)
+            try {
+                driver.findElement(By.xpath("//XCUIElementTypeButton[contains(@name,'year')]")).click();
+                driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + year + "']")).click();
+            } catch (Exception ignored) {
             }
+
+// 🔹 Step 2: Navigate months (like Android logic)
+            int currentMonth = LocalDate.now().getMonthValue();
+            int diff = targetMonth - currentMonth;
+
+            By nextBtn = By.xpath("//XCUIElementTypeButton[@name='Next Month']");
+            By prevBtn = By.xpath("//XCUIElementTypeButton[@name='Previous Month']");
+
+            for (int i = 0; i < Math.abs(diff); i++) {
+                if (diff > 0) {
+                    driver.findElement(nextBtn).click();
+                } else {
+                    driver.findElement(prevBtn).click();
+                }
+
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ignored) {
+                }
+            }
+
+// 🔹 Step 3: Select day
+            String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
 // Confirm
             wait.until(ExpectedConditions.elementToBeClickable(
@@ -501,28 +545,52 @@ public class Issuer {
                             eu.europa.eudi.elements.android.IssuerElements.clickIssueDate))
                     .click();
 
-            // Parse yyyy-MM-dd
+
+// parse yyyy-MM-dd
             String[] p = issueDate.split("-");
             String year = p[0];
+            int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
-            // Open year selector
+// open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
                 driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
             }
 
-            // Scroll to year
             selectYearScrollUp(driver, year);
+            //month
 
-            // Select day
+            By nextBtn = By.id("android:id/next");
+            By prevBtn = By.id("android:id/prev");
+
+// Target month from birthDate
+
+// System current month (your picker starts here)
+            int currentMonth = LocalDate.now().getMonthValue();
+
+// Calculate difference
+            int diff = 3 - currentMonth;
+
+// Navigate
+            for (int i = 0; i < Math.abs(diff); i++) {
+                if (diff > 0) {
+                    driver.findElement(nextBtn).click();
+                } else {
+                    driver.findElement(prevBtn).click();
+                }
+
+                try {
+                    Thread.sleep(200); // allow UI to update
+                } catch (InterruptedException ignored) {}
+            }
+// select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-            // Confirm
+// confirm
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.android.IssuerElements.chooseSet))
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
 
         } else {
@@ -608,28 +676,52 @@ public class Issuer {
                             eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate))
                     .click();
 
-            // Parse yyyy-MM-dd
+
+// parse yyyy-MM-dd
             String[] p = expiryDate.split("-");
             String year = p[0];
-            String day = String.valueOf(Integer.parseInt(p[2])); // remove leading 0
+            int targetMonth = Integer.parseInt(p[1]);
+            String day = String.valueOf(Integer.parseInt(p[2]));
 
-            // Open year selector
+// open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
                 driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
             }
 
-            // Scroll to year
             selectYearScrollUp(driver, year);
+            //month
 
-            // Select day
+            By nextBtn = By.id("android:id/next");
+            By prevBtn = By.id("android:id/prev");
+
+// Target month from birthDate
+
+// System current month (your picker starts here)
+            int currentMonth = LocalDate.now().getMonthValue();
+
+// Calculate difference
+            int diff = 3 - currentMonth;
+
+// Navigate
+            for (int i = 0; i < Math.abs(diff); i++) {
+                if (diff > 0) {
+                    driver.findElement(nextBtn).click();
+                } else {
+                    driver.findElement(prevBtn).click();
+                }
+
+                try {
+                    Thread.sleep(200); // allow UI to update
+                } catch (InterruptedException ignored) {}
+            }
+// select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-            // Confirm
+// confirm
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.android.IssuerElements.chooseSet))
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
 
         } else {

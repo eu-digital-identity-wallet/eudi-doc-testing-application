@@ -2054,8 +2054,12 @@ public class AutomatedStepDefs {
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() throws InterruptedException {
         if ("Python".equalsIgnoreCase(this.issuerType)) {
-            test.mobile().wallet().clickAddButton();
-            test.mobile().issuer().issueMDL();
+            switch (issueScenario.toLowerCase()) {
+                case "cross device":
+                    test.mobile().wallet().clickAddButton();
+                    test.mobile().issuer().issueMDL();
+                    break;
+            }
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
         }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
