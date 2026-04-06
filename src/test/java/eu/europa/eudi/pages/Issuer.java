@@ -419,64 +419,51 @@ public class Issuer {
                     .click();
 
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            // Driver & wait
+            IOSDriver driverIos = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
-// Load YAML
-            FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
-            String birthDate = yml.fields.get("Birth Date").value; // "1990-01-10"
-
-// Open date picker
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickBirthDate)).click();
 
-// Parse date
-            String[] p = birthDate.split("-");
-            String year = p[0];
-            int targetMonth = Integer.parseInt(p[1]);
-            String day = String.valueOf(Integer.parseInt(p[2]));
+            String day = "10";
 
-// Convert month number → name
-            String[] months = {
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-            };
-            String targetMonthName = months[targetMonth - 1];
-
-// 🔹 Step 1: Select year (tap header → choose year)
-            try {
-                driver.findElement(By.xpath("//XCUIElementTypeButton[contains(@name,'year')]")).click();
-                driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + year + "']")).click();
-            } catch (Exception ignored) {
-            }
-
-// 🔹 Step 2: Navigate months (like Android logic)
-            int currentMonth = LocalDate.now().getMonthValue();
-            int diff = targetMonth - currentMonth;
-
-            By nextBtn = By.xpath("//XCUIElementTypeButton[@name='Next Month']");
-            By prevBtn = By.xpath("//XCUIElementTypeButton[@name='Previous Month']");
-
-            for (int i = 0; i < Math.abs(diff); i++) {
-                if (diff > 0) {
-                    driver.findElement(nextBtn).click();
-                } else {
-                    driver.findElement(prevBtn).click();
-                }
-
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException ignored) {
-                }
-            }
-
-// 🔹 Step 3: Select day
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// Confirm
-            wait.until(ExpectedConditions.elementToBeClickable(
-                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+// 🔹 Step 1: Open year/month picker
+            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
+
+// 🔹 Step 2: Get all picker wheels
+            List<WebElement> wheels = wait.until(driver ->
+                    driver.findElements(By.className("XCUIElementTypePickerWheel"))
+            );
+
+// Safety check
+            if (wheels.size() < 2) {
+                throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
+            }
+
+// Based on your inspector:
+// index 0 → Month
+// index 1 → Year
+            WebElement monthWheel = wheels.get(0);
+            WebElement yearWheel = wheels.get(1);
+
+// 🔹 Step 3: Set values
+            String targetYear = "2020";
+            String targetMonth = "March";
+
+
+            monthWheel.sendKeys(targetMonth);
+            yearWheel.sendKeys(targetYear);
+
+// 🔹 Step 4: Click Done
+            By doneBtn = AppiumBy.accessibilityId("Done");
+            wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
+
+
         }
     }
 
@@ -595,7 +582,7 @@ public class Issuer {
 
         } else {
 
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
 // Load YAML
@@ -606,55 +593,42 @@ public class Issuer {
             wait.until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate))
                     .click();
+            String day = "10";
 
-// Parse date
-            String[] parts = issueDate.split("-");
-            String year = parts[0];
-            String month = parts[1];
-            String day = String.valueOf(Integer.parseInt(parts[2])); // remove leading 0
+            String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// Convert month number → month name
-            String[] months = {
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-            };
-            String monthName = months[Integer.parseInt(month) - 1];
+// Step 1: Open year/month picker
+            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-// Attempt wheel picker first
-            List<WebElement> wheels = driver.findElements(By.className("XCUIElementTypePickerWheel"));
-            if (wheels.size() >= 3) {
-                // Typical order: Month / Day / Year
-                wheels.get(0).sendKeys(monthName);
-                wheels.get(1).sendKeys(day);
-                wheels.get(2).sendKeys(year);
-            } else {
-                // Fallback: calendar-style picker
-                try {
-                    // Try to select year if wheel exists
-                    List<WebElement> yearWheel = driver.findElements(
-                            By.xpath("//XCUIElementTypePickerWheel[contains(@value,'" + year + "')]"));
-                    if (!yearWheel.isEmpty()) yearWheel.get(0).sendKeys(year);
+// Step 2: Get all picker wheels
+            List<WebElement> wheels = wait.until(driver ->
+                    driver.findElements(By.className("XCUIElementTypePickerWheel"))
+            );
 
-                    // Try to select month if wheel exists
-                    List<WebElement> monthWheel = driver.findElements(
-                            By.xpath("//XCUIElementTypePickerWheel[contains(@value,'" + monthName + "')]"));
-                    if (!monthWheel.isEmpty()) monthWheel.get(0).sendKeys(monthName);
-
-                    // Select day button or static text
-                    By dayLocator = By.xpath(
-                            "//XCUIElementTypeButton[@name='" + day + "'] | " +
-                                    "//XCUIElementTypeStaticText[@name='" + day + "']"
-                    );
-                    wait.until(ExpectedConditions.elementToBeClickable(dayLocator)).click();
-
-                } catch (TimeoutException e) {
-                    throw new RuntimeException("Could not select Issue Date on iOS picker: " + issueDate, e);
-                }
+// Safety check
+            if (wheels.size() < 2) {
+                throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
             }
 
-// Confirm
-            wait.until(ExpectedConditions.elementToBeClickable(
-                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+// Based on your inspector:
+// index 0 → Month
+// index 1 → Year
+            WebElement monthWheel = wheels.get(0);
+            WebElement yearWheel = wheels.get(1);
+
+// Step 3: Set values
+            String targetYear = "2020";
+            String targetMonth = "March";
+
+
+            monthWheel.sendKeys(targetMonth);
+            yearWheel.sendKeys(targetYear);
+
+// Step 4: Click Done
+            By doneBtn = AppiumBy.accessibilityId("Done");
+            wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
         }
     }
 
@@ -725,7 +699,7 @@ public class Issuer {
                     .click();
 
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
 // Load YAML
@@ -736,44 +710,43 @@ public class Issuer {
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
 
-// Parse yyyy-MM-dd
-            String[] p = expiryDate.split("-");
-            String year = p[0];
-            String month = p[1];
-            String day = String.valueOf(Integer.parseInt(p[2]));
+            String day = "10";
 
-// Convert month number → month name (iOS uses text months)
-            String[] months = {
-                    "January","February","March","April","May","June",
-                    "July","August","September","October","November","December"
-            };
-            String monthName = months[Integer.parseInt(month) - 1];
+            String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// Try to find picker wheels
-            List<WebElement> wheels = driver.findElements(By.className("XCUIElementTypePickerWheel"));
+// Step 1: Open year/month picker
+            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-            if (wheels.size() >= 3) {
-                // Wheel picker: month, day, year
-                wheels.get(0).sendKeys(monthName);
-                wheels.get(1).sendKeys(day);
-                wheels.get(2).sendKeys(year);
-            } else {
-                // Fallback: calendar-style picker (static text)
-                String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
+// Step 2: Get all picker wheels
+            List<WebElement> wheels = wait.until(driver ->
+                    driver.findElements(By.className("XCUIElementTypePickerWheel"))
+            );
 
-                try {
-                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
-                } catch (TimeoutException e) {
-                    throw new RuntimeException("Could not find day '" + day + "' on iOS calendar picker", e);
-                }
-
-                // Optionally handle month/year selection if calendar shows multiple months
-                // You may need to swipe the calendar until the correct month/year is visible
+// Safety check
+            if (wheels.size() < 2) {
+                throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
             }
 
-// Confirm
-            wait.until(ExpectedConditions.elementToBeClickable(
-                    eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
+// Based on your inspector:
+// index 0 → Month
+// index 1 → Year
+            WebElement monthWheel = wheels.get(0);
+            WebElement yearWheel = wheels.get(1);
+
+// Step 3: Set values
+            String targetYear = "2020";
+            String targetMonth = "March";
+
+
+            monthWheel.sendKeys(targetMonth);
+            yearWheel.sendKeys(targetYear);
+
+// Step 4: Click Done
+            By doneBtn = AppiumBy.accessibilityId("Done");
+            wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
+
         }
     }
 
