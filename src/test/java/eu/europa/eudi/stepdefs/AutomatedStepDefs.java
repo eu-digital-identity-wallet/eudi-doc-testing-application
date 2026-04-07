@@ -2887,7 +2887,18 @@ public class AutomatedStepDefs {
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
 
-// Get full visible page text
+        // Wait for first required field to appear before reading page text
+        String firstRequiredKey = yml.fields.entrySet().stream()
+                .filter(e -> e.getValue().required)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+        if (firstRequiredKey != null) {
+            new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(d -> d.findElement(By.tagName("body")).getText().contains(firstRequiredKey));
+        }
+
+        // Get full visible page text
         String pageText = driver.findElement(By.tagName("body")).getText();
 
         yml.fields.forEach((fieldKey, cfg) -> {
