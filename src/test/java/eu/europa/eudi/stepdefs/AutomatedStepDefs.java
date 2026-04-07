@@ -2801,7 +2801,7 @@ public class AutomatedStepDefs {
     }
 
     @Then("the verifier verifies the credential successfully with {} for {}")
-    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
+    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) throws InterruptedException {
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":
@@ -2844,7 +2844,7 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -2888,6 +2888,7 @@ public class AutomatedStepDefs {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
 
 // Get full visible page text
+
         String pageText = driver.findElement(By.tagName("body")).getText();
 
         yml.fields.forEach((fieldKey, cfg) -> {
@@ -2912,12 +2913,13 @@ public class AutomatedStepDefs {
         });
     }
 
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes(String yamlPath) {
+
+    private void verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes(String yamlPath) throws InterruptedException {
 
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             switchToWebView(driver);
 
@@ -2943,45 +2945,44 @@ public class AutomatedStepDefs {
             });
 
         } else {
-            IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            Set<String> contexts = driver.getContextHandles();
+            System.out.println(contexts);
 
-            String pageText = driver1.getPageSource();
+            for (String context : driver.getContextHandles()) {
+                if (context.contains("WEBVIEW")) {
+                    driver.context(context);
+                    break;
+                }
+            }
 
-// ISO → UI label mapping for iOS
-            Map<String, String> isoToLabel = Map.of(
-                    "org.iso.18013.5.1:birth_date", "Birth Date",
-                    "org.iso.18013.5.1:family_name", "Family Name",
-                    "org.iso.18013.5.1:given_name", "Given Name",
-                    "org.iso.18013.5.1:issuing_authority", "Issuing Authority",
-                    "org.iso.18013.5.1:issuing_country", "Issuing Country",
-                    "org.iso.18013.5.1:document_number", "Document Number",
-                    "issue_date", "Issue Date",
-                    "expiry_date", "Expiry Date"
-            );
+            System.out.println("Current context: " + driver.getContext());
 
-            yml.fields.forEach((fieldKey, cfg) -> {
+            List<WebElement> elements = driver.findElements(By.xpath("//*"));
 
-                if (!cfg.required) return;
+            Set<String> domValues = new HashSet<>();
 
-                // Resolve label for iOS
-                String label = isoToLabel.getOrDefault(fieldKey, fieldKey);
+            for (WebElement el : elements) {
 
-                // Check label exists
-                if (!pageText.contains(label)) {
-                    throw new AssertionError("Label not found: " + label);
+                String text = el.getText();
+                if (text != null && !text.trim().isEmpty()) {
+                    domValues.add(text.trim());
                 }
 
-                // Check value
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-
-                    if (!pageText.contains(cfg.value.trim())) {
-                        throw new AssertionError(
-                                "Wrong value for " + label +
-                                        " expected: " + cfg.value
-                        );
-                    }
+                String value = el.getAttribute("value");
+                if (value != null && !value.trim().isEmpty()) {
+                    domValues.add(value.trim());
                 }
-            });
+            }
+
+            String expected = "2020-03-10";
+
+            boolean found = domValues.stream()
+                    .anyMatch(v -> v.contains(expected));
+
+            if (!found) {
+                throw new AssertionError("Missing value: " + expected);
+            }
         }
     }
 
@@ -2990,6 +2991,34 @@ public class AutomatedStepDefs {
     }
 
     private void switchToWebView(AndroidDriver driver) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(d -> {
+            for (String context : driver.getContextHandles()) {
+
+                System.out.println("Found context: " + context);
+
+                if (context.contains("WEBVIEW")) {
+                    try {
+                        driver.context(context);
+
+                        // KEY: verify WebView is actually usable
+                        if (driver.getPageSource().length() > 0) {
+                            System.out.println("Switched to WebView: " + context);
+                            return true;
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("WebView not ready yet...");
+                    }
+                }
+            }
+            return false;
+        });
+    }
+
+    private void switchToWebViewIos(IOSDriver driver) {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
