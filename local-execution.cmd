@@ -5,7 +5,7 @@ set "CUSTOM_CSS=src\test\resources\custom-style.css"
 set "REPORT_DIR=target\site\reports\EUDI_Wallet_Version_2025.12.34-Demo\css"
 
 REM Run tests and generate reports
-mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@end2end1"
+mvn verify -ntp -Dtest=TestRunner -Dcucumber.filter.tags="@ANDROID and "
 mvn serenity:aggregate -Dtags="@end2end1"
 
 REM Find core.css using PowerShell

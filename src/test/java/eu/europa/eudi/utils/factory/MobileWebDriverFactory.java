@@ -155,6 +155,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("name", featureName + " - iOS Test");
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
+                options.setCapability("includeSafariInWebviews", true);
 
 
                 try {
