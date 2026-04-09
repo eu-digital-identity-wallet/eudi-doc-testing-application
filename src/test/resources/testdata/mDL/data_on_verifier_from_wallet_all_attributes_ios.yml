@@ -26,10 +26,10 @@ fields:
     value: "1234"
     required: true
 
-  "issue_date":
+  "org.iso.18013.5.1:issue_date":
     value: "2020-03-10"
     required: true
 
-  "expiry_date":
+  "org.iso.18013.5.1:expiry_date":
     value: "2020-03-10"
     required: true

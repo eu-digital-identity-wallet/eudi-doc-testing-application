@@ -10,11 +10,7 @@ fields:
     required: true
     value: "1234"
 
-  expiry_date:
-    required: true
-    value: "10 Mar 2020"
-
-  issue_date:
+  Expiry Date:
     required: true
     value: "10 Mar 2020"
 

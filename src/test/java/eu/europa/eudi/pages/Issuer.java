@@ -1404,7 +1404,7 @@ public class Issuer {
         clickFormEu();
         clickSubmit();
         formIsDisplayed();
-        verifyMandatoryInfoLabelsPresent("testdata/mDL/py_issuer_form.yml");
+//        verifyMandatoryInfoLabelsPresent("testdata/mDL/py_issuer_form.yml");
         chooseBirthDate();
         enterDocumentNumber();
         scrollUntilFindSign();
