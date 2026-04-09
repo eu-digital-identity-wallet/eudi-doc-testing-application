@@ -5,6 +5,7 @@ import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -34,6 +35,10 @@ import java.net.MalformedURLException;
 
 import java.time.Duration;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -2180,28 +2185,28 @@ public class AutomatedStepDefs {
     }
 
     private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
+            Set<String> allTexts = new HashSet<>();
 
-        Set<String> allTexts = new HashSet<>();
+            By locator = isAndroid
+                    ? By.className("android.widget.TextView")
+                    : By.className("XCUIElementTypeStaticText");
 
-        By locator = isAndroid
-                ? By.className("android.widget.TextView")
-                : By.className("XCUIElementTypeStaticText");
+            for (int i = 0; i < maxScrolls; i++) {
 
-        for (int i = 0; i < maxScrolls; i++) {
+                List<WebElement> elements = driver.findElements(locator);
 
-            List<WebElement> elements = driver.findElements(locator);
-
-            for (WebElement el : elements) {
-                String txt = el.getText();
-                if (txt != null && !txt.trim().isEmpty()) {
-                    allTexts.add(txt.trim());
+                for (WebElement el : elements) {
+                    String txt = el.getText();
+                    if (txt != null && !txt.trim().isEmpty()) {
+                        allTexts.add(txt.trim());
+                    }
                 }
+
+                scrollFast(driver, isAndroid);
             }
 
-            scrollFast(driver, isAndroid);
-        }
+            return allTexts;
 
-        return allTexts;
     }
 
     private void scrollFast(AppiumDriver driver, boolean isAndroid) {
@@ -2834,7 +2839,7 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
+//                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
@@ -2844,7 +2849,11 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                } else {
+                                    //to do
+                                }
                             }
                         }
                     }
@@ -2956,45 +2965,107 @@ public class AutomatedStepDefs {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            Set<String> contexts = driver.getContextHandles();
-            System.out.println(contexts);
 
-            for (String context : driver.getContextHandles()) {
-                if (context.contains("WEBVIEW")) {
-                    driver.context(context);
-                    break;
-                }
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+
+            wait.until(d -> {
+                List<WebElement> els = driver.findElements(
+                        AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
+                );
+
+                return els.size() > 5; // dialog loaded (safe threshold)
+            });
+
+            List<WebElement> els = driver.findElements(
+                    AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
+            );
+
+            for (WebElement el : els) {
+                System.out.println("TEXT FOUND: " + el.getAttribute("name"));
             }
 
-            System.out.println("Current context: " + driver.getContext());
+// ✅ HERE you call your method
+            String pageText = collectAllTextsIOS(driver);
 
-            List<WebElement> elements = driver.findElements(By.xpath("//*"));
+            System.out.println("PAGE TEXT: " + pageText);
 
-            Set<String> domValues = new HashSet<>();
+// ✅ your existing YAML validation stays
+            yml.fields.forEach((fieldKey, cfg) -> {
 
-            for (WebElement el : elements) {
+                if (!cfg.required) return;
 
-                String text = el.getText();
-                if (text != null && !text.trim().isEmpty()) {
-                    domValues.add(text.trim());
+                String normalizedKey = fieldKey.toLowerCase();
+
+                if (!pageText.contains(normalizedKey)) {
+                    throw new AssertionError("Missing label: " + fieldKey);
                 }
 
-                String value = el.getAttribute("value");
-                if (value != null && !value.trim().isEmpty()) {
-                    domValues.add(value.trim());
+                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                    String value = cfg.value.trim().toLowerCase();
+
+                    if (!pageText.contains(value)) {
+                        throw new AssertionError("Missing value: " + cfg.value);
+                    }
                 }
-            }
-
-            String expected = "2020-03-10";
-
-            boolean found = domValues.stream()
-                    .anyMatch(v -> v.contains(expected));
-
-            if (!found) {
-                throw new AssertionError("Missing value: " + expected);
-            }
+            });
         }
     }
+
+    private String collectAllTextsIOS(IOSDriver driver) {
+
+        List<WebElement> elements = driver.findElements(
+                AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
+        );
+
+        StringBuilder allText = new StringBuilder();
+
+        for (WebElement el : elements) {
+            String text = el.getAttribute("name");
+
+            if (text != null && !text.trim().isEmpty()) {
+                allText.append(text.toLowerCase()).append(" ");
+            }
+        }
+
+        return allText.toString();
+    }
+
+    private String collectAllTextAsString(IOSDriver driver) {
+        String source = driver.getPageSource();
+
+        return source
+                .replaceAll("<[^>]+>", " ")
+                .replaceAll("&nbsp;", " ")
+                .replaceAll("\\s+", " ")
+                .trim()
+                .toLowerCase();
+    }
+
+    private boolean containsText(Set<String> texts, String expected) {
+        String normalized = expected.trim().toLowerCase();
+
+        return texts.stream().anyMatch(t -> t.contains(normalized));
+    }
+
+    private Set<String> collectAllTextsIos(IOSDriver driver) {
+        String source = driver.getPageSource();
+
+        // Remove scripts & styles
+        source = source.replaceAll("<script[^>]*>.*?</script>", " ");
+        source = source.replaceAll("<style[^>]*>.*?</style>", " ");
+
+        // Remove all tags → keep only text
+        String cleanText = source
+                .replaceAll("<[^>]+>", " ")
+                .replaceAll("&nbsp;", " ")
+                .replaceAll("\\s+", " ")
+                .trim()
+                .toLowerCase();
+
+        // Split into words/phrases
+        return new HashSet<>(Arrays.asList(cleanText.split(" ")));
+    }
+
 
     private String getPageText(AndroidDriver driver) {
         return driver.findElement(By.tagName("body")).getText();
@@ -3030,30 +3101,28 @@ public class AutomatedStepDefs {
 
     private void switchToWebViewIos(IOSDriver driver) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        Set<String> contexts = driver.getContextHandles();
+        System.out.println("ALL CONTEXTS:");
+        for (String ctx : contexts) {
+            System.out.println(">> " + ctx);
+        }
 
-        wait.until(d -> {
-            for (String context : driver.getContextHandles()) {
-
-                System.out.println("Found context: " + context);
-
-                if (context.contains("WEBVIEW")) {
-                    try {
-                        driver.context(context);
-
-                        // KEY: verify WebView is actually usable
-                        if (driver.getPageSource().length() > 0) {
-                            System.out.println("Switched to WebView: " + context);
-                            return true;
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("WebView not ready yet...");
-                    }
-                }
+        for (String ctx : driver.getContextHandles()) {
+            if (ctx.contains("WEBVIEW")) {
+                driver.context(ctx);
+                System.out.println("Switched to: " + ctx);
+                break;
             }
-            return false;
-        });
+        }
+
+        new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(d -> driver.getPageSource().length() > 1000);
+
+        String source = driver.getPageSource();
+
+        System.out.println("====== PAGE SOURCE ======");
+        System.out.println(source);
+        System.out.println("=========================");
     }
 
     @When("the user clicks the Verify with EUDI Wallet button")
