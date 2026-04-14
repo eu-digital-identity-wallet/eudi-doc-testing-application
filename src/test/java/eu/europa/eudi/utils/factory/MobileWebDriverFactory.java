@@ -44,9 +44,9 @@ public class MobileWebDriverFactory {
             if (env.equalsIgnoreCase("browserstack")) {
                 String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
-                DesiredCapabilities options = new DesiredCapabilities();
+                UiAutomator2Options options = new UiAutomator2Options();
                 if (envCI.equalsIgnoreCase("githubactions")) {
-                options.setCapability("appium:app", appUrl);
+                    options.setCapability("appium:app", appUrl);
                 }else{
                     options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
                 }
@@ -57,8 +57,11 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", false);
+                options.setCapability("browserstack.video", true);
+                options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
-                options.setCapability("newCommandTimeout", 320); // or longer for stability
+                options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
+//                options.setCapability("appium:waitForIdleTimeout", 100);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
@@ -90,7 +93,7 @@ public class MobileWebDriverFactory {
                 // --- Real device setup ---
                 File apkPath = new File("src/test/resources/app/androidApp.apk");
 
-                DesiredCapabilities caps = new DesiredCapabilities();
+                UiAutomator2Options caps = new UiAutomator2Options();
                 caps.setCapability("deviceName", envDataConfig.getAppiumAndroidDeviceName());
                 caps.setCapability("udid", envDataConfig.getAppiumAndroidUdid());
                 caps.setCapability("platformName", envDataConfig.getAppiumAndroidPlatformName());
@@ -142,14 +145,17 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("appium:automationName", envDataConfig.getAppiumBrowserstackIosAutomationName());
                 options.setCapability("autoAcceptAlerts", true);
-                options.setCapability("browserstack.debug", "true");
-                options.setCapability("browserstack.deviceLogs", "true");
+                options.setCapability("browserstack.debug", true);
+                options.setCapability("browserstack.deviceLogs", true);
+                options.setCapability("browserstack.video", true);
+                options.setCapability("browserstack.appiumLogs", false);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
                 options.setCapability("name", featureName + " - iOS Test");
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
+                options.setCapability("includeSafariInWebviews", true);
 
 
                 try {
@@ -175,7 +181,7 @@ public class MobileWebDriverFactory {
                 envDataConfig = new EnvDataConfig();
                 File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
                 apkPath1.getAbsolutePath();
-                DesiredCapabilities caps1 = new DesiredCapabilities();
+                XCUITestOptions caps1 = new XCUITestOptions();
                 caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
                 caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
                 caps1.setCapability("platformVersion", test.envDataConfig().getAppiumIosPlatformVersion()); // your iOS version

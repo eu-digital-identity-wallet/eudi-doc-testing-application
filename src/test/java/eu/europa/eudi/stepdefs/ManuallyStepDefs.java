@@ -1,10 +1,14 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.utils.TestSetup;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class ManuallyStepDefs {
     TestSetup test;
@@ -8087,6 +8091,549 @@ public class ManuallyStepDefs {
 
     @Given("the user is on the Home screen")
     public void theUserIsOnTheHomeScreen() {
+        //manual
+    }
+
+    // ========== END TO END SCENARIO STEPS ==========[
+
+    @And("the issuance is performed on a cross device")
+    public void theIssuanceIsPerformedOnACrossDevice() {
+        //manual
+    }
+
+    @When("the user presents the credential to the Proximity Verifier App")
+    public void theUserPresentsTheCredentialToTheProximityVerifierApp() {
+        //manual
+    }
+
+    @And("the presentation is performed on a proximity case")
+    public void thePresentationIsPerformedOnAProximityCase() {
+        //manual
+    }
+
+    @And("the user shares all attributes2")
+    public void theUserSharesAllAttributes2() {
+        //manual
+    }
+
+    @And("the user shares specific attributes \\(custom)")
+    public void theUserSharesSpecificAttributesCustom() {
+        //manual
+    }
+
+    @And("the user shares all attributes \\(full)")
+    public void theUserSharesAllAttributesFull() {
+        //manual
+    }
+
+    @Given("the user initiates credential issuance using the {}")
+    public void theUserInitiatesCredentialIssuanceUsingThe(String arg0) {
+        //manual
+    }
+
+    @And("issuance method is {}")
+    public void issuanceMethodIs(String arg0) {
+        //manual
+    }
+
+    @And("issuance is performed on a {}")
+    public void issuanceIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @When("issuance flow is completed")
+    public void issuanceFlowIsCompleted() {
+        //manual
+    }
+
+    @Then("credential is stored in the Wallet")
+    public void credentialIsStoredInTheWallet() {
+        //manual
+    }
+
+    @When("user presents the credential to the {}")
+    public void userPresentsTheCredentialToThe(String arg0) {
+        //manual
+    }
+
+    @And("presentation is performed on a {}")
+    public void presentationIsPerformedOnA(String arg0) {
+        //manual
+    }
+
+    @And("user shares {}")
+    public void userShares(String arg0) {
+        //manual
+    }
+
+    @Given("user initiates credential issuance using the {}")
+    public void userInitiatesCredentialIssuanceUsingThe(String arg0) {
+        //manual
+    }
+
+
+    @Given("the user is on the Relying Party service page on the same device as the Wallet")
+    public void theUserIsOnTheRelyingPartyServicePageOnTheSameDeviceAsTheWallet() {
+        //manual
+    }
+
+    @Then("a presentation request is initiated by the Relying Party")
+    public void aPresentationRequestIsInitiatedByTheRelyingParty() {
+        //manual
+    }
+
+    @Given("a presentation request has been initiated")
+    public void aPresentationRequestHasBeenInitiated() {
+        //manual
+    }
+
+    @When("the browser processes the Digital Credentials API invocation")
+    public void theBrowserProcessesTheDigitalCredentialsAPIInvocation() {
+        //manual
+    }
+
+    @Then("the user is prompted to grant permission")
+    public void theUserIsPromptedToGrantPermission() {
+        //manual
+    }
+
+    @Given("the browser displays a permission prompt")
+    public void theBrowserDisplaysAPermissionPrompt() {
+        //manual
+    }
+
+    @When("the user grants permission")
+    public void theUserGrantsPermission() {
+        //manual
+    }
+
+    @Then("the Operating System starts searching for suitable attestations")
+    public void theOperatingSystemStartsSearchingForSuitableAttestations() {
+        //manual
+    }
+
+    @When("the user denies permission")
+    public void theUserDeniesPermission() {
+        //manual
+    }
+
+    @Then("the presentation process is terminated")
+    public void thePresentationProcessIsTerminated() {
+        //manual
+    }
+
+    @Given("the Operating System searches installed Wallet Units")
+    public void theOperatingSystemSearchesInstalledWalletUnits() {
+        //manual
+    }
+
+    @When("suitable attestations matching the request exist")
+    public void suitableAttestationsMatchingTheRequestExist() {
+        //manual
+    }
+
+    @Then("the browser displays a selector interface with the matching attestations")
+    public void theBrowserDisplaysASelectorInterfaceWithTheMatchingAttestations() {
+        //manual
+    }
+
+    @When("no suitable attestations match the request")
+    public void noSuitableAttestationsMatchTheRequest() {
+        //manual
+    }
+
+    @Then("the user is notified and the process is terminated")
+    public void theUserIsNotifiedAndTheProcessIsTerminated() {
+        //manual
+    }
+
+    @Given("matching attestations are displayed in the selector interface")
+    public void matchingAttestationsAreDisplayedInTheSelectorInterface() {
+        //manual
+    }
+
+    @When("the user views the attestation list")
+    public void theUserViewsTheAttestationList() {
+        //manual
+    }
+
+    @Then("each attestation shows issuer, credential type, and wallet name")
+    public void eachAttestationShowsIssuerCredentialTypeAndWalletName() {
+        //manual
+    }
+
+    @Given("multiple Wallet Units contain suitable attestations")
+    public void multipleWalletUnitsContainSuitableAttestations() {
+        //manual
+    }
+
+    @When("the selector interface is displayed")
+    public void theSelectorInterfaceIsDisplayed() {
+        //manual
+    }
+
+    @Then("each attestation indicates which Wallet Unit holds it")
+    public void eachAttestationIndicatesWhichWalletUnitHoldsIt() {
+        //manual
+    }
+
+    @Given("the selector interface displays suitable attestations")
+    public void theSelectorInterfaceDisplaysSuitableAttestations() {
+        //manual
+    }
+
+    @When("the user selects one attestation")
+    public void theUserSelectsOneAttestation() {
+        //manual
+    }
+
+    @Then("the corresponding Wallet Unit is invoked by the Operating System")
+    public void theCorrespondingWalletUnitIsInvokedByTheOperatingSystem() {
+        //manual
+    }
+
+    @Given("the Wallet Unit is opened after attestation selection")
+    public void theWalletUnitIsOpenedAfterAttestationSelection() {
+        //manual
+    }
+
+    @When("the Wallet validates the request origin and RP identity")
+    public void theWalletValidatesTheRequestOriginAndRPIdentity() {
+        //manual
+    }
+
+    @Then("the verified identity of the Relying Party is displayed to the user")
+    public void theVerifiedIdentityOfTheRelyingPartyIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @Given("the Wallet has verified the Relying Party")
+    public void theWalletHasVerifiedTheRelyingParty() {
+        //manual
+    }
+
+    @When("the presentation request screen is shown")
+    public void thePresentationRequestScreenIsShown() {
+        //manual
+    }
+
+    @Then("the requested attestations and related attributes are displayed")
+    public void theRequestedAttestationsAndRelatedAttributesAreDisplayed() {
+        //manual
+    }
+
+    @Given("the presentation request screen is displayed in the Wallet")
+    public void thePresentationRequestScreenIsDisplayedInTheWallet() {
+        //manual
+    }
+
+    @When("the user provides consent to share selected attributes")
+    public void theUserProvidesConsentToShareSelectedAttributes() {
+        //manual
+    }
+
+    @When("the user enters a valid six-digit PIN")
+    public void theUserEntersAValidSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the attestation is presented successfully")
+    public void theAttestationIsPresentedSuccessfully() {
+        //manual
+    }
+
+    @Then("an authentication error is displayed")
+    public void anAuthenticationErrorIsDisplayed() {
+        //manual
+    }
+
+    @Given("the attestation has been presented to the Relying Party")
+    public void theAttestationHasBeenPresentedToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the Relying Party validates the attestation successfully")
+    public void theRelyingPartyValidatesTheAttestationSuccessfully() {
+        //manual
+    }
+
+    @Then("a verification confirmation is displayed in the browser")
+    public void aVerificationConfirmationIsDisplayedInTheBrowser() {
+        //manual
+    }
+
+    @When("the Relying Party fails to validate the attestation")
+    public void theRelyingPartyFailsToValidateTheAttestation() {
+        //manual
+    }
+
+    @Then("an error message is displayed and retry is allowed")
+    public void anErrorMessageIsDisplayedAndRetryIsAllowed() {
+        //manual
+    }
+
+    @Given("the user is on the Relying Party service page via a Desktop browser")
+    public void theUserIsOnTheRelyingPartyServicePageViaADesktopBrowser() {
+        //manual
+    }
+
+    @Then("a presentation request flow is initiated")
+    public void aPresentationRequestFlowIsInitiated() {
+        //manual
+    }
+
+    @Given("a presentation request flow has been initiated")
+    public void aPresentationRequestFlowHasBeenInitiated() {
+        //manual
+    }
+
+    @When("the Desktop browser invokes the Digital Credentials API")
+    public void theDesktopBrowserInvokesTheDigitalCredentialsAPI() {
+        //manual
+    }
+
+    @Given("the Desktop browser displays a permission prompt")
+    public void theDesktopBrowserDisplaysAPermissionPrompt() {
+        //manual
+    }
+
+    @Then("the Relying Party generates a presentation reques")
+    public void theRelyingPartyGeneratesAPresentationReques() {
+        //manual
+    }
+
+    @Given("a valid presentation request has been created")
+    public void aValidPresentationRequestHasBeenCreated() {
+        //manual
+    }
+
+    @When("the Desktop browser processes the request")
+    public void theDesktopBrowserProcessesTheRequest() {
+        //manual
+    }
+
+    @Then("a QR code is displayed to the user")
+    public void aQRCodeIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @Given("a QR code is displayed on the Desktop browser")
+    public void aQRCodeIsDisplayedOnTheDesktopBrowser() {
+        //manual
+    }
+
+    @When("the user scans the QR code with the mobile device camera")
+    public void theUserScansTheQRCodeWithTheMobileDeviceCamera() {
+        //manual
+    }
+
+    @Then("the presentation request is transferred to the mobile device")
+    public void thePresentationRequestIsTransferredToTheMobileDevice() {
+        //manual
+    }
+
+    @Given("the mobile device has received a presentation request")
+    public void theMobileDeviceHasReceivedAPresentationRequest() {
+        //manual
+    }
+
+    @When("the Mobile Operating System evaluates installed Wallet Units")
+    public void theMobileOperatingSystemEvaluatesInstalledWalletUnits() {
+        //manual
+    }
+
+    @Then("suitable attestations matching the request are identified")
+    public void suitableAttestationsMatchingTheRequestAreIdentified() {
+        //manual
+    }
+
+    @When("no installed Wallet Unit contains suitable attestations")
+    public void noInstalledWalletUnitContainsSuitableAttestations() {
+        //manual
+    }
+
+    @Given("suitable attestations exist on the mobile device")
+    public void suitableAttestationsExistOnTheMobileDevice() {
+        //manual
+    }
+
+    @When("the Mobile Operating System prepares the selection interface")
+    public void theMobileOperatingSystemPreparesTheSelectionInterface() {
+        //manual
+    }
+
+    @Then("a list of matching attestations is displayed")
+    public void aListOfMatchingAttestationsIsDisplayed() {
+        //manual
+    }
+
+    @Given("the selector interface is displayed on the mobile device")
+    public void theSelectorInterfaceIsDisplayedOnTheMobileDevice() {
+        //manual
+    }
+
+    @When("the user views the list of attestations")
+    public void theUserViewsTheListOfAttestations() {
+        //manual
+    }
+
+    @Then("each attestation displays issuer, credential type, and wallet name")
+    public void eachAttestationDisplaysIssuerCredentialTypeAndWalletName() {
+        //manual
+    }
+
+    @When("the selector interface is shown")
+    public void theSelectorInterfaceIsShown() {
+        //manual
+    }
+
+    @Then("each attestation indicates the Wallet Unit that holds it")
+    public void eachAttestationIndicatesTheWalletUnitThatHoldsIt() {
+        //manual
+    }
+
+    @Given("the selector interface displays matching attestations")
+    public void theSelectorInterfaceDisplaysMatchingAttestations() {
+        //manual
+    }
+
+    @Then("the corresponding Wallet Unit is invoked")
+    public void theCorrespondingWalletUnitIsInvoked() {
+        //manual
+    }
+
+    @Given("the Wallet Unit has been opened on the mobile device")
+    public void theWalletUnitHasBeenOpenedOnTheMobileDevice() {
+        //manual
+    }
+
+    @When("the Wallet validates the Relying Party identity and request origin")
+    public void theWalletValidatesTheRelyingPartyIdentityAndRequestOrigin() {
+        //manual
+    }
+
+    @Then("the verified identity is displayed to the user")
+    public void theVerifiedIdentityIsDisplayedToTheUser() {
+        //manual
+    }
+
+    @When("the user consents to share attributes and enters a valid {int}-digit PIN")
+    public void theUserConsentsToShareAttributesAndEntersAValidDigitPIN(int arg0) {
+        //manual
+    }
+
+    @When("the user consents to share attributes and enters a valid six-digit PIN")
+    public void theUserConsentsToShareAttributesAndEntersAValidSixDigitPIN() {
+        //manual
+    }
+
+    @Given("the attestation has been presented from the mobile Wallet")
+    public void theAttestationHasBeenPresentedFromTheMobileWallet() {
+        //manual
+    }
+
+    @Then("a verification confirmation is displayed in the Desktop browser")
+    public void aVerificationConfirmationIsDisplayedInTheDesktopBrowser() {
+        //manual
+    }
+
+    @Given("a wallet user navigates to the Documents section and selects to add from a list")
+    public void aWalletUserNavigatesToTheDocumentsSectionAndSelectsToAddFromAList() {
+        //manual
+    }
+
+    @When("the documents on the list are displayed")
+    public void theDocumentsOnTheListAreDisplayed() {
+        //manual
+    }
+
+    @Then("the user can see one PID option without any format indication")
+    public void theUserCanSeeOnePIDOptionWithoutAnyFormatIndication() {
+        //manual
+    }
+
+    @Given("a wallet user requests PID issuance")
+    public void aWalletUserRequestsPIDIssuance() {
+        //manual
+    }
+
+    @When("the PID provider processes the request")
+    public void thePIDProviderProcessesTheRequest() {
+        //manual
+    }
+
+    @Then("both ISO mdoc and SD-JWT VC formats are generated simultaneously")
+    public void bothISOMdocAndSDJWTVCFormatsAreGeneratedSimultaneously() {
+        //manual
+    }
+
+    @Given("both PID formats are generated successfully")
+    public void bothPIDFormatsAreGeneratedSuccessfully() {
+        //manual
+    }
+
+    @When("the PID is delivered to the user's wallet")
+    public void thePIDIsDeliveredToTheUserSWallet() {
+        //manual
+    }
+
+    @Then("both formats are received in a secure transaction")
+    public void bothFormatsAreReceivedInASecureTransaction() {
+        //manual
+    }
+
+    @Given("both PID formats are delivered to the wallet")
+    public void bothPIDFormatsAreDeliveredToTheWallet() {
+        //manual
+    }
+
+    @When("they are stored in the wallet")
+    public void theyAreStoredInTheWallet() {
+        //manual
+    }
+
+    @Then("both formats are accessible")
+    public void bothFormatsAreAccessible() {
+        //manual
+    }
+
+    @And("they appear as PID mdoc and PID sd-jwt in the user interface's documents section")
+    public void theyAppearAsPIDMdocAndPIDSdJwtInTheUserInterfaceSDocumentsSection() {
+        //manual
+    }
+
+    @Given("the wallet has both PID formats stored")
+    public void theWalletHasBothPIDFormatsStored() {
+        //manual
+    }
+
+    @When("a service requests PID-based identity verification")
+    public void aServiceRequestsPIDBasedIdentityVerification() {
+        //manual
+    }
+
+    @Then("the wallet automatically selects the appropriate format")
+    public void theWalletAutomaticallySelectsTheAppropriateFormat() {
+        //manual
+    }
+
+    @And("the user does not need to manually choose the format")
+    public void theUserDoesNotNeedToManuallyChooseTheFormat() {
+        //manual
+    }
+
+    @Given("either the mdoc or sd-jwt format fails to generate")
+    public void eitherTheMdocOrSdJwtFormatFailsToGenerate() {
+        //manual
+    }
+
+    @Then("the entire PID issuance process fails")
+    public void theEntirePIDIssuanceProcessFails() {
+        //manual
+    }
+
+    @And("no partial PID is stored in the wallet")
+    public void noPartialPIDIsStoredInTheWallet() {
         //manual
     }
 }

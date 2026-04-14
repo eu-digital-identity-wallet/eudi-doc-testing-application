@@ -7,7 +7,7 @@ Feature: Deleting a mDL document
     When the user opens a mDL
     Then the user should see the document contents
 
-  @US_RM_TC_02 @before_03
+  @US_RM_TC_02 @before_03 @release
   Scenario: User deletes the document
     Given the user has opened the selected mDL
     When the user presses the delete button for mDL

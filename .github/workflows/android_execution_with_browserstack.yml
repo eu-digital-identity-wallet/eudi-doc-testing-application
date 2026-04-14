@@ -10,6 +10,7 @@ on:
           - main
           - develop
           - milestone/2025.Q4
+          - milestone/2026.Q1
         default: develop
 
       test-cases:
@@ -172,5 +173,9 @@ jobs:
           name: android-device-logs
           path: android-logs/
 
-
-
+      - name: Upload Serenity JSON Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-serenity-json    # or ios-serenity-json
+          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/*.json

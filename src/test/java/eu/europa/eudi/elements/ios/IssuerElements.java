@@ -11,7 +11,7 @@ public class IssuerElements {
     public static By clickCountrySelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Country Selection\"]");
     public static By formIsDisplayed = By.xpath("//*[@label='EUDI Wallet Credential']");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
-    public static By successfullyShared = By.xpath("//XCUIElementTypeStaticText[@name=\"You successfully shared the following information with\"]");
+    public static By successfullyShared = By.id("document_success_screen_content_header_description");
     public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"]/preceding-sibling::*[1]\n");
     public static By clickCountry = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[13]/XCUIElementTypeTextField[1]");
@@ -49,4 +49,12 @@ public class IssuerElements {
     public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
+    public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select the Credentials you would like to issue:\"]");
+    public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
+    public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
+    public static By clickUsername = By.xpath("//XCUIElementTypeTextField");
+    public static By clickPassword = By.xpath("//XCUIElementTypeSecureTextField");
+    public static By clickSignIn = By.xpath("//XCUIElementTypeButton[@name=\"Sign In\"]");
+    public static By issueCredentialPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
+    public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
 }

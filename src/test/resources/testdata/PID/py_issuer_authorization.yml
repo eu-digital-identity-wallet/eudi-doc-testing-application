@@ -1,0 +1,31 @@
+screen: "PY Issuer Mandatory Information Form"
+
+fields:
+
+  "Birth Date":
+    value: "2020-02-10"
+    required: true
+
+  "Family Name":
+    value: "Papadopoulos"
+    required: true
+
+  "Given Name":
+    value: "Nikos"
+    required: true
+
+  "Issuing Authority":
+    value: "Test PID issuer"
+    required: true
+
+  "Issuing Country":
+    value: "FC"
+    required: true
+
+  "Nationality":
+    value: "GR"
+    required: true
+
+  "Place Of Birth":
+    value: "Athens"
+    required: true
