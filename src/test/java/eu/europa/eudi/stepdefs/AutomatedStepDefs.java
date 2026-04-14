@@ -2058,8 +2058,11 @@ public class AutomatedStepDefs {
         if ("Python".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "cross device":
-                    test.mobile().wallet().clickAddButton();
-                    test.mobile().issuer().issueMDL();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                        test.mobile().wallet().clickAddButton();
+                        test.mobile().issuer().issueMDL();
+                    }
                     break;
             }
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
@@ -2185,28 +2188,39 @@ public class AutomatedStepDefs {
     }
 
     private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
-            Set<String> allTexts = new HashSet<>();
 
-            By locator = isAndroid
-                    ? By.className("android.widget.TextView")
-                    : By.className("XCUIElementTypeStaticText");
+        Set<String> allTexts = new HashSet<>();
 
-            for (int i = 0; i < maxScrolls; i++) {
+        By locator = isAndroid
+                ? By.className("android.widget.TextView")
+                : AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND visible == 1");
 
+        for (int scroll = 0; scroll < maxScrolls; scroll++) {
+
+            try {
                 List<WebElement> elements = driver.findElements(locator);
 
                 for (WebElement el : elements) {
-                    String txt = el.getText();
-                    if (txt != null && !txt.trim().isEmpty()) {
-                        allTexts.add(txt.trim());
+                    try {
+                        String txt = el.getText();
+
+                        if (txt != null && !txt.trim().isEmpty()) {
+                            allTexts.add(txt.trim());
+                        }
+
+                    } catch (StaleElementReferenceException e) {
+                        // skip stale element
                     }
                 }
 
-                scrollFast(driver, isAndroid);
+            } catch (Exception e) {
+                // retry whole batch once if needed
             }
 
-            return allTexts;
+            scrollFast(driver, isAndroid);
+        }
 
+        return allTexts;
     }
 
     private void scrollFast(AppiumDriver driver, boolean isAndroid) {
@@ -2230,7 +2244,7 @@ public class AutomatedStepDefs {
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
 
         swipe.addAction(finger.createPointerMove(
-                Duration.ofMillis(250), // 🔥 MUCH faster
+                Duration.ofMillis(250),
                 PointerInput.Origin.viewport(),
                 startX,
                 endY

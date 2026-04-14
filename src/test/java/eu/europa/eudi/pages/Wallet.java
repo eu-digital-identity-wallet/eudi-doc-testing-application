@@ -104,7 +104,21 @@ public class Wallet {
             char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys("1");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+            // 1. Wait for PIN screen to actually be ready (NOT element-specific)
+            wait.until(d ->
+                    !d.findElements(By.className("XCUIElementTypeSecureTextField")).isEmpty()
+                            || !d.findElements(By.className("XCUIElementTypeTextField")).isEmpty()
+            );
+
+            // 2. Small stabilization pause (important for iOS animations)
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ignored) {}
+
+            // 3. Use ACTIVE ELEMENT (most stable approach on iOS)
+            driver.switchTo().activeElement().sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
@@ -1350,8 +1364,16 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
         } else {
+
+            By issueBtn = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
+
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
+                    .until(ExpectedConditions.refreshed(
+                            ExpectedConditions.elementToBeClickable(issueBtn)
+                    ))
+                    .click();
+//            test.mobileWebDriverFactory().getWait()
+//                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
         }
     }
 

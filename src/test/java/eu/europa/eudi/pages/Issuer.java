@@ -276,7 +276,47 @@ public class Issuer {
                 throw new RuntimeException("FormEU element not found in NATIVE after retries.");
             }
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
+           IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            boolean found = false;
+            int maxAttempts = 5;
+            int waitSeconds = 5;
+
+            By locator = eu.europa.eudi.elements.ios.IssuerElements.clickFormEu;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    // 🔥 IMPORTANT: refresh + re-locate every attempt (iOS fix)
+                    WebElement element = wait.until(
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
+                            )
+                    );
+
+                    wait.until(ExpectedConditions.elementToBeClickable(locator));
+
+                    element.click();
+
+                    System.out.println("Clicked FormEU in IOS on attempt " + attempt);
+
+                    found = true;
+
+                } catch (Exception e) {
+                    System.out.println("⚠ FormEU not found in IOS on attempt " + attempt);
+
+                    try {
+                        Thread.sleep(1000); // small stabilization wait
+                    } catch (InterruptedException ignored) {}
+                }
+            }
+
+            if (!found) {
+                throw new RuntimeException("FormEU element not found in IOS after retries.");
+            }
         }
     }
 
