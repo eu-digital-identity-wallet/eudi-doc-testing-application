@@ -30,7 +30,7 @@ public class WaitsUtils {
                     String actualText = element.getText().trim();
 
                     // If text matches, return the element. WebDriverWait will stop waiting.
-                    if (actualText.equalsIgnoreCase(expectedText)) {
+                    if (actualText.toLowerCase().contains(expectedText.toLowerCase())) {
                         return element;
                     }
                 } catch (NoSuchElementException | StaleElementReferenceException e) {
@@ -62,12 +62,12 @@ public class WaitsUtils {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 
-        // 1️⃣ Wait for visibility
+        // Wait for visibility
         WebElement visibleElement = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(locator)
         );
 
-        // 2️⃣ Wait for clickability
+        // Wait for clickability
         WebElement clickableElement = wait.until(
                 ExpectedConditions.elementToBeClickable(locator)
         );

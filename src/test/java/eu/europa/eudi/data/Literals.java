@@ -11,12 +11,12 @@ public interface Literals {
         LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
-        PID("eu.europa.ec.eudi.pid.1"),
-        PID_demo("PID (MSO Mdoc)"),
+
+        PID("PID (MSO MDoc)"),
         PID_IOS("eu_pid_doctype_name"),
         MDL("mDL (MSO Mdoc)"),
         MDL_IOS("mdl_doctype_name"),
-        DASHBOARD_PAGE("Welcome back, Foteini"),
+        DASHBOARD_PAGE("Welcome back, Nikos"),
         CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
         SUCCESS_MESSAGE_PID("You can now add your National ID"),
@@ -26,7 +26,7 @@ public interface Literals {
         ISSUANCE_DETAILS("PID (MSO Mdoc)"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
-        SCAN_QR("SCAN QR"),
+        SCAN_QR("Scan QR"),
         DETAILS_NATIONAL_ID("Family Name"),
         DETAILS_MDL("Date of birth"),
         DETAILS_DOCUMENT("Family Name(s)"),
@@ -43,7 +43,13 @@ public interface Literals {
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
         SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
-        DETAILS_ARE_BLURRED_REAL("eye.slash");
+        DETAILS_ARE_BLURRED_REAL("eye.slash"),
+        QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
+        ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)"),
+        QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document."),
+        PID_KOTLIN("PID (MSO MDoc)"),
+        QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
+        MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
 
         public final String label;
         Wallet(String label) {
@@ -59,7 +65,14 @@ public interface Literals {
         APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
         WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
         PRESENTATION_QUERY_TYPE("Request URI Method"),
-        CHOOSE_WALLET_DISPLAYED("Invoke Wallet");
+        CHOOSE_WALLET_DISPLAYED("Invoke Wallet"),
+        PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
+        MDL_IS_DISPLAYED_ON_WEB_KOTLIN("Mobile Driving Licence (MDL)"),
+        URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
+        PID_IS_DISPLAYED_ON_VERIFIER("eu.europa.ec.eudi.pid.1"),
+        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
+        SELECT_CREDENTIALS("Please select credentials"),
+        SPECIFIC_ATTRIBUTES_PAGE("Mobile Driving Licence (MDL)");
 
         public final String label;
         Verifier(String label) {
@@ -96,7 +109,10 @@ public interface Literals {
         FORM_DEV("For testing purposes only."),
         SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
         CODEISVISIBLE("Code"),
-        COUNTRY("Country");
+        COUNTRY("Country"),
+        CREDENTIAL_PAGE_KOTLIN("Please select the Credentials you would like to issue:"),
+        ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
+        SIGN_IN_USER_PAGE("Sign in to your account");
 
         public final String label;
         Issuer(String label) {

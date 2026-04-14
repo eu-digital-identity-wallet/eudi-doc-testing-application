@@ -1,0 +1,15 @@
+[ {
+  "duration" : 0.02,
+  "eventName" : "sdk:cli:logCreatedEvent",
+  "startTime" : 9111442.1494,
+  "success" : true,
+  "worker" : 1,
+  "failure" : null,
+  "details" : null,
+  "entryType" : "measure",
+  "platform" : 1,
+  "command" : null,
+  "testName" : null,
+  "hookType" : "",
+  "cli" : true
+} ]

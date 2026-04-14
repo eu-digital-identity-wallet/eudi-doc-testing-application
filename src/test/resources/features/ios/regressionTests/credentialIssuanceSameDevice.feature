@@ -28,7 +28,7 @@ Feature: Credential issuance process for the same device
     Then the user is redirected to the EUDI Wallet app
     And a success message is displayed on the EUDI Wallet app
 
-  @US_COSD_TC_04 @before_01
+  @US_COSD_TC_04 @before_01 @release
   Scenario: User views the issued credential in the EUDI Wallet
     Given the user sees a success message in the EUDI Wallet app
     When the user presses the CONTINUE button

@@ -21,7 +21,7 @@ Feature: Add Pid By Choosing From List
     When the user clicks on Credential Provider FormEU and submits for pid
     Then the provider form is displayed for the user to register personal data
 
-  @US_RIP_TC_04 @before_01
+  @US_RIP_TC_04 @before_01 @release
   Scenario: Enter data and display national ID
     Given a provider form is displayed
     When the user fills in the form

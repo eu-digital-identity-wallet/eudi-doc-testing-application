@@ -6,9 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static io.appium.java_client.remote.AndroidMobileCapabilityType.SKIP_UNLOCK;
-import static org.apache.http.HttpHeaders.TIMEOUT;
-
 /**
  * The {@link EnvDataConfig} exposes all properties contained in env.properties derived from {@link ResourcesConfig} to the tests.
  */

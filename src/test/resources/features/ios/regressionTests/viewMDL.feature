@@ -21,7 +21,7 @@ Feature: View mDL document
     When the user selects eye icon auto
     Then the attestation details should no longer be blurred auto
 
-  @US_VMDL_TC_04 @before_03
+  @US_VMDL_TC_04 @before_03 @release
   Scenario: User closes the mDL document and returns to the dashboard
     Given the mDL is open
     When the user clicks the back button
