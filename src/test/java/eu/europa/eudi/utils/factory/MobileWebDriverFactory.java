@@ -14,6 +14,8 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class MobileWebDriverFactory {
@@ -61,6 +63,14 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
                 options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
+                options.setCapability("appium:disableIdLocatorAutocompletion", true);
+                options.setCapability("appium:disableSuppressAccessibilityService", false);
+                Map<String, Object> appiumSettings = new HashMap<>();
+                appiumSettings.put("snapshotMaxDepth", 500);
+                appiumSettings.put("allowInvisibleElements", true);
+
+                options.setCapability("appium:settings", appiumSettings);
+
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");

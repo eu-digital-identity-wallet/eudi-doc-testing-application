@@ -528,8 +528,9 @@ public class Issuer {
 
                 // Not found → scroll UP
                 driver.findElement(AppiumBy.androidUIAutomator(
-                        uiScrollable + ".scrollBackward()"
-                ));
+                        "new UiScrollable(new UiSelector().scrollable(true))" +
+                                ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
+                )).click();
             }
         }
 
@@ -942,7 +943,7 @@ public class Issuer {
 // switch outside wait
             driver.context("NATIVE_APP");
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(150));
 
             WebElement header = wait.until(d -> {
                 try {

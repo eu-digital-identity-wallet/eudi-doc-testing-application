@@ -1139,7 +1139,7 @@ public class Wallet {
                     swipe.addAction(finger.createPointerMove(Duration.ZERO,
                             PointerInput.Origin.viewport(), startX, startY));
                     swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(80))); // smaller pause
+                    swipe.addAction(new Pause(finger, Duration.ofMillis(150))); // smaller pause
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(120),
                             PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));

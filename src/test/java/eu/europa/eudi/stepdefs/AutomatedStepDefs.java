@@ -2205,6 +2205,11 @@ public class AutomatedStepDefs {
             if (noChangeCounter >= 2) break;
 
             scrollFast(driver, startX, startY, endY);
+            try {
+                Thread.sleep(500); // 300–800ms works well on BrowserStack
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
         return allTexts;
@@ -2240,7 +2245,7 @@ public class AutomatedStepDefs {
 
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
 
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(80),
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(180),
                 PointerInput.Origin.viewport(), startX, endY));
 
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
