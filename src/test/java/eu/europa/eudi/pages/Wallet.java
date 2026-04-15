@@ -1148,9 +1148,7 @@ public class Wallet {
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                     Thread.sleep(50);
-                 Scroll until visible
-
-
+                }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 6; i++) {
