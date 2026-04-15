@@ -61,7 +61,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
                 options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
-//                options.setCapability("appium:waitForIdleTimeout", 100);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
