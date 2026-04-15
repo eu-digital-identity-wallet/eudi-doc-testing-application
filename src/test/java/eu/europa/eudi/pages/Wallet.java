@@ -11,6 +11,8 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -1120,35 +1122,33 @@ public class Wallet {
             String env = envDataConfig.getExecutionEnvironment();
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 22; i++) {
-                    try {
-                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
-                        if (mdlElement.isDisplayed()) {
-                            break;
-                        }
-                    } catch (Exception e) {
-                        // element not visible yet, continue scrolling
+                for (int i = 0; i < 22; i++) {  // reduce from 22 → 10
+
+                    if (isElementVisible(driver)) {
+                        break;
                     }
-                    // Get screen size
+
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.6);
-                    int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
+                    int startY = (int) (size.height * 0.7);
+                    int endY = (int) (size.height * 0.3);
+
                     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                     Sequence swipe = new Sequence(finger, 1);
 
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                    swipe.addAction(finger.createPointerMove(Duration.ZERO,
+                            PointerInput.Origin.viewport(), startX, startY));
                     swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                    swipe.addAction(new Pause(finger, Duration.ofMillis(80))); // smaller pause
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(120),
+                            PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    Thread.sleep(50);
+
+                    // ⚡ no Thread.sleep (big speed gain)
                 }
+
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 6; i++) {
@@ -1182,6 +1182,11 @@ public class Wallet {
                 }
             }
         }
+    }
+
+    private boolean isElementVisible(IOSDriver driver) {
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickMdl).isEmpty()
+                && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickMdl).get(0).isDisplayed();
     }
 
     public void scrollUntilPIDTwoPid() throws InterruptedException {

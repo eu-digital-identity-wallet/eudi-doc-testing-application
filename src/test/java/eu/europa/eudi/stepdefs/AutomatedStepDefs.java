@@ -1892,7 +1892,7 @@ public class AutomatedStepDefs {
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) throws InterruptedException, MalformedURLException {
         this.issuerType = issuerType;
         this.credential = credential;
-        test.mobile().wallet().launchApp();
+//        test.mobile().wallet().launchApp();
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":
@@ -2150,105 +2150,98 @@ public class AutomatedStepDefs {
 
         boolean isAndroid = test.getSystemOperation().equals(Literals.General.ANDROID.label);
 
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 6);
-            yml.fields.forEach((fieldKey, cfg) -> {
+        AppiumDriver driver = isAndroid
+                ? (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid()
+                : (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-                if (!cfg.required) return;
+        Set<String> screenTexts = collectAllTexts(driver, isAndroid, 6);
 
-                if (!screenTexts.contains(fieldKey)) {
-                    throw new AssertionError("Missing label: " + fieldKey);
+        yml.fields.forEach((fieldKey, cfg) -> {
+
+            if (!cfg.required) return;
+
+            if (!screenTexts.contains(fieldKey)) {
+                throw new AssertionError("Missing label: " + fieldKey);
+            }
+
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                if (!screenTexts.contains(cfg.value.trim())) {
+                    throw new AssertionError("Missing value: " + cfg.value);
                 }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    if (!screenTexts.contains(cfg.value.trim())) {
-                        throw new AssertionError("Missing value: " + cfg.value);
-                    }
-                }
-            });
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 5);
-            yml.fields.forEach((fieldKey, cfg) -> {
-
-                if (!cfg.required) return;
-
-                if (!screenTexts.contains(fieldKey)) {
-                    throw new AssertionError("Missing label: " + fieldKey);
-                }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    if (!screenTexts.contains(cfg.value.trim())) {
-                        throw new AssertionError("Missing value: " + cfg.value);
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 
     private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
 
         Set<String> allTexts = new HashSet<>();
 
-        By locator = isAndroid
-                ? By.className("android.widget.TextView")
-                : AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND visible == 1");
+        Dimension size = driver.manage().window().getSize();
 
-        for (int scroll = 0; scroll < maxScrolls; scroll++) {
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.65);
+        int endY = (int) (size.height * 0.35);
 
-            try {
-                List<WebElement> elements = driver.findElements(locator);
+        String lastPageSource = "";
+        int noChangeCounter = 0;
 
-                for (WebElement el : elements) {
-                    try {
-                        String txt = el.getText();
+        for (int i = 0; i < maxScrolls; i++) {
 
-                        if (txt != null && !txt.trim().isEmpty()) {
-                            allTexts.add(txt.trim());
-                        }
+            String pageSource = driver.getPageSource();
 
-                    } catch (StaleElementReferenceException e) {
-                        // skip stale element
-                    }
-                }
-
-            } catch (Exception e) {
-                // retry whole batch once if needed
+            // stop if UI stopped changing
+            if (pageSource.equals(lastPageSource)) {
+                noChangeCounter++;
+            } else {
+                noChangeCounter = 0;
             }
 
-            scrollFast(driver, isAndroid);
+            lastPageSource = pageSource;
+
+            // extract text FAST (regex-based, no WebElements)
+            extractTexts(pageSource, allTexts, isAndroid);
+
+            // stop early if no new content twice
+            if (noChangeCounter >= 2) break;
+
+            scrollFast(driver, startX, startY, endY);
         }
 
         return allTexts;
     }
 
-    private void scrollFast(AppiumDriver driver, boolean isAndroid) {
+    private void extractTexts(String pageSource, Set<String> allTexts, boolean isAndroid) {
 
-        Dimension size = driver.manage().window().getSize();
+        Pattern pattern;
 
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.6);
-        int endY = (int) (size.height * 0.3);
+        if (isAndroid) {
+            pattern = Pattern.compile("text=\"(.*?)\"");
+        } else {
+            pattern = Pattern.compile("label=\"(.*?)\"");
+        }
+
+        Matcher matcher = pattern.matcher(pageSource);
+
+        while (matcher.find()) {
+            String txt = matcher.group(1).trim();
+            if (!txt.isEmpty()) {
+                allTexts.add(txt);
+            }
+        }
+    }
+
+    private void scrollFast(AppiumDriver driver, int startX, int startY, int endY) {
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1);
 
-        swipe.addAction(finger.createPointerMove(
-                Duration.ZERO,
-                PointerInput.Origin.viewport(),
-                startX,
-                startY
-        ));
+        swipe.addAction(finger.createPointerMove(Duration.ZERO,
+                PointerInput.Origin.viewport(), startX, startY));
 
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
 
-        swipe.addAction(finger.createPointerMove(
-                Duration.ofMillis(250),
-                PointerInput.Origin.viewport(),
-                startX,
-                endY
-        ));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(80),
+                PointerInput.Origin.viewport(), startX, endY));
 
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
