@@ -184,7 +184,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <rerunFailingTestsCount>7</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <skip>false</skip>
                 </configuration>
             </plugin>
