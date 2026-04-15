@@ -906,7 +906,7 @@ public class Issuer {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
-            while (i < 5) {
+            while (i < 4) {
                 WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
