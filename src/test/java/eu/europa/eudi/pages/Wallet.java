@@ -1120,41 +1120,36 @@ public class Wallet {
             String env = envDataConfig.getExecutionEnvironment();
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-//                for (int i = 0; i < 22; i++) {
-//                    try {
-//                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
-//                        if (mdlElement.isDisplayed()) {
-//                            break;
-//                        }
-//                    } catch (Exception e) {
-//                        // element not visible yet, continue scrolling
-//                    }
-//                    // Get screen size
-//                    Dimension size = driver.manage().window().getSize();
-//                    int startX = size.width / 2;
-//                    int startY = (int) (size.height * 0.6);
-//                    int endY = (int) (size.height * 0.5);
-//                    // --- START: REPLACEMENT FOR TouchAction ---
-//                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-//                    Sequence swipe = new Sequence(finger, 1);
-//
-//                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-//                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-//                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-//                    // This replaces your waitAction
-//                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-//                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-//
-//                    driver.perform(Collections.singletonList(swipe));
-//                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-//                    Thread.sleep(50);
-                // Scroll until visible
-                driver.executeScript("mobile: scroll", Map.of(
-                        "predicateString", "label CONTAINS 'mDL'"
-                ));
+                for (int i = 0; i < 22; i++) {
+                    try {
+                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
+                        if (mdlElement.isDisplayed()) {
+                            break;
+                        }
+                    } catch (Exception e) {
+                        // element not visible yet, continue scrolling
+                    }
+                    // Get screen size
+                    Dimension size = driver.manage().window().getSize();
+                    int startX = size.width / 2;
+                    int startY = (int) (size.height * 0.6);
+                    int endY = (int) (size.height * 0.5);
+                    // --- START: REPLACEMENT FOR TouchAction ---
+                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                    Sequence swipe = new Sequence(finger, 1);
 
-// Then click normally
-                driver.findElement(By.id("mDL (MSO Mdoc)")).click();
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                    // This replaces your waitAction
+                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                    driver.perform(Collections.singletonList(swipe));
+                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    Thread.sleep(50);
+                 Scroll until visible
+
 
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
