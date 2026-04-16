@@ -44,15 +44,14 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-//                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
-                String appUrl = System.getProperty("app.url");
+                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 UiAutomator2Options options = new UiAutomator2Options();
-                if (envCI.equalsIgnoreCase("githubactions")) {
-                    options.setCapability("appium:app", appUrl);
-                }else{
+//                if (envCI.equalsIgnoreCase("githubactions")) {
+//                    options.setCapability("appium:app", appUrl);
+//                }else{
                     options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
-                }
+              //  }
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
