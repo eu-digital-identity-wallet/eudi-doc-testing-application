@@ -44,7 +44,8 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+//                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
+                String appUrl = System.getProperty("app.url");
                 // --- BrowserStack setup ---
                 UiAutomator2Options options = new UiAutomator2Options();
                 if (envCI.equalsIgnoreCase("githubactions")) {
