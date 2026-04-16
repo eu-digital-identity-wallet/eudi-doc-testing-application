@@ -1,4 +1,4 @@
-@IOS @US_ETESA @automated
+@IOS @US_CIPSDPYPID @automated
 Feature: Automated Regression Tests PID
 
   @before_01
