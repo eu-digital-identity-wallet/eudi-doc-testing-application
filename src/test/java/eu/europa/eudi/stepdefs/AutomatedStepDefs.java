@@ -1892,7 +1892,7 @@ public class AutomatedStepDefs {
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) throws InterruptedException, MalformedURLException {
         this.issuerType = issuerType;
         this.credential = credential;
-//        test.mobile().wallet().launchApp();
+        test.mobile().wallet().launchApp();
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":

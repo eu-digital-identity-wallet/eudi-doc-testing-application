@@ -508,34 +508,11 @@ public class Issuer {
     }
 
     private void selectYearScrollUp(AndroidDriver driver, String year) {
-        String uiScrollable =
-                "new UiScrollable(new UiSelector().scrollable(true))";
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
+        )).click();
 
-        // Try up to 25 scrolls (enough to reach very old years)
-        for (int i = 0; i < 25; i++) {
-
-            try {
-                // Check if year is visible
-                WebElement yearEl = driver.findElement(
-                        By.xpath("//*[@text='" + year + "']")
-                );
-
-                // Found → click and exit
-                yearEl.click();
-                return;
-
-            } catch (NoSuchElementException e) {
-
-                // Not found → scroll UP
-                driver.findElement(AppiumBy.androidUIAutomator(
-                        "new UiScrollable(new UiSelector().scrollable(true))" +
-                                ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
-                )).click();
-            }
-        }
-
-        // If we reach here, year was never found
-        throw new AssertionError("Year not found in date picker (scroll up only): " + year);
     }
 
     public void enterDocumentNumber() {
