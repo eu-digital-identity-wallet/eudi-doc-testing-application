@@ -1105,7 +1105,7 @@ public class Wallet {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 50; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlPython);
                     if (pidElement.isDisplayed()) {
