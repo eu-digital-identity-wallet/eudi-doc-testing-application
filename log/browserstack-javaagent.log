@@ -20769,3 +20769,1603 @@ hashed_id: "f24092964a3ca121cbcae47cc1cb8cddd9541108"
 	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
 	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
 
+13:54:57.423 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+13:54:57.963 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+13:54:57.964 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+13:54:58.323 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:54:58.323 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+13:54:58.325 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+13:55:57.936 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+13:55:58.461 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+13:55:58.462 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+13:55:58.828 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:55:58.828 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+13:55:58.830 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+13:57:05.014 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+13:57:05.573 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+13:57:05.574 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+13:57:05.813 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:57:05.814 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+13:57:05.815 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:02:41.284 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:02:41.785 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:02:41.786 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:02:42.043 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:02:42.043 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:02:42.044 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:08:09.354 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:08:09.806 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:08:09.807 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:08:10.063 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:08:10.063 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:08:10.064 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:10:26.356 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:10:27.437 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:10:27.438 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:10:28.841 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:10:28.842 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:10:28.845 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:13:58.957 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:13:59.433 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:13:59.435 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:13:59.697 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:13:59.697 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:13:59.698 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:17:27.727 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:17:28.735 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:17:28.737 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:17:29.312 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:17:29.312 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:17:29.314 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:22:27.954 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:22:28.534 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:22:28.535 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:22:28.841 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:22:28.841 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:22:28.842 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:26:04.812 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:26:05.917 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:26:05.918 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:26:06.379 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:26:06.380 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:26:06.382 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:29:48.322 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:29:50.190 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:29:50.193 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:29:50.568 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:29:50.568 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:29:50.571 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:37:54.013 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:37:54.506 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:37:54.507 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:37:54.813 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:37:54.813 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:37:54.814 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:44:18.928 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:44:20.550 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:44:20.554 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:44:21.578 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:44:21.579 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:44:21.581 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:39:10.967 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:39:11.393 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:39:11.394 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:39:11.632 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:39:11.633 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:39:11.633 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:45:28.537 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:45:29.764 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:45:29.766 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:45:31.275 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:45:31.276 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:45:31.277 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:57:58.743 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:57:59.366 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:57:59.368 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:57:59.927 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:57:59.927 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:57:59.930 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:02:20.421 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:02:21.577 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:02:21.579 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:02:22.904 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:02:22.904 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:02:22.907 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:06:03.036 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:06:03.672 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:06:03.673 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:06:03.983 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:06:03.984 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:06:03.985 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:24:53.678 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:24:54.285 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:24:54.286 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:24:54.536 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:24:54.536 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:24:54.538 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:32:25.834 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:32:26.318 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:32:26.319 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:32:26.629 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:32:26.629 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:32:26.630 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:37:10.184 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:37:11.929 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:37:11.930 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:37:12.380 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:37:12.380 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:37:12.381 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:41:51.828 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+16:41:52.509 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+16:41:52.510 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+16:41:52.830 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:41:52.831 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:41:52.832 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:30:27.658 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+17:30:28.314 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+17:30:28.319 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+17:30:28.661 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:30:28.662 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:30:28.662 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:34:50.192 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+17:34:51.161 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+17:34:51.163 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+17:34:51.681 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:34:51.682 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:34:51.684 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:39:57.375 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+17:39:58.666 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+17:39:58.668 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+17:39:59.493 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:39:59.493 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:39:59.495 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:18:39.216 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:18:39.597 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:18:39.598 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:18:39.836 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:18:39.836 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:18:39.838 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:25:27.259 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:25:27.834 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:25:27.835 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:25:28.110 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:25:28.111 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:25:28.112 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:32:58.396 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:32:58.759 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:32:58.760 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:32:58.975 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:32:58.976 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:32:58.977 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:38:02.822 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:38:04.189 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:38:04.191 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:38:04.583 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:38:04.583 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:38:04.585 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:42:01.614 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:42:02.246 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:42:02.247 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:42:02.567 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:42:02.568 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:42:02.569 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:46:50.545 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:46:50.901 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:46:50.902 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:46:51.124 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:46:51.124 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:46:51.125 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:51:03.199 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:51:03.632 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:51:03.633 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:51:03.866 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:51:03.867 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:51:03.868 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:55:45.192 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+09:55:45.560 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+09:55:45.561 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+09:55:45.800 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:55:45.800 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:55:45.801 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:01:06.401 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:01:07.229 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:01:07.230 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:01:09.323 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:01:09.324 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:01:09.326 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:05:48.979 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:05:49.372 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:05:49.373 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:05:49.595 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:05:49.595 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:05:49.596 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:10:44.072 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:10:44.426 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:10:44.427 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:10:44.637 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:10:44.638 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:10:44.638 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:16:05.418 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:16:05.893 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:16:05.893 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:16:06.126 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:16:06.126 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:16:06.127 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:19:59.796 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:20:00.224 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:20:00.226 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:20:00.494 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:20:00.495 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:20:00.496 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:28:51.858 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:28:52.313 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:28:52.313 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:28:52.534 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:28:52.534 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:28:52.536 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:31:55.143 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:31:55.857 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:31:55.859 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:31:56.255 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:31:56.256 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:31:56.257 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:38:12.717 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:38:13.804 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:38:13.805 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:38:14.206 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:38:14.207 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:38:14.209 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:43:29.162 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:43:29.585 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:43:29.586 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:43:29.818 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:43:29.818 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:43:29.820 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:48:01.415 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:48:01.788 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:48:01.789 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:48:01.991 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:48:01.991 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:48:01.993 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:51:27.733 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:51:28.655 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:51:28.656 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:51:30.043 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:51:30.043 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:51:30.045 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:55:16.728 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:55:17.681 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:55:17.682 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:55:19.026 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:55:19.027 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:55:19.028 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:58:18.171 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+10:58:19.936 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+10:58:19.937 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+10:58:20.337 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:58:20.338 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:58:20.339 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:21:31.348 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:21:31.867 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:21:31.868 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:21:32.200 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:21:32.200 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:21:32.202 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:26:11.807 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:26:12.767 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:26:12.767 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:26:13.288 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:26:13.288 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:26:13.290 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:29:14.204 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:29:15.195 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:29:15.197 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:29:15.650 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:29:15.650 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:29:15.650 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:32:47.526 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:32:47.934 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:32:47.935 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:32:48.159 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:32:48.159 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:32:48.160 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:37:20.229 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:37:21.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:37:21.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:37:21.720 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:37:21.720 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:37:21.720 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:44:36.903 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:44:37.831 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:44:37.832 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:44:38.366 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:44:38.367 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:44:38.369 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:46:55.676 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:46:56.152 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:46:56.154 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:46:56.413 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:46:56.413 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:46:56.413 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:50:15.117 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:50:16.112 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:50:16.114 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:50:16.539 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:50:16.539 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:50:16.541 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:53:28.146 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:53:28.688 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:53:28.691 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:53:28.957 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:53:28.958 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:53:28.958 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:55:40.810 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:55:41.306 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:55:41.307 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:55:41.561 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:55:41.562 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:55:41.563 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:59:55.843 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+11:59:56.280 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+11:59:56.280 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+11:59:56.508 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:59:56.510 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:59:56.510 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:02:48.455 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:02:48.976 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:02:48.977 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:02:49.220 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:02:49.221 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:02:49.222 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:08:20.545 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:08:21.012 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:08:21.013 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:08:21.274 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:08:21.275 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:08:21.276 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:12:09.844 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:12:10.505 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:12:10.506 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:12:10.816 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:12:10.816 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:12:10.818 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:14:57.365 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:14:58.347 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:14:58.348 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:14:58.735 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:14:58.735 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:14:58.737 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:19:04.166 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:19:05.286 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:19:05.289 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:19:05.825 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:19:05.825 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:19:05.828 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:26:15.903 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:26:16.538 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:26:16.539 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:26:16.833 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:26:16.834 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:26:16.835 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:30:33.492 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+12:30:34.109 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+12:30:34.110 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+12:30:34.464 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:30:34.465 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:30:34.466 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+13:51:32.932 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+13:51:33.311 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+13:51:33.312 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+13:51:33.523 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:51:33.523 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+13:51:33.524 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+13:58:27.313 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+13:58:27.783 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+13:58:27.784 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+13:58:28.019 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+13:58:28.019 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+13:58:28.020 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:02:28.857 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:02:29.470 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:02:29.471 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:02:29.733 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:02:29.734 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:02:29.735 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:08:13.611 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:08:14.003 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:08:14.005 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:08:14.225 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:08:14.226 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:08:14.227 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:18:00.314 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:18:00.786 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:18:00.787 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:18:01.050 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:18:01.051 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:18:01.052 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:30:48.635 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:30:49.015 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:30:49.016 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:30:49.240 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:30:49.240 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:30:49.241 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:40:59.464 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:41:00.035 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:41:00.035 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:41:00.285 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:41:00.285 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:41:00.289 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:46:15.953 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:46:16.455 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:46:16.456 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:46:16.723 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:46:16.724 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:46:16.725 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:52:22.364 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:52:23.208 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:52:23.208 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:52:23.600 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:52:23.600 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:52:23.600 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:58:51.057 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+14:58:51.601 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+14:58:51.602 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+14:58:51.889 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:58:51.889 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:58:51.890 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:03:21.578 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:03:22.113 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:03:22.114 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:03:22.382 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:03:22.382 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:03:22.382 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:08:15.599 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:08:16.107 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:08:16.108 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:08:16.385 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:08:16.385 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:08:16.388 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:13:15.753 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:13:16.948 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:13:16.950 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:13:17.396 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:13:17.396 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:13:17.398 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:20:42.418 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:20:42.920 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:20:42.921 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:20:43.160 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:20:43.161 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:20:43.162 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:26:10.222 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:26:11.232 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:26:11.234 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:26:11.766 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:26:11.768 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:26:11.770 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:31:36.869 [main] DEBUG c.browserstack.BrowserStackJavaAgent - Extracted CLI argument from system : null
+15:31:37.369 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.40.0
+15:31:37.371 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 10.0.0
+15:31:37.625 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:31:37.625 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:31:37.625 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\ftheofil\Projects\eu-digital-identity-walleteudi-doc-testing-application-internal. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.a(Unknown Source)
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.startBrowserStackAgent(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+

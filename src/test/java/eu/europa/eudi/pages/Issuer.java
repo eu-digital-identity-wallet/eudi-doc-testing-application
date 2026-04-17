@@ -10,8 +10,10 @@ import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -188,6 +190,9 @@ public class Issuer {
 
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//            driver.runAppInBackground(Duration.ofSeconds(30));
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickEudiwButton)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
@@ -508,8 +513,14 @@ public class Issuer {
     }
 
     private void selectYearScrollUp(AndroidDriver driver, String year) {
+//        driver.findElement(AppiumBy.androidUIAutomator(
+//                "new UiScrollable(new UiSelector().scrollable(true))" +
+//                        ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
+//        )).click();
+
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollBackward()" +
                         ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
         )).click();
 
@@ -920,7 +931,7 @@ public class Issuer {
 // switch outside wait
             driver.context("NATIVE_APP");
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(150));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(250));
 
             WebElement header = wait.until(d -> {
                 try {
@@ -932,6 +943,8 @@ public class Issuer {
                     return null;
                 }
             });
+
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement header = WaitsUtils.waitForExactText(
@@ -1704,7 +1717,7 @@ public class Issuer {
     public void scrollUntilFindSign() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 1; i++) {
+            for (int i = 0; i < 2; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
@@ -2047,8 +2060,8 @@ public class Issuer {
                 Sequence swipe = new Sequence(finger, 0);
                 swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(150))); // shorter pause
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(270), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // shorter pause
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 // Perform swipe
@@ -2618,16 +2631,18 @@ public class Issuer {
     public void scrollUntilMdlIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed);
                 } catch (Exception e) {
-                    slowScroll();  // ← slow scroll instead of UiScrollable
+                    slowScroll(); // ← slow scroll instead of UiScrollable
                 }
 
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();

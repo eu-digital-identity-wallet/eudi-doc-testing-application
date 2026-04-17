@@ -1103,9 +1103,9 @@ public class Wallet {
     public void scrollUntilmDLOnDocuments() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 80; i++) {
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlPython);
                     if (pidElement.isDisplayed()) {
@@ -1973,4 +1973,15 @@ public class Wallet {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickToViewDetailsSecond)).click();
     }
 
+    public boolean isQrVisible() {
+        if (!test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            return false;
+        }
+
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        return driver.findElements(
+                eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR
+        ).stream().anyMatch(WebElement::isDisplayed);
+    }
 }
