@@ -8636,6 +8636,71 @@ public class ManuallyStepDefs {
     public void noPartialPIDIsStoredInTheWallet() {
         //manual
     }
+
+    @And("an existing PID or attestation is stored in the Wallet")
+    public void anExistingPIDOrAttestationIsStoredInTheWallet() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option from the Issuer details")
+    public void theUserSelectsTheReIssuanceOptionFromTheIssuerDetails() {
+        //manual
+    }
+
+    @Then("the wallet requests re-issuance from the issuer")
+    public void theWalletRequestsReIssuanceFromTheIssuer() {
+        //manual
+    }
+
+    @Given("the user requested re-issuance for an existing PID or attestation")
+    public void theUserRequestedReIssuanceForAnExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet sends the re-issuance request")
+    public void theWalletSendsTheReIssuanceRequest() {
+        //manual
+    }
+
+    @Then("the request is sent to the same issuer that issued the original PID or attestation")
+    public void theRequestIsSentToTheSameIssuerThatIssuedTheOriginalPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the request is for the same PID or attestation type")
+    public void theRequestIsForTheSamePIDOrAttestationType() {
+        //manual
+    }
+
+    @Given("an existing PID or attestation is already stored in the Wallet")
+    public void anExistingPIDOrAttestationIsAlreadyStoredInTheWallet() {
+        //manual
+    }
+
+    @When("the Wallet receives the re-issued PID or attestation of the same type")
+    public void theWalletReceivesTheReIssuedPIDOrAttestationOfTheSameType() {
+        //manual
+    }
+
+    @Then("the existing PID or attestation is replaced")
+    public void theExistingPIDOrAttestationIsReplaced() {
+        //manual
+    }
+
+    @Given("the original PID or attestation was issued in batch")
+    public void theOriginalPIDOrAttestationWasIssuedInBatch() {
+        //manual
+    }
+
+    @When("the issuer re-issues the PID or attestation")
+    public void theIssuerReIssuesThePIDOrAttestation() {
+        //manual
+    }
+
+    @Then("the PID or attestation is re-issued in batch")
+    public void thePIDOrAttestationIsReIssuedInBatch() {
+        //manual
+    }
 }
 
 
