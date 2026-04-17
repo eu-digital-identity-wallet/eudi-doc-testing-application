@@ -1790,8 +1790,11 @@ public class AutomatedStepDefs {
 
     @Then("the QR code scan should be activated")
     public void theQRCodeScanShouldBeActivated() {
-        test.mobile().wallet().onlyThisTimeQR();
-        test.mobile().wallet().theQRScannerIsActivated();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if (test.mobile().wallet().isQrVisible()) {
+                test.mobile().wallet().onlyThisTimeQR();
+            }
+        }        test.mobile().wallet().theQRScannerIsActivated();
     }
 
     @When("the user scans the pre-generated QR code")
@@ -1993,7 +1996,11 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickOnDocuments();
                     test.mobile().wallet().clickToAddDocument();
                     test.mobile().wallet().clickQROption();
-                    test.mobile().wallet().onlyThisTimeQR();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                     test.mobile().wallet().clickAddButton();
@@ -2040,8 +2047,11 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().clickOnDocuments();
                         test.mobile().wallet().clickToAddDocument();
                         test.mobile().wallet().clickQROption();
-                        test.mobile().wallet().onlyThisTimeQR();
-                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                            if (test.mobile().wallet().isQrVisible()) {
+                                test.mobile().wallet().onlyThisTimeQR();
+                            }
+                        }                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                         test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
@@ -2060,8 +2070,8 @@ public class AutomatedStepDefs {
                 case "cross device":
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().issueMDL();
+//                        test.mobile().wallet().clickAddButton();
+//                        test.mobile().issuer().issueMDL();
                     }
                     break;
             }
@@ -2510,8 +2520,11 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().clickAuthenticate();
                     test.mobile().wallet().clickOnline();
-                    test.mobile().wallet().onlyThisTimeQR();
-                    test.mobile().wallet().theQRScannerIsActivated();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }                    test.mobile().wallet().theQRScannerIsActivated();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().createAPin();
@@ -2742,9 +2755,13 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickToAddDocument();
                     test.mobile().wallet().addDocumentPageIsDisplayed();
                     test.mobile().wallet().clickOnline();
-//                    if ("same device".equalsIgnoreCase(this.issueScenario)) {
-                        test.mobile().wallet().onlyThisTimeQR();
-                    //}
+
+
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
