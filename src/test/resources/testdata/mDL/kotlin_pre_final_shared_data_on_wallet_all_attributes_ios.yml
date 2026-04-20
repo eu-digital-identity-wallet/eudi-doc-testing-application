@@ -1,0 +1,41 @@
+screen: "Wallet - PID details"
+
+fields:
+
+  Birth Date:
+    required: true
+    value: "30 May 1948"
+
+  "Distinguishing Sign":
+    value: "GR"
+    required: true
+
+  "Document Number":
+    value: "A123-4567-8900"
+    required: true
+
+  "Expiry Date":
+    value: "31 Dec 2040"
+    required: true
+
+  "Family Name(s)":
+    value: "Georgiou"
+    required: true
+
+  "Given Name(s)":
+    value: "Georgios"
+    required: true
+
+  "Issuance Date":
+    value: "01 Jan 2000"
+    required: true
+
+  "Issuing Authority":
+    value: "Ministry of Infrastructure and Transportation"
+    required: true
+
+  "Portrait Image":
+    value: ""
+    required: false
+
+

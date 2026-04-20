@@ -2667,9 +2667,13 @@ public class AutomatedStepDefs {
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
 
                         } else {
-
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            }
                         }
                     }
 
