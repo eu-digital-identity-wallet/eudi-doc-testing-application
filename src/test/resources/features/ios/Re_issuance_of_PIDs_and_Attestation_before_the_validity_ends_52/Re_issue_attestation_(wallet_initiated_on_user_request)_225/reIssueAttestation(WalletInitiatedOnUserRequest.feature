@@ -1,10 +1,9 @@
-@IOS @US_RIAWIOUR
-Feature: User Authentication and Re-Issuance of PIDs/Attestations
+@IOS Feature: User Authentication and Re-Issuance of PIDs/Attestations
   As an EUDI User,
   I want to re-issue a PID/attestation from the original issuer by replacing an existing PID or attestation
   so that fresh attestations are available in my EUDI Wallet.
 
-  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/225
+  # https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/225
 
   @US_RIAWIOUR_TC_01
   Scenario: Successful authentication
@@ -20,59 +19,27 @@ Feature: User Authentication and Re-Issuance of PIDs/Attestations
     And the user can retry the authentication
 
   @US_RIAWIOUR_TC_03
-  Scenario: User initiates re-issuance
+  Scenario: User initiates re-issuance from an existing PID or attestation
     Given the user is authenticated in the Wallet
-    When the user selects the re-issuance option from an existing PID or attestation
-    Then the wallet checks for a valid refresh token
+    And an existing PID or attestation is stored in the Wallet
+    When the user selects the re-issuance option from the Issuer details
+    Then the wallet requests re-issuance from the issuer
 
   @US_RIAWIOUR_TC_04
-  Scenario: Wallet requests re-issuance with valid token
-    Given the wallet has a valid refresh token
-    When the wallet requests the issuer to issue the same PID or attestation
-    Then the wallet receives the new PID or attestation
+  Scenario: Wallet requests re-issuance to the same issuer for same document type
+    Given the user requested re-issuance for an existing PID or attestation
+    When the wallet sends the re-issuance request
+    Then the request is sent to the same issuer that issued the original PID or attestation
+    And the request is for the same PID or attestation type
 
   @US_RIAWIOUR_TC_05
-  Scenario: Notification on attribute differences
-    Given the wallet received the new PID or attestation
-    When the wallet compares the attribute values to the existing ones
-    And there are differences
-    Then the wallet notifies the user
+  Scenario: Existing PID or attestation is replaced by the re-issued one
+    Given an existing PID or attestation is already stored in the Wallet
+    When the Wallet receives the re-issued PID or attestation of the same type
+    Then the existing PID or attestation is replaced
 
   @US_RIAWIOUR_TC_06
-  Scenario: Presentation of new PID or attestation
-    Given the wallet received the new PID or attestation
-    When the wallet confirms the issuance
-    Then the wallet presents the PID or attestation to the user
-    And informs the user it has been stored
-
-  @US_RIAWIOUR_TC_07
-  Scenario: User redirected for authentication
-    Given the wallet does not have a valid refresh token
-    When the user selects the re-issuance option
-    Then the user is redirected to the issuer service for authentication
-
-  @US_RIAWIOUR_TC_08
-  Scenario: User consents to issuance
-    Given the user is authenticated with the issuer service
-    When the issuer displays the PID or attestation details
-    Then the user clicks Agree and proceed to issuance
-
-  @US_RIAWIOUR_TC_09
-  Scenario: Issuer issues PID or attestation
-    Given the user consented to the issuance
-    When the issuer service issues the PID or attestation
-    Then the user is redirected back to the Wallet
-
-  @US_RIAWIOUR_TC_10
-  Scenario: Successful storage of new PID or attestation
-    Given the wallet received the new PID or attestation
-    When the wallet confirms the issuance
-    Then the wallet presents the PID or attestation to the user
-    And informs the user it has been stored
-
-  @US_RIAWIOUR_TC_11
-  Scenario: Redirection issues to issuer service
-    Given the wallet attempts to redirect the user to the issuer service
-    When there is an issue in the redirection
-    Then the user should be able to return back to the Wallet
-    And still be able to make any other option
+  Scenario: Re-issuance in batch when the original issuance was in batch
+    Given the original PID or attestation was issued in batch
+    When the issuer re-issues the PID or attestation
+    Then the PID or attestation is re-issued in batch
