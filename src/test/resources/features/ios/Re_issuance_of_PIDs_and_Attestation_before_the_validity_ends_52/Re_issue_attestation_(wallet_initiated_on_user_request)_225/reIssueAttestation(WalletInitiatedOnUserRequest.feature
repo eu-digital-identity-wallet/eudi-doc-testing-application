@@ -1,4 +1,6 @@
-@IOS Feature: User Authentication and Re-Issuance of PIDs/Attestations
+@IOS
+
+Feature: User Authentication and Re-Issuance of PIDs/Attestations
   As an EUDI User,
   I want to re-issue a PID/attestation from the original issuer by replacing an existing PID or attestation
   so that fresh attestations are available in my EUDI Wallet.
