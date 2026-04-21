@@ -91,4 +91,5 @@ public class WalletElements {
     public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
  public static By clickToViewDetailsSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[3]");
+    public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
 }
