@@ -2631,16 +2631,26 @@ public class Issuer {
     public void scrollUntilMdlIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
+            WebElement element = null;
+
+            for (int i = 0; i < 80; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed);
-                } catch (Exception e) {
-                    slowScroll(); // ← slow scroll instead of UiScrollable
+                    element = driver.findElement(WalletElements.clickMSISDNPython);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll();
                 }
 
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                try {
+                    Thread.sleep(300); // let UI settle
+                } catch (InterruptedException ignored) {}
+            }
 
 
         } else {
