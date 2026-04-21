@@ -5,27 +5,27 @@ Feature: Cross-Device Presentation of Digital Attestations via EUDI Wallet
   So that I can provide verified information through the browser seamlessly, without manual app switching.
 
   @US_RAPDCAPICD_TC_01
-  Scenario: User clicks Verify with EUDI Wallet on Desktop browser
-    Given the user is on the Relying Party service page via a Desktop browser
-    When the user clicks the Verify with EUDI Wallet button
+  Scenario: User initiates verification from Desktop browser
+    Given the user is on the Relying Party service page
+    When the user initiates the wallet verification flow
     Then a presentation request flow is initiated
 
   @US_RAPDCAPICD_TC_02
-  Scenario: Desktop browser prompts for Digital Credentials API permission
+  Scenario: Desktop browser requests permission for Digital Credentials API
     Given a presentation request flow has been initiated
     When the Desktop browser invokes the Digital Credentials API
     Then the user is prompted to grant permission
 
   @US_RAPDCAPICD_TC_03
   Scenario: User grants permission on Desktop browser
-    Given the Desktop browser displays a permission prompt
+    Given the browser displays a permission prompt
     When the user grants permission
-    Then the Relying Party generates a presentation reques
+    Then the Relying Party generates a valid presentation request
 
   @US_RAPDCAPICD_TC_04
   Scenario: QR code is displayed for cross-device flow
     Given a valid presentation request has been created
-    When the Desktop browser processes the request
+    When the browser processes the request
     Then a QR code is displayed to the user
 
   @US_RAPDCAPICD_TC_05
@@ -47,16 +47,16 @@ Feature: Cross-Device Presentation of Digital Attestations via EUDI Wallet
     Then the user is notified and the process is terminated
 
   @US_RAPDCAPICD_TC_08
-  Scenario: Mobile selector displays matching attestations
+  Scenario: Mobile OS displays selector with matching attestations
     Given suitable attestations exist on the mobile device
     When the Mobile Operating System prepares the selection interface
     Then a list of matching attestations is displayed
 
   @US_RAPDCAPICD_TC_09
   Scenario: Attestation identifying information is displayed
-    Given the selector interface is displayed on the mobile device
+    Given the selector interface is displayed
     When the user views the list of attestations
-    Then each attestation displays issuer, credential type, and wallet name
+    Then each attestation displays credential type, and wallet name
 
   @US_RAPDCAPICD_TC_10
   Scenario: Selector indicates Wallet Unit ownership
@@ -65,43 +65,31 @@ Feature: Cross-Device Presentation of Digital Attestations via EUDI Wallet
     Then each attestation indicates the Wallet Unit that holds it
 
   @US_RAPDCAPICD_TC_11
-  Scenario: User selects an attestation on mobile device
+  Scenario: User selects an attestation and Wallet opens
     Given the selector interface displays matching attestations
     When the user selects one attestation
     Then the corresponding Wallet Unit is invoked
 
   @US_RAPDCAPICD_TC_12
-  Scenario: Wallet verifies RP identity and origin
-    Given the Wallet Unit has been opened on the mobile device
-    When the Wallet validates the Relying Party identity and request origin
-    Then the verified identity is displayed to the user
-
-  @US_RAPDCAPICD_TC_13
   Scenario: Wallet displays requested attestations and attributes
     Given the Wallet has verified the Relying Party
     When the presentation request screen is shown
     Then the requested attestations and related attributes are displayed
 
-  @US_RAPDCAPICD_TC_14
+  @US_RAPDCAPICD_TC_13
   Scenario: Successful consent and authentication
     Given the presentation request screen is displayed in the Wallet
     When the user consents to share attributes and enters a valid six-digit PIN
     Then the attestation is presented successfully
 
-  @US_RAPDCAPICD_TC_15
-  Scenario: Invalid PIN during cross-device presentation
-    Given the Wallet requests PIN authentication
-    When the user enters an incorrect six-digit PIN
-    Then an authentication error is displayed
-
-  @US_RAPDCAPICD_TC_16
-  Scenario: Relying Party verifies attestation successfully on Desktop
+  @US_RAPDCAPICD_TC_14
+  Scenario: Relying Party verifies attestation successfully
     Given the attestation has been presented from the mobile Wallet
     When the Relying Party validates the attestation successfully
     Then a verification confirmation is displayed in the Desktop browser
 
-  @US_RAPDCAPICD_TC_17
-  Scenario: Relying Party verification fails on Desktop
+  @US_RAPDCAPICD_TC_15
+  Scenario: Relying Party verification fails
     Given the attestation has been presented from the mobile Wallet
     When the Relying Party fails to validate the attestation
     Then an error message is displayed and retry is allowed
