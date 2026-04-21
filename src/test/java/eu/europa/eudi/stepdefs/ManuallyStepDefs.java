@@ -8706,6 +8706,36 @@ public class ManuallyStepDefs {
     public void theUserInitiatesTheWalletVerificationFlow() {
         //manual
     }
+
+    @When("the system identifies one or more suitable attestations")
+    public void theSystemIdentifiesOneOrMoreSuitableAttestations() {
+        //manual
+    }
+
+    @Then("the user sees an extension of the Wallet open automatically")
+    public void theUserSeesAnExtensionOfTheWalletOpenAutomatically() {
+        //manual
+    }
+
+    @Given("the extension of the Wallet is open")
+    public void theExtensionOfTheWalletIsOpen() {
+        //manual
+    }
+
+    @Then("the requesting Relying Party the requested attestations and related attributes are displayed")
+    public void theRequestingRelyingPartyTheRequestedAttestationsAndRelatedAttributesAreDisplayed() {
+        //manual
+    }
+
+    @Then("the requesting Relying Party and the requested attestations and related attributes are displayed")
+    public void theRequestingRelyingPartyAndTheRequestedAttestationsAndRelatedAttributesAreDisplayed() {
+        //manual
+    }
+
+    @Then("the user is not prompted to grant permission")
+    public void theUserIsNotPromptedToGrantPermission() {
+        //manual
+    }
 }
 
 
