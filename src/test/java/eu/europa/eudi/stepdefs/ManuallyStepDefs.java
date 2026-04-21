@@ -8287,7 +8287,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the corresponding Wallet Unit is invoked by the Operating System")
+    @Then("the corresponding Wallet Unit is automatically invoked")
     public void theCorrespondingWalletUnitIsInvokedByTheOperatingSystem() {
         //manual
     }
@@ -8397,7 +8397,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Relying Party generates a presentation reques")
+    @Then("the Relying Party generates a valid presentation request")
     public void theRelyingPartyGeneratesAPresentationReques() {
         //manual
     }
@@ -8407,7 +8407,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the Desktop browser processes the request")
+    @When("the browser processes the request")
     public void theDesktopBrowserProcessesTheRequest() {
         //manual
     }
@@ -8477,7 +8477,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("each attestation displays issuer, credential type, and wallet name")
+    @Then("each attestation displays credential type, and wallet name")
     public void eachAttestationDisplaysIssuerCredentialTypeAndWalletName() {
         //manual
     }
@@ -8699,6 +8699,11 @@ public class ManuallyStepDefs {
 
     @Then("the PID or attestation is re-issued in batch")
     public void thePIDOrAttestationIsReIssuedInBatch() {
+        //manual
+    }
+
+    @When("the user initiates the wallet verification flow")
+    public void theUserInitiatesTheWalletVerificationFlow() {
         //manual
     }
 }
