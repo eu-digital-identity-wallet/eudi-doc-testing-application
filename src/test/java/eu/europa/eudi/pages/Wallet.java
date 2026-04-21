@@ -244,9 +244,9 @@ public class Wallet {
 
     public void clickMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickMdlPython)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlPython)).click();
         } else {
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
             tapAction(button, false);
         }
     }
@@ -1103,20 +1103,26 @@ public class Wallet {
     public void scrollUntilmDLOnDocuments() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
+
+            WebElement element = null;
 
             for (int i = 0; i < 80; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickMdlPython);
-                    if (pidElement.isDisplayed()) {
+                    element = driver.findElement(WalletElements.clickMdlPython);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
                         break;
                     }
-                } catch (Exception e) {
-                    slowScroll(driver);  // ← slow scroll instead of UiScrollable
-                }
-            }
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                } catch (Exception ignored) {
+                    slowScroll(driver);
+                }
+
+                try {
+                    Thread.sleep(300); // let UI settle
+                } catch (InterruptedException ignored) {}
+            }
         } else {
             envDataConfig = new EnvDataConfig();
             String env = envDataConfig.getExecutionEnvironment();
