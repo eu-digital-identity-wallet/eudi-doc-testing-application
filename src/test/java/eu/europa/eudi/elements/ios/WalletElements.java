@@ -28,8 +28,6 @@ public class WalletElements {
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
     public static By detailsOfMdlIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Date of birth\"]");
     public static By clickEyeIcon = By.xpath("//XCUIElementTypeButton[@label=\"Hide\"]"); //XCUIElementTypeButton[@name="eye.slash"]
-
-    public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN to share data\"]");
     public static By detailsOfDocument = By.xpath("//XCUIElementTypeStaticText[@label=\"Family Name(s)\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
@@ -63,17 +61,14 @@ public class WalletElements {
     public static By detailsAreBlurredReal = By.xpath("//XCUIElementTypeOther[@name=\"eye.slash\"]");
     public static By addPIDPageIsDisplayed = By.id("add_document_screen_subtitle");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@name=\"Authenticate\"]");
-    public static By onlineOption = By.xpath("//XCUIElementTypeButton[@name=\"Online\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
     public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
-    public static By issueButton = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
     public static By issuedPID = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"])[1]");
     public static By selectMDLKotlin = By.xpath("//XCUIElementTypeOther[@name=\"org.iso.18013.5.1.mDL\"] | //XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
-    public static By closeCorrespondingMessage = By.id("Close");
     public static By scanQR = By.id("Scan QR");
 }

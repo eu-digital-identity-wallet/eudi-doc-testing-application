@@ -192,41 +192,22 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            boolean found = false;
-            int maxAttempts = 5;
-            int waitSeconds = 10;
+            Set<String> contexts = driver.getContextHandles();
+            System.out.println("Available contexts: " + contexts);
 
-            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
-                try {
-                    driver.context("NATIVE_APP");
-
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-
-                    WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(
-                                    eu.europa.eudi.elements.android.IssuerElements.clickEudiwButton
-                            )
-                    );
-
-                    wait.until(ExpectedConditions.elementToBeClickable(element));
-
-                    element.click();
-
-                    System.out.println("Clicked EudiwButton on attempt " + attempt);
-                    found = true;
-
-                } catch (Exception e) {
-                    System.out.println("⚠ EudiwButton not ready on attempt " + attempt);
-
-                    if (attempt == maxAttempts) {
-                        throw new RuntimeException("EudiwButton not clickable after retries.", e);
-                    }
-
-                    try {
-                        Thread.sleep(1000); // small pause before retry
-                    } catch (InterruptedException ignored) {}
+// switch to webview (name may vary)
+            for (String context : contexts) {
+                if (context.toLowerCase().contains("webview") || context.toLowerCase().contains("chrome")) {
+                    driver.context(context);
+                    break;
                 }
             }
+
+            By locator = By.xpath("//a[contains(text(),'Use EUDIW')]");
+
+            new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(ExpectedConditions.elementToBeClickable(locator))
+                    .click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
         }
@@ -2687,16 +2668,18 @@ public class Issuer {
             });
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed,
+
+            WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
+                    .until(ExpectedConditions.visibilityOfElementLocated(
+                            eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed
+                    ));
+
+            String headerText = header.getText().trim();
+
+            Assert.assertEquals(
                     Literals.Issuer.SIGN_IN_USER_PAGE.label,
-                    driver,
-                    80
+                    headerText
             );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, headerText);
         }
 
 
