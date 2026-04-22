@@ -4,6 +4,8 @@ Feature: Present Digital Attestations via Browser using EUDI Wallet on Same Devi
   I want to present digital attestations to a requestor Relying Party residing on the same device as my EUDI Wallet, by utilising browser capabilities
   So that I can provide verified information through the browser seamlessly, without manual app switching.
 
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/235
+
   @US_RAPDCAPISD_TC_01
   Scenario: User initiates verification from browser
     Given the user is on the Relying Party service page
