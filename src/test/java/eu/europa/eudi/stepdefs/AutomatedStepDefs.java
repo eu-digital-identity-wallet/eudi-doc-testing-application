@@ -2164,7 +2164,7 @@ public class AutomatedStepDefs {
                 ? (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid()
                 : (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-        Set<String> screenTexts = collectAllTexts(driver, isAndroid, 6);
+        Set<String> screenTexts = collectAllTexts(driver, isAndroid, 8);
 
         yml.fields.forEach((fieldKey, cfg) -> {
 
