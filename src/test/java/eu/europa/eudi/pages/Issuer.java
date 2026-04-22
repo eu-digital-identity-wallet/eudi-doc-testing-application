@@ -2637,7 +2637,7 @@ public class Issuer {
 
             for (int i = 0; i < 80; i++) {
                 try {
-                    element = driver.findElement(WalletElements.clickMdlPython);
+                    element = driver.findElement(WalletElements.selectMDLPythonCredential);
 
                     if (element.isDisplayed() && element.isEnabled()) {
                         break;
