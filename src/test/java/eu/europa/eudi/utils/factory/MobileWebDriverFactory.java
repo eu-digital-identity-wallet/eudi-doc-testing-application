@@ -59,13 +59,15 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", true);
-                options.setCapability("browserstack.video", true);
+                options.setCapability("browserstack.video", false);
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
                 options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
                 options.setCapability("appium:disableIdLocatorAutocompletion", true);
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);
+                options.setCapability("disableWindowAnimation", true);
+                options.setCapability("ignoreUnimportantViews", true);
                 options.setCapability("newCommandTimeout", 300);
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("snapshotMaxDepth", 500);
