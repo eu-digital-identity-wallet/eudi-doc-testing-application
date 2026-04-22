@@ -4,6 +4,8 @@ Feature: Cross-Device Presentation of Digital Attestations via EUDI Wallet
   I want to present digital attestations to a requestor Relying Party residing on a different device (e.g., Laptop/Desktop) than my EUDI Wallet, by utilising browser capabilities
   So that I can provide verified information through the browser seamlessly, without manual app switching.
 
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/305
+
   @US_RAPDCAPICD_TC_01
   Scenario: User initiates verification from Desktop browser
     Given the user is on the Relying Party service page
