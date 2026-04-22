@@ -190,10 +190,43 @@ public class Issuer {
 
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.runAppInBackground(Duration.ofSeconds(30));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickEudiwButton)).click();
+            boolean found = false;
+            int maxAttempts = 5;
+            int waitSeconds = 10;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(
+                                    eu.europa.eudi.elements.android.IssuerElements.clickEudiwButton
+                            )
+                    );
+
+                    wait.until(ExpectedConditions.elementToBeClickable(element));
+
+                    element.click();
+
+                    System.out.println("Clicked EudiwButton on attempt " + attempt);
+                    found = true;
+
+                } catch (Exception e) {
+                    System.out.println("⚠ EudiwButton not ready on attempt " + attempt);
+
+                    if (attempt == maxAttempts) {
+                        throw new RuntimeException("EudiwButton not clickable after retries.", e);
+                    }
+
+                    try {
+                        Thread.sleep(1000); // small pause before retry
+                    } catch (InterruptedException ignored) {}
+                }
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
         }
@@ -926,23 +959,52 @@ public class Issuer {
 
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//
+//// switch outside wait
+//            driver.context("NATIVE_APP");
+//
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(250));
+//
+//            WebElement header = wait.until(d -> {
+//                try {
+//                    WebElement el = driver.findElement(
+//                            By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]")
+//                    );
+//                    return el.isDisplayed() ? el : null;
+//                } catch (Exception e) {
+//                    return null;
+//                }
+//            });
+
+            By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
+
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-// switch outside wait
-            driver.context("NATIVE_APP");
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 20;
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(250));
-
-            WebElement header = wait.until(d -> {
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-                    WebElement el = driver.findElement(
-                            By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]")
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
                     );
-                    return el.isDisplayed() ? el : null;
-                } catch (Exception e) {
-                    return null;
+
+                    System.out.println("Element is visible on attempt " + attempt);
+                    found = true;
+
+                } catch (TimeoutException e) {
+                    System.out.println("Attempt " + attempt + " failed - element not visible yet");
+                    if (attempt == maxAttempts) {
+                        throw e;
+                    }
                 }
-            });
+            }
 
 
         } else {
@@ -1717,7 +1779,7 @@ public class Issuer {
     public void scrollUntilFindSign() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
@@ -2322,13 +2384,42 @@ public class Issuer {
     public void fillLoginForm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
-            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
+            By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
+
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 20;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
+                    );
+
+                    System.out.println("Username field is visible on attempt " + attempt);
+                    found = true;
+
+                } catch (TimeoutException e) {
+                    System.out.println("Attempt " + attempt + " failed - username not visible yet");
+
+                    if (attempt == maxAttempts) {
+                        throw e;
+                    }
+                }
+            }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
+            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
             username.clear();
             username.sendKeys("tneal");
             test.mobileWebDriverFactory().androidDriver.hideKeyboard();
 
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
             WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
             password.clear();
             password.sendKeys("password");

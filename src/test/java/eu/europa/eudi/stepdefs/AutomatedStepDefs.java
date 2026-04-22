@@ -1794,7 +1794,8 @@ public class AutomatedStepDefs {
             if (test.mobile().wallet().isQrVisible()) {
                 test.mobile().wallet().onlyThisTimeQR();
             }
-        }        test.mobile().wallet().theQRScannerIsActivated();
+        }
+        test.mobile().wallet().theQRScannerIsActivated();
     }
 
     @When("the user scans the pre-generated QR code")

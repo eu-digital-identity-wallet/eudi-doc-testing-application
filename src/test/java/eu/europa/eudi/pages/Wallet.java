@@ -1311,40 +1311,68 @@ public class Wallet {
     }
 
     public void mockQRInject(File qrImagePath) {
-        try {
-            // Validate input file
-            if (qrImagePath == null) {
-                throw new IllegalArgumentException("QR image file path is null");
-            }
-            if (!qrImagePath.exists()) {
-                throw new IllegalArgumentException("QR image file does not exist: " + qrImagePath.getAbsolutePath());
-            }
+        int maxAttempts = 2;
 
-            // Read QR code image and get its content
-            BufferedImage bufferedImage = ImageIO.read(qrImagePath);
-            LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
-            hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
-            hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-            Result result = new MultiFormatReader().decode(bitmap, hints);
-            String qrContent = result.getText();
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                // Validate input file
+                if (qrImagePath == null) {
+                    throw new IllegalArgumentException("QR image file path is null");
+                }
+                if (!qrImagePath.exists()) {
+                    throw new IllegalArgumentException("QR image file does not exist: " + qrImagePath.getAbsolutePath());
+                }
 
-            // Inject the QR content based on platform
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                // Android deep link injection
-                test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
-                        ImmutableMap.of(
-                                "url", qrContent,
-                                "package", test.envDataConfig().getAppiumAndroidAppPackage()
-                        ));
-            } else {
-                test.mobileWebDriverFactory().iosDriver.get(qrContent);
+                // Read image
+                BufferedImage bufferedImage = ImageIO.read(qrImagePath);
+
+                // Optional: convert to grayscale (improves ZXing success rate)
+                BufferedImage grayImage = new BufferedImage(
+                        bufferedImage.getWidth(),
+                        bufferedImage.getHeight(),
+                        BufferedImage.TYPE_BYTE_GRAY
+                );
+                grayImage.getGraphics().drawImage(bufferedImage, 0, 0, null);
+
+                LuminanceSource source = new BufferedImageLuminanceSource(grayImage);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+                Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
+                hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
+                hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+
+                Result result = new MultiFormatReader().decode(bitmap, hints);
+                String qrContent = result.getText();
+
+                System.out.println("QR decoded successfully on attempt " + attempt);
+
+                // Inject QR content
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
+                            ImmutableMap.of(
+                                    "url", qrContent,
+                                    "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                            ));
+                } else {
+                    test.mobileWebDriverFactory().iosDriver.get(qrContent);
+                }
+
+                return; // success → exit method
+
+            } catch (com.google.zxing.NotFoundException e) {
+                System.out.println("QR not found in image (attempt " + attempt + ")");
+
+                if (attempt == maxAttempts) {
+                    throw new RuntimeException("QR code not found after retries: " + qrImagePath.getAbsolutePath(), e);
+                }
+
+            } catch (Exception e) {
+                System.out.println("General QR processing error (attempt " + attempt + "): " + e.getMessage());
+
+                if (attempt == maxAttempts) {
+                    throw new RuntimeException("Failed to process QR code after retries", e);
+                }
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to process QR code: " + e.getMessage());
         }
     }
 
@@ -1986,8 +2014,10 @@ public class Wallet {
 
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-        return driver.findElements(
-                eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR
-        ).stream().anyMatch(WebElement::isDisplayed);
+//        return driver.findElements(
+//                eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR
+//        ).stream().anyMatch(WebElement::isDisplayed);
+
+        return !driver.findElements(eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR).isEmpty();
     }
 }
