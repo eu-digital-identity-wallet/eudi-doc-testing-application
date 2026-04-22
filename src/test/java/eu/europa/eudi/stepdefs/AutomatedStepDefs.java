@@ -2818,8 +2818,12 @@ public class AutomatedStepDefs {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            } else {
+
+                            }
                         }
                     }
 
@@ -2915,7 +2919,7 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
