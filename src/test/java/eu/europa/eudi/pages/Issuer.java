@@ -251,8 +251,8 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             boolean found = false;
-            int maxAttempts = 5; // number of tries
-            int waitSeconds = 5; // per try
+            int maxAttempts = 8; // number of tries
+            int waitSeconds = 8; // per try
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {

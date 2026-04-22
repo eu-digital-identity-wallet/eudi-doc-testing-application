@@ -19,7 +19,7 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.id("eu.europa.ec.euidi.dev:id/biometric_screen_title");
     public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
-    public static By clickMdlPython = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
+    public static By clickMdlPython = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/following-sibling::android.view.View//android.view.View[@content-desc=\"Add\"]");
     public static By mdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]");
     public static By confirmsDeletion = By.id("eu.europa.ec.euidi.dev:id/document_details_screen_dialogue_delete_document_positive_button");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
