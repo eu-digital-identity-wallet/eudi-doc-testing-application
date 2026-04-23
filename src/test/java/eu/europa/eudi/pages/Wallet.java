@@ -1404,15 +1404,15 @@ public class Wallet {
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
         } else {
 
-            By issueBtn = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.refreshed(
-                            ExpectedConditions.elementToBeClickable(issueBtn)
-                    ))
-                    .click();
+//            By issueBtn = By.xpath("//XCUIElementTypeButton[@label=\"Issue\"]");
+//
 //            test.mobileWebDriverFactory().getWait()
-//                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.issueButton)).click();
+//                    .until(ExpectedConditions.refreshed(
+//                            ExpectedConditions.elementToBeClickable(issueBtn)
+//                    ))
+//                    .click();
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
         }
     }
 

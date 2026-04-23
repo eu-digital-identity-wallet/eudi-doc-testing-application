@@ -2004,7 +2004,11 @@ public class AutomatedStepDefs {
                     }
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                    test.mobile().wallet().viewDataPage();
                     test.mobile().wallet().clickAddButton();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+                    }
                     test.mobile().issuer().signInUsser();
                     test.mobile().issuer().fillLoginForm();
                     break;
@@ -2820,9 +2824,10 @@ public class AutomatedStepDefs {
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
