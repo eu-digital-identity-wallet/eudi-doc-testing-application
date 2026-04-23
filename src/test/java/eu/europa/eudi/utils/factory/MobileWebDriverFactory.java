@@ -67,11 +67,17 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);
                 options.setCapability("disableWindowAnimation", true);
-                options.setCapability("ignoreUnimportantViews", true);
                 options.setCapability("newCommandTimeout", 300);
                 Map<String, Object> appiumSettings = new HashMap<>();
-                appiumSettings.put("snapshotMaxDepth", 500);
                 appiumSettings.put("allowInvisibleElements", true);
+                options.setCapability("appium:newCommandTimeout", 300);
+                options.setCapability("appium:adbExecTimeout", 60000);
+                options.setCapability("appium:uiautomator2ServerInstallTimeout", 60000);
+                options.setCapability("appium:uiautomator2ServerLaunchTimeout", 60000);
+                options.setCapability("appium:appWaitDuration", 30000);
+                options.setCapability("appium:appWaitActivity", "*");
+                options.setCapability("appium:waitForIdleTimeout", 0);
+                options.setCapability("appium:waitForSelectorTimeout", 10000);
 
 
                 options.setCapability("appium:settings", appiumSettings);
@@ -171,6 +177,11 @@ public class MobileWebDriverFactory {
                 options.setCapability("sessionName", featureName);
                 options.setCapability("includeSafariInWebviews", true);
                 options.setCapability("waitForQuiescence", true);
+                options.setCapability("appium:newCommandTimeout", 300);
+                options.setCapability("appium:launchTimeout", 60000);
+                options.setCapability("appium:wdaLaunchTimeout", 60000);
+                options.setCapability("appium:wdaConnectionTimeout", 60000);
+                options.setCapability("appium:includeSafariInWebviews", true);
 
 
                 try {
