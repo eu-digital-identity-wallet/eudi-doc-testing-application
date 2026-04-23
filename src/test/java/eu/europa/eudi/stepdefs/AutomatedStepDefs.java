@@ -1843,7 +1843,7 @@ public class AutomatedStepDefs {
     }
 
     @Then("the user clicks the add button")
-    public void theUserClicksTheAddButton() {
+    public void theUserClicksTheAddButton() throws InterruptedException {
         test.mobile().wallet().clickAddButton();
         test.mobile().issuer().fillLoginForm();
     }
