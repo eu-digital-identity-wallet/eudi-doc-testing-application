@@ -59,7 +59,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("autoRotate", true);
-                options.setCapability("browserstack.video", true);
+                options.setCapability("browserstack.video", false);
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
                 options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
@@ -161,7 +161,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("autoAcceptAlerts", true);
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
-                options.setCapability("browserstack.video", true);
+                options.setCapability("browserstack.video", false);
                 options.setCapability("browserstack.appiumLogs", false);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
