@@ -1,5 +1,6 @@
 package eu.europa.eudi.pages;
 
+import com.google.common.collect.ImmutableMap;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
@@ -190,26 +191,22 @@ public class Issuer {
 
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
-            Set<String> contexts = driver.getContextHandles();
-            System.out.println("Available contexts: " + contexts);
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-// switch to webview (name may vary)
-            for (String context : contexts) {
-                if (context.toLowerCase().contains("webview") || context.toLowerCase().contains("chrome")) {
-                    driver.context(context);
-                    break;
-                }
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+                driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                        "url", deepLink,
+                        "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                ));
+
+                System.out.println("✅ Deep link executed on Android");
+
+            } else {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
             }
-
-            By locator = By.xpath("//a[contains(text(),'Use EUDIW')]");
-
-            new WebDriverWait(driver, Duration.ofSeconds(30))
-                    .until(ExpectedConditions.elementToBeClickable(locator))
-                    .click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
         }
     }
 
@@ -2185,7 +2182,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 15; i++) {
                 try {
                     WebElement pidElement = driver.findElement(WalletElements.findConfirm);
                     if (pidElement.isDisplayed()) break;
