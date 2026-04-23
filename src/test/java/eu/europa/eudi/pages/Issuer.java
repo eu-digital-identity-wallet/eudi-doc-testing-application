@@ -2435,6 +2435,8 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
 
         } else {
+            Thread.sleep(2000);
+
             test.mobileWebDriverFactory().iosDriver.rotate(ScreenOrientation.PORTRAIT);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickUsername)).click();
             WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickUsername));
@@ -2703,6 +2705,7 @@ public class Issuer {
             System.out.println("Header is visible: " + header.isDisplayed());
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            Thread.sleep(2000);
 
             WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
                     .until(ExpectedConditions.visibilityOfElementLocated(
