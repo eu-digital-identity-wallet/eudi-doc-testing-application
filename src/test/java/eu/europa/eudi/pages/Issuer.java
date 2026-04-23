@@ -189,7 +189,7 @@ public class Issuer {
         }
     }
 
-    public void clickUseEudiw() {
+    public void clickUseEudiw() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
@@ -205,7 +205,28 @@ public class Issuer {
                 System.out.println("✅ Deep link executed on Android");
 
             } else {
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+// 1. Switch to WEBVIEW
+                Set<String> contexts = driver.getContextHandles();
+                System.out.println("Contexts: " + contexts);
+
+                for (String context : contexts) {
+                    if (context.toLowerCase().contains("webview") || context.toLowerCase().contains("safari")) {
+                        driver.context(context);
+                        break;
+                    }
+                }
+
+// 2. Click element in WEBVIEW
+                By locator = By.xpath("//a[contains(text(),'Use EUDIW')]");
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+                wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+
+                System.out.println("✅ Clicked Use EUDIW");
             }
         }
     }
@@ -261,6 +282,8 @@ public class Issuer {
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            Thread.sleep(2000);
+
             boolean found = false;
             int maxAttempts = 8; // number of tries
             int waitSeconds = 8; // per try
@@ -937,23 +960,6 @@ public class Issuer {
 
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//// switch outside wait
-//            driver.context("NATIVE_APP");
-//
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(250));
-//
-//            WebElement header = wait.until(d -> {
-//                try {
-//                    WebElement el = driver.findElement(
-//                            By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]")
-//                    );
-//                    return el.isDisplayed() ? el : null;
-//                } catch (Exception e) {
-//                    return null;
-//                }
-//            });
 
             By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
 
@@ -987,17 +993,41 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed,
-                    Literals.Issuer.FORM_IOS.label,
-                    driver,
-                    80
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.FORM_IOS.label, headerText);
-        }
+
+            By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
+
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 20;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
+                    );
+
+                    String text = element.getText().trim();
+
+                    if (text.contains(Literals.Issuer.FORM_IOS.label)) {
+                        System.out.println("Element visible on attempt " + attempt);
+                        found = true;
+                    } else {
+                        throw new RuntimeException("Text mismatch: " + text);
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Attempt " + attempt + " failed - retrying...");
+
+                    if (attempt == maxAttempts) {
+                        throw new RuntimeException("Form iOS element not found after retries", e);
+                    }
+                }
+            }
+
+            Assert.assertTrue("Form not displayed correctly", found);        }
     }
 
     public void issuePID() throws InterruptedException {
@@ -2359,11 +2389,11 @@ public class Issuer {
         }
     }
 
-    public void fillLoginForm() {
+    public void fillLoginForm() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
-
+            Thread.sleep(2000);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             boolean found = false;
@@ -2646,23 +2676,31 @@ public class Issuer {
         }
     }
 
-    public void signInUsser() {
+    public void signInUsser() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-// switch outside wait
+// switch to native
             driver.context("NATIVE_APP");
+
+// optional: small stability pause (important in CI / BrowserStack)
+            Thread.sleep(2000);
+
+            By locator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
             WebElement header = wait.until(d -> {
                 try {
-                    WebElement el = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed);
+                    WebElement el = d.findElement(locator);
                     return el.isDisplayed() ? el : null;
                 } catch (Exception e) {
                     return null;
                 }
             });
+
+            System.out.println("Header is visible: " + header.isDisplayed());
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
