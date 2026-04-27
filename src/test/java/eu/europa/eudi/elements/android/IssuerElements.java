@@ -17,7 +17,7 @@ public class IssuerElements {
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickFormEu = By.xpath("//android.widget.TextView[@text=\"FormEU\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
-    public static By clickFamilyName = By.xpath("//android.view.View[@text=\"Family Name\"]/following-sibling::android.widget.EditText[1]\n");
+    public static By clickFamilyName = By.xpath("//android.view.View[@text='Family Name']/../android.widget.EditText");
     public static By clickBirthDate = By.xpath("//android.widget.Spinner");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
     public static By enterDocumentNumber = By.xpath("//android.view.View[@text=\"Document Number\"]/following-sibling::android.widget.EditText[1]\n");
@@ -31,7 +31,7 @@ public class IssuerElements {
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text=\"Country Code\"]/following-sibling::android.widget.EditText[1]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
-    public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
+    public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Given Name\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By formIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"For testing purposes only.\"]");
     public static By clickFamilyNameDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
