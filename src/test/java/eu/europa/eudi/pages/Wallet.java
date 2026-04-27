@@ -1400,6 +1400,8 @@ public class Wallet {
 
     public void clickAddButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
         } else {
@@ -1939,6 +1941,8 @@ public class Wallet {
     public void viewDataPage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
             wait.until(ExpectedConditions.textToBePresentInElementLocated(

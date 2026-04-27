@@ -283,10 +283,10 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             Thread.sleep(2000);
-
+            driver.context("NATIVE_APP");
             boolean found = false;
             int maxAttempts = 8; // number of tries
-            int waitSeconds = 8; // per try
+            int waitSeconds = 90; // per try
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -320,7 +320,7 @@ public class Issuer {
 
             boolean found = false;
             int maxAttempts = 5;
-            int waitSeconds = 5;
+            int waitSeconds = 90;
 
             By locator = eu.europa.eudi.elements.ios.IssuerElements.clickFormEu;
 
@@ -967,7 +967,7 @@ public class Issuer {
 
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 20;
+            int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -998,7 +998,7 @@ public class Issuer {
 
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 20;
+            int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -2394,10 +2394,11 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
 
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 20;
+            int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -2669,8 +2670,6 @@ public class Issuer {
 
 // 5. Assert
             Assert.assertTrue(header.isDisplayed());
-
-//            driver.context("NATIVE_APP");
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
