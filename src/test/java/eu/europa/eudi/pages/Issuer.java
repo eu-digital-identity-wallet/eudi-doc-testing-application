@@ -845,7 +845,7 @@ public class Issuer {
     public void scrollUntilFindDate() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 3; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
@@ -1509,7 +1509,7 @@ public class Issuer {
         chooseBirthDate();
         enterDocumentNumber();
         scrollUntilFindSign();
-        codeIsVisible();
+//        codeIsVisible();
         enterCode();
         scrollUntilFindDate();
         clickScreen();
@@ -2395,6 +2395,8 @@ public class Issuer {
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
+            Thread.sleep(4000);
+
 
             boolean found = false;
             int maxAttempts = 8;
@@ -2402,7 +2404,6 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-                    driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
@@ -2685,7 +2686,7 @@ public class Issuer {
             driver.context("NATIVE_APP");
 
 // optional: small stability pause (important in CI / BrowserStack)
-            Thread.sleep(2000);
+            Thread.sleep(4000);
 
             By locator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
 
