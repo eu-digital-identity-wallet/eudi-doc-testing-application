@@ -317,7 +317,8 @@ public class Issuer {
         } else {
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
+            Thread.sleep(2000);
+            driver.context("NATIVE_APP");
             boolean found = false;
             int maxAttempts = 5;
             int waitSeconds = 90;
@@ -326,6 +327,7 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
@@ -2415,7 +2417,7 @@ public class Issuer {
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
-            Thread.sleep(4000);
+            Thread.sleep(2000);
 
 
             boolean found = false;
@@ -2424,6 +2426,7 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
@@ -2457,19 +2460,68 @@ public class Issuer {
 
         } else {
             Thread.sleep(2000);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.context("NATIVE_APP");
 
             test.mobileWebDriverFactory().iosDriver.rotate(ScreenOrientation.PORTRAIT);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickUsername)).click();
-            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickUsername));
+
+            By locator = eu.europa.eudi.elements.ios.IssuerElements.clickUsername;
+
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 90;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
+                    );
+
+                    System.out.println("Username field is visible on attempt " + attempt);
+                    found = true;
+
+                } catch (TimeoutException e) {
+                    System.out.println("Attempt " + attempt + " failed - username not visible yet");
+
+                    if (attempt == maxAttempts) {
+                        throw e;
+                    }
+                }
+            }
+
+// Username
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(locator))
+                    .click();
+
+            WebElement username = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(locator));
+
             username.clear();
             username.sendKeys("tneal");
 
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickPassword)).click();
-            WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickPassword));
+// Password
+            By passwordLocator = eu.europa.eudi.elements.ios.IssuerElements.clickPassword;
+
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(passwordLocator))
+                    .click();
+
+            WebElement password = test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(passwordLocator));
+
             password.clear();
             password.sendKeys("password");
 
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickSignIn)).click();
+// Sign in
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(
+                            eu.europa.eudi.elements.ios.IssuerElements.clickSignIn))
+                    .click();
         }
     }
 
@@ -2725,6 +2777,7 @@ public class Issuer {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Thread.sleep(2000);
+            driver.context("NATIVE_APP");
 
             WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
                     .until(ExpectedConditions.visibilityOfElementLocated(
