@@ -960,10 +960,11 @@ public class Issuer {
 
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+            Thread.sleep(2000);
 
             By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
-
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             boolean found = false;
             int maxAttempts = 8;
@@ -1774,6 +1775,25 @@ public class Issuer {
             searchBar.clear();
             searchBar.sendKeys("1234");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
+//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+//
+//            Set<String> contexts = driver.getContextHandles();
+//            for (String context : contexts) {
+//                System.out.println(context);
+//            }
+
+// Switch to WEBVIEW (example name)
+//            driver.context("WEBVIEW_chrome");
+//            By codeField = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText");
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//
+//            WebElement codeInput = wait.until(
+//                    ExpectedConditions.visibilityOfElementLocated(codeField)
+//            );
+//
+//            codeInput.click();
+//            codeInput.clear();
+//            codeInput.sendKeys("12345");
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
