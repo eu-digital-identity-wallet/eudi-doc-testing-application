@@ -463,8 +463,10 @@ public class Verifier {
         }
     }
 
-    public File captureScreen() {
+    public File captureScreen() throws InterruptedException {
         WebDriver driver;
+        Thread.sleep(2000);
+
 
         // Get correct driver
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -480,7 +482,7 @@ public class Verifier {
 
         // Small wait to avoid blank/transition screenshots
         try {
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -670,9 +672,10 @@ public class Verifier {
         Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
 
-    public File captureScreenOnWeb() {
+    public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
+        Thread.sleep(2000);
 
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
@@ -680,7 +683,7 @@ public class Verifier {
 
         // Small stability wait (important for dynamic rendering)
         try {
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
