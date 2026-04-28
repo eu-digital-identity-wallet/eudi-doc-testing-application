@@ -41,7 +41,7 @@ public class IssuerElements {
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By authorizePageIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Review & Send\"]");
     public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
-    public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::*[1]");
+    public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
     public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]");
