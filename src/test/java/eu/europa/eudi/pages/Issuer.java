@@ -11,9 +11,12 @@ import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -283,7 +286,8 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             Thread.sleep(2000);
-            driver.context("NATIVE_APP");
+
+            driver.context("NATIVE_APP"); // switch back
             boolean found = false;
             int maxAttempts = 8; // number of tries
             int waitSeconds = 90; // per try
@@ -292,9 +296,15 @@ public class Issuer {
                 try {
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
+                    TouchAction action = new TouchAction(driver);
+                    action.press(PointOption.point(500, 300))  // start near top
+                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                            .moveTo(PointOption.point(500, 1000)) // swipe down
+                            .release()
+                            .perform();
+//                    driver.findElement(AppiumBy.androidUIAutomator(
+//                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+//                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
