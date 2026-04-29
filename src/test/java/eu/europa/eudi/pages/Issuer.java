@@ -282,17 +282,19 @@ public class Issuer {
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.context("NATIVE_APP");
             Thread.sleep(2000);
-
-
+            driver.context("NATIVE_APP");
+            boolean found = false;
+            int maxAttempts = 8; // number of tries
             int waitSeconds = 90; // per try
 
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
@@ -301,6 +303,20 @@ public class Issuer {
 
                     wait.until(ExpectedConditions.elementToBeClickable(element));
                     element.click();
+                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
+                    found = true;
+
+                } catch (Exception e) {
+                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
+                    Thread.sleep(1000); // small wait before retry
+                }
+            }
+
+            if (!found) {
+                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
+            }
+
+
         } else {
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1019,10 +1035,15 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-                    driver.context("NATIVE_APP");
-
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
+
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
+                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(locator)
                     );
