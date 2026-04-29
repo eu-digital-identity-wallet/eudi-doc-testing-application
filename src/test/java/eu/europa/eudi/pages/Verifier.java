@@ -675,7 +675,7 @@ public class Verifier {
     public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
 
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
@@ -683,7 +683,7 @@ public class Verifier {
 
         // Small stability wait (important for dynamic rendering)
         try {
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

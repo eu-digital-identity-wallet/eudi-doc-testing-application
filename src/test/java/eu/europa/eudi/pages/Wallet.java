@@ -246,8 +246,8 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlPython)).click();
         } else {
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
-            tapAction(button, false);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickMdl)).click();
+
         }
     }
 
@@ -1124,70 +1124,65 @@ public class Wallet {
                 } catch (InterruptedException ignored) {}
             }
         } else {
-            envDataConfig = new EnvDataConfig();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 22; i++) {  // reduce from 22 → 10
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 80; i++) {  // reduce from 22 → 10
 
-                    if (isElementVisible(driver)) {
-                        break;
-                    }
-
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.7);
-                    int endY = (int) (size.height * 0.3);
-
-                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                    Sequence swipe = new Sequence(finger, 1);
-
-                    swipe.addAction(finger.createPointerMove(Duration.ZERO,
-                            PointerInput.Origin.viewport(), startX, startY));
-                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(150))); // smaller pause
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(120),
-                            PointerInput.Origin.viewport(), startX, endY));
-                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                    driver.perform(Collections.singletonList(swipe));
-
-                    // ⚡ no Thread.sleep (big speed gain)
+                if (isElementVisible(driver)) {
+                    break;
                 }
 
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 6; i++) {
-                    try {
-                        WebElement mdlElement = driver.findElement(eu.europa.eudi.elements.ios.WalletElements.clickMdl);
-                        if (mdlElement.isDisplayed()) {
-                            break;
-                        }
-                    } catch (Exception e) {
-                        // element not visible yet, continue scrolling
-                    }
-                    // Get screen size
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.6);
-                    int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
-                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                    Sequence swipe = new Sequence(finger, 1);
+                Dimension size = driver.manage().window().getSize();
 
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.80);
+                int endY   = (int) (size.height * 0.40);
 
-                    driver.perform(Collections.singletonList(swipe));
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    Thread.sleep(50);
-                }
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+                // small natural pause (iOS likes this)
+                swipe.addAction(new Pause(finger, Duration.ofMillis(120)));
+
+                // smoother movement (this is the “Android feel” part)
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
             }
+
         }
+    }
+
+    private void iosScroll(IOSDriver driver) {
+        int startX = driver.manage().window().getSize().width / 2;
+        int startY = (int) (driver.manage().window().getSize().height * 0.75);
+        int endY   = (int) (driver.manage().window().getSize().height * 0.35);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(new Pause(finger, Duration.ofMillis(100)));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
     }
 
     private boolean isElementVisible(IOSDriver driver) {
