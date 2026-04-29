@@ -71,4 +71,5 @@ public class WalletElements {
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
+    public static By clickMSISDNPython = By.id("MSISDN (MSO Mdoc)");;
 }
