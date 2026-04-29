@@ -40,9 +40,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # Checkout the code
         with:
+          fetch-depth: 0
           clean: true
           lfs: false
-          ref: ${{ inputs.branch-to-checkout || 'main' }}
+          ref: ${{ inputs.branch-to-checkout }}
 
       - name: Download Latest Release APK
         env:
@@ -71,10 +72,10 @@ jobs:
           java-version: 17
           distribution: 'oracle'
 
-      - name: Set up Node JS 16.20.2
+      - name: Set up Node JS
         uses: actions/setup-node@v4
         with:
-          node-version: '16.20.2'
+          node-version: '20'
 
       - name: Clean Old Results
         run: |
