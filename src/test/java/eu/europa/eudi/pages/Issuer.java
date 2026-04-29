@@ -281,48 +281,26 @@ public class Issuer {
 
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.context("NATIVE_APP");
-//            Thread.sleep(2000);
-//
-//            boolean found = false;
-//            int maxAttempts = 8; // number of tries
-//            int waitSeconds = 90; // per try
-//
-//            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
-//                try {
-//
-//
-//                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-//                    WebElement element = wait.until(
-//                            ExpectedConditions.visibilityOfElementLocated(
-//                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
-//                            )
-//                    );
-//
-//                    wait.until(ExpectedConditions.elementToBeClickable(element));
-//                    element.click();
-//                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
-//                    found = true;
-//
-//                } catch (Exception e) {
-//                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
-//                    Thread.sleep(1000); // small wait before retry
-//                }
-//            }
-//
-//            if (!found) {
-//                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
-//            }
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+            Thread.sleep(2000);
 
-            By formEuLocator = eu.europa.eudi.elements.android.IssuerElements.clickFormEu;
 
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            int waitSeconds = 90; // per try
 
-            clickStable(driver, formEuLocator, "Form EU");
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
 
-            System.out.println("Clicked FormEU successfully");
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(
+                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
+                            )
+                    );
+
+                    wait.until(ExpectedConditions.elementToBeClickable(element));
+                    element.click();
         } else {
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -382,6 +360,7 @@ public class Issuer {
                 // 1. optional scroll (if needed for your screen)
                 if (scrollTextHint != null) {
                     scrollToText((AndroidDriver) d, scrollTextHint);
+                    handleChromePopupIfPresent(driver);
                 }
 
                 // 2. find element (NO visibility wait)
@@ -398,6 +377,26 @@ public class Issuer {
         wait.until(ExpectedConditions.elementToBeClickable(element));
 
         element.click();
+    }
+
+    private void handleChromePopupIfPresent(AndroidDriver driver) {
+        By continueButtonLocator = By.id("com.android.chrome:id/positive_button");
+
+        try {
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebElement continueButton = shortWait.until(d -> {
+                List<WebElement> buttons = d.findElements(continueButtonLocator);
+                return buttons.isEmpty() ? null : buttons.get(0);
+            });
+
+            if (continueButton != null && continueButton.isDisplayed()) {
+                System.out.println("Chrome popup detected, clicking Continue...");
+                continueButton.click();
+            }
+
+        } catch (Exception ignored) {
+            // No popup appeared, nothing to do
+        }
     }
 
     public void enterGivenName() {
@@ -1002,12 +1001,42 @@ public class Issuer {
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             driver.context("NATIVE_APP");
+            Thread.sleep(2000);
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
 
-            WebElement element = findStableElement(driver, "Issue attributes");
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
+            ));
 
-            System.out.println("Element found: " + element.getText());
+            By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
+
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 90;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    driver.context("NATIVE_APP");
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
+                    );
+
+                    System.out.println("Element is visible on attempt " + attempt);
+                    found = true;
+
+                } catch (TimeoutException e) {
+                    System.out.println("Attempt " + attempt + " failed - element not visible yet");
+                    if (attempt == maxAttempts) {
+                        throw e;
+                    }
+                }
+            }
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -2474,53 +2503,54 @@ public class Issuer {
 
     public void fillLoginForm() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-//            By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            driver.context("NATIVE_APP");
-//            Thread.sleep(2000);
-//            System.out.println(driver.getPageSource());
-//
-//            boolean found = false;
-//            int maxAttempts = 8;
-//            int waitSeconds = 90;
-//
-//            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
-//                try {
-//                    driver.context("NATIVE_APP");
-//
-//                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-//
-//                    WebElement element = wait.until(
-//                            ExpectedConditions.visibilityOfElementLocated(locator)
-//                    );
-//
-//                    System.out.println("Username field is visible on attempt " + attempt);
-//                    found = true;
-//
-//                } catch (TimeoutException e) {
-//                    System.out.println("Attempt " + attempt + " failed - username not visible yet");
-//
-//                    if (attempt == maxAttempts) {
-//                        throw e;
-//                    }
-//                }
-//            }
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
-//            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
-//            username.clear();
-//            username.sendKeys("tneal");
-//            test.mobileWebDriverFactory().androidDriver.hideKeyboard();
-//
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
-//            WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
-//            password.clear();
-//            password.sendKeys("password");
-//
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+            By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+            Thread.sleep(2000);
 
-            loginStable(driver, "tneal", "password");
+            boolean found = false;
+            int maxAttempts = 8;
+            int waitSeconds = 90;
+
+            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
+                try {
+                    driver.context("NATIVE_APP");
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
+
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
+                    WebElement element = wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(locator)
+                    );
+
+                    System.out.println("Username field is visible on attempt " + attempt);
+                    found = true;
+
+                } catch (TimeoutException e) {
+                    System.out.println("Attempt " + attempt + " failed - username not visible yet");
+
+                    if (attempt == maxAttempts) {
+                        throw e;
+                    }
+                }
+            }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
+            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
+            username.clear();
+            username.sendKeys("tneal");
+            test.mobileWebDriverFactory().androidDriver.hideKeyboard();
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
+            WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
+            password.clear();
+            password.sendKeys("password");
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
+
         } else {
             Thread.sleep(2000);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -2863,34 +2893,31 @@ public class Issuer {
 
     public void signInUsser() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            AndroidDriver driver =
-//                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//            Thread.sleep(3000);
-//
-//// wait until native context is available
-//            new WebDriverWait(driver, Duration.ofSeconds(20))
-//                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-//
-//            driver.context("NATIVE_APP");
-//
-//            Thread.sleep(2000);
-//
-//            By locator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
-//
-//            WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
-//                    .until(ExpectedConditions.visibilityOfElementLocated(locator));
-//
-//            System.out.println("Header is visible: " + header.isDisplayed());
-
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            By headerLocator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
+            Thread.sleep(3000);
 
-            WebElement header = waitForHeaderStable(driver, headerLocator);
+// wait until native context is available
+            new WebDriverWait(driver, Duration.ofSeconds(20))
+                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+
+            driver.context("NATIVE_APP");
+
+            Thread.sleep(2000);
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
+
+
+            By locator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
+
+            WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
+                    .until(ExpectedConditions.visibilityOfElementLocated(locator));
 
             System.out.println("Header is visible: " + header.isDisplayed());
+
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Thread.sleep(2000);
