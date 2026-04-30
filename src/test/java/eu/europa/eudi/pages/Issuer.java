@@ -207,32 +207,15 @@ public class Issuer {
 
                 System.out.println("✅ Deep link executed on Android");
 
-            } else {
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-// 1. Switch to WEBVIEW
-                Set<String> contexts = driver.getContextHandles();
-                System.out.println("Contexts: " + contexts);
-
-                for (String context : contexts) {
-                    if (context.toLowerCase().contains("webview") || context.toLowerCase().contains("safari")) {
-                        driver.context(context);
-                        break;
-                    }
-                }
-
-// 2. Click element in WEBVIEW
-                By locator = By.xpath("//a[contains(text(),'Use EUDIW')]");
-
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-                wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-
-                System.out.println("✅ Clicked Use EUDIW");
             }
+        }else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
         }
-    }
+        }
+
+
 
     public void authenticationPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
