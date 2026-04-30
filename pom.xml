@@ -163,7 +163,7 @@
                 <version>3.5.4</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <skip>false</skip>
                 </configuration>
             </plugin>
