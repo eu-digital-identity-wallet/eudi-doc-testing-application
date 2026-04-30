@@ -7,7 +7,6 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.*;
@@ -30,7 +29,6 @@ public class MobileWebDriverFactory {
     private Process logcatProcess;
     private Thread logcatThread;
     private String sessionId;
-
 
     public MobileWebDriverFactory(TestSetup test, boolean noReset) {
         this.test = test;
@@ -70,14 +68,10 @@ public class MobileWebDriverFactory {
                 options.setCapability("newCommandTimeout", 300);
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("allowInvisibleElements", true);
-
-
                 options.setCapability("appium:settings", appiumSettings);
-
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
-
                 options.setCapability("name", featureName + " - Android Test");
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
@@ -170,8 +164,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("includeSafariInWebviews", true);
                 options.setCapability("waitForQuiescence", true);
 
-
-
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
@@ -225,7 +217,6 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
-
 
     public WebDriver getDriverAndroid() {
         return androidDriver;

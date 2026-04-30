@@ -7,7 +7,6 @@ import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.config.EnvDataConfig;;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -26,7 +25,6 @@ import java.util.*;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.NoSuchElementException;
 
 public class Verifier {
     TestSetup test;
@@ -537,10 +535,7 @@ public class Verifier {
 
     public void selectAllAttributesOnWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWeb)).click();
-
-
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWeb)).click();
-
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWeb)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWeb)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWeb)).click();
@@ -645,15 +640,12 @@ public class Verifier {
     }
 
     public void assertQrCodeIsVisible() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
         By qrCanvas = By.xpath("//qrcode//canvas");
-
         WebElement canvas = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(qrCanvas)
         );
-
         Assert.assertTrue("QR Code canvas is not displayed", canvas.isDisplayed());
     }
 

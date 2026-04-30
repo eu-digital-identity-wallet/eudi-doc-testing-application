@@ -1,6 +1,5 @@
 package eu.europa.eudi.elements.android;
 
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class IssuerElements {
@@ -8,7 +7,6 @@ public class IssuerElements {
     public static By checkPID = By.xpath("//android.widget.TextView[@text=\" PID (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox"); //(//android.widget.CheckBox[@resource-id="check"])[8]
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
-    public static By clickEudiwButton = By.xpath("//android.widget.TextView[@text=\"Use EUDIW\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
     public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
@@ -33,8 +31,6 @@ public class IssuerElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Given Name\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
-    public static By formIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"For testing purposes only.\"]");
-    public static By clickFamilyNameDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
     public static By givenNameFieldDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
     public static By clickCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[1]");
     public static By clickCountryCodeDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText");
@@ -43,8 +39,6 @@ public class IssuerElements {
     public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
-    public static By codeIsVisible = By.xpath("//android.view.View[@text='Code']");
-    public static By formIsDisplayedAndroid = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes for your EUDI Wallet demo application.')]");
     public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select the Credentials you would like to issue:\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
@@ -54,6 +48,5 @@ public class IssuerElements {
 
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By birthDate = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-    public static By issueCredentalsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
 }

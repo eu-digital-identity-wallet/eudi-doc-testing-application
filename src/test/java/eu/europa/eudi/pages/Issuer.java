@@ -11,16 +11,10 @@ import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -31,9 +25,6 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,10 +40,8 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-
             String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
-
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
@@ -135,9 +124,6 @@ public class Issuer {
 
             boolean found = false;
 
-// =========================
-// 1TRY NATIVE FIRST
-// =========================
             try {
                 driver.context("NATIVE_APP");
 
@@ -158,9 +144,6 @@ public class Issuer {
                 System.out.println("QR not found in NATIVE");
             }
 
-// =========================
-// FALLBACK TO WEBVIEW
-// =========================
             if (!found) {
                 for (String context : driver.getContextHandles()) {
                     System.out.println("Context: " + context);
@@ -214,8 +197,6 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
         }
         }
-
-
 
     public void authenticationPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -277,23 +258,15 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    TouchAction action = new TouchAction(driver);
-                    action.press(PointOption.point(500, 300))  // start near top
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                            .moveTo(PointOption.point(500, 1000)) // swipe down
-                            .release()
-                            .perform();
-//                    driver.findElement(AppiumBy.androidUIAutomator(
-//                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-//                    ));
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
                             )
                     );
-
                     wait.until(ExpectedConditions.elementToBeClickable(element));
                     element.click();
                     System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
@@ -311,7 +284,6 @@ public class Issuer {
 
 
         } else {
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFormEu)).click();
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Thread.sleep(2000);
             driver.context("NATIVE_APP");
@@ -335,11 +307,8 @@ public class Issuer {
                     );
 
                     wait.until(ExpectedConditions.elementToBeClickable(locator));
-
                     element.click();
-
                     System.out.println("Clicked FormEU in IOS on attempt " + attempt);
-
                     found = true;
 
                 } catch (Exception e) {
@@ -354,57 +323,6 @@ public class Issuer {
             if (!found) {
                 throw new RuntimeException("FormEU element not found in IOS after retries.");
             }
-        }
-    }
-
-    public void clickStable(AndroidDriver driver, By locator, String scrollTextHint) {
-
-        driver.context("NATIVE_APP");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-
-        WebElement element = wait.until(d -> {
-
-            try {
-                // 1. optional scroll (if needed for your screen)
-                if (scrollTextHint != null) {
-                    scrollToText((AndroidDriver) d, scrollTextHint);
-                    handleChromePopupIfPresent(driver);
-                }
-
-                // 2. find element (NO visibility wait)
-                WebElement el = d.findElement(locator);
-
-                return (el.isDisplayed() && el.isEnabled()) ? el : null;
-
-            } catch (Exception e) {
-                return null;
-            }
-        });
-
-        // 3. ensure clickable state
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-
-        element.click();
-    }
-
-    private void handleChromePopupIfPresent(AndroidDriver driver) {
-        By continueButtonLocator = By.id("com.android.chrome:id/positive_button");
-
-        try {
-            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            WebElement continueButton = shortWait.until(d -> {
-                List<WebElement> buttons = d.findElements(continueButtonLocator);
-                return buttons.isEmpty() ? null : buttons.get(0);
-            });
-
-            if (continueButton != null && continueButton.isDisplayed()) {
-                System.out.println("Chrome popup detected, clicking Continue...");
-                continueButton.click();
-            }
-
-        } catch (Exception ignored) {
-            // No popup appeared, nothing to do
         }
     }
 
@@ -548,7 +466,6 @@ public class Issuer {
 
         } else {
             // Driver & wait
-            IOSDriver driverIos = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
             wait.until(ExpectedConditions.elementToBeClickable(
@@ -596,17 +513,11 @@ public class Issuer {
     }
 
     private void selectYearScrollUp(AndroidDriver driver, String year) {
-//        driver.findElement(AppiumBy.androidUIAutomator(
-//                "new UiScrollable(new UiSelector().scrollable(true))" +
-//                        ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
-//        )).click();
-
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
                         ".scrollBackward()" +
                         ".scrollIntoView(new UiSelector().text(\"" + year + "\"))"
         )).click();
-
     }
 
     public void enterDocumentNumber() {
@@ -643,7 +554,6 @@ public class Issuer {
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.android.IssuerElements.clickIssueDate))
                     .click();
-
 
 // parse yyyy-MM-dd
             String[] p = issueDate.split("-");
@@ -693,8 +603,6 @@ public class Issuer {
                     .click();
 
         } else {
-
-            IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
 // Load YAML
@@ -734,7 +642,6 @@ public class Issuer {
             String targetYear = "2020";
             String targetMonth = "March";
 
-
             monthWheel.sendKeys(targetMonth);
             yearWheel.sendKeys(targetYear);
 
@@ -747,49 +654,37 @@ public class Issuer {
     public void chooseExpiryDate() {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             // Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-
             // Get Expiry Date value (example: 2030-05-15)
             String expiryDate = yml.fields.get("Expiry Date").value;
-
             // Open date picker
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate))
                     .click();
-
-
 // parse yyyy-MM-dd
             String[] p = expiryDate.split("-");
             String year = p[0];
             int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
-
 // open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
                 driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
             }
-
             selectYearScrollUp(driver, year);
             //month
 
             By nextBtn = By.id("android:id/next");
             By prevBtn = By.id("android:id/prev");
-
 // Target month from birthDate
-
 // System current month (your picker starts here)
             int currentMonth = LocalDate.now().getMonthValue();
-
 // Calculate difference
             int diff = 3 - currentMonth;
-
 // Navigate
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
@@ -804,26 +699,20 @@ public class Issuer {
             }
 // select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
-
 // confirm
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
-
         } else {
             IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
-
 // Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
             String expiryDate = yml.fields.get("Expiry Date").value; // e.g., "2030-05-15"
-
 // Open date picker
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
-
             String day = "10";
-
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
@@ -972,7 +861,6 @@ public class Issuer {
                     slowScroll();  // ← slow scroll instead of UiScrollable
                 }
             }
-
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         } else {
@@ -987,7 +875,6 @@ public class Issuer {
                 driver.executeScript("mobile: swipe", params);
                 i++;
             }
-
         }
     }
 
@@ -1002,10 +889,8 @@ public class Issuer {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.authorize)).click();
         }
     }
-
 
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1015,13 +900,10 @@ public class Issuer {
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
             ));
-
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
             ));
-
             By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
-
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
@@ -1029,7 +911,6 @@ public class Issuer {
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-
                     driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
@@ -1054,9 +935,7 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
-
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
@@ -1091,38 +970,6 @@ public class Issuer {
             Assert.assertTrue("Form not displayed correctly", found);        }
     }
 
-    public WebElement findStableElement(AndroidDriver driver, String visibleText) {
-
-        By locator = By.xpath("//android.widget.TextView[contains(@text,'" + visibleText + "')]");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-
-        return wait.until(d -> {
-
-            try {
-                // 1. ensure UI is stable (basic readiness check)
-                if (!isAppReady((AndroidDriver) d)) return null;
-
-                // 2. scroll into view (critical for Android lists)
-                scrollToText((AndroidDriver) d, visibleText);
-
-                // 3. find element (use presence, NOT visibility wait)
-                List<WebElement> elements = d.findElements(locator);
-
-                for (WebElement el : elements) {
-                    if (el.isDisplayed()) {
-                        return el;
-                    }
-                }
-
-                return null;
-
-            } catch (Exception e) {
-                return null;
-            }
-        });
-    }
-
     private void scrollToText(AndroidDriver driver, String text) {
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
@@ -1154,7 +1001,6 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
-//        verifyMandatoryInfoLabelsPresentInAuthorizePage();
         scrollUntilAuthorize();
         clickAuthorize();
     }
@@ -1163,7 +1009,6 @@ public class Issuer {
             FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
                 // Collect all mandatory labels
@@ -1213,62 +1058,11 @@ public class Issuer {
                         });
         }
     }
-
-    public void fastScroll(AndroidDriver driver) throws InterruptedException {
-
-        String originalContext = driver.getContext();
-
-        try {
-            // Switch to NATIVE_APP context once
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context("NATIVE_APP");
-                Thread.sleep(300); // shorter stabilization
-            }
-
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.75);
-            int endY = (int) (size.height * 0.35); // slightly shorter swipe
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 0);
-
-            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // short pause
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-            // Perform swipe
-            try {
-                driver.perform(Collections.singletonList(swipe));
-            } catch (InvalidElementStateException e) {
-                // Retry once if swipe fails (common in hybrid apps)
-                Thread.sleep(500);
-                driver.perform(Collections.singletonList(swipe));
-            }
-
-        } finally {
-            // Switch back to original context if needed
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context(originalContext);
-            }
-        }
-    }
-
-    private String escapeXpath(String s) {
-        // minimal escape for quotes in your current style
-        return s.replace("\"", "\\\"");
-    }
-
     private void verifyMandatoryInfoLabelsPresent(String yamlPath) {
 
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             // Collect all mandatory labels
             List<String> mandatoryLabels = yml.fields.entrySet().stream()
                     .filter(entry -> entry.getValue().required)
@@ -1360,25 +1154,6 @@ public class Issuer {
         }
     }
 
-    public void issuePIDDev() throws InterruptedException {
-//        issuerServiceIsDisplayed();
-        selectCountryOfOriginDev();
-        clickFormEu();
-        clickSubmit();
-        formIsDisplayedDev();
-        enterFamilyNameDev();
-        enterGivenNameDev();
-        chooseBirthDateDev();
-        enterCountryDev();
-        scrollUntilCountryCode();
-        enterCountryCodeDev();
-        scrollUntilFindSubmit();
-        clickConfirm();
-        authorizeIsDisplayedDev();
-        scrollUntilAuthorize();
-        clickAuthorize();
-    }
-
     private void chooseBirthDateDev() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickBirthDate)).click();
@@ -1458,52 +1233,6 @@ public class Issuer {
             WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.givenNameFieldDev);
             givenName.clear();
             givenName.sendKeys("Foteini");
-        }
-    }
-
-
-    private void enterFamilyNameDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFamilyNameDev)).click();
-            WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyNameDev));
-            givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.familyNameFieldDev)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement givenFamily = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.familyNameFieldDev);
-            givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");
-        }
-    }
-
-    private void formIsDisplayedDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedDev,
-                    Literals.Issuer.FORM_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.formIsDisplayedDev
-            ).getText().trim();
-
-            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, headerText);
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev,
-                    Literals.Issuer.FORM_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayedDev
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.FORM_DEV.label, headerText);
         }
     }
 
@@ -1612,11 +1341,9 @@ public class Issuer {
         clickFormEu();
         clickSubmit();
         formIsDisplayed();
-//        verifyMandatoryInfoLabelsPresent("testdata/mDL/py_issuer_form.yml");
         chooseBirthDate();
         enterDocumentNumber();
         scrollUntilFindSign();
-//        codeIsVisible();
         enterCode();
         scrollUntilFindDate();
         clickScreen();
@@ -1633,58 +1360,15 @@ public class Issuer {
         clickAuthorize();
     }
 
-    private void validateScreenFields() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        try {
-            for (String context : driver.getContextHandles()) {
-                if (context.contains("WEBVIEW")) {
-                    driver.context(context);
-                    break;
-                }
-            }
-
-            String yamlPath = "src/test/resources/testdata/mDL/py_issuer_form.yml";
-            List<String> yamlFields = loadYamlFields(yamlPath);
-
-            int maxScrolls = 8;
-
-            for (int i = 0; i < maxScrolls; i++) {
-
-                Thread.sleep(1500);
-
-                String dom = driver.getPageSource();
-
-                List<String> missingFields = findMissingFields(dom, yamlFields);
-
-                if (missingFields.isEmpty()) {
-                    System.out.println("All fields found on screen");
-                    return;
-                }
-
-                System.out.println("Scrolling... Missing fields: " + missingFields);
-
-                swipeUp(driver);
-
-            }
-
-            throw new RuntimeException("Some fields not found after scrolling.");
-
-        } catch (Exception e) {
-            throw new RuntimeException("Validation failed: " + e.getMessage(), e);
-        }
-    }
-
     private void swipeUp(AppiumDriver driver) {
 
         Dimension size = driver.manage().window().getSize();
-
         int startX = size.width / 2;
         int startY = (int) (size.height * 0.75);
         int endY = (int) (size.height * 0.30);
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 0);
-
         swipe.addAction(finger.createPointerMove(
                 Duration.ZERO,
                 PointerInput.Origin.viewport(),
@@ -1693,9 +1377,7 @@ public class Issuer {
 
         swipe.addAction(finger.createPointerDown(
                 PointerInput.MouseButton.LEFT.asArg()));
-
         swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
         swipe.addAction(finger.createPointerMove(
                 Duration.ofMillis(600),
                 PointerInput.Origin.viewport(),
@@ -1704,123 +1386,7 @@ public class Issuer {
 
         swipe.addAction(finger.createPointerUp(
                 PointerInput.MouseButton.LEFT.asArg()));
-
         driver.perform(Collections.singletonList(swipe));
-    }
-
-    private List<String> findMissingFields(String dom, List<String> yamlFields) {
-
-        List<String> missing = new ArrayList<>();
-
-        for (String field : yamlFields) {
-
-            if (!dom.contains(field)) {
-                missing.add(field);
-            }
-        }
-
-        return missing;
-    }
-
-    private List<String> loadYamlFields(String yamlPath) throws Exception {
-
-        Yaml yaml = new Yaml();
-
-        Map<String, Object> data =
-                yaml.load(new FileInputStream(yamlPath));
-
-        Map<String, Object> fields =
-                (Map<String, Object>) data.get("fields");
-
-        return new ArrayList<>(fields.keySet());
-    }
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePageForMdl() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            yml.fields.forEach((fieldKey, cfg) -> {
-                if (!cfg.required) return;
-                String[] labels = fieldKey.split("\\.");
-                String lastLabel = labels[labels.length - 1];
-                // 1) find labels (scroll)
-                for (String label : labels) {
-                    try {
-                        assertTextVisibleWithScroll(driver, label, 10);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                // 2) if expected value in yml -> verify it exists (scroll still at that area)
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    try {
-                        assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    // if no expected value -> at least ensure some value exists near the label
-                    // simplest: just ensure there is at least one TextView visible
-                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-                    if (driver.findElements(anyValue).isEmpty()) {
-                        throw new AssertionError("No values visible for label: " + lastLabel);
-                    }
-                }
-            });
-        } else {
-            //nothing now for iOS
-        }
-
-    }
-
-    private void verifyMandatoryInfoLabelsPresentForMdl() {
-        FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_form.yml", FormYml.class);
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            // (Optional) make sure we're in a stable context
-            // driver.context("NATIVE_APP");
-
-            yml.fields.forEach((fieldKey, cfg) -> {
-                if (!cfg.required) return;
-
-                String[] labels = fieldKey.split("\\.");
-
-                for (String label : labels) {
-
-                    boolean found = false;
-
-                    for (int i = 0; i < 5; i++) {
-
-                        By labelLocator = By.xpath(
-                                "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') " +
-                                        "and contains(@text, \"" + label + "\")]"
-                        );
-
-                        if (!driver.findElements(labelLocator).isEmpty()) {
-                            found = true;
-                            break;
-                        }
-
-                        // scroll down a bit and try again
-                        try {
-                            slowScroll();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    if (!found) {
-                        throw new AssertionError("Mandatory label not found: " + label);
-                    }
-                }
-            });
-            test.mobile().wallet().scrollUpForBirthDate();
-
-        } else {
-            //nothing now for iOS
-        }
     }
 
     public void enterGivenNameOnMdl() {
@@ -1856,23 +1422,6 @@ public class Issuer {
         }
     }
 
-    private void codeIsVisible() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.codeIsVisible,
-                    Literals.Issuer.CODEISVISIBLE.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.codeIsVisible
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.CODEISVISIBLE.label, headerText);
-        }
-    }
-
     public void enterCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.enterCode)).click();
@@ -1881,25 +1430,6 @@ public class Issuer {
             searchBar.clear();
             searchBar.sendKeys("1234");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//            Set<String> contexts = driver.getContextHandles();
-//            for (String context : contexts) {
-//                System.out.println(context);
-//            }
-
-// Switch to WEBVIEW (example name)
-//            driver.context("WEBVIEW_chrome");
-//            By codeField = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText");
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//
-//            WebElement codeInput = wait.until(
-//                    ExpectedConditions.visibilityOfElementLocated(codeField)
-//            );
-//
-//            codeInput.click();
-//            codeInput.clear();
-//            codeInput.sendKeys("12345");
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1929,7 +1459,6 @@ public class Issuer {
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(20);
@@ -1945,14 +1474,12 @@ public class Issuer {
                 // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
-
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
@@ -1978,7 +1505,6 @@ public class Issuer {
 
             givenFamily.clear();
             givenFamily.sendKeys(country);
-
             WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
             test.mobile().wallet().tapAction(placeOfBirth, false);
         } else {
@@ -2010,7 +1536,6 @@ public class Issuer {
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
@@ -2026,14 +1551,12 @@ public class Issuer {
                 // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
-
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
@@ -2053,14 +1576,12 @@ public class Issuer {
                 // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
-
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
@@ -2076,14 +1597,12 @@ public class Issuer {
                 // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
-
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                 Thread.sleep(50);
@@ -2114,7 +1633,6 @@ public class Issuer {
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String countryCode = getValueFromYml("Nationality.Country Code");
-
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             IssuerElements.clickCountryCode
@@ -2129,7 +1647,6 @@ public class Issuer {
 
             givenFamily.clear();
             givenFamily.sendKeys(countryCode);
-
             WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.closeKeyboard));
             test.mobile().wallet().tapAction(element, false);
 
@@ -2146,7 +1663,6 @@ public class Issuer {
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             WebElement header = WaitsUtils.waitForExactText(
                     eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
                     Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
@@ -2632,55 +2148,6 @@ public class Issuer {
         }
     }
 
-    public void loginStable(AndroidDriver driver, String usernameText, String passwordText) {
-
-        // 1. Rotate to portrait
-        driver.rotate(ScreenOrientation.PORTRAIT);
-
-        // 2. Ensure native context
-        WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        contextWait.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-        driver.context("NATIVE_APP");
-
-        // 3. Wait for app readiness
-        WebDriverWait readyWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        readyWait.until(d -> isAppReady(driver));
-
-        // 4. Username field
-        By usernameLocator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
-        WebElement usernameField = waitForElementClickable(driver, usernameLocator, "Username");
-        usernameField.clear();
-        usernameField.sendKeys(usernameText);
-        driver.hideKeyboard();
-
-        // 5. Password field
-        By passwordLocator = eu.europa.eudi.elements.android.IssuerElements.clickPassword;
-        WebElement passwordField = waitForElementClickable(driver, passwordLocator, "Password");
-        passwordField.clear();
-        passwordField.sendKeys(passwordText);
-
-        // 6. Click Sign In
-        By signInLocator = eu.europa.eudi.elements.android.IssuerElements.clickSignIn;
-        WebElement signInButton = waitForElementClickable(driver, signInLocator, "Sign In");
-        signInButton.click();
-    }
-
-    private WebElement waitForElementClickable(AndroidDriver driver, By locator, String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-
-        return wait.until(d -> {
-            try {
-                // Scroll into view if needed
-                scrollToText(driver, elementName);
-
-                WebElement el = driver.findElement(locator);
-                return (el.isDisplayed() && el.isEnabled()) ? el : null;
-            } catch (Exception e) {
-                return null;
-            }
-        });
-    }
-
     public void clickGenerate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.clickGenerateButton)).click();
@@ -2695,50 +2162,6 @@ public class Issuer {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidMsoMdoc)).click();
         }
-    }
-
-    public void ckeckFieldsOnWallet() {
-        FormYml yml = YmlLoader.load("testdata/PID/py_issuer_authorization.yml", FormYml.class);
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-            if (!cfg.required) return;
-
-            String[] labels = fieldKey.split("\\.");
-            String lastLabel = labels[labels.length - 1];
-
-            // 1) find labels (scroll)
-            for (String label : labels) {
-                try {
-                    assertTextVisibleWithScroll(driver, label, 10);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            // 2) if expected value in yml -> verify it exists (scroll still at that area)
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                try {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                // if no expected value -> at least ensure some value exists near the label
-                // simplest: just ensure there is at least one TextView visible
-                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-                if (driver.findElements(anyValue).isEmpty()) {
-                    throw new AssertionError("No values visible for label: " + lastLabel);
-                }
-            }
-        });
-    }
-
-    private String readValueBelowLabel(AndroidDriver driver, String label) {
-        By valueLocator = By.xpath(
-                "//android.view.View[@text='" + label + "']/following::android.widget.TextView[1]"
-        );
-        return driver.findElement(valueLocator).getText();
     }
 
     public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) throws InterruptedException {
@@ -2777,14 +2200,11 @@ public class Issuer {
 
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence swipe = new Sequence(finger, 0);
-
             swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
             swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
             swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY)); // faster swipe
             swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
             driver.perform(Collections.singletonList(swipe));
-
             if (!"NATIVE_APP".equals(originalContext)) {
                 driver.context(originalContext);
             }
@@ -2949,43 +2369,7 @@ public class Issuer {
                     headerText
             );
         }
-
-
-
-//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed)).getText();
-//            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
-//        } else {
-//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed)).getText();
-//            Assert.assertEquals(Literals.Issuer.SIGN_IN_USER_PAGE.label, pageHeader);
-//        }
     }
-
-    public WebElement waitForHeaderStable(AndroidDriver driver, By locator) {
-
-        // 1. wait for native context
-        WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        contextWait.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-
-        driver.context("NATIVE_APP");
-
-        // 2. wait for app/page readiness
-        WebDriverWait readyWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        readyWait.until(d -> isAppReady(driver));
-
-        // 3. wait for header element
-        WebDriverWait elementWait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
-        return elementWait.until(d -> {
-            try {
-                WebElement el = driver.findElement(locator);
-                return (el.isDisplayed()) ? el : null;
-            } catch (Exception e) {
-                return null;
-            }
-        });
-    }
-  
 
     public void selectMdlPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -3072,73 +2456,5 @@ public class Issuer {
                 }
             }
         }
-    }
-
-    public void requestCredentialsPageIsDisplayedOnWeb() {
-        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.requestCredentialOnIssuer)).getText();
-        Assert.assertEquals(Literals.Verifier.SELECT_CREDENTIALS.label, pageHeader);
-    }
-
-    public void scrollUntilMdlIssuerOnWeb() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement mdlCheckbox = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
-                        By.name("eu.europa.ec.eudi.mdl_mdoc")
-                )
-        );
-
-// Scroll to element
-        ((JavascriptExecutor) driver).executeScript(
-                "arguments[0].scrollIntoView({block: 'center'});",
-                mdlCheckbox
-        );
-
-// Wait until clickable
-        wait.until(ExpectedConditions.elementToBeClickable(mdlCheckbox));
-
-// Click it
-        mdlCheckbox.click();
-    }
-
-    public void selectMdlPythonIssuerOnWeb() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickMdlOnWeb)).click();
-    }
-
-    public WebElement scrollUntilFindSubmitIssuerOnWeb() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
-        WebDriverWait wait = test.webWebDriverFactory().getWait();
-
-        By nextCandidates = By.id("btncheck");
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        // Use a custom ExpectedCondition with a lambda expression
-        return wait.until(d -> {
-            try {
-                // First, try to find the element without scrolling
-                WebElement element = driver.findElement(nextCandidates);
-                if (element.isDisplayed()) {
-                    // If found and visible, scroll it into the center of the view for interaction
-                    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-                    return element;
-                }
-            } catch (Exception e) {
-                // Element not found or not visible, so we scroll down and try again
-                js.executeScript("window.scrollBy(0, 300);"); // Scroll down by 300 pixels
-            }
-            // Return null to tell the wait to continue polling
-            return null;
-        });
-    }
-
-    public void clickSubmitButtonOnWeb() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSubmitButtonOnWeb)).click();
-    }
-
-    public void qrIsDisplayedOnIssuer() {
-        String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.requestCredentialOnIssuerForQR)).getText();
-        Assert.assertEquals(Literals.Issuer.ISSUER_SERVICE_IS_DISPLAYED.label, pageHeader);
     }
 }
