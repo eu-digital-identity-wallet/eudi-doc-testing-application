@@ -1,14 +1,10 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.utils.TestSetup;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class ManuallyStepDefs {
     TestSetup test;

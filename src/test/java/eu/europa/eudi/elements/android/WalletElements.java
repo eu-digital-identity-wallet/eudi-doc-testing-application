@@ -1,6 +1,5 @@
 package eu.europa.eudi.elements.android;
 
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class WalletElements {
@@ -28,13 +27,12 @@ public class WalletElements {
     public static By unselectDataForMdlKotlin = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
+
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
     public static By issuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By successMessageIsDisplayedForIssuer = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
-
-    public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By detailsOfMdlIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Date of birth\"]");
     public static By detailsOfDocument = By.xpath("//android.widget.TextView[@text=\"Family Name(s)\"]");;
     public static By clickSecondPID = By.xpath("(//android.widget.TextView[@text=\"PID (MSO Mdoc)\"])[2]");
@@ -71,18 +69,12 @@ public class WalletElements {
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By onlineOption = By.xpath("//android.widget.TextView[@text=\"Scan QR\"]");
     public static By walletLink = By.linkText("Link");
-//    public static By walletLink = AppiumBy.accessibilityId("Link");
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickPIDKotlin = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
-
-    public static By closeButtonOnVerifier = By.xpath("//android.widget.Button[@text=\"Close\"]");
-
     public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
-    public static By closeButton = By.xpath("//android.widget.Button");
     public static By sexButton = By.xpath("//android.widget.Button[@text=\"Sex\"]");
-    public static By clickExpandVerificationSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])");;
     public static By residentStreet = By.xpath("//android.widget.TextView[@text=\"Resident Street\"]");;
     public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
     public static By scanQRIsActivatedForIssuance = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
@@ -90,6 +82,5 @@ public class WalletElements {
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
     public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
- public static By clickToViewDetailsSecond = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[3]");
     public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
 }

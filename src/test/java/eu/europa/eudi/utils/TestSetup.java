@@ -11,7 +11,6 @@ import io.cucumber.java.Scenario;
 import java.net.MalformedURLException;
 
 public class TestSetup {
-    private String transactionCode;
     EnvDataConfig envDataConfig;
     MobileWebDriverFactory mobileWebDriverFactory;
     WebWebDriverFactory webWebDriverFactory;
@@ -25,7 +24,6 @@ public class TestSetup {
         this.scenario = scenario;
         mobileWebDriverFactory = new MobileWebDriverFactory(TestSetup.this, noReset);
         mobilePageObjectFactory = new MobilePageObjectFactory(TestSetup.this);
-        
         webWebDriverFactory = new WebWebDriverFactory(TestSetup.this);
         webPageObjectFactory = new WebPageObjectFactory(TestSetup.this);
     }

@@ -20,12 +20,6 @@ public class WebWebDriverFactory {
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
-        // Optional but recommended for stability:
-        // options.addArguments("--start-maximized");
-        // options.addArguments("--disable-gpu");
-        // options.addArguments("--no-sandbox");
-        // options.addArguments("--disable-dev-shm-usage");
-
         webDriver = new ChromeDriver(options);
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
     }

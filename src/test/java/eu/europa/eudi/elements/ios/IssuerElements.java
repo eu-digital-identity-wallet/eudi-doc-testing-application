@@ -30,14 +30,11 @@ public class IssuerElements {
     public static By clickExpiryDate = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[10]/XCUIElementTypeOther[4]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date\"]");
-
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeTextField");
     public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
-    public static By formIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"For testing purposes only.\"]");
-    public static By familyNameFieldDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
     public static By givenNameFieldDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
     public static By clickCountryDev = By.xpath("//XCUIElementTypeOther[@name=\"Country Region Locality\"]/XCUIElementTypeTextField[1]");
     public static By clickCountryCodeDev = By.xpath("(//XCUIElementTypeOther[@name=\"Country Code\"])[1]/XCUIElementTypeTextField");

@@ -3,14 +3,11 @@ package eu.europa.eudi.utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Collections;
 
 public class WaitsUtils {
     public static WebElement waitForExactText(By locator,
@@ -54,24 +51,5 @@ public class WaitsUtils {
             // Throw a more informative exception
             throw new TimeoutException("Timeout: Text '" + expectedText + "' not found for locator '" + locator + "' within " + timeoutSeconds + " seconds.", e);
         }
-    }
-
-    public static WebElement waitVisibleThenClickable(By locator,
-                                                      AndroidDriver driver,
-                                                      int timeoutSeconds) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-
-        // Wait for visibility
-        WebElement visibleElement = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator)
-        );
-
-        // Wait for clickability
-        WebElement clickableElement = wait.until(
-                ExpectedConditions.elementToBeClickable(locator)
-        );
-
-        return clickableElement;
     }
 }
