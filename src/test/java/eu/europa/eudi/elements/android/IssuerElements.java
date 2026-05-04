@@ -43,7 +43,7 @@ public class IssuerElements {
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
-    public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[25]");
+    public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
 
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
