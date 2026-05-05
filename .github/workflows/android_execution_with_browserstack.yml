@@ -121,37 +121,28 @@ jobs:
           echo "BUILD_ID=$BUILD_ID"
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-#      - name: Run Android Selenium Appium tests on BrowserStack Farm
-#        env:
-#          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
-#        if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
-#        continue-on-error: true
-#        run: |
-#          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
-#          echo "Running Android tests with tags: $TEST_CASES"
-#          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-#          mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
-
       - name: Run Android Selenium Appium tests on BrowserStack Farm
+        env:
+          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+        if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
+        continue-on-error: true
         run: |
           TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
           echo "Running Android tests with tags: $TEST_CASES"
+          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+          mvn verify -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
-          mvn verify -ntp \
-            -Dapp.url=$BROWSERSTACK_APP_URL \
-            -Dcucumber.filter.tags="$TEST_CASES"
+      - name: Generate Serenity Report
+        if: always()
+        run: |
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
-#      - name: Generate Serenity Report
-#        if: always()
-#        run: |
-#          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
-
-#      - name: Replace Serenity Core CSS
-#        if: always()
-#        run: |
-#          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
-#          echo "Replacing core.css using custom-style.css..."
-#          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+          echo "Replacing core.css using custom-style.css..."
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
 
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
