@@ -262,6 +262,9 @@ public class Issuer {
                     driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
+                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
@@ -1882,7 +1885,7 @@ public class Issuer {
     public void scrollUntilFindName() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 3; i++) {
                 // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
