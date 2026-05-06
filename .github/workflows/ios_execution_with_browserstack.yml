@@ -93,10 +93,10 @@ jobs:
         if: ${{ inputs.platform == 'IOS' || inputs.platform == 'both' }}
         continue-on-error: true
         run: |
-          TEST_CASES="${{ inputs.test-cases }} and @IOS"
-          echo "Running iOS tests with tags: $TEST_CASES"
-          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-          mvn test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
+            TEST_CASES="${{ inputs.test-cases }} and @IOS"
+            echo "Running iOS tests with tags: $TEST_CASES"
+            export CUCUMBER_FILTER_TAGS="$TEST_CASES"
+            mvn test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
 
       - name: Generate Serenity Report
         if: always()
