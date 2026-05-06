@@ -22,6 +22,9 @@ Feature: Issuance and presentation - mDL
       | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
       | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | all attributes       |
       | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
@@ -40,3 +43,6 @@ Feature: Issuance and presentation - mDL
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
       | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
