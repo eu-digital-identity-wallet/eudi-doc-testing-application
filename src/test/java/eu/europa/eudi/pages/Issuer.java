@@ -2049,6 +2049,9 @@ public class Issuer {
                     driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
                     ));
+                    driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
+                    ));
 
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
@@ -2341,6 +2344,9 @@ public class Issuer {
             Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
             ));
 
 
