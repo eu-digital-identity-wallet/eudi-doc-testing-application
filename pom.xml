@@ -165,6 +165,9 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <rerunFailingTestsCount>1</rerunFailingTestsCount>
                     <skip>false</skip>
+                    <systemPropertyVariables>
+                        <serenity.rerun.failures.only>false</serenity.rerun.failures.only>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 
