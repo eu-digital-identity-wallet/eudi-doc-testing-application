@@ -37,6 +37,11 @@
     <dependencies>
         <!-- JSON -->
         <dependency>
+            <groupId>org.snakeyaml</groupId>
+            <artifactId>snakeyaml-engine</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.2</version>
@@ -144,8 +149,7 @@
                 <version>${serenity.version}</version>
                 <executions>
                     <execution>
-                        <id>serenity-report</id>
-                        <phase>verify</phase>
+                        <phase>post-integration-test</phase>
                         <goals>
                             <goal>aggregate</goal>
                         </goals>
