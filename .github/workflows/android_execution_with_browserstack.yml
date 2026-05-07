@@ -121,27 +121,6 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-      - name: Fetch BrowserStack Sessions
-        if: always()
-        run: |
-          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
-          echo "Fetching sessions for build: $BUILD_ID"
-
-          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-            -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions.json" \
-            -o sessions.json
-
-          echo "Sessions JSON:"
-          cat sessions.json | jq '.'
-
-      - name: Create Session Mapping File
-        if: always()
-        run: |
-          jq -r '.[] | "\(.name // "unknown")=\(.hashed_id)"' sessions.json > session_map.txt
-
-          echo "Session Map:"
-          cat session_map.txt
-
       # ---------------- RUN TESTS ----------------
       - name: Run Android Tests on BrowserStack
         env:
@@ -193,6 +172,27 @@ jobs:
         if: always()
         run: |
           python3 merge_serenity_results.py || true
+
+      - name: Fetch BrowserStack Sessions
+        if: always()
+        run: |
+          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
+          echo "Fetching sessions for build: $BUILD_ID"
+
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions.json" \
+            -o sessions.json
+
+          echo "Sessions JSON:"
+          cat sessions.json | jq '.'
+
+      - name: Create Session Mapping File
+        if: always()
+        run: |
+          jq -r '.[] | "\(.name // "unknown")=\(.hashed_id)"' sessions.json > session_map.txt
+
+          echo "Session Map:"
+          cat session_map.txt
 
       # ---------------- REPORT ----------------
       - name: Generate Serenity Report
