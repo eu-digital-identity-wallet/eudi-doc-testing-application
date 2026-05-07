@@ -15,3 +15,4 @@ Feature: Issuance and presentation - mDL
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
+
