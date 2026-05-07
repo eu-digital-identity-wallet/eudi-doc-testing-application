@@ -5,10 +5,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = {"src/test/resources/features"},
+        features = "@target/rerun.txt",
         monochrome = true,
         glue = {"eu.europa.eudi.stepdefs"},
-        plugin = {"rerun:target/rerun.txt"})
+        plugin = {"pretty", "json:target/rerun/cucumber-rerun.json"}
+)
 
 public class RerunTestRunner {
 }
