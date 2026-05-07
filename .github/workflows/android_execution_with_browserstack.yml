@@ -19,7 +19,7 @@ on:
         default: "@automated"
 
       platform:
-        description: 'Platform to test - android'
+        description: 'Platform to test'
         type: choice
         options:
           - ANDROID
@@ -37,79 +37,59 @@ jobs:
 
     steps:
 
-      # -------------------------
+      # ----------------------------
       # Checkout
-      # -------------------------
-      - uses: actions/checkout@v4
+      # ----------------------------
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch-to-checkout }}
 
-      # -------------------------
-      # APK Download
-      # -------------------------
-      - name: Download Latest Release APK
-        env:
-          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
-        run: |
-          latest_release=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/$REPO/releases/latest")
-
-          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
-
-          curl -L -o app.apk "$apk_url"
-
-      # -------------------------
+      # ----------------------------
       # Setup
-      # -------------------------
-      - name: Set up JDK 17
+      # ----------------------------
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: oracle
 
-      - name: Set up Node JS
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Clean Old Results
-        run: |
-          rm -rf target/site/serenity*
-
-      # -------------------------
+      # ----------------------------
       # Upload App
-      # -------------------------
-      - name: Upload app to BrowserStack
+      # ----------------------------
+      - name: Upload App to BrowserStack
         id: upload_app
         run: |
           response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
             -F "file=@app.apk")
 
-          app_url=$(echo $response | jq -r '.app_url')
-          echo "app_url=$app_url" >> $GITHUB_OUTPUT
+          echo "app_url=$(echo $response | jq -r '.app_url')" >> $GITHUB_OUTPUT
 
       # =====================================================
-      # 1. INITIAL TEST RUN
+      # 1. INITIAL EXECUTION
       # =====================================================
-      - name: Run Android Tests (Initial Run)
+      - name: Run Full Test Suite (Execution 1)
         id: run1
         continue-on-error: true
         env:
-          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+          APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
-          TAGS="${{ inputs.test-cases }} and @ANDROID"
-
           mvn test -ntp \
-            -Dapp.url=$BROWSERSTACK_APP_URL \
-            -Dcucumber.filter.tags="$TAGS" \
+            -Dapp.url=$APP_URL \
+            -Dcucumber.filter.tags="${{ inputs.test-cases }} and @ANDROID" \
             -Dserenity.outputDirectory=target/site/serenity-run1
 
       # =====================================================
       # 2. DETECT FAILURES
       # =====================================================
       - name: Detect Failures
-        id: detect_failures
+        id: detect
         if: always()
         run: |
           if grep -r '"result":"FAILURE"' target/site/serenity-run1 2>/dev/null; then
@@ -121,21 +101,21 @@ jobs:
       # =====================================================
       # 3. RERUN FAILED TESTS
       # =====================================================
-      - name: Rerun Failed Tests
-        if: steps.detect_failures.outputs.has_failures == 'true'
+      - name: Rerun Failed Tests (Execution 2)
+        if: steps.detect.outputs.has_failures == 'true'
         continue-on-error: true
         env:
-          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
+          APP_URL: ${{ steps.upload_app.outputs.app_url }}
         run: |
           mvn test -ntp \
-            -Dapp.url=$BROWSERSTACK_APP_URL \
-            -Dcucumber.options="@target/rerun/rerun.txt" \
+            -Dapp.url=$APP_URL \
+            -Dcucumber.options="@target/rerun.txt" \
             -Dserenity.outputDirectory=target/site/serenity-run2
 
       # =====================================================
       # 4. MERGE RESULTS
       # =====================================================
-      - name: Merge Serenity Results
+      - name: Merge Execution Results
         if: always()
         run: |
           mkdir -p target/site/serenity
@@ -143,47 +123,26 @@ jobs:
           cp -r target/site/serenity-run1/* target/site/serenity/ || true
           cp -r target/site/serenity-run2/* target/site/serenity/ || true
 
-      # -------------------------
-      # FINAL REPORT
-      # -------------------------
-      - name: Generate Serenity Report
+      # =====================================================
+      # 5. FINAL REPORT
+      # =====================================================
+      - name: Generate Final Serenity Report
         if: always()
         run: mvn serenity:aggregate
 
-      # -------------------------
-      # CSS override (your logic kept)
-      # -------------------------
-      - name: Replace Serenity Core CSS
-        if: always()
-        run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
-
-      # -------------------------
-      # Upload Reports
-      # -------------------------
+      # =====================================================
+      # 6. ARTIFACTS
+      # =====================================================
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android-serenity-report
-          path: target/site/reports/*
+          name: serenity-report
+          path: target/site/reports/
 
-      # -------------------------
-      # Logs (unchanged)
-      # -------------------------
-      - name: Upload Android Logs
+      - name: Upload JSON Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android-device-logs
-          path: android-logs/
-
-      - name: Upload Serenity JSON Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: android-serenity-json
-          path: |
-            target/site/serenity/**/*.json
-            target/site/reports/**/*.json
+          name: serenity-json
+          path: target/site/serenity/**/*.json
