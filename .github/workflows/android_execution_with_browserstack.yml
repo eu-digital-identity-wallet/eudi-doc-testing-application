@@ -31,6 +31,7 @@ jobs:
     timeout-minutes: 240
 
     env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
@@ -38,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          clean: true
+          clean: false
           lfs: false
           ref: ${{ inputs.branch-to-checkout }}
 
