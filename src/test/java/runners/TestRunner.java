@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         monochrome = true,
-        glue = {"eu.europa.eudi.stepdefs"})
+        glue = {"eu.europa.eudi.stepdefs"},
+        plugin = {"rerun:target/rerun.txt"})
 public class TestRunner {
 }
