@@ -12,7 +12,5 @@ Feature: Issuance and presentation - mDL
     And the presentation is performed on a <presentation_scenario> for the <credential>
     Then the verifier verifies the credential successfully with <presentation_scenario> for <selective_disclosure>
     Examples:
-      | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
+      | credential | issuer | issuance_method | issue_scenario | verifier | presentation_scenario | selective_disclosure |
 
