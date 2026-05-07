@@ -1,186 +1,3 @@
-#name: Android Automation Tests Execution
-#
-#on:
-#  workflow_dispatch:
-#    inputs:
-#      branch-to-checkout:
-#        description: 'Branch to checkout'
-#        type: choice
-#        options:
-#          - main
-#          - develop
-#          - milestone/2025.Q4
-#          - milestone/2026.Q1
-#        default: develop
-#
-#      test-cases:
-#        description: 'Choose Test Cases'
-#        type: string
-#        default: "@automated"
-#
-#      platform:
-#        description: 'Platform to test - android'
-#        type: choice
-#        options:
-#          - ANDROID
-#        default: ANDROID
-#
-#  # schedule:
-#  #   # WED,SAT 03:15 UTC
-#  #   - cron: '15 3 * * 3,6'
-#
-#jobs:
-#  build:
-#    runs-on: macos-latest
-#    timeout-minutes: 240 # increase IF needed
-#    env:
-#      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-#      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-#
-#    steps:
-#      - uses: actions/checkout@v4 # Checkout the code
-#        with:
-#          fetch-depth: 0
-#          clean: true
-#          lfs: false
-#          ref: ${{ inputs.branch-to-checkout }}
-#
-#      - name: Download Latest Release APK
-#        env:
-#          REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
-#        run: |
-#          GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-#          latest_release=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/releases/latest")
-#          echo "Latest Release JSON: $latest_release"
-#          apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
-#          if [ -z "$apk_url" ]; then
-#            echo "No APK found in the latest release."
-#            exit 1
-#          fi
-#          echo "Downloading APK from: $apk_url"
-#          curl -L -o app.apk "$apk_url"
-#
-#      - name: Verify APK file
-#        run: |
-#          ls -lh app.apk
-#          file app.apk
-#          zipinfo -1 app.apk | head -n 10
-#
-#      - name: Set up JDK 17
-#        uses: actions/setup-java@v4
-#        with:
-#          java-version: 17
-#          distribution: 'oracle'
-#
-#      - name: Set up Node JS
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: '20'
-#
-#      - name: Clean Old Results
-#        run: |
-#          rm -rf target/serenity
-#          rm -rf target/site/reports
-#          rm -rf target/site/serenity
-#
-#      - name: Initialize Session Map
-#        run: echo "" > session_map.txt
-#
-#      - name: Check jq Installation
-#        run: |
-#          if ! command -v jq &> /dev/null; then
-#            echo "jq not found, installing..."
-#            brew install jq
-#          else
-#            echo "jq is already installed."
-#            jq --version
-#          fi
-#
-#      - name: Check BrowserStack Credentials
-#        run: |
-#          response=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" https://api.browserstack.com/automate/plan.json)
-#          echo "BrowserStack Response: $response"
-#
-#      - name: Upload app to BrowserStack
-#        id: upload_app
-#        run: |
-#          response=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-#            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-#            -F "file=@app.apk")
-#          echo "Response: $response"
-#          app_url=$(echo $response | jq -r '.app_url')
-#          echo "app_url=$app_url" >> $GITHUB_OUTPUT
-#
-#      - name: Get Latest BrowserStack Build ID
-#        id: fetch-build
-#        if: always()
-#        run: |
-#          BUILD_ID=$(curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
-#            -X GET "https://api-cloud.browserstack.com/app-automate/builds.json" \
-#            | jq -r '.[0].automation_build.hashed_id')
-#          echo "BUILD_ID=$BUILD_ID"
-#          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
-#
-#      - name: Run Android Selenium Appium tests on BrowserStack Farm
-#        env:
-#          BROWSERSTACK_APP_URL: ${{ steps.upload_app.outputs.app_url }}
-#        if: ${{ inputs.platform == 'ANDROID' || inputs.platform == 'both' }}
-#        continue-on-error: true
-#        run: |
-#          TEST_CASES="${{ inputs.test-cases }} and @ANDROID"
-#          echo "Running Android tests with tags: $TEST_CASES"
-#          export CUCUMBER_FILTER_TAGS="$TEST_CASES"
-#          mvn test -ntp -Dapp.url=$BROWSERSTACK_APP_URL -Dcucumber.filter.tags="$TEST_CASES"
-#
-#      - name: Generate Serenity Report
-#        if: always()
-#        run: |
-#          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
-#
-#      - name: Replace Serenity Core CSS
-#        if: always()
-#        run: |
-#          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
-#          echo "Replacing core.css using custom-style.css..."
-#          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
-#
-#      - name: Upload Serenity Report
-#        uses: actions/upload-artifact@v4
-#        if: always()
-#        with:
-#          name: android-serenity-report
-#          path: target/site/reports/*
-#
-#      - name: Download BrowserStack Device Logs per Feature (Android)
-#        if: always() && (inputs.platform == 'ANDROID' || inputs.platform == 'both')
-#        run: |
-#          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
-#          mkdir -p android-logs
-#
-#          while IFS='=' read FEATURE SESSION_ID; do
-#            [[ "$FEATURE" != *"_Android" ]] && continue
-#            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
-#            echo "Downloading logs for Android: $FEATURE_CLEAN | Session: $SESSION_ID"
-#
-#            curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
-#            -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
-#            -o "android-logs/${FEATURE_CLEAN}.txt"
-#          done < session_map.txt
-#
-#      - name: Upload Android Logs
-#        uses: actions/upload-artifact@v4
-#        if: always()
-#        with:
-#          name: android-device-logs
-#          path: android-logs/
-#
-#      - name: Upload Serenity JSON Results
-#        uses: actions/upload-artifact@v4
-#        if: always()
-#        with:
-#          name: android-serenity-json    # or ios-serenity-json
-#          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/*.json
-
 name: Android Automation Tests Execution
 
 on:
@@ -208,6 +25,9 @@ on:
           - ANDROID
         default: ANDROID
 
+  # schedule:
+  #   - cron: '15 3 * * 3,6'
+
 jobs:
   build:
     runs-on: macos-latest
@@ -218,36 +38,85 @@ jobs:
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+
+      # ---------------- Checkout ----------------
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           clean: true
+          lfs: false
           ref: ${{ inputs.branch-to-checkout }}
 
-      - name: Download Latest APK
+      # ---------------- APK Download ----------------
+      - name: Download Latest Release APK
         env:
           REPO: eu-digital-identity-wallet/eudi-app-android-wallet-ui
         run: |
           GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-
           latest_release=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/repos/$REPO/releases/latest")
 
           apk_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | contains("Demo.apk")) | .browser_download_url')
 
+          if [ -z "$apk_url" ]; then
+            echo "No APK found in the latest release."
+            exit 1
+          fi
+
           curl -L -o app.apk "$apk_url"
 
-      - name: Setup Java
+      - name: Verify APK file
+        run: |
+          ls -lh app.apk
+          file app.apk
+          zipinfo -1 app.apk | head -n 10
+
+      # ---------------- Setup Tools ----------------
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: oracle
 
-      - name: Setup Node
+      - name: Set up Node JS
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      # ✅ ADDED: Python for local execution script
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # ---------------- jq ----------------
+      - name: Check jq Installation
+        run: |
+          if ! command -v jq &> /dev/null; then
+            brew install jq || sudo apt-get update && sudo apt-get install -y jq
+          fi
+
+      # ---------------- Cleanup ----------------
+      - name: Clean Old Results
+        run: |
+          rm -rf target/serenity
+          rm -rf target/site/reports
+          rm -rf target/site/serenity
+          rm -rf android-logs
+
+      - name: Initialize Session Map
+        run: echo "" > session_map.txt
+
+      # ---------------- BrowserStack ----------------
+      - name: Check BrowserStack Credentials
+        run: |
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+          https://api.browserstack.com/automate/plan.json
 
       - name: Upload app to BrowserStack
         id: upload_app
@@ -259,139 +128,73 @@ jobs:
           app_url=$(echo $response | jq -r '.app_url')
           echo "app_url=$app_url" >> $GITHUB_OUTPUT
 
-      #############################################
-      # MAIN TEST EXECUTION (FULL PARITY)
-      #############################################
-
-      - name: Run Android Tests (with reruns + report)
-        if: ${{ inputs.platform == 'ANDROID' }}
-        continue-on-error: true
-        env:
-          APP_URL: ${{ steps.upload_app.outputs.app_url }}
-        run: |
-
-          export CUCUMBER_FILTER_TAGS="${{ inputs.test-cases }} and @ANDROID"
-
-          RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
-          BACKUP_DIR="target/serenity-backup"
-
-          rm -f target/rerun.txt target/rerun2.txt
-          rm -rf target/site/serenity
-
-          rm -rf android-logs
-          mkdir -p android-logs
-
-          mkdir -p "$BACKUP_DIR"
-
-          rm -f "$BACKUP_DIR"/*.json || true
-          rm -f "$RESULTS_DIR"/*.json || true
-
-          echo "--- MAIN RUN ---"
-
-          mvn test \
-            -ntp \
-            -Dtest=TestRunner \
-            -Dapp.url="$APP_URL" \
-            -Dcucumber.filter.tags="$CUCUMBER_FILTER_TAGS"
-
-          echo "--- BACKUP JSON ---"
-
-          cp "$RESULTS_DIR"/*.json "$BACKUP_DIR/" 2>/dev/null || true
-
-          ########################################
-          # RERUN 1
-          ########################################
-
-          if [ -s target/rerun.txt ]; then
-
-            mvn test \
-              -ntp \
-              -Dtest=RerunTestRunner \
-              -Dapp.url="$APP_URL"
-
-            python3 merge_serenity_results.py
-
-            cp "$RESULTS_DIR"/*.json "$BACKUP_DIR/" 2>/dev/null || true
-          fi
-
-          ########################################
-          # RERUN 2
-          ########################################
-
-          if [ -s target/rerun2.txt ]; then
-
-            mvn test \
-              -ntp \
-              -Dtest=RerunTestRunner \
-              -Dapp.url="$APP_URL" \
-              -Dcucumber.features="@target/rerun2.txt"
-
-            python3 merge_serenity_results.py
-          fi
-
-          ########################################
-          # SERENITY REPORT
-          ########################################
-
-          mvn serenity:aggregate \
-            -Dtags="$CUCUMBER_FILTER_TAGS"
-
-          ########################################
-          # CUSTOM CSS
-          ########################################
-
-          REPORT_DIR="$RESULTS_DIR/css"
-          CUSTOM_CSS="src/test/resources/custom-style.css"
-
-          if [ -f "$CUSTOM_CSS" ]; then
-            CORE_CSS=$(find "$REPORT_DIR" -name "core.css" | head -n 1)
-
-            if [ -n "$CORE_CSS" ]; then
-              cp "$CUSTOM_CSS" "$CORE_CSS"
-            fi
-          fi
-
-      #############################################
-      # DEVICE LOGS (MISSING PIECE FIXED)
-      #############################################
-
-      - name: Download BrowserStack Device Logs
+      - name: Get Latest BrowserStack Build ID
+        id: fetch-build
         if: always()
         run: |
-          BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+          BUILD_ID=$(curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
             -X GET "https://api-cloud.browserstack.com/app-automate/builds.json" \
             | jq -r '.[0].automation_build.hashed_id')
 
+          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+
+      # ---------------- LOCAL EXECUTION (ADDED) ----------------
+      - name: Make local script executable
+        if: ${{ inputs.platform == 'ANDROID' }}
+        run: chmod +x local-execution-mac.sh
+
+      - name: Run Local Android Execution
+        if: ${{ inputs.platform == 'ANDROID' }}
+        run: |
+          echo "Running LOCAL Android execution..."
+          ./local-execution-mac.sh
+
+      # ---------------- Reports ----------------
+      - name: Generate Serenity Report
+        if: always()
+        run: |
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+
+      # ---------------- UPLOAD LOCAL REPORT (IMPORTANT) ----------------
+      - name: Upload Local Serenity Report
+        if: always() && ${{ inputs.platform == 'ANDROID' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-android-serenity-report
+          path: target/site/reports/
+
+      - name: Upload Local JSON Results
+        if: always() && ${{ inputs.platform == 'ANDROID' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-android-serenity-json
+          path: target/site/reports/**/*.json
+
+
+      - name: Download BrowserStack Device Logs per Feature (Android)
+        if: always() && (inputs.platform == 'ANDROID')
+        run: |
+          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
           mkdir -p android-logs
 
           while IFS='=' read FEATURE SESSION_ID; do
             [[ "$FEATURE" != *"_Android" ]] && continue
-
             FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
 
-            curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-              -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
-              -o "android-logs/${FEATURE_CLEAN}.txt"
-
+            curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
+            -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
+            -o "android-logs/${FEATURE_CLEAN}.txt"
           done < session_map.txt
 
       - name: Upload Android Logs
-        if: always()
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: android-device-logs
           path: android-logs/
-
-      - name: Upload Serenity Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-serenity-report
-          path: target/site/reports/*
-
-      - name: Upload JSON Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/*.json
