@@ -1,9 +1,40 @@
 #!/bin/bash
-export CUCUMBER_FILTER_TAGS="@end2end"
-mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@end2end" "$@"
+export CUCUMBER_FILTER_TAGS="@ANDROID and @execution"
+RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+BACKUP_DIR="target/serenity-backup"
+
+# Clean up leftovers from previous runs
+rm -f target/rerun.txt target/rerun2.txt
+rm -f "$BACKUP_DIR"/*.json
+rm -f "$RESULTS_DIR"/*.json
+
+# Main run
+mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@ANDROID and @execution" "$@"
+
+# Backup full results before any rerun overwrites them
+mkdir -p "$BACKUP_DIR"
+cp "$RESULTS_DIR"/*.json "$BACKUP_DIR/" 2>/dev/null || true
+echo "--- Backed up $(ls $BACKUP_DIR/*.json 2>/dev/null | wc -l | tr -d ' ') JSON file(s) ---"
+
+# Rerun pass 1
+if [ -s target/rerun.txt ]; then
+  echo "--- Failures detected. Rerunning failed scenarios (pass 1/2) ---"
+  mvn test -Dtest=RerunTestRunner "$@"
+  echo "--- Merging pass 1 results ---"
+  python3 merge_serenity_results.py
+  cp "$RESULTS_DIR"/*.json "$BACKUP_DIR/" 2>/dev/null || true
+fi
+
+# Rerun pass 2
+if [ -s target/rerun2.txt ]; then
+  echo "--- Failures still present. Rerunning failed scenarios (pass 2/2) ---"
+  mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt" "$@"
+  echo "--- Merging pass 2 results ---"
+  python3 merge_serenity_results.py
+fi
+
 rm -rf target/site/serenity
-# Clear previous report data
-mvn serenity:aggregate -Dtags="end2end"
+mvn serenity:aggregate -Dtags="ANDROID and execution"
 echo "--- Applying custom CSS ---"
 
 REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/css"
