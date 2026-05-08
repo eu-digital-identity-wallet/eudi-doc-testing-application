@@ -2,13 +2,21 @@ name: Merge All Serenity Reports
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - iOS Automation Tests Execution
-      - Android Automation Tests Execution
-      - Manual Tests Execution
-    types:
-      - completed
+    inputs:
+      ios_run_id:
+        description: "iOS workflow run ID"
+        required: true
+        type: string
+
+      android_run_id:
+        description: "Android workflow run ID"
+        required: true
+        type: string
+
+      manual_run_id:
+        description: "Manual workflow run ID"
+        required: true
+        type: string
 
 jobs:
   merge-reports:
@@ -22,40 +30,14 @@ jobs:
         uses: actions/checkout@v4
 
       # =====================================================
-      # FETCH LATEST SUCCESSFUL RUN IDS
+      # PRINT PROVIDED IDS
       # =====================================================
-      - name: Fetch workflow run IDs
+      - name: Print workflow run IDs
         run: |
-
-          echo "Fetching latest successful workflow runs..."
-
-          # IMPORTANT:
-          # Replace filenames below with your REAL workflow filenames
-          # from .github/workflows/
-
-          IOS_RUN_ID=$(curl -s \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/ios.yml/runs?status=success&per_page=1" \
-            | jq -r '.workflow_runs[0].id')
-
-          ANDROID_RUN_ID=$(curl -s \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/android.yml/runs?status=success&per_page=1" \
-            | jq -r '.workflow_runs[0].id')
-
-          MANUAL_RUN_ID=$(curl -s \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/manual.yml/runs?status=success&per_page=1" \
-            | jq -r '.workflow_runs[0].id')
-
-          echo "IOS_RUN_ID=$IOS_RUN_ID" >> $GITHUB_ENV
-          echo "ANDROID_RUN_ID=$ANDROID_RUN_ID" >> $GITHUB_ENV
-          echo "MANUAL_RUN_ID=$MANUAL_RUN_ID" >> $GITHUB_ENV
-
           echo "======================================="
-          echo "iOS Run ID: $IOS_RUN_ID"
-          echo "Android Run ID: $ANDROID_RUN_ID"
-          echo "Manual Run ID: $MANUAL_RUN_ID"
+          echo "iOS Run ID: ${{ inputs.ios_run_id }}"
+          echo "Android Run ID: ${{ inputs.android_run_id }}"
+          echo "Manual Run ID: ${{ inputs.manual_run_id }}"
           echo "======================================="
 
       # =====================================================
@@ -65,15 +47,12 @@ jobs:
         run: |
           mkdir -p merged/ios
 
-          echo "Using iOS Run ID: ${IOS_RUN_ID}"
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${IOS_RUN_ID}/artifacts \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts \
             > ios.json
 
           echo "===== IOS API RESPONSE ====="
           cat ios.json
-          echo "============================"
 
           IOS_ARTIFACT_ID=$(jq -r '
             .artifacts[]?
@@ -101,15 +80,12 @@ jobs:
         run: |
           mkdir -p merged/android
 
-          echo "Using Android Run ID: ${ANDROID_RUN_ID}"
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${ANDROID_RUN_ID}/artifacts \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts \
             > android.json
 
           echo "===== ANDROID API RESPONSE ====="
           cat android.json
-          echo "================================"
 
           ANDROID_ARTIFACT_ID=$(jq -r '
             .artifacts[]?
@@ -137,15 +113,12 @@ jobs:
         run: |
           mkdir -p merged/manual
 
-          echo "Using Manual Run ID: ${MANUAL_RUN_ID}"
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${MANUAL_RUN_ID}/artifacts \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts \
             > manual.json
 
           echo "===== MANUAL API RESPONSE ====="
           cat manual.json
-          echo "==============================="
 
           MANUAL_ARTIFACT_ID=$(jq -r '
             .artifacts[]?
@@ -188,7 +161,7 @@ jobs:
           python3 merge_serenity_results.py merged/all
 
       # =====================================================
-      # GENERATE FINAL SERENITY REPORT
+      # GENERATE FINAL REPORT
       # =====================================================
       - name: Generate final Serenity report
         run: |
