@@ -27,109 +27,109 @@ jobs:
       # =========================
       # DOWNLOAD ARTIFACT (ANDROID)
       # =========================
-      - name: Download Android Artifact
+      - name: Download Android
         run: |
-          mkdir -p android-json
+          mkdir -p android
 
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
 
-          ANDROID_ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-json") | .id' android.json)
+          ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-json") | .id' android.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o android.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ANDROID_ID/zip
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
 
-          unzip -o android.zip -d android-json
+          unzip -o android.zip -d android
 
       # =========================
-      # DOWNLOAD ARTIFACT (iOS)
+      # DOWNLOAD ARTIFACT (IOS)
       # =========================
-      - name: Download iOS Artifact
+      - name: Download iOS
         run: |
-          mkdir -p ios-json
+          mkdir -p ios
 
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
 
-          IOS_ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-json") | .id' ios.json)
+          ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-json") | .id' ios.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o ios.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$IOS_ID/zip
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
 
-          unzip -o ios.zip -d ios-json
+          unzip -o ios.zip -d ios
 
       # =========================
       # DOWNLOAD ARTIFACT (MANUAL)
       # =========================
-      - name: Download Manual Artifact
+      - name: Download Manual
         run: |
-          mkdir -p manual-json
+          mkdir -p manual
 
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
 
-          MANUAL_ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-json") | .id' manual.json)
+          ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-json") | .id' manual.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o manual.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$MANUAL_ID/zip
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
 
-          unzip -o manual.zip -d manual-json
-
-      # =========================
-      # DEBUG (IMPORTANT)
-      # =========================
-      - name: Debug extracted files
-        run: |
-          echo "ANDROID:"
-          find android-json -type f | head -50
-
-          echo "IOS:"
-          find ios-json -type f | head -50
-
-          echo "MANUAL:"
-          find manual-json -type f | head -50
+          unzip -o manual.zip -d manual
 
       # =========================
-      # MERGE ALL JSON SAFELY
+      # EXTRACT ONLY VALID CUCUMBER JSON
       # =========================
-      - name: Merge JSON (robust)
+      - name: Build clean merged JSON
         run: |
           mkdir -p merged-json
 
-          find android-json -type f -name "*.json" -exec cp {} merged-json/ \;
-          find ios-json -type f -name "*.json" -exec cp {} merged-json/ \;
-          find manual-json -type f -name "*.json" -exec cp {} merged-json/ \;
+          for dir in android ios manual; do
+            find $dir -type f -name "*.json" | while read f; do
 
-          echo "Merged JSON files:"
-          ls -lh merged-json
+              # keep ONLY cucumber-style JSON
+              if grep -q '"elements"' "$f" && grep -q '"keyword"' "$f"; then
+                echo "Keeping: $f"
+                cp "$f" merged-json/
+              else
+                echo "Skipping invalid: $f"
+              fi
+
+            done
+          done
 
       # =========================
-      # SAFETY CHECK (VERY IMPORTANT)
+      # VALIDATION (CRITICAL)
       # =========================
-      - name: Validate JSON exists
+      - name: Validate JSON integrity
         run: |
-          COUNT=$(find merged-json -name "*.json" | wc -l)
-          echo "Total JSON files: $COUNT"
+          COUNT=$(ls merged-json/*.json 2>/dev/null | wc -l)
+          echo "Valid JSON files: $COUNT"
 
           if [ "$COUNT" -eq 0 ]; then
-            echo "❌ No JSON files found. Merge failed."
+            echo "❌ No valid Cucumber JSON found"
             exit 1
           fi
 
+          for f in merged-json/*.json; do
+            jq empty "$f" || {
+              echo "❌ Broken JSON: $f"
+              exit 1
+            }
+          done
+
       # =========================
-      # RUN SERENITY AGGREGATION
+      # SERENITY AGGREGATION
       # =========================
-      - name: Generate Serenity Report
+      - name: Generate Final Report
         run: |
           mvn serenity:aggregate \
             -Dserenity.sourceDirectory=merged-json \
             -Dserenity.outputDirectory=final-report
 
       # =========================
-      # UPLOAD FINAL REPORT
+      # UPLOAD
       # =========================
       - name: Upload Report
         uses: actions/upload-artifact@v4
