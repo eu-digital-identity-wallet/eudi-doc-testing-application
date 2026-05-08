@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 3,
-      "startTime": "2026-05-08T11:42:21.778039300+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:59.519598700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And attestations are issued in the EUDI Wallet",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:21.783463900+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:59.521106700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user is on the Home screen of the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.783463900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.522116100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user navigates to the Documents screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.783463900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.522116100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the Documents screen should be displayed showing a list of issued attestations",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.783463900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.522116100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -112,9 +112,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:21.769524200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:21.783463900+03:00[Europe/Athens]",
-  "duration": 13,
+  "startTime": "2026-05-08T15:38:59.508770200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:59.524117300+03:00[Europe/Athens]",
+  "duration": 15,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has opened the EUDI Wallet application",
-      "duration": 2,
-      "startTime": "2026-05-08T11:41:58.022728900+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:41.272972200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user navigates to the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:58.025728+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:41.276971600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then Home screen should be displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:58.025728+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:41.277971300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_ADBSQRC_TC_01"
     }
   ],
-  "startTime": "2026-05-08T11:41:58.004132800+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:58.028049500+03:00[Europe/Athens]",
-  "duration": 23,
+  "startTime": "2026-05-08T15:38:41.252164+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:41.278972100+03:00[Europe/Athens]",
+  "duration": 26,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

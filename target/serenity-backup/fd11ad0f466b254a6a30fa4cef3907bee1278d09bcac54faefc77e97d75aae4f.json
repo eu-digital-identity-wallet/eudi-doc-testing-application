@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the navigation drawer is open",
-      "duration": 6,
-      "startTime": "2026-05-08T11:42:11.697512400+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:52.674621700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user taps the back icon button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:11.706357800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:52.678621800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the navigation drawer slides away",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:11.706357800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:52.678621800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_MS"
     }
   ],
-  "startTime": "2026-05-08T11:42:11.662495400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:11.710416900+03:00[Europe/Athens]",
-  "duration": 47,
+  "startTime": "2026-05-08T15:38:52.650562800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:52.681144800+03:00[Europe/Athens]",
+  "duration": 30,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

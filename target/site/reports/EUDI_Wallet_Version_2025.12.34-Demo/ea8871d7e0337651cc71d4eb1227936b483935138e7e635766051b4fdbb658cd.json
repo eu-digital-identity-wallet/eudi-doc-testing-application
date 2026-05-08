@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:21.210424500+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:58.965698400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 524,
-      "startTime": "2026-05-08T11:42:21.210424500+03:00[Europe/Athens]",
+      "duration": 507,
+      "startTime": "2026-05-08T15:38:58.967854600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has entered search text in the search field",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.735223600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.475516900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the search text does not match any documents",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.735223600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.475516900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the EUDI Wallet should display an informative message in the list section",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:21.735223600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:59.475516900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -52,8 +52,8 @@
     {
       "number": 6,
       "description": "And categories with no matching documents should not be displayed",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:21.735223600+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:59.475516900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -121,9 +121,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:21.210424500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:21.735223600+03:00[Europe/Athens]",
-  "duration": 524,
+  "startTime": "2026-05-08T15:38:58.957983100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:59.477533500+03:00[Europe/Athens]",
+  "duration": 519,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

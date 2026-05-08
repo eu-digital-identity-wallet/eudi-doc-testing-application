@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is viewing the success screen after an attestation is issued",
-      "duration": 507,
-      "startTime": "2026-05-08T11:42:00.250945800+03:00[Europe/Athens]",
+      "duration": 511,
+      "startTime": "2026-05-08T15:38:43.562671500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user closes the success screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.758710300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:44.075276900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user navigates back to the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.758710300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:44.075276900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:00.232505900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:00.761933200+03:00[Europe/Athens]",
-  "duration": 529,
+  "startTime": "2026-05-08T15:38:43.554077800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:44.077292800+03:00[Europe/Athens]",
+  "duration": 523,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

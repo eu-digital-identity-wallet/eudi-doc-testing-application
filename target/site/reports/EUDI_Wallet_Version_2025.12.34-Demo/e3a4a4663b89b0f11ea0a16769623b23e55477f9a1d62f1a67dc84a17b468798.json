@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Documents screen",
-      "duration": 2,
-      "startTime": "2026-05-08T11:42:02.119906100+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:45.357049300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the list of attestations is visible",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:02.122923900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:45.359048300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "When the user selects an attestation card",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:02.122923900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:45.359048300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the user should be able to view the details of the attestation",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:02.122923900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:45.359048300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:02.104333100+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:02.123926400+03:00[Europe/Athens]",
-  "duration": 19,
+  "startTime": "2026-05-08T15:38:45.342535100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:45.360048500+03:00[Europe/Athens]",
+  "duration": 17,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

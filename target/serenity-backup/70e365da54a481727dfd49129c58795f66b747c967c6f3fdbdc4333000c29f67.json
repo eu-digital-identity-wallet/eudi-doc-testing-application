@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the Home screen",
-      "duration": 2,
-      "startTime": "2026-05-08T11:41:58.986281500+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:42.332869300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user navigates to the Documents screen",
       "duration": 2,
-      "startTime": "2026-05-08T11:41:58.989018800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:42.337631400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Documents screen is displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:58.991898800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:42.341036300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_ADBCFL_TC_01"
     }
   ],
-  "startTime": "2026-05-08T11:41:58.966630+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:58.993918+03:00[Europe/Athens]",
-  "duration": 27,
+  "startTime": "2026-05-08T15:38:42.309360800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:42.343166100+03:00[Europe/Athens]",
+  "duration": 33,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

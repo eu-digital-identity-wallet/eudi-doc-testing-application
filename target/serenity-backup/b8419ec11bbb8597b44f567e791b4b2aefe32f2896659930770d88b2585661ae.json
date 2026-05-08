@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:03.925998+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.092643+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user is on the Documents screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:03.929002500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.094681300+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has expanded the Sort by section",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.438181300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.604240800+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user selects to sort by Date Issued",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.439212600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.604240800+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the user selects Descending order",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.439212600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.604240800+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the user taps the Apply button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.439212600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.604240800+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "Then the bottom sheet should slide down",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.440222200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.604240800+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the EUDI Wallet should apply the sorting by Date Issued in descending order",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.440222200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.605249400+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -80,7 +80,7 @@
       "number": 9,
       "description": "And the documents should be listed according to the selected sorting order",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:04.441229200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:47.605249400+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -148,9 +148,9 @@
       "displayName": "Failed"
     }
   ],
-  "startTime": "2026-05-08T11:42:03.910741100+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:04.443460100+03:00[Europe/Athens]",
-  "duration": 532,
+  "startTime": "2026-05-08T15:38:47.082302900+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:47.606250+03:00[Europe/Athens]",
+  "duration": 523,
   "testFailureMessage": "Failing manual test",
   "projectKey": "",
   "annotatedResult": "SKIPPED",

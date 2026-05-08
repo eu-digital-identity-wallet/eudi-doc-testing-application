@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 3,
-      "startTime": "2026-05-08T11:42:07.519574300+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:49.829755200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 505,
-      "startTime": "2026-05-08T11:42:07.522613600+03:00[Europe/Athens]",
+      "duration": 506,
+      "startTime": "2026-05-08T15:38:49.831770+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Given the user has opened the filter or sort bottom sheet",
-      "duration": 1,
-      "startTime": "2026-05-08T11:42:08.028246600+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:50.338003600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps the Filter by Expiry Period section",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.029768300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338003600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the user selects an expiry period (e.g., Next thirty Days)",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.030299600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338996300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the user taps the Apply button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.031315+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338996300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "Then the bottom sheet should slide down",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.031315+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338996300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the EUDI Wallet should apply the filter by the selected expiry period",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.031315+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338996300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -80,7 +80,7 @@
       "number": 9,
       "description": "And only documents expiring within the selected period should be displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.031315+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.338996300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -148,9 +148,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:07.487745+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:08.036357500+03:00[Europe/Athens]",
-  "duration": 548,
+  "startTime": "2026-05-08T15:38:49.822291400+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:50.340504900+03:00[Europe/Athens]",
+  "duration": 518,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the EUDI Wallet displays a list of available documents",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:23.516010700+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:01.133367800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects a document from the list",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.516010700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.136380100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the EUDI Wallet should retrieve the selected document",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.531256700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.137378800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:23.500658200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:23.532574700+03:00[Europe/Athens]",
-  "duration": 31,
+  "startTime": "2026-05-08T15:39:01.113264200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:01.138380100+03:00[Europe/Athens]",
+  "duration": 25,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the Documents screen",
-      "duration": 503,
-      "startTime": "2026-05-08T11:42:00.970974+03:00[Europe/Athens]",
+      "duration": 510,
+      "startTime": "2026-05-08T15:38:44.188286700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user views the screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:01.474256700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:44.698755200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Documents screen includes a Search bar",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:01.474256700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:44.699756600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:00.947728200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:01.476774600+03:00[Europe/Athens]",
-  "duration": 529,
+  "startTime": "2026-05-08T15:38:44.173814+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:44.700755500+03:00[Europe/Athens]",
+  "duration": 526,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 1,
-      "startTime": "2026-05-08T10:47:21.662874400+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:20.560967700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 112229,
-      "startTime": "2026-05-08T10:47:21.664390600+03:00[Europe/Athens]",
+      "duration": 503,
+      "startTime": "2026-05-08T15:38:20.563478500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has opened the filter or sort bottom sheet",
       "duration": 0,
-      "startTime": "2026-05-08T10:49:13.894576800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:21.068435300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps the Filter by Issuer section",
       "duration": 0,
-      "startTime": "2026-05-08T10:49:13.894576800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:21.068435300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the user selects one or more issuers from the list",
       "duration": 0,
-      "startTime": "2026-05-08T10:49:13.896088200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:21.069438600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the user taps the Apply button",
       "duration": 0,
-      "startTime": "2026-05-08T10:49:13.896598800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:21.069438600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -61,8 +61,8 @@
     {
       "number": 7,
       "description": "Then the bottom sheet should slide down",
-      "duration": 1,
-      "startTime": "2026-05-08T10:49:13.896598800+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:21.070436200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the EUDI Wallet should apply the filter by the selected issuers",
       "duration": 0,
-      "startTime": "2026-05-08T10:49:13.897607600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:21.070436200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -79,8 +79,8 @@
     {
       "number": 9,
       "description": "And only documents issued by the selected issuers should be displayed",
-      "duration": 1,
-      "startTime": "2026-05-08T10:49:13.897607600+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:21.071435200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -148,9 +148,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T10:46:45.352213300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T10:49:16.220933700+03:00[Europe/Athens]",
-  "duration": 150868,
+  "startTime": "2026-05-08T15:38:20.547455500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:21.073851800+03:00[Europe/Athens]",
+  "duration": 526,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

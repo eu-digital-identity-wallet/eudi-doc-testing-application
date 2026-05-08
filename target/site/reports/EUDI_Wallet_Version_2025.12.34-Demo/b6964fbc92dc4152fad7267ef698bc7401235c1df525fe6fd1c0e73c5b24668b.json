@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 5,
-      "startTime": "2026-05-08T11:42:09.385627+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:51.462327100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 512,
-      "startTime": "2026-05-08T11:42:09.390809100+03:00[Europe/Athens]",
+      "duration": 513,
+      "startTime": "2026-05-08T15:38:51.464395200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has applied a filter or sorting option that is different from the default",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:09.905692+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:51.978309900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user returns to the Documents screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:09.907718300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:51.979305+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the filter or sort button should have a visual indication that user filter(s) either and or or sorting options have been applied",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:09.907718300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:51.979305+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -112,9 +112,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:09.357210500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:09.912099100+03:00[Europe/Athens]",
-  "duration": 554,
+  "startTime": "2026-05-08T15:38:51.454639+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:51.980828700+03:00[Europe/Athens]",
+  "duration": 526,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

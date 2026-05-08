@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Home screen",
-      "duration": 1,
-      "startTime": "2026-05-08T11:02:15.309444200+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:23.540834+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user clicks on the Authenticate section",
       "duration": 0,
-      "startTime": "2026-05-08T11:02:15.312187300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.545690300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Authenticate section include In Person and Online options",
       "duration": 0,
-      "startTime": "2026-05-08T11:02:15.312187300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.545690300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:01:39.166906100+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:02:17.926712400+03:00[Europe/Athens]",
-  "duration": 38759,
+  "startTime": "2026-05-08T15:38:23.512392200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:23.547689900+03:00[Europe/Athens]",
+  "duration": 35,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the test is being ignored",
-      "duration": 4,
-      "startTime": "2026-05-08T11:41:57.935308500+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:41.185328300+03:00[Europe/Athens]",
       "exception": {
         "errorType": "net.serenitybdd.model.PendingStepException",
         "message": "Test is skipped because the required condition is not met",
@@ -69,9 +69,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:41:57.868076800+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:57.942980+03:00[Europe/Athens]",
-  "duration": 74,
+  "startTime": "2026-05-08T15:38:41.132073100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:41.191341600+03:00[Europe/Athens]",
+  "duration": 59,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

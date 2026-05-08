@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 8,
-      "startTime": "2026-05-08T11:41:46.646856700+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:29.455414600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 522,
-      "startTime": "2026-05-08T11:41:46.655371800+03:00[Europe/Athens]",
+      "duration": 510,
+      "startTime": "2026-05-08T15:38:29.457417+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Given the user has entered text in the search field",
-      "duration": 3,
-      "startTime": "2026-05-08T11:41:47.180725500+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:29.968245100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps on the Clear trailing icon button (e.g., X)",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:47.184748400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:29.969243700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the search field should be cleared of any text",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:47.187749800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:29.969243700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -52,8 +52,8 @@
     {
       "number": 6,
       "description": "And the EUDI Wallet should reset any previously applied search",
-      "duration": 0,
-      "startTime": "2026-05-08T11:41:47.189749300+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:29.969243700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "And the screen should list all non-expired documents",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:47.190749300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:29.970258100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the filtering and sorting should respect the current settings",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:47.192748200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:29.970258100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -139,9 +139,9 @@
       "displayName": "US_SD_TC_05"
     }
   ],
-  "startTime": "2026-05-08T11:41:46.596486100+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:47.199298500+03:00[Europe/Athens]",
-  "duration": 602,
+  "startTime": "2026-05-08T15:38:29.443791500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:29.972410600+03:00[Europe/Athens]",
+  "duration": 528,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

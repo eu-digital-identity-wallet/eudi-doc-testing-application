@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
       "duration": 2,
-      "startTime": "2026-05-08T10:42:20.080868900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:19.430179+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 112623,
-      "startTime": "2026-05-08T10:42:20.082988100+03:00[Europe/Athens]",
+      "duration": 508,
+      "startTime": "2026-05-08T15:38:19.434178+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has opened the filter or sort bottom sheet",
       "duration": 0,
-      "startTime": "2026-05-08T10:44:12.707496700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:19.943278400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps the Filter by Category section",
       "duration": 0,
-      "startTime": "2026-05-08T10:44:12.708501100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:19.943278400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the section should switch between collapsed and expanded views",
       "duration": 0,
-      "startTime": "2026-05-08T10:44:12.713983100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:19.943278400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -112,9 +112,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T10:41:54.688853600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T10:44:15.164745500+03:00[Europe/Athens]",
-  "duration": 140475,
+  "startTime": "2026-05-08T15:38:19.393010200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:19.945275800+03:00[Europe/Athens]",
+  "duration": 552,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Documents screen",
-      "duration": 4,
-      "startTime": "2026-05-08T10:28:26.203209700+03:00[Europe/Athens]",
+      "duration": 5,
+      "startTime": "2026-05-08T15:38:16.052456700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "When the user clicks on the Document section",
-      "duration": 0,
-      "startTime": "2026-05-08T10:28:26.207442200+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:16.057738400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Documents screen includes a list of all attestations issued to the wallet",
       "duration": 0,
-      "startTime": "2026-05-08T10:28:26.208442700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:16.058740400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And the attestations are grouped by category",
       "duration": 0,
-      "startTime": "2026-05-08T10:28:26.208442700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:16.059738400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And for each attestation, a card is displayed including the attestation name, the issuer, and the validity end date",
       "duration": 0,
-      "startTime": "2026-05-08T10:28:26.208442700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:16.059738400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -110,9 +110,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T10:27:51.572915500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T10:28:28.554422200+03:00[Europe/Athens]",
-  "duration": 36981,
+  "startTime": "2026-05-08T15:38:16.023392900+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:16.063438100+03:00[Europe/Athens]",
+  "duration": 40,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user has a valid EUDI Wallet on their mobile device",
       "duration": 2,
-      "startTime": "2026-05-08T11:42:24.831729300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.165490400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user has issued a PID attestation to the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.168260300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user has internet connectivity",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.169257800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Given the user has shared the requested attestation to the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.169257800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "When the user selects the option to create a qualified certificate from the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.169257800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And specifies an alias",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:02.169257800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -61,8 +61,8 @@
     {
       "number": 7,
       "description": "Then the QTSP generates the qualified certificate",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:24.834245600+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:39:02.169257800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -130,9 +130,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:24.810776600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:24.836253800+03:00[Europe/Athens]",
-  "duration": 25,
+  "startTime": "2026-05-08T15:39:02.148470800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:02.171257500+03:00[Europe/Athens]",
+  "duration": 22,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

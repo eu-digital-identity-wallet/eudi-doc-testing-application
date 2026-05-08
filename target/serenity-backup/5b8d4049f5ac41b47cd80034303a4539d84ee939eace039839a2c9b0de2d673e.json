@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has entered the correct PIN",
-      "duration": 2,
-      "startTime": "2026-05-08T11:39:24.260628500+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:27.044313700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the data sharing process is successful",
       "duration": 0,
-      "startTime": "2026-05-08T11:39:24.263217300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.048320300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Then the wallet displays a success screen",
-      "duration": 110549,
-      "startTime": "2026-05-08T11:39:24.263217300+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:27.049318+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And the success screen provides details about the data that were shared",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:14.814651400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.050320+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the success screen includes a Close button",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:14.814651400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.050320+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -110,9 +110,9 @@
       "displayName": "US_PDO"
     }
   ],
-  "startTime": "2026-05-08T11:38:57.878056400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:17.141425900+03:00[Europe/Athens]",
-  "duration": 139263,
+  "startTime": "2026-05-08T15:38:27.021843500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:27.054319900+03:00[Europe/Athens]",
+  "duration": 32,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

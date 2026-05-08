@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has a valid EUDI Wallet on their mobile device",
-      "duration": 2,
-      "startTime": "2026-05-08T11:42:25.923557500+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:03.057662700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user has issued a PID attestation to the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.061195300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user has internet connectivity",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.061195300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And the user is authenticated in the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.061195300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Given the QTSP receives the attestation",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.062187700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "When the QTSP verifies the attestation successfully",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.062187700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "Then the EUDI Wallet displays a confirmation message indicating the presentation outcome from the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.062187700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the user views the signed document at the Relying Party interface",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:25.927583800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.062187700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -139,8 +139,8 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:25.906195800+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:25.929597100+03:00[Europe/Athens]",
+  "startTime": "2026-05-08T15:39:03.039956400+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:03.063187100+03:00[Europe/Athens]",
   "duration": 23,
   "projectKey": "",
   "annotatedResult": "IGNORED",

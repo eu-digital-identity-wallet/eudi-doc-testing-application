@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the first step",
-      "duration": 4,
-      "startTime": "2026-05-08T11:42:26.956829+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:04.006871600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects one attestation option",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.960883900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:04.009881300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the verifier allows the user to proceed to the next step",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.964476200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:04.009881300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:26.935328300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:26.965618600+03:00[Europe/Athens]",
-  "duration": 30,
+  "startTime": "2026-05-08T15:39:03.988096300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:04.012273900+03:00[Europe/Athens]",
+  "duration": 24,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

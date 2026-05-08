@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 6,
-      "startTime": "2026-05-08T11:41:43.873161100+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:27.228167300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 513,
-      "startTime": "2026-05-08T11:41:43.880239300+03:00[Europe/Athens]",
+      "duration": 509,
+      "startTime": "2026-05-08T15:38:27.231165700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Given the user is viewing the Documents screen",
-      "duration": 0,
-      "startTime": "2026-05-08T11:41:44.395484100+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:27.740969200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the screen should list all non-expired documents",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.396505900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.741983100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the documents should be grouped by category",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.397504+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.741983100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -52,8 +52,8 @@
     {
       "number": 6,
       "description": "And the search field should be empty and enabled",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:44.397504+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:27.741983100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "And the search field should display a search icon on the left side",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.398504600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.741983100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And the search field should display the hinted search text for example Search Documents",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.399506700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.742982400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -80,7 +80,7 @@
       "number": 9,
       "description": "And no search or filters are applied",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.399506700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.742982400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -89,7 +89,7 @@
       "number": 10,
       "description": "And categories with no documents should not be displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:44.400505800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:27.742982400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -157,9 +157,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:41:43.806299400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:44.405502500+03:00[Europe/Athens]",
-  "duration": 599,
+  "startTime": "2026-05-08T15:38:27.212090300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:27.744982200+03:00[Europe/Athens]",
+  "duration": 532,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

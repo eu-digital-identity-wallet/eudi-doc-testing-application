@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the wallet is displaying the presentation request",
-      "duration": 8,
-      "startTime": "2026-05-08T11:42:14.635187900+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:53.971676300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects the back button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:14.644895200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:53.976669+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user is redirected to the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:14.644895200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:53.976669+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:14.607171400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:14.646917900+03:00[Europe/Athens]",
-  "duration": 39,
+  "startTime": "2026-05-08T15:38:53.951259700+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:53.978677500+03:00[Europe/Athens]",
+  "duration": 27,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -8,7 +8,7 @@
       "number": 1,
       "description": "1: Displaying credential offer after scanning QR code ({includes=Attestation to be issued})",
       "duration": 26,
-      "startTime": "2026-05-08T11:41:58.264258900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:41.531470300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -17,8 +17,8 @@
         {
           "number": 2,
           "description": "Given the user has scanned a valid QR code rendered by the Issuer",
-          "duration": 4,
-          "startTime": "2026-05-08T11:41:58.283997400+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:41.551541700+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -27,7 +27,7 @@
           "number": 3,
           "description": "Then the wallet should display the credential offer which Attestation to be issued:",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:58.288520500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.555541300+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -37,8 +37,8 @@
     {
       "number": 4,
       "description": "2: Displaying credential offer after scanning QR code ({includes=Name of the issuer})",
-      "duration": 24,
-      "startTime": "2026-05-08T11:41:58.354024300+03:00[Europe/Athens]",
+      "duration": 29,
+      "startTime": "2026-05-08T15:38:41.629182900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -47,8 +47,8 @@
         {
           "number": 5,
           "description": "Given the user has scanned a valid QR code rendered by the Issuer",
-          "duration": 2,
-          "startTime": "2026-05-08T11:41:58.373757500+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:41.652778700+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -56,8 +56,8 @@
         {
           "number": 6,
           "description": "Then the wallet should display the credential offer which Name of the issuer:",
-          "duration": 0,
-          "startTime": "2026-05-08T11:41:58.377260500+03:00[Europe/Athens]",
+          "duration": 1,
+          "startTime": "2026-05-08T15:38:41.656779200+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -67,8 +67,8 @@
     {
       "number": 7,
       "description": "3: Displaying credential offer after scanning QR code ({includes=Cancel button})",
-      "duration": 28,
-      "startTime": "2026-05-08T11:41:58.438022500+03:00[Europe/Athens]",
+      "duration": 30,
+      "startTime": "2026-05-08T15:38:41.715625900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -78,7 +78,7 @@
           "number": 8,
           "description": "Given the user has scanned a valid QR code rendered by the Issuer",
           "duration": 4,
-          "startTime": "2026-05-08T11:41:58.459046700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.738750800+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -87,7 +87,7 @@
           "number": 9,
           "description": "Then the wallet should display the credential offer which Cancel button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:58.463573400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.743274400+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -97,8 +97,8 @@
     {
       "number": 10,
       "description": "4: Displaying credential offer after scanning QR code ({includes=Add document button})",
-      "duration": 24,
-      "startTime": "2026-05-08T11:41:58.532966500+03:00[Europe/Athens]",
+      "duration": 25,
+      "startTime": "2026-05-08T15:38:41.804876900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -107,8 +107,8 @@
         {
           "number": 11,
           "description": "Given the user has scanned a valid QR code rendered by the Issuer",
-          "duration": 3,
-          "startTime": "2026-05-08T11:41:58.551698100+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:41.824822500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -117,7 +117,7 @@
           "number": 12,
           "description": "Then the wallet should display the credential offer which Add document button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:58.555240+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.828823200+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -127,8 +127,8 @@
     {
       "number": 13,
       "description": "5: Displaying credential offer after scanning QR code ({includes=})",
-      "duration": 20,
-      "startTime": "2026-05-08T11:41:58.623044700+03:00[Europe/Athens]",
+      "duration": 27,
+      "startTime": "2026-05-08T15:38:41.890640300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -137,8 +137,8 @@
         {
           "number": 14,
           "description": "Given the user has scanned a valid QR code rendered by the Issuer",
-          "duration": 2,
-          "startTime": "2026-05-08T11:41:58.639140500+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:41.912515700+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -147,7 +147,7 @@
           "number": 15,
           "description": "Then the wallet should display the credential offer which :",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:58.641162500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.916023100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -215,9 +215,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:41:58.263643600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:58.643162100+03:00[Europe/Athens]",
-  "duration": 27,
+  "startTime": "2026-05-08T15:38:41.530471800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:41.919036200+03:00[Europe/Athens]",
+  "duration": 28,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

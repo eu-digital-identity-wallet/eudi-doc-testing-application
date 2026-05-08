@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has uploaded a document and selected a QTSP",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:23.788628700+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:01.342652300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the EUDI Wallet retrieves the Credential ID details from the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.788628700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.345656200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the EUDI Wallet presents the Credential ID details to the user",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.788628700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.345656200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And user confirms to proceed with the signing operation",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.788628700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.346656800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:23.768846300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:23.788628700+03:00[Europe/Athens]",
-  "duration": 19,
+  "startTime": "2026-05-08T15:39:01.323980100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:01.347662100+03:00[Europe/Athens]",
+  "duration": 23,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

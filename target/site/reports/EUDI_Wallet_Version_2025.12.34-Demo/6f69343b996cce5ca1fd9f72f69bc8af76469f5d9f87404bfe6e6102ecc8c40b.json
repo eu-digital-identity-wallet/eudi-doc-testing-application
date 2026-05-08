@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the Documents screen",
-      "duration": 514,
-      "startTime": "2026-05-08T11:41:59.058261700+03:00[Europe/Athens]",
+      "duration": 515,
+      "startTime": "2026-05-08T15:38:42.434051300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects to add a new document",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:59.572836200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:42.950400100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user selects to add a new document From list",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:59.572836200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:42.950400100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:59.573835500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:42.950400100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:41:59.044065500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:59.574836200+03:00[Europe/Athens]",
-  "duration": 530,
+  "startTime": "2026-05-08T15:38:42.411976200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:42.952398+03:00[Europe/Athens]",
+  "duration": 540,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

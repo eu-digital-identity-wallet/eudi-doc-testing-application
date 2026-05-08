@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the navigation drawer is open",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:13.142949900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:53.164833400+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user taps the Exit option",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:13.149662500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:53.169356900+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the application is closing",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:13.149662500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:53.169356900+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "Failed"
     }
   ],
-  "startTime": "2026-05-08T11:42:13.104947400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:13.155656+03:00[Europe/Athens]",
-  "duration": 50,
+  "startTime": "2026-05-08T15:38:53.140941+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:53.171360800+03:00[Europe/Athens]",
+  "duration": 30,
   "testFailureMessage": "Failing manual test",
   "projectKey": "",
   "annotatedResult": "SKIPPED",

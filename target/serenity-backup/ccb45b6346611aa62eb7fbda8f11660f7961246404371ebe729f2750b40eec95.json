@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDIW web verifier",
-      "duration": 3,
-      "startTime": "2026-05-08T11:41:54.741025600+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:36.364486100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user navigates to the presentation request section",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:54.745035600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:36.368041+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user views the presentation request guide",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:54.745035600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:36.368041+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:41:54.721063900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:54.747068400+03:00[Europe/Athens]",
-  "duration": 26,
+  "startTime": "2026-05-08T15:38:36.343240600+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:36.370360900+03:00[Europe/Athens]",
+  "duration": 27,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

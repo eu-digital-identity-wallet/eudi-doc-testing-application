@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the wallet is displaying the presentation request",
-      "duration": 7,
-      "startTime": "2026-05-08T11:42:14.768343400+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:54.041887500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "When the user selects the Share button",
-      "duration": 1,
-      "startTime": "2026-05-08T11:42:14.776196700+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:54.044057300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the wallet requests the user to enter the PIN to proceed",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:14.779040+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:54.045053600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:14.739814200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:14.783027300+03:00[Europe/Athens]",
-  "duration": 43,
+  "startTime": "2026-05-08T15:38:54.029363300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:54.047067800+03:00[Europe/Athens]",
+  "duration": 17,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

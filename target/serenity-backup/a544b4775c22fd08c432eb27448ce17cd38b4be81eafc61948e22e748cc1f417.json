@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Home screen",
       "duration": 2,
-      "startTime": "2026-05-08T11:01:36.782099100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.451540600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "Then the user observes the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:01:36.785091+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.455100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the Home screen display Authenticate and Sign a document sections",
       "duration": 0,
-      "startTime": "2026-05-08T11:01:36.786091100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.455100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:01:14.072030400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:01:39.136336200+03:00[Europe/Athens]",
-  "duration": 25064,
+  "startTime": "2026-05-08T15:38:23.435004100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:23.456105500+03:00[Europe/Athens]",
+  "duration": 21,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "1: Wallet displays the presentation request ({includes=The name of the requesting Relying Party})",
-      "duration": 77,
-      "startTime": "2026-05-08T11:42:15.779577600+03:00[Europe/Athens]",
+      "duration": 21,
+      "startTime": "2026-05-08T15:38:54.347486300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -17,8 +17,8 @@
         {
           "number": 2,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 14,
-          "startTime": "2026-05-08T11:42:15.829194100+03:00[Europe/Athens]",
+          "duration": 2,
+          "startTime": "2026-05-08T15:38:54.364555200+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -26,8 +26,8 @@
         {
           "number": 3,
           "description": "When the wallet displays the presentation request",
-          "duration": 2,
-          "startTime": "2026-05-08T11:42:15.843913200+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:54.368091100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -36,7 +36,7 @@
           "number": 4,
           "description": "Then the presentation request The name of the requesting Relying Party:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:15.845946600+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.368091100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -46,8 +46,8 @@
     {
       "number": 5,
       "description": "2: Wallet displays the presentation request ({includes=The attestations requested by the Relying Party})",
-      "duration": 74,
-      "startTime": "2026-05-08T11:42:16.032514800+03:00[Europe/Athens]",
+      "duration": 20,
+      "startTime": "2026-05-08T15:38:54.414024800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -56,8 +56,8 @@
         {
           "number": 6,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 19,
-          "startTime": "2026-05-08T11:42:16.080329700+03:00[Europe/Athens]",
+          "duration": 2,
+          "startTime": "2026-05-08T15:38:54.430189600+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -66,7 +66,7 @@
           "number": 7,
           "description": "When the wallet displays the presentation request",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.102885700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.432192100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -75,7 +75,7 @@
           "number": 8,
           "description": "Then the presentation request The attestations requested by the Relying Party:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.102885700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.433191700+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -85,8 +85,8 @@
     {
       "number": 9,
       "description": "3: Wallet displays the presentation request ({includes=The option to expand on the details for each attestation})",
-      "duration": 41,
-      "startTime": "2026-05-08T11:42:16.229507600+03:00[Europe/Athens]",
+      "duration": 21,
+      "startTime": "2026-05-08T15:38:54.475035500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -95,8 +95,8 @@
         {
           "number": 10,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 5,
-          "startTime": "2026-05-08T11:42:16.261376600+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:54.490136500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -105,7 +105,7 @@
           "number": 11,
           "description": "When the wallet displays the presentation request",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.266905800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.493331600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -114,7 +114,7 @@
           "number": 12,
           "description": "Then the presentation request The option to expand on the details for each attestation:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.266905800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.494331200+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -124,8 +124,8 @@
     {
       "number": 13,
       "description": "4: Wallet displays the presentation request ({includes=The option to unselect specific data elements})",
-      "duration": 45,
-      "startTime": "2026-05-08T11:42:16.344674200+03:00[Europe/Athens]",
+      "duration": 23,
+      "startTime": "2026-05-08T15:38:54.546347100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -134,8 +134,8 @@
         {
           "number": 14,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 6,
-          "startTime": "2026-05-08T11:42:16.379226+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:54.563227800+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -144,7 +144,7 @@
           "number": 15,
           "description": "When the wallet displays the presentation request",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.388210700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.567488600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -153,7 +153,7 @@
           "number": 16,
           "description": "Then the presentation request The option to unselect specific data elements:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.388210700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.567488600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -163,8 +163,8 @@
     {
       "number": 17,
       "description": "5: Wallet displays the presentation request ({includes=A back button})",
-      "duration": 38,
-      "startTime": "2026-05-08T11:42:16.493361100+03:00[Europe/Athens]",
+      "duration": 18,
+      "startTime": "2026-05-08T15:38:54.615612200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -173,8 +173,8 @@
         {
           "number": 18,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 4,
-          "startTime": "2026-05-08T11:42:16.521555900+03:00[Europe/Athens]",
+          "duration": 2,
+          "startTime": "2026-05-08T15:38:54.629794400+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -183,7 +183,7 @@
           "number": 19,
           "description": "When the wallet displays the presentation request",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.525968900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.632301100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -192,7 +192,7 @@
           "number": 20,
           "description": "Then the presentation request A back button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.525968900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.633310200+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -202,8 +202,8 @@
     {
       "number": 21,
       "description": "6: Wallet displays the presentation request ({includes=A Share button})",
-      "duration": 37,
-      "startTime": "2026-05-08T11:42:16.621428800+03:00[Europe/Athens]",
+      "duration": 17,
+      "startTime": "2026-05-08T15:38:54.667363500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -212,8 +212,8 @@
         {
           "number": 22,
           "description": "Given the user has scanned a QR code rendered by a Relying Party",
-          "duration": 10,
-          "startTime": "2026-05-08T11:42:16.644139700+03:00[Europe/Athens]",
+          "duration": 2,
+          "startTime": "2026-05-08T15:38:54.679424100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -222,7 +222,7 @@
           "number": 23,
           "description": "When the wallet displays the presentation request",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.655753400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.682417600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -231,7 +231,7 @@
           "number": 24,
           "description": "Then the presentation request A Share button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:16.655753400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:54.682417600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -299,9 +299,9 @@
       "displayName": "US_PDO_TC_03"
     }
   ],
-  "startTime": "2026-05-08T11:42:15.779577600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:16.658629200+03:00[Europe/Athens]",
-  "duration": 78,
+  "startTime": "2026-05-08T15:38:54.347486300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:54.685062200+03:00[Europe/Athens]",
+  "duration": 22,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

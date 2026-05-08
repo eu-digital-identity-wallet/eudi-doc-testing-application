@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the EUDI Wallet displays a list of QTSPs",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:23.221169200+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:00.711657200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects a preferred QTSP from the list",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.221169200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:00.714659500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the EUDI Wallet presents a screen to inform the user that the QTSP requests to release the matching attestation",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.221169200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:00.714659500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:23.198698900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:23.227946500+03:00[Europe/Athens]",
-  "duration": 29,
+  "startTime": "2026-05-08T15:39:00.699429400+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:00.715659400+03:00[Europe/Athens]",
+  "duration": 16,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

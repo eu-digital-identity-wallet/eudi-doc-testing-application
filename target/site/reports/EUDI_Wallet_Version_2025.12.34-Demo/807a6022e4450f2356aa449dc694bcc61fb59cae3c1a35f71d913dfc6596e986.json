@@ -7,18 +7,18 @@
     {
       "number": 1,
       "description": "1: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=specific attributes})",
-      "duration": 24,
-      "startTime": "2026-05-08T11:42:27.757182400+03:00[Europe/Athens]",
+      "duration": 18,
+      "startTime": "2026-05-08T15:39:05.230424700+03:00[Europe/Athens]",
       "result": "ERROR",
       "precondition": false,
       "level": 0,
-      "lineNumber": 31,
+      "lineNumber": 41,
       "children": [
         {
           "number": 2,
           "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
-          "duration": 8,
-          "startTime": "2026-05-08T11:45:27.556649+03:00[Europe/Athens]",
+          "duration": 2,
+          "startTime": "2026-05-08T15:40:48.123660900+03:00[Europe/Athens]",
           "exception": {
             "errorType": "java.lang.NullPointerException",
             "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
@@ -39,7 +39,7 @@
                 "declaringClass": "\u00e2\u0153\u00bd",
                 "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
                 "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
-                "lineNumber": 20
+                "lineNumber": 30
               }
             ]
           },
@@ -51,7 +51,7 @@
           "number": 3,
           "description": "And the issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.565356700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.125661+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -60,7 +60,7 @@
           "number": 4,
           "description": "And the issuance is performed on a same device for the mDL (MSO Mdoc)",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.565356700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.125661+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -69,7 +69,7 @@
           "number": 5,
           "description": "When the issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.565356700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.125661+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -78,7 +78,7 @@
           "number": 6,
           "description": "Then the credential is stored in the Wallet",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.565356700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.126662200+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -87,7 +87,7 @@
           "number": 7,
           "description": "When the user presents the credential to the Web verifier",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.567379+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.126662200+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -96,7 +96,7 @@
           "number": 8,
           "description": "And the user shares specific attributes",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.567379+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.126662200+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -105,7 +105,7 @@
           "number": 9,
           "description": "And the presentation is performed on a same device for the mDL (MSO Mdoc)",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.567379+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.126662200+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -114,7 +114,7 @@
           "number": 10,
           "description": "Then the verifier verifies the credential successfully with same device for specific attributes",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:27.569404500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.126662200+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -124,18 +124,18 @@
     {
       "number": 11,
       "description": "2: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=all attributes})",
-      "duration": 31,
-      "startTime": "2026-05-08T11:42:27.835703800+03:00[Europe/Athens]",
+      "duration": 28,
+      "startTime": "2026-05-08T15:39:05.309483+03:00[Europe/Athens]",
       "result": "ERROR",
       "precondition": false,
       "level": 0,
-      "lineNumber": 32,
+      "lineNumber": 42,
       "children": [
         {
           "number": 12,
           "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
-          "duration": 17,
-          "startTime": "2026-05-08T11:45:28.213760300+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:40:48.208149300+03:00[Europe/Athens]",
           "exception": {
             "errorType": "java.lang.NullPointerException",
             "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
@@ -156,7 +156,7 @@
                 "declaringClass": "\u00e2\u0153\u00bd",
                 "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
                 "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
-                "lineNumber": 20
+                "lineNumber": 30
               }
             ]
           },
@@ -168,7 +168,7 @@
           "number": 13,
           "description": "And the issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.231754300+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.211151+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -177,7 +177,7 @@
           "number": 14,
           "description": "And the issuance is performed on a same device for the mDL (MSO Mdoc)",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.233777400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.211151+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -186,7 +186,7 @@
           "number": 15,
           "description": "When the issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.233777400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -195,7 +195,7 @@
           "number": 16,
           "description": "Then the credential is stored in the Wallet",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.235796500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -204,7 +204,7 @@
           "number": 17,
           "description": "When the user presents the credential to the Web verifier",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.235796500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -213,7 +213,7 @@
           "number": 18,
           "description": "And the user shares all attributes",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.235796500+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -222,7 +222,7 @@
           "number": 19,
           "description": "And the presentation is performed on a same device for the mDL (MSO Mdoc)",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.239830900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -231,7 +231,709 @@
           "number": 20,
           "description": "Then the verifier verifies the credential successfully with same device for all attributes",
           "duration": 0,
-          "startTime": "2026-05-08T11:45:28.239830900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:40:48.212163300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "description": "3: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Web verifier, presentation_scenario=cross device, selective_disclosure=specific attributes})",
+      "duration": 24,
+      "startTime": "2026-05-08T15:39:05.384141+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 43,
+      "children": [
+        {
+          "number": 22,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 3,
+          "startTime": "2026-05-08T15:40:48.282648700+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 23,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.285648800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 24,
+          "description": "And the issuance is performed on a same device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.285648800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 25,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.285648800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 26,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.285648800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 27,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.286648600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 28,
+          "description": "And the user shares specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.286648600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 29,
+          "description": "And the presentation is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.286648600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 30,
+          "description": "Then the verifier verifies the credential successfully with cross device for specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.286648600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "description": "4: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Web verifier, presentation_scenario=cross device, selective_disclosure=all attributes})",
+      "duration": 16,
+      "startTime": "2026-05-08T15:39:05.439909+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 44,
+      "children": [
+        {
+          "number": 32,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T15:40:48.340742700+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 33,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.342751400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 34,
+          "description": "And the issuance is performed on a same device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.342751400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 35,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.342751400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 36,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.343751300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 37,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.343751300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 38,
+          "description": "And the user shares all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.343751300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 39,
+          "description": "And the presentation is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.343751300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 40,
+          "description": "Then the verifier verifies the credential successfully with cross device for all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.343751300+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "description": "5: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=specific attributes})",
+      "duration": 21,
+      "startTime": "2026-05-08T15:39:05.485368700+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 45,
+      "children": [
+        {
+          "number": 42,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T15:40:48.401441900+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 43,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.403442700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 44,
+          "description": "And the issuance is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 45,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 46,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 47,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 48,
+          "description": "And the user shares specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 49,
+          "description": "And the presentation is performed on a same device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 50,
+          "description": "Then the verifier verifies the credential successfully with same device for specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.404460700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "description": "6: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=all attributes})",
+      "duration": 22,
+      "startTime": "2026-05-08T15:39:05.544300500+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 46,
+      "children": [
+        {
+          "number": 52,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 1,
+          "startTime": "2026-05-08T15:40:48.466889100+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 53,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.468881800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 54,
+          "description": "And the issuance is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.468881800+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 55,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 56,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 57,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 58,
+          "description": "And the user shares all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 59,
+          "description": "And the presentation is performed on a same device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 60,
+          "description": "Then the verifier verifies the credential successfully with same device for all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.469881700+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 61,
+      "description": "7: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Web verifier, presentation_scenario=cross device, selective_disclosure=all attributes})",
+      "duration": 19,
+      "startTime": "2026-05-08T15:39:05.604032+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 47,
+      "children": [
+        {
+          "number": 62,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T15:40:48.525554600+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 63,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 64,
+          "description": "And the issuance is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 65,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 66,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 67,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 68,
+          "description": "And the user shares all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 69,
+          "description": "And the presentation is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 70,
+          "description": "Then the verifier verifies the credential successfully with cross device for all attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.528573600+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "description": "8: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Web verifier, presentation_scenario=cross device, selective_disclosure=specific attributes})",
+      "duration": 16,
+      "startTime": "2026-05-08T15:39:05.649276600+03:00[Europe/Athens]",
+      "result": "ERROR",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 48,
+      "children": [
+        {
+          "number": 72,
+          "description": "Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T15:40:48.580254500+03:00[Europe/Athens]",
+          "exception": {
+            "errorType": "java.lang.NullPointerException",
+            "message": "Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null",
+            "stackTrace": [
+              {
+                "declaringClass": "eu.europa.eudi.pages.Wallet",
+                "methodName": "launchApp",
+                "fileName": "Wallet.java",
+                "lineNumber": 55
+              },
+              {
+                "declaringClass": "eu.europa.eudi.stepdefs.AutomatedStepDefs",
+                "methodName": "theUserInitiatesACredentialIssuanceUsingThe",
+                "fileName": "AutomatedStepDefs.java",
+                "lineNumber": 1866
+              },
+              {
+                "declaringClass": "\u00e2\u0153\u00bd",
+                "methodName": "the user initiates a mDL (MSO Mdoc) issuance using the Kotlin",
+                "fileName": "file:///C:/Users/ftheofil/Projects/eu-digital-identity-walleteudi-doc-testing-application-internal/src/test/resources/features/ios/regressionTests/Automated_Regression_Tests/MDL_MSO_Mdoc/issuanceAndPresentationScenariosMdl.feature",
+                "lineNumber": 30
+              }
+            ]
+          },
+          "result": "ERROR",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 73,
+          "description": "And the issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 74,
+          "description": "And the issuance is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 75,
+          "description": "When the issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 76,
+          "description": "Then the credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 77,
+          "description": "When the user presents the credential to the Web verifier",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 78,
+          "description": "And the user shares specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.582257400+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 79,
+          "description": "And the presentation is performed on a cross device for the mDL (MSO Mdoc)",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.583259+03:00[Europe/Athens]",
+          "result": "SKIPPED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 80,
+          "description": "Then the verifier verifies the credential successfully with cross device for specific attributes",
+          "duration": 0,
+          "startTime": "2026-05-08T15:40:48.583259+03:00[Europe/Athens]",
           "result": "SKIPPED",
           "precondition": false,
           "level": 1
@@ -292,17 +994,17 @@
       "displayName": "automated"
     }
   ],
-  "startTime": "2026-05-08T11:42:27.757182400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:27.781557800+03:00[Europe/Athens]",
-  "duration": 24,
+  "startTime": "2026-05-08T15:39:05.230424700+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:05.249124400+03:00[Europe/Athens]",
+  "duration": 18,
   "testFailureCause": {
     "errorType": "net.thucydides.model.domain.MultipleAssertionErrors",
-    "message": "\r\nThe following 3 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
+    "message": "\r\nThe following 9 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n4) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n5) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n6) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n7) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n8) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n9) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
     "stackTrace": []
   },
   "testFailureClassname": "net.thucydides.model.domain.MultipleAssertionErrors",
-  "testFailureMessage": "\r\nThe following 3 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
-  "testFailureSummary": "\r\nThe following 3 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
+  "testFailureMessage": "\r\nThe following 9 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n4) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n5) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n6) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n7) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n8) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n9) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
+  "testFailureSummary": "\r\nThe following 9 assertions failed:\r\n1) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n2) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n3) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n4) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n5) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n6) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n7) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n8) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n9) Cannot invoke \"io.appium.java_client.ios.IOSDriver.activateApp(String)\" because \"eu.europa.eudi.utils.TestSetup.mobileWebDriverFactory().iosDriver\" is null\r\n",
   "projectKey": "",
   "annotatedResult": "ERROR",
   "isManualTestingUpToDate": false,
@@ -327,7 +1029,7 @@
           "same device",
           "specific attributes"
         ],
-        "lineNumber": 31,
+        "lineNumber": 41,
         "result": "ERROR"
       },
       {
@@ -340,7 +1042,85 @@
           "same device",
           "all attributes"
         ],
-        "lineNumber": 32,
+        "lineNumber": 42,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "same device",
+          "Web verifier",
+          "cross device",
+          "specific attributes"
+        ],
+        "lineNumber": 43,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "same device",
+          "Web verifier",
+          "cross device",
+          "all attributes"
+        ],
+        "lineNumber": 44,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Web verifier",
+          "same device",
+          "specific attributes"
+        ],
+        "lineNumber": 45,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Web verifier",
+          "same device",
+          "all attributes"
+        ],
+        "lineNumber": 46,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Web verifier",
+          "cross device",
+          "all attributes"
+        ],
+        "lineNumber": 47,
+        "result": "ERROR"
+      },
+      {
+        "values": [
+          "mDL (MSO Mdoc)",
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Web verifier",
+          "cross device",
+          "specific attributes"
+        ],
+        "lineNumber": 48,
         "result": "ERROR"
       }
     ],

@@ -1,190 +1,100 @@
-name: Merge All Serenity Reports
+name: Merge All Reports
 
 on:
   workflow_dispatch:
     inputs:
-      ios_run_id:
-        description: "iOS workflow run ID"
-        required: true
-        type: string
-
       android_run_id:
-        description: "Android workflow run ID"
+        description: 'Android Run ID'
         required: true
         type: string
-
+      ios_run_id:
+        description: 'iOS Run ID'
+        required: true
+        type: string
       manual_run_id:
-        description: "Manual workflow run ID"
+        description: 'manual Run ID'
         required: true
         type: string
 
 jobs:
-  merge-reports:
+  merge-and-report:
     runs-on: ubuntu-latest
-
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANDROID_RUN_ID: ${{ inputs.android_run_id }}
+      ANDROID_ARTIFACT: android-serenity-json
+      IOS_RUN_ID: ${{ inputs.ios_run_id }}
+      IOS_ARTIFACT: ios-serenity-json
+      MANUAL_RUN_ID: ${{ inputs.manual_run_id }}
+      MANUAL_ARTIFACT: manual-serenity-json
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # =====================================================
-      # PRINT PROVIDED IDS
-      # =====================================================
-      - name: Print workflow run IDs
+      - name: Download Android Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "======================================="
-          echo "iOS Run ID: ${{ inputs.ios_run_id }}"
-          echo "Android Run ID: ${{ inputs.android_run_id }}"
-          echo "Manual Run ID: ${{ inputs.manual_run_id }}"
-          echo "======================================="
-
-      # =====================================================
-      # DOWNLOAD IOS ARTIFACT
-      # =====================================================
-      - name: Download iOS report
-        run: |
-          mkdir -p merged/ios
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts \
-            > ios.json
-
-          echo "===== IOS API RESPONSE ====="
-          cat ios.json
-
-          IOS_ARTIFACT_ID=$(jq -r '
-            .artifacts[]?
-            | select(.name=="ios-serenity-json")
-            | .id
-          ' ios.json)
-
-          echo "iOS Artifact ID: $IOS_ARTIFACT_ID"
-
-          if [ -z "$IOS_ARTIFACT_ID" ] || [ "$IOS_ARTIFACT_ID" = "null" ]; then
-            echo "❌ ios-serenity-json artifact not found"
-            exit 1
-          fi
-
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$ANDROID_RUN_ID/artifacts > android_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$ANDROID_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' android_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "Android JSON artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o ios.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${IOS_ARTIFACT_ID}/zip
+            -o android_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip android_json.zip -d android-json
 
-          unzip -o ios.zip -d merged/ios
-
-      # =====================================================
-      # DOWNLOAD ANDROID ARTIFACT
-      # =====================================================
-      - name: Download Android report
+      - name: Download iOS Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p merged/android
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts \
-            > android.json
-
-          echo "===== ANDROID API RESPONSE ====="
-          cat android.json
-
-          ANDROID_ARTIFACT_ID=$(jq -r '
-            .artifacts[]?
-            | select(.name=="android-serenity-json")
-            | .id
-          ' android.json)
-
-          echo "Android Artifact ID: $ANDROID_ARTIFACT_ID"
-
-          if [ -z "$ANDROID_ARTIFACT_ID" ] || [ "$ANDROID_ARTIFACT_ID" = "null" ]; then
-            echo "❌ android-serenity-json artifact not found"
-            exit 1
-          fi
-
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$IOS_RUN_ID/artifacts > ios_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$IOS_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' ios_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "iOS JSON artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o android.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${ANDROID_ARTIFACT_ID}/zip
+            -o ios_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip ios_json.zip -d ios-json
 
-          unzip -o android.zip -d merged/android
-
-      # =====================================================
-      # DOWNLOAD MANUAL ARTIFACT
-      # =====================================================
-      - name: Download Manual report
+      - name: Download manual Serenity JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p merged/manual
-
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts \
-            > manual.json
-
-          echo "===== MANUAL API RESPONSE ====="
-          cat manual.json
-
-          MANUAL_ARTIFACT_ID=$(jq -r '
-            .artifacts[]?
-            | select(.name=="manual-serenity-json")
-            | .id
-          ' manual.json)
-
-          echo "Manual Artifact ID: $MANUAL_ARTIFACT_ID"
-
-          if [ -z "$MANUAL_ARTIFACT_ID" ] || [ "$MANUAL_ARTIFACT_ID" = "null" ]; then
-            echo "❌ manual-serenity-json artifact not found"
-            exit 1
-          fi
-
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$MANUAL_RUN_ID/artifacts > manual_artifacts.json
+          ARTIFACT_ID=$(jq -r --arg NAME "$MANUAL_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' manual_artifacts.json)
+          [ -z "$ARTIFACT_ID" ] && echo "manual JSON artifact not found!" && exit 1
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o manual.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${MANUAL_ARTIFACT_ID}/zip
+            -o manual_json.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          unzip manual_json.zip -d manual-json
 
-          unzip -o manual.zip -d merged/manual
-
-      # =====================================================
-      # MERGE JSON RESULTS
-      # =====================================================
-      - name: Merge all JSON results
+      - name: Merge Serenity JSONs
         run: |
-          mkdir -p merged/all
+          mkdir merged-json
+          find android-json -type f -name '*.json' -exec cp {} merged-json/ \;
+          find ios-json -type f -name '*.json' -exec cp {} merged-json/ \;
+          find manual-json -type f -name '*.json' -exec cp {} merged-json/ \;
 
-          find merged/ios -name "*.json" -exec cp {} merged/all/ \;
-          find merged/android -name "*.json" -exec cp {} merged/all/ \;
-          find merged/manual -name "*.json" -exec cp {} merged/all/ \;
-
-          echo "Merged JSON files:"
-          find merged/all -name "*.json"
-
-      # =====================================================
-      # OPTIONAL MERGE SCRIPT
-      # =====================================================
-      - name: Run merge script
+      - name: List merged-json content
         run: |
-          python3 merge_serenity_results.py merged/all
+          ls -l merged-json
+          head -n 20 merged-json/*.json || true
 
-      # =====================================================
-      # GENERATE FINAL REPORT
-      # =====================================================
-      - name: Generate final Serenity report
+      - name: Generate Merged Serenity HTML Report
+        run: mvn serenity:aggregate -Dserenity.sourceDirectory=merged-json -Dserenity.outputDirectory=merged-html-report
+
+      - name: Replace Serenity Core CSS
+        if: always()
         run: |
-          mvn serenity:aggregate \
-            -Dserenity.outputDirectory=target/final-report
+          REPORT_DIR="merged-html-report"
+          echo "Replacing core.css using custom-style.css..."
+          mkdir -p "$REPORT_DIR/css"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
 
-      # =====================================================
-      # VALIDATE REPORT
-      # =====================================================
-      - name: Validate report
-        run: |
-          if [ ! -f target/final-report/index.html ]; then
-            echo "❌ Serenity report generation failed"
-            exit 1
-          fi
-
-          echo "✅ Serenity report generated successfully"
-
-      # =====================================================
-      # UPLOAD FINAL REPORT
-      # =====================================================
-      - name: Upload final unified report
+      - name: Upload Merged HTML Serenity Report
         uses: actions/upload-artifact@v4
         with:
-          name: FINAL-SERENITY-REPORT
-          path: target/final-report
+          name: serenity-report
+          path: merged-html-report

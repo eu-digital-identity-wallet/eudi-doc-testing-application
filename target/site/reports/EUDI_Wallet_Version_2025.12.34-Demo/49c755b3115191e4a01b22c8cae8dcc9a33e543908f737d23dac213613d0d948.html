@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
 <head>
     <meta charset="UTF-8"/>
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Serenity Reports</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <title>##s</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -106,20 +103,18 @@
 
 
 
-    <script class="code" type="text/javascript">$(document).ready(function () {
+    <script>
+
+        $(document).ready(function () {
 
             $("#scenario-results").DataTable({
-                "order": [[0, "asc",], [1, "asc",], [2, "asc",]],
+                "order": [[0, "asc",], [3, "asc",]],
                 "language": {
                     searchPlaceholder: "Filter",
                     search: ""
                 },
                 columnDefs: [
-                    {
-                        targets: 4,
-                        visible: false
-                    },
-                    {type: 'time-elapsed-dhms', targets: 6}
+                    {type: 'time-elapsed-dhms', targets: 4}
                 ]
             })
             $("#manual-scenario-results").DataTable({
@@ -128,61 +123,63 @@
                     searchPlaceholder: "Filter",
                     search: ""
                 },
-                columnDefs: [
-                    {
-                        targets: 4,
-                        visible: false
-                    },
-                ]
             })
 
-            // Results table
-            $('#test-results-table').DataTable({
-                "order": [[0, "asc",], [3, "asc",]],
-                "pageLength": 10,
-                "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]]
-            });
-
-            $('#evidence-table').DataTable({
+            $('.example-table table').DataTable({
                 searching: false,
+                ordering: false,
                 paging: false,
                 info: false
             });
 
-            $(".feature-coverage-table").DataTable({
-                searching: true,
+            $('.example-table-in-scenario table').DataTable({
+                searching: false,
+                ordering: false,
                 paging: false,
-                info: false,
-                language: {
-                    searchPlaceholder: "Filter",
-                    search: ""
-                },
-                columnDefs: [
-                    {
-                        targets: 2,
-                        visible: false
-                    },
-                ]
+                info: false
             });
 
-            $(".feature-coverage-table-with-pagination").DataTable({
-                searching: true,
-                order: [[0, "asc",]],
-                pageLength: 10,
-                language: {
-                    searchPlaceholder: "Filter",
-                    search: ""
-                },
-                columnDefs: [
-                    {
-                        targets: 2,
-                        visible: false
-                    },
-                ]
+            $('#evidence-table').DataTable(
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
+            );
+
+
+            $(".scenario-docs .card-body table").wrap("<div class='table-responsive'></div>");
+
+            $("#requirements-tabs").tabs();
+            $("#test-tabs").tabs();
+
+            var requirementsTree = [];
+
+            $('#tree').treeview({
+                data: requirementsTree,
+                enableLinks: true,
+                levels: 10,
+                showTags: true,
+                expandIcon: "bi bi-journal-plus",
+                collapseIcon: "bi bi-journal-minus",
+                emptyIcon: "bi bi-journal"
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".scenario-docs > div > p").html(function () {
+                var text = $(this).text().trim().split(" ");
+                var first = text.shift();
+                return (text.length > 0 ? "<strong>" + first + "</strong> " : first) + text.join(" ");
             });
         });
     </script>
 </head>
+
 
 <body class="results-page">
 <div id="topheader">
@@ -197,41 +194,30 @@
     </div>
 </div>
 
+
 <div class="middlecontent">
-
-
     <div id="contenttop">
         <div class="middlebg">
-        <span class="breadcrumbs"><a href="index.html">Home</a>
-                    > ## 
-                > <span class="truncate-60">
-                C:\sers\ftheofil\projects\eu-Digital-Identity-Walleteudi-Doc-Testing-Application-Internal\src\test\resources\features\android\RQES Relying Party QTSP Centric Flow 16
+            <span class="breadcrumbs">
+            <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
+
+                > <a href="e1874e6ede4e2d36907ff04c53fd714dae568f932feee22c0b618a7c415f376d.html">Android</a>
+
+
+                    > <span class="truncate-40">RQES relying party QTSP centric flow 16</span>
+
             </span>
-        </span>
         </div>
         <div class="rightbg"></div>
     </div>
-
     <div class="clr"></div>
+
     <!--/* starts second table*/-->
-        <div>
-            <table class="table environment">
-                <tr>
-                        <th class="custom-title">
-                            Application version
-                        </th>
-                </tr>
-                <tr>
-                        <td class="custom-value">
-                            Version 2025.12.34-Demo
-                        </td>
-                </tr>
-            </table>
-        </div>
+
 <div>
     <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        <li >
+            <a href="index.html"><i class="bi bi-journal-check"></i> Overall Test Results</a>
         </li>
         <li >
             <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
@@ -248,77 +234,80 @@
         <li >
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
-        <li >
-            <a href="f00f76a04d2d99822f342e19edfb456d954ef898f485c501f324bafd9ade930f.html"><i class="bi bi-chat-text"></i> ##s</a>
+        <li class="active">
+            <a href="#"><i class="bi bi-chat-text"></i> ##s</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 08-05-2026 11:47:33</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated </span>
     <br style="clear:left"/>
 </div>
+
     <div class="clr"></div>
+
     <div id="beforetable"></div>
     <div id="results-dashboard">
-        <div class="middlb">
-            <div class="table">
+        <div class="table">
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
 
-                <h2><i class='bi bi-tags'></i> ##: C:\users\ftheofil\projects\eu-Digital-Identity-Walleteudi-Doc-Testing-Application-Internal\src\test\resources\features\android\RQES Relying Party QTSP Centric Flow 16</h2>
-                <table class='overview'>
-                    <tr>
-                        <td width="375px" valign="top">
-                            <div class="test-count-summary">
-                                <div class="test-count-title">
-                                    0 tests
-
-                                     |
-                                        <a href="49c755b3115191e4a01b22c8cae8dcc9a33e543908f737d23dac213613d0d948.csv" title="Download CSV"> <i class="bi bi-cloud-arrow-down"
-                                                                                        title="Download CSV"></i></a>
-
-
+                                    <div class="col-sm-12">
+                                        <span>
+                                            <h2><i class="bi bi-book"></i> ##: RQES relying party QTSP centric flow 16</h2>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                            <div class="requirementNarrativeTitle">
+                                <p><a href="https://github.com/eu-digital-identity-wallet/eudi-wallet-reference-implementation-roadmap/issues/16">rQES: Relying Party/QTSP-centric flow #16</a></p>
+<ul>
+<li><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/209">Access document to be signed (R4) #209</a></li>
+<li><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/210">Authenticate to Relying Party (R4) #210</a></li>
+<li><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/215">Enroll to signing service (rQES) #215</a></li>
+<li><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/208">Select and authenticate to QTSP (R4) #208</a></li>
+<li><a href="https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/207">Sign document (R4) #207</a></li>
+</ul>
 
-                            <div>
-                                <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a data-toggle="tab" href="#summary"><i class="bi bi-house-door"></i>
-                                            Summary</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#tests"><i class="bi bi-speedometer"></i> Test
-                                            Results</a>
-                                    </li>
-                                </ul>
+                            </div>
+
+                    </div>
+                </div>
 
 
-                                <div class="card border">
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div id="summary" class="tab-pane fade in active">
-                                            <div class="container-fluid">
-                                                <div class="dashboard-charts row">
-                                                    <div class="col-lg-4 col-md-6 col-sm-9">
-                                                        <!-- PIE CHART -->
-                                                        <h4><i class="bi bi-pie-chart"></i> Overview</h4>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6 col-sm-9">
-                                                        <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
-                                                        <!-- Severity bar chart -->
-                                                        <div class="chart-container">
-                                                            <canvas id="severityChart" height="200px"></canvas>
-                                                        </div>
-                                                    </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-9">
-                                                            <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+                <div class="row">
+                    <div class="col-sm-12">
 
-                                                            <!-- Duration bar chart -->
-                                                            <div class="chart-container">
-                                                                <canvas id="durationChart" height="200px"></canvas>
-                                                            </div>
-                                                        </div>
-                                                </div>
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="bi bi-journal-text"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="bi bi-speedometer"></i> Test Results</a>
+                            </li>
+                        </ul>
+
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h3>Feature Coverage By Scenario</h3>
+
+                                                <!-- REQUIREMENTS PIE CHART -->
+
                                             </div>
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-md-4 col-sm-6">
+                                            <div class="col-sm-8">
+                                                <h3>Requirements Overview</h3>
+
+                                                <div id="tree"></div>
+
+                                                <!-- STATS -->
     <div>
         <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
         <div>
@@ -387,19 +376,40 @@
             </table>
         </div>
     </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container-fluid">
-
-                                            </div>
-                                            <div class="container-fluid">
+                                                <!-- END STATS -->
                                             </div>
                                         </div>
-                                        <div id="tests" class="tab-pane fade">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
+                                    </div>
+                                </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h3>Feature Coverage By Scenario</h3>
+                                                <!-- TEST RESULT PIE CHART -->
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                <!-- Severity bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="severityChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                <!-- Duration bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="durationChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
     <div>
         <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
         <div>
@@ -465,46 +475,39 @@
         </div>
     </div>
 
-                                                        <h3><i class="bi bi-gear"></i> Automated Scenarios</h3>
+                                                <h3><i class="bi bi-gear"></i> Automated Tests</h3>
 
-                                                            No automated tests were executed
+                                                    No automated tests were executed
 
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
-
-                                                            No manual tests were recorded
-
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="container-fluid">
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                                    No manual tests were recorded
+
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="version">Serenity BDD version 4.2.22</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div id="beforefooter"></div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <span class="version">Serenity BDD version 4.2.22</span>
-        </div>
-    </div>
-</div>
-
 <!-- Chart data -->
     <!-- PIE CHART -->
     <script>
@@ -528,7 +531,7 @@
             datasets: [{
                 label: 'Test Results',
                 fill: false,
-                data: [0,0,0,0,0,0,0,0],
+                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 8}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -600,6 +603,101 @@
         outcomeChartCtx.onclick = clickHandler;
     </script>
     <!-- END PIE CHART -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const requirementsChartCtx = document.getElementById('requirementChart');
+
+        // Options define for display value on top of bars
+        const requirementsOutcomeDetailsReports = [
+            { title: 'Passing Test Cases', link: "5b47be1103ea7528c7e93f98c3af79c78b53786fac9b4b240c75d14fbd97adb4.html" },
+            { title: 'Pending Test Cases', link: "6f673d92980da3f5002455dea49c1e7a926f56dbec1e2f4b80761a02cd1a3b18.html" },
+            { title: 'Ignored Test Cases', link: "6553a5845d63d4d6b532ca45570dd44b5e7f4d32df58d95c6f60c91fa5f8790d.html" },
+            { title: 'Skipped Test Cases', link: "6860b7c47769ddd665c4a29149a2ec8f8fe503b999909c7a3c989e990c93286b.html" },
+            { title: 'Aborted Test Cases',  link: "074d9c79c8496fe95f3ec68427bc79b6e2f1d92602ea404d38bbcdb54c6c91e9.html"},
+            { title: 'Failed Test Cases', link: "6c9f7936aa313a3570cc3084acbe5f680eac35f9374bfdbf27cd68082bb86705.html"  },
+            { title: 'Broken Test Cases', link: "12de84fa1805b85b5b0098f4df8f7cae786a78e54223c51c126214bbf025b9a2.html"    },
+            { title: 'Compromised Test Cases',  link: "5b6d79686bd300884af3c3b7c8e74b4893fc09c2f8af619dc5f43ab88345ab3b.html" },
+            { title: 'Undefined Test Cases',  link: "" },
+        ]
+        const requirementsOutcomeData = {
+            labels: ['Passing Test Cases', 'Pending Test Cases', 'Ignored Test Cases', 'Skipped Test Cases', 'Aborted Test Cases', 'Failed Test Cases', 'Broken Test Cases', 'Compromised Test Cases','Undefined Test Cases'],
+            datasets: [{
+                label: 'Feature Coverage',
+                fill: false,
+                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 8}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const requirementsOutcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const requirementsChart = new Chart(requirementsChartCtx, {
+            type: 'doughnut',
+            data: requirementsOutcomeData,
+            options: requirementsOutcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = " "
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function reqsClickHandler(click) {
+            const points = requirementsChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length && requirementsOutcomeDetailsReports[firstPoint.index].link) {
+                const firstPoint = points[0];
+                window.open(requirementsOutcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        requirementsChartCtx.onclick = reqsClickHandler;
+    </script>
+    <!-- END PIE CHART -->
 
     <!-- SUMMARY BAR CHART -->
     <script>
@@ -631,7 +729,7 @@
                 },
                 {
                     label: 'Manual',
-                    data: [0,0,0,0,0,0,0,0],
+                    data: [0,0,8,0,0,0,0,0],
                     backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
                     borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                     borderWidth: 1
@@ -757,7 +855,5 @@
         durationChartCtx.onclick = durationClickHandler;
     </script>
     <!-- END DURATION CHART -->
-
-
 </body>
 </html>

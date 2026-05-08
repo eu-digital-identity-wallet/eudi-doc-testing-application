@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Home screen",
-      "duration": 2,
-      "startTime": "2026-05-08T11:03:01.189186600+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:23.643771100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "When the user clicks on the Sign a document section",
-      "duration": 0,
-      "startTime": "2026-05-08T11:03:01.191396300+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:23.648021600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Sign Document screen is displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:03:01.192687400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:23.649022100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:02:17.953205+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:03:03.614288200+03:00[Europe/Athens]",
-  "duration": 45661,
+  "startTime": "2026-05-08T15:38:23.614770800+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:23.651022900+03:00[Europe/Athens]",
+  "duration": 36,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

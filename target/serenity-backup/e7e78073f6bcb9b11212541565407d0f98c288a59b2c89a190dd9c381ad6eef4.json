@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has a valid EUDI Wallet with the document to be signed",
-      "duration": 4,
-      "startTime": "2026-05-08T11:42:23.132130200+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:39:00.654927200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects the Sign Document option in the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.136247800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:00.658097600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then EUDI Wallet should prompt the user to select a QTSP from a preloaded list of available QTSPs",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.136247800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:00.658097600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,8 +92,8 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:23.115881200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:23.138503400+03:00[Europe/Athens]",
+  "startTime": "2026-05-08T15:39:00.636385300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:00.659093600+03:00[Europe/Athens]",
   "duration": 22,
   "projectKey": "",
   "annotatedResult": "IGNORED",

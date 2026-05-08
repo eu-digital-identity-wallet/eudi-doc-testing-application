@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user has selected a QTSP from the list",
       "duration": 3,
-      "startTime": "2026-05-08T11:41:50.835600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.883342500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the EUDI Wallet requests the user to consent to the release of the requested attestation",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.839802500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.887523600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user authenticates successfully in the Wallet, e.x. Share and PIN",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.839802500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.887523600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the EUDI Wallet presents the requested attestation to the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.839802500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.887523600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,8 +101,8 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:41:50.818210900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:50.841801+03:00[Europe/Athens]",
+  "startTime": "2026-05-08T15:38:32.865540300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:32.889523800+03:00[Europe/Athens]",
   "duration": 23,
   "projectKey": "",
   "annotatedResult": "IGNORED",

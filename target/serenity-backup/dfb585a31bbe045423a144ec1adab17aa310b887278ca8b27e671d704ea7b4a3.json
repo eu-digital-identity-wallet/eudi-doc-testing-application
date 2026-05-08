@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has selected a multiple option",
-      "duration": 1,
-      "startTime": "2026-05-08T11:42:26.775028+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:39:03.817199300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user indicates that they want to choose specific attributes in the attestations they desire",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.776175100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.819235800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user selects the format of the attestations",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.776175100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.819235800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the verifier saves the selected options",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.776175100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.820747400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the user clicks on the next button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:26.776175100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:03.820747400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -110,9 +110,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:26.758523600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:26.776175100+03:00[Europe/Athens]",
-  "duration": 17,
+  "startTime": "2026-05-08T15:39:03.801199+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:03.821761500+03:00[Europe/Athens]",
+  "duration": 20,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,
