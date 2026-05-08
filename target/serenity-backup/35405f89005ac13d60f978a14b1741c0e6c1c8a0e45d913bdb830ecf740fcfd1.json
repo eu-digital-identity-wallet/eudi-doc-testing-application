@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user follows the steps of the guide",
-      "duration": 2,
-      "startTime": "2026-05-08T11:41:55.489380200+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:37.082378+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the verifier displays a deep link",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:55.493378400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:37.086384+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user clicks on the deep link",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:55.493378400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:37.086384+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And the user is redirected to the EUDI wallet app",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:55.493378400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:37.087381700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the user\u00e2\u20ac\u2122s request made to the verifier appears in the wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:55.494378900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:37.087381700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -110,9 +110,9 @@
       "displayName": "US_RWVSD_TC_09"
     }
   ],
-  "startTime": "2026-05-08T11:41:55.469430300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:55.495889600+03:00[Europe/Athens]",
-  "duration": 26,
+  "startTime": "2026-05-08T15:38:37.061444300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:37.089381500+03:00[Europe/Athens]",
+  "duration": 27,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

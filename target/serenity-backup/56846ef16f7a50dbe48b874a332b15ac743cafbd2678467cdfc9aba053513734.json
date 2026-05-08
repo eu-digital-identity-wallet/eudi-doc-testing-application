@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the EUDI Wallet Home screen",
-      "duration": 2,
-      "startTime": "2026-05-08T11:19:29.054772600+03:00[Europe/Athens]",
+      "duration": 6,
+      "startTime": "2026-05-08T15:38:24.942097200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user clicks on the Authenticate section",
       "duration": 0,
-      "startTime": "2026-05-08T11:19:29.057763500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:24.949106800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user clicks on the In person option",
       "duration": 0,
-      "startTime": "2026-05-08T11:19:29.057763500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:24.950108200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the wallet displays a page which includes a QR code and the option to share via NFC",
       "duration": 0,
-      "startTime": "2026-05-08T11:19:29.058874800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:24.950108200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:18:53.368479300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:19:31.325051800+03:00[Europe/Athens]",
-  "duration": 37956,
+  "startTime": "2026-05-08T15:38:24.911726500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:24.952162800+03:00[Europe/Athens]",
+  "duration": 40,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

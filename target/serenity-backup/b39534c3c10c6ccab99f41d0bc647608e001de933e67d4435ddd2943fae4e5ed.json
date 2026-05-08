@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has a valid EUDI Wallet",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:51.796509500+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:33.621884800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user has authenticated in the Relying Party service",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.798506900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.626934600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user is on the Relying Party service page",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.799505600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.626934600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user selects the option to view the document to be signed",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.799505600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.626934600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the Relying Party should present the document to the user for viewing",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.799505600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.626934600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -112,9 +112,9 @@
       "displayName": "US_ADTBS"
     }
   ],
-  "startTime": "2026-05-08T11:41:51.672085900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:51.801008800+03:00[Europe/Athens]",
-  "duration": 128,
+  "startTime": "2026-05-08T15:38:33.598619+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:33.628930500+03:00[Europe/Athens]",
+  "duration": 30,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

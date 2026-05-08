@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has selected a document from the list",
-      "duration": 1,
-      "startTime": "2026-05-08T11:42:23.598347900+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:39:01.202179200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the EUDI Wallet retrieves the document",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.599975900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.204193800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Then the EUDI Wallet should display metadata such as file name and kind of file(ex.pdf)",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:23.599975900+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:39:01.204193800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "And the EUDI Wallet should display the document's content",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:23.599975900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.205195400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:23.579702100+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:23.599975900+03:00[Europe/Athens]",
-  "duration": 20,
+  "startTime": "2026-05-08T15:39:01.187420200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:01.206228600+03:00[Europe/Athens]",
+  "duration": 18,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

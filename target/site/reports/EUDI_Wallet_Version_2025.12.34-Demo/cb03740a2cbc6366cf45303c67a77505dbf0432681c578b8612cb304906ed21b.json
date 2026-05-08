@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is authenticated in the EUDI Wallet",
-      "duration": 3,
-      "startTime": "2026-05-08T11:41:50.938989900+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:38:32.979225300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user is on the main screen of the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.943479600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.982766400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "When the user selects the option Sign a Document",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.943479600+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.982766400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the EUDI Wallet should display a list of available documents from the device",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:50.944532800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:32.982766400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "US_DLODFS_TC_01"
     }
   ],
-  "startTime": "2026-05-08T11:41:50.914856300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:50.945755500+03:00[Europe/Athens]",
-  "duration": 30,
+  "startTime": "2026-05-08T15:38:32.954995200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:32.984767900+03:00[Europe/Athens]",
+  "duration": 29,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

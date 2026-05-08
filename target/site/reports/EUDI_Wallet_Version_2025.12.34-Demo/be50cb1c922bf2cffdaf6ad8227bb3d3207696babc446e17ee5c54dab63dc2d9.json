@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has a valid EUDI Wallet on their mobile device",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:39:01.939909500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user has issued a PID attestation to the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.944803200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user has internet connectivity",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.944803200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -34,8 +34,8 @@
     {
       "number": 4,
       "description": "Given the QR code in the QRSP is displayed",
-      "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:39:01.944803200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "When the user authenticates successfully in the EUDI Wallet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.945823500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the user scans the displayed QR code from the QTSP",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.945823500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "Then the EUDI Wallet should display the attestation release request",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:01.945823500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -130,9 +130,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:24.550546900+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:24.565800300+03:00[Europe/Athens]",
-  "duration": 15,
+  "startTime": "2026-05-08T15:39:01.919270500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:01.947827600+03:00[Europe/Athens]",
+  "duration": 28,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:05.956941200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:48.737740900+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "And the user is on the Documents screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:05.963391900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:48.739741100+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has expanded the Filter by Category section",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.475137700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.249368+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user selects one or more categories",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.478925+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.249368+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the user taps the Apply button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.478925+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.249368+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "Then the bottom sheet should slide down",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.482980300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.249368+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "And the EUDI Wallet should apply the filter by the selected categories",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.489131+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.250367500+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -71,7 +71,7 @@
       "number": 8,
       "description": "And only documents within those categories should be displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:06.501629400+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:49.250367500+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -139,9 +139,9 @@
       "displayName": "Failed"
     }
   ],
-  "startTime": "2026-05-08T11:42:05.917526200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:06.515595500+03:00[Europe/Athens]",
-  "duration": 598,
+  "startTime": "2026-05-08T15:38:48.729181900+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:49.251367500+03:00[Europe/Athens]",
+  "duration": 522,
   "testFailureMessage": "Failing manual test",
   "projectKey": "",
   "annotatedResult": "SKIPPED",

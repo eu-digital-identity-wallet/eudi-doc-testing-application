@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "1: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=specific attributes (custom), status=passed})",
-      "duration": 27,
-      "startTime": "2026-05-08T11:41:57.464151400+03:00[Europe/Athens]",
+      "duration": 33,
+      "startTime": "2026-05-08T15:38:40.754800300+03:00[Europe/Athens]",
       "result": "SUCCESS",
       "precondition": false,
       "level": 0,
@@ -17,8 +17,8 @@
         {
           "number": 2,
           "description": "Given user initiates credential issuance using the Kotlin",
-          "duration": 2,
-          "startTime": "2026-05-08T11:41:57.485182400+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:40.780920800+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -27,7 +27,7 @@
           "number": 3,
           "description": "And issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.785398300+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -36,7 +36,7 @@
           "number": 4,
           "description": "And issuance is performed on a same device",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.785398300+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -45,7 +45,7 @@
           "number": 5,
           "description": "When issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.785953+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -54,7 +54,7 @@
           "number": 6,
           "description": "Then credential is stored in the Wallet",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.785953+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -63,7 +63,7 @@
           "number": 7,
           "description": "When user presents the credential to the Proximity Verifier App",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.785953+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -72,7 +72,7 @@
           "number": 8,
           "description": "And presentation is performed on a proximity case",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.786507500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -81,7 +81,7 @@
           "number": 9,
           "description": "And user shares specific attributes (custom)",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.786507500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -90,7 +90,7 @@
           "number": 10,
           "description": "Then verifier verifies the credential successfully with passed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.786507500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -100,8 +100,8 @@
     {
       "number": 11,
       "description": "2: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=all attributes (full), status=passed})",
-      "duration": 29,
-      "startTime": "2026-05-08T11:41:57.563792500+03:00[Europe/Athens]",
+      "duration": 32,
+      "startTime": "2026-05-08T15:38:40.870280800+03:00[Europe/Athens]",
       "result": "SUCCESS",
       "precondition": false,
       "level": 0,
@@ -110,8 +110,8 @@
         {
           "number": 12,
           "description": "Given user initiates credential issuance using the Kotlin",
-          "duration": 3,
-          "startTime": "2026-05-08T11:41:57.585372800+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:40.895564400+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -120,7 +120,7 @@
           "number": 13,
           "description": "And issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.589481700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.899585+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -129,7 +129,7 @@
           "number": 14,
           "description": "And issuance is performed on a same device",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.589481700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.899585+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -138,7 +138,7 @@
           "number": 15,
           "description": "When issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.590044100+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.900584700+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -147,7 +147,7 @@
           "number": 16,
           "description": "Then credential is stored in the Wallet",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.590044100+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.900584700+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -156,7 +156,7 @@
           "number": 17,
           "description": "When user presents the credential to the Proximity Verifier App",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.590605200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.900584700+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -165,7 +165,7 @@
           "number": 18,
           "description": "And presentation is performed on a proximity case",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.590605200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.901098500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -174,7 +174,7 @@
           "number": 19,
           "description": "And user shares all attributes (full)",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.591151+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.901098500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -183,7 +183,7 @@
           "number": 20,
           "description": "Then verifier verifies the credential successfully with passed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.591151+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.901753500+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -193,8 +193,8 @@
     {
       "number": 21,
       "description": "3: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=specific attributes (custom), status=passed})",
-      "duration": 28,
-      "startTime": "2026-05-08T11:41:57.664195100+03:00[Europe/Athens]",
+      "duration": 29,
+      "startTime": "2026-05-08T15:38:40.966905+03:00[Europe/Athens]",
       "result": "SUCCESS",
       "precondition": false,
       "level": 0,
@@ -203,8 +203,8 @@
         {
           "number": 22,
           "description": "Given user initiates credential issuance using the Kotlin",
-          "duration": 2,
-          "startTime": "2026-05-08T11:41:57.685343400+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:40.988485600+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -213,7 +213,7 @@
           "number": 23,
           "description": "And issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.993045100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -222,7 +222,7 @@
           "number": 24,
           "description": "And issuance is performed on a cross device",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.993045100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -231,7 +231,7 @@
           "number": 25,
           "description": "When issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.993045100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -240,7 +240,7 @@
           "number": 26,
           "description": "Then credential is stored in the Wallet",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.993045100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -249,7 +249,7 @@
           "number": 27,
           "description": "When user presents the credential to the Proximity Verifier App",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.994043100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -258,7 +258,7 @@
           "number": 28,
           "description": "And presentation is performed on a proximity case",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.994043100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -267,7 +267,7 @@
           "number": 29,
           "description": "And user shares specific attributes (custom)",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.994043100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -276,7 +276,7 @@
           "number": 30,
           "description": "Then verifier verifies the credential successfully with passed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.691592600+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:40.994043100+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -286,8 +286,8 @@
     {
       "number": 31,
       "description": "4: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=all attributes (full), status=passed})",
-      "duration": 27,
-      "startTime": "2026-05-08T11:41:57.769849100+03:00[Europe/Athens]",
+      "duration": 28,
+      "startTime": "2026-05-08T15:38:41.057728+03:00[Europe/Athens]",
       "result": "SUCCESS",
       "precondition": false,
       "level": 0,
@@ -296,8 +296,8 @@
         {
           "number": 32,
           "description": "Given user initiates credential issuance using the Kotlin",
-          "duration": 4,
-          "startTime": "2026-05-08T11:41:57.788693300+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:41.079716200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -306,7 +306,7 @@
           "number": 33,
           "description": "And issuance method is credential offer",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.083234200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -315,7 +315,7 @@
           "number": 34,
           "description": "And issuance is performed on a cross device",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.083234200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -324,7 +324,7 @@
           "number": 35,
           "description": "When issuance flow is completed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.084238200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -332,8 +332,8 @@
         {
           "number": 36,
           "description": "Then credential is stored in the Wallet",
-          "duration": 1,
-          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:41.084238200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -342,7 +342,7 @@
           "number": 37,
           "description": "When user presents the credential to the Proximity Verifier App",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.084238200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -351,7 +351,7 @@
           "number": 38,
           "description": "And presentation is performed on a proximity case",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.084238200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -359,8 +359,8 @@
         {
           "number": 39,
           "description": "And user shares all attributes (full)",
-          "duration": 1,
-          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:41.085241600+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -369,7 +369,7 @@
           "number": 40,
           "description": "Then verifier verifies the credential successfully with passed",
           "duration": 0,
-          "startTime": "2026-05-08T11:41:57.795617300+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:41.085241600+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -421,9 +421,9 @@
       "displayName": "US_ETESM"
     }
   ],
-  "startTime": "2026-05-08T11:41:57.464151400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:57.796867+03:00[Europe/Athens]",
-  "duration": 23,
+  "startTime": "2026-05-08T15:38:40.753022600+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:41.087233300+03:00[Europe/Athens]",
+  "duration": 31,
   "projectKey": "",
   "isManualTestingUpToDate": false,
   "dataTable": {

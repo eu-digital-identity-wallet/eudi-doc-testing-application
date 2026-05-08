@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has selected an attestation option",
-      "duration": 4,
-      "startTime": "2026-05-08T11:42:27.032052900+03:00[Europe/Athens]",
+      "duration": 2,
+      "startTime": "2026-05-08T15:39:04.073033100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user indicates that they want to choose specific attributes",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:27.036102200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:04.075341500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "And the user selects the format of the attestation",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:27.036102200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:04.075341500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the user clicks on the next button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:27.036102200+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:39:04.075341500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,8 +101,8 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:27.017571+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:27.036102200+03:00[Europe/Athens]",
+  "startTime": "2026-05-08T15:39:04.058697200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:39:04.076847600+03:00[Europe/Athens]",
   "duration": 18,
   "projectKey": "",
   "annotatedResult": "IGNORED",

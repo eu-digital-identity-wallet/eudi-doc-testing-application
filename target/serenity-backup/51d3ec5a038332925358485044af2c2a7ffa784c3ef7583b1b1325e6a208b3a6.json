@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 6,
-      "startTime": "2026-05-08T11:42:08.144336500+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:50.372159500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 509,
-      "startTime": "2026-05-08T11:42:08.150474100+03:00[Europe/Athens]",
+      "duration": 512,
+      "startTime": "2026-05-08T15:38:50.373169200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Given the user has applied a filter or sort option",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.659555300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.886541700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps the Reset all button in the filter or sort bottom sheet",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.659555300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.886541700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the filters and sort options should be reset to the default values",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.659555300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.886541700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the bottom sheet should slide down",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.661070800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.886541700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -62,7 +62,7 @@
       "number": 7,
       "description": "And the EUDI Wallet should display all non expired documents grouped by category in ascending order by attestation name",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:08.661070800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:50.887550900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -130,9 +130,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:08.122999500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:08.663088200+03:00[Europe/Athens]",
-  "duration": 540,
+  "startTime": "2026-05-08T15:38:50.363910100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:50.888551700+03:00[Europe/Athens]",
+  "duration": 524,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "1: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=The name of the requesting Relying Party})",
-      "duration": 51,
-      "startTime": "2026-05-08T11:42:13.580547700+03:00[Europe/Athens]",
+      "duration": 30,
+      "startTime": "2026-05-08T15:38:53.339093500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -17,8 +17,8 @@
         {
           "number": 2,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 6,
-          "startTime": "2026-05-08T11:42:13.619473700+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:53.362195500+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -27,7 +27,7 @@
           "number": 3,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:13.627607400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.366709+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -35,8 +35,8 @@
         {
           "number": 4,
           "description": "And the reader device scans the QR code",
-          "duration": 1,
-          "startTime": "2026-05-08T11:42:13.627607400+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:53.366709+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -44,8 +44,8 @@
         {
           "number": 5,
           "description": "Then the wallet displays the presentation request which The name of the requesting Relying Party:",
-          "duration": 1,
-          "startTime": "2026-05-08T11:42:13.628763100+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:53.366709+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -55,8 +55,8 @@
     {
       "number": 6,
       "description": "2: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=The attestations requested by the Relying Party})",
-      "duration": 61,
-      "startTime": "2026-05-08T11:42:13.782555700+03:00[Europe/Athens]",
+      "duration": 33,
+      "startTime": "2026-05-08T15:38:53.448971500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -65,8 +65,8 @@
         {
           "number": 7,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 8,
-          "startTime": "2026-05-08T11:42:13.827841500+03:00[Europe/Athens]",
+          "duration": 5,
+          "startTime": "2026-05-08T15:38:53.474931800+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -75,7 +75,7 @@
           "number": 8,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:13.838126300+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.479936400+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -83,8 +83,8 @@
         {
           "number": 9,
           "description": "And the reader device scans the QR code",
-          "duration": 2,
-          "startTime": "2026-05-08T11:42:13.838126300+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:53.480932400+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -93,7 +93,7 @@
           "number": 10,
           "description": "Then the wallet displays the presentation request which The attestations requested by the Relying Party:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:13.840161200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.481440700+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -103,8 +103,8 @@
     {
       "number": 11,
       "description": "3: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=The option to expand on the details for each requested attestation})",
-      "duration": 47,
-      "startTime": "2026-05-08T11:42:13.971964900+03:00[Europe/Athens]",
+      "duration": 36,
+      "startTime": "2026-05-08T15:38:53.552920900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -113,8 +113,8 @@
         {
           "number": 12,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 8,
-          "startTime": "2026-05-08T11:42:14.003820600+03:00[Europe/Athens]",
+          "duration": 4,
+          "startTime": "2026-05-08T15:38:53.582589800+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -123,7 +123,7 @@
           "number": 13,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.013781800+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.587589700+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -131,8 +131,8 @@
         {
           "number": 14,
           "description": "And the reader device scans the QR code",
-          "duration": 0,
-          "startTime": "2026-05-08T11:42:14.015346400+03:00[Europe/Athens]",
+          "duration": 1,
+          "startTime": "2026-05-08T15:38:53.587589700+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -141,7 +141,7 @@
           "number": 15,
           "description": "Then the wallet displays the presentation request which The option to expand on the details for each requested attestation:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.015346400+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.588592300+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -151,8 +151,8 @@
     {
       "number": 16,
       "description": "4: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=The option to unselect specific data elements from each requested attestation})",
-      "duration": 60,
-      "startTime": "2026-05-08T11:42:14.128379800+03:00[Europe/Athens]",
+      "duration": 37,
+      "startTime": "2026-05-08T15:38:53.668144200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -161,8 +161,8 @@
         {
           "number": 17,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 9,
-          "startTime": "2026-05-08T11:42:14.171200+03:00[Europe/Athens]",
+          "duration": 5,
+          "startTime": "2026-05-08T15:38:53.697216300+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -171,7 +171,7 @@
           "number": 18,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.182832700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.702350400+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -180,7 +180,7 @@
           "number": 19,
           "description": "And the reader device scans the QR code",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.182832700+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.702350400+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -188,8 +188,8 @@
         {
           "number": 20,
           "description": "Then the wallet displays the presentation request which The option to unselect specific data elements from each requested attestation:",
-          "duration": 1,
-          "startTime": "2026-05-08T11:42:14.184408500+03:00[Europe/Athens]",
+          "duration": 0,
+          "startTime": "2026-05-08T15:38:53.703349900+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -199,8 +199,8 @@
     {
       "number": 21,
       "description": "5: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=A back button})",
-      "duration": 50,
-      "startTime": "2026-05-08T11:42:14.321731300+03:00[Europe/Athens]",
+      "duration": 30,
+      "startTime": "2026-05-08T15:38:53.769839900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -209,8 +209,8 @@
         {
           "number": 22,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 4,
-          "startTime": "2026-05-08T11:42:14.359348800+03:00[Europe/Athens]",
+          "duration": 5,
+          "startTime": "2026-05-08T15:38:53.791890900+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -219,7 +219,7 @@
           "number": 23,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.368251+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.797763600+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -228,7 +228,7 @@
           "number": 24,
           "description": "And the reader device scans the QR code",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.368251+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.798758100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -237,7 +237,7 @@
           "number": 25,
           "description": "Then the wallet displays the presentation request which A back button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.369635200+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.798758100+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -247,8 +247,8 @@
     {
       "number": 26,
       "description": "6: Scan QR-code or tap for NFC with reader device and display presentation request ({includes=A Share button})",
-      "duration": 34,
-      "startTime": "2026-05-08T11:42:14.479734600+03:00[Europe/Athens]",
+      "duration": 27,
+      "startTime": "2026-05-08T15:38:53.863181800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0,
@@ -257,8 +257,8 @@
         {
           "number": 27,
           "description": "Given the user is on the screen displaying a QR code and the option to share via NFC",
-          "duration": 10,
-          "startTime": "2026-05-08T11:42:14.500368600+03:00[Europe/Athens]",
+          "duration": 3,
+          "startTime": "2026-05-08T15:38:53.883382200+03:00[Europe/Athens]",
           "result": "SUCCESS",
           "precondition": false,
           "level": 1
@@ -267,7 +267,7 @@
           "number": 28,
           "description": "When the displayed QR code is scanned or the NFC option is tapped with a reader device",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.510768100+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.887379900+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -276,7 +276,7 @@
           "number": 29,
           "description": "And the reader device scans the QR code",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.510768100+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.888381900+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -285,7 +285,7 @@
           "number": 30,
           "description": "Then the wallet displays the presentation request which A Share button:",
           "duration": 0,
-          "startTime": "2026-05-08T11:42:14.510768100+03:00[Europe/Athens]",
+          "startTime": "2026-05-08T15:38:53.888381900+03:00[Europe/Athens]",
           "result": "IGNORED",
           "precondition": false,
           "level": 1
@@ -353,9 +353,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:13.578301400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:14.515685900+03:00[Europe/Athens]",
-  "duration": 57,
+  "startTime": "2026-05-08T15:38:53.339093500+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:53.890413100+03:00[Europe/Athens]",
+  "duration": 30,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

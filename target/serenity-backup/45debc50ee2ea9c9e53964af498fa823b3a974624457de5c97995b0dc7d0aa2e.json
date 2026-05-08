@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is viewing the predefined list of attestations",
-      "duration": 511,
-      "startTime": "2026-05-08T11:41:59.653518300+03:00[Europe/Athens]",
+      "duration": 508,
+      "startTime": "2026-05-08T15:38:43.018263700+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects one attestation to be issued",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.166160700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:43.526800800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "And the attestation is successfully issued",
-      "duration": 1,
-      "startTime": "2026-05-08T11:42:00.166160700+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:43.526800800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "Then the wallet displays a success screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.167161700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:43.527796100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "And the screen informs the user about the attestation issued and the issuer who issued it",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.167161700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:43.527796100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -53,7 +53,7 @@
       "number": 6,
       "description": "And the screen displays a Close button to return to the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:00.167161700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:43.527796100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -119,9 +119,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:41:59.635285400+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:00.170591100+03:00[Europe/Athens]",
-  "duration": 535,
+  "startTime": "2026-05-08T15:38:43.002908+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:43.528894900+03:00[Europe/Athens]",
+  "duration": 525,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

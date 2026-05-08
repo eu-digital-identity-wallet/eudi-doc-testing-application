@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the wallet displays the success screen with details about the data shared",
-      "duration": 13,
-      "startTime": "2026-05-08T11:42:15.073828500+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:54.183259600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user selects the Close button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:15.089762100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:54.186260900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user is redirected to the Home screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:15.089762100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:54.186260900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:15.030317600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:15.098110200+03:00[Europe/Athens]",
-  "duration": 67,
+  "startTime": "2026-05-08T15:38:54.166562+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:54.188260300+03:00[Europe/Athens]",
+  "duration": 21,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the navigation drawer is open",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:12.011011700+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:52.779393400+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user taps the Notifications option",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:12.024784100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:52.783919700+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Notifications screen is displayed",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:12.024784100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:52.784919200+03:00[Europe/Athens]",
       "result": "SKIPPED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "Failed"
     }
   ],
-  "startTime": "2026-05-08T11:42:11.906364300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:12.029149+03:00[Europe/Athens]",
-  "duration": 122,
+  "startTime": "2026-05-08T15:38:52.753037200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:52.786446100+03:00[Europe/Athens]",
+  "duration": 33,
   "testFailureMessage": "Failing manual test",
   "projectKey": "",
   "annotatedResult": "SKIPPED",

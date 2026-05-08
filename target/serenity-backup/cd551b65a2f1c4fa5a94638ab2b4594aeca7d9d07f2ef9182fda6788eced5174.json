@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the QTSP has signed the document and returned it",
-      "duration": 3,
-      "startTime": "2026-05-08T11:41:51.593963+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:33.516731100+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the EUDI Wallet receives the signed document",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.597504100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.521243600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Then the EUDI Wallet enables the user to share the document or close the process",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:51.597504100+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:33.522260800+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_SD_TC_04"
     }
   ],
-  "startTime": "2026-05-08T11:41:51.573349800+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:51.601019400+03:00[Europe/Athens]",
-  "duration": 27,
+  "startTime": "2026-05-08T15:38:33.496952900+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:33.525263200+03:00[Europe/Athens]",
+  "duration": 28,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is registered to a valid EUDI Wallet on their mobile device",
-      "duration": 4,
-      "startTime": "2026-05-08T11:41:48.052934200+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:30.555559+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "And the user is on the Documents screen",
-      "duration": 504,
-      "startTime": "2026-05-08T11:41:48.057930200+03:00[Europe/Athens]",
+      "duration": 503,
+      "startTime": "2026-05-08T15:38:30.557069400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -25,8 +25,8 @@
     {
       "number": 3,
       "description": "Given the user has entered valid search text in the search field",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:48.562960200+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:31.060848+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -35,7 +35,7 @@
       "number": 4,
       "description": "When the user taps on the Search button on the device keyboard",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:48.564961100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:31.061857500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -44,7 +44,7 @@
       "number": 5,
       "description": "Then the EUDI Wallet should apply the search text on the attributes of the issuer and attestation name",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:48.565960300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:31.061857500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -52,8 +52,8 @@
     {
       "number": 6,
       "description": "And the screen should display matching documents grouped by category",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:48.565960300+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:31.061857500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -121,9 +121,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:41:48.028285200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:48.570969900+03:00[Europe/Athens]",
-  "duration": 542,
+  "startTime": "2026-05-08T15:38:30.545192300+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:31.063856700+03:00[Europe/Athens]",
+  "duration": 518,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is on the final step",
       "duration": 3,
-      "startTime": "2026-05-08T11:41:54.236972+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:35.915875300+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user clicks on the next button",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:54.240522300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:35.920565900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the verifier generates a QR code",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:54.240522300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:35.920565900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_RWVCD_TC_05"
     }
   ],
-  "startTime": "2026-05-08T11:41:54.216915600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:54.242523900+03:00[Europe/Athens]",
-  "duration": 25,
+  "startTime": "2026-05-08T15:38:35.893320200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:35.922590300+03:00[Europe/Athens]",
+  "duration": 29,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

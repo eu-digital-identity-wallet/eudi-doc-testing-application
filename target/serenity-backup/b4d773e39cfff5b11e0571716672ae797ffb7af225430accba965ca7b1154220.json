@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is reviewing the Credential ID details in the EUDI Wallet",
-      "duration": 3,
-      "startTime": "2026-05-08T11:41:51.431994900+03:00[Europe/Athens]",
+      "duration": 4,
+      "startTime": "2026-05-08T15:38:33.347373600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user decides not to proceed",
       "duration": 2,
-      "startTime": "2026-05-08T11:41:51.435023800+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.351375+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the user can select the Abort operation option",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:51.437543500+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:33.354372600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -34,8 +34,8 @@
     {
       "number": 4,
       "description": "And EUDI Wallet should return the user to the main page",
-      "duration": 0,
-      "startTime": "2026-05-08T11:41:51.438543400+03:00[Europe/Athens]",
+      "duration": 1,
+      "startTime": "2026-05-08T15:38:33.354372600+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -101,9 +101,9 @@
       "displayName": "ANDROID"
     }
   ],
-  "startTime": "2026-05-08T11:41:51.417397300+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:51.440550300+03:00[Europe/Athens]",
-  "duration": 23,
+  "startTime": "2026-05-08T15:38:33.328326100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:33.358192800+03:00[Europe/Athens]",
+  "duration": 29,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

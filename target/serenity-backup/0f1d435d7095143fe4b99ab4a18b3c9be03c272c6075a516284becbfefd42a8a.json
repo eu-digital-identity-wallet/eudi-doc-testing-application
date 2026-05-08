@@ -8,7 +8,7 @@
       "number": 1,
       "description": "Given the user is on the verifier",
       "duration": 3,
-      "startTime": "2026-05-08T11:41:55.308585900+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:36.928935200+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -16,8 +16,8 @@
     {
       "number": 2,
       "description": "When the user selects multiple attestations option",
-      "duration": 1,
-      "startTime": "2026-05-08T11:41:55.312553+03:00[Europe/Athens]",
+      "duration": 0,
+      "startTime": "2026-05-08T15:38:36.932939900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the verifier displays the available attestations",
       "duration": 0,
-      "startTime": "2026-05-08T11:41:55.313719300+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:36.932939900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_RWVSD_TC_07"
     }
   ],
-  "startTime": "2026-05-08T11:41:55.288588600+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:41:55.315236300+03:00[Europe/Athens]",
-  "duration": 26,
+  "startTime": "2026-05-08T15:38:36.905852200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:36.934938300+03:00[Europe/Athens]",
+  "duration": 29,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,

@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user is on the Documents screen",
-      "duration": 501,
-      "startTime": "2026-05-08T11:42:01.534587+03:00[Europe/Athens]",
+      "duration": 509,
+      "startTime": "2026-05-08T15:38:44.737303400+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user views the screen",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:02.036628100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:45.246461900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the Documents screen includes a Filter_Sort button",
       "duration": 0,
-      "startTime": "2026-05-08T11:42:02.036628100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:45.247460900+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,8 +92,8 @@
       "displayName": "IOS"
     }
   ],
-  "startTime": "2026-05-08T11:42:01.518573200+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:42:02.038642900+03:00[Europe/Athens]",
+  "startTime": "2026-05-08T15:38:44.728301400+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:45.248973500+03:00[Europe/Athens]",
   "duration": 520,
   "projectKey": "",
   "annotatedResult": "IGNORED",

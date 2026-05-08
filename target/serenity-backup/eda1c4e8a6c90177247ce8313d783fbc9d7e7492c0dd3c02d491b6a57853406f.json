@@ -7,8 +7,8 @@
     {
       "number": 1,
       "description": "Given the user has selected the Online option in the Present document section",
-      "duration": 0,
-      "startTime": "2026-05-08T11:29:39.469348100+03:00[Europe/Athens]",
+      "duration": 3,
+      "startTime": "2026-05-08T15:38:26.078011+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -17,7 +17,7 @@
       "number": 2,
       "description": "When the user scans a QR code rendered by a Relying Party",
       "duration": 0,
-      "startTime": "2026-05-08T11:29:39.469348100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:26.081548500+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -26,7 +26,7 @@
       "number": 3,
       "description": "Then the wallet displays the presentation request",
       "duration": 0,
-      "startTime": "2026-05-08T11:29:39.469348100+03:00[Europe/Athens]",
+      "startTime": "2026-05-08T15:38:26.082548+03:00[Europe/Athens]",
       "result": "IGNORED",
       "precondition": false,
       "level": 0
@@ -92,9 +92,9 @@
       "displayName": "US_PDO"
     }
   ],
-  "startTime": "2026-05-08T11:29:04.676439500+03:00[Europe/Athens]",
-  "endTime": "2026-05-08T11:29:41.916625200+03:00[Europe/Athens]",
-  "duration": 37240,
+  "startTime": "2026-05-08T15:38:26.059710600+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T15:38:26.083555200+03:00[Europe/Athens]",
+  "duration": 23,
   "projectKey": "",
   "annotatedResult": "IGNORED",
   "isManualTestingUpToDate": false,
