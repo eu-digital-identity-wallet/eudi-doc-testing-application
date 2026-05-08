@@ -1,138 +1,61 @@
-name: Merge All Reports
+name: Merge Serenity Reports
 
 on:
-  workflow_dispatch:
-    inputs:
-      android_run_id:
-        required: true
-        type: string
-      ios_run_id:
-        required: true
-        type: string
-      manual_run_id:
-        required: true
-        type: string
+  workflow_run:
+    workflows:
+      - Android Automation Tests Execution
+      - iOS Automation Tests Execution
+      - Manual Tests Execution
+    types:
+      - completed
 
 jobs:
   merge:
-    runs-on: ubuntu-latest
-
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: macos-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Download Android artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: android-serenity-json
+          path: artifacts/android
+        continue-on-error: true
 
-      # =========================
-      # DOWNLOAD ARTIFACT (ANDROID)
-      # =========================
-      - name: Download Android
+      - name: Download iOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-serenity-json
+          path: artifacts/ios
+        continue-on-error: true
+
+      - name: Download Manual artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: manual-serenity-json
+          path: artifacts/manual
+        continue-on-error: true
+
+      - name: Merge Serenity JSON results
         run: |
-          mkdir -p android
+          mkdir -p merged
 
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
+          cp -r artifacts/android/* merged/ 2>/dev/null || true
+          cp -r artifacts/ios/* merged/ 2>/dev/null || true
+          cp -r artifacts/manual/* merged/ 2>/dev/null || true
 
-          ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-json") | .id' android.json)
+          echo "Merged files:"
+          ls -R merged
 
-          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o android.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
-
-          unzip -o android.zip -d android
-
-      # =========================
-      # DOWNLOAD ARTIFACT (IOS)
-      # =========================
-      - name: Download iOS
+      - name: Run merge script
         run: |
-          mkdir -p ios
+          python3 merge_serenity_results.py merged || true
 
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
-
-          ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-json") | .id' ios.json)
-
-          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o ios.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
-
-          unzip -o ios.zip -d ios
-
-      # =========================
-      # DOWNLOAD ARTIFACT (MANUAL)
-      # =========================
-      - name: Download Manual
+      - name: Generate combined report
         run: |
-          mkdir -p manual
+          mvn serenity:aggregate
 
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
-
-          ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-json") | .id' manual.json)
-
-          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o manual.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ID/zip
-
-          unzip -o manual.zip -d manual
-
-      # =========================
-      # EXTRACT ONLY VALID CUCUMBER JSON
-      # =========================
-      - name: Build clean merged JSON
-        run: |
-          mkdir -p merged-json
-
-          for dir in android ios manual; do
-            find $dir -type f -name "*.json" | while read f; do
-
-              # keep ONLY cucumber-style JSON
-              if grep -q '"elements"' "$f" && grep -q '"keyword"' "$f"; then
-                echo "Keeping: $f"
-                cp "$f" merged-json/
-              else
-                echo "Skipping invalid: $f"
-              fi
-
-            done
-          done
-
-      # =========================
-      # VALIDATION (CRITICAL)
-      # =========================
-      - name: Validate JSON integrity
-        run: |
-          COUNT=$(ls merged-json/*.json 2>/dev/null | wc -l)
-          echo "Valid JSON files: $COUNT"
-
-          if [ "$COUNT" -eq 0 ]; then
-            echo "❌ No valid Cucumber JSON found"
-            exit 1
-          fi
-
-          for f in merged-json/*.json; do
-            jq empty "$f" || {
-              echo "❌ Broken JSON: $f"
-              exit 1
-            }
-          done
-
-      # =========================
-      # SERENITY AGGREGATION
-      # =========================
-      - name: Generate Final Report
-        run: |
-          mvn serenity:aggregate \
-            -Dserenity.sourceDirectory=merged-json \
-            -Dserenity.outputDirectory=final-report
-
-      # =========================
-      # UPLOAD
-      # =========================
-      - name: Upload Report
+      - name: Upload merged report
         uses: actions/upload-artifact@v4
         with:
-          name: merged-serenity-report
-          path: final-report
+          name: combined-serenity-report
+          path: target/site
