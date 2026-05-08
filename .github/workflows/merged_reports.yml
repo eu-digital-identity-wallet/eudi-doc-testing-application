@@ -4,108 +4,134 @@ on:
   workflow_dispatch:
     inputs:
       android_run_id:
-        description: 'Android Run ID'
         required: true
         type: string
       ios_run_id:
-        description: 'iOS Run ID'
         required: true
         type: string
       manual_run_id:
-        description: 'manual Run ID'
         required: true
         type: string
 
 jobs:
-  merge-reports:
+  merge:
     runs-on: ubuntu-latest
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       # =========================
-      # DOWNLOAD ANDROID REPORT
+      # DOWNLOAD ARTIFACT (ANDROID)
       # =========================
-      - name: Download Android Report Artifact
+      - name: Download Android Artifact
         run: |
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
+          mkdir -p android-json
 
-          ANDROID_ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-report") | .id' android.json)
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
+
+          ANDROID_ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-json") | .id' android.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o android.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ANDROID_ID/zip
 
-          unzip android.zip -d android-report
+          unzip -o android.zip -d android-json
 
       # =========================
-      # DOWNLOAD iOS REPORT
+      # DOWNLOAD ARTIFACT (iOS)
       # =========================
-      - name: Download iOS Report Artifact
+      - name: Download iOS Artifact
         run: |
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
+          mkdir -p ios-json
 
-          IOS_ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-report") | .id' ios.json)
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
+
+          IOS_ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-json") | .id' ios.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o ios.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$IOS_ID/zip
 
-          unzip ios.zip -d ios-report
+          unzip -o ios.zip -d ios-json
 
       # =========================
-      # DOWNLOAD MANUAL REPORT
+      # DOWNLOAD ARTIFACT (MANUAL)
       # =========================
-      - name: Download Manual Report Artifact
+      - name: Download Manual Artifact
         run: |
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
+          mkdir -p manual-json
 
-          MANUAL_ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-report") | .id' manual.json)
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
+
+          MANUAL_ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-json") | .id' manual.json)
 
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
             -o manual.zip \
             https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$MANUAL_ID/zip
 
-          unzip manual.zip -d manual-report
+          unzip -o manual.zip -d manual-json
 
       # =========================
-      # MERGE REPORTS (FILE LEVEL)
+      # DEBUG (IMPORTANT)
       # =========================
-      - name: Merge All Serenity Reports
+      - name: Debug extracted files
         run: |
-          mkdir merged-report
+          echo "ANDROID:"
+          find android-json -type f | head -50
 
-          cp -r android-report/* merged-report/ || true
-          cp -r ios-report/* merged-report/ || true
-          cp -r manual-report/* merged-report/ || true
+          echo "IOS:"
+          find ios-json -type f | head -50
+
+          echo "MANUAL:"
+          find manual-json -type f | head -50
 
       # =========================
-      # LIST MERGED OUTPUT
+      # MERGE ALL JSON SAFELY
       # =========================
-      - name: Verify merged report
+      - name: Merge JSON (robust)
         run: |
-          find merged-report | head -100
+          mkdir -p merged-json
+
+          find android-json -type f -name "*.json" -exec cp {} merged-json/ \;
+          find ios-json -type f -name "*.json" -exec cp {} merged-json/ \;
+          find manual-json -type f -name "*.json" -exec cp {} merged-json/ \;
+
+          echo "Merged JSON files:"
+          ls -lh merged-json
 
       # =========================
-      # OPTIONAL: RE-GENERATE AGGREGATED REPORT
+      # SAFETY CHECK (VERY IMPORTANT)
       # =========================
-      - name: Generate Final Serenity Report
+      - name: Validate JSON exists
+        run: |
+          COUNT=$(find merged-json -name "*.json" | wc -l)
+          echo "Total JSON files: $COUNT"
+
+          if [ "$COUNT" -eq 0 ]; then
+            echo "❌ No JSON files found. Merge failed."
+            exit 1
+          fi
+
+      # =========================
+      # RUN SERENITY AGGREGATION
+      # =========================
+      - name: Generate Serenity Report
         run: |
           mvn serenity:aggregate \
-            -Dserenity.outputDirectory=final-report \
-            -Dserenity.sourceDirectory=merged-report
+            -Dserenity.sourceDirectory=merged-json \
+            -Dserenity.outputDirectory=final-report
 
       # =========================
       # UPLOAD FINAL REPORT
       # =========================
-      - name: Upload Final Report
+      - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: merged-serenity-report
