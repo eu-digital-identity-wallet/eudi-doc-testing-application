@@ -1,4 +1,4 @@
-@ANDROID @US_ETESM @Q4_2024
+@IOS @US_ETESM @Q4_2024
 Feature: Manual Regression Tests
   
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
