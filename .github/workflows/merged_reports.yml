@@ -17,84 +17,96 @@ on:
         type: string
 
 jobs:
-  merge-and-report:
+  merge-reports:
     runs-on: ubuntu-latest
+
     env:
-      ANDROID_RUN_ID: ${{ inputs.android_run_id }}
-      ANDROID_ARTIFACT: android-serenity-json
-      IOS_RUN_ID: ${{ inputs.ios_run_id }}
-      IOS_ARTIFACT: ios-serenity-json
-      MANUAL_RUN_ID: ${{ inputs.manual_run_id }}
-      MANUAL_ARTIFACT: manual-serenity-json
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download Android Serenity JSON
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # =========================
+      # DOWNLOAD ANDROID REPORT
+      # =========================
+      - name: Download Android Report Artifact
         run: |
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/$ANDROID_RUN_ID/artifacts > android_artifacts.json
-          ARTIFACT_ID=$(jq -r --arg NAME "$ANDROID_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' android_artifacts.json)
-          [ -z "$ARTIFACT_ID" ] && echo "Android JSON artifact not found!" && exit 1
-          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o android_json.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-          unzip android_json.zip -d android-json
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
 
-      - name: Download iOS Serenity JSON
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANDROID_ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-report") | .id' android.json)
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o android.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ANDROID_ID/zip
+
+          unzip android.zip -d android-report
+
+      # =========================
+      # DOWNLOAD iOS REPORT
+      # =========================
+      - name: Download iOS Report Artifact
         run: |
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/$IOS_RUN_ID/artifacts > ios_artifacts.json
-          ARTIFACT_ID=$(jq -r --arg NAME "$IOS_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' ios_artifacts.json)
-          [ -z "$ARTIFACT_ID" ] && echo "iOS JSON artifact not found!" && exit 1
-          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o ios_json.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-          unzip ios_json.zip -d ios-json
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
 
-      - name: Download manual Serenity JSON
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IOS_ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-report") | .id' ios.json)
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o ios.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$IOS_ID/zip
+
+          unzip ios.zip -d ios-report
+
+      # =========================
+      # DOWNLOAD MANUAL REPORT
+      # =========================
+      - name: Download Manual Report Artifact
         run: |
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/$MANUAL_RUN_ID/artifacts > manual_artifacts.json
-          ARTIFACT_ID=$(jq -r --arg NAME "$MANUAL_ARTIFACT" '.artifacts[] | select(.name==$NAME) | .id' manual_artifacts.json)
-          [ -z "$ARTIFACT_ID" ] && echo "manual JSON artifact not found!" && exit 1
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
+
+          MANUAL_ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-report") | .id' manual.json)
+
           curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -o manual_json.zip \
-            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
-          unzip manual_json.zip -d manual-json
+            -o manual.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$MANUAL_ID/zip
 
-      - name: Merge Serenity JSONs
+          unzip manual.zip -d manual-report
+
+      # =========================
+      # MERGE REPORTS (FILE LEVEL)
+      # =========================
+      - name: Merge All Serenity Reports
         run: |
-          mkdir merged-json
-          find android-json -type f -name '*.json' -exec cp {} merged-json/ \;
-          find ios-json -type f -name '*.json' -exec cp {} merged-json/ \;
-          find manual-json -type f -name '*.json' -exec cp {} merged-json/ \;
+          mkdir merged-report
 
-      - name: List merged-json content
+          cp -r android-report/* merged-report/ || true
+          cp -r ios-report/* merged-report/ || true
+          cp -r manual-report/* merged-report/ || true
+
+      # =========================
+      # LIST MERGED OUTPUT
+      # =========================
+      - name: Verify merged report
         run: |
-          ls -l merged-json
-          head -n 20 merged-json/*.json || true
+          find merged-report | head -100
 
-      - name: Generate Merged Serenity HTML Report
-        run: mvn serenity:aggregate -Dserenity.sourceDirectory=merged-json -Dserenity.outputDirectory=merged-html-report
-
-      - name: Replace Serenity Core CSS
-        if: always()
+      # =========================
+      # OPTIONAL: RE-GENERATE AGGREGATED REPORT
+      # =========================
+      - name: Generate Final Serenity Report
         run: |
-          REPORT_DIR="merged-html-report"
-          echo "Replacing core.css using custom-style.css..."
-          mkdir -p "$REPORT_DIR/css"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+          mvn serenity:aggregate \
+            -Dserenity.outputDirectory=final-report \
+            -Dserenity.sourceDirectory=merged-report
 
-      - name: Upload Merged HTML Serenity Report
+      # =========================
+      # UPLOAD FINAL REPORT
+      # =========================
+      - name: Upload Final Report
         uses: actions/upload-artifact@v4
         with:
-          name: serenity-report
-          path: merged-html-report
+          name: merged-serenity-report
+          path: final-report
