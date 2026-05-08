@@ -1,4 +1,4 @@
-name: Merge All Reports
+name: Merge Reports
 
 on:
   workflow_dispatch:
@@ -20,37 +20,47 @@ jobs:
     steps:
       - name: Create folders
         run: |
-          mkdir android ios manual merged-report
+          mkdir -p android ios manual merged-report
 
-      # ===================== ANDROID =====================
-      - name: Download Android report
+      # ================= ANDROID =================
+      - name: Download Android artifact
         run: |
-          curl -L -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/artifacts \
-          -o android.json
+          echo "Download your android zip here"
+          # unzip android.zip -d android
 
-      # (replace with your real download method)
-      # unzip android report into folder
-      - run: echo "Unzip android report here"
+      # ================= iOS =================
+      - name: Download iOS artifact
+        run: |
+          echo "Download your ios zip here"
+          # unzip ios.zip -d ios
 
-      # ===================== IOS =====================
-      - name: Download iOS report
-        run: echo "Download + unzip iOS report"
+      # ================= MANUAL =================
+      - name: Download Manual artifact
+        run: |
+          echo "Download your manual zip here"
+          # unzip manual.zip -d manual
 
-      # ===================== MANUAL =====================
-      - name: Download Manual report
-        run: echo "Download + unzip manual report"
-
-      # ===================== MERGE =====================
-      - name: Combine reports
+      # ================= MERGE =================
+      - name: Merge reports properly
         run: |
           cp -r android/* merged-report/ || true
           cp -r ios/* merged-report/ || true
           cp -r manual/* merged-report/ || true
 
-      # ===================== RESULT =====================
+          echo "Merged content:"
+          ls -R merged-report
+
+      # ================= CHECK =================
+      - name: Validate merged folder
+        run: |
+          if [ -z "$(ls -A merged-report)" ]; then
+            echo "❌ merged-report is empty"
+            exit 1
+          fi
+
+      # ================= UPLOAD =================
       - name: Upload merged report
         uses: actions/upload-artifact@v4
         with:
-          name: combined-report
+          name: merged-report
           path: merged-report
