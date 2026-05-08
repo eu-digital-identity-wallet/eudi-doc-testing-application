@@ -241,16 +241,13 @@
             <a href="0272dadd83d6e6ac748d9a947522ca78b8873f5156f9bd38d6a0eb735ee5993b.html"><i class="bi bi-chat-text"></i> Epics</a>
         </li>
         <li >
-            <a href="2a4631d87648e59c428d4cf0e9247f9d286e4679f436ca2ce872e931eb4dfd58.html"><i class="bi bi-chat-text"></i> Stories</a>
-        </li>
-        <li >
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
         <li >
             <a href="f00f76a04d2d99822f342e19edfb456d954ef898f485c501f324bafd9ade930f.html"><i class="bi bi-chat-text"></i> ##s</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 08-05-2026 10:10:20</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 08-05-2026 11:47:08</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -265,7 +262,7 @@
                         <td width="375px" valign="top">
                             <div class="test-count-summary">
                                 <div class="test-count-title">
-                                    1 test
+                                    2 tests
 
                                     
 
@@ -341,54 +338,54 @@
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>1</td>
+                    <td>2</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>May 08, 2026 10:07:09</td>
+                    <td>May 08, 2026 11:41:55</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>May 08, 2026 10:10:00</td>
+                    <td>May 08, 2026 11:41:56</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td> 2m 51s</td>
+                    <td>653ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td> 2m 51s</td>
+                    <td>151ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td> 2m 51s</td>
+                    <td>190ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td> 2m 51s</td>
+                    <td>170ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 2m 51s</td>
+                    <td>653ms</td>
                 </tr>
                 </tbody>
             </table>
@@ -423,9 +420,9 @@
                                                                                             <a href="e80871cbeb0055b9d03cad985f88194961174cd64c9ef809d14765df8bd7cb3c.html"> Issuance and presentation - mDL</a>
                                                                                     </td>
                                                                                     <td>1</td>
-                                                                                    <td>1: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=specific attributes})
-Given the user initiates a mDL (MSO Mdoc) issuance using the Kotlin
-And the issuance method is credential offer
+                                                                                    <td>1: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Python, issuance_method=from list, issue_scenario=same device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=specific attributes})
+Given the user initiates a mDL (MSO Mdoc) issuance using the Python
+And the issuance method is from list
 And the issuance is performed on a same device for the mDL (MSO Mdoc)
 When the issuance flow is completed
 Then the credential is stored in the Wallet
@@ -433,19 +430,29 @@ When the user presents the credential to the Web verifier
 And the user shares specific attributes
 And the presentation is performed on a same device for the mDL (MSO Mdoc)
 Then the verifier verifies the credential successfully with same device for specific attributes
+2: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL ({credential=mDL (MSO Mdoc), issuer=Python, issuance_method=from list, issue_scenario=same device, verifier=Web verifier, presentation_scenario=same device, selective_disclosure=all attributes})
+Given the user initiates a mDL (MSO Mdoc) issuance using the Python
+And the issuance method is from list
+And the issuance is performed on a same device for the mDL (MSO Mdoc)
+When the issuance flow is completed
+Then the credential is stored in the Wallet
+When the user presents the credential to the Web verifier
+And the user shares all attributes
+And the presentation is performed on a same device for the mDL (MSO Mdoc)
+Then the verifier verifies the credential successfully with same device for all attributes
 </td>
-                                                                                    <td>1</td>
-                                                                                    <td>100%</td>
+                                                                                    <td>2</td>
+                                                                                    <td>0%</td>
                                                                                     <td>
-                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            <a href='##beforetable'><i class='bi bi-exclamation-triangle-fill error-icon ' title='ERROR'></i></a>
                                                                                     </td>
                                                                                     <td>
                                                                                         <div class="progress">
                                                                                                 <div class="progress-bar"
                                                                                                      role="progressbar"
-                                                                                                     style="width: 100%; background-color: #b0cf73"
-                                                                                                     aria-valuenow="1"
-                                                                                                     title="100% success"
+                                                                                                     style="width: 100%; background-color: #fe6c2d"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% error"
                                                                                                      aria-valuemin="0"
                                                                                                      aria-valuemax="100">
                                                                                                 </div>
@@ -457,6 +464,35 @@ Then the verifier verifies the credential successfully with same device for spec
                                                         </div>
                                                     </div>
 
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h3>Test Failure Overview</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h4>Most Frequent Failures</h4>
+                                                            <table class="table" style="width:40vw;">
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h4>Most Unstable Features</h4>
+                                                            <table class="table" style="width:40vw;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="e80871cbeb0055b9d03cad985f88194961174cd64c9ef809d14765df8bd7cb3c.html">Issuance and presentation - mDL</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge failure-badge">50%</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                             </div>
                                             <div class="container-fluid">
         <div class="row">
@@ -466,23 +502,23 @@ Then the verifier verifies the credential successfully with same device for spec
                         <div class="card-body">
                             <div>
                                     <a href="dab5254d51d75c81d241b1dd51870971c6a8bc023a3bf456da79d87e3e7ecc1c.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> US CIPSDPYMDL&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US CIPSDPYMDL&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="1cd9bf3286ec013f8676415daae8c10a8666f1d6ae959a3b2356c56ecfe8eaf1.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Execution&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Execution&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="a87abd4204ec96c8db74264eb8886fbfe73d8c3e1714488bb853210c21fb4e5a.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Android&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Android&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="e51fac53ca6d4bd2be7014480617f642171f85701fee5677f22ef67a19f23113.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Automated&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Automated&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                             </div>
@@ -510,17 +546,17 @@ Then the verifier verifies the credential successfully with same device for spec
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td> 2m 51s</td>
+                    <td>653ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>1</td>
+                    <td>2</td>
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td> 2m 51s</td>
+                    <td>151ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -531,30 +567,30 @@ Then the verifier verifies the credential successfully with same device for spec
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td> 2m 51s</td>
+                    <td>190ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>May 08, 2026 10:07:09</td>
+                    <td>May 08, 2026 11:41:55</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td> 2m 51s</td>
+                    <td>170ms</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>May 08, 2026 10:10:00</td>
+                    <td>May 08, 2026 11:41:56</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 2m 51s</td>
+                    <td>653ms</td>
                 </tr>
                 </tbody>
             </table>
@@ -577,16 +613,16 @@ Then the verifier verifies the credential successfully with same device for spec
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr class="scenario-result SUCCESS">
+                                                                    <tr class="scenario-result ERROR">
                                                                         <td>
                                                                                 <a href="e80871cbeb0055b9d03cad985f88194961174cd64c9ef809d14765df8bd7cb3c.html">Issuance and presentation - mDL</a>
                                                                         </td>
-                                                                        <td data-order="Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL">
+                                                                        <td data-order="Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL">
                                                                             <i class="bi bi-table"
                                                                                title="Data Driven Scenario"> <a
-                                                                                        href="71d5d417db4be67d3b88638903d21ff4f92aa13d86609bf1aba98328d0efaeea.html">Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL</a>
+                                                                                        href="6a528424b247925963aed800ea80e35ec7e0ed7d83adacc8ae3257ac465598c3.html">Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL</a>
                                                                                 <br/>
-                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 1 passing test case
+                                                                                    <a href='##beforetable'><i class='bi bi-exclamation-triangle-fill error-icon ' title='ERROR'></i></a> 2 broken test cases
                                                                                     <br/>
                                                                         </td>
                                                                         <td><span style="display:none"></span>
@@ -602,10 +638,10 @@ And the user shares &lt;selective_disclosure&gt;
 And the presentation is performed on a &lt;presentation_scenario&gt; for the &lt;credential&gt;
 Then the verifier verifies the credential successfully with &lt;presentation_scenario&gt; for &lt;selective_disclosure&gt;
 </td>
-                                                                        <td data-order="1778224029">10:07:09</td>
-                                                                        <td>2m 51s</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
+                                                                        <td data-order="1778229715">11:41:55</td>
+                                                                        <td>653ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-exclamation-triangle-fill error-icon ' title='ERROR'></i></a> <span
+                                                                                    style="display:none">ERROR</span>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -631,23 +667,23 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
                         <div class="card-body">
                             <div>
                                     <a href="dab5254d51d75c81d241b1dd51870971c6a8bc023a3bf456da79d87e3e7ecc1c.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> US CIPSDPYMDL&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US CIPSDPYMDL&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="1cd9bf3286ec013f8676415daae8c10a8666f1d6ae959a3b2356c56ecfe8eaf1.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Execution&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Execution&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="a87abd4204ec96c8db74264eb8886fbfe73d8c3e1714488bb853210c21fb4e5a.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Android&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Android&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                                     <a href="e51fac53ca6d4bd2be7014480617f642171f85701fee5677f22ef67a19f23113.html">
-                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Automated&nbsp;&nbsp;&nbsp;1
+                                    <span class="tag-badge badge" style="background-color:#fe6c2d; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Automated&nbsp;&nbsp;&nbsp;2
                                     </span>
                                     </a>
                             </div>
@@ -701,7 +737,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
             datasets: [{
                 label: 'Test Results',
                 fill: false,
-                data: [1,0,0,0,0,0,0,0],
+                data: [0,0,0,0,0,0,2,0],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -752,7 +788,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
                         ctx.font = fontSize + "em sans-serif";
                         ctx.textBaseline = "middle";
 
-                        var text = "100%"
+                        var text = " "
                         textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
                         textY = (height / 2) - 40;
 
@@ -797,7 +833,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
             datasets: [
                 {
                     label: 'Automated',
-                    data: [1,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,2,0],
                     backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                     borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                     borderWidth: 1
@@ -880,7 +916,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
             datasets: [{
                 label: 'Number of tests per duration',
                 fill: false,
-                data: ['0','0','0','0','0','1','0','0'],
+                data: ['2','0','0','0','0','0','0','0'],
                 backgroundColor: 'rgba(83, 146, 255,0.5)',
                 borderColor: 'rgba(83, 146, 255, 1)',
             }]
@@ -944,7 +980,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
         const coverageReports = [
             {
                 title: 'Issuance and presentation - mDL',
-                result: 'SUCCESS',
+                result: 'ERROR',
                 link: "e80871cbeb0055b9d03cad985f88194961174cd64c9ef809d14765df8bd7cb3c.html"
             },
         ]
@@ -955,7 +991,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
             datasets: [
                 {
                     label: ['Passing Tests'],
-                    data: [1],
+                    data: [0],
                     backgroundColor: [ 'rgba(153,204,51,0.5)' ]
                 },
                 {
@@ -985,7 +1021,7 @@ Then the verifier verifies the credential successfully with &lt;presentation_sce
                 },
                 {
                     label: ['Errors'],
-                    data: [0],
+                    data: [2],
                     backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
                 },
                 {

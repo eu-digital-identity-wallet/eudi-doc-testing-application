@@ -1,0 +1,105 @@
+{
+  "name": "'Present a document' section options",
+  "id": "eudi-wallet-home-screen;-present-a-document--section-options",
+  "scenarioId": "android/New_version_of_the_wallet_UI_10/Home_Screen_Redesign_205/homeScreen:'Present a document' section options",
+  "methodName": "'Present a document' section options",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given the user is on the EUDI Wallet Home screen",
+      "duration": 1,
+      "startTime": "2026-05-08T11:02:15.309444200+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 2,
+      "description": "When the user clicks on the Authenticate section",
+      "duration": 0,
+      "startTime": "2026-05-08T11:02:15.312187300+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 3,
+      "description": "Then the Authenticate section include In Person and Online options",
+      "duration": 0,
+      "startTime": "2026-05-08T11:02:15.312187300+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    }
+  ],
+  "userStory": {
+    "id": "android/New_version_of_the_wallet_UI_10/Home_Screen_Redesign_205/homeScreen",
+    "storyName": "EUDI Wallet Home Screen",
+    "displayName": "EUDI Wallet Home Screen",
+    "path": "android/New_version_of_the_wallet_UI_10/Home_Screen_Redesign_205/homeScreen",
+    "pathElements": [
+      {
+        "name": "android",
+        "description": ""
+      },
+      {
+        "name": "New_version_of_the_wallet_UI_10",
+        "description": ""
+      },
+      {
+        "name": "Home_Screen_Redesign_205",
+        "description": ""
+      },
+      {
+        "name": "homeScreen",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a EUDI Wallet User\n  I want to have a \u00e2\u20ac\u02dcHome\u00e2\u20ac\u2122 screen as the main screen of the EUDI Wallet\n  So that I can have quick access to the key functionalities of the EUDI Wallet",
+    "type": "feature"
+  },
+  "title": "'Present a document' section options",
+  "description": "",
+  "tags": [
+    {
+      "name": "US_HS",
+      "type": "tag",
+      "displayName": "US_HS"
+    },
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "Passed",
+      "type": "manual",
+      "displayName": "Passed"
+    },
+    {
+      "name": "US_HS_TC_03",
+      "type": "tag",
+      "displayName": "US_HS_TC_03"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "ANDROID",
+      "type": "tag",
+      "displayName": "ANDROID"
+    }
+  ],
+  "startTime": "2026-05-08T11:01:39.166906100+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:02:17.926712400+03:00[Europe/Athens]",
+  "duration": 38759,
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED"
+}

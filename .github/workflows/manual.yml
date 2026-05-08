@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: manual-serenity-report
-          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/**/*.json
+          path: target/site
 
       - name: Upload Serenity JSON Results
         uses: actions/upload-artifact@v4

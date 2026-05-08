@@ -1,0 +1,510 @@
+{
+  "name": "Successful credential issuance and presentation with selective disclosure - Kotlin Issuer",
+  "id": "manual-regression-tests;successful-credential-issuance-and-presentation-with-selective-disclosure---kotlin-issuer",
+  "scenarioId": "android/regressionTests/Manual_Regression_Tests/issuanceAndPresentationScenarios:Successful credential issuance and presentation with selective disclosure - Kotlin Issuer",
+  "methodName": "Successful credential issuance and presentation with selective disclosure - Kotlin Issuer",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "1: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=specific attributes (custom), status=passed})",
+      "duration": 27,
+      "startTime": "2026-05-08T11:41:57.464151400+03:00[Europe/Athens]",
+      "result": "SUCCESS",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 35,
+      "children": [
+        {
+          "number": 2,
+          "description": "Given user initiates credential issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T11:41:57.485182400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 3,
+          "description": "And issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 4,
+          "description": "And issuance is performed on a same device",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 5,
+          "description": "When issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 6,
+          "description": "Then credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.488864900+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 7,
+          "description": "When user presents the credential to the Proximity Verifier App",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 8,
+          "description": "And presentation is performed on a proximity case",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 9,
+          "description": "And user shares specific attributes (custom)",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 10,
+          "description": "Then verifier verifies the credential successfully with passed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.489864200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "description": "2: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=same device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=all attributes (full), status=passed})",
+      "duration": 29,
+      "startTime": "2026-05-08T11:41:57.563792500+03:00[Europe/Athens]",
+      "result": "SUCCESS",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 36,
+      "children": [
+        {
+          "number": 12,
+          "description": "Given user initiates credential issuance using the Kotlin",
+          "duration": 3,
+          "startTime": "2026-05-08T11:41:57.585372800+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 13,
+          "description": "And issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.589481700+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 14,
+          "description": "And issuance is performed on a same device",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.589481700+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 15,
+          "description": "When issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.590044100+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 16,
+          "description": "Then credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.590044100+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 17,
+          "description": "When user presents the credential to the Proximity Verifier App",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.590605200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 18,
+          "description": "And presentation is performed on a proximity case",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.590605200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 19,
+          "description": "And user shares all attributes (full)",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.591151+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 20,
+          "description": "Then verifier verifies the credential successfully with passed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.591151+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "description": "3: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=specific attributes (custom), status=passed})",
+      "duration": 28,
+      "startTime": "2026-05-08T11:41:57.664195100+03:00[Europe/Athens]",
+      "result": "SUCCESS",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 37,
+      "children": [
+        {
+          "number": 22,
+          "description": "Given user initiates credential issuance using the Kotlin",
+          "duration": 2,
+          "startTime": "2026-05-08T11:41:57.685343400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 23,
+          "description": "And issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 24,
+          "description": "And issuance is performed on a cross device",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 25,
+          "description": "When issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 26,
+          "description": "Then credential is stored in the Wallet",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.689575400+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 27,
+          "description": "When user presents the credential to the Proximity Verifier App",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 28,
+          "description": "And presentation is performed on a proximity case",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 29,
+          "description": "And user shares specific attributes (custom)",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.690593200+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 30,
+          "description": "Then verifier verifies the credential successfully with passed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.691592600+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "description": "4: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer ({issuer=Kotlin, issuance_method=credential offer, issue_scenario=cross device, verifier=Proximity Verifier App, presentation_scenario=proximity case, selective_disclosure=all attributes (full), status=passed})",
+      "duration": 27,
+      "startTime": "2026-05-08T11:41:57.769849100+03:00[Europe/Athens]",
+      "result": "SUCCESS",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 38,
+      "children": [
+        {
+          "number": 32,
+          "description": "Given user initiates credential issuance using the Kotlin",
+          "duration": 4,
+          "startTime": "2026-05-08T11:41:57.788693300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 33,
+          "description": "And issuance method is credential offer",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 34,
+          "description": "And issuance is performed on a cross device",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 35,
+          "description": "When issuance flow is completed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 36,
+          "description": "Then credential is stored in the Wallet",
+          "duration": 1,
+          "startTime": "2026-05-08T11:41:57.793082800+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 37,
+          "description": "When user presents the credential to the Proximity Verifier App",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 38,
+          "description": "And presentation is performed on a proximity case",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 39,
+          "description": "And user shares all attributes (full)",
+          "duration": 1,
+          "startTime": "2026-05-08T11:41:57.794597300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 40,
+          "description": "Then verifier verifies the credential successfully with passed",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:57.795617300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    }
+  ],
+  "userStory": {
+    "id": "android/regressionTests/Manual_Regression_Tests/issuanceAndPresentationScenarios",
+    "storyName": "Manual Regression Tests",
+    "displayName": "Manual Regression Tests",
+    "path": "android/regressionTests/Manual_Regression_Tests/issuanceAndPresentationScenarios",
+    "pathElements": [
+      {
+        "name": "android",
+        "description": ""
+      },
+      {
+        "name": "regressionTests",
+        "description": ""
+      },
+      {
+        "name": "Manual_Regression_Tests",
+        "description": ""
+      },
+      {
+        "name": "issuanceAndPresentationScenarios",
+        "description": ""
+      }
+    ],
+    "type": "feature"
+  },
+  "title": "Successful credential issuance and presentation with selective disclosure - Kotlin Issuer",
+  "description": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "ANDROID",
+      "type": "tag",
+      "displayName": "ANDROID"
+    },
+    {
+      "name": "US_ETESM",
+      "type": "tag",
+      "displayName": "US_ETESM"
+    }
+  ],
+  "startTime": "2026-05-08T11:41:57.464151400+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:41:57.796867+03:00[Europe/Athens]",
+  "duration": 23,
+  "projectKey": "",
+  "isManualTestingUpToDate": false,
+  "dataTable": {
+    "headers": [
+      "issuer",
+      "issuance_method",
+      "issue_scenario",
+      "verifier",
+      "presentation_scenario",
+      "selective_disclosure",
+      "status"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Kotlin",
+          "credential offer",
+          "same device",
+          "Proximity Verifier App",
+          "proximity case",
+          "specific attributes (custom)",
+          "passed"
+        ],
+        "lineNumber": 35,
+        "result": "SUCCESS"
+      },
+      {
+        "values": [
+          "Kotlin",
+          "credential offer",
+          "same device",
+          "Proximity Verifier App",
+          "proximity case",
+          "all attributes (full)",
+          "passed"
+        ],
+        "lineNumber": 36,
+        "result": "SUCCESS"
+      },
+      {
+        "values": [
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Proximity Verifier App",
+          "proximity case",
+          "specific attributes (custom)",
+          "passed"
+        ],
+        "lineNumber": 37,
+        "result": "SUCCESS"
+      },
+      {
+        "values": [
+          "Kotlin",
+          "credential offer",
+          "cross device",
+          "Proximity Verifier App",
+          "proximity case",
+          "all attributes (full)",
+          "passed"
+        ],
+        "lineNumber": 38,
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true,
+    "scenarioOutline": "Given user initiates credential issuance using the <issuer>\n\rAnd issuance method is <issuance_method>\n\rAnd issuance is performed on a <issue_scenario>\n\rWhen issuance flow is completed\n\rThen credential is stored in the Wallet\n\rWhen user presents the credential to the <verifier>\n\rAnd presentation is performed on a <presentation_scenario>\n\rAnd user shares <selective_disclosure>\n\rThen verifier verifies the credential successfully with <status>\n\r",
+    "dataSetDescriptors": [
+      {
+        "startRow": 0,
+        "rowCount": 0,
+        "name": "",
+        "description": ""
+      }
+    ]
+  },
+  "manual": false,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "SUCCESS",
+  "scenarioOutline": "Given user initiates credential issuance using the <issuer>\r\nAnd issuance method is <issuance_method>\r\nAnd issuance is performed on a <issue_scenario>\r\nWhen issuance flow is completed\r\nThen credential is stored in the Wallet\r\nWhen user presents the credential to the <verifier>\r\nAnd presentation is performed on a <presentation_scenario>\r\nAnd user shares <selective_disclosure>\r\nThen verifier verifies the credential successfully with <status>",
+  "annotatedResult": "SUCCESS"
+}

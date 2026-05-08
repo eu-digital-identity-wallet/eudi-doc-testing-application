@@ -1,0 +1,372 @@
+{
+  "name": "Access EUDI Wallet menu",
+  "id": "eudi-wallet-menu-screen;access-eudi-wallet-menu",
+  "scenarioId": "android/New_version_of_the_wallet_UI_10/Menu_screen_Redesign_203/menuScreen:Access EUDI Wallet menu",
+  "methodName": "Access EUDI Wallet menu",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "1: Access EUDI Wallet menu ({options=Notifications})",
+      "duration": 30170,
+      "startTime": "2026-05-08T11:03:03.643544900+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 17,
+      "children": [
+        {
+          "number": 2,
+          "description": "Given the user is on the EUDI Wallet Home screen",
+          "duration": 2,
+          "startTime": "2026-05-08T11:03:31.365596500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 3,
+          "description": "When the user taps the menu button on the upper left corner of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:03:31.367602300+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 4,
+          "description": "Then the navigation drawer slides in from the right side of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:03:31.367602300+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 5,
+          "description": "And the navigation drawer includes an icon button to close the drawer, and the following Notifications:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:03:31.368667200+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "description": "2: Access EUDI Wallet menu ({options=Change PIN})",
+      "duration": 52270,
+      "startTime": "2026-05-08T11:03:33.838956400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 18,
+      "children": [
+        {
+          "number": 7,
+          "description": "Given the user is on the EUDI Wallet Home screen",
+          "duration": 1,
+          "startTime": "2026-05-08T11:04:23.769728300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 8,
+          "description": "When the user taps the menu button on the upper left corner of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:23.772390600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 9,
+          "description": "Then the navigation drawer slides in from the right side of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:23.772390600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 10,
+          "description": "And the navigation drawer includes an icon button to close the drawer, and the following Change PIN:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:23.772390600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "description": "3: Access EUDI Wallet menu ({options=Privacy Notice})",
+      "duration": 35835,
+      "startTime": "2026-05-08T11:04:26.137096300+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 19,
+      "children": [
+        {
+          "number": 12,
+          "description": "Given the user is on the EUDI Wallet Home screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:59.610180500+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 13,
+          "description": "When the user taps the menu button on the upper left corner of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:59.610180500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 14,
+          "description": "Then the navigation drawer slides in from the right side of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:59.610180500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 15,
+          "description": "And the navigation drawer includes an icon button to close the drawer, and the following Privacy Notice:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:04:59.610180500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "description": "4: Access EUDI Wallet menu ({options=Help / FAQs})",
+      "duration": 29812,
+      "startTime": "2026-05-08T11:05:02.005525+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 20,
+      "children": [
+        {
+          "number": 17,
+          "description": "Given the user is on the EUDI Wallet Home screen",
+          "duration": 4,
+          "startTime": "2026-05-08T11:05:29.106148300+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 18,
+          "description": "When the user taps the menu button on the upper left corner of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:05:29.110637600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 19,
+          "description": "Then the navigation drawer slides in from the right side of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:05:29.112239600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 20,
+          "description": "And the navigation drawer includes an icon button to close the drawer, and the following Help / FAQs:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:05:29.112239600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "description": "5: Access EUDI Wallet menu ({options=Exit})",
+      "duration": 559093,
+      "startTime": "2026-05-08T11:05:31.833697100+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 21,
+      "children": [
+        {
+          "number": 22,
+          "description": "Given the user is on the EUDI Wallet Home screen",
+          "duration": 4,
+          "startTime": "2026-05-08T11:14:48.561684900+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 23,
+          "description": "When the user taps the menu button on the upper left corner of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:14:48.567051600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 24,
+          "description": "Then the navigation drawer slides in from the right side of the screen",
+          "duration": 0,
+          "startTime": "2026-05-08T11:14:48.567051600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 25,
+          "description": "And the navigation drawer includes an icon button to close the drawer, and the following Exit:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:14:48.567051600+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    }
+  ],
+  "userStory": {
+    "id": "android/New_version_of_the_wallet_UI_10/Menu_screen_Redesign_203/menuScreen",
+    "storyName": "EUDI Wallet Menu Screen",
+    "displayName": "EUDI Wallet Menu Screen",
+    "path": "android/New_version_of_the_wallet_UI_10/Menu_screen_Redesign_203/menuScreen",
+    "pathElements": [
+      {
+        "name": "android",
+        "description": ""
+      },
+      {
+        "name": "New_version_of_the_wallet_UI_10",
+        "description": ""
+      },
+      {
+        "name": "Menu_screen_Redesign_203",
+        "description": ""
+      },
+      {
+        "name": "menuScreen",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a EUDI Wallet User\n  I want to access the additional secondary options of the EUDI Wallet\n  So that I can be informed about EUDI Wallet aspects (help, privacy notice), change my access PIN, view my notifications or exit the application",
+    "type": "feature"
+  },
+  "title": "Access EUDI Wallet menu",
+  "description": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "US_MS_TC_01",
+      "type": "tag",
+      "displayName": "US_MS_TC_01"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "ANDROID",
+      "type": "tag",
+      "displayName": "ANDROID"
+    },
+    {
+      "name": "US_MS",
+      "type": "tag",
+      "displayName": "US_MS"
+    },
+    {
+      "name": "Failed",
+      "type": "manual",
+      "displayName": "Failed"
+    }
+  ],
+  "startTime": "2026-05-08T11:03:03.643544900+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:14:50.927113300+03:00[Europe/Athens]",
+  "duration": 30170,
+  "testFailureMessage": "Failing manual test",
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "dataTable": {
+    "headers": [
+      "options"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Notifications"
+        ],
+        "lineNumber": 17,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Change PIN"
+        ],
+        "lineNumber": 18,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Privacy Notice"
+        ],
+        "lineNumber": 19,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Help / FAQs"
+        ],
+        "lineNumber": 20,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Exit"
+        ],
+        "lineNumber": 21,
+        "result": "IGNORED"
+      }
+    ],
+    "predefinedRows": true,
+    "scenarioOutline": "Given the user is on the EUDI Wallet Home screen\n\rWhen the user taps the menu button on the upper left corner of the screen\n\rThen the navigation drawer slides in from the right side of the screen\n\rAnd the navigation drawer includes an icon button to close the drawer, and the following <options>:\n\r",
+    "dataSetDescriptors": [
+      {
+        "startRow": 0,
+        "rowCount": 0,
+        "name": "",
+        "description": ""
+      }
+    ]
+  },
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED",
+  "scenarioOutline": "Given the user is on the EUDI Wallet Home screen\r\nWhen the user taps the menu button on the upper left corner of the screen\r\nThen the navigation drawer slides in from the right side of the screen\r\nAnd the navigation drawer includes an icon button to close the drawer, and the following <options>:"
+}

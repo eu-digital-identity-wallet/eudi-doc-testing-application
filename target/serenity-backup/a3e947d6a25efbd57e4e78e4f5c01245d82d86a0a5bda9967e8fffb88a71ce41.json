@@ -1,0 +1,105 @@
+{
+  "name": "User selects request related to multiple attestations",
+  "id": "eudiw-web-verifier;user-selects-request-related-to-multiple-attestations",
+  "scenarioId": "android/Web-Verifier_UI_Rework/Restructure_web_verifier_to_ease_the_generation_of_presentation_requests_206/RestructureWebVerifierSameDevice:User selects request related to multiple attestations",
+  "methodName": "User selects request related to multiple attestations",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given the user is on the verifier",
+      "duration": 3,
+      "startTime": "2026-05-08T11:41:55.308585900+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 2,
+      "description": "When the user selects multiple attestations option",
+      "duration": 1,
+      "startTime": "2026-05-08T11:41:55.312553+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 3,
+      "description": "Then the verifier displays the available attestations",
+      "duration": 0,
+      "startTime": "2026-05-08T11:41:55.313719300+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    }
+  ],
+  "userStory": {
+    "id": "android/Web-Verifier_UI_Rework/Restructure_web_verifier_to_ease_the_generation_of_presentation_requests_206/RestructureWebVerifierSameDevice",
+    "storyName": "EUDIW Web Verifier",
+    "displayName": "EUDIW Web Verifier",
+    "path": "android/Web-Verifier_UI_Rework/Restructure_web_verifier_to_ease_the_generation_of_presentation_requests_206/RestructureWebVerifierSameDevice",
+    "pathElements": [
+      {
+        "name": "android",
+        "description": ""
+      },
+      {
+        "name": "Web-Verifier_UI_Rework",
+        "description": ""
+      },
+      {
+        "name": "Restructure_web_verifier_to_ease_the_generation_of_presentation_requests_206",
+        "description": ""
+      },
+      {
+        "name": "RestructureWebVerifierSameDevice",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a User,\n  I want the EUDIW web verifier to guide me through in the generation of presentation requests\n  so that I can generate presentation requests as per my needs.",
+    "type": "feature"
+  },
+  "title": "User selects request related to multiple attestations",
+  "description": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "Passed",
+      "type": "manual",
+      "displayName": "Passed"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "US_RWVSD",
+      "type": "tag",
+      "displayName": "US_RWVSD"
+    },
+    {
+      "name": "ANDROID",
+      "type": "tag",
+      "displayName": "ANDROID"
+    },
+    {
+      "name": "US_RWVSD_TC_07",
+      "type": "tag",
+      "displayName": "US_RWVSD_TC_07"
+    }
+  ],
+  "startTime": "2026-05-08T11:41:55.288588600+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:41:55.315236300+03:00[Europe/Athens]",
+  "duration": 26,
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED"
+}

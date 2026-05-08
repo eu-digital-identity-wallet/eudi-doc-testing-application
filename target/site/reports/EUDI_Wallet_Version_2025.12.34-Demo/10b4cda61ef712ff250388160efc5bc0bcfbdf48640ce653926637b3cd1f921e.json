@@ -1,0 +1,105 @@
+{
+  "name": "Selecting Scan a QR code option",
+  "id": "issuing-and-storing-attestations-in-the-eudi-wallet-via-qr-code;selecting-scan-a-qr-code-option",
+  "scenarioId": "android/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode:Selecting Scan a QR code option",
+  "methodName": "Selecting Scan a QR code option",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given the user is on the Add document screen",
+      "duration": 3,
+      "startTime": "2026-05-08T10:17:41.696865500+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 2,
+      "description": "When the user selects the option Scan a QR code in the Add document screen",
+      "duration": 1,
+      "startTime": "2026-05-08T10:17:41.700475700+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 3,
+      "description": "Then the wallet should open the scanner allowing the user to scan the QR code rendered by the Issuer",
+      "duration": 0,
+      "startTime": "2026-05-08T10:17:41.701991200+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    }
+  ],
+  "userStory": {
+    "id": "android/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode",
+    "storyName": "Issuing and storing attestations in the EUDI Wallet via QR code",
+    "displayName": "Issuing and storing attestations in the EUDI Wallet via QR code",
+    "path": "android/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode",
+    "pathElements": [
+      {
+        "name": "android",
+        "description": ""
+      },
+      {
+        "name": "New_version_of_the_wallet_UI_10",
+        "description": ""
+      },
+      {
+        "name": "Add_Document_by_scanning_a_QR_code_Redesign_199",
+        "description": ""
+      },
+      {
+        "name": "addDocumentByScanningQRCode",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a EUDI Wallet User\n  I want to issue and store attestations in my EUDI Wallet advertised by issuers\n  So that I can prove to the Relying Parties that I own them when I am requested using my EUDI Wallet",
+    "type": "feature"
+  },
+  "title": "Selecting Scan a QR code option",
+  "description": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "Passed",
+      "type": "manual",
+      "displayName": "Passed"
+    },
+    {
+      "name": "US_ADBSQRC",
+      "type": "tag",
+      "displayName": "US_ADBSQRC"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "US_ADBSQRC_TC_03",
+      "type": "tag",
+      "displayName": "US_ADBSQRC_TC_03"
+    },
+    {
+      "name": "ANDROID",
+      "type": "tag",
+      "displayName": "ANDROID"
+    }
+  ],
+  "startTime": "2026-05-08T10:16:54.270555700+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T10:17:44.043003+03:00[Europe/Athens]",
+  "duration": 49772,
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED"
+}

@@ -1,0 +1,152 @@
+{
+  "name": "User initiates document signing",
+  "id": "eudi-wallet-user-authenticates-to-qtsp-for-document-signing;user-initiates-document-signing",
+  "scenarioId": "ios/RQES_Relying_Party_QTSP_centric_flow_16/Select_And_Authenticate_to_QTSP_R4_208/selectAndAuthenticateToQTSP:User initiates document signing",
+  "methodName": "User initiates document signing",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given the user has a valid EUDI Wallet on their mobile device",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.915470700+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 2,
+      "description": "And the user has issued a PID attestation to the EUDI Wallet",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.915470700+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 3,
+      "description": "And the user has internet connectivity",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.915470700+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 4,
+      "description": "And the user is authenticated in the Relying Party service",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.930030400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 5,
+      "description": "And the user is viewing the document to be signed in the Relying Party service",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.930030400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 6,
+      "description": "Given the user selects the option to Sign Document",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.930030400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 7,
+      "description": "When the user selects the document in the Relying Party service",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.930030400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    },
+    {
+      "number": 8,
+      "description": "Then the QTSP renders a QR code requesting the user to scan it",
+      "duration": 0,
+      "startTime": "2026-05-08T11:42:24.930030400+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0
+    }
+  ],
+  "userStory": {
+    "id": "ios/RQES_Relying_Party_QTSP_centric_flow_16/Select_And_Authenticate_to_QTSP_R4_208/selectAndAuthenticateToQTSP",
+    "storyName": "EUDI Wallet User Authenticates to QTSP for Document Signing",
+    "displayName": "EUDI Wallet User Authenticates to QTSP for Document Signing",
+    "path": "ios/RQES_Relying_Party_QTSP_centric_flow_16/Select_And_Authenticate_to_QTSP_R4_208/selectAndAuthenticateToQTSP",
+    "pathElements": [
+      {
+        "name": "ios",
+        "description": ""
+      },
+      {
+        "name": "RQES_Relying_Party_QTSP_centric_flow_16",
+        "description": ""
+      },
+      {
+        "name": "Select_And_Authenticate_to_QTSP_R4_208",
+        "description": ""
+      },
+      {
+        "name": "selectAndAuthenticateToQTSP",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a EUDI Wallet User,\n  I want to use my EUDI Wallet to authenticate to QTSPs\n  so that I can be securely authenticated and authorized by the QTSP which provides the signing service.",
+    "type": "feature"
+  },
+  "title": "User initiates document signing",
+  "description": "",
+  "backgroundTitle": "",
+  "backgroundDescription": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "Passed",
+      "type": "manual",
+      "displayName": "Passed"
+    },
+    {
+      "name": "US_SAATQ",
+      "type": "tag",
+      "displayName": "US_SAATQ"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "US_SAATQ_TC_01",
+      "type": "tag",
+      "displayName": "US_SAATQ_TC_01"
+    },
+    {
+      "name": "IOS",
+      "type": "tag",
+      "displayName": "IOS"
+    }
+  ],
+  "startTime": "2026-05-08T11:42:24.900914200+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:42:24.933172+03:00[Europe/Athens]",
+  "duration": 32,
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED"
+}
