@@ -1,0 +1,11 @@
+screen: "Wallet Data From Verifier For Sharing"
+
+fields:
+
+  "Family name":
+    required: true
+    value: "Theofilatou"
+
+  "Given name":
+    required: true
+    value: "Foteini"
