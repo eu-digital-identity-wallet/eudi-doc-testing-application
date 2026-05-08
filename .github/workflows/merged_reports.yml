@@ -17,48 +17,78 @@ jobs:
   merge:
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - name: Create folders
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ===================== FUNCTION =====================
+      - name: Download Android Report
         run: |
           mkdir -p android ios manual merged-report
 
-      # ================= ANDROID =================
-      - name: Download Android artifact
-        run: |
-          echo "Download your android zip here"
-          # unzip android.zip -d android
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.android_run_id }}/artifacts > android.json
 
-      # ================= iOS =================
-      - name: Download iOS artifact
-        run: |
-          echo "Download your ios zip here"
-          # unzip ios.zip -d ios
+          ANDROID_ID=$(jq -r '.artifacts[] | select(.name=="android-serenity-report") | .id' android.json)
 
-      # ================= MANUAL =================
-      - name: Download Manual artifact
-        run: |
-          echo "Download your manual zip here"
-          # unzip manual.zip -d manual
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o android.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ANDROID_ID/zip
 
-      # ================= MERGE =================
-      - name: Merge reports properly
+          unzip -o android.zip -d android
+
+      - name: Download iOS Report
         run: |
-          cp -r android/* merged-report/ || true
-          cp -r ios/* merged-report/ || true
-          cp -r manual/* merged-report/ || true
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.ios_run_id }}/artifacts > ios.json
+
+          IOS_ID=$(jq -r '.artifacts[] | select(.name=="ios-serenity-report") | .id' ios.json)
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o ios.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$IOS_ID/zip
+
+          unzip -o ios.zip -d ios
+
+      - name: Download Manual Report
+        run: |
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.manual_run_id }}/artifacts > manual.json
+
+          MANUAL_ID=$(jq -r '.artifacts[] | select(.name=="manual-serenity-report") | .id' manual.json)
+
+          curl -L -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -o manual.zip \
+            https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$MANUAL_ID/zip
+
+          unzip -o manual.zip -d manual
+
+      # ===================== FIND INDEX.HTML =====================
+      - name: Collect HTML reports
+        run: |
+          echo "Searching reports..."
+
+          find android -name "index.html" -exec cp {} merged-report/android.html \;
+          find ios -name "index.html" -exec cp {} merged-report/ios.html \;
+          find manual -name "index.html" -exec cp {} merged-report/manual.html \;
 
           echo "Merged content:"
           ls -R merged-report
 
-      # ================= CHECK =================
-      - name: Validate merged folder
+      # ===================== VALIDATION =====================
+      - name: Validate merged output
         run: |
-          if [ -z "$(ls -A merged-report)" ]; then
-            echo "❌ merged-report is empty"
+          if [ ! -f merged-report/android.html ] && \
+             [ ! -f merged-report/ios.html ] && \
+             [ ! -f merged-report/manual.html ]; then
+            echo "❌ No reports found after extraction"
             exit 1
           fi
 
-      # ================= UPLOAD =================
+      # ===================== UPLOAD =====================
       - name: Upload merged report
         uses: actions/upload-artifact@v4
         with:
