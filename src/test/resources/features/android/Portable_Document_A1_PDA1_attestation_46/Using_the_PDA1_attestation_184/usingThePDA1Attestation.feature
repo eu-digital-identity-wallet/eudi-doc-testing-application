@@ -1,4 +1,4 @@
-@ANDROID @US_UTPA @Q1_2025
+@ANDROID @US_UTPA @Q1_2025 @Q2026
 Feature: Support PDA1 Attestation in EUDI Wallet
 
  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/184
