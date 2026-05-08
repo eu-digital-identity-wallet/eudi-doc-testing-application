@@ -1,0 +1,281 @@
+{
+  "name": "Displaying credential offer after scanning QR code",
+  "id": "issuing-and-storing-attestations-in-the-eudi-wallet-via-qr-code;displaying-credential-offer-after-scanning-qr-code",
+  "scenarioId": "ios/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode:Displaying credential offer after scanning QR code",
+  "methodName": "Displaying credential offer after scanning QR code",
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "1: Displaying credential offer after scanning QR code ({includes=Attestation to be issued})",
+      "duration": 26,
+      "startTime": "2026-05-08T11:41:58.264258900+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 38,
+      "children": [
+        {
+          "number": 2,
+          "description": "Given the user has scanned a valid QR code rendered by the Issuer",
+          "duration": 4,
+          "startTime": "2026-05-08T11:41:58.283997400+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 3,
+          "description": "Then the wallet should display the credential offer which Attestation to be issued:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:58.288520500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "description": "2: Displaying credential offer after scanning QR code ({includes=Name of the issuer})",
+      "duration": 24,
+      "startTime": "2026-05-08T11:41:58.354024300+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 39,
+      "children": [
+        {
+          "number": 5,
+          "description": "Given the user has scanned a valid QR code rendered by the Issuer",
+          "duration": 2,
+          "startTime": "2026-05-08T11:41:58.373757500+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 6,
+          "description": "Then the wallet should display the credential offer which Name of the issuer:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:58.377260500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "description": "3: Displaying credential offer after scanning QR code ({includes=Cancel button})",
+      "duration": 28,
+      "startTime": "2026-05-08T11:41:58.438022500+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 40,
+      "children": [
+        {
+          "number": 8,
+          "description": "Given the user has scanned a valid QR code rendered by the Issuer",
+          "duration": 4,
+          "startTime": "2026-05-08T11:41:58.459046700+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 9,
+          "description": "Then the wallet should display the credential offer which Cancel button:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:58.463573400+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "description": "4: Displaying credential offer after scanning QR code ({includes=Add document button})",
+      "duration": 24,
+      "startTime": "2026-05-08T11:41:58.532966500+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 41,
+      "children": [
+        {
+          "number": 11,
+          "description": "Given the user has scanned a valid QR code rendered by the Issuer",
+          "duration": 3,
+          "startTime": "2026-05-08T11:41:58.551698100+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 12,
+          "description": "Then the wallet should display the credential offer which Add document button:",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:58.555240+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "description": "5: Displaying credential offer after scanning QR code ({includes=})",
+      "duration": 20,
+      "startTime": "2026-05-08T11:41:58.623044700+03:00[Europe/Athens]",
+      "result": "IGNORED",
+      "precondition": false,
+      "level": 0,
+      "lineNumber": 42,
+      "children": [
+        {
+          "number": 14,
+          "description": "Given the user has scanned a valid QR code rendered by the Issuer",
+          "duration": 2,
+          "startTime": "2026-05-08T11:41:58.639140500+03:00[Europe/Athens]",
+          "result": "SUCCESS",
+          "precondition": false,
+          "level": 1
+        },
+        {
+          "number": 15,
+          "description": "Then the wallet should display the credential offer which :",
+          "duration": 0,
+          "startTime": "2026-05-08T11:41:58.641162500+03:00[Europe/Athens]",
+          "result": "IGNORED",
+          "precondition": false,
+          "level": 1
+        }
+      ]
+    }
+  ],
+  "userStory": {
+    "id": "ios/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode",
+    "storyName": "Issuing and storing attestations in the EUDI Wallet via QR code",
+    "displayName": "Issuing and storing attestations in the EUDI Wallet via QR code",
+    "path": "ios/New_version_of_the_wallet_UI_10/Add_Document_by_scanning_a_QR_code_Redesign_199/addDocumentByScanningQRCode",
+    "pathElements": [
+      {
+        "name": "ios",
+        "description": ""
+      },
+      {
+        "name": "New_version_of_the_wallet_UI_10",
+        "description": ""
+      },
+      {
+        "name": "Add_Document_by_scanning_a_QR_code_Redesign_199",
+        "description": ""
+      },
+      {
+        "name": "addDocumentByScanningQRCode",
+        "description": ""
+      }
+    ],
+    "narrative": "  As a EUDI Wallet User\n  I want to issue and store attestations in my EUDI Wallet advertised by issuers\n  So that I can prove to the Relying Parties that I own them when I am requested using my EUDI Wallet",
+    "type": "feature"
+  },
+  "title": "Displaying credential offer after scanning QR code",
+  "description": "",
+  "tags": [
+    {
+      "name": "Q4_2024",
+      "type": "tag",
+      "displayName": "Q4_2024"
+    },
+    {
+      "name": "Passed",
+      "type": "manual",
+      "displayName": "Passed"
+    },
+    {
+      "name": "US_ADBSQRC",
+      "type": "tag",
+      "displayName": "US_ADBSQRC"
+    },
+    {
+      "name": "manual",
+      "type": "tag",
+      "displayName": "manual"
+    },
+    {
+      "name": "US_ADBSQRC_TC_04",
+      "type": "tag",
+      "displayName": "US_ADBSQRC_TC_04"
+    },
+    {
+      "name": "IOS",
+      "type": "tag",
+      "displayName": "IOS"
+    }
+  ],
+  "startTime": "2026-05-08T11:41:58.263643600+03:00[Europe/Athens]",
+  "endTime": "2026-05-08T11:41:58.643162100+03:00[Europe/Athens]",
+  "duration": 27,
+  "projectKey": "",
+  "annotatedResult": "IGNORED",
+  "isManualTestingUpToDate": false,
+  "dataTable": {
+    "headers": [
+      "includes"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Attestation to be issued"
+        ],
+        "lineNumber": 38,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Name of the issuer"
+        ],
+        "lineNumber": 39,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Cancel button"
+        ],
+        "lineNumber": 40,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          "Add document button"
+        ],
+        "lineNumber": 41,
+        "result": "IGNORED"
+      },
+      {
+        "values": [
+          ""
+        ],
+        "lineNumber": 42,
+        "result": "IGNORED"
+      }
+    ],
+    "predefinedRows": true,
+    "scenarioOutline": "Given the user has scanned a valid QR code rendered by the Issuer\n\rThen the wallet should display the credential offer which <includes>:\n\r",
+    "dataSetDescriptors": [
+      {
+        "startRow": 0,
+        "rowCount": 0,
+        "name": "",
+        "description": ""
+      }
+    ]
+  },
+  "manual": true,
+  "testSource": "Cucumber",
+  "order": 0,
+  "result": "IGNORED",
+  "scenarioOutline": "Given the user has scanned a valid QR code rendered by the Issuer\r\nThen the wallet should display the credential offer which <includes>:"
+}
