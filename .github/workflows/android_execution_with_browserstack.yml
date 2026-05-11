@@ -4,26 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to checkout'
-        type: choice
-        options:
-          - main
-          - develop
-          - milestone/2025.Q4
-          - milestone/2026.Q1
-        default: develop
+        description: 'Branch from Execute Full Pipeline'
+        type: string
+        required: true
 
       test-cases:
-        description: 'Choose Test Cases'
+        description: 'Tags from Execute Full Pipeline'
         type: string
-        default: "@automated"
-
-      platform:
-        description: 'Platform to test - android'
-        type: choice
-        options:
-          - ANDROID
-        default: ANDROID
+        required: true
 
   # schedule:
   #   # WED,SAT 03:15 UTC
@@ -125,7 +113,6 @@ jobs:
       - name: Run Android Tests on BrowserStack
         env:
           TEST_CASES: ${{ inputs.test-cases }}
-        if: ${{ inputs.platform == 'ANDROID' }}
         continue-on-error: true
         run: |
           TEST_TAGS="$TEST_CASES and @ANDROID"
@@ -133,6 +120,7 @@ jobs:
 
           mvn test -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
+  
 
       # ---------------- BACKUP RESULTS ----------------
       - name: Backup Serenity JSON Results
