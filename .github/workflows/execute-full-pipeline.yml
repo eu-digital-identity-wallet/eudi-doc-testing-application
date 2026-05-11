@@ -9,6 +9,7 @@ on:
         options:
           - main
           - develop
+          - milestone/2026.Q1
         default: develop
 
       test-cases:
