@@ -1,5 +1,9 @@
 name: Execute Full Pipeline
 
+permissions:
+  actions: write
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
@@ -22,7 +26,6 @@ on:
         type: string
         default: "@Q3_2025"
 
-
 jobs:
 
   # =========================================================
@@ -32,51 +35,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # ---------------- ANDROID ----------------
       - name: Trigger Android
         run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          curl -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/android-tests.yml/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "test-cases":"${{ inputs.test-cases }}"
               }
             }'
 
+      # ---------------- IOS ----------------
       - name: Trigger iOS
         run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          curl -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/ios-tests.yml/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "test-cases":"${{ inputs.test-cases }}"
               }
             }'
 
+      # ---------------- MANUAL ----------------
       - name: Trigger Manual
         run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          curl -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/manual-tests.yml/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "tagName":"${{ inputs.manual-tag }}"
               }
             }'
-  
 
   # =========================================================
-  # 2. WAIT FOR COMPLETION (IMPORTANT FIX)
+  # 2. WAIT FOR COMPLETION
   # =========================================================
   wait-for-completion:
     runs-on: ubuntu-latest
@@ -85,25 +91,46 @@ jobs:
     steps:
       - name: Wait for all workflows to complete
         run: |
-          echo "Waiting for Android, iOS, Manual..."
 
           wait_for() {
-            NAME=$1
+
+            WORKFLOW_NAME=$1
+
+            echo "Waiting for: $WORKFLOW_NAME"
 
             while true; do
-              DATA=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+
+              RESPONSE=$(curl -s \
+                -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+                -H "Accept: application/vnd.github+json" \
                 https://api.github.com/repos/${{ github.repository }}/actions/runs)
 
-              STATUS=$(echo "$DATA" | jq -r --arg NAME "$NAME" \
-                '.workflow_runs[] | select(.name==$NAME) | .status' | head -1)
+              STATUS=$(echo "$RESPONSE" | jq -r \
+                --arg NAME "$WORKFLOW_NAME" '
+                .workflow_runs
+                | map(select(.name == $NAME))
+                | sort_by(.created_at)
+                | reverse
+                | .[0].status
+              ')
 
-              echo "$NAME => status=$STATUS"
+              CONCLUSION=$(echo "$RESPONSE" | jq -r \
+                --arg NAME "$WORKFLOW_NAME" '
+                .workflow_runs
+                | map(select(.name == $NAME))
+                | sort_by(.created_at)
+                | reverse
+                | .[0].conclusion
+              ')
+
+              echo "$WORKFLOW_NAME => status=$STATUS conclusion=$CONCLUSION"
 
               if [[ "$STATUS" == "completed" ]]; then
                 break
               fi
 
-              sleep 20
+              sleep 30
+
             done
           }
 
@@ -112,16 +139,16 @@ jobs:
           wait_for "Manual Tests Execution"
 
           echo "All workflows completed"
-  
 
   # =========================================================
-  # 3. FINAL SUMMARY REPORT (INSIDE SAME PIPELINE)
+  # 3. FINAL SUMMARY REPORT
   # =========================================================
   final-summary:
     runs-on: macos-latest
     needs: wait-for-completion
 
     steps:
+
       - uses: actions/checkout@v5
 
       - name: Set up JDK 17
@@ -150,7 +177,7 @@ jobs:
           name: manual-serenity-json
           path: reports/manual
 
-      # ---------------- MERGE ----------------
+      # ---------------- MERGE RESULTS ----------------
 
       - name: Merge JSON Results
         run: |
@@ -160,7 +187,7 @@ jobs:
           find reports/ios -name "*.json" -exec cp {} target/site/reports/final/ \;
           find reports/manual -name "*.json" -exec cp {} target/site/reports/final/ \;
 
-      # ---------------- REPORT ----------------
+      # ---------------- FINAL REPORT ----------------
 
       - name: Generate Final Serenity Report
         run: mvn serenity:aggregate
