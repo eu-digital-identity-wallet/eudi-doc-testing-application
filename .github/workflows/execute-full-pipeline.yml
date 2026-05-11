@@ -35,6 +35,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug Token
+        run: |
+          echo "Checking token..."
+          
+          if [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "TOKEN IS EMPTY"
+            exit 1
+          fi
+          
+          RESPONSE=$(curl -s \
+            -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/user)
+          
+          echo "$RESPONSE"
 
       # ---------------- ANDROID ----------------
       - name: Trigger Android
