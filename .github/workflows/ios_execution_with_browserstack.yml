@@ -4,26 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to checkout'
-        type: choice
-        options:
-          - main
-          - develop
-          - milestone/2025.Q4
-          - milestone/2026.Q1
-        default: develop
+        description: 'Branch from Execute Full Pipeline'
+        type: string
 
       test-cases:
-        description: 'Choose Test Cases'
+        description: 'Tags from Execute Full Pipeline'
         type: string
-        default: "@automated"
-
-      platform:
-        description: 'Platform to test - iOS'
-        type: choice
-        options:
-          - IOS
-        default: IOS
 
 jobs:
   build:
@@ -95,7 +81,6 @@ jobs:
 
       # ---------------- TEST EXECUTION ----------------
       - name: Run iOS Tests on BrowserStack
-        if: ${{ inputs.platform == 'IOS' }}
         continue-on-error: true
         run: |
           TEST_TAGS="${{ inputs.test-cases }} and @IOS"

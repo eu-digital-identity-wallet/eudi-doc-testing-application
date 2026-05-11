@@ -1,19 +1,18 @@
 name: Manual Tests Execution
+
 on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to checkout'
-        type: choice
-        options:
-          - main
-          - develop
-          - milestone/2025.Q4
-          - milestone/2026.Q1
-      tagName:
-        description: "Enter the tag to execute (example: @Q3_2025 for milestone/2025.Q3)"
+        description: 'Branch from Execute Full Pipeline'
+        type: string
         required: true
-        default: "@Q3_2025"
+
+      tagName:
+        description: 'Tag from Execute Full Pipeline'
+        type: string
+        required: true
+
 jobs:
   build:
     runs-on: macos-latest
