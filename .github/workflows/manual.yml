@@ -1,25 +1,24 @@
 name: Manual Tests Execution
+
 on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to checkout'
-        type: choice
-        options:
-          - main
-          - develop
-          - milestone/2025.Q4
-          - milestone/2026.Q1
-      tagName:
-        description: "Enter the tag to execute (example: @Q3_2025 for milestone/2025.Q3)"
+        description: 'Branch from Execute Full Pipeline'
+        type: string
         required: true
-        default: "@Q3_2025"
+
+      tagName:
+        description: 'Tag from Execute Full Pipeline'
+        type: string
+        required: true
+
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - name: Checkout main repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Permission to file .sh
         run: |
@@ -27,13 +26,13 @@ jobs:
           sudo chmod +x local-execution.sh
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 17
           distribution: 'oracle'
 
       - name: Set up Node JS 18.16.1
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '18.16.1'
 
@@ -68,14 +67,14 @@ jobs:
           cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/css/core.css
 
       - name: Upload report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: manual-serenity-report
           path: target/site
 
       - name: Upload Serenity JSON Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: manual-serenity-json    # or ios-serenity-json
-          path: target/site/reports/*/*.json
+          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/**/*.json
