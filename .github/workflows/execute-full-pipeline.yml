@@ -105,22 +105,36 @@ jobs:
                 -H "Accept: application/vnd.github+json" \
                 https://api.github.com/repos/${{ github.repository }}/actions/runs)
 
+              echo "GitHub API response received"
+
+              # DEBUG
+              echo "$RESPONSE" | jq '.' > response.json || true
+
+              # CHECK API ERROR
+              MESSAGE=$(echo "$RESPONSE" | jq -r '.message // empty')
+
+              if [[ -n "$MESSAGE" ]]; then
+                echo "GitHub API ERROR: $MESSAGE"
+                sleep 20
+                continue
+              fi
+
               STATUS=$(echo "$RESPONSE" | jq -r \
                 --arg NAME "$WORKFLOW_NAME" '
-                .workflow_runs
+                (.workflow_runs // [])
                 | map(select(.name == $NAME))
                 | sort_by(.created_at)
                 | reverse
-                | .[0].status
+                | .[0].status // "not_found"
               ')
 
               CONCLUSION=$(echo "$RESPONSE" | jq -r \
                 --arg NAME "$WORKFLOW_NAME" '
-                .workflow_runs
+                (.workflow_runs // [])
                 | map(select(.name == $NAME))
                 | sort_by(.created_at)
                 | reverse
-                | .[0].conclusion
+                | .[0].conclusion // "unknown"
               ')
 
               echo "$WORKFLOW_NAME => status=$STATUS conclusion=$CONCLUSION"
@@ -130,7 +144,6 @@ jobs:
               fi
 
               sleep 30
-
             done
           }
 
