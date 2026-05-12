@@ -7,6 +7,7 @@ permissions:
 on:
   workflow_dispatch:
     inputs:
+
       branch-to-checkout:
         description: 'Branch to checkout'
         type: choice
@@ -29,34 +30,96 @@ on:
 jobs:
 
   # =========================================================
-  # 1. TRIGGER ALL WORKFLOWS
+  # 1. TRIGGER WORKFLOWS + CAPTURE RUN IDS
   # =========================================================
   trigger:
     runs-on: ubuntu-latest
 
+    outputs:
+      android_run_id: ${{ steps.android.outputs.run_id }}
+      ios_run_id: ${{ steps.ios.outputs.run_id }}
+      manual_run_id: ${{ steps.manual.outputs.run_id }}
+
     steps:
-      - name: Debug Token
+
+      - name: Validate Token
         run: |
-          echo "Checking token..."
 
           if [ -z "${{ secrets.GH_PAT }}" ]; then
-            echo "TOKEN IS EMPTY"
+            echo "GH_PAT is empty"
             exit 1
           fi
 
+      # =====================================================
+      # ANDROID
+      # =====================================================
+
+      - name: Trigger Android Workflow
+        id: android
+        run: |
+
+          WORKFLOW_FILE="android_execution_with_browserstack.yml"
+
+          echo "Triggering Android workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
+            -d '{
+              "ref":"${{ inputs.branch-to-checkout }}",
+              "inputs":{
+                "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
+                "test-cases":"${{ inputs.test-cases }}"
+              }
+            }'
+
+          echo "Waiting workflow registration..."
+          sleep 15
+
           RESPONSE=$(curl -s \
-            -H "Authorization: token ${{ secrets.GH_PAT }}" \
-            https://api.github.com/user)
-
-          echo "$RESPONSE"
-
-      # ---------------- ANDROID ----------------
-      - name: Trigger Android
-        run: |
-          curl -L -X POST \
             -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/android_execution_with_browserstack.yml/dispatches \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "Android Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect Android workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
+
+      # =====================================================
+      # IOS
+      # =====================================================
+
+      - name: Trigger iOS Workflow
+        id: ios
+        run: |
+
+          WORKFLOW_FILE="ios_execution_with_browserstack.yml"
+
+          echo "Triggering iOS workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
             -d '{
               "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
@@ -65,28 +128,50 @@ jobs:
               }
             }'
 
-      # ---------------- IOS ----------------
-      - name: Trigger iOS
-        run: |
-          curl -L -X POST \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/ios_execution_with_browserstack.yml/dispatches \
-            -d '{
-              "ref":"${{ inputs.branch-to-checkout }}",
-              "inputs":{
-                "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
-                "test-cases":"${{ inputs.test-cases }}"
-              }
-            }'
+          echo "Waiting workflow registration..."
+          sleep 15
 
-      # ---------------- MANUAL ----------------
-      - name: Trigger Manual
-        run: |
-          curl -L -X POST \
+          RESPONSE=$(curl -s \
             -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/manual.yml/dispatches \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "iOS Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect iOS workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
+
+      # =====================================================
+      # MANUAL
+      # =====================================================
+
+      - name: Trigger Manual Workflow
+        id: manual
+        run: |
+
+          WORKFLOW_FILE="manual.yml"
+
+          echo "Triggering Manual workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
             -d '{
               "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
@@ -94,6 +179,32 @@ jobs:
                 "tagName":"${{ inputs.manual-tag }}"
               }
             }'
+
+          echo "Waiting workflow registration..."
+          sleep 15
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "Manual Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect Manual workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
 
   # =========================================================
   # 2. WAIT FOR COMPLETION
@@ -103,57 +214,41 @@ jobs:
     needs: trigger
 
     steps:
-      - name: Wait for all workflows to complete
+
+      - name: Wait For Android
         run: |
+          wait_run() {
 
-          wait_for() {
+            RUN_ID=$1
+            NAME=$2
 
-            WORKFLOW_NAME=$1
-
-            echo "Waiting for: $WORKFLOW_NAME"
+            echo "Waiting for $NAME ($RUN_ID)"
 
             while true; do
 
               RESPONSE=$(curl -s \
                 -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
                 -H "Accept: application/vnd.github+json" \
-                https://api.github.com/repos/${{ github.repository }}/actions/runs)
+                https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID)
 
-              echo "GitHub API response received"
-
-              # DEBUG
-              echo "$RESPONSE" | jq '.' > response.json || true
-
-              # CHECK API ERROR
-              MESSAGE=$(echo "$RESPONSE" | jq -r '.message // empty')
-
-              if [[ -n "$MESSAGE" ]]; then
-                echo "GitHub API ERROR: $MESSAGE"
+              if ! echo "$RESPONSE" | jq empty; then
+                echo "Invalid JSON received"
                 sleep 20
                 continue
               fi
 
-              STATUS=$(echo "$RESPONSE" | jq -r \
-                --arg NAME "$WORKFLOW_NAME" '
-                (.workflow_runs // [])
-                | map(select(.name == $NAME))
-                | sort_by(.created_at)
-                | reverse
-                | .[0].status // "not_found"
-              ')
+              STATUS=$(echo "$RESPONSE" | jq -r '.status')
+              CONCLUSION=$(echo "$RESPONSE" | jq -r '.conclusion')
 
-              CONCLUSION=$(echo "$RESPONSE" | jq -r \
-                --arg NAME "$WORKFLOW_NAME" '
-                (.workflow_runs // [])
-                | map(select(.name == $NAME))
-                | sort_by(.created_at)
-                | reverse
-                | .[0].conclusion // "unknown"
-              ')
-
-              echo "$WORKFLOW_NAME => status=$STATUS conclusion=$CONCLUSION"
+              echo "$NAME => status=$STATUS conclusion=$CONCLUSION"
 
               if [[ "$STATUS" == "completed" ]]; then
+
+                if [[ "$CONCLUSION" != "success" ]]; then
+                  echo "$NAME failed"
+                  exit 1
+                fi
+
                 break
               fi
 
@@ -161,14 +256,12 @@ jobs:
             done
           }
 
-          wait_for "Android Automation Tests Execution"
-          wait_for "iOS Automation Tests Execution"
-          wait_for "Manual Tests Execution"
-
-          echo "All workflows completed"
+          wait_run "${{ needs.trigger.outputs.android_run_id }}" "Android"
+          wait_run "${{ needs.trigger.outputs.ios_run_id }}" "iOS"
+          wait_run "${{ needs.trigger.outputs.manual_run_id }}" "Manual"
 
   # =========================================================
-  # 3. FINAL SUMMARY REPORT
+  # 3. FINAL REPORT
   # =========================================================
   final-summary:
     runs-on: macos-latest
@@ -184,7 +277,9 @@ jobs:
           java-version: 17
           distribution: oracle
 
-      # ---------------- DOWNLOAD ARTIFACTS ----------------
+      # =====================================================
+      # DOWNLOAD ARTIFACTS
+      # =====================================================
 
       - name: Download Android JSON
         uses: actions/download-artifact@v5
@@ -204,17 +299,22 @@ jobs:
           name: manual-serenity-json
           path: reports/manual
 
-      # ---------------- MERGE RESULTS ----------------
+      # =====================================================
+      # MERGE REPORTS
+      # =====================================================
 
       - name: Merge JSON Results
         run: |
+
           mkdir -p target/site/reports/final
 
           find reports/android -name "*.json" -exec cp {} target/site/reports/final/ \;
           find reports/ios -name "*.json" -exec cp {} target/site/reports/final/ \;
           find reports/manual -name "*.json" -exec cp {} target/site/reports/final/ \;
 
-      # ---------------- FINAL REPORT ----------------
+      # =====================================================
+      # GENERATE FINAL REPORT
+      # =====================================================
 
       - name: Generate Final Serenity Report
         run: mvn serenity:aggregate
@@ -223,4 +323,4 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: final-combined-serenity-report
-          path: target/site/
+          path: target/site

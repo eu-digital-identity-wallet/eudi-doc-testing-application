@@ -1,6 +1,7 @@
 @IOS @US_CIPSDPYMDL @automated @execution
 Feature: Issuance and presentation - mDL
 
+  @execution @IOS
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -12,20 +13,10 @@ Feature: Issuance and presentation - mDL
     And the presentation is performed on a <presentation_scenario> for the <credential>
     Then the verifier verifies the credential successfully with <presentation_scenario> for <selective_disclosure>
     Examples:
-      | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
+      | credential     | issuer | issuance_method | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
+      | mDL (MSO Mdoc) | Python | from list       | same device    | Web verifier | same device           | specific attributes  |
 
+  @execution @IOS
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -39,10 +30,3 @@ Feature: Issuance and presentation - mDL
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | all attributes       |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |

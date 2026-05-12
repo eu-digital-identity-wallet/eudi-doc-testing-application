@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set CUCUMBER_FILTER_TAGS=@execution or @Q4_2024
+set CUCUMBER_FILTER_TAGS=@execution and @ANDROID
 set RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2025.12.34-Demo
 set BACKUP_DIR=target\serenity-backup
 
@@ -21,7 +21,7 @@ echo ========================================================
 
 call mvn test ^
 -Dtest=TestRunner ^
--Dcucumber.filter.tags="@execution or @Q4_2024" ^
+-Dcucumber.filter.tags="@execution and @ANDROID" ^
 %*
 
 echo ========================================================
