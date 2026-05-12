@@ -1,5 +1,4 @@
-name: Execute Full Pipeline
-
+name: Execute Final Summary Report
 permissions:
   actions: write
   contents: read
