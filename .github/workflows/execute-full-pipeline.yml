@@ -265,7 +265,7 @@ jobs:
   # =========================================================
   final-summary:
     runs-on: macos-latest
-    needs: wait-for-completion
+    needs: [ trigger, wait-for-completion ]
 
     steps:
 
@@ -278,36 +278,101 @@ jobs:
           distribution: oracle
 
       # =====================================================
-      # DOWNLOAD ARTIFACTS
+      # INSTALL GH CLI
       # =====================================================
 
-      - name: Download Android JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: android-serenity-json
-          path: reports/android
-
-      - name: Download iOS JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: ios-serenity-json
-          path: reports/ios
-
-      - name: Download Manual JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: manual-serenity-json
-          path: reports/manual
+      - name: Setup GitHub CLI
+        run: |
+          gh --version
 
       # =====================================================
-      # MERGE REPORTS
+      # CREATE REPORT FOLDERS
+      # =====================================================
+
+      - name: Create folders
+        run: |
+          mkdir -p reports/android
+          mkdir -p reports/ios
+          mkdir -p reports/manual
+
+      # =====================================================
+      # DOWNLOAD ANDROID ARTIFACT
+      # =====================================================
+
+      - name: Download Android Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.android_run_id }}"
+          
+          echo "Downloading Android artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name android-serenity-json \
+            --dir reports/android
+
+      # =====================================================
+      # DOWNLOAD IOS ARTIFACT
+      # =====================================================
+
+      - name: Download iOS Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.ios_run_id }}"
+          
+          echo "Downloading iOS artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name ios-serenity-json \
+            --dir reports/ios
+
+      # =====================================================
+      # DOWNLOAD MANUAL ARTIFACT
+      # =====================================================
+
+      - name: Download Manual Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.manual_run_id }}"
+          
+          echo "Downloading Manual artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name manual-serenity-json \
+            --dir reports/manual
+
+      # =====================================================
+      # DEBUG
+      # =====================================================
+
+      - name: Show Downloaded Files
+        run: |
+          echo "ANDROID FILES"
+          find reports/android
+          
+          echo "IOS FILES"
+          find reports/ios
+          
+          echo "MANUAL FILES"
+          find reports/manual
+
+      # =====================================================
+      # MERGE RESULTS
       # =====================================================
 
       - name: Merge JSON Results
         run: |
-
+          
           mkdir -p target/site/reports/final
-
+          
           find reports/android -name "*.json" -exec cp {} target/site/reports/final/ \;
           find reports/ios -name "*.json" -exec cp {} target/site/reports/final/ \;
           find reports/manual -name "*.json" -exec cp {} target/site/reports/final/ \;
@@ -318,6 +383,10 @@ jobs:
 
       - name: Generate Final Serenity Report
         run: mvn serenity:aggregate
+
+      # =====================================================
+      # UPLOAD FINAL REPORT
+      # =====================================================
 
       - name: Upload Final Report
         uses: actions/upload-artifact@v5
