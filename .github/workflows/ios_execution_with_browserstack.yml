@@ -133,7 +133,7 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and @IOS"
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
