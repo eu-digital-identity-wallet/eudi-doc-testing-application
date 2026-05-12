@@ -373,9 +373,9 @@ jobs:
           
           mkdir -p target/site/reports/final
           
-          find reports/android -name "*.json" -exec cp {} target/site/reports/final/ \;
-          find reports/ios -name "*.json" -exec cp {} target/site/reports/final/ \;
-          find reports/manual -name "*.json" -exec cp {} target/site/reports/final/ \;
+          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/ \;
+          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/ \;
+          find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/ \;
 
       # =====================================================
       # GENERATE FINAL REPORT
