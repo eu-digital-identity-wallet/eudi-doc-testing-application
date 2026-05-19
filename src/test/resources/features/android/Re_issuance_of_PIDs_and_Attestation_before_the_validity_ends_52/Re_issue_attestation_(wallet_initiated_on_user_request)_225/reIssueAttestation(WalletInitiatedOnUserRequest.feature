@@ -9,13 +9,13 @@ Feature: User Authentication and Re-Issuance of PIDs/Attestations
   @US_RIAWIOUR_TC_01
   Scenario: Successful authentication
     Given the user opens the Wallet application
-    When the user authenticates successfully using a six digit PIN or Biometrics
+    When the user authenticates successfully using a six digit PIN
     Then the Wallet grants access to the user
 
   @US_RIAWIOUR_TC_02
   Scenario: Unsuccessful authentication
     Given the user opens the Wallet application
-    When the user fails to authenticate using the six digit PIN or Biometrics
+    When the user fails to authenticate using the six digit PIN
     Then the Wallet presents an error message
     And the user can retry the authentication
 
