@@ -8732,6 +8732,16 @@ public class ManuallyStepDefs {
     public void theUserIsNotPromptedToGrantPermission() {
         //manual
     }
+
+    @When("the user authenticates successfully using a six digit PIN")
+    public void theUserAuthenticatesSuccessfullyUsingASixDigitPIN() {
+        //manual
+    }
+
+    @When("the user fails to authenticate using the six digit PIN")
+    public void theUserFailsToAuthenticateUsingTheSixDigitPIN() {
+        //manual
+    }
 }
 
 
