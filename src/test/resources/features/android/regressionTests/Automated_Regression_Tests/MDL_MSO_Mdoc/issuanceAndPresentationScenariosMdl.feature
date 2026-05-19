@@ -1,7 +1,6 @@
 @ANDROID @US_CIPSDPYMDL @automated @execution
 Feature: Issuance and presentation - mDL
 
-  @execution @ANDROID
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
@@ -16,7 +15,6 @@ Feature: Issuance and presentation - mDL
       | credential     | issuer | issuance_method | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Python | from list       | same device    | Web verifier | same device           | specific attributes  |
 
-  @execution @ANDROID
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>

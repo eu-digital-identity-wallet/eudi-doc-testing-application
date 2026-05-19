@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.id("eu.europa.ec.euidi.dev:id/pin_screen_title");
-    public static By pinTexfield1 = By.id("eu.europa.ec.euidi.dev:id/pin_text_field_0");
+    public static By pinTexfield1 = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi.dev:id/pin_text_field_0\"]");
     public static By pinTexfield2 = By.id("eu.europa.ec.euidi.dev:id/pin_text_field_1");
     public static By pinTexfield3 = By.id("eu.europa.ec.euidi.dev:id/pin_text_field_2");
     public static By pinTexfield4 = By.id("eu.europa.ec.euidi.dev:id/pin_text_field_3");
