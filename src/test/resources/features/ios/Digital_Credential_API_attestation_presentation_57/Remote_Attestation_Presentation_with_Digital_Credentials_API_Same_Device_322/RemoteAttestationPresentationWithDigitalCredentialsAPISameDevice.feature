@@ -1,4 +1,4 @@
-@IOS @US_RAPDCAPISD @Q1_2026
+@IOS @manual @US_RAPDCAPISD @Q1_2026
 Feature: Present Digital Attestations via Browser using EUDI Wallet on Same Device
   As a EUDI Wallet User
   I want to present digital attestations to a requestor Relying Party residing on the same device as my EUDI Wallet, by utilising browser capabilities

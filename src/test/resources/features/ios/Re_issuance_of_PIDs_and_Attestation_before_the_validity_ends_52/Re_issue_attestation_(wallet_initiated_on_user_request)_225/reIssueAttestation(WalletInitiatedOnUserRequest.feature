@@ -1,5 +1,4 @@
-@IOS
-
+@IOS @manual @US_RIAWIOUR @Q1_2026
 Feature: User Authentication and Re-Issuance of PIDs/Attestations
   As an EUDI User,
   I want to re-issue a PID/attestation from the original issuer by replacing an existing PID or attestation
