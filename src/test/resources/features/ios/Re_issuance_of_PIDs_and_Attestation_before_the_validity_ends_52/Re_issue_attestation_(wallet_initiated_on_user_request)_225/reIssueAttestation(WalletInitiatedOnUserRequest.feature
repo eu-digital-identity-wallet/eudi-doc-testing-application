@@ -4,7 +4,7 @@ Feature: User Authentication and Re-Issuance of PIDs/Attestations
   I want to re-issue a PID/attestation from the original issuer by replacing an existing PID or attestation
   so that fresh attestations are available in my EUDI Wallet.
 
-  # https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/225
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/225
 
   @US_RIAWIOUR_TC_01 @manual:Passed
   Scenario: Successful authentication
