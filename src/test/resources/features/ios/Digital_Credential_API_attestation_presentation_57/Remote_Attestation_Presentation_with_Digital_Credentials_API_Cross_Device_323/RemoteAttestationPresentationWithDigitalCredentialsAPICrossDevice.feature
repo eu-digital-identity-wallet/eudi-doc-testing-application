@@ -1,4 +1,4 @@
-@IOS @US_RAPDCAPICD @Q1_2026
+@IOS @manual @US_RAPDCAPICD @Q1_2026
 Feature: Cross-Device Presentation of Digital Attestations via EUDI Wallet
   As a EUDI Wallet User
   I want to present digital attestations to a requestor Relying Party residing on a different device (e.g., Laptop/Desktop) than my EUDI Wallet, by utilising browser capabilities
