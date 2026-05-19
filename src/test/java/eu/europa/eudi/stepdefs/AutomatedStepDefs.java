@@ -2392,7 +2392,7 @@ public class AutomatedStepDefs {
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().clickAuthenticate();
-                    test.mobile().wallet().clickOnline();
+                    test.mobile().wallet().clickOnlinePresentation();
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                         if (test.mobile().wallet().isQrVisible()) {
                             test.mobile().wallet().onlyThisTimeQR();
@@ -2628,10 +2628,8 @@ public class AutomatedStepDefs {
 
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickOnDocuments();
-                    test.mobile().wallet().clickToAddDocument();
-                    test.mobile().wallet().addDocumentPageIsDisplayed();
-                    test.mobile().wallet().clickOnline();
+                    test.mobile().wallet().clickAuthenticate();
+                    test.mobile().wallet().clickOnlinePresentation();
 
 
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
