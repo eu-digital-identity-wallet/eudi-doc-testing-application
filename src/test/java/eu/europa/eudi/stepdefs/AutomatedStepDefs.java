@@ -2483,6 +2483,9 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
+                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                        test.mobile().wallet().createAPin();
+                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2637,7 +2640,7 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().onlyThisTimeQR();
                         }
                     }
-                    test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+//                    test.mobile().wallet().theQRScannerIsActivatedForPresentation();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {

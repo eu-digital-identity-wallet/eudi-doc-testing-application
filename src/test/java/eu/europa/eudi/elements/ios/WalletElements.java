@@ -62,6 +62,7 @@ public class WalletElements {
     public static By addPIDPageIsDisplayed = By.id("add_document_screen_subtitle");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@label=\"Authenticate\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
+    public static By scanQRIsActivatedForPresentation = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from a Relying Party to present a digital document online.\"]");
     public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
     public static By kotlinIssuanceDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");

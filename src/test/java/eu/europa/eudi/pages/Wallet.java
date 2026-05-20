@@ -1926,4 +1926,20 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlinePresentation)).click();
         }
     }
+
+    public void theQRScannerIsActivatedForPresentation() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+                driver.context("NATIVE_APP");
+                String pageHeader = test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.visibilityOfElementLocated(WalletElements.scanQRIsActivatedForPresentation)).getText();
+                Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_PRESENTATION.label, pageHeader);
+            } else {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                driver.context("NATIVE_APP");
+                String pageHeader = test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivatedForPresentation)).getText();
+                Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_PRESENTATION.label, pageHeader);
+            }
+    }
 }
