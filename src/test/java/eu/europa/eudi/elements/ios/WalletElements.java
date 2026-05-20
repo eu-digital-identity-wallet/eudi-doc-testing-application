@@ -60,7 +60,7 @@ public class WalletElements {
     public static By confirmsDeletion = By.id("document_details_screen_dialog_delete_document_negative_button");
     public static By detailsAreBlurredReal = By.xpath("//XCUIElementTypeOther[@name=\"eye.slash\"]");
     public static By addPIDPageIsDisplayed = By.id("add_document_screen_subtitle");
-    public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@name=\"Authenticate\"]");
+    public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@label=\"Authenticate\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
     public static By successMessageForVerifier = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
@@ -70,4 +70,5 @@ public class WalletElements {
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
+    public static By onlinePresentation = By.id("home_tab_screen_dialog_online_button");
 }

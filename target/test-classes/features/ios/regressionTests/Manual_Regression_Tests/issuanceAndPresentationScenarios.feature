@@ -1,6 +1,6 @@
-@IOS @US_ETESM @Q2026
-Feature: Manual Regression Tests
-  
+@IOS @US_ETESM @Q1_2026
+Feature: Issuance and presentation - Proximity case
+
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
     Given user initiates credential issuance using the <issuer>
     And issuance method is <issuance_method>
