@@ -9,6 +9,8 @@ import eu.europa.eudi.utils.config.EnvDataConfig;;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
@@ -163,22 +165,40 @@ public class Verifier {
         }
     }
 
-    public void insertPIN() {
+    public void insertPIN() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             String fullPin = test.envDataConfig().getPin();
-            char firstDigit = fullPin.charAt(0);
-            char secondDigit = fullPin.charAt(1);
-            char thirdDigit = fullPin.charAt(2);
-            char fourthDigit = fullPin.charAt(3);
-            char fifthDigit = fullPin.charAt(4);
-            char sixthDigit = fullPin.charAt(5);
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield1).sendKeys(String.valueOf(firstDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield6).sendKeys(String.valueOf(sixthDigit));
+
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+// Wait until the EditText is present
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("android.widget.EditText")
+                    )
+            );
+
+// Focus the field
+            pinField.click();
+
+// Small stabilization pause
+            Thread.sleep(500);
+
+// Send digits one-by-one as real keyboard events
+            for (char digit : fullPin.toCharArray()) {
+                driver.pressKey(
+                        new KeyEvent(
+                                AndroidKey.valueOf("DIGIT_" + digit)
+                        )
+                );
+
+                Thread.sleep(100);
+            }
         } else {
             String fullPin = test.envDataConfig().getPin();
             char secondDigit = fullPin.charAt(1);

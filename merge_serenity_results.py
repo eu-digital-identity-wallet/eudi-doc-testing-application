@@ -1,6 +1,6 @@
 import json, os, glob, re, shutil, copy
 
-RESULTS_DIR = "target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+RESULTS_DIR = "target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
 BACKUP_DIR  = "target/serenity-backup"
 
 PRIORITY = {"SUCCESS": 0, "PENDING": 1, "IGNORED": 2, "SKIPPED": 3, "FAILURE": 4, "ERROR": 5}

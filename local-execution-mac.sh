@@ -1,6 +1,6 @@
 #!/bin/bash
 export CUCUMBER_FILTER_TAGS="@ANDROID and @execution"
-RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
 BACKUP_DIR="target/serenity-backup"
 
 # Clean up leftovers from previous runs
@@ -37,7 +37,7 @@ rm -rf target/site/serenity
 mvn serenity:aggregate -Dtags="ANDROID and execution"
 echo "--- Applying custom CSS ---"
 
-REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/css"
+REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/css"
 CUSTOM_CSS="src/test/resources/custom-style.css"
 
 if [ -f "$CUSTOM_CSS" ]; then

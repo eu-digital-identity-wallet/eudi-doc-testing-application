@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 set CUCUMBER_FILTER_TAGS=@execution and @ANDROID
-set RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2025.12.34-Demo
+set RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo
 set BACKUP_DIR=target\serenity-backup
 
 echo ========================================================
@@ -103,7 +103,7 @@ echo ========================================================
 echo APPLY CUSTOM CSS
 echo ========================================================
 
-set REPORT_DIR=target\site\reports\EUDI_Wallet_Version_2025.12.34-Demo\css
+set REPORT_DIR=target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo\css
 set CUSTOM_CSS=src\test\resources\custom-style.css
 set CORE_CSS_PATH=
 

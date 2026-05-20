@@ -40,12 +40,12 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            String url = "https://issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
             if ("browserstack".equalsIgnoreCase(env)) {
                 // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -59,7 +59,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            String url = "https://issuer.eudiw.dev/credential_offer";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -71,7 +71,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            String url = "https://issuer.eudiw.dev/credential_offer";
 
             try {
                 try {

@@ -432,7 +432,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters their PIN")
-    public void theUserEntersTheirPIN() {
+    public void theUserEntersTheirPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -527,7 +527,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has successfully entered the PIN")
-    public void theUserHasSuccessfullyEnteredThePIN() {
+    public void theUserHasSuccessfullyEnteredThePIN() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //        test.mobile().wallet().startAndStopDriver();
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -559,7 +559,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has opened the selected mDL")
-    public void theUserHasOpenedTheSelectedMDL() {
+    public void theUserHasOpenedTheSelectedMDL() throws InterruptedException {
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAMDL();
         theUserShouldSeeTheDocumentContents();
@@ -598,7 +598,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has opened the selected PID")
-    public void theUserHasOpenedTheSelectedPID() {
+    public void theUserHasOpenedTheSelectedPID() throws InterruptedException {
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAPIDNotTheFirstOneIssued();
         theUserShouldSeeThePidDocumentContents();
@@ -628,12 +628,12 @@ public class AutomatedStepDefs {
     }
 
     @Then("the user should enter the PIN")
-    public void theUserShouldEnterThePIN() {
+    public void theUserShouldEnterThePIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
     @Given("the user has successfully entered the PIN after reboot")
-    public void theUserHasSuccessfullyEnteredThePINAfterReboot() {
+    public void theUserHasSuccessfullyEnteredThePINAfterReboot() throws InterruptedException {
         theApplicationHasRebooted();
         theLoginScreenAppears();
         theUserShouldEnterThePIN();
@@ -836,7 +836,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters the correct PIN")
-    public void theUserEntersTheCorrectPIN() {
+    public void theUserEntersTheCorrectPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -849,7 +849,7 @@ public class AutomatedStepDefs {
     }
 
     @When("user authorizes the disclosure of the data")
-    public void userAuthorizesTheDisclosureOfTheData() {
+    public void userAuthorizesTheDisclosureOfTheData() throws InterruptedException {
         test.mobile().wallet().pinFieldIsDisplayed();
         test.mobile().verifier().insertPIN();
     }
@@ -993,7 +993,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the expanded verification details are seen")
-    public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException {
+    public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException, InterruptedException {
         theUserViewsTheDocumentThatIsRequested();
         theUserInsertsThePIN();
         theUserClicksToViewTheDocumentsDetails();
@@ -1015,7 +1015,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user inserts the PIN")
-    public void theUserInsertsThePIN() {
+    public void theUserInsertsThePIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -1396,7 +1396,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() {
+    public void theUserEntersTheirSixDigitPINCorrectly() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -1517,7 +1517,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the user authenticates using a six-digit PIN or Biometrics")
-    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() {
+    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() throws InterruptedException {
         test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -1561,7 +1561,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user is successfully authenticated in the EUDI Wallet")
-    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() throws MalformedURLException {
+    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
         theAuthenticationIsSuccessful();
@@ -1573,14 +1573,14 @@ public class AutomatedStepDefs {
     }
 
     @Given("the EUDI Wallet requests the user to consent")
-    public void theEUDIWalletRequestsTheUserToConsent() throws MalformedURLException {
+    public void theEUDIWalletRequestsTheUserToConsent() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
         theAuthenticationIsSuccessful();
     }
 
     @Given("the user consents to the attestation presentation")
-    public void theUserConsentsToTheAttestationPresentation() throws MalformedURLException {
+    public void theUserConsentsToTheAttestationPresentation() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
     }
@@ -1597,7 +1597,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("Method A is configured for the attestation type")
-    public void methodAIsConfiguredForTheAttestationType() throws MalformedURLException {
+    public void methodAIsConfiguredForTheAttestationType() throws MalformedURLException, InterruptedException {
         theUserConsentsToTheAttestationPresentation();
         theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome();
         theRelyingPartyServiceReceivesTheAttestation();
