@@ -886,11 +886,13 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         }
     }
