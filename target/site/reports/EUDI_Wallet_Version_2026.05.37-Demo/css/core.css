@@ -2745,3 +2745,102 @@ div.code {
 .dataTables_filter input {
     font-weight: normal;
 }
+
+
+.nav.nav-tabs li:last-child {
+    display: none!important;
+}
+
+
+#coverageChart{
+display:none!important;
+}
+
+   .container-fluid:nth-of-type(4) {
+       display: none!important;
+   }
+
+.container-fluid:nth-of-type(3) {
+       display: none!important;
+   }
+
+   .container-fluid:nth-of-type(2) {
+          display: none!important;
+      }
+
+      .table.table-striped.table-hover {
+          display: none!important;
+      }
+
+    h3:has(.bi.bi-speedometer2) {
+        display: none!important;
+    }
+
+    .example-tags .tag-badge{
+     display: none!important;
+    }
+
+    .feature-tags{
+         display: none!important;
+    }
+
+    .tag   {
+    display:none!important;
+    }
+
+
+   .nav.nav-tabs li:nth-child(2)
+   {
+   display: none!important;
+   }
+
+.nav.nav-tabs li:nth-child(4)
+      {
+      display: none!important;
+      }
+
+.nav.nav-tabs li:nth-child(5)
+{
+display: none!important;
+}
+
+.nav.nav-tabs li:nth-child(6)
+{
+display: none!important;
+}
+
+.nav.nav-tabs li:nth-child(7)
+{
+display: none!important;
+}
+
+#durationChart {
+
+    display: none!important;
+}
+
+.dashboard-charts .col-lg-4:nth-of-type(3) {
+  display: none!important;
+}
+
+.dashboard-charts .col-lg-4:nth-of-type(2) {
+  margin-left: 150px!important;
+}
+
+
+.step-table tr > :nth-child(4) {
+    display: none!important;
+}
+
+
+.step-table tr > :nth-child(4) {
+
+     display: none!important;
+
+}
+
+.step-table tr:last-of-type td:last-child {
+
+     display: none;
+
+}

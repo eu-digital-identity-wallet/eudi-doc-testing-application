@@ -154,7 +154,7 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [];
+            var requirementsTree = [{"text":"Remote attestation presentation with digital credentials api on android cross device 305","type":"features","href":"93e145398df192f983f4463594ee694391d7df8117ed253a62365ec374cf8945.html","nodes":[{"text":"Cross-Device Presentation of Digital Attestations via EUDI Wallet","type":"feature","href":"c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e15 scenarios\u003c/span\u003e, \u003cspan class\u003d\u0027feature-count\u0027\u003e15 test cases\u003c/span\u003e"]}],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e1 feature\u003c/span\u003e "]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
@@ -201,8 +201,8 @@
             <span class="breadcrumbs">
             <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
 
-                > <a href="#">Android</a>
-                > <a href="#">Digital credential API attestation presentation 57</a>
+                > <a href="e1874e6ede4e2d36907ff04c53fd714dae568f932feee22c0b618a7c415f376d.html">Android</a>
+                > <a href="4e1481e2b547e194f931cc284b8fc9b7d3566f98c2aa1d0756fd8826e4c2f89b.html">Digital credential API attestation presentation 57</a>
 
 
                     > <span class="truncate-40">Remote attestation presentation with digital credentials api on android cross device 305</span>
@@ -239,7 +239,7 @@
             <a href="f00f76a04d2d99822f342e19edfb456d954ef898f485c501f324bafd9ade930f.html"><i class="bi bi-chat-text"></i> ##s</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated </span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 20-05-2026 11:24</span>
     <br style="clear:left"/>
 </div>
 
@@ -293,6 +293,9 @@
                                                 <h3>Feature Coverage By Scenario</h3>
 
                                                 <!-- REQUIREMENTS PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="requirementChart" width="300" height="300"></canvas>
+                                                    </div>
 
                                             </div>
                                             <div class="col-sm-8">
@@ -310,60 +313,66 @@
                     <td>
                         <i class="bi bi-card-checklist"></i> Number of Scenarios
                     </td>
-                    <td>0</td>
+                    <td>15</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>0</td>
+                    <td>15</td>
                 </tr>
+                    <tr scope="row">
+                        <td>
+                            <i class="bi bi-person"></i> Number of Manual Test Cases
+                        </td>
+                        <td>15</td>
+                    </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td></td>
+                    <td>May 20, 2026 11:24:10</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td></td>
+                    <td>May 20, 2026 11:33:54</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>0ms</td>
+                    <td> 9m 44s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>0ms</td>
+                    <td>25s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>0ms</td>
+                    <td>57s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>0ms</td>
+                    <td>38s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td>0ms</td>
+                    <td> 9m 43s</td>
                 </tr>
                 </tbody>
             </table>
@@ -381,6 +390,9 @@
                                             <div class="col-sm-4">
                                                 <h3>Feature Coverage By Scenario</h3>
                                                 <!-- TEST RESULT PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="resultChart" width="300" height="300"></canvas>
+                                                    </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
@@ -412,56 +424,56 @@
                     <td>
                         <i class="bi bi-card-checklist"></i> Number of Scenarios
                     </td>
-                    <td>0</td>
+                    <td>15</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>0ms</td>
+                    <td> 9m 44s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>0</td>
+                    <td>15</td>
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>0ms</td>
+                    <td>25s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-person"></i> Number of Manual Test Cases
                     </td>
-                    <td>0</td>
+                    <td>15</td>
                     <td>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>0ms</td>
+                    <td>57s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td></td>
+                    <td>May 20, 2026 11:24:10</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>0ms</td>
+                    <td>38s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td></td>
+                    <td>May 20, 2026 11:33:54</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td>0ms</td>
+                    <td> 9m 43s</td>
                 </tr>
                 </tbody>
             </table>
@@ -479,11 +491,337 @@
                                             <div class="col-sm-12">
                                                 <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
 
-                                                    No manual tests were recorded
+                                                    <table class="scenario-result-table table"
+                                                           id="manual-scenario-results">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>##</th>
+                                                            <th class="test-name-column">Scenario</th>
+                                                            <th>Context</th>
+                                                            <th>Steps</th>
+                                                            <th>Result</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="af39364113eb7e2aa18a79f81134fe8f09f936e461d171a9524f210834462329.html">User initiates verification from Desktop browser</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="ac1a9c4396bde257865381db0153fad3263e80cd18c6c109b9bbf92b83bb1f5a.html">Desktop browser requests permission for Digital Credentials API</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="c398a1db62c869d849ff6d1b80063d3319817ffca74847fbea07e7d1fdeb2ee5.html">User grants permission on Desktop browser</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="733506d663a693d7be70792bc57f22fc9d009aa579fc0470e8fcfa32b8b0e134.html">QR code is displayed for cross-device flow</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="7dca5e0feadf15f0138e42df1413b0b6f501003516c93515627ceef91c07a9d6.html">User scans QR code using mobile device</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="644ba6b5d0d6c339d973dc32ecb5707e7a31e8a1b4f9565fdb5515f27eb231f6.html">Mobile OS searches for matching attestations</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="380ba55da9a8d766ac7e795d821ebb0115898e450690213d508ea012318e7861.html">No matching attestations on mobile device</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="884e778f81739461af9604e74571da48d986263cee4598aa301fb2e798ff97e1.html">Mobile OS displays selector with matching attestations</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="e658484e4db3972576338e7010b8970aebba7cad9cc3035331c633722cfa3a9a.html">Attestation identifying information is displayed</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="ca0667e4792f197915b9357af0f2fc8b826af9ff9ae63c3e3d8c468b898873f2.html">Selector indicates Wallet Unit ownership</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="b25dba7c0c6356ae475b4d97a2683554a81c71fa019d994856712b7725ef2953.html">User selects an attestation and Wallet opens</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="9c26e192200222ff474a9e05555a661933e928dadfa6a3e5f8be530cd78589a7.html">Wallet displays requested attestations and attributes</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="e3ce1300e9bdfc5b8c0d73e5b5f3c7f404a65c1a99bdf2c92a1a942ffc1f6b58.html">Successful consent and authentication</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="757e001ea5ec89854ed724e9eff30c1770b8a266b7a789554aed82cb7ac6e480.html">Relying Party verifies attestation successfully</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="c7567e4f7cef79f934ad35f679fc8ae279ac165059e10d61c031ee12a91e5460.html">Cross-Device Presentation of Digital Attestations via EUDI Wallet</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="fc48828c0372645848a3c68f4fcb1d0106e723ffbde75f3a16073ab1c9a118b2.html">Relying Party verification fails</a>
+                                                                    </td>
+                                                                    <td><i class="bi bi-person"></i></td>
+                                                                    <td>3</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        <span style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
 
                                             </div>
                                         </div>
 
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="9a26bd101adfda745f743db04eb3269922eb1ff4d86d9997efeca1ebfe995ac4.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Manual&nbsp;&nbsp;&nbsp;15
+                                    </span>
+                                    </a>
+                                    <a href="08d81da08950f3e1fe112dcd27894c3738fd06396acaf2b4e73e2c4a3c4ff04f.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 12&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="d8cbcea110b0be7529f17bd052332cedc30b53fc3429e8a46d2d7a447d6d8ee4.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 02&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="3515ccf5e4d94a8fca724c5bc62f74072d93b0c14352871b6051bbdca9596116.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 14&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="4af6957a0aa110dd426901c7eab906843d372264890b1245ddd88c8d0354d0db.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 04&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="0478a2f0150cba0cf190cf6fa67873a0b1c3a2ad24048c25d5b24c2ad2716496.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 10&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="64965aa77ef089b7d6c89db23dffd88b7bb873e30a155eb0d929b02bc81f3c83.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 06&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="ae613ee84fb4def7a8e48e5b169676d696704f5184fbb870d4bd8f3be8b7aec6.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 08&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="a87abd4204ec96c8db74264eb8886fbfe73d8c3e1714488bb853210c21fb4e5a.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Android&nbsp;&nbsp;&nbsp;15
+                                    </span>
+                                    </a>
+                                    <a href="363c6e99fe9c3e8a9c161b94e737d5fa33a28685cbe4eb20399de075685a792f.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 01&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="ad8480b0dccdbc2fe21b9a74f6b6e9643ad748fd9ab1d44ba7877b1c5f88d02a.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 13&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="cebea28489aca3ff64f6acd7c3f05e95941d6efc3cb59223fb40c0716a4fa477.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Q1 2026&nbsp;&nbsp;&nbsp;15
+                                    </span>
+                                    </a>
+                                    <a href="c46107771feaf1cd6626da248dbe48800aa88448b7ef85920e557a9b1898a74c.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 03&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="4ac5d6571d6d02cf49db076d5dd3aa2b2345ae28e1f840dbbb97174731390a2c.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 15&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="010fa9dcc0bf6fb857857e57b87ee3eedf8d4b49e6216ba22a2d13d31e266322.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD&nbsp;&nbsp;&nbsp;15
+                                    </span>
+                                    </a>
+                                    <a href="af6765ff67a5dd571caecceb0418bd16ea31b65b46cb03b91b39ec10507c42d1.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 11&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="ccbf576148e9a519a05f906520176d4aa79f0d054638a263108911128ccaf81b.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 09&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="9f3ca4954e39a0bef81dbc390ceeb1a31b3b49b0e6a3e7634a813c62848f17e5.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 05&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="064d76225efa1d897778f553831ce43122ab6a810f37a57724d37fb5489521a2.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> US RAPDCAPICD TC 07&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                                <h5 class="card-title">Manual</h5>
+                            <div>
+                                    <a href="220d8ef6080eb8a7746b6ccaff3b44ac3c1f123a09790bb9a8ff31e7b07c9746.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Passed&nbsp;&nbsp;&nbsp;15
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
                                     </div>
                                 </div>
                             </div>
@@ -524,7 +862,7 @@
             datasets: [{
                 label: 'Test Results',
                 fill: false,
-                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                data: [{meta: 'Passing tests', value: 15}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -575,7 +913,7 @@
                         ctx.font = fontSize + "em sans-serif";
                         ctx.textBaseline = "middle";
 
-                        var text = " "
+                        var text = "100%"
                         textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
                         textY = (height / 2) - 40;
 
@@ -619,7 +957,7 @@
             datasets: [{
                 label: 'Feature Coverage',
                 fill: false,
-                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                data: [{meta: 'Passing tests', value: 15}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -670,7 +1008,7 @@
                         ctx.font = fontSize + "em sans-serif";
                         ctx.textBaseline = "middle";
 
-                        var text = " "
+                        var text = "100%"
                         textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
                         textY = (height / 2) - 40;
 
@@ -722,7 +1060,7 @@
                 },
                 {
                     label: 'Manual',
-                    data: [0,0,0,0,0,0,0,0],
+                    data: [15,0,0,0,0,0,0,0],
                     backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
                     borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                     borderWidth: 1
@@ -798,7 +1136,7 @@
             datasets: [{
                 label: 'Number of tests per duration',
                 fill: false,
-                data: ['0','0','0','0','0','0','0','0'],
+                data: ['0','0','3','12','0','0','0','0'],
                 backgroundColor: 'rgba(83, 146, 255,0.5)',
                 borderColor: 'rgba(83, 146, 255, 1)',
             }]
