@@ -72,7 +72,7 @@ public class WalletElements {
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By kotlinIssuanceDetails = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
-    public static By clickPIDKotlin = By.id("eu.europa.ec.euidi:id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
+    public static By clickPIDKotlin = By.id("eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
     public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By sexButton = By.xpath("//android.widget.Button[@text=\"Sex\"]");
     public static By residentStreet = By.xpath("//android.widget.TextView[@text=\"Resident Street\"]");;

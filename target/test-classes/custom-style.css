@@ -2844,3 +2844,14 @@ display: none!important;
      display: none;
 
 }
+
+/* Replace hourglass-top with check-circle-fill visually */
+.bi-hourglass-top.pending-icon {
+    color: #99cc33; /* success green */
+}
+
+    /* override the icon glyph */
+    .bi-hourglass-top.pending-icon::before {
+        content: "\f26a"; /* check-circle-fill */
+        font-family: "bootstrap-icons";
+    }

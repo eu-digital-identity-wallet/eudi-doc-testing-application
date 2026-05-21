@@ -177,7 +177,7 @@ public class Issuer {
 
     public void clickUseEudiw() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
