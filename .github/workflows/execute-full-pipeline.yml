@@ -1,8 +1,12 @@
-name: Execute Full Pipeline
+name: Final Summary Report
+permissions:
+  actions: write
+  contents: read
 
 on:
   workflow_dispatch:
     inputs:
+
       branch-to-checkout:
         description: 'Branch to checkout'
         type: choice
@@ -22,106 +26,248 @@ on:
         type: string
         default: "@Q3_2025"
 
-
 jobs:
 
   # =========================================================
-  # 1. TRIGGER ALL WORKFLOWS
+  # 1. TRIGGER WORKFLOWS + CAPTURE RUN IDS
   # =========================================================
   trigger:
     runs-on: ubuntu-latest
 
+    outputs:
+      android_run_id: ${{ steps.android.outputs.run_id }}
+      ios_run_id: ${{ steps.ios.outputs.run_id }}
+      manual_run_id: ${{ steps.manual.outputs.run_id }}
+
     steps:
-      - name: Trigger Android
+
+      - name: Validate Token
         run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+
+          if [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "GH_PAT is empty"
+            exit 1
+          fi
+
+      # =====================================================
+      # ANDROID
+      # =====================================================
+
+      - name: Trigger Android Workflow
+        id: android
+        run: |
+
+          WORKFLOW_FILE="android_execution_with_browserstack.yml"
+
+          echo "Triggering Android workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/android-tests.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "test-cases":"${{ inputs.test-cases }}"
               }
             }'
 
-      - name: Trigger iOS
-        run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          echo "Waiting workflow registration..."
+          sleep 15
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/ios-tests.yml/dispatches \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "Android Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect Android workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
+
+      # =====================================================
+      # IOS
+      # =====================================================
+
+      - name: Trigger iOS Workflow
+        id: ios
+        run: |
+
+          WORKFLOW_FILE="ios_execution_with_browserstack.yml"
+
+          echo "Triggering iOS workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "test-cases":"${{ inputs.test-cases }}"
               }
             }'
 
-      - name: Trigger Manual
-        run: |
-          curl -s -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          echo "Waiting workflow registration..."
+          sleep 15
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/manual-tests.yml/dispatches \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "iOS Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect iOS workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
+
+      # =====================================================
+      # MANUAL
+      # =====================================================
+
+      - name: Trigger Manual Workflow
+        id: manual
+        run: |
+
+          WORKFLOW_FILE="manual.yml"
+
+          echo "Triggering Manual workflow..."
+
+          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          curl -s -L -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
             -d '{
-              "ref":"develop",
+              "ref":"${{ inputs.branch-to-checkout }}",
               "inputs":{
                 "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
                 "tagName":"${{ inputs.manual-tag }}"
               }
             }'
-  
+
+          echo "Waiting workflow registration..."
+          sleep 15
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
+
+          RUN_ID=$(echo "$RESPONSE" | jq -r \
+            --arg BEFORE "$BEFORE" '
+              .workflow_runs
+              | map(select(.created_at >= $BEFORE))
+              | sort_by(.created_at)
+              | reverse
+              | .[0].id
+            ')
+
+          echo "Manual Run ID: $RUN_ID"
+
+          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
+            echo "Failed to detect Manual workflow run"
+            exit 1
+          fi
+
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
 
   # =========================================================
-  # 2. WAIT FOR COMPLETION (IMPORTANT FIX)
+  # 2. WAIT FOR COMPLETION
   # =========================================================
   wait-for-completion:
     runs-on: ubuntu-latest
     needs: trigger
 
     steps:
-      - name: Wait for all workflows to complete
-        run: |
-          echo "Waiting for Android, iOS, Manual..."
 
-          wait_for() {
-            NAME=$1
+      - name: Wait For Android
+        run: |
+          wait_run() {
+
+            RUN_ID=$1
+            NAME=$2
+
+            echo "Waiting for $NAME ($RUN_ID)"
 
             while true; do
-              DATA=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                https://api.github.com/repos/${{ github.repository }}/actions/runs)
 
-              STATUS=$(echo "$DATA" | jq -r --arg NAME "$NAME" \
-                '.workflow_runs[] | select(.name==$NAME) | .status' | head -1)
+              RESPONSE=$(curl -s \
+                -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+                -H "Accept: application/vnd.github+json" \
+                https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID)
 
-              echo "$NAME => status=$STATUS"
+              if ! echo "$RESPONSE" | jq empty; then
+                echo "Invalid JSON received"
+                sleep 20
+                continue
+              fi
+
+              STATUS=$(echo "$RESPONSE" | jq -r '.status')
+              CONCLUSION=$(echo "$RESPONSE" | jq -r '.conclusion')
+
+              echo "$NAME => status=$STATUS conclusion=$CONCLUSION"
 
               if [[ "$STATUS" == "completed" ]]; then
+
+                if [[ "$CONCLUSION" != "success" ]]; then
+                  echo "$NAME failed"
+                  exit 1
+                fi
+
                 break
               fi
 
-              sleep 20
+              sleep 30
             done
           }
 
-          wait_for "Android Automation Tests Execution"
-          wait_for "iOS Automation Tests Execution"
-          wait_for "Manual Tests Execution"
-
-          echo "All workflows completed"
-  
+          wait_run "${{ needs.trigger.outputs.android_run_id }}" "Android"
+          wait_run "${{ needs.trigger.outputs.ios_run_id }}" "iOS"
+          wait_run "${{ needs.trigger.outputs.manual_run_id }}" "Manual"
 
   # =========================================================
-  # 3. FINAL SUMMARY REPORT (INSIDE SAME PIPELINE)
+  # 3. FINAL REPORT
   # =========================================================
   final-summary:
     runs-on: macos-latest
-    needs: wait-for-completion
+    needs: [ trigger, wait-for-completion ]
 
     steps:
+
       - uses: actions/checkout@v5
 
       - name: Set up JDK 17
@@ -130,43 +276,119 @@ jobs:
           java-version: 17
           distribution: oracle
 
-      # ---------------- DOWNLOAD ARTIFACTS ----------------
+      # =====================================================
+      # INSTALL GH CLI
+      # =====================================================
 
-      - name: Download Android JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: android-serenity-json
-          path: reports/android
+      - name: Setup GitHub CLI
+        run: |
+          gh --version
 
-      - name: Download iOS JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: ios-serenity-json
-          path: reports/ios
+      # =====================================================
+      # CREATE REPORT FOLDERS
+      # =====================================================
 
-      - name: Download Manual JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: manual-serenity-json
-          path: reports/manual
+      - name: Create folders
+        run: |
+          mkdir -p reports/android
+          mkdir -p reports/ios
+          mkdir -p reports/manual
 
-      # ---------------- MERGE ----------------
+      # =====================================================
+      # DOWNLOAD ANDROID ARTIFACT
+      # =====================================================
+
+      - name: Download Android Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.android_run_id }}"
+          
+          echo "Downloading Android artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name android-serenity-json \
+            --dir reports/android
+
+      # =====================================================
+      # DOWNLOAD IOS ARTIFACT
+      # =====================================================
+
+      - name: Download iOS Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.ios_run_id }}"
+          
+          echo "Downloading iOS artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name ios-serenity-json \
+            --dir reports/ios
+
+      # =====================================================
+      # DOWNLOAD MANUAL ARTIFACT
+      # =====================================================
+
+      - name: Download Manual Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          
+          RUN_ID="${{ needs.trigger.outputs.manual_run_id }}"
+          
+          echo "Downloading Manual artifact from run: $RUN_ID"
+          
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name manual-serenity-json \
+            --dir reports/manual
+
+      # =====================================================
+      # DEBUG
+      # =====================================================
+
+      - name: Show Downloaded Files
+        run: |
+          echo "ANDROID FILES"
+          find reports/android
+          
+          echo "IOS FILES"
+          find reports/ios
+          
+          echo "MANUAL FILES"
+          find reports/manual
+
+      # =====================================================
+      # MERGE RESULTS
+      # =====================================================
 
       - name: Merge JSON Results
         run: |
+          
           mkdir -p target/site/reports/final
+          
+          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+          find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
 
-          find reports/android -name "*.json" -exec cp {} target/site/reports/final/ \;
-          find reports/ios -name "*.json" -exec cp {} target/site/reports/final/ \;
-          find reports/manual -name "*.json" -exec cp {} target/site/reports/final/ \;
-
-      # ---------------- REPORT ----------------
+      # =====================================================
+      # GENERATE FINAL REPORT
+      # =====================================================
 
       - name: Generate Final Serenity Report
         run: mvn serenity:aggregate
+
+      # =====================================================
+      # UPLOAD FINAL REPORT
+      # =====================================================
 
       - name: Upload Final Report
         uses: actions/upload-artifact@v5
         with:
           name: final-combined-serenity-report
-          path: target/site/
+          path: target/site
