@@ -13,8 +13,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.*;
@@ -1510,39 +1508,6 @@ public class Wallet {
         }
     }
 
-    private void assertAttributeVisibleWithScroll(AndroidDriver driver, String attrKey, int maxSwipes) {
-
-        By keyLocator = By.xpath("//android.widget.TextView[@text=\"" + attrKey + "\"]");
-        for (int i = 0; i < maxSwipes; i++) {
-            if (!driver.findElements(keyLocator).isEmpty()) return;
-            slowScroll(driver); // your existing helper
-        }
-        Assert.fail("Attribute key not found: " + attrKey);
-    }
-
-    private String readValueForAttributeKey(AndroidDriver driver, String attrKey) {
-
-        // take the first TextView after the key that is not empty and not the literal words "value" or "tag"
-        By valueLocator = By.xpath(
-                "//android.widget.TextView[@text=\"" + attrKey + "\"]" +
-                        "/following::android.widget.TextView[" +
-                        "normalize-space(@text) != '' and " +
-                        "normalize-space(@text) != 'value' and " +
-                        "normalize-space(@text) != 'tag'" +
-                        "][1]"
-        );
-
-        for (int i = 0; i < 5; i++) {
-            if (!driver.findElements(valueLocator).isEmpty()) {
-                return driver.findElement(valueLocator).getText();
-            }
-            slowScroll(driver);
-        }
-
-        throw new AssertionError("Value not found for attribute key: " + attrKey);
-    }
-
-
     public void clickExpandVerificationDown() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickExpandDetails)).click();
     }
@@ -1572,26 +1537,6 @@ public class Wallet {
                 if (pidElement.isDisplayed()) break;
             } catch (Exception e) {
                 slowScrollUp();  // ← slow scroll instead of UiScrollable
-            }
-        }
-    }
-
-    public void scrollDown() {
-        AndroidDriver driver =
-                (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-        for (int i = 0; i < 10; i++) {
-            try {
-                WebElement element = driver.findElement(IssuerElements.birthDate);
-
-                if (element.isDisplayed()) {
-                    break;
-                }
-
-            } catch (Exception e) {
-                slowScrollDown(); // scroll to upper content
             }
         }
     }
@@ -1701,63 +1646,6 @@ public class Wallet {
             try {
                 Thread.sleep(150);
             } catch (InterruptedException ignored) {
-            }
-        }
-    }
-
-    public void scrollUntilSex() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-        for (int i = 0; i < 5; i++) {
-            try {
-                WebElement pidElement = driver.findElement(WalletElements.sexButton);
-                if (pidElement.isDisplayed()) break;
-            } catch (Exception e) {
-                slowScroll(driver);  // ← slow scroll instead of UiScrollable
-            }
-        }
-    }
-
-    public void checkDataOnWalletFromVerifierFromKotlin() {
-        FormYml yml = YmlLoader.load("testdata/PID/kotlin_data_on_wallet.yml", FormYml.class);
-
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-            if (!cfg.required) return;
-
-            // For nested like "Birth Place.country"
-            String[] labels = fieldKey.split("\\.");
-
-            // 1) Make sure each label exists (with scroll)
-            for (String label : labels) {
-                assertTextVisibleWithScroll(driver, label, 30);
-            }
-
-            // 2) If YAML has a value -> assert value under the LAST label
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                String lastLabel = labels[labels.length - 1];
-                String actual = readValueBelowLabel(driver, lastLabel);
-                org.junit.Assert.assertEquals(
-                        "Wrong value for label: " + fieldKey,
-                        cfg.value.trim(),
-                        actual.trim()
-                );
-            }
-        });
-    }
-
-    public void scrollUntilResidentStreet() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-        for (int i = 0; i < 5; i++) {
-            try {
-                WebElement pidElement = driver.findElement(WalletElements.residentStreet);
-                if (pidElement.isDisplayed()) break;
-            } catch (Exception e) {
-                slowScroll(driver);  // ← slow scroll instead of UiScrollable
             }
         }
     }

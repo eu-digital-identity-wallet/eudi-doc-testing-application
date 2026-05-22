@@ -21,8 +21,6 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.yaml.snakeyaml.Yaml;
-import java.io.FileInputStream;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
@@ -188,7 +186,7 @@ public class Issuer {
                         "package", test.envDataConfig().getAppiumAndroidAppPackage()
                 ));
 
-                System.out.println("✅ Deep link executed on Android");
+                System.out.println("Deep link executed on Android");
 
             }
         }else {
@@ -302,7 +300,7 @@ public class Issuer {
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
-                    // 🔥 IMPORTANT: refresh + re-locate every attempt (iOS fix)
+                    //IMPORTANT: refresh + re-locate every attempt (iOS fix)
                     WebElement element = wait.until(
                             ExpectedConditions.refreshed(
                                     ExpectedConditions.visibilityOfElementLocated(locator)
@@ -479,11 +477,11 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// 🔹 Step 1: Open year/month picker
+//Step 1: Open year/month picker
             By showYearPicker = AppiumBy.accessibilityId("Show year picker");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-// 🔹 Step 2: Get all picker wheels
+//Step 2: Get all picker wheels
             List<WebElement> wheels = wait.until(driver ->
                     driver.findElements(By.className("XCUIElementTypePickerWheel"))
             );
@@ -499,7 +497,7 @@ public class Issuer {
             WebElement monthWheel = wheels.get(0);
             WebElement yearWheel = wheels.get(1);
 
-// 🔹 Step 3: Set values
+//Step 3: Set values
             String targetYear = "2020";
             String targetMonth = "March";
 
@@ -507,7 +505,7 @@ public class Issuer {
             monthWheel.sendKeys(targetMonth);
             yearWheel.sendKeys(targetYear);
 
-// 🔹 Step 4: Click Done
+//Step 4: Click Done
             By doneBtn = AppiumBy.accessibilityId("Done");
             wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
 
@@ -975,20 +973,6 @@ public class Issuer {
             Assert.assertTrue("Form not displayed correctly", found);        }
     }
 
-    private void scrollToText(AndroidDriver driver, String text) {
-        driver.findElement(AppiumBy.androidUIAutomator(
-                "new UiScrollable(new UiSelector().scrollable(true))" +
-                        ".scrollIntoView(new UiSelector().textContains(\"" + text + "\"))"
-        ));
-    }
-
-    private boolean isAppReady(AndroidDriver driver) {
-        try {
-            return driver.getPageSource() != null && driver.getPageSource().length() > 1000;
-        } catch (Exception e) {
-            return false;
-        }
-    }
     public void issuePID() throws InterruptedException {
         selectCountryOfOrigin();
         clickFormEu();
@@ -1159,26 +1143,6 @@ public class Issuer {
         }
     }
 
-    private void chooseBirthDateDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickBirthDate)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.chooseSet)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickBirthDateDev)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.chooseSet)).click();
-        }
-    }
-
-    private void authorizeIsDisplayedDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayedDev)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED_DEV.label, pageHeader);
-        }
-    }
-
     public void clickConfirm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickConfirm)).click();
@@ -1187,57 +1151,6 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        }
-    }
-
-    private void enterCountryCodeDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountryCodeDev)).click();
-            WebElement countryCode = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountryCodeDev));
-            countryCode.clear();
-            countryCode.sendKeys("GR");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboard)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCodeDev)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement countryCode = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCodeDev);
-            countryCode.clear();
-            countryCode.sendKeys("GR");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.closeKeyboard)).click();
-        }
-    }
-
-    private void enterCountryDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountryDev));
-            countryField.click();
-            countryField = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickedCountryDev));
-            countryField.clear();
-            countryField.sendKeys("Greece");
-            WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
-            placeOfBirth.click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryDev)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement country = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountryDev);
-            country.clear();
-            country.sendKeys("Greece");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickPlaceOfBirth)).click();
-        }
-    }
-
-    private void enterGivenNameDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.givenNameFieldDev)).click();
-            WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.givenNameFieldDev));
-            givenName.clear();
-            givenName.sendKeys("Foteini");
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.givenNameFieldDev)).click();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.givenNameFieldDev);
-            givenName.clear();
-            givenName.sendKeys("Foteini");
         }
     }
 
@@ -1363,35 +1276,6 @@ public class Issuer {
         verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/py_issuer_authorization.yml");
         scrollUntilAuthorize();
         clickAuthorize();
-    }
-
-    private void swipeUp(AppiumDriver driver) {
-
-        Dimension size = driver.manage().window().getSize();
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.75);
-        int endY = (int) (size.height * 0.30);
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 0);
-        swipe.addAction(finger.createPointerMove(
-                Duration.ZERO,
-                PointerInput.Origin.viewport(),
-                startX,
-                startY));
-
-        swipe.addAction(finger.createPointerDown(
-                PointerInput.MouseButton.LEFT.asArg()));
-        swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-        swipe.addAction(finger.createPointerMove(
-                Duration.ofMillis(600),
-                PointerInput.Origin.viewport(),
-                startX,
-                endY));
-
-        swipe.addAction(finger.createPointerUp(
-                PointerInput.MouseButton.LEFT.asArg()));
-        driver.perform(Collections.singletonList(swipe));
     }
 
     public void enterGivenNameOnMdl() {

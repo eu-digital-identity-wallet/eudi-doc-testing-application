@@ -753,7 +753,7 @@ public class Verifier {
             try {
                 srcFile = canvas.getScreenshotAs(OutputType.FILE);
             } catch (Exception e) {
-                // 🔥 Fallback: container screenshot (VERY important)
+                // Fallback: container screenshot (VERY important)
                 srcFile = container.getScreenshotAs(OutputType.FILE);
             }
 

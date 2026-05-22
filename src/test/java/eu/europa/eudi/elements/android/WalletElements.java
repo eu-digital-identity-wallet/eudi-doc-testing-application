@@ -27,7 +27,6 @@ public class WalletElements {
     public static By unselectDataForMdlKotlin = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By correspondingMessageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Choosing not to share certain data may result in failure to issue the requested document.\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
-
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By successMessageForDrivingIsDisplayed = By.xpath("//android.widget.TextView[@text=\"You have successfully added the following to your wallet\"]");
