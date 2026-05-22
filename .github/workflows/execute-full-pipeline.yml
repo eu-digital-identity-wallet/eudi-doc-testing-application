@@ -1,4 +1,4 @@
-name: Execute Final Summary Report
+name: Final Summary Report
 permissions:
   actions: write
   contents: read
