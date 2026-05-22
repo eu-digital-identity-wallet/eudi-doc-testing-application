@@ -27,7 +27,7 @@ jobs:
         with:
           fetch-depth: 0
           clean: false
-          lfs: true
+          lfs: false
           ref: ${{ inputs.branch-to-checkout }}
 
       # ---------------- JDK ----------------
