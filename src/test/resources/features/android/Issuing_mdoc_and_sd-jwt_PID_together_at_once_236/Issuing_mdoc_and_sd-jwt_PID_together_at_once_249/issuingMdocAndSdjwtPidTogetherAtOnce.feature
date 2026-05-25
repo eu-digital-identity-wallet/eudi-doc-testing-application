@@ -1,4 +1,4 @@
-@ANDROID @manual @US_IMASPTAO @Q1_2025
+@ANDROID @manual @US_IMASPTAO @Q1_2026
 Feature: PID-07 Issuing mdoc and sd-jwt PID together at once
   As a wallet user requesting a PID
   I want to receive my PID in both ISO mdoc and SD-JWT VC formats simultaneously

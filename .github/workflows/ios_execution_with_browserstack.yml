@@ -95,7 +95,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
 
       # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -133,12 +133,12 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and @IOS"
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
@@ -178,4 +178,4 @@ jobs:
         if: always()
         with:
           name: ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2025.12.34-Demo/**/*.json
+          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json

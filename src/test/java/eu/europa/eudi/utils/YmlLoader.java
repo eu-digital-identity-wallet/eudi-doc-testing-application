@@ -2,10 +2,7 @@ package eu.europa.eudi.utils;
 
 import org.snakeyaml.engine.v2.api.Load;
 import org.snakeyaml.engine.v2.api.LoadSettings;
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
 
 public class YmlLoader {
     public static <T> T load(String file, Class<T> clazz) {

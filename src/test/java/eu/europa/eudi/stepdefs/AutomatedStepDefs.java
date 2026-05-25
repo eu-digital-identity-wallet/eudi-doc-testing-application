@@ -22,37 +22,28 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
-
 import java.time.Duration;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class AutomatedStepDefs {
 
     static TestSetup test;
     EnvDataConfig envDataConfig;
-    private WebDriver webDriver;
     private String issuerType;
     private String credential;
     private String issuanceMethod;
     private String selectiveDisclosure;
-    private String issueScenario;
 
     @Before
     public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
@@ -199,16 +190,6 @@ public class AutomatedStepDefs {
         }
     }
 
-    private boolean clickNextIfVisible() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
-        WebDriverWait wait = test.webWebDriverFactory().getWait();
-
-        By nextButton = By.xpath("//button[.//span[normalize-space()='Next']]");
-
-        Boolean next = wait.until(ExpectedConditions.elementToBeClickable(nextButton)).isDisplayed();
-        return next;
-    }
-
     private void waitForBrowserStackToBeReadyAndroid(WebDriver driverAndroid) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             try {
@@ -279,13 +260,11 @@ public class AutomatedStepDefs {
             // Ignore cleanup errors
         }
     }
-
-
+    
     public static TestSetup getTest() {
         return test;
     }
-
-
+    
     @Given("user opens Verifier App")
     public void userOpensVerifierApp() throws MalformedURLException {
         test.mobile().wallet().userOpensVerifier();
@@ -453,7 +432,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters their PIN")
-    public void theUserEntersTheirPIN() {
+    public void theUserEntersTheirPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -548,7 +527,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has successfully entered the PIN")
-    public void theUserHasSuccessfullyEnteredThePIN() {
+    public void theUserHasSuccessfullyEnteredThePIN() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //        test.mobile().wallet().startAndStopDriver();
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -580,7 +559,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has opened the selected mDL")
-    public void theUserHasOpenedTheSelectedMDL() {
+    public void theUserHasOpenedTheSelectedMDL() throws InterruptedException {
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAMDL();
         theUserShouldSeeTheDocumentContents();
@@ -619,7 +598,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user has opened the selected PID")
-    public void theUserHasOpenedTheSelectedPID() {
+    public void theUserHasOpenedTheSelectedPID() throws InterruptedException {
         theUserHasSuccessfullyEnteredThePIN();
         theUserOpensAPIDNotTheFirstOneIssued();
         theUserShouldSeeThePidDocumentContents();
@@ -649,12 +628,12 @@ public class AutomatedStepDefs {
     }
 
     @Then("the user should enter the PIN")
-    public void theUserShouldEnterThePIN() {
+    public void theUserShouldEnterThePIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
     @Given("the user has successfully entered the PIN after reboot")
-    public void theUserHasSuccessfullyEnteredThePINAfterReboot() {
+    public void theUserHasSuccessfullyEnteredThePINAfterReboot() throws InterruptedException {
         theApplicationHasRebooted();
         theLoginScreenAppears();
         theUserShouldEnterThePIN();
@@ -857,7 +836,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters the correct PIN")
-    public void theUserEntersTheCorrectPIN() {
+    public void theUserEntersTheCorrectPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -870,7 +849,7 @@ public class AutomatedStepDefs {
     }
 
     @When("user authorizes the disclosure of the data")
-    public void userAuthorizesTheDisclosureOfTheData() {
+    public void userAuthorizesTheDisclosureOfTheData() throws InterruptedException {
         test.mobile().wallet().pinFieldIsDisplayed();
         test.mobile().verifier().insertPIN();
     }
@@ -1014,7 +993,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the expanded verification details are seen")
-    public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException {
+    public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException, InterruptedException {
         theUserViewsTheDocumentThatIsRequested();
         theUserInsertsThePIN();
         theUserClicksToViewTheDocumentsDetails();
@@ -1036,7 +1015,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user inserts the PIN")
-    public void theUserInsertsThePIN() {
+    public void theUserInsertsThePIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -1048,7 +1027,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().clickConfirm();
         test.mobile().wallet().successMessageOfSetUpPin();
-
     }
 
     @When("the user navigates to the Documents screen")
@@ -1080,7 +1058,7 @@ public class AutomatedStepDefs {
 
     @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
     public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
-//        test.mobile().wallet().predefinedListIsDisplayed();
+      //donothing
     }
 
     @Given("the user is viewing the predefined list of attestations")
@@ -1105,12 +1083,12 @@ public class AutomatedStepDefs {
 
     @And("the screen informs the user about the attestation issued and the issuer who issued it")
     public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
-//        test.mobile().wallet().informUserAboutAttestation();
+         //donothing
     }
 
     @And("the screen displays a Close button to return to the Home screen")
     public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
-//        test.mobile().wallet().clickButtonIsDisplayed();
+         //donothing
     }
 
     @Given("the user is viewing the success screen after an attestation is issued")
@@ -1138,7 +1116,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().scrollUntilFindSubmit();
         test.mobile().issuer().clickPersonalIdentificationData();
-//        test.mobile().issuer().clickPreAuthorizationCode();
         test.mobile().issuer().clickSubmitButton();
     }
 
@@ -1214,12 +1191,12 @@ public class AutomatedStepDefs {
 
     @Then("the Wallet app requests the transaction code")
     public void theWalletAppRequestsTheTransactionCode() {
-//        test.mobile().wallet().verfiricationIsDisplayed();
+       //donothing
     }
 
     @And("the user enters the transaction code provided by the Issuer")
     public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
-//        test.mobile().wallet().sendTrasactionCode();
+       //donothing
     }
 
     @Given("the user entered the transaction code provided by the Issuer")
@@ -1256,7 +1233,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().launchSafari();
         test.mobile().issuer().requestCredentialsPageIsDisplayed();
         test.mobile().issuer().scrollUntilFindSubmit();
-//        test.mobile().issuer().clickAgeOver18();
         test.mobile().issuer().clickSubmitButton();
     }
 
@@ -1280,7 +1256,7 @@ public class AutomatedStepDefs {
 
     @Then("the Wallet is initiated and the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
     public void theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
-//        test.mobile().wallet().detailsOfAgeOver18IsDisplayed();
+        //donothing
     }
 
     @Given("the user is presented with details of the credentials to be issued")
@@ -1292,7 +1268,7 @@ public class AutomatedStepDefs {
 
     @When("the user selects to proceed with the issuance process")
     public void theUserSelectsToProceedWithTheIssuanceProcess() {
-//        test.mobile().wallet().clickAdd();
+       //donothing
     }
 
     @Then("the user is redirected to the Issuer service to present their PID")
@@ -1321,7 +1297,7 @@ public class AutomatedStepDefs {
 
     @And("the user sees the details regarding the issuance")
     public void theUserSeesTheDetailsRegardingTheIssuance() {
-//        test.mobile().wallet().detailsArePresentedForDeferred();
+        //donothing
     }
 
     @Given("the user is on the wallet app with issuance details")
@@ -1334,7 +1310,7 @@ public class AutomatedStepDefs {
 
     @When("the user clicks the Issue button")
     public void theUserClicksTheIssueButton() {
-//        test.mobile().wallet().clickAdd();
+      //donothing
     }
 
     @Then("the user is redirected to the issuer for authentication and consent")
@@ -1349,7 +1325,7 @@ public class AutomatedStepDefs {
 
     @When("the user selects the Online option in the Authenticate section")
     public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
-//         test.mobile().wallet().clickAuthentication();
+        //donothing
     }
 
     @When("the user decides not to proceed")
@@ -1359,8 +1335,7 @@ public class AutomatedStepDefs {
 
     @Then("the user can select the Abort operation option")
     public void theUserCanSelectTheAbortOperationOption() {
-//        test.mobile().wallet().cancelSigningIsDisplayed();
-//        test.mobile().wallet().clickCancelSigning();
+        //donothing
     }
 
     @And("EUDI Wallet should return the user to the main page")
@@ -1370,15 +1345,12 @@ public class AutomatedStepDefs {
 
     @When("the EUDI Wallet receives the signed document")
     public void theEUDIWalletReceivesTheSignedDocument() {
-//        test.mobile().wallet().clickToViewSignDocument();
-//        test.mobile().wallet().clickBackWallet();
+        //donothing
     }
 
     @Then("the EUDI Wallet enables the user to share the document or close the process")
     public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
         test.mobile().wallet().clickDone();
-//       test.mobile().wallet().closeIsDisplayed();
-//       test.mobile().wallet().shareIsDisplayed();
     }
 
     @Given("the user has been redirected to the Issuer service to present their PID")
@@ -1413,7 +1385,7 @@ public class AutomatedStepDefs {
 
     @Then("the user is prompted to enter their six-digit PIN")
     public void theUserIsPromptedToEnterTheirSixDigitPIN() {
-//        test.mobile().wallet().createAPinIsDisplayed();
+      //donothing
     }
 
     @Given("the user has been prompted to enter their six-digit PIN")
@@ -1424,7 +1396,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() {
+    public void theUserEntersTheirSixDigitPINCorrectly() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
@@ -1478,12 +1450,12 @@ public class AutomatedStepDefs {
 
     @Then("the user is redirected to the wallet app after issuance")
     public void theUserIsRedirectedToTheWalletAppAfterIssuance() {
-//        test.mobile().wallet().isOnWallet();
+       //donothing
     }
 
     @And("a message appears stating that the request is in progress")
     public void aMessageAppearsStatingThatTheRequestIsInProgress() {
-//        test.mobile().wallet().requestInProgressIsDisplayed();
+     //donothing
     }
 
     @Given("the user sees the issuance in progress message")
@@ -1496,14 +1468,13 @@ public class AutomatedStepDefs {
 
     @When("the user clicks OK")
     public void theUserClicksOK() {
-//       test.mobile().wallet().clickOk();
+      //donothing
     }
 
     @Then("the dashboard appears with the document grayed out and in a pending state")
     public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().clickOnDocuments();
-//        test.mobile().wallet().documentInPendingState();
     }
 
     @Given("the wallet app is polling the issuer for the credential")
@@ -1515,7 +1486,7 @@ public class AutomatedStepDefs {
 
     @Then("the user views a modal informing them that the document has been issued")
     public void theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued() {
-//        test.mobile().wallet().documentIsIssued();
+        //donothing
     }
 
     @Given("the user visits the issuer service on the same device")
@@ -1546,7 +1517,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the user authenticates using a six-digit PIN or Biometrics")
-    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() {
+    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() throws InterruptedException {
         test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -1590,7 +1561,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user is successfully authenticated in the EUDI Wallet")
-    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() throws MalformedURLException {
+    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
         theAuthenticationIsSuccessful();
@@ -1602,17 +1573,16 @@ public class AutomatedStepDefs {
     }
 
     @Given("the EUDI Wallet requests the user to consent")
-    public void theEUDIWalletRequestsTheUserToConsent() throws MalformedURLException {
+    public void theEUDIWalletRequestsTheUserToConsent() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
         theAuthenticationIsSuccessful();
     }
 
     @Given("the user consents to the attestation presentation")
-    public void theUserConsentsToTheAttestationPresentation() throws MalformedURLException {
+    public void theUserConsentsToTheAttestationPresentation() throws MalformedURLException, InterruptedException {
         theEUDIWalletIsOpened();
         theUserAuthenticatesUsingASixDigitPINOrBiometrics();
-
     }
 
     @Then("the EUDI Wallet displays a confirmation message indicating the outcome")
@@ -1627,7 +1597,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("Method A is configured for the attestation type")
-    public void methodAIsConfiguredForTheAttestationType() throws MalformedURLException {
+    public void methodAIsConfiguredForTheAttestationType() throws MalformedURLException, InterruptedException {
         theUserConsentsToTheAttestationPresentation();
         theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome();
         theRelyingPartyServiceReceivesTheAttestation();
@@ -1635,7 +1605,7 @@ public class AutomatedStepDefs {
 
     @When("the EUDI Wallet selects an available matching attestation")
     public void theEUDIWalletSelectsAnAvailableMatchingAttestation() {
-//        test.mobile().wallet().openWallet();
+         //donothing
     }
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
@@ -1646,7 +1616,7 @@ public class AutomatedStepDefs {
 
     @And("the EUDI Wallet reduces the internal counter of unused attestations")
     public void theEUDIWalletReducesTheInternalCounterOfUnusedAttestations() {
-//        test.mobile().wallet().instanceHasReduced();
+          //donothing
     }
 
     @Given("the authentication is successful and continue")
@@ -1682,7 +1652,7 @@ public class AutomatedStepDefs {
 
     @Then("the Wallet displays a counter showing the number of attestations issued")
     public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
-//        test.mobile().wallet().counterOfIssuedAttestation();
+        //donothing
     }
 
     @Given("the user views the issuance confirmation modal")
@@ -1693,12 +1663,12 @@ public class AutomatedStepDefs {
 
     @When("the user clicks to view the document information")
     public void theUserClicksToViewTheDocumentInformation() {
-//        test.mobile().wallet().clickToSeeDocument();
+       //donothing
     }
 
     @Then("the document is open")
     public void theDocumentIsOpen() {
-//        test.mobile().wallet().documentOpened();
+        //nothing
     }
 
     @When("the user clicks on the X button")
@@ -1790,7 +1760,11 @@ public class AutomatedStepDefs {
 
     @Then("the QR code scan should be activated")
     public void theQRCodeScanShouldBeActivated() {
-        test.mobile().wallet().onlyThisTimeQR();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if (test.mobile().wallet().isQrVisible()) {
+                test.mobile().wallet().onlyThisTimeQR();
+            }
+        }
         test.mobile().wallet().theQRScannerIsActivated();
     }
 
@@ -1835,11 +1809,10 @@ public class AutomatedStepDefs {
     @And("the user clicks the wallet link")
     public void theUserClicksTheWalletLink() {
         test.mobile().issuer().clickWalletLink();
-
     }
 
     @Then("the user clicks the add button")
-    public void theUserClicksTheAddButton() {
+    public void theUserClicksTheAddButton() throws InterruptedException {
         test.mobile().wallet().clickAddButton();
         test.mobile().issuer().fillLoginForm();
     }
@@ -1853,7 +1826,6 @@ public class AutomatedStepDefs {
     public void theDetailsOfTheCredentialToBeIssuedArePresentedKotlin() {
         test.mobile().wallet().detailsArePresentedKotlin();
     }
-
 
     @And("the PID from Kotlin is displayed in the Documents")
     public void thePIDFromKotlinIsDisplayedInTheDocuments() {
@@ -1875,7 +1847,6 @@ public class AutomatedStepDefs {
     public void theVerifierHasGeneratedAQRCodeForPresentationRequest() throws MalformedURLException, InterruptedException {
         test.mobile().wallet().userOpensVerifier();
         test.mobile().verifier().createVerifierQRScreenshot();
-
     }
 
     @Then("verifier verifies the credential successfully with {}")
@@ -1899,21 +1870,7 @@ public class AutomatedStepDefs {
                     test.mobile().issuer().kotlinIssuerService();
                     break;
                 case "python":
-//                test.mobile().wallet().checkIfPageIsTrue();
-//                test.mobile().wallet().createAPin();
-//                test.mobile().wallet().clickNextButton();
-//                test.mobile().wallet().renterThePin();
-//                test.mobile().wallet().clickConfirm();
-//                test.mobile().wallet().successMessageOfSetUpPin();
-//                test.mobile().wallet().clickAddMyDigitalID();
-//                test.mobile().wallet().addPIDPageIsDisplayed();
-//                test.mobile().wallet().scrollUntilPIDFirst();
-//                test.mobile().wallet().clickPID();
-//                test.mobile().issuer().issuePID();
-//                test.mobile().issuer().sleepMethod();
-//                test.mobile().issuer().successfullySharedMessage();
-//                test.mobile().issuer().ckeckFieldsOnWallet();
-//                test.mobile().wallet().clickDone();
+
                     break;
             }
         } else {
@@ -1975,7 +1932,6 @@ public class AutomatedStepDefs {
 
     @And("the issuance is performed on a {} for the {}")
     public void theIssuanceIsPerformedOnA(String issueScenario, String credential) throws InterruptedException {
-        this.issueScenario = issueScenario;
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
@@ -1993,10 +1949,18 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickOnDocuments();
                     test.mobile().wallet().clickToAddDocument();
                     test.mobile().wallet().clickQROption();
-                    test.mobile().wallet().onlyThisTimeQR();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }
                     test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                     test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                    test.mobile().wallet().viewDataPage();
                     test.mobile().wallet().clickAddButton();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+                    }
                     test.mobile().issuer().signInUsser();
                     test.mobile().issuer().fillLoginForm();
                     break;
@@ -2040,8 +2004,11 @@ public class AutomatedStepDefs {
                         test.mobile().wallet().clickOnDocuments();
                         test.mobile().wallet().clickToAddDocument();
                         test.mobile().wallet().clickQROption();
-                        test.mobile().wallet().onlyThisTimeQR();
-                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                            if (test.mobile().wallet().isQrVisible()) {
+                                test.mobile().wallet().onlyThisTimeQR();
+                            }
+                        }                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                         test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
@@ -2052,19 +2019,9 @@ public class AutomatedStepDefs {
         }
     }
 
-
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() throws InterruptedException {
         if ("Python".equalsIgnoreCase(this.issuerType)) {
-            switch (issueScenario.toLowerCase()) {
-                case "cross device":
-                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().issueMDL();
-                    }
-                    break;
-            }
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
         }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2099,191 +2056,115 @@ public class AutomatedStepDefs {
         }
     }
 
-//    private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
-//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//
-//            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//            yml.fields.forEach((fieldKey, cfg) -> {
-//                if (!cfg.required) return;
-//
-//                // search full label
-//                assertTextVisibleWithScroll(fieldKey, 10);
-//
-//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-//                    assertTextVisibleWithScroll(cfg.value.trim(), 5);
-//                } else {
-//                    By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-//
-//                    if (driver.findElements(anyValue).isEmpty()) {
-//                        throw new AssertionError("No values visible for label: " + fieldKey);
-//                    }
-//                }
-//            });
-//        }else{
-//            FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-//            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//
-//            yml.fields.forEach((fieldKey, cfg) -> {
-//                if (!cfg.required) return;
-//
-//                // search full label
-//                assertTextVisibleWithScroll(fieldKey, 10);
-//
-//                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-//                    assertTextVisibleWithScroll(cfg.value.trim(), 8);
-//                } else {
-//                    By anyValue = By.xpath("//XCUIElementTypeStaticText[@name!='']");
-//
-//                    if (driver.findElements(anyValue).isEmpty()) {
-//                        throw new AssertionError("No values visible for label: " + fieldKey);
-//                    }
-//                }
-//            });
-//        }
-//    }
-
     private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
 
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
 
         boolean isAndroid = test.getSystemOperation().equals(Literals.General.ANDROID.label);
 
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 6);
-            yml.fields.forEach((fieldKey, cfg) -> {
+        AppiumDriver driver = isAndroid
+                ? (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid()
+                : (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-                if (!cfg.required) return;
+        Set<String> screenTexts = collectAllTexts(driver, isAndroid, 8);
 
-                if (!screenTexts.contains(fieldKey)) {
-                    throw new AssertionError("Missing label: " + fieldKey);
+        yml.fields.forEach((fieldKey, cfg) -> {
+
+            if (!cfg.required) return;
+
+            if (!screenTexts.contains(fieldKey)) {
+                throw new AssertionError("Missing label: " + fieldKey);
+            }
+
+            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
+                if (!screenTexts.contains(cfg.value.trim())) {
+                    throw new AssertionError("Missing value: " + cfg.value);
                 }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    if (!screenTexts.contains(cfg.value.trim())) {
-                        throw new AssertionError("Missing value: " + cfg.value);
-                    }
-                }
-            });
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            Set<String> screenTexts = collectAllTexts(driver, isAndroid, 5);
-            yml.fields.forEach((fieldKey, cfg) -> {
-
-                if (!cfg.required) return;
-
-                if (!screenTexts.contains(fieldKey)) {
-                    throw new AssertionError("Missing label: " + fieldKey);
-                }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    if (!screenTexts.contains(cfg.value.trim())) {
-                        throw new AssertionError("Missing value: " + cfg.value);
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 
     private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
 
         Set<String> allTexts = new HashSet<>();
 
-        By locator = isAndroid
-                ? By.className("android.widget.TextView")
-                : AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND visible == 1");
+        Dimension size = driver.manage().window().getSize();
 
-        for (int scroll = 0; scroll < maxScrolls; scroll++) {
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.65);
+        int endY = (int) (size.height * 0.35);
 
-            try {
-                List<WebElement> elements = driver.findElements(locator);
+        String lastPageSource = "";
+        int noChangeCounter = 0;
 
-                for (WebElement el : elements) {
-                    try {
-                        String txt = el.getText();
+        for (int i = 0; i < maxScrolls; i++) {
 
-                        if (txt != null && !txt.trim().isEmpty()) {
-                            allTexts.add(txt.trim());
-                        }
+            String pageSource = driver.getPageSource();
 
-                    } catch (StaleElementReferenceException e) {
-                        // skip stale element
-                    }
-                }
-
-            } catch (Exception e) {
-                // retry whole batch once if needed
+            // stop if UI stopped changing
+            if (pageSource.equals(lastPageSource)) {
+                noChangeCounter++;
+            } else {
+                noChangeCounter = 0;
             }
 
-            scrollFast(driver, isAndroid);
+            lastPageSource = pageSource;
+
+            // extract text FAST (regex-based, no WebElements)
+            extractTexts(pageSource, allTexts, isAndroid);
+
+            // stop early if no new content twice
+            if (noChangeCounter >= 2) break;
+
+            scrollFast(driver, startX, startY, endY);
+            try {
+                Thread.sleep(500); // 300–800ms works well on BrowserStack
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
         return allTexts;
     }
 
-    private void scrollFast(AppiumDriver driver, boolean isAndroid) {
+    private void extractTexts(String pageSource, Set<String> allTexts, boolean isAndroid) {
 
-        Dimension size = driver.manage().window().getSize();
+        Pattern pattern;
 
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.6);
-        int endY = (int) (size.height * 0.3);
+        if (isAndroid) {
+            pattern = Pattern.compile("text=\"(.*?)\"");
+        } else {
+            pattern = Pattern.compile("label=\"(.*?)\"");
+        }
+
+        Matcher matcher = pattern.matcher(pageSource);
+
+        while (matcher.find()) {
+            String txt = matcher.group(1).trim();
+            if (!txt.isEmpty()) {
+                allTexts.add(txt);
+            }
+        }
+    }
+
+    private void scrollFast(AppiumDriver driver, int startX, int startY, int endY) {
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1);
 
-        swipe.addAction(finger.createPointerMove(
-                Duration.ZERO,
-                PointerInput.Origin.viewport(),
-                startX,
-                startY
-        ));
+        swipe.addAction(finger.createPointerMove(Duration.ZERO,
+                PointerInput.Origin.viewport(), startX, startY));
 
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
 
-        swipe.addAction(finger.createPointerMove(
-                Duration.ofMillis(250),
-                PointerInput.Origin.viewport(),
-                startX,
-                endY
-        ));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(180),
+                PointerInput.Origin.viewport(), startX, endY));
 
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(swipe));
     }
 
-    public void assertTextVisibleWithScroll(String text, int maxScrolls) {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
-
-            for (int i = 0; i < 2; i++) {
-                if (!driver.findElements(locator).isEmpty()) return;
-                slowScroll();
-            }
-            throw new AssertionError("Text not found: " + text);
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            By locator = By.xpath(
-                    "//*[@name=\"" + text.replace("\"", "\\\"") + "\" or " +
-                            "@label=\"" + text.replace("\"", "\\\"") + "\" or " +
-                            "@value=\"" + text.replace("\"", "\\\"") + "\"]"
-            );
-            for (int i = 0; i < maxScrolls; i++) {
-
-                if (!driver.findElements(locator).isEmpty()) {
-                    return;
-                }
-
-                slowScroll();
-            }
-            throw new AssertionError("Text not found: " + text);
-        }
-    }
     @When("the user presents the credential to the {}")
     public void theUserPresentsTheCredentialToThe(String verifierType) throws MalformedURLException {
         switch (verifierType.toLowerCase()) {
@@ -2511,9 +2392,12 @@ public class AutomatedStepDefs {
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().clickAuthenticate();
-                    test.mobile().wallet().clickOnline();
-                    test.mobile().wallet().onlyThisTimeQR();
-                    test.mobile().wallet().theQRScannerIsActivated();
+                    test.mobile().wallet().clickOnlinePresentation();
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }                    test.mobile().wallet().theQRScannerIsActivated();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().createAPin();
@@ -2599,6 +2483,9 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
+                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                        test.mobile().wallet().createAPin();
+                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2656,9 +2543,13 @@ public class AutomatedStepDefs {
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
 
                         } else {
-
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            }
                         }
                     }
 
@@ -2740,14 +2631,16 @@ public class AutomatedStepDefs {
 
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickOnDocuments();
-                    test.mobile().wallet().clickToAddDocument();
-                    test.mobile().wallet().addDocumentPageIsDisplayed();
-                    test.mobile().wallet().clickOnline();
-//                    if ("same device".equalsIgnoreCase(this.issueScenario)) {
-                        test.mobile().wallet().onlyThisTimeQR();
-                    //}
-                    test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                    test.mobile().wallet().clickAuthenticate();
+                    test.mobile().wallet().clickOnlinePresentation();
+
+
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        if (test.mobile().wallet().isQrVisible()) {
+                            test.mobile().wallet().onlyThisTimeQR();
+                        }
+                    }
+//                    test.mobile().wallet().theQRScannerIsActivatedForPresentation();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2798,8 +2691,13 @@ public class AutomatedStepDefs {
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            }
                         }
                     }
 
@@ -2895,7 +2793,7 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -2998,12 +2896,10 @@ public class AutomatedStepDefs {
                 System.out.println("TEXT FOUND: " + el.getAttribute("name"));
             }
 
-// ✅ HERE you call your method
             String pageText = collectAllTextsIOS(driver);
 
             System.out.println("PAGE TEXT: " + pageText);
 
-// ✅ your existing YAML validation stays
             yml.fields.forEach((fieldKey, cfg) -> {
 
                 if (!cfg.required) return;
@@ -3044,43 +2940,6 @@ public class AutomatedStepDefs {
         return allText.toString();
     }
 
-    private String collectAllTextAsString(IOSDriver driver) {
-        String source = driver.getPageSource();
-
-        return source
-                .replaceAll("<[^>]+>", " ")
-                .replaceAll("&nbsp;", " ")
-                .replaceAll("\\s+", " ")
-                .trim()
-                .toLowerCase();
-    }
-
-    private boolean containsText(Set<String> texts, String expected) {
-        String normalized = expected.trim().toLowerCase();
-
-        return texts.stream().anyMatch(t -> t.contains(normalized));
-    }
-
-    private Set<String> collectAllTextsIos(IOSDriver driver) {
-        String source = driver.getPageSource();
-
-        // Remove scripts & styles
-        source = source.replaceAll("<script[^>]*>.*?</script>", " ");
-        source = source.replaceAll("<style[^>]*>.*?</style>", " ");
-
-        // Remove all tags → keep only text
-        String cleanText = source
-                .replaceAll("<[^>]+>", " ")
-                .replaceAll("&nbsp;", " ")
-                .replaceAll("\\s+", " ")
-                .trim()
-                .toLowerCase();
-
-        // Split into words/phrases
-        return new HashSet<>(Arrays.asList(cleanText.split(" ")));
-    }
-
-
     private String getPageText(AndroidDriver driver) {
         return driver.findElement(By.tagName("body")).getText();
     }
@@ -3111,32 +2970,6 @@ public class AutomatedStepDefs {
             }
             return false;
         });
-    }
-
-    private void switchToWebViewIos(IOSDriver driver) {
-
-        Set<String> contexts = driver.getContextHandles();
-        System.out.println("ALL CONTEXTS:");
-        for (String ctx : contexts) {
-            System.out.println(">> " + ctx);
-        }
-
-        for (String ctx : driver.getContextHandles()) {
-            if (ctx.contains("WEBVIEW")) {
-                driver.context(ctx);
-                System.out.println("Switched to: " + ctx);
-                break;
-            }
-        }
-
-        new WebDriverWait(driver, Duration.ofSeconds(30))
-                .until(d -> driver.getPageSource().length() > 1000);
-
-        String source = driver.getPageSource();
-
-        System.out.println("====== PAGE SOURCE ======");
-        System.out.println(source);
-        System.out.println("=========================");
     }
 
     @When("the user clicks the Verify with EUDI Wallet button")

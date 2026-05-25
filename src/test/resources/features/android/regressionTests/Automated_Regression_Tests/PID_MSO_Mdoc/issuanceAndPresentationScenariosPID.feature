@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated
+@ANDROID @@US_CIPSDPYPID @automated
 Feature: Automated Regression Tests PID
 
   @before_01
