@@ -6,7 +6,7 @@ It describes the performance testing for the EUDI Wallet application, including 
 ## Test Run Information
 
 - **Application Under Test:** EUDI Wallet
-- **Application Version:** 2025.12.34-Demo
+- **Application Version:** 2026.05.37-Demo
 - **Test Type:** Performance Testing
 - **Test Execution Environment:** BrowserStack Real Device Farm and Local Physical Devices
 

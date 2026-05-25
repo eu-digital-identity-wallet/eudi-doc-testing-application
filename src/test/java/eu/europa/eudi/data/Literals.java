@@ -49,6 +49,7 @@ public interface Literals {
         QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document."),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
+        QR_SCANNER_IS_ACTIVATED_FOR_PRESENTATION("Scan a QR code provided from a Relying Party to present a digital document online."),
         MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
 
         public final String label;
@@ -83,7 +84,8 @@ public interface Literals {
     enum General{
         ANDROID("android"),
 
-        IOS("ios_execution_with_browserstack.yml");
+        IOS("ios_execution_with_browserstack.yml"),
+        WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE("WebDriver is not an instance of AppiumDriver");
         public final String label;
         General(String label) {
             this.label = label;

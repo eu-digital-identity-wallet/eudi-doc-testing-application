@@ -7,13 +7,14 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class MobileWebDriverFactory {
@@ -28,7 +29,6 @@ public class MobileWebDriverFactory {
     private Process logcatProcess;
     private Thread logcatThread;
     private String sessionId;
-
 
     public MobileWebDriverFactory(TestSetup test, boolean noReset) {
         this.test = test;
@@ -45,27 +45,33 @@ public class MobileWebDriverFactory {
                 String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 UiAutomator2Options options = new UiAutomator2Options();
-                if (envCI.equalsIgnoreCase("githubactions")) {
-                    options.setCapability("appium:app", appUrl);
-                }else{
+//                if (envCI.equalsIgnoreCase("githubactions")) {
+//                    options.setCapability("appium:app", appUrl);
+//                }else{
                     options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
-                }
+              //  }
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("automationName", envDataConfig.getAppiumAndroidAutomationName());
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
-                options.setCapability("autoRotate", false);
+                options.setCapability("autoRotate", true);
                 options.setCapability("browserstack.video", true);
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
-                options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
-//                options.setCapability("appium:waitForIdleTimeout", 100);
+//                options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
+                options.setCapability("appium:disableIdLocatorAutocompletion", true);
+                options.setCapability("appium:disableSuppressAccessibilityService", false);
+                options.setCapability("autoGrantPermissions", true);
+                options.setCapability("disableWindowAnimation", true);
+                options.setCapability("newCommandTimeout", 300);
+                Map<String, Object> appiumSettings = new HashMap<>();
+                appiumSettings.put("allowInvisibleElements", true);
+                options.setCapability("appium:settings", appiumSettings);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
-
                 options.setCapability("name", featureName + " - Android Test");
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
@@ -156,7 +162,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
                 options.setCapability("includeSafariInWebviews", true);
-
+                options.setCapability("waitForQuiescence", true);
 
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
@@ -211,7 +217,6 @@ public class MobileWebDriverFactory {
             e.printStackTrace();
         }
     }
-
 
     public WebDriver getDriverAndroid() {
         return androidDriver;

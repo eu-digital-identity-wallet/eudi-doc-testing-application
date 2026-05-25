@@ -1,14 +1,10 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.utils.TestSetup;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class ManuallyStepDefs {
     TestSetup test;
@@ -8287,7 +8283,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the corresponding Wallet Unit is invoked by the Operating System")
+    @Then("the corresponding Wallet Unit is automatically invoked")
     public void theCorrespondingWalletUnitIsInvokedByTheOperatingSystem() {
         //manual
     }
@@ -8397,7 +8393,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Relying Party generates a presentation reques")
+    @Then("the Relying Party generates a valid presentation request")
     public void theRelyingPartyGeneratesAPresentationReques() {
         //manual
     }
@@ -8407,7 +8403,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the Desktop browser processes the request")
+    @When("the browser processes the request")
     public void theDesktopBrowserProcessesTheRequest() {
         //manual
     }
@@ -8477,7 +8473,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("each attestation displays issuer, credential type, and wallet name")
+    @Then("each attestation displays credential type, and wallet name")
     public void eachAttestationDisplaysIssuerCredentialTypeAndWalletName() {
         //manual
     }
@@ -8634,6 +8630,116 @@ public class ManuallyStepDefs {
 
     @And("no partial PID is stored in the wallet")
     public void noPartialPIDIsStoredInTheWallet() {
+        //manual
+    }
+
+    @And("an existing PID or attestation is stored in the Wallet")
+    public void anExistingPIDOrAttestationIsStoredInTheWallet() {
+        //manual
+    }
+
+    @When("the user selects the re-issuance option from the Issuer details")
+    public void theUserSelectsTheReIssuanceOptionFromTheIssuerDetails() {
+        //manual
+    }
+
+    @Then("the wallet requests re-issuance from the issuer")
+    public void theWalletRequestsReIssuanceFromTheIssuer() {
+        //manual
+    }
+
+    @Given("the user requested re-issuance for an existing PID or attestation")
+    public void theUserRequestedReIssuanceForAnExistingPIDOrAttestation() {
+        //manual
+    }
+
+    @When("the wallet sends the re-issuance request")
+    public void theWalletSendsTheReIssuanceRequest() {
+        //manual
+    }
+
+    @Then("the request is sent to the same issuer that issued the original PID or attestation")
+    public void theRequestIsSentToTheSameIssuerThatIssuedTheOriginalPIDOrAttestation() {
+        //manual
+    }
+
+    @And("the request is for the same PID or attestation type")
+    public void theRequestIsForTheSamePIDOrAttestationType() {
+        //manual
+    }
+
+    @Given("an existing PID or attestation is already stored in the Wallet")
+    public void anExistingPIDOrAttestationIsAlreadyStoredInTheWallet() {
+        //manual
+    }
+
+    @When("the Wallet receives the re-issued PID or attestation of the same type")
+    public void theWalletReceivesTheReIssuedPIDOrAttestationOfTheSameType() {
+        //manual
+    }
+
+    @Then("the existing PID or attestation is replaced")
+    public void theExistingPIDOrAttestationIsReplaced() {
+        //manual
+    }
+
+    @Given("the original PID or attestation was issued in batch")
+    public void theOriginalPIDOrAttestationWasIssuedInBatch() {
+        //manual
+    }
+
+    @When("the issuer re-issues the PID or attestation")
+    public void theIssuerReIssuesThePIDOrAttestation() {
+        //manual
+    }
+
+    @Then("the PID or attestation is re-issued in batch")
+    public void thePIDOrAttestationIsReIssuedInBatch() {
+        //manual
+    }
+
+    @When("the user initiates the wallet verification flow")
+    public void theUserInitiatesTheWalletVerificationFlow() {
+        //manual
+    }
+
+    @When("the system identifies one or more suitable attestations")
+    public void theSystemIdentifiesOneOrMoreSuitableAttestations() {
+        //manual
+    }
+
+    @Then("the user sees an extension of the Wallet open automatically")
+    public void theUserSeesAnExtensionOfTheWalletOpenAutomatically() {
+        //manual
+    }
+
+    @Given("the extension of the Wallet is open")
+    public void theExtensionOfTheWalletIsOpen() {
+        //manual
+    }
+
+    @Then("the requesting Relying Party the requested attestations and related attributes are displayed")
+    public void theRequestingRelyingPartyTheRequestedAttestationsAndRelatedAttributesAreDisplayed() {
+        //manual
+    }
+
+    @Then("the requesting Relying Party and the requested attestations and related attributes are displayed")
+    public void theRequestingRelyingPartyAndTheRequestedAttestationsAndRelatedAttributesAreDisplayed() {
+        //manual
+    }
+
+    @Then("the user is not prompted to grant permission")
+    public void theUserIsNotPromptedToGrantPermission() {
+        //manual
+    }
+
+    @When("the user authenticates successfully using a six digit PIN")
+    public void theUserAuthenticatesSuccessfullyUsingASixDigitPIN() {
+        //manual
+    }
+
+    @When("the user fails to authenticate using the six digit PIN")
+    public void theUserFailsToAuthenticateUsingTheSixDigitPIN() {
         //manual
     }
 }

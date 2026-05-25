@@ -7,9 +7,10 @@ import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.config.EnvDataConfig;;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
 import org.json.JSONObject;
@@ -26,7 +27,6 @@ import java.util.*;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.NoSuchElementException;
 
 public class Verifier {
     TestSetup test;
@@ -165,22 +165,40 @@ public class Verifier {
         }
     }
 
-    public void insertPIN() {
+    public void insertPIN() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebDriver driver = test.mobileWebDriverFactory().getDriverAndroid();
             String fullPin = test.envDataConfig().getPin();
-            char firstDigit = fullPin.charAt(0);
-            char secondDigit = fullPin.charAt(1);
-            char thirdDigit = fullPin.charAt(2);
-            char fourthDigit = fullPin.charAt(3);
-            char fifthDigit = fullPin.charAt(4);
-            char sixthDigit = fullPin.charAt(5);
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield1).sendKeys(String.valueOf(firstDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
-            driver.findElement(eu.europa.eudi.elements.android.WalletElements.pinTexfield6).sendKeys(String.valueOf(sixthDigit));
+
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+// Wait until the EditText is present
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("android.widget.EditText")
+                    )
+            );
+
+// Focus the field
+            pinField.click();
+
+// Small stabilization pause
+            Thread.sleep(500);
+
+// Send digits one-by-one as real keyboard events
+            for (char digit : fullPin.toCharArray()) {
+                driver.pressKey(
+                        new KeyEvent(
+                                AndroidKey.valueOf("DIGIT_" + digit)
+                        )
+                );
+
+                Thread.sleep(100);
+            }
         } else {
             String fullPin = test.envDataConfig().getPin();
             char secondDigit = fullPin.charAt(1);
@@ -463,8 +481,10 @@ public class Verifier {
         }
     }
 
-    public File captureScreen() {
+    public File captureScreen() throws InterruptedException {
         WebDriver driver;
+        Thread.sleep(3000);
+
 
         // Get correct driver
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -480,7 +500,7 @@ public class Verifier {
 
         // Small wait to avoid blank/transition screenshots
         try {
-            Thread.sleep(500);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -535,10 +555,7 @@ public class Verifier {
 
     public void selectAllAttributesOnWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWeb)).click();
-
-
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWeb)).click();
-
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWeb)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWeb)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWeb)).click();
@@ -643,15 +660,12 @@ public class Verifier {
     }
 
     public void assertQrCodeIsVisible() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
         By qrCanvas = By.xpath("//qrcode//canvas");
-
         WebElement canvas = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(qrCanvas)
         );
-
         Assert.assertTrue("QR Code canvas is not displayed", canvas.isDisplayed());
     }
 
@@ -670,9 +684,10 @@ public class Verifier {
         Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
 
-    public File captureScreenOnWeb() {
+    public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
+        Thread.sleep(4000);
 
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
@@ -680,7 +695,7 @@ public class Verifier {
 
         // Small stability wait (important for dynamic rendering)
         try {
-            Thread.sleep(500);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -738,7 +753,7 @@ public class Verifier {
             try {
                 srcFile = canvas.getScreenshotAs(OutputType.FILE);
             } catch (Exception e) {
-                // 🔥 Fallback: container screenshot (VERY important)
+                // Fallback: container screenshot (VERY important)
                 srcFile = container.getScreenshotAs(OutputType.FILE);
             }
 

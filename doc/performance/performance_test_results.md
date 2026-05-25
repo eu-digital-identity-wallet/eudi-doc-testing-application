@@ -17,7 +17,7 @@ These terms are aligned with the **EUDI Architecture and Reference Framework [R0
 ## Test Run Information
 
 - **Application Under Test:** EUDI Wallet
-- **Application Version:** 2025.12.34-Demo
+- **Application Version:** 2026.05.37-Demo
 - **Test Type:** Performance Testing
 - **Test Execution Environment:** BrowserStack Real Device Farm and Local Physical Devices
 
@@ -171,8 +171,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.03% |
-| Memory Usage | 237.18 MB |
+| CPU Usage | 3.53% |
+| Memory Usage | 152.92 MB |
 | Response Time | < 1 s |
 
 ---
@@ -190,8 +190,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 6.28% |
-| Memory Usage | 228.68 MB |
+| CPU Usage | 4.61% |
+| Memory Usage | 169.36 MB |
 | Response Time | < 1 s |
 
 ---
@@ -208,8 +208,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.77% |
-| Memory Usage | 218.79 MB |
+| CPU Usage | 3.17% |
+| Memory Usage | 118.57 MB |
 | Response Time | < 1 s |
 
 ---
@@ -228,7 +228,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 237.99 MB |
+| Memory Usage | 100.34 MB |
 | Response Time | < 1 s |
 
 ---
@@ -246,8 +246,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.27% |
-| Memory Usage | 238.13 MB |
+| CPU Usage | 2.16% |
+| Memory Usage | 179.48 MB |
 | Response Time | < 1 s |
 
 ---
@@ -265,8 +265,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.06% |
-| Memory Usage | 55.81 MB |
+| CPU Usage | 3.11% |
+| Memory Usage | 57.02 MB |
 | Response Time | < 1 s |
 
 ---
@@ -284,8 +284,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.88% |
-| Memory Usage | 46.74 MB |
+| CPU Usage | 1% |
+| Memory Usage | 48.33 MB |
 | Response Time | < 1 s |
 
 ---
@@ -303,8 +303,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.56% |
-| Memory Usage | 44.33 MB |
+| CPU Usage | 1.51% |
+| Memory Usage | 45.19 MB |
 | Response Time | < 1 s |
 
 ---
@@ -324,8 +324,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.41% |
-| Memory Usage | 237.12 MB |
+| CPU Usage | 7.32% |
+| Memory Usage | 161.12 MB |
 | Response Time | < 1 s |
 
 ---
@@ -343,8 +343,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.95% |
-| Memory Usage | 280.32 MB |
+| CPU Usage | 9.02% |
+| Memory Usage | 167.7 MB |
 | Response Time | < 1 s |
 
 ---
@@ -362,8 +362,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.57% |
-| Memory Usage | 219.27 MB |
+| CPU Usage | 5.61% |
+| Memory Usage | 120.06 MB |
 | Response Time | < 1 s |
 
 ---
@@ -381,8 +381,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.64% |
-| Memory Usage | 242.02 MB |
+| CPU Usage | 0.1% |
+| Memory Usage | 136.42 MB |
 | Response Time | < 1 s |
 
 ---
@@ -400,8 +400,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.03% |
-| Memory Usage | 239.31 MB |
+| CPU Usage | 3.78% |
+| Memory Usage | 191.01 MB |
 | Response Time | < 1 s |
 
 ---
@@ -419,8 +419,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.08% |
-| Memory Usage | 83.65 MB |
+| CPU Usage | 1.62% |
+| Memory Usage | 55.09 MB |
 | Response Time | < 1 s |
 
 ---
@@ -438,8 +438,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.86% |
-| Memory Usage | 49.09 MB |
+| CPU Usage | 1.12% |
+| Memory Usage | 44.16 MB |
 | Response Time | < 1 s |
 
 ---
@@ -457,8 +457,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.73% |
-| Memory Usage | 46.55 MB |
+| CPU Usage | 1.16% |
+| Memory Usage | 50.89 MB |
 | Response Time | < 1 s |
 
 ---
@@ -478,8 +478,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.15% |
-| Memory Usage | 227.72 MB |
+| CPU Usage | 5.05% |
+| Memory Usage | 150.87 MB |
 | Response Time | < 1 s |
 
 ---
@@ -497,8 +497,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 6.71% |
-| Memory Usage | 262.56 MB |
+| CPU Usage | 6.07% |
+| Memory Usage | 162.9 MB |
 | Response Time | < 1 s |
 
 ---
@@ -516,8 +516,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.95% |
-| Memory Usage | 220.38 MB |
+| CPU Usage | 3.82% |
+| Memory Usage | 122.51 MB |
 | Response Time | < 1 s |
 
 ---
@@ -536,7 +536,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 243.31 MB |
+| Memory Usage | 133.56 MB |
 | Response Time | < 1 s |
 
 ---
@@ -554,8 +554,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.56% |
-| Memory Usage | 235.9 MB |
+| CPU Usage | 2.46% |
+| Memory Usage | 178.73 MB |
 | Response Time | < 1 s |
 
 ---
@@ -573,8 +573,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.54% |
-| Memory Usage | 52.06 MB |
+| CPU Usage | 1.42% |
+| Memory Usage | 44.02 MB |
 | Response Time | < 1 s |
 
 ---
@@ -592,8 +592,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.84% |
-| Memory Usage | 49.62 MB |
+| CPU Usage | 0.41% |
+| Memory Usage | 49.67 MB |
 | Response Time | < 1 s |
 
 ---
@@ -611,8 +611,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.93% |
-| Memory Usage | 47.28 MB |
+| CPU Usage | 0.48% |
+| Memory Usage | 56.14 MB |
 | Response Time | < 1 s |
 
 ---
@@ -632,8 +632,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.15% |
-| Memory Usage | 227.72 MB |
+| CPU Usage | 5.05% |
+| Memory Usage | 150.87 MB |
 | Response Time | < 1 s |
 
 ---
@@ -651,8 +651,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 6.71% |
-| Memory Usage | 262.56 MB |
+| CPU Usage | 6.07% |
+| Memory Usage | 162.9 MB |
 | Response Time | < 1 s |
 
 ---
@@ -670,8 +670,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.64% |
-| Memory Usage | 228.62 MB |
+| CPU Usage | 3.82% |
+| Memory Usage | 122.51 MB |
 | Response Time | < 1 s |
 
 ---
@@ -690,7 +690,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 257.44 MB |
+| Memory Usage | 133.56 MB |
 | Response Time | < 1 s |
 
 ---       
@@ -708,8 +708,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.08% |
-| Memory Usage | 249.59 MB |
+| CPU Usage | 2.46% |
+| Memory Usage | 178.73 MB |
 | Response Time | < 1 s |
 
 ---
@@ -727,8 +727,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.54% |
-| Memory Usage | 52.06 MB |
+| CPU Usage | 1.43% |
+| Memory Usage | 74.06 MB |
 | Response Time | < 1 s |
 
 ---
@@ -746,8 +746,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.88% |
-| Memory Usage | 49.92 MB |
+| CPU Usage | 0.67% |
+| Memory Usage | 36.96 MB |
 | Response Time | < 1 s |
 
 ---
@@ -765,8 +765,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.91% |
-| Memory Usage | 43.57 MB |
+| CPU Usage | 0.44% |
+| Memory Usage | 46.92 MB |
 | Response Time | < 1 s |
 
 ---
@@ -786,8 +786,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.43% |
-| Memory Usage | 229.91 MB |
+| CPU Usage | 4.59% |
+| Memory Usage | 158.54 MB |
 | Response Time | < 1 s |
 
 ---
@@ -805,8 +805,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.98% |
-| Memory Usage | 271.11 MB |
+| CPU Usage | 6.48% |
+| Memory Usage | 196.21 MB |
 | Response Time | < 1 s |
 
 ---
@@ -824,8 +824,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.01% |
-| Memory Usage | 225.41 MB |
+| CPU Usage | 4.2% |
+| Memory Usage | 123.48 MB |
 | Response Time | < 1 s |
 
 ---
@@ -844,7 +844,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 241.34 MB |
+| Memory Usage | 146.1 MB |
 | Response Time | < 1 s |
 
 ---
@@ -862,8 +862,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.74% |
-| Memory Usage | 219.65 MB |
+| CPU Usage | 2.75% |
+| Memory Usage | 189.98 MB |
 | Response Time | < 1 s |
 
 ---
@@ -881,8 +881,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.59% |
-| Memory Usage | 90.43 MB |
+| CPU Usage | 1.11% |
+| Memory Usage | 60.11 MB |
 | Response Time | < 1 s |
 
 ---
@@ -900,8 +900,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.93% |
-| Memory Usage | 49.44 MB |
+| CPU Usage | 0.43% |
+| Memory Usage | 46.9 MB |
 | Response Time | < 1 s |
 
 ---
@@ -919,8 +919,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 0.83% |
-| Memory Usage | 48.32 MB |
+| CPU Usage | 0.51% |
+| Memory Usage | 45.14 MB |
 | Response Time | < 1 s |
 
 ---
@@ -941,7 +941,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 261.8 MB |
+| Memory Usage | 235.2 MB |
 | Response Time | < 1 s |
 
 ---
@@ -960,7 +960,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 30.75 MB |
+| Memory Usage | 33.56 MB |
 | Response Time | < 1 s |
 
 ---
@@ -980,8 +980,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.34% |
-| Memory Usage | 255.49 MB |
+| CPU Usage | 5.73% |
+| Memory Usage | 183.16 MB |
 | Response Time | < 1 s |
 
 ---
@@ -995,14 +995,12 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 - Figure 88: Network Performance Graph
 
 ![img_88.png](charts_images/img_88.png)
-![img_89.png](charts_images/img_89.png)
-![img_90.png](charts_images/img_90.png)
 
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 6.91% |
-| Memory Usage | 285.82 MB |
+| CPU Usage | 7.57% |
+| Memory Usage | 193.46 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1020,8 +1018,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.99% |
-| Memory Usage | 215.71 MB |
+| CPU Usage | 4.78% |
+| Memory Usage | 128.15 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1040,7 +1038,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 246.77 MB |
+| Memory Usage | 138.09 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1058,8 +1056,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.78% |
-| Memory Usage | 295.92 MB |
+| CPU Usage | 2.63% |
+| Memory Usage | 224.27 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1077,8 +1075,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.24% |
-| Memory Usage | 81.28 MB |
+| CPU Usage | 2.17% |
+| Memory Usage | 74.66 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1092,19 +1090,12 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 - Figure 100-01-02-03-04-05-06-07: Network Performance Graph
 
 ![img_100.png](charts_images/img_100.png)
-![img_101.png](charts_images/img_101.png)
-![img_102.png](charts_images/img_102.png)
-![img_103.png](charts_images/img_103.png)
-![img_104.png](charts_images/img_104.png)
-![img_105.png](charts_images/img_105.png)
-![img_106.png](charts_images/img_106.png)
-![img_107.png](charts_images/img_107.png)
 
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.76% |
-| Memory Usage | 63.91 MB |
+| CPU Usage | 1.39% |
+| Memory Usage | 50.72 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1122,8 +1113,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.13% |
-| Memory Usage | 53 MB |
+| CPU Usage | 1.27% |
+| Memory Usage | 46.45 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1143,8 +1134,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.03% |
-| Memory Usage | 237.18 MB |
+| CPU Usage | 3.53% |
+| Memory Usage | 152.92 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1162,8 +1153,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 6.28% |
-| Memory Usage | 228.68 MB |
+| CPU Usage | 4.61% |
+| Memory Usage | 196.36 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1181,8 +1172,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 4.59% |
-| Memory Usage | 234.72 MB |
+| CPU Usage | 3.17% |
+| Memory Usage | 118.57 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1201,7 +1192,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | CPU usage is unavailable for Huawei devices on BrowserStack. |
-| Memory Usage | 257.62 MB |
+| Memory Usage | 100.34 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1219,8 +1210,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 3.51% |
-| Memory Usage | 272.75 MB |
+| CPU Usage | 2.16% |
+| Memory Usage | 179.48 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1238,8 +1229,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 5.06% |
-| Memory Usage | 55.81 MB |
+| CPU Usage | 2.68% |
+| Memory Usage | 73.01 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1257,8 +1248,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 2.06% |
-| Memory Usage | 60.02 MB |
+| CPU Usage | 1.66% |
+| Memory Usage | 49.72 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1276,8 +1267,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.57% |
-| Memory Usage | 51.58 MB |
+| CPU Usage | 1.36% |
+| Memory Usage | 46.03 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1392,8 +1383,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.34% |
-| Memory Usage | 58.58 MB |
+| CPU Usage | 1.76% |
+| Memory Usage | 75 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1411,8 +1402,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.32% |
-| Memory Usage | 55.4 MB |
+| CPU Usage | 0.81% |
+| Memory Usage | 53.21 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1430,8 +1421,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 **Results:**
 | Metric | Value |
 |--------|--------|
-| CPU Usage | 1.17% |
-| Memory Usage | 62.29 MB |
+| CPU Usage | 0.22% |
+| Memory Usage | 55.27 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1452,7 +1443,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 261.8 MB |
+| Memory Usage | 235.2 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1471,7 +1462,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 30.75 MB |
+| Memory Usage | 39.27 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1492,7 +1483,7 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 276.5 MB |
+| Memory Usage | 210.8 MB |
 | Response Time | < 1 s |
 
 ---
@@ -1511,7 +1502,8 @@ Disclaimer: The values shown in the charts may slightly differ from the final va
 | Metric | Value |
 |--------|--------|
 | CPU Usage | 0.1% |
-| Memory Usage | 37.05 MB |
+
+| Memory Usage | 39.06 MB |
 | Response Time | < 1 s |
 
 ---
