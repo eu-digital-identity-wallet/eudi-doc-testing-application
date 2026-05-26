@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch from Execute Full Pipeline'
+        description: 'Branch to checkout'
         type: string
         required: true
 
       test-cases:
-        description: 'Tags from Execute Full Pipeline'
+        description: 'Tags to execute'
         type: string
         required: true
 

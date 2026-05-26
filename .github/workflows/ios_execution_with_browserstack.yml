@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch from Execute Full Pipeline'
+        description: 'Branch to checkout'
         type: string
 
       test-cases:
-        description: 'Tags from Execute Full Pipeline'
+        description: 'Tags to execute'
         type: string
 
 jobs:
