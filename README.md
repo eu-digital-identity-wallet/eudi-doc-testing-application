@@ -254,7 +254,7 @@ You can also trigger test runs directly from the project's GitHub Actions [here]
    1. Step 1: Navigate to GitHub Actions - Go the project's GitHub Actions [here](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
    2. Step 2: Select and Run the Workflow
 
-      1. From the workflow list on the left, select the test suite you wish to run (e.g., "Automation Tests Execution").
+      1. From the workflow list on the left, select the test suite you wish to run (e.g., "Final Summary Report").
       2. On the right side, you will see the “Run workflow” tab. Click it, then select the desired workflow branch, branch to checkout and test cases.
       3. Confirm by clicking the green "Run workflow" button in the dropdown.
 
