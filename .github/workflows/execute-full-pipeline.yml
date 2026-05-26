@@ -17,7 +17,7 @@ on:
         default: develop
 
       test-cases:
-        description: 'Cucumber tags for Android & iOS'
+        description: 'Automated Android & iOS test tag'
         type: string
         default: "@automated"
 
