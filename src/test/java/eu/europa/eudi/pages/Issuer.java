@@ -77,8 +77,10 @@ public class Issuer {
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
+                //TODO Yvonne
                 Thread.sleep(3000);
                 driver.get(url);
+                //TODO Yvonne
                 Thread.sleep(5000);
                 driver.context("NATIVE_APP");
             } catch (Exception e) {
@@ -118,6 +120,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
+            //TODO Yvonne
             Thread.sleep(2000); // allow UI to settle
 
             boolean found = false;
@@ -247,6 +250,7 @@ public class Issuer {
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            //TODO Varvara
             Thread.sleep(2000);
 
             driver.context("NATIVE_APP"); // switch back
@@ -275,6 +279,7 @@ public class Issuer {
 
                 } catch (Exception e) {
                     System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
+                    //TODO Varvara
                     Thread.sleep(1000); // small wait before retry
                 }
             }
@@ -286,6 +291,7 @@ public class Issuer {
 
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            //TODO Varvara
             Thread.sleep(2000);
             driver.context("NATIVE_APP");
             boolean found = false;
@@ -316,6 +322,7 @@ public class Issuer {
                     System.out.println("⚠ FormEU not found in IOS on attempt " + attempt);
 
                     try {
+                        //TODO Yvonne
                         Thread.sleep(1000); // small stabilization wait
                     } catch (InterruptedException ignored) {}
                 }
@@ -453,6 +460,7 @@ public class Issuer {
                 }
 
                 try {
+                    //TODO Thanos
                     Thread.sleep(200); // allow UI to update
                 } catch (InterruptedException ignored) {
                 }
@@ -592,6 +600,7 @@ public class Issuer {
                 }
 
                 try {
+                    //todo Thanos
                     Thread.sleep(200); // allow UI to update
                 } catch (InterruptedException ignored) {}
             }
@@ -695,6 +704,7 @@ public class Issuer {
                 }
 
                 try {
+                    //todo Thanos
                     Thread.sleep(200); // allow UI to update
                 } catch (InterruptedException ignored) {}
             }
@@ -803,6 +813,7 @@ public class Issuer {
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo Thanos check comment n01
                 Thread.sleep(20);
             }
         } else {
@@ -883,13 +894,15 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
+            //TODO Thanos
             Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]"); // <-- IMPORTANT: Use the correct ID or selector for your button
+            By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
+            //TODO Thanos
             Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         }
@@ -899,6 +912,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
+            //TODO Yvonne
             Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
@@ -1193,6 +1207,7 @@ public class Issuer {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //TODO Thanos
                     Thread.sleep(50);
                 }
             } else {
@@ -1216,6 +1231,7 @@ public class Issuer {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //TODO Thanos
                     Thread.sleep(50);
                 }
             }
@@ -1350,6 +1366,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //TODO Thanos todo check comment n01
                 Thread.sleep(20);
             }
         } else {
@@ -1371,6 +1388,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo Thanos check comment n01
                 Thread.sleep(50);
             }
         }
@@ -1427,6 +1445,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo thanos check comment n01
                 Thread.sleep(50);
             }
         } else {
@@ -1448,6 +1467,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo thanos check comment n01
                 Thread.sleep(50);
             }
         }
@@ -1473,6 +1493,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo thanos check comment n01
                 Thread.sleep(50);
             }
         } else {
@@ -1494,6 +1515,7 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo thanos check comment n01
                 Thread.sleep(50);
             }
         }
@@ -1578,6 +1600,7 @@ public class Issuer {
         }
     }
 
+    //TODO Thanos remove this method and find a dynamic way to verify that the last action is completed or the next is ready or both
     public void sleepMethod() {
         try {
             Thread.sleep(3000);
@@ -1648,6 +1671,7 @@ public class Issuer {
                 // Switch to NATIVE once if needed
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
+                    //todo Yvonne
                     Thread.sleep(500); // shorter wait
                 }
 
@@ -1664,11 +1688,12 @@ public class Issuer {
                 swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // shorter pause
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
+                //todo Thanos check comment n01
                 // Perform swipe
                 try {
                     driver.perform(Collections.singletonList(swipe));
                 } catch (InvalidElementStateException e) {
+                    //todo Yvonne
                     Thread.sleep(800); // retry delay if needed
                     driver.perform(Collections.singletonList(swipe));
                 }
@@ -1790,6 +1815,7 @@ public class Issuer {
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo n01 Thanos, the above code appears multiple times and I find that the duration is the only difference. Make a common function and add as variables the different values
                 Thread.sleep(20);
             }
         } else {
@@ -1813,6 +1839,7 @@ public class Issuer {
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo Thanos check comment n01
                 Thread.sleep(50);
             }
         }
@@ -1904,6 +1931,7 @@ public class Issuer {
 
                 driver.perform(Collections.singletonList(swipe));
                 // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                //todo Thanos check comment n01
                 Thread.sleep(50);
             }
         }
@@ -1926,6 +1954,7 @@ public class Issuer {
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
+            //todo Yvonne
             Thread.sleep(2000);
 
             boolean found = false;
@@ -1973,6 +2002,7 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
 
         } else {
+            //todo Yvonne
             Thread.sleep(2000);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.context("NATIVE_APP");
@@ -2221,6 +2251,7 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
+            //todo Yvonne
             Thread.sleep(3000);
 
 // wait until native context is available
@@ -2229,6 +2260,7 @@ public class Issuer {
 
             driver.context("NATIVE_APP");
 
+            //todo Yvonne
             Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
@@ -2248,6 +2280,7 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            //todo Yvonne
             Thread.sleep(2000);
             driver.context("NATIVE_APP");
 
@@ -2294,6 +2327,7 @@ public class Issuer {
                 }
 
                 try {
+                    //TODO Thanos
                     Thread.sleep(300); // let UI settle
                 } catch (InterruptedException ignored) {}
             }
@@ -2322,6 +2356,7 @@ public class Issuer {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
+                    //todo Thanos check comment no1
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
                     Thread.sleep(50);
                 }
@@ -2346,6 +2381,7 @@ public class Issuer {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment no1
                     Thread.sleep(50);
                 }
             }
