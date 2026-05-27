@@ -359,7 +359,7 @@ public class Wallet {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
 
-            String url = "tneal";
+            String url = "https://verifier.eudiw.dev/home";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
