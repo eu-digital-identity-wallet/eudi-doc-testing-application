@@ -88,6 +88,7 @@ public class Wallet {
             pinField.click();
 
 // Small stabilization pause
+            //todo Varvara
             Thread.sleep(500);
 
 // Send digits one-by-one as real keyboard events
@@ -98,6 +99,7 @@ public class Wallet {
                         )
                 );
 
+                //todo Varvara
                 Thread.sleep(100);
             }
         } else {
@@ -119,6 +121,7 @@ public class Wallet {
 
             // 2. Small stabilization pause (important for iOS animations)
             try {
+                //todo Varvara
                 Thread.sleep(500);
             } catch (InterruptedException ignored) {}
 
@@ -162,6 +165,7 @@ public class Wallet {
             pinField.click();
 
 // Small stabilization pause
+            //todo Varvara
             Thread.sleep(500);
 
 // Send digits one-by-one as real keyboard events
@@ -171,7 +175,7 @@ public class Wallet {
                                 AndroidKey.valueOf("DIGIT_" + digit)
                         )
                 );
-
+                //todo Varvara
                 Thread.sleep(100);
             }
         } else {
@@ -443,6 +447,7 @@ public class Wallet {
     public void clickEyeIcon() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             try {
+                //todo Varvara
                 Thread.sleep(500);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickEyeIcon)).click();
             } catch (Exception e) {
@@ -639,6 +644,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             } else {
@@ -662,6 +668,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             }
@@ -843,6 +850,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             } else {
@@ -866,6 +874,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             }
@@ -976,6 +985,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             } else {
@@ -999,6 +1009,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             }
@@ -1044,6 +1055,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             } else {
@@ -1067,6 +1079,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             }
@@ -1122,6 +1135,7 @@ public class Wallet {
                 }
 
                 try {
+                    //todo Varvara
                     Thread.sleep(300); // let UI settle
                 } catch (InterruptedException ignored) {}
             }
@@ -1214,6 +1228,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             } else {
@@ -1237,6 +1252,7 @@ public class Wallet {
 
                     driver.perform(Collections.singletonList(swipe));
                     // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
+                    //todo Thanos check comment n01
                     Thread.sleep(50);
                 }
             }
@@ -1586,6 +1602,7 @@ public class Wallet {
         driver.perform(Arrays.asList(swipe));
 
         try {
+            //todo Thanos check comment n01
             Thread.sleep(250);
         } catch (InterruptedException ignored) {}
     }
@@ -1616,6 +1633,7 @@ public class Wallet {
 
             // optional: tiny settle time helps some apps
             try {
+                //todo Thanos check comment n01
                 Thread.sleep(150);
             } catch (InterruptedException ignored) {
             }
@@ -1644,6 +1662,7 @@ public class Wallet {
 
 // optional: small pause helps UI settle
             try {
+                //todo Thanos check comment n01
                 Thread.sleep(150);
             } catch (InterruptedException ignored) {
             }

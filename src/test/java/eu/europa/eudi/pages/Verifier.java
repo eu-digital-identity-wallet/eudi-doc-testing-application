@@ -155,8 +155,10 @@ public class Verifier {
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
+                //todo Yvonne
                 Thread.sleep(3000);
                 driver.get(url);
+                //todo Yvonne
                 Thread.sleep(5000);
                 driver.context("NATIVE_APP");
             } catch (Exception e) {
@@ -187,6 +189,7 @@ public class Verifier {
             pinField.click();
 
 // Small stabilization pause
+            //todo Yvonne
             Thread.sleep(500);
 
 // Send digits one-by-one as real keyboard events
@@ -197,6 +200,7 @@ public class Verifier {
                         )
                 );
 
+                //todo Yvonne
                 Thread.sleep(100);
             }
         } else {
@@ -459,6 +463,7 @@ public class Verifier {
         clickNext();
 
         // Wait a bit for QR code to appear
+        //Todo Yvonne check if it is needed since there is already a thread.sleep in the captureScreen method
         Thread.sleep(3000);
 
         // Capture screenshot
@@ -483,6 +488,7 @@ public class Verifier {
 
     public File captureScreen() throws InterruptedException {
         WebDriver driver;
+        //todo Yvonne
         Thread.sleep(3000);
 
 
@@ -500,6 +506,7 @@ public class Verifier {
 
         // Small wait to avoid blank/transition screenshots
         try {
+            //todo Yvonne
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -687,6 +694,7 @@ public class Verifier {
     public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
+        //Todo Yvonne
         Thread.sleep(4000);
 
         if (driver == null) {
@@ -695,6 +703,7 @@ public class Verifier {
 
         // Small stability wait (important for dynamic rendering)
         try {
+            //Todo Yvonne
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -746,6 +755,7 @@ public class Verifier {
             });
 
             // Extra buffer for rendering (BrowserStack safe)
+            //TODO Yvonne
             Thread.sleep(500);
 
             // Try canvas screenshot first
@@ -860,7 +870,7 @@ public class Verifier {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
-// reduce implicit wait
+
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
             List<WebElement> switches = wait.until(d ->
@@ -879,6 +889,7 @@ public class Verifier {
                 el.click();
 
                 // small pause helps Safari WebView refresh
+                //todo Varvara
                 Thread.sleep(500);
             }
 
@@ -910,6 +921,7 @@ public class Verifier {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
                 Thread.sleep(500);
+                //todo Thanos check comment n01
             }
 
             List<WebElement> switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
@@ -917,6 +929,7 @@ public class Verifier {
             wait.until(ExpectedConditions.visibilityOf(el));
             wait.until(ExpectedConditions.elementToBeClickable(el));
             el.click();
+            //todo Thanos
             Thread.sleep(500);
         }
 
