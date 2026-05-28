@@ -22,7 +22,6 @@ public class IssuerElements {
     public static By clickFamilyName = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[1]");
     public static By familyNameField = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[1]");
     public static By clickBirthDate = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[7]");
-    public static By chooseSet = By.xpath("//XCUIElementTypeButton[@name=\"Done\"]");
     public static By enterDocumentNumber = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[1]");
     public static By documentNumberField = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField[1]");
     public static By closeKeyboardBefore03 = By.xpath("//XCUIElementTypeStaticText[@name=\"Document Number\"]");
@@ -35,12 +34,7 @@ public class IssuerElements {
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeTextField");
     public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
-    public static By givenNameFieldDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
-    public static By clickCountryDev = By.xpath("//XCUIElementTypeOther[@name=\"Country Region Locality\"]/XCUIElementTypeTextField[1]");
-    public static By clickCountryCodeDev = By.xpath("(//XCUIElementTypeOther[@name=\"Country Code\"])[1]/XCUIElementTypeTextField");
     public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
-    public static By authorizePageIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"Review & Send\"]");
-    public static By clickBirthDateDev = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[5]");
     public static By enterCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]/XCUIElementTypeTextField[1]");
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");
     public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
