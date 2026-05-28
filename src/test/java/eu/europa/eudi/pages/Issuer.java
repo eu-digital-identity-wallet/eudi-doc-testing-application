@@ -251,42 +251,28 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             //TODO Varvara
-            Thread.sleep(2000);
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(1000));
+
+            waitNativeAppTransition.until(d ->
+                    driver.getContextHandles().contains("NATIVE_APP")
+            );
 
             driver.context("NATIVE_APP"); // switch back
-            boolean found = false;
-            int maxAttempts = 8; // number of tries
-            int waitSeconds = 90; // per try
 
-            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
-                try {
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
-                    WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(
-                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
-                            )
-                    );
-                    wait.until(ExpectedConditions.elementToBeClickable(element));
-                    element.click();
-                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
-                    found = true;
-
-                } catch (Exception e) {
-                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
-                    //TODO Varvara
-                    Thread.sleep(1000); // small wait before retry
-                }
-            }
-
-            if (!found) {
-                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
-            }
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+            ));
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
+            ));
+            WebElement element = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            eu.europa.eudi.elements.android.IssuerElements.clickFormEu
+                    )
+            );
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
 
 
         } else {
