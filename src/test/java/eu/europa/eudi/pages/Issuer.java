@@ -70,19 +70,22 @@ public class Issuer {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             String url = "https://issuer.eudiw.dev/credential_offer";
-
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             try {
                 try {
                     driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
-                //TODO Yvonne
-                Thread.sleep(3000);
                 driver.get(url);
-                //TODO Yvonne
-                Thread.sleep(5000);
+
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
+
                 driver.context("NATIVE_APP");
+
+                if (!driver.getContext().equals("NATIVE_APP")) {
+                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current context: " + driver.getContext());
+                }
             } catch (Exception e) {
                 throw new RuntimeException("Failed to launch Safari", e);
             }
@@ -119,9 +122,8 @@ public class Issuer {
     public void qrCodeIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            //TODO Yvonne
-            Thread.sleep(2000); // allow UI to settle
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
 
             boolean found = false;
 
@@ -320,11 +322,6 @@ public class Issuer {
 
                 } catch (Exception e) {
                     System.out.println("⚠ FormEU not found in IOS on attempt " + attempt);
-
-                    try {
-                        //TODO Yvonne
-                        Thread.sleep(1000); // small stabilization wait
-                    } catch (InterruptedException ignored) {}
                 }
             }
 
