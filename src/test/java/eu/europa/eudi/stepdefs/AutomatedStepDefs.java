@@ -848,12 +848,6 @@ public class AutomatedStepDefs {
         test.mobile().verifier().insertPIN2();
     }
 
-    @When("user authorizes the disclosure of the data")
-    public void userAuthorizesTheDisclosureOfTheData() throws InterruptedException {
-        test.mobile().wallet().pinFieldIsDisplayed();
-        test.mobile().verifier().insertPIN();
-    }
-
     @Then("user presses the share button on wallet")
     public void userPressesTheShareButtonOnWallet() {
         test.mobile().wallet().closeCorrespondingMessage();

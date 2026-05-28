@@ -147,23 +147,17 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://verifier.eudiw.dev/home";
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            String url = "https://issuer.eudiw.dev/credential_offer";
+
             try {
                 try {
                     driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
-                driver.get(url);
-
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
-
+                WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+                waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                 driver.context("NATIVE_APP");
-
-                if (!driver.getContext().equals("NATIVE_APP")) {
-                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current context: " + driver.getContext());
-                }
             } catch (Exception e) {
                 throw new RuntimeException("Failed to launch Safari", e);
             }
@@ -455,12 +449,6 @@ public class Verifier {
         selectSpecificAttributes();
         clickNext();
         clickNext();
-
-        // Wait a bit for QR code to appear
-        //Todo Yvonne check if it is needed since there is already a thread.sleep in the captureScreen method
-        Thread.sleep(3000);
-
-        // Capture screenshot
         captureScreen();
     }
 
@@ -482,66 +470,59 @@ public class Verifier {
 
     public File captureScreen() throws InterruptedException {
         WebDriver driver;
-        //todo Yvonne
-        Thread.sleep(3000);
 
-
-        // Get correct driver
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
 
-        // Safety check
         if (driver == null) {
-            throw new RuntimeException("Driver is null. Cannot capture screenshot.");
+            throw new RuntimeException("Driver is null.");
         }
 
-        // Small wait to avoid blank/transition screenshots
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-            //todo Yvonne
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("your_page_anchor")));
+        } catch (Exception e) {
+            System.out.println("Warning: Stability element not found.");
         }
 
-        // Create filename
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File screenshotsDir = new File("screenshots");
-
         if (!screenshotsDir.exists()) {
             screenshotsDir.mkdirs();
         }
-
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
-        try {
-            // Take screenshot
-            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        int maxRetries = 3;
+        int attempts = 0;
+        boolean success = false;
 
-            // Copy using stable Java NIO
-            Files.copy(
-                    srcFile.toPath(),
-                    destFile.toPath(),
-                    StandardCopyOption.REPLACE_EXISTING
-            );
+        while (attempts < maxRetries && !success) {
+            try {
+                File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-            // Validate file
-            if (!destFile.exists() || destFile.length() == 0) {
-                throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
+                Files.copy(srcFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                if (destFile.exists() && destFile.length() > 0) {
+                    success = true;
+                } else {
+                    attempts++;
+                }
+            } catch (Exception e) {
+                attempts++;
+                if (attempts >= maxRetries) {
+                    throw new RuntimeException("Screenshot failed after " + maxRetries + " attempts: " + e.getMessage(), e);
+                }
             }
+        }
 
-            System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
-
+        if (success) {
             this.capturedScreenFile = destFile;
             return destFile;
-
-        } catch (Exception e) {
-            throw new RuntimeException(
-                    "Failed to capture screenshot at: " + destFile.getAbsolutePath(),
-                    e
-            );
+        } else {
+            throw new RuntimeException("Failed to capture a non-empty screenshot.");
         }
     }
 
@@ -688,19 +669,9 @@ public class Verifier {
     public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
-        //Todo Yvonne
-        Thread.sleep(4000);
 
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
-        }
-
-        // Small stability wait (important for dynamic rendering)
-        try {
-            //Todo Yvonne
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
         }
 
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -713,21 +684,15 @@ public class Verifier {
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
-            // CORRECT selector
-            By qrContainer = By.cssSelector(".vc-verifiable-credential");
+            By qrContainerSelector = By.cssSelector(".vc-verifiable-credential");
 
-            // Wait for container first (more stable than canvas)
-            WebElement container = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(qrContainer)
-            );
+            WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(qrContainerSelector));
 
-            // Scroll into view
             ((JavascriptExecutor) driver).executeScript(
                     "arguments[0].scrollIntoView({block:'center'});",
                     container
             );
 
-            // Find canvas INSIDE container (not globally)
             WebElement canvas = wait.until(d -> {
                 try {
                     WebElement c = container.findElement(By.cssSelector("qrcode canvas"));
@@ -737,44 +702,39 @@ public class Verifier {
                 }
             });
 
-            // Wait until canvas is actually rendered (CRITICAL FIX)
             wait.until(d -> {
-                Long w = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].getBoundingClientRect().width;", canvas);
+                try {
+                    Object width = ((JavascriptExecutor) d).executeScript(
+                            "return arguments[0].getBoundingClientRect().width;", canvas);
+                    Object height = ((JavascriptExecutor) d).executeScript(
+                            "return arguments[0].getBoundingClientRect().height;", canvas);
 
-                Long h = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].getBoundingClientRect().height;", canvas);
-
-                return w != null && h != null && w > 0 && h > 0;
+                    return width instanceof Number && height instanceof Number
+                            && ((Number) width).doubleValue() > 0
+                            && ((Number) height).doubleValue() > 0;
+                } catch (Exception e) {
+                    return false;
+                }
             });
 
-            // Extra buffer for rendering (BrowserStack safe)
-            //TODO Yvonne
-            Thread.sleep(500);
-
-            // Try canvas screenshot first
             File srcFile;
             try {
                 srcFile = canvas.getScreenshotAs(OutputType.FILE);
             } catch (Exception e) {
-                // Fallback: container screenshot (VERY important)
                 srcFile = container.getScreenshotAs(OutputType.FILE);
             }
 
-            // Save using NIO
             Files.copy(
                     srcFile.toPath(),
                     destFile.toPath(),
                     StandardCopyOption.REPLACE_EXISTING
             );
 
-            // Validate file
             if (!destFile.exists() || destFile.length() == 0) {
                 throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
             }
 
             System.out.println("Web QR screenshot saved: " + destFile.getAbsolutePath());
-
             this.capturedScreenFile = destFile;
             return destFile;
 

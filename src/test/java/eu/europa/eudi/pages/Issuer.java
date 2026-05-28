@@ -15,6 +15,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.HasContext;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -76,18 +77,23 @@ public class Issuer {
                     driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
+
                 driver.activateApp("com.apple.mobilesafari");
+
+                wait.until(d -> d.getWindowHandles().size() > 0);
+
                 driver.get(url);
 
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body")));
 
                 driver.context("NATIVE_APP");
 
                 if (!driver.getContext().equals("NATIVE_APP")) {
-                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current context: " + driver.getContext());
+                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current: " + driver.getContext());
                 }
+
             } catch (Exception e) {
-                throw new RuntimeException("Failed to launch Safari", e);
+                throw new RuntimeException("Failed to launch Safari or navigate to URL: " + e.getMessage(), e);
             }
         }
     }
@@ -894,9 +900,9 @@ public class Issuer {
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
-            //TODO Yvonne
-            Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
             ));
@@ -1650,12 +1656,12 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String originalContext = driver.getContext();
 
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
             try {
-                // Switch to NATIVE once if needed
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
-                    //todo Yvonne
-                    Thread.sleep(500); // shorter wait
+                    wait.until(d -> ((HasContext) d).getContext().equals("NATIVE_APP"));
                 }
 
                 Dimension size = driver.manage().window().getSize();
@@ -1673,18 +1679,23 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 //todo Thanos check comment n01
                 // Perform swipe
-                try {
-                    driver.perform(Collections.singletonList(swipe));
-                } catch (InvalidElementStateException e) {
-                    //todo Yvonne
-                    Thread.sleep(800); // retry delay if needed
-                    driver.perform(Collections.singletonList(swipe));
-                }
+                int maxRetries = 2;
+                int attempts = 0;
+                boolean success = false;
 
-            } finally {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
+                while (attempts < maxRetries && !success) {
+                    try {
+                        driver.perform(Collections.singletonList(swipe));
+                        success = true;
+                    } catch (InvalidElementStateException e) {
+                        attempts++;
+                        if (attempts >= maxRetries) {
+                            throw new RuntimeException("Swipe failed after " + maxRetries + " attempts", e);
+                        }
+                    }
                 }
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to execute swipe sequence: " + e.getMessage(), e);
             }
 
         }else{
@@ -1936,9 +1947,9 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
-            //todo Yvonne
-            Thread.sleep(2000);
 
             boolean found = false;
             int maxAttempts = 8;
@@ -1985,9 +1996,9 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
 
         } else {
-            //todo Yvonne
-            Thread.sleep(2000);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
             test.mobileWebDriverFactory().iosDriver.rotate(ScreenOrientation.PORTRAIT);
@@ -2234,17 +2245,10 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            //todo Yvonne
-            Thread.sleep(3000);
-
-// wait until native context is available
-            new WebDriverWait(driver, Duration.ofSeconds(20))
-                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
-            //todo Yvonne
-            Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
             ));
@@ -2263,8 +2267,8 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            //todo Yvonne
-            Thread.sleep(2000);
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
             WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
