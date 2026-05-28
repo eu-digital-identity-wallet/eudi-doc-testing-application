@@ -4,12 +4,6 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.id("eu.europa.ec.euidi:id/pin_screen_title");
-    public static By pinTexfield1 = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/pin_text_field_0\"]");
-    public static By pinTexfield2 = By.id("eu.europa.ec.euidi:id/pin_text_field_1");
-    public static By pinTexfield3 = By.id("eu.europa.ec.euidi:id/pin_text_field_2");
-    public static By pinTexfield4 = By.id("eu.europa.ec.euidi:id/pin_text_field_3");
-    public static By pinTexfield5 = By.id("eu.europa.ec.euidi:id/pin_text_field_4");
-    public static By pinTexfield6 = By.id("eu.europa.ec.euidi:id/pin_text_field_5");
     public static By nextButton = By.id("eu.europa.ec.euidi:id/pin_screen_button");
     public static By clickConfirm = By.id("eu.europa.ec.euidi:id/pin_screen_button");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"Your wallet is secured!\"]");
@@ -73,16 +67,12 @@ public class WalletElements {
     public static By issuedPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickPIDKotlin = By.id("eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc");
     public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
-    public static By sexButton = By.xpath("//android.widget.Button[@text=\"Sex\"]");
-    public static By residentStreet = By.xpath("//android.widget.TextView[@text=\"Resident Street\"]");;
     public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
     public static By scanQRIsActivatedForIssuance = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
-    public static By scanQRIsActivatedForPresentation = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document online.\"]");
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Eaa-0\"]");
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
     public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
     public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
     public static By onlinePresentation = By.xpath("//android.widget.TextView[@text=\"Online\"]");
-    public static By clickPin = By.xpath("//android.widget.EditText");
 }

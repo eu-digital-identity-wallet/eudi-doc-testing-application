@@ -245,7 +245,6 @@ public class Verifier {
         int centerX = 545;
         int centerY = 1715;
 
-        // Perform tap on center of bounds
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, centerY))
                 .perform();
@@ -284,15 +283,12 @@ public class Verifier {
                 jsonElement = driver.findElement(By.className("android.widget.TextView"));
 
             }
-            // Get the text
             String rawText = jsonElement.getText();
 
             JSONObject jsonObject = new JSONObject(rawText);
 
-            // Extract the transaction_id from "key" field
             String transactionId = jsonObject.getString("key");
 
-            // Output the result
             System.out.println("Transaction ID: " + transactionId);
 
             EventsApiVerifier api = new EventsApiVerifier();
@@ -301,13 +297,11 @@ public class Verifier {
             if (test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-// Locate the element that contains the JSON text
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
                 WebElement jsonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
                         By.xpath("//XCUIElementTypeStaticText[contains(@value, 'value')]")
                 ));
 
-// Try to extract text from multiple possible attributes
                 String jsonText = jsonElement.getText();
 
                 if (jsonText == null || jsonText.trim().isEmpty()) {
@@ -320,7 +314,6 @@ public class Verifier {
                     jsonText = jsonElement.getAttribute("name");
                 }
 
-// Validate and parse the JSON
                 if (jsonText == null || jsonText.trim().isEmpty()) {
                     throw new RuntimeException("Could not find or extract JSON text from the UI.");
                 }
@@ -352,9 +345,7 @@ public class Verifier {
                     int width = el.getSize().getWidth();
                     int height = el.getSize().getHeight();
 
-                    // Filter element based on known size or position (optional)
                     if (width == 1407 && height == 198 && x == 90 && y == 265) {
-                        // Try getText(), label, value, name
                         String text = el.getText();
                         if (text == null || text.trim().isEmpty()) {
                             text = el.getAttribute("label");
@@ -374,7 +365,6 @@ public class Verifier {
                     }
                 }
 
-                // Validate and parse the JSON
                 if (jsonText == null || jsonText.trim().isEmpty()) {
                     throw new RuntimeException("Could not find or extract JSON text from the UI.");
                 }
@@ -567,7 +557,6 @@ public class Verifier {
                             );
                         }
 
-                        // treat aria-disabled=true as disabled too
                         boolean reallyEnabled =
                                 (disabled == null) &&
                                         (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
@@ -580,7 +569,6 @@ public class Verifier {
                 return null;
             });
 
-            // Try normal click then JS click
             try {
                 btn.click();
             } catch (ElementClickInterceptedException e) {
@@ -616,7 +604,6 @@ public class Verifier {
                             );
                         }
 
-                        // treat aria-disabled=true as disabled too
                         boolean reallyEnabled =
                                 (disabled == null) &&
                                         (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
@@ -629,7 +616,6 @@ public class Verifier {
                 return null;
             });
 
-            // Try normal click then JS click
             try {
                 btn.click();
             } catch (ElementClickInterceptedException e) {
@@ -842,12 +828,10 @@ public class Verifier {
 
                 el.click();
 
-                // small pause helps Safari WebView refresh
                 //todo Varvara
                 Thread.sleep(500);
             }
 
-// restore implicit wait
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
         }
     }
@@ -1048,18 +1032,15 @@ public class Verifier {
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
         try {
-            // Wait for header to be visible
             wait.until(ExpectedConditions.visibilityOfElementLocated(
                     eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin
             ));
 
-            // If visible → click View Content
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.android.VerifierElements.clickViewContentOnWeb
             )).click();
 
         } catch (TimeoutException e) {
-            // Header not visible → refresh
             test.webWebDriverFactory().getDriverWeb().navigate().refresh();
             test.web().verifier().walletRespondedOnWebforMdlKotlin();
             test.web().verifier().clickViewContentOnWeb();
