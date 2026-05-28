@@ -148,19 +148,22 @@ public class Verifier {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             String url = "https://verifier.eudiw.dev/home";
-
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             try {
                 try {
                     driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
-                //todo Yvonne
-                Thread.sleep(3000);
                 driver.get(url);
-                //todo Yvonne
-                Thread.sleep(5000);
+
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
+
                 driver.context("NATIVE_APP");
+
+                if (!driver.getContext().equals("NATIVE_APP")) {
+                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current context: " + driver.getContext());
+                }
             } catch (Exception e) {
                 throw new RuntimeException("Failed to launch Safari", e);
             }
@@ -184,14 +187,8 @@ public class Verifier {
                             AppiumBy.className("android.widget.EditText")
                     )
             );
-
 // Focus the field
             pinField.click();
-
-// Small stabilization pause
-            //todo Yvonne
-            Thread.sleep(500);
-
 // Send digits one-by-one as real keyboard events
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
@@ -199,9 +196,6 @@ public class Verifier {
                                 AndroidKey.valueOf("DIGIT_" + digit)
                         )
                 );
-
-                //todo Yvonne
-                Thread.sleep(100);
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
