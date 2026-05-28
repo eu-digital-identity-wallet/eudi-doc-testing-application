@@ -31,12 +31,7 @@ public class IssuerElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Given Name\"]");
     public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
-    public static By givenNameFieldDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
-    public static By clickCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[4]/android.widget.EditText[1]");
-    public static By clickCountryCodeDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
-    public static By authorizePageIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Review & Send\"]");
-    public static By clickedCountryDev = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.view.View[2]/android.widget.EditText[1]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select the Credentials you would like to issue:\"]");
@@ -46,6 +41,5 @@ public class IssuerElements {
     public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
-    public static By birthDate = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
 }
