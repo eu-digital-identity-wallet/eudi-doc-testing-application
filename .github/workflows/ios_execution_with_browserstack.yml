@@ -1,181 +1,399 @@
-name: iOS Automation Tests Execution
+  name: Summary Report Without Rerun
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch-to-checkout:
-        description: 'Branch to checkout'
-        type: string
+  permissions:
+    actions: write
+    contents: read
 
-      test-cases:
-        description: 'Tags to execute'
-        type: string
+  on:
+    workflow_dispatch:
+      inputs:
 
-jobs:
-  build:
-    runs-on: macos-latest
-    timeout-minutes: 240
+        branch-to-checkout:
+          description: 'Branch to checkout'
+          type: choice
+          options:
+            - main
+            - develop
+            - milestone/2026.Q1
+            - refactor
+          default: develop
 
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        test-cases:
+          description: 'Automated Android & iOS test tag'
+          type: string
+          default: "@automated"
 
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-          clean: false
-          lfs: false
-          ref: ${{ inputs.branch-to-checkout }}
+  jobs:
 
-      # ---------------- JAVA + NODE ----------------
-      - name: Set up JDK 17
-        uses: actions/setup-java@v5
-        with:
-          java-version: 17
-          distribution: 'oracle'
+    # =====================================================
+    # ANDROID TESTS
+    # =====================================================
 
-      - name: Set up Node JS
-        uses: actions/setup-node@v5
-        with:
-          node-version: '20'
+    android-tests:
+      runs-on: macos-latest
+      timeout-minutes: 240
 
-      # ---------------- CLEAN ----------------
-      - name: Clean Old Results
-        run: |
-          rm -rf target/serenity
-          rm -rf target/site/reports
-          rm -rf target/site/serenity
-          rm -f target/rerun.txt target/rerun2.txt
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-      - name: Initialize Session Map
-        run: echo "" > session_map.txt
+      steps:
 
-      # ---------------- JQ ----------------
-      - name: Check jq Installation
-        run: |
-          if ! command -v jq &> /dev/null; then
-            echo "jq not found, installing..."
-            brew install jq
-          else
-            jq --version
-          fi
+        - uses: actions/checkout@v5
+          with:
+            fetch-depth: 0
+            clean: false
+            lfs: false
+            ref: ${{ inputs.branch-to-checkout }}
 
-      # ---------------- BROWSERSTACK CHECK ----------------
-      - name: Check BrowserStack Credentials
-        run: |
-          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-          https://api.browserstack.com/automate/plan.json
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
 
-      # ---------------- BUILD ID ----------------
-      - name: Get Latest BrowserStack Build ID
-        id: fetch-build
-        if: always()
-        run: |
-          BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-            https://api-cloud.browserstack.com/app-automate/builds.json \
-            | jq -r '.[0].automation_build.hashed_id')
+        - name: Set up Node JS
+          uses: actions/setup-node@v5
+          with:
+            node-version: '22'
 
-          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+        - name: Clean Old Results
+          run: |
+            rm -rf target/serenity
+            rm -rf target/site/reports
+            rm -rf target/site/serenity
 
-      # ---------------- TEST EXECUTION ----------------
-      - name: Run iOS Tests on BrowserStack
-        continue-on-error: true
-        run: |
-          TEST_TAGS="${{ inputs.test-cases }} and @IOS"
-          echo "Running tests: $TEST_TAGS"
+        - name: Initialize Session Map
+          run: echo "" > session_map.txt
 
-          mvn test -ntp \
-            -Dapp.url=$BROWSERSTACK_APP_URL \
-            -Dcucumber.filter.tags="$TEST_TAGS"
+        - name: Check jq Installation
+          run: |
+            if ! command -v jq &> /dev/null; then
+              brew install jq
+            else
+              jq --version
+            fi
 
-      # ---------------- BACKUP RESULTS ----------------
-      - name: Backup Serenity JSON Results
-        if: always()
-        run: |
-          mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
-
-      # ---------------- RERUN PASS 1 ----------------
-      - name: Rerun Pass 1
-        if: always()
-        run: |
-          if [ -s target/rerun.txt ]; then
-            echo "Running rerun pass 1..."
-            mvn test -Dtest=RerunTestRunner
-          else
-            echo "No rerun.txt found"
-          fi
-
-      - name: Merge Results Pass 1
-        if: always()
-        run: |
-          python3 merge_serenity_results.py || true
-
-      # ---------------- RERUN PASS 2 ----------------
-      - name: Rerun Pass 2
-        if: always()
-        run: |
-          if [ -s target/rerun2.txt ]; then
-            echo "Running rerun pass 2..."
-            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt"
-          else
-            echo "No rerun2.txt found"
-          fi
-
-      - name: Final Merge Results
-        if: always()
-        run: |
-          python3 merge_serenity_results.py || true
-
-      # ---------------- REPORT ----------------
-      - name: Generate Serenity Report
-        if: always()
-        run: |
-          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
-
-      - name: Replace Serenity Core CSS
-        if: always()
-        run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
-
-      # ---------------- ARTIFACTS ----------------
-      - name: Upload Serenity Report
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: ios-serenity-report
-          path: target/site/
-
-      - name: Download BrowserStack Device Logs per Feature (iOS)
-        if: always()
-        run: |
-          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
-          mkdir -p ios-logs
-
-          while IFS='=' read FEATURE SESSION_ID; do
-            [[ "$FEATURE" != *"_IOS" && "$FEATURE" != *"_iOS" ]] && continue
-            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
-
-            echo "Downloading logs for iOS: $FEATURE_CLEAN | Session: $SESSION_ID"
-
+        - name: Check BrowserStack Credentials
+          run: |
             curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-              -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
-              -o "ios-logs/${FEATURE_CLEAN}.txt"
-          done < session_map.txt
+            https://api.browserstack.com/automate/plan.json
 
-      - name: Upload iOS Logs
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: ios-device-logs
-          path: ios-logs/
+        - name: Get Latest BrowserStack Build ID
+          id: fetch-build
+          run: |
+            BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+              https://api-cloud.browserstack.com/app-automate/builds.json \
+              | jq -r '.[0].automation_build.hashed_id')
+            
+            echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-      - name: Upload Serenity JSON Results
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+        - name: Run Android Tests
+          continue-on-error: true
+          run: |
+            TEST_TAGS="${{ inputs.test-cases }} and @ANDROID"
+            
+            echo "Running tests: $TEST_TAGS"
+            
+            mvn clean verify -ntp \
+              -Dcucumber.filter.tags="$TEST_TAGS"
+
+        - name: Generate Serenity Report
+          if: always()
+          run: |
+            mvn serenity:aggregate -ntp
+
+        - name: Download BrowserStack Device Logs (Android)
+          if: always()
+          run: |
+            BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
+            
+            mkdir -p android-logs
+            
+            while IFS='=' read FEATURE SESSION_ID; do
+            
+              [[ "$FEATURE" != *"_Android" ]] && continue
+            
+              FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            
+              echo "Downloading logs for $FEATURE_CLEAN"
+            
+              curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+                -X GET \
+                "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
+                -o "android-logs/${FEATURE_CLEAN}.txt"
+            
+            done < session_map.txt
+
+        - name: Upload Android Logs
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: android-device-logs
+            path: android-logs/
+
+        - name: Upload Android Serenity Report
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: android-serenity-report
+            path: target/site/
+
+        - name: Upload Android JSON
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: android-serenity-json
+            path: target/site/reports/**/*.json
+
+    # =====================================================
+    # IOS TESTS
+    # =====================================================
+
+    ios-tests:
+      runs-on: macos-latest
+      timeout-minutes: 240
+
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+      steps:
+
+        - uses: actions/checkout@v5
+          with:
+            fetch-depth: 0
+            clean: false
+            lfs: false
+            ref: ${{ inputs.branch-to-checkout }}
+
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
+
+        - name: Set up Node JS
+          uses: actions/setup-node@v5
+          with:
+            node-version: '20'
+
+        - name: Clean Old Results
+          run: |
+            rm -rf target/serenity
+            rm -rf target/site/reports
+            rm -rf target/site/serenity
+
+        - name: Initialize Session Map
+          run: echo "" > session_map.txt
+
+        - name: Check jq Installation
+          run: |
+            if ! command -v jq &> /dev/null; then
+              brew install jq
+            else
+              jq --version
+            fi
+
+        - name: Check BrowserStack Credentials
+          run: |
+            curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            https://api.browserstack.com/automate/plan.json
+
+        - name: Get Latest BrowserStack Build ID
+          id: fetch-build
+          run: |
+            BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+              https://api-cloud.browserstack.com/app-automate/builds.json \
+              | jq -r '.[0].automation_build.hashed_id')
+            
+            echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+
+        - name: Run iOS Tests
+          continue-on-error: true
+          run: |
+            TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+            
+            echo "Running tests: $TEST_TAGS"
+            
+            mvn clean verify -ntp \
+              -Dcucumber.filter.tags="$TEST_TAGS"
+
+        - name: Generate Serenity Report
+          if: always()
+          run: |
+            mvn serenity:aggregate -ntp
+
+        - name: Download BrowserStack Device Logs (iOS)
+          if: always()
+          run: |
+            BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
+            
+            mkdir -p ios-logs
+            
+            while IFS='=' read FEATURE SESSION_ID; do
+            
+              [[ "$FEATURE" != *"_IOS" && "$FEATURE" != *"_iOS" ]] && continue
+            
+              FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
+            
+              echo "Downloading logs for $FEATURE_CLEAN"
+            
+              curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+                -X GET \
+                "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
+                -o "ios-logs/${FEATURE_CLEAN}.txt"
+            
+            done < session_map.txt
+
+        - name: Upload iOS Logs
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: ios-device-logs
+            path: ios-logs/
+
+        - name: Upload iOS Serenity Report
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: ios-serenity-report
+            path: target/site/
+
+        - name: Upload iOS JSON
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: ios-serenity-json
+            path: target/site/reports/**/*.json
+
+    # =====================================================
+    # FINAL SUMMARY
+    # =====================================================
+
+    final-summary:
+      runs-on: macos-latest
+
+      needs:
+        - android-tests
+        - ios-tests
+
+      if: always()
+
+      steps:
+
+        - uses: actions/checkout@v5
+
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
+
+        - name: Create folders
+          run: |
+            mkdir -p reports/android/json
+            mkdir -p reports/android/logs
+            mkdir -p reports/android/report
+            
+            mkdir -p reports/ios/json
+            mkdir -p reports/ios/logs
+            mkdir -p reports/ios/report
+            
+            mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
+
+        # =====================================================
+        # DOWNLOAD ANDROID ARTIFACTS
+        # =====================================================
+
+        - name: Download Android JSON
+          uses: actions/download-artifact@v5
+          with:
+            name: android-serenity-json
+            path: reports/android/json
+
+        - name: Download Android Logs
+          uses: actions/download-artifact@v5
+          with:
+            name: android-device-logs
+            path: reports/android/logs
+
+        - name: Download Android Report
+          uses: actions/download-artifact@v5
+          with:
+            name: android-serenity-report
+            path: reports/android/report
+
+        # =====================================================
+        # DOWNLOAD IOS ARTIFACTS
+        # =====================================================
+
+        - name: Download iOS JSON
+          uses: actions/download-artifact@v5
+          with:
+            name: ios-serenity-json
+            path: reports/ios/json
+
+        - name: Download iOS Logs
+          uses: actions/download-artifact@v5
+          with:
+            name: ios-device-logs
+            path: reports/ios/logs
+
+        - name: Download iOS Report
+          uses: actions/download-artifact@v5
+          with:
+            name: ios-serenity-report
+            path: reports/ios/report
+
+        # =====================================================
+        # DEBUG
+        # =====================================================
+
+        - name: Show Downloaded Files
+          run: |
+            echo "ANDROID FILES"
+            find reports/android
+            
+            echo "IOS FILES"
+            find reports/ios
+
+        # =====================================================
+        # MERGE JSON RESULTS
+        # =====================================================
+
+        - name: Merge JSON Results
+          run: |
+            find reports/android/json -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+            find reports/ios/json -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+
+        # =====================================================
+        # GENERATE FINAL REPORT
+        # =====================================================
+
+        - name: Generate Final Serenity Report
+          run: |
+            mvn serenity:aggregate
+
+        # =====================================================
+        # UPLOAD FINAL REPORT
+        # =====================================================
+
+        - name: Upload Final Combined Report
+          uses: actions/upload-artifact@v5
+          with:
+            name: final-combined-serenity-report
+            path: target/site
+
+        # =====================================================
+        # UPLOAD ALL LOGS
+        # =====================================================
+
+        - name: Upload All Device Logs
+          uses: actions/upload-artifact@v5
+          with:
+            name: all-device-logs
+            path: |
+              reports/android/logs
+              reports/ios/logs
+

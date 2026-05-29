@@ -34,7 +34,7 @@ public class WalletElements {
     public static By verificationDetails = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PIN\"]");
     public static By clickAddMyDigitalID = By.id("eu.europa.ec.euidi:id/success_screen_primary_button");
-    public static By clickDocuments = By.id("eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_documents");
+    public static By clickDocuments = By.id("eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_document");
     public static By clickClose = By.id("eu.europa.ec.euidi:id/document_success_screen_button");
     public static By documentsPageIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"Documents\"])[1]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Hide\"]"); //androidx.compose.ui.platform.h1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button
