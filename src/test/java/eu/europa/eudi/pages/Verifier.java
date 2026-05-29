@@ -175,15 +175,12 @@ public class Verifier {
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-// Wait until the EditText is present
             WebElement pinField = wait.until(
                     ExpectedConditions.presenceOfElementLocated(
                             AppiumBy.className("android.widget.EditText")
                     )
             );
-// Focus the field
             pinField.click();
-// Send digits one-by-one as real keyboard events
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
                         new KeyEvent(
@@ -250,142 +247,6 @@ public class Verifier {
                 .perform();
     }
 
-    public void clickTransactionsLogs() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickTransactionsLogs)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickTransactionsLogs)).click();
-        }
-    }
-
-    public void clickTransactionInitialized() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickTransactionInitialized)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-            WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickTransactionInitialized));
-            test.mobile().wallet().tapAction(element, true);
-        }
-    }
-
-    public void getTransactionId() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement jsonElement;
-            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
-            } else {
-                jsonElement = driver.findElement(By.className("android.widget.TextView"));
-
-            }
-            String rawText = jsonElement.getText();
-
-            JSONObject jsonObject = new JSONObject(rawText);
-
-            String transactionId = jsonObject.getString("key");
-
-            System.out.println("Transaction ID: " + transactionId);
-
-            EventsApiVerifier api = new EventsApiVerifier();
-            api.getPresentationEvents(transactionId);
-        } else {
-            if (test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-                WebElement jsonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//XCUIElementTypeStaticText[contains(@value, 'value')]")
-                ));
-
-                String jsonText = jsonElement.getText();
-
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("label");
-                }
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("value");
-                }
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("name");
-                }
-
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    throw new RuntimeException("Could not find or extract JSON text from the UI.");
-                }
-
-                System.out.println("Found JSON text: " + jsonText);
-
-                try {
-                    JSONObject jsonObject = new JSONObject(jsonText);
-                    String transactionId = jsonObject.getString("key");
-
-                    System.out.println("Transaction ID: " + transactionId);
-
-                    EventsApiVerifier api = new EventsApiVerifier();
-                    api.getPresentationEvents(transactionId);
-
-                } catch (Exception e) {
-                    System.err.println("Failed to parse JSON: " + e.getMessage());
-                    throw new RuntimeException(e);
-                }
-
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                List<WebElement> elements = driver.findElements(By.xpath("//XCUIElementTypeStaticText"));
-                String jsonText = null;
-
-                for (WebElement el : elements) {
-                    int x = el.getLocation().getX();
-                    int y = el.getLocation().getY();
-                    int width = el.getSize().getWidth();
-                    int height = el.getSize().getHeight();
-
-                    if (width == 1407 && height == 198 && x == 90 && y == 265) {
-                        String text = el.getText();
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("label");
-                        }
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("value");
-                        }
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("name");
-                        }
-
-                        if (text != null && !text.trim().isEmpty()) {
-                            jsonText = text;
-                            System.out.println("Found JSON text: " + jsonText);
-                            break;
-                        }
-                    }
-                }
-
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    throw new RuntimeException("Could not find or extract JSON text from the UI.");
-                }
-
-                try {
-                    JSONObject jsonObject = new JSONObject(jsonText);
-                    String transactionId = jsonObject.getString("key");
-
-                    System.out.println("Transaction ID: " + transactionId);
-
-                    EventsApiVerifier api = new EventsApiVerifier();
-                    api.getPresentationEvents(transactionId);
-
-                } catch (Exception e) {
-                    System.err.println("Failed to parse JSON: " + e.getMessage());
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-    }
-
     public void chooseWalletPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.chooseWalletPageDisplayed)).getText();
@@ -429,17 +290,6 @@ public class Verifier {
             }
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickSelect)).click();
         }
-    }
-
-    public void createVerifierQRScreenshot() throws InterruptedException {
-        appOpensSuccessfully();
-        selectSpecificAttestation();
-        scrollUntilNext();
-        clickNext();
-        selectSpecificAttributes();
-        clickNext();
-        clickNext();
-        captureScreen();
     }
 
     private void selectSpecificAttestation() {
