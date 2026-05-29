@@ -307,116 +307,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().correspondingMessageIsDisplayed();
     }
 
-    @Given("the user is on the issuer service")
-    public void theUserIsOnTheIssuerService() {
-        test.mobile().issuer().issuerService();
-    }
-
-    @When("the user selects to issue a credential")
-    public void theUserSelectsToIssueACredential() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilPIDIssuer();
-        test.mobile().issuer().clickPersonalIdentificationData();
-        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the user is redirected to the EUDI Wallet")
-    public void theUserIsRedirectedToTheEUDIWallet() throws InterruptedException {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @And("the details of the credential to be issued are presented")
-    public void theDetailsOfTheCredentialToBeIssuedArePresented() {
-        test.mobile().wallet().detailsArePresented();
-    }
-
-    @Given("the user is presented with the credential details on the EUDI Wallet")
-    public void theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet() throws InterruptedException {
-        theUserIsOnTheIssuerService();
-        theUserSelectsToIssueACredential();
-        theUserIsRedirectedToTheEUDIWallet();
-        theDetailsOfTheCredentialToBeIssuedArePresented();
-    }
-
-    @When("the user presses the Issue button")
-    public void theUserPressesTheIssueButton() {
-        test.mobile().wallet().clickIssue();
-    }
-
-    @Then("the user is redirected back to the issuer service")
-    public void theUserIsRedirectedBackToTheIssuerService() {
-        //auto accept pop up
-    }
-
-    @And("the user is prompted to authenticate and consent to the issuance")
-    public void theUserIsPromptedToAuthenticateAndConsentToTheIssuance() {
-        //auto accept pop up
-    }
-
-    @And("the user is asked to authenticate and consent on the issuer service")
-    public void theUserIsAskedToAuthenticateAndConsentOnTheIssuerService() throws InterruptedException {
-        theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet();
-        test.mobile().wallet().clickIssue();
-    }
-
-    @When("the user authenticates and consents to the issuance")
-    public void theUserAuthenticatesAndConsentsToTheIssuance() {
-        //auto accept pop up
-    }
-
-    @And("inserts the required credential details")
-    public void insertsTheRequiredCredentialDetails() throws InterruptedException {
-        test.mobile().issuer().selectCountryOfOrigin();
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickConfirm();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("the user is redirected to the EUDI Wallet app")
-    public void theUserIsRedirectedToTheEUDIWalletApp() {
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
-    @And("a success message is displayed on the EUDI Wallet app")
-    public void aSuccessMessageIsDisplayedOnTheEUDIWalletApp() {
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
-    @When("the user presses the CONTINUE button")
-    public void theUserPressesTheCONTINUEButton() {
-        test.mobile().wallet().clickDone();
-    }
-
-
-    @Then("the new document is presented in the EUDI Wallet dashboard screen")
-    public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().secondPIDIsDisplayed();
-    }
-
-    @Given("the user sees a success message in the EUDI Wallet app")
-    public void theUserSeesASuccessMessageInTheEUDIWalletApp() throws InterruptedException {
-        theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-        insertsTheRequiredCredentialDetails();
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
     @When("the user enters their PIN")
     public void theUserEntersTheirPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
@@ -933,14 +823,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().transactionCodeIsDisplayed();
     }
 
-    @Given("the transaction code has been created")
-    public void theTransactionCodeHasBeenCreated() throws InterruptedException {
-        theUserIsOnTheIssuerService();
-        theUserChoosesToIssueADocWithPreAuthorization();
-        theUserRegistersTheirPersonalData();
-        aTransactionCodeHasBeenCreated();
-    }
-
     @When("the user selects to register with the EUDI wallet app")
     public void theUserSelectsToRegisterWithTheEUDIWalletApp() throws InterruptedException {
         test.mobile().issuer().qrCodeIsDisplayed();
@@ -957,13 +839,6 @@ public class AutomatedStepDefs {
         //manual
     }
 
-    @Given("the user has entered the PIN")
-    public void theUserHasEnteredThePIN() throws InterruptedException {
-        theTransactionCodeHasBeenCreated();
-        theUserSelectsToRegisterWithTheEUDIWalletApp();
-        theUserIsRedirectedToTheEUDIWalletApplication();
-        theUserEntersThePIN();
-    }
 
     @When("the request from the issuer is displayed on the wallet app")
     public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
@@ -975,13 +850,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickIssue();
     }
 
-    @Given("the user has clicked on the ISSUE button")
-    public void theUserHasClickedOnTheISSUEButton() throws InterruptedException {
-        theUserHasEnteredThePIN();
-        theRequestFromTheIssuerIsDisplayedOnTheWalletApp();
-        theUserClicksOnTheISSUEButton();
-    }
-
     @Then("the Wallet app requests the transaction code")
     public void theWalletAppRequestsTheTransactionCode() {
        //donothing
@@ -990,13 +858,6 @@ public class AutomatedStepDefs {
     @And("the user enters the transaction code provided by the Issuer")
     public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
        //donothing
-    }
-
-    @Given("the user entered the transaction code provided by the Issuer")
-    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() throws InterruptedException {
-        theUserHasClickedOnTheISSUEButton();
-        theWalletAppRequestsTheTransactionCode();
-        theUserEntersTheTransactionCodeProvidedByTheIssuer();
     }
 
     @When("the Wallet application displays a success message")
