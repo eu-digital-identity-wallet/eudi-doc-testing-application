@@ -8742,6 +8742,97 @@ public class ManuallyStepDefs {
     public void theUserFailsToAuthenticateUsingTheSixDigitPIN() {
         //manual
     }
+
+    @Given("the user is on the issuer service")
+    public void theUserIsOnTheIssuerService() {
+        //manual
+    }
+
+    @When("the user selects to issue a credential")
+    public void theUserSelectsToIssueACredential() throws InterruptedException {
+        //manual
+    }
+
+    @Then("the user is redirected to the EUDI Wallet")
+    public void theUserIsRedirectedToTheEUDIWallet() throws InterruptedException {
+        //manual
+    }
+
+    @And("the details of the credential to be issued are presented")
+    public void theDetailsOfTheCredentialToBeIssuedArePresented() {
+        //manual
+    }
+
+    @Given("the user is presented with the credential details on the EUDI Wallet")
+    public void theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet() throws InterruptedException {
+        //manual
+    }
+
+    @When("the user presses the Issue button")
+    public void theUserPressesTheIssueButton() {
+        //manual
+    }
+
+    @Then("the user is redirected back to the issuer service")
+    public void theUserIsRedirectedBackToTheIssuerService() {
+        //manual
+    }
+
+    @And("the user is prompted to authenticate and consent to the issuance")
+    public void theUserIsPromptedToAuthenticateAndConsentToTheIssuance() {
+        //manual
+    }
+
+    @And("the user is asked to authenticate and consent on the issuer service")
+    public void theUserIsAskedToAuthenticateAndConsentOnTheIssuerService() throws InterruptedException {
+        //manual
+    }
+
+    @When("the user authenticates and consents to the issuance")
+    public void theUserAuthenticatesAndConsentsToTheIssuance() {
+        //manual
+    }
+
+    @And("inserts the required credential details")
+    public void insertsTheRequiredCredentialDetails() throws InterruptedException {
+        //manual
+    }
+
+    @And("a success message is displayed on the EUDI Wallet app")
+    public void aSuccessMessageIsDisplayedOnTheEUDIWalletApp() {
+        //manual
+    }
+
+    @When("the user presses the CONTINUE button")
+    public void theUserPressesTheCONTINUEButton() {
+        //manual
+    }
+
+
+    @Then("the new document is presented in the EUDI Wallet dashboard screen")
+    public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
+        //manual
+    }
+
+    @Given("the transaction code has been created")
+    public void theTransactionCodeHasBeenCreated() throws InterruptedException {
+       //manual
+    }
+
+    @Given("the user has entered the PIN")
+    public void theUserHasEnteredThePIN() throws InterruptedException {
+        //manual
+    }
+
+    @Given("the user has clicked on the ISSUE button")
+    public void theUserHasClickedOnTheISSUEButton() throws InterruptedException {
+       //manual
+    }
+
+    @Given("the user entered the transaction code provided by the Issuer")
+    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() throws InterruptedException {
+       //manual
+    }
 }
 
 
