@@ -10,8 +10,6 @@ public class VerifierElements {
     public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"The following transaction requires your permission and authentication.\"]");
     public static By appOpensSuccessfully = By.xpath("//android.widget.TextView[@text=\"Define your presentation request\"]");
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
-    public static By clickTransactionsLogs = By.xpath("//android.widget.TextView[@text=\"transaction log\"]");
-    public static By clickTransactionInitialized = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectAttributesMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[1]/android.view.View");
@@ -23,8 +21,6 @@ public class VerifierElements {
     public static By msoMdocReal = By.xpath("//android.view.View[@resource-id=\"mat-option-23\"]");
     public static By specificAttributes = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]");
     public static By specificAttributesMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-2-panel\"]");
-    public static By selectAttributesButton = By.xpath("//android.widget.Button[@text=\"Select Attributes\"]");
-    public static By clickSelect = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By appOpensSuccessfullyOnWeb =  By.xpath("//h4[normalize-space()='Define your presentation request']");;
     public static By clickDataOnWeb = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space()='Person Identification Data (PID)']]");
     public static By selectAttributesOnWeb = By.xpath("//mat-form-field[.//mat-label[normalize-space()='-- attributes by --']]//div[contains(@class,'mat-mdc-select-trigger')]");

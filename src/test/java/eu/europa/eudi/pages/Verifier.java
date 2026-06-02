@@ -1,11 +1,10 @@
 package eu.europa.eudi.pages;
 
-import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
-import eu.europa.eudi.utils.config.EnvDataConfig;;
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,7 +12,6 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
-import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
@@ -260,51 +258,6 @@ public class Verifier {
     public void clickNextForAndroid() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickNextForVerifier)).click();
-        }
-    }
-
-    public void selectSpecificAttributes() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesButton)).click();
-
-            for (int i = 0; i < 5; i++) {
-                try {
-                    By attributeLocator = By.xpath("//android.view.View[@resource-id='mat-mdc-checkbox-" + i + "']/android.view.View");
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
-                } catch (Exception e) {
-                    System.out.println("Could not click attribute " + i + ", continuing...");
-                }
-            }
-
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSelect)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesButton)).click();
-
-            for (int i = 1; i < 5; i++) {
-                try {
-                    By attributeLocator = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[" + i + "]");
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
-                } catch (Exception e) {
-                    System.out.println("Could not click attribute " + i + ", continuing...");
-                }
-            }
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickSelect)).click();
-        }
-    }
-
-    private void selectSpecificAttestation() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.specificAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.msoMdoc)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
         }
     }
 
@@ -708,17 +661,15 @@ public class Verifier {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                Thread.sleep(500);
-                //todo Thanos check comment n01
             }
 
             List<WebElement> switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
             WebElement el = switches.get(index);
             wait.until(ExpectedConditions.visibilityOf(el));
             wait.until(ExpectedConditions.elementToBeClickable(el));
+            String prevValue = el.getAttribute("value");
             el.click();
-            //todo Thanos
-            Thread.sleep(500);
+            wait.until(d -> !prevValue.equals(el.getAttribute("value")));
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));

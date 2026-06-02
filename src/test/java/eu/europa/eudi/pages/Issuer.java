@@ -281,8 +281,6 @@ public class Issuer {
 
                 } catch (Exception e) {
                     System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
-                    //TODO Varvara
-                    Thread.sleep(1000);
                 }
             }
 
@@ -293,8 +291,8 @@ public class Issuer {
 
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            //TODO Varvara
-            Thread.sleep(2000);
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
             boolean found = false;
             int maxAttempts = 5;
@@ -439,17 +437,14 @@ public class Issuer {
 
             int diff = 3 - currentMonth;
 
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
-                }
-
-                try {
-                    //TODO Thanos
-                    Thread.sleep(200);
-                } catch (InterruptedException ignored) {
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
             }
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
@@ -557,17 +552,15 @@ public class Issuer {
 
             int diff = 3 - currentMonth;
 
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
-
-                try {
-                    //todo Thanos
-                    Thread.sleep(200);
-                } catch (InterruptedException ignored) {}
             }
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
@@ -639,17 +632,15 @@ public class Issuer {
             By prevBtn = By.id("android:id/prev");
             int currentMonth = LocalDate.now().getMonthValue();
             int diff = 3 - currentMonth;
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
-
-                try {
-                    //todo Thanos
-                    Thread.sleep(200);
-                } catch (InterruptedException ignored) {}
             }
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
             test.mobileWebDriverFactory().getWait()
@@ -729,8 +720,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                //todo Thanos check comment n01
-                Thread.sleep(20);
             }
         } else {
             int i = 1;
@@ -806,20 +795,16 @@ public class Issuer {
         }
     }
 
-    public void clickAuthorize() throws InterruptedException {
+    public void clickAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-            //TODO Thanos
-            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
-            //TODO Thanos
-            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         }
     }
@@ -1080,36 +1065,6 @@ public class Issuer {
         }
     }
 
-    public void selectCountryOfOriginDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
-        }
-    }
-
     public void issueMDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
@@ -1204,8 +1159,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //TODO Thanos todo check comment n01
-                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1222,8 +1175,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1275,8 +1226,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1293,8 +1242,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1315,8 +1262,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1333,8 +1278,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1351,7 +1294,7 @@ public class Issuer {
 
     public void successfullySharedMessage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
             Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.successfullyShared)).getText();
@@ -1418,14 +1361,6 @@ public class Issuer {
         }
     }
 
-    //TODO Thanos remove this method and find a dynamic way to verify that the last action is completed or the next is ready or both
-    public void sleepMethod() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void transactionCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1506,7 +1441,6 @@ public class Issuer {
                 swipe.addAction(new Pause(finger, Duration.ofMillis(100)));
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-                //todo Thanos check comment n01
                 int maxRetries = 2;
                 int attempts = 0;
                 boolean success = false;
@@ -1596,8 +1530,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                //todo n01 Thanos, the above code appears multiple times and I find that the duration is the only difference. Make a common function and add as variables the different values
-                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1616,8 +1548,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1691,8 +1621,6 @@ public class Issuer {
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -2030,11 +1958,6 @@ public class Issuer {
                 } catch (Exception ignored) {
                     slowScroll();
                 }
-
-                try {
-                    //TODO Thanos
-                    Thread.sleep(300);
-                } catch (InterruptedException ignored) {}
             }
 
 
@@ -2058,8 +1981,6 @@ public class Issuer {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment no1
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -2078,8 +1999,6 @@ public class Issuer {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment no1
-                    Thread.sleep(50);
                 }
             }
         }
