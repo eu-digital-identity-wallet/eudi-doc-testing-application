@@ -1651,6 +1651,7 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
                     driver.findElement(AppiumBy.androidUIAutomator(
                             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
@@ -1705,6 +1706,7 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
