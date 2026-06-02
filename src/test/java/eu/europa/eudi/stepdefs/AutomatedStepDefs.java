@@ -1089,7 +1089,8 @@ public class AutomatedStepDefs {
                             if (test.mobile().wallet().isQrVisible()) {
                                 test.mobile().wallet().onlyThisTimeQR();
                             }
-                        }                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        }
+                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                         test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
