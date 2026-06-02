@@ -9,7 +9,6 @@ public class IssuerElements {
     public static By qrCodeIsDisplayed = By.xpath("//android.widget.TextView[@text=\"QR Code\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
-    public static By authenticationMethodSelection = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.id("document_success_screen_content_header_description");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
@@ -30,11 +29,9 @@ public class IssuerElements {
     public static By clickCountryCode = By.xpath("//android.view.View[@text=\"Country Code\"]/following-sibling::android.widget.EditText[1]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Given Name\"]");
-    public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
-    public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select the Credentials you would like to issue:\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");

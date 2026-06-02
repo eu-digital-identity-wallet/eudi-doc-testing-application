@@ -30,17 +30,14 @@ public class IssuerElements {
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date\"]");
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
-    public static By authenticationMethodSelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[11]/XCUIElementTypeTextField");
     public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
-    public static By selectCountryOfOriginIsDisplayedDev = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
     public static By enterCode = By.xpath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]/XCUIElementTypeTextField[1]");
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");
     public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
-    public static By requestCredentialsKotlinIssuerPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select the Credentials you would like to issue:\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
     public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
     public static By clickUsername = By.xpath("//XCUIElementTypeTextField");

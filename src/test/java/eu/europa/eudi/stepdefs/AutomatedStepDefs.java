@@ -87,7 +87,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickExpandVerification();
             test.mobile().wallet().clickExpandVerificationDown();
@@ -134,7 +133,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
         }
@@ -276,63 +274,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().createAPin();
     }
 
-    @Then("the PID should open")
-    public void thePIDShouldOpen() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Given("the user is in the verifier app")
-    public void theUserIsInTheVerifierApp() throws MalformedURLException {
-        userOpensVerifierApp();
-    }
-
-    @When("the verifier requests a doc from the wallet user")
-    public void theVerifierRequestsADocFromTheWalletUser() {
-        test.mobile().verifier().launchSafari();
-        test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectAllAttributes();
-        test.mobile().verifier().scrollUntilNext();
-
-        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().scrollUntilSumbit();
-            test.mobile().verifier().clickSubmit();
-        } else {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNextForAndroid();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().assertAndClickNext();
-        }
-    }
-
-    @Then("the requestor of the data is displayed in the wallet")
-    public void theRequestorOfTheDataIsDisplayedInTheWallet() {
-        test.mobile().verifier().chooseWalletPageIsDisplayed();
-        test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @And("the document from which the data are requested is displayed")
-    public void theDocumentFromWhichTheDataAreRequestedIsDisplayed() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Given("the user has selected some data")
-    public void theUserHasSelectedSomeData() throws MalformedURLException {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-    }
-
-    @When("the user unselects some of this data")
-    public void theUserUnselectsSomeOfThisData() {
-        test.mobile().wallet().clickToViewDetails();
-        test.mobile().wallet().detailsOfDocumentIsDisplayed();
-        test.mobile().wallet().unselectData();
-    }
-
     @When("the user enters the correct PIN")
     public void theUserEntersTheCorrectPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
@@ -355,25 +296,9 @@ public class AutomatedStepDefs {
         }
     }
 
-    @When("the user clicks on Documents")
-    public void theUserClicksOnDocuments() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
     @Given("the test is being ignored")
     public void theTestIsBeingIgnored() {
         test.mobile().wallet().skippedTest();
-    }
-
-    @Given("the user is on Home page")
-    public void theUserIsOnHomePage() {
-        test.mobile().wallet().homePageIsDisplayed();
-    }
-
-    @And("the details should be blurred by default auto")
-    public void theDetailsShouldBeBlurredByDefault() {
-        test.mobile().wallet().detailsAreBlurred();
     }
 
     @Then("the user should see the home screen")
@@ -735,13 +660,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().authenticationSuccessfully();
     }
 
-    @Given("a success message is displayed for the successful presentation of PID")
-    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfPID() throws InterruptedException {
-        theUserHasBeenPromptedToEnterTheirSixDigitPIN();
-        theUserEntersTheirSixDigitPINCorrectly();
-        aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID();
-    }
-
     @When("the user clicks the Continue button")
     public void theUserClicksTheContinueButton() throws InterruptedException {
         test.mobile().wallet().clickDone();
@@ -1014,19 +932,6 @@ public class AutomatedStepDefs {
         //donothing
     }
 
-    @Given("the user is viewing the details of attestation auto")
-    public void theUserIsViewingTheDetailsOfAttestationAuto() {
-        theUserIsOnHomePage();
-        theUserClicksOnDocuments();
-        theUserClicksOnThePIDDocument();
-        thePIDShouldOpen();
-        theDetailsShouldBeBlurredByDefault();
-    }
-
-    private void theUserClicksOnThePIDDocument() {
-        test.mobile().wallet().clickPID();
-    }
-
     @Then("verifier verifies the credential successfully with {}")
     public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
         if ("failed".equalsIgnoreCase(status)) {
@@ -1151,7 +1056,6 @@ public class AutomatedStepDefs {
                     } else {
                         if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                             test.mobile().issuer().issuerService();
-                            test.mobile().issuer().sleepMethod();
                             test.mobile().issuer().requestCredentialsPageIsDisplayed();
                             test.mobile().issuer().scrollUntilMdlIssuer();
                             test.mobile().issuer().selectMdlPythonIssuer();
@@ -1169,7 +1073,6 @@ public class AutomatedStepDefs {
                         test.mobile().issuer().issuerService();
                     } else {
                         test.mobile().issuer().issuerService();
-                        test.mobile().issuer().sleepMethod();
                         test.mobile().issuer().requestCredentialsPageIsDisplayed();
                         test.mobile().issuer().scrollUntilMdlIssuer();
                         test.mobile().issuer().selectMdlPythonIssuer();
@@ -1346,113 +1249,6 @@ public class AutomatedStepDefs {
             case "web verifier":
                 test.mobile().wallet().userOpensVerifier();
                 break;
-        }
-    }
-
-    private void slowScroll() {
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            String originalContext = driver.getContext();
-
-            try {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.30);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 0);
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(800),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                driver.perform(Collections.singletonList(swipe));
-
-            } finally {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
-                }
-            }
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-            String originalContext = driver.getContext();
-
-            try {
-
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.30);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 0);
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(800),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                driver.perform(Collections.singletonList(swipe));
-
-            } finally {
-
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
-                }
-            }
         }
     }
 
@@ -1891,7 +1687,6 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickClose();
                     test.mobile().verifier().walletResponded();
                     test.mobile().verifier().clickViewContent();
-                    test.mobile().issuer().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
                     test.mobile().verifier().clickCloseOnVerifier();
                     break;
@@ -1935,7 +1730,6 @@ public class AutomatedStepDefs {
                             }
                         }
                     }
-                    test.mobile().issuer().sleepMethod();
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();
@@ -1974,7 +1768,6 @@ public class AutomatedStepDefs {
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
 
-        // Wait for first required field to appear before reading page text
         String firstRequiredKey = yml.fields.entrySet().stream()
                 .filter(e -> e.getValue().required)
                 .map(Map.Entry::getKey)

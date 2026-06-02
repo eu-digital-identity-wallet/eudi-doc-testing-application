@@ -1,12 +1,10 @@
 package eu.europa.eudi.pages;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
-import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
@@ -19,7 +17,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -35,7 +32,6 @@ import com.google.zxing.common.HybridBinarizer;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.NoSuchElementException;
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -253,25 +249,6 @@ public class Wallet {
         }
     }
 
-    public void mdlIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.mdlIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.MDL.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.mdlIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.MDL.label, pageHeader);
-        }
-    }
-
-    public void confirmsDeletion() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.confirmsDeletion)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.confirmsDeletion)).click();
-
-        }
-    }
-
     public void dashboardPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayed)).getText();
@@ -286,15 +263,6 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.unselectData)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
-        }
-    }
-
-    public void correspondingMessageIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.correspondingMessageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.CORRESPONDING_MESSAGE.label, pageHeader);
-        } else {
-            //nothing
         }
     }
 
@@ -322,15 +290,6 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSubmit)).click();
         }
-    }
-
-    public void clickDrivingLicenceButton() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickDrivingLicenceButtonOnDocuments));
-            tapAction(button, false);
-        } else {
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickMdl));
-            tapAction(button, false);        }
     }
 
     public void successMessageForDrivingIsDisplayed() {
@@ -403,31 +362,11 @@ public class Wallet {
         }
     }
 
-    public void detailsOfDocumentIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.detailsOfDocument)).getText();
-            Assert.assertEquals(Literals.Wallet.DETAILS_DOCUMENT.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsOfDocument)).getText();
-            Assert.assertEquals(Literals.Wallet.DETAILS_DOCUMENT.label, pageHeader);
-        }
-    }
-
     public void clickExpandVerification() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickExpandVerification)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
-        }
-    }
-
-    public void verificationDetailsAreDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.verificationDetails)).getText();
-            Assert.assertEquals(Literals.Wallet.VERIFICATION_DETAILS.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.verificationDetails)).getText();
-            Assert.assertEquals(Literals.Wallet.VERIFICATION_DETAILS.label, pageHeader);
         }
     }
 
@@ -594,8 +533,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -614,8 +551,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             }
         }
@@ -647,39 +582,6 @@ public class Wallet {
         }
     }
 
-    public void clickDeleteDocument() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDeleteDocument)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickDeleteDocument)).click();
-        }
-    }
-
-    public void scrollUntilYouFindDelete() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".setAsVerticalList()" +
-                            ".flingForward()" +
-                            ".setMaxSearchSwipes(50)" +
-                            ".scrollIntoView(new UiSelector().text(\"Digital Credentials Issuer\"))"
-            ));
-        } else {
-            int i = 1;
-            while (i < 4) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
-                String elementId = ((RemoteWebElement) scrollView).getId();
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                params.put("element", elementId);
-                driver.executeScript("mobile: swipe", params);
-                i++;
-            }
-        }
-    }
-
     public void skippedTest() {
         boolean shouldRunTest = false;
         Assume.assumeTrue("Test is skipped because the required condition is not met", shouldRunTest);
@@ -700,26 +602,6 @@ public class Wallet {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.homePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.HOME_PAGE_IS_DISPLAYED.label, pageHeader);
-        }
-    }
-
-    public void detailsAreBlurred() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.detailsAreBlurred));
-            String elementLabel = eyeElement.getAttribute("content-desc");
-            Assert.assertEquals(Literals.Wallet.DETAILS_ARE_BLURRED.label, elementLabel);
-        } else {
-            envDataConfig = new EnvDataConfig();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
-                WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsAreBlurred));
-                String elementLabel = eyeElement.getAttribute("label");
-                Assert.assertEquals(Literals.Wallet.DETAILS_ARE_BLURRED.label, elementLabel);
-            } else {
-                WebElement eyeElement = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.detailsAreBlurredReal));
-                String elementLabel = eyeElement.getAttribute("label");
-                Assert.assertEquals(Literals.Wallet.DETAILS_ARE_BLURRED.label, elementLabel);
-            }
         }
     }
 
@@ -766,17 +648,6 @@ public class Wallet {
         }
     }
 
-    public void successMessageIsDisplayedForVerifier() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successMessageForVerifier)).getText();
-            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_VERIFIER.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successMessageForVerifier)).getText();
-            Assert.assertEquals(Literals.Wallet.SUCCESS_MESSAGE_VERIFIER.label, pageHeader);
-        }
-    }
-
-
     public void clickPIDOnDocuments() {
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPIDOnDocuments));
@@ -822,8 +693,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -842,8 +711,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             }
         }
@@ -884,8 +751,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -904,8 +769,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             }
         }
@@ -1047,8 +910,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1067,8 +928,6 @@ public class Wallet {
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment n01
-                    Thread.sleep(50);
                 }
             }
         }
@@ -1189,15 +1048,6 @@ public class Wallet {
         }
     }
 
-    public void openIssuedPID() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.issuedPID)).click();
-        } else {
-            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuedPID));
-            tapAction(button, false);
-        }
-    }
-
     public void insertPidFromList() throws InterruptedException {
         test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().clickToAddDocument();
@@ -1264,12 +1114,6 @@ public class Wallet {
             swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
             driver.perform(Arrays.asList(swipe));
-
-            try {
-                //todo Thanos check comment n01
-                Thread.sleep(150);
-            } catch (InterruptedException ignored) {
-            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
@@ -1291,12 +1135,6 @@ public class Wallet {
             swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
             driver.perform(Arrays.asList(swipe));
-
-            try {
-                //todo Thanos check comment n01
-                Thread.sleep(150);
-            } catch (InterruptedException ignored) {
-            }
         }
     }
 
