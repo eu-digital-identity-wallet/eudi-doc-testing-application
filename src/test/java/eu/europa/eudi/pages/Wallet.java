@@ -82,7 +82,7 @@ public class Wallet {
             pinField.click();
 
             //todo Varvara
-            Thread.sleep(500);
+
 
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
@@ -92,7 +92,7 @@ public class Wallet {
                 );
 
                 //todo Varvara
-                Thread.sleep(100);
+
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
@@ -109,11 +109,6 @@ public class Wallet {
                     !d.findElements(By.className("XCUIElementTypeSecureTextField")).isEmpty()
                             || !d.findElements(By.className("XCUIElementTypeTextField")).isEmpty()
             );
-
-            try {
-                //todo Varvara
-                Thread.sleep(500);
-            } catch (InterruptedException ignored) {}
 
             driver.switchTo().activeElement().sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
@@ -152,7 +147,7 @@ public class Wallet {
             pinField.click();
 
             //todo Varvara
-            Thread.sleep(500);
+//            Thread.sleep(500);
 
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
@@ -161,18 +156,25 @@ public class Wallet {
                         )
                 );
                 //todo Varvara
-                Thread.sleep(100);
+//                Thread.sleep(100);
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
-            char firstDigit = fullPin.charAt(0);
             char secondDigit = fullPin.charAt(1);
             char thirdDigit = fullPin.charAt(2);
             char fourthDigit = fullPin.charAt(3);
             char fifthDigit = fullPin.charAt(4);
             char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(firstDigit));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+            wait.until(d ->
+                    !d.findElements(By.className("XCUIElementTypeSecureTextField")).isEmpty()
+                            || !d.findElements(By.className("XCUIElementTypeTextField")).isEmpty()
+            );
+
+            driver.switchTo().activeElement().sendKeys("1");
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
@@ -226,7 +228,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.loginPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.LOGIN_IOS.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
         }
     }
 
@@ -803,7 +805,7 @@ public class Wallet {
         driver.perform(Collections.singletonList(swipe));
     }
 
-    public void scrollUntilmDLOnDocuments() throws InterruptedException {
+    public void scrollUntilmDLOnDocuments() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
@@ -821,11 +823,6 @@ public class Wallet {
                 } catch (Exception ignored) {
                     slowScroll(driver);
                 }
-
-                try {
-                    //todo Varvara
-                    Thread.sleep(300);
-                } catch (InterruptedException ignored) {}
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();

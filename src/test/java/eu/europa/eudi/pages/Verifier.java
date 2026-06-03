@@ -632,7 +632,7 @@ public class Verifier {
                 el.click();
 
                 //todo Varvara
-                Thread.sleep(500);
+//                Thread.sleep(500);
             }
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));

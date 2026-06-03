@@ -962,9 +962,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickNextButton();
                     test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
                     test.mobile().issuer().kotlinIssuerService();
@@ -973,9 +971,9 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickNextButton();
+//                    test.mobile().wallet().clickNextButton();
                     test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().clickConfirm();
+//                    test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
             }
@@ -1447,9 +1445,9 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
-                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                        test.mobile().wallet().createAPin();
-                    }
+//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+//                        test.mobile().wallet().createAPin();
+//                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
