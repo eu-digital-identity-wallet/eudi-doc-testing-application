@@ -630,9 +630,6 @@ public class Verifier {
                 wait.until(ExpectedConditions.elementToBeClickable(el));
 
                 el.click();
-
-                //todo Varvara
-//                Thread.sleep(500);
             }
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));

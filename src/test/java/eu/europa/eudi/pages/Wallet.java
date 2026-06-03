@@ -81,18 +81,12 @@ public class Wallet {
 
             pinField.click();
 
-            //todo Varvara
-
-
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
                         new KeyEvent(
                                 AndroidKey.valueOf("DIGIT_" + digit)
                         )
                 );
-
-                //todo Varvara
-
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
@@ -143,20 +137,13 @@ public class Wallet {
                             AppiumBy.className("android.widget.EditText")
                     )
             );
-
             pinField.click();
-
-            //todo Varvara
-//            Thread.sleep(500);
-
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
                         new KeyEvent(
                                 AndroidKey.valueOf("DIGIT_" + digit)
                         )
                 );
-                //todo Varvara
-//                Thread.sleep(100);
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
@@ -225,7 +212,7 @@ public class Wallet {
     public void loginPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.loginPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.LOGIN_ANDROID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.loginPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);

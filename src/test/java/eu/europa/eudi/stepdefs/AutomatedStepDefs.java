@@ -16,16 +16,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.FileWriter;
@@ -971,9 +968,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
-//                    test.mobile().wallet().clickNextButton();
                     test.mobile().wallet().renterThePin();
-//                    test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
             }
@@ -1445,9 +1440,9 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
-//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//                        test.mobile().wallet().createAPin();
-//                    }
+                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                        test.mobile().wallet().createAPin();
+                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {

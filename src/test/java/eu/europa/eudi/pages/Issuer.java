@@ -257,7 +257,6 @@ public class Issuer {
             waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
-            driver.context("NATIVE_APP");
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
