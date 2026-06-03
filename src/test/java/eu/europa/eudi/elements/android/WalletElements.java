@@ -1,5 +1,6 @@
 package eu.europa.eudi.elements.android;
 
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import org.openqa.selenium.By;
 
 public class WalletElements {

@@ -14,7 +14,7 @@ public class WalletElements {
     public static By clickConfirm = By.id("Confirm");
     public static By successMessage = By.id("success_screen_title");
     public static By dashboardPageIsDisplayed = By.id("home_tab_screen_username_text");
-    public static By clickShare = By.id("Share");
+    public static By clickShare = By.id("request_screen_share_button");
     public static By authenticationSuccess = By.xpath("//XCUIElementTypeStaticText[@label=\"You successfully shared the following information with\"]");
     public static By clickMdl = By.id("mDL (MSO Mdoc)");
     public static By addDoc = By.xpath("//XCUIElementTypeStaticText[@label=\"ADD DOC\"]");
@@ -23,13 +23,13 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.id("biometric_screen_pin_title");
     public static By successMessageForDrivingIsDisplayed = By.id("document_success_screen_content_header_description");
     public static By unselectData = By.xpath("(//XCUIElementTypeButton[@name='checkmark.square.fill'])[1] | (//XCUIElementTypeButton[@name='Selected'])[1]");
-    public static By clickIssue = By.id("Issue");
+    public static By clickIssue = By.id("document_offer_screen_issue_button");
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
-    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN to share data\"]");
+    public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID (MSO Mdoc)");
-    public static By clickDone = By.id("Done");
+    public static By clickDone = By.id("document_success_screen_done_button");
     public static By clickOnDocuments = By.id("documents_tab");
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");

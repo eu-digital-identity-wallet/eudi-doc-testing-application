@@ -253,7 +253,9 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             //TODO Varvara
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(1000));
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+            driver.context("NATIVE_APP");
 
             driver.context("NATIVE_APP");
             boolean found = false;
