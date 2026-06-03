@@ -252,23 +252,14 @@ public class Issuer {
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            //TODO Varvara
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(1000));
-
-            driver.context("NATIVE_APP");
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
@@ -812,15 +803,6 @@ public class Issuer {
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-            driver.context("NATIVE_APP");
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-            ));
             By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
             boolean found = false;
             int maxAttempts = 8;
@@ -828,14 +810,8 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(locator)
                     );
