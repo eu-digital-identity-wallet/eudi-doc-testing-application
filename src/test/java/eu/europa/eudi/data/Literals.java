@@ -8,6 +8,7 @@ public interface Literals {
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back!"),
+        LOGIN_ANDROID("Welcome back"),
         LOGIN_IOS("Login"),
         WELCOME_PAGE("Welcome to the EUDI Wallet"),
         USER_PROFIL("National ID"),
