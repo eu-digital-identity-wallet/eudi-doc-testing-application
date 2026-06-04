@@ -39,11 +39,12 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            test.envDataConfig();
+            String url = test.envDataConfig().getPythonUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
             if ("browserstack".equalsIgnoreCase(env)) {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -56,7 +57,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+            String url = test.envDataConfig().getPythonUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -68,7 +69,9 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
+
+            test.envDataConfig();
+            String url = test.envDataConfig().getPythonUrl();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             try {
                 try {
@@ -179,7 +182,7 @@ public class Issuer {
         }
     }
 
-    public void clickUseEudiw() throws InterruptedException {
+    public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
@@ -1533,16 +1536,18 @@ public class Issuer {
 
     public void kotlinIssuerService() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            envDataConfig = new EnvDataConfig();
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
-            String url = "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            test.envDataConfig();
+            String url = test.envDataConfig().getKotlinUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate");
+                deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -1555,7 +1560,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            String url = test.envDataConfig().getKotlinUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -1830,8 +1835,19 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLKotlinCredential)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin));
+
+            wait.until(driver -> {
+                try {
+                    driver.findElement(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin).click();
+                    return true;
+                } catch (StaleElementReferenceException e) {
+                    return false;
+                }
+            });
         }
     }
 
