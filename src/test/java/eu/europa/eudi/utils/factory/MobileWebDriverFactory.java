@@ -60,7 +60,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.video", true);
                 options.setCapability("browserstack.appiumLogs", false);
                 options.setCapability("orientation", "PORTRAIT");
-//                options.setCapability("androidProcess", "eu.europa.ec.euidi.dev");
                 options.setCapability("appium:disableIdLocatorAutocompletion", true);
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);

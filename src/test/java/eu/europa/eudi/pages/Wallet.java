@@ -99,12 +99,15 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-            wait.until(d ->
-                    !d.findElements(By.className("XCUIElementTypeSecureTextField")).isEmpty()
-                            || !d.findElements(By.className("XCUIElementTypeTextField")).isEmpty()
-            );
 
-            driver.switchTo().activeElement().sendKeys("1");
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("XCUIElementTypeTextField")
+                    )
+            );
+            pinField.click();
+
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
@@ -156,12 +159,15 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-            wait.until(d ->
-                    !d.findElements(By.className("XCUIElementTypeSecureTextField")).isEmpty()
-                            || !d.findElements(By.className("XCUIElementTypeTextField")).isEmpty()
-            );
 
-            driver.switchTo().activeElement().sendKeys("1");
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("XCUIElementTypeTextField")
+                    )
+            );
+            pinField.click();
+
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
