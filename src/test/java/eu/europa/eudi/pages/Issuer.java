@@ -39,11 +39,11 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             String env = test.envDataConfig().getExecutionEnvironment();
             if ("browserstack".equalsIgnoreCase(env)) {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", "https://ec.dev.issuer.eudiw.dev/credential_offer");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -56,7 +56,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -68,7 +68,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/credential_offer";
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             try {
                 try {
@@ -252,24 +252,14 @@ public class Issuer {
     public void clickFormEu() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            //TODO Varvara
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-            driver.context("NATIVE_APP");
-
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(
                                     eu.europa.eudi.elements.android.IssuerElements.clickFormEu
@@ -288,7 +278,6 @@ public class Issuer {
             if (!found) {
                 throw new RuntimeException("FormEU element not found in NATIVE after retries.");
             }
-
 
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -813,15 +802,6 @@ public class Issuer {
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-            driver.context("NATIVE_APP");
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-            ));
             By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
             boolean found = false;
             int maxAttempts = 8;
@@ -829,14 +809,8 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(locator)
                     );
@@ -851,7 +825,6 @@ public class Issuer {
                     }
                 }
             }
-
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
@@ -1559,12 +1532,12 @@ public class Issuer {
             driver.runAppInBackground(Duration.ofSeconds(10));
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
-            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            String url = "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate");
+                deepLinkArgs.put("url", "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate");
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -1577,7 +1550,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            String url = "https://dev.issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -1642,9 +1615,6 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-            driver.context("NATIVE_APP");
 
             boolean found = false;
             int maxAttempts = 8;
@@ -1652,15 +1622,8 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-                    driver.context("NATIVE_APP");
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
 
+                    driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
@@ -1693,7 +1656,7 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
             waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
@@ -1938,7 +1901,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLPython)).click();
 
         }
     }

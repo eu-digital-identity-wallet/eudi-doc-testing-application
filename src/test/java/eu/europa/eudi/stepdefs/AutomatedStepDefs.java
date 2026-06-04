@@ -1440,9 +1440,6 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
-                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                        test.mobile().wallet().createAPin();
-                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {

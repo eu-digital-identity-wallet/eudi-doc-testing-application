@@ -145,7 +145,7 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = "https://ec.dev.issuer.eudiw.dev/";
 
             try {
                 try {
