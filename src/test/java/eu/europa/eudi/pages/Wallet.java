@@ -301,13 +301,12 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-
-            String url = "https://verifier.eudiw.dev/home";
+            String url = test.envDataConfig().getVerifierUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://verifier.eudiw.dev/home");
+                deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
@@ -320,7 +319,7 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://verifier.eudiw.dev/home";
+            String url = test.envDataConfig().getVerifierUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");

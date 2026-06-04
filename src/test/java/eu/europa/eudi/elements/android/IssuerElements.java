@@ -29,12 +29,12 @@ public class IssuerElements {
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text=\"Country Code\"]/following-sibling::android.widget.EditText[1]");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
-    public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Given Name\"]");
+    public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
-    public static By clickUsername = By.xpath("//android.widget.EditText[@resource-id=\"username\"]");
+    public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");

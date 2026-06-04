@@ -104,8 +104,9 @@ public class AutomatedStepDefs {
         if (data_for_scan) {
             test.webWebDriverFactory().startWebDriverSession();
             try {
-                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
-
+                test.envDataConfig();
+                String url = test.envDataConfig().getVerifierUrl();
+                test.webWebDriverFactory().getDriverWeb().get(url);
                 test.web().verifier().appOpensSuccessfullyOnWeb();
                 test.web().verifier().selectAllAttributesOnWeb();
                 test.web().verifier().scrollUntilNextOnWeb();
@@ -1345,8 +1346,9 @@ public class AutomatedStepDefs {
                     test.webWebDriverFactory().startWebDriverSession();
 
                     try {
-
-                        test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                        test.envDataConfig();
+                        String url = test.envDataConfig().getVerifierUrl();
+                        test.webWebDriverFactory().getDriverWeb().get(url);
                         test.web().verifier().appOpensSuccessfullyOnWeb();
                         test.web().verifier().selectAllAttributesOnWeb();
                         test.web().verifier().scrollUntilNextOnWeb();
@@ -1539,8 +1541,9 @@ public class AutomatedStepDefs {
                             test.webWebDriverFactory().startWebDriverSession();
 
                             try {
-
-                                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                                test.envDataConfig();
+                                String url = test.envDataConfig().getVerifierUrl();
+                                test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().selectSpecificAttributesOnWebForMdl();
                                 test.web().verifier().scrollUntilNextOnWeb();
@@ -1565,8 +1568,9 @@ public class AutomatedStepDefs {
                             test.webWebDriverFactory().startWebDriverSession();
 
                             try {
-
-                                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                                test.envDataConfig();
+                                String url = test.envDataConfig().getVerifierUrl();
+                                test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
 
                                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
