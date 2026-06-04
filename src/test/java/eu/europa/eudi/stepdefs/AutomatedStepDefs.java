@@ -282,12 +282,28 @@ public class AutomatedStepDefs {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((AndroidDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
             driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
             test.mobile().wallet().loginPageIsDisplayed();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((IOSDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
         }

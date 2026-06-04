@@ -258,6 +258,8 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
                     WebElement element = wait.until(
@@ -281,9 +283,7 @@ public class Issuer {
 
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            new WebDriverWait(driver, Duration.ofSeconds(10))
-                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-            driver.context("NATIVE_APP");
+
             boolean found = false;
             int maxAttempts = 5;
             int waitSeconds = 90;
@@ -292,8 +292,9 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
-
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
                     WebElement element = wait.until(
@@ -802,13 +803,15 @@ public class Issuer {
     public void formIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
+            By locator = AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Issue attributes\")");
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
                     WebElement element = wait.until(
@@ -834,7 +837,9 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
                     WebElement element = wait.until(
@@ -1622,7 +1627,8 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
