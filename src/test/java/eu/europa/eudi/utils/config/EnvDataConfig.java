@@ -1,5 +1,6 @@
 package eu.europa.eudi.utils.config;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -105,8 +106,28 @@ public class EnvDataConfig {
     public String getAppiumAndroidAppActivity() {
         return getEnvProperties().getProperty(APPIUM_ANDROID_APP_ACTIVITY);
     }
+
     private Properties getEnvProperties() {
-        return readProperties(resourcesConfig.getEnvironmentPropertiesPath());
+        Properties properties = new Properties();
+
+        // 1. Load base environment properties
+        properties.putAll(
+                readProperties(resourcesConfig.getEnvironmentPropertiesPath())
+        );
+
+        // 2. Load browserstack local overrides (if exists)
+        String bsPath = resourcesConfig.getBrowserStackPropertiesPath();
+        File bsFile = new File(bsPath);
+
+        if (bsFile.exists()) {
+            try (FileInputStream fis = new FileInputStream(bsFile)) {
+                properties.load(fis);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return properties;
     }
 
     private static Properties readProperties(String filePath) {
