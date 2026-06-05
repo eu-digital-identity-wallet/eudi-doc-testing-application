@@ -252,12 +252,15 @@ public class Issuer {
                 .perform(Collections.singletonList(tap));
     }
 
-    public void clickFormEu() throws InterruptedException {
+    public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 90;
+            int waitSeconds = 110;
+
+            By locator = eu.europa.eudi.elements.android.IssuerElements.clickFormEu;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -265,25 +268,26 @@ public class Issuer {
                     waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
+
                     WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(
-                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
                             )
                     );
-                    wait.until(ExpectedConditions.elementToBeClickable(element));
+
+                    wait.until(ExpectedConditions.elementToBeClickable(locator));
                     element.click();
-                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
+                    System.out.println("Clicked FormEU in android on attempt " + attempt);
                     found = true;
 
                 } catch (Exception e) {
-                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
+                    System.out.println("⚠ FormEU not found in android on attempt " + attempt);
                 }
             }
 
             if (!found) {
-                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
+                throw new RuntimeException("FormEU element not found in android after retries.");
             }
-
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
@@ -803,13 +807,13 @@ public class Issuer {
         }
     }
 
-    public void formIsDisplayed() throws InterruptedException {
+    public void formIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            By locator = AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Issue attributes\")");
+            By locator = AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")");
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 90;
+            int waitSeconds = 110;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
@@ -817,8 +821,11 @@ public class Issuer {
                     waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(locator)
+
+                   wait.until(
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
+                            )
                     );
 
                     System.out.println("Element is visible on attempt " + attempt);
@@ -846,7 +853,9 @@ public class Issuer {
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
                     WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(locator)
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
+                            )
                     );
 
                     String text = element.getText().trim();
@@ -867,7 +876,8 @@ public class Issuer {
                 }
             }
 
-            Assert.assertTrue("Form not displayed correctly", found);        }
+            Assert.assertTrue("Form not displayed correctly", found);
+        }
     }
 
     public void issuePID() throws InterruptedException {
