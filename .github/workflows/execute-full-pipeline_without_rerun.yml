@@ -37,11 +37,6 @@
         BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
         BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-      - name: Verify BrowserStack env vars
-        run: |
-          echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
-          echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
-
       steps:
 
         - uses: actions/checkout@v5
@@ -56,6 +51,11 @@
           with:
             java-version: 17
             distribution: oracle
+
+        - name: Verify BrowserStack env vars
+          run: |
+            echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
+            echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
 
         - name: Set up Node JS
           uses: actions/setup-node@v5
