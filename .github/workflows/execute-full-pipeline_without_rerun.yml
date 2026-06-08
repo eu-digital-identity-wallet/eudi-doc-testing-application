@@ -37,11 +37,6 @@
         BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
         BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-      - name: Verify BrowserStack env vars
-        run: |
-          echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
-          echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
-
       steps:
 
         - uses: actions/checkout@v5
@@ -50,6 +45,11 @@
             clean: false
             lfs: false
             ref: ${{ inputs.branch-to-checkout }}
+
+        - name: Verify BrowserStack env vars
+          run: |
+              echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
+              echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
 
         - name: Set up JDK 17
           uses: actions/setup-java@v5
