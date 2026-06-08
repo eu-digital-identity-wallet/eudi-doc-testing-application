@@ -1,193 +1,210 @@
-name: Summary Report Without Rerun
+  name: Summary Report Without Rerun
 
-permissions:
-  actions: write
-  contents: read
+  permissions:
+    actions: write
+    contents: read
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch-to-checkout:
-        description: 'Branch to checkout'
-        type: choice
-        options:
-          - main
-          - develop
-          - milestone/2026.Q1
-          - refactor
-        default: develop
+  on:
+    workflow_dispatch:
+      inputs:
 
-      test-cases:
-        description: 'Automated Android & iOS test tag'
-        type: string
-        default: "@automated"
+        branch-to-checkout:
+          description: 'Branch to checkout'
+          type: choice
+          options:
+            - main
+            - develop
+            - milestone/2026.Q1
+            - refactor
+          default: develop
 
-jobs:
+        test-cases:
+          description: 'Automated Android & iOS test tag'
+          type: string
+          default: "@automated"
 
-  # =====================================================
-  # ANDROID TESTS
-  # =====================================================
-  android-tests:
-    runs-on: macos-latest
-    timeout-minutes: 240
+  jobs:
 
-    env:
-      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+    # =====================================================
+    # ANDROID TESTS
+    # =====================================================
 
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-          clean: false
-          lfs: false
-          ref: ${{ inputs.branch-to-checkout }}
+    android-tests:
+      runs-on: macos-latest
+      timeout-minutes: 240
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v5
-        with:
-          java-version: 17
-          distribution: oracle
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-      - name: Set up Node JS
-        uses: actions/setup-node@v5
-        with:
-          node-version: '22'
+      steps:
 
-      - name: Clean Old Results
-        run: |
-          rm -rf target/serenity
-          rm -rf target/site/reports
-          rm -rf target/site/serenity
+        - uses: actions/checkout@v5
+          with:
+            fetch-depth: 0
+            clean: false
+            lfs: false
+            ref: ${{ inputs.branch-to-checkout }}
 
-      - name: Run Android Tests
-        continue-on-error: true
-        run: |
-          TEST_TAGS="${{ inputs.test-cases }} and @ANDROID"
-          echo "Running tests: $TEST_TAGS"
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
 
-          mvn clean verify -ntp \
-            -Dcucumber.filter.tags="$TEST_TAGS"
+        - name: Set up Node JS
+          uses: actions/setup-node@v5
+          with:
+            node-version: '22'
 
-      - name: Upload Android JSON
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: android-serenity-json
-          path: target/site/reports/**/*.json
+        - name: Clean Old Results
+          run: |
+            rm -rf target/serenity
+            rm -rf target/site/reports
+            rm -rf target/site/serenity
 
+        - name: Run Android Tests
+          continue-on-error: true
+          run: |
+            TEST_TAGS="${{ inputs.test-cases }} and @ANDROID"
+            
+            echo "Running tests: $TEST_TAGS"
+            
+            mvn clean verify -ntp \
+              -Dcucumber.filter.tags="$TEST_TAGS"
 
-  # =====================================================
-  # IOS TESTS
-  # =====================================================
-  ios-tests:
-    runs-on: macos-latest
-    timeout-minutes: 240
+        - name: Generate Serenity Report
+          if: always()
+          run: |
+            mvn serenity:aggregate -ntp
 
-    env:
-      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        - name: Upload Android JSON
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: android-serenity-json
+            path: target/site/reports/**/*.json
 
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-          clean: false
-          lfs: false
-          ref: ${{ inputs.branch-to-checkout }}
+    # =====================================================
+    # IOS TESTS
+    # =====================================================
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v5
-        with:
-          java-version: 17
-          distribution: oracle
+    ios-tests:
+      runs-on: macos-latest
+      timeout-minutes: 240
 
-      - name: Set up Node JS
-        uses: actions/setup-node@v5
-        with:
-          node-version: '20'
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-      - name: Clean Old Results
-        run: |
-          rm -rf target/serenity
-          rm -rf target/site/reports
-          rm -rf target/site/serenity
+      steps:
 
-      - name: Run iOS Tests
-        continue-on-error: true
-        run: |
-          TEST_TAGS="${{ inputs.test-cases }} and @IOS"
-          echo "Running tests: $TEST_TAGS"
+        - uses: actions/checkout@v5
+          with:
+            fetch-depth: 0
+            clean: false
+            lfs: false
+            ref: ${{ inputs.branch-to-checkout }}
 
-          mvn clean verify -ntp \
-            -Dcucumber.filter.tags="$TEST_TAGS"
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
 
-      - name: Upload iOS JSON
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: ios-serenity-json
-          path: target/site/reports/**/*.json
+        - name: Set up Node JS
+          uses: actions/setup-node@v5
+          with:
+            node-version: '20'
 
+        - name: Clean Old Results
+          run: |
+            rm -rf target/serenity
+            rm -rf target/site/reports
+            rm -rf target/site/serenity
 
-  # =====================================================
-  # FINAL SUMMARY
-  # =====================================================
-  final-summary:
-    runs-on: macos-latest
+        - name: Run iOS Tests
+          continue-on-error: true
+          run: |
+            TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+            
+            echo "Running tests: $TEST_TAGS"
+            
+            mvn clean verify -ntp \
+              -Dcucumber.filter.tags="$TEST_TAGS"
 
-    needs:
-      - android-tests
-      - ios-tests
+        - name: Generate Serenity Report
+          if: always()
+          run: |
+            mvn serenity:aggregate -ntp
 
-    if: always()
+        - name: Upload iOS JSON
+          uses: actions/upload-artifact@v5
+          if: always()
+          with:
+            name: ios-serenity-json
+            path: target/site/reports/**/*.json
 
-    steps:
-      - uses: actions/checkout@v5
+    # =====================================================
+    # FINAL SUMMARY
+    # =====================================================
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v5
-        with:
-          java-version: 17
-          distribution: oracle
+    final-summary:
+      runs-on: macos-latest
 
-      - name: Create clean report folder
-        run: |
-          rm -rf target/site/reports
-          mkdir -p reports/android
-          mkdir -p reports/ios
-          mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
+      needs:
+        - android-tests
+        - ios-tests
 
-      - name: Download Android JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: android-serenity-json
-          path: reports/android
+      if: always()
 
-      - name: Download iOS JSON
-        uses: actions/download-artifact@v5
-        with:
-          name: ios-serenity-json
-          path: reports/ios
+      steps:
 
-      - name: Merge JSON Results
-        run: |
-          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+        - uses: actions/checkout@v5
 
-      - name: Generate Final Serenity Report
-        run: |
-          mvn serenity:aggregate
+        - name: Set up JDK 17
+          uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
 
-      - name: Replace Serenity Core CSS
-        if: always()
-        run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
-          echo "Replacing core.css using custom-style.css..."
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css"
+        - name: Create folders
+          run: |
+            mkdir -p reports/android
+            mkdir -p reports/ios
+            mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
 
-      - name: Upload Final Report
-        uses: actions/upload-artifact@v5
-        with:
-          name: final-combined-serenity-report
-          path: target/site
+        - name: Download Android JSON
+          uses: actions/download-artifact@v5
+          with:
+            name: android-serenity-json
+            path: reports/android
+
+        - name: Download iOS JSON
+          uses: actions/download-artifact@v5
+          with:
+            name: ios-serenity-json
+            path: reports/ios
+
+        - name: Show Downloaded Files
+          run: |
+            echo "ANDROID FILES"
+            find reports/android
+            
+            echo "IOS FILES"
+            find reports/ios
+
+        - name: Merge JSON Results
+          run: |
+            find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+            find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+
+        - name: Generate Final Serenity Report
+          run: |
+            mvn serenity:aggregate
+
+        - name: Upload Final Report
+          uses: actions/upload-artifact@v5
+          with:
+            name: final-combined-serenity-report
+            path: target/site
