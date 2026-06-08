@@ -9,48 +9,23 @@ public interface Literals {
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back!"),
         LOGIN_ANDROID("Welcome back"),
-        LOGIN_IOS("Login"),
-        WELCOME_PAGE("Welcome to the EUDI Wallet"),
-        USER_PROFIL("National ID"),
 
         PID("PID (MSO MDoc)"),
-        PID_IOS("eu_pid_doctype_name"),
-        MDL("mDL (MSO Mdoc)"),
-        MDL_IOS("mdl_doctype_name"),
         DASHBOARD_PAGE("Welcome back, Nikos"),
-        CORRESPONDING_MESSAGE("Choosing not to share certain data may result in failure to issue the requested document."),
         ADD_DOCUMENT("Add document"),
-        SUCCESS_MESSAGE_PID("You can now add your National ID"),
-        DRIVING_LICENCE("Driving License"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
         SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),
         ISSUANCE_DETAILS("PID (MSO Mdoc)"),
         SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER("You have successfully added the following to your wallet"),
-        SUCCESS_MESSAGE_IS_DISPLAYED_FOR_ISSUER_IOS("You successfully shared the following information with"),
-        SCAN_QR("Scan QR"),
-        DETAILS_NATIONAL_ID("Family Name"),
-        DETAILS_MDL("Date of birth"),
-        DETAILS_DOCUMENT("Family Name(s)"),
-        OPTIONAL_DATA("Family Name"),
-        ACTUAL_DATA("ANDERSSON"),
-        VERIFICATION_DETAILS("Birth Date"),
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
-        DETAILS_ARE_BLURRED("Hide"),
-        DETAILS_ARE_NOT_BLURRED("Show"),
-        CREDENTIALS_PROVIDER_DISPLAYED("Issue attributes for your EUDI Wallet demo application."),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
-        SUCCESS_MESSAGE_VERIFIER("You successfully shared the following information with"),
-        DETAILS_ARE_BLURRED_REAL("eye.slash"),
         QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
-        ISSUANCE_DETAILS_KOTLIN("PID (MSO MDoc)"),
-        QR_SCANNER_IS_ACTIVATED_IOS("Scan a QR code provided from a Relying Party to present a digital document."),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
-        QR_SCANNER_IS_ACTIVATED_FOR_PRESENTATION("Scan a QR code provided from a Relying Party to present a digital document online."),
         MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
 
         public final String label;
@@ -63,18 +38,13 @@ public interface Literals {
 
         VIEW_DATA_PAGE("The following transaction requires your permission and authentication."),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
-        AUTHENTICATION_PAGE("Proceed to authentication"),
-        APP_OPEN_SUCCESSFULLY_IOS("Define your presentation request"),
         WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
         PRESENTATION_QUERY_TYPE("Request URI Method"),
         CHOOSE_WALLET_DISPLAYED("Invoke Wallet"),
         PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
         MDL_IS_DISPLAYED_ON_WEB_KOTLIN("Mobile Driving Licence (MDL)"),
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
-        PID_IS_DISPLAYED_ON_VERIFIER("eu.europa.ec.eudi.pid.1"),
-        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
-        SELECT_CREDENTIALS("Please select credentials"),
-        SPECIFIC_ATTRIBUTES_PAGE("Mobile Driving Licence (MDL)");
+        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL");
 
         public final String label;
         Verifier(String label) {
@@ -85,8 +55,7 @@ public interface Literals {
     enum General{
         ANDROID("android"),
 
-        IOS("ios_execution_with_browserstack.yml"),
-        WEB_DRIVER_NOT_INSTANCE_APPIUM_MESSAGE("WebDriver is not an instance of AppiumDriver");
+        IOS("ios_execution_with_browserstack.yml");
         public final String label;
         General(String label) {
             this.label = label;
@@ -97,23 +66,12 @@ public interface Literals {
         CREDENTIAL_PAGE_IOS("1"),
         CREDENTIAL_PAGE("Please select credentials"),
         QR_CODE("QR Code"),
-        ISSUER_SERVICE("Testing OpenID for Verifiable Credential Issuance - draft 13"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        FORM("EUDI Wallet Credential"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Please review the selected attributes before sending to the EudiWallet demo app."),
-        AUTHORIZE_IS_DISPLAYED_DEV("Review & Send"),
-        ISSUER_SERVICE_IS_DISPLAYED("Request Credentials for your EUDI Wallet"),
-        TRANSACTION_CODE_IS_DISPLAYED("Transaction Code"),
-        FORM_ANDROID("Issue attributes for your EUDI Wallet demo application."),
         FORM_IOS("1"),
-        FORM_DEV("For testing purposes only."),
-        SELECT_COUNTRY_IS_DISPLAYED_DEV("Please select your country of origin"),
-        CODEISVISIBLE("Code"),
-        COUNTRY("Country"),
-        CREDENTIAL_PAGE_KOTLIN("Please select the Credentials you would like to issue:"),
         ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
         SIGN_IN_USER_PAGE("Sign in to your account");
 
