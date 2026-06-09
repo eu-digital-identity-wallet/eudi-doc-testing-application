@@ -49,4 +49,11 @@ public class ResourcesConfig {
 
     }
 
+    public String getBrowserStackPropertiesPath() {
+        if (System.getProperty("browserstack.properties") == null)
+            return getEnvPath() + "/browserstack-local.properties";
+        else
+            return getAbsolutePath() + System.getProperty("browserstack.properties");
+    }
+
 }

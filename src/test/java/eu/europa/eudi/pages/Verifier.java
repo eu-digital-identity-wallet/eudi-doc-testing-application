@@ -1,11 +1,10 @@
 package eu.europa.eudi.pages;
 
-import eu.europa.eudi.api.EventsApiVerifier;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
-import eu.europa.eudi.utils.config.EnvDataConfig;;
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,7 +12,6 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
-import org.json.JSONObject;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
@@ -147,7 +145,6 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://verifier.eudiw.dev/home";
 
             try {
                 try {
@@ -155,11 +152,8 @@ public class Verifier {
                 } catch (Exception e) {
                 }
                 driver.activateApp("com.apple.mobilesafari");
-                //todo Yvonne
-                Thread.sleep(3000);
-                driver.get(url);
-                //todo Yvonne
-                Thread.sleep(5000);
+                WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+                waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                 driver.context("NATIVE_APP");
             } catch (Exception e) {
                 throw new RuntimeException("Failed to launch Safari", e);
@@ -178,30 +172,18 @@ public class Verifier {
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-// Wait until the EditText is present
             WebElement pinField = wait.until(
                     ExpectedConditions.presenceOfElementLocated(
                             AppiumBy.className("android.widget.EditText")
                     )
             );
-
-// Focus the field
             pinField.click();
-
-// Small stabilization pause
-            //todo Yvonne
-            Thread.sleep(500);
-
-// Send digits one-by-one as real keyboard events
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
                         new KeyEvent(
                                 AndroidKey.valueOf("DIGIT_" + digit)
                         )
                 );
-
-                //todo Yvonne
-                Thread.sleep(100);
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
@@ -257,155 +239,9 @@ public class Verifier {
         int centerX = 545;
         int centerY = 1715;
 
-        // Perform tap on center of bounds
         new TouchAction(driver)
                 .tap(PointOption.point(centerX, centerY))
                 .perform();
-    }
-
-    public void clickTransactionsLogs() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickTransactionsLogs)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickTransactionsLogs)).click();
-        }
-    }
-
-    public void clickTransactionInitialized() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickTransactionInitialized)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-            WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickTransactionInitialized));
-            test.mobile().wallet().tapAction(element, true);
-        }
-    }
-
-    public void getTransactionId() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement jsonElement;
-            if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                jsonElement = driver.findElement(By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.widget.TextView"));
-            } else {
-                jsonElement = driver.findElement(By.className("android.widget.TextView"));
-
-            }
-            // Get the text
-            String rawText = jsonElement.getText();
-
-            JSONObject jsonObject = new JSONObject(rawText);
-
-            // Extract the transaction_id from "key" field
-            String transactionId = jsonObject.getString("key");
-
-            // Output the result
-            System.out.println("Transaction ID: " + transactionId);
-
-            EventsApiVerifier api = new EventsApiVerifier();
-            api.getPresentationEvents(transactionId);
-        } else {
-            if (test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-// Locate the element that contains the JSON text
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-                WebElement jsonElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//XCUIElementTypeStaticText[contains(@value, 'value')]")
-                ));
-
-// Try to extract text from multiple possible attributes
-                String jsonText = jsonElement.getText();
-
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("label");
-                }
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("value");
-                }
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    jsonText = jsonElement.getAttribute("name");
-                }
-
-// Validate and parse the JSON
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    throw new RuntimeException("Could not find or extract JSON text from the UI.");
-                }
-
-                System.out.println("Found JSON text: " + jsonText);
-
-                try {
-                    JSONObject jsonObject = new JSONObject(jsonText);
-                    String transactionId = jsonObject.getString("key");
-
-                    System.out.println("Transaction ID: " + transactionId);
-
-                    EventsApiVerifier api = new EventsApiVerifier();
-                    api.getPresentationEvents(transactionId);
-
-                } catch (Exception e) {
-                    System.err.println("Failed to parse JSON: " + e.getMessage());
-                    throw new RuntimeException(e);
-                }
-
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                List<WebElement> elements = driver.findElements(By.xpath("//XCUIElementTypeStaticText"));
-                String jsonText = null;
-
-                for (WebElement el : elements) {
-                    int x = el.getLocation().getX();
-                    int y = el.getLocation().getY();
-                    int width = el.getSize().getWidth();
-                    int height = el.getSize().getHeight();
-
-                    // Filter element based on known size or position (optional)
-                    if (width == 1407 && height == 198 && x == 90 && y == 265) {
-                        // Try getText(), label, value, name
-                        String text = el.getText();
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("label");
-                        }
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("value");
-                        }
-                        if (text == null || text.trim().isEmpty()) {
-                            text = el.getAttribute("name");
-                        }
-
-                        if (text != null && !text.trim().isEmpty()) {
-                            jsonText = text;
-                            System.out.println("Found JSON text: " + jsonText);
-                            break;
-                        }
-                    }
-                }
-
-                // Validate and parse the JSON
-                if (jsonText == null || jsonText.trim().isEmpty()) {
-                    throw new RuntimeException("Could not find or extract JSON text from the UI.");
-                }
-
-                try {
-                    JSONObject jsonObject = new JSONObject(jsonText);
-                    String transactionId = jsonObject.getString("key");
-
-                    System.out.println("Transaction ID: " + transactionId);
-
-                    EventsApiVerifier api = new EventsApiVerifier();
-                    api.getPresentationEvents(transactionId);
-
-                } catch (Exception e) {
-                    System.err.println("Failed to parse JSON: " + e.getMessage());
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 
     public void chooseWalletPageIsDisplayed() {
@@ -424,130 +260,61 @@ public class Verifier {
         }
     }
 
-    public void selectSpecificAttributes() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesButton)).click();
-
-            for (int i = 0; i < 5; i++) {
-                try {
-                    By attributeLocator = By.xpath("//android.view.View[@resource-id='mat-mdc-checkbox-" + i + "']/android.view.View");
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
-                } catch (Exception e) {
-                    System.out.println("Could not click attribute " + i + ", continuing...");
-                }
-            }
-
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickSelect)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesButton)).click();
-
-            for (int i = 1; i < 5; i++) {
-                try {
-                    By attributeLocator = By.xpath("(//XCUIElementTypeSwitch[@value=\"0\"])[" + i + "]");
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
-                } catch (Exception e) {
-                    System.out.println("Could not click attribute " + i + ", continuing...");
-                }
-            }
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickSelect)).click();
-        }
-    }
-
-    public void createVerifierQRScreenshot() throws InterruptedException {
-        appOpensSuccessfully();
-        selectSpecificAttestation();
-        scrollUntilNext();
-        clickNext();
-        selectSpecificAttributes();
-        clickNext();
-        clickNext();
-
-        // Wait a bit for QR code to appear
-        //Todo Yvonne check if it is needed since there is already a thread.sleep in the captureScreen method
-        Thread.sleep(3000);
-
-        // Capture screenshot
-        captureScreen();
-    }
-
-    private void selectSpecificAttestation() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.specificAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.msoMdoc)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
-        }
-    }
-
     public File captureScreen() throws InterruptedException {
         WebDriver driver;
-        //todo Yvonne
-        Thread.sleep(3000);
 
-
-        // Get correct driver
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             driver = test.mobileWebDriverFactory().getDriverAndroid();
         } else {
             driver = test.mobileWebDriverFactory().getDriverIos();
         }
 
-        // Safety check
         if (driver == null) {
-            throw new RuntimeException("Driver is null. Cannot capture screenshot.");
+            throw new RuntimeException("Driver is null.");
         }
 
-        // Small wait to avoid blank/transition screenshots
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-            //todo Yvonne
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("your_page_anchor")));
+        } catch (Exception e) {
+            System.out.println("Warning: Stability element not found.");
         }
 
-        // Create filename
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File screenshotsDir = new File("screenshots");
-
         if (!screenshotsDir.exists()) {
             screenshotsDir.mkdirs();
         }
-
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
-        try {
-            // Take screenshot
-            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        int maxRetries = 3;
+        int attempts = 0;
+        boolean success = false;
 
-            // Copy using stable Java NIO
-            Files.copy(
-                    srcFile.toPath(),
-                    destFile.toPath(),
-                    StandardCopyOption.REPLACE_EXISTING
-            );
+        while (attempts < maxRetries && !success) {
+            try {
+                File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-            // Validate file
-            if (!destFile.exists() || destFile.length() == 0) {
-                throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
+                Files.copy(srcFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                if (destFile.exists() && destFile.length() > 0) {
+                    success = true;
+                } else {
+                    attempts++;
+                }
+            } catch (Exception e) {
+                attempts++;
+                if (attempts >= maxRetries) {
+                    throw new RuntimeException("Screenshot failed after " + maxRetries + " attempts: " + e.getMessage(), e);
+                }
             }
+        }
 
-            System.out.println("Screenshot saved: " + destFile.getAbsolutePath());
-
+        if (success) {
             this.capturedScreenFile = destFile;
             return destFile;
-
-        } catch (Exception e) {
-            throw new RuntimeException(
-                    "Failed to capture screenshot at: " + destFile.getAbsolutePath(),
-                    e
-            );
+        } else {
+            throw new RuntimeException("Failed to capture a non-empty screenshot.");
         }
     }
 
@@ -592,7 +359,6 @@ public class Verifier {
                             );
                         }
 
-                        // treat aria-disabled=true as disabled too
                         boolean reallyEnabled =
                                 (disabled == null) &&
                                         (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
@@ -605,7 +371,6 @@ public class Verifier {
                 return null;
             });
 
-            // Try normal click then JS click
             try {
                 btn.click();
             } catch (ElementClickInterceptedException e) {
@@ -641,7 +406,6 @@ public class Verifier {
                             );
                         }
 
-                        // treat aria-disabled=true as disabled too
                         boolean reallyEnabled =
                                 (disabled == null) &&
                                         (ariaDisabled == null || ariaDisabled.equalsIgnoreCase("false"));
@@ -654,7 +418,6 @@ public class Verifier {
                 return null;
             });
 
-            // Try normal click then JS click
             try {
                 btn.click();
             } catch (ElementClickInterceptedException e) {
@@ -694,19 +457,9 @@ public class Verifier {
     public File captureScreenOnWeb() throws InterruptedException {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
-        //Todo Yvonne
-        Thread.sleep(4000);
 
         if (driver == null) {
             throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
-        }
-
-        // Small stability wait (important for dynamic rendering)
-        try {
-            //Todo Yvonne
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
         }
 
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -719,21 +472,15 @@ public class Verifier {
         File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
         try {
-            // CORRECT selector
-            By qrContainer = By.cssSelector(".vc-verifiable-credential");
+            By qrContainerSelector = By.cssSelector(".vc-verifiable-credential");
 
-            // Wait for container first (more stable than canvas)
-            WebElement container = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(qrContainer)
-            );
+            WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(qrContainerSelector));
 
-            // Scroll into view
             ((JavascriptExecutor) driver).executeScript(
                     "arguments[0].scrollIntoView({block:'center'});",
                     container
             );
 
-            // Find canvas INSIDE container (not globally)
             WebElement canvas = wait.until(d -> {
                 try {
                     WebElement c = container.findElement(By.cssSelector("qrcode canvas"));
@@ -743,44 +490,39 @@ public class Verifier {
                 }
             });
 
-            // Wait until canvas is actually rendered (CRITICAL FIX)
             wait.until(d -> {
-                Long w = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].getBoundingClientRect().width;", canvas);
+                try {
+                    Object width = ((JavascriptExecutor) d).executeScript(
+                            "return arguments[0].getBoundingClientRect().width;", canvas);
+                    Object height = ((JavascriptExecutor) d).executeScript(
+                            "return arguments[0].getBoundingClientRect().height;", canvas);
 
-                Long h = (Long) ((JavascriptExecutor) d)
-                        .executeScript("return arguments[0].getBoundingClientRect().height;", canvas);
-
-                return w != null && h != null && w > 0 && h > 0;
+                    return width instanceof Number && height instanceof Number
+                            && ((Number) width).doubleValue() > 0
+                            && ((Number) height).doubleValue() > 0;
+                } catch (Exception e) {
+                    return false;
+                }
             });
 
-            // Extra buffer for rendering (BrowserStack safe)
-            //TODO Yvonne
-            Thread.sleep(500);
-
-            // Try canvas screenshot first
             File srcFile;
             try {
                 srcFile = canvas.getScreenshotAs(OutputType.FILE);
             } catch (Exception e) {
-                // Fallback: container screenshot (VERY important)
                 srcFile = container.getScreenshotAs(OutputType.FILE);
             }
 
-            // Save using NIO
             Files.copy(
                     srcFile.toPath(),
                     destFile.toPath(),
                     StandardCopyOption.REPLACE_EXISTING
             );
 
-            // Validate file
             if (!destFile.exists() || destFile.length() == 0) {
                 throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
             }
 
             System.out.println("Web QR screenshot saved: " + destFile.getAbsolutePath());
-
             this.capturedScreenFile = destFile;
             return destFile;
 
@@ -887,13 +629,8 @@ public class Verifier {
                 wait.until(ExpectedConditions.elementToBeClickable(el));
 
                 el.click();
-
-                // small pause helps Safari WebView refresh
-                //todo Varvara
-                Thread.sleep(500);
             }
 
-// restore implicit wait
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
         }
     }
@@ -920,17 +657,15 @@ public class Verifier {
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                Thread.sleep(500);
-                //todo Thanos check comment n01
             }
 
             List<WebElement> switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
             WebElement el = switches.get(index);
             wait.until(ExpectedConditions.visibilityOf(el));
             wait.until(ExpectedConditions.elementToBeClickable(el));
+            String prevValue = el.getAttribute("value");
             el.click();
-            //todo Thanos
-            Thread.sleep(500);
+            wait.until(d -> !prevValue.equals(el.getAttribute("value")));
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
@@ -1094,18 +829,15 @@ public class Verifier {
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
         try {
-            // Wait for header to be visible
             wait.until(ExpectedConditions.visibilityOfElementLocated(
                     eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin
             ));
 
-            // If visible → click View Content
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.android.VerifierElements.clickViewContentOnWeb
             )).click();
 
         } catch (TimeoutException e) {
-            // Header not visible → refresh
             test.webWebDriverFactory().getDriverWeb().navigate().refresh();
             test.web().verifier().walletRespondedOnWebforMdlKotlin();
             test.web().verifier().clickViewContentOnWeb();

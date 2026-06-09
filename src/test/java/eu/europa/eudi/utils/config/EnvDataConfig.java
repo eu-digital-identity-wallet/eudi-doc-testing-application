@@ -1,7 +1,6 @@
 package eu.europa.eudi.utils.config;
 
-import org.apache.commons.lang3.StringUtils;
-
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -39,6 +38,9 @@ public class EnvDataConfig {
     public static final String BROWSERSTACK_IOS_DEVICE_NAME = "browserstack.ios.deviceName";
     public static final String BROWSERSTACK_IOS_PLATFORM_VERSION = "browserstack.ios.platformVersion";
     public static final String BROWSERSTACK_IOS_AUTOMATION_NAME = "browserstack.ios.automationName";
+    public static final String KOTLIN_ISSUER = "kotlin.url";
+    public static final String VERIFIER_URL = "verifier.url";
+    public static final String PYTHON_ISSUER = "python.url";
     ResourcesConfig resourcesConfig;
 
     public EnvDataConfig() {
@@ -104,8 +106,28 @@ public class EnvDataConfig {
     public String getAppiumAndroidAppActivity() {
         return getEnvProperties().getProperty(APPIUM_ANDROID_APP_ACTIVITY);
     }
+
     private Properties getEnvProperties() {
-        return readProperties(resourcesConfig.getEnvironmentPropertiesPath());
+        Properties properties = new Properties();
+
+        // 1. Load base environment properties
+        properties.putAll(
+                readProperties(resourcesConfig.getEnvironmentPropertiesPath())
+        );
+
+        // 2. Load browserstack local overrides (if exists)
+        String bsPath = resourcesConfig.getBrowserStackPropertiesPath();
+        File bsFile = new File(bsPath);
+
+        if (bsFile.exists()) {
+            try (FileInputStream fis = new FileInputStream(bsFile)) {
+                properties.load(fis);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return properties;
     }
 
     private static Properties readProperties(String filePath) {
@@ -166,5 +188,17 @@ public class EnvDataConfig {
     public String getAppiumBrowserstackIosAutomationName() {
         return getEnvProperties().getProperty(BROWSERSTACK_IOS_AUTOMATION_NAME);
 
+    }
+
+    public String getVerifierUrl() {
+        return getEnvProperties().getProperty(VERIFIER_URL);
+    }
+
+    public String getKotlinUrl() {
+        return getEnvProperties().getProperty(KOTLIN_ISSUER);
+    }
+
+    public String getPythonUrl() {
+        return getEnvProperties().getProperty(PYTHON_ISSUER);
     }
 }

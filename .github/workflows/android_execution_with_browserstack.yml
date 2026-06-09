@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to checkout'
+        description: 'Branch to ckeckout'
         type: string
         required: true
 

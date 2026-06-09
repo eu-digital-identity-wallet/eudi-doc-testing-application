@@ -16,16 +16,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.FileWriter;
@@ -87,14 +84,13 @@ public class AutomatedStepDefs {
             test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickExpandVerification();
             test.mobile().wallet().clickExpandVerificationDown();
             test.mobile().wallet().scrollUntilNationality();
             test.mobile().wallet().clickExpandVerificationDown();
             test.mobile().wallet().scrollUp();
-            test.mobile().issuer().ckeckFieldsOnWalletFromPyIssuer();
+            test.mobile().issuer().checkFieldsOnWalletFromPyIssuer();
             test.mobile().wallet().clickDone();
             theUserIsOnTheLoginScreen();
             test.mobile().wallet().createAPin();
@@ -108,8 +104,9 @@ public class AutomatedStepDefs {
         if (data_for_scan) {
             test.webWebDriverFactory().startWebDriverSession();
             try {
-                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
-
+                test.envDataConfig();
+                String url = test.envDataConfig().getVerifierUrl();
+                test.webWebDriverFactory().getDriverWeb().get(url);
                 test.web().verifier().appOpensSuccessfullyOnWeb();
                 test.web().verifier().selectAllAttributesOnWeb();
                 test.web().verifier().scrollUntilNextOnWeb();
@@ -134,7 +131,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().scrollUntilPIDFirst();
             test.mobile().wallet().clickPID();
             test.mobile().issuer().issuePID();
-            test.mobile().issuer().sleepMethod();
             test.mobile().issuer().successfullySharedMessage();
             test.mobile().wallet().clickDone();
         }
@@ -184,7 +180,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().clickHome();
         }
         if (ignored) {
-            // Logic to skip the test
             test.mobile().wallet().skippedTest();
             throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
         }
@@ -193,10 +188,10 @@ public class AutomatedStepDefs {
     private void waitForBrowserStackToBeReadyAndroid(WebDriver driverAndroid) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             try {
-                driverAndroid.getPageSource();   // forces first Appium command
+                driverAndroid.getPageSource();
                 return;
             } catch (Exception e) {
-                Thread.sleep(1500);       // wait for Appium/Device to finish connecting
+                Thread.sleep(1500);
             }
         }
     }
@@ -204,10 +199,10 @@ public class AutomatedStepDefs {
     private void waitForBrowserStackToBeReadyIos(WebDriver driverIos) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             try {
-                driverIos.getPageSource();   // forces first Appium command
+                driverIos.getPageSource();
                 return;
             } catch (Exception e) {
-                Thread.sleep(1500);       // wait for Appium/Device to finish connecting
+                Thread.sleep(1500);
             }
         }
     }
@@ -272,599 +267,14 @@ public class AutomatedStepDefs {
         test.mobile().verifier().appOpensSuccessfully();
     }
 
-    @When("user selects specific data to share")
-    public void userSelectSpecificDataToShare() {
-        test.mobile().verifier().launchSafari();
-        test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectAllAttributes();
-        test.mobile().verifier().scrollUntilNext();
-        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().scrollUntilSumbit();
-            test.mobile().verifier().clickSubmit();
-        } else {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNextForAndroid();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().assertAndClickNext();
-        }
-    }
-
-    @And("user selects to be identified using EUDI Wallet")
-    public void userSelectsToBeIdentifiedUsingEUDIWallet() {
-        test.mobile().verifier().chooseWallet();
-    }
-
-    @And("user views the data and can unselect any of them")
-    public void userViewsTheDataAndCanUnselectAnyOfThem() {
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickExpandVerification();
-        test.mobile().wallet().unselectData();
-    }
-
-    @And("user presses the share button")
-    public void userPressesTheShareButton() throws MalformedURLException {
-        userSelectsToBeIdentifiedUsingTheEUDIWallet();
-        userViewsTheDataAndCanUnselectAnyOfThem();
-        userPressesTheShareButtonOnWallet();
-    }
-
-    @And("user is authenticated successfully")
-    public void userIsAuthenticatedSuccessfully() {
-        test.mobile().wallet().authenticationSuccessfully();
-    }
-
-    @And("a corresponding message is displayed")
-    public void aCorrespondingMessageIsDisplayed() {
-        test.mobile().wallet().correspondingMessageIsDisplayed();
-    }
-
-    @Given("the user is on the issuer service")
-    public void theUserIsOnTheIssuerService() {
-        test.mobile().issuer().issuerService();
-    }
-
-    @When("the user selects to issue a credential")
-    public void theUserSelectsToIssueACredential() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilPIDIssuer();
-        test.mobile().issuer().clickPersonalIdentificationData();
-        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the user is redirected to the EUDI Wallet")
-    public void theUserIsRedirectedToTheEUDIWallet() throws InterruptedException {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @And("the details of the credential to be issued are presented")
-    public void theDetailsOfTheCredentialToBeIssuedArePresented() {
-//        test.mobile().verifier().insertPIN2();
-        test.mobile().wallet().detailsArePresented();
-    }
-
-    @Given("the user is presented with the credential details on the EUDI Wallet")
-    public void theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet() throws InterruptedException {
-        theUserIsOnTheIssuerService();
-        theUserSelectsToIssueACredential();
-        theUserIsRedirectedToTheEUDIWallet();
-        theDetailsOfTheCredentialToBeIssuedArePresented();
-    }
-
-    @When("the user presses the Issue button")
-    public void theUserPressesTheIssueButton() {
-        test.mobile().wallet().clickIssue();
-    }
-
-    @Then("the user is redirected back to the issuer service")
-    public void theUserIsRedirectedBackToTheIssuerService() {
-        //auto accept pop up
-    }
-
-    @And("the user is prompted to authenticate and consent to the issuance")
-    public void theUserIsPromptedToAuthenticateAndConsentToTheIssuance() {
-        //auto accept pop up
-    }
-
-    @And("the user is asked to authenticate and consent on the issuer service")
-    public void theUserIsAskedToAuthenticateAndConsentOnTheIssuerService() throws InterruptedException {
-        theUserIsPresentedWithTheCredentialDetailsOnTheEUDIWallet();
-        test.mobile().wallet().clickIssue();
-    }
-
-    @When("the user authenticates and consents to the issuance")
-    public void theUserAuthenticatesAndConsentsToTheIssuance() {
-        //auto accept pop up
-    }
-
-    @And("inserts the required credential details")
-    public void insertsTheRequiredCredentialDetails() throws InterruptedException {
-        test.mobile().issuer().selectCountryOfOrigin();
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickConfirm();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("the user is redirected to the EUDI Wallet app")
-    public void theUserIsRedirectedToTheEUDIWalletApp() {
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
-    @And("a success message is displayed on the EUDI Wallet app")
-    public void aSuccessMessageIsDisplayedOnTheEUDIWalletApp() {
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
-    @When("the user presses the CONTINUE button")
-    public void theUserPressesTheCONTINUEButton() {
-        test.mobile().wallet().clickDone();
-    }
-
-
-    @Then("the new document is presented in the EUDI Wallet dashboard screen")
-    public void theNewDocumentIsPresentedInTheEUDIWalletDashboardScreen() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().secondPIDIsDisplayed();
-    }
-
-    @Given("the user sees a success message in the EUDI Wallet app")
-    public void theUserSeesASuccessMessageInTheEUDIWalletApp() throws InterruptedException {
-        theUserIsAskedToAuthenticateAndConsentOnTheIssuerService();
-        insertsTheRequiredCredentialDetails();
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-    }
-
     @When("the user enters their PIN")
     public void theUserEntersTheirPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
     }
 
-    @Then("the user should see the dashboard screen")
-    public void theUserShouldSeeTheDashboardScreen() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @Given("the user is on the dashboard screen")
-    public void theUserIsOnTheDashboardScreen() {
-        theUserShouldSeeTheDashboardScreen();
-    }
-
-    @When("the user clicks on the PID doc")
-    public void theUserClicksOnThePIDDoc() {
-        test.mobile().wallet().clickPID();
-    }
-
-    @Then("the PID should open")
-    public void thePIDShouldOpen() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Given("the PID is open")
-    public void thePIDIsOpen() {
-        theUserIsViewingTheDetailsOfAnAttestation();
-        theUserSelectsEyeIcon();
-    }
-
-    @When("the user clicks the back button")
-    public void theUserClicksTheBackButton() {
-        test.mobile().wallet().clickBackButton();
-    }
-
-    @Then("the PID should close")
-    public void thePIDShouldClose() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @And("the user should see the dashboard screen again")
-    public void theUserShouldSeeTheDashboardScreenAgain() {
-        test.mobile().wallet().clickHome();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @Then("the user should see the documents they have issued so far")
-    public void theUserShouldSeeTheDocumentsTheyHaveIssuedSoFar() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @When("the user clicks on the mDL doc")
-    public void theUserClicksOnTheMDLDoc() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickMdl();
-    }
-
-    @Then("the mDL should open")
-    public void theMDLShouldOpen() {
-        test.mobile().wallet().mdlIsDisplayed();
-    }
-
-    @Given("the mDL is open")
-    public void theMDLIsOpen() throws InterruptedException {
-        theUserIsViewingTheDetailsOfTheMDL();
-    }
-
-    @Then("the mDL should close")
-    public void theMDLShouldClose() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @When("the user clicks the add doc button")
-    public void theUserClicksTheAddDocButton() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickToAddDocument();
-    }
-
-    @And("the add document page is displayed")
-    public void theAddDocumentPageIsDisplayed() {
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-        test.mobile().wallet().clickFromList();
-    }
-
-    @Then("the authentication method selection is displayed")
-    public void theAuthenticationMethodSelectionIsDisplayed() {
-        test.mobile().issuer().authenticationMethodSelection();
-    }
-
-    @When("the dashboard page is displayed on wallet")
-    public void theDashboardPageIsDisplayedOnWallet() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @Given("the user has successfully entered the PIN")
-    public void theUserHasSuccessfullyEnteredThePIN() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//        test.mobile().wallet().startAndStopDriver();
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-// Re-launches the app from scratch
-            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-            test.mobile().wallet().loginPageIsDisplayed();
-            test.mobile().wallet().createAPin();
-        } else {
-            //        test.mobile().wallet().startAndStopDriver();
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-// Re-launches the app from scratch
-            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
-            test.mobile().wallet().loginPageIsDisplayed();
-            test.mobile().wallet().createAPin();
-        }
-    }
-
-    @When("the user opens a mDL")
-    public void theUserOpensAMDL() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickMdl();
-    }
-
-    @Then("the user should see the document contents")
-    public void theUserShouldSeeTheDocumentContents() {
-        test.mobile().wallet().mdlDetailsAreDisplayed();
-    }
-
-    @Given("the user has opened the selected mDL")
-    public void theUserHasOpenedTheSelectedMDL() throws InterruptedException {
-        theUserHasSuccessfullyEnteredThePIN();
-        theUserOpensAMDL();
-        theUserShouldSeeTheDocumentContents();
-    }
-
-    @When("the user presses the delete button")
-    public void theUserPressesTheDeleteButton() {
-        test.mobile().wallet().scrollUntilYouFindDelete();
-        test.mobile().wallet().clickDeleteDocument();
-        test.mobile().wallet().confirmsDeletion();
-    }
-
-    @When("the user presses the delete button for mDL")
-    public void theUserPressesTheDeleteButtonForMdl() {
-        test.mobile().wallet().scrollUntilYouFindDelete();
-        test.mobile().wallet().clickDeleteDocument();
-        test.mobile().wallet().confirmsDeletion();
-    }
-
-    @Then("the document should be deleted")
-    public void theDocumentShouldBeDeleted() {
-        test.mobile().wallet().confirmsDeletion();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @When("the user opens a PID \\(not the first one issued)")
-    public void theUserOpensAPIDNotTheFirstOneIssued() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickSecondPID();
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Then("the user should see the pid document contents")
-    public void theUserShouldSeeThePidDocumentContents() {
-        test.mobile().wallet().detailsOfDocumentIsDisplayed();
-    }
-
-    @Given("the user has opened the selected PID")
-    public void theUserHasOpenedTheSelectedPID() throws InterruptedException {
-        theUserHasSuccessfullyEnteredThePIN();
-        theUserOpensAPIDNotTheFirstOneIssued();
-        theUserShouldSeeThePidDocumentContents();
-    }
-
-    @Given("the user has opened the first PID that was issued")
-    public void theUserHasOpenedTheFirstPIDThatWasIssued() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().openIssuedPID();
-        test.mobile().wallet().detailsOfDocumentIsDisplayed();
-    }
-
-    @And("the application should reboot")
-    public void theApplicationShouldReboot() {
-        test.mobile().wallet().loginPageIsDisplayed();
-    }
-
-    @Given("the application has rebooted")
-    public void theApplicationHasRebooted() {
-        theUserHasOpenedTheFirstPIDThatWasIssued();
-        theUserPressesTheDeleteButton();
-    }
-
-    @When("the login screen appears")
-    public void theLoginScreenAppears() {
-        theApplicationShouldReboot();
-    }
-
-    @Then("the user should enter the PIN")
-    public void theUserShouldEnterThePIN() throws InterruptedException {
-        test.mobile().wallet().createAPin();
-    }
-
-    @Given("the user has successfully entered the PIN after reboot")
-    public void theUserHasSuccessfullyEnteredThePINAfterReboot() throws InterruptedException {
-        theApplicationHasRebooted();
-        theLoginScreenAppears();
-        theUserShouldEnterThePIN();
-    }
-
-    @When("the user is prompted to enter a PID")
-    public void theUserIsPromptedToEnterAPID() throws InterruptedException {
-        test.mobile().wallet().scrollUntilPIDFirst();
-        test.mobile().wallet().clickPID();
-    }
-
-    @Then("the user should be able to enter a PID again")
-    public void theUserShouldBeAbleToEnterAPIDAgain() throws InterruptedException {
-        test.mobile().issuer().issuePID();
-        test.mobile().issuer().successfullySharedMessage();
-        test.mobile().wallet().clickDone();
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @And("the user clicks the driving license button")
-    public void theUserClicksTheDrivingLicenseButton() throws InterruptedException {
-        test.mobile().wallet().scrollUntilmDL();
-        test.mobile().wallet().clickDrivingLicenceButton();
-    }
-
-    @Then("the user is redirected to the issuer service to issue mDL")
-    public void theUserIsRedirectedToTheIssuerServiceToIssueMDL() {
-        test.mobile().issuer().selectCountryOfOrigin();
-    }
-
-    @And("the user clicks on Credential Provider FormEU and submits")
-    public void theUserClicksOnCredentialProviderFormEUAndSubmits() throws InterruptedException {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @Then("the provider form is displayed for the user to register personal data")
-    public void theProviderFormIsDisplayedForTheUserToRegisterPersonalData() throws InterruptedException {
-        test.mobile().issuer().formIsDisplayed();
-    }
-
-    @Given("a provider form is displayed")
-    public void aProviderFormIsDisplayed() throws InterruptedException {
-        theCredentialsProviderIsDisplayedOnScreen();
-        theUserClicksOnCredentialProviderFormEUAndSubmitsForPid();
-        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
-    }
-
-    @When("the user registers personal data")
-    public void theUserRegistersPersonalData() throws InterruptedException {
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterDocumentNumber();
-        test.mobile().issuer().scrollUntilFindSign();
-        test.mobile().issuer().enterCode();
-        test.mobile().issuer().scrollUntilFindDate();
-        test.mobile().issuer().clickScreen();
-        test.mobile().issuer().chooseExpiryDate();
-        test.mobile().issuer().chooseIssueDate();
-        test.mobile().issuer().scrollUntilFindName();
-        test.mobile().issuer().enterFamilyNameOnMdl();
-        test.mobile().issuer().enterGivenNameOnMdl();
-        test.mobile().issuer().scrollUntilFindConfirm();
-        test.mobile().issuer().clickConfirm();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("a success message for mdl is displayed")
-    public void aSuccessMessageForMdlIsDisplayed() {
-        test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickDone();
-    }
-
-    @And("the driving license is displayed in the wallet")
-    public void theDrivingLicenseIsDisplayedInTheWallet() {
-        test.mobile().wallet().mdlIsDisplayed();
-    }
-
-    @When("the user fills in the form")
-    public void theUserFillsInTheForm() throws InterruptedException {
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilCountry();
-        test.mobile().issuer().enterCountry();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickConfirm();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("a success message for pid is displayed")
-    public void aSuccessMessageForPidIsDisplayed() {
-        test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickDone();
-    }
-
-    @And("the national id is displayed in the dashboard")
-    public void theNationalIdIsDisplayedInTheDashboard() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().secondPIDIsDisplayed();
-    }
-
-    @Given("user opens Verifier Application")
-    public void userOpensVerifierApplication() throws MalformedURLException {
-        userOpensVerifierApp();
-    }
-
-    @Given("the user is in the verifier app")
-    public void theUserIsInTheVerifierApp() throws MalformedURLException {
-        userOpensVerifierApp();
-    }
-
-    @When("the verifier requests a doc from the wallet user")
-    public void theVerifierRequestsADocFromTheWalletUser() {
-        test.mobile().verifier().launchSafari();
-        test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectAllAttributes();
-        test.mobile().verifier().scrollUntilNext();
-
-        if (test.envDataConfig().getAppiumBrowserstackAndroidDeviceName().equals("Samsung Galaxy S22 Ultra") || test.envDataConfig().getAppiumBrowserstackIosDeviceName().equals("iPhone 15 Pro")) {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().scrollUntilSumbit();
-            test.mobile().verifier().clickSubmit();
-        } else {
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().clickNextForAndroid();
-            test.mobile().verifier().clickNext();
-            test.mobile().verifier().assertAndClickNext();
-        }
-    }
-
-    @Then("the requestor of the data is displayed in the wallet")
-    public void theRequestorOfTheDataIsDisplayedInTheWallet() {
-        test.mobile().verifier().chooseWalletPageIsDisplayed();
-        test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @And("the document from which the data are requested is displayed")
-    public void theDocumentFromWhichTheDataAreRequestedIsDisplayed() {
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Given("the user views the document that is requested")
-    public void theUserViewsTheDocumentThatIsRequested() throws MalformedURLException {
-        theUserHasFinalizedDataSelection();
-        theUserClicksTheSHAREButton();
-        thePINFieldIsDisplayedToAuthorizeSharing();
-    }
-
-    @Then("the user clicks to view the document's details")
-    public void theUserClicksToViewTheDocumentsDetails() {
-        test.mobile().wallet().successMessageIsDisplayedForVerifier();
-        test.mobile().wallet().clickToViewDetails();
-    }
-
-    @Then("the expanded verification details are displayed")
-    public void theExpandedVerificationDetailsAreDisplayed() {
-        test.mobile().wallet().verificationDetailsAreDisplayed();
-    }
-
-    @Given("the user has selected some data")
-    public void theUserHasSelectedSomeData() throws MalformedURLException {
-        theUserIsInTheVerifierApp();
-        theVerifierRequestsADocFromTheWalletUser();
-        theRequestorOfTheDataIsDisplayedInTheWallet();
-        theDocumentFromWhichTheDataAreRequestedIsDisplayed();
-    }
-
-    @When("the user unselects some of this data")
-    public void theUserUnselectsSomeOfThisData() {
-        test.mobile().wallet().clickToViewDetails();
-        test.mobile().wallet().detailsOfDocumentIsDisplayed();
-        test.mobile().wallet().unselectData();
-    }
-
-    @Given("the user has finalized data selection")
-    public void theUserHasFinalizedDataSelection() throws MalformedURLException {
-        theUserHasSelectedSomeData();
-        theUserUnselectsSomeOfThisData();
-        aCorrespondingMessageIsDisplayed();
-        test.mobile().wallet().closeCorrespondingMessage();
-    }
-
-    @When("the user clicks the share button")
-    public void theUserClicksTheSHAREButton() {
-        test.mobile().wallet().clickShareButton();
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @Then("the PIN field is displayed to authorize sharing")
-    public void thePINFieldIsDisplayedToAuthorizeSharing() {
-        test.mobile().wallet().pinFieldIsDisplayed();
-    }
-
     @When("the user enters the correct PIN")
     public void theUserEntersTheCorrectPIN() throws InterruptedException {
         test.mobile().wallet().createAPin();
-    }
-
-    @Given("user selects to be identified using the EUDI Wallet")
-    public void userSelectsToBeIdentifiedUsingTheEUDIWallet() throws MalformedURLException {
-        userOpensVerifierApplication();
-        userSelectSpecificDataToShare();
-        userSelectsToBeIdentifiedUsingEUDIWallet();
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @When("user authorizes the disclosure of the data")
-    public void userAuthorizesTheDisclosureOfTheData() throws InterruptedException {
-        test.mobile().wallet().pinFieldIsDisplayed();
-        test.mobile().verifier().insertPIN();
-    }
-
-    @Then("user presses the share button on wallet")
-    public void userPressesTheShareButtonOnWallet() {
-        test.mobile().wallet().closeCorrespondingMessage();
-        test.mobile().wallet().clickShareButton();
-    }
-
-    @Given("a provider form is displayed for mdl")
-    public void aProviderFormIsDisplayedForMdl() throws InterruptedException {
-        theIssuerServiceTestCredentialProviderScreenIsDisplayed();
-        theUserClicksOnCredentialProviderFormEUAndSubmits();
-        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
     }
 
     @Given("the user is on the Login screen")
@@ -873,76 +283,36 @@ public class AutomatedStepDefs {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-// Re-launches the app from scratch
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((AndroidDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
             driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
             test.mobile().wallet().loginPageIsDisplayed();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             Thread.sleep(500);
             driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-// Re-launches the app from scratch
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((IOSDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
             driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
             test.mobile().wallet().loginPageIsDisplayed();
         }
     }
 
-    @When("the user clicks on Documents")
-    public void theUserClicksOnDocuments() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @Given("the issuer service -test credential provider screen- is displayed")
-    public void theIssuerServiceTestCredentialProviderScreenIsDisplayed() throws InterruptedException {
-        theHomePageIsDisplayedOnWallet();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayed();
-        theUserClicksTheDrivingLicenseButton();
-        theUserIsRedirectedToTheIssuerServiceToIssueMDL();
-    }
-
-    @Then("the user should see the Documents dashboard")
-    public void theUserShouldSeeTheDocumentsDashboard() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
     @Given("the test is being ignored")
     public void theTestIsBeingIgnored() {
         test.mobile().wallet().skippedTest();
-    }
-
-    @Given("the user is on Home page")
-    public void theUserIsOnHomePage() {
-        test.mobile().wallet().homePageIsDisplayed();
-    }
-
-    @And("the details should be blurred by default auto")
-    public void theDetailsShouldBeBlurredByDefault() {
-        test.mobile().wallet().detailsAreBlurred();
-    }
-
-    @And("the user should see the eye icon to view the details of the attestation auto")
-    public void theUserShouldSeeTheEyeIconToViewTheDetailsOfTheAttestation() {
-        test.mobile().wallet().eyeIconIsDisplayed();
-    }
-
-    @Given("the user is viewing the details of an attestation auto")
-    public void theUserIsViewingTheDetailsOfAnAttestation() {
-        theUserIsOnHomePage();
-        theUserClicksOnDocuments();
-        theUserClicksOnThePIDDoc();
-        thePIDShouldOpen();
-        theDetailsShouldBeBlurredByDefault();
-    }
-
-    @When("the user selects eye icon auto")
-    public void theUserSelectsEyeIcon() {
-        test.mobile().wallet().clickEyeIcon();
-    }
-
-    @Then("the attestation details should no longer be blurred auto")
-    public void theAttestationDetailsShouldNoLongerBeBlurred() {
-        test.mobile().wallet().detailsAreNotBlurred();
     }
 
     @Then("the user should see the home screen")
@@ -955,78 +325,6 @@ public class AutomatedStepDefs {
         theUserIsOnTheLoginScreen();
         theUserEntersTheirPIN();
         theUserShouldSeeTheHomeScreen();
-    }
-
-    @Given("the user is viewing the details of the mDL")
-    public void theUserIsViewingTheDetailsOfTheMDL() throws InterruptedException {
-        theUserIsOnTheHomeScreen();
-        theUserClicksOnTheMDLDoc();
-        theMDLShouldOpen();
-        theDetailsShouldBeBlurredByDefault();
-    }
-
-    @Given("the home page is displayed on wallet")
-    public void theHomePageIsDisplayedOnWallet() throws InterruptedException {
-        theUserIsOnTheLoginScreen();
-        theUserEntersTheirPIN();
-        theUserShouldSeeTheHomeScreen();
-    }
-
-    @And("the user clicks the PID button")
-    public void theUserClicksThePidButton() throws InterruptedException {
-        test.mobile().wallet().scrollUntilPIDOnDocuments();
-        test.mobile().wallet().clickPIDOnDocuments();
-    }
-
-    @Then("the credentials provider is displayed")
-    public void theCredentialsProviderIsDisplayed() {
-        test.mobile().issuer().selectCountryOfOriginDev();
-    }
-
-    @Given("the credentials provider is displayed on screen")
-    public void theCredentialsProviderIsDisplayedOnScreen() throws InterruptedException {
-        theHomePageIsDisplayedOnWallet();
-        theUserClicksTheAddDocButton();
-        theAddDocumentPageIsDisplayed();
-        theUserClicksThePidButton();
-        theCredentialsProviderIsDisplayed();
-    }
-
-    @Given("the expanded verification details are seen")
-    public void theExpandedVerificationDetailsAreSeen() throws MalformedURLException, InterruptedException {
-        theUserViewsTheDocumentThatIsRequested();
-        theUserInsertsThePIN();
-        theUserClicksToViewTheDocumentsDetails();
-        theExpandedVerificationDetailsAreDisplayed();
-    }
-
-    @When("the user clicks done")
-    public void theUserClicksDone() {
-        test.mobile().wallet().clickDone();
-    }
-
-    @Then("the user gets redirected to verifier and views the respond")
-    public void theUserGetsRedirectedToVerifierAndViewsTheRespond() {
-        test.mobile().verifier().walletResponded();
-        test.mobile().verifier().clickTransactionsLogs();
-        test.mobile().verifier().clickTransactionInitialized();
-        test.mobile().verifier().getTransactionId();
-
-    }
-
-    @When("the user inserts the PIN")
-    public void theUserInsertsThePIN() throws InterruptedException {
-        test.mobile().wallet().createAPin();
-    }
-
-    @Given("the user before")
-    public void the_user_before() throws InterruptedException {
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().clickNextButton();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickConfirm();
-        test.mobile().wallet().successMessageOfSetUpPin();
     }
 
     @When("the user navigates to the Documents screen")
@@ -1140,14 +438,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().transactionCodeIsDisplayed();
     }
 
-    @Given("the transaction code has been created")
-    public void theTransactionCodeHasBeenCreated() throws InterruptedException {
-        theUserIsOnTheIssuerService();
-        theUserChoosesToIssueADocWithPreAuthorization();
-        theUserRegistersTheirPersonalData();
-        aTransactionCodeHasBeenCreated();
-    }
-
     @When("the user selects to register with the EUDI wallet app")
     public void theUserSelectsToRegisterWithTheEUDIWalletApp() throws InterruptedException {
         test.mobile().issuer().qrCodeIsDisplayed();
@@ -1164,13 +454,6 @@ public class AutomatedStepDefs {
         //manual
     }
 
-    @Given("the user has entered the PIN")
-    public void theUserHasEnteredThePIN() throws InterruptedException {
-        theTransactionCodeHasBeenCreated();
-        theUserSelectsToRegisterWithTheEUDIWalletApp();
-        theUserIsRedirectedToTheEUDIWalletApplication();
-        theUserEntersThePIN();
-    }
 
     @When("the request from the issuer is displayed on the wallet app")
     public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
@@ -1182,13 +465,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickIssue();
     }
 
-    @Given("the user has clicked on the ISSUE button")
-    public void theUserHasClickedOnTheISSUEButton() throws InterruptedException {
-        theUserHasEnteredThePIN();
-        theRequestFromTheIssuerIsDisplayedOnTheWalletApp();
-        theUserClicksOnTheISSUEButton();
-    }
-
     @Then("the Wallet app requests the transaction code")
     public void theWalletAppRequestsTheTransactionCode() {
        //donothing
@@ -1197,13 +473,6 @@ public class AutomatedStepDefs {
     @And("the user enters the transaction code provided by the Issuer")
     public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
        //donothing
-    }
-
-    @Given("the user entered the transaction code provided by the Issuer")
-    public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() throws InterruptedException {
-        theUserHasClickedOnTheISSUEButton();
-        theWalletAppRequestsTheTransactionCode();
-        theUserEntersTheTransactionCodeProvidedByTheIssuer();
     }
 
     @When("the Wallet application displays a success message")
@@ -1403,13 +672,6 @@ public class AutomatedStepDefs {
     @Then("a success message is displayed for the successful presentation of the PID")
     public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
         test.mobile().wallet().authenticationSuccessfully();
-    }
-
-    @Given("a success message is displayed for the successful presentation of PID")
-    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfPID() throws InterruptedException {
-        theUserHasBeenPromptedToEnterTheirSixDigitPIN();
-        theUserEntersTheirSixDigitPINCorrectly();
-        aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID();
     }
 
     @When("the user clicks the Continue button")
@@ -1619,13 +881,6 @@ public class AutomatedStepDefs {
           //donothing
     }
 
-    @Given("the authentication is successful and continue")
-    public void theAuthenticationIsSuccessfulAndContinue() throws InterruptedException {
-        theUserVisitsTheIssuerServiceOnTheSameDevice();
-        theUserRequestsTheIssuanceOfAnAttestationType();
-        theIssuerServiceRedirectsTheUserToTheWallet();
-    }
-
     @When("the Wallet receives the attestation from the issuer service")
     public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
         test.mobile().issuer().clickFormEu();
@@ -1691,164 +946,6 @@ public class AutomatedStepDefs {
         //donothing
     }
 
-    @And("the user clicks on the PID doc on documents")
-    public void theUserClicksOnThePIDDocOnDocuments() {
-        test.mobile().wallet().clickPID();
-    }
-
-    @Given("the user is viewing the details of attestation auto")
-    public void theUserIsViewingTheDetailsOfAttestationAuto() {
-        theUserIsOnHomePage();
-        theUserClicksOnDocuments();
-        theUserClicksOnThePIDDocument();
-        thePIDShouldOpen();
-        theDetailsShouldBeBlurredByDefault();
-    }
-
-    private void theUserClicksOnThePIDDocument() {
-        test.mobile().wallet().clickPID();
-    }
-
-    @Given("the PID is now open")
-    public void thePIDIsNowOpen() {
-        theUserIsViewingTheDetailsOfAttestationAuto();
-        theUserSelectsEyeIcon();
-    }
-
-    @When("the user clicks on Credential Provider FormEU and submits for pid")
-    public void theUserClicksOnCredentialProviderFormEUAndSubmitsForPid() throws InterruptedException {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @Then("the user is redirected to the issuer service to issue mDL \\(MSO Mdoc)")
-    public void theUserIsRedirectedToTheIssuerServiceToIssueMDLMSOMdoc() {
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-    }
-
-    @Given("a provider form is displayed for mDL \\(MSO Mdoc)")
-    public void aProviderFormIsDisplayedForMDLMSOMdoc() throws InterruptedException {
-        theIssuerServiceTestCredentialProviderScreenIsDisplayed();
-        theUserClicksOnCredentialProviderFormEUAndSubmits();
-        theProviderFormIsDisplayedForTheUserToRegisterPersonalData();
-    }
-
-    @Then("a success message for mDL \\(MSO Mdoc) is displayed")
-    public void aSuccessMessageForMDLMSOMdocIsDisplayed() {
-        test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickDone();
-    }
-
-    @When("the user clicks on Credential Provider FormEU PID and submits")
-    public void theUserClicksOnCredentialProviderFormEUPIDAndSubmits() throws InterruptedException {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-    }
-
-    @Given("the issuer has generated a QR code for credential issuance")
-    public void theIssuerHasGeneratedAQRCodeForCredentialIssuance() throws InterruptedException {
-        test.mobile().verifier().createVerifierQRScreenshot();
-    }
-
-    @When("the user clicks on the Scan QR")
-    public void theUserClicksOnTheScanQR() {
-        test.mobile().wallet().scanQrIsDisplayed();
-        test.mobile().wallet().clickQROption();
-    }
-
-    @Then("the QR code scan should be activated")
-    public void theQRCodeScanShouldBeActivated() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            if (test.mobile().wallet().isQrVisible()) {
-                test.mobile().wallet().onlyThisTimeQR();
-            }
-        }
-        test.mobile().wallet().theQRScannerIsActivated();
-    }
-
-    @When("the user scans the pre-generated QR code")
-    public void theUserScansThePreGeneratedQRCode() {
-        test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
-    }
-
-    @Then("the details of the credential to be issued should be displayed including the credential type and the issuer name")
-    public void theDetailsOfTheCredentialToBeIssuedShouldBeDisplayedIncludingTheCredentialTypeAndTheIssuerName() {
-        test.mobile().wallet().detailsArePresented();
-    }
-
-    @When("the user clicks on Αuthenticate")
-    public void theUserClicksOnΑuthenticate() {
-        test.mobile().wallet().clickAuthenticate();
-    }
-
-    @Then("the user clicks the Online option")
-    public void theUserClicksTheOnlineOption() {
-        test.mobile().wallet().clickOnline();
-    }
-
-    @Then("the user successfully shares the attestation")
-    public void theUserSuccessfullySharesTheAttestation() {
-        test.mobile().wallet().successMessageIsDisplayedForVerifier();
-    }
-
-    @Given("the user is in the Kotlin issuer")
-    public void theUserIsInTheKotlinIssuer() {
-        test.mobile().issuer().kotlinIssuerService();
-    }
-
-    @When("the user selects to issue a PID in the Kotlin issuer")
-    public void theUserSelectsToIssueAPIDInTheKotlinIssuer() throws InterruptedException {
-        test.mobile().issuer().requestCredentialsKotlinIssuerPageIsDisplayed();
-        test.mobile().issuer().selectPIDKotlin();
-        test.mobile().issuer().scrollUntilGenerate();
-        test.mobile().issuer().clickGenerate();
-    }
-
-    @And("the user clicks the wallet link")
-    public void theUserClicksTheWalletLink() {
-        test.mobile().issuer().clickWalletLink();
-    }
-
-    @Then("the user clicks the add button")
-    public void theUserClicksTheAddButton() throws InterruptedException {
-        test.mobile().wallet().clickAddButton();
-        test.mobile().issuer().fillLoginForm();
-    }
-
-    @Then("the user opens the verifier app")
-    public void theUserOpensTheVerifierApp() throws MalformedURLException {
-        userOpensVerifierApp();
-    }
-
-    @And("the details of the credential to be issued are presented Kotlin")
-    public void theDetailsOfTheCredentialToBeIssuedArePresentedKotlin() {
-        test.mobile().wallet().detailsArePresentedKotlin();
-    }
-
-    @And("the PID from Kotlin is displayed in the Documents")
-    public void thePIDFromKotlinIsDisplayedInTheDocuments() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.kotlinIssuanceDetails)).getText();
-            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.kotlinIssuanceDetails)).getText();
-            Assert.assertEquals(Literals.Wallet.ISSUANCE_DETAILS_KOTLIN.label, pageHeader);
-        }
-    }
-
-    @And("the user presses share")
-    public void theUserPressesShare() {
-        test.mobile().wallet().clickShareButton();
-    }
-
-    @Given("the verifier has generated a QR code for presentation request")
-    public void theVerifierHasGeneratedAQRCodeForPresentationRequest() throws MalformedURLException, InterruptedException {
-        test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().createVerifierQRScreenshot();
-    }
-
     @Then("verifier verifies the credential successfully with {}")
     public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
         if ("failed".equalsIgnoreCase(status)) {
@@ -1879,9 +976,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickNextButton();
                     test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
                     test.mobile().issuer().kotlinIssuerService();
@@ -1890,9 +985,7 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickNextButton();
                     test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().clickConfirm();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
             }
@@ -1973,7 +1066,6 @@ public class AutomatedStepDefs {
                     } else {
                         if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                             test.mobile().issuer().issuerService();
-                            test.mobile().issuer().sleepMethod();
                             test.mobile().issuer().requestCredentialsPageIsDisplayed();
                             test.mobile().issuer().scrollUntilMdlIssuer();
                             test.mobile().issuer().selectMdlPythonIssuer();
@@ -1991,7 +1083,6 @@ public class AutomatedStepDefs {
                         test.mobile().issuer().issuerService();
                     } else {
                         test.mobile().issuer().issuerService();
-                        test.mobile().issuer().sleepMethod();
                         test.mobile().issuer().requestCredentialsPageIsDisplayed();
                         test.mobile().issuer().scrollUntilMdlIssuer();
                         test.mobile().issuer().selectMdlPythonIssuer();
@@ -2008,7 +1099,8 @@ public class AutomatedStepDefs {
                             if (test.mobile().wallet().isQrVisible()) {
                                 test.mobile().wallet().onlyThisTimeQR();
                             }
-                        }                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                        }
+                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                         test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                         test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
@@ -2101,7 +1193,6 @@ public class AutomatedStepDefs {
 
             String pageSource = driver.getPageSource();
 
-            // stop if UI stopped changing
             if (pageSource.equals(lastPageSource)) {
                 noChangeCounter++;
             } else {
@@ -2110,15 +1201,13 @@ public class AutomatedStepDefs {
 
             lastPageSource = pageSource;
 
-            // extract text FAST (regex-based, no WebElements)
             extractTexts(pageSource, allTexts, isAndroid);
 
-            // stop early if no new content twice
             if (noChangeCounter >= 2) break;
 
             scrollFast(driver, startX, startY, endY);
             try {
-                Thread.sleep(500); // 300–800ms works well on BrowserStack
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -2171,121 +1260,6 @@ public class AutomatedStepDefs {
             case "web verifier":
                 test.mobile().wallet().userOpensVerifier();
                 break;
-        }
-    }
-
-    private void slowScroll() {
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            String originalContext = driver.getContext();
-
-            try {
-                // Always scroll in NATIVE
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75); // start lower
-                int endY = (int) (size.height * 0.30); // end higher
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 0);
-
-                // Move to start
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                // Touch down
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                // Small pause (important on cloud devices)
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                // Swipe
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(800),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                // Release
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                driver.perform(Collections.singletonList(swipe));
-
-            } finally {
-                // Restore context
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
-                }
-            }
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-            String originalContext = driver.getContext();
-
-            try {
-
-                // Always scroll in NATIVE context
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.30);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 0);
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(800),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                driver.perform(Collections.singletonList(swipe));
-
-            } finally {
-
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
-                }
-            }
         }
     }
 
@@ -2372,8 +1346,9 @@ public class AutomatedStepDefs {
                     test.webWebDriverFactory().startWebDriverSession();
 
                     try {
-
-                        test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                        test.envDataConfig();
+                        String url = test.envDataConfig().getVerifierUrl();
+                        test.webWebDriverFactory().getDriverWeb().get(url);
                         test.web().verifier().appOpensSuccessfullyOnWeb();
                         test.web().verifier().selectAllAttributesOnWeb();
                         test.web().verifier().scrollUntilNextOnWeb();
@@ -2483,9 +1458,6 @@ public class AutomatedStepDefs {
                     }
 
                     test.mobile().verifier().chooseWallet();
-                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                        test.mobile().wallet().createAPin();
-                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2569,8 +1541,9 @@ public class AutomatedStepDefs {
                             test.webWebDriverFactory().startWebDriverSession();
 
                             try {
-
-                                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                                test.envDataConfig();
+                                String url = test.envDataConfig().getVerifierUrl();
+                                test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().selectSpecificAttributesOnWebForMdl();
                                 test.web().verifier().scrollUntilNextOnWeb();
@@ -2595,8 +1568,9 @@ public class AutomatedStepDefs {
                             test.webWebDriverFactory().startWebDriverSession();
 
                             try {
-
-                                test.webWebDriverFactory().getDriverWeb().get("https://verifier.eudiw.dev/home");
+                                test.envDataConfig();
+                                String url = test.envDataConfig().getVerifierUrl();
+                                test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
 
                                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -2640,7 +1614,6 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().onlyThisTimeQR();
                         }
                     }
-//                    test.mobile().wallet().theQRScannerIsActivatedForPresentation();
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2725,7 +1698,6 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickClose();
                     test.mobile().verifier().walletResponded();
                     test.mobile().verifier().clickViewContent();
-                    test.mobile().issuer().sleepMethod();
 //        test.mobile().wallet().checkDataOnVerifierFromWallet();
                     test.mobile().verifier().clickCloseOnVerifier();
                     break;
@@ -2769,7 +1741,6 @@ public class AutomatedStepDefs {
                             }
                         }
                     }
-                    test.mobile().issuer().sleepMethod();
                     break;
                 case "cross device":
                     test.mobile().wallet().clickClose();
@@ -2808,7 +1779,6 @@ public class AutomatedStepDefs {
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
 
-        // Wait for first required field to appear before reading page text
         String firstRequiredKey = yml.fields.entrySet().stream()
                 .filter(e -> e.getValue().required)
                 .map(Map.Entry::getKey)
@@ -2819,19 +1789,16 @@ public class AutomatedStepDefs {
                     .until(d -> d.findElement(By.tagName("body")).getText().contains(firstRequiredKey));
         }
 
-        // Get full visible page text
         String pageText = driver.findElement(By.tagName("body")).getText();
 
         yml.fields.forEach((fieldKey, cfg) -> {
 
             if (!cfg.required) return;
 
-            // check label
             if (!pageText.contains(fieldKey)) {
                 throw new AssertionError("Label not found: " + fieldKey);
             }
 
-            // check value
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
 
                 if (!pageText.contains(cfg.value.trim())) {
@@ -2885,7 +1852,7 @@ public class AutomatedStepDefs {
                         AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
                 );
 
-                return els.size() > 5; // dialog loaded (safe threshold)
+                return els.size() > 5;
             });
 
             List<WebElement> els = driver.findElements(
@@ -2957,7 +1924,6 @@ public class AutomatedStepDefs {
                     try {
                         driver.context(context);
 
-                        // KEY: verify WebView is actually usable
                         if (driver.getPageSource().length() > 0) {
                             System.out.println("Switched to WebView: " + context);
                             return true;
@@ -2970,10 +1936,5 @@ public class AutomatedStepDefs {
             }
             return false;
         });
-    }
-
-    @When("the user clicks the Verify with EUDI Wallet button")
-    public void theUserClicksTheVerifyWithEUDIWalletButton() {
-        //nothing
     }
 }
