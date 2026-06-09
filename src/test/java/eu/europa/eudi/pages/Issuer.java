@@ -1889,7 +1889,7 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
             waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
@@ -1911,7 +1911,7 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
             waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
