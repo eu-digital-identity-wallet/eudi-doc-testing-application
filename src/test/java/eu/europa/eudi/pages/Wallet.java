@@ -1042,8 +1042,8 @@ public class Wallet {
         test.mobile().wallet().clickToAddDocument();
         test.mobile().wallet().addDocumentPageIsDisplayed();
         test.mobile().wallet().clickFromList();
-        test.mobile().wallet().scrollUntilPIDOnDocuments();
-        test.mobile().wallet().clickPIDOnDocuments();
+        test.mobile().wallet().scrollUntilmDLOnDocuments();
+        test.mobile().wallet().clickPID();
         test.mobile().issuer().issuePID();
 
     }
