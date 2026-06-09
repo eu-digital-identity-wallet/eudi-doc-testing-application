@@ -15,6 +15,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.HasContext;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -38,16 +39,15 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            test.envDataConfig();
+            String url = test.envDataConfig().getPythonUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
             if ("browserstack".equalsIgnoreCase(env)) {
-                // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer.eudiw.dev/credential_offer");
+                deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
-                // Works locally via ADB
                 Map<String, Object> args = new HashMap<>();
                 args.put("command", "am");
                 args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
@@ -57,7 +57,7 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer.eudiw.dev/credential_offer";
+            String url = test.envDataConfig().getPythonUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -69,22 +69,32 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String url = "https://issuer.eudiw.dev/credential_offer";
 
+            test.envDataConfig();
+            String url = test.envDataConfig().getPythonUrl();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             try {
                 try {
                     driver.terminateApp("eu.europa.ec.euidi");
                 } catch (Exception e) {
                 }
+
                 driver.activateApp("com.apple.mobilesafari");
-                //TODO Yvonne
-                Thread.sleep(3000);
+
+                wait.until(d -> d.getWindowHandles().size() > 0);
+
                 driver.get(url);
-                //TODO Yvonne
-                Thread.sleep(5000);
+
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body")));
+
                 driver.context("NATIVE_APP");
+
+                if (!driver.getContext().equals("NATIVE_APP")) {
+                    throw new RuntimeException("Failed to switch to NATIVE_APP context. Current: " + driver.getContext());
+                }
+
             } catch (Exception e) {
-                throw new RuntimeException("Failed to launch Safari", e);
+                throw new RuntimeException("Failed to launch Safari or navigate to URL: " + e.getMessage(), e);
             }
         }
     }
@@ -119,9 +129,8 @@ public class Issuer {
     public void qrCodeIsDisplayed() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            //TODO Yvonne
-            Thread.sleep(2000); // allow UI to settle
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
 
             boolean found = false;
 
@@ -156,8 +165,6 @@ public class Issuer {
 
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
-                // IMPORTANT: QR in webview usually has NO text
-                // so we look for container / canvas / image
                 WebElement webQr = wait.until(ExpectedConditions.visibilityOfElementLocated(
                         By.xpath("//img | //canvas | //*[contains(@class,'qr')]")
                 ));
@@ -166,7 +173,6 @@ public class Issuer {
 
                 System.out.println("QR found in WEBVIEW");
 
-                // ALWAYS go back
                 driver.context("NATIVE_APP");
             }
 
@@ -176,7 +182,7 @@ public class Issuer {
         }
     }
 
-    public void clickUseEudiw() throws InterruptedException {
+    public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
@@ -231,8 +237,7 @@ public class Issuer {
             y = location.getY() + size.getHeight() / 2;
         }
 
-// FIX 1: Respect viewportRect on BrowserStack (top offset = 75)
-        int viewportTop = 75;   // from capabilities
+        int viewportTop = 75;
         y = Math.max(y, viewportTop + 1);
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -247,53 +252,45 @@ public class Issuer {
                 .perform(Collections.singletonList(tap));
     }
 
-    public void clickFormEu() throws InterruptedException {
+    public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            //TODO Varvara
-            Thread.sleep(2000);
 
-            driver.context("NATIVE_APP"); // switch back
             boolean found = false;
-            int maxAttempts = 8; // number of tries
-            int waitSeconds = 90; // per try
+            int maxAttempts = 8;
+            int waitSeconds = 110;
+
+            By locator = eu.europa.eudi.elements.android.IssuerElements.clickFormEu;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
+
                     WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(
-                                    eu.europa.eudi.elements.android.IssuerElements.clickFormEu
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
                             )
                     );
-                    wait.until(ExpectedConditions.elementToBeClickable(element));
+
+                    wait.until(ExpectedConditions.elementToBeClickable(locator));
                     element.click();
-                    System.out.println("Clicked FormEU in NATIVE on attempt " + attempt);
+                    System.out.println("Clicked FormEU in android on attempt " + attempt);
                     found = true;
 
                 } catch (Exception e) {
-                    System.out.println("⚠FormEU not found in NATIVE on attempt " + attempt);
-                    //TODO Varvara
-                    Thread.sleep(1000); // small wait before retry
+                    System.out.println("⚠ FormEU not found in android on attempt " + attempt);
                 }
             }
 
             if (!found) {
-                throw new RuntimeException("FormEU element not found in NATIVE after retries.");
+                throw new RuntimeException("FormEU element not found in android after retries.");
             }
-
-
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            //TODO Varvara
-            Thread.sleep(2000);
-            driver.context("NATIVE_APP");
+
             boolean found = false;
             int maxAttempts = 5;
             int waitSeconds = 90;
@@ -302,11 +299,11 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
-
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
-                    //IMPORTANT: refresh + re-locate every attempt (iOS fix)
                     WebElement element = wait.until(
                             ExpectedConditions.refreshed(
                                     ExpectedConditions.visibilityOfElementLocated(locator)
@@ -320,11 +317,6 @@ public class Issuer {
 
                 } catch (Exception e) {
                     System.out.println("⚠ FormEU not found in IOS on attempt " + attempt);
-
-                    try {
-                        //TODO Yvonne
-                        Thread.sleep(1000); // small stabilization wait
-                    } catch (InterruptedException ignored) {}
                 }
             }
 
@@ -417,20 +409,17 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
-            String birthDate = yml.fields.get("Birth Date").value;   // "1990-01-10"
+            String birthDate = yml.fields.get("Birth Date").value;
 
-// open date picker
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickBirthDate))
                     .click();
 
-// parse yyyy-MM-dd
             String[] p = birthDate.split("-");
             String year = p[0];
             int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
-// open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
@@ -438,43 +427,31 @@ public class Issuer {
             }
 
             selectYearScrollUp(driver, year);
-            //month
 
             By nextBtn = By.id("android:id/next");
             By prevBtn = By.id("android:id/prev");
 
-// Target month from birthDate
-
-// System current month (your picker starts here)
             int currentMonth = LocalDate.now().getMonthValue();
 
-// Calculate difference
             int diff = 3 - currentMonth;
 
-// Navigate
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
-                }
-
-                try {
-                    //TODO Thanos
-                    Thread.sleep(200); // allow UI to update
-                } catch (InterruptedException ignored) {
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
             }
-// select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-// confirm
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
 
         } else {
-            // Driver & wait
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
             wait.until(ExpectedConditions.elementToBeClickable(
@@ -485,27 +462,20 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-//Step 1: Open year/month picker
             By showYearPicker = AppiumBy.accessibilityId("Show year picker");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-//Step 2: Get all picker wheels
             List<WebElement> wheels = wait.until(driver ->
                     driver.findElements(By.className("XCUIElementTypePickerWheel"))
             );
 
-// Safety check
             if (wheels.size() < 2) {
                 throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
             }
 
-// Based on your inspector:
-// index 0 → Month
-// index 1 → Year
             WebElement monthWheel = wheels.get(0);
             WebElement yearWheel = wheels.get(1);
 
-//Step 3: Set values
             String targetYear = "2020";
             String targetMonth = "March";
 
@@ -513,7 +483,6 @@ public class Issuer {
             monthWheel.sendKeys(targetMonth);
             yearWheel.sendKeys(targetYear);
 
-//Step 4: Click Done
             By doneBtn = AppiumBy.accessibilityId("Done");
             wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
 
@@ -552,25 +521,20 @@ public class Issuer {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            // Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
 
-            // Get Issue Date value (example: 2024-03-01)
             String issueDate = yml.fields.get("Issue Date").value;
 
-            // Open date picker
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.android.IssuerElements.clickIssueDate))
                     .click();
 
-// parse yyyy-MM-dd
             String[] p = issueDate.split("-");
             String year = p[0];
             int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
-// open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
@@ -578,36 +542,26 @@ public class Issuer {
             }
 
             selectYearScrollUp(driver, year);
-            //month
 
             By nextBtn = By.id("android:id/next");
             By prevBtn = By.id("android:id/prev");
 
-// Target month from birthDate
-
-// System current month (your picker starts here)
             int currentMonth = LocalDate.now().getMonthValue();
 
-// Calculate difference
             int diff = 3 - currentMonth;
 
-// Navigate
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
-
-                try {
-                    //todo Thanos
-                    Thread.sleep(200); // allow UI to update
-                } catch (InterruptedException ignored) {}
             }
-// select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-// confirm
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
@@ -615,11 +569,9 @@ public class Issuer {
         } else {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
-// Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
             String issueDate = yml.fields.get("Issue Date").value; // "yyyy-MM-dd"
 
-// Open date picker
             wait.until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate))
                     .click();
@@ -628,34 +580,26 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// Step 1: Open year/month picker
             By showYearPicker = AppiumBy.accessibilityId("Show year picker");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-// Step 2: Get all picker wheels
             List<WebElement> wheels = wait.until(driver ->
                     driver.findElements(By.className("XCUIElementTypePickerWheel"))
             );
 
-// Safety check
             if (wheels.size() < 2) {
                 throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
             }
 
-// Based on your inspector:
-// index 0 → Month
-// index 1 → Year
             WebElement monthWheel = wheels.get(0);
             WebElement yearWheel = wheels.get(1);
 
-// Step 3: Set values
             String targetYear = "2020";
             String targetMonth = "March";
 
             monthWheel.sendKeys(targetMonth);
             yearWheel.sendKeys(targetYear);
 
-// Step 4: Click Done
             By doneBtn = AppiumBy.accessibilityId("Done");
             wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
         }
@@ -665,89 +609,66 @@ public class Issuer {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            // Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-            // Get Expiry Date value (example: 2030-05-15)
             String expiryDate = yml.fields.get("Expiry Date").value;
-            // Open date picker
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate))
                     .click();
-// parse yyyy-MM-dd
             String[] p = expiryDate.split("-");
             String year = p[0];
             int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
-// open year selection
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
             } catch (Exception e) {
                 driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
             }
             selectYearScrollUp(driver, year);
-            //month
 
             By nextBtn = By.id("android:id/next");
             By prevBtn = By.id("android:id/prev");
-// Target month from birthDate
-// System current month (your picker starts here)
             int currentMonth = LocalDate.now().getMonthValue();
-// Calculate difference
             int diff = 3 - currentMonth;
-// Navigate
+            WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
                     driver.findElement(nextBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(nextBtn));
                 } else {
                     driver.findElement(prevBtn).click();
+                    calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
-
-                try {
-                    //todo Thanos
-                    Thread.sleep(200); // allow UI to update
-                } catch (InterruptedException ignored) {}
             }
-// select day
             driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
-// confirm
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
         } else {
             IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
-// Load YAML
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
             String expiryDate = yml.fields.get("Expiry Date").value; // e.g., "2030-05-15"
-// Open date picker
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
             String day = "10";
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-// Step 1: Open year/month picker
             By showYearPicker = AppiumBy.accessibilityId("Show year picker");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
-// Step 2: Get all picker wheels
             List<WebElement> wheels = wait.until(driver ->
                     driver.findElements(By.className("XCUIElementTypePickerWheel"))
             );
 
-// Safety check
             if (wheels.size() < 2) {
                 throw new RuntimeException("Expected at least 2 picker wheels (month & year)");
             }
 
-// Based on your inspector:
-// index 0 → Month
-// index 1 → Year
             WebElement monthWheel = wheels.get(0);
             WebElement yearWheel = wheels.get(1);
 
-// Step 3: Set values
             String targetYear = "2020";
             String targetMonth = "March";
 
@@ -755,7 +676,6 @@ public class Issuer {
             monthWheel.sendKeys(targetMonth);
             yearWheel.sendKeys(targetYear);
 
-// Step 4: Click Done
             By doneBtn = AppiumBy.accessibilityId("Done");
             wait.until(ExpectedConditions.elementToBeClickable(doneBtn)).click();
 
@@ -780,41 +700,24 @@ public class Issuer {
         }
     }
 
-    public void authenticationMethodSelection() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authenticationMethodSelection)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHENTICATION_PAGE.label, pageHeader);
-
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authenticationMethodSelection)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHENTICATION_PAGE.label, pageHeader);
-        }
-    }
-
     public void scrollUntilFindDate() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo Thanos check comment n01
-                Thread.sleep(20);
             }
         } else {
             int i = 1;
@@ -839,7 +742,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll();  // ← slow scroll instead of UiScrollable
+                    slowScroll();
                 }
             }
 
@@ -870,7 +773,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(IssuerElements.authorize);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll();  // ← slow scroll instead of UiScrollable
+                    slowScroll();
                 }
             }
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -890,53 +793,39 @@ public class Issuer {
         }
     }
 
-    public void clickAuthorize() throws InterruptedException {
+    public void clickAuthorize() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-            //TODO Thanos
-            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
-            //TODO Thanos
-            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
         }
     }
 
-    public void formIsDisplayed() throws InterruptedException {
+    public void formIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.context("NATIVE_APP");
-            //TODO Yvonne
-            Thread.sleep(2000);
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-            ));
-            By locator = By.xpath("//android.widget.TextView[contains(@text,'Issue attributes')]");
+            By locator = AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")");
             boolean found = false;
             int maxAttempts = 8;
-            int waitSeconds = 90;
+            int waitSeconds = 110;
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
 
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
-                    WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(locator)
+                   wait.until(
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
+                            )
                     );
 
                     System.out.println("Element is visible on attempt " + attempt);
@@ -949,7 +838,6 @@ public class Issuer {
                     }
                 }
             }
-
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
@@ -959,11 +847,15 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
-
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                    driver.context("NATIVE_APP");
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
                     WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(locator)
+                            ExpectedConditions.refreshed(
+                                    ExpectedConditions.visibilityOfElementLocated(locator)
+                            )
                     );
 
                     String text = element.getText().trim();
@@ -984,7 +876,8 @@ public class Issuer {
                 }
             }
 
-            Assert.assertTrue("Form not displayed correctly", found);        }
+            Assert.assertTrue("Form not displayed correctly", found);
+        }
     }
 
     public void issuePID() throws InterruptedException {
@@ -1014,7 +907,6 @@ public class Issuer {
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-                // Collect all mandatory labels
                 List<String> mandatoryLabels = yml.fields.entrySet().stream()
                         .filter(entry -> entry.getValue().required)
                         .flatMap(entry -> Arrays.stream(entry.getKey().split("\\.")))
@@ -1026,7 +918,6 @@ public class Issuer {
 
                 for (int scroll = 0; scroll < maxScrolls && foundLabels.size() < mandatoryLabels.size(); scroll++) {
 
-                    // Build one XPath that searches for all labels at once
                     String xpath = mandatoryLabels.stream()
                             .map(label -> "contains(@text, \"" + label + "\")")
                             .collect(Collectors.joining(" or "));
@@ -1066,7 +957,6 @@ public class Issuer {
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            // Collect all mandatory labels
             List<String> mandatoryLabels = yml.fields.entrySet().stream()
                     .filter(entry -> entry.getValue().required)
                     .flatMap(entry -> Arrays.stream(entry.getKey().split("\\.")))
@@ -1078,7 +968,6 @@ public class Issuer {
 
             for (int scroll = 0; scroll < maxScrolls && foundLabels.size() < mandatoryLabels.size(); scroll++) {
 
-                // Build one XPath that searches for all labels at once
                 String xpath = mandatoryLabels.stream()
                         .map(label -> "contains(@text, \"" + label + "\")")
                         .collect(Collectors.joining(" or "));
@@ -1168,106 +1057,6 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilPIDIssuer() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-            for (int i = 0; i < 3; i++) {
-                try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.WalletElements.clickPID);
-                    if (pidElement.isDisplayed()) break;
-                } catch (Exception e) {
-                    slowScroll();  // ← slow scroll instead of UiScrollable
-                }
-            }
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        } else {
-            envDataConfig = new EnvDataConfig();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 9; i++) {
-                    // Get screen size
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.6);
-                    int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
-                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                    Sequence swipe = new Sequence(finger, 1);
-
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                    driver.perform(Collections.singletonList(swipe));
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    //TODO Thanos
-                    Thread.sleep(50);
-                }
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 2; i++) {
-                    // Get screen size
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.6);
-                    int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
-                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                    Sequence swipe = new Sequence(finger, 1);
-
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                    driver.perform(Collections.singletonList(swipe));
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    //TODO Thanos
-                    Thread.sleep(50);
-                }
-            }
-        }
-    }
-
-    public void selectCountryOfOriginDev() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayedDev
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label,
-                    driver,
-                    30
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayedDev
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED_DEV.label, headerText);
-        }
-    }
-
     public void issueMDL() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
@@ -1349,47 +1138,35 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //TODO Thanos todo check comment n01
-                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1428,47 +1205,35 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 2; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1477,46 +1242,34 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 1; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1533,7 +1286,7 @@ public class Issuer {
 
     public void successfullySharedMessage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.successfullyShared)).getText();
             Assert.assertEquals(Literals.Issuer.SUCCESSFULLY_SHARED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.successfullyShared)).getText();
@@ -1600,14 +1353,6 @@ public class Issuer {
         }
     }
 
-    //TODO Thanos remove this method and find a dynamic way to verify that the last action is completed or the next is ready or both
-    public void sleepMethod() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void transactionCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1667,41 +1412,44 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String originalContext = driver.getContext();
 
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
             try {
-                // Switch to NATIVE once if needed
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
-                    //todo Yvonne
-                    Thread.sleep(500); // shorter wait
+                    wait.until(d -> ((HasContext) d).getContext().equals("NATIVE_APP"));
                 }
 
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.35); // slightly shorter swipe
+                int endY = (int) (size.height * 0.35);
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
                 Sequence swipe = new Sequence(finger, 0);
                 swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(100))); // shorter pause
+                swipe.addAction(new Pause(finger, Duration.ofMillis(100)));
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-                //todo Thanos check comment n01
-                // Perform swipe
-                try {
-                    driver.perform(Collections.singletonList(swipe));
-                } catch (InvalidElementStateException e) {
-                    //todo Yvonne
-                    Thread.sleep(800); // retry delay if needed
-                    driver.perform(Collections.singletonList(swipe));
-                }
+                int maxRetries = 2;
+                int attempts = 0;
+                boolean success = false;
 
-            } finally {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
+                while (attempts < maxRetries && !success) {
+                    try {
+                        driver.perform(Collections.singletonList(swipe));
+                        success = true;
+                    } catch (InvalidElementStateException e) {
+                        attempts++;
+                        if (attempts >= maxRetries) {
+                            throw new RuntimeException("Swipe failed after " + maxRetries + " attempts", e);
+                        }
+                    }
                 }
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to execute swipe sequence: " + e.getMessage(), e);
             }
 
         }else{
@@ -1709,7 +1457,6 @@ public class Issuer {
             String originalContext = driver.getContext();
 
             try {
-                // Always scroll in NATIVE
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context("NATIVE_APP");
                 }
@@ -1723,7 +1470,6 @@ public class Issuer {
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 0);
 
-                // Move to start
                 swipe.addAction(finger.createPointerMove(
                         Duration.ZERO,
                         PointerInput.Origin.viewport(),
@@ -1731,15 +1477,12 @@ public class Issuer {
                         startY
                 ));
 
-                // Touch down
                 swipe.addAction(finger.createPointerDown(
                         PointerInput.MouseButton.LEFT.asArg()
                 ));
 
-                // Pause (important for real devices / BrowserStack)
                 swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
 
-                // Swipe
                 swipe.addAction(finger.createPointerMove(
                         Duration.ofMillis(350),
                         PointerInput.Origin.viewport(),
@@ -1747,7 +1490,6 @@ public class Issuer {
                         endY
                 ));
 
-                // Release
                 swipe.addAction(finger.createPointerUp(
                         PointerInput.MouseButton.LEFT.asArg()
                 ));
@@ -1755,40 +1497,9 @@ public class Issuer {
                 driver.perform(Collections.singletonList(swipe));
 
             } finally {
-                // Restore context
                 if (!"NATIVE_APP".equals(originalContext)) {
                     driver.context(originalContext);
                 }
-            }
-        }
-    }
-
-    public void scrollUntilFindConfirm() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-            for (int i = 0; i < 15; i++) {
-                try {
-                    WebElement pidElement = driver.findElement(WalletElements.findConfirm);
-                    if (pidElement.isDisplayed()) break;
-                } catch (Exception e) {
-                    slowScroll();  // ← slow scroll instead of UiScrollable
-                }
-            }
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 5) {
-                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
-                String elementId = ((RemoteWebElement) scrollView).getId();
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                params.put("element", elementId);
-                driver.executeScript("mobile: swipe", params);
-                i++;
             }
         }
     }
@@ -1797,71 +1508,59 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo n01 Thanos, the above code appears multiple times and I find that the duration is the only difference. Make a common function and add as variables the different values
-                Thread.sleep(20);
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 5; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
 
     public void kotlinIssuerService() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            envDataConfig = new EnvDataConfig();
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
-            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            test.envDataConfig();
+            String url = test.envDataConfig().getKotlinUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
 
             if ("browserstack".equalsIgnoreCase(env)) {
-                // Safe for BrowserStack
                 Map<String, Object> deepLinkArgs = new HashMap<>();
-                deepLinkArgs.put("url", "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate");
+                deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
             } else {
-                // Works locally via ADB
                 Map<String, Object> args = new HashMap<>();
                 args.put("command", "am");
                 args.put("args", new String[]{"start", "-a", "android.intent.action.VIEW", "-d", url});
@@ -1871,22 +1570,11 @@ public class Issuer {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate";
+            String url = test.envDataConfig().getKotlinUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
             driver.executeScript("mobile: launchApp", args);
-        }
-    }
-
-    public void requestCredentialsKotlinIssuerPageIsDisplayed() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsKotlinIssuerPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_KOTLIN.label, pageHeader);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsKotlinIssuerPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_KOTLIN.label, pageHeader);
         }
     }
 
@@ -1913,26 +1601,20 @@ public class Issuer {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 5; i++) {
-                // Get screen size
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.6);
                 int endY = (int) (size.height * 0.5);
-                // --- START: REPLACEMENT FOR TouchAction ---
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
 
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                // This replaces your waitAction
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                 driver.perform(Collections.singletonList(swipe));
-                // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                //todo Thanos check comment n01
-                Thread.sleep(50);
             }
         }
     }
@@ -1953,9 +1635,6 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.context("NATIVE_APP");
-            //todo Yvonne
-            Thread.sleep(2000);
 
             boolean found = false;
             int maxAttempts = 8;
@@ -1963,14 +1642,9 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-                    ));
-
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
 
@@ -2002,9 +1676,9 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
 
         } else {
-            //todo Yvonne
-            Thread.sleep(2000);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
             test.mobileWebDriverFactory().iosDriver.rotate(ScreenOrientation.PORTRAIT);
@@ -2017,6 +1691,7 @@ public class Issuer {
 
             for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
                 try {
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
 
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
@@ -2037,7 +1712,6 @@ public class Issuer {
                 }
             }
 
-// Username
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.visibilityOfElementLocated(locator))
                     .click();
@@ -2048,7 +1722,6 @@ public class Issuer {
             username.clear();
             username.sendKeys("tneal");
 
-// Password
             By passwordLocator = eu.europa.eudi.elements.ios.IssuerElements.clickPassword;
 
             test.mobileWebDriverFactory().getWait()
@@ -2061,7 +1734,6 @@ public class Issuer {
             password.clear();
             password.sendKeys("password");
 
-// Sign in
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickSignIn))
@@ -2089,20 +1761,20 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200)); // very short implicit wait
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
             int scrollCount = 0;
 
             while (scrollCount < maxScrolls) {
                 if (!driver.findElements(locator).isEmpty()) {
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // reset to normal
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
                     return;
                 }
 
-                fastSwipe(driver); // perform faster swipe
+                fastSwipe(driver);
                 scrollCount++;
             }
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // reset to normal
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             throw new AssertionError("Text not found: " + text);
         }
     }
@@ -2135,7 +1807,7 @@ public class Issuer {
     }
 
 
-    public void ckeckFieldsOnWalletFromPyIssuer() {
+    public void checkFieldsOnWalletFromPyIssuer() {
         FormYml yml = YmlLoader.load("testdata/PID/py_data_on_wallet.yml", FormYml.class);
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -2145,7 +1817,6 @@ public class Issuer {
             String[] labels = fieldKey.split("\\.");
             String lastLabel = labels[labels.length - 1];
 
-            // 1) find labels (scroll)
             for (String label : labels) {
                 try {
                     assertTextVisibleWithScroll(driver, label, 10);
@@ -2154,7 +1825,6 @@ public class Issuer {
                 }
             }
 
-            // 2) if expected value in yml -> verify it exists (scroll still at that area)
             if (cfg.value != null && !cfg.value.trim().isEmpty()) {
                 try {
                     assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
@@ -2162,8 +1832,6 @@ public class Issuer {
                     throw new RuntimeException(e);
                 }
             } else {
-                // if no expected value -> at least ensure some value exists near the label
-                // simplest: just ensure there is at least one TextView visible
                 By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
                 if (driver.findElements(anyValue).isEmpty()) {
                     throw new AssertionError("No values visible for label: " + lastLabel);
@@ -2172,58 +1840,31 @@ public class Issuer {
         });
     }
 
-    public void ckeckFieldsOnWalletFromKotlinIssuer() {
-        FormYml yml = YmlLoader.load("testdata/PID/kotlin_data_on_wallet.yml", FormYml.class);
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-            if (!cfg.required) return;
-
-            String[] labels = fieldKey.split("\\.");
-            String lastLabel = labels[labels.length - 1];
-
-            // 1) find labels (scroll)
-            for (String label : labels) {
-                try {
-                    assertTextVisibleWithScroll(driver, label, 10);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            // 2) if expected value in yml -> verify it exists (scroll still at that area)
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                try {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                // if no expected value -> at least ensure some value exists near the label
-                // simplest: just ensure there is at least one TextView visible
-                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-                if (driver.findElements(anyValue).isEmpty()) {
-                    throw new AssertionError("No values visible for label: " + lastLabel);
-                }
-            }
-        });
-    }
 
     public void selectMDLKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLKotlinCredential)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
+            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin));
+
+            wait.until(driver -> {
+                try {
+                    driver.findElement(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin).click();
+                    return true;
+                } catch (StaleElementReferenceException e) {
+                    return false;
+                }
+            });
         }
     }
 
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            // 1. Get driver
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-// 2. Switch to WEBVIEW
             for (String context : driver.getContextHandles()) {
                 if (context.contains("WEBVIEW_chrome")) {
                     driver.context(context);
@@ -2231,14 +1872,11 @@ public class Issuer {
                 }
             }
 
-// 3. Locate element in DOM
             By locator = By.xpath("//h4[contains(text(),'Scan the generated QR Code')]");
 
-// 4. Wait
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
             WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
-// 5. Assert
             Assert.assertTrue(header.isDisplayed());
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
@@ -2251,17 +1889,10 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            //todo Yvonne
-            Thread.sleep(3000);
-
-// wait until native context is available
-            new WebDriverWait(driver, Duration.ofSeconds(20))
-                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
-            //todo Yvonne
-            Thread.sleep(2000);
             driver.findElement(AppiumBy.androidUIAutomator(
                     "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
             ));
@@ -2280,8 +1911,8 @@ public class Issuer {
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            //todo Yvonne
-            Thread.sleep(2000);
+            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
             WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
@@ -2302,7 +1933,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLKotlin)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLPython)).click();
 
         }
     }
@@ -2325,11 +1956,6 @@ public class Issuer {
                 } catch (Exception ignored) {
                     slowScroll();
                 }
-
-                try {
-                    //TODO Thanos
-                    Thread.sleep(300); // let UI settle
-                } catch (InterruptedException ignored) {}
             }
 
 
@@ -2339,50 +1965,38 @@ public class Issuer {
             if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 9; i++) {
-                    // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
                     int startY = (int) (size.height * 0.6);
                     int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
                     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                     Sequence swipe = new Sequence(finger, 1);
 
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                     swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                     swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    //todo Thanos check comment no1
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    Thread.sleep(50);
                 }
             } else {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 2; i++) {
-                    // Get screen size
                     Dimension size = driver.manage().window().getSize();
                     int startX = size.width / 2;
                     int startY = (int) (size.height * 0.6);
                     int endY = (int) (size.height * 0.5);
-                    // --- START: REPLACEMENT FOR TouchAction ---
                     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                     Sequence swipe = new Sequence(finger, 1);
 
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                     swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                     swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    // This replaces your waitAction
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
                     driver.perform(Collections.singletonList(swipe));
-                    // --- END: REPLACEMENT FOR TouchAction ---// Optional: Add a short pause between swipes
-                    //todo Thanos check comment no1
-                    Thread.sleep(50);
                 }
             }
         }

@@ -15,24 +15,18 @@ public class WaitsUtils {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 
-        // Define a custom ExpectedCondition that returns a WebElement
         ExpectedCondition<WebElement> textMatches = new ExpectedCondition<WebElement>() {
             @Override
             public WebElement apply(WebDriver driver) {
                 try {
-                    // Find the element on each check to avoid staleness
                     WebElement element = driver.findElement(locator);
                     String actualText = element.getText().trim();
 
-                    // If text matches, return the element. WebDriverWait will stop waiting.
                     if (actualText.toLowerCase().contains(expectedText.toLowerCase())) {
                         return element;
                     }
                 } catch (NoSuchElementException | StaleElementReferenceException e) {
-                    // Element not found or stale, wait will continue polling.
                 }
-                // If text does not match or an exception occurred, return null.
-                // WebDriverWait will continue polling until timeout.
                 return null;
             }
 
@@ -42,11 +36,9 @@ public class WaitsUtils {
             }
         };
 
-        // Use the custom condition with wait.until()
         try {
             return wait.until(textMatches);
         } catch (TimeoutException e) {
-            // Throw a more informative exception
             throw new TimeoutException("Timeout: Text '" + expectedText + "' not found for locator '" + locator + "' within " + timeoutSeconds + " seconds.", e);
         }
     }
