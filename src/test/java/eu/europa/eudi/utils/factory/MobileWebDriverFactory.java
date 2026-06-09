@@ -48,8 +48,8 @@ public class MobileWebDriverFactory {
 //                if (envCI.equalsIgnoreCase("githubactions")) {
 //                    options.setCapability("appium:app", appUrl);
 //                }else{
-                    options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
-              //  }
+                options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
+                //  }
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
@@ -78,24 +78,13 @@ public class MobileWebDriverFactory {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-
-                        System.out.println("BS USER = " + username);
-                        System.out.println("BS KEY LENGTH = " +
-                                (accessKey != null ? accessKey.length() : 0));
-
-                        options.setCapability("browserstack.user", username);
-                        options.setCapability("browserstack.key", accessKey);
-
-                        androidDriver = new AndroidDriver(
-                                new URL("https://hub-cloud.browserstack.com/wd/hub"),
-                                options
-                        );
+                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
                     }else{
                         androidDriver = new AndroidDriver(
-                        new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
+                                new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
                     }
 
-                wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+                    wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                     this.sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
                     System.out.println("Session ID: " + this.sessionId);
 
@@ -178,20 +167,13 @@ public class MobileWebDriverFactory {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-
-                        options.setCapability("browserstack.user", username);
-                        options.setCapability("browserstack.key", accessKey);
-
-                        iosDriver = new IOSDriver(
-                                new URL("https://hub-cloud.browserstack.com/wd/hub"),
-                                options
-                        );
+                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
                     }else{
                         iosDriver = new IOSDriver(
                                 new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
                     }
 
-                wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
+                    wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     e.printStackTrace();
