@@ -78,7 +78,18 @@ public class MobileWebDriverFactory {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+
+                        System.out.println("BS USER = " + username);
+                        System.out.println("BS KEY LENGTH = " +
+                                (accessKey != null ? accessKey.length() : 0));
+
+                        options.setCapability("browserstack.user", username);
+                        options.setCapability("browserstack.key", accessKey);
+
+                        androidDriver = new AndroidDriver(
+                                new URL("https://hub-cloud.browserstack.com/wd/hub"),
+                                options
+                        );
                     }else{
                         androidDriver = new AndroidDriver(
                         new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
@@ -167,7 +178,14 @@ public class MobileWebDriverFactory {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+
+                        options.setCapability("browserstack.user", username);
+                        options.setCapability("browserstack.key", accessKey);
+
+                        iosDriver = new IOSDriver(
+                                new URL("https://hub-cloud.browserstack.com/wd/hub"),
+                                options
+                        );
                     }else{
                         iosDriver = new IOSDriver(
                                 new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
