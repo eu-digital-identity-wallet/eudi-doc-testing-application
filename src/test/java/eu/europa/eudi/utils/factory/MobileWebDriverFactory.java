@@ -75,14 +75,14 @@ public class MobileWebDriverFactory {
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
                 try {
-                    if (envCI.equalsIgnoreCase("githubactions")) {
-                        String username = System.getenv("BROWSERSTACK_USERNAME");
-                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-                    }else{
+//                    if (envCI.equalsIgnoreCase("githubactions")) {
+//                        String username = System.getenv("BROWSERSTACK_USERNAME");
+//                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+//                        androidDriver = new AndroidDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+//                    }else{
                         androidDriver = new AndroidDriver(
                         new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
-                    }
+//                    }
 
                 wait = new WebDriverWait(androidDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                     this.sessionId = ((RemoteWebDriver) androidDriver).getSessionId().toString();
@@ -164,14 +164,14 @@ public class MobileWebDriverFactory {
                 options.setCapability("waitForQuiescence", true);
 
                 try {
-                    if (envCI.equalsIgnoreCase("githubactions")) {
-                        String username = System.getenv("BROWSERSTACK_USERNAME");
-                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
-                    }else{
+//                    if (envCI.equalsIgnoreCase("githubactions")) {
+//                        String username = System.getenv("BROWSERSTACK_USERNAME");
+//                        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+//                        iosDriver = new IOSDriver(new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", username, accessKey)), options);
+//                    }else{
                         iosDriver = new IOSDriver(
                                 new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
-                    }
+//                    }
 
                 wait = new WebDriverWait(iosDriver, Duration.ofSeconds(envDataConfig.getAppiumLongWaitInSeconds()));
                 } catch (Exception e) {
