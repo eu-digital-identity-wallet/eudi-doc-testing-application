@@ -967,7 +967,12 @@ public class AutomatedStepDefs {
                     test.mobile().issuer().kotlinIssuerService();
                     break;
                 case "python":
-
+                    test.mobile().wallet().launchApp();
+                    test.mobile().wallet().checkIfPageIsTrue();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().renterThePin();
+                    test.mobile().wallet().successMessageOfSetUpPin();
+                    test.mobile().wallet().clickAddMyDigitalID();
                     break;
             }
         } else {
