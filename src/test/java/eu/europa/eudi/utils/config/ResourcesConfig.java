@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 public class ResourcesConfig {
 
     private String getTestResourcesPath() {
-       return System.getProperty("user.dir") + "\\preAuthorizationCodeSameDevice.feature\\resources";
+        return System.getProperty("user.dir") + "\\preAuthorizationCodeSameDevice.feature\\resources";
     }
 
     private String getEnvPath() {
@@ -42,10 +42,10 @@ public class ResourcesConfig {
     }
 
     public String getEnvironmentPropertiesPath() {
-            if (System.getProperty("env.properties") == null)
-                return getEnvPath() + "/env.properties";
-            else
-                return getAbsolutePath() + System.getProperty("env.properties");
+        if (System.getProperty("env.properties") == null)
+            return getEnvPath() + "/env.properties";
+        else
+            return getAbsolutePath() + System.getProperty("env.properties");
 
     }
 
