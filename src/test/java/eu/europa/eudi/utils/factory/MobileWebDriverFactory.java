@@ -79,13 +79,14 @@ public class MobileWebDriverFactory {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
                         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 
-                        options.setCapability("browserstack.user", username);
-                        options.setCapability("browserstack.key", accessKey);
-
-                        androidDriver = new AndroidDriver(
-                                new URL("https://hub-cloud.browserstack.com/wd/hub"),
-                                options
+                        URL browserstackUrl = new URL(
+                                String.format(
+                                        "https://%s:%s@hub-cloud.browserstack.com/wd/hub",
+                                        username,
+                                        accessKey
+                                )
                         );
+                        androidDriver = new AndroidDriver(browserstackUrl, options);
                     }else{
                         androidDriver = new AndroidDriver(
                         new URL(String.format("https://%s:%s@hub.browserstack.com/wd/hub", envDataConfig.getAppiumBrowserstackGeneralUsername(), envDataConfig.getAppiumBrowserstackGeneralAccesskey())), options);
