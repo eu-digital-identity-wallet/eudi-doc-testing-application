@@ -1,8 +1,7 @@
-@IOS @@US_CIPSDPYPID @automated
-Feature: Automated Regression Tests PID
+@IOS @US_ETESA @automated @execution_Q1_2026
+Feature: Issuance and presentation - mDL
 
-  @before_01
-  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID
+  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
     And the issuance is performed on a <issue_scenario> for the <credential>
@@ -14,21 +13,20 @@ Feature: Automated Regression Tests PID
     Then the verifier verifies the credential successfully with <presentation_scenario> for <selective_disclosure>
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | all attributes       |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | all attributes       |
-      | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | all attributes       |
-      | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | all attributes       |
-      | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | all attributes       |
-      | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
-      | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
+      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
+      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
+      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
-  @before_01
-  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - PID
+  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - mDL
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
     And the issuance is performed on a <issue_scenario> for the <credential>
@@ -40,12 +38,11 @@ Feature: Automated Regression Tests PID
     Then the verifier verifies the credential successfully with <presentation_scenario> for <selective_disclosure>
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | all attributes       |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | all attributes       |
-      | PID (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
-      | PID (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | all attributes       |
-      | PID (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
-      | PID (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | all attributes       |
+      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
