@@ -1,0 +1,32 @@
+screen: "PID details on Verifier"
+
+fields:
+
+  "eu.europa.ec.eudi.pid.1:birth_date":
+    value: "2020-03-10"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:family_name":
+    value: "Papadopoulos"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:given_name":
+    value: "Nikos"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:issuing_authority":
+    value: "Test PID issuer"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:issuing_country":
+    value: "FC"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:place_of_birth":
+    value: "Athens"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:nationality":
+    value: "GR"
+    required: true
+

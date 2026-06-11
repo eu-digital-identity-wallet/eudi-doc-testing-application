@@ -28,7 +28,7 @@ public class IssuerElements {
     public static By clickCountry = By.xpath("//android.view.View[@text=\"Country\"]/following-sibling::android.widget.EditText[1]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text=\"Country Code\"]/following-sibling::android.widget.EditText[1]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\" or @text=\"Nationalities\"]\n");
+    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
