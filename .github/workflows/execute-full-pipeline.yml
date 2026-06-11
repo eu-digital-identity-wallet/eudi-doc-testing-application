@@ -14,6 +14,7 @@ on:
           - main
           - develop
           - milestone/2026.Q1
+          - milestone/2026.Q2
           - refactor
         default: develop
 
