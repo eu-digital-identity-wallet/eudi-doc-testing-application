@@ -184,7 +184,8 @@ public class Issuer {
 
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -281,7 +282,7 @@ public class Issuer {
                     found = true;
 
                 } catch (Exception e) {
-                    System.out.println("⚠ FormEU not found in android on attempt " + attempt);
+                    System.out.println("FormEU not found in android on attempt " + attempt);
                 }
             }
 
@@ -316,7 +317,7 @@ public class Issuer {
                     found = true;
 
                 } catch (Exception e) {
-                    System.out.println("⚠ FormEU not found in IOS on attempt " + attempt);
+                    System.out.println("FormEU not found in IOS on attempt " + attempt);
                 }
             }
 
@@ -329,28 +330,12 @@ public class Issuer {
     public void enterGivenName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String givenName = getValueFromYml("Given Name");
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.clickGivenName
-                    ))
-                    .click();
-
-            WebElement givenFamily =
-                    test.mobileWebDriverFactory().getWait()
-                            .until(ExpectedConditions.visibilityOfElementLocated(
-                                    IssuerElements.clickGivenName
-                            ));
-
-            givenFamily.clear();
-            givenFamily.sendKeys(givenName);
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.closeKeyboardForm
-                    ))
-                    .click();
-
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement searchBar = driver.findElement(IssuerElements.clickGivenName);
+            searchBar.clear();
+            searchBar.sendKeys(givenName);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -363,28 +348,12 @@ public class Issuer {
     public void enterFamilyName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String familyName = getValueFromYml("Family Name");
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.clickFamilyName
-                    ))
-                    .click();
-
-            WebElement givenFamily =
-                    test.mobileWebDriverFactory().getWait()
-                            .until(ExpectedConditions.visibilityOfElementLocated(
-                                    IssuerElements.clickFamilyName
-                            ));
-
-            givenFamily.clear();
-            givenFamily.sendKeys(familyName);
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.closeKeyboardForm
-                    ))
-                    .click();
-
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement searchBar = driver.findElement(IssuerElements.clickFamilyName);
+            searchBar.clear();
+            searchBar.sendKeys(familyName);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -881,12 +850,14 @@ public class Issuer {
     }
 
     public void issuePID() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        }
         selectCountryOfOrigin();
         clickFormEu();
         scrollUntilFindSubmit();
         clickSubmit();
         formIsDisplayed();
-        verifyMandatoryInfoLabelsPresent("py_issuer_form.yml");
         chooseBirthDate();
         enterFamilyName();
         enterGivenName();
@@ -897,6 +868,7 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
+        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
         scrollUntilAuthorize();
         clickAuthorize();
     }
@@ -1174,23 +1146,12 @@ public class Issuer {
     public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String country = getValueFromYml("Place Of Birth.Country");
-
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.clickCountry
-                    ))
-                    .click();
-
-            WebElement givenFamily =
-                    test.mobileWebDriverFactory().getWait()
-                            .until(ExpectedConditions.visibilityOfElementLocated(
-                                    IssuerElements.clickCountry
-                            ));
-
-            givenFamily.clear();
-            givenFamily.sendKeys(country);
-            WebElement placeOfBirth = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickPlaceOfBirth));
-            test.mobile().wallet().tapAction(placeOfBirth, false);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountry)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement searchBar = driver.findElement(IssuerElements.clickCountry);
+            searchBar.clear();
+            searchBar.sendKeys(country);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickPlaceOfBirth)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1297,23 +1258,12 @@ public class Issuer {
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String countryCode = getValueFromYml("Nationality.Country Code");
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            IssuerElements.clickCountryCode
-                    ))
-                    .click();
-
-            WebElement givenFamily =
-                    test.mobileWebDriverFactory().getWait()
-                            .until(ExpectedConditions.visibilityOfElementLocated(
-                                    IssuerElements.clickCountryCode
-                            ));
-
-            givenFamily.clear();
-            givenFamily.sendKeys(countryCode);
-            WebElement element = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.closeKeyboard));
-            test.mobile().wallet().tapAction(element, false);
-
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement searchBar = driver.findElement(IssuerElements.clickCountryCode);
+            searchBar.clear();
+            searchBar.sendKeys(countryCode);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboard)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1331,7 +1281,7 @@ public class Issuer {
                     eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
                     Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
                     driver,
-                    30
+                    50
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed
@@ -1344,7 +1294,7 @@ public class Issuer {
                     eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed,
                     Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
                     driver,
-                    30
+                    50
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed
@@ -1938,10 +1888,18 @@ public class Issuer {
         }
     }
 
+    public void selectPidPythonIssuer() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDPythonCredential)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDPython)).click();
+
+        }
+    }
+
     public void scrollUntilMdlIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
             WebElement element = null;
 
@@ -1957,12 +1915,8 @@ public class Issuer {
                     slowScroll();
                 }
             }
-
-
         } else {
             envDataConfig = new EnvDataConfig();
-            String env = envDataConfig.getExecutionEnvironment();
-            if (env.equalsIgnoreCase("browserstack")) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 9; i++) {
                     Dimension size = driver.manage().window().getSize();
@@ -1971,34 +1925,73 @@ public class Issuer {
                     int endY = (int) (size.height * 0.5);
                     PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                     Sequence swipe = new Sequence(finger, 1);
-
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                     swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                     swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                     driver.perform(Collections.singletonList(swipe));
-                }
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                for (int i = 0; i < 2; i++) {
-                    Dimension size = driver.manage().window().getSize();
-                    int startX = size.width / 2;
-                    int startY = (int) (size.height * 0.6);
-                    int endY = (int) (size.height * 0.5);
-                    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                    Sequence swipe = new Sequence(finger, 1);
-
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
-                    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                    swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
-                    swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                    driver.perform(Collections.singletonList(swipe));
-                }
             }
         }
     }
+
+    public void scrollUntilPidIssuer() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement element = null;
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.selectPIDPythonCredential);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll();
+                }
+            }
+        } else {
+            envDataConfig = new EnvDataConfig();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 9; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
+    public void clickUseEudiwPid() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+
+                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+                            driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                                    "url", deepLink,
+                                    "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                            ));
+
+                            System.out.println("Deep link executed on Android");
+
+                        }
+                    } else {
+                        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                        driver.context("NATIVE_APP");
+                        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+                    }
+            }
 }

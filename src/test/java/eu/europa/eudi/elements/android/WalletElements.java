@@ -14,12 +14,13 @@ public class WalletElements {
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By loginPageIsDisplayed = By.id(APP_PACKAGE + ":id/biometric_screen_title");
-    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
+    public static By clickPID = By.xpath("//android.widget.TextView[@text=\"PID Combined\"]");
    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
     public static By clickMdlPython = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/following-sibling::android.view.View//android.view.View[@content-desc=\"Add\"]");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By unselectData = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-    public static By unselectDataForMdlPython = By.xpath("//android.widget.TextView[@text=\"Date of birth\"]");
+    public static By unselectDataPython = By.xpath("//android.widget.TextView[@text=\"Date of birth\"]");
+    public static By unselectDataPidPython = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By unselectDataForMdlKotlin = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
@@ -58,6 +59,8 @@ public class WalletElements {
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
     public static By unselectDataForMdlKotlinAllAttributes = By.xpath("//android.widget.TextView[@text=\"Administrative Number\"]");;
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
+    public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
     public static By onlinePresentation = By.xpath("//android.widget.TextView[@text=\"Online\"]");
+    public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (SD-JWT VC)\"]");
 }

@@ -13,7 +13,7 @@ public class VerifierElements {
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectAttributesMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By firstAttribute = By.xpath("//android.view.View[@resource-id=\"mat-option-1\"]");
+    public static By firstAttribute = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By msoMdoc = By.xpath("//android.view.View[@resource-id='mat-option-2'] | //android.widget.ListView[@resource-id='mat-select-1-panel'][1]");
@@ -25,6 +25,7 @@ public class VerifierElements {
     public static By clickDataOnWeb = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space()='Person Identification Data (PID)']]");
     public static By selectAttributesOnWeb = By.xpath("//mat-form-field[.//mat-label[normalize-space()='-- attributes by --']]//div[contains(@class,'mat-mdc-select-trigger')]");
     public static By selectAttributesOnWebForMdl = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Mobile Driving Licence')]]//div[contains(@class,'mat-mdc-select-trigger')]");
+    public static By selectAttributesOnWebForPID = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Person Identification Data')]]//div[contains(@class,'mat-mdc-select-trigger')]");
     public static By firstAttributeOnWeb =  By.xpath("//mat-option//span[normalize-space()='All attributes']");
     public static By clickFormatOnWeb = By.xpath("//mat-form-field[.//mat-label[normalize-space()='-- format --']]//div[contains(@class,'mat-mdc-select-trigger')]");
     public static By msoMdocOnWeb = By.xpath("//mat-option//span[normalize-space()='mso_mdoc']");
@@ -43,11 +44,17 @@ public class VerifierElements {
     public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
     public static By walletRespondedMdlKotlin = By.xpath("//android.widget.TextView[@text=\"org.iso.18013.5.1.mDL\"]");
     public static By clickDataOnWebForMdl = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Mobile Driving Licence (MDL)']]");
+    public static By clickDataOnWebForPID = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Person Identification Data (PID)']]");
     public static By firstAttributeOnWebForMdl = By.xpath("//mat-option[.//span[contains(@class, 'primary-text') and normalize-space(.)='All attributes']]");
+    public static By firstAttributeOnWebForPID = By.xpath("//mat-option[.//span[contains(@class, 'primary-text') and normalize-space(.)='All attributes']]");
     public static By clickFormatOnWebForMdl = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Mobile Driving Licence')]]//div[contains(@class, 'mat-mdc-form-field-infix') and .//mat-label[normalize-space(.)='-- format --']]//div[contains(@class, 'mat-mdc-select-trigger')]");
+    public static By clickFormatOnWebForPID = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Person Identification Data')]]//div[contains(@class, 'mat-mdc-form-field-infix') and .//mat-label[normalize-space(.)='-- format --']]//div[contains(@class, 'mat-mdc-select-trigger')]");
     public static By msoMdocOnWebForMdl = By.xpath("//mat-option[normalize-space(.)='mso_mdoc']");
+    public static By msoMdocOnWebForPID = By.xpath("//mat-option[normalize-space(.)='mso_mdoc']");
     public static By firstAttributeSpecificOnWebForMdl = By.xpath("//mat-option[normalize-space(.)='Specific attributes']");
+    public static By firstAttributeSpecificOnWebForPID = By.xpath("//mat-option[normalize-space(.)='Specific attributes']");
     public static By clickSpecificAttributesButtonForMdlOnWeb = By.xpath("//mat-card[.//mat-card-title[contains(.,'Mobile Driving Licence')]]//button[.//span[normalize-space(.)='Select Attributes']]");
+    public static By clickSpecificAttributesButtonForPIDOnWeb = By.xpath("//mat-card[.//mat-card-title[contains(.,'Person Identification Data')]]//button[.//span[normalize-space(.)='Select Attributes']]");
     public static By walletRespondedWebMdlKotlin = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(., 'query_0')]]//mat-card-title[normalize-space(.)='org.iso.18013.5.1.mDL']");
     public static By clickCloseVerifierOnWeb = By.xpath("//button[.//span[normalize-space(.)='Close']]");
 }
