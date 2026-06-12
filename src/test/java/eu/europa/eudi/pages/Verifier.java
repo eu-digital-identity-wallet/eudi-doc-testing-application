@@ -260,7 +260,7 @@ public class Verifier {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("your_page_anchor")));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("img[src^='data:image/png']")));
         } catch (Exception e) {
             System.out.println("Warning: Stability element not found.");
         }
