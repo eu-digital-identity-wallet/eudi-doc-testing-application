@@ -17,6 +17,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -827,7 +828,7 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 80; i++) {
 
-                if (isElementVisible(driver)) {
+                if (isElementVisiblePID(driver)) {
                     break;
                 }
 
@@ -869,6 +870,12 @@ public class Wallet {
     private boolean isElementVisible(IOSDriver driver) {
         return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickMdl).isEmpty()
                 && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickMdl).get(0).isDisplayed();
+    }
+
+
+    private boolean isElementVisiblePID(IOSDriver driver) {
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).isEmpty()
+                && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).get(0).isDisplayed();
     }
 
     public void scrollUntilPIDTwoPid() throws InterruptedException {
@@ -1059,18 +1066,36 @@ public class Wallet {
     }
 
     public void scrollUntilNationality() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-        for (int i = 0; i < 10; i++) {
-            try {
-                WebElement pidElement = driver.findElement(IssuerElements.nationality);
-                if (pidElement.isDisplayed()) break;
-            } catch (Exception e) {
-                slowScroll(driver);
+            for (int i = 0; i < 10; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(IssuerElements.nationality);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    slowScroll(driver);
+                }
+            }
+
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 2; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
             }
         }
-
     }
 
     public void scrollUp() {

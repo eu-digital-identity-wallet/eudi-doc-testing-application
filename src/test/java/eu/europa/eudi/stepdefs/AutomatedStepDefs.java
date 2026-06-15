@@ -1332,16 +1332,27 @@ public class AutomatedStepDefs {
                             break;
 
                         case "all attributes":
-
                             test.mobile().verifier().launchSafari();
                             test.mobile().verifier().appOpensSuccessfully();
-                            test.mobile().verifier().selectAllAttributes();
-                            test.mobile().verifier().scrollUntilNext();
-                            test.mobile().verifier().clickNext();
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().verifier().appOpensSuccessfully();
+                                test.mobile().verifier().selectAllAttributes();
+                                test.mobile().verifier().scrollUntilNext();
+                                test.mobile().verifier().clickNext();
+                            } else {
+                                test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                                test.mobile().verifier().scrollUntilNext();
+                                test.mobile().verifier().clickNext();
+                                test.mobile().verifier().selectAttributes();
+                                test.mobile().verifier().selectTheMandatoryAttributes();
+                                test.mobile().verifier().clickSelect();
+                            }
+
                             test.mobile().verifier().clickNext();
                             test.mobile().verifier().scrollUntilSumbit();
                             test.mobile().verifier().clickSubmit();
                             break;
+
                     }
 
                     test.mobile().verifier().chooseWallet();
@@ -1381,19 +1392,18 @@ public class AutomatedStepDefs {
                                     "testdata/PID/pre_final_shared_data_on_wallet.yml");
 
                         } else {
-
-                            test.mobile().wallet().clickExpandVerification();
-                            test.mobile().wallet().scrollUntilNationality();
-                            test.mobile().wallet().clickExpandVerification();
-                            test.mobile().wallet().scrollUpForBirthDateOnPID();
-
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().clickExpandVerification();
+                            }
+                                test.mobile().wallet().scrollUntilNationality();
+                                test.mobile().wallet().clickExpandVerification();
+                                test.mobile().wallet().scrollUpForBirthDateOnPID();
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                //TODO PYTHON
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                        "testdata/mDL/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
 
@@ -1419,7 +1429,7 @@ public class AutomatedStepDefs {
 
                     test.mobile().wallet().clickShareButton();
                     test.mobile().wallet().pinFieldIsDisplayed();
-                    test.mobile().verifier().insertPIN();
+                    test.mobile().wallet().createAPin();
                     test.mobile().wallet().authenticationSuccessfully();
 
                     break;
@@ -1474,10 +1484,10 @@ public class AutomatedStepDefs {
 
                                 } else {
 
-                                    test.web().verifier().selectSpecificAttributesOnWebForMdl();
+                                    test.web().verifier().selectSpecificAttributesOnWebForPID();
                                     test.web().verifier().scrollUntilNextOnWeb();
-                                    test.web().verifier().mdlIsDisplayedOnWeb();
-                                    test.web().verifier().clickSpecificAttributesButtonForMdl();
+                                    test.web().verifier().pidIsDisplayedOnWeb();
+                                    test.web().verifier().clickSpecificAttributesButtonForPID();
                                     test.web().verifier().selectMandatoryAttributesOnWeb();
                                     test.web().verifier().scrollUntilNextOnWeb();
                                 }
@@ -1876,20 +1886,15 @@ public class AutomatedStepDefs {
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            //TODO
+                            //TODO KOTLIN
 //                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO
+                                //TODO KOTLIN
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                    //TODO
-//                                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
-                                } else {
-                                    //to do
+                                    //nothing
                                 }
-                            }
                         }
                     }
                     break;
