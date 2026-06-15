@@ -45,4 +45,5 @@ public class IssuerElements {
     public static By clickSignIn = By.xpath("//XCUIElementTypeButton[@name=\"Sign In\"]");
     public static By issueCredentialPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
+    public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
 }

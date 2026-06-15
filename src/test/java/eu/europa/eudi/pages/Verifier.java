@@ -439,17 +439,17 @@ public class Verifier {
         Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
 
-    public File captureScreenOnWeb() throws InterruptedException {
+    public File captureScreenOnWeb() {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
         if (driver == null) {
-            throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
+            throw new RuntimeException("Web driver is null. Cannot capture QR.");
         }
 
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File screenshotsDir = new File("screenshots");
 
+        File screenshotsDir = new File("screenshots");
         if (!screenshotsDir.exists()) {
             screenshotsDir.mkdirs();
         }
@@ -459,7 +459,9 @@ public class Verifier {
         try {
             By qrContainerSelector = By.cssSelector(".vc-verifiable-credential");
 
-            WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(qrContainerSelector));
+            WebElement container = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(qrContainerSelector)
+            );
 
             ((JavascriptExecutor) driver).executeScript(
                     "arguments[0].scrollIntoView({block:'center'});",
@@ -468,54 +470,58 @@ public class Verifier {
 
             WebElement canvas = wait.until(d -> {
                 try {
-                    WebElement c = container.findElement(By.cssSelector("qrcode canvas"));
+                    WebElement c = container.findElement(
+                            By.cssSelector("qrcode canvas")
+                    );
                     return c.isDisplayed() ? c : null;
                 } catch (Exception e) {
                     return null;
                 }
             });
 
+            // Wait until canvas has dimensions
             wait.until(d -> {
-                try {
-                    Object width = ((JavascriptExecutor) d).executeScript(
-                            "return arguments[0].getBoundingClientRect().width;", canvas);
-                    Object height = ((JavascriptExecutor) d).executeScript(
-                            "return arguments[0].getBoundingClientRect().height;", canvas);
+                Long width = ((Number) ((JavascriptExecutor) d).executeScript(
+                        "return arguments[0].width;", canvas
+                )).longValue();
 
-                    return width instanceof Number && height instanceof Number
-                            && ((Number) width).doubleValue() > 0
-                            && ((Number) height).doubleValue() > 0;
-                } catch (Exception e) {
-                    return false;
-                }
+                Long height = ((Number) ((JavascriptExecutor) d).executeScript(
+                        "return arguments[0].height;", canvas
+                )).longValue();
+
+                return width > 0 && height > 0;
             });
 
-            File srcFile;
-            try {
-                srcFile = canvas.getScreenshotAs(OutputType.FILE);
-            } catch (Exception e) {
-                srcFile = container.getScreenshotAs(OutputType.FILE);
-            }
-
-            Files.copy(
-                    srcFile.toPath(),
-                    destFile.toPath(),
-                    StandardCopyOption.REPLACE_EXISTING
+            // Export canvas directly as PNG
+            String dataUrl = (String) ((JavascriptExecutor) driver).executeScript(
+                    "return arguments[0].toDataURL('image/png');",
+                    canvas
             );
 
-            if (!destFile.exists() || destFile.length() == 0) {
-                throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
+            if (dataUrl == null || !dataUrl.startsWith("data:image/png;base64,")) {
+                throw new RuntimeException("Canvas did not return a valid PNG.");
             }
 
-            System.out.println("Web QR screenshot saved: " + destFile.getAbsolutePath());
+            String base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+
+            byte[] imageBytes = Base64.getDecoder().decode(base64);
+
+            Files.write(destFile.toPath(), imageBytes);
+
+            if (!destFile.exists() || destFile.length() == 0) {
+                throw new RuntimeException(
+                        "Generated QR image is empty: " + destFile.getAbsolutePath()
+                );
+            }
+
+            System.out.println("QR image saved: " + destFile.getAbsolutePath());
+
             this.capturedScreenFile = destFile;
             return destFile;
 
         } catch (Exception e) {
             throw new RuntimeException(
-                    "Failed to capture QR screenshot (web) at: " + destFile.getAbsolutePath(),
-                    e
-            );
+                    "Failed to capture QR image at: " + destFile.getAbsolutePath(), e);
         }
     }
 
@@ -563,7 +569,7 @@ public class Verifier {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.allAttributes)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributesMdl)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
         }
@@ -688,6 +694,34 @@ public class Verifier {
             test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormatMdl)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdocMdl)).click();
+        }
+    }
+
+    public void selectAllAttributesForPID() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickDataMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesMdl)).click();
+            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.specificAttributesMdl));
+            Dimension dropdownSize = dropdown.getSize();
+            test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() - 50);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocMdl)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesMdl)).click();
+            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.allAttributes));
+            Dimension dropdownSize = dropdown.getSize();
+            test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormatMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdocMdl)).click();
+
+
+
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributesMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
         }
     }
 

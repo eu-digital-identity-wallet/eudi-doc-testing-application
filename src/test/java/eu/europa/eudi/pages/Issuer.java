@@ -337,11 +337,12 @@ public class Issuer {
             searchBar.sendKeys(givenName);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
         } else {
+            String givenNameText = getValueFromYml("Given Name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.givenNameField);
             givenName.clear();
-            givenName.sendKeys("Foteini");
+            givenName.sendKeys(givenNameText);
         }
     }
 
@@ -355,11 +356,12 @@ public class Issuer {
             searchBar.sendKeys(familyName);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
         } else {
+            String familyName = getValueFromYml("Family Name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenFamily = (WebElement) driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.familyNameField);
             givenFamily.clear();
-            givenFamily.sendKeys("Theofilatou");
+            givenFamily.sendKeys(familyName);
         }
     }
 
@@ -750,7 +752,7 @@ public class Issuer {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
-            while (i < 4) {
+            while (i < 6) {
                 WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
                 String elementId = ((RemoteWebElement) scrollView).getId();
                 Map<String, Object> params = new HashMap<>();
@@ -1153,11 +1155,12 @@ public class Issuer {
             searchBar.sendKeys(country);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickPlaceOfBirth)).click();
         } else {
+            String countryText = getValueFromYml("Place Of Birth.Country");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement country = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountry);
             country.clear();
-            country.sendKeys("Greece");
+            country.sendKeys(countryText);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickPlaceOfBirth)).click();
         }
     }
@@ -1302,11 +1305,12 @@ public class Issuer {
             searchBar.sendKeys(countryCode);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboard)).click();
         } else {
+            String countryCodeText = getValueFromYml("Nationality.Country Code");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement countryCode = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode);
             countryCode.clear();
-            countryCode.sendKeys("GR");
+            countryCode.sendKeys(countryCodeText);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.closeKeyboard)).click();
         }
     }
