@@ -1555,10 +1555,13 @@ public class AutomatedStepDefs {
 
                             test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
-//                            test.mobile().wallet().scrollUpForBirthDateOnPID();
-
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            }
                         }
 
                     } else {
@@ -1904,24 +1907,21 @@ public class AutomatedStepDefs {
                     test.web().verifier().clickViewContentOnWeb();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            //TODO
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet.yml");
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                //TODO
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            //TODO
+                            //TODO KOTLIN
 //                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO
+                                //TODO KOTLIN
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
