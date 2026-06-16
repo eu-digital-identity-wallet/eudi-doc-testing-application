@@ -1148,7 +1148,7 @@ public class Issuer {
     public void enterCountry() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String country = getValueFromYml("Place Of Birth.Country");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountry)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountry)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement searchBar = driver.findElement(IssuerElements.clickCountry);
             searchBar.clear();
@@ -1298,7 +1298,7 @@ public class Issuer {
     public void enterCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String countryCode = getValueFromYml("Nationality.Country Code");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountryCode)).click();
             AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebElement searchBar = driver.findElement(IssuerElements.clickCountryCode);
             searchBar.clear();

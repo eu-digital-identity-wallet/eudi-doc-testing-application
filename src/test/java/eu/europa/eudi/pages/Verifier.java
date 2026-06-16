@@ -440,90 +440,84 @@ public class Verifier {
     }
 
     public File captureScreenOnWeb() {
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
-        WebDriverWait wait = test.webWebDriverFactory().getWait();
+            WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+            WebDriverWait wait = test.webWebDriverFactory().getWait();
 
-        if (driver == null) {
-            throw new RuntimeException("Web driver is null. Cannot capture QR.");
-        }
-
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-
-        File screenshotsDir = new File("screenshots");
-        if (!screenshotsDir.exists()) {
-            screenshotsDir.mkdirs();
-        }
-
-        File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
-
-        try {
-            By qrContainerSelector = By.cssSelector(".vc-verifiable-credential");
-
-            WebElement container = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(qrContainerSelector)
-            );
-
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block:'center'});",
-                    container
-            );
-
-            WebElement canvas = wait.until(d -> {
-                try {
-                    WebElement c = container.findElement(
-                            By.cssSelector("qrcode canvas")
-                    );
-                    return c.isDisplayed() ? c : null;
-                } catch (Exception e) {
-                    return null;
-                }
-            });
-
-            // Wait until canvas has dimensions
-            wait.until(d -> {
-                Long width = ((Number) ((JavascriptExecutor) d).executeScript(
-                        "return arguments[0].width;", canvas
-                )).longValue();
-
-                Long height = ((Number) ((JavascriptExecutor) d).executeScript(
-                        "return arguments[0].height;", canvas
-                )).longValue();
-
-                return width > 0 && height > 0;
-            });
-
-            // Export canvas directly as PNG
-            String dataUrl = (String) ((JavascriptExecutor) driver).executeScript(
-                    "return arguments[0].toDataURL('image/png');",
-                    canvas
-            );
-
-            if (dataUrl == null || !dataUrl.startsWith("data:image/png;base64,")) {
-                throw new RuntimeException("Canvas did not return a valid PNG.");
+            if (driver == null) {
+                throw new RuntimeException("Web driver is null. Cannot capture screenshot.");
             }
 
-            String base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            File screenshotsDir = new File("screenshots");
 
-            byte[] imageBytes = Base64.getDecoder().decode(base64);
+            if (!screenshotsDir.exists()) {
+                screenshotsDir.mkdirs();
+            }
 
-            Files.write(destFile.toPath(), imageBytes);
+            File destFile = new File(screenshotsDir, timestamp + "_verifier.png");
 
-            if (!destFile.exists() || destFile.length() == 0) {
+            try {
+                By qrContainerSelector = By.cssSelector(".vc-verifiable-credential");
+
+                WebElement container = wait.until(ExpectedConditions.visibilityOfElementLocated(qrContainerSelector));
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        container
+                );
+
+                WebElement canvas = wait.until(d -> {
+                    try {
+                        WebElement c = container.findElement(By.cssSelector("qrcode canvas"));
+                        return c.isDisplayed() ? c : null;
+                    } catch (Exception e) {
+                        return null;
+                    }
+                });
+
+                wait.until(d -> {
+                    try {
+                        Object width = ((JavascriptExecutor) d).executeScript(
+                                "return arguments[0].getBoundingClientRect().width;", canvas);
+                        Object height = ((JavascriptExecutor) d).executeScript(
+                                "return arguments[0].getBoundingClientRect().height;", canvas);
+
+                        return width instanceof Number && height instanceof Number
+                                && ((Number) width).doubleValue() > 0
+                                && ((Number) height).doubleValue() > 0;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
+
+                File srcFile;
+                try {
+                    srcFile = canvas.getScreenshotAs(OutputType.FILE);
+                } catch (Exception e) {
+                    srcFile = container.getScreenshotAs(OutputType.FILE);
+                }
+
+                Files.copy(
+                        srcFile.toPath(),
+                        destFile.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING
+                );
+
+                if (!destFile.exists() || destFile.length() == 0) {
+                    throw new RuntimeException("Screenshot file is empty: " + destFile.getAbsolutePath());
+                }
+
+                System.out.println("Web QR screenshot saved: " + destFile.getAbsolutePath());
+                this.capturedScreenFile = destFile;
+                return destFile;
+
+            } catch (Exception e) {
                 throw new RuntimeException(
-                        "Generated QR image is empty: " + destFile.getAbsolutePath()
+                        "Failed to capture QR screenshot (web) at: " + destFile.getAbsolutePath(),
+                        e
                 );
             }
-
-            System.out.println("QR image saved: " + destFile.getAbsolutePath());
-
-            this.capturedScreenFile = destFile;
-            return destFile;
-
-        } catch (Exception e) {
-            throw new RuntimeException(
-                    "Failed to capture QR image at: " + destFile.getAbsolutePath(), e);
         }
-    }
 
     public void scrollUntilSumbit() {
 

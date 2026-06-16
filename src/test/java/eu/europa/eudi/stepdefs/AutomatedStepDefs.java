@@ -1397,7 +1397,7 @@ public class AutomatedStepDefs {
                             }
                                 test.mobile().wallet().scrollUntilNationality();
                                 test.mobile().wallet().clickExpandVerification();
-                                test.mobile().wallet().scrollUpForBirthDateOnPID();
+//                                test.mobile().wallet().scrollUpForBirthDateOnPID();
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
@@ -1553,8 +1553,9 @@ public class AutomatedStepDefs {
 
                         } else {
 
+                            test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
-                            test.mobile().wallet().clickToViewDetails();
+//                            test.mobile().wallet().scrollUpForBirthDateOnPID();
 
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");

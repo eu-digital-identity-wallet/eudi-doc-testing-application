@@ -54,7 +54,7 @@ public class WalletElements {
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
     public static By selectMDLKotlin = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'org.iso.18013.5.1.mDL'");
     public static By selectMDLPython = By.xpath("//XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
-    public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name=' PID (MSO Mdoc) ']/preceding-sibling::XCUIElementTypeSwitch[1]");
+    public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
