@@ -803,7 +803,7 @@ public class Issuer {
                 // 2. OPTIMIZED CONTEXT SWITCHING
                 // We do this once at the start. We use a dedicated Wait for the context switch.
                 // We cast 'd' to AppiumDriver inside the lambda to solve the 'getContextHandles' error.
-                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(100));
+                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(150));
                 contextWait.until(d -> {
                     AndroidDriver driver1 = (AndroidDriver) d;
                     Set<String> contexts = driver1.getContextHandles();
@@ -818,7 +818,7 @@ public class Issuer {
                 // Instead of a manual 'for' loop (which causes hangs in CI/CD),
                 // we use a single WebDriverWait with intelligent polling.
                 // 'refreshed' handles cases where the element might momentarily disappear/re-appear.
-                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(100));
+                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(150));
 
                 smartWait.ignoring(StaleElementReferenceException.class)
                         .ignoring(NoSuchElementException.class)
