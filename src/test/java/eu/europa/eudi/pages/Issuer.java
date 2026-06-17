@@ -263,7 +263,7 @@ public class Issuer {
                     // 1. OPTIMIZED CONTEXT SWITCH (Once)
                     // We ensure we are in NATIVE_APP before attempting to find the element.
                     // We cast to AppiumDriver to resolve the 'getContextHandles' compilation error.
-                    WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(150));
                     contextWait.until(d -> {
                         AndroidDriver driver1 = (AndroidDriver) d;
                         Set<String> contexts = driver1.getContextHandles();
@@ -277,7 +277,7 @@ public class Issuer {
                     // 2. SINGLE SMART WAIT (Replaces the for-loop)
                     // Instead of looping 8 times with 110s each, we use one 60s window.
                     // The WebDriverWait internally polls the driver, which is much more efficient.
-                    WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                    WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(150));
 
                     // Ignore common mobile flakiness during the wait period
                     smartWait.ignoring(StaleElementReferenceException.class)
@@ -803,7 +803,7 @@ public class Issuer {
                 // 2. OPTIMIZED CONTEXT SWITCHING
                 // We do this once at the start. We use a dedicated Wait for the context switch.
                 // We cast 'd' to AppiumDriver inside the lambda to solve the 'getContextHandles' error.
-                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(100));
                 contextWait.until(d -> {
                     AndroidDriver driver1 = (AndroidDriver) d;
                     Set<String> contexts = driver1.getContextHandles();
@@ -818,7 +818,7 @@ public class Issuer {
                 // Instead of a manual 'for' loop (which causes hangs in CI/CD),
                 // we use a single WebDriverWait with intelligent polling.
                 // 'refreshed' handles cases where the element might momentarily disappear/re-appear.
-                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
+                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(100));
 
                 smartWait.ignoring(StaleElementReferenceException.class)
                         .ignoring(NoSuchElementException.class)
