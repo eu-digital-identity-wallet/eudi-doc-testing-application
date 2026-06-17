@@ -1477,9 +1477,9 @@ public class AutomatedStepDefs {
 
                                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-                                    test.web().verifier().selectAllAttributesOnWebForMdl();
+                                    test.web().verifier().selectAllAttributesOnWebForPID();
                                     test.web().verifier().scrollUntilNextOnWeb();
-                                    test.web().verifier().mdlIsDisplayedOnWeb();
+                                    test.web().verifier().pidIsDisplayedOnWeb();
                                     test.web().verifier().scrollUntilNextOnWeb();
 
                                 } else {
@@ -1553,8 +1553,12 @@ public class AutomatedStepDefs {
 
                         } else {
 
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().clickExpandVerification();
+                            }
                             test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
+
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
