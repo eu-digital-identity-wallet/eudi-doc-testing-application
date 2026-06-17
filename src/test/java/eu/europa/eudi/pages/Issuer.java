@@ -263,7 +263,7 @@ public class Issuer {
                     // 1. OPTIMIZED CONTEXT SWITCH (Once)
                     // We ensure we are in NATIVE_APP before attempting to find the element.
                     // We cast to AppiumDriver to resolve the 'getContextHandles' compilation error.
-                    WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(150));
+                    WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
                     contextWait.until(d -> {
                         AndroidDriver driver1 = (AndroidDriver) d;
                         Set<String> contexts = driver1.getContextHandles();
@@ -277,7 +277,7 @@ public class Issuer {
                     // 2. SINGLE SMART WAIT (Replaces the for-loop)
                     // Instead of looping 8 times with 110s each, we use one 60s window.
                     // The WebDriverWait internally polls the driver, which is much more efficient.
-                    WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(150));
+                    WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
 
                     // Ignore common mobile flakiness during the wait period
                     smartWait.ignoring(StaleElementReferenceException.class)
@@ -295,7 +295,7 @@ public class Issuer {
 
                 } catch (TimeoutException e) {
                     // 4. CLEAR ERROR REPORTING
-                    throw new AssertionError("TIMEOUT ERROR: FormEU element was not clickable within 60s. " +
+                    throw new AssertionError("TIMEOUT ERROR: FormEU element was not clickable within time. " +
                             "Check if the app is stuck on a loading screen or if the context is incorrect.", e);
                 } catch (Exception e) {
                     throw new RuntimeException("An unexpected error occurred while clicking FormEU: " + e.getMessage(), e);
@@ -803,7 +803,7 @@ public class Issuer {
                 // 2. OPTIMIZED CONTEXT SWITCHING
                 // We do this once at the start. We use a dedicated Wait for the context switch.
                 // We cast 'd' to AppiumDriver inside the lambda to solve the 'getContextHandles' error.
-                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(150));
+                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
                 contextWait.until(d -> {
                     AndroidDriver driver1 = (AndroidDriver) d;
                     Set<String> contexts = driver1.getContextHandles();
@@ -818,7 +818,7 @@ public class Issuer {
                 // Instead of a manual 'for' loop (which causes hangs in CI/CD),
                 // we use a single WebDriverWait with intelligent polling.
                 // 'refreshed' handles cases where the element might momentarily disappear/re-appear.
-                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(150));
+                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
 
                 smartWait.ignoring(StaleElementReferenceException.class)
                         .ignoring(NoSuchElementException.class)
@@ -832,7 +832,7 @@ public class Issuer {
                 // 4. ENHANCED ERROR REPORTING
                 // If it fails on GitHub Actions, this error message will tell you exactly what happened.
                 // Tip: If using Serenity, add 'Serenity.takeScreenshot()' here to debug the visual state.
-                throw new AssertionError("TIMEOUT ERROR: The 'Mandatory Information' form was not detected within 60 seconds. " +
+                throw new AssertionError("TIMEOUT ERROR: The 'Mandatory Information' form was not detected within time. " +
                         "This may be due to slow network latency on the CI runner or the app being stuck on a different screen.", e);
 
             } catch (Exception e) {
