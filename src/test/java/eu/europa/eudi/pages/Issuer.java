@@ -900,7 +900,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
-        selectCountryOfOrigin();
         clickFormEu();
         scrollUntilFindSubmit();
         clickSubmit();
@@ -1080,7 +1079,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
-        selectCountryOfOrigin();
         clickFormEu();
         clickSubmit();
         formIsDisplayed();
