@@ -13,7 +13,6 @@ public class IssuerElements {
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.id("document_success_screen_content_header_description");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
-    public static By clickFormEu = AppiumBy.androidUIAutomator("new UiSelector().text(\"FormEU\")");
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
     public static By clickFamilyName = By.xpath("//android.view.View[@text='Family Name']/../android.widget.EditText");
     public static By clickBirthDate = By.xpath("//android.widget.Spinner");

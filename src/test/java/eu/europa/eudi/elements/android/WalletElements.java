@@ -62,5 +62,5 @@ public class WalletElements {
     public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
     public static By onlinePresentation = By.xpath("//android.widget.TextView[@text=\"Online\"]");
-    public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (SD-JWT VC)\"]");
+    public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (MSO Mdoc)\"]");
 }
