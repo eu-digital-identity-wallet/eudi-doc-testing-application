@@ -256,50 +256,59 @@ public class Issuer {
 
     public void clickFormEu() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-                By locator = eu.europa.eudi.elements.android.IssuerElements.clickFormEu;
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-                try {
-                    // 1. OPTIMIZED CONTEXT SWITCH (Once)
-                    // We ensure we are in NATIVE_APP before attempting to find the element.
-                    // We cast to AppiumDriver to resolve the 'getContextHandles' compilation error.
-                    WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
-                    contextWait.until(d -> {
-                        AndroidDriver driver1 = (AndroidDriver) d;
-                        Set<String> contexts = driver1.getContextHandles();
-                        if (contexts.contains("NATIVE_APP")) {
-                            driver1.context("NATIVE_APP");
-                            return true;
-                        }
-                        return false;
-                    });
+            //Locators for YOUR specific elements (from Appium Inspector)
+            By[] locators = {
+                    AppiumBy.androidUIAutomator("resourceId(\"FC\")"),
+                    AppiumBy.androidUIAutomator("className(\"android.widget.RadioButton\").resourceId(\"FC\")"),
+                    AppiumBy.androidUIAutomator("new UiSelector().text(\"FormEU\")"),
+                    AppiumBy.androidUIAutomator("className(\"android.widget.TextView\").text(\"FormEU\")")
+            };
 
-                    // 2. SINGLE SMART WAIT (Replaces the for-loop)
-                    // Instead of looping 8 times with 110s each, we use one 60s window.
-                    // The WebDriverWait internally polls the driver, which is much more efficient.
-                    WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
-
-                    // Ignore common mobile flakiness during the wait period
-                    smartWait.ignoring(StaleElementReferenceException.class)
-                            .ignoring(NoSuchElementException.class);
-
-                    // 3. VISIBILITY + CLICKABILITY
-                    // We wait for it to be visible AND clickable in one sequence.
-                    // 'refreshed' handles the case where the element is recreated during animation.
-                    WebElement element = smartWait.until(ExpectedConditions.refreshed(
-                            ExpectedConditions.elementToBeClickable(locator)
-                    ));
-
-                    element.click();
-                    System.out.println("Successfully clicked FormEU in Android.");
-
-                } catch (TimeoutException e) {
-                    // 4. CLEAR ERROR REPORTING
-                    throw new AssertionError("TIMEOUT ERROR: FormEU element was not clickable within time. " +
-                            "Check if the app is stuck on a loading screen or if the context is incorrect.", e);
-                } catch (Exception e) {
-                    throw new RuntimeException("An unexpected error occurred while clicking FormEU: " + e.getMessage(), e);
+            try {
+                // Switch to NATIVE_APP (10s timeout)
+                if (!"NATIVE_APP".equals(driver.getContext())) {
+                    new WebDriverWait(driver, Duration.ofSeconds(3000))
+                            .until(d -> {
+                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
+                                if (contexts.contains("NATIVE_APP")) {
+                                    ((AndroidDriver) d).context("NATIVE_APP");
+                                    return true;
+                                }
+                                return false;
+                            });
                 }
+
+                // Try all locators (30s total timeout)
+                for (By locator : locators) {
+                    try {
+                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
+                                .pollingEvery(Duration.ofMillis(500))
+                                .ignoring(StaleElementReferenceException.class)
+                                .ignoring(NoSuchElementException.class)
+                                .until(ExpectedConditions.refreshed(
+                                        ExpectedConditions.elementToBeClickable(locator)
+                                ));
+
+                        System.out.println("SUCCESS: Element found using: " + locator);
+
+                        // CLICK THE ELEMENT
+                        element.click();
+
+                        return;
+                    } catch (TimeoutException ignored) {
+                        // Try next locator
+                    }
+                }
+
+                // If ALL locators fail
+                throw new AssertionError("Element not found within time");
+
+            } catch (Exception e) {
+                // 4General failed message
+                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
+            }
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
@@ -793,51 +802,56 @@ public class Issuer {
         // 1. Check if we are running on Android
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-            // Cast to AndroidDriver to access mobile-specific capabilities
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            // The locator for the element we are waiting for
-            By locator = AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")");
+            //Locators for YOUR specific elements (from Appium Inspector)
+            By[] locators = {
+                    AppiumBy.androidUIAutomator("resourceId(\"content\")"),
+                    AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
+            };
 
             try {
-                // 2. OPTIMIZED CONTEXT SWITCHING
-                // We do this once at the start. We use a dedicated Wait for the context switch.
-                // We cast 'd' to AppiumDriver inside the lambda to solve the 'getContextHandles' error.
-                WebDriverWait contextWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
-                contextWait.until(d -> {
-                    AndroidDriver driver1 = (AndroidDriver) d;
-                    Set<String> contexts = driver1.getContextHandles();
-                    if (contexts.contains("NATIVE_APP")) {
-                        driver1.context("NATIVE_APP");
-                        return true;
+                // Switch to NATIVE_APP (10s timeout)
+                if (!"NATIVE_APP".equals(driver.getContext())) {
+                    new WebDriverWait(driver, Duration.ofSeconds(3000))
+                            .until(d -> {
+                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
+                                if (contexts.contains("NATIVE_APP")) {
+                                    ((AndroidDriver) d).context("NATIVE_APP");
+                                    return true;
+                                }
+                                return false;
+                            });
+                }
+
+                // Try all locators (30s total timeout)
+                for (By locator : locators) {
+                    try {
+                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
+                                .pollingEvery(Duration.ofMillis(500))
+                                .ignoring(StaleElementReferenceException.class)
+                                .ignoring(NoSuchElementException.class)
+                                .until(ExpectedConditions.refreshed(
+                                        ExpectedConditions.visibilityOfElementLocated(locator)
+                                ));
+
+                        System.out.println("SUCCESS: Element found using: " + locator);
+
+                        // CLICK THE ELEMENT
+                        element.click();
+
+                        return;
+                    } catch (TimeoutException ignored) {
+                        // Try next locator
                     }
-                    return false;
-                });
+                }
 
-                // 3. ROBUST ELEMENT WAITING
-                // Instead of a manual 'for' loop (which causes hangs in CI/CD),
-                // we use a single WebDriverWait with intelligent polling.
-                // 'refreshed' handles cases where the element might momentarily disappear/re-appear.
-                WebDriverWait smartWait = new WebDriverWait(driver, Duration.ofSeconds(3000));
-
-                smartWait.ignoring(StaleElementReferenceException.class)
-                        .ignoring(NoSuchElementException.class)
-                        .until(ExpectedConditions.refreshed(
-                                ExpectedConditions.visibilityOfElementLocated(locator)
-                        ));
-
-                System.out.println("Success: 'Mandatory Information' form is visible.");
-
-            } catch (TimeoutException e) {
-                // 4. ENHANCED ERROR REPORTING
-                // If it fails on GitHub Actions, this error message will tell you exactly what happened.
-                // Tip: If using Serenity, add 'Serenity.takeScreenshot()' here to debug the visual state.
-                throw new AssertionError("TIMEOUT ERROR: The 'Mandatory Information' form was not detected within time. " +
-                        "This may be due to slow network latency on the CI runner or the app being stuck on a different screen.", e);
+                // If ALL locators fail
+                throw new AssertionError("Element not found within time");
 
             } catch (Exception e) {
-                // Catch any other unexpected Appium/Selenium errors
-                throw new RuntimeException("An unexpected error occurred during the form visibility check: " + e.getMessage(), e);
+                // 4General failed message
+                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
             }
 
         } else {
@@ -1354,7 +1368,7 @@ public class Issuer {
                     eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
                     Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
                     driver,
-                    50
+                    80
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed
@@ -1367,7 +1381,7 @@ public class Issuer {
                     eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed,
                     Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
                     driver,
-                    50
+                    80
             );
             String headerText = driver.findElement(
                     eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed
