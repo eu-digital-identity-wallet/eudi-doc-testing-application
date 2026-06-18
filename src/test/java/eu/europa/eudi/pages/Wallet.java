@@ -17,7 +17,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -63,7 +62,7 @@ public class Wallet {
         }
     }
 
-    public void createAPin() throws InterruptedException {
+    public void createAPin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String fullPin = test.envDataConfig().getPin();
 
@@ -251,14 +250,6 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE.label, pageHeader);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.dashboardPageIsDisplayed)).isDisplayed();
-        }
-    }
-
-    public void unselectData() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.unselectData)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.unselectData)).click();
         }
     }
 
@@ -659,7 +650,6 @@ public class Wallet {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             envDataConfig = new EnvDataConfig();
-            String env = envDataConfig.getExecutionEnvironment();
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                 for (int i = 0; i < 30; i++) {
                     Dimension size = driver.manage().window().getSize();
@@ -808,7 +798,6 @@ public class Wallet {
     public void scrollUntilPidOnDocuments() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
             WebElement element = null;
 
@@ -952,18 +941,6 @@ public class Wallet {
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR))
                     .click();
-        }
-    }
-
-    public void theQRScannerIsActivated() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRIsActivated)).getText();
-            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED.label, pageHeader);
-        } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRIsActivated)).getText();
-            Assert.assertEquals(Literals.Wallet.QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE.label, pageHeader);
         }
     }
 
@@ -1329,44 +1306,5 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlinePresentation)).click();
         }
-    }
-
-    public void scrollUpForBirthDateOnPID() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-        int maxScrolls = 10;     // safety limit
-        int count = 0;
-        By locator = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            slowScrollUp();
-            count++;
-        }
-
-        if (driver.findElements(locator).isEmpty()) {
-            throw new RuntimeException("Mandatory Information not found after scrolling up");
-        }
-    } else {
-        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-        int maxScrolls = 10;
-        int count = 0;
-
-        By locator = By.xpath(
-                "//XCUIElementTypeStaticText[@name='Birth Date' " +
-                        "or @label='Birth Date' " +
-                        "or @value='Birth Date']"
-        );
-
-        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            slowScrollUp();
-            count++;
-        }
-
-        if (driver.findElements(locator).isEmpty()) {
-            throw new RuntimeException("Mandatory Information not found after scrolling up");
-        }
-    }
     }
 }

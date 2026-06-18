@@ -18,7 +18,6 @@ public class VerifierElements {
     public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By msoMdoc = By.xpath("//android.view.View[@resource-id='mat-option-2'] | //android.widget.ListView[@resource-id='mat-select-1-panel'][1]");
     public static By msoMdocMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-3-panel\"]");
-    public static By msoMdocReal = By.xpath("//android.view.View[@resource-id=\"mat-option-23\"]");
     public static By specificAttributes = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]");
     public static By specificAttributesMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-2-panel\"]");
     public static By appOpensSuccessfullyOnWeb =  By.xpath("//h4[normalize-space()='Define your presentation request']");;

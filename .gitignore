@@ -12,6 +12,7 @@ buildNumber.properties
 *.iml
 target/
 browserstack-local.properties
+session_map.txt
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar

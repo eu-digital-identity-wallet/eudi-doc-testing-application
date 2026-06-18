@@ -127,7 +127,7 @@ public class Issuer {
         }
     }
 
-    public void qrCodeIsDisplayed() throws InterruptedException {
+    public void qrCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
@@ -523,7 +523,6 @@ public class Issuer {
 
             String[] p = issueDate.split("-");
             String year = p[0];
-            int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
             try {
@@ -561,8 +560,6 @@ public class Issuer {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
 
             FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-            String issueDate = yml.fields.get("Issue Date").value; // "yyyy-MM-dd"
-
             wait.until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickIssueDate))
                     .click();
@@ -608,7 +605,6 @@ public class Issuer {
                     .click();
             String[] p = expiryDate.split("-");
             String year = p[0];
-            int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
             try {
                 driver.findElement(By.id("android:id/date_picker_header_year")).click();
@@ -636,10 +632,7 @@ public class Issuer {
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
                     .click();
         } else {
-            IOSDriver driver1 = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
-            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-            String expiryDate = yml.fields.get("Expiry Date").value; // e.g., "2030-05-15"
             wait.until(ExpectedConditions.elementToBeClickable(
                     eu.europa.eudi.elements.ios.IssuerElements.clickExpiryDate)).click();
             String day = "10";
@@ -691,7 +684,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindDate() throws InterruptedException {
+    public void scrollUntilFindDate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
@@ -968,99 +961,6 @@ public class Issuer {
                         .ifPresent(label -> {
                             throw new AssertionError("Mandatory label not found: " + label);
                         });
-        }
-    }
-    private void verifyMandatoryInfoLabelsPresent(String yamlPath) {
-
-        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            List<String> mandatoryLabels = yml.fields.entrySet().stream()
-                    .filter(entry -> entry.getValue().required)
-                    .flatMap(entry -> Arrays.stream(entry.getKey().split("\\.")))
-                    .distinct()
-                    .collect(Collectors.toList());
-
-            Set<String> foundLabels = new HashSet<>();
-            int maxScrolls = 5;
-
-            for (int scroll = 0; scroll < maxScrolls && foundLabels.size() < mandatoryLabels.size(); scroll++) {
-
-                String xpath = mandatoryLabels.stream()
-                        .map(label -> "contains(@text, \"" + label + "\")")
-                        .collect(Collectors.joining(" or "));
-
-                List<WebElement> elements = driver.findElements(By.xpath(
-                        "//android.webkit.WebView//*[(@class='android.view.View' or @class='android.widget.TextView') and (" + xpath + ")]"
-                ));
-
-                for (WebElement el : elements) {
-                    String text = el.getText();
-                    for (String label : mandatoryLabels) {
-                        if (text.contains(label)) {
-                            foundLabels.add(label);
-                        }
-                    }
-                }
-
-                if (foundLabels.size() < mandatoryLabels.size()) {
-                    try {
-                        slowScroll();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-
-            mandatoryLabels.stream()
-                    .filter(label -> !foundLabels.contains(label))
-                    .findFirst()
-                    .ifPresent(label -> {
-                        throw new AssertionError("Mandatory label not found: " + label);
-                    });
-
-
-            test.mobile().wallet().scrollUpForBirthDate();
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-            yml.fields.forEach((fieldKey, cfg) -> {
-
-                if (!cfg.required) return;
-
-                String[] labels = fieldKey.split("\\.");
-
-                for (String label : labels) {
-
-                    boolean found = false;
-
-                    for (int i = 0; i < 5; i++) {
-
-                        By labelLocator = By.xpath(
-                                "//XCUIElementTypeStaticText[contains(@name,'" + label + "') " +
-                                        "or contains(@label,'" + label + "') " +
-                                        "or contains(@value,'" + label + "')]"
-                        );
-
-                        if (!driver.findElements(labelLocator).isEmpty()) {
-                            found = true;
-                            break;
-                        }
-
-                        try {
-                            slowScroll();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    if (!found) {
-                        throw new AssertionError("Mandatory label not found: " + label);
-                    }
-                }
-            });
-
-            test.mobile().wallet().scrollUpForBirthDate();
         }
     }
 
@@ -1358,36 +1258,6 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.closeKeyboard)).click();
         }
     }
-
-    public void selectCountryOfOrigin() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
-                    driver,
-                    80
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, headerText);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebElement header = WaitsUtils.waitForExactText(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed,
-                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
-                    driver,
-                    80
-            );
-            String headerText = driver.findElement(
-                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed
-            ).getText().trim();
-            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, headerText);
-        }
-    }
-
 
     public void transactionCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
