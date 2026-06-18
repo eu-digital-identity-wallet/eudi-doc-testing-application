@@ -303,7 +303,7 @@ public class Issuer {
                 }
 
                 // If ALL locators fail
-                throw new AssertionError("Element not found within time");
+                throw new AssertionError("Click FormEu not found within time");
 
             } catch (Exception e) {
                 // 4General failed message
@@ -840,7 +840,7 @@ public class Issuer {
                 }
 
                 // If ALL locators fail
-                throw new AssertionError("Element not found within time");
+                throw new AssertionError("Form not found within time");
 
             } catch (Exception e) {
                 // 4General failed message
