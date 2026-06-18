@@ -15,7 +15,7 @@ public class WalletElements {
     public static By authenticationSuccess = By.xpath("//android.widget.TextView[@text=\"You successfully shared the following information with\"]");
     public static By loginPageIsDisplayed = By.id(APP_PACKAGE + ":id/biometric_screen_title");
     public static By clickPID = By.id("eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://ec.dev.issuer.eudiw.dev_eu.europa.ec.eudi.pid_mdoc,eu.europa.ec.eudi.pid_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt");
-   public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
+    public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
     public static By clickMdlPython = By.xpath("//android.widget.TextView[@text=\"mDL (MSO Mdoc)\"]/following-sibling::android.view.View//android.view.View[@content-desc=\"Add\"]");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By unselectData = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
@@ -44,7 +44,6 @@ public class WalletElements {
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By addPIDPageIsDisplayed = By.id(APP_PACKAGE + ":id/add_document_screen_subtitle");
-    public static By clickPIDOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickPIDOnDocumentsSecond = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
     public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");

@@ -208,7 +208,7 @@ public class AutomatedStepDefs {
     }
 
     @After
-    public void tearDown(Scenario scenario) throws InterruptedException {
+    public void tearDown(Scenario scenario) {
         String featureName = test.getScenario().getUri().getPath()
                 .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                 .replace(".feature", "")
