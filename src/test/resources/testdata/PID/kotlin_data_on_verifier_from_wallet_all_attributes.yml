@@ -1,0 +1,31 @@
+screen: "PID details on Verifier - Kotlin"
+
+fields:
+
+  "eu.europa.ec.eudi.pid.1:birth_date":
+    value: "1955-04-12"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:family_name":
+    value: "Neal"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:given_name":
+    value: "Tyler"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:issuing_authority":
+    value: "GR Administrative authority"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:issuing_country":
+    value: "GR"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:place_of_birth":
+    value: ""
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:nationality":
+    value: "AT"
+    required: true
