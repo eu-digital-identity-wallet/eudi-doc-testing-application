@@ -61,5 +61,6 @@ public class WalletElements {
     public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By clickMSISDNPython = By.xpath("//android.widget.TextView[@text=\"MSISDN (MSO Mdoc)\"]");
     public static By onlinePresentation = By.xpath("//android.widget.TextView[@text=\"Online\"]");
+    public static By clickPidFromKotlinFromList = By.id(APP_PACKAGE + ":id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred");
     public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (MSO Mdoc)\"]");
 }

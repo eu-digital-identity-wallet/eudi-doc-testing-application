@@ -1157,7 +1157,16 @@ public class AutomatedStepDefs {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
             test.mobile().wallet().clickExpandVerification();
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
+                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
+                } else {
+                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
+                }
             } else {
                 verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
             }
@@ -1168,7 +1177,6 @@ public class AutomatedStepDefs {
     public void theCredentialIsStoredInTheWallet() {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                test.mobile().wallet().clickExpandVerification();
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
@@ -1397,7 +1405,7 @@ public class AutomatedStepDefs {
                             }
                                 test.mobile().wallet().scrollUntilNationality();
                                 test.mobile().wallet().clickExpandVerification();
-//                                test.mobile().wallet().scrollUpForBirthDateOnPID();
+                                test.mobile().wallet().scrollUpForBirthDateOnPID();
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
@@ -1410,19 +1418,20 @@ public class AutomatedStepDefs {
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                              //TODO KOTLIN
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
-
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                                test.mobile().wallet().scrollUntilNationality();
+                                test.mobile().wallet().clickExpandVerificationDown();
+                                test.mobile().wallet().scrollUntilPlaceOfBirth();
+                                test.mobile().wallet().clickExpandVerificationDown();
+                                test.mobile().wallet().scrollUpForBirthDateOnPID();
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1520,26 +1529,18 @@ public class AutomatedStepDefs {
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
 
-                        test.mobile().wallet().clickMDLFromKotlin();
-
+                        test.mobile().wallet().clickPIDFromKotlin();
+                        test.mobile().wallet().unselectData();
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
-                        } else {
-                            test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
+                            test.mobile().wallet().unselectData();
                         }
 
                     } else {
 
                         test.mobile().wallet().clickToViewDetails();
                         test.mobile().wallet().unselectDataPIDPython();
-                    }
-
-                    test.mobile().wallet().closeCorrespondingMessage();
-                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
-                        }
-                    } else {
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataPIDPython();
                         }
@@ -1571,18 +1572,17 @@ public class AutomatedStepDefs {
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            //TODO KOTLIN
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                    "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                                test.mobile().wallet().scrollUntilNationality();
+                                test.mobile().wallet().clickExpandVerificationDown();
+                                test.mobile().wallet().scrollUntilPlaceOfBirth();
+                                test.mobile().wallet().clickExpandVerificationDown();
+                                test.mobile().wallet().scrollUpForBirthDateOnPID();
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-//                                        "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1647,21 +1647,12 @@ public class AutomatedStepDefs {
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
 
                         test.mobile().wallet().clickMDLFromKotlin();
-
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataForMdlKotlin();
                         } else {
                             test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
-
-                    } else {
-
-                        test.mobile().wallet().clickToViewDetails();
-                        test.mobile().wallet().unselectDataPython();
-                    }
-
-                    test.mobile().wallet().closeCorrespondingMessage();
-                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataForMdlKotlin();
                         }
@@ -1809,6 +1800,10 @@ public class AutomatedStepDefs {
                         } else {
                             test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
                         }
+                        test.mobile().wallet().closeCorrespondingMessage();
+                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+                            test.mobile().wallet().unselectDataForMdlKotlin();
+                        }
 
                     } else {
 
@@ -1894,15 +1889,11 @@ public class AutomatedStepDefs {
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            //TODO KOTLIN
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                    //nothing
-                                }
+                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            }
                         }
                     }
                     break;
@@ -1916,19 +1907,16 @@ public class AutomatedStepDefs {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
+                                //TODO
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            //TODO KOTLIN
-//                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                //TODO KOTLIN
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             }
                         }
                     }
