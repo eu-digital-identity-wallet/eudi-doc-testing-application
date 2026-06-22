@@ -964,7 +964,12 @@ public class AutomatedStepDefs {
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
                 case "kotlin":
-                    test.mobile().issuer().kotlinIssuerService();
+                    test.mobile().wallet().launchApp();
+                    test.mobile().wallet().checkIfPageIsTrue();
+                    test.mobile().wallet().createAPin();
+                    test.mobile().wallet().renterThePin();
+                    test.mobile().wallet().successMessageOfSetUpPin();
+                    test.mobile().wallet().clickAddMyDigitalID();
                     break;
                 case "python":
                     test.mobile().wallet().launchApp();
@@ -1002,14 +1007,23 @@ public class AutomatedStepDefs {
         this.issuanceMethod = issuanceMethod;
         switch (issuanceMethod.toLowerCase()) {
             case "from list":
-                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                    test.mobile().wallet().insertPidFromList();
-                } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                    test.mobile().wallet().insertMdlFromList();
+                if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().insertPidFromListKotlin();
+                    } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().insertMdlFromList();
+                    }
+                } else {
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().insertPidFromList();
+                    } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().insertMdlFromList();
+                    }
                 }
                 break;
             case "credential offer":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    test.mobile().issuer().kotlinIssuerService();
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().selectPIDKotlin();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
@@ -1033,14 +1047,17 @@ public class AutomatedStepDefs {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
-                    test.mobile().issuer().issueCredentialsPageIsDisplayed();
-                    test.mobile().issuer().clickWalletLink();
-                    test.mobile().wallet().viewDataPage();
-                    test.mobile().wallet().clickAddButton();
-                    test.mobile().issuer().signInUsser();
-                    test.mobile().issuer().fillLoginForm();
+                    if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                        test.mobile().issuer().issueCredentialsPageIsDisplayed();
+                        test.mobile().issuer().clickWalletLink();
+                        test.mobile().wallet().viewDataPage();
+                        test.mobile().wallet().clickAddButton();
+                        test.mobile().issuer().signInUsser();
+                        test.mobile().issuer().fillLoginForm();
+                    }
                     break;
                 case "cross device":
+                    test.mobile().issuer().qrCodeIsDisplayed();
                     test.mobile().verifier().captureScreen();
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
@@ -1368,26 +1385,18 @@ public class AutomatedStepDefs {
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
 
-                        test.mobile().wallet().clickMDLFromKotlin();
-
+                        test.mobile().wallet().clickPIDFromKotlin();
+                        test.mobile().wallet().unselectData();
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
-                        } else {
-                            test.mobile().wallet().unselectDataForMdlKotlinAllAttributes();
+                            test.mobile().wallet().unselectData();
                         }
 
                     } else {
 
                         test.mobile().wallet().clickToViewDetails();
                         test.mobile().wallet().unselectDataPIDPython();
-                    }
-
-                    test.mobile().wallet().closeCorrespondingMessage();
-                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
-                        }
-                    } else {
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataPIDPython();
                         }
@@ -1554,19 +1563,11 @@ public class AutomatedStepDefs {
 
                         } else {
 
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().clickExpandVerification();
-                            }
-                            test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
+                            test.mobile().wallet().clickToViewDetails();
 
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
-                            } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
-                            }
+                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
                         }
 
                     } else {
@@ -1656,7 +1657,12 @@ public class AutomatedStepDefs {
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataForMdlKotlin();
                         }
+
                     } else {
+
+                        test.mobile().wallet().clickToViewDetails();
+                        test.mobile().wallet().unselectDataPython();
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataPython();
                         }
@@ -1794,7 +1800,6 @@ public class AutomatedStepDefs {
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
 
                         test.mobile().wallet().clickMDLFromKotlin();
-
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataForMdlKotlin();
                         } else {
@@ -1809,14 +1814,7 @@ public class AutomatedStepDefs {
 
                         test.mobile().wallet().clickToViewDetails();
                         test.mobile().wallet().unselectDataPython();
-                    }
-
-                    test.mobile().wallet().closeCorrespondingMessage();
-                    if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().unselectDataForMdlKotlin();
-                        }
-                    } else {
+                        test.mobile().wallet().closeCorrespondingMessage();
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
                             test.mobile().wallet().unselectDataPython();
                         }

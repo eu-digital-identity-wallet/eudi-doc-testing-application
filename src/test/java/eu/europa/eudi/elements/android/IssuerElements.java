@@ -24,7 +24,7 @@ public class IssuerElements {
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Expiry Date\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-    public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\"]");
+    public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\" or @text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text='Country Code']/../android.widget.EditText");
     public static By clickCountry = By.xpath("//android.view.View[@text='Country']/../android.widget.EditText");
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
