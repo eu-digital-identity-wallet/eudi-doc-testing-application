@@ -6,8 +6,8 @@ This repository contains the test procedures for the EUDI Wallet project, encomp
 
 - [Overview](#overview)
 - [Requirements](#requirements)
-- [Local Environment Setup For Real Device/Emulator](#local-environment-setup-for-real-deviceemulator)
 - [Test Case Overview](#test-case-overview)
+- [Local Environment Setup For Real Device/Emulator](#local-environment-setup-for-real-deviceemulator)
 - [Running Tests Locally with Real Device/Emulator](#running-tests-locally-with-real-deviceemulator)
 - [Running Tests Locally with Real Device through Browserstack Farm](#running-tests-locally-with-real-device-through-browserstack-farm)
 - [Running Tests via GitHub Actions & BrowserStack](#running-tests-via-github-actions--browserstack-farm)
@@ -18,12 +18,12 @@ This repository contains the test procedures for the EUDI Wallet project, encomp
 
 ## Overview
 
-The test suite is designed to validate the EUDI Wallet's functionality. Depending on your needs, you can execute these tests locally on physical devices/emulators or through Browserstack Device Farm. Also you can trigger them via GitHub Actions integrated with BrowserStack for scalable device testing.
+The test suite is designed to validate the EUDI Wallet's functionality. Depending on your needs, you can execute these tests locally on physical devices/emulators or through BrowserStack Device Farm. Tests can also be triggered through GitHub Actions integrated with BrowserStack for scalable device testing.
 ## Requirements
 
 ### Prerequisites
 - **Java 17**: Required for all tests.
-- **Maven 3.9.6+**: Required for build and test management.
+- **Maven 3.9.6+**: Required for dependency management, build, and test execution.
 
 ### Automation-Specific Requirements
 If you intend to run automated UI tests locally, you will also need:
@@ -32,9 +32,15 @@ If you intend to run automated UI tests locally, you will also need:
 - **Android Studio 2023.1.1+**: For Android emulators/ADB.
 - **Xcode 15+**: For iOS simulators/devices (macOS only).
 - **WebDriverAgent**: Required for real iPhone devices.
-- **Browserstack Device Farm Account**: For local execution on a real device through farm.
+- **BrowserStack Device Farm Account**: Required for executing tests on BrowserStack-hosted real devices.
 
-> **Note:** To run **manual tests only**, you only need Java 17 and Maven 3.9.6.
+> **Note:** To run **manual tests only**, Java 17 and Maven 3.9.6 are sufficient when executing manual test workflows.
+
+## Test Case Overview
+
+Tests are written in **Gherkin** and located in the `src/test/resources/features` directory.
+
+**Structure:** `features` $\rightarrow$ `[iOS|Android]` $\rightarrow$ `[Epic]` $\rightarrow$ `[User Story]` $\rightarrow$ `.feature` files.
 
 ## Local Environment Setup For Real Device/Emulator
 
@@ -76,12 +82,6 @@ If you plan to use GitHub Actions for running our tests, you can skip this secti
    - Run `./Scripts/bootstrap.sh`.
    - Build the project in Xcode (`Cmd + B`) targeting your device.
 
-## Test Case Overview
-
-Tests are written in **Gherkin** and located in the `src/test/resources/features` directory.
-
-**Structure:** `features` $\rightarrow$ `[iOS|Android]` $\rightarrow$ `[Epic]` $\rightarrow$ `[User Story]` $\rightarrow$ `.feature` files.
-
 ## Running Tests Locally with Real Device/Emulator
 
 ### Step 1: Device Preparation
@@ -115,13 +115,21 @@ appium.ios.platformName=iOS
 appium.ios.udid=YourUDID
 ```
 
-### Step 3: Select Tests (Tags)
+### Step 3: Upload Application
+
+Place the application package in: src/test/resources/app/
+
+Required filenames:
+- Android: androidApp.apk
+- iOS: iosApp.ipa
+
+### Step 4: Select Tests (Tags)
 Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specify tags:
 - `@ANDROID` / `@IOS`: Run all tests for the platform.
 - `@manual` / `@automated`: Run by test type.
 - `@US_VD_TC_01`: Run a specific test case.
 
-### Step 4: Execution
+### Step 5: Execution
 1. Open `src/test/java/eu/europa/eudi/utils/factory/locallyTestExecution.java`.
 2. Set the script name on line 6 to `./local-execution-mac.sh` (Mac) or `local-execution.cmd` (Windows).
 3. Run the following:
@@ -131,14 +139,14 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
    java locallyTestExecution
    ```
 
-### Step 5: Reports & Logs
+### Step 6: Reports & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
 - **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/[feature].txt`.
 
-## Running Tests Locally with Real Device through Browserstack Farm
+## Running Tests Locally with Real Device through BrowserStack Farm
 
-### Step 1: Add Browserstack Account Credentials
-Create a `browserstack-local.properties` file with your Browserstack Account Credentials:
+### Step 1: Add BrowserStack Account Credentials
+Create a `browserstack-local.properties` file with your BrowserStack Account Credentials:
 
 **Important**: Add browserstack-local.properties to .gitignore
 
@@ -180,7 +188,7 @@ App URL - Get from BrowserStack Dashboard:
 
 1. Log in to BrowserStack: https://app.browserstack.com/app-automate
 2. Click the "Upload new app" button in the top right
-3. Select your compiled .ipa file (for iOS) and .apk file (for android) from your local machine
+3. 3. Select your compiled .ipa file (for iOS) and .apk file (for Android) from your local machine
 4. Wait for the upload to complete (you'll see a success message)
 5. The app URL will be displayed in the format: bs://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 6. Copy this entire URL (including the bs:// prefix)
@@ -239,7 +247,7 @@ When executing mobile automation tests, please be aware of the following environ
 * **Stability:** Tests running on physical devices may exhibit occasional instability (flakiness) due to network latency or device-specific background processes.
 
 #### **Emulators / Virtual Devices**
-* **Stability Warning:** Testing on emulators is **highly unstable** and is currently not recommended for formal execution or result logging.
+* **Stability Warning:** Testing on emulators is intended primarily for development and debugging purposes and is not recommended for formal validation activities.
 * **Reliability:** Due to synchronization issues and architectural differences between emulators and real hardware, tests on emulators may fail unpredictably and do not produce reliable reports.
 * **Authentication Workflow:**
     * To proceed the initial app-view, you **must skip the Google Account sign-in step**.
@@ -259,7 +267,7 @@ This section documents the compatibility between test automation versions and EU
 
 | Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Status | Notes |
 |-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|---|-------|
-| [milestone/2026.Q2](#https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Stable | -     |
+| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Stable | -     |
 
 
 ## Contributing
@@ -272,6 +280,6 @@ Copyright (c) 2024 European Commission
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at:
 
-http://www.apache.org/licenses/LICENSE-2.0
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

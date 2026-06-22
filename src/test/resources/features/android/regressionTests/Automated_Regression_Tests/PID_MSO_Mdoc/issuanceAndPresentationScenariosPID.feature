@@ -26,7 +26,6 @@ Feature: Issuance and presentation - PID
       | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | all attributes       |
       | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
-
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
