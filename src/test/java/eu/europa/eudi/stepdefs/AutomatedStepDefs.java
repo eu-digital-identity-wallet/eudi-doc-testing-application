@@ -1563,8 +1563,11 @@ public class AutomatedStepDefs {
 
                         } else {
 
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().clickExpandVerification();
+                            }
+                            test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
-                            test.mobile().wallet().clickToViewDetails();
 
                             verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
