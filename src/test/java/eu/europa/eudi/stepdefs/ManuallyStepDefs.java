@@ -9238,5 +9238,45 @@ public class ManuallyStepDefs {
         //manual
     }
 
+    @Then("the following text is displayed: Secure your wallet with a PIN code and connect to your National System")
+    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
+        //manual
+    }
+
+    @Given("the user opens the app again after issuing a PID")
+    public void theUserOpensTheAppAgainAfterIssuingAPID() {
+        //manual
+    }
+
+    @Then("the search field should display the label Search")
+    public void theSearchFieldShouldDisplayTheLabelSearch() {
+        //manual
+    }
+
+    @When("the user navigates at the bottom of the screen")
+    public void theUserNavigatesAtTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @Then("the remaining instances section is displayed at the bottom of the screen")
+    public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @When("the user observes the top of the screen")
+    public void theUserObservesTheTopOfTheScreen() {
+        //manual
+    }
+
+    @Then("the Issuer details card is displayed on top")
+    public void theIssuerDetailsCardIsDisplayedOnTop() {
+        //manual
+    }
+
+    @When("the filters are displayed")
+    public void theFiltersAreDisplayed() {
+        //manual
+    }
+
 
 
