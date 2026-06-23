@@ -9216,5 +9216,75 @@ public class ManuallyStepDefs {
     }
 }
 
+    @Then("the following text is displayed: Secure your wallet with a PIN code and connect to your National System")
+    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
+        //manual
+    }
+
+    @Given("the user opens the app again after issuing a PID")
+    public void theUserOpensTheAppAgainAfterIssuingAPID() {
+        //manual
+    }
+
+    @Then("the search field should display the label Search")
+    public void theSearchFieldShouldDisplayTheLabelSearch() {
+        //manual
+    }
+
+    @When("the user navigates at the bottom of the screen")
+    public void theUserNavigatesAtTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @Then("the remaining instances section is displayed at the bottom of the screen")
+    public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreen() {
+        //manual
+    }
+
+    @When("the user observes the top of the screen")
+    public void theUserObservesTheTopOfTheScreen() {
+        //manual
+    }
+
+    @Then("the Issuer details card is displayed on top")
+    public void theIssuerDetailsCardIsDisplayedOnTop() {
+        //manual
+    }
+
+    @When("the filters are displayed")
+    public void theFiltersAreDisplayed() {
+        //manual
+    }
+
+@Given("the user is at the Add Document screen")
+public void theUserIsAtTheAddDocumentScreen() {
+    //manual
+}
+
+@When("user attempts to issue an attestation")
+public void userAttemptsToIssueAnAttestation() {
+    //manual
+}
+
+@Then("The instances count is not displayed during issuance")
+public void theInstancesCountIsNotDisplayedDuringIssuance() {
+    //manual
+}
+
+@Given("the user navigates to the Settings Option button")
+public void theUserNavigatesToTheSettingsOptionButton() {
+    //manual
+}
+
+@Given("the user is on the History screen")
+public void theUserIsOnTheHistoryScreen() {
+    //manual
+}
+
+@When("the user selects online")
+public void theUserSelectsOnline() {
+    //manual
+}
+
 
 

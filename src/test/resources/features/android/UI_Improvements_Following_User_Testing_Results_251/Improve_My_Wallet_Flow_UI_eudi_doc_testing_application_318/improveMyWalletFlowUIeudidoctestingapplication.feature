@@ -6,13 +6,13 @@ Feature: Improve My Wallet Flow UI
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/318
 
-  @US_IMWFUEDTA_TC_01 @manual:
+  @US_IMWFUEDTA_TC_01 @manual:Passed
   Scenario: Verify Change PIN screen title
-    Given the user navigates to the Settings
+    Given the user navigates to the Settings Option button
     When the user navigates to the Change PIN screen
     Then the screen title is displayed as Change PIN
 
-  @US_IMWFUEDTA_TC_02 @manual:
+  @US_IMWFUEDTA_TC_02 @manual:Passed
   Scenario: Verify prompt appears when tapping Back
     Given the user is on the Change PIN screen
     When the user taps the Back button
