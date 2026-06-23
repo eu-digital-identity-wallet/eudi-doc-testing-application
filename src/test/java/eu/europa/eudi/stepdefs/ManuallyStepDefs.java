@@ -9256,5 +9256,25 @@ public class ManuallyStepDefs {
         //manual
     }
 
+@Given("the user is at the Add Document screen")
+public void theUserIsAtTheAddDocumentScreen() {
+    //manual
+}
+
+@When("user attempts to issue an attestation")
+public void userAttemptsToIssueAnAttestation() {
+    //manual
+}
+
+@Then("The instances count is not displayed during issuance")
+public void theInstancesCountIsNotDisplayedDuringIssuance() {
+    //manual
+}
+
+@Given("the user navigates to the Settings Option button")
+public void theUserNavigatesToTheSettingsOptionButton() {
+    //manual
+}
+
 
 
