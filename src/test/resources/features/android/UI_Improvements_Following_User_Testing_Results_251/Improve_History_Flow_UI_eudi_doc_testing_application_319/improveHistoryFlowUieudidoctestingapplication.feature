@@ -6,19 +6,24 @@ Feature:  Improve History Flow UI
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/319
 
-  @US_IHFUEDTA_TC_01 @manual:
+  @US_IHFUEDTA_TC_01 @manual:Passed
   Scenario: Verify Transactions label is updated
     Given the user navigates through the application
     Then all instances of Transactions should be renamed to History
     And the corresponding icon should be updated
 
-  @US_IHFUEDTA_TC_02 @manual:
+  @US_IHFUEDTA_TC_02 @manual:Passed
+  Scenario: Verify search field label
+    Given the user is on the History screen
+    Then the search field should display the label Search
+
+  @US_IHFUEDTA_TC_03 @manual:Passed
   Scenario: Verify arrow direction when collapsed on Android
     Given the user opens the Filter screen on Android
     And a filter section is collapsed
     Then the arrow icon should point down
 
-  @US_IHFUEDTA_TC_03 @manual:
+  @US_IHFUEDTA_TC_04 @manual:Passed
   Scenario: Verify arrow direction when expanded on Android
     Given the user opens the Filter screen on Android
     When the user expands a filter section

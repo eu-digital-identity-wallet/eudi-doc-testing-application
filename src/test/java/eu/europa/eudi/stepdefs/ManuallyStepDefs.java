@@ -9276,5 +9276,15 @@ public void theUserNavigatesToTheSettingsOptionButton() {
     //manual
 }
 
+@Given("the user is on the History screen")
+public void theUserIsOnTheHistoryScreen() {
+    //manual
+}
+
+@When("the user selects online")
+public void theUserSelectsOnline() {
+    //manual
+}
+
 
 
