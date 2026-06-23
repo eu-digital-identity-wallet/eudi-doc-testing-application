@@ -21,7 +21,7 @@ echo ========================================================
 
 call mvn test ^
 -Dtest=TestRunner ^
--Dcucumber.filter.tags="@execution and @ANDROID" ^
+-Dcucumber.filter.tags="@execution_Q2_2026" ^
 %*
 
 echo ========================================================
@@ -97,7 +97,7 @@ if exist target\site\serenity (
     rmdir /s /q target\site\serenity
 )
 
-call mvn serenity:aggregate -Dtags="ANDROID and execution"
+call mvn serenity:aggregate -Dtags="execution_Q2_2026"
 
 echo ========================================================
 echo APPLY CUSTOM CSS

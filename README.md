@@ -262,7 +262,6 @@ This framework is designed to be cross-platform (Android & iOS). However, mobile
 ##### **1. UI Component Mismatch (OS & Versioning)**
 Mobile OS updates (e.g., moving from Android 12 to Android 14, or iOS 16 to iOS 17) often change how native widgets are rendered.
 * **Example:** A date selection feature may appear as a `Spinner` (dropdown) on one Android version, but as a `DatePicker` (calendar popup) on another. On iOS, this might manifest as a `PickerWheel`.
-* **Framework Handling:** To maintain stability, the framework utilizes **Hybrid Locators** (using logical `OR` XPath operations) and **Platform-Aware Logic** to detect and interact with the correct component regardless of the underlying OS implementation.
 
 ##### **2. Device-Specific Rendering (Fragmentation)**
 Different manufacturers (Samsung, Xiaomi, Google Pixel, Apple) implement "skins" or custom UI layers over the base OS.
@@ -271,7 +270,7 @@ Different manufacturers (Samsung, Xiaomi, Google Pixel, Apple) implement "skins"
 
 ##### **3. Environment Stability**
 
-* **Physical Devices:** While more accurate for final validation, physical devices may encounter network latency or hardware-level interruptions (e.g., system permission pop-ups) that can cause transient test failures.
+* **Physical Devices:** While more accurate for final validation, physical devices may encounter network latency or hardware-level interruptions that can cause transient test failures.
 
 * **Emulators/Simulators:**
 * **Stability Warning:** Testing on emulators is intended primarily for development and debugging purposes and is not recommended for formal validation activities.
