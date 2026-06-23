@@ -6,14 +6,14 @@ Feature: Improve Authentication Flow UI
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/320
 
-  @US_IAFUEDTA_TC_01 @manual:
+  @US_IAFUEDTA_TC_01 @manual:Passed
   Scenario: Verify navigation to Authentication Intro screen
     Given the user is on the Home page and selects Authenticate
     When the user selects either in person or online
     Then the title Authenticate my identity is displayed
 
-  @US_IAFUEDTA_TC_02 @manual:
+  @US_IAFUEDTA_TC_02 @manual:Passed
   Scenario: Verify informative text
     Given the user is on the Home page and selects Authenticate
-    When the user selects either online
+    When the user selects online
     Then the informative text Scan a QR code provided from an interacting party to authenticate your identity is displayed
