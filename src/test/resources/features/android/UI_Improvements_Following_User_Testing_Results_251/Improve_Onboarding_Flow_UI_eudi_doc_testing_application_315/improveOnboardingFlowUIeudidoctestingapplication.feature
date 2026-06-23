@@ -6,45 +6,45 @@ Feature: User onboarding experience
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/315
 
-  @US_IOFUEDTA_TC_01 @manual:
+  @US_IOFUEDTA_TC_01 @manual:Passed
   Scenario: Logo consistency across onboarding
     Given the user opens the app either for the first time, or for next time
     When the user navigates through onboarding screens
     Then the updated logo is displayed on all screens
 
-  @US_IOFUEDTA_TC_02 @manual:
+  @US_IOFUEDTA_TC_02 @manual:Passed
   Scenario: Type PIN screen informational text
     Given the user opens the app for the first time
     When the user navigates to the Welcome to your wallet screen
     Then the following text is displayed: Secure your wallet with a PIN code and connect to your National System below the Welcome to your Wallet
 
-  @US_IOFUEDTA_TC_03 @manual:
+  @US_IOFUEDTA_TC_03 @manual:Passed
   Scenario: Type PIN screen label
     Given the user opens the app for the first time
     When the user navigates to the Welcome to your wallet screen
     Then the Label Type a PIN is displayed above the PIN input fields
 
-  @US_IOFUEDTA_TC_04 @manual:
+  @US_IOFUEDTA_TC_04 @manual:Passed
   Scenario: Type PIN screen "Next" button removal
     Given the user opens the app for the first time
     When the user navigates to the Welcome to your wallet screen and types a PIN
     Then the Next button is removed
 
-  @US_IOFUEDTA_TC_05 @manual:
+  @US_IOFUEDTA_TC_05 @manual:Passed
   Scenario: Confirm PIN screen informational text
     Given the user types a PIN for a first time
     When confirm PIN screen is displayed
-    Then the following text is displayed: “Secure your wallet with a PIN code and connect to your National System.”
+    Then the following text is displayed: Secure your wallet with a PIN code and connect to your National System
     And Label Confirm PIN is displayed above the input fields
 
-  @US_IOFUEDTA_TC_06 @manual:
-  Scenario: Confirm PIN screen "Confirm" button removal
+  @US_IOFUEDTA_TC_06 @manual:Passed
+  Scenario: Confirm PIN screen Confirm button removal
     Given the user types a PIN for a first time
     When confirm PIN screen is displayed
     Then the Confirm button is removed
 
-  @US_IOFUEDTA_TC_07 @manual:
+  @US_IOFUEDTA_TC_07 @manual:Passed
   Scenario: Home tab greeting updated
-    Given the user opens the app
+    Given the user opens the app again after issuing a PID
     When user navigates to the Home tab
     Then the greeting is updated to Welcome, [Name]
