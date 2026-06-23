@@ -8833,6 +8833,410 @@ public class ManuallyStepDefs {
     public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() throws InterruptedException {
        //manual
     }
-}
+
+    @Given("the user opens the app either for the first time, or for next time")
+    public void theUserOpensTheAppEitherForTheFirstTimeOrForNextTime() {
+        //manual
+    }
+
+    @When("the user navigates through onboarding screens")
+    public void theUserNavigatesThroughOnboardingScreens() {
+        //manual
+    }
+
+    @Then("the updated logo is displayed on all screens")
+    public void theUpdatedLogoIsDisplayedOnAllScreens() {
+        //manual
+    }
+
+    @Given("the user opens the app for the first time")
+    public void theUserOpensTheAppForTheFirstTime() {
+        //manual
+    }
+
+    @When("the user navigates to the Welcome to your wallet screen")
+    public void theUserNavigatesToTheWelcomeToYourWalletScreen() {
+        //manual
+    }
+
+    @Then("the following text is displayed: “Secure your wallet with a PIN code and connect to your National System.” below the {string}.")
+    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystemBelowThe(String arg0) {
+        //manual
+    }
+
+    @Then("the Label “Type a PIN” is displayed above the PIN input fields")
+    public void theLabelTypeAPINIsDisplayedAboveThePINInputFields() {
+        //manual
+    }
+
+    @When("the user navigates to the Welcome to your wallet screen and types a PIN")
+    public void theUserNavigatesToTheWelcomeToYourWalletScreenAndTypesAPIN() {
+        //manual
+    }
+
+    @Then("the “Next” button is removed")
+    public void theNextButtonIsRemoved() {
+        //manual
+    }
+
+    @Given("the user types a PIN for a first time")
+    public void theUserTypesAPINForAFirstTime() {
+        //manual
+    }
+
+    @When("confirm PIN screen is displayed")
+    public void confirmPINScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the following text is displayed: “Secure your wallet with a PIN code and connect to your National System.”")
+    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
+        //manual
+    }
+
+    @And("Label “Confirm PIN” is displayed above the input fields")
+    public void labelConfirmPINIsDisplayedAboveTheInputFields() {
+        //manual
+    }
+
+    @Then("the “Confirm” button is removed")
+    public void theConfirmButtonIsRemoved() {
+        //manual
+    }
+
+    @Given("the user opens the app")
+    public void theUserOpensTheApp() {
+        //manual
+    }
+
+    @When("user navigates to the Home tab")
+    public void userNavigatesToTheHomeTab() {
+        //manual
+    }
+
+    @Then("the greeting is updated to “Welcome, [Name]”")
+    public void theGreetingIsUpdatedToWelcomeName() {
+        //manual
+    }
+
+    @Then("the hyperlink {string} is a button")
+    public void theHyperlinkIsAButton(String arg0) {
+        //manual
+    }
+
+    @Given("the user launches the app on Android")
+    public void theUserLaunchesTheAppOnAndroid() {
+        //manual
+    }
+
+    @When("the Document List screen is displayed")
+    public void theDocumentListScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the {string} button is not visible")
+    public void theButtonIsNotVisible(String arg0) {
+        //manual
+    }
+
+    @Then("the + button is not visible")
+    public void theButtonIsNotVisible() {
+        //manual
+    }
+
+    @Given("the user is on the Document List screen")
+    public void theUserIsOnTheDocumentListScreen() {
+        //manual
+    }
+
+    @Then("all search fields should display the label Search")
+    public void allSearchFieldsShouldDisplayTheLabelSearch() {
+        //manual
+    }
+
+    @Given("the user is on the Document List screen on Android")
+    public void theUserIsOnTheDocumentListScreenOnAndroid() {
+        //manual
+    }
+
+    @When("the user scrolls down the list")
+    public void theUserScrollsDownTheList() {
+        //manual
+    }
+
+    @Then("the Add document FAB should collapse to icon only")
+    public void theAddDocumentFABShouldCollapseToIconOnly() {
+        //manual
+    }
+
+    @When("the user scrolls up")
+    public void theUserScrollsUp() {
+        //manual
+    }
+
+    @Then("the FAB should expand to show label and icon")
+    public void theFABShouldExpandToShowLabelAndIcon() {
+        //manual
+    }
+
+    @Given("the user opens a document details screen")
+    public void theUserOpensADocumentDetailsScreen() {
+        //manual
+    }
+
+    @Then("the Issuer details card should be displayed")
+    public void theIssuerDetailsCardShouldBeDisplayed() {
+        //manual
+    }
+
+    @And("the remaining instances section should not be displayed separately")
+    public void theRemainingInstancesSectionShouldNotBeDisplayedSeparately() {
+        //manual
+    }
+
+    @Given("the user is on the Document Details screen")
+    public void theUserIsOnTheDocumentDetailsScreen() {
+        //manual
+    }
+
+    @Then("the Eye button should be placed next to Document Details text")
+    public void theEyeButtonShouldBePlacedNextToDocumentDetailsText() {
+        //manual
+    }
+
+    @Then("the Issuer details section should not be displayed")
+    public void theIssuerDetailsSectionShouldNotBeDisplayed() {
+        //manual
+    }
+
+    @Given("the user is on the Document Details screen on Android")
+    public void theUserIsOnTheDocumentDetailsScreenOnAndroid() {
+        //manual
+    }
+
+    @Then("the button should be labeled Remove from wallet")
+    public void theButtonShouldBeLabeledRemoveFromWallet() {
+        //manual
+    }
+
+    @And("the text Delete document should not be visible")
+    public void theTextDeleteDocumentShouldNotBeVisible() {
+        //manual
+    }
+
+    @Given("the user opens the Filter screen on Android")
+    public void theUserOpensTheFilterScreenOnAndroid() {
+        //manual
+    }
+
+    @And("a filter section is collapsed")
+    public void aFilterSectionIsCollapsed() {
+        //manual
+    }
+
+    @Then("the arrow icon should point down")
+    public void theArrowIconShouldPointDown() {
+        //manual
+    }
+
+    @When("the user expands a filter section")
+    public void theUserExpandsAFilterSection() {
+        //manual
+    }
+
+    @Then("the arrow icon should point up")
+    public void theArrowIconShouldPointUp()  {
+        //manual
+    }
+
+    @Then("the filter list should match the updated UI provided filters")
+    public void theFilterListShouldMatchTheUpdatedUIProvidedFilters() {
+        //manual
+    }
+
+    @Given("the user launches the app on iOS")
+    public void theUserLaunchesTheAppOnIOS() {
+        //manual
+    }
+
+    @Then("the + button should be visible")
+    public void theButtonShouldBeVisible() {
+        //manual
+    }
+
+    @And("the + button color should be blue")
+    public void theButtonColorShouldBeBlue() {
+        //manual
+    }
+
+
+    @Given("the user opens the Filter screen on iOS")
+    public void theUserOpensTheFilterScreenOnIOS() {
+        //manual
+    }
+
+    @Then("filters should be grouped by category")
+    public void filtersShouldBeGroupedByCategory() {
+        //manual
+    }
+
+    @Given("the user is on the Filter screen on iOS")
+    public void theUserIsOnTheFilterScreenOnIOS() {
+        //manual
+    }
+
+    @Then("all filter options should use switches instead of checkboxes")
+    public void allFilterOptionsShouldUseSwitchesInsteadOfCheckboxes() {
+        //manual
+    }
+
+    @Then("a check button should be visible in the upper right corner")
+    public void aCheckButtonShouldBeVisibleInTheUpperRightCorner() {
+        //manual
+    }
+
+    @And("the Apply button should not be visible")
+    public void theApplyButtonShouldNotBeVisible() {
+        //manual
+    }
+
+    @Given("the user is at the Documents details screen")
+    public void theUserIsAtTheDocumentsDetailsScreen() {
+        //manual
+    }
+
+    @Then("The instances count is removed from the screen")
+    public void theInstancesCountIsRemovedFromTheScreen() {
+        //manual
+    }
+
+    @Given("the user navigates to the Add Document screen")
+    public void theUserNavigatesToTheAddDocumentScreen() {
+        //manual
+    }
+
+    @When("the user selects from List option")
+    public void theUserSelectsFromListOption() {
+        //manual
+    }
+
+    @Then("a QR button should be visible in the upper right corner")
+    public void aQRButtonShouldBeVisibleInTheUpperRightCorner() {
+        //manual
+    }
+
+    @Given("the user navigates to the Settings")
+    public void theUserNavigatesToTheSettings() {
+        //manual
+    }
+
+    @When("the user navigates to the Change PIN screen")
+    public void theUserNavigatesToTheChangePINScreen() {
+        //manual
+
+    }
+
+    @Then("the screen title is displayed as Change PIN")
+    public void theScreenTitleIsDisplayedAsChangePIN() {
+        //manual
+
+    }
+
+    @Given("the user is on the Change PIN screen")
+    public void theUserIsOnTheChangePINScreen() {
+        //manual
+
+    }
+
+    @When("the user taps the Back button")
+    public void theUserTapsTheBackButton() {
+        //manual
+
+    }
+
+    @Then("An informational prompt appears with the text: Cancel PIN change?")
+    public void anInformationalPromptAppearsWithTheTextCancelPINChange() {
+        //manual
+
+    }
+
+    @Given("the user is on the Home page and selects Authenticate")
+    public void theUserIsOnTheHomePageAndSelectsAuthenticate() {
+        //manual
+
+    }
+
+    @When("the user selects either in person or online")
+    public void theUserSelectsEitherInPersonOrOnline() {
+        //manual
+
+    }
+
+    @Then("the title Authenticate my identity is displayed")
+    public void theTitleAuthenticateMyIdentityIsDisplayed() {
+        //manual
+
+    }
+
+    @When("the user selects either online")
+    public void theUserSelectsEitherOnline() {
+        //manual
+
+    }
+
+    @Then("the informative text Scan a QR code provided from an interacting party to authenticate your identity is displayed")
+    public void theInformativeTextScanAQRCodeProvidedFromAnInteractingPartyToAuthenticateYourIdentityIsDisplayed() {
+        //manual
+
+    }
+
+    @Given("the user navigates through the application")
+    public void theUserNavigatesThroughTheApplication() {
+        //manual
+    }
+
+    @Then("all instances of Transactions should be renamed to History")
+    public void allInstancesOfTransactionsShouldBeRenamedToHistory() {
+        //manual
+    }
+
+    @And("the corresponding icon should be updated")
+    public void theCorrespondingIconShouldBeUpdated() {
+        //manual
+    }
+
+    @Then("the following text is displayed: Secure your wallet with a PIN code and connect to your National System below the Welcome to your Wallet")
+    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystemBelowTheWelcomeToYourWallet() {
+        //manual
+
+    }
+
+    @Then("the Label Type a PIN is displayed above the PIN input fields")
+    public void theLabelTypeAPINIsDisplayedAboveThePINInputFields() {
+        //manual
+
+    }
+
+    @Then("the Next button is removed")
+    public void theNextButtonIsRemoved() {
+        //manual
+
+    }
+
+    @And("Label Confirm PIN is displayed above the input fields")
+    public void labelConfirmPINIsDisplayedAboveTheInputFields() {
+        //manual
+    }
+
+    @Then("the Confirm button is removed")
+    public void theConfirmButtonIsRemoved() {
+        //manual
+    }
+
+    @Then("the greeting is updated to Welcome, [Name]")
+    public void theGreetingIsUpdatedToWelcomeName() {
+        //manual
+    }
+
 
 

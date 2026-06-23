@@ -2154,4 +2154,8 @@ public class AutomatedStepDefs {
             return false;
         });
     }
+
+    @Then("the hyperlink Learn more is a button")
+    public void theHyperlinkLearnMoreIsAButton() {
+    }
 }
