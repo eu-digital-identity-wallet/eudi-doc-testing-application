@@ -103,6 +103,7 @@ public class ManuallyStepDefs {
     public void theAgeVerificationOpen() {
         //manual
     }
+
     @Given("the user visits the Relying Party service on a different device from the one where the wallet app is installed")
     public void theUserVisitsTheRelyingPartyServiceOnADifferentDeviceFromTheOneWhereTheWalletAppIsInstalled() {
         //manual
@@ -2037,7 +2038,6 @@ public class ManuallyStepDefs {
     public void theUserShouldBeAbleToSelectToReturnToTheMainPageOfTheEUDIWallet(String arg0) {
         //manual
     }
-
 
 
     @Given("the user is redirected to the EUDI Wallet via the QTSPs deep link")
@@ -4262,7 +4262,7 @@ public class ManuallyStepDefs {
     }
 
     @Then("the EUDI Wallet should collapse the entry and return it to the list view")
-    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView()   {
+    public void theEUDIWalletShouldCollapseTheEntryAndReturnItToTheListView() {
         //manual
     }
 
@@ -4596,6 +4596,7 @@ public class ManuallyStepDefs {
     public void the_wallet_should_display_the_credential_offer_which_attestation_to_be_issued() {
         // manual
     }
+
     @Then("the wallet should display the credential offer which Name of the issuer:")
     public void the_wallet_should_display_the_credential_offer_which_name_of_the_issuer() {
         // manual
@@ -4655,6 +4656,7 @@ public class ManuallyStepDefs {
     public void the_wallet_displays_the_presentation_request_which_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
         // manual
     }
+
     @Then("the wallet displays the presentation request which A Cancel button:")
     public void the_wallet_displays_the_presentation_request_which_a_cancel_button() {
         // manual
@@ -5666,7 +5668,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-      @When("the user selects the PID for presentation")
+    @When("the user selects the PID for presentation")
     public void theUserSelectsThePIDForPresentation() {
         //manual
     }
@@ -5896,7 +5898,7 @@ public class ManuallyStepDefs {
     public void theTransactionsAreSortedByTransactionDateDescendingDefaultSortOption() {
         //manual
     }
-    
+
     @Then("the filter and sort bottom sheet options slide up from the bottom screen")
     public void theFilterAndSortBottomSheetOptionsSlideUpFromTheBottomScreen() {
         //manual
@@ -5947,7 +5949,7 @@ public class ManuallyStepDefs {
     }
 
     @And("the transactions are grouped by period as per user story 124")
-    public void theTransactionsAreGroupedByPeriodAsPerUserStory(){
+    public void theTransactionsAreGroupedByPeriodAsPerUserStory() {
         //manual
     }
 
@@ -5963,7 +5965,7 @@ public class ManuallyStepDefs {
 
     @Then("the user can select to filter the transactions by operation status \\(Completed, Failed) using checkboxes")
     public void theUserCanSelectToFilterTheTransactionsByOperationStatusCompletedFailedUsingCheckboxes() {
-     //manual
+        //manual
     }
 
     @Then("the user can select to filter the transactions by relying party name using checkboxes")
@@ -5973,7 +5975,7 @@ public class ManuallyStepDefs {
 
     @And("the list of relying parties includes unique relying parties recorded in the presentation transactions in the EUDI Wallet")
     public void theListOfRelyingPartiesIncludesUniqueRelyingPartiesRecordedInThePresentationTransactionsInTheEUDIWallet() {
-     //manual
+        //manual
     }
 
     @Then("the user can select to filter the transactions by transaction types \\(Presentation, Issuance, Signing) using checkboxes")
@@ -6139,7 +6141,7 @@ public class ManuallyStepDefs {
 
     @Then("the wallet displays the presentation request which includes Attestations and The attestation\\(s) requested by the Relying Party")
     public void the_wallet_displays_the_presentation_request_which_includes_attestations_and_the_attestation_s_requested_by_the_relying_party() {
-      //manual
+        //manual
     }
 
     @Then("the wallet displays the presentation request which includes Expand Details Option and The option to expand on the details for each requested attestation")
@@ -6149,7 +6151,7 @@ public class ManuallyStepDefs {
 
     @Then("the wallet displays the presentation request which includes Unselect Option and The option to unselect specific data elements from each requested attestation")
     public void the_wallet_displays_the_presentation_request_which_includes_unselect_option_and_the_option_to_unselect_specific_data_elements_from_each_requested_attestation() {
-       //manual
+        //manual
     }
 
     @Then("the wallet displays the presentation request which includes Data to be signed and Data to be signed\\/signature details \\(where {string}={string})")
@@ -6159,8 +6161,9 @@ public class ManuallyStepDefs {
 
     @Then("the wallet displays the presentation request which includes Details Field and A {string} field \\(mapped to label; free text defined by the requestor) \\(mandatory)")
     public void the_wallet_displays_the_presentation_request_which_includes_details_field_and_a_field_mapped_to_label_free_text_defined_by_the_requestor_mandatory(String string) {
-       //manual
+        //manual
     }
+
     @Then("the wallet displays the presentation request which includes Location Field and A {string} field \\(mapped to documentLocation_uri; including a URI where the file to be signed is located) \\(optional)")
     public void the_wallet_displays_the_presentation_request_which_includes_location_field_and_a_field_mapped_to_document_location_uri_including_a_uri_where_the_file_to_be_signed_is_located_optional(String string) {
         //manual
@@ -6285,6 +6288,7 @@ public class ManuallyStepDefs {
     public void the_eudi_wallet_presents_the_following_status_and_the_presentation_operation_status_completed_or_failed() {
         //manual
     }
+
     @Then("the EUDI Wallet presents the following DateTime and The datetime the presentation operation was performed")
     public void the_eudi_wallet_presents_the_following_date_time_and_the_datetime_the_presentation_operation_was_performed() {
         //manual
@@ -8026,27 +8030,27 @@ public class ManuallyStepDefs {
 
     @Then("the EUDI Wallet presents the Credential ID details to the user")
     public void theEUDIWalletPresentsTheCredentialIDDetailsToTheUser() {
-       //manual
+        //manual
     }
 
     @And("user confirms to proceed with the signing operation")
     public void userConfirmsToProceedWithTheSigningOperation() {
-      //manual
+        //manual
     }
 
     @Given("the user is reviewing the Credential ID details in the EUDI Wallet")
     public void theUserIsReviewingTheCredentialIDDetailsInTheEUDIWallet() {
-    //manual
+        //manual
     }
 
     @When("the EUDI Wallet requests the user to consent to the release of the requested attestation")
     public void theEUDIWalletRequestsTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
-       //manual
+        //manual
     }
 
     @And("the user authenticates successfully in the Wallet, e.x. Share and PIN")
     public void theUserAuthenticatesSuccessfullyInTheWalletEXShareAndPIN() {
-       //manual
+        //manual
     }
 
     @When("the EUDI Wallet presents the requested attestation to the QTSP")
@@ -8056,12 +8060,12 @@ public class ManuallyStepDefs {
 
     @And("a success screen is displayed with the signed document")
     public void aSuccessScreenIsDisplayedWithTheSignedDocument() {
-          //manual
+        //manual
     }
 
     @Given("the QTSP has signed the document and returned it")
     public void theQTSPHasSignedTheDocumentAndReturnedIt() {
-     //manual
+        //manual
     }
 
 
@@ -8816,7 +8820,7 @@ public class ManuallyStepDefs {
 
     @Given("the transaction code has been created")
     public void theTransactionCodeHasBeenCreated() throws InterruptedException {
-       //manual
+        //manual
     }
 
     @Given("the user has entered the PIN")
@@ -8826,12 +8830,12 @@ public class ManuallyStepDefs {
 
     @Given("the user has clicked on the ISSUE button")
     public void theUserHasClickedOnTheISSUEButton() throws InterruptedException {
-       //manual
+        //manual
     }
 
     @Given("the user entered the transaction code provided by the Issuer")
     public void theUserEnteredTheTransactionCodeProvidedByTheIssuer() throws InterruptedException {
-       //manual
+        //manual
     }
 
     @Given("the user opens the app either for the first time, or for next time")
@@ -9045,7 +9049,7 @@ public class ManuallyStepDefs {
     }
 
     @Then("the arrow icon should point up")
-    public void theArrowIconShouldPointUp()  {
+    public void theArrowIconShouldPointUp() {
         //manual
     }
 
@@ -9210,33 +9214,7 @@ public class ManuallyStepDefs {
         //manual
 
     }
-
-    @Then("the Label Type a PIN is displayed above the PIN input fields")
-    public void theLabelTypeAPINIsDisplayedAboveThePINInputFields() {
-        //manual
-
-    }
-
-    @Then("the Next button is removed")
-    public void theNextButtonIsRemoved() {
-        //manual
-
-    }
-
-    @And("Label Confirm PIN is displayed above the input fields")
-    public void labelConfirmPINIsDisplayedAboveTheInputFields() {
-        //manual
-    }
-
-    @Then("the Confirm button is removed")
-    public void theConfirmButtonIsRemoved() {
-        //manual
-    }
-
-    @Then("the greeting is updated to Welcome, [Name]")
-    public void theGreetingIsUpdatedToWelcomeName() {
-        //manual
-    }
+}
 
     @Then("the following text is displayed: Secure your wallet with a PIN code and connect to your National System")
     public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {

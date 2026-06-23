@@ -1568,9 +1568,13 @@ public class AutomatedStepDefs {
                             }
                             test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
-
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                            }
                         }
 
                     } else {
