@@ -9,8 +9,9 @@ This repository contains the test procedures for the EUDI Wallet project, encomp
 - [Test Case Overview](#test-case-overview)
 - [Local Environment Setup For Real Device/Emulator](#local-environment-setup-for-real-deviceemulator)
 - [Running Tests Locally with Real Device/Emulator](#running-tests-locally-with-real-deviceemulator)
-- [Running Tests Locally with Real Device through Browserstack Farm](#running-tests-locally-with-real-device-through-browserstack-farm)
-- [Running Tests via GitHub Actions & BrowserStack](#running-tests-via-github-actions--browserstack-farm)
+- [Running Tests Locally with Real Device through BrowserStack Device Farm](#running-tests-locally-with-real-device-through-browserstack-device-farm)
+- [Running Tests via GitHub Actions & BrowserStack Device Farm](#running-tests-via-github-actions--browserstack-device-farm)
+- [Execution Notes & Known Limitations](#execution-notes--known-limitations)
 - [Troubleshooting](#troubleshooting)
 - [Automation & App Version Compatibility](#automation--app-version-compatibility)
 - [Contributing](#contributing)
@@ -19,6 +20,18 @@ This repository contains the test procedures for the EUDI Wallet project, encomp
 ## Overview
 
 The test suite is designed to validate the EUDI Wallet's functionality. Depending on your needs, you can execute these tests locally on physical devices/emulators or through BrowserStack Device Farm. Tests can also be triggered through GitHub Actions integrated with BrowserStack for scalable device testing.
+
+## Technical Stack
+- **Language:** Java 17
+- **Build Tool:** Maven
+- **Core Framework:** [Serenity BDD](https://serenity-bdd.github.io/)
+- **BDD Engine:** Cucumber
+- **Web Automation:** [Selenium 4.40.0](https://www.selenium.dev/)
+- **Mobile Automation:** [Appium 10.0.0](https://appium.io/)
+- **Cloud Execution:** [BrowserStack Device Farm SDK](https://www.browserstack.com/)
+- **Reporting:** Serenity HTML Reports
+- **Utilities:** ZXing (QR/Barcode), SnakeYAML (Parsing), Logback (Logging)
+
 ## Requirements
 
 ### Prerequisites
@@ -26,13 +39,13 @@ The test suite is designed to validate the EUDI Wallet's functionality. Dependin
 - **Maven 3.9.6+**: Required for dependency management, build, and test execution.
 
 ### Automation-Specific Requirements
-If you intend to run automated UI tests locally, you will also need:
+If you intend to run automated UI tests locally, the following additional tools are required:
 - **Appium 2.x**: Mobile automation server.
 - **Node.js**: Required to install Appium.
 - **Android Studio 2023.1.1+**: For Android emulators/ADB.
 - **Xcode 15+**: For iOS simulators/devices (macOS only).
 - **WebDriverAgent**: Required for real iPhone devices.
-- **BrowserStack Device Farm Account**: Required for executing tests on BrowserStack-hosted real devices.
+- **BrowserStack Device Farm Account**: Required for executing tests on BrowserStack Device Farm.
 
 > **Note:** To run **manual tests only**, Java 17 and Maven 3.9.6 are sufficient when executing manual test workflows.
 
@@ -40,7 +53,7 @@ If you intend to run automated UI tests locally, you will also need:
 
 Tests are written in **Gherkin** and located in the `src/test/resources/features` directory.
 
-**Structure:** `features` $\rightarrow$ `[iOS|Android]` $\rightarrow$ `[Epic]` $\rightarrow$ `[User Story]` $\rightarrow$ `.feature` files.
+**Structure:** `features` → `[iOS|Android]` → `[Epic]` → `[User Story]` → `.feature` files.
 
 ## Local Environment Setup For Real Device/Emulator
 
@@ -70,12 +83,12 @@ If you plan to use GitHub Actions for running our tests, you can skip this secti
 ### 3. Android Environment
 1. Install **Android Studio** for running on an emulator and create a virtual device: `Pixel_6_API_33_1`.
 2. **For Real Devices**: Enable **Developer Options** (Tap "Build Number" 7 times in Settings) and enable **USB Debugging**.
-3. **App Installation**: Build the Android app from the [Android Wallet UI repo](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui).
+3. **App Installation**: Build the Android app from the [Android Wallet UI Repository](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui).
 
 ### 4. iOS Environment (macOS only)
 1. Install **Xcode** from the App Store.
-2. Connect your iPhone $\rightarrow$ Window $\rightarrow$ Devices and Simulators $\rightarrow$ Check "Show as run destination".
-3. **App Installation**: Build the iOS app from the [iOS Wallet UI repo](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui).
+2. Connect your iPhone → Window → Devices and Simulators → Check "Show as run destination".
+3. **App Installation**: Build the iOS app from the [iOS Wallet UI Repository](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui).
 4. **WebDriverAgent (Real Devices)**:
    - Clone the WebDriverAgent project.
    - Install Carthage: `brew install carthage`.
@@ -117,11 +130,11 @@ appium.ios.udid=YourUDID
 
 ### Step 3: Upload Application
 
-Place the application package in: src/test/resources/app/
+Place the application files in: `src/test/resources/app/`
 
 Required filenames:
-- Android: androidApp.apk
-- iOS: iosApp.ipa
+- Android: `androidApp.apk`
+- iOS: `iosApp.ipa`
 
 ### Step 4: Select Tests (Tags)
 Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specify tags:
@@ -143,14 +156,14 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
 - **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/[feature].txt`.
 
-## Running Tests Locally with Real Device through BrowserStack Farm
+## Running Tests Locally with Real Device through BrowserStack Device Farm
 
-### Step 1: Add BrowserStack Account Credentials
-Create a `browserstack-local.properties` file with your BrowserStack Account Credentials:
+### Step 1: Add BrowserStack Device Farm Account Credentials
+Create a `browserstack-local.properties` file with your BrowserStack Device Farm Account Credentials.
 
-**Important**: Add browserstack-local.properties to .gitignore
+**Important**: Add `browserstack-local.properties` to `.gitignore`
 
-**BrowserStack Credentials:**
+**BrowserStack Device Farm Credentials:**
 ```properties
 browserstack.username=your_browserstack_username
 browserstack.accesskey=your_browserstack_access_key
@@ -164,31 +177,29 @@ Update `env.properties` with your device details and choose environment:
 execution.environment=browserstack
 ci.environment=locally
 ```
-**BrowserStack Android Configuration:**
+**Android Configuration:**
 ```properties
 browserstack.android.appUrl=bs://************************************
 appium.android.deviceName=YourDeviceName
 appium.android.platformVersion=YourPlatformVersion
 appium.android.platformName=Android
-appium.android.udid=YourUDID
 ```
 
-**BrowserStack iOS Configuration:**
+**iOS Configuration:**
 ```properties
 browserstack.ios.appUrl=bs://************************************
 appium.ios.deviceName=YourDeviceName
 appium.ios.platformVersion=YourPlatformVersion
 appium.ios.platformName=iOS
-appium.ios.udid=YourUDID
 ```
 
 **Note**:
 
-App URL - Get from BrowserStack Dashboard:
+App URL - Get from BrowserStack Device Farm Dashboard:
 
-1. Log in to BrowserStack: https://app.browserstack.com/app-automate
+1. Log in to BrowserStack Device Farm: https://app.browserstack.com/app-automate
 2. Click the "Upload new app" button in the top right
-3. 3. Select your compiled .ipa file (for iOS) and .apk file (for Android) from your local machine
+3. Select your compiled .ipa file (for iOS) and .apk file (for Android) from your local machine
 4. Wait for the upload to complete (you'll see a success message)
 5. The app URL will be displayed in the format: bs://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 6. Copy this entire URL (including the bs:// prefix)
@@ -214,7 +225,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
 - **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/[feature].txt`.
 
-## Running Tests via GitHub Actions & BrowserStack Farm
+## Running Tests via GitHub Actions & BrowserStack Device Farm
 
 Trigger tests via the [GitHub Actions Tab](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
 
@@ -241,16 +252,31 @@ ci.environment=githubactions
 
 When executing mobile automation tests, please be aware of the following environment-specific behaviors:
 
-### Mobile Device Execution
+### Mobile Automation & Platform Variability
 
-#### **Physical Devices**
-* **Stability:** Tests running on physical devices may exhibit occasional instability (flakiness) due to network latency or device-specific background processes.
+#### **Overview**
+This framework is designed to be cross-platform (Android & iOS). However, mobile automation faces inherent challenges due to how different Operating Systems and device manufacturers render user interface components.
 
-#### **Emulators / Virtual Devices**
+#### **Known Challenges & Behavior**
+
+##### **1. UI Component Mismatch (OS & Versioning)**
+Mobile OS updates (e.g., moving from Android 12 to Android 14, or iOS 16 to iOS 17) often change how native widgets are rendered.
+* **Example:** A date selection feature may appear as a `Spinner` (dropdown) on one Android version, but as a `DatePicker` (calendar popup) on another. On iOS, this might manifest as a `PickerWheel`.
+
+##### **2. Device-Specific Rendering (Fragmentation)**
+Different manufacturers (Samsung, Xiaomi, Google Pixel, Apple) implement "skins" or custom UI layers over the base OS.
+* **Impact:** This can cause discrepancies in element visibility, screen resolution, and the specific XPath/Accessibility ID required to locate an element.
+* **Recommendation:** Always use **Appium Inspector** to verify the UI hierarchy on the specific device/emulator you are targeting.
+
+##### **3. Environment Stability**
+
+* **Physical Devices:** While more accurate for final validation, physical devices may encounter network latency or hardware-level interruptions that can cause transient test failures.
+
+* **Emulators/Simulators:**
 * **Stability Warning:** Testing on emulators is intended primarily for development and debugging purposes and is not recommended for formal validation activities.
 * **Reliability:** Due to synchronization issues and architectural differences between emulators and real hardware, tests on emulators may fail unpredictably and do not produce reliable reports.
 * **Authentication Workflow:**
-    * To proceed the initial app-view, you **must skip the Google Account sign-in step**.
+    * To continue beyond the initial app view, you must skip the Google Account sign-in step.
     * **Alternative:** If skipping the sign-in is not possible in your environment, you must manually create a local application account to bypass the Google authentication flow and proceed with the test steps.
 
 ## Troubleshooting
