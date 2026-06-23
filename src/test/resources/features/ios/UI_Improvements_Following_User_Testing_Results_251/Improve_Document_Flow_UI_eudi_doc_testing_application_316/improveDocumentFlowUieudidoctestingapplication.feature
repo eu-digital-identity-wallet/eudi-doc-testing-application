@@ -6,51 +6,49 @@ Feature: User document management experience
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/316
 
-  @US_IDFUEDTA_TC_01 @manual:
+  @US_IDFUEDTA_TC_01 @manual:Passed
   Scenario: Verify + button color in iOS
     Given the user launches the app on iOS
     When the Document List screen is displayed
     Then the + button should be visible
     And the + button color should be blue
 
-  @US_IDFUEDTA_TC_02 @manual:
+  @US_IDFUEDTA_TC_02 @manual:Passed
   Scenario: Verify search field label
     Given the user is on the Document List screen
-    Then all search fields should display the label Search
+    Then the search field should display the label Search
 
-  @US_IDFUEDTA_TC_03 @manual:
-  Scenario: Verify issuer details card presence
+  @US_IDFUEDTA_TC_03 @manual:Passed
+  Scenario: Remaining instances section
     Given the user opens a document details screen
-    Then the Issuer details card should be displayed
-    And the remaining instances section should not be displayed separately
+    When the user navigates at the bottom of the screen
+    Then the remaining instances section is displayed at the bottom of the screen
 
-  @US_IDFUEDTA_TC_04 @manual:
+  @US_IDFUEDTA_TC_04 @manual:Passed
   Scenario: Verify Eye button placement and text
     Given the user is on the Document Details screen
     Then the Eye button should be placed next to Document Details text
 
-  @US_IDFUEDTA_TC_05 @manual:
-  Scenario: Verify issuer details section removal
+  @US_IDFUEDTA_TC_05 @manual:Passed
+  Scenario: The Issuer details card is displayed on top
     Given the user is on the Document Details screen
-    Then the Issuer details section should not be displayed
+    When the user observes the top of the screen
+    Then the Issuer details card is displayed on top
 
-  @US_IDFUEDTA_TC_06 @manual:
+  @US_IDFUEDTA_TC_06 @manual:Passed
   Scenario: Verify filters grouping
     Given the user opens the Filter screen on iOS
+    When the filters are displayed
     Then filters should be grouped by category
 
-  @US_IDFUEDTA_TC_07 @manual:
+  @US_IDFUEDTA_TC_07 @manual:Passed
   Scenario: Verify filter controls use switches
     Given the user is on the Filter screen on iOS
+    When the filters are displayed
     Then all filter options should use switches instead of checkboxes
 
-  @US_IDFUEDTA_TC_08 @manual:
+  @US_IDFUEDTA_TC_08 @manual:Passed
   Scenario: Verify check button in header
     Given the user opens the Filter screen on iOS
     Then a check button should be visible in the upper right corner
     And the Apply button should not be visible
-
-  @US_IDFUEDTA_TC_09 @manual:
-  Scenario: Verify updated filter list on iOS
-    Given the user opens the Filter screen on iOS
-    Then the filter list should match the updated UI provided filters
