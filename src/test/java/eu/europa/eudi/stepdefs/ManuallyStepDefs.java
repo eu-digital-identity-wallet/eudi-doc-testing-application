@@ -9214,12 +9214,6 @@ public class ManuallyStepDefs {
         //manual
 
     }
-}
-
-    @Then("the following text is displayed: Secure your wallet with a PIN code and connect to your National System")
-    public void theFollowingTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
-        //manual
-    }
 
     @Given("the user opens the app again after issuing a PID")
     public void theUserOpensTheAppAgainAfterIssuingAPID() {
@@ -9256,34 +9250,35 @@ public class ManuallyStepDefs {
         //manual
     }
 
-@Given("the user is at the Add Document screen")
-public void theUserIsAtTheAddDocumentScreen() {
-    //manual
-}
+    @Given("the user is at the Add Document screen")
+    public void theUserIsAtTheAddDocumentScreen() {
+        //manual
+    }
 
-@When("user attempts to issue an attestation")
-public void userAttemptsToIssueAnAttestation() {
-    //manual
-}
+    @When("user attempts to issue an attestation")
+    public void userAttemptsToIssueAnAttestation() {
+        //manual
+    }
 
-@Then("The instances count is not displayed during issuance")
-public void theInstancesCountIsNotDisplayedDuringIssuance() {
-    //manual
-}
+    @Then("The instances count is not displayed during issuance")
+    public void theInstancesCountIsNotDisplayedDuringIssuance() {
+        //manual
+    }
 
-@Given("the user navigates to the Settings Option button")
-public void theUserNavigatesToTheSettingsOptionButton() {
-    //manual
-}
+    @Given("the user navigates to the Settings Option button")
+    public void theUserNavigatesToTheSettingsOptionButton() {
+        //manual
+    }
 
-@Given("the user is on the History screen")
-public void theUserIsOnTheHistoryScreen() {
-    //manual
-}
+    @Given("the user is on the History screen")
+    public void theUserIsOnTheHistoryScreen() {
+        //manual
+    }
 
-@When("the user selects online")
-public void theUserSelectsOnline() {
-    //manual
+    @When("the user selects online")
+    public void theUserSelectsOnline() {
+        //manual
+    }
 }
 
 

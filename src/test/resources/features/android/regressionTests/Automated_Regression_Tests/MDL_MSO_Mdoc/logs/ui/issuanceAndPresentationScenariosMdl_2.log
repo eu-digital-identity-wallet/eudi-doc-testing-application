@@ -1,0 +1,400 @@
+
+===== BROWSERSTACK DEVICE LOGS =====
+06-24 14:08:34.567 E/pa.ec.euidi.de(28038): Not starting debugger since process cannot load the jdwp agent.
+06-24 14:08:34.571 E/USNET   (28038): USNET: appName: eu.europa.ec.euidi.dev
+06-24 14:08:34.574 D/ActivityThread(28038): setConscryptValidator
+06-24 14:08:34.574 D/ActivityThread(28038): setConscryptValidator - put
+06-24 14:08:34.606 D/ActivityThread(28038): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 14:08:34.607 D/CompatibilityChangeReporter(28038): Compat change id reported: 171979766; UID 10382; state: ENABLED
+06-24 14:08:34.699 I/SPEG    (28038): Preparing application
+06-24 14:08:36.703 I/WindowManager( 1221): Destroying surface Surface(name=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity$_28038)/@0x55084e6 called by com.android.server.wm.WindowStateAnimator.destroySurface:987 com.android.server.wm.WindowStateAnimator.destroySurfaceLocked:518 com.android.server.wm.WindowState.removeImmediately:2960 com.android.server.wm.WindowState.removeIfPossible:3151 com.android.server.wm.WindowState.removeIfPossible:2984 com.android.server.wm.WindowToken.removeAllWindowsIfPossible:241 com.android.server.wm.ActivityRecord.removeIfPossible:4297 com.android.server.wm.ActivityRecord.onRemovedFromDisplay:4387 
+06-24 14:08:42.692 E/pa.ec.euidi.de(29484): Not starting debugger since process cannot load the jdwp agent.
+06-24 14:08:42.693 E/USNET   (29484): USNET: appName: eu.europa.ec.euidi.dev
+06-24 14:08:42.694 D/ActivityThread(29484): setConscryptValidator
+06-24 14:08:42.694 D/ActivityThread(29484): setConscryptValidator - put
+06-24 14:08:42.704 D/ActivityThread(29484): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 14:08:42.705 D/CompatibilityChangeReporter(29484): Compat change id reported: 171979766; UID 10382; state: ENABLED
+06-24 14:08:42.719 V/GraphicsEnvironment(29484): ANGLE Developer option for 'eu.europa.ec.euidi.dev' set to: 'default'
+06-24 14:08:42.719 V/GraphicsEnvironment(29484): App is not on the allowlist for updatable production driver.
+06-24 14:08:42.720 D/LoadedApk(29484): LoadedApk::makeApplication() appContext.mOpPackageName=eu.europa.ec.euidi.dev appContext.mBasePackageName=eu.europa.ec.euidi.dev
+06-24 14:08:42.720 D/NetworkSecurityConfig(29484): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 14:08:42.721 D/NetworkSecurityConfig(29484): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 14:08:42.732 D/ActivityThread(29484): handleBindApplication() --
+06-24 14:08:42.739 D/WM-PackageManagerHelper(29484): Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+06-24 14:08:42.739 D/WM-Schedulers(29484): Created SystemJobScheduler and enabled SystemJobService
+06-24 14:08:42.740 D/WM-ForceStopRunnable(29484): The default process name was not specified.
+06-24 14:08:42.740 D/WM-ForceStopRunnable(29484): Performing cleanup operations.
+06-24 14:08:42.741 I/[Koin]  (29484): Started 110 definitions in 0.031 ms
+06-24 14:08:42.747 D/OpenGLRenderer(29484): RenderThread::requireGlContext()
+06-24 14:08:42.752 D/vulkan  (29484): searching for layers in '/data/app/~~MTifjcsrMLsF7rYGjM2DKw==/eu.europa.ec.euidi.dev-8hsSGZuabVRbG7XxvqGQPg==/lib/arm64'
+06-24 14:08:42.752 D/vulkan  (29484): searching for layers in '/data/app/~~MTifjcsrMLsF7rYGjM2DKw==/eu.europa.ec.euidi.dev-8hsSGZuabVRbG7XxvqGQPg==/base.apk!/lib/arm64-v8a'
+06-24 14:08:42.753 V/SVK     (29484): ------------------------------------------------------------------
+06-24 14:08:42.753 V/SVK     (29484): Samsung Vulkan version merge SHA1      = None
+06-24 14:08:42.753 V/SVK     (29484): Samsung Vulkan version revision number = 3b10981
+06-24 14:08:42.753 V/SVK     (29484): ------------------------------------------------------------------
+06-24 14:08:42.753 V/SVK     (29484): Entering: Create
+06-24 14:08:42.753 V/SVK     (29484): --------------------------------------------------------
+06-24 14:08:42.753 V/SVK     (29484): Application Name: 
+06-24 14:08:42.753 V/SVK     (29484): Vulkan API 1.1 version
+06-24 14:08:42.753 V/SVK     (29484): --------------------------------------------------------
+06-24 14:08:42.755 V/SVK     (29484): Exiting: Create
+06-24 14:08:42.755 V/SVK     (29484): ------------------------------------------------------------------
+06-24 14:08:42.755 V/SVK     (29484): Samsung Vulkan version merge SHA1      = None
+06-24 14:08:42.755 V/SVK     (29484): Samsung Vulkan version revision number = 3b10981
+06-24 14:08:42.755 V/SVK     (29484): ------------------------------------------------------------------
+06-24 14:08:42.755 V/SVK     (29484): Entering: Create
+06-24 14:08:42.755 V/SVK     (29484): --------------------------------------------------------
+06-24 14:08:42.755 V/SVK     (29484): Application Name: eu.europa.ec.euidi.dev
+06-24 14:08:42.755 V/SVK     (29484): Vulkan API 1.1 version
+06-24 14:08:42.755 V/SVK     (29484): --------------------------------------------------------
+06-24 14:08:42.756 V/SVK     (29484): Exiting: Create
+06-24 14:08:42.757 D/PAL     (29484): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:42.757 D/PAL     (29484): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:42.757 D/PAL     (29484): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:42.757 D/PAL     (29484): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:42.757 D/PAL     (29484): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:42.757 D/PAL     (29484): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:42.757 D/PAL     (29484): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:42.757 D/PAL     (29484): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:42.757 D/PAL     (29484): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:42.757 D/PAL     (29484): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:42.757 D/PAL     (29484): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:42.757 D/PAL     (29484): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:42.763 I/ANGLE   (29484): Version (git hash: d85b941c62b4), Renderer (ANGLE (Samsung Xclipse 920) on Vulkan 1.1.179)
+06-24 14:08:42.766 D/OpenGLRenderer(29484): RenderThread::setGrContext()
+06-24 14:08:42.766 D/CompatibilityChangeReporter(29484): Compat change id reported: 160794467; UID 10382; state: ENABLED
+06-24 14:08:42.767 D/WM-ForceStopRunnable(29484): Application was force-stopped, rescheduling.
+06-24 14:08:42.772 D/WM-SystemJobScheduler(29484): Scheduling work ID df4fe63a-c8ff-414f-8005-ccf0f61ac6d7Job ID 0
+06-24 14:08:42.776 D/WM-GreedyScheduler(29484): Starting work for df4fe63a-c8ff-414f-8005-ccf0f61ac6d7
+06-24 14:08:42.778 D/WM-SystemJobScheduler(29484): Scheduling work ID 63e71d09-0687-4469-a9dd-5d1b55e236d6Job ID 1
+06-24 14:08:42.781 D/WM-GreedyScheduler(29484): Starting work for 63e71d09-0687-4469-a9dd-5d1b55e236d6
+06-24 14:08:42.783 D/WM-Processor(29484): cb6: processing WorkGenerationalId(workSpecId=df4fe63a-c8ff-414f-8005-ccf0f61ac6d7, generation=0)
+06-24 14:08:42.783 D/WM-Processor(29484): cb6: processing WorkGenerationalId(workSpecId=63e71d09-0687-4469-a9dd-5d1b55e236d6, generation=0)
+06-24 14:08:42.812 I/DecorView(29484): [INFO] isPopOver=false, config=true
+06-24 14:08:42.812 I/DecorView(29484): updateCaptionType >> DecorView@c614c71[], isFloating=false, isApplication=true, hasWindowControllerCallback=true, hasWindowDecorCaption=false
+06-24 14:08:42.812 D/DecorView(29484): setCaptionType = 0, this = DecorView@c614c71[]
+06-24 14:08:42.813 I/DecorView(29484): getCurrentDensityDpi: from real metrics. densityDpi=450 msg=resources_loaded
+06-24 14:08:42.814 D/PhoneWindow(29484): forceLight changed to false [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4319 com.android.internal.policy.PhoneWindow.setNavigationBarColor:4011 mk2.b:19 h40.run:151 jk2.a:136 
+06-24 14:08:42.818 D/WM-PackageManagerHelper(29484): Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+06-24 14:08:42.818 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.setVisibility:4294 android.app.ActivityThread.handleResumeActivity:5301 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176 
+06-24 14:08:42.818 I/MSHandlerLifeCycle(29484): removeMultiSplitHandler: no exist. decor=DecorView@c614c71[]
+06-24 14:08:42.824 I/DecorView(29484): notifyKeepScreenOnChanged: keepScreenOn=false
+06-24 14:08:42.825 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.hasMultiSplitHandlerInNonFreeformMode:890 com.android.internal.policy.DecorView.notifyKeepScreenOnChanged:884 android.view.ViewRootImpl.applyKeepScreenOnFlag:2914 android.view.ViewRootImpl.collectViewAttributes:2938 android.view.ViewRootImpl.setView:1550 
+06-24 14:08:42.828 I/ViewRootImpl@ba5a948[MainActivity](29484): setView = com.android.internal.policy.DecorView@c614c71 TM=false
+06-24 14:08:42.828 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:42.828 I/MSHandlerLifeCycle(29484): removeMultiSplitHandler: no exist. decor=DecorView@c614c71[MainActivity]
+06-24 14:08:42.860 I/ViewRootImpl@ba5a948[MainActivity](29484): Relayout returned: old=(0,0,1080,2316) new=(0,0,1080,2316) req=(1080,2316)0 dur=5 res=0x6 s={true -5476376611528740720} ch=true fn=-1
+06-24 14:08:42.862 W/vulkan  (29484): CreateSwapchainKHR(VkSwapchainCreateInfoKHR.imageColorSpace = 1000104013) failed: Unsupported color space, but assume as Success for ANGLE.
+06-24 14:08:42.863 I/ViewRootImpl@ba5a948[MainActivity](29484): [DP] dp(1) 1 android.view.ViewRootImpl.reportNextDraw:11374 android.view.ViewRootImpl.performTraversals:4167 android.view.ViewRootImpl.doTraversal:2893 
+06-24 14:08:42.863 D/ViewRootImpl@ba5a948[MainActivity](29484): Creating frameDrawingCallback nextDrawUseBlastSync=false reportNextDraw=true hasBlurUpdates=false
+06-24 14:08:42.863 D/ViewRootImpl@ba5a948[MainActivity](29484): Creating frameCompleteCallback
+06-24 14:08:42.864 D/OpenGLRenderer(29484): eglCreateWindowSurface
+06-24 14:08:42.868 D/ViewRootImpl@ba5a948[MainActivity](29484): Received frameDrawingCallback frameNum=1. Creating transactionCompleteCallback=false
+06-24 14:08:42.868 I/pa.ec.euidi.de(29484): [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+06-24 14:08:42.873 I/blob    (29484): initializing random seed using 4345490505233
+06-24 14:08:42.873 I/blob    (29484): get: no cache entry found for key of size 20
+06-24 14:08:42.911 D/PAL     (29484): pSubmitInfo->stackSizeInDwords = 0 (PreProcessSubmit:1279)
+06-24 14:08:42.911 D/PAL     (29484): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:42.911 D/PAL     (29484): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:42.911 D/PAL     (29484): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:42.911 D/PAL     (29484): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:42.913 D/ViewRootImpl@ba5a948[MainActivity](29484): Received frameCompleteCallback  lastAcquiredFrameNum=1 lastAttemptedDrawFrameNum=1
+06-24 14:08:42.914 I/ViewRootImpl@ba5a948[MainActivity](29484): [DP] pdf(0) 1 android.view.ViewRootImpl.lambda$addFrameCompleteCallbackIfNeeded$3$ViewRootImpl:4969 android.view.ViewRootImpl$$ExternalSyntheticLambda16.run:6 android.os.Handler.handleCallback:938 
+06-24 14:08:42.914 I/ViewRootImpl@ba5a948[MainActivity](29484): [DP] rdf()
+06-24 14:08:42.914 D/ViewRootImpl@ba5a948[MainActivity](29484): reportDrawFinished (fn: -1) 
+06-24 14:08:42.916 D/WM-WorkerWrapper(29484): Starting work for eu.europa.ec.corelogic.worker.RevocationWorkManager
+06-24 14:08:42.916 D/WM-WorkerWrapper(29484): Starting work for eu.europa.ec.corelogic.worker.ReIssuanceWorkManager
+06-24 14:08:42.920 W/System.err(29484): SLF4J(W): No SLF4J providers were found.
+06-24 14:08:42.920 W/System.err(29484): SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+06-24 14:08:42.920 W/System.err(29484): SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+06-24 14:08:42.929 I/SQLiteConnection(29484): Database keying operation returned:0
+06-24 14:08:42.930 D/WM-SystemJobService(29484): onStartJob for WorkGenerationalId(workSpecId=63e71d09-0687-4469-a9dd-5d1b55e236d6, generation=0)
+06-24 14:08:42.931 D/WM-Processor(29484): Work WorkGenerationalId(workSpecId=63e71d09-0687-4469-a9dd-5d1b55e236d6, generation=0) is already enqueued for processing
+06-24 14:08:42.931 D/WM-SystemJobService(29484): onStartJob for WorkGenerationalId(workSpecId=df4fe63a-c8ff-414f-8005-ccf0f61ac6d7, generation=0)
+06-24 14:08:42.933 I/ViewRootImpl@ba5a948[MainActivity](29484): MSG_WINDOW_FOCUS_CHANGED 1 0
+06-24 14:08:42.934 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:42.934 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:42.936 D/WM-Processor(29484): Work WorkGenerationalId(workSpecId=df4fe63a-c8ff-414f-8005-ccf0f61ac6d7, generation=0) is already enqueued for processing
+06-24 14:08:42.944 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:43.436 W/pa.ec.euidi.de(29484): Long monitor contention with owner arch_disk_io_0 (29547) at java.lang.Object uv7.getValue()(SourceFile:-1) waiters=0 in java.lang.Object uv7.getValue() for 479ms
+06-24 14:08:43.438 I/WM-WorkerWrapper(29484): Worker result SUCCESS for Work [ id=63e71d09-0687-4469-a9dd-5d1b55e236d6, tags={ eu.europa.ec.corelogic.worker.ReIssuanceWorkManager } ]
+06-24 14:08:43.439 D/WM-Processor(29484): cb6 63e71d09-0687-4469-a9dd-5d1b55e236d6 executed; reschedule = false
+06-24 14:08:43.439 D/WM-SystemJobService(29484): 63e71d09-0687-4469-a9dd-5d1b55e236d6 executed on JobScheduler
+06-24 14:08:43.439 I/WM-WorkerWrapper(29484): Worker result SUCCESS for Work [ id=df4fe63a-c8ff-414f-8005-ccf0f61ac6d7, tags={ eu.europa.ec.corelogic.worker.RevocationWorkManager } ]
+06-24 14:08:43.440 D/WM-Processor(29484): cb6 df4fe63a-c8ff-414f-8005-ccf0f61ac6d7 executed; reschedule = false
+06-24 14:08:43.440 D/WM-SystemJobService(29484): df4fe63a-c8ff-414f-8005-ccf0f61ac6d7 executed on JobScheduler
+06-24 14:08:43.440 D/WM-GreedyScheduler(29484): Cancelling work ID 63e71d09-0687-4469-a9dd-5d1b55e236d6
+06-24 14:08:43.442 D/WM-SystemJobScheduler(29484): Scheduling work ID 63e71d09-0687-4469-a9dd-5d1b55e236d6Job ID 1
+06-24 14:08:43.443 D/WM-SystemJobScheduler(29484): Scheduling work ID df4fe63a-c8ff-414f-8005-ccf0f61ac6d7Job ID 0
+06-24 14:08:43.444 D/WM-GreedyScheduler(29484): Cancelling work ID df4fe63a-c8ff-414f-8005-ccf0f61ac6d7
+06-24 14:08:44.369 I/ViewRootImpl@ba5a948[MainActivity](29484): stopped(false) old=false
+06-24 14:08:44.370 I/DecorView(29484): notifyKeepScreenOnChanged: keepScreenOn=false
+06-24 14:08:44.370 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:44.370 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:44.370 I/MSHandlerLifeCycle(29484): removeMultiSplitHandler: no exist. decor=DecorView@c614c71[MainActivity]
+06-24 14:08:44.436 I/ViewRootImpl@ba5a948[MainActivity](29484): Relayout returned: old=(0,0,1080,2316) new=(0,0,1080,2316) req=(1080,2316)0 dur=3 res=0x0 s={true -5476376611528740720} ch=false fn=4
+06-24 14:08:44.780 I/ViewRootImpl@ba5a948[MainActivity](29484): stopped(false) old=false
+06-24 14:08:44.782 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:44.782 I/MSHandlerLifeCycle(29484): removeMultiSplitHandler: no exist. decor=DecorView@c614c71[MainActivity]
+06-24 14:08:44.933 W/Bundle  (29484): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 14:08:44.936 W/Bundle  (29484): Attempt to cast generated internal exception:
+06-24 14:08:44.936 W/Bundle  (29484): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 14:08:44.936 W/Bundle  (29484): 	at xx6.a(Unknown Source:60)
+06-24 14:08:44.936 W/Bundle  (29484): 	at if5.b(Unknown Source:115)
+06-24 14:08:44.936 W/Bundle  (29484): 	at if5.l(Unknown Source:623)
+06-24 14:08:44.936 W/Bundle  (29484): 	at if5.m(Unknown Source:84)
+06-24 14:08:44.936 W/Bundle  (29484): 	at yf5.b(Unknown Source:12)
+06-24 14:08:44.936 W/Bundle  (29484): 	at t90.e(Unknown Source:80)
+06-24 14:08:44.936 W/Bundle  (29484): 	at m6.invokeSuspend(Unknown Source:89)
+06-24 14:08:44.936 W/Bundle  (29484): 	at m6.invoke(Unknown Source:59)
+06-24 14:08:44.936 W/Bundle  (29484): 	at q5.i(Unknown Source:1604)
+06-24 14:08:44.936 W/Bundle  (29484): 	at vi1.F(Unknown Source:127)
+06-24 14:08:44.936 W/Bundle  (29484): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 14:08:44.936 W/Bundle  (29484): 	at o20.resumeWith(Unknown Source:7)
+06-24 14:08:44.936 W/Bundle  (29484): 	at v52.run(Unknown Source:113)
+06-24 14:08:44.936 W/Bundle  (29484): 	at yl.r0(Unknown Source:23)
+06-24 14:08:44.936 W/Bundle  (29484): 	at xl.run(Unknown Source:2)
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.os.Looper.loop(Looper.java:313)
+06-24 14:08:44.936 W/Bundle  (29484): 	at android.app.ActivityThread.main(ActivityThread.java:8663)
+06-24 14:08:44.936 W/Bundle  (29484): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 14:08:44.936 W/Bundle  (29484): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 14:08:44.936 W/Bundle  (29484): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
+06-24 14:08:45.019 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:45.019 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:45.021 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:45.021 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:45.023 D/InsetsController(29484): show(ime(), fromIme=false)
+06-24 14:08:45.023 I/IMM_LC  (29484): requestImeShow
+06-24 14:08:45.024 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 14:08:45.024 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:45.034 I/IMM_LC  (29484): showSoftInput(View,I)
+06-24 14:08:45.034 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 14:08:45.034 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:45.161 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:45.163 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.show:942 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6457 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 android.os.Looper.loop:313 android.app.ActivityThread.main:8663 
+06-24 14:08:45.175 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@16125fb fN = 7 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:45.175 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:45.214 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@2395aad fN = 8 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:45.215 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:46.350 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x0, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:46.351 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 0
+06-24 14:08:46.352 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:46.376 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x1, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:46.376 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 1
+06-24 14:08:46.376 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:46.383 D/InsetsController(29484): show(ime(), fromIme=false)
+06-24 14:08:46.384 I/IMM_LC  (29484): showSoftInput(View,I)
+06-24 14:08:46.384 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 14:08:46.384 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:46.389 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:46.650 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:46.659 I/ViewRootImpl@ba5a948[MainActivity](29484): setInTouchMode(false), android.view.ViewRootImpl.checkForLeavingTouchModeAndConsume:9024 android.view.ViewRootImpl.access$3500:294 android.view.ViewRootImpl$EarlyPostImeInputStage.processKeyEvent:7373 android.view.ViewRootImpl$EarlyPostImeInputStage.onProcess:7357 android.view.ViewRootImpl$InputStage.deliver:6901 android.view.ViewRootImpl$InputStage.onDeliverToNext:6958 android.view.ViewRootImpl$InputStage.forward:6924 android.view.ViewRootImpl$AsyncInputStage.forward:7155 android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent:7342 android.view.inputmethod.InputMethodManager$PendingEvent.run:3399 
+06-24 14:08:46.659 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:46.663 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:46.702 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:46.925 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:46.930 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:46.944 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:46.967 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:47.155 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.158 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:47.164 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.166 D/io_stats(  618): !@ Read_top(KB): system_server(1221) 1472 martsuggestions(4488) 240 pa.ec.euidi.dev(29484) 204
+06-24 14:08:47.201 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:47.539 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.544 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:47.553 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.611 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:47.744 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.746 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:47.750 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:47.796 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:48.035 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:48.037 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:48.045 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:48.116 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:48.117 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.InsetsController.hide:981 wi7.R:60 
+06-24 14:08:48.118 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:48.118 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:48.137 W/IInputConnectionWrapper(29484): getSelectedText on inactive InputConnection
+06-24 14:08:48.138 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@eccf269 fN = 20 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.139 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.140 W/IInputConnectionWrapper(29484): getTextBeforeCursor on inactive InputConnection
+06-24 14:08:48.141 D/ProfileInstaller(29484): Installing profile for eu.europa.ec.euidi.dev
+06-24 14:08:48.142 W/IInputConnectionWrapper(29484): getTextAfterCursor on inactive InputConnection
+06-24 14:08:48.148 W/IInputConnectionWrapper(29484): getCursorCapsMode on inactive InputConnection
+06-24 14:08:48.150 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:48.151 W/IInputConnectionWrapper(29484): getExtractedText on inactive InputConnection
+06-24 14:08:48.157 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:48.160 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@fb6e1fa fN = 21 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.160 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.277 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:48.278 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.show:976 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6457 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 
+06-24 14:08:48.305 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@d5bb652 fN = 23 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.305 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.330 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@e0b3220 fN = 24 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.330 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.384 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6461 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 
+06-24 14:08:48.393 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@75e187f fN = 26 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.393 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.424 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:48.425 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@28e8895 fN = 27 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:48.426 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:48.592 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:48.592 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:48.594 D/InsetsController(29484): show(ime(), fromIme=false)
+06-24 14:08:48.594 I/IMM_LC  (29484): requestImeShow
+06-24 14:08:48.594 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 14:08:48.594 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:48.598 I/IMM_LC  (29484): showSoftInput(View,I)
+06-24 14:08:48.598 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 14:08:48.598 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:48.947 I/pa.ec.euidi.de(29484): Thread[6,tid=29489,WaitingInMainSignalCatcherLoop,Thread*=0xb400007c95944330,peer=0x136c01f0,"Signal Catcher"]: reacting to signal 10
+06-24 14:08:48.947 I/pa.ec.euidi.de(29484): 
+06-24 14:08:48.947 I/pa.ec.euidi.de(29484): SIGUSR1 forcing GC (no HPROF) and profile save
+06-24 14:08:48.969 I/pa.ec.euidi.de(29484): Explicit concurrent copying GC freed 159423(3965KB) AllocSpace objects, 22(780KB) LOS objects, 58% free, 4424KB/10MB, paused 37us,26us total 22.141ms
+06-24 14:08:48.971 D/InputTransport(29484): Input channel destroyed: 'ClientS', fd=116
+06-24 14:08:48.971 D/InputTransport(29484): Input channel destroyed: 'ClientS', fd=117
+06-24 14:08:48.971 D/InputTransport(29484): Input channel destroyed: 'ClientS', fd=107
+06-24 14:08:48.971 D/InputTransport(29484): Input channel destroyed: 'ClientS', fd=113
+06-24 14:08:49.835 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x0, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:49.837 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 0
+06-24 14:08:49.837 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:49.860 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x1, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:49.861 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 1
+06-24 14:08:49.861 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:49.884 D/InsetsController(29484): show(ime(), fromIme=false)
+06-24 14:08:49.884 I/IMM_LC  (29484): requestImeShow
+06-24 14:08:49.884 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 14:08:49.884 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:49.892 I/IMM_LC  (29484): showSoftInput(View,I)
+06-24 14:08:49.892 I/IMM_LC  (29484): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 14:08:49.892 I/IMM_LC  (29484): ssi() view is not EditText
+06-24 14:08:49.929 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:49.930 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.show:942 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6457 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 android.os.Looper.loop:313 android.app.ActivityThread.main:8663 
+06-24 14:08:49.938 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@cd9f24e fN = 34 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:49.938 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:49.944 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:49.968 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@65f647c fN = 35 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:49.968 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:50.785 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:50.787 I/ViewRootImpl@ba5a948[MainActivity](29484): setInTouchMode(false), android.view.ViewRootImpl.checkForLeavingTouchModeAndConsume:9024 android.view.ViewRootImpl.access$3500:294 android.view.ViewRootImpl$EarlyPostImeInputStage.processKeyEvent:7373 android.view.ViewRootImpl$EarlyPostImeInputStage.onProcess:7357 android.view.ViewRootImpl$InputStage.deliver:6901 android.view.ViewRootImpl$InputStage.onDeliverToNext:6958 android.view.ViewRootImpl$InputStage.forward:6924 android.view.ViewRootImpl$AsyncInputStage.forward:7155 android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent:7342 android.view.inputmethod.InputMethodManager$PendingEvent.run:3399 
+06-24 14:08:50.788 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:50.792 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:50.809 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:50.934 D/[secipm](29484): mSecIpmManager setProfileLength eu.europa.ec.euidi.dev profile:16761
+06-24 14:08:50.955 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:50.959 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:50.968 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:50.995 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:51.176 D/io_stats(  618): !@ Read_top(KB): system_server(1221) 700 ndroid.systemui(2485) 132 pa.ec.euidi.dev(29484) 92
+06-24 14:08:51.216 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.217 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:51.225 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.259 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:51.469 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.470 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:51.473 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.525 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:51.759 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.762 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:51.765 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:51.772 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:52.009 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x0 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:52.013 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 0
+06-24 14:08:52.022 I/InputDispatcher( 1221): Delivering key to (29484): action: 0x1 (0), f=0x0, m=0x0, d=0, 'a7c287e'
+06-24 14:08:52.044 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme key 1
+06-24 14:08:52.093 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:52.094 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.InsetsController.hide:981 wi7.R:60 
+06-24 14:08:52.096 D/InputMethodManager(29484): startInputInner - Id : 0
+06-24 14:08:52.096 I/InputMethodManager(29484): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:52.119 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@3761ec8 fN = 45 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.119 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.119 W/IInputConnectionWrapper(29484): getExtractedText on inactive InputConnection
+06-24 14:08:52.127 W/IInputConnectionWrapper(29484): getSelectedText on inactive InputConnection
+06-24 14:08:52.130 W/IInputConnectionWrapper(29484): getTextBeforeCursor on inactive InputConnection
+06-24 14:08:52.131 W/IInputConnectionWrapper(29484): getTextAfterCursor on inactive InputConnection
+06-24 14:08:52.132 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:52.135 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@8630686 fN = 46 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.150 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.173 W/IInputConnectionWrapper(29484): getCursorCapsMode on inactive InputConnection
+06-24 14:08:52.183 W/IInputConnectionWrapper(29484): getExtractedText on inactive InputConnection
+06-24 14:08:52.395 D/InsetsController(29484): show(ime(), fromIme=true)
+06-24 14:08:52.396 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.show:976 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6457 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 
+06-24 14:08:52.400 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@d402c9d fN = 48 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.400 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.417 D/InputTransport(29484): Input channel destroyed: 'ClientS', fd=115
+06-24 14:08:52.437 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@35ed4e3 fN = 49 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.437 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.503 D/InsetsSourceConsumer(29484): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6461 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6382 
+06-24 14:08:52.534 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@3e605e fN = 51 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.534 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.566 I/IMM_LC  (29484): notifyImeHidden
+06-24 14:08:52.569 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: t = android.view.SurfaceControl$Transaction@ae6290c fN = 52 android.view.SyncRtSurfaceTransactionApplier.applyTransaction:94 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$SyncRtSurfaceTransactionApplier:71 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4 
+06-24 14:08:52.569 I/ViewRootImpl@ba5a948[MainActivity](29484): mWNT: merge t to BBQ
+06-24 14:08:52.673 I/pa.ec.euidi.de(29484): Background concurrent copying GC freed 129640(6080KB) AllocSpace objects, 0(0B) LOS objects, 53% free, 5440KB/11MB, paused 7.054ms,20us total 62.286ms
+06-24 14:08:52.953 W/Bundle  (29484): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 14:08:52.953 W/Bundle  (29484): Attempt to cast generated internal exception:
+06-24 14:08:52.953 W/Bundle  (29484): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 14:08:52.953 W/Bundle  (29484): 	at xx6.a(Unknown Source:60)
+06-24 14:08:52.953 W/Bundle  (29484): 	at if5.b(Unknown Source:115)
+06-24 14:08:52.953 W/Bundle  (29484): 	at if5.l(Unknown Source:623)
+06-24 14:08:52.953 W/Bundle  (29484): 	at if5.m(Unknown Source:84)
+06-24 14:08:52.953 W/Bundle  (29484): 	at yf5.b(Unknown Source:12)
+06-24 14:08:52.953 W/Bundle  (29484): 	at e6.e(Unknown Source:295)
+06-24 14:08:52.953 W/Bundle  (29484): 	at q92.invokeSuspend(Unknown Source:124)
+06-24 14:08:52.953 W/Bundle  (29484): 	at q92.invoke(Unknown Source:45)
+06-24 14:08:52.953 W/Bundle  (29484): 	at q5.i(Unknown Source:1604)
+06-24 14:08:52.953 W/Bundle  (29484): 	at vi1.F(Unknown Source:127)
+06-24 14:08:52.953 W/Bundle  (29484): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 14:08:52.953 W/Bundle  (29484): 	at o20.resumeWith(Unknown Source:7)
+06-24 14:08:52.953 W/Bundle  (29484): 	at v52.run(Unknown Source:113)
+06-24 14:08:52.953 W/Bundle  (29484): 	at yl.r0(Unknown Source:23)
+06-24 14:08:52.953 W/Bundle  (29484): 	at xl.run(Unknown Source:2)
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.os.Looper.loop(Looper.java:313)
+06-24 14:08:52.953 W/Bundle  (29484): 	at android.app.ActivityThread.main(ActivityThread.java:8663)
+06-24 14:08:52.953 W/Bundle  (29484): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 14:08:52.953 W/Bundle  (29484): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 14:08:52.953 W/Bundle  (29484): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
+06-24 14:08:54.759 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x0, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:54.762 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 0
+06-24 14:08:54.762 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:54.796 I/InputDispatcher( 1221): Delivering touch to (29484): action: 0x1, f=0x0, d=0, 'a7c287e', t=1 
+06-24 14:08:54.796 I/ViewRootImpl@ba5a948[MainActivity](29484): ViewPostIme pointer 1
+06-24 14:08:54.796 I/MSHandlerLifeCycle(29484): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@c614c71[MainActivity]
+06-24 14:08:54.804 I/NavController(29484): Ignoring popBackStack to route QUICK_PIN?pinFlow={pinFlow} as it was not found on the current back stack
+06-24 14:08:54.804 W/Bundle  (29484): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 14:08:54.804 W/Bundle  (29484): Attempt to cast generated internal exception:
+06-24 14:08:54.804 W/Bundle  (29484): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 14:08:54.804 W/Bundle  (29484): 	at xx6.a(Unknown Source:60)
+06-24 14:08:54.804 W/Bundle  (29484): 	at if5.b(Unknown Source:115)
+06-24 14:08:54.804 W/Bundle  (29484): 	at if5.l(Unknown Source:623)
+06-24 14:08:54.804 W/Bundle  (29484): 	at if5.m(Unknown Source:84)
+06-24 14:08:54.804 W/Bundle  (29484): 	at yf5.b(Unknown Source:12)
+06-24 14:08:54.804 W/Bundle  (29484): 	at e6.e(Unknown Source:72)
+06-24 14:08:54.804 W/Bundle  (29484): 	at m6.invokeSuspend(Unknown Source:67)
+06-24 14:08:54.804 W/Bundle  (29484): 	at m6.invoke(Unknown Source:45)
+06-24 14:08:54.804 W/Bundle  (29484): 	at q5.i(Unknown Source:1604)
+06-24 14:08:54.804 W/Bundle  (29484): 	at vi1.F(Unknown Source:127)
+06-24 14:08:54.804 W/Bundle  (29484): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 14:08:54.804 W/Bundle  (29484): 	at o20.resumeWith(Unknown Source:7)
+06-24 14:08:54.804 W/Bundle  (29484): 	at v52.run(Unknown Source:113)
+06-24 14:08:54.804 W/Bundle  (29484): 	at yl.r0(Unknown Source:23)
+06-24 14:08:54.804 W/Bundle  (29484): 	at xl.run(Unknown Source:2)
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.os.Looper.loop(Looper.java:313)
+06-24 14:08:54.804 W/Bundle  (29484): 	at android.app.ActivityThread.main(ActivityThread.java:8663)
+06-24 14:08:54.804 W/Bundle  (29484): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 14:08:54.804 W/Bundle  (29484): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 14:08:54.804 W/Bundle  (29484): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
