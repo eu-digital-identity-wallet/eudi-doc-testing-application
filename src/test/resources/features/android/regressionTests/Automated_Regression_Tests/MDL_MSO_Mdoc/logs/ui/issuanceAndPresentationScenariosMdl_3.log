@@ -1,0 +1,349 @@
+
+===== BROWSERSTACK DEVICE LOGS =====
+06-24 13:37:00.744 D/ActivityThread( 5925): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 13:37:00.744 D/CompatibilityChangeReporter( 5925): Compat change id reported: 171979766; UID 10543; state: ENABLED
+06-24 13:37:00.791 I/SPEG    ( 5925): Preparing application
+06-24 13:37:02.876 I/WindowManager( 1204): Destroying surface Surface(name=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity$_5925)/@0xba84ca1 called by com.android.server.wm.WindowStateAnimator.destroySurface:987 com.android.server.wm.WindowStateAnimator.destroySurfaceLocked:518 com.android.server.wm.WindowState.removeImmediately:2952 com.android.server.wm.WindowState.removeIfPossible:3143 com.android.server.wm.WindowState.removeIfPossible:2976 com.android.server.wm.WindowToken.removeAllWindowsIfPossible:241 com.android.server.wm.ActivityRecord.removeIfPossible:4272 com.android.server.wm.ActivityRecord.onRemovedFromDisplay:4362 
+06-24 13:37:09.664 E/pa.ec.euidi.de( 7429): Not starting debugger since process cannot load the jdwp agent.
+06-24 13:37:09.665 E/USNET   ( 7429): USNET: appName: eu.europa.ec.euidi.dev
+06-24 13:37:09.667 D/ActivityThread( 7429): setConscryptValidator
+06-24 13:37:09.667 D/ActivityThread( 7429): setConscryptValidator - put
+06-24 13:37:09.681 D/ActivityThread( 7429): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 13:37:09.682 D/CompatibilityChangeReporter( 7429): Compat change id reported: 171979766; UID 10543; state: ENABLED
+06-24 13:37:09.698 V/GraphicsEnvironment( 7429): ANGLE Developer option for 'eu.europa.ec.euidi.dev' set to: 'default'
+06-24 13:37:09.698 V/GraphicsEnvironment( 7429): App is not on the allowlist for updatable production driver.
+06-24 13:37:09.698 D/LoadedApk( 7429): LoadedApk::makeApplication() appContext.mOpPackageName=eu.europa.ec.euidi.dev appContext.mBasePackageName=eu.europa.ec.euidi.dev
+06-24 13:37:09.699 D/NetworkSecurityConfig( 7429): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 13:37:09.700 D/NetworkSecurityConfig( 7429): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 13:37:09.708 D/ActivityThread( 7429): handleBindApplication() --
+06-24 13:37:09.715 D/WM-PackageManagerHelper( 7429): Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+06-24 13:37:09.715 D/WM-Schedulers( 7429): Created SystemJobScheduler and enabled SystemJobService
+06-24 13:37:09.715 D/WM-ForceStopRunnable( 7429): The default process name was not specified.
+06-24 13:37:09.716 D/WM-ForceStopRunnable( 7429): Performing cleanup operations.
+06-24 13:37:09.716 I/[Koin]  ( 7429): Started 110 definitions in 0.026 ms
+06-24 13:37:09.719 D/OpenGLRenderer( 7429): RenderThread::requireGlContext()
+06-24 13:37:09.720 D/vulkan  ( 7429): searching for layers in '/data/app/~~EHLTfCJqnPFI_5S8SQC3SQ==/eu.europa.ec.euidi.dev-MDwWbwS_FciNtDXpQpnjvQ==/lib/arm64'
+06-24 13:37:09.721 D/vulkan  ( 7429): searching for layers in '/data/app/~~EHLTfCJqnPFI_5S8SQC3SQ==/eu.europa.ec.euidi.dev-MDwWbwS_FciNtDXpQpnjvQ==/base.apk!/lib/arm64-v8a'
+06-24 13:37:09.721 V/SVK     ( 7429): ------------------------------------------------------------------
+06-24 13:37:09.721 V/SVK     ( 7429): Samsung Vulkan version merge SHA1      = None
+06-24 13:37:09.721 V/SVK     ( 7429): Samsung Vulkan version revision number = a927fb4
+06-24 13:37:09.721 V/SVK     ( 7429): ------------------------------------------------------------------
+06-24 13:37:09.721 V/SVK     ( 7429): Entering: Create
+06-24 13:37:09.721 V/SVK     ( 7429): --------------------------------------------------------
+06-24 13:37:09.721 V/SVK     ( 7429): Application Name: eu.europa.ec.euidi.dev
+06-24 13:37:09.721 V/SVK     ( 7429): Vulkan API 1.1 version
+06-24 13:37:09.721 V/SVK     ( 7429): --------------------------------------------------------
+06-24 13:37:09.725 V/SVK     ( 7429): Exiting: Create
+06-24 13:37:09.726 D/PAL     ( 7429): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 13:37:09.726 D/PAL     ( 7429): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 13:37:09.726 D/PAL     ( 7429): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 13:37:09.726 D/PAL     ( 7429): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 13:37:09.726 D/PAL     ( 7429): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 13:37:09.726 D/PAL     ( 7429): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 13:37:09.726 D/PAL     ( 7429): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 13:37:09.726 D/PAL     ( 7429): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 13:37:09.726 D/PAL     ( 7429): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 13:37:09.726 D/PAL     ( 7429): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 13:37:09.726 D/PAL     ( 7429): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 13:37:09.726 D/PAL     ( 7429): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 13:37:09.730 I/ANGLE   ( 7429): Version (git hash: 37fd0863d339), Renderer (ANGLE (Samsung Xclipse 920) on Vulkan 1.1.179)
+06-24 13:37:09.735 D/OpenGLRenderer( 7429): RenderThread::setGrContext()
+06-24 13:37:09.751 D/CompatibilityChangeReporter( 7429): Compat change id reported: 160794467; UID 10543; state: ENABLED
+06-24 13:37:09.751 D/WM-ForceStopRunnable( 7429): Application was force-stopped, rescheduling.
+06-24 13:37:09.756 D/WM-SystemJobScheduler( 7429): Scheduling work ID ac405a67-db32-4fd3-9c98-aa96c9205166Job ID 0
+06-24 13:37:09.758 D/WM-GreedyScheduler( 7429): Starting work for ac405a67-db32-4fd3-9c98-aa96c9205166
+06-24 13:37:09.761 D/WM-SystemJobScheduler( 7429): Scheduling work ID 959e0626-c69d-4ce4-8b03-61789dc49250Job ID 1
+06-24 13:37:09.763 D/WM-GreedyScheduler( 7429): Starting work for 959e0626-c69d-4ce4-8b03-61789dc49250
+06-24 13:37:09.765 D/WM-Processor( 7429): cb6: processing WorkGenerationalId(workSpecId=ac405a67-db32-4fd3-9c98-aa96c9205166, generation=0)
+06-24 13:37:09.765 D/WM-Processor( 7429): cb6: processing WorkGenerationalId(workSpecId=959e0626-c69d-4ce4-8b03-61789dc49250, generation=0)
+06-24 13:37:09.795 I/DecorView( 7429): [INFO] isPopOver=false, config=true
+06-24 13:37:09.795 I/DecorView( 7429): updateCaptionType >> DecorView@5886b78[], isFloating=false, isApplication=true, hasWindowControllerCallback=true, hasWindowDecorCaption=false
+06-24 13:37:09.795 D/DecorView( 7429): setCaptionType = 0, this = DecorView@5886b78[]
+06-24 13:37:09.796 I/DecorView( 7429): getCurrentDensityDpi: from real metrics. densityDpi=450 msg=resources_loaded
+06-24 13:37:09.797 D/PhoneWindow( 7429): forceLight changed to false [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4319 com.android.internal.policy.PhoneWindow.setNavigationBarColor:4011 mk2.b:19 h40.run:151 jk2.a:136 
+06-24 13:37:09.798 D/WM-PackageManagerHelper( 7429): Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+06-24 13:37:09.800 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.setVisibility:4295 android.app.ActivityThread.handleResumeActivity:5301 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176 
+06-24 13:37:09.800 I/MSHandlerLifeCycle( 7429): removeMultiSplitHandler: no exist. decor=DecorView@5886b78[]
+06-24 13:37:09.806 I/DecorView( 7429): notifyKeepScreenOnChanged: keepScreenOn=false
+06-24 13:37:09.806 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.hasMultiSplitHandlerInNonFreeformMode:890 com.android.internal.policy.DecorView.notifyKeepScreenOnChanged:884 android.view.ViewRootImpl.applyKeepScreenOnFlag:2893 android.view.ViewRootImpl.collectViewAttributes:2917 android.view.ViewRootImpl.setView:1544 
+06-24 13:37:09.810 I/ViewRootImpl@41d0acb[MainActivity]( 7429): setView = com.android.internal.policy.DecorView@5886b78 TM=false
+06-24 13:37:09.811 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:09.811 I/MSHandlerLifeCycle( 7429): removeMultiSplitHandler: no exist. decor=DecorView@5886b78[MainActivity]
+06-24 13:37:09.840 I/ViewRootImpl@41d0acb[MainActivity]( 7429): Relayout returned: old=(0,0,1080,2316) new=(0,0,1080,2316) req=(1080,2316)0 dur=4 res=0x6 s={true -5476376632838688224} ch=true fn=-1
+06-24 13:37:09.842 I/ViewRootImpl@41d0acb[MainActivity]( 7429): [DP] dp(1) 1 android.view.ViewRootImpl.reportNextDraw:11326 android.view.ViewRootImpl.performTraversals:4146 android.view.ViewRootImpl.doTraversal:2872 
+06-24 13:37:09.842 D/ViewRootImpl@41d0acb[MainActivity]( 7429): Creating frameCompleteCallback mNextDrawUseBlastSync=false mReportNextDraw=true commitCallbacks size=0
+06-24 13:37:09.842 W/vulkan  ( 7429): CreateSwapchainKHR(VkSwapchainCreateInfoKHR.imageColorSpace = 1000104013) failed: Unsupported color space, but assume as Success for ANGLE.
+06-24 13:37:09.843 D/OpenGLRenderer( 7429): eglCreateWindowSurface
+06-24 13:37:09.847 I/pa.ec.euidi.de( 7429): [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+06-24 13:37:09.850 I/blob    ( 7429): initializing random seed using 24046139896210
+06-24 13:37:09.850 I/blob    ( 7429): get: no cache entry found for key of size 20
+06-24 13:37:09.887 D/PAL     ( 7429): pSubmitInfo->stackSizeInDwords = 0 (PreProcessSubmit:1279)
+06-24 13:37:09.887 D/PAL     ( 7429): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 13:37:09.887 D/PAL     ( 7429): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 13:37:09.887 D/PAL     ( 7429): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 13:37:09.887 D/PAL     ( 7429): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 13:37:09.889 D/ViewRootImpl@41d0acb[MainActivity]( 7429): Received frameCompleteCallback frameNum=1
+06-24 13:37:09.891 I/ViewRootImpl@41d0acb[MainActivity]( 7429): [DP] pdf(0) 1 android.view.ViewRootImpl.lambda$createFrameCompleteCallback$3$ViewRootImpl:4904 android.view.ViewRootImpl$$ExternalSyntheticLambda15.run:6 android.os.Handler.handleCallback:938 
+06-24 13:37:09.891 I/ViewRootImpl@41d0acb[MainActivity]( 7429): [DP] rdf()
+06-24 13:37:09.891 D/ViewRootImpl@41d0acb[MainActivity]( 7429): reportDrawFinished (fn: -1) 
+06-24 13:37:09.892 D/WM-WorkerWrapper( 7429): Starting work for eu.europa.ec.corelogic.worker.RevocationWorkManager
+06-24 13:37:09.892 D/WM-WorkerWrapper( 7429): Starting work for eu.europa.ec.corelogic.worker.ReIssuanceWorkManager
+06-24 13:37:09.895 W/System.err( 7429): SLF4J(W): No SLF4J providers were found.
+06-24 13:37:09.895 W/System.err( 7429): SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+06-24 13:37:09.895 W/System.err( 7429): SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+06-24 13:37:09.900 D/WM-SystemJobService( 7429): onStartJob for WorkGenerationalId(workSpecId=ac405a67-db32-4fd3-9c98-aa96c9205166, generation=0)
+06-24 13:37:09.901 D/WM-Processor( 7429): Work WorkGenerationalId(workSpecId=ac405a67-db32-4fd3-9c98-aa96c9205166, generation=0) is already enqueued for processing
+06-24 13:37:09.902 D/WM-SystemJobService( 7429): onStartJob for WorkGenerationalId(workSpecId=959e0626-c69d-4ce4-8b03-61789dc49250, generation=0)
+06-24 13:37:09.903 D/WM-Processor( 7429): Work WorkGenerationalId(workSpecId=959e0626-c69d-4ce4-8b03-61789dc49250, generation=0) is already enqueued for processing
+06-24 13:37:09.913 I/SQLiteConnection( 7429): Database keying operation returned:0
+06-24 13:37:09.928 I/ViewRootImpl@41d0acb[MainActivity]( 7429): MSG_WINDOW_FOCUS_CHANGED 1 0
+06-24 13:37:09.928 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:09.928 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:09.938 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:10.416 W/pa.ec.euidi.de( 7429): Long monitor contention with owner arch_disk_io_0 (7500) at java.lang.Object uv7.getValue()(SourceFile:-1) waiters=0 in java.lang.Object uv7.getValue() for 466ms
+06-24 13:37:10.418 I/WM-WorkerWrapper( 7429): Worker result SUCCESS for Work [ id=959e0626-c69d-4ce4-8b03-61789dc49250, tags={ eu.europa.ec.corelogic.worker.ReIssuanceWorkManager } ]
+06-24 13:37:10.418 D/WM-Processor( 7429): cb6 959e0626-c69d-4ce4-8b03-61789dc49250 executed; reschedule = false
+06-24 13:37:10.418 D/WM-SystemJobService( 7429): 959e0626-c69d-4ce4-8b03-61789dc49250 executed on JobScheduler
+06-24 13:37:10.420 D/WM-GreedyScheduler( 7429): Cancelling work ID 959e0626-c69d-4ce4-8b03-61789dc49250
+06-24 13:37:10.422 D/WM-SystemJobScheduler( 7429): Scheduling work ID 959e0626-c69d-4ce4-8b03-61789dc49250Job ID 1
+06-24 13:37:10.422 I/WM-WorkerWrapper( 7429): Worker result SUCCESS for Work [ id=ac405a67-db32-4fd3-9c98-aa96c9205166, tags={ eu.europa.ec.corelogic.worker.RevocationWorkManager } ]
+06-24 13:37:10.423 D/WM-Processor( 7429): cb6 ac405a67-db32-4fd3-9c98-aa96c9205166 executed; reschedule = false
+06-24 13:37:10.423 D/WM-SystemJobService( 7429): ac405a67-db32-4fd3-9c98-aa96c9205166 executed on JobScheduler
+06-24 13:37:10.424 D/WM-GreedyScheduler( 7429): Cancelling work ID ac405a67-db32-4fd3-9c98-aa96c9205166
+06-24 13:37:10.425 D/WM-SystemJobScheduler( 7429): Scheduling work ID ac405a67-db32-4fd3-9c98-aa96c9205166Job ID 0
+06-24 13:37:11.157 I/ViewRootImpl@41d0acb[MainActivity]( 7429): stopped(false) old=false
+06-24 13:37:11.158 I/DecorView( 7429): notifyKeepScreenOnChanged: keepScreenOn=false
+06-24 13:37:11.158 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:11.158 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:11.158 I/MSHandlerLifeCycle( 7429): removeMultiSplitHandler: no exist. decor=DecorView@5886b78[MainActivity]
+06-24 13:37:11.175 I/ViewRootImpl@41d0acb[MainActivity]( 7429): Relayout returned: old=(0,0,1080,2316) new=(0,0,1080,2316) req=(1080,2316)0 dur=6 res=0x0 s={true -5476376632838688224} ch=false fn=4
+06-24 13:37:11.565 I/ViewRootImpl@41d0acb[MainActivity]( 7429): stopped(false) old=false
+06-24 13:37:11.566 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:11.566 I/MSHandlerLifeCycle( 7429): removeMultiSplitHandler: no exist. decor=DecorView@5886b78[MainActivity]
+06-24 13:37:11.900 W/Bundle  ( 7429): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 13:37:11.900 W/Bundle  ( 7429): Attempt to cast generated internal exception:
+06-24 13:37:11.900 W/Bundle  ( 7429): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at xx6.a(Unknown Source:60)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at if5.b(Unknown Source:115)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at if5.l(Unknown Source:623)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at if5.m(Unknown Source:84)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at yf5.b(Unknown Source:12)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at t90.e(Unknown Source:80)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at m6.invokeSuspend(Unknown Source:89)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at m6.invoke(Unknown Source:59)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at q5.i(Unknown Source:1604)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at vi1.F(Unknown Source:127)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at o20.resumeWith(Unknown Source:7)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at v52.run(Unknown Source:113)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at yl.r0(Unknown Source:23)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at xl.run(Unknown Source:2)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.os.Looper.loop(Looper.java:313)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at android.app.ActivityThread.main(ActivityThread.java:8646)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 13:37:11.900 W/Bundle  ( 7429): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
+06-24 13:37:12.001 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:12.001 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:12.003 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:12.003 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:12.004 D/InsetsController( 7429): show(ime(), fromIme=false)
+06-24 13:37:12.004 I/IMM_LC  ( 7429): requestImeShow
+06-24 13:37:12.004 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 13:37:12.004 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:12.011 I/IMM_LC  ( 7429): showSoftInput(View,I)
+06-24 13:37:12.011 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 13:37:12.011 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:12.132 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:12.133 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.show:942 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6410 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 android.os.Looper.loop:313 android.app.ActivityThread.main:8646 
+06-24 13:37:13.432 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x0, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:13.433 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 0
+06-24 13:37:13.433 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:13.453 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x1, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:13.453 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 1
+06-24 13:37:13.453 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:13.476 D/InsetsController( 7429): show(ime(), fromIme=false)
+06-24 13:37:13.476 I/IMM_LC  ( 7429): showSoftInput(View,I)
+06-24 13:37:13.476 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 13:37:13.476 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:13.485 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:13.746 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:13.754 I/ViewRootImpl@41d0acb[MainActivity]( 7429): setInTouchMode(false), android.view.ViewRootImpl.checkForLeavingTouchModeAndConsume:8976 android.view.ViewRootImpl.access$3500:294 android.view.ViewRootImpl$EarlyPostImeInputStage.processKeyEvent:7326 android.view.ViewRootImpl$EarlyPostImeInputStage.onProcess:7310 android.view.ViewRootImpl$InputStage.deliver:6854 android.view.ViewRootImpl$InputStage.onDeliverToNext:6911 android.view.ViewRootImpl$InputStage.forward:6877 android.view.ViewRootImpl$AsyncInputStage.forward:7108 android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent:7295 android.view.inputmethod.InputMethodManager$PendingEvent.run:3394 
+06-24 13:37:13.754 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:13.762 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:13.773 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:13.948 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:13.952 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:13.957 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:13.994 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:14.148 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.152 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:14.160 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.163 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:14.323 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.326 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:14.333 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.338 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:14.489 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.492 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:14.500 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.535 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:14.698 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.700 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:14.705 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:14.706 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:14.779 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:14.779 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.InsetsController.hide:981 wi7.R:60 
+06-24 13:37:14.779 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:14.780 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:14.803 W/IInputConnectionWrapper( 7429): getSelectedText on inactive InputConnection
+06-24 13:37:14.804 W/IInputConnectionWrapper( 7429): getTextBeforeCursor on inactive InputConnection
+06-24 13:37:14.805 W/IInputConnectionWrapper( 7429): getTextAfterCursor on inactive InputConnection
+06-24 13:37:14.806 W/IInputConnectionWrapper( 7429): getCursorCapsMode on inactive InputConnection
+06-24 13:37:14.807 W/IInputConnectionWrapper( 7429): getExtractedText on inactive InputConnection
+06-24 13:37:14.818 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:14.937 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:14.938 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.show:976 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6410 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 
+06-24 13:37:14.962 D/ProfileInstaller( 7429): Installing profile for eu.europa.ec.euidi.dev
+06-24 13:37:15.054 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6414 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 
+06-24 13:37:15.118 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:15.252 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:15.252 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:15.257 D/InsetsController( 7429): show(ime(), fromIme=false)
+06-24 13:37:15.257 I/IMM_LC  ( 7429): requestImeShow
+06-24 13:37:15.257 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 13:37:15.257 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:15.268 I/IMM_LC  ( 7429): showSoftInput(View,I)
+06-24 13:37:15.269 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 13:37:15.269 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:15.932 I/pa.ec.euidi.de( 7429): Thread[5,tid=7434,WaitingInMainSignalCatcherLoop,Thread*=0xb40000779f69fd80,peer=0x137c01f0,"Signal Catcher"]: reacting to signal 10
+06-24 13:37:15.932 I/pa.ec.euidi.de( 7429): 
+06-24 13:37:15.932 I/pa.ec.euidi.de( 7429): SIGUSR1 forcing GC (no HPROF) and profile save
+06-24 13:37:15.975 I/pa.ec.euidi.de( 7429): Explicit concurrent copying GC freed 158417(3822KB) AllocSpace objects, 22(780KB) LOS objects, 58% free, 4421KB/10MB, paused 81us,28us total 42.155ms
+06-24 13:37:15.976 D/InputTransport( 7429): Input channel destroyed: 'ClientS', fd=116
+06-24 13:37:15.976 D/InputTransport( 7429): Input channel destroyed: 'ClientS', fd=117
+06-24 13:37:15.977 D/InputTransport( 7429): Input channel destroyed: 'ClientS', fd=106
+06-24 13:37:15.977 D/InputTransport( 7429): Input channel destroyed: 'ClientS', fd=109
+06-24 13:37:16.795 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x0, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:16.796 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 0
+06-24 13:37:16.796 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:16.809 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x1, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:16.809 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 1
+06-24 13:37:16.809 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:16.851 D/InsetsController( 7429): show(ime(), fromIme=false)
+06-24 13:37:16.851 I/IMM_LC  ( 7429): requestImeShow
+06-24 13:37:16.851 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 13:37:16.851 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:16.867 I/IMM_LC  ( 7429): showSoftInput(View,I)
+06-24 13:37:16.867 I/IMM_LC  ( 7429): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 13:37:16.867 I/IMM_LC  ( 7429): ssi() view is not EditText
+06-24 13:37:16.943 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:16.943 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.show:942 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6410 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 android.os.Looper.loop:313 android.app.ActivityThread.main:8646 
+06-24 13:37:16.961 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:17.638 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:17.640 I/ViewRootImpl@41d0acb[MainActivity]( 7429): setInTouchMode(false), android.view.ViewRootImpl.checkForLeavingTouchModeAndConsume:8976 android.view.ViewRootImpl.access$3500:294 android.view.ViewRootImpl$EarlyPostImeInputStage.processKeyEvent:7326 android.view.ViewRootImpl$EarlyPostImeInputStage.onProcess:7310 android.view.ViewRootImpl$InputStage.deliver:6854 android.view.ViewRootImpl$InputStage.onDeliverToNext:6911 android.view.ViewRootImpl$InputStage.forward:6877 android.view.ViewRootImpl$AsyncInputStage.forward:7108 android.view.ViewRootImpl$ImeInputStage.onFinishedInputEvent:7295 android.view.inputmethod.InputMethodManager$PendingEvent.run:3394 
+06-24 13:37:17.641 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:17.657 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:17.658 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:17.820 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:17.823 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:17.827 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:17.860 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:17.908 D/[secipm]( 7429): mSecIpmManager setProfileLength eu.europa.ec.euidi.dev profile:16762
+06-24 13:37:18.055 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.059 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:18.064 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.068 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:18.253 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.254 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:18.257 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.258 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:18.461 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.463 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:18.471 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.510 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:18.715 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x0 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.719 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 0
+06-24 13:37:18.728 I/InputDispatcher( 1204): Delivering key to (7429): action: 0x1 (0), f=0x0, m=0x0, d=0, '3ec4897'
+06-24 13:37:18.792 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:18.793 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.InsetsController.hide:981 wi7.R:60 
+06-24 13:37:18.793 D/InputMethodManager( 7429): startInputInner - Id : 0
+06-24 13:37:18.793 I/InputMethodManager( 7429): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 13:37:18.806 W/IInputConnectionWrapper( 7429): getSelectedText on inactive InputConnection
+06-24 13:37:18.808 W/IInputConnectionWrapper( 7429): getTextBeforeCursor on inactive InputConnection
+06-24 13:37:18.808 W/IInputConnectionWrapper( 7429): getTextAfterCursor on inactive InputConnection
+06-24 13:37:18.809 W/IInputConnectionWrapper( 7429): getCursorCapsMode on inactive InputConnection
+06-24 13:37:18.811 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme key 1
+06-24 13:37:18.811 W/IInputConnectionWrapper( 7429): getExtractedText on inactive InputConnection
+06-24 13:37:18.834 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:18.904 D/InputTransport( 7429): Input channel destroyed: 'ClientS', fd=115
+06-24 13:37:19.175 D/InsetsController( 7429): show(ime(), fromIme=true)
+06-24 13:37:19.176 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.show:976 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6410 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 
+06-24 13:37:19.236 W/Bundle  ( 7429): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 13:37:19.236 W/Bundle  ( 7429): Attempt to cast generated internal exception:
+06-24 13:37:19.236 W/Bundle  ( 7429): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at xx6.a(Unknown Source:60)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at if5.b(Unknown Source:115)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at if5.l(Unknown Source:623)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at if5.m(Unknown Source:84)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at yf5.b(Unknown Source:12)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at e6.e(Unknown Source:295)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at q92.invokeSuspend(Unknown Source:124)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at q92.invoke(Unknown Source:45)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at q5.i(Unknown Source:1604)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at vi1.F(Unknown Source:127)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at o20.resumeWith(Unknown Source:7)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at v52.run(Unknown Source:113)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at yl.r0(Unknown Source:23)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at xl.run(Unknown Source:2)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.os.Looper.loop(Looper.java:313)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at android.app.ActivityThread.main(ActivityThread.java:8646)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 13:37:19.236 W/Bundle  ( 7429): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
+06-24 13:37:19.251 I/pa.ec.euidi.de( 7429): Background concurrent copying GC freed 162620(7644KB) AllocSpace objects, 0(0B) LOS objects, 50% free, 6079KB/11MB, paused 41us,21us total 102.472ms
+06-24 13:37:19.291 D/InsetsSourceConsumer( 7429): setRequestedVisible: visible=false, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.hide:242 android.view.ImeInsetsSourceConsumer.hide:68 android.view.ImeInsetsSourceConsumer.hide:74 android.view.InsetsController.hideDirectly:1473 android.view.InsetsController.controlAnimationUnchecked:1139 android.view.InsetsController.applyAnimation:1456 android.view.InsetsController.applyAnimation:1437 android.view.InsetsController.hide:1006 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6414 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 
+06-24 13:37:19.344 I/IMM_LC  ( 7429): notifyImeHidden
+06-24 13:37:21.234 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x0, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:21.235 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 0
+06-24 13:37:21.235 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:21.247 I/InputDispatcher( 1204): Delivering touch to (7429): action: 0x1, f=0x0, d=0, '3ec4897', t=1 
+06-24 13:37:21.248 I/ViewRootImpl@41d0acb[MainActivity]( 7429): ViewPostIme pointer 1
+06-24 13:37:21.248 I/MSHandlerLifeCycle( 7429): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@5886b78[MainActivity]
+06-24 13:37:21.249 I/NavController( 7429): Ignoring popBackStack to route QUICK_PIN?pinFlow={pinFlow} as it was not found on the current back stack
+06-24 13:37:21.249 W/Bundle  ( 7429): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 13:37:21.249 W/Bundle  ( 7429): Attempt to cast generated internal exception:
+06-24 13:37:21.249 W/Bundle  ( 7429): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at xx6.a(Unknown Source:60)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at if5.b(Unknown Source:115)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at if5.l(Unknown Source:623)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at if5.m(Unknown Source:84)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at yf5.b(Unknown Source:12)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at e6.e(Unknown Source:72)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at m6.invokeSuspend(Unknown Source:67)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at m6.invoke(Unknown Source:45)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at q5.i(Unknown Source:1604)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at vi1.F(Unknown Source:127)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at o20.resumeWith(Unknown Source:7)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at v52.run(Unknown Source:113)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at yl.r0(Unknown Source:23)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at xl.run(Unknown Source:2)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.os.Looper.loop(Looper.java:313)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at android.app.ActivityThread.main(ActivityThread.java:8646)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 13:37:21.249 W/Bundle  ( 7429): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)

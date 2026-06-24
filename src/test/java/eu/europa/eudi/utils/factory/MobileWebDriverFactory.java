@@ -24,7 +24,7 @@ public class MobileWebDriverFactory {
     EnvDataConfig envDataConfig;
     public AndroidDriver androidDriver;
     public IOSDriver iosDriver;
-
+    private File currentLogFile;
     public UiAutomator2Options options;
     private Process logcatProcess;
     private Thread logcatThread;
@@ -252,78 +252,117 @@ public class MobileWebDriverFactory {
         }
     }
 
-    public void startLogging(String featureDirPath, String featureName, String scenarioName, String platform) {
+    public File getCurrentLogFile() {
+        return currentLogFile;
+    }
+
+    public void startLogging(String featureDirPath,
+                             String featureName,
+                             String scenarioNumber,
+                             String platform) {
+
         envDataConfig = new EnvDataConfig();
-        String env = envDataConfig.getExecutionEnvironment();
-        if (env.equalsIgnoreCase("real")) {
-            try {
-                // Stop any previous logging
-                stopLogging();
-                //  Create a directory for the feature if it doesn't exist
-                File featureDir = new File(featureDirPath + "/logs/ui");
-                if (!featureDir.exists()) {
-                    featureDir.mkdirs();
-                }
 
-                File newFile = new File(featureDir, featureName + ".txt");
-                try {
-                    if (newFile.createNewFile()) {
-                        System.out.println("File created: " + newFile.getName());
-                    } else {
-                        System.out.println("File already exists.");
-                    }
-                } catch (IOException e) {
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
-                    return;
-                }
+        try {
 
-                if ("IOS".equalsIgnoreCase(platform)) {
-                    logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
-                } else if ("ANDROID".equalsIgnoreCase(platform)) {
-                    logcatProcess = Runtime.getRuntime().exec("adb logcat");
-                } else if ("WEB".equalsIgnoreCase(platform)) {
-                    // For web testing, we don't need device logging, just skip the process creation
-                    logcatProcess = null;
-                } else {
-                    throw new IllegalArgumentException("Unsupported platform for logging: " + platform);
-                }
+            stopLogging();
 
-                // Start a new thread to read logcat output and write to the log file
-                if (logcatProcess != null) {
-                    logcatThread = new Thread(() -> {
-                        try (BufferedReader reader = new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
-                             PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
-                            String line;
-                            while ((line = reader.readLine()) != null) {
-                                try {
-                                    if (line.contains("@IOS and @automated")) {
-                                        writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                                    } else if (line.contains("@ANDROID and @automated")) {
-                                        writeLog(line, "logs/ui" + featureName + "/" + scenarioName + ".txt");
-                                    } else {
-                                        writeLog(line, newFile.getPath());
-                                    }
-                                } catch (Exception e) {
-                                    System.err.println("Error writing log line: " + e.getMessage());
-                                }
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
-                    logcatThread.start();
-                } else {
-                    // For web platform, just create an empty log file
-                    try (PrintWriter logWriter = new PrintWriter(new FileWriter(newFile))) {
-                        logWriter.println("Web test logging started for: " + scenarioName);
-                    } catch (IOException e) {
-                        System.err.println("Error creating web log file: " + e.getMessage());
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            String env = envDataConfig.getExecutionEnvironment();
+
+            // ----------------------------
+            // 1. Create SAME LOG FILE ALWAYS
+            // ----------------------------
+            File logDir = new File(
+                    featureDirPath
+                            + File.separator
+                            + "logs"
+                            + File.separator
+                            + "ui"
+            );
+
+            if (!logDir.exists()) {
+                logDir.mkdirs();
             }
+
+            File logFile = new File(
+                    logDir,
+                    featureName + "_" + scenarioNumber + ".log"
+            );
+
+            if (logFile.exists() && !logFile.delete()) {
+                throw new IOException("Cannot delete old log file: " + logFile);
+            }
+
+            if (!logFile.createNewFile()) {
+                throw new IOException("Cannot create log file: " + logFile);
+            }
+
+            // 🔥 CRITICAL FIX: ALWAYS SET THIS
+            currentLogFile = logFile;
+
+            System.out.println("Log file ready: " + logFile.getAbsolutePath());
+
+            // ----------------------------
+            // 2. BrowserStack MODE
+            // ----------------------------
+            if ("browserstack".equalsIgnoreCase(env)) {
+                System.out.println("BrowserStack mode → skipping local logcat, file created");
+                return;
+            }
+
+            // ----------------------------
+            // 3. REAL DEVICES ONLY
+            // ----------------------------
+            if ("ANDROID".equalsIgnoreCase(platform)) {
+
+                try {
+                    Runtime.getRuntime().exec("adb logcat -c").waitFor();
+                } catch (Exception e) {
+                    System.err.println("adb clear failed: " + e.getMessage());
+                }
+
+                logcatProcess = Runtime.getRuntime().exec("adb logcat");
+
+            } else if ("IOS".equalsIgnoreCase(platform)) {
+
+                logcatProcess = Runtime.getRuntime().exec("idevicesyslog");
+
+            } else {
+                throw new IllegalArgumentException("Unsupported platform: " + platform);
+            }
+
+            // ----------------------------
+            // 4. LOG THREAD (REAL DEVICES ONLY)
+            // ----------------------------
+            logcatThread = new Thread(() -> {
+
+                try (BufferedReader reader =
+                             new BufferedReader(new InputStreamReader(logcatProcess.getInputStream()));
+                     BufferedWriter writer =
+                             new BufferedWriter(new FileWriter(currentLogFile, true))) {
+
+                    String line;
+
+                    while (!Thread.currentThread().isInterrupted()
+                            && (line = reader.readLine()) != null) {
+
+                        writer.write(line);
+                        writer.newLine();
+                        writer.flush();
+                    }
+
+                } catch (Exception e) {
+                    if (!Thread.currentThread().isInterrupted()) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            logcatThread.setDaemon(true);
+            logcatThread.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -1,5 +1,6 @@
 package eu.europa.eudi.stepdefs;
 
+import browserstack.shaded.org.json.JSONObject;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.utils.TestSetup;
@@ -22,11 +23,12 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -42,153 +44,46 @@ public class AutomatedStepDefs {
     private String issuanceMethod;
     private String selectiveDisclosure;
 
+
     @Before
-    public void setup(Scenario scenario) throws InterruptedException, MalformedURLException {
+    public void setup(Scenario scenario) throws Exception {
+
         envDataConfig = new EnvDataConfig();
-        String env = envDataConfig.getExecutionEnvironment();
-        boolean noReset = scenario.getSourceTagNames().contains("@noreset");
-        boolean data = scenario.getSourceTagNames().contains("@before_01");
-        boolean data_for_scan = scenario.getSourceTagNames().contains("@before_04");
-        boolean two_pid_data = scenario.getSourceTagNames().contains("@before_02");
-        boolean pid_and_mdl_data = scenario.getSourceTagNames().contains("@before_03");
-        boolean ignored = scenario.getSourceTagNames().contains("@Ignored");
+
         boolean android = scenario.getSourceTagNames().contains("@ANDROID");
         boolean ios = scenario.getSourceTagNames().contains("@IOS");
+
+        String env = envDataConfig.getExecutionEnvironment();
+
         if (android) {
-            test = new TestSetup(noReset, Literals.General.ANDROID.label, scenario);
+            test = new TestSetup(false, Literals.General.ANDROID.label, scenario);
             test.startAndroidDriverSession();
-            test.setScenario(scenario);
             test.startLogging();
-            if (env.equalsIgnoreCase("browserstack")) {
-                waitForBrowserStackToBeReadyAndroid(test.mobileWebDriverFactory().getDriverAndroid());
+
+            if ("browserstack".equalsIgnoreCase(env)) {
+                waitForDriver(test.mobileWebDriverFactory().getDriverAndroid());
             }
         }
+
         if (ios) {
-            test = new TestSetup(noReset, Literals.General.IOS.label, scenario);
+            test = new TestSetup(false, Literals.General.IOS.label, scenario);
             test.startIosDriverSession();
-            test.setScenario(scenario);
             test.startLogging();
-            if (env.equalsIgnoreCase("browserstack")) {
-                waitForBrowserStackToBeReadyIos(test.mobileWebDriverFactory().getDriverIos());
+
+            if ("browserstack".equalsIgnoreCase(env)) {
+                waitForDriver(test.mobileWebDriverFactory().getDriverIos());
             }
         }
-        if (data) {
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().scrollUntilPIDFirst();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().issuer().successfullySharedMessage();
-            test.mobile().wallet().clickExpandVerification();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUntilNationality();
-            test.mobile().wallet().clickExpandVerificationDown();
-            test.mobile().wallet().scrollUp();
-            test.mobile().issuer().checkFieldsOnWalletFromPyIssuer();
-            test.mobile().wallet().clickDone();
-            theUserIsOnTheLoginScreen();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().dashboardPageIsDisplayed();
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().documentsPageIsDisplayed();
 
-
-        }
-
-        if (data_for_scan) {
-            test.webWebDriverFactory().startWebDriverSession();
-            try {
-                test.envDataConfig();
-                String url = test.envDataConfig().getVerifierUrl();
-                test.webWebDriverFactory().getDriverWeb().get(url);
-                test.web().verifier().appOpensSuccessfullyOnWeb();
-                test.web().verifier().selectAllAttributesOnWeb();
-                test.web().verifier().scrollUntilNextOnWeb();
-                test.web().verifier().pidIsDisplayedOnWeb();
-                test.web().verifier().scrollUntilNextOnWeb();
-                test.web().verifier().uriMethodIsDisplayed();
-                test.web().verifier().scrollUntilNextOnWeb();
-                test.web().verifier().assertQrCodeIsVisible();
-                test.web().verifier().captureScreenOnWeb();
-            } finally {
-                test.webWebDriverFactory().quitDriverWeb();
-            }
-
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().scrollUntilPIDFirst();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().issuer().successfullySharedMessage();
-            test.mobile().wallet().clickDone();
-        }
-
-        if (two_pid_data) {
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().scrollUntilPIDFirst();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().wallet().clickDone();
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().clickToAddDocument();
-            test.mobile().wallet().clickFromList();
-            test.mobile().wallet().scrollUntilPIDTwoPid();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().wallet().clickDone();
-        }
-
-        if (pid_and_mdl_data) {
-            test.mobile().wallet().checkIfPageIsTrue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().clickNextButton();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().clickConfirm();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().wallet().addPIDPageIsDisplayed();
-            test.mobile().wallet().scrollUntilPIDFirst();
-            test.mobile().wallet().clickPID();
-            test.mobile().issuer().issuePID();
-            test.mobile().wallet().clickDone();
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().clickToAddDocument();
-            test.mobile().wallet().clickFromList();
-            test.mobile().wallet().scrollUntilmDLOnDocuments();
-            test.mobile().wallet().clickMdl();
-            test.mobile().issuer().issueMDL();
-            test.mobile().wallet().clickDone();
-            test.mobile().wallet().clickHome();
-        }
-        if (ignored) {
-            test.mobile().wallet().skippedTest();
-            throw new AssumptionViolatedException("Test is ignored due to @manual:Ignored tag");
+        if (scenario.getSourceTagNames().contains("@Ignored")) {
+            throw new AssumptionViolatedException("Ignored scenario");
         }
     }
 
-    private void waitForBrowserStackToBeReadyAndroid(WebDriver driverAndroid) throws InterruptedException {
+    private void waitForDriver(org.openqa.selenium.WebDriver driver) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             try {
-                driverAndroid.getPageSource();
+                driver.getPageSource();
                 return;
             } catch (Exception e) {
                 Thread.sleep(1500);
@@ -196,66 +91,185 @@ public class AutomatedStepDefs {
         }
     }
 
-    private void waitForBrowserStackToBeReadyIos(WebDriver driverIos) throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            try {
-                driverIos.getPageSource();
-                return;
-            } catch (Exception e) {
-                Thread.sleep(1500);
-            }
-        }
-    }
-
+    // =========================
+    // TEARDOWN
+    // =========================
     @After
     public void tearDown(Scenario scenario) {
-        String featureName = test.getScenario().getUri().getPath()
-                .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
-                .replace(".feature", "")
-                .replace(" ", "_");
-        boolean android = scenario.getSourceTagNames().contains("@ANDROID");
-        boolean ios = scenario.getSourceTagNames().contains("@IOS");
-        try (FileWriter fw = new FileWriter("session_map.txt", true)) {
+
+        try {
+            String env = envDataConfig.getExecutionEnvironment();
+            if (!"browserstack".equalsIgnoreCase(env)) {
+                stopDrivers();
+                return;
+            }
+
+            boolean android = scenario.getSourceTagNames().contains("@ANDROID");
+            boolean ios = scenario.getSourceTagNames().contains("@IOS");
+
+            String sessionId = null;
 
             if (android) {
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-                String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
-                fw.write(featureName + "_Android=" + sessionId + "\n");
+                sessionId = driver.getSessionId().toString();
+
                 test.stopAndroidDriverSession();
             }
+
             if (ios) {
                 IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
-                fw.write(featureName + "_IOS=" + sessionId + "\n");
+                sessionId = driver.getSessionId().toString();
+
                 test.stopIosDriverSession();
             }
+
+            if (sessionId != null) {
+                BrowserStackService.downloadDeviceLogs(sessionId, test);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        cleanupScreenshotsFolder();
+        cleanup();
+    }
 
+    private void stopDrivers() {
+        test.stopAndroidDriverSession();
+        test.stopIosDriverSession();
+    }
+
+    private void cleanup() {
+        cleanupScreenshotsFolder();
         test.stopLogging();
     }
 
-    private void cleanupScreenshotsFolder() {
-        try {
-            File screenshotsDir = new File("screenshots");
-            if (screenshotsDir.exists() && screenshotsDir.isDirectory()) {
-                File[] files = screenshotsDir.listFiles();
-                if (files != null) {
-                    for (File file : files) {
-                        if (file.isFile()) {
-                            file.delete();
+    // =========================
+    // BROWSERSTACK SERVICE
+    // =========================
+    public static class BrowserStackService {
+
+        static void downloadDeviceLogs(String sessionId, TestSetup test) throws Exception {
+
+            EnvDataConfig config = new EnvDataConfig();
+
+            String auth = config.getAppiumBrowserstackGeneralUsername()
+                    + ":" + config.getAppiumBrowserstackGeneralAccesskey();
+
+            String encodedAuth = Base64.getEncoder()
+                    .encodeToString(auth.getBytes(StandardCharsets.UTF_8));
+
+            String sessionUrl =
+                    "https://api.browserstack.com/app-automate/sessions/"
+                            + sessionId + ".json";
+
+            JSONObject sessionJson = httpGetJson(sessionUrl, encodedAuth);
+            String buildId = sessionJson
+                    .getJSONObject("automation_session")
+                    .optString("build_hashed_id");
+
+            if (buildId == null || buildId.isEmpty()) {
+                throw new RuntimeException("Missing build_id for session " + sessionId);
+            }
+
+            String logUrl =
+                    "https://api-cloud.browserstack.com/app-automate/builds/"
+                            + buildId
+                            + "/sessions/"
+                            + sessionId
+                            + "/devicelogs";
+
+            fetchAndAppendLogs(logUrl, encodedAuth, test);
+        }
+
+        public static JSONObject httpGetJson(String url, String auth) throws Exception {
+
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestProperty("Authorization", "Basic " + auth);
+            conn.setRequestProperty("Accept", "application/json");
+
+            int code = conn.getResponseCode();
+
+            if (code != 200) {
+                throw new RuntimeException("API failed: HTTP " + code);
+            }
+
+            try (BufferedReader br =
+                         new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                return new JSONObject(sb.toString());
+            }
+        }
+
+        public static void fetchAndAppendLogs(
+                String url,
+                String auth,
+                TestSetup test
+        ) throws Exception {
+
+            for (int i = 0; i < 10; i++) {
+
+                HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+                conn.setRequestProperty("Authorization", "Basic " + auth);
+
+                if (conn.getResponseCode() == 200) {
+
+                    File file = test.mobileWebDriverFactory().getCurrentLogFile();
+
+                    if (file == null) {
+                        file = new File("logs/ui/fallback.log");
+                    }
+
+                    file.getParentFile().mkdirs();
+
+                    try (BufferedReader reader =
+                                 new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                         BufferedWriter writer =
+                                 new BufferedWriter(new FileWriter(file, true))) {
+
+                        writer.newLine();
+                        writer.write("===== BROWSERSTACK DEVICE LOGS =====");
+                        writer.newLine();
+
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            writer.write(line);
+                            writer.newLine();
                         }
                     }
+
+                    return;
                 }
+
+                Thread.sleep(4000);
             }
-        } catch (Exception e) {
-            // Ignore cleanup errors
+
+            throw new RuntimeException("Failed to download BrowserStack logs");
         }
     }
-    
+
+    // =========================
+    // UTILITIES
+    // =========================
+    private void cleanupScreenshotsFolder() {
+        File dir = new File("screenshots");
+        if (!dir.exists()) return;
+
+        File[] files = dir.listFiles();
+        if (files == null) return;
+
+        for (File f : files) {
+            f.delete();
+        }
+    }
+
     public static TestSetup getTest() {
         return test;
     }

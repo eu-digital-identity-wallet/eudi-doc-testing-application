@@ -9,6 +9,8 @@ import eu.europa.eudi.utils.factory.WebWebDriverFactory;
 import io.cucumber.java.Scenario;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestSetup {
     EnvDataConfig envDataConfig;
@@ -68,28 +70,40 @@ public class TestSetup {
         return scenario;
     }
 
-    // Methods to start and stop logging
     public void startLogging() {
+
         if (!scenario.getSourceTagNames().contains("@automated")) {
-            // If the @automated tag is not present, do not start logging
             return;
         }
 
-        // Extract the full path from the URI
         String fullPath = scenario.getUri().getPath();
 
-        // Extract the directory of the feature file
-        String featureDirPath = fullPath.substring(0, fullPath.lastIndexOf('/'));
+        String featureDirPath =
+                fullPath.substring(0, fullPath.lastIndexOf('/'));
 
-        // Extract the feature name from the path
-        String featureName = fullPath.substring(fullPath.lastIndexOf('/') + 1).replace(".feature", "");
-        // Extract the scenario name
-        String scenarioName = scenario.getName();
+        String featureName =
+                fullPath.substring(fullPath.lastIndexOf('/') + 1)
+                        .replace(".feature", "")
+                        .replace(" ", "_");
 
-        // Start logging with the determined parameters
-        mobileWebDriverFactory.startLogging(featureDirPath, featureName, scenarioName, systemOperation);
+        int scenarioNumber = getNextScenarioNumber(featureName);
+
+        mobileWebDriverFactory.startLogging(
+                featureDirPath,
+                featureName,
+                String.valueOf(scenarioNumber),
+                systemOperation
+        );
     }
 
+    private static final ConcurrentHashMap<String, AtomicInteger> SCENARIO_COUNTERS =
+            new ConcurrentHashMap<>();
+
+    private static int getNextScenarioNumber(String featureName) {
+        return SCENARIO_COUNTERS
+                .computeIfAbsent(featureName, k -> new AtomicInteger(0))
+                .incrementAndGet();
+    }
 
     public void stopLogging() {
         mobileWebDriverFactory.stopLogging();

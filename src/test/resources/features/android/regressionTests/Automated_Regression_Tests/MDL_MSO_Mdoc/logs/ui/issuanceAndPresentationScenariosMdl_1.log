@@ -1,0 +1,169 @@
+
+===== BROWSERSTACK DEVICE LOGS =====
+06-24 14:07:59.506 E/pa.ec.euidi.de( 1450): Not starting debugger since process cannot load the jdwp agent.
+06-24 14:07:59.508 E/USNET   ( 1450): USNET: appName: eu.europa.ec.euidi.dev
+06-24 14:07:59.512 D/ActivityThread( 1450): setConscryptValidator
+06-24 14:07:59.512 D/ActivityThread( 1450): setConscryptValidator - put
+06-24 14:07:59.545 D/ActivityThread( 1450): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 14:07:59.545 D/CompatibilityChangeReporter( 1450): Compat change id reported: 171979766; UID 10517; state: ENABLED
+06-24 14:07:59.594 I/SPEG    ( 1450): Preparing application
+06-24 14:08:01.715 I/WindowManager( 1197): Destroying surface Surface(name=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity$_1450)/@0x192faf0 called by com.android.server.wm.WindowStateAnimator.destroySurface:987 com.android.server.wm.WindowStateAnimator.destroySurfaceLocked:518 com.android.server.wm.WindowState.removeImmediately:2952 com.android.server.wm.WindowState.removeIfPossible:3143 com.android.server.wm.WindowState.removeIfPossible:2976 com.android.server.wm.WindowToken.removeAllWindowsIfPossible:241 com.android.server.wm.ActivityRecord.removeIfPossible:4272 com.android.server.wm.ActivityRecord.onRemovedFromDisplay:4362 
+06-24 14:08:02.185 D/io_stats(  618): !@ Read_top(KB): system_server(1197) 2960 speg_helper(1859) 248 pa.ec.euidi.dev(1450) 196
+06-24 14:08:08.114 E/pa.ec.euidi.de( 3307): Not starting debugger since process cannot load the jdwp agent.
+06-24 14:08:08.114 E/USNET   ( 3307): USNET: appName: eu.europa.ec.euidi.dev
+06-24 14:08:08.116 D/ActivityThread( 3307): setConscryptValidator
+06-24 14:08:08.116 D/ActivityThread( 3307): setConscryptValidator - put
+06-24 14:08:08.136 D/ActivityThread( 3307): handleBindApplication()++ app=eu.europa.ec.euidi.dev
+06-24 14:08:08.136 D/CompatibilityChangeReporter( 3307): Compat change id reported: 171979766; UID 10517; state: ENABLED
+06-24 14:08:08.149 V/GraphicsEnvironment( 3307): ANGLE Developer option for 'eu.europa.ec.euidi.dev' set to: 'default'
+06-24 14:08:08.149 V/GraphicsEnvironment( 3307): App is not on the allowlist for updatable production driver.
+06-24 14:08:08.150 D/LoadedApk( 3307): LoadedApk::makeApplication() appContext.mOpPackageName=eu.europa.ec.euidi.dev appContext.mBasePackageName=eu.europa.ec.euidi.dev
+06-24 14:08:08.150 D/NetworkSecurityConfig( 3307): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 14:08:08.151 D/NetworkSecurityConfig( 3307): Using Network Security Config from resource network_security_config debugBuild: false
+06-24 14:08:08.162 D/ActivityThread( 3307): handleBindApplication() --
+06-24 14:08:08.168 D/WM-PackageManagerHelper( 3307): Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+06-24 14:08:08.168 D/WM-Schedulers( 3307): Created SystemJobScheduler and enabled SystemJobService
+06-24 14:08:08.169 D/WM-ForceStopRunnable( 3307): The default process name was not specified.
+06-24 14:08:08.169 D/WM-ForceStopRunnable( 3307): Performing cleanup operations.
+06-24 14:08:08.170 I/[Koin]  ( 3307): Started 110 definitions in 0.024 ms
+06-24 14:08:08.178 D/OpenGLRenderer( 3307): RenderThread::requireGlContext()
+06-24 14:08:08.179 D/vulkan  ( 3307): searching for layers in '/data/app/~~jPAzDdWOX-BaI95EFaMwCQ==/eu.europa.ec.euidi.dev-K4D9HcmF1EaHb3i7AXmLXg==/lib/arm64'
+06-24 14:08:08.180 D/vulkan  ( 3307): searching for layers in '/data/app/~~jPAzDdWOX-BaI95EFaMwCQ==/eu.europa.ec.euidi.dev-K4D9HcmF1EaHb3i7AXmLXg==/base.apk!/lib/arm64-v8a'
+06-24 14:08:08.180 V/SVK     ( 3307): ------------------------------------------------------------------
+06-24 14:08:08.180 V/SVK     ( 3307): Samsung Vulkan version merge SHA1      = None
+06-24 14:08:08.180 V/SVK     ( 3307): Samsung Vulkan version revision number = a927fb4
+06-24 14:08:08.180 V/SVK     ( 3307): ------------------------------------------------------------------
+06-24 14:08:08.180 V/SVK     ( 3307): Entering: Create
+06-24 14:08:08.180 V/SVK     ( 3307): --------------------------------------------------------
+06-24 14:08:08.180 V/SVK     ( 3307): Application Name: eu.europa.ec.euidi.dev
+06-24 14:08:08.180 V/SVK     ( 3307): Vulkan API 1.1 version
+06-24 14:08:08.180 V/SVK     ( 3307): --------------------------------------------------------
+06-24 14:08:08.182 V/SVK     ( 3307): Exiting: Create
+06-24 14:08:08.183 D/PAL     ( 3307): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:08.183 D/PAL     ( 3307): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:08.183 D/PAL     ( 3307): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:08.183 D/PAL     ( 3307): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:08.183 D/PAL     ( 3307): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:08.183 D/PAL     ( 3307): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:08.183 D/PAL     ( 3307): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:08.183 D/PAL     ( 3307): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:08.183 D/PAL     ( 3307): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:08.183 D/PAL     ( 3307): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:08.183 D/PAL     ( 3307): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:08.183 D/PAL     ( 3307): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:08.189 I/ANGLE   ( 3307): Version (git hash: 37fd0863d339), Renderer (ANGLE (Samsung Xclipse 920) on Vulkan 1.1.179)
+06-24 14:08:08.191 D/OpenGLRenderer( 3307): RenderThread::setGrContext()
+06-24 14:08:08.197 D/CompatibilityChangeReporter( 3307): Compat change id reported: 160794467; UID 10517; state: ENABLED
+06-24 14:08:08.199 D/WM-ForceStopRunnable( 3307): Application was force-stopped, rescheduling.
+06-24 14:08:08.204 D/WM-SystemJobScheduler( 3307): Scheduling work ID 8d357fbc-4410-42f6-81db-2d5ef6d4685dJob ID 0
+06-24 14:08:08.206 D/WM-GreedyScheduler( 3307): Starting work for 8d357fbc-4410-42f6-81db-2d5ef6d4685d
+06-24 14:08:08.209 D/WM-SystemJobScheduler( 3307): Scheduling work ID adaddae4-e1b0-404f-93b2-0d3db6b5b11eJob ID 1
+06-24 14:08:08.211 D/WM-GreedyScheduler( 3307): Starting work for adaddae4-e1b0-404f-93b2-0d3db6b5b11e
+06-24 14:08:08.212 D/WM-Processor( 3307): cb6: processing WorkGenerationalId(workSpecId=8d357fbc-4410-42f6-81db-2d5ef6d4685d, generation=0)
+06-24 14:08:08.213 D/WM-Processor( 3307): cb6: processing WorkGenerationalId(workSpecId=adaddae4-e1b0-404f-93b2-0d3db6b5b11e, generation=0)
+06-24 14:08:08.274 I/DecorView( 3307): [INFO] isPopOver=false, config=true
+06-24 14:08:08.274 I/DecorView( 3307): updateCaptionType >> DecorView@feb8d42[], isFloating=false, isApplication=true, hasWindowControllerCallback=true, hasWindowDecorCaption=false
+06-24 14:08:08.274 D/DecorView( 3307): setCaptionType = 0, this = DecorView@feb8d42[]
+06-24 14:08:08.282 I/DecorView( 3307): getCurrentDensityDpi: from real metrics. densityDpi=450 msg=resources_loaded
+06-24 14:08:08.282 D/WM-PackageManagerHelper( 3307): Skipping component enablement for androidx.work.impl.background.systemalarm.RescheduleReceiver
+06-24 14:08:08.283 D/PhoneWindow( 3307): forceLight changed to false [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4319 com.android.internal.policy.PhoneWindow.setNavigationBarColor:4011 mk2.b:19 h40.run:151 jk2.a:136 
+06-24 14:08:08.296 I/MSHandlerLifeCycle( 3307): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.setVisibility:4295 android.app.ActivityThread.handleResumeActivity:5301 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176 
+06-24 14:08:08.296 I/MSHandlerLifeCycle( 3307): removeMultiSplitHandler: no exist. decor=DecorView@feb8d42[]
+06-24 14:08:08.303 I/DecorView( 3307): notifyKeepScreenOnChanged: keepScreenOn=false
+06-24 14:08:08.303 I/MSHandlerLifeCycle( 3307): isMultiSplitHandlerRequested: ignored. pkg=eu.europa.ec.euidi.dev parent=null callers=com.android.internal.policy.DecorView.hasMultiSplitHandlerInNonFreeformMode:890 com.android.internal.policy.DecorView.notifyKeepScreenOnChanged:884 android.view.ViewRootImpl.applyKeepScreenOnFlag:2893 android.view.ViewRootImpl.collectViewAttributes:2917 android.view.ViewRootImpl.setView:1544 
+06-24 14:08:08.306 I/ViewRootImpl@86eddfd[MainActivity]( 3307): setView = com.android.internal.policy.DecorView@feb8d42 TM=false
+06-24 14:08:08.307 I/MSHandlerLifeCycle( 3307): isMultiSplitHandlerRequested: windowingMode=1 isFullscreen=true isPopOver=false isHidden=false skipActivityType=false isHandlerType=true this: DecorView@feb8d42[MainActivity]
+06-24 14:08:08.307 I/MSHandlerLifeCycle( 3307): removeMultiSplitHandler: no exist. decor=DecorView@feb8d42[MainActivity]
+06-24 14:08:08.333 I/ViewRootImpl@86eddfd[MainActivity]( 3307): Relayout returned: old=(0,0,1080,2316) new=(0,0,1080,2316) req=(1080,2316)0 dur=4 res=0x6 s={true -5476376610231563152} ch=true fn=-1
+06-24 14:08:08.335 I/ViewRootImpl@86eddfd[MainActivity]( 3307): [DP] dp(1) 1 android.view.ViewRootImpl.reportNextDraw:11326 android.view.ViewRootImpl.performTraversals:4146 android.view.ViewRootImpl.doTraversal:2872 
+06-24 14:08:08.335 D/ViewRootImpl@86eddfd[MainActivity]( 3307): Creating frameCompleteCallback mNextDrawUseBlastSync=false mReportNextDraw=true commitCallbacks size=0
+06-24 14:08:08.335 W/vulkan  ( 3307): CreateSwapchainKHR(VkSwapchainCreateInfoKHR.imageColorSpace = 1000104013) failed: Unsupported color space, but assume as Success for ANGLE.
+06-24 14:08:08.337 D/OpenGLRenderer( 3307): eglCreateWindowSurface
+06-24 14:08:08.338 I/pa.ec.euidi.de( 3307): [HIDL_FETCH_IMapper] android.hardware.graphics.mapper@4.0: Loaded Mapper successfully.
+06-24 14:08:08.342 I/blob    ( 3307): initializing random seed using 14056258827577
+06-24 14:08:08.342 I/blob    ( 3307): get: no cache entry found for key of size 20
+06-24 14:08:08.375 D/PAL     ( 3307): pSubmitInfo->stackSizeInDwords = 0 (PreProcessSubmit:1279)
+06-24 14:08:08.375 D/PAL     ( 3307): m_perSubmitCmdStream size = { TotalChunkDwords:24, AvailableDwords:2017 } (RebuildCommandStreams:1591)
+06-24 14:08:08.375 D/PAL     ( 3307): m_acePreambleCmdStream size = { TotalChunkDwords:16, AvailableDwords:2029 } (RebuildCommandStreams:1616)
+06-24 14:08:08.375 D/PAL     ( 3307): m_dePostambleCmdStream size = { TotalChunkDwords:24, AvailableDwords:2024 } (RebuildCommandStreams:1729)
+06-24 14:08:08.375 D/PAL     ( 3307): m_deCmdStream size = { TotalChunkDwords:200, AvailableDwords:1843 } (RebuildCommandStreams:1732)
+06-24 14:08:08.377 D/ViewRootImpl@86eddfd[MainActivity]( 3307): Received frameCompleteCallback frameNum=1
+06-24 14:08:08.379 I/ViewRootImpl@86eddfd[MainActivity]( 3307): [DP] pdf(0) 1 android.view.ViewRootImpl.lambda$createFrameCompleteCallback$3$ViewRootImpl:4904 android.view.ViewRootImpl$$ExternalSyntheticLambda15.run:6 android.os.Handler.handleCallback:938 
+06-24 14:08:08.379 I/ViewRootImpl@86eddfd[MainActivity]( 3307): [DP] rdf()
+06-24 14:08:08.379 D/ViewRootImpl@86eddfd[MainActivity]( 3307): reportDrawFinished (fn: -1) 
+06-24 14:08:08.380 D/WM-WorkerWrapper( 3307): Starting work for eu.europa.ec.corelogic.worker.RevocationWorkManager
+06-24 14:08:08.380 D/WM-WorkerWrapper( 3307): Starting work for eu.europa.ec.corelogic.worker.ReIssuanceWorkManager
+06-24 14:08:08.385 I/ViewRootImpl@86eddfd[MainActivity]( 3307): MSG_WINDOW_FOCUS_CHANGED 1 0
+06-24 14:08:08.385 D/InputMethodManager( 3307): startInputInner - Id : 0
+06-24 14:08:08.385 I/InputMethodManager( 3307): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:08.387 W/System.err( 3307): SLF4J(W): No SLF4J providers were found.
+06-24 14:08:08.387 W/System.err( 3307): SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+06-24 14:08:08.387 W/System.err( 3307): SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+06-24 14:08:08.389 I/SQLiteConnection( 3307): Database keying operation returned:0
+06-24 14:08:08.391 D/WM-SystemJobService( 3307): onStartJob for WorkGenerationalId(workSpecId=8d357fbc-4410-42f6-81db-2d5ef6d4685d, generation=0)
+06-24 14:08:08.391 D/WM-SystemJobService( 3307): onStartJob for WorkGenerationalId(workSpecId=adaddae4-e1b0-404f-93b2-0d3db6b5b11e, generation=0)
+06-24 14:08:08.392 D/WM-Processor( 3307): Work WorkGenerationalId(workSpecId=8d357fbc-4410-42f6-81db-2d5ef6d4685d, generation=0) is already enqueued for processing
+06-24 14:08:08.392 D/WM-Processor( 3307): Work WorkGenerationalId(workSpecId=adaddae4-e1b0-404f-93b2-0d3db6b5b11e, generation=0) is already enqueued for processing
+06-24 14:08:08.400 D/InputMethodManager( 3307): startInputInner - Id : 0
+06-24 14:08:08.886 W/pa.ec.euidi.de( 3307): Long monitor contention with owner arch_disk_io_0 (3415) at java.lang.Object uv7.getValue()(SourceFile:-1) waiters=0 in java.lang.Object uv7.getValue() for 469ms
+06-24 14:08:08.888 I/WM-WorkerWrapper( 3307): Worker result SUCCESS for Work [ id=adaddae4-e1b0-404f-93b2-0d3db6b5b11e, tags={ eu.europa.ec.corelogic.worker.ReIssuanceWorkManager } ]
+06-24 14:08:08.889 D/WM-Processor( 3307): cb6 adaddae4-e1b0-404f-93b2-0d3db6b5b11e executed; reschedule = false
+06-24 14:08:08.889 D/WM-SystemJobService( 3307): adaddae4-e1b0-404f-93b2-0d3db6b5b11e executed on JobScheduler
+06-24 14:08:08.890 D/WM-GreedyScheduler( 3307): Cancelling work ID adaddae4-e1b0-404f-93b2-0d3db6b5b11e
+06-24 14:08:08.892 D/WM-SystemJobScheduler( 3307): Scheduling work ID adaddae4-e1b0-404f-93b2-0d3db6b5b11eJob ID 2
+06-24 14:08:08.893 I/WM-WorkerWrapper( 3307): Worker result SUCCESS for Work [ id=8d357fbc-4410-42f6-81db-2d5ef6d4685d, tags={ eu.europa.ec.corelogic.worker.RevocationWorkManager } ]
+06-24 14:08:08.893 D/WM-Processor( 3307): cb6 8d357fbc-4410-42f6-81db-2d5ef6d4685d executed; reschedule = false
+06-24 14:08:08.894 D/WM-SystemJobService( 3307): 8d357fbc-4410-42f6-81db-2d5ef6d4685d executed on JobScheduler
+06-24 14:08:08.895 D/WM-GreedyScheduler( 3307): Cancelling work ID 8d357fbc-4410-42f6-81db-2d5ef6d4685d
+06-24 14:08:08.896 D/WM-SystemJobScheduler( 3307): Scheduling work ID 8d357fbc-4410-42f6-81db-2d5ef6d4685dJob ID 0
+06-24 14:08:10.392 W/Bundle  ( 3307): Key android-support-nav:controller:deepLinkIntent expected String but value was a android.content.Intent.  The default value <null> was returned.
+06-24 14:08:10.392 W/Bundle  ( 3307): Attempt to cast generated internal exception:
+06-24 14:08:10.392 W/Bundle  ( 3307): java.lang.ClassCastException: android.content.Intent cannot be cast to java.lang.String
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.os.BaseBundle.getString(BaseBundle.java:1199)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at xx6.a(Unknown Source:60)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at if5.b(Unknown Source:115)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at if5.l(Unknown Source:623)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at if5.m(Unknown Source:84)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at yf5.b(Unknown Source:12)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at t90.e(Unknown Source:80)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at m6.invokeSuspend(Unknown Source:89)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at m6.invoke(Unknown Source:59)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at q5.i(Unknown Source:1604)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at vi1.F(Unknown Source:127)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at cd3.invokeSuspend(Unknown Source:11)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at o20.resumeWith(Unknown Source:7)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at v52.run(Unknown Source:113)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at yl.r0(Unknown Source:23)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at xl.run(Unknown Source:2)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.os.Handler.handleCallback(Handler.java:938)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.os.Looper.loopOnce(Looper.java:226)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.os.Looper.loop(Looper.java:313)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at android.app.ActivityThread.main(ActivityThread.java:8646)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at java.lang.reflect.Method.invoke(Native Method)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+06-24 14:08:10.392 W/Bundle  ( 3307): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)
+06-24 14:08:10.498 D/InputMethodManager( 3307): startInputInner - Id : 0
+06-24 14:08:10.498 I/InputMethodManager( 3307): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:10.501 D/InputMethodManager( 3307): startInputInner - Id : 0
+06-24 14:08:10.501 I/InputMethodManager( 3307): startInputInner - mService.startInputOrWindowGainedFocus
+06-24 14:08:10.502 D/InsetsController( 3307): show(ime(), fromIme=false)
+06-24 14:08:10.502 I/IMM_LC  ( 3307): requestImeShow
+06-24 14:08:10.503 I/IMM_LC  ( 3307): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT_BY_INSETS_API
+06-24 14:08:10.503 I/IMM_LC  ( 3307): ssi() view is not EditText
+06-24 14:08:10.545 I/IMM_LC  ( 3307): showSoftInput(View,I)
+06-24 14:08:10.545 I/IMM_LC  ( 3307): ssi() - flag : 0 view : eu.europa.ec.euidi.dev reason = SHOW_SOFT_INPUT
+06-24 14:08:10.545 I/IMM_LC  ( 3307): ssi() view is not EditText
+06-24 14:08:10.628 D/InsetsController( 3307): show(ime(), fromIme=true)
+06-24 14:08:10.628 D/InsetsSourceConsumer( 3307): setRequestedVisible: visible=true, type=19, host=eu.europa.ec.euidi.dev/eu.europa.ec.assemblylogic.ui.MainActivity, from=android.view.InsetsSourceConsumer.show:235 android.view.InsetsController.showDirectly:1489 android.view.InsetsController.controlAnimationUnchecked:1137 android.view.InsetsController.show:942 android.view.ViewRootImpl$ViewRootHandler.handleMessageImpl:6410 android.view.ViewRootImpl$ViewRootHandler.handleMessage:6335 android.os.Handler.dispatchMessage:106 android.os.Looper.loopOnce:226 android.os.Looper.loop:313 android.app.ActivityThread.main:8646 
+06-24 14:08:14.241 D/ProfileInstaller( 3307): Installing profile for eu.europa.ec.euidi.dev
+06-24 14:08:14.416 I/pa.ec.euidi.de( 3307): Thread[6,tid=3314,WaitingInMainSignalCatcherLoop,Thread*=0xb400007ce2e44a60,peer=0x137401f0,"Signal Catcher"]: reacting to signal 10
+06-24 14:08:14.417 I/pa.ec.euidi.de( 3307): 
+06-24 14:08:14.417 I/pa.ec.euidi.de( 3307): SIGUSR1 forcing GC (no HPROF) and profile save
+06-24 14:08:14.435 I/pa.ec.euidi.de( 3307): Explicit concurrent copying GC freed 135570(3008KB) AllocSpace objects, 22(780KB) LOS objects, 58% free, 4414KB/10MB, paused 36us,22us total 18.456ms
+06-24 14:08:14.436 D/InputTransport( 3307): Input channel destroyed: 'ClientS', fd=116
+06-24 14:08:14.437 D/InputTransport( 3307): Input channel destroyed: 'ClientS', fd=117
+06-24 14:08:16.400 D/[secipm]( 3307): mSecIpmManager setProfileLength eu.europa.ec.euidi.dev profile:16530
+06-24 14:08:25.439 I/pa.ec.euidi.de( 3307): Explicit concurrent copying GC freed 1154(87KB) AllocSpace objects, 0(0B) LOS objects, 58% free, 4427KB/10MB, paused 29us,25us total 19.283ms
+06-24 14:08:49.379 I/pa.ec.euidi.de( 3307): Explicit concurrent copying GC freed 8991(332KB) AllocSpace objects, 1(20KB) LOS objects, 58% free, 4431KB/10MB, paused 28us,30us total 16.378ms
+06-24 14:09:13.338 I/pa.ec.euidi.de( 3307): Explicit concurrent copying GC freed 9088(335KB) AllocSpace objects, 1(20KB) LOS objects, 58% free, 4431KB/10MB, paused 28us,33us total 22.506ms
