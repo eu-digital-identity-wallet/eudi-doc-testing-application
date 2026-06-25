@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ManuallyStepDefs {
-    TestSetup test;
+    private final TestSetup test = TestHooks.getTest();
 
     @Given("the user is on Login screen")
     public void theUserIsOnLoginScreen() {
@@ -9205,58 +9205,56 @@ public class ManuallyStepDefs {
     public void theUserNavigatesAtTheBottomOfTheScreen() {
         //manual
     }
-}
+
 
     @Then("the remaining instances section is displayed at the bottom of the screen")
     public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreen() {
-        //manual
+    //manual
     }
 
     @When("the user observes the top of the screen")
     public void theUserObservesTheTopOfTheScreen() {
-        //manual
+    //manual
     }
 
     @Then("the Issuer details card is displayed on top")
     public void theIssuerDetailsCardIsDisplayedOnTop() {
-        //manual
+    //manual
     }
 
     @When("the filters are displayed")
     public void theFiltersAreDisplayed() {
-        //manual
+    //manual
     }
 
     @Given("the user is at the Add Document screen")
     public void theUserIsAtTheAddDocumentScreen() {
-        //manual
+    //manual
     }
 
     @When("user attempts to issue an attestation")
     public void userAttemptsToIssueAnAttestation() {
-        //manual
+    //manual
     }
 
     @Then("The instances count is not displayed during issuance")
     public void theInstancesCountIsNotDisplayedDuringIssuance() {
-        //manual
+    //manual
     }
 
     @Given("the user navigates to the Settings Option button")
     public void theUserNavigatesToTheSettingsOptionButton() {
-        //manual
+    //manual
     }
 
     @Given("the user is on the History screen")
     public void theUserIsOnTheHistoryScreen() {
-        //manual
+    //manual
     }
 
     @When("the user selects online")
     public void theUserSelectsOnline() {
-        //manual
+    //manual
     }
+
 }
-
-
-

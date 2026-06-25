@@ -41,6 +41,8 @@ public class EnvDataConfig {
     public static final String KOTLIN_ISSUER = "kotlin.url";
     public static final String VERIFIER_URL = "verifier.url";
     public static final String PYTHON_ISSUER = "python.url";
+    public static final String BROWSERSTACK_LOGS = "pythonbrowserstack.device.logs.enabled";
+
     ResourcesConfig resourcesConfig;
 
     public EnvDataConfig() {
@@ -200,5 +202,11 @@ public class EnvDataConfig {
 
     public String getPythonUrl() {
         return getEnvProperties().getProperty(PYTHON_ISSUER);
+    }
+
+    public boolean isBrowserStackDeviceLogsEnabled() {
+        return Boolean.parseBoolean(
+                getEnvProperties().getProperty("browserstack.device.logs.enabled")
+        );
     }
 }

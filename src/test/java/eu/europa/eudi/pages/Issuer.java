@@ -1700,6 +1700,8 @@ public class Issuer {
 
     public void selectPIDKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidMsoMdoc)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidMsoMdoc)).click();
@@ -1792,6 +1794,8 @@ public class Issuer {
 
     public void selectMDLKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLKotlinCredential)).click();
         } else {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
@@ -1814,14 +1818,19 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            for (String context : driver.getContextHandles()) {
-                if (context.contains("WEBVIEW_chrome")) {
-                    driver.context(context);
-                    break;
-                }
-            }
+//            if (!"WEBVIEW_chrome".equals(driver.getContext())) {
+//                new WebDriverWait(driver, Duration.ofSeconds(3000))
+//                        .until(d -> {
+//                            Set<String> contexts = ((AndroidDriver) d).getContextHandles();
+//                            if (contexts.contains("WEBVIEW_chrome")) {
+//                                ((AndroidDriver) d).context("WEBVIEW_chrome");
+//                                return true;
+//                            }
+//                            return false;
+//                        });
+//            }
 
-            By locator = By.xpath("//h4[contains(text(),'Scan the generated QR Code')]");
+            By locator = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
             WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
