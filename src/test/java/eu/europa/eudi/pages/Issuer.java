@@ -183,6 +183,50 @@ public class Issuer {
         }
     }
 
+    public void qrCodeIsDisplayedKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            new WebDriverWait(driver, Duration.ofSeconds(2000))
+                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+
+            boolean found = false;
+
+            try {
+                driver.context("NATIVE_APP");
+                WebElement nativeQr = new WebDriverWait(driver, Duration.ofSeconds(15))
+                        .until(ExpectedConditions.visibilityOfElementLocated(
+                                eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayedKotlin
+                        ));
+                Assert.assertTrue(nativeQr.isDisplayed());
+                found = true;
+                System.out.println("Kotlin QR found in NATIVE");
+            } catch (Exception e) {
+                System.out.println("Kotlin QR not found in NATIVE");
+            }
+
+            if (!found) {
+                for (String context : driver.getContextHandles()) {
+                    if (context.contains("WEBVIEW")) {
+                        driver.context(context);
+                        break;
+                    }
+                }
+                WebElement webQr = new WebDriverWait(driver, Duration.ofSeconds(25))
+                        .until(ExpectedConditions.visibilityOfElementLocated(
+                                By.xpath("//img | //canvas | //*[contains(@class,'qr')]")
+                        ));
+                Assert.assertTrue(webQr.isDisplayed());
+                System.out.println("Kotlin QR found in WEBVIEW");
+                driver.context("NATIVE_APP");
+            }
+        } else {
+            WebElement el = test.mobileWebDriverFactory().getWait().until(
+                    ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.qrCodeIsDisplayedKotlin)
+            );
+            Assert.assertTrue(el.isDisplayed());
+        }
+    }
+
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -1789,7 +1833,7 @@ public class Issuer {
         }
     }
 
-    public void signInUsser() throws InterruptedException {
+    public void signInUser() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();

@@ -364,6 +364,62 @@ public class Wallet {
         }
     }
 
+    public void clickExpandVerificationMSODocIOS() {
+        test.mobileWebDriverFactory().getWait().until(
+            ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)
+        ).click();
+    }
+
+    public void clickExpandNationalityIOS() {
+        scrollToAndClickIOS(eu.europa.eudi.elements.ios.WalletElements.clickExpandNationality);
+    }
+
+    public void clickExpandPlaceOfBirthIOS() {
+        scrollToAndClickIOS(eu.europa.eudi.elements.ios.WalletElements.clickExpandPlaceOfBirth);
+    }
+
+    private void scrollToAndClickIOS(By locator) {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        driver.setSetting("waitForQuiescence", false);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        Dimension size = driver.manage().window().getSize();
+        int startX = size.width / 2;
+        try {
+            for (int i = 0; i < 12; i++) {
+                List<WebElement> els = driver.findElements(locator);
+                if (!els.isEmpty() && els.get(0).isDisplayed()) {
+                    WebElement el = els.get(0);
+                    // if element is too low (Done button area), scroll up a bit first
+                    if (el.getLocation().getY() > size.height * 0.72) {
+                        PointerInput nudge = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                        Sequence nudgeUp = new Sequence(nudge, 1);
+                        nudgeUp.addAction(nudge.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int)(size.height * 0.58)));
+                        nudgeUp.addAction(nudge.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                        nudgeUp.addAction(nudge.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int)(size.height * 0.40)));
+                        nudgeUp.addAction(nudge.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                        driver.perform(Collections.singletonList(nudgeUp));
+                        els = driver.findElements(locator);
+                        if (!els.isEmpty()) { els.get(0).click(); return; }
+                    } else {
+                        el.click();
+                        return;
+                    }
+                }
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence scroll = new Sequence(finger, 1);
+                scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int)(size.height * 0.62)));
+                scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                scroll.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int)(size.height * 0.43)));
+                scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(scroll));
+            }
+            throw new RuntimeException("Element not found after scroll: " + locator);
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            driver.setSetting("waitForQuiescence", true);
+        }
+    }
+
     public void pinFieldIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.pinFieldIsDisplayed)).getText();
@@ -875,6 +931,11 @@ public class Wallet {
                 && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).get(0).isDisplayed();
     }
 
+    private boolean isElementVisibleForKotlinPid(IOSDriver driver) {
+        List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlinFromList);
+        return !els.isEmpty() && els.get(0).isDisplayed();
+    }
+
     public void scrollUntilPIDTwoPid() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1062,6 +1123,20 @@ public class Wallet {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickExpandDetails)).click();
     }
 
+    public void clickExpandVerificationDownIOS() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        WebElement el = test.mobileWebDriverFactory().getWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickDownArrow));
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1);
+        tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(),
+                el.getLocation().getX() + el.getSize().getWidth() / 2,
+                el.getLocation().getY() + el.getSize().getHeight() / 2));
+        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Collections.singletonList(tap));
+    }
+
     public void scrollUntilNationality() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1156,7 +1231,11 @@ public class Wallet {
     }
 
     public void clickPIDFromKotlin() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
+        }else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).click();
+        }
     }
     public void clickMDLFromKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1394,44 +1473,14 @@ public class Wallet {
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            for (int i = 0; i < 80; i++) {
-
-                if (isElementVisiblePID(driver)) {
-                    break;
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.80);
-                int endY   = (int) (size.height * 0.40);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
+            try {
+                driver.executeScript("mobile: scroll", ImmutableMap.of(
+                    "predicateString", "name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'",
+                    "direction", "down"
                 ));
-
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(120)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(350),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-                driver.perform(Collections.singletonList(swipe));
+            } catch (Exception ignored) {
+                // element already visible or scroll not needed
             }
-
         }
     }
 
@@ -1442,7 +1491,7 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
         test.mobile().wallet().clickKotlinPIDFromList();
-        test.mobile().issuer().signInUsser();
+        test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
     }
 
@@ -1450,7 +1499,29 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlinFromList)).click();
         } else {
-            //TODO
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            By locator = AppiumBy.iOSNsPredicateString(
+                "name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'"
+            );
+            driver.setSetting("waitForQuiescence", false);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+            try {
+                for (int attempt = 0; attempt < 5; attempt++) {
+                    try {
+                        driver.findElement(locator).click();
+                        return;
+                    } catch (Exception e) {
+                        driver.executeScript("mobile: scroll", ImmutableMap.of(
+                            "predicateString", "name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'",
+                            "direction", "down"
+                        ));
+                    }
+                }
+                throw new RuntimeException("PID Combined (Kotlin) not clickable after retries");
+            } finally {
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                driver.setSetting("waitForQuiescence", true);
+            }
         }
     }
 
@@ -1485,5 +1556,45 @@ public class Wallet {
                 driver.perform(Collections.singletonList(swipe));
             }
         }
+    }
+
+    public void scrollUntilBirthPlaceKotlinPIDIOS() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        By locator = By.xpath(
+            "//XCUIElementTypeStaticText[@label='Birth Place' or @name='Birth Place' or @value='Birth Place']"
+        );
+        for (int i = 0; i < 10; i++) {
+            List<WebElement> els = driver.findElements(locator);
+            if (!els.isEmpty() && els.get(0).isDisplayed()) break;
+            slowScrollIOS(driver);
+        }
+    }
+
+    public void scrollUntilNationalityKotlinPIDIOS() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        By locator = By.xpath(
+            "//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationality' or @value='Nationality']"
+        );
+        for (int i = 0; i < 10; i++) {
+            List<WebElement> els = driver.findElements(locator);
+            if (!els.isEmpty() && els.get(0).isDisplayed()) break;
+            slowScrollIOS(driver);
+        }
+    }
+
+    private void slowScrollIOS(IOSDriver driver) {
+        Dimension size = driver.manage().window().getSize();
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.7);
+        int endY = (int) (size.height * 0.3);
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Collections.singletonList(swipe));
     }
 }
