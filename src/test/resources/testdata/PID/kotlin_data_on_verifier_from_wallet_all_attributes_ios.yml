@@ -1,0 +1,47 @@
+screen: "PID details on Verifier - Kotlin iOS"
+
+fields:
+
+  "eu.europa.ec.eudi.pid.1:family_name":
+    value: "Neal"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:given_name":
+    value: "Tyler"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:birth_date":
+    value: "1955-04-12"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:nationality":
+    value: ""
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:resident_city":
+    value: "Gemeinde Biberbach"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:resident_street":
+    value: "Trauner"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:resident_house_number":
+    value: "101"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:family_name_birth":
+    value: "Neal"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:given_name_birth":
+    value: "Tyler"
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:sex":
+    value: ""
+    required: true
+
+  "eu.europa.ec.eudi.pid.1:issuance_date":
+    value: ""
+    required: true

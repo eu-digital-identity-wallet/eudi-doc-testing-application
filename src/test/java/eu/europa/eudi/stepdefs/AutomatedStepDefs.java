@@ -1066,12 +1066,12 @@ public class AutomatedStepDefs {
                         test.mobile().issuer().clickWalletLink();
                         test.mobile().wallet().viewDataPage();
                         test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().signInUsser();
+                        test.mobile().issuer().signInUser();
                         test.mobile().issuer().fillLoginForm();
                     }
                     break;
                 case "cross device":
-                    test.mobile().issuer().qrCodeIsDisplayed();
+                    test.mobile().issuer().qrCodeIsDisplayedKotlin();
                     test.mobile().verifier().captureScreen();
                     theUserIsOnTheLoginScreen();
                     test.mobile().wallet().createAPin();
@@ -1090,7 +1090,7 @@ public class AutomatedStepDefs {
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                         test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
                     }
-                    test.mobile().issuer().signInUsser();
+                    test.mobile().issuer().signInUser();
                     test.mobile().issuer().fillLoginForm();
                     break;
             }
@@ -1186,8 +1186,8 @@ public class AutomatedStepDefs {
         }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
-            test.mobile().wallet().clickExpandVerification();
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().clickExpandVerification();
                 if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandVerificationDown();
@@ -1199,7 +1199,16 @@ public class AutomatedStepDefs {
                     verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
                 }
             } else {
-                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
+                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS();
+                    test.mobile().wallet().clickExpandNationalityIOS();
+                    test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
+                } else {
+                    test.mobile().wallet().clickExpandVerification();
+                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
+                }
             }
         }
     }
@@ -1912,6 +1921,8 @@ public class AutomatedStepDefs {
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1936,6 +1947,8 @@ public class AutomatedStepDefs {
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
