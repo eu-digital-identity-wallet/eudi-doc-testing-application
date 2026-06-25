@@ -6,6 +6,7 @@ public class IssuerElements {
     public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeOther[@name=\"Request Credentials for your EUDI Wallet\" and @value=\"1\"]");
     public static By clickSubmitButton = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"QR Code\"]");
+    public static By qrCodeIsDisplayedKotlin = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By clickEudiwButton = By.xpath("//XCUIElementTypeStaticText[@name=\"Use EUDIW\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Country Selection\"]");

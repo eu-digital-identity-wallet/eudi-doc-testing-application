@@ -8868,20 +8868,11 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Label “Type a PIN” is displayed above the PIN input fields")
-    public void theLabelTypeAPINIsDisplayedAboveThePINInputFields() {
-        //manual
-    }
-
     @When("the user navigates to the Welcome to your wallet screen and types a PIN")
     public void theUserNavigatesToTheWelcomeToYourWalletScreenAndTypesAPIN() {
         //manual
     }
 
-    @Then("the “Next” button is removed")
-    public void theNextButtonIsRemoved() {
-        //manual
-    }
 
     @Given("the user types a PIN for a first time")
     public void theUserTypesAPINForAFirstTime() {
@@ -8898,16 +8889,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("Label “Confirm PIN” is displayed above the input fields")
-    public void labelConfirmPINIsDisplayedAboveTheInputFields() {
-        //manual
-    }
-
-    @Then("the “Confirm” button is removed")
-    public void theConfirmButtonIsRemoved() {
-        //manual
-    }
-
     @Given("the user opens the app")
     public void theUserOpensTheApp() {
         //manual
@@ -8915,11 +8896,6 @@ public class ManuallyStepDefs {
 
     @When("user navigates to the Home tab")
     public void userNavigatesToTheHomeTab() {
-        //manual
-    }
-
-    @Then("the greeting is updated to “Welcome, [Name]”")
-    public void theGreetingIsUpdatedToWelcomeName() {
         //manual
     }
 
@@ -9229,6 +9205,7 @@ public class ManuallyStepDefs {
     public void theUserNavigatesAtTheBottomOfTheScreen() {
         //manual
     }
+}
 
     @Then("the remaining instances section is displayed at the bottom of the screen")
     public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreen() {
