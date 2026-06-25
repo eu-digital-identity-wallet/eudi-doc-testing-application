@@ -11,6 +11,7 @@ This repository contains the test procedures for the EUDI Wallet project, encomp
 - [Running Tests Locally with Real Device/Emulator](#running-tests-locally-with-real-deviceemulator)
 - [Running Tests Locally with Real Device through BrowserStack Device Farm](#running-tests-locally-with-real-device-through-browserstack-device-farm)
 - [Running Tests via GitHub Actions & BrowserStack Device Farm](#running-tests-via-github-actions--browserstack-device-farm)
+- [Test Environment Scope](#test-environment-scope)
 - [Execution Notes & Known Limitations](#execution-notes--known-limitations)
 - [Troubleshooting](#troubleshooting)
 - [Automation & App Version Compatibility](#automation--app-version-compatibility)
@@ -154,7 +155,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 
 ### Step 6: Reports & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
-- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/[feature].txt`.
+- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`.
 
 ## Running Tests Locally with Real Device through BrowserStack Device Farm
 
@@ -223,7 +224,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 
 ### Step 5: Reports & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
-- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/[feature].txt`.
+- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`.
 
 ## Running Tests via GitHub Actions & BrowserStack Device Farm
 
@@ -248,14 +249,25 @@ ci.environment=githubactions
 2. Click **Run workflow**, configure the branch and test cases.
 3. Download the **serenity-report** and **device-logs** artifacts.
 
+## Test Environment Scope
+
+The automated tests were designed, developed, and validated using the following target environment:
+
+* **Device:** Samsung Galaxy S22 Ultra
+* **Platform:** Android
+* **Platform Version:** 12.0
+
+While the framework is intended to support cross-platform execution (Android and iOS), the test implementation and object identification strategies were created based on the UI behavior and element hierarchy of the Samsung Galaxy S22 Ultra running Android 12.0.
+
+Execution on different devices, manufacturers, operating system versions, or custom vendor UI implementations may result in differences in UI rendering, element identification, navigation flows, timing, and synchronization behavior. Consequently, issues such as those described in the sections below may occur when running the tests outside the validated target environment.
+
+For any device or OS version other than Samsung Galaxy S22 Ultra (Android 12.0), it is recommended to verify the application's UI hierarchy using Appium Inspector and, where necessary, adjust element locators and test synchronization logic accordingly.
+
 ## Execution Notes & Known Limitations
 
 When executing mobile automation tests, please be aware of the following environment-specific behaviors:
 
 ### Mobile Automation & Platform Variability
-
-#### **Overview**
-This framework is designed to be cross-platform (Android & iOS). However, mobile automation faces inherent challenges due to how different Operating Systems and device manufacturers render user interface components.
 
 #### **Known Challenges & Behavior**
 
@@ -273,12 +285,11 @@ Different manufacturers (Samsung, Xiaomi, Google Pixel, Apple) implement "skins"
 * **Physical Devices:** While more accurate for final validation, physical devices may encounter network latency or hardware-level interruptions that can cause transient test failures.
 
 * **Emulators/Simulators:**
-* **Stability Warning:** Testing on emulators is intended primarily for development and debugging purposes and is not recommended for formal validation activities.
-* **Reliability:** Due to synchronization issues and architectural differences between emulators and real hardware, tests on emulators may fail unpredictably and do not produce reliable reports.
-* **Authentication Workflow:**
-    * To continue beyond the initial app view, you must skip the Google Account sign-in step.
-    * **Alternative:** If skipping the sign-in is not possible in your environment, you must manually create a local application account to bypass the Google authentication flow and proceed with the test steps.
-
+    * **Stability Warning:** Testing on emulators is intended primarily for development and debugging purposes and is not recommended for formal validation activities.
+    * **Reliability:** Due to synchronization issues and architectural differences between emulators and real hardware, tests on emulators may fail unpredictably and do not produce reliable reports.
+    * **Authentication Workflow:**
+        * To continue beyond the initial app view, you must skip the Google Account sign-in step.
+        * **Alternative:** If skipping the sign-in is not possible in your environment, you must manually create a local application account to bypass the Google authentication flow and proceed with the test steps.
 ## Troubleshooting
 
 **Windows Long File Paths:**
@@ -291,9 +302,9 @@ git config --system core.longpaths true
 
 This section documents the compatibility between test automation versions and EUDI Wallet application versions.
 
-| Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Status | Notes |
-|-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|---|-------|
-| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Stable | -     |
+| Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Status | Validated Device           |
+|-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|---|-------------------|
+| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Stable | Samsung Galaxy S22 Ultra (Android 12.0) |
 
 
 ## Contributing
