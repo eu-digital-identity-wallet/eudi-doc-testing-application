@@ -71,10 +71,14 @@ public class TestHooks {
 
         try {
             String env = envDataConfig.getExecutionEnvironment();
+
             if (!"browserstack".equalsIgnoreCase(env)) {
                 stopDrivers();
                 return;
             }
+
+            boolean downloadLogs =
+                    envDataConfig.isBrowserStackDeviceLogsEnabled();
 
             boolean android = scenario.getSourceTagNames().contains("@ANDROID");
             boolean ios = scenario.getSourceTagNames().contains("@IOS");
@@ -82,20 +86,22 @@ public class TestHooks {
             String sessionId = null;
 
             if (android) {
-                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-                sessionId = driver.getSessionId().toString();
+                AndroidDriver driver =
+                        (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
+                sessionId = driver.getSessionId().toString();
                 test.stopAndroidDriverSession();
             }
 
             if (ios) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                sessionId = driver.getSessionId().toString();
+                IOSDriver driver =
+                        (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
+                sessionId = driver.getSessionId().toString();
                 test.stopIosDriverSession();
             }
 
-            if (sessionId != null) {
+            if (downloadLogs && sessionId != null) {
                 BrowserStackService.downloadDeviceLogs(sessionId, test);
             }
 
