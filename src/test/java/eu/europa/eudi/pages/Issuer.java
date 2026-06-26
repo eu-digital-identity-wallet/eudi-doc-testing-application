@@ -1267,6 +1267,59 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            //Locators for YOUR specific elements (from Appium Inspector)
+            By[] locators = {
+                    AppiumBy.androidUIAutomator("resourceId(\"//android.view.View[@resource-id=\"authForm\"]\")"),
+                    AppiumBy.androidUIAutomator("new UiSelector().text(\"Review & Send\")")
+            };
+
+            try {
+                // Switch to NATIVE_APP (10s timeout)
+                if (!"NATIVE_APP".equals(driver.getContext())) {
+                    new WebDriverWait(driver, Duration.ofSeconds(3000))
+                            .until(d -> {
+                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
+                                if (contexts.contains("NATIVE_APP")) {
+                                    ((AndroidDriver) d).context("NATIVE_APP");
+                                    return true;
+                                }
+                                return false;
+                            });
+                }
+
+                // Try all locators (30s total timeout)
+                for (By locator : locators) {
+                    try {
+                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
+                                .pollingEvery(Duration.ofMillis(500))
+                                .ignoring(StaleElementReferenceException.class)
+                                .ignoring(NoSuchElementException.class)
+                                .until(ExpectedConditions.refreshed(
+                                        ExpectedConditions.visibilityOfElementLocated(locator)
+                                ));
+
+                        System.out.println("SUCCESS: Element found using: " + locator);
+
+                        // CLICK THE ELEMENT
+                        element.click();
+
+                        return;
+                    } catch (TimeoutException ignored) {
+                        // Try next locator
+                    }
+                }
+
+                // If ALL locators fail
+                throw new AssertionError("Form not found within time");
+
+            } catch (Exception e) {
+                // 4General failed message
+                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
+            }
+
+
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
@@ -1571,6 +1624,7 @@ public class Issuer {
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink)).click();
             driver.context("NATIVE_APP");
 

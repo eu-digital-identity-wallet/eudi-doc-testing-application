@@ -224,8 +224,8 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 
 ### Step 5: Reports & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
-- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`.
-
+- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`. - To enable logging for automated scenarios, set in env.properties file:
+    ```browserstack.device.logs.enabled=true```
 ## Running Tests via GitHub Actions & BrowserStack Device Farm
 
 Trigger tests via the [GitHub Actions Tab](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/actions).
