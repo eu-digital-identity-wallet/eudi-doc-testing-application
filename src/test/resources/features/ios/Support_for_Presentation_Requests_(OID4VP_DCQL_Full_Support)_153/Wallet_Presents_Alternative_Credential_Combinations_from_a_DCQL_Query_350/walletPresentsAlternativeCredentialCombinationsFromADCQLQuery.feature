@@ -1,4 +1,4 @@
-@ANDROID @US_WPACCFAQ @Q2_2026
+@IOS @US_WPACCFAQ @Q2_2026
 Feature: Wallet Presents Alternative Credential Combinations from a DCQL Query
   As a Wallet User
   I want the Wallet to show me all valid credential combinations defined in the RP’s DCQL query
