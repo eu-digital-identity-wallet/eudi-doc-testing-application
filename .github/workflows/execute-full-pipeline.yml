@@ -428,9 +428,9 @@ jobs:
           name: final-combined-serenity-report
           path: target/site
 
-      - name: Upload Combined Device Logs
-        uses: actions/upload-artifact@v5
+      - name: Upload logs
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: combined-device-logs
-          path: logs
+            name: logs
+            path: logs/
