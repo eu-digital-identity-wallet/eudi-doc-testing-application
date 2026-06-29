@@ -399,31 +399,23 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          RUN_ID="${{ needs.trigger.outputs.android_run_id }}"
-
-          gh run download $RUN_ID \
-            --repo ${{ github.repository }} \
-            --name android-device-logs \
+          mkdir -p logs/android
+          
+          gh run download "${{ needs.trigger.outputs.android_run_id }}" \
+            --repo "${{ github.repository }}" \
+            --name "android-device-logs" \
             --dir logs/android
 
       - name: Download iOS Logs
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          RUN_ID="${{ needs.trigger.outputs.ios_run_id }}"
-
-          gh run download $RUN_ID \
-            --repo ${{ github.repository }} \
-            --name ios-device-logs \
+          mkdir -p logs/ios
+          
+          gh run download "${{ needs.trigger.outputs.ios_run_id }}" \
+            --repo "${{ github.repository }}" \
+            --name "ios-device-logs" \
             --dir logs/ios
-
-      - name: Show Downloaded Files
-        run: |
-          echo "ANDROID LOGS"
-          find logs/android
-
-          echo "IOS LOGS"
-          find logs/ios
 
       # =====================================================
       # UPLOAD ARTIFACTS
@@ -441,6 +433,4 @@ jobs:
         if: always()
         with:
           name: combined-device-logs
-          path: |
-            logs/android
-            logs/ios
+          path: logs
