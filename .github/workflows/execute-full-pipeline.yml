@@ -385,12 +385,62 @@ jobs:
       - name: Generate Final Serenity Report
         run: mvn serenity:aggregate
 
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
       # =====================================================
-      # UPLOAD FINAL REPORT
+      # DOWNLOAD DEVICE LOGS
+      # =====================================================
+
+      - name: Download Android Logs
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          RUN_ID="${{ needs.trigger.outputs.android_run_id }}"
+
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name android-device-logs \
+            --dir logs/android
+
+      - name: Download iOS Logs
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          RUN_ID="${{ needs.trigger.outputs.ios_run_id }}"
+
+          gh run download $RUN_ID \
+            --repo ${{ github.repository }} \
+            --name ios-device-logs \
+            --dir logs/ios
+
+      - name: Show Downloaded Files
+        run: |
+          echo "ANDROID LOGS"
+          find logs/android
+
+          echo "IOS LOGS"
+          find logs/ios
+
+      # =====================================================
+      # UPLOAD ARTIFACTS
       # =====================================================
 
       - name: Upload Final Report
         uses: actions/upload-artifact@v5
+        if: always()
         with:
           name: final-combined-serenity-report
           path: target/site
+
+      - name: Upload Combined Device Logs
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: combined-device-logs
+          path: |
+            logs/android
+            logs/ios
