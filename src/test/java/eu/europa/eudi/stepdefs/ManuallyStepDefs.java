@@ -9257,4 +9257,138 @@ public class ManuallyStepDefs {
     //manual
     }
 
+    @Given("the user opens the RP request")
+    public void theUserOpensTheRPRequest() {
+        //manual
+    }
+
+    @When("the Wallet loads the request")
+    public void theWalletLoadsTheRequest() {
+        //manual
+    }
+
+    @Then("it displays all valid credential combinations that satisfy the request")
+    public void itDisplaysAllValidCredentialCombinationsThatSatisfyTheRequest() {
+        //manual
+    }
+
+    @Given("the Wallet contains stored credentials")
+    public void theWalletContainsStoredCredentials() {
+        //manual
+    }
+
+    @When("the Wallet evaluates possible combinations")
+    public void theWalletEvaluatesPossibleCombinations() {
+        //manual
+    }
+
+    @Then("it displays only valid combinations based on the stored credentials")
+    public void itDisplaysOnlyValidCombinationsBasedOnTheStoredCredentials() {
+        //manual
+    }
+
+    @Given("more than one valid credential combination exists")
+    public void moreThanOneValidCredentialCombinationExists() {
+        //manual
+    }
+
+    @When("the Wallet displays the combinations")
+    public void theWalletDisplaysTheCombinations() {
+        //manual
+    }
+
+    @Then("the user must select exactly one before continuing")
+    public void theUserMustSelectExactlyOneBeforeContinuing() {
+        //manual
+    }
+
+    @Given("the Wallet displays available combinations")
+    public void theWalletDisplaysAvailableCombinations() {
+        //manual
+    }
+
+    @When("the user views the options")
+    public void theUserViewsTheOptions() {
+        //manual
+    }
+
+    @Then("each option clearly indicates which credentials will be shared")
+    public void eachOptionClearlyIndicatesWhichCredentialsWillBeShared() {
+        //manual
+    }
+
+    @Given("only one valid credential combination exists")
+    public void onlyOneValidCredentialCombinationExists() {
+        //manual
+    }
+
+    @When("the Wallet displays it")
+    public void theWalletDisplaysIt() {
+        //manual
+    }
+
+    @Then("the user can proceed without making a selection")
+    public void theUserCanProceedWithoutMakingASelection() {
+        //manual
+    }
+
+    @Given("the Wallet does not contain the required credentials")
+    public void theWalletDoesNotContainTheRequiredCredentials() {
+        //manual
+    }
+
+    @When("the Wallet evaluates the request")
+    public void theWalletEvaluatesTheRequest() {
+        //manual
+    }
+
+    @Then("it displays an error message explaining the request cannot be fulfilled")
+    public void itDisplaysAnErrorMessageExplainingTheRequestCannotBeFulfilled() {
+        //manual
+    }
+
+    @Given("the user has selected a valid combination")
+    public void theUserHasSelectedAValidCombination() {
+        //manual
+    }
+
+    @When("the user proceeds")
+    public void theUserProceeds() {
+        //manual
+    }
+
+    @Then("the Wallet shows exactly which information will be shared with the RP")
+    public void theWalletShowsExactlyWhichInformationWillBeSharedWithTheRP() {
+        //manual
+    }
+
+    @Given("the user proceeds with a valid combination")
+    public void theUserProceedsWithAValidCombination() {
+        //manual
+    }
+
+    @When("the Wallet prepares the data")
+    public void theWalletPreparesTheData() {
+        //manual
+    }
+
+    @Then("it does not show or share any information not requested by the RP")
+    public void itDoesNotShowOrShareAnyInformationNotRequestedByTheRP() {
+        //manual
+    }
+
+    @Given("the user is in the sharing flow")
+    public void theUserIsInTheSharingFlow() {
+        //manual
+    }
+
+    @When("the user cancels")
+    public void theUserCancels() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the previous screen without sharing any information")
+    public void theWalletReturnsToThePreviousScreenWithoutSharingAnyInformation() {
+        //manual
+    }
 }
