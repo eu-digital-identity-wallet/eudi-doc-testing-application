@@ -4,14 +4,30 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to ckeckout'
-        type: string
-        required: true
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+          - milestone/2026.Q1
+          - milestone/2026.Q2
+          - refactor
+        default: develop
 
-      test-cases:
-        description: 'Tags to execute'
+      test-cases-android:
+        description: 'Automated Android test tag'
         type: string
-        required: true
+        default: "@automated"
+
+      test-cases-ios:
+        description: 'Automated iOS test tag'
+        type: string
+        default: "@automated"
+
+      manual-tag:
+        description: 'Manual test tag'
+        type: string
+        default: "@Q3_2025"
 
 jobs:
   build:
