@@ -107,8 +107,9 @@ jobs:
         run: |
           TEST_TAGS="$TEST_CASES and @ANDROID"
           echo "Running tests: $TEST_TAGS"
-          
+
           mvn clean verify -ntp \
+            -Dtest=TestRunner \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
       # ---------------- RERUN PASS 1 ----------------
@@ -250,11 +251,14 @@ jobs:
       # ---------------- TEST EXECUTION ----------------
       - name: Run iOS Tests on BrowserStack
         continue-on-error: true
+        env:
+          TEST_CASES: ${{ inputs.test-cases-ios }}
         run: |
-          TEST_TAGS="${{ inputs.test-cases-ios }} and @IOS"
+          TEST_TAGS="$TEST_CASES and @IOS"
           echo "Running tests: $TEST_TAGS"
-          
+
           mvn test -ntp \
+            -Dtest=TestRunner1 \
             -Dapp.url=$BROWSERSTACK_APP_URL \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
@@ -371,15 +375,31 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.manual-tag }}" "$@"
+
+          mvn clean verify -ntp \
+            -Dtest=TestRunner2 \
+            -Dcucumber.filter.tags="${{ github.event.inputs.manual-tag }}"
+
           rm -rf target/site/serenity 
-          mvn serenity:aggregate -Dtags="${{ github.event.inputs.manual-tag }}"
+
+          mvn serenity:aggregate -ntp \
+            -Dtags="${{ github.event.inputs.manual-tag }}"
+
           echo "Modifying JSON files to mark tests as manual..."
-          find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
-            if grep -q "\"manual\":" "$file" 2>/dev/null; then    
-              sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
-              sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
-            fi
+
+          find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" \
+            | grep -v "nivo-slider\|bootstrap-icons" \
+            | while read file; do  
+
+              if grep -q "\"manual\":" "$file" 2>/dev/null; then    
+
+                sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null \
+                || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
+
+                sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null \
+                || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
+
+              fi
           done
 
       - name: Produce report
