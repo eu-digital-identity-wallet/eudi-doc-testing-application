@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features"},
         monochrome = true,
         glue = {"eu.europa.eudi.stepdefs"},
+        tags = "not @execution_Q2_2026",
         plugin = {"rerun:target/rerun.txt"})
 public class TestRunner2 {
 }
