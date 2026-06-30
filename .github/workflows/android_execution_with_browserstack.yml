@@ -14,20 +14,10 @@ on:
           - refactor
         default: develop
 
-      test-cases-android:
-        description: 'Automated Android test tag'
+      test-cases:
+        description: 'Tags to execute'
         type: string
-        default: "@automated"
-
-      test-cases-ios:
-        description: 'Automated iOS test tag'
-        type: string
-        default: "@automated"
-
-      manual-tag:
-        description: 'Manual test tag'
-        type: string
-        default: "@Q3_2025"
+        required: true
 
 jobs:
   build:

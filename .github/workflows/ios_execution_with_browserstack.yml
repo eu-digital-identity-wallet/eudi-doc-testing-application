@@ -5,7 +5,14 @@ on:
     inputs:
       branch-to-checkout:
         description: 'Branch to checkout'
-        type: string
+        type: choice
+        options:
+          - main
+          - develop
+          - milestone/2026.Q1
+          - milestone/2026.Q2
+          - refactor
+        default: develop
 
       test-cases:
         description: 'Tags to execute'
