@@ -134,7 +134,7 @@ jobs:
 
 
       - name: Download BrowserStack Device Logs per Feature (Android)
-        if: always() && (inputs.platform == 'ANDROID' || inputs.platform == 'both')
+        if: always()
         run: |
           BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
           mkdir -p android-logs
