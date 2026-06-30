@@ -4,9 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       branch-to-checkout:
-        description: 'Branch to ckeckout'
-        type: string
-        required: true
+        description: 'Branch to checkout'
+        type: choice
+        options:
+          - main
+          - develop
+          - milestone/2026.Q1
+          - milestone/2026.Q2
+          - refactor
+        default: develop
 
       test-cases:
         description: 'Tags to execute'
