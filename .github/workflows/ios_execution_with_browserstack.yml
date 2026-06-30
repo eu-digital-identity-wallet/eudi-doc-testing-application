@@ -149,33 +149,23 @@ jobs:
           name: ios-serenity-report
           path: target/site/
 
-      - name: Download BrowserStack Device Logs per Feature (iOS)
-        if: always()
-        run: |
-          BUILD_ID="${{ steps.fetch-build.outputs.buildid }}"
-          mkdir -p ios-logs
-
-          while IFS='=' read FEATURE SESSION_ID; do
-            [[ "$FEATURE" != *"_IOS" && "$FEATURE" != *"_iOS" ]] && continue
-            FEATURE_CLEAN=$(echo "$FEATURE" | tr -d '[:space:]')
-
-            echo "Downloading logs for iOS: $FEATURE_CLEAN | Session: $SESSION_ID"
-
-            curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-              -X GET "https://api-cloud.browserstack.com/app-automate/builds/$BUILD_ID/sessions/$SESSION_ID/devicelogs" \
-              -o "ios-logs/${FEATURE_CLEAN}.txt"
-          done < session_map.txt
-
-      - name: Upload iOS Logs
-        uses: actions/upload-artifact@v5
-        if: always()
-        with:
-          name: ios-device-logs
-          path: ios-logs/
-
       - name: Upload Serenity JSON Results
         uses: actions/upload-artifact@v5
         if: always()
         with:
           name: ios-serenity-json
           path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+
+      - name: Show downloaded BrowserStack logs
+        if: always()
+        run: |
+          echo "Searching for BrowserStack logs..."
+          find src/test/resources/features/ios -type f -path "*/logs/ui/*" || true
+
+      - name: Upload iOS BrowserStack Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-device-logs
+          path: src/test/resources/features/ios/**/logs/ui/**
+          if-no-files-found: warn
