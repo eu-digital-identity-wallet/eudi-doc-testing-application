@@ -29,7 +29,6 @@ on:
         type: string
         default: "@Q3_2025"
 
-
 permissions:
   actions: write
   contents: read
@@ -104,7 +103,7 @@ jobs:
       - name: Run Android Tests on BrowserStack
         continue-on-error: true
         env:
-          TEST_CASES: ${{ inputs.test-cases }}
+          TEST_CASES: ${{ inputs.test-cases-android }}
         run: |
           TEST_TAGS="$TEST_CASES and @ANDROID"
           echo "Running tests: $TEST_TAGS"
@@ -145,6 +144,12 @@ jobs:
         if: always()
         run: |
           mvn serenity:aggregate -ntp
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
@@ -246,7 +251,7 @@ jobs:
       - name: Run iOS Tests on BrowserStack
         continue-on-error: true
         run: |
-          TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+          TEST_TAGS="${{ inputs.test-cases-ios }} and @IOS"
           echo "Running tests: $TEST_TAGS"
           
           mvn test -ntp \
@@ -296,7 +301,7 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases-ios }} and @IOS"
 
       - name: Replace Serenity Core CSS
         if: always()
@@ -366,9 +371,9 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.tagName }}" "$@"
+          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.manual-tag }}" "$@"
           rm -rf target/site/serenity 
-          mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+          mvn serenity:aggregate -Dtags="${{ github.event.inputs.manual-tag }}"
           echo "Modifying JSON files to mark tests as manual..."
           find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
             if grep -q "\"manual\":" "$file" 2>/dev/null; then    
@@ -378,12 +383,13 @@ jobs:
           done
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+        run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.manual-tag }}"
 
-      - name: Inject Custom CSS into Serenity Report
+      - name: Replace Serenity Core CSS
         if: always()
         run: |
-          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/css/core.css
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       - name: Upload report
         uses: actions/upload-artifact@v5
@@ -444,3 +450,9 @@ jobs:
           with:
             name: final-combined-serenity-report
             path: target/site
+
+        - name: Replace Serenity Core CSS
+          if: always()
+          run: |
+              REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+              cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
