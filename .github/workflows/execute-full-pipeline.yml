@@ -1,12 +1,8 @@
 name: Final Summary Report
-permissions:
-  actions: write
-  contents: read
 
 on:
   workflow_dispatch:
     inputs:
-
       branch-to-checkout:
         description: 'Branch to checkout'
         type: choice
@@ -23,367 +19,274 @@ on:
         type: string
         default: "@automated"
 
-      manual-tag:
-        description: 'Manual test tag'
-        type: string
-        default: "@Q3_2025"
+
+permissions:
+  actions: write
+  contents: read
 
 jobs:
 
-  # =========================================================
-  # 1. TRIGGER WORKFLOWS + CAPTURE RUN IDS
-  # =========================================================
-  trigger:
-    runs-on: ubuntu-latest
-
-    outputs:
-      android_run_id: ${{ steps.android.outputs.run_id }}
-      ios_run_id: ${{ steps.ios.outputs.run_id }}
-      manual_run_id: ${{ steps.manual.outputs.run_id }}
-
-    steps:
-
-      - name: Validate Token
-        run: |
-
-          if [ -z "${{ secrets.GH_PAT }}" ]; then
-            echo "GH_PAT is empty"
-            exit 1
-          fi
-
-      # =====================================================
-      # ANDROID
-      # =====================================================
-
-      - name: Trigger Android Workflow
-        id: android
-        run: |
-
-          WORKFLOW_FILE="android_execution_with_browserstack.yml"
-
-          echo "Triggering Android workflow..."
-
-          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          curl -s -L -X POST \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
-            -d '{
-              "ref":"${{ inputs.branch-to-checkout }}",
-              "inputs":{
-                "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
-                "test-cases":"${{ inputs.test-cases }}"
-              }
-            }'
-
-          echo "Waiting workflow registration..."
-          sleep 15
-
-          RESPONSE=$(curl -s \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
-
-          RUN_ID=$(echo "$RESPONSE" | jq -r \
-            --arg BEFORE "$BEFORE" '
-              .workflow_runs
-              | map(select(.created_at >= $BEFORE))
-              | sort_by(.created_at)
-              | reverse
-              | .[0].id
-            ')
-
-          echo "Android Run ID: $RUN_ID"
-
-          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
-            echo "Failed to detect Android workflow run"
-            exit 1
-          fi
-
-          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
-
-      # =====================================================
-      # IOS
-      # =====================================================
-
-      - name: Trigger iOS Workflow
-        id: ios
-        run: |
-
-          WORKFLOW_FILE="ios_execution_with_browserstack.yml"
-
-          echo "Triggering iOS workflow..."
-
-          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          curl -s -L -X POST \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
-            -d '{
-              "ref":"${{ inputs.branch-to-checkout }}",
-              "inputs":{
-                "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
-                "test-cases":"${{ inputs.test-cases }}"
-              }
-            }'
-
-          echo "Waiting workflow registration..."
-          sleep 15
-
-          RESPONSE=$(curl -s \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
-
-          RUN_ID=$(echo "$RESPONSE" | jq -r \
-            --arg BEFORE "$BEFORE" '
-              .workflow_runs
-              | map(select(.created_at >= $BEFORE))
-              | sort_by(.created_at)
-              | reverse
-              | .[0].id
-            ')
-
-          echo "iOS Run ID: $RUN_ID"
-
-          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
-            echo "Failed to detect iOS workflow run"
-            exit 1
-          fi
-
-          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
-
-      # =====================================================
-      # MANUAL
-      # =====================================================
-
-      - name: Trigger Manual Workflow
-        id: manual
-        run: |
-
-          WORKFLOW_FILE="manual.yml"
-
-          echo "Triggering Manual workflow..."
-
-          BEFORE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          curl -s -L -X POST \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/dispatches \
-            -d '{
-              "ref":"${{ inputs.branch-to-checkout }}",
-              "inputs":{
-                "branch-to-checkout":"${{ inputs.branch-to-checkout }}",
-                "tagName":"${{ inputs.manual-tag }}"
-              }
-            }'
-
-          echo "Waiting workflow registration..."
-          sleep 15
-
-          RESPONSE=$(curl -s \
-            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=5")
-
-          RUN_ID=$(echo "$RESPONSE" | jq -r \
-            --arg BEFORE "$BEFORE" '
-              .workflow_runs
-              | map(select(.created_at >= $BEFORE))
-              | sort_by(.created_at)
-              | reverse
-              | .[0].id
-            ')
-
-          echo "Manual Run ID: $RUN_ID"
-
-          if [[ -z "$RUN_ID" || "$RUN_ID" == "null" ]]; then
-            echo "Failed to detect Manual workflow run"
-            exit 1
-          fi
-
-          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
-
-  # =========================================================
-  # 2. WAIT FOR COMPLETION
-  # =========================================================
-  wait-for-completion:
-    runs-on: ubuntu-latest
-    needs: trigger
-
-    steps:
-
-      - name: Wait For Android
-        run: |
-          wait_run() {
-
-            RUN_ID=$1
-            NAME=$2
-
-            echo "Waiting for $NAME ($RUN_ID)"
-
-            while true; do
-
-              RESPONSE=$(curl -s \
-                -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
-                -H "Accept: application/vnd.github+json" \
-                https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID)
-
-              if ! echo "$RESPONSE" | jq empty; then
-                echo "Invalid JSON received"
-                sleep 20
-                continue
-              fi
-
-              STATUS=$(echo "$RESPONSE" | jq -r '.status')
-              CONCLUSION=$(echo "$RESPONSE" | jq -r '.conclusion')
-
-              echo "$NAME => status=$STATUS conclusion=$CONCLUSION"
-
-              if [[ "$STATUS" == "completed" ]]; then
-
-                if [[ "$CONCLUSION" != "success" ]]; then
-                  echo "$NAME failed"
-                  exit 1
-                fi
-
-                break
-              fi
-
-              sleep 30
-            done
-          }
-
-          wait_run "${{ needs.trigger.outputs.android_run_id }}" "Android"
-          wait_run "${{ needs.trigger.outputs.ios_run_id }}" "iOS"
-          wait_run "${{ needs.trigger.outputs.manual_run_id }}" "Manual"
-
-  # =========================================================
-  # 3. FINAL REPORT
-  # =========================================================
-  final-summary:
+  android-tests:
     runs-on: macos-latest
-    needs: [ trigger, wait-for-completion ]
+    timeout-minutes: 240
+
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
     steps:
-
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          clean: false
+          lfs: false
+          ref: ${{ inputs.branch-to-checkout }}
 
+      # ---------------- JDK ----------------
       - name: Set up JDK 17
         uses: actions/setup-java@v5
         with:
           java-version: 17
-          distribution: oracle
+          distribution: 'oracle'
 
-      # =====================================================
-      # INSTALL GH CLI
-      # =====================================================
+      # ---------------- NODE ----------------
+      - name: Set up Node JS
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-      - name: Setup GitHub CLI
+      # ---------------- CLEAN ----------------
+      - name: Clean Old Results
         run: |
-          gh --version
+          rm -rf target/serenity
+          rm -rf target/site/reports
+          rm -rf target/site/serenity
 
-      # =====================================================
-      # CREATE REPORT FOLDERS
-      # =====================================================
+      - name: Initialize Session Map
+        run: echo "" > session_map.txt
 
-      - name: Create folders
+      # ---------------- JQ ----------------
+      - name: Check jq Installation
         run: |
-          mkdir -p reports/android
-          mkdir -p reports/ios
-          mkdir -p reports/manual
+          if ! command -v jq &> /dev/null; then
+            brew install jq
+          else
+            jq --version
+          fi
 
-      # =====================================================
-      # DOWNLOAD ANDROID ARTIFACT
-      # =====================================================
+      # ---------------- BROWSERSTACK CHECK ----------------
+      - name: Check BrowserStack Credentials
+        run: |
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+          https://api.browserstack.com/automate/plan.json
 
-      - name: Download Android Artifact
+      # ---------------- BUILD ID ----------------
+      - name: Get Latest BrowserStack Build ID
+        id: fetch-build
+        run: |
+          BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            https://api-cloud.browserstack.com/app-automate/builds.json \
+            | jq -r '.[0].automation_build.hashed_id')
+          
+          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+
+      # ---------------- TEST EXECUTION (FIXED) ----------------
+      - name: Run Android Tests on BrowserStack
+        continue-on-error: true
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+          TEST_CASES: ${{ inputs.test-cases }}
         run: |
+          TEST_TAGS="$TEST_CASES and @ANDROID"
+          echo "Running tests: $TEST_TAGS"
           
-          RUN_ID="${{ needs.trigger.outputs.android_run_id }}"
-          
-          echo "Downloading Android artifact from run: $RUN_ID"
-          
-          gh run download $RUN_ID \
-            --repo ${{ github.repository }} \
-            --name android-serenity-json \
-            --dir reports/android
+          mvn clean verify -ntp \
+            -Dcucumber.filter.tags="$TEST_TAGS"
 
-      # =====================================================
-      # DOWNLOAD IOS ARTIFACT
-      # =====================================================
-
-      - name: Download iOS Artifact
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+      # ---------------- RERUN PASS 1 ----------------
+      - name: Rerun Pass 1
+        if: always()
         run: |
-          
-          RUN_ID="${{ needs.trigger.outputs.ios_run_id }}"
-          
-          echo "Downloading iOS artifact from run: $RUN_ID"
-          
-          gh run download $RUN_ID \
-            --repo ${{ github.repository }} \
-            --name ios-serenity-json \
-            --dir reports/ios
+          if [ -s target/rerun.txt ]; then
+            mvn test -Dtest=RerunTestRunner
+          else
+            echo "No rerun.txt found"
+          fi
 
-      # =====================================================
-      # DOWNLOAD MANUAL ARTIFACT
-      # =====================================================
+      - name: Merge Results Pass 1
+        if: always()
+        run: python3 merge_serenity_results.py || true
 
-      - name: Download Manual Artifact
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+      # ---------------- RERUN PASS 2 ----------------
+      - name: Rerun Pass 2
+        if: always()
         run: |
-          
-          RUN_ID="${{ needs.trigger.outputs.manual_run_id }}"
-          
-          echo "Downloading Manual artifact from run: $RUN_ID"
-          
-          gh run download $RUN_ID \
-            --repo ${{ github.repository }} \
-            --name manual-serenity-json \
-            --dir reports/manual
+          if [ -s target/rerun2.txt ]; then
+            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt"
+          else
+            echo "No rerun2.txt found"
+          fi
 
-      # =====================================================
-      # DEBUG
-      # =====================================================
+      - name: Final Merge Results
+        if: always()
+        run: python3 merge_serenity_results.py || true
 
-      - name: Show Downloaded Files
+      # ---------------- REPORT (FIXED) ----------------
+      - name: Generate Serenity Report
+        if: always()
         run: |
-          echo "ANDROID FILES"
-          find reports/android
-          
-          echo "IOS FILES"
-          find reports/ios
-          
-          echo "MANUAL FILES"
-          find reports/manual
+          mvn serenity:aggregate -ntp
 
-      # =====================================================
-      # MERGE RESULTS
-      # =====================================================
+      # ---------------- ARTIFACTS ----------------
+      - name: Upload Serenity Report
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: android-serenity-report
+          path: target/site/
 
-      - name: Merge JSON Results
+      - name: Upload Serenity JSON Results
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: android-serenity-json
+          path: target/site/reports/**/**/*.json
+
+      - name: Show downloaded BrowserStack logs
+        if: always()
         run: |
-          
-          mkdir -p target/site/reports/final
-          
-          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-          find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+          echo "Searching for BrowserStack logs..."
+          find src/test/resources/features/android -type f -path "*/logs/ui/*" || true
 
-      # =====================================================
-      # GENERATE FINAL REPORT
-      # =====================================================
+      - name: Upload Android BrowserStack Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-device-logs
+          path: src/test/resources/features/android/**/logs/ui/**
+          if-no-files-found: warn
 
-      - name: Generate Final Serenity Report
-        run: mvn serenity:aggregate
+  ios-tests:
+    runs-on: macos-latest
+    timeout-minutes: 240
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          clean: false
+          lfs: false
+          ref: ${{ inputs.branch-to-checkout }}
+
+      # ---------------- JAVA + NODE ----------------
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      # ---------------- CLEAN ----------------
+      - name: Clean Old Results
+        run: |
+          rm -rf target/serenity
+          rm -rf target/site/reports
+          rm -rf target/site/serenity
+          rm -f target/rerun.txt target/rerun2.txt
+
+      - name: Initialize Session Map
+        run: echo "" > session_map.txt
+
+      # ---------------- JQ ----------------
+      - name: Check jq Installation
+        run: |
+          if ! command -v jq &> /dev/null; then
+            echo "jq not found, installing..."
+            brew install jq
+          else
+            jq --version
+          fi
+
+      # ---------------- BROWSERSTACK CHECK ----------------
+      - name: Check BrowserStack Credentials
+        run: |
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+          https://api.browserstack.com/automate/plan.json
+
+      # ---------------- BUILD ID ----------------
+      - name: Get Latest BrowserStack Build ID
+        id: fetch-build
+        if: always()
+        run: |
+          BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            https://api-cloud.browserstack.com/app-automate/builds.json \
+            | jq -r '.[0].automation_build.hashed_id')
+          
+          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+
+      # ---------------- TEST EXECUTION ----------------
+      - name: Run iOS Tests on BrowserStack
+        continue-on-error: true
+        run: |
+          TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+          echo "Running tests: $TEST_TAGS"
+          
+          mvn test -ntp \
+            -Dapp.url=$BROWSERSTACK_APP_URL \
+            -Dcucumber.filter.tags="$TEST_TAGS"
+
+      # ---------------- BACKUP RESULTS ----------------
+      - name: Backup Serenity JSON Results
+        if: always()
+        run: |
+          mkdir -p target/serenity-backup
+          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
+
+      # ---------------- RERUN PASS 1 ----------------
+      - name: Rerun Pass 1
+        if: always()
+        run: |
+          if [ -s target/rerun.txt ]; then
+            echo "Running rerun pass 1..."
+            mvn test -Dtest=RerunTestRunner
+          else
+            echo "No rerun.txt found"
+          fi
+
+      - name: Merge Results Pass 1
+        if: always()
+        run: |
+          python3 merge_serenity_results.py || true
+
+      # ---------------- RERUN PASS 2 ----------------
+      - name: Rerun Pass 2
+        if: always()
+        run: |
+          if [ -s target/rerun2.txt ]; then
+            echo "Running rerun pass 2..."
+            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt"
+          else
+            echo "No rerun2.txt found"
+          fi
+
+      - name: Final Merge Results
+        if: always()
+        run: |
+          python3 merge_serenity_results.py || true
+
+      # ---------------- REPORT ----------------
+      - name: Generate Serenity Report
+        if: always()
+        run: |
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
@@ -391,46 +294,143 @@ jobs:
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
-      # =====================================================
-      # DOWNLOAD DEVICE LOGS
-      # =====================================================
-
-      - name: Download Android Logs
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          mkdir -p logs/android
-          
-          gh run download "${{ needs.trigger.outputs.android_run_id }}" \
-            --repo "${{ github.repository }}" \
-            --name "android-device-logs" \
-            --dir logs/android
-
-      - name: Download iOS Logs
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          mkdir -p logs/ios
-          
-          gh run download "${{ needs.trigger.outputs.ios_run_id }}" \
-            --repo "${{ github.repository }}" \
-            --name "ios-device-logs" \
-            --dir logs/ios
-
-      # =====================================================
-      # UPLOAD ARTIFACTS
-      # =====================================================
-
-      - name: Upload Final Report
+      # ---------------- ARTIFACTS ----------------
+      - name: Upload Serenity Report
         uses: actions/upload-artifact@v5
         if: always()
         with:
-          name: final-combined-serenity-report
-          path: target/site
+          name: ios-serenity-report
+          path: target/site/
 
-      - name: Upload logs
+      - name: Upload Serenity JSON Results
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: ios-serenity-json
+          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+
+      - name: Show downloaded BrowserStack logs
+        if: always()
+        run: |
+          echo "Searching for BrowserStack logs..."
+          find src/test/resources/features/ios -type f -path "*/logs/ui/*" || true
+
+      - name: Upload iOS BrowserStack Logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-            name: logs
-            path: logs/
+          name: ios-device-logs
+          path: src/test/resources/features/ios/**/logs/ui/**
+          if-no-files-found: warn
+
+  manual-tests:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v5
+
+      - name: Permission to file .sh
+        run: |
+          #!/bin/bash
+          sudo chmod +x local-execution.sh
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS 18.16.1
+        uses: actions/setup-node@v5
+        with:
+          node-version: '18.16.1'
+
+      - name: Clean old reports
+        run: |
+          mvn clean
+          rm -rf target/site
+
+      - name: Clean Maven cache
+        run: mvn dependency:purge-local-repository -DreResolve=false
+
+      - name: Run Ui Tests
+        run: |
+          #!/bin/bash
+          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.tagName }}" "$@"
+          rm -rf target/site/serenity 
+          mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+          echo "Modifying JSON files to mark tests as manual..."
+          find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
+            if grep -q "\"manual\":" "$file" 2>/dev/null; then    
+              sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
+              sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
+            fi
+          done
+
+      - name: Produce report
+        run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+
+      - name: Inject Custom CSS into Serenity Report
+        if: always()
+        run: |
+          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/css/core.css
+
+      - name: Upload report
+        uses: actions/upload-artifact@v5
+        with:
+          name: manual-serenity-report
+          path: target/site
+
+      - name: Upload Serenity JSON Results
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: manual-serenity-json    # or ios-serenity-json
+          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+
+  final-summary:
+      runs-on: macos-latest
+      needs:
+       - android-tests
+       - ios-tests
+       - manual-tests
+
+      if: always()
+
+      steps:
+
+        - uses: actions/checkout@v5
+
+        - uses: actions/setup-java@v5
+          with:
+            java-version: 17
+            distribution: oracle
+
+        - uses: actions/download-artifact@v5
+          with:
+            name: android-serenity-json
+            path: reports/android
+
+        - uses: actions/download-artifact@v5
+          with:
+            name: ios-serenity-json
+            path: reports/ios
+
+        - uses: actions/download-artifact@v5
+          with:
+            name: manual-serenity-json
+            path: reports/manual
+
+        - run: |
+            mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
+
+            find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+            find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+            find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+
+        - run: mvn serenity:aggregate
+
+        - uses: actions/upload-artifact@v5
+          with:
+            name: final-combined-serenity-report
+            path: target/site
