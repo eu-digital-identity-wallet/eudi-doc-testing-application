@@ -15,7 +15,7 @@ on:
         default: develop
 
       test-cases:
-        description: 'Tags to execute'
+        description: 'Android Tags to execute'
         type: string
         required: true
 
@@ -129,6 +129,12 @@ jobs:
         if: always()
         run: |
           mvn serenity:aggregate -ntp
+
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report

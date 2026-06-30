@@ -446,13 +446,15 @@ jobs:
 
         - run: mvn serenity:aggregate
 
+        - name: Replace Serenity Core CSS
+          if: always()
+          run: |
+            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+            cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
         - uses: actions/upload-artifact@v5
           with:
             name: final-combined-serenity-report
             path: target/site
 
-        - name: Replace Serenity Core CSS
-          if: always()
-          run: |
-              REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
-              cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
