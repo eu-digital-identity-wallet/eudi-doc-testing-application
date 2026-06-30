@@ -7,7 +7,6 @@ import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
 import eu.europa.eudi.utils.factory.WebPageObjectFactory;
 import eu.europa.eudi.utils.factory.WebWebDriverFactory;
 import io.cucumber.java.Scenario;
-
 import java.net.MalformedURLException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;

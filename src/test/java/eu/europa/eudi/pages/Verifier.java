@@ -28,7 +28,6 @@ import java.util.Date;
 
 public class Verifier {
     TestSetup test;
-    EnvDataConfig envDataConfig;
     private File capturedScreenFile;
 
 
@@ -242,7 +241,7 @@ public class Verifier {
         }
     }
 
-    public File captureScreen() throws InterruptedException {
+    public File captureScreen() {
         WebDriver driver;
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -307,14 +306,6 @@ public class Verifier {
     public void appOpensSuccessfullyOnWeb() {
         String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfullyOnWeb)).getText();
         Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
-    }
-
-    public void selectAllAttributesOnWeb() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWeb)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWeb)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWeb)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWeb)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWeb)).click();
     }
 
     public void scrollUntilNextOnWeb() {
@@ -580,7 +571,7 @@ public class Verifier {
         }
     }
 
-    public void clickSpecificAttributes() throws InterruptedException {
+    public void clickSpecificAttributes() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectFirstAttribute)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectSecondAttribute)).click();

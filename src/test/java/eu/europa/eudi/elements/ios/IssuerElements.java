@@ -11,7 +11,6 @@ public class IssuerElements {
     public static By authenticationPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//XCUIElementTypeStaticText[@name=\"Country Selection\"]");
     public static By formIsDisplayed = By.xpath("//*[@label='EUDI Wallet Credential']");
-    public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");
     public static By successfullyShared = By.id("document_success_screen_content_header_description");
     public static By authorizePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickPID = By.xpath("//XCUIElementTypeStaticText[@label=\"PID (MSO Mdoc)\"]/preceding-sibling::*[1]\n");

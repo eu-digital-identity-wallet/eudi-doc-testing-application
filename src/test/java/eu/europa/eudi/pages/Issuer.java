@@ -1096,7 +1096,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindSign() throws InterruptedException {
+    public void scrollUntilFindSign() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
@@ -1153,7 +1153,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilCountryCode() throws InterruptedException {
+    public void scrollUntilCountryCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 2; i++) {
@@ -1190,7 +1190,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilCountryCodePid() throws InterruptedException {
+    public void scrollUntilCountryCodePid() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 4; i++) {
@@ -1506,7 +1506,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilFindName() throws InterruptedException {
+    public void scrollUntilFindName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             for (int i = 0; i < 3; i++) {
@@ -1580,7 +1580,7 @@ public class Issuer {
         }
     }
 
-    public void scrollUntilGenerate() throws InterruptedException {
+    public void scrollUntilGenerate() {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1811,41 +1811,6 @@ public class Issuer {
         }
     }
 
-
-    public void checkFieldsOnWalletFromPyIssuer() {
-        FormYml yml = YmlLoader.load("testdata/PID/py_data_on_wallet.yml", FormYml.class);
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-            if (!cfg.required) return;
-
-            String[] labels = fieldKey.split("\\.");
-            String lastLabel = labels[labels.length - 1];
-
-            for (String label : labels) {
-                try {
-                    assertTextVisibleWithScroll(driver, label, 10);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                try {
-                    assertTextVisibleWithScroll(driver, cfg.value.trim(), 3);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                By anyValue = By.xpath("//android.webkit.WebView//android.widget.TextView[@text!='']");
-                if (driver.findElements(anyValue).isEmpty()) {
-                    throw new AssertionError("No values visible for label: " + lastLabel);
-                }
-            }
-        });
-    }
-
-
     public void selectMDLKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1871,18 +1836,6 @@ public class Issuer {
     public void issueCredentialsPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-//            if (!"WEBVIEW_chrome".equals(driver.getContext())) {
-//                new WebDriverWait(driver, Duration.ofSeconds(3000))
-//                        .until(d -> {
-//                            Set<String> contexts = ((AndroidDriver) d).getContextHandles();
-//                            if (contexts.contains("WEBVIEW_chrome")) {
-//                                ((AndroidDriver) d).context("WEBVIEW_chrome");
-//                                return true;
-//                            }
-//                            return false;
-//                        });
-//            }
 
             By locator = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
 
