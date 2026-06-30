@@ -15,13 +15,24 @@
             - main
             - develop
             - milestone/2026.Q1
+            - milestone/2026.Q2
             - refactor
           default: develop
 
-        test-cases:
-          description: 'Automated Android & iOS test tag'
+        test-cases-android:
+          description: 'Automated Android test tag'
           type: string
           default: "@automated"
+
+        test-cases-ios:
+          description: 'Automated iOS test tag'
+          type: string
+          default: "@automated"
+
+        manual-tag:
+          description: 'Manual test tag'
+          type: string
+          default: "@Q3_2025"
 
   jobs:
 
@@ -46,16 +57,19 @@
             lfs: false
             ref: ${{ inputs.branch-to-checkout }}
 
-        - name: Verify BrowserStack env vars
-          run: |
-              echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
-              echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
-
         - name: Set up JDK 17
           uses: actions/setup-java@v5
           with:
             java-version: 17
             distribution: oracle
+
+        - name: Verify BrowserStack env vars
+          run: |
+            echo "USERNAME EXISTS: $([ -n "$BROWSERSTACK_USERNAME" ] && echo YES || echo NO)"
+            echo "ACCESS KEY EXISTS: $([ -n "$BROWSERSTACK_ACCESS_KEY" ] && echo YES || echo NO)"
+
+            echo "USERNAME LENGTH: ${#BROWSERSTACK_USERNAME}"
+            echo "ACCESS KEY LENGTH: ${#BROWSERSTACK_ACCESS_KEY}"
 
         - name: Set up Node JS
           uses: actions/setup-node@v5
@@ -71,8 +85,7 @@
         - name: Run Android Tests
           continue-on-error: true
           run: |
-            TEST_TAGS="${{ inputs.test-cases }} and @ANDROID"
-            
+            TEST_TAGS="${{ inputs.test-cases-android }} and @ANDROID"            
             echo "Running tests: $TEST_TAGS"
             
             mvn clean verify -ntp \
@@ -131,7 +144,7 @@
         - name: Run iOS Tests
           continue-on-error: true
           run: |
-            TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+            TEST_TAGS="${{ inputs.test-cases-ios }} and @IOS"
             
             echo "Running tests: $TEST_TAGS"
             
@@ -207,6 +220,11 @@
         - name: Generate Final Serenity Report
           run: |
             mvn serenity:aggregate
+
+        - name: Replace Serenity Core CSS
+          run: |
+             REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+             cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
         - name: Upload Final Report
           uses: actions/upload-artifact@v5
