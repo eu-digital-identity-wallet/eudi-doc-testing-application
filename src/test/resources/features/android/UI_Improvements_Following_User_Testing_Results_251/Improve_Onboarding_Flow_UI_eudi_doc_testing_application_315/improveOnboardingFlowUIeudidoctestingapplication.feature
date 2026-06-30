@@ -34,7 +34,7 @@ Feature: User onboarding experience
   Scenario: Confirm PIN screen informational text
     Given the user types a PIN for a first time
     When confirm PIN screen is displayed
-    Then the following text is displayed: Secure your wallet with a PIN code and connect to your National System
+    Then this text is displayed Secure your wallet with a PIN code and connect to your National System
     And Label Confirm PIN is displayed above the input fields
 
   @US_IOFUEDTA_TC_06 @manual:Passed
