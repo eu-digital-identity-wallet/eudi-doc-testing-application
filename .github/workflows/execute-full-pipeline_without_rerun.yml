@@ -1,4 +1,4 @@
-  name: Summary Report Without Rerun
+  name: Final Automation Tests Execution Without Rerun
 
   permissions:
     actions: write
