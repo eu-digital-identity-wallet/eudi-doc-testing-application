@@ -1,4 +1,4 @@
-name: Final Automation Tests Execution
+name: Final Tests Execution
 
 on:
   workflow_dispatch:
