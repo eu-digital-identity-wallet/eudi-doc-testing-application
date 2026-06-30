@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/android"},
+        features = {"src/test/resources/features/android/regressionTests"},
         monochrome = true,
         glue = {"eu.europa.eudi.stepdefs"},
         plugin = {"rerun:target/rerun.txt"})
