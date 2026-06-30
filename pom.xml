@@ -173,6 +173,10 @@
                 <version>3.5.4</version>
 
                 <configuration>
+                    <includes>
+                        <include>**/*Runner*.java</include>
+                    </includes>
+
                     <parallel>classes</parallel>
                     <threadCount>3</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
