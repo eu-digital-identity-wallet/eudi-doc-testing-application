@@ -174,7 +174,7 @@
 
                 <configuration>
                     <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
+                    <threadCount>3</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                 </configuration>
             </plugin>
