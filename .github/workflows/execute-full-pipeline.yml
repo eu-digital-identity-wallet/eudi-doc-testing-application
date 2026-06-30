@@ -145,6 +145,12 @@ jobs:
         run: |
           mvn serenity:aggregate -ntp
 
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
         uses: actions/upload-artifact@v5
@@ -379,10 +385,11 @@ jobs:
       - name: Produce report
         run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.manual-tag }}"
 
-      - name: Inject Custom CSS into Serenity Report
+      - name: Replace Serenity Core CSS
         if: always()
         run: |
-          cp src/test/resources/custom-style.css target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/css/core.css
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       - name: Upload report
         uses: actions/upload-artifact@v5
