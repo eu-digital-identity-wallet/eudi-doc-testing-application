@@ -9391,4 +9391,34 @@ public class ManuallyStepDefs {
     public void theWalletReturnsToThePreviousScreenWithoutSharingAnyInformation() {
         //manual
     }
+
+    @Then("the Label Type a PIN is displayed above the PIN input fields")
+    public void theLabelTypeAPINIsDisplayedAboveThePINInputFields() {
+        //manual
+    }
+
+    @Then("the Next button is removed")
+    public void theNextButtonIsRemoved() {
+        //manual
+    }
+
+    @Then("the greeting is updated to Welcome, [Name]")
+    public void theGreetingIsUpdatedToWelcomeName() {
+        //manual
+    }
+
+    @Then("the Confirm button is removed")
+    public void theConfirmButtonIsRemoved() {
+        //manual
+    }
+
+    @And("Label Confirm PIN is displayed above the input fields")
+    public void labelConfirmPINIsDisplayedAboveTheInputFields() {
+        //manual
+    }
+
+    @Then("this text is displayed Secure your wallet with a PIN code and connect to your National System")
+    public void thisTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
+        //manual
+    }
 }
