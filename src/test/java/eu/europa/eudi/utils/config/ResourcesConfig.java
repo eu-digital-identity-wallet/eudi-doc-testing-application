@@ -8,10 +8,6 @@ import java.nio.file.Paths;
  */
 public class ResourcesConfig {
 
-    private String getTestResourcesPath() {
-        return System.getProperty("user.dir") + "\\preAuthorizationCodeSameDevice.feature\\resources";
-    }
-
     private String getEnvPath() {
         return System.getProperty("user.dir");
     }

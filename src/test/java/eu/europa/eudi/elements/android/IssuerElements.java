@@ -11,7 +11,6 @@ public class IssuerElements {
     public static By qrCodeIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By authenticationPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Authentication Method Selection\"]");
     public static By clickCountrySelection = By.xpath("//android.widget.RadioButton[@text=\"Country Selection\"]");
-    public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");
     public static By successfullyShared = By.id("document_success_screen_content_header_description");
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
@@ -31,7 +30,7 @@ public class IssuerElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
-    public static  By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
+    public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");

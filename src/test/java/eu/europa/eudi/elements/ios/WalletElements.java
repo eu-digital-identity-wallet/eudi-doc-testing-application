@@ -63,7 +63,5 @@ public class WalletElements {
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
     public static By onlinePresentation = By.id("home_tab_screen_dialog_online_button");
-    public static By clickPidFromKotlinFromList = AppiumBy.iOSNsPredicateString(
-        "name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'"
-    );
+    public static By clickPidFromKotlinFromList = AppiumBy.iOSNsPredicateString("name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'");
 }

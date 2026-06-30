@@ -18,7 +18,6 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
@@ -36,19 +35,19 @@ public class AutomatedStepDefs {
     private String selectiveDisclosure;
 
     @Given("user opens Verifier App")
-    public void userOpensVerifierApp() throws MalformedURLException {
+    public void userOpensVerifierApp(){
         test.mobile().wallet().userOpensVerifier();
         test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
     }
 
     @When("the user enters their PIN")
-    public void theUserEntersTheirPIN() throws InterruptedException {
+    public void theUserEntersTheirPIN() {
         test.mobile().wallet().createAPin();
     }
 
     @When("the user enters the correct PIN")
-    public void theUserEntersTheCorrectPIN() throws InterruptedException {
+    public void theUserEntersTheCorrectPIN(){
         test.mobile().wallet().createAPin();
     }
 
@@ -214,7 +213,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user selects to register with the EUDI wallet app")
-    public void theUserSelectsToRegisterWithTheEUDIWalletApp() throws InterruptedException {
+    public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -955,9 +954,9 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().scrollUntilPlaceOfBirth();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
-                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
                 } else {
-                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
                 }
             } else {
                 if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
@@ -965,10 +964,10 @@ public class AutomatedStepDefs {
                     test.mobile().wallet().clickExpandNationalityIOS();
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
-                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
                 } else {
                     test.mobile().wallet().clickExpandVerification();
-                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
                 }
             }
         }
@@ -996,112 +995,6 @@ public class AutomatedStepDefs {
             }
             test.mobile().wallet().clickClose();
         }
-    }
-
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
-
-        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-
-        boolean isAndroid = test.getSystemOperation().equals(Literals.General.ANDROID.label);
-
-        AppiumDriver driver = isAndroid
-                ? (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid()
-                : (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-        Set<String> screenTexts = collectAllTexts(driver, isAndroid, 8);
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-
-            if (!cfg.required) return;
-
-            if (!screenTexts.contains(fieldKey)) {
-                throw new AssertionError("Missing label: " + fieldKey);
-            }
-
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                if (!screenTexts.contains(cfg.value.trim())) {
-                    throw new AssertionError("Missing value: " + cfg.value);
-                }
-            }
-        });
-    }
-
-    private Set<String> collectAllTexts(AppiumDriver driver, boolean isAndroid, int maxScrolls) {
-
-        Set<String> allTexts = new HashSet<>();
-
-        Dimension size = driver.manage().window().getSize();
-
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.65);
-        int endY = (int) (size.height * 0.35);
-
-        String lastPageSource = "";
-        int noChangeCounter = 0;
-
-        for (int i = 0; i < maxScrolls; i++) {
-
-            String pageSource = driver.getPageSource();
-
-            if (pageSource.equals(lastPageSource)) {
-                noChangeCounter++;
-            } else {
-                noChangeCounter = 0;
-            }
-
-            lastPageSource = pageSource;
-
-            extractTexts(pageSource, allTexts, isAndroid);
-
-            if (noChangeCounter >= 2) break;
-
-            scrollFast(driver, startX, startY, endY);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-
-        return allTexts;
-    }
-
-    private void extractTexts(String pageSource, Set<String> allTexts, boolean isAndroid) {
-
-        Pattern pattern;
-
-        if (isAndroid) {
-            pattern = Pattern.compile("text=\"(.*?)\"");
-        } else {
-            pattern = Pattern.compile("label=\"(.*?)\"");
-        }
-
-        Matcher matcher = pattern.matcher(pageSource);
-
-        while (matcher.find()) {
-            String txt = matcher.group(1).trim();
-            if (!txt.isEmpty()) {
-                allTexts.add(txt);
-            }
-        }
-    }
-
-    private void scrollFast(AppiumDriver driver, int startX, int startY, int endY) {
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
-
-        swipe.addAction(finger.createPointerMove(Duration.ZERO,
-                PointerInput.Origin.viewport(), startX, startY));
-
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(180),
-                PointerInput.Origin.viewport(), startX, endY));
-
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        driver.perform(Collections.singletonList(swipe));
     }
 
     @When("the user presents the credential to the {}")
@@ -1189,7 +1082,7 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/PID/pre_final_shared_data_on_wallet.yml");
 
                         } else {
@@ -1200,10 +1093,10 @@ public class AutomatedStepDefs {
                                 test.mobile().wallet().clickExpandVerification();
                                 test.mobile().wallet().scrollUpForBirthDateOnPID();
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1211,7 +1104,7 @@ public class AutomatedStepDefs {
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1220,10 +1113,10 @@ public class AutomatedStepDefs {
                                 test.mobile().wallet().scrollUntilPlaceOfBirth();
                                 test.mobile().wallet().clickExpandVerificationDown();
                                 test.mobile().wallet().scrollUpForBirthDateOnPID();
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1342,7 +1235,7 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/PID/pre_final_shared_data_on_wallet.yml");
 
                         } else {
@@ -1353,10 +1246,10 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().scrollUntilNationality();
                             test.mobile().wallet().clickExpandVerification();
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/PID/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1364,7 +1257,7 @@ public class AutomatedStepDefs {
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 test.mobile().wallet().scrollUntilNationality();
@@ -1372,9 +1265,9 @@ public class AutomatedStepDefs {
                                 test.mobile().wallet().scrollUntilPlaceOfBirth();
                                 test.mobile().wallet().clickExpandVerificationDown();
                                 test.mobile().wallet().scrollUpForBirthDateOnPID();
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1462,7 +1355,7 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet.yml");
 
                         } else {
@@ -1471,10 +1364,10 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().clickToViewDetails();
 
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1483,15 +1376,15 @@ public class AutomatedStepDefs {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
 
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
 
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1614,7 +1507,7 @@ public class AutomatedStepDefs {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet.yml");
 
                         } else {
@@ -1622,21 +1515,21 @@ public class AutomatedStepDefs {
                             test.mobile().wallet().clickExpandVerification();
                             test.mobile().wallet().clickToViewDetails();
 
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/pre_final_shared_data_on_wallet_all_attributes.yml");
                         }
 
                     } else {
 
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                     "testdata/mDL/kotlin_pre_final_shared_data_on_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
                                         "testdata/mDL/kotlin_pre_final_shared_data_on_wallet_all_attributes_ios.yml");
                             }
                         }
@@ -1668,22 +1561,22 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().clickViewContent();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_verifier_from_wallet.yml");
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
 //                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1693,23 +1586,20 @@ public class AutomatedStepDefs {
                     test.web().verifier().clickViewContentOnWeb();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet.yml");
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                //TODO
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     }
@@ -1725,25 +1615,21 @@ public class AutomatedStepDefs {
                     test.mobile().verifier().clickViewContent();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
                                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                    verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
-                                } else {
-                                    //to do
+                                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
                                 }
                             }
                         }
@@ -1754,22 +1640,20 @@ public class AutomatedStepDefs {
                     test.web().verifier().checkTheResponse();
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
                             } else {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
                         } else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
                             }
                         }
                     }
@@ -1778,169 +1662,6 @@ public class AutomatedStepDefs {
                     break;
             }
         }
-    }
-
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb(String yamlPath) {
-        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-        WebDriver driver = test.webWebDriverFactory().getDriverWeb();
-
-        String firstRequiredKey = yml.fields.entrySet().stream()
-                .filter(e -> e.getValue().required)
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
-        if (firstRequiredKey != null) {
-            new WebDriverWait(driver, Duration.ofSeconds(30))
-                    .until(d -> d.findElement(By.tagName("body")).getText().contains(firstRequiredKey));
-        }
-
-        String pageText = driver.findElement(By.tagName("body")).getText();
-
-        yml.fields.forEach((fieldKey, cfg) -> {
-
-            if (!cfg.required) return;
-
-            if (!pageText.contains(fieldKey)) {
-                throw new AssertionError("Label not found: " + fieldKey);
-            }
-
-            if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-
-                if (!pageText.contains(cfg.value.trim())) {
-                    throw new AssertionError(
-                            "Wrong value for " + fieldKey +
-                                    " expected: " + cfg.value
-                    );
-                }
-            }
-        });
-    }
-
-
-    private void verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes(String yamlPath) {
-
-        FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            switchToWebView(driver);
-
-            String pageText = getPageText(driver);
-
-            yml.fields.forEach((fieldKey, cfg) -> {
-
-                if (!cfg.required) return;
-
-                if (!pageText.contains(fieldKey)) {
-                    throw new AssertionError("Label not found: " + fieldKey);
-                }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-
-                    if (!pageText.contains(cfg.value.trim())) {
-                        throw new AssertionError(
-                                "Wrong value for " + fieldKey +
-                                        " expected: " + cfg.value
-                        );
-                    }
-                }
-            });
-
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-
-            wait.until(d -> {
-                List<WebElement> els = driver.findElements(
-                        AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
-                );
-
-                return els.size() > 5;
-            });
-
-            List<WebElement> els = driver.findElements(
-                    AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
-            );
-
-            for (WebElement el : els) {
-                System.out.println("TEXT FOUND: " + el.getAttribute("name"));
-            }
-
-            String pageText = collectAllTextsIOS(driver);
-
-            System.out.println("PAGE TEXT: " + pageText);
-
-            yml.fields.forEach((fieldKey, cfg) -> {
-
-                if (!cfg.required) return;
-
-                String normalizedKey = fieldKey.toLowerCase();
-
-                if (!pageText.contains(normalizedKey)) {
-                    throw new AssertionError("Missing label: " + fieldKey);
-                }
-
-                if (cfg.value != null && !cfg.value.trim().isEmpty()) {
-                    String value = cfg.value.trim().toLowerCase();
-
-                    if (!pageText.contains(value)) {
-                        throw new AssertionError("Missing value: " + cfg.value);
-                    }
-                }
-            });
-        }
-    }
-
-    private String collectAllTextsIOS(IOSDriver driver) {
-
-        List<WebElement> elements = driver.findElements(
-                AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
-        );
-
-        StringBuilder allText = new StringBuilder();
-
-        for (WebElement el : elements) {
-            String text = el.getAttribute("name");
-
-            if (text != null && !text.trim().isEmpty()) {
-                allText.append(text.toLowerCase()).append(" ");
-            }
-        }
-
-        return allText.toString();
-    }
-
-    private String getPageText(AndroidDriver driver) {
-        return driver.findElement(By.tagName("body")).getText();
-    }
-
-    private void switchToWebView(AndroidDriver driver) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        wait.until(d -> {
-            for (String context : driver.getContextHandles()) {
-
-                System.out.println("Found context: " + context);
-
-                if (context.contains("WEBVIEW")) {
-                    try {
-                        driver.context(context);
-
-                        if (driver.getPageSource().length() > 0) {
-                            System.out.println("Switched to WebView: " + context);
-                            return true;
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("WebView not ready yet...");
-                    }
-                }
-            }
-            return false;
-        });
     }
 
     @Then("the hyperlink Learn more is a button")

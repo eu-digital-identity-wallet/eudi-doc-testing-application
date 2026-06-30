@@ -39,7 +39,6 @@ public class VerifierElements {
     public static By clickSelectAttributes = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By clickViewContent = By.xpath("//android.widget.Button[@text=\"View Content\"]");
     public static By clickViewContentOnWeb = By.xpath("//button[contains(@class, 'mat-mdc-outlined-button') and .//span[normalize-space(.)='View Content']]");
-    public static By clickCloseOnVerifier = By.xpath("//span[normalize-space()='Close']");
     public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
     public static By walletRespondedMdlKotlin = By.xpath("//android.widget.TextView[@text=\"org.iso.18013.5.1.mDL\"]");
     public static By clickDataOnWebForMdl = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Mobile Driving Licence (MDL)']]");
