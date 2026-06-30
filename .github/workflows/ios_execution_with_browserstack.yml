@@ -15,7 +15,7 @@ on:
         default: develop
 
       test-cases:
-        description: 'Tags to execute'
+        description: 'iOS Tags to execute'
         type: string
 
 jobs:
