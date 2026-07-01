@@ -97,7 +97,7 @@ jobs:
 
           mvn test -ntp \
             -Dapp.url=$BROWSERSTACK_APP_URL \
-            -Dcucumber.filter.tags="@$TEST_TAGS"
+            -Dcucumber.filter.tags="$TEST_TAGS"
 
       # ---------------- BACKUP RESULTS ----------------
       - name: Backup Serenity JSON Results
