@@ -222,7 +222,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
    java locallyTestExecution
    ```
 
-### Step 5: Reports & Logs
+### Step 5: Report & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
 - **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`. - To enable logging for automated scenarios with BrowserStack Device Farm, set in env.properties file:
     ```browserstack.device.logs.enabled=true```
@@ -302,9 +302,9 @@ git config --system core.longpaths true
 
 This section documents the compatibility between test automation versions and EUDI Wallet application versions.
 
-| Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Status | Validated Device           |
-|-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|---|-------------------|
-| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Stable | Samsung Galaxy S22 Ultra (Android 12.0) |
+| Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Validated Device           |
+|-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|-|-------------------|
+| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19   | Samsung Galaxy S22 Ultra (Android 12.0) |
 
 
 ## Contributing
