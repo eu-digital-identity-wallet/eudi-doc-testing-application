@@ -841,16 +841,16 @@ public class Issuer {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            //Locators for YOUR specific elements (from Appium Inspector)
+// Locators
             By[] locators = {
                     AppiumBy.androidUIAutomator("resourceId(\"content\")"),
                     AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
             };
 
             try {
-                // Switch to NATIVE_APP (10s timeout)
+                // Switch to NATIVE_APP
                 if (!"NATIVE_APP".equals(driver.getContext())) {
-                    new WebDriverWait(driver, Duration.ofSeconds(3000))
+                    new WebDriverWait(driver, Duration.ofSeconds(30))
                             .until(d -> {
                                 Set<String> contexts = ((AndroidDriver) d).getContextHandles();
                                 if (contexts.contains("NATIVE_APP")) {
@@ -861,36 +861,37 @@ public class Issuer {
                             });
                 }
 
-                // Try all locators (30s total timeout)
-                for (By locator : locators) {
-                    try {
-                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
-                                .pollingEvery(Duration.ofMillis(500))
-                                .ignoring(StaleElementReferenceException.class)
-                                .ignoring(NoSuchElementException.class)
-                                .until(ExpectedConditions.refreshed(
-                                        ExpectedConditions.visibilityOfElementLocated(locator)
-                                ));
+                // One timeout for ALL locators
+                WebElement element = new WebDriverWait(driver, Duration.ofSeconds(150))
+                        .pollingEvery(Duration.ofMillis(200))
+                        .ignoring(NoSuchElementException.class)
+                        .ignoring(StaleElementReferenceException.class)
+                        .until(d -> {
 
-                        System.out.println("SUCCESS: Element found using: " + locator);
+                            for (By locator : locators) {
+                                try {
+                                    WebElement e = d.findElement(locator);
 
-                        // CLICK THE ELEMENT
-                        element.click();
+                                    if (e.isDisplayed()) {
+                                        System.out.println("SUCCESS: Found using " + locator);
+                                        return e;
+                                    }
+                                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
+                                }
+                            }
 
-                        return;
-                    } catch (TimeoutException ignored) {
-                        // Try next locator
-                    }
-                }
+                            // Nothing found yet -> keep waiting
+                            return null;
+                        });
 
-                // If ALL locators fail
-                throw new AssertionError("Form not found within time");
+                element.click();
+
+            } catch (TimeoutException e) {
+                throw new AssertionError("None of the locators were found within 100 seconds.", e);
 
             } catch (Exception e) {
-                // 4General failed message
                 throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
             }
-
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
@@ -1636,36 +1637,57 @@ public class Issuer {
     public void fillLoginForm() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-            By locator = eu.europa.eudi.elements.android.IssuerElements.clickUsername;
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            boolean found = false;
-            int maxAttempts = 8;
-            int waitSeconds = 90;
+            By[] locators = {
+                    eu.europa.eudi.elements.android.IssuerElements.clickUsername
+            };
 
-            for (int attempt = 1; attempt <= maxAttempts && !found; attempt++) {
-                try {
-                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
-                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-                    driver.context("NATIVE_APP");
-
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-
-                    WebElement element = wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(locator)
-                    );
-
-                    System.out.println("Username field is visible on attempt " + attempt);
-                    found = true;
-
-                } catch (TimeoutException e) {
-                    System.out.println("Attempt " + attempt + " failed - username not visible yet");
-
-                    if (attempt == maxAttempts) {
-                        throw e;
-                    }
+            try {
+                // Wait for NATIVE_APP
+                if (!"NATIVE_APP".equals(driver.getContext())) {
+                    new WebDriverWait(driver, Duration.ofSeconds(30))
+                            .until(d -> {
+                                Set<String> contexts = driver.getContextHandles();
+                                if (contexts.contains("NATIVE_APP")) {
+                                    driver.context("NATIVE_APP");
+                                    return true;
+                                }
+                                return false;
+                            });
                 }
+
+                // One timeout for all locators
+                WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
+                        .pollingEvery(Duration.ofMillis(500))
+                        .ignoring(NoSuchElementException.class)
+                        .ignoring(StaleElementReferenceException.class)
+                        .until(d -> {
+
+                            for (By locator : locators) {
+                                try {
+                                    WebElement e = d.findElement(locator);
+
+                                    if (e.isDisplayed()) {
+                                        System.out.println("SUCCESS: Username found using " + locator);
+                                        return e;
+                                    }
+
+                                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
+                                }
+                            }
+
+                            return null;
+                        });
+
+                // Use the element
+                element.click(); // or element.sendKeys(...)
+
+            } catch (TimeoutException e) {
+                throw new AssertionError("Username field was not found within 100 seconds.", e);
             }
+
+
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
             WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
             username.clear();
