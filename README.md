@@ -302,10 +302,9 @@ git config --system core.longpaths true
 
 This section documents the compatibility between test automation versions and EUDI Wallet application versions.
 
-| Branch Automation Testing                                                                                               | Android App Version | iOS App Version | Release Date | Validated Device           |
-|-------------------------------------------------------------------------------------------------------------------------|---|---|--------------|-|-------------------|
-| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19    | Samsung Galaxy S22 Ultra (Android 12.0) |
-
+| Branch Automation Testing | Android App Version | iOS App Version | Release Date | Validated Device                                       |
+|---------------------------|---------------------|-----------------|--------------|--------------------------------------------------------|
+| [milestone/2026.Q2](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q2) | 2026.06.144-Dev | 2026.6.187-Dev | 2026-06-19 | Samsung Galaxy S22 Ultra (12.0) / iPhone 15 Pro (17.0) |
 
 ## Contributing
 
