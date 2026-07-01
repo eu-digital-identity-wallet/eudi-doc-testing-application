@@ -224,7 +224,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
 
 ### Step 5: Reports & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
-- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`. - To enable logging for automated scenarios, set in env.properties file:
+- **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`. - To enable logging for automated scenarios with BrowserStack Device Farm, set in env.properties file:
     ```browserstack.device.logs.enabled=true```
 ## Running Tests via GitHub Actions & BrowserStack Device Farm
 
@@ -242,12 +242,12 @@ ci.environment=githubactions
 ### Manual Tests
 1. Select **"Manual Tests Execution"** workflow.
 2. Click **Run workflow**, select the branch, and confirm.
-3. Download the **report artifact** (.zip) and open `index.html`.
+3. Download the **manual-serenity-report** (.zip) and open `index.html`.
 
 ### Automated Tests
-1. Select **"Final Summary Report"** workflow.
+1. Select **"Android Automation Tests Execution"** or **"iOS Automation Tests Execution"** workflow .
 2. Click **Run workflow**, configure the branch and test cases.
-3. Download the **serenity-report** and **device-logs** artifacts.
+3. Download the **serenity-report** and **android-device-logs** or **ios-device-logs** artifacts.
 
 ## Test Environment Scope
 
