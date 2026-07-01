@@ -153,7 +153,7 @@ Edit `local-execution.cmd` (Windows) or `local-execution-mac.sh` (Mac) to specif
    java locallyTestExecution
    ```
 
-### Step 6: Reports & Logs
+### Step 6: Report & Logs
 - **Serenity Report**: Open `./target/site/serenity/index.html` in a browser.
 - **App Logs**: Found in `./src/test/resources/features/[platform]/.../logs/ui/[testCase]_[numberRow].log`.
 
