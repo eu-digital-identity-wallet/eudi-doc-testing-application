@@ -39,7 +39,7 @@ The test suite is designed to validate the EUDI Wallet's functionality. Dependin
 - **Java 17**: Required for all tests.
 - **Maven 3.9.6+**: Required for dependency management, build, and test execution.
 
-### Automation-Specific Requirements
+### Automation - Specific Requirements
 If you intend to run automated UI tests locally, the following additional tools are required:
 - **Appium 2.x**: Mobile automation server.
 - **Node.js**: Required to install Appium.
