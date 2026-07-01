@@ -1,6 +1,6 @@
 name: Android Automation Tests Execution
 
-run-name: "Android Automation Tests Execution | ${{ inputs.test-cases }}"
+run-name: "Android Automation Tests Execution | ${{ steps.clean.outputs.clean_tags }}"
 
 on:
   workflow_dispatch:
@@ -37,6 +37,14 @@ jobs:
           clean: false
           lfs: false
           ref: ${{ inputs.branch-to-checkout }}
+
+      - name: Normalize run name
+        id: clean
+        run: |
+          CLEAN_TAGS="${TEST_CASES//@/}"
+          echo "clean_tags=$CLEAN_TAGS" >> $GITHUB_OUTPUT
+        env:
+          TEST_CASES: ${{ inputs.test-cases }}
 
       # ---------------- JDK ----------------
       - name: Set up JDK 17
