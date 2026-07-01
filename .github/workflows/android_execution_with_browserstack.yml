@@ -1,5 +1,7 @@
 name: Android Automation Tests Execution
 
+run-name: "Android Automation Tests Execution | ${{ inputs.test-cases }}"
+
 on:
   workflow_dispatch:
     inputs:
