@@ -1,4 +1,4 @@
-@IOS @US_ETESA @automated @execution_Q2_2026
+@IOS @US_ETESA @automated @MDL
 Feature: Issuance and presentation - mDL
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL

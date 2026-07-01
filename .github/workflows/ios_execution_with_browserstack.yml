@@ -1,5 +1,7 @@
 name: iOS Automation Tests Execution
 
+run-name: "ios Automation Tests Execution | ${{ inputs.test-cases }}"
+
 on:
   workflow_dispatch:
     inputs:

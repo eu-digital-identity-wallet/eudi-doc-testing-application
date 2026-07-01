@@ -98,6 +98,13 @@ jobs:
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
+      # ---------------- BACKUP RESULTS ----------------
+      - name: Backup Serenity JSON Results
+        if: always()
+        run: |
+          mkdir -p target/serenity-backup
+          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
+
       # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
@@ -130,7 +137,7 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -ntp
+          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()

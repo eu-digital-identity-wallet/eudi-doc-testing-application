@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated @execution_Q3_2026
+@ANDROID @US_ETESA @automated @PID
 Feature: Issuance and presentation - PID
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID
