@@ -27,6 +27,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class Issuer {
     TestSetup test;
@@ -1639,67 +1640,31 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            By[] locators = {
-                    eu.europa.eudi.elements.android.IssuerElements.clickUsername
-            };
-
+            WebElement username;
             try {
-                // Wait for NATIVE_APP
-                if (!"NATIVE_APP".equals(driver.getContext())) {
-                    new WebDriverWait(driver, Duration.ofSeconds(30))
-                            .until(d -> {
-                                Set<String> contexts = driver.getContextHandles();
-                                if (contexts.contains("NATIVE_APP")) {
-                                    driver.context("NATIVE_APP");
-                                    return true;
-                                }
-                                return false;
-                            });
-                }
-
-                // One timeout for all locators
-                WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
-                        .pollingEvery(Duration.ofMillis(500))
-                        .ignoring(NoSuchElementException.class)
-                        .ignoring(StaleElementReferenceException.class)
-                        .until(d -> {
-
-                            for (By locator : locators) {
-                                try {
-                                    WebElement e = d.findElement(locator);
-
-                                    if (e.isDisplayed()) {
-                                        System.out.println("SUCCESS: Username found using " + locator);
-                                        return e;
-                                    }
-
-                                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
-                                }
-                            }
-
-                            return null;
-                        });
-
-                // Use the element
-                element.click(); // or element.sendKeys(...)
-
+                username = waitForVisibleAcrossContexts(driver,
+                        IssuerElements.clickUsername, IssuerElements.usernameWeb,
+                        Duration.ofSeconds(100));
             } catch (TimeoutException e) {
+                System.out.println("Contexts at failure: " + driver.getContextHandles());
+                System.out.println("Page source:\n" + driver.getPageSource());
                 throw new AssertionError("Username field was not found within 100 seconds.", e);
             }
+            username.click();
+            username.sendKeys("tneal"); // or wherever the value comes from
 
-
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername)).click();
-            WebElement username = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickUsername));
-            username.clear();
-            username.sendKeys("tneal");
-            test.mobileWebDriverFactory().androidDriver.hideKeyboard();
-
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword)).click();
-            WebElement password = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickPassword));
-            password.clear();
+            WebElement password = waitForVisibleAcrossContexts(driver,
+                    IssuerElements.clickPassword, IssuerElements.passwordWeb,
+                    Duration.ofSeconds(100));
+            password.click();
             password.sendKeys("password");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickSignIn)).click();
 
+            WebElement submit = waitForVisibleAcrossContexts(driver,
+                    IssuerElements.loginSubmit, IssuerElements.loginSubmitWeb,
+                    Duration.ofSeconds(100));
+            submit.click();
+
+            driver.context("NATIVE_APP"); // reset before continuing native steps
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
@@ -1859,10 +1824,30 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            By locator = By.xpath("//android.widget.TextView[@text=\"Scan the generated QR Code to issue the requested Credentials:\"]");
-
+            String expectedText = "Scan the generated QR Code to issue the requested Credentials:";
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-            WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+            WebElement header = wait.until((ExpectedCondition<WebElement>) d -> {
+                AndroidDriver ad = (AndroidDriver) d;
+
+                for (String ctx : ad.getContextHandles()) {
+                    try {
+                        ad.context(ctx);
+
+                        By locator = ctx.equals("NATIVE_APP")
+                                ? By.xpath("//android.widget.TextView[@text=\"" + expectedText + "\"]")
+                                : By.xpath("//*[normalize-space(text())=\"" + expectedText + "\"]");
+
+                        List<WebElement> found = ad.findElements(locator);
+                        if (!found.isEmpty() && found.get(0).isDisplayed()) {
+                            return found.get(0); // driver stays switched into whichever context matched
+                        }
+                    } catch (Exception ignored) {
+                        // context may not be attached yet / transient error — try the next one
+                    }
+                }
+                return null; // triggers another poll
+            });
 
             Assert.assertTrue(header.isDisplayed());
         } else {
@@ -1873,28 +1858,23 @@ public class Issuer {
 
     public void signInUser() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
-            waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+// wait until session has NATIVE_APP context available at all
+            new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
 
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-            ));
-            driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"
-            ));
+            safeScrollForwardAndBack(driver);
 
+            By nativeLocator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed; // //android.widget.TextView[@resource-id="kc-page-title"]
+            By webLocator = By.cssSelector("#kc-page-title");
 
-            By locator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
-
-            WebElement header = new WebDriverWait(driver, Duration.ofSeconds(80))
-                    .until(ExpectedConditions.visibilityOfElementLocated(locator));
-
+            WebElement header = waitForVisibleAcrossContexts(driver, nativeLocator, webLocator, Duration.ofSeconds(80));
             System.out.println("Header is visible: " + header.isDisplayed());
+            Assert.assertTrue(header.isDisplayed());
 
+            driver.context("NATIVE_APP"); // reset context before continuing with native steps
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1913,6 +1893,40 @@ public class Issuer {
                     Literals.Issuer.SIGN_IN_USER_PAGE.label,
                     headerText
             );
+        }
+    }
+
+    public WebElement waitForVisibleAcrossContexts(AndroidDriver driver,
+                                                   By nativeLocator,
+                                                   By webLocator,
+                                                   Duration timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        return wait.until(d -> {
+            AndroidDriver ad = (AndroidDriver) d;
+            for (String ctx : ad.getContextHandles()) {
+                try {
+                    ad.context(ctx);
+                    By locator = ctx.equals("NATIVE_APP") ? nativeLocator : webLocator;
+                    List<WebElement> found = ad.findElements(locator);
+                    if (!found.isEmpty() && found.get(0).isDisplayed()) {
+                        return found.get(0);
+                    }
+                } catch (Exception ignored) {
+                    // context not attached yet / transient — try next context
+                }
+            }
+            return null; // triggers another poll cycle
+        });
+    }
+
+    public void safeScrollForwardAndBack(AndroidDriver driver) {
+        try {
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"));
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"));
+        } catch (Exception e) {
+            // no scrollable native element present — safe to ignore
         }
     }
 

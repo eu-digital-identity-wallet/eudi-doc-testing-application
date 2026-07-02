@@ -30,7 +30,7 @@ public class IssuerElements {
     public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
-    public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]\n");
+    public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
@@ -39,4 +39,10 @@ public class IssuerElements {
     public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
+    public static By codeScreenReady = By.xpath("//*[@text='Codes' or contains(@text,'Code')]");;
+    public static By usernameWeb = By.cssSelector("#username");
+    public static By passwordWeb = By.cssSelector("#password");;
+    public static By loginSubmit = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"kc-login\")");;
+    public static By loginSubmitWeb = By.cssSelector("#kc-login");;
+    ;
 }
