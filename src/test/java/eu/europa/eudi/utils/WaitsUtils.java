@@ -1,11 +1,14 @@
 package eu.europa.eudi.utils;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class WaitsUtils {
     public static WebElement waitForExactText(By locator,
@@ -42,4 +45,5 @@ public class WaitsUtils {
             throw new TimeoutException("Timeout: Text '" + expectedText + "' not found for locator '" + locator + "' within " + timeoutSeconds + " seconds.", e);
         }
     }
+
 }
