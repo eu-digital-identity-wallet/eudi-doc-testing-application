@@ -64,7 +64,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);
                 options.setCapability("disableWindowAnimation", true);
-                options.setCapability("newCommandTimeout", 300);
+                options.setCapability("newCommandTimeout", 500);
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("allowInvisibleElements", true);
                 options.setCapability("appium:settings", appiumSettings);
@@ -74,6 +74,11 @@ public class MobileWebDriverFactory {
                 options.setCapability("name", featureName + " - Android Test");
                 options.setCapability("feature_name", featureName); // used for logs mapping
                 options.setCapability("sessionName", featureName);  // fallback key also recognized by BS
+                options.setCapability("appium:adbExecTimeout", 120000);
+                options.setCapability("appium:uiautomator2ServerLaunchTimeout", 120000);
+                options.setCapability("appium:androidInstallTimeout", 180000);
+                options.setCapability("appium:deviceReadyTimeout", 120);
+                options.setCapability("appium:autoGrantPermissions", true);
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
