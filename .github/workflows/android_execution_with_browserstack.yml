@@ -134,9 +134,9 @@ jobs:
         run: |
           if [ -s target/rerun2.txt ]; then
             mvn test -Dtest=RerunTestRunner2
-         else
+          else
             echo "No rerun2.txt found"
-         fi
+          fi
 
       - name: Final Merge Results
         if: always()
