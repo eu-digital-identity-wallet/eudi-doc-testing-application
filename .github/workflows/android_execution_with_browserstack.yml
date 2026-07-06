@@ -142,10 +142,6 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-      - name: Final Merge Results
-        if: always()
-        run: python3 merge_serenity_results.py || true
-
       # ---------------- REPORT (FIXED) ----------------
       - name: Generate Serenity Report
         if: always()
