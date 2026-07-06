@@ -129,6 +129,19 @@ jobs:
             echo "No rerun2.txt found"
           fi
 
+      - name: Rerun Pass 3
+        if: always()
+        run: |
+          if [ -s target/rerun2.txt ]; then
+            mvn test -Dtest=RerunTestRunner2
+         else
+            echo "No rerun2.txt found"
+         fi
+
+      - name: Final Merge Results
+        if: always()
+        run: python3 merge_serenity_results.py || true
+
       - name: Final Merge Results
         if: always()
         run: python3 merge_serenity_results.py || true
