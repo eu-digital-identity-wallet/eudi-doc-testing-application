@@ -187,38 +187,61 @@ public class Issuer {
     public void qrCodeIsDisplayedKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            new WebDriverWait(driver, Duration.ofSeconds(2000))
-                    .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
 
+            int maxAttempts = 5;
+            int attempt = 0;
             boolean found = false;
 
-            try {
-                driver.context("NATIVE_APP");
-                WebElement nativeQr = new WebDriverWait(driver, Duration.ofSeconds(15))
-                        .until(ExpectedConditions.visibilityOfElementLocated(
-                                eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayedKotlin
-                        ));
-                Assert.assertTrue(nativeQr.isDisplayed());
-                found = true;
-                System.out.println("Kotlin QR found in NATIVE");
-            } catch (Exception e) {
-                System.out.println("Kotlin QR not found in NATIVE");
+            while (attempt < maxAttempts && !found) {
+                attempt++;
+                System.out.println("Attempt " + attempt + " to find QR. Refreshing...");
+
+                // ADDED: Refresh functionality
+                pullToRefresh(driver);
+                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+
+                // --- YOUR ORIGINAL CODE STARTS HERE ---
+                new WebDriverWait(driver, Duration.ofSeconds(2000))
+                        .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+
+                try {
+                    driver.context("NATIVE_APP");
+                    WebElement nativeQr = new WebDriverWait(driver, Duration.ofSeconds(15))
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    eu.europa.eudi.elements.android.IssuerElements.qrCodeIsDisplayedKotlin
+                            ));
+                    Assert.assertTrue(nativeQr.isDisplayed());
+                    found = true;
+                    System.out.println("Kotlin QR found in NATIVE");
+                } catch (Exception e) {
+                    System.out.println("Kotlin QR not found in NATIVE");
+                }
+
+                if (!found) {
+                    for (String context : driver.getContextHandles()) {
+                        if (context.contains("WEBVIEW")) {
+                            driver.context(context);
+                            break;
+                        }
+                    }
+                    try {
+                        WebElement webQr = new WebDriverWait(driver, Duration.ofSeconds(25))
+                                .until(ExpectedConditions.visibilityOfElementLocated(
+                                        By.xpath("//img | //canvas | //*[contains(@class,'qr')]")
+                                ));
+                        Assert.assertTrue(webQr.isDisplayed());
+                        System.out.println("Kotlin QR found in WEBVIEW");
+                        found = true; // Added this so the loop knows to stop
+                    } catch (Exception e) {
+                        System.out.println("Kotlin QR not found in WEBVIEW");
+                    }
+                    driver.context("NATIVE_APP");
+                }
+                // --- YOUR ORIGINAL CODE ENDS HERE ---
             }
 
             if (!found) {
-                for (String context : driver.getContextHandles()) {
-                    if (context.contains("WEBVIEW")) {
-                        driver.context(context);
-                        break;
-                    }
-                }
-                WebElement webQr = new WebDriverWait(driver, Duration.ofSeconds(25))
-                        .until(ExpectedConditions.visibilityOfElementLocated(
-                                By.xpath("//img | //canvas | //*[contains(@class,'qr')]")
-                        ));
-                Assert.assertTrue(webQr.isDisplayed());
-                System.out.println("Kotlin QR found in WEBVIEW");
-                driver.context("NATIVE_APP");
+                throw new AssertionError("QR Code not found after " + maxAttempts + " refreshes.");
             }
         } else {
             WebElement el = test.mobileWebDriverFactory().getWait().until(
@@ -303,7 +326,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            //Locators for YOUR specific elements (from Appium Inspector)
+// Locators for YOUR specific elements
             By[] locators = {
                     AppiumBy.androidUIAutomator("resourceId(\"FC\")"),
                     AppiumBy.androidUIAutomator("className(\"android.widget.RadioButton\").resourceId(\"FC\")"),
@@ -311,48 +334,61 @@ public class Issuer {
                     AppiumBy.androidUIAutomator("className(\"android.widget.TextView\").text(\"FormEU\")")
             };
 
-            try {
-                // Switch to NATIVE_APP (10s timeout)
-                if (!"NATIVE_APP".equals(driver.getContext())) {
-                    new WebDriverWait(driver, Duration.ofSeconds(3000))
-                            .until(d -> {
-                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
-                                if (contexts.contains("NATIVE_APP")) {
-                                    ((AndroidDriver) d).context("NATIVE_APP");
-                                    return true;
-                                }
-                                return false;
-                            });
-                }
+            int maxAttempts = 5; // Max number of refreshes to try
+            int attempt = 0;
+            boolean elementClicked = false;
 
-                // Try all locators (30s total timeout)
-                for (By locator : locators) {
-                    try {
-                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
-                                .pollingEvery(Duration.ofMillis(500))
-                                .ignoring(StaleElementReferenceException.class)
-                                .ignoring(NoSuchElementException.class)
-                                .until(ExpectedConditions.refreshed(
-                                        ExpectedConditions.elementToBeClickable(locator)
-                                ));
+            while (attempt < maxAttempts && !elementClicked) {
+                attempt++;
+                System.out.println("Attempt " + attempt + " to find FormEU. Refreshing page...");
 
-                        System.out.println("SUCCESS: Element found using: " + locator);
+                // 1. Perform the refresh gesture
+                pullToRefresh(driver);
 
-                        // CLICK THE ELEMENT
-                        element.click();
+                // 2. Pause to allow the app to process the refresh and reload data
+                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
 
-                        return;
-                    } catch (TimeoutException ignored) {
-                        // Try next locator
+                try {
+                    // 3. Ensure we are in NATIVE_APP context
+                    if (!"NATIVE_APP".equals(driver.getContext())) {
+                        driver.context("NATIVE_APP");
                     }
+
+                    // 4. Try all locators within a reasonable window for THIS attempt
+                    // We use a shorter timeout (e.g., 15s) so we can refresh again if it's not there
+                    WebElement element = new WebDriverWait(driver, Duration.ofSeconds(15))
+                            .pollingEvery(Duration.ofMillis(500))
+                            .ignoring(NoSuchElementException.class)
+                            .ignoring(StaleElementReferenceException.class)
+                            .until(d -> {
+                                for (By locator : locators) {
+                                    try {
+                                        WebElement e = d.findElement(locator);
+                                        if (e.isDisplayed() && e.isEnabled()) {
+                                            System.out.println("SUCCESS: Found and ready to click using: " + locator);
+                                            return e;
+                                        }
+                                    } catch (Exception ignored) {
+                                        // Try the next locator in the list
+                                    }
+                                }
+                                return null; // None of the locators found in this poll
+                            });
+
+                    if (element != null) {
+                        element.click();
+                        elementClicked = true;
+                        System.out.println("Successfully clicked the element on attempt " + attempt);
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Attempt " + attempt + " failed: " + e.getMessage());
                 }
+            }
 
-                // If ALL locators fail
-                throw new AssertionError("Click FormEu not found within time");
-
-            } catch (Exception e) {
-                // 4General failed message
-                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
+// Final check: If the loop finished and we never clicked the element, throw the error
+            if (!elementClicked) {
+                throw new AssertionError("Click FormEu not found after " + maxAttempts + " refreshes and attempts.");
             }
         } else {
            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -842,57 +878,67 @@ public class Issuer {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-// Locators
+            // Locators
             By[] locators = {
                     AppiumBy.androidUIAutomator("resourceId(\"content\")"),
                     AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
             };
 
-            try {
-                // Switch to NATIVE_APP
-                if (!"NATIVE_APP".equals(driver.getContext())) {
-                    new WebDriverWait(driver, Duration.ofSeconds(30))
+            int maxAttempts = 5; // Maximum number of times to refresh
+            int attempt = 0;
+            WebElement element = null;
+
+            while (attempt < maxAttempts) {
+                attempt++;
+                System.out.println("Attempt " + attempt + " to find element. Refreshing page...");
+
+                // 1. Perform the refresh
+                pullToRefresh(driver);
+
+                // 2. Small pause to let the refresh action register
+                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+
+                try {
+                    // 3. Ensure we are in NATIVE_APP
+                    if (!"NATIVE_APP".equals(driver.getContext())) {
+                        driver.context("NATIVE_APP");
+                    }
+
+                    // 4. Short wait to see if the element appeared after this specific refresh
+                    // We use a shorter timeout here (e.g., 15 seconds) because we want to
+                    // refresh again if it doesn't appear quickly.
+                    element = new WebDriverWait(driver, Duration.ofSeconds(15))
+                            .pollingEvery(Duration.ofMillis(500))
+                            .ignoring(NoSuchElementException.class)
+                            .ignoring(StaleElementReferenceException.class)
                             .until(d -> {
-                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
-                                if (contexts.contains("NATIVE_APP")) {
-                                    ((AndroidDriver) d).context("NATIVE_APP");
-                                    return true;
+                                for (By locator : locators) {
+                                    try {
+                                        WebElement e = d.findElement(locator);
+                                        if (e.isDisplayed()) {
+                                            System.out.println("SUCCESS: Found using " + locator);
+                                            return e;
+                                        }
+                                    } catch (Exception ignored) {}
                                 }
-                                return false;
+                                return null;
                             });
+
+                    if (element != null) {
+                        break; // Exit the while loop, we found it!
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Attempt " + attempt + " failed to find element: " + e.getMessage());
                 }
-
-                // One timeout for ALL locators
-                WebElement element = new WebDriverWait(driver, Duration.ofSeconds(150))
-                        .pollingEvery(Duration.ofMillis(200))
-                        .ignoring(NoSuchElementException.class)
-                        .ignoring(StaleElementReferenceException.class)
-                        .until(d -> {
-
-                            for (By locator : locators) {
-                                try {
-                                    WebElement e = d.findElement(locator);
-
-                                    if (e.isDisplayed()) {
-                                        System.out.println("SUCCESS: Found using " + locator);
-                                        return e;
-                                    }
-                                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
-                                }
-                            }
-
-                            // Nothing found yet -> keep waiting
-                            return null;
-                        });
-
-                element.click();
-
-            } catch (TimeoutException e) {
-                throw new AssertionError("None of the locators were found within 100 seconds.", e);
-
-            } catch (Exception e) {
-                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
             }
+
+            // Final Action
+            if (element != null) {
+                element.click();
+            } else {
+                throw new AssertionError("Element was not displayed even after " + maxAttempts + " refreshes.");
+        }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
@@ -933,6 +979,30 @@ public class Issuer {
 
             Assert.assertTrue("Form not displayed correctly", found);
         }
+    }
+
+    public void pullToRefresh(AndroidDriver driver) {
+        Dimension size = driver.manage().window().getSize();
+        int centerX = size.width / 2;
+
+        // START: Lower the start point to avoid the system status bar
+        int top = 400;    // Changed from 200 to 400
+
+        // END: Stop the swipe before the bottom of the screen
+        int bottom = 700; // Changed from 800 to 700 (shorter, more controlled pull)
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), centerX, top));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+        // Increase duration slightly to make it look like a human "pull" rather than a "flick"
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), centerX, bottom));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
+        System.out.println("Performed a safe Pull-to-Refresh gesture.");
     }
 
     public void issuePID() throws InterruptedException {
@@ -1267,60 +1337,71 @@ public class Issuer {
 
     public void authorizeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            //Locators for YOUR specific elements (from Appium Inspector)
-            By[] locators = {
-                    AppiumBy.androidUIAutomator("resourceId(\"//android.view.View[@resource-id=\"authForm\"]\")"),
-                    AppiumBy.androidUIAutomator("new UiSelector().text(\"Review & Send\")")
-            };
+            int maxAttempts = 5;
+            int attempt = 0;
+            boolean success = false;
 
-            try {
-                // Switch to NATIVE_APP (10s timeout)
-                if (!"NATIVE_APP".equals(driver.getContext())) {
-                    new WebDriverWait(driver, Duration.ofSeconds(3000))
-                            .until(d -> {
-                                Set<String> contexts = ((AndroidDriver) d).getContextHandles();
-                                if (contexts.contains("NATIVE_APP")) {
-                                    ((AndroidDriver) d).context("NATIVE_APP");
-                                    return true;
-                                }
-                                return false;
-                            });
-                }
+            while (attempt < maxAttempts && !success) {
+                attempt++;
+                System.out.println("Attempt " + attempt + " to verify Authorize page. Refreshing...");
 
-                // Try all locators (30s total timeout)
-                for (By locator : locators) {
-                    try {
-                        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(100))
-                                .pollingEvery(Duration.ofMillis(500))
-                                .ignoring(StaleElementReferenceException.class)
-                                .ignoring(NoSuchElementException.class)
-                                .until(ExpectedConditions.refreshed(
-                                        ExpectedConditions.visibilityOfElementLocated(locator)
-                                ));
+                // 1. Perform the refresh gesture
+                pullToRefresh(driver);
+                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
 
-                        System.out.println("SUCCESS: Element found using: " + locator);
+                try {
+                    // 2. Verify the Page Header
+                    // We wrap this in a try-catch so if the header is missing, we refresh and try again
+                    String pageHeader = test.mobileWebDriverFactory().getWait().until(
+                            ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)
+                    ).getText();
 
-                        // CLICK THE ELEMENT
-                        element.click();
+                    Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
+                    System.out.println("Header verified correctly.");
 
-                        return;
-                    } catch (TimeoutException ignored) {
-                        // Try next locator
+                    // 3. Switch to NATIVE_APP
+                    if (!"NATIVE_APP".equals(driver.getContext())) {
+                        driver.context("NATIVE_APP");
                     }
+
+                    // 4. Search for the form elements
+                    By[] locators = {
+                            AppiumBy.androidUIAutomator("resourceId(\"//android.view.View[@resource-id=\"authForm\"]\")"),
+                            AppiumBy.androidUIAutomator("new UiSelector().text(\"Review & Send\")")
+                    };
+
+                    // We look for all locators within a shared timeout for this attempt
+                    WebElement element = new WebDriverWait(driver, Duration.ofSeconds(15))
+                            .pollingEvery(Duration.ofMillis(500))
+                            .ignoring(StaleElementReferenceException.class)
+                            .ignoring(NoSuchElementException.class)
+                            .until(d -> {
+                                for (By locator : locators) {
+                                    try {
+                                        WebElement e = d.findElement(locator);
+                                        if (e.isDisplayed()) return e;
+                                    } catch (Exception ignored) {}
+                                }
+                                return null;
+                            });
+
+                    if (element != null) {
+                        element.click();
+                        System.out.println("SUCCESS: Element found and clicked.");
+                        success = true; // Mark as successful to break the loop
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Attempt " + attempt + " failed: " + e.getMessage());
+                    // The loop will now continue to the next attempt (refresh)
                 }
-
-                // If ALL locators fail
-                throw new AssertionError("Form not found within time");
-
-            } catch (Exception e) {
-                // 4General failed message
-                throw new AssertionError("Failed to find or click element: " + e.getMessage(), e);
             }
 
+            if (!success) {
+                throw new AssertionError("Authorize page or form was not found/clickable after " + maxAttempts + " refreshes.");
+            }
 
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayed)).getText();
