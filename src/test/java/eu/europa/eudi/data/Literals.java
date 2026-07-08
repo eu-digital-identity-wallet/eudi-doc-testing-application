@@ -22,8 +22,6 @@ public interface Literals {
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
         HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
-        ADD_PID_PAGE("Choose a digital document from the list below to add to your wallet."),
-        QR_SCANNER_IS_ACTIVATED("Scan a QR code provided from a Relying Party to present a digital document."),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
         MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
@@ -67,7 +65,6 @@ public interface Literals {
         CREDENTIAL_PAGE("Please select credentials"),
         QR_CODE("QR Code"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin"),
         SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
         SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Please review the selected attributes before sending to the EudiWallet demo app."),

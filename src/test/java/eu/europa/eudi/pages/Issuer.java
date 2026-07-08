@@ -198,7 +198,6 @@ public class Issuer {
 
                 // ADDED: Refresh functionality
                 pullToRefresh(driver);
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
 
                 // --- YOUR ORIGINAL CODE STARTS HERE ---
                 new WebDriverWait(driver, Duration.ofSeconds(2000))
@@ -346,7 +345,7 @@ public class Issuer {
                 pullToRefresh(driver);
 
                 // 2. Pause to allow the app to process the refresh and reload data
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+
 
                 try {
                     // 3. Ensure we are in NATIVE_APP context
@@ -896,7 +895,6 @@ public class Issuer {
                 pullToRefresh(driver);
 
                 // 2. Small pause to let the refresh action register
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
 
                 try {
                     // 3. Ensure we are in NATIVE_APP
@@ -1349,7 +1347,6 @@ public class Issuer {
 
                 // 1. Perform the refresh gesture
                 pullToRefresh(driver);
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
 
                 try {
                     // 2. Verify the Page Header

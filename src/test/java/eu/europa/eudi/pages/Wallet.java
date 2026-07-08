@@ -5,7 +5,6 @@ import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.WaitsUtils;
 import eu.europa.eudi.utils.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
@@ -20,7 +19,6 @@ import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
 import com.google.zxing.BarcodeFormat;
@@ -121,14 +119,6 @@ public class Wallet {
         }
     }
 
-    public void clickNextButton() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.nextButton)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.nextButton)).click();
-        }
-    }
-
     public void renterThePin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String fullPin = test.envDataConfig().getPin();
@@ -178,14 +168,6 @@ public class Wallet {
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6).sendKeys(String.valueOf(sixthDigit));
-        }
-    }
-
-    public void clickConfirm() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickConfirm)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickConfirm)).click();
         }
     }
 
@@ -665,35 +647,6 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.closeCorrespondingMessage)).click();
         }else{
         }
-    }
-
-    private void slowScrollFirst(AndroidDriver driver) {
-        Dimension size = driver.manage().window().getSize();
-
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.60);
-        int endY   = (int) (size.height * 0.30);
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
-
-        swipe.addAction(finger.createPointerMove(
-                Duration.ZERO,
-                PointerInput.Origin.viewport(),
-                startX,
-                startY));
-
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-
-        swipe.addAction(finger.createPointerMove(
-                Duration.ofMillis(500),
-                PointerInput.Origin.viewport(),
-                startX,
-                endY));
-
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        driver.perform(Collections.singletonList(swipe));
     }
 
     public void scrollUntilmDLOnDocuments() {
@@ -1536,11 +1489,6 @@ public class Wallet {
             if (noChangeCounter >= 2) break;
 
             scrollFast(driver, startX, startY, endY);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
         }
 
         return allTexts;
@@ -1582,5 +1530,37 @@ public class Wallet {
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(swipe));
+    }
+
+    public void restartApp() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            Thread.sleep(500);
+            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((AndroidDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            test.mobile().wallet().loginPageIsDisplayed();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            Thread.sleep(500);
+            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
+            new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(d -> {
+                        try {
+                            return ((IOSDriver) d).getPageSource() != null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    });
+            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+            test.mobile().wallet().loginPageIsDisplayed();
+        }
     }
 }

@@ -49,6 +49,11 @@ public class ManuallyStepDefs {
         //manual
     }
 
+    @Then("the document should close")
+    public void theDocumentShouldClose() {
+        //manual
+    }
+
     @When("the user clicks add doc button")
     public void theUserClicksAddDocButton() {
         //manual

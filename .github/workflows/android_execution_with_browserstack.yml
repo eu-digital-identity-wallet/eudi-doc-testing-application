@@ -13,13 +13,15 @@ on:
           - develop
           - milestone/2026.Q1
           - milestone/2026.Q2
-          - refactor
+
         default: develop
 
       test-cases:
         description: 'Android Tags to execute'
-        type: string
-        required: true
+        type: choice
+        options:
+          - PID mso_mdoc
+          - MDL
 
 jobs:
   build:

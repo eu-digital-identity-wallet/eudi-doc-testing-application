@@ -37,17 +37,13 @@ public class WalletElements {
     public static By clickToAddDocument = By.id(APP_PACKAGE + ":id/documents_screen_plus_button");
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
-    public static By clickHomeButton = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_home");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID (MSO MDoc)\"])");
     public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
     public static By clickDownArrow = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By closeCorrespondingMessage = By.xpath("//android.view.View[@content-desc=\"Close sheet\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
-    public static By addPIDPageIsDisplayed = By.id(APP_PACKAGE + ":id/add_document_screen_subtitle");
-    public static By clickPIDOnDocumentsSecond = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
     public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
     public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");
-    public static By scanQRIsActivated = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from a Relying Party to present a digital document.\"]");
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By walletLink = By.xpath("//android.widget.TextView[@text=\"Link\"]");
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
