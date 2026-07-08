@@ -13,13 +13,15 @@ on:
           - develop
           - milestone/2026.Q1
           - milestone/2026.Q2
-          - refactor
+
         default: develop
 
       test-cases:
         description: 'Android Tags to execute'
-        type: string
-        required: true
+        type: choice
+        options:
+          - PID mso_mdoc
+          - MDL
 
 jobs:
   build:
@@ -92,11 +94,18 @@ jobs:
         env:
           TEST_CASES: ${{ inputs.test-cases }}
         run: |
-          TEST_TAGS="$TEST_CASES and @ANDROID"
+          TEST_TAGS="@$TEST_CASES and @ANDROID"
           echo "Running tests: $TEST_TAGS"
 
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
+
+      # ---------------- BACKUP RESULTS ----------------
+      - name: Backup Serenity JSON Results
+        if: always()
+        run: |
+          mkdir -p target/serenity-backup
+          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
 
       # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -122,6 +131,15 @@ jobs:
             echo "No rerun2.txt found"
           fi
 
+      - name: Rerun Pass 3
+        if: always()
+        run: |
+          if [ -s target/rerun2.txt ]; then
+            mvn test -Dtest=RerunTestRunner2
+          else
+            echo "No rerun2.txt found"
+          fi
+
       - name: Final Merge Results
         if: always()
         run: python3 merge_serenity_results.py || true
@@ -130,7 +148,7 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -ntp
+          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()

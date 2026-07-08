@@ -29,11 +29,6 @@
           type: string
           default: "@automated"
 
-        manual-tag:
-          description: 'Manual test tag'
-          type: string
-          default: "@Q3_2025"
-
   jobs:
 
     # =====================================================
@@ -85,7 +80,7 @@
         - name: Run Android Tests
           continue-on-error: true
           run: |
-            TEST_TAGS="${{ inputs.test-cases-android }} and @ANDROID"            
+            TEST_TAGS="@${{ inputs.test-cases-android }} and @ANDROID"            
             echo "Running tests: $TEST_TAGS"
             
             mvn clean verify -ntp \
@@ -144,7 +139,7 @@
         - name: Run iOS Tests
           continue-on-error: true
           run: |
-            TEST_TAGS="${{ inputs.test-cases-ios }} and @IOS"
+            TEST_TAGS="@${{ inputs.test-cases-ios }} and @IOS"
             
             echo "Running tests: $TEST_TAGS"
             
