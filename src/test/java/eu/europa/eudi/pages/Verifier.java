@@ -4,7 +4,6 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
-import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -96,7 +95,9 @@ public class Verifier {
             Dimension dropdownSize = dropdown.getSize();
             test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() - 50);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
+            WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
+            Dimension dropdownSize2 = dropdown2.getSize();
+            test.mobile().wallet().tapAction(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() / 3);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
@@ -219,16 +220,6 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.walletResponded)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED.label, pageHeader);
         }
-    }
-
-    public void clickMsoMdocRealDevice() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        int centerX = 545;
-        int centerY = 1715;
-
-        new TouchAction(driver)
-                .tap(PointOption.point(centerX, centerY))
-                .perform();
     }
 
     public void chooseWalletPageIsDisplayed() {
@@ -552,8 +543,9 @@ public class Verifier {
                 Dimension dropdownSize = dropdown.getSize();
                 test.mobile().wallet().tapAction(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc)).click();
-                clickMsoMdocRealDevice();
+                WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
+                Dimension dropdownSize2 = dropdown2.getSize();
+                test.mobile().wallet().tapAction(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() / 3);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();

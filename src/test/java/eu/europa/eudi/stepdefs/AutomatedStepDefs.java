@@ -1,11 +1,7 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.YmlLoader;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.And;
@@ -13,16 +9,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import static org.junit.Assert.fail;
 
 public class AutomatedStepDefs {
@@ -53,35 +43,7 @@ public class AutomatedStepDefs {
 
     @Given("the user is on the Login screen")
     public void theUserIsOnTheLoginScreen() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Thread.sleep(500);
-            driver.terminateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-            new WebDriverWait(driver, Duration.ofSeconds(50))
-                    .until(d -> {
-                        try {
-                            return ((AndroidDriver) d).getPageSource() != null;
-                        } catch (Exception e) {
-                            return false;
-                        }
-                    });
-            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
-            test.mobile().wallet().loginPageIsDisplayed();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            Thread.sleep(500);
-            driver.terminateApp(test.envDataConfig().getAppiumIosBundleId());
-            new WebDriverWait(driver, Duration.ofSeconds(50))
-                    .until(d -> {
-                        try {
-                            return ((IOSDriver) d).getPageSource() != null;
-                        } catch (Exception e) {
-                            return false;
-                        }
-                    });
-            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
-            test.mobile().wallet().loginPageIsDisplayed();
-        }
+        test.mobile().wallet().restartApp();
     }
 
     @Given("the test is being ignored")
@@ -128,17 +90,12 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickFromList();
     }
 
-    @Then("the wallet displays a predefined list of attestations that the user can issue and add to their EUDI Wallet")
-    public void theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet() {
-      //donothing
-    }
 
     @Given("the user is viewing the predefined list of attestations")
     public void theUserIsViewingThePredefinedListOfAttestations() throws InterruptedException {
         theUserIsOnTheDocumentsScreen();
         theUserSelectsToAddANewDocument();
         theUserSelectsToAddANewDocumentFromList();
-        theWalletShouldDisplayAPredefinedListOfAttestationsThatTheUserCanIssueAndAddToTheirEUDIWallet();
     }
 
     @When("the user selects one attestation to be issued")
@@ -151,25 +108,6 @@ public class AutomatedStepDefs {
     @Then("the wallet displays a success screen")
     public void theWalletDisplaysASuccessScreen() {
         test.mobile().issuer().successfullySharedMessage();
-    }
-
-    @And("the screen informs the user about the attestation issued and the issuer who issued it")
-    public void theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt() {
-         //donothing
-    }
-
-    @And("the screen displays a Close button to return to the Home screen")
-    public void theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen() {
-         //donothing
-    }
-
-    @Given("the user is viewing the success screen after an attestation is issued")
-    public void theUserIsViewingTheSuccessScreenAfterAnAttestationIsIssued() throws InterruptedException {
-        theUserIsViewingThePredefinedListOfAttestations();
-        theUserSelectsOneAttestationToBeIssued();
-        theWalletDisplaysASuccessScreen();
-        theScreenShouldInformTheUserAboutTheAttestationIssuedAndTheIssuerWhoIssuedIt();
-        theScreenShouldDisplayACloseButtonToReturnToTheHomeScreen();
     }
 
     @When("the user closes the success screen")
@@ -218,17 +156,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickUseEudiw();
     }
 
-    @Then("the user is redirected to the EUDI wallet application")
-    public void theUserIsRedirectedToTheEUDIWalletApplication() {
-        //manual
-    }
-
-    @And("the user enters the PIN")
-    public void theUserEntersThePIN() {
-        //manual
-    }
-
-
     @When("the request from the issuer is displayed on the wallet app")
     public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
         test.mobile().wallet().detailsArePresented();
@@ -237,16 +164,6 @@ public class AutomatedStepDefs {
     @Then("the user clicks on the ISSUE button")
     public void theUserClicksOnTheISSUEButton() {
         test.mobile().wallet().clickIssue();
-    }
-
-    @Then("the Wallet app requests the transaction code")
-    public void theWalletAppRequestsTheTransactionCode() {
-       //donothing
-    }
-
-    @And("the user enters the transaction code provided by the Issuer")
-    public void theUserEntersTheTransactionCodeProvidedByTheIssuer() {
-       //donothing
     }
 
     @When("the Wallet application displays a success message")
@@ -297,23 +214,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickUseEudiw();
     }
 
-    @Then("the Wallet is initiated and the user is presented with details of the credentials to be issued \\(type of credential, issuer name, image)")
-    public void theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage() {
-        //donothing
-    }
-
-    @Given("the user is presented with details of the credentials to be issued")
-    public void theUserIsPresentedWithDetailsOfTheCredentialsToBeIssued() throws InterruptedException {
-        theUserIsPresentedWithAURLToInitiateTheEUDIWallet();
-        theUserSelectsTheURL();
-        theWalletIsInitiatedAndTheUserIsPresentedWithDetailsOfTheCredentialsToBeIssuedTypeOfCredentialIssuerNameImage();
-    }
-
-    @When("the user selects to proceed with the issuance process")
-    public void theUserSelectsToProceedWithTheIssuanceProcess() {
-       //donothing
-    }
-
     @Then("the user is redirected to the Issuer service to present their PID")
     public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
         test.mobile().issuer().authenticationPageIsDisplayed();
@@ -338,24 +238,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickUseEudiw();
     }
 
-    @And("the user sees the details regarding the issuance")
-    public void theUserSeesTheDetailsRegardingTheIssuance() {
-        //donothing
-    }
-
-    @Given("the user is on the wallet app with issuance details")
-    public void theUserIsOnTheWalletAppWithIssuanceDetails() throws InterruptedException {
-        theUserIsOnTheIssuerServicePage();
-        theUserChoosesToIssueACredentialToTheWalletApp();
-        theUserIsRedirectedToTheWalletApp();
-        theUserSeesTheDetailsRegardingTheIssuance();
-    }
-
-    @When("the user clicks the Issue button")
-    public void theUserClicksTheIssueButton() {
-      //donothing
-    }
-
     @Then("the user is redirected to the issuer for authentication and consent")
     public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
         test.mobile().issuer().authenticationPageIsDisplayed();
@@ -366,19 +248,9 @@ public class AutomatedStepDefs {
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
-    @When("the user selects the Online option in the Authenticate section")
-    public void theUserSelectsTheOnlineOptionInTheAuthenticateSection() {
-        //donothing
-    }
-
     @When("the user decides not to proceed")
     public void theUserDecidesNotToProceed() {
         test.mobile().verifier().insertPIN2();
-    }
-
-    @Then("the user can select the Abort operation option")
-    public void theUserCanSelectTheAbortOperationOption() {
-        //donothing
     }
 
     @And("EUDI Wallet should return the user to the main page")
@@ -386,21 +258,9 @@ public class AutomatedStepDefs {
         test.mobile().wallet().dashboardPageIsDisplayed();
     }
 
-    @When("the EUDI Wallet receives the signed document")
-    public void theEUDIWalletReceivesTheSignedDocument() {
-        //donothing
-    }
-
     @Then("the EUDI Wallet enables the user to share the document or close the process")
     public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
         test.mobile().wallet().clickDone();
-    }
-
-    @Given("the user has been redirected to the Issuer service to present their PID")
-    public void theUserHasBeenRedirectedToTheIssuerServiceToPresentTheirPID() throws InterruptedException {
-        theUserIsPresentedWithDetailsOfTheCredentialsToBeIssued();
-        theUserSelectsToProceedWithTheIssuanceProcess();
-        theUserIsRedirectedToTheIssuerServiceToPresentTheirPID();
     }
 
     @When("the EUDI Wallet displays the presentation request for PID")
@@ -414,28 +274,9 @@ public class AutomatedStepDefs {
         test.mobile().verifier().viewDataPage();
     }
 
-    @Given("the user has been prompted to consent by selecting the Share button")
-    public void theUserHasBeenPromptedToConsentBySelectingTheShareButton() throws InterruptedException {
-        theUserHasBeenRedirectedToTheIssuerServiceToPresentTheirPID();
-        theEUDIWalletDisplaysThePresentationRequestForPID();
-        theUserIsPromptedToConsentBySelectingTheShareButton();
-    }
-
     @When("the user selects the Share button")
     public void theUserSelectsTheShareButton() {
         test.mobile().wallet().clickShareButton();
-    }
-
-    @Then("the user is prompted to enter their six-digit PIN")
-    public void theUserIsPromptedToEnterTheirSixDigitPIN() {
-      //donothing
-    }
-
-    @Given("the user has been prompted to enter their six-digit PIN")
-    public void theUserHasBeenPromptedToEnterTheirSixDigitPIN() throws InterruptedException {
-        theUserHasBeenPromptedToConsentBySelectingTheShareButton();
-        theUserSelectsTheShareButton();
-        theUserIsPromptedToEnterTheirSixDigitPIN();
     }
 
     @When("the user enters their six-digit PIN correctly")
@@ -468,13 +309,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickOnDocuments();
     }
 
-    @Given("the user is on the issuer page for authentication and consent")
-    public void theUserIsOnTheIssuerPageForAuthenticationAndConsent() throws InterruptedException {
-        theUserIsOnTheWalletAppWithIssuanceDetails();
-        theUserClicksTheIssueButton();
-        theUserIsRedirectedToTheIssuerForAuthenticationAndConsent();
-    }
-
     @When("the user authenticates and consents the issuance")
     public void theUserAuthenticatesAndConsentsTheIssuance() throws InterruptedException {
         test.mobile().issuer().clickCountrySelection();
@@ -484,46 +318,12 @@ public class AutomatedStepDefs {
         test.mobile().issuer().clickAuthorize();
     }
 
-    @Then("the user is redirected to the wallet app after issuance")
-    public void theUserIsRedirectedToTheWalletAppAfterIssuance() {
-       //donothing
-    }
-
-    @And("a message appears stating that the request is in progress")
-    public void aMessageAppearsStatingThatTheRequestIsInProgress() {
-     //donothing
-    }
-
-    @Given("the user sees the issuance in progress message")
-    public void theUserSeesTheIssuanceInProgressMessage() throws InterruptedException {
-        theUserIsOnTheIssuerPageForAuthenticationAndConsent();
-        theUserAuthenticatesAndConsentsTheIssuance();
-        theUserIsRedirectedToTheWalletAppAfterIssuance();
-        aMessageAppearsStatingThatTheRequestIsInProgress();
-    }
-
-    @When("the user clicks OK")
-    public void theUserClicksOK() {
-      //donothing
-    }
-
     @Then("the dashboard appears with the document grayed out and in a pending state")
     public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().clickOnDocuments();
     }
 
-    @Given("the wallet app is polling the issuer for the credential")
-    public void theWalletAppIsPollingTheIssuerForTheCredential() throws InterruptedException {
-        theUserSeesTheIssuanceInProgressMessage();
-        theUserClicksOK();
-        theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState();
-    }
-
-    @Then("the user views a modal informing them that the document has been issued")
-    public void theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued() {
-        //donothing
-    }
 
     @Given("the user visits the issuer service on the same device")
     public void theUserVisitsTheIssuerServiceOnTheSameDevice() {
@@ -639,20 +439,10 @@ public class AutomatedStepDefs {
         theRelyingPartyServiceReceivesTheAttestation();
     }
 
-    @When("the EUDI Wallet selects an available matching attestation")
-    public void theEUDIWalletSelectsAnAvailableMatchingAttestation() {
-         //donothing
-    }
-
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
     public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
         test.mobile().wallet().dashboardPageIsDisplayed();
         test.mobile().wallet().clickOnDocuments();
-    }
-
-    @And("the EUDI Wallet reduces the internal counter of unused attestations")
-    public void theEUDIWalletReducesTheInternalCounterOfUnusedAttestations() {
-          //donothing
     }
 
     @When("the Wallet receives the attestation from the issuer service")
@@ -679,45 +469,14 @@ public class AutomatedStepDefs {
         test.mobile().wallet().nationalIdIsDisplayed();
     }
 
-    @Then("the Wallet displays a counter showing the number of attestations issued")
-    public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
-        //donothing
-    }
-
-    @Given("the user views the issuance confirmation modal")
-    public void theUserViewsTheIssuanceConfirmationModal() throws InterruptedException {
-        theWalletAppIsPollingTheIssuerForTheCredential();
-        theUserViewsAModalInformingThemThatTheDocumentHasBeenIssued();
-    }
-
-    @When("the user clicks to view the document information")
-    public void theUserClicksToViewTheDocumentInformation() {
-       //donothing
-    }
-
-    @Then("the document is open")
-    public void theDocumentIsOpen() {
-        //nothing
-    }
-
     @When("the user clicks on the X button")
     public void theUserClicksOnTheXButton() {
         test.mobile().wallet().clickBackButton();
     }
 
-    @Then("the document should close")
-    public void theDocumentShouldClose() {
-        //manual
-    }
-
     @Then("the document appears on the dashboard screen")
     public void theDocumentAppearsOnTheDashboardScreen() {
         test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @When("the issuer sends the credential to the wallet app")
-    public void theIssuerSendsTheCredentialToTheWalletApp() {
-        //donothing
     }
 
     @Then("verifier verifies the credential successfully with {}")
@@ -737,15 +496,7 @@ public class AutomatedStepDefs {
         test.mobile().wallet().launchApp();
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
-                case "kotlin":
-                    test.mobile().wallet().launchApp();
-                    test.mobile().wallet().checkIfPageIsTrue();
-                    test.mobile().wallet().createAPin();
-                    test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().successMessageOfSetUpPin();
-                    test.mobile().wallet().clickAddMyDigitalID();
-                    break;
-                case "python":
+                case "kotlin", "python":
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
@@ -1565,8 +1316,6 @@ public class AutomatedStepDefs {
                         }else {
                             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                                 test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-//                                verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
                             }
                         }
                     } else {
@@ -1662,9 +1411,5 @@ public class AutomatedStepDefs {
                     break;
             }
         }
-    }
-
-    @Then("the hyperlink Learn more is a button")
-    public void theHyperlinkLearnMoreIsAButton() {
     }
 }

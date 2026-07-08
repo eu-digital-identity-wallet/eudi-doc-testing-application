@@ -230,25 +230,16 @@ public class MobileWebDriverFactory {
     }
 
     public void quitDriverIos() {
-        if (iosDriver != null) {
-            iosDriver.quit();
-            try {
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        if (androidDriver != null) {
+            androidDriver.quit();
+            androidDriver = null; // Important: clear the reference
         }
     }
-
 
     public void quitDriverAndroid() {
         if (androidDriver != null) {
             androidDriver.quit();
-            try {
-                Thread.sleep(1500); // wait 1.5s before next scenario starts
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+            androidDriver = null; // Important: clear the reference
         }
     }
 

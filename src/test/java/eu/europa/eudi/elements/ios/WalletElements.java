@@ -39,7 +39,6 @@ public class WalletElements {
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
-    public static By clickHomeButton = By.id("home_tab");
     public static By clickToAddDocument = By.id("plus");
     public static By clickFromList = By.id("Choose from list");
     public static By secondPidIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@label=\"PID (MSO MDoc)\"])");
@@ -51,7 +50,6 @@ public class WalletElements {
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[7]");
     public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@name='Go Down']");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
-    public static By addPIDPageIsDisplayed = By.id("add_document_screen_subtitle");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@label=\"Authenticate\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
     public static By walletLink = By.xpath("//XCUIElementTypeStaticText[@name=\"Link\"]");
@@ -63,5 +61,4 @@ public class WalletElements {
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
     public static By onlinePresentation = By.id("home_tab_screen_dialog_online_button");
-    public static By clickPidFromKotlinFromList = AppiumBy.iOSNsPredicateString("name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'");
 }
