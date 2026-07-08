@@ -13,12 +13,15 @@ on:
           - develop
           - milestone/2026.Q1
           - milestone/2026.Q2
-          - refactor
+
         default: develop
 
       test-cases:
         description: 'iOS Tags to execute'
-        type: string
+        type: choice
+        options:
+          - PID mso_mdoc
+          - MDL
 
 jobs:
   build:
