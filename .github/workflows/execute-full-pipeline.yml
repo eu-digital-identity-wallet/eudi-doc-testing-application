@@ -28,10 +28,6 @@ on:
         type: string
         default: "@Q3_2025"
 
-permissions:
-  actions: write
-  contents: read
-
 jobs:
 
   android-tests:
