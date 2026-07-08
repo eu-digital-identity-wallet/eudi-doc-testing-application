@@ -53,9 +53,9 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="${{ github.event.inputs.tagName }}" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@${{ github.event.inputs.tagName }}" "$@"
           rm -rf target/site/serenity 
-          mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+          mvn serenity:aggregate -Dtags="@${{ github.event.inputs.tagName }}"
           echo "Modifying JSON files to mark tests as manual..."
           find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
             if grep -q "\"manual\":" "$file" 2>/dev/null; then    
@@ -65,7 +65,7 @@ jobs:
           done
 
       - name: Produce report
-        run: mvn serenity:aggregate -Dtags="${{ github.event.inputs.tagName }}"
+        run: mvn serenity:aggregate -Dtags="@${{ github.event.inputs.tagName }}"
 
       - name: Replace Serenity Core CSS
         if: always()

@@ -1,5 +1,7 @@
 name: iOS Automation Tests Execution
 
+run-name: "ios Automation Tests Execution | ${{ inputs.test-cases }}"
+
 on:
   workflow_dispatch:
     inputs:
@@ -11,12 +13,15 @@ on:
           - develop
           - milestone/2026.Q1
           - milestone/2026.Q2
-          - refactor
+
         default: develop
 
       test-cases:
         description: 'iOS Tags to execute'
-        type: string
+        type: choice
+        options:
+          - PID mso_mdoc
+          - MDL
 
 jobs:
   build:
@@ -90,7 +95,7 @@ jobs:
       - name: Run iOS Tests on BrowserStack
         continue-on-error: true
         run: |
-          TEST_TAGS="${{ inputs.test-cases }} and @IOS"
+          TEST_TAGS="@${{ inputs.test-cases }} and @IOS"
           echo "Running tests: $TEST_TAGS"
 
           mvn test -ntp \
@@ -140,7 +145,7 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
