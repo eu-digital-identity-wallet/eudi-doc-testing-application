@@ -1,4 +1,4 @@
-@IOS @US_ETESA @automated @execution_Q3_2026
+@IOS @US_ETESA @automated @execution_Q3_2026 @PID_mso_mdoc
 Feature: Issuance and presentation - PID
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID
