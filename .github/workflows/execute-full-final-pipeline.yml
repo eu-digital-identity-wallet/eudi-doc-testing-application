@@ -1,6 +1,6 @@
 name: Final Tests Execution
 
-on:
+'on':
   workflow_dispatch:
     inputs:
       branch-to-checkout:
