@@ -6,13 +6,13 @@ Feature: Wallet Presents Alternative Credential Combinations from a DCQL Query
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/350
 
-  @US_WPACCFAQ_TC_01 @manual:
+  @US_WPACCFAQ_TC_01 @manual:Passed
   Scenario: Display all valid combinations
     Given the user opens the RP request
     When the Wallet loads the request
     Then it displays all valid credential combinations that satisfy the request
 
-  @US_WPACCFAQ_TC_02 @manual:
+  @US_WPACCFAQ_TC_02 @manual:Failed
   Scenario: Display only valid combinations
     Given the Wallet contains stored credentials
     When the Wallet evaluates possible combinations
