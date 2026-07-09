@@ -9426,4 +9426,44 @@ public class ManuallyStepDefs {
     public void thisTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
         //manual
     }
+
+    @When("the Wallet processes the RP Access Certificate")
+    public void theWalletProcessesTheRPAccessCertificate() {
+        //manual
+    }
+
+    @And("the certificate verification fails")
+    public void theCertificateVerificationFails() {
+        //manual
+    }
+
+    @Given("a presentation flow has been initiated by a Relying Party")
+    public void aPresentationFlowHasBeenInitiatedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet terminates the presentation interaction")
+    public void theWalletTerminatesThePresentationInteraction() {
+        //manual
+    }
+
+    @And("the Wallet displays a clear notification to the Wallet user that no information about the Wallet user has been shared")
+    public void theWalletDisplaysAClearNotificationToTheWalletUserThatNoInformationAboutTheWalletUserHasBeenShared() {
+        //manual
+    }
+
+    @Given("an issuance flow has been initiated by a Relying Party")
+    public void anIssuanceFlowHasBeenInitiatedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet terminates the issuance interaction")
+    public void theWalletTerminatesTheIssuanceInteraction() {
+        //manual
+    }
+
+    @And("the Wallet displays a notification informs the Wallet user that the issuance has been blocked")
+    public void theWalletDisplaysANotificationInformsTheWalletUserThatTheIssuanceHasBeenBlocked() {
+        //manual
+    }
 }
