@@ -5,12 +5,10 @@ import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
@@ -25,10 +23,15 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static org.junit.Assert.fail;
+
 public class Verifier {
     TestSetup test;
     private File capturedScreenFile;
-
+    private String issuerType;
+    private String credential;
+    private String issuanceMethod;
+    private String selectiveDisclosure;
 
     public Verifier(TestSetup test) {
         this.test = test;
@@ -795,6 +798,125 @@ public class Verifier {
             test.webWebDriverFactory().getDriverWeb().navigate().refresh();
             test.web().verifier().walletRespondedOnWebforMdlKotlin();
             test.web().verifier().clickViewContentOnWeb();
+        }
+    }
+
+    public void verifyCredential(String status) {
+        if ("failed".equalsIgnoreCase(status)) {
+            fail("Credential verification failed as per test input.");
+        }
+        if ("passed".equalsIgnoreCase(status)) {
+            System.out.println("Credential verification passed as per test input.");
+        }
+    }
+
+    public void verifierVerifyCredential(String presentationScenario, String selectiveDisclosure) {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+            switch (presentationScenario.toLowerCase()) {
+                case "same device":
+                    test.mobile().wallet().clickClose();
+                    test.mobile().verifier().walletResponded();
+                    test.mobile().verifier().clickViewContent();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_verifier_from_wallet.yml");
+                        }else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
+                            }
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                            }
+                        }
+                    }
+                    break;
+                case "cross device":
+                    test.mobile().wallet().clickClose();
+                    test.web().verifier().clickViewContentOnWeb();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet.yml");
+                        }else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
+                            }
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                            }
+                        }
+                    }
+                    test.web().verifier().clickCloseOnVerifierWeb();
+                    test.webWebDriverFactory().quitDriverWeb();
+                    break;
+            }
+        } else {
+            switch (presentationScenario.toLowerCase()) {
+                case "same device":
+                    test.mobile().wallet().clickClose();
+                    test.mobile().verifier().walletRespondedMdlKotlin();
+                    test.mobile().verifier().clickViewContent();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
+                        }else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                            }
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case "cross device":
+                    test.mobile().wallet().clickClose();
+                    test.web().verifier().checkTheResponse();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
+                        }else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
+                            } else {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
+                            }
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
+                        } else {
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
+                            }
+                        }
+                    }
+                    test.web().verifier().clickCloseOnVerifierWeb();
+                    test.webWebDriverFactory().quitDriverWeb();
+                    break;
+            }
         }
     }
 }
