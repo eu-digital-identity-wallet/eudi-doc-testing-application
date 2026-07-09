@@ -106,8 +106,8 @@ jobs:
         run: |
           mkdir -p target/serenity-backup
           cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
-
-      # ---------------- RERUN PASS 1 ----------------
+          
+          # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
@@ -121,7 +121,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-      # ---------------- RERUN PASS 2 ----------------
+  # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
         if: always()
         run: |
@@ -131,30 +131,35 @@ jobs:
             echo "No rerun2.txt found"
           fi
 
-      - name: Rerun Pass 3
-        if: always()
-        run: |
-          if [ -s target/rerun2.txt ]; then
-            mvn test -Dtest=RerunTestRunner2
-          else
-            echo "No rerun2.txt found"
-          fi
-
-      - name: Final Merge Results
+      - name: Merge Results Pass 2
         if: always()
         run: python3 merge_serenity_results.py || true
 
-      # ---------------- REPORT (FIXED) ----------------
+  # ---------------- RERUN PASS 3 ----------------
+      - name: Rerun Pass 3
+        if: always()
+        run: |
+          if [ -s target/rerun3.txt ]; then
+            mvn test -Dtest=RerunTestRunner2
+          else
+            echo "No rerun3.txt found"
+          fi
+
+      - name: Merge Results Pass 3
+        if: always()
+        run: python3 merge_serenity_results.py || true
+
+  # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
           mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
-      - name: Replace Serenity Core CSS
-        if: always()
-        run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+          - name: Replace Serenity Core CSS
+            if: always()
+            run: |
+              REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+              cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report

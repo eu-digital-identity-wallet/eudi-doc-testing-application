@@ -112,7 +112,7 @@ jobs:
           cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
 
 
-      # ---------------- RERUN PASS 1 ----------------
+            # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
@@ -123,12 +123,10 @@ jobs:
             echo "No rerun.txt found"
           fi
 
-
       - name: Merge Results Pass 1
         if: always()
         run: |
           python3 merge_serenity_results.py || true
-
 
       # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
@@ -143,8 +141,25 @@ jobs:
             echo "No rerun2.txt found"
           fi
 
-
       - name: Merge Results Pass 2
+        if: always()
+        run: |
+          python3 merge_serenity_results.py || true
+
+      # ---------------- RERUN PASS 3 ----------------
+      - name: Rerun Pass 3
+        if: always()
+        run: |
+          if [ -s target/rerun3.txt ]; then
+            echo "Running rerun pass 3..."
+            mvn test \
+              -Dtest=RerunTestRunner2 \
+              -Dcucumber.features="@target/rerun3.txt"
+          else
+            echo "No rerun3.txt found"
+          fi
+
+      - name: Merge Results Pass 3
         if: always()
         run: |
           python3 merge_serenity_results.py || true
@@ -153,7 +168,8 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+          mvn serenity:aggregate \
+            -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()

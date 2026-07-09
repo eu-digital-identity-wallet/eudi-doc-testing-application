@@ -12,7 +12,6 @@ import io.cucumber.java.Scenario;
 import org.junit.AssumptionViolatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
