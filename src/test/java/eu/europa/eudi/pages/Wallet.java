@@ -39,9 +39,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Wallet {
 
-    private String selectiveDisclosure;
-    private String issuerType;
-    private String credential;
+    public String selectiveDisclosure;
+    public String issuerType;
+    public String credential;
     TestSetup test;
     EnvDataConfig envDataConfig;
 
@@ -1567,8 +1567,6 @@ public class Wallet {
     }
 
     public void initiateCredential(String credential, String issuerType) {
-        this.issuerType = issuerType;
-        this.credential = credential;
         test.mobile().wallet().launchApp();
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (issuerType.toLowerCase()) {
@@ -1634,7 +1632,9 @@ public class Wallet {
         }
     }
 
-    public void performPresentation(String presentationScenario, String credential) throws InterruptedException {
+    public void performPresentation(String presentationScenario, String credential, String selectiveDisclosure, String issuerType) throws InterruptedException {
+        this.selectiveDisclosure = selectiveDisclosure;
+        this.issuerType = issuerType;
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
 
             switch (presentationScenario.toLowerCase()) {

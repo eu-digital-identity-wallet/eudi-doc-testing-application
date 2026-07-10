@@ -27,11 +27,10 @@ import static org.junit.Assert.fail;
 
 public class Verifier {
     TestSetup test;
-    private File capturedScreenFile;
-    private String issuerType;
-    private String credential;
-    private String issuanceMethod;
-    private String selectiveDisclosure;
+    public File capturedScreenFile;
+    public String issuerType;
+    public String credential;
+    public String selectiveDisclosure;
 
     public Verifier(TestSetup test) {
         this.test = test;
@@ -810,7 +809,9 @@ public class Verifier {
         }
     }
 
-    public void verifierVerifyCredential(String presentationScenario, String selectiveDisclosure) {
+    public void verifierVerifyCredential(String presentationScenario, String selectiveDisclosure, String issuerType) {
+        this.selectiveDisclosure = selectiveDisclosure;
+        this.issuerType = issuerType;
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":

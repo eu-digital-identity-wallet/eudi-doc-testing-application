@@ -13,7 +13,10 @@ public class AutomatedStepDefs {
 
     private final TestSetup test = TestHooks.getTest();
 
-    private String selectiveDisclosure;
+    public String selectiveDisclosure;
+    public String issuerType;
+    public String credential;
+    public String issuanceMethod;
 
 
     @Given("user opens Verifier App")
@@ -478,22 +481,24 @@ public class AutomatedStepDefs {
 
     @Given("the user initiates a {} issuance using the {}")
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) {
+        this.issuerType = issuerType;
+        this.credential = credential;
       test.mobile().wallet().initiateCredential(credential, issuerType);
     }
 
     @And("the issuance method is {}")
     public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
-       test.mobile().issuer().issuanceMethod(issuanceMethod);
+        test.mobile().issuer().issuanceMethodIs(issuanceMethod, this.credential, this.issuerType);
     }
 
     @And("the issuance is performed on a {} for the {}")
     public void theIssuanceIsPerformedOnA(String issueScenario, String credential) throws InterruptedException {
-       test.mobile().issuer().performIssuance(issueScenario, credential);
+       test.mobile().issuer().performIssuance(issueScenario, credential, this.issuanceMethod);
     }
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-      test.mobile().issuer().completedIsuuanceFlow();
+      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential);
     }
 
     @Then("the credential is stored in the Wallet")
@@ -508,7 +513,7 @@ public class AutomatedStepDefs {
 
     @And("the presentation is performed on a {} for the {}")
     public void thePresentationIsPerformedOnA(String presentationScenario, String credential) throws InterruptedException {
-        test.mobile().wallet().performPresentation(presentationScenario, credential);
+        test.mobile().wallet().performPresentation(presentationScenario, credential, this.selectiveDisclosure, this.issuerType);
     }
 
 
@@ -519,6 +524,6 @@ public class AutomatedStepDefs {
 
     @Then("the verifier verifies the credential successfully with {} for {}")
     public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) throws InterruptedException {
-      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure);
+      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType);
     }
 }

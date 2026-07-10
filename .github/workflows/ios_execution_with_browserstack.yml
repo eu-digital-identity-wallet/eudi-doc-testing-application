@@ -59,7 +59,7 @@ jobs:
           rm -rf target/serenity
           rm -rf target/site/reports
           rm -rf target/site/serenity
-          rm -f target/rerun.txt target/rerun2.txt
+          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
@@ -103,7 +103,6 @@ jobs:
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
-
       # ---------------- BACKUP RESULTS ----------------
       - name: Backup Serenity JSON Results
         if: always()
@@ -111,8 +110,7 @@ jobs:
           mkdir -p target/serenity-backup
           cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
 
-
-            # ---------------- RERUN PASS 1 ----------------
+      # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
@@ -153,7 +151,7 @@ jobs:
           if [ -s target/rerun3.txt ]; then
             echo "Running rerun pass 3..."
             mvn test \
-              -Dtest=RerunTestRunner2 \
+              -Dtest=RerunTestRunner \
               -Dcucumber.features="@target/rerun3.txt"
           else
             echo "No rerun3.txt found"
