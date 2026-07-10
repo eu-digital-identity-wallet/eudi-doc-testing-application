@@ -59,6 +59,7 @@ jobs:
           rm -rf target/serenity
           rm -rf target/site/reports
           rm -rf target/site/serenity
+          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
@@ -140,7 +141,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun3.txt ]; then
-            mvn test -Dtest=RerunTestRunner2
+            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun3.txt"
           else
             echo "No rerun3.txt found"
           fi
@@ -155,11 +156,11 @@ jobs:
         run: |
           mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
-          - name: Replace Serenity Core CSS
-            if: always()
-            run: |
-              REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
-              cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+            cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report

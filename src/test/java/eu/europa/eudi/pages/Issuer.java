@@ -30,9 +30,9 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class Issuer {
-    private String issuerType;
-    private String credential;
-    private String issuanceMethod;
+    public String issuerType;
+    public String credential;
+    public String issuanceMethod;
     TestSetup test;
     EnvDataConfig envDataConfig;
 
@@ -1121,14 +1121,14 @@ public class Issuer {
     public void enterGivenNameOnMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-            String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given Name");
+            String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickGivenName)).click();
             WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName));
             givenName.clear();
             givenName.sendKeys(givenNameText);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given Name");
+            String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameOnMdl)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebElement givenName = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameOnMdl);
@@ -1140,14 +1140,14 @@ public class Issuer {
 
     public void enterFamilyNameOnMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family Name");
+            String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName)).click();
             WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName));
             givenFamily.clear();
             givenFamily.sendKeys(familyName);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family Name");
+            String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyNameOnMdl)).click();
             WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyNameOnMdl));
             givenFamily.clear();
@@ -2133,8 +2133,9 @@ public class Issuer {
                     }
             }
 
-    public void issuanceMethod(String issuanceMethod) throws InterruptedException {
-        this.issuanceMethod = issuanceMethod;
+    public void issuanceMethodIs(String issuanceMethod, String credential, String issuerType) throws InterruptedException {
+        this.issuerType = issuerType;
+        this.credential = credential;
         switch (issuanceMethod.toLowerCase()) {
             case "from list":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2172,7 +2173,9 @@ public class Issuer {
         }
     }
 
-    public void performIssuance(String issueScenario, String credential) throws InterruptedException {
+    public void performIssuance(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
+       this.issuanceMethod = issuanceMethod;
+       this.credential = credential;
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             switch (issueScenario.toLowerCase()) {
                 case "same device":
@@ -2294,7 +2297,9 @@ public class Issuer {
         }
     }
 
-    public void completedIsuuanceFlow() {
+    public void completedIsuuanceFlow(String issuerType, String credential) {
+        this.issuerType = issuerType;
+        this.credential = credential;
         if ("Python".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
         }
