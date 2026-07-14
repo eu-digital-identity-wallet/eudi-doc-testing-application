@@ -97,7 +97,7 @@ jobs:
         env:
           TEST_CASES: ${{ inputs.test-cases }}
         run: |
-          TEST_TAGS="@$TEST_CASES and @ANDROID"
+          TEST_TAGS="@$TEST_CASES and @IOS"
           echo "Running tests: $TEST_TAGS"
 
           mvn clean verify -ntp \
@@ -133,7 +133,7 @@ jobs:
           if [ -s target/rerun2.txt ]; then
             echo "Running rerun pass 2..."
             mvn test \
-              -Dtest=RerunTestRunner \
+              -Dtest=RerunTestRunner2 \
               -Dcucumber.features="@target/rerun2.txt"
           else
             echo "No rerun2.txt found"
@@ -151,7 +151,7 @@ jobs:
           if [ -s target/rerun3.txt ]; then
             echo "Running rerun pass 3..."
             mvn test \
-              -Dtest=RerunTestRunner \
+              -Dtest=RerunTestRunner3 \
               -Dcucumber.features="@target/rerun3.txt"
           else
             echo "No rerun3.txt found"

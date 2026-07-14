@@ -2134,6 +2134,7 @@ public class Issuer {
             }
 
     public void issuanceMethodIs(String issuanceMethod, String credential, String issuerType) throws InterruptedException {
+        this.issuanceMethod = issuanceMethod;
         this.issuerType = issuerType;
         this.credential = credential;
         switch (issuanceMethod.toLowerCase()) {
@@ -2173,127 +2174,130 @@ public class Issuer {
         }
     }
 
-    public void performIssuance(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
-       this.issuanceMethod = issuanceMethod;
-       this.credential = credential;
-        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            switch (issueScenario.toLowerCase()) {
-                case "same device":
-                    if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                        test.mobile().issuer().issueCredentialsPageIsDisplayed();
-                        test.mobile().issuer().clickWalletLink();
-                        test.mobile().wallet().viewDataPage();
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().signInUser();
-                        test.mobile().issuer().fillLoginForm();
-                    }
-                    break;
-                case "cross device":
-                    test.mobile().issuer().qrCodeIsDisplayedKotlin();
-                    test.mobile().verifier().captureScreen();
-                    test.mobile().wallet().restartApp();
-                    test.mobile().wallet().createAPin();
-                    test.mobile().wallet().clickOnDocuments();
-                    test.mobile().wallet().clickToAddDocument();
-                    test.mobile().wallet().clickQROption();
-                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                        if (test.mobile().wallet().isQrVisible()) {
-                            test.mobile().wallet().onlyThisTimeQR();
-                        }
-                    }
-                    test.mobile().wallet().theQRScannerIsActivatedForIssuance();
-                    test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                    test.mobile().wallet().viewDataPage();
-                    test.mobile().wallet().clickAddButton();
-                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                        test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-                    }
-                    test.mobile().issuer().signInUser();
-                    test.mobile().issuer().fillLoginForm();
-                    break;
-            }
-        } else {
-            switch (issueScenario.toLowerCase()) {
-                case "same device":
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                        if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                            test.mobile().issuer().issuerService();
-                            test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                            test.mobile().issuer().scrollUntilPidIssuer();
-                            test.mobile().issuer().selectPidPythonIssuer();
-                            test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                            test.mobile().issuer().clickSubmitButton();
-                            test.mobile().issuer().clickUseEudiwPid();
+    public void performIssuance(String issueScenario, String credential, String issuanceMethod, String issuerType) throws InterruptedException {
+       this.issuerType = issuerType;
+        switch (issuanceMethod.toLowerCase()) {
+            case "credential offer":
+                if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    switch (issueScenario.toLowerCase()) {
+                        case "same device":
+                            if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                                test.mobile().issuer().issueCredentialsPageIsDisplayed();
+                                test.mobile().issuer().clickWalletLink();
+                                test.mobile().wallet().viewDataPage();
+                                test.mobile().wallet().clickAddButton();
+                                test.mobile().issuer().signInUser();
+                                test.mobile().issuer().fillLoginForm();
+                            }
+                            break;
+                        case "cross device":
+                            test.mobile().issuer().qrCodeIsDisplayedKotlin();
+                            test.mobile().verifier().captureScreen();
+                            test.mobile().wallet().restartApp();
+                            test.mobile().wallet().createAPin();
+                            test.mobile().wallet().clickOnDocuments();
+                            test.mobile().wallet().clickToAddDocument();
+                            test.mobile().wallet().clickQROption();
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                if (test.mobile().wallet().isQrVisible()) {
+                                    test.mobile().wallet().onlyThisTimeQR();
+                                }
+                            }
+                            test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                            test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                            test.mobile().wallet().viewDataPage();
                             test.mobile().wallet().clickAddButton();
-                            test.mobile().issuer().issuePID();
-                        }
-                    } else {
-                        if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                            test.mobile().issuer().issuerService();
-                            test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                            test.mobile().issuer().scrollUntilMdlIssuer();
-                            test.mobile().issuer().selectMdlPythonIssuer();
-                            test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                            test.mobile().issuer().clickSubmitButton();
-                            test.mobile().issuer().clickUseEudiw();
-                            test.mobile().wallet().clickAddButton();
-                            test.mobile().issuer().issueMDL();
+                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+                            }
+                            test.mobile().issuer().signInUser();
+                            test.mobile().issuer().fillLoginForm();
+                            break;
+                    }
+                } else {
+                    switch (issueScenario.toLowerCase()) {
+                        case "same device":
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+//                        if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                                test.mobile().issuer().issuerService();
+                                test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                                test.mobile().issuer().scrollUntilPidIssuer();
+                                test.mobile().issuer().selectPidPythonIssuer();
+                                test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                test.mobile().issuer().clickSubmitButton();
+                                test.mobile().issuer().clickUseEudiwPid();
+                                test.mobile().wallet().clickAddButton();
+                                test.mobile().issuer().issuePID();
+//                        }
+                            } else {
+                                if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                                    test.mobile().issuer().issuerService();
+                                    test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                                    test.mobile().issuer().scrollUntilMdlIssuer();
+                                    test.mobile().issuer().selectMdlPythonIssuer();
+                                    test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                    test.mobile().issuer().clickSubmitButton();
+                                    test.mobile().issuer().clickUseEudiw();
+                                    test.mobile().wallet().clickAddButton();
+                                    test.mobile().issuer().issueMDL();
 
-                        }
-                    }
-                    break;
-                case "cross device":
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().issuer().issuerService();
-                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                        test.mobile().issuer().scrollUntilPidIssuer();
-                        test.mobile().issuer().selectPidPythonIssuer();
-                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                        test.mobile().issuer().clickSubmitButton();
-                        test.mobile().issuer().qrCodeIsDisplayed();
-                        test.mobile().verifier().captureScreen();
-                        test.mobile().wallet().restartApp();
-                        test.mobile().wallet().createAPin();
-                        test.mobile().wallet().clickOnDocuments();
-                        test.mobile().wallet().clickToAddDocument();
-                        test.mobile().wallet().clickQROption();
-                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                            if (test.mobile().wallet().isQrVisible()) {
-                                test.mobile().wallet().onlyThisTimeQR();
+                                }
                             }
-                        }
-                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
-                        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                        test.mobile().wallet().viewDataPage();
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().issuePID();
-                    } else {
-                        test.mobile().issuer().issuerService();
-                        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                        test.mobile().issuer().scrollUntilMdlIssuer();
-                        test.mobile().issuer().selectMdlPythonIssuer();
-                        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                        test.mobile().issuer().clickSubmitButton();
-                        test.mobile().issuer().qrCodeIsDisplayed();
-                        test.mobile().verifier().captureScreen();
-                        test.mobile().wallet().restartApp();
-                        test.mobile().wallet().createAPin();
-                        test.mobile().wallet().clickOnDocuments();
-                        test.mobile().wallet().clickToAddDocument();
-                        test.mobile().wallet().clickQROption();
-                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                            if (test.mobile().wallet().isQrVisible()) {
-                                test.mobile().wallet().onlyThisTimeQR();
+                            break;
+                        case "cross device":
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                                test.mobile().issuer().issuerService();
+                                test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                                test.mobile().issuer().scrollUntilPidIssuer();
+                                test.mobile().issuer().selectPidPythonIssuer();
+                                test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                test.mobile().issuer().clickSubmitButton();
+                                test.mobile().issuer().qrCodeIsDisplayed();
+                                test.mobile().verifier().captureScreen();
+                                test.mobile().wallet().restartApp();
+                                test.mobile().wallet().createAPin();
+                                test.mobile().wallet().clickOnDocuments();
+                                test.mobile().wallet().clickToAddDocument();
+                                test.mobile().wallet().clickQROption();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    if (test.mobile().wallet().isQrVisible()) {
+                                        test.mobile().wallet().onlyThisTimeQR();
+                                    }
+                                }
+                                test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                                test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                                test.mobile().wallet().viewDataPage();
+                                test.mobile().wallet().clickAddButton();
+                                test.mobile().issuer().issuePID();
+                            } else {
+                                test.mobile().issuer().issuerService();
+                                test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                                test.mobile().issuer().scrollUntilMdlIssuer();
+                                test.mobile().issuer().selectMdlPythonIssuer();
+                                test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                test.mobile().issuer().clickSubmitButton();
+                                test.mobile().issuer().qrCodeIsDisplayed();
+                                test.mobile().verifier().captureScreen();
+                                test.mobile().wallet().restartApp();
+                                test.mobile().wallet().createAPin();
+                                test.mobile().wallet().clickOnDocuments();
+                                test.mobile().wallet().clickToAddDocument();
+                                test.mobile().wallet().clickQROption();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    if (test.mobile().wallet().isQrVisible()) {
+                                        test.mobile().wallet().onlyThisTimeQR();
+                                    }
+                                }
+                                test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                                test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                                test.mobile().wallet().viewDataPage();
+                                test.mobile().wallet().clickAddButton();
+                                test.mobile().issuer().issueMDL();
+                                break;
                             }
-                        }
-                        test.mobile().wallet().theQRScannerIsActivatedForIssuance();
-                        test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                        test.mobile().wallet().viewDataPage();
-                        test.mobile().wallet().clickAddButton();
-                        test.mobile().issuer().issueMDL();
-                        break;
                     }
-            }
+                }
+                break;
         }
     }
 

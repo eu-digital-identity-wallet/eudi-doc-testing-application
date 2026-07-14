@@ -127,7 +127,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun2.txt ]; then
-            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt"
+            mvn test -Dtest=RerunTestRunner2 -Dcucumber.features="@target/rerun2.txt"
           else
             echo "No rerun2.txt found"
           fi
@@ -141,7 +141,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun3.txt ]; then
-            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun3.txt"
+            mvn test -Dtest=RerunTestRunner3 -Dcucumber.features="@target/rerun3.txt"
           else
             echo "No rerun3.txt found"
           fi

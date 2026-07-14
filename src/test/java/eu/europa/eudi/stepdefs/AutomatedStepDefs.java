@@ -491,9 +491,9 @@ public class AutomatedStepDefs {
         test.mobile().issuer().issuanceMethodIs(issuanceMethod, this.credential, this.issuerType);
     }
 
-    @And("the issuance is performed on a {} for the {}")
-    public void theIssuanceIsPerformedOnA(String issueScenario, String credential) throws InterruptedException {
-       test.mobile().issuer().performIssuance(issueScenario, credential, this.issuanceMethod);
+    @And("the issuance is performed on a {} for the {} and {}")
+    public void theIssuanceIsPerformedOnA(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
+       test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
     }
 
     @When("the issuance flow is completed")
