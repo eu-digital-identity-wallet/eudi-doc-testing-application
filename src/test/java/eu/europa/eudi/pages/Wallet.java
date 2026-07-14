@@ -1617,7 +1617,7 @@ public class Wallet {
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickToViewDetails();
             }else{
-                test.mobile().wallet().clickToViewDetails();
+//                test.mobile().wallet().clickToViewDetails();
                 test.mobile().wallet().clickToViewDetails();
             }
             test.mobile().wallet().clickClose();

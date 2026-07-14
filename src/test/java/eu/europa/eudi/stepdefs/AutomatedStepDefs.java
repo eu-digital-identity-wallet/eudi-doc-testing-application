@@ -524,6 +524,6 @@ public class AutomatedStepDefs {
 
     @Then("the verifier verifies the credential successfully with {} for {}")
     public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) throws InterruptedException {
-      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType);
+      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
     }
 }
