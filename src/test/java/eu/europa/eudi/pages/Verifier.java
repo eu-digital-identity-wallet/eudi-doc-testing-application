@@ -809,7 +809,8 @@ public class Verifier {
         }
     }
 
-    public void verifierVerifyCredential(String presentationScenario, String selectiveDisclosure, String issuerType) {
+    public void verifierVerifyCredential(String presentationScenario, String selectiveDisclosure, String issuerType, String credential) {
+        this.credential = credential;
         this.selectiveDisclosure = selectiveDisclosure;
         this.issuerType = issuerType;
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
