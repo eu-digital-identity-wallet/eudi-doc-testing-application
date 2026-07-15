@@ -228,7 +228,7 @@ public class AutomatedStepDefs {
     }
 
     @Then("the user is redirected to the wallet app")
-    public void theUserIsRedirectedToTheWalletApp() throws InterruptedException {
+    public void theUserIsRedirectedToTheWalletApp() {
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -259,7 +259,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the EUDI Wallet displays the presentation request for PID")
-    public void theEUDIWalletDisplaysThePresentationRequestForPID() throws InterruptedException {
+    public void theEUDIWalletDisplaysThePresentationRequestForPID() {
         test.mobile().issuer().clickSubmit();
         test.mobile().issuer().qrCodeIsDisplayed();
     }
@@ -275,7 +275,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() throws InterruptedException {
+    public void theUserEntersTheirSixDigitPINCorrectly() {
         test.mobile().wallet().createAPin();
     }
 
@@ -335,7 +335,7 @@ public class AutomatedStepDefs {
     }
 
     @Then("the issuer service redirects the user to the Wallet")
-    public void theIssuerServiceRedirectsTheUserToTheWallet() throws InterruptedException {
+    public void theIssuerServiceRedirectsTheUserToTheWallet() {
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -523,7 +523,7 @@ public class AutomatedStepDefs {
     }
 
     @Then("the verifier verifies the credential successfully with {} for {}")
-    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) throws InterruptedException {
+    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
       test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
     }
 }

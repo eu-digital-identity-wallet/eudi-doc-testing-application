@@ -4,8 +4,9 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
+import eu.europa.eudi.utils.MobileActionsUtils;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.YmlLoader;
+import eu.europa.eudi.utils.yaml.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
@@ -422,50 +423,10 @@ public class Wallet {
     public void clickAddMyDigitalID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickAddMyDigitalID));
-            tapAction(myDigitalIDButton, false);
+            MobileActionsUtils.tapActionWallet(myDigitalIDButton, false);
         } else {
             WebElement myDigitalIDButton = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAddMyDigitalID));
-            tapAction(myDigitalIDButton, false);
-        }
-    }
-
-    public void tapAction(WebElement element, int xOffset, int yOffset) {
-        AppiumDriver driver;
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        } else {
-            driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverIos();
-        }
-
-        Point location = element.getLocation();
-        int x = location.getX() + xOffset;
-        int y = location.getY() + yOffset;
-
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            int viewportTop = 75;
-            y = Math.max(y, viewportTop + 1);
-        }
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence tap = new Sequence(finger, 1);
-
-        tap.addAction(finger.createPointerMove(Duration.ZERO,
-                PointerInput.Origin.viewport(), x, y));
-
-        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));  // FIXED
-
-        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));    // FIXED
-
-        driver.perform(Collections.singletonList(tap));
-    }
-
-    public void tapAction(WebElement element, boolean clickLeft) {
-        Dimension size = element.getSize();
-        if (clickLeft) {
-            tapAction(element, 10, size.getHeight() / 2);
-        } else {
-            tapAction(element, size.getWidth() / 2, size.getHeight() / 2);
+            MobileActionsUtils.tapActionWallet(myDigitalIDButton, false);
         }
     }
 
@@ -474,7 +435,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPID)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
-            tapAction(button, false);
+            MobileActionsUtils.tapActionWallet(button, false);
         }
     }
 
@@ -517,7 +478,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickFromList)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickFromList));
-            tapAction(button, false);
+            MobileActionsUtils.tapActionWallet(button, false);
         }
     }
 
@@ -935,52 +896,6 @@ public class Wallet {
         }
     }
 
-    public void slowScrollUp() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            Dimension size = driver.manage().window().getSize();
-            int width = size.width;
-            int height = size.height;
-
-            int x = width / 2;
-
-            int startY = (int) (height * 0.25);
-            int endY = (int) (height * 0.80);
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 1);
-
-            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
-            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), x, endY));
-            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-            driver.perform(Arrays.asList(swipe));
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-            Dimension size = driver.manage().window().getSize();
-            int width = size.width;
-            int height = size.height;
-
-            int x = width / 2;
-
-            int startY = (int) (height * 0.25);
-            int endY = (int) (height * 0.80);
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 1);
-
-            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
-            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), x, endY));
-            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-            driver.perform(Arrays.asList(swipe));
-        }
-    }
-
     public void clickPIDFromKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
@@ -1127,7 +1042,7 @@ public class Wallet {
         int count = 0;
         By locator = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
         while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            slowScrollUp();
+            MobileActionsUtils.slowScrollUp();
             count++;
         }
 
@@ -1148,7 +1063,7 @@ public class Wallet {
         );
 
         while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            slowScrollUp();
+            MobileActionsUtils.slowScrollUp();
             count++;
         }
 

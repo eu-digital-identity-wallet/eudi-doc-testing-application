@@ -5,9 +5,10 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.data.yml.FormYml;
 import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
+import eu.europa.eudi.utils.MobileActionsUtils;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsUtils;
-import eu.europa.eudi.utils.YmlLoader;
+import eu.europa.eudi.utils.yaml.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -15,7 +16,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.HasContext;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -292,36 +292,8 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickCountrySelection)).click();
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.clickCountrySelection));
-            tapAction(button, false);
+            MobileActionsUtils.tapAction(button, false);
         }
-    }
-
-    public void tapAction(WebElement myDigitalIDButton, boolean clickLeft) {
-        Point location = myDigitalIDButton.getLocation();
-        Dimension size = myDigitalIDButton.getSize();
-
-        int x, y;
-        if (clickLeft) {
-            x = location.getX() + 10;
-            y = location.getY() + size.getHeight() / 2;
-        } else {
-            x = location.getX() + size.getWidth() / 2;
-            y = location.getY() + size.getHeight() / 2;
-        }
-
-        int viewportTop = 75;
-        y = Math.max(y, viewportTop + 1);
-
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence tap = new Sequence(finger, 1);
-
-        tap.addAction(finger.createPointerMove(Duration.ZERO,
-                PointerInput.Origin.viewport(), x, y));
-        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));     // FIX 2
-        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        ((AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid())
-                .perform(Collections.singletonList(tap));
     }
 
     public void clickFormEu() {
@@ -809,7 +781,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll();
+                    MobileActionsUtils.slowScroll();
                 }
             }
 
@@ -840,7 +812,7 @@ public class Issuer {
                     WebElement pidElement = driver.findElement(IssuerElements.authorize);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
-                    slowScroll();
+                    MobileActionsUtils.slowScroll();
                 }
             }
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -1065,7 +1037,7 @@ public class Issuer {
 
                     if (foundLabels.size() < mandatoryLabels.size()) {
                         try {
-                            slowScroll();
+                            MobileActionsUtils.slowScroll();
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
@@ -1498,102 +1470,6 @@ public class Issuer {
         }
     }
 
-    private void slowScroll() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            String originalContext = driver.getContext();
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-            try {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                    wait.until(d -> ((HasContext) d).getContext().equals("NATIVE_APP"));
-                }
-
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.35);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
-                Sequence swipe = new Sequence(finger, 0);
-                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(new Pause(finger, Duration.ofMillis(100)));
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-                int maxRetries = 2;
-                int attempts = 0;
-                boolean success = false;
-
-                while (attempts < maxRetries && !success) {
-                    try {
-                        driver.perform(Collections.singletonList(swipe));
-                        success = true;
-                    } catch (InvalidElementStateException e) {
-                        attempts++;
-                        if (attempts >= maxRetries) {
-                            throw new RuntimeException("Swipe failed after " + maxRetries + " attempts", e);
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to execute swipe sequence: " + e.getMessage(), e);
-            }
-
-        }else{
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String originalContext = driver.getContext();
-
-            try {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context("NATIVE_APP");
-                }
-
-                Dimension size = driver.manage().window().getSize();
-
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.75);
-                int endY = (int) (size.height * 0.30);
-
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 0);
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ZERO,
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        startY
-                ));
-
-                swipe.addAction(finger.createPointerDown(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                swipe.addAction(new Pause(finger, Duration.ofMillis(200)));
-
-                swipe.addAction(finger.createPointerMove(
-                        Duration.ofMillis(350),
-                        PointerInput.Origin.viewport(),
-                        startX,
-                        endY
-                ));
-
-                swipe.addAction(finger.createPointerUp(
-                        PointerInput.MouseButton.LEFT.asArg()
-                ));
-
-                driver.perform(Collections.singletonList(swipe));
-
-            } finally {
-                if (!"NATIVE_APP".equals(originalContext)) {
-                    driver.context(originalContext);
-                }
-            }
-        }
-    }
 
     public void scrollUntilFindName() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1836,55 +1712,6 @@ public class Issuer {
         }
     }
 
-    public void assertTextVisibleWithScroll(AndroidDriver driver, String text, int maxScrolls) throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            By locator = By.xpath("//*[@text=\"" + text.replace("\"", "\\\"") + "\"]");
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(200));
-            int scrollCount = 0;
-
-            while (scrollCount < maxScrolls) {
-                if (!driver.findElements(locator).isEmpty()) {
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-                    return;
-                }
-
-                fastSwipe(driver);
-                scrollCount++;
-            }
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            throw new AssertionError("Text not found: " + text);
-        }
-    }
-
-    private void fastSwipe(AndroidDriver driver) {
-        try {
-            String originalContext = driver.getContext();
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context("NATIVE_APP");
-            }
-
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.7);
-            int endY = (int) (size.height * 0.3);
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 0);
-            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY)); // faster swipe
-            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-            driver.perform(Collections.singletonList(swipe));
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context(originalContext);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Swipe failed", e);
-        }
-    }
-
     public void selectMDLKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -2050,7 +1877,7 @@ public class Issuer {
                     }
 
                 } catch (Exception ignored) {
-                    slowScroll();
+                    MobileActionsUtils.slowScroll();
                 }
             }
         } else {
@@ -2087,7 +1914,7 @@ public class Issuer {
                     }
 
                 } catch (Exception ignored) {
-                    slowScroll();
+                    MobileActionsUtils.slowScroll();
                 }
             }
         } else {
