@@ -15,6 +15,8 @@ browserstack-local.properties
 session_map.txt
 .DS_Store
 .gitattributes
+src/.DS_Store
+src/test/resources/.DS_Store
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
