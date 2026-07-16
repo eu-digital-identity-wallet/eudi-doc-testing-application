@@ -20,6 +20,7 @@ src/test/resources/.DS_Store
 **/.DS_Store
 **/logs/ui
 local-execution.sh
+logs/ui
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
