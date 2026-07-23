@@ -4,6 +4,8 @@ Feature: RP Access Certificate verification failure in presentation flow
   I want the Wallet to notify me whenever the processing of a Wallet Relying Party Access Certificate fails in the presentation flow,,
   so that I can avoid sharing my information with an untrusted party.
 
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/324
+
   @US_VACPF_TC_01
   Scenario: Block presentation when RP access certificate verification fails
     Given a presentation flow has been initiated by a Relying Party
