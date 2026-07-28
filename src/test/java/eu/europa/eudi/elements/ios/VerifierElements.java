@@ -15,9 +15,9 @@ public class VerifierElements {
     public static By msoMdoc = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By clickDataMdl = By.xpath("//XCUIElementTypeButton[@label=\"Mobile Driving Licence (MDL)\"]");
-    public static By selectAttributesMdl = By.xpath("(//XCUIElementTypeOther[@label=\"-- attributes by --\"])[2]");
+    public static By selectAttributesMdl = By.xpath("(//XCUIElementTypeButton[@label=\"-- attributes by --\"])[2]");
     public static By specificAttributesMdl = By.xpath("//XCUIElementTypeOther[@name=\"Specific attributes\"]");
-    public static By clickFormatMdl = By.xpath("(//XCUIElementTypeOther[@label=\"-- format --\"])[2]");
+    public static By clickFormatMdl = By.xpath("(//XCUIElementTypeButton[@label=\"-- format --\"])[2]");
     public static By msoMdocMdl = By.xpath("//XCUIElementTypeOther[@name=\"mso_mdoc\"]");
     public static By selectAttributeButton = By.xpath("//XCUIElementTypeButton[@name=\"Select Attributes\"]");
     public static By clickSelectAttributes = By.xpath("//XCUIElementTypeButton[@name=\"Select\"]");

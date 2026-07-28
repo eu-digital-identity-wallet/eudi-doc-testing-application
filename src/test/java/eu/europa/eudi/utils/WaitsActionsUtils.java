@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class WaitsUtils {
+public class WaitsActionsUtils {
     public static WebElement waitForExactText(By locator,
                                               String expectedText,
                                               AppiumDriver driver,
@@ -18,13 +18,14 @@ public class WaitsUtils {
             @Override
             public WebElement apply(WebDriver driver) {
                 try {
+                    assert driver != null;
                     WebElement element = driver.findElement(locator);
                     String actualText = element.getText().trim();
 
                     if (actualText.toLowerCase().contains(expectedText.toLowerCase())) {
                         return element;
                     }
-                } catch (NoSuchElementException | StaleElementReferenceException e) {
+                } catch (NoSuchElementException | StaleElementReferenceException ignored) {
                 }
                 return null;
             }

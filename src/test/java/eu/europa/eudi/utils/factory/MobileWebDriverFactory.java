@@ -158,6 +158,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("sessionName", featureName);
                 options.setCapability("includeSafariInWebviews", true);
                 options.setCapability("waitForQuiescence", true);
+                options.setCapability("browserstack.networkLogs", true);
 
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
@@ -181,7 +182,6 @@ public class MobileWebDriverFactory {
                 // --- Real device setup ---
                 envDataConfig = new EnvDataConfig();
                 File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
-                apkPath1.getAbsolutePath();
                 XCUITestOptions caps1 = new XCUITestOptions();
                 caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
                 caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());

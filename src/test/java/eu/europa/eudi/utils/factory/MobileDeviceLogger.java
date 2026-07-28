@@ -34,10 +34,6 @@ public class MobileDeviceLogger {
                             + "ui"
             );
 
-            if (!logDir.exists()) {
-                logDir.mkdirs();
-            }
-
             File logFile = new File(
                     logDir,
                     featureName + "_" + scenarioNumber + ".log"
