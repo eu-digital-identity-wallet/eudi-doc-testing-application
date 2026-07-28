@@ -6,11 +6,11 @@ Feature: RP Access Certificate verification failure in issuance flow
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/326
 
-  @US_VACIF_TC_01
+  @US_VACIF_TC_01 @manual:Failed
   Scenario: Block issuance when RP access certificate verification fails
     Given an issuance flow has been initiated by a Relying Party
     When the Wallet processes the RP Access Certificate
     And the certificate verification fails
     Then the Wallet terminates the issuance interaction
-    And the Wallet displays a notification informs the Wallet user that the issuance has been blocked
-
+    And the Wallet displays a notification informs the Wallet user that the issuance has been blocked indicating that the RP could not be verified
+    And the Wallet displays a clear notification to the Wallet user that no information about the Wallet user has been shared

@@ -9462,8 +9462,18 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @And("the Wallet displays a notification informs the Wallet user that the issuance has been blocked")
-    public void theWalletDisplaysANotificationInformsTheWalletUserThatTheIssuanceHasBeenBlocked() {
+    @And("the Wallet displays a notification informs the Wallet user that the issuance has been blocked indicating that the RP could not be verified")
+    public void theWalletDisplaysANotificationInformsTheWalletUserThatTheIssuanceHasBeenBlockedIndicatingThatTheRPCouldNotBeVerified() {
+        //manual
+    }
+
+    @Then("the hyperlink Learn more is a button")
+    public void theHyperlinkLearnMoreIsAButton() {
+        //manual
+    }
+
+    @And("the Wallet displays a counter showing the number of attestations issued")
+    public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
         //manual
     }
 }
