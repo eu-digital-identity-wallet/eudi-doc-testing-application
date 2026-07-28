@@ -4,7 +4,7 @@ import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.VerifierElements;
 import eu.europa.eudi.utils.MobileActionsUtils;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.WaitsUtils;
+import eu.europa.eudi.utils.WaitsActionsUtils;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -12,8 +12,6 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.file.Files;
@@ -45,16 +43,6 @@ public class Verifier {
         }
     }
 
-    public void assertAndClickNext() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.presentationQueryTypeIsVisible)).getText();
-            Assert.assertEquals(Literals.Verifier.PRESENTATION_QUERY_TYPE.label, pageHeader);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickNextForVerifier)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickNext)).click();
-        }
-    }
-
     public void chooseWallet() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.chooseWallet)).click();
@@ -66,7 +54,7 @@ public class Verifier {
     public void viewDataPage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement header = WaitsUtils.waitForExactText(
+            WebElement header = WaitsActionsUtils.waitForExactText(
                     eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
                     Literals.Verifier.VIEW_DATA_PAGE.label,
                     driver,
@@ -87,26 +75,6 @@ public class Verifier {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.appOpensSuccessfully)).getText();
             Assert.assertEquals(Literals.Verifier.APP_OPEN_SUCCESSFULLY.label, pageHeader);
-        }
-    }
-
-    public void selectAllAttributes() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
-            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttribute));
-            Dimension dropdownSize = dropdown.getSize();
-            MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() - 50);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
-            WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
-            Dimension dropdownSize2 = dropdown2.getSize();
-            MobileActionsUtils.tapActionOffSet(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() / 3);
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.allAttributes)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
         }
     }
 
@@ -178,6 +146,7 @@ public class Verifier {
             }
         } else {
             String fullPin = test.envDataConfig().getPin();
+            char firstDigit = fullPin.charAt(0);
             char secondDigit = fullPin.charAt(1);
             char thirdDigit = fullPin.charAt(2);
             char fourthDigit = fullPin.charAt(3);
@@ -185,7 +154,7 @@ public class Verifier {
             char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1Ver).click();
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1Ver).sendKeys(String.valueOf(firstDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2Ver).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3Ver).sendKeys(String.valueOf(thirdDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4Ver).sendKeys(String.valueOf(fourthDigit));
@@ -235,7 +204,7 @@ public class Verifier {
         }
     }
 
-    public File captureScreen() {
+    public void captureScreen() {
         WebDriver driver;
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -287,7 +256,6 @@ public class Verifier {
 
         if (success) {
             this.capturedScreenFile = destFile;
-            return destFile;
         } else {
             throw new RuntimeException("Failed to capture a non-empty screenshot.");
         }
@@ -421,7 +389,7 @@ public class Verifier {
         Assert.assertEquals(Literals.Verifier.URI_METHOD_IS_DISPLAYED_ON_WEB.label, pageHeader);
     }
 
-    public File captureScreenOnWeb() {
+    public void captureScreenOnWeb() {
         WebDriver driver = test.webWebDriverFactory().getDriverWeb();
         WebDriverWait wait = test.webWebDriverFactory().getWait();
 
@@ -499,7 +467,6 @@ public class Verifier {
             System.out.println("QR image saved: " + destFile.getAbsolutePath());
 
             this.capturedScreenFile = destFile;
-            return destFile;
 
         } catch (Exception e) {
             throw new RuntimeException(
@@ -598,42 +565,6 @@ public class Verifier {
         }
     }
 
-    public void selectTheMandatoryAttributes() throws InterruptedException {
-        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        WebDriverWait wait = test.mobileWebDriverFactory().getWait();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-
-        int[] mandatoryIndices = {0, 1, 2, 3, 4, 9, 11, 12, 13, 14, 15};
-
-        for (int index : mandatoryIndices) {
-
-            if (index == 11) {
-                Dimension size = driver.manage().window().getSize();
-                int startX = size.width / 2;
-                int startY = (int) (size.height * 0.65);
-                int endY = (int) (size.height * 0.35);
-                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-                Sequence swipe = new Sequence(finger, 1);
-                swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                swipe.addAction(finger.createPointerMove(Duration.ofMillis(800), PointerInput.Origin.viewport(), startX, endY));
-                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-                driver.perform(Collections.singletonList(swipe));
-            }
-
-            List<WebElement> switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
-            WebElement el = switches.get(index);
-            wait.until(ExpectedConditions.visibilityOf(el));
-            wait.until(ExpectedConditions.elementToBeClickable(el));
-            String prevValue = el.getAttribute("value");
-            el.click();
-            wait.until(d -> !prevValue.equals(el.getAttribute("value")));
-        }
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
-    }
-
     public void clickSelect() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickSelectAttributes)).click();
@@ -654,26 +585,6 @@ public class Verifier {
 
     public void clickViewContentOnWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickViewContentOnWeb)).click();
-    }
-
-    public void selectAllAttributesForMdl() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickDataMdl)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesMdl)).click();
-            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.specificAttributesMdl));
-            Dimension dropdownSize = dropdown.getSize();
-            MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() - 50);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatMdl)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocMdl)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickDataMdl)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesMdl)).click();
-            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.allAttributes));
-            Dimension dropdownSize = dropdown.getSize();
-            MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormatMdl)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdocMdl)).click();
-        }
     }
 
     public void selectSpecificAttributesForMdl() {
@@ -704,22 +615,6 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.walletRespondedMdlKotlin)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_MDL_KOTLIN.label, pageHeader);
         }
-    }
-
-    public void selectAllAttributesOnWebForMdl() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWebForMdl)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWebForMdl)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWebForMdl)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWebForMdl)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForMdl)).click();
-    }
-
-    public void selectAllAttributesOnWebForPID() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWebForPID)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWebForPID)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeOnWebForPID)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWebForPID)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForPID)).click();
     }
 
     public void selectSpecificAttributesOnWebForMdl() {
@@ -823,20 +718,10 @@ public class Verifier {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_verifier_from_wallet.yml");
-                        }else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
-                            }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
-                        } else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
-                            }
                         }
                     }
                     break;
@@ -846,20 +731,10 @@ public class Verifier {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet.yml");
-                        }else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_all_attributes.yml");
-                            }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
-                        } else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
-                            }
                         }
                     }
                     test.web().verifier().clickCloseOnVerifierWeb();
@@ -875,22 +750,10 @@ public class Verifier {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/data_on_verifier_from_wallet.yml");
-                        }else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
-                            }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
-                        } else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageAllAttributes("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes_ios.yml");
-                                }
-                            }
                         }
                     }
                     break;
@@ -900,20 +763,10 @@ public class Verifier {
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet.yml");
-                        }else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes.yml");
-                            } else {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/data_on_verifier_from_wallet_all_attributes_ios.yml");
-                            }
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
                             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet.yml");
-                        } else {
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/mDL/kotlin_data_on_verifier_from_wallet_all_attributes.yml");
-                            }
                         }
                     }
                     test.web().verifier().clickCloseOnVerifierWeb();

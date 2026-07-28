@@ -9,12 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class WebWebDriverFactory {
-    private final TestSetup test;
     private WebDriver webDriver;
     private WebDriverWait wait;
 
     public WebWebDriverFactory(TestSetup test) {
-        this.test = test;
     }
 
     public void startWebDriverSession() {

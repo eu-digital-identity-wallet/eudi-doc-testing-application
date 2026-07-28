@@ -360,29 +360,11 @@ public class AutomatedStepDefs {
         userOpensVerifierApp();
     }
 
-    @When("the user selects the option to present an attestation type")
-    public void theUserSelectsTheOptionToPresentAnAttestationType() {
-        test.mobile().verifier().launchSafari();
-        test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().selectAllAttributes();
-        test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().assertAndClickNext();
-    }
-
     @Then("the Relying Party service redirects the user to the EUDI Wallet")
     public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
         test.mobile().verifier().chooseWalletPageIsDisplayed();
         test.mobile().verifier().chooseWallet();
         test.mobile().verifier().insertPIN2();
-    }
-
-    @Given("the EUDI Wallet is opened")
-    public void theEUDIWalletIsOpened() throws MalformedURLException {
-        theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice();
-        theUserSelectsTheOptionToPresentAnAttestationType();
-        theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet();
     }
 
     @Then("the authentication is successful")
@@ -391,29 +373,10 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickDone();
     }
 
-    @Given("the user is successfully authenticated in the EUDI Wallet")
-    public void theUserIsSuccessfullyAuthenticatedInTheEUDIWallet() throws MalformedURLException, InterruptedException {
-        theEUDIWalletIsOpened();
-        theUserAuthenticatesUsingASixDigitPINOrBiometrics();
-        theAuthenticationIsSuccessful();
-    }
 
     @Then("the EUDI Wallet informs the user that the Relying Party requests an attestation")
     public void theEUDIWalletInformsTheUserThatTheRelyingPartyRequestsAnAttestation() {
         test.mobile().verifier().viewDataPage();
-    }
-
-    @Given("the EUDI Wallet requests the user to consent")
-    public void theEUDIWalletRequestsTheUserToConsent() throws MalformedURLException, InterruptedException {
-        theEUDIWalletIsOpened();
-        theUserAuthenticatesUsingASixDigitPINOrBiometrics();
-        theAuthenticationIsSuccessful();
-    }
-
-    @Given("the user consents to the attestation presentation")
-    public void theUserConsentsToTheAttestationPresentation() throws MalformedURLException, InterruptedException {
-        theEUDIWalletIsOpened();
-        theUserAuthenticatesUsingASixDigitPINOrBiometrics();
     }
 
     @Then("the EUDI Wallet displays a confirmation message indicating the outcome")
@@ -425,13 +388,6 @@ public class AutomatedStepDefs {
     @Then("the Relying Party service receives the attestation")
     public void theRelyingPartyServiceReceivesTheAttestation() {
         test.mobile().verifier().walletResponded();
-    }
-
-    @Given("Method A is configured for the attestation type")
-    public void methodAIsConfiguredForTheAttestationType() throws MalformedURLException, InterruptedException {
-        theUserConsentsToTheAttestationPresentation();
-        theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome();
-        theRelyingPartyServiceReceivesTheAttestation();
     }
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
@@ -503,7 +459,7 @@ public class AutomatedStepDefs {
 
     @Then("the credential is stored in the Wallet")
     public void theCredentialIsStoredInTheWallet() {
-      test.mobile().wallet().credentialStoredInWallet();
+      test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
     }
 
     @When("the user presents the credential to the {}")

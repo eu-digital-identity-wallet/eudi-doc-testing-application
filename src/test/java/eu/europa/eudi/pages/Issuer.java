@@ -7,13 +7,15 @@ import eu.europa.eudi.elements.android.IssuerElements;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.MobileActionsUtils;
 import eu.europa.eudi.utils.TestSetup;
-import eu.europa.eudi.utils.WaitsUtils;
+import eu.europa.eudi.utils.WaitsActionsUtils;
 import eu.europa.eudi.utils.yaml.YmlLoader;
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
@@ -27,7 +29,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public class Issuer {
     public String issuerType;
@@ -256,7 +257,7 @@ public class Issuer {
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -508,7 +509,7 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            By showYearPicker = AppiumBy.accessibilityId("DatePicker.Show");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
             List<WebElement> wheels = wait.until(driver ->
@@ -623,7 +624,7 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            By showYearPicker = AppiumBy.accessibilityId("DatePicker.Show");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
             List<WebElement> wheels = wait.until(driver ->
@@ -694,7 +695,7 @@ public class Issuer {
             String dayXpath = String.format("//XCUIElementTypeStaticText[@name='%s']", day);
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dayXpath))).click();
 
-            By showYearPicker = AppiumBy.accessibilityId("Show year picker");
+            By showYearPicker = AppiumBy.accessibilityId("DatePicker.Show");
             wait.until(ExpectedConditions.elementToBeClickable(showYearPicker)).click();
 
             List<WebElement> wheels = wait.until(driver ->
@@ -815,7 +816,7 @@ public class Issuer {
                     MobileActionsUtils.slowScroll();
                 }
             }
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -832,17 +833,52 @@ public class Issuer {
         }
     }
 
-    public void clickAuthorize() {
+    public void clickAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(350));
+//            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
+//            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+
+
+            // Switch to WEBVIEW
+            for (String context : driver.getContextHandles()) {
+                if (context.contains("WEBVIEW")) {
+                    driver.context(context);
+                    break;
+                }
+            }
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+
+            wait.until(d ->
+                    ((JavascriptExecutor)d)
+                            .executeScript("return document.readyState")
+                            .equals("complete"));
+
+// Switch back if you need to click a native element
+            driver.context("NATIVE_APP");
+
+
+            By authorizeButton = By.xpath("//android.widget.Button[@text='Authorize']");
+
+// Wait until visible
+            wait.until(ExpectedConditions.visibilityOfElementLocated(authorizeButton));
+
+// Wait until clickable
+            wait.until(ExpectedConditions.elementToBeClickable(authorizeButton));
+
+// Click
+            Thread.sleep(5000); // 3-second delay
+
+            driver.findElement(authorizeButton).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            driver.context("NATIVE_APP");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(350));
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
+            driver.context("NATIVE_APP");
         }
     }
 
@@ -1055,11 +1091,13 @@ public class Issuer {
 
     public void clickConfirm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickConfirm)).click();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickConfirm)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
 
         }
     }
@@ -1069,6 +1107,7 @@ public class Issuer {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
         clickFormEu();
+        scrollUntilFindSubmit();
         clickSubmit();
         formIsDisplayed();
         chooseBirthDate();
@@ -1421,7 +1460,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebElement header = WaitsUtils.waitForExactText(
+            WebElement header = WaitsActionsUtils.waitForExactText(
                     IssuerElements.qrCodeIsDisplayed,
                     Literals.Issuer.QR_CODE.label,
                     driver,
@@ -1598,7 +1637,7 @@ public class Issuer {
         }
     }
 
-    public void fillLoginForm() throws InterruptedException {
+    public void fillLoginForm() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -1607,7 +1646,7 @@ public class Issuer {
             try {
                 username = waitForVisibleAcrossContexts(driver,
                         IssuerElements.clickUsername, IssuerElements.usernameWeb,
-                        Duration.ofSeconds(100));
+                        Duration.ofSeconds(2000));
             } catch (TimeoutException e) {
                 System.out.println("Contexts at failure: " + driver.getContextHandles());
                 System.out.println("Page source:\n" + driver.getPageSource());
@@ -1618,13 +1657,13 @@ public class Issuer {
 
             WebElement password = waitForVisibleAcrossContexts(driver,
                     IssuerElements.clickPassword, IssuerElements.passwordWeb,
-                    Duration.ofSeconds(100));
+                    Duration.ofSeconds(2000));
             password.click();
             password.sendKeys("password");
 
             WebElement submit = waitForVisibleAcrossContexts(driver,
                     IssuerElements.loginSubmit, IssuerElements.loginSubmitWeb,
-                    Duration.ofSeconds(100));
+                    Duration.ofSeconds(2000));
             submit.click();
 
             driver.context("NATIVE_APP"); // reset before continuing native steps
@@ -1739,31 +1778,98 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             String expectedText = "Scan the generated QR Code to issue the requested Credentials:";
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
-            WebElement header = wait.until((ExpectedCondition<WebElement>) d -> {
-                AndroidDriver ad = (AndroidDriver) d;
+            By[] locators = {
+                    By.xpath("//android.widget.TextView[@text=\"" + expectedText + "\"]"),
+                    By.xpath("//*[normalize-space(text())=\"" + expectedText + "\"]"),
+                    By.xpath("//*[contains(@text,\"Scan the generated QR Code\")]"),
+                    By.xpath("//*[contains(text(),\"Scan the generated QR Code\")]")
+            };
 
-                for (String ctx : ad.getContextHandles()) {
-                    try {
-                        ad.context(ctx);
+            int maxAttempts = 5;
+            int attempt = 0;
+            boolean headerFound = false;
 
-                        By locator = ctx.equals("NATIVE_APP")
-                                ? By.xpath("//android.widget.TextView[@text=\"" + expectedText + "\"]")
-                                : By.xpath("//*[normalize-space(text())=\"" + expectedText + "\"]");
+            while (attempt < maxAttempts && !headerFound) {
+                attempt++;
 
-                        List<WebElement> found = ad.findElements(locator);
-                        if (!found.isEmpty() && found.get(0).isDisplayed()) {
-                            return found.get(0); // driver stays switched into whichever context matched
-                        }
-                    } catch (Exception ignored) {
-                        // context may not be attached yet / transient error — try the next one
+                System.out.println("Attempt " + attempt + " to find QR header. Refreshing page...");
+
+                // Refresh if needed
+                pullToRefresh(driver);
+
+                try {
+                    WebElement header = new WebDriverWait(driver, Duration.ofSeconds(20))
+                            .pollingEvery(Duration.ofMillis(500))
+                            .ignoring(NoSuchElementException.class)
+                            .ignoring(StaleElementReferenceException.class)
+                            .until(d -> {
+
+                                AndroidDriver ad = (AndroidDriver) d;
+
+                                // Try all available contexts
+                                for (String ctx : ad.getContextHandles()) {
+                                    try {
+                                        System.out.println("Checking context: " + ctx);
+
+                                        ad.context(ctx);
+
+                                        for (By locator : locators) {
+                                            try {
+                                                List<WebElement> elements = ad.findElements(locator);
+
+                                                if (!elements.isEmpty()) {
+                                                    WebElement element = elements.get(0);
+
+                                                    if (element.isDisplayed()) {
+                                                        System.out.println(
+                                                                "SUCCESS: Found QR header using "
+                                                                        + locator
+                                                                        + " in context "
+                                                                        + ctx
+                                                        );
+
+                                                        return element;
+                                                    }
+                                                }
+
+                                            } catch (Exception ignored) {
+                                                // Try next locator
+                                            }
+                                        }
+
+                                    } catch (Exception ignored) {
+                                        // Context unavailable, continue
+                                    }
+                                }
+
+                                return null;
+                            });
+
+
+                    if (header != null) {
+                        Assert.assertTrue(header.isDisplayed());
+                        headerFound = true;
+
+                        System.out.println(
+                                "Successfully found QR header on attempt " + attempt
+                        );
                     }
-                }
-                return null; // triggers another poll
-            });
 
-            Assert.assertTrue(header.isDisplayed());
+
+                } catch (Exception e) {
+                    System.out.println(
+                            "Attempt " + attempt + " failed: " + e.getMessage()
+                    );
+                }
+            }
+
+
+            if (!headerFound) {
+                throw new AssertionError(
+                        "QR header not found after " + maxAttempts + " refresh attempts."
+                );
+            }
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
@@ -1774,21 +1880,36 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-// wait until session has NATIVE_APP context available at all
-            new WebDriverWait(driver, Duration.ofSeconds(30))
+// Wait until the NATIVE_APP context exists
+            new WebDriverWait(driver, Duration.ofSeconds(3000))
                     .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+
             driver.context("NATIVE_APP");
 
+// Perform your native actions
             safeScrollForwardAndBack(driver);
 
-            By nativeLocator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed; // //android.widget.TextView[@resource-id="kc-page-title"]
+// Define locators for both contexts
+            By nativeLocator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
             By webLocator = By.cssSelector("#kc-page-title");
 
-            WebElement header = waitForVisibleAcrossContexts(driver, nativeLocator, webLocator, Duration.ofSeconds(80));
-            System.out.println("Header is visible: " + header.isDisplayed());
+            WebElement header;
+            try {
+                header = waitForVisibleAcrossContexts(
+                        driver,
+                        nativeLocator,
+                        webLocator,
+                        Duration.ofSeconds(300));
+            } catch (TimeoutException e) {
+                System.out.println("Contexts at failure: " + driver.getContextHandles());
+                System.out.println("Current context: " + driver.getContext());
+                System.out.println("Page source:\n" + driver.getPageSource());
+                throw new AssertionError("Sign page header was not found.", e);
+            }
+
             Assert.assertTrue(header.isDisplayed());
 
-            driver.context("NATIVE_APP"); // reset context before continuing with native steps
+            driver.context("NATIVE_APP"); // Reset before continuing native steps
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1939,7 +2060,7 @@ public class Issuer {
 
     public void clickUseEudiwPid() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                        String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://ec.dev.issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+                        String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
                         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -1970,7 +2091,7 @@ public class Issuer {
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertPidFromListKotlin();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().wallet().insertMdlFromList();
+                        test.mobile().wallet().insertMdlFromListKotlin();
                     }
                 } else {
                     if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
@@ -2045,7 +2166,6 @@ public class Issuer {
                     switch (issueScenario.toLowerCase()) {
                         case "same device":
                             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-//                        if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
                                 test.mobile().issuer().scrollUntilPidIssuer();
@@ -2055,10 +2175,10 @@ public class Issuer {
                                 test.mobile().issuer().clickUseEudiwPid();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issuePID();
-//                        }
                             } else {
                                 if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                                     test.mobile().issuer().issuerService();
+                                    test.mobile().issuer().clickissuerService();
                                     test.mobile().issuer().requestCredentialsPageIsDisplayed();
                                     test.mobile().issuer().scrollUntilMdlIssuer();
                                     test.mobile().issuer().selectMdlPythonIssuer();
@@ -2074,6 +2194,7 @@ public class Issuer {
                         case "cross device":
                             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                                 test.mobile().issuer().issuerService();
+                                test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
                                 test.mobile().issuer().scrollUntilPidIssuer();
                                 test.mobile().issuer().selectPidPythonIssuer();
@@ -2098,6 +2219,7 @@ public class Issuer {
                                 test.mobile().issuer().issuePID();
                             } else {
                                 test.mobile().issuer().issuerService();
+                                test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
                                 test.mobile().issuer().scrollUntilMdlIssuer();
                                 test.mobile().issuer().selectMdlPythonIssuer();
@@ -2125,6 +2247,14 @@ public class Issuer {
                     }
                 }
                 break;
+        }
+    }
+
+    private void clickissuerService() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssuerCredentialOffer)).click();
+        }else{
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickIssuerCredentialOffer)).click();
         }
     }
 

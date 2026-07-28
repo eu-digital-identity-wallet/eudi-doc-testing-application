@@ -42,5 +42,5 @@ public class IssuerElements {
     public static By passwordWeb = By.cssSelector("#password");;
     public static By loginSubmit = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"kc-login\")");;
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
-    ;
+    public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"https://issuer.eudiw.dev/credential_offer\"]");
 }
