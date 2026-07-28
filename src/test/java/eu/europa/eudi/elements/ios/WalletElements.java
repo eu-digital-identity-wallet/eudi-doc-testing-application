@@ -46,7 +46,7 @@ public class WalletElements {
     public static By pinTexfield4Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[4]");
     public static By pinTexfield5Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]");
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[6]");
-    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@name='Go Down']");
+    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@label='Go Down']");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@label=\"Authenticate\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");

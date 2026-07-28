@@ -225,12 +225,13 @@ public class Wallet {
         }
     }
 
-    public void clickMdl() {
+    public void clickMdl() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(55));
+            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickMdlPython)).click();
         } else {
+            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickMdl)).click();
 
         }
@@ -437,7 +438,9 @@ public class Wallet {
 
     public void clickPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPID)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPID)).click();
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickPID));
+            MobileActionsUtils.tapActionWallet(button, false);
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
             MobileActionsUtils.tapActionWallet(button, false);
@@ -844,6 +847,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.addButton)).click();
         } else {
+            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
         }
@@ -1077,8 +1081,9 @@ public class Wallet {
         test.mobile().issuer().fillLoginForm();
     }
 
-    private void clickKotlinPIDFromList() {
+    private void clickKotlinPIDFromList() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlinFromList)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1094,7 +1099,7 @@ public class Wallet {
                         return;
                     } catch (Exception e) {
                         driver.executeScript("mobile: scroll", ImmutableMap.of(
-                            "predicateString", "name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_dev.issuer-backend.eudiw.dev_mDocPid'",
+                            "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
                             "direction", "down"
                         ));
                     }
