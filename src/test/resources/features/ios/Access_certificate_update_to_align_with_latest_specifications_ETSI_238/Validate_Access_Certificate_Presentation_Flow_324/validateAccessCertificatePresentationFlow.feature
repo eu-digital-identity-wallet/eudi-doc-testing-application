@@ -6,7 +6,7 @@ Feature: RP Access Certificate verification failure in presentation flow
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/324
 
-  @US_VACPF_TC_01
+  @US_VACPF_TC_01 @manual:Passed
   Scenario: Block presentation when RP access certificate verification fails
     Given a presentation flow has been initiated by a Relying Party
     When the Wallet processes the RP Access Certificate
