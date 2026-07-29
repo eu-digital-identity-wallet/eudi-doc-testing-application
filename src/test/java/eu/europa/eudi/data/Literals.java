@@ -70,7 +70,8 @@ public interface Literals {
         AUTHORIZE_IS_DISPLAYED("Please review the selected attributes before sending to the EudiWallet demo app."),
         FORM_IOS("1"),
         ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
-        SIGN_IN_USER_PAGE("Sign in to your account");
+        SIGN_IN_USER_PAGE("Sign in to your account"),
+        SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin");
 
         public final String label;
         Issuer(String label) {

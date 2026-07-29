@@ -884,71 +884,76 @@ public class Issuer {
     }
 
     public void formIsDisplayed() {
-        // 1. Check if we are running on Android
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            // Locators
             By[] locators = {
                     AppiumBy.androidUIAutomator("resourceId(\"content\")"),
                     AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
             };
 
-            int maxAttempts = 5; // Maximum number of times to refresh
+            int maxAttempts = 5;
             int attempt = 0;
             WebElement element = null;
 
             while (attempt < maxAttempts) {
+
                 attempt++;
-                System.out.println("Attempt " + attempt + " to find element. Refreshing page...");
-
-                // 1. Perform the refresh
-                pullToRefresh(driver);
-
-                // 2. Small pause to let the refresh action register
+                System.out.println("Attempt " + attempt + " to find element.");
 
                 try {
-                    // 3. Ensure we are in NATIVE_APP
+                    // Ensure we are in NATIVE_APP
                     if (!"NATIVE_APP".equals(driver.getContext())) {
                         driver.context("NATIVE_APP");
                     }
 
-                    // 4. Short wait to see if the element appeared after this specific refresh
-                    // We use a shorter timeout here (e.g., 15 seconds) because we want to
-                    // refresh again if it doesn't appear quickly.
+                    // First try WITHOUT refresh
                     element = new WebDriverWait(driver, Duration.ofSeconds(15))
                             .pollingEvery(Duration.ofMillis(500))
                             .ignoring(NoSuchElementException.class)
                             .ignoring(StaleElementReferenceException.class)
                             .until(d -> {
+
                                 for (By locator : locators) {
                                     try {
                                         WebElement e = d.findElement(locator);
+
                                         if (e.isDisplayed()) {
                                             System.out.println("SUCCESS: Found using " + locator);
                                             return e;
                                         }
-                                    } catch (Exception ignored) {}
+
+                                    } catch (Exception ignored) {
+                                    }
                                 }
+
                                 return null;
                             });
 
                     if (element != null) {
-                        break; // Exit the while loop, we found it!
+                        break;
                     }
 
                 } catch (Exception e) {
-                    System.out.println("Attempt " + attempt + " failed to find element: " + e.getMessage());
+                    System.out.println("Element not found on attempt " + attempt);
+
+                    // Refresh only after the first failed attempt
+                    if (attempt < maxAttempts) {
+                        System.out.println("Refreshing page...");
+                        pullToRefresh(driver);
+                    }
                 }
             }
 
-            // Final Action
             if (element != null) {
                 element.click();
             } else {
-                throw new AssertionError("Element was not displayed even after " + maxAttempts + " refreshes.");
-        }
+                throw new AssertionError(
+                        "Element was not displayed even after " + maxAttempts + " attempts."
+                );
+            }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = eu.europa.eudi.elements.ios.IssuerElements.formIsDisplayed;
@@ -1040,12 +1045,28 @@ public class Issuer {
         driver.perform(Collections.singletonList(swipe));
 
         System.out.println("Pull-to-refresh executed.");
+
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+
+            WebElement continueButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            AppiumBy.id("com.android.chrome:id/positive_button")
+                    )
+            );
+
+            continueButton.click();
+            System.out.println("Clicked Continue.");
+        } catch (TimeoutException e) {
+            System.out.println("Confirm Form Resubmission popup did not appear.");
+        }
     }
 
     public void issuePID() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
+        selectCountryOfOrigin();
         clickFormEu();
         scrollUntilFindSubmit();
         clickSubmit();
@@ -1063,6 +1084,63 @@ public class Issuer {
         verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
         scrollUntilAuthorize();
         clickAuthorize();
+    }
+
+    private void selectCountryOfOrigin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebElement header = null;
+            String headerText = null;
+
+            try {
+                // First attempt
+                header = WaitsActionsUtils.waitForExactText(
+                        eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
+                        Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                        driver,
+                        30
+                );
+
+                headerText = driver.findElement(
+                        eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed
+                ).getText().trim();
+
+            } catch (Exception e) {
+                // If not found, refresh and check again
+                pullToRefresh(driver);
+
+                header = WaitsActionsUtils.waitForExactText(
+                        eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed,
+                        Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                        driver,
+                        30
+                );
+
+                headerText = driver.findElement(
+                        eu.europa.eudi.elements.android.IssuerElements.selectCountryOfOriginIsDisplayed
+                ).getText().trim();
+            }
+
+            Assert.assertEquals(
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                    headerText
+            );
+
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement header = WaitsActionsUtils.waitForExactText(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed,
+                    Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label,
+                    driver,
+                    30
+            );
+            String headerText = driver.findElement(
+                    eu.europa.eudi.elements.ios.IssuerElements.selectCountryOfOriginIsDisplayed
+            ).getText().trim();
+            Assert.assertEquals(Literals.Issuer.SELECT_COUNTRY_IS_DISPLAYED.label, headerText);
+        }
     }
 
     private void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
@@ -1134,6 +1212,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
+        selectCountryOfOrigin();
         clickFormEu();
         scrollUntilFindSubmit();
         clickSubmit();
@@ -1673,8 +1752,23 @@ public class Issuer {
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
             driver.context("NATIVE_APP");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink)).click();
+
+            try {
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink))
+                        .click();
+
+            } catch (Exception e) {
+                // Element not found -> refresh and try again
+                pullToRefresh(driver);
+
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink))
+                        .click();
+            }
+
             driver.context("NATIVE_APP");
 
         } else {
@@ -2204,9 +2298,9 @@ public class Issuer {
                             test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                             test.mobile().wallet().viewDataPage();
                             test.mobile().wallet().clickAddButton();
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-                            }
+//                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+//                                test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+//                            }
                             test.mobile().issuer().signInUser();
                             test.mobile().issuer().fillLoginForm();
                             break;
