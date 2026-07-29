@@ -1,4 +1,4 @@
-@ANDROID @US_ETESM @Q2_2026
+@ANDROID @US_ETESM
 Feature: Issuance and presentation - Proximity case
   
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer
