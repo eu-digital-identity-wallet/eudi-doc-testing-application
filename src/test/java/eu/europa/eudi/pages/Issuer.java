@@ -992,27 +992,54 @@ public class Issuer {
     }
 
     public void pullToRefresh(AndroidDriver driver) {
+
         Dimension size = driver.manage().window().getSize();
+
         int centerX = size.width / 2;
 
-        // START: Lower the start point to avoid the system status bar
-        int top = 400;    // Changed from 200 to 400
+        int startY = (int) (size.height * 0.25);
+        int endY = (int) (size.height * 0.70);
 
-        // END: Stop the swipe before the bottom of the screen
-        int bottom = 700; // Changed from 800 to 700 (shorter, more controlled pull)
+        PointerInput finger = new PointerInput(
+                PointerInput.Kind.TOUCH,
+                "finger"
+        );
 
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence swipe = new Sequence(finger, 1);
 
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), centerX, top));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(
+                finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        centerX,
+                        startY
+                )
+        );
 
-        // Increase duration slightly to make it look like a human "pull" rather than a "flick"
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), centerX, bottom));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(
+                finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                )
+        );
+
+        swipe.addAction(
+                finger.createPointerMove(
+                        Duration.ofMillis(800),
+                        PointerInput.Origin.viewport(),
+                        centerX,
+                        endY
+                )
+        );
+
+        swipe.addAction(
+                finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                )
+        );
 
         driver.perform(Collections.singletonList(swipe));
-        System.out.println("Performed a safe Pull-to-Refresh gesture.");
+
+        System.out.println("Pull-to-refresh executed.");
     }
 
     public void issuePID() throws InterruptedException {
@@ -1359,71 +1386,88 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             int maxAttempts = 5;
-            int attempt = 0;
-            boolean success = false;
 
-            while (attempt < maxAttempts && !success) {
-                attempt++;
-                System.out.println("Attempt " + attempt + " to verify Authorize page. Refreshing...");
-
-                // 1. Perform the refresh gesture
-                pullToRefresh(driver);
+            for (int attempt = 1; attempt <= maxAttempts; attempt++) {
 
                 try {
-                    // 2. Verify the Page Header
-                    // We wrap this in a try-catch so if the header is missing, we refresh and try again
-                    String pageHeader = test.mobileWebDriverFactory().getWait().until(
-                            ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed)
-                    ).getText();
+                    System.out.println("Attempt " + attempt + " checking Authorize page...");
 
-                    Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
-                    System.out.println("Header verified correctly.");
+                    // Check session before doing anything
+                    verifyDriverSession(driver);
 
-                    // 3. Switch to NATIVE_APP
+                    // 1. Verify header exists
+                    String pageHeader = new WebDriverWait(driver, Duration.ofSeconds(15))
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    eu.europa.eudi.elements.android.IssuerElements.authorizePageIsDisplayed))
+                            .getText();
+
+                    Assert.assertEquals(
+                            Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label,
+                            pageHeader
+                    );
+
+                    System.out.println("Authorize header verified.");
+
+                    // 2. Switch context
                     if (!"NATIVE_APP".equals(driver.getContext())) {
                         driver.context("NATIVE_APP");
                     }
 
-                    // 4. Search for the form elements
-                    By[] locators = {
-                            AppiumBy.androidUIAutomator("resourceId(\"//android.view.View[@resource-id=\"authForm\"]\")"),
-                            AppiumBy.androidUIAutomator("new UiSelector().text(\"Review & Send\")")
-                    };
-
-                    // We look for all locators within a shared timeout for this attempt
+                    // 3. Find Review & Send button
                     WebElement element = new WebDriverWait(driver, Duration.ofSeconds(15))
                             .pollingEvery(Duration.ofMillis(500))
                             .ignoring(StaleElementReferenceException.class)
-                            .ignoring(NoSuchElementException.class)
-                            .until(d -> {
-                                for (By locator : locators) {
-                                    try {
-                                        WebElement e = d.findElement(locator);
-                                        if (e.isDisplayed()) return e;
-                                    } catch (Exception ignored) {}
-                                }
-                                return null;
-                            });
+                            .until(ExpectedConditions.elementToBeClickable(
+                                    AppiumBy.androidUIAutomator(
+                                            "new UiSelector().text(\"Review & Send\")"
+                                    )
+                            ));
 
-                    if (element != null) {
-                        element.click();
-                        System.out.println("SUCCESS: Element found and clicked.");
-                        success = true; // Mark as successful to break the loop
+                    // 4. Click/tap
+                    element.click();
+
+                    System.out.println("SUCCESS: Review & Send clicked.");
+                    return;
+
+                } catch (TimeoutException e) {
+
+                    System.out.println(
+                            "Authorize page not ready. Attempt "
+                                    + attempt + "/" + maxAttempts
+                    );
+
+                    if (attempt < maxAttempts) {
+                        pullToRefresh(driver);
                     }
 
-                } catch (Exception e) {
-                    System.out.println("Attempt " + attempt + " failed: " + e.getMessage());
-                    // The loop will now continue to the next attempt (refresh)
+                } catch (WebDriverException e) {
+
+                    // Session is dead - do not retry
+                    throw new RuntimeException(
+                            "Appium session terminated during Authorize verification",
+                            e
+                    );
                 }
             }
 
-            if (!success) {
-                throw new AssertionError("Authorize page or form was not found/clickable after " + maxAttempts + " refreshes.");
-            }
-
+            throw new AssertionError(
+                    "Authorize page was not available after " + maxAttempts + " attempts."
+            );
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.authorizePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.AUTHORIZE_IS_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    private void verifyDriverSession(AndroidDriver driver) {
+
+        try {
+            driver.getPageSource();
+        } catch (Exception e) {
+            throw new IllegalStateException(
+                    "BrowserStack/Appium session is no longer active",
+                    e
+            );
         }
     }
 
