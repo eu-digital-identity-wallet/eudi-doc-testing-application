@@ -14,10 +14,6 @@ Feature: Issuance and presentation - mDL
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
       | mDL (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
 
@@ -34,7 +30,5 @@ Feature: Issuance and presentation - mDL
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
