@@ -61,7 +61,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);
                 options.setCapability("disableWindowAnimation", true);
-                options.setCapability("browserstack.idleTimeout", 300);
                 options.setCapability("newCommandTimeout", 300);
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("allowInvisibleElements", true);
@@ -151,7 +150,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("browserstack.video", true);
                 options.setCapability("browserstack.appiumLogs", false);
-                options.setCapability("browserstack.idleTimeout", 300);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
