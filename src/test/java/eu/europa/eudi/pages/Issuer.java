@@ -2172,6 +2172,7 @@ public class Issuer {
                         case "same device":
                             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                                 test.mobile().issuer().issuerService();
+                                test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
                                 test.mobile().issuer().scrollUntilPidIssuer();
                                 test.mobile().issuer().selectPidPythonIssuer();
