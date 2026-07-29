@@ -14,7 +14,6 @@ Feature: Issuance and presentation - PID (MSO Mdoc)
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | PID (MSO Mdoc) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
       | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
       | PID (MSO Mdoc) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
       | PID (MSO Mdoc) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |

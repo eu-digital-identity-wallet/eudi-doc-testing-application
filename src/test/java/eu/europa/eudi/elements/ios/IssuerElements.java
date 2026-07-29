@@ -47,4 +47,5 @@ public class IssuerElements {
     public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
     public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"https://issuer.eudiw.dev/credential_offer\"]");;
+    public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");;
 }
