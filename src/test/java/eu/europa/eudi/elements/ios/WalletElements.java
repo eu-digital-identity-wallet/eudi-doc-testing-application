@@ -25,7 +25,7 @@ public class WalletElements {
     public static By clickIssue = By.id("document_offer_screen_issue_button");
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN\"]");
-    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]"); //"//XCUIElementTypeImage[@name=\"chevron.down\"]"
+    public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By clickExpandVerificationMSODoc = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO MDoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO MDoc)']");
     public static By clickExpandNationality = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationality']]/XCUIElementTypeImage[@name='chevron.down']");
     public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]/XCUIElementTypeImage[@name='chevron.down']");
@@ -46,7 +46,7 @@ public class WalletElements {
     public static By pinTexfield4Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[4]");
     public static By pinTexfield5Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]");
     public static By pinTexfield6Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[6]");
-    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@name='chevron.down'] | //XCUIElementTypeImage[@label='Go Down']");
+    public static By clickDownArrow = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By issuanceDetailsNew = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By authenticateButton = By.xpath("//XCUIElementTypeButton[@label=\"Authenticate\"]");
     public static By scanQRIsActivated = By.xpath("//XCUIElementTypeStaticText[@label=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
@@ -55,7 +55,7 @@ public class WalletElements {
     public static By selectMDLPython = By.xpath("//XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
-    public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@name=\"chevron.down\"]");
+    public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
     public static By clickMdlKotlin = By.id("Mobile Driving Licence (MSO MDoc)");
