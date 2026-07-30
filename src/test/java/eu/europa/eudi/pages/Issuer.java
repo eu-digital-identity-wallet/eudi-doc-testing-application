@@ -836,11 +836,6 @@ public class Issuer {
     public void clickAuthorize() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(350));
-//            By theButtonToClick = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
-//            wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
-
-
             // Switch to WEBVIEW
             for (String context : driver.getContextHandles()) {
                 if (context.contains("WEBVIEW")) {
@@ -869,14 +864,11 @@ public class Issuer {
             wait.until(ExpectedConditions.elementToBeClickable(authorizeButton));
 
 // Click
-            Thread.sleep(5000); // 3-second delay
-
             driver.findElement(authorizeButton).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.context("NATIVE_APP");
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(350));
-            Thread.sleep(5000); // 3-second delay
             By theButtonToClick = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
             wait.until(ExpectedConditions.elementToBeClickable(theButtonToClick)).click();
             driver.context("NATIVE_APP");
@@ -2106,10 +2098,8 @@ public class Issuer {
 
     public void selectMdlPythonIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
         } else {
-            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLPython)).click();
 
         }
@@ -2117,10 +2107,8 @@ public class Issuer {
 
     public void selectPidPythonIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDPythonCredential)).click();
         } else {
-            Thread.sleep(5000); // 3-second delay
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDPython)).click();
 
         }
@@ -2298,9 +2286,6 @@ public class Issuer {
                             test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                             test.mobile().wallet().viewDataPage();
                             test.mobile().wallet().clickAddButton();
-//                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//                                test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
-//                            }
                             test.mobile().issuer().signInUser();
                             test.mobile().issuer().fillLoginForm();
                             break;

@@ -21,7 +21,6 @@ public class WalletElements {
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@label=\"Submit\"]");
     public static By loginPageIsDisplayed = By.id("biometric_screen_pin_title");
     public static By successMessageForDrivingIsDisplayed = By.id("document_success_screen_content_header_description");
-    public static By unselectData = By.xpath("(//XCUIElementTypeButton[@name='checkmark.square.fill'])[1] | (//XCUIElementTypeButton[@name='Selected'])[1]");
     public static By clickIssue = By.id("document_offer_screen_issue_button");
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN\"]");
@@ -56,7 +55,6 @@ public class WalletElements {
     public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
-    public static By unselectDataForMdlKotlin = By.xpath("(//XCUIElementTypeButton[@name=\"Selected\"])[1]");
     public static By scanQR = By.id("Scan QR");
     public static By clickMdlKotlin = By.id("Mobile Driving Licence (MSO MDoc)");
 }
