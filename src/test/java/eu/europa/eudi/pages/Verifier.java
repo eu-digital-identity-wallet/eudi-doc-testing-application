@@ -54,7 +54,7 @@ public class Verifier {
     public void viewDataPage() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement header = WaitsActionsUtils.waitForExactText(
+            WaitsActionsUtils.waitForExactText(
                     eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
                     Literals.Verifier.VIEW_DATA_PAGE.label,
                     driver,

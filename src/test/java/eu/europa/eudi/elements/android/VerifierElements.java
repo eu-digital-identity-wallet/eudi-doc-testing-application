@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 public class VerifierElements {
     public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-1\"]");
     public static By clickNextForVerifier = By.xpath("//android.widget.Button[@text=\"Next\"]");
-    public static By presentationQueryTypeIsVisible = By.xpath("//android.widget.TextView[@text=\"Request URI Method\"]");
     public static By chooseWallet = By.xpath("//android.widget.TextView[@text=\"OPEN WITH YOUR WALLET\"]");
     public static By viewDataPage = By.xpath("//android.widget.TextView[@text=\"The following transaction requires your permission and authentication.\"]");
     public static By appOpensSuccessfully = By.xpath("//android.widget.TextView[@text=\"Define your presentation request\"]");
@@ -13,7 +12,6 @@ public class VerifierElements {
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectAttributesMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By firstAttribute = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-0-panel\"]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-1\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id='mat-select-1-panel']");
@@ -38,8 +36,6 @@ public class VerifierElements {
     public static By walletRespondedMdlKotlin = By.xpath("//android.widget.TextView[@text=\"org.iso.18013.5.1.mDL\"]");
     public static By clickDataOnWebForMdl = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Mobile Driving Licence (MDL)']]");
     public static By clickDataOnWebForPID = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Person Identification Data (PID)']]");
-    public static By firstAttributeOnWebForMdl = By.xpath("//mat-option[.//span[contains(@class, 'primary-text') and normalize-space(.)='All attributes']]");
-    public static By firstAttributeOnWebForPID = By.xpath("//mat-option[.//span[contains(@class, 'primary-text') and normalize-space(.)='All attributes']]");
     public static By clickFormatOnWebForMdl = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Mobile Driving Licence')]]//div[contains(@class, 'mat-mdc-form-field-infix') and .//mat-label[normalize-space(.)='-- format --']]//div[contains(@class, 'mat-mdc-select-trigger')]");
     public static By clickFormatOnWebForPID = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Person Identification Data')]]//div[contains(@class, 'mat-mdc-form-field-infix') and .//mat-label[normalize-space(.)='-- format --']]//div[contains(@class, 'mat-mdc-select-trigger')]");
     public static By msoMdocOnWebForMdl = By.xpath("//mat-option[normalize-space(.)='mso_mdoc']");
