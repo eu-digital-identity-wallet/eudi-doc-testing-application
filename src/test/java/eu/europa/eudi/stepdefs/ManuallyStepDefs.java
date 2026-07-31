@@ -9476,4 +9476,8 @@ public class ManuallyStepDefs {
     public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
         //manual
     }
+
+    @Given("the issuer has issued a new batch of one-time-use credentials to my wallet")
+    public void theIssuerHasIssuedANewBatchOfOneTimeUseCredentialsToMyWallet() {
+    }
 }
