@@ -1,5 +1,6 @@
 package eu.europa.eudi.elements.ios;
 
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class VerifierElements {
@@ -23,4 +24,5 @@ public class VerifierElements {
     public static By viewDataPageOnWallet = By.id("request_screen_description");
     public static By walletRespondedMdlKotlin = By.id("org.iso.18013.5.1.mDL");
     public static By clickViewContent = By.id("View Content");
+    public static By sdJwt = AppiumBy.accessibilityId("dc+sd-jwt");
 }

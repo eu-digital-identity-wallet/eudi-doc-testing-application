@@ -1380,7 +1380,7 @@ public class Wallet {
     public void performPresentation(String presentationScenario, String credential, String selectiveDisclosure, String issuerType) throws InterruptedException {
         this.selectiveDisclosure = selectiveDisclosure;
         this.issuerType = issuerType;
-        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || "PID (SD-JWT)".equalsIgnoreCase(credential)) {
 
             switch (presentationScenario.toLowerCase()) {
 
@@ -1393,7 +1393,7 @@ public class Wallet {
                             test.mobile().verifier().launchSafari();
                             test.mobile().wallet().rotateScreen();
                             test.mobile().verifier().appOpensSuccessfully();
-                            test.mobile().verifier().selectSpecificAttributesOnVerifier();
+                            test.mobile().verifier().selectSpecificAttributesOnVerifier(this.credential);
                             test.mobile().verifier().scrollUntilNext();
                             test.mobile().verifier().clickNext();
                             test.mobile().verifier().selectAttributes();
@@ -1419,10 +1419,14 @@ public class Wallet {
                     }
 
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
-
-                        if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/PID/pre_final_shared_data_on_wallet.yml");
+                        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)){
+                            if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet.yml");}
+                        } else if ("PID (SD-JWT)".equalsIgnoreCase(credential)){
+                            if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet_sdjwt.yml");}
                         }
                     }
 
