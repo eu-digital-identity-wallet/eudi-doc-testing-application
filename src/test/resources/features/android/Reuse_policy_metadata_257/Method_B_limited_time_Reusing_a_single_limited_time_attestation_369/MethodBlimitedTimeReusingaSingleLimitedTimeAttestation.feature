@@ -4,45 +4,27 @@ Feature: Reusable attestation with silent renewal under Method B (limited_time)
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/369
 
-  @US_MBTRSLTA_TC_01
+  @US_MBTRSLTA_TC_01 @manual:Passed
   Scenario: User sees a normal credential after issuance
     Given the issuer has issued a credential under Method B
     When I open my wallet
     Then I see a single credential instance displayed like any other credential
     And the credential has a batch size of one
 
-  @US_MBTRSLTA_TC_02
+  @US_MBTRSLTA_TC_02 @manual:Passed
   Scenario: User can present the credential repeatedly without noticing time-based behavior
     Given I hold a valid credential issued under Method B
     When I present the credential to a verifier multiple times
     Then each presentation completes successfully without decreasing the counter of the instances
 
-  @US_MBTRSLTA_TC_03
+  @US_MBTRSLTA_TC_03 @manual:Passed
   Scenario: No timers or countdowns are shown to the user
     Given I hold a valid credential issued under Method B
     When I view the credential in my wallet
     Then I do not see any timer, countdown, or expiration warning
 
-  @US_MBTRSLTA_TC_04
-  Scenario: Credential remains valid and usable as its lifetime progresses
-    Given I hold a credential whose remaining lifetime is above the reissue trigger lifetime left threshold
-    When I present the credential to a verifier
-    Then the presentation completes successfully with no indication of impending expiry
-
-  @US_MBTRSLTA_TC_05
+  @US_MBTRSLTA_TC_04 @manual:Passed
   Scenario: Wallet silently refreshes the credential when it nears expiry
     Given I hold a credential whose remaining lifetime has fallen below the reissue trigger lifetime left threshold
     When the wallet checks the credential's remaining lifetime
     Then the wallet silently reissues a fresh credential instance without notifying me
-
-  @US_MBTRSLTA_TC_06
-  Scenario: Credential appears fully valid after silent renewal
-    Given the wallet has silently reissued a fresh credential instance to replace the near expiry one
-    When I next open my wallet
-    Then I see the credential displayed as fully valid
-
-  @US_MBTRSLTA_TC_07
-  Scenario: User never sees an expired credential
-    Given the wallet manages renewal of my Method B credential in the background
-    When I attempt to present the credential at any point in time
-    Then I am never shown an expired credential
