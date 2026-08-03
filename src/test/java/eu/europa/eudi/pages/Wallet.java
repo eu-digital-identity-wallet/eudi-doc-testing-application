@@ -362,8 +362,7 @@ public class Wallet {
 
     public void clickExpandVerificationMSODocIOS() {
         test.mobileWebDriverFactory().getWait().until(
-            ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)
-        ).click();
+            ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)).click();
     }
 
     public void clickExpandNationalityIOS() {
@@ -860,7 +859,7 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilPidOnDocuments();
         test.mobile().wallet().clickPID();
-        test.mobile().issuer().issuePID();
+        test.mobile().issuer().issuePID(this.credential);
     }
 
     public void clickExpandVerificationDown() {
@@ -1342,13 +1341,31 @@ public class Wallet {
                 test.mobile().wallet().mdlIsDisplayedKotlin();
             }
         } else {
-            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().clickDone();
+            test.mobile().wallet().clickOnDocuments();
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                test.mobile().wallet().clickToViewDetails();
-            }else{
-                test.mobile().wallet().clickToViewDetails();
+                test.mobile().wallet().pidMdocIsDisplayed();
+            }else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)){
+                test.mobile().wallet().pidSdJwtIsDisplayed();
             }
-            test.mobile().wallet().clickClose();
+        }
+    }
+
+    private void pidSdJwtIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+           //todo
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_SD_JWT.label, pageHeader);
+        }
+    }
+
+    public void pidMdocIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //todo
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidMdocIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_IOS.label, pageHeader);
         }
     }
 

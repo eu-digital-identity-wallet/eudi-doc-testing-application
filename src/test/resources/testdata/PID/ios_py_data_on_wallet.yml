@@ -1,9 +1,13 @@
-screen: "Wallet Data From Python Issuer"
+screen: "Wallet Data From Python Issuer iOS"
 
 fields:
 
   "Birth Date":
-    value: "10 Feb 2020"
+    value: "10 Mar 2020"
+    required: true
+
+  "Birth Place":
+    value: ""
     required: true
 
   "country":
