@@ -505,7 +505,7 @@ public class Verifier {
         }
     }
 
-    public void selectSpecificAttributesOnVerifier() {
+    public void selectSpecificAttributesOnVerifier(String credential) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
@@ -521,7 +521,11 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributesMdl)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
+            } else {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.sdJwt)).click();
+            }
         }
     }
 
@@ -709,7 +713,7 @@ public class Verifier {
         this.credential = credential;
         this.selectiveDisclosure = selectiveDisclosure;
         this.issuerType = issuerType;
-        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || ("PID (SD-JWT)".equalsIgnoreCase(credential))) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":
                     test.mobile().wallet().clickClose();
