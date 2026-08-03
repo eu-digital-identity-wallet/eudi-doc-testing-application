@@ -38,22 +38,22 @@ Feature: Randomized balanced rotation with silent renewal under Method C (rotati
   Scenario: Counter never shows depletion or decreasing values
     Given I hold a credential backed by a batch of N instances under Method C
     When I present the credential repeatedly
-    Then the counter continues to display "N of N" and never decreases
+    Then the counter continues to display N of N and never decreases
 
   @US_MCBRAFCROBA_TC_07
   Scenario: No warnings are shown regardless of usage
     Given I hold a credential backed by a batch of N instances under Method C
     When I present the credential any number of times
-    Then I see no warning indicators, low-remaining alerts, or signs of depletion
+    Then I see no warning indicators, low remaining alerts, or signs of depletion
 
   @US_MCBRAFCROBA_TC_08
   Scenario: Wallet silently refreshes the batch when its lifetime is close to ending
-    Given the batch's remaining lifetime has fallen below the reissue_trigger_lifetime_left threshold
+    Given the batch's remaining lifetime has fallen below the reissue trigger lifetime left threshold
     When the wallet checks the batch's remaining lifetime
-    Then the wallet silently re-issues a fresh batch of N instances without notifying me
+    Then the wallet silently reissues a fresh batch of N instances without notifying me
 
   @US_MCBRAFCROBA_TC_09
   Scenario: Credential shows full availability after silent renewal
-    Given the wallet has silently re-issued a fresh batch to replace the near-expiry batch
+    Given the wallet has silently reissued a fresh batch to replace the near expiry batch
     When I next open my wallet
-    Then I see the counter showing "N of N"
+    Then I see the counter showing N of N
