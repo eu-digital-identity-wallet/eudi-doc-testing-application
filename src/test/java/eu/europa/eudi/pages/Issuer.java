@@ -1054,7 +1054,7 @@ public class Issuer {
         }
     }
 
-    public void issuePID() throws InterruptedException {
+    public void issuePID(String credential) throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
@@ -1073,7 +1073,11 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
-        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
+        if ("PID (SD-JWT)".equalsIgnoreCase(credential)) {
+            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt.yml");
+        } else {
+            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
+        }
         scrollUntilAuthorize();
         clickAuthorize();
     }
@@ -2225,7 +2229,7 @@ public class Issuer {
                         test.mobile().wallet().insertMdlFromListKotlin();
                     }
                 } else {
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential) || "PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertPidFromList();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertMdlFromList();
@@ -2293,7 +2297,7 @@ public class Issuer {
                 } else {
                     switch (issueScenario.toLowerCase()) {
                         case "same device":
-                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential) || "PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
@@ -2303,7 +2307,7 @@ public class Issuer {
                                 test.mobile().issuer().clickSubmitButton();
                                 test.mobile().issuer().clickUseEudiwPid();
                                 test.mobile().wallet().clickAddButton();
-                                test.mobile().issuer().issuePID();
+                                test.mobile().issuer().issuePID(this.credential);
                             } else {
                                 if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                                     test.mobile().issuer().issuerService();
@@ -2345,7 +2349,7 @@ public class Issuer {
                                 test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
                                 test.mobile().wallet().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
-                                test.mobile().issuer().issuePID();
+                                test.mobile().issuer().issuePID(this.credential);
                             } else {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
@@ -2392,6 +2396,32 @@ public class Issuer {
         this.credential = credential;
         if ("Python".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().clickExpandVerification();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+                    }else {
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                    }
+                    } else {
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS();
+                    test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandNationalityIOS();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                    }else{
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+                    }
+                }
+            }
         }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();

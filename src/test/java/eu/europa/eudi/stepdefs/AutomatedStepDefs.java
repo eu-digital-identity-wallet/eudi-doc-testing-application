@@ -97,7 +97,7 @@ public class AutomatedStepDefs {
     public void theUserSelectsOneAttestationToBeIssued() throws InterruptedException {
         test.mobile().wallet().scrollUntilPID();
         test.mobile().wallet().clickPID();
-        test.mobile().issuer().issuePID();
+        test.mobile().issuer().issuePID("PID (MSO Mdoc)");
     }
 
     @Then("the wallet displays a success screen")
