@@ -9,13 +9,13 @@ Feature: Reusable attestation with silent renewal under Method B (limited_time)
     Given the issuer has issued a credential under Method B
     When I open my wallet
     Then I see a single credential instance displayed like any other credential
-    And the credential has a batch size of 1
+    And the credential has a batch size of one
 
   @US_MBTRSLTA_TC_02
   Scenario: User can present the credential repeatedly without noticing time-based behavior
     Given I hold a valid credential issued under Method B
     When I present the credential to a verifier multiple times
-    Then each presentation completes successfully without descreasing the counter of the instances
+    Then each presentation completes successfully without decreasing the counter of the instances
 
   @US_MBTRSLTA_TC_03
   Scenario: No timers or countdowns are shown to the user
@@ -25,19 +25,19 @@ Feature: Reusable attestation with silent renewal under Method B (limited_time)
 
   @US_MBTRSLTA_TC_04
   Scenario: Credential remains valid and usable as its lifetime progresses
-    Given I hold a credential whose remaining lifetime is above the reissue_trigger_lifetime_left threshold
+    Given I hold a credential whose remaining lifetime is above the reissue trigger lifetime left threshold
     When I present the credential to a verifier
     Then the presentation completes successfully with no indication of impending expiry
 
   @US_MBTRSLTA_TC_05
   Scenario: Wallet silently refreshes the credential when it nears expiry
-    Given I hold a credential whose remaining lifetime has fallen below the reissue_trigger_lifetime_left threshold
+    Given I hold a credential whose remaining lifetime has fallen below the reissue trigger lifetime left threshold
     When the wallet checks the credential's remaining lifetime
-    Then the wallet silently re-issues a fresh credential instance without notifying me
+    Then the wallet silently reissues a fresh credential instance without notifying me
 
   @US_MBTRSLTA_TC_06
   Scenario: Credential appears fully valid after silent renewal
-    Given the wallet has silently re-issued a fresh credential instance to replace the near-expiry one
+    Given the wallet has silently reissued a fresh credential instance to replace the near expiry one
     When I next open my wallet
     Then I see the credential displayed as fully valid
 
