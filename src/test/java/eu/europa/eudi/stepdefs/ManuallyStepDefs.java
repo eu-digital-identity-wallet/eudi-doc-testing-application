@@ -9856,4 +9856,19 @@ public class ManuallyStepDefs {
     public void theTransactionsScreenIncludesAFilterOrSortButton() {
         //manual
     }
+
+    @Then("the wallet does not show an error and it falls back to its own default reuse policy")
+    public void theWalletDoesNotShowAnErrorAndItFallsBackToItsOwnDefaultReusePolicy() {
+        //manual
+    }
+
+    @Then("I see an orange warning indicator with an accompanying icon")
+    public void iSeeAnOrangeWarningIndicatorWithAnAccompanyingIcon() {
+        //manual
+    }
+
+    @Given("the batch's remaining lifetime has fallen below the reissue trigger lifetime left threshold provided by the issuer")
+    public void theBatchSRemainingLifetimeHasFallenBelowTheReissueTriggerLifetimeLeftThresholdProvidedByTheIssuer() {
+        //manual
+    }
 }
