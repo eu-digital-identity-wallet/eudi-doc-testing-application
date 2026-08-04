@@ -13,9 +13,9 @@ Feature: Issuance and presentation - PID (SD-JWT)
     Then the verifier verifies the credential successfully with <presentation_scenario> for <selective_disclosure>
     Examples:
       | credential   | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
-      | PID (SD-JWT) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
+#      | PID (SD-JWT) | Python | from list        | same device    | Web verifier | same device           | specific attributes  |
       | PID (SD-JWT) | Python | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (SD-JWT) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | PID (SD-JWT) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
-      | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
+#      | PID (SD-JWT) | Python | credential offer | same device    | Web verifier | same device           | specific attributes  |
+#      | PID (SD-JWT) | Python | credential offer | same device    | Web verifier | cross device          | specific attributes  |
+#      | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
+#      | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |

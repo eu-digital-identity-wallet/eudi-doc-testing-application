@@ -25,4 +25,5 @@ public class VerifierElements {
     public static By walletRespondedMdlKotlin = By.id("org.iso.18013.5.1.mDL");
     public static By clickViewContent = By.id("View Content");
     public static By sdJwt = AppiumBy.accessibilityId("dc+sd-jwt");
+    public static By walletRespondedSdJwt = By.xpath("//XCUIElementTypeStaticText[@name=\"urn:eudi:pid:1\"]");
 }
