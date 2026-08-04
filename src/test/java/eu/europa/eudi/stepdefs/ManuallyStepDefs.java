@@ -49,6 +49,11 @@ public class ManuallyStepDefs {
         //manual
     }
 
+    @Then("the document should close")
+    public void theDocumentShouldClose() {
+        //manual
+    }
+
     @When("the user clicks add doc button")
     public void theUserClicksAddDocButton() {
         //manual
@@ -9419,6 +9424,451 @@ public class ManuallyStepDefs {
 
     @Then("this text is displayed Secure your wallet with a PIN code and connect to your National System")
     public void thisTextIsDisplayedSecureYourWalletWithAPINCodeAndConnectToYourNationalSystem() {
+        //manual
+    }
+
+    @When("the Wallet processes the RP Access Certificate")
+    public void theWalletProcessesTheRPAccessCertificate() {
+        //manual
+    }
+
+    @And("the certificate verification fails")
+    public void theCertificateVerificationFails() {
+        //manual
+    }
+
+    @Given("a presentation flow has been initiated by a Relying Party")
+    public void aPresentationFlowHasBeenInitiatedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet terminates the presentation interaction")
+    public void theWalletTerminatesThePresentationInteraction() {
+        //manual
+    }
+
+    @And("the Wallet displays a clear notification to the Wallet user that no information about the Wallet user has been shared")
+    public void theWalletDisplaysAClearNotificationToTheWalletUserThatNoInformationAboutTheWalletUserHasBeenShared() {
+        //manual
+    }
+
+    @Given("an issuance flow has been initiated by a Relying Party")
+    public void anIssuanceFlowHasBeenInitiatedByARelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet terminates the issuance interaction")
+    public void theWalletTerminatesTheIssuanceInteraction() {
+        //manual
+    }
+
+    @And("the Wallet displays a notification informs the Wallet user that the issuance has been blocked indicating that the RP could not be verified")
+    public void theWalletDisplaysANotificationInformsTheWalletUserThatTheIssuanceHasBeenBlockedIndicatingThatTheRPCouldNotBeVerified() {
+        //manual
+    }
+
+    @Then("the hyperlink Learn more is a button")
+    public void theHyperlinkLearnMoreIsAButton() {
+        //manual
+    }
+
+    @And("the Wallet displays a counter showing the number of attestations issued")
+    public void theWalletDisplaysACounterShowingTheNumberOfAttestationsIssued() {
+        //manual
+    }
+
+    @Given("the issuer has issued a new batch of one time use credentials to my wallet")
+    public void theIssuerHasIssuedANewBatchOfOneTimeUseCredentialsToMyWallet() {
+        //manual
+    }
+
+    @When("I open my wallet")
+    public void iOpenMyWallet() {
+        //manual
+    }
+
+    @Then("I see the credential displayed like any other credential")
+    public void iSeeTheCredentialDisplayedLikeAnyOtherCredential() {
+        //manual
+    }
+
+    @Given("I hold a one time use credential with four of four uses remaining")
+    public void iHoldAOneTimeUseCredentialWithFourOfFourUsesRemaining() {
+        //manual
+    }
+
+    @When("I present the credential to a verifier")
+    public void iPresentTheCredentialToAVerifier() {
+        //manual
+    }
+
+    @Then("the presentation completes successfully with no unusual prompts or steps")
+    public void thePresentationCompletesSuccessfullyWithNoUnusualPromptsOrSteps() {
+        //manual
+    }
+
+    @Given("the issuer has issued a new batch of four one time use credential instances")
+    public void theIssuerHasIssuedANewBatchOfFourOneTimeUseCredentialInstances() {
+        //manual
+    }
+
+    @When("I view the credential in my wallet")
+    public void iViewTheCredentialInMyWallet() {
+        //manual
+    }
+
+    @Then("I see a counter showing four of four remaining")
+    public void iSeeACounterShowingFourOfFourRemaining() {
+        //manual
+    }
+
+    @When("I successfully present the credential to a verifier")
+    public void iSuccessfullyPresentTheCredentialToAVerifier() {
+        //manual
+    }
+
+    @Then("I see the counter update to three of four remaining")
+    public void iSeeTheCounterUpdateToThreeOfFourRemaining() {
+        //manual
+    }
+
+    @Given("I hold a one time use credential with two of four uses remaining")
+    public void iHoldAOneTimeUseCredentialWithTwoOfFourUsesRemaining() {
+        //manual
+    }
+
+    @Then("I see the counter update to one of four remaining")
+    public void iSeeTheCounterUpdateToOneOfFourRemaining() {
+        //manual
+    }
+
+    @Given("I hold a one time use credential with one of four uses remaining")
+    public void iHoldAOneTimeUseCredentialWithOneOfFourUsesRemaining() {
+        //manual
+    }
+
+    @Then("I see a red warning indicator with an accompanying icon")
+    public void iSeeARedWarningIndicatorWithAnAccompanyingIcon() {
+        //manual
+    }
+
+    @Given("I hold a one time use credential with one of four uses remaining and the warning indicator is displayed")
+    public void iHoldAOneTimeUseCredentialWithOneOfFourUsesRemainingAndTheWarningIndicatorIsDisplayed() {
+        //manual
+    }
+
+    @Then("I am not asked to take any action")
+    public void iAmNotAskedToTakeAnyAction() {
+        //manual
+    }
+
+    @Given("I hold a one time use credential with one of four uses remaining, matching the reissue trigger unused value")
+    public void iHoldAOneTimeUseCredentialWithOneOfFourUsesRemainingMatchingTheReissueTriggerUnusedValue() {
+        //manual
+    }
+
+    @When("the wallet checks the remaining use count")
+    public void theWalletChecksTheRemainingUseCount() {
+        //manual
+    }
+
+    @Then("the wallet triggers background reissuance without notifying me")
+    public void theWalletTriggersBackgroundReissuanceWithoutNotifyingMe() {
+        //manual
+    }
+
+    @Given("the wallet has silently reissued a fresh batch of credentials to replace the depleted batch")
+    public void theWalletHasSilentlyReissuedAFreshBatchOfCredentialsToReplaceTheDepletedBatch() {
+        //manual
+    }
+
+    @When("I next open my wallet")
+    public void iNextOpenMyWallet() {
+        //manual
+    }
+
+    @Then("I see the counter showing four of four remaining")
+    public void iSeeTheCounterShowingFourOfFourRemaining() {
+        //manual
+    }
+
+    @Given("the issuer has issued a credential under Method B")
+    public void theIssuerHasIssuedACredentialUnderMethodB() {
+        //manual
+    }
+
+    @Then("I see a single credential instance displayed like any other credential")
+    public void iSeeASingleCredentialInstanceDisplayedLikeAnyOtherCredential() {
+        //manual
+    }
+
+    @And("the credential has a batch size of one")
+    public void theCredentialHasABatchSizeOfOne() {
+        //manual
+    }
+
+    @Given("I hold a valid credential issued under Method B")
+    public void iHoldAValidCredentialIssuedUnderMethodB() {
+        //manual
+    }
+
+    @When("I present the credential to a verifier multiple times")
+    public void iPresentTheCredentialToAVerifierMultipleTimes() {
+        //manual
+    }
+
+    @Then("each presentation completes successfully without decreasing the counter of the instances")
+    public void eachPresentationCompletesSuccessfullyWithoutDecreasingTheCounterOfTheInstances() {
+        //manual
+    }
+
+    @Then("I do not see any timer, countdown, or expiration warning")
+    public void iDoNotSeeAnyTimerCountdownOrExpirationWarning() {
+        //manual
+    }
+
+    @Given("I hold a credential whose remaining lifetime is above the reissue trigger lifetime left threshold")
+    public void iHoldACredentialWhoseRemainingLifetimeIsAboveTheReissueTriggerLifetimeLeftThreshold() {
+        //manual
+    }
+
+    @Then("the presentation completes successfully with no indication of impending expiry")
+    public void thePresentationCompletesSuccessfullyWithNoIndicationOfImpendingExpiry() {
+        //manual
+    }
+
+    @Given("I hold a credential whose remaining lifetime has fallen below the reissue trigger lifetime left threshold")
+    public void iHoldACredentialWhoseRemainingLifetimeHasFallenBelowTheReissueTriggerLifetimeLeftThreshold() {
+        //manual
+    }
+
+    @When("the wallet checks the credential's remaining lifetime")
+    public void theWalletChecksTheCredentialSRemainingLifetime() {
+        //manual
+    }
+
+    @Then("the wallet silently reissues a fresh credential instance without notifying me")
+    public void theWalletSilentlyReissuesAFreshCredentialInstanceWithoutNotifyingMe() {
+        //manual
+    }
+
+    @Given("the wallet has silently reissued a fresh credential instance to replace the near expiry one")
+    public void theWalletHasSilentlyReissuedAFreshCredentialInstanceToReplaceTheNearExpiryOne() {
+        //manual
+    }
+
+    @Then("I see the credential displayed as fully valid")
+    public void iSeeTheCredentialDisplayedAsFullyValid() {
+        //manual
+    }
+
+    @Given("the wallet manages renewal of my Method B credential in the background")
+    public void theWalletManagesRenewalOfMyMethodBCredentialInTheBackground() {
+        //manual
+    }
+
+    @When("I attempt to present the credential at any point in time")
+    public void iAttemptToPresentTheCredentialAtAnyPointInTime() {
+        //manual
+    }
+
+    @Then("I am never shown an expired credential")
+    public void iAmNeverShownAnExpiredCredential() {
+        //manual
+    }
+
+    @Given("the issuer has issued a batch of N credential instances under Method C")
+    public void theIssuerHasIssuedABatchOfNCredentialInstancesUnderMethodC() {
+        //manual
+    }
+
+    @Then("I see a single credential displayed in the wallet UI")
+    public void iSeeASingleCredentialDisplayedInTheWalletUI() {
+        //manual
+    }
+
+    @Then("I see the counter showing N of N")
+    public void iSeeTheCounterShowingNOfN() {
+        //manual
+    }
+
+    @Given("I hold a credential backed by a batch of N instances under Method C")
+    public void iHoldACredentialBackedByABatchOfNInstancesUnderMethodC() {
+        //manual
+    }
+
+    @Then("each presentation completes successfully with no indication that a different underlying instance was used")
+    public void eachPresentationCompletesSuccessfullyWithNoIndicationThatADifferentUnderlyingInstanceWasUsed() {
+        //manual
+    }
+
+    @When("I present the credential N times in succession")
+    public void iPresentTheCredentialNTimesInSuccession() {
+        //manual
+    }
+
+    @Then("each of the N instances is used at least once before any instance is reused")
+    public void eachOfTheNInstancesIsUsedAtLeastOnceBeforeAnyInstanceIsReused() {
+        //manual
+    }
+
+    @Given("every instance in the current batch has been used at least once during the rotation cycle")
+    public void everyInstanceInTheCurrentBatchHasBeenUsedAtLeastOnceDuringTheRotationCycle() {
+        //manual
+    }
+
+    @When("I present the credential again")
+    public void iPresentTheCredentialAgain() {
+        //manual
+    }
+
+    @Then("the wallet begins a new rotation cycle by drawing from the full set of instances again")
+    public void theWalletBeginsANewRotationCycleByDrawingFromTheFullSetOfInstancesAgain() {
+        //manual
+    }
+
+    @When("I present the credential repeatedly")
+    public void iPresentTheCredentialRepeatedly() {
+        //manual
+    }
+
+    @Then("the counter continues to display N of N and never decreases")
+    public void theCounterContinuesToDisplayNOfNAndNeverDecreases() {
+        //manual
+    }
+
+    @When("I present the credential any number of times")
+    public void iPresentTheCredentialAnyNumberOfTimes() {
+        //manual
+    }
+
+    @Then("I see no warning indicators, low remaining alerts, or signs of depletion")
+    public void iSeeNoWarningIndicatorsLowRemainingAlertsOrSignsOfDepletion() {
+        //manual
+    }
+
+    @Given("the batch's remaining lifetime has fallen below the reissue trigger lifetime left threshold")
+    public void theBatchSRemainingLifetimeHasFallenBelowTheReissueTriggerLifetimeLeftThreshold() {
+        //manual
+    }
+
+    @When("the wallet checks the batch's remaining lifetime")
+    public void theWalletChecksTheBatchSRemainingLifetime() {
+        //manual
+    }
+
+    @Then("the wallet silently reissues a fresh batch of N instances without notifying me")
+    public void theWalletSilentlyReissuesAFreshBatchOfNInstancesWithoutNotifyingMe() {
+        //manual
+    }
+
+    @Given("the wallet has silently reissued a fresh batch to replace the near expiry batch")
+    public void theWalletHasSilentlyReissuedAFreshBatchToReplaceTheNearExpiryBatch() {
+        //manual
+    }
+
+    @Given("the issuer metadata includes a credential reuse policy with at least one supported option")
+    public void theIssuerMetadataIncludesACredentialReusePolicyWithAtLeastOneSupportedOption() {
+        //manual
+    }
+
+    @When("I proceed through credential issuance")
+    public void iProceedThroughCredentialIssuance() {
+        //manual
+    }
+
+    @Then("I see a normal issuance flow with no additional steps related to reuse behavior")
+    public void iSeeANormalIssuanceFlowWithNoAdditionalStepsRelatedToReuseBehavior() {
+        //manual
+    }
+
+    @Given("the issuer metadata includes a credential reuse policy with multiple supported options")
+    public void theIssuerMetadataIncludesACredentialReusePolicyWithMultipleSupportedOptions() {
+        //manual
+    }
+
+    @Then("I am not prompted to select a reuse method")
+    public void iAmNotPromptedToSelectAReuseMethod() {
+        //manual
+    }
+
+    @Given("the issuer metadata includes a credential reuse policy with a single option that the wallet supports")
+    public void theIssuerMetadataIncludesACredentialReusePolicyWithASingleOptionThatTheWalletSupports() {
+        //manual
+    }
+
+    @When("the wallet processes the issuer metadata")
+    public void theWalletProcessesTheIssuerMetadata() {
+        //manual
+    }
+
+    @Then("the wallet silently applies that reuse method to the issued credential")
+    public void theWalletSilentlyAppliesThatReuseMethodToTheIssuedCredential() {
+        //manual
+    }
+
+    @Given("the issuer metadata includes a credential reuse policy listing multiple options in order of preference")
+    public void theIssuerMetadataIncludesACredentialReusePolicyListingMultipleOptionsInOrderOfPreference() {
+        //manual
+    }
+
+    @Then("the wallet silently selects and applies the first option it fully supports")
+    public void theWalletSilentlySelectsAndAppliesTheFirstOptionItFullySupports() {
+        //manual
+    }
+
+    @Given("the issuer metadata's credential reuse policy does not include once only or limited time")
+    public void theIssuerMetadataSCredentialReusePolicyDoesNotIncludeOnceOnlyOrLimitedTime() {
+        //manual
+    }
+
+    @Then("I see an error and the issuance flow is blocked")
+    public void iSeeAnErrorAndTheIssuanceFlowIsBlocked() {
+        //manual
+    }
+
+    @Given("the issuer metadata does not include a credential reuse policy")
+    public void theIssuerMetadataDoesNotIncludeACredentialReusePolicy() {
+        //manual
+    }
+
+    @Given("the issuer metadata's credential reuse policy includes only once only")
+    public void theIssuerMetadataSCredentialReusePolicyIncludesOnlyOnceOnly() {
+        //manual
+    }
+
+    @Then("the wallet silently applies the once only reuse method and issuance proceeds normally")
+    public void theWalletSilentlyAppliesTheOnceOnlyReuseMethodAndIssuanceProceedsNormally() {
+        //manual
+    }
+
+    @Given("the issuer metadata's credential reuse policy includes rotating batch and limited time")
+    public void theIssuerMetadataSCredentialReusePolicyIncludesRotatingBatchAndLimitedTime() {
+        //manual
+    }
+
+    @Then("the wallet silently selects the first fully supported option and issuance proceeds normally")
+    public void theWalletSilentlySelectsTheFirstFullySupportedOptionAndIssuanceProceedsNormally() {
+        //manual
+    }
+
+    @Then("the Transactions screen includes a Filter or Sort button")
+    public void theTransactionsScreenIncludesAFilterOrSortButton() {
+        //manual
+    }
+
+    @Then("the wallet does not show an error and it falls back to its own default reuse policy")
+    public void theWalletDoesNotShowAnErrorAndItFallsBackToItsOwnDefaultReusePolicy() {
+        //manual
+    }
+
+    @Then("I see an orange warning indicator with an accompanying icon")
+    public void iSeeAnOrangeWarningIndicatorWithAnAccompanyingIcon() {
+        //manual
+    }
+
+    @Given("the batch's remaining lifetime has fallen below the reissue trigger lifetime left threshold provided by the issuer")
+    public void theBatchSRemainingLifetimeHasFallenBelowTheReissueTriggerLifetimeLeftThresholdProvidedByTheIssuer() {
         //manual
     }
 }

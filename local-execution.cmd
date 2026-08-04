@@ -1,142 +1,114 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set CUCUMBER_FILTER_TAGS=@execution and @ANDROID
-set RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo
-set BACKUP_DIR=target\serenity-backup
+set "RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.07.39-Demo"
+set "BACKUP_DIR=target\serenity-backup"
 
-echo ========================================================
-echo CLEANUP
-echo ========================================================
+echo ===============================
+echo Cleaning previous execution...
+echo ===============================
 
-if exist target\rerun.txt del /f /q target\rerun.txt
-if exist target\rerun2.txt del /f /q target\rerun2.txt
+if exist target\serenity rmdir /S /Q target\serenity
+if exist target\site\reports rmdir /S /Q target\site\reports
+if exist target\site\serenity rmdir /S /Q target\site\serenity
 
-if exist "%BACKUP_DIR%\*.json" del /f /q "%BACKUP_DIR%\*.json"
-if exist "%RESULTS_DIR%\*.json" del /f /q "%RESULTS_DIR%\*.json"
+if exist target\rerun.txt del /Q target\rerun.txt
+if exist target\rerun2.txt del /Q target\rerun2.txt
+if exist target\rerun3.txt del /Q target\rerun3.txt
 
-echo ========================================================
-echo MAIN EXECUTION
-echo ========================================================
+mkdir "%BACKUP_DIR%" 2>nul
 
-call mvn test ^
--Dtest=TestRunner ^
--Dcucumber.filter.tags="@execution_Q2_2026" ^
-%*
+echo.
+echo ===============================
+echo Main execution
+echo ===============================
 
-echo ========================================================
-echo BACKUP RESULTS
-echo ========================================================
+call mvn clean verify -ntp ^
+    -Dtest=TestRunner ^
+    -Dcucumber.filter.tags="@IOS and @execution_Q3_2026"
 
-if not exist "%BACKUP_DIR%" mkdir "%BACKUP_DIR%"
+echo.
+echo ===============================
+echo Backup Serenity JSON
+echo ===============================
 
-copy "%RESULTS_DIR%\*.json" "%BACKUP_DIR%\" >nul 2>&1
-
-set COUNT=0
-
-for %%f in ("%BACKUP_DIR%\*.json") do (
-    if exist "%%f" set /a COUNT+=1
+if exist "%RESULTS_DIR%\*.json" (
+    copy /Y "%RESULTS_DIR%\*.json" "%BACKUP_DIR%\" >nul
 )
 
-echo --- Backed up !COUNT! JSON file(s) ---
-
-echo ========================================================
-echo RERUN PASS 1
-echo ========================================================
+echo.
+echo ===============================
+echo Rerun Pass 1
+echo ===============================
 
 if exist target\rerun.txt (
-
     for %%A in (target\rerun.txt) do (
-
-        if %%~zA gtr 0 (
-
-            echo Failures detected. Rerunning failed scenarios...
-
-            call mvn test ^
-            -Dtest=RerunTestRunner ^
-            %*
-
-            echo Merging rerun results...
-
+        if %%~zA GTR 0 (
+            call mvn test -Dtest=RerunTestRunner
             python merge_serenity_results.py
-
-            copy "%RESULTS_DIR%\*.json" "%BACKUP_DIR%\" >nul 2>&1
         )
     )
 )
 
-echo ========================================================
-echo RERUN PASS 2
-echo ========================================================
+echo.
+echo ===============================
+echo Rerun Pass 2
+echo ===============================
 
 if exist target\rerun2.txt (
-
     for %%A in (target\rerun2.txt) do (
-
-        if %%~zA gtr 0 (
-
-            echo Failures still present. Running second rerun...
-
+        if %%~zA GTR 0 (
             call mvn test ^
-            -Dtest=RerunTestRunner ^
-            -Dcucumber.features="@target/rerun2.txt" ^
-            %*
-
-            echo Merging second rerun results...
+                -Dtest=RerunTestRunner2 ^
+                -Dcucumber.features="@target/rerun2.txt"
 
             python merge_serenity_results.py
         )
     )
 )
 
-echo ========================================================
-echo GENERATE SERENITY REPORT
-echo ========================================================
+echo.
+echo ===============================
+echo Rerun Pass 3
+echo ===============================
 
-if exist target\site\serenity (
-    rmdir /s /q target\site\serenity
+if exist target\rerun3.txt (
+    for %%A in (target\rerun3.txt) do (
+        if %%~zA GTR 0 (
+            call mvn test ^
+                -Dtest=RerunTestRunner3 ^
+                -Dcucumber.features="@target/rerun3.txt"
+
+            python merge_serenity_results.py
+        )
+    )
 )
 
-call mvn serenity:aggregate -Dtags="execution_Q2_2026"
+echo.
+echo ===============================
+echo Generate Serenity Report
+echo ===============================
 
-echo ========================================================
-echo APPLY CUSTOM CSS
-echo ========================================================
+call mvn serenity:aggregate ^
+    -Dtags="@IOS and @execution_Q3_2026"
 
-set REPORT_DIR=target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo\css
-set CUSTOM_CSS=src\test\resources\custom-style.css
-set CORE_CSS_PATH=
+echo.
+echo ===============================
+echo Apply custom CSS
+echo ===============================
 
-if exist "%CUSTOM_CSS%" (
-
-    for /r "%REPORT_DIR%" %%f in (core.css) do (
-        set CORE_CSS_PATH=%%f
-    )
-
-    if not "!CORE_CSS_PATH!"=="" (
-
-        echo Found core.css:
-        echo !CORE_CSS_PATH!
-
-        copy /y "%CUSTOM_CSS%" "!CORE_CSS_PATH!" >nul
-
-        echo Custom CSS applied successfully.
-
-    ) else (
-
-        echo WARNING: core.css not found.
-    )
-
-) else (
-
-    echo WARNING: custom-style.css not found.
+if exist "src\test\resources\custom-style.css" (
+    copy /Y ^
+        "src\test\resources\custom-style.css" ^
+        "%RESULTS_DIR%\css\core.css" >nul
 )
 
-echo ========================================================
-echo EXECUTION COMPLETE
-echo ========================================================
-
+echo.
+echo ==========================================
+echo Execution completed.
+echo.
 echo Report:
-echo target\site\serenity\index.html
+echo target\site\reports\EUDI_Wallet_Version_2026.07.39-Demo\index.html
+echo ==========================================
 
-endlocal
+pause
