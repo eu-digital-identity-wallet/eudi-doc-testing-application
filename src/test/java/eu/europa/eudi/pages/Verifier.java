@@ -513,9 +513,15 @@ public class Verifier {
                 Dimension dropdownSize = dropdown.getSize();
                 MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
                 WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
                 Dimension dropdownSize2 = dropdown2.getSize();
                 MobileActionsUtils.tapActionOffSet(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() / 3);
+            }else{
+                WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
+                Dimension dropdownSize2 = dropdown2.getSize();
+                MobileActionsUtils.tapActionOffSet(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() * 2 / 3);
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();

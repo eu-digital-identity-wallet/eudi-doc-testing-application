@@ -865,6 +865,8 @@ public class Issuer {
 
 // Click
             driver.findElement(authorizeButton).click();
+            Thread.sleep(5000); // 3-second delay
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.context("NATIVE_APP");
