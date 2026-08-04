@@ -20,7 +20,7 @@ on:
         description: 'Android Tags to execute'
         type: choice
         options:
-          - PID_mso_mdoc
+          - PID mso_mdoc
           - MDL
 
 jobs:
