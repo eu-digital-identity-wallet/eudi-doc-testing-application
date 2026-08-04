@@ -36,13 +36,12 @@ public class IssuerElements {
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
-    public static By clickSignIn = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
-    public static By codeScreenReady = By.xpath("//*[@text='Codes' or contains(@text,'Code')]");;
     public static By usernameWeb = By.cssSelector("#username");
     public static By passwordWeb = By.cssSelector("#password");;
     public static By loginSubmit = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"kc-login\")");;
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
-    ;
+    public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"https://issuer.eudiw.dev/credential_offer\"]");
+    public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
 }
