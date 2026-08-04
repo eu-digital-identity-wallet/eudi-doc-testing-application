@@ -59,4 +59,6 @@ public class WalletElements {
     public static By clickMdlKotlin = By.id("Mobile Driving Licence (MSO MDoc)");
     public static By pidMdocIsDisplayed = AppiumBy.accessibilityId("PID (MSO Mdoc)");
     public static By pidSdJwtIsDisplayed = AppiumBy.accessibilityId("PID (SD-JWT VC)");
+    public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
+    public static By onlinePresentation = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_online_button\"])[2]");
 }

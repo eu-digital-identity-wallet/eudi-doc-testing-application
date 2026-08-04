@@ -44,7 +44,8 @@ public interface Literals {
         PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
         MDL_IS_DISPLAYED_ON_WEB_KOTLIN("Mobile Driving Licence (MDL)"),
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
-        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL");
+        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
+        WALLET_RESPONDED_SDJWT("urn:eudi:pid:1");
 
         public final String label;
         Verifier(String label) {

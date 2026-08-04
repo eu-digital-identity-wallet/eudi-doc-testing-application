@@ -990,9 +990,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlinePresentation)).click();
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeSheet[@name='Authenticate']")));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlinePresentation)).click();
         }
     }
 
@@ -1457,7 +1455,7 @@ public class Wallet {
                                 String url = test.envDataConfig().getVerifierUrl();
                                 test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
-                                test.web().verifier().selectSpecificAttributesOnWebForPID();
+                                test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
                                 test.web().verifier().scrollUntilNextOnWeb();
                                 test.web().verifier().pidIsDisplayedOnWeb();
                                 test.web().verifier().clickSpecificAttributesButtonForPID();
@@ -1498,8 +1496,13 @@ public class Wallet {
 
                     if ("Python".equalsIgnoreCase(this.issuerType)) {
                         if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                    "testdata/PID/pre_final_shared_data_on_wallet.yml");
+                            if ("PID (SD-JWT)".equalsIgnoreCase(credential)){
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                    "testdata/PID/pre_final_shared_data_on_wallet_sdjwt.yml");
+                        } else {
+                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                        "testdata/PID/pre_final_shared_data_on_wallet.yml");
+                            }
                         }
 
                     } else {
@@ -1621,6 +1624,14 @@ public class Wallet {
                     test.mobile().wallet().authenticationSuccessfully();
                     break;
             }
+        }
+    }
+
+    private void clickPIDSdjwt() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //todo
+         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidSdjwt)).click();
         }
     }
 
