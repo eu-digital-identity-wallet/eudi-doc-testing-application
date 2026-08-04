@@ -5,7 +5,7 @@ import os
 import re
 import shutil
 
-RESULTS_DIR = "target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+RESULTS_DIR = "target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
 BACKUP_DIR = "target/serenity-backup"
 
 PRIORITY = {

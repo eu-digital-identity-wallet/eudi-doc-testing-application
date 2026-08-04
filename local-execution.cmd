@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set "RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo"
+set "RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.07.39-Demo"
 set "BACKUP_DIR=target\serenity-backup"
 
 echo ===============================
@@ -108,7 +108,7 @@ echo ==========================================
 echo Execution completed.
 echo.
 echo Report:
-echo target\site\reports\EUDI_Wallet_Version_2026.05.37-Demo\index.html
+echo target\site\reports\EUDI_Wallet_Version_2026.07.39-Demo\index.html
 echo ==========================================
 
 pause

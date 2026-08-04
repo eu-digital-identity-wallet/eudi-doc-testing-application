@@ -4,7 +4,7 @@ set +e
 
 export CUCUMBER_FILTER_TAGS="@ANDROID and @execution_Q2_2026"
 
-RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
 BACKUP_DIR="target/serenity-backup"
 
 echo "========== CLEAN =========="
@@ -77,5 +77,5 @@ echo
 echo "========================================"
 echo "Execution completed."
 echo "Report:"
-echo "target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/index.html"
+echo "target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/index.html"
 echo "========================================"
