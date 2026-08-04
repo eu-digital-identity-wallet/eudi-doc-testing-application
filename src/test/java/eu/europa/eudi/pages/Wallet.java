@@ -435,11 +435,13 @@ public class Wallet {
         }
     }
 
-    public void clickPID() {
+    public void clickPID() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 //            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPID)).click();
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickPID));
             MobileActionsUtils.tapActionWallet(button, false);
+            Thread.sleep(5000); // 3-second delay
+
         } else {
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPID));
             MobileActionsUtils.tapActionWallet(button, false);
@@ -1425,8 +1427,14 @@ public class Wallet {
                                         "testdata/PID/pre_final_shared_data_on_wallet.yml");}
                         } else if ("PID (SD-JWT)".equalsIgnoreCase(credential)){
                             if (selectiveDisclosure.equalsIgnoreCase("specific attributes")) {
-                                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                                        "testdata/PID/pre_final_shared_data_on_wallet_sdjwt.yml");}
+                                if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                            "testdata/PID/pre_final_shared_data_on_wallet_sdjwt.yml");
+                                } else {
+                                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                                            "testdata/PID/pre_final_shared_data_on_wallet_sdjwt_android.yml");
+                                }
+                            }
                         }
                     }
 
