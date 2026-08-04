@@ -1,4 +1,4 @@
-@ANDROID @US_LT @Q1_2025
+ @ANDROID @US_LT @Q1_2025
 Feature: List Transactions in EUDI Wallet
   As a EUDI Wallet User
   I want to access the EUDI Wallet screen having organized all my transactions
@@ -30,7 +30,7 @@ Feature: List Transactions in EUDI Wallet
   @US_LT_TC_04 @manual:Passed
   Scenario: Transactions screen includes a Filter/Sort button
     Given the user is on the Transactions screen
-    Then the Transactions screen includes a Filter/Sort button
+    Then the Transactions screen includes a Filter or Sort button
 
   @US_LT_TC_05 @manual:Passed
   Scenario Outline: Transactions screen lists transactions grouped by period
