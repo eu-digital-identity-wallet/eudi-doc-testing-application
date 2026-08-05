@@ -21,6 +21,7 @@ on:
         type: choice
         options:
           - PID_mso_mdoc
+          - PID_sdjwt
           - MDL
 
 jobs:
