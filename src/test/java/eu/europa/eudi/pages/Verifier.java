@@ -723,7 +723,7 @@ public class Verifier {
         this.credential = credential;
         this.selectiveDisclosure = selectiveDisclosure;
         this.issuerType = issuerType;
-        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || ("PID (SD-JWT)".equalsIgnoreCase(credential))) {
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":
                     test.mobile().wallet().clickClose();
@@ -824,7 +824,10 @@ public class Verifier {
 
     private void walletRespondedSdJwt() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedSdJwt)).getText();
+            Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_SDJWT.label, pageHeader);
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
