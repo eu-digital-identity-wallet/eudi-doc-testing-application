@@ -1076,7 +1076,11 @@ public class Issuer {
         clickConfirm();
         authorizeIsDisplayed();
         if ("PID (SD-JWT)".equalsIgnoreCase(credential)) {
-            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt_android.yml");
+            }else{
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt.yml");
+            }
         } else {
             verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
         }
@@ -2158,6 +2162,43 @@ public class Issuer {
         }
     }
 
+    public void scrollUntilPidSDJWTIssuer() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement element = null;
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.selectPIDSDJWTPythonCredential);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    MobileActionsUtils.slowScroll();
+                }
+            }
+        } else {
+            envDataConfig = new EnvDataConfig();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 9; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
     public void scrollUntilPidIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -2217,6 +2258,29 @@ public class Issuer {
                         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
                     }
             }
+
+    public void clickUseEudiwPidSDJWT() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String deepLink =
+                    "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_vc_sd_jwt%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2256c01aa5-3d6f-4983-b376-5e759bbeded6%22%7D%7D%7D";
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+                driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                        "url", deepLink,
+                        "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                ));
+
+                System.out.println("Deep link executed on Android");
+
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+        }
+    }
 
     public void issuanceMethodIs(String issuanceMethod, String credential, String issuerType) throws InterruptedException {
         this.issuanceMethod = issuanceMethod;
@@ -2299,15 +2363,23 @@ public class Issuer {
                 } else {
                     switch (issueScenario.toLowerCase()) {
                         case "same device":
-                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential) || "PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || "PID (SD-JWT)".equalsIgnoreCase(credential)) {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                                test.mobile().issuer().scrollUntilPidIssuer();
-                                test.mobile().issuer().selectPidPythonIssuer();
-                                test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                                test.mobile().issuer().clickSubmitButton();
-                                test.mobile().issuer().clickUseEudiwPid();
+                                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                                    test.mobile().issuer().scrollUntilPidIssuer();
+                                    test.mobile().issuer().selectPidPythonIssuer();
+                                    test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                    test.mobile().issuer().clickSubmitButton();
+                                    test.mobile().issuer().clickUseEudiwPid();
+                                }else{
+                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
+                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                    test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                    test.mobile().issuer().clickSubmitButton();
+                                    test.mobile().issuer().clickUseEudiwPidSDJWT();
+                                }
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issuePID(this.credential);
                             } else {
@@ -2382,6 +2454,15 @@ public class Issuer {
                     }
                 }
                 break;
+        }
+    }
+
+    private void selectPidSDJWTPythonIssuer() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectPIDSDJWTPythonCredential)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDPython)).click();
+
         }
     }
 

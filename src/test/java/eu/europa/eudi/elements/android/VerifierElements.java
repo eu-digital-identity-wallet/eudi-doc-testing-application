@@ -47,4 +47,5 @@ public class VerifierElements {
     public static By walletRespondedWebMdlKotlin = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(., 'query_0')]]//mat-card-title[normalize-space(.)='org.iso.18013.5.1.mDL']");
     public static By clickCloseVerifierOnWeb = By.xpath("//button[.//span[normalize-space(.)='Close']]");
     public static By sdJwtOnWebForPID = By.xpath("//mat-option[normalize-space(.)='dc+sd-jwt']");
+    public static By walletRespondedSdJwt =  By.xpath("//android.widget.TextView[@text=\"urn:eudi:pid:1\"]");
 }
