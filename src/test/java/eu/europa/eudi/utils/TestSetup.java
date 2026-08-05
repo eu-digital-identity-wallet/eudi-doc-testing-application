@@ -2,10 +2,7 @@ package eu.europa.eudi.utils;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
 
-import eu.europa.eudi.utils.factory.MobilePageObjectFactory;
-import eu.europa.eudi.utils.factory.MobileWebDriverFactory;
-import eu.europa.eudi.utils.factory.WebPageObjectFactory;
-import eu.europa.eudi.utils.factory.WebWebDriverFactory;
+import eu.europa.eudi.utils.factory.*;
 import io.cucumber.java.Scenario;
 import java.net.MalformedURLException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -87,7 +84,7 @@ public class TestSetup {
 
         int scenarioNumber = getNextScenarioNumber(featureName);
 
-        mobileWebDriverFactory.startLogging(
+        MobileDeviceLogger.startLogging(
                 featureDirPath,
                 featureName,
                 String.valueOf(scenarioNumber),
@@ -105,7 +102,7 @@ public class TestSetup {
     }
 
     public void stopLogging() {
-        mobileWebDriverFactory.stopLogging();
+        MobileDeviceLogger.stopLogging();
     }
 
     public WebPageObjectFactory web() {

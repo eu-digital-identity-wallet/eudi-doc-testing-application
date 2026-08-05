@@ -4,17 +4,22 @@ import browserstack.shaded.org.json.JSONObject;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import eu.europa.eudi.utils.factory.MobileDeviceLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.junit.AssumptionViolatedException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Base64;
+import java.util.function.Function;
 
 public class TestHooks {
     EnvDataConfig envDataConfig;
@@ -56,14 +61,21 @@ public class TestHooks {
     }
 
     private void waitForDriver(org.openqa.selenium.WebDriver driver) throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            try {
-                driver.getPageSource();
-                return;
-            } catch (Exception e) {
-                Thread.sleep(1500);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(15)) // Total timeout (10 attempts * 1.5s = 15s)
+                .pollingEvery(Duration.ofMillis(1500)) // Poll every 1.5 seconds
+                .ignoring(Exception.class);           // Ignore all exceptions (matches your catch (Exception e))
+
+        wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                try {
+                    driver.getPageSource();
+                    return true; // Success! Driver is responsive.
+                } catch (Exception e) {
+                    return false; // Keep trying until timeout
+                }
             }
-        }
+        });
     }
 
     @After
@@ -196,7 +208,7 @@ public class TestHooks {
 
                 if (conn.getResponseCode() == 200) {
 
-                    File file = test.mobileWebDriverFactory().getCurrentLogFile();
+                    File file = MobileDeviceLogger.getCurrentLogFile();
 
                     if (file == null) {
                         file = new File("logs/ui/fallback.log");
