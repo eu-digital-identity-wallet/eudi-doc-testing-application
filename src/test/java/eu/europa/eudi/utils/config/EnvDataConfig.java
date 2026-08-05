@@ -41,7 +41,6 @@ public class EnvDataConfig {
     public static final String KOTLIN_ISSUER = "kotlin.url";
     public static final String VERIFIER_URL = "verifier.url";
     public static final String PYTHON_ISSUER = "python.url";
-    public static final String BROWSERSTACK_LOGS = "pythonbrowserstack.device.logs.enabled";
 
     ResourcesConfig resourcesConfig;
 

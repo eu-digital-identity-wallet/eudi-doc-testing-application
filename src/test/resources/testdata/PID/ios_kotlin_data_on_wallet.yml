@@ -70,10 +70,6 @@ fields:
     value: "AT"
     required: false
 
-  "Personal Administrative Number":
-    value: "AT-00000001"
-    required: true
-
   "Resident City":
     value: "Gemeinde Biberbach"
     required: true

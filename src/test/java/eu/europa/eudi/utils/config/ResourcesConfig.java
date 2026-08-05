@@ -1,6 +1,7 @@
 package eu.europa.eudi.utils.config;
 
 import java.nio.file.Paths;
+import java.util.Objects;
 
 
 /**
@@ -29,7 +30,7 @@ public class ResourcesConfig {
         String absPath = Paths.get(".")
                 .toAbsolutePath().normalize().toString().replace("\\", "/");
 
-        String modulePath = this.getClass().getClassLoader().getResource(".").getPath();
+        String modulePath = Objects.requireNonNull(this.getClass().getClassLoader().getResource(".")).getPath();
         modulePath = modulePath.replace("\\", "/");
         modulePath = modulePath.replace(absPath, "");
         modulePath = modulePath.replace("//", "/");
