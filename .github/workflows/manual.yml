@@ -57,7 +57,7 @@ jobs:
           rm -rf target/site/serenity 
           mvn serenity:aggregate -Dtags="@${{ github.event.inputs.tagName }}"
           echo "Modifying JSON files to mark tests as manual..."
-          find target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
+          find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
             if grep -q "\"manual\":" "$file" 2>/dev/null; then    
               sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
               sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
@@ -70,7 +70,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       - name: Upload report
@@ -84,4 +84,4 @@ jobs:
         if: always()
         with:
           name: manual-serenity-json    # or ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/**/*.json
+          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
