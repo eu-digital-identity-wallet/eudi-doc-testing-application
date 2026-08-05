@@ -20,7 +20,8 @@ on:
         description: 'iOS Tags to execute'
         type: choice
         options:
-          - PID mso_mdoc
+          - PID_mso_mdoc
+          - PID_sdjwt
           - MDL
 
 jobs:
@@ -59,7 +60,7 @@ jobs:
           rm -rf target/serenity
           rm -rf target/site/reports
           rm -rf target/site/serenity
-          rm -f target/rerun.txt target/rerun2.txt
+          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
@@ -94,12 +95,13 @@ jobs:
       # ---------------- TEST EXECUTION ----------------
       - name: Run iOS Tests on BrowserStack
         continue-on-error: true
+        env:
+          TEST_CASES: ${{ inputs.test-cases }}
         run: |
-          TEST_TAGS="@${{ inputs.test-cases }} and @IOS"
+          TEST_TAGS="@$TEST_CASES and @IOS"
           echo "Running tests: $TEST_TAGS"
 
-          mvn test -ntp \
-            -Dapp.url=$BROWSERSTACK_APP_URL \
+          mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
       # ---------------- BACKUP RESULTS ----------------
@@ -131,12 +133,32 @@ jobs:
         run: |
           if [ -s target/rerun2.txt ]; then
             echo "Running rerun pass 2..."
-            mvn test -Dtest=RerunTestRunner -Dcucumber.features="@target/rerun2.txt"
+            mvn test \
+              -Dtest=RerunTestRunner2 \
+              -Dcucumber.features="@target/rerun2.txt"
           else
             echo "No rerun2.txt found"
           fi
 
-      - name: Final Merge Results
+      - name: Merge Results Pass 2
+        if: always()
+        run: |
+          python3 merge_serenity_results.py || true
+
+      # ---------------- RERUN PASS 3 ----------------
+      - name: Rerun Pass 3
+        if: always()
+        run: |
+          if [ -s target/rerun3.txt ]; then
+            echo "Running rerun pass 3..."
+            mvn test \
+              -Dtest=RerunTestRunner3 \
+              -Dcucumber.features="@target/rerun3.txt"
+          else
+            echo "No rerun3.txt found"
+          fi
+
+      - name: Merge Results Pass 3
         if: always()
         run: |
           python3 merge_serenity_results.py || true
@@ -145,7 +167,8 @@ jobs:
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+          mvn serenity:aggregate \
+            -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
