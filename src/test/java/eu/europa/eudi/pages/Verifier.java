@@ -767,7 +767,7 @@ public class Verifier {
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet_sdjwt.yml");
                         }
                     }
                     break;
@@ -780,7 +780,7 @@ public class Verifier {
                         }
                     } else {
                         if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
-                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet.yml");
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_sdjwt.yml");
                         }
                     }
                     test.web().verifier().clickCloseOnVerifierWeb();

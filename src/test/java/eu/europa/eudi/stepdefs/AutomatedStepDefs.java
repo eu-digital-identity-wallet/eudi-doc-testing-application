@@ -454,7 +454,7 @@ public class AutomatedStepDefs {
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential);
+      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
     }
 
     @Then("the credential is stored in the Wallet")

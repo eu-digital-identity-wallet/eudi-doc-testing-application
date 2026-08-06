@@ -44,4 +44,5 @@ public class IssuerElements {
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
     public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"https://issuer.eudiw.dev/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
+    public static By pidSDJWT = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[3]");;
 }

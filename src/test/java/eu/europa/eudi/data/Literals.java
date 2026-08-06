@@ -26,7 +26,9 @@ public interface Literals {
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
         MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)"),
         PID_IOS("PID (MSO Mdoc)"),
-        PID_SD_JWT("PID (SD-JWT VC)");
+        PID_SD_JWT("PID (SD-JWT VC)"),
+        PID_SD_JWT_ANDROID("PID (SD-JWT VC Compact)"),
+        PID_SD_JWT__ON_DOCUMENTS_ANDROID("PID (SD-JWT VC)");
 
         public final String label;
         Wallet(String label) {
