@@ -1293,45 +1293,26 @@ public class Wallet {
     }
 
     public void initiateCredential(String credential, String issuerType) {
-        test.mobile().wallet().launchApp();
-        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
-            switch (issuerType.toLowerCase()) {
-                case "kotlin", "python":
+
                     test.mobile().wallet().launchApp();
                     test.mobile().wallet().checkIfPageIsTrue();
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().renterThePin();
                     test.mobile().wallet().successMessageOfSetUpPin();
                     test.mobile().wallet().clickAddMyDigitalID();
-                    break;
-            }
-        } else {
-            switch (issuerType.toLowerCase()) {
-                case "kotlin":
-                    test.mobile().wallet().launchApp();
-                    test.mobile().wallet().checkIfPageIsTrue();
-                    test.mobile().wallet().createAPin();
-                    test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().successMessageOfSetUpPin();
-                    test.mobile().wallet().clickAddMyDigitalID();
-                    test.mobile().issuer().kotlinIssuerService();
-                    break;
-                case "python":
-                    test.mobile().wallet().launchApp();
-                    test.mobile().wallet().checkIfPageIsTrue();
-                    test.mobile().wallet().createAPin();
-                    test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().successMessageOfSetUpPin();
-                    test.mobile().wallet().clickAddMyDigitalID();
-            }
+
         }
-    }
+
 
     public void credentialStoredInWallet(String credential, String issuerType) {
         this.credential = credential;
         this.issuerType = issuerType;
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+            if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                test.mobile().wallet().clickClose();
+                test.mobile().wallet().clickOnDocuments();
+                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments();
+            }else if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
@@ -1346,14 +1327,27 @@ public class Wallet {
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidMdocIsDisplayed();
             }else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)){
-                test.mobile().wallet().pidSdJwtIsDisplayed();
+                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments();
             }
         }
     }
 
+
+
     private void pidSdJwtIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-           //todo
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidSdJwtIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ANDROID.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_SD_JWT.label, pageHeader);
+        }
+    }
+
+    private void pidSdJwtIsDisplayedOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_SD_JWT__ON_DOCUMENTS_ANDROID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.PID_SD_JWT.label, pageHeader);
@@ -1413,7 +1407,11 @@ public class Wallet {
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                        test.mobile().wallet().clickPIDFromKotlin();
+                        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+                            test.mobile().wallet().clickPIDFromKotlin();
+                        }else{
+                            test.mobile().wallet().clickPIDSdjwt();
+                        }
                     } else {
                         test.mobile().wallet().clickToViewDetails();
                     }
@@ -1489,7 +1487,11 @@ public class Wallet {
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                        test.mobile().wallet().clickPIDFromKotlin();
+                        if ("PID (SD-JWT)".equalsIgnoreCase(credential)){
+                            test.mobile().wallet().clickPIDSdjwt();
+                        }else {
+                            test.mobile().wallet().clickPIDFromKotlin();
+                        }
                     } else {
                         test.mobile().wallet().clickToViewDetails();
                     }
@@ -1627,10 +1629,11 @@ public class Wallet {
         }
     }
 
+
     private void clickPIDSdjwt() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
-         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickPidSDJWTFromKotlin)).click();
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidSdjwt)).click();
         }
     }
@@ -1643,5 +1646,55 @@ public class Wallet {
             test.mobile().wallet().scrollUntilmDLOnDocuments();
             test.mobile().wallet().clickMdlKotlin();
             test.mobile().issuer().issueMDL();
+    }
+
+    public void insertPidSdjwtFromListKotlin() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
+        test.mobile().wallet().clickKotlinPIDSDWJTFromList();
+        test.mobile().issuer().signInUser();
+        test.mobile().issuer().fillLoginForm();
+    }
+
+    private void clickKotlinPIDSDWJTFromList() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            Thread.sleep(5000); // 3-second delay
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickPidSDJWTFromKotlinFromList)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            By locator = AppiumBy.iOSNsPredicateString(
+                    "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'"
+            );
+            driver.setSetting("waitForQuiescence", false);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+            try {
+                for (int attempt = 0; attempt < 5; attempt++) {
+                    try {
+                        driver.findElement(locator).click();
+                        return;
+                    } catch (Exception e) {
+                        driver.executeScript("mobile: scroll", ImmutableMap.of(
+                                "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
+                                "direction", "down"
+                        ));
+                    }
+                }
+                throw new RuntimeException("PID Combined (Kotlin) not clickable after retries");
+            } finally {
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                driver.setSetting("waitForQuiescence", true);
+            }
+        }
+    }
+
+    public void clickExpandVerificationForSDJWT() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickExpandVerificationSDJWT)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerification)).click();
+        }
     }
 }
