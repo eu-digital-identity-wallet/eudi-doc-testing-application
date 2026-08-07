@@ -27,7 +27,7 @@ public class IssuerElements {
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\" or @text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text='Country Code']/../android.widget.EditText");
     public static By clickCountry = By.xpath("//android.view.View[@text='Country']/../android.widget.EditText");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
+    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text='Nationality' or @text='Nationalities']");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]");
@@ -44,4 +44,5 @@ public class IssuerElements {
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
     public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"https://issuer.eudiw.dev/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
+    public static By pidSDJWT = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[3]");;
 }

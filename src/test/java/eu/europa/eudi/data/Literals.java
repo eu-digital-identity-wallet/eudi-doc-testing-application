@@ -24,7 +24,12 @@ public interface Literals {
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
-        MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)");
+        MDL_KOTLIN("Mobile Driving Licence (MSO MDoc)"),
+        PID_IOS("PID (MSO Mdoc)"),
+        PID_SD_JWT("PID (SD-JWT VC)"),
+        PID_SD_JWT_ANDROID("PID (SD-JWT VC Compact)"),
+        PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC)"),
+        PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC Compact)");
 
         public final String label;
         Wallet(String label) {
@@ -42,7 +47,8 @@ public interface Literals {
         PID_IS_DISPLAYED_ON_WEB("Person Identification Data (PID)"),
         MDL_IS_DISPLAYED_ON_WEB_KOTLIN("Mobile Driving Licence (MDL)"),
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
-        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL");
+        WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
+        WALLET_RESPONDED_SDJWT("urn:eudi:pid:1");
 
         public final String label;
         Verifier(String label) {

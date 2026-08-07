@@ -1,0 +1,14 @@
+screen: "Wallet Data To Verifier"
+
+fields:
+
+  "family name":
+    value: "Papadopoulos"
+    required: true
+
+  "given name":
+    value: "Nikos"
+    required: true
+
+  "birthdate":
+    value: "2020-03-10"

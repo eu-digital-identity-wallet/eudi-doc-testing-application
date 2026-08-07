@@ -43,6 +43,7 @@ public class WalletElements {
     public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
+    public static By clickPidSDJWTFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");;
     public static By scanQRIsActivatedForIssuance = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an issuer to add a digital document to your wallet.\"]");
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Eaa-0\"]");
     public static By mdlIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"Mobile Driving Licence (MSO MDoc)\"]");
@@ -53,4 +54,9 @@ public class WalletElements {
     public static By clickPidFromKotlinFromList = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]/android.view.View/android.view.View");
     public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (MSO Mdoc)\"]");
     public static By clickMdlKotlin = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View/android.view.View");
+    public static By selectPIDSDJWTPythonCredential = By.xpath("//android.widget.TextView[@text=\" PID (SD-JWT VC)\"]/preceding-sibling::android.widget.CheckBox");;
+    public static By clickPidSDJWTFromKotlinFromList;
+    public static By clickExpandVerificationSDJWT = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[2]");
+    public static By pidSdJwtIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
+    public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
 }
