@@ -1,4 +1,4 @@
-screen: "Wallet - PID details"
+screen: "Wallet Data From Python Issuer"
 
 fields:
 
@@ -6,8 +6,12 @@ fields:
     value: "10 Feb 2020"
     required: true
 
-  "Birth Place.country":
-    value: "GR"
+  "country":
+    value: "Athens"
+    required: true
+
+  "Expiry Date":
+    value: ""
     required: true
 
   "Family Name(s)":
@@ -20,6 +24,10 @@ fields:
 
   "Issuance Authority":
     value: "Test PID issuer"
+    required: true
+
+  "Issuance Date":
+    value: ""
     required: true
 
   "Issuing Country":
