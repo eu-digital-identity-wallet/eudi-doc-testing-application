@@ -13,7 +13,7 @@ Feature: Automatic validation of Provider's registration certificate before issu
     And the Wallet retrieves issuer metadata during an issuance flow
     And the Wallet automatically and silently validates the provider's registration certificate, without requiring the user to opt in or manually trigger it
 
-  @US_VEAAPIDPRC_TC_01 @manual:Passed
+  @US_VEAAPIDPRC_TC_01
   Scenario: Issuance proceeds to approval screen when the registration certificate is valid
     Given the issuer metadata contains a registration certificate that is valid
     When the Wallet performs the automatic validation
