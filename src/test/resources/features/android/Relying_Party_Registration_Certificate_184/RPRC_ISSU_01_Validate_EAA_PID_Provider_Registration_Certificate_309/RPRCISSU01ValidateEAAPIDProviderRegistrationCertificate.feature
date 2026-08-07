@@ -8,7 +8,7 @@ Feature: Automatic validation of Provider's registration certificate before issu
 
   Background:
     Given the user is authenticated to a valid EUDI Wallet on their device
-    And a valid PID / QEAA / PuB-EAA / EAA Provider's Access Certificate is available
+    And a valid PID or QEAA or PuB-EAA or EAA Provider's Access Certificate is available
     And the Wallet Unit has verified that the requested attestation type is registered by the relevant Registrar
     And the Wallet retrieves issuer metadata during an issuance flow
     And the Wallet automatically and silently validates the provider's registration certificate, without requiring the user to opt in or manually trigger it
