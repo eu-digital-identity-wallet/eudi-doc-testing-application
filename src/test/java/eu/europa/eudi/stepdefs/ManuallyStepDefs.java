@@ -9871,4 +9871,44 @@ public class ManuallyStepDefs {
     public void theBatchSRemainingLifetimeHasFallenBelowTheReissueTriggerLifetimeLeftThresholdProvidedByTheIssuer() {
         //manual
     }
+
+    @Given("the user visits the RP service and is requested to present certain attestations")
+    public void theUserVisitsTheRPServiceAndIsRequestedToPresentCertainAttestations() {
+        //manual
+    }
+
+    @When("the user clicks the corresponding button to present attestations from their installed Wallet")
+    public void theUserClicksTheCorrespondingButtonToPresentAttestationsFromTheirInstalledWallet() {
+        //manual
+    }
+
+    @Then("the Wallet processes the presentation request against the RP's WRPRC")
+    public void theWalletProcessesThePresentationRequestAgainstTheRPSWRPRC() {
+        //manual
+    }
+
+    @Given("all attributes requested by the RP are covered by its WRPRC")
+    public void allAttributesRequestedByTheRPAreCoveredByItsWRPRC() {
+        //manual
+    }
+
+    @When("the Wallet evaluates the presentation request")
+    public void theWalletEvaluatesThePresentationRequest() {
+        //manual
+    }
+
+    @Then("the consent screen proceeds normally without any warning")
+    public void theConsentScreenProceedsNormallyWithoutAnyWarning() {
+        //manual
+    }
+
+    @Given("one or more attributes requested by the RP are not covered by its WRPRC")
+    public void oneOrMoreAttributesRequestedByTheRPAreNotCoveredByItsWRPRC() {
+        //manual
+    }
+
+    @Then("a clear warning is displayed before any disclosure, listing the unregistered attributes")
+    public void aClearWarningIsDisplayedBeforeAnyDisclosureListingTheUnregisteredAttributes() {
+        //manual
+    }
 }
