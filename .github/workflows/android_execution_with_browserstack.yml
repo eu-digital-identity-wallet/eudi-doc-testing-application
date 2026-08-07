@@ -14,6 +14,7 @@ on:
           - milestone/2026.Q1
           - milestone/2026.Q2
           - milestone/2026.Q3
+          - milestone/2026.Q3.1
 
         default: develop
 
@@ -21,8 +22,7 @@ on:
         description: 'Android Tags to execute'
         type: choice
         options:
-          - PID_mso_mdoc
-          - PID_sdjwt
+          - PID mso_mdoc
           - MDL
 
 jobs:
@@ -108,7 +108,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
           
           # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -161,7 +161,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
             cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------

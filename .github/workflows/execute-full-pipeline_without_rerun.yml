@@ -185,7 +185,7 @@
           run: |
             mkdir -p reports/android
             mkdir -p reports/ios
-            mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
+            mkdir -p target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo
 
         - name: Download Android JSON
           uses: actions/download-artifact@v5
@@ -209,8 +209,8 @@
 
         - name: Merge JSON Results
           run: |
-            find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-            find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+            find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/ \;
+            find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/ \;
 
         - name: Generate Final Serenity Report
           run: |
@@ -218,7 +218,7 @@
 
         - name: Replace Serenity Core CSS
           run: |
-             REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+             REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
              cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
         - name: Upload Final Report
