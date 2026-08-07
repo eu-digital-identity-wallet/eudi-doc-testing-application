@@ -22,7 +22,7 @@ Feature: Retrieval and display of the interacting party's identity from the Acce
   Scenario: Intermediary's trade name is recorded in the transaction log
     Given the RP uses an intermediary for the presentation request
     When the transaction is completed
-    Then the intermediary's trade name is recorded in the Wallet's transaction log
+    Then the intermediary trade name is recorded in the Wallet transaction log
 
   @US_WDRPAPIFWRPACCS_TC_04
   Scenario: Issuance approval screen displays the identity of the Provider

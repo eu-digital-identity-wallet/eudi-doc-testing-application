@@ -49,9 +49,3 @@ Feature: Display of RP's registered details on the Consent Screen
     Given the user has consented to share the selected attributes
     When the user enters the correct six-digit PIN
     Then the Wallet displays a confirmation of successful presentation
-
-  @US_VRPDDPR_TC_07
-  Scenario: Confirmation of successful presentation is displayed
-    Given the user has consented and successfully authenticated with their PIN
-    When the presentation is completed
-    Then the Wallet displays a confirmation screen indicating successful presentation

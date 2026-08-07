@@ -57,7 +57,7 @@ Feature: Warning for presentation requests that exceed RP's registered scope
   @US_WDAWAOA_TC_09
   Scenario: User authenticates successfully with PIN/biometrics after giving consent
     Given the user has consented to share the selected attributes
-    When the user authenticates using their six-digit PIN or biometrics
+    When the user authenticates using their six digit PIN or biometrics
     Then the Wallet displays a confirmation of successful presentation
 
   @US_WDAWAOA_TC_10

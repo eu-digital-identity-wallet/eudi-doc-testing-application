@@ -9911,4 +9911,374 @@ public class ManuallyStepDefs {
     public void aClearWarningIsDisplayedBeforeAnyDisclosureListingTheUnregisteredAttributes() {
         //manual
     }
+
+    @Given("the user visits the RP service")
+    public void theUserVisitsTheRPService() {
+        //manual
+    }
+
+    @And("the RP requests the presentation of certain attestations of attributes")
+    public void theRPRequestsThePresentationOfCertainAttestationsOfAttributes() {
+        //manual
+    }
+
+    @When("the user selects to present attestations from their installed Wallet Unit by clicking the corresponding button")
+    public void theUserSelectsToPresentAttestationsFromTheirInstalledWalletUnitByClickingTheCorrespondingButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Data Sharing Request User Approval screen")
+    public void theWalletDisplaysTheDataSharingRequestUserApprovalScreen() {
+        //manual
+    }
+
+    @And("the screen shows the RP name")
+    public void theScreenShowsTheRPName() {
+        //manual
+    }
+
+    @And("the screen shows the RP unique identifier")
+    public void theScreenShowsTheRPUniqueIdentifier() {
+        //manual
+    }
+
+    @And("the screen shows a user friendly description of the RP's intended use of the data")
+    public void theScreenShowsAUserFriendlyDescriptionOfTheRPSIntendedUseOfTheData() {
+        //manual
+    }
+
+    @And("the screen shows a link to the RP's privacy policy")
+    public void theScreenShowsALinkToTheRPSPrivacyPolicy() {
+        //manual
+    }
+
+    @And("the screen shows a validation status indicator confirming RP verified")
+    public void theScreenShowsAValidationStatusIndicatorConfirmingRPVerified() {
+        //manual
+    }
+
+    @Given("the Data Sharing Request User Approval screen is displayed with the RP's details")
+    public void theDataSharingRequestUserApprovalScreenIsDisplayedWithTheRPSDetails() {
+        //manual
+    }
+
+    @When("the user reviews the information, consents to share the selected attributes")
+    public void theUserReviewsTheInformationConsentsToShareTheSelectedAttributes() {
+        //manual
+    }
+
+    @And("the user authenticates by entering the correct six digit PIN")
+    public void theUserAuthenticatesByEnteringTheCorrectSixDigitPIN() {
+        //manual
+    }
+
+    @Then("the Wallet displays a confirmation of successful presentation")
+    public void theWalletDisplaysAConfirmationOfSuccessfulPresentation() {
+        //manual
+    }
+
+    @Given("the user has requested to present attestations via the Wallet")
+    public void theUserHasRequestedToPresentAttestationsViaTheWallet() {
+        //manual
+    }
+
+    @When("the Data Sharing Request User Approval screen is displayed")
+    public void theDataSharingRequestUserApprovalScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("a user friendly description of the RP's intended use of the requested data is shown")
+    public void aUserFriendlyDescriptionOfTheRPSIntendedUseOfTheRequestedDataIsShown() {
+        //manual
+    }
+
+    @Given("the Wallet RP Access Certificate \\(WRPRC) validation has failed")
+    public void theWalletRPAccessCertificateWRPRCValidationHasFailed() {
+        //manual
+    }
+
+    @When("the Data Sharing Request screen is displayed")
+    public void theDataSharingRequestScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("a warning indicator is shown stating RP could not be verified")
+    public void aWarningIndicatorIsShownStatingRPCouldNotBeVerified() {
+        //manual
+    }
+
+    @And("the warning indicator remains visible throughout the consent screen")
+    public void theWarningIndicatorRemainsVisibleThroughoutTheConsentScreen() {
+        //manual
+    }
+
+    @Given("the Data Sharing Request screen is displayed with the the warning indicator")
+    public void theDataSharingRequestScreenIsDisplayedWithTheTheWarningIndicator() {
+        //manual
+    }
+
+    @When("the user gives consent to proceed")
+    public void theUserGivesConsentToProceed() {
+        //manual
+    }
+
+    @Then("the Wallet proceeds to the authentication step")
+    public void theWalletProceedsToTheAuthenticationStep() {
+        //manual
+    }
+
+    @Given("the user has consented to share the selected attributes")
+    public void theUserHasConsentedToShareTheSelectedAttributes() {
+        //manual
+    }
+
+    @Given("the presentation request includes both registered and unregistered attributes")
+    public void thePresentationRequestIncludesBothRegisteredAndUnregisteredAttributes() {
+        //manual
+    }
+
+    @When("the consent screen is displayed")
+    public void theConsentScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("registered attributes are shown with standard display and unregistered attributes are shown with a distinct warning indicator")
+    public void registeredAttributesAreShownWithStandardDisplayAndUnregisteredAttributesAreShownWithADistinctWarningIndicator() {
+        //manual
+    }
+
+    @Given("the warning for unregistered attributes is displayed on the consent screen")
+    public void theWarningForUnregisteredAttributesIsDisplayedOnTheConsentScreen() {
+        //manual
+    }
+
+    @When("the user chooses to cancel")
+    public void theUserChoosesToCancel() {
+        //manual
+    }
+
+    @Then("the Wallet returns the user to the Home screen")
+    public void theWalletReturnsTheUserToTheHomeScreen() {
+        //manual
+    }
+
+    @When("the user explicitly approves to proceed with the presentation")
+    public void theUserExplicitlyApprovesToProceedWithThePresentation() {
+        //manual
+    }
+
+    @Then("the Wallet accepts the approval and continues to the attribute selection step")
+    public void theWalletAcceptsTheApprovalAndContinuesToTheAttributeSelectionStep() {
+        //manual
+    }
+
+    @When("the user has not provided an explicit action to approve proceeding")
+    public void theUserHasNotProvidedAnExplicitActionToApproveProceeding() {
+        //manual
+    }
+
+    @Then("the Wallet does not treat this as approval and does not proceed with the presentation")
+    public void theWalletDoesNotTreatThisAsApprovalAndDoesNotProceedWithThePresentation() {
+        //manual
+    }
+
+    @Given("the Data Sharing screen is displayed with registered and unregistered attributes distinguished")
+    public void theDataSharingScreenIsDisplayedWithRegisteredAndUnregisteredAttributesDistinguished() {
+        //manual
+    }
+
+    @When("the user reviews the information and consents to share the selected attributes")
+    public void theUserReviewsTheInformationAndConsentsToShareTheSelectedAttributes() {
+        //manual
+    }
+
+    @When("the user authenticates using their six digit PIN or biometrics")
+    public void theUserAuthenticatesUsingTheirSixDigitPINOrBiometrics() {
+        //manual
+    }
+
+    @Given("the user has consented and successfully authenticated")
+    public void theUserHasConsentedAndSuccessfullyAuthenticated() {
+        //manual
+    }
+
+    @When("the presentation is completed")
+    public void thePresentationIsCompleted() {
+        //manual
+    }
+
+    @Then("the Wallet displays a confirmation screen indicating successful presentation")
+    public void theWalletDisplaysAConfirmationScreenIndicatingSuccessfulPresentation() {
+        //manual
+    }
+
+    @Given("the user is authenticated to a valid EUDI Wallet on their device")
+    public void theUserIsAuthenticatedToAValidEUDIWalletOnTheirDevice() {
+        //manual
+    }
+
+    @And("a valid PID or QEAA or PuB-EAA or EAA Provider's Access Certificate is available")
+    public void aValidPIDOrQEAAOrPuBEAAOrEAAProviderSAccessCertificateIsAvailable() {
+        //manual
+    }
+
+    @And("the Wallet Unit has verified that the requested attestation type is registered by the relevant Registrar")
+    public void theWalletUnitHasVerifiedThatTheRequestedAttestationTypeIsRegisteredByTheRelevantRegistrar() {
+        //manual
+    }
+
+    @And("the Wallet retrieves issuer metadata during an issuance flow")
+    public void theWalletRetrievesIssuerMetadataDuringAnIssuanceFlow() {
+        //manual
+    }
+
+    @And("the Wallet automatically and silently validates the provider's registration certificate, without requiring the user to opt in or manually trigger it")
+    public void theWalletAutomaticallyAndSilentlyValidatesTheProviderSRegistrationCertificateWithoutRequiringTheUserToOptInOrManuallyTriggerIt() {
+        //manual
+    }
+
+    @Given("the issuer metadata contains a registration certificate that is valid")
+    public void theIssuerMetadataContainsARegistrationCertificateThatIsValid() {
+        //manual
+    }
+
+    @When("the Wallet performs the automatic validation")
+    public void theWalletPerformsTheAutomaticValidation() {
+        //manual
+    }
+
+    @Then("the validation passes")
+    public void theValidationPasses() {
+        //manual
+    }
+
+    @And("the issuance approval screen is displayed")
+    public void theIssuanceApprovalScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the screen shows the provider details and the attestation or PID to be issued")
+    public void theScreenShowsTheProviderDetailsAndTheAttestationOrPIDToBeIssued() {
+        //manual
+    }
+
+    @Given("the issuer metadata contains a registration certificate that is not valid")
+    public void theIssuerMetadataContainsARegistrationCertificateThatIsNotValid() {
+        //manual
+    }
+
+    @When("the Wallet performs the automatic validation check")
+    public void theWalletPerformsTheAutomaticValidationCheck() {
+        //manual
+    }
+
+    @Then("the Wallet treats this as a validation failure")
+    public void theWalletTreatsThisAsAValidationFailure() {
+        //manual
+    }
+
+    @Given("the user is registered to a valid EUDI Wallet on their device")
+    public void theUserIsRegisteredToAValidEUDIWalletOnTheirDevice() {
+        //manual
+    }
+
+    @And("a Provider's Access Certificate is available")
+    public void aProviderSAccessCertificateIsAvailable() {
+        //manual
+    }
+
+    @And("the issuer metadata includes a WRPRC")
+    public void theIssuerMetadataIncludesAWRPRC() {
+        //manual
+    }
+
+    @And("the Wallet automatically validates the WRPRC before displaying any issuance approval screen")
+    public void theWalletAutomaticallyValidatesTheWRPRCBeforeDisplayingAnyIssuanceApprovalScreen() {
+        //manual
+    }
+
+    @Given("the user has opened the Wallet app and authenticated successfully using PIN or biometrics")
+    public void theUserHasOpenedTheWalletAppAndAuthenticatedSuccessfullyUsingPINOrBiometrics() {
+        //manual
+    }
+
+    @When("the user selects Documents and then adds a document")
+    public void theUserSelectsDocumentsAndThenAddsADocument() {
+        //manual
+    }
+
+    @Then("the Wallet redirects the user to the Provider's service, which sends the offer")
+    public void theWalletRedirectsTheUserToTheProviderSServiceWhichSendsTheOffer() {
+        //manual
+    }
+
+    @Given("the provider has sent an offer containing issuer metadata with a WRPRC")
+    public void theProviderHasSentAnOfferContainingIssuerMetadataWithAWRPRC() {
+        //manual
+    }
+
+    @When("the WRPRC validation fails")
+    public void theWRPRCValidationFails() {
+        //manual
+    }
+
+    @Then("the Wallet does not display the issuance approval screen")
+    public void theWalletDoesNotDisplayTheIssuanceApprovalScreen() {
+        //manual
+    }
+
+    @And("the Wallet displays a blocker stating that the provider could not be validated")
+    public void theWalletDisplaysABlockerStatingThatTheProviderCouldNotBeValidated() {
+        //manual
+    }
+
+    @Given("the blocker stating that the provider could not be validated is displayed")
+    public void theBlockerStatingThatTheProviderCouldNotBeValidatedIsDisplayed() {
+        //manual
+    }
+
+    @When("the user selects Cancel")
+    public void theUserSelectsCancel() {
+        //manual
+    }
+
+    @Given("a presentation request is received from an RP presenting its registration certificate")
+    public void aPresentationRequestIsReceivedFromAnRPPresentingItsRegistrationCertificate() {
+        //manual
+    }
+
+    @Then("the screen shows the RP's user friendly trade name and the trade name of the specific service")
+    public void theScreenShowsTheRPSUserFriendlyTradeNameAndTheTradeNameOfTheSpecificService() {
+        //manual
+    }
+
+    @Given("the RP uses an intermediary for the presentation request")
+    public void theRPUsesAnIntermediaryForThePresentationRequest() {
+        //manual
+    }
+
+    @Then("the Wallet does not inform the user of the intermediary's trade name or its service trade name")
+    public void theWalletDoesNotInformTheUserOfTheIntermediarySTradeNameOrItsServiceTradeName() {
+        //manual
+    }
+
+    @When("the transaction is completed")
+    public void theTransactionIsCompleted() {
+        //manual
+    }
+
+    @Then("the intermediary trade name is recorded in the Wallet transaction log")
+    public void theIntermediaryTradeNameIsRecordedInTheWalletTransactionLog() {
+        //manual
+    }
+
+    @Given("an issuance request is received from a PID Provider or Attestation Provider presenting its access certificate")
+    public void anIssuanceRequestIsReceivedFromAPIDProviderOrAttestationProviderPresentingItsAccessCertificate() {
+        //manual
+    }
+
+    @Then("the screen shows the provider's identity as included in the subject information of the access certificate")
+    public void theScreenShowsTheProviderSIdentityAsIncludedInTheSubjectInformationOfTheAccessCertificate() {
+        //manual
+    }
 }
