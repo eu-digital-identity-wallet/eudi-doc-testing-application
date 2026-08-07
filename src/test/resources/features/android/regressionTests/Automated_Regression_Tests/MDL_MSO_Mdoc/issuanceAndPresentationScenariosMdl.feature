@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated @execution_Q2_2026 @MDL
+@IOS @US_ETESA @automated @execution_Q2_2026 @MDL
 Feature: Issuance and presentation - mDL
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL
@@ -37,6 +37,3 @@ Feature: Issuance and presentation - mDL
       | mDL (MSO Mdoc) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
       | mDL (MSO Mdoc) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
-
-
-
