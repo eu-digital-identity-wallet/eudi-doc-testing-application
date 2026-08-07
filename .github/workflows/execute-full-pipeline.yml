@@ -148,7 +148,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
@@ -263,7 +263,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
 
       # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -306,7 +306,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
@@ -322,7 +322,7 @@ jobs:
         if: always()
         with:
           name: ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+          path: target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/**/*.json
 
       - name: Show downloaded BrowserStack logs
         if: always()
@@ -375,7 +375,7 @@ jobs:
           rm -rf target/site/serenity 
           mvn serenity:aggregate -Dtags="${{ github.event.inputs.manual-tag }}"
           echo "Modifying JSON files to mark tests as manual..."
-          find target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
+          find target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo -name "*.json" | grep -v "nivo-slider\|bootstrap-icons" | while read file; do  
             if grep -q "\"manual\":" "$file" 2>/dev/null; then    
               sed -i '' 's/"manual":\s*false/"manual": true/g' "$file" 2>/dev/null || sed -i 's/"manual":\s*false/"manual": true/g' "$file"    
               sed -i '' 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file" 2>/dev/null || sed -i 's/"source":\s*"CUCUMBER"/"source": "MANUAL"/g' "$file"  
@@ -388,7 +388,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       - name: Upload report
@@ -402,7 +402,7 @@ jobs:
         if: always()
         with:
           name: manual-serenity-json    # or ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/**/*.json
+          path: target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/**/*.json
 
   final-summary:
     runs-on: macos-latest
@@ -438,18 +438,18 @@ jobs:
           path: reports/manual
 
       - run: |
-          mkdir -p target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo
+          mkdir -p target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo
           
-          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
-          find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo/ \;
+          find reports/android -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/ \;
+          find reports/ios -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/ \;
+          find reports/manual -name "*.json" -exec cp {} target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/ \;
 
       - run: mvn serenity:aggregate
 
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.05.37-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       - uses: actions/upload-artifact@v5
