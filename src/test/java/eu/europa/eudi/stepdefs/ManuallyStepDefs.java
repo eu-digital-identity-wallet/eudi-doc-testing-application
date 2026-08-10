@@ -10162,11 +10162,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the issuer metadata contains a registration certificate that is not valid")
-    public void theIssuerMetadataContainsARegistrationCertificateThatIsNotValid() {
-        //manual
-    }
-
     @When("the Wallet performs the automatic validation check")
     public void theWalletPerformsTheAutomaticValidationCheck() {
         //manual
@@ -10279,6 +10274,21 @@ public class ManuallyStepDefs {
 
     @Then("the screen shows the provider's identity as included in the subject information of the access certificate")
     public void theScreenShowsTheProviderSIdentityAsIncludedInTheSubjectInformationOfTheAccessCertificate() {
+        //manual
+    }
+
+    @Given("the issuer metadata contains a registration certificate that is revoked")
+    public void theIssuerMetadataContainsARegistrationCertificateThatIsRevoked() {
+        //manual
+    }
+
+    @Given("the issuer metadata contains a registration certificate that is not issued by a trusted authority")
+    public void theIssuerMetadataContainsARegistrationCertificateThatIsNotIssuedByATrustedAuthority() {
+        //manual
+    }
+
+    @Given("the issuer metadata contains a registration certificate does not contain a registration certificate")
+    public void theIssuerMetadataContainsARegistrationCertificateDoesNotContainARegistrationCertificate() {
         //manual
     }
 }
