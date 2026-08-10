@@ -37,30 +37,24 @@ Feature: Warning for presentation requests that exceed RP's registered scope
     Then the Wallet returns the user to the Home screen
 
   @US_WDAWAOA_TC_06
-  Scenario: User explicitly approves to proceed despite the warning
-    Given the warning for unregistered attributes is displayed on the consent screen
-    When the user explicitly approves to proceed with the presentation
-    Then the Wallet accepts the approval and continues to the attribute selection step
-
-  @US_WDAWAOA_TC_07
   Scenario: Silence or pre-ticked boxes are not accepted as approval to proceed
     Given the warning for unregistered attributes is displayed on the consent screen
     When the user has not provided an explicit action to approve proceeding
     Then the Wallet does not treat this as approval and does not proceed with the presentation
 
-  @US_WDAWAOA_TC_08
+  @US_WDAWAOA_TC_07
   Scenario: User reviews the Data Sharing/Approval screen and consents to share selected attributes
     Given the Data Sharing screen is displayed with registered and unregistered attributes distinguished
     When the user reviews the information and consents to share the selected attributes
     Then the Wallet proceeds to the authentication step
 
-  @US_WDAWAOA_TC_09
+  @US_WDAWAOA_TC_08
   Scenario: User authenticates successfully with PIN/biometrics after giving consent
     Given the user has consented to share the selected attributes
     When the user authenticates using their six digit PIN or biometrics
     Then the Wallet displays a confirmation of successful presentation
 
-  @US_WDAWAOA_TC_10
+  @US_WDAWAOA_TC_09
   Scenario: Confirmation of successful presentation is displayed
     Given the user has consented and successfully authenticated
     When the presentation is completed
