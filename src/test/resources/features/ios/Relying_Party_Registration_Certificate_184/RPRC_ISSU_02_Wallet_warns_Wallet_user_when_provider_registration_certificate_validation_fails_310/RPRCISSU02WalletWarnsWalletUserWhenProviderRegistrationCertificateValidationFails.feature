@@ -12,20 +12,20 @@ Feature: Warning when the provider's registration certificate cannot be validate
     And the issuer metadata includes a WRPRC
     And the Wallet automatically validates the WRPRC before displaying any issuance approval screen
 
-  @US_WWWUWPRCVF_TC_01
+  @US_WWWUWPRCVF_TC_01 @manual:Passed
   Scenario: User requests to add a document and is redirected to the provider's service
     Given the user has opened the Wallet app and authenticated successfully using PIN or biometrics
     When the user selects Documents and then adds a document
     Then the Wallet redirects the user to the Provider's service, which sends the offer
 
-  @US_WWWUWPRCVF_TC_02
+  @US_WWWUWPRCVF_TC_02 @manual:Failed
   Scenario: Issuance approval screen is not displayed when WRPRC validation fails
     Given the provider has sent an offer containing issuer metadata with a WRPRC
     When the WRPRC validation fails
     Then the Wallet does not display the issuance approval screen
     And the Wallet displays a blocker stating that the provider could not be validated
 
-  @US_WWWUWPRCVF_TC_03
+  @US_WWWUWPRCVF_TC_03 @manual:Passed
   Scenario: User cancels from the blocker and returns to the Home screen
     Given the blocker stating that the provider could not be validated is displayed
     When the user selects Cancel
