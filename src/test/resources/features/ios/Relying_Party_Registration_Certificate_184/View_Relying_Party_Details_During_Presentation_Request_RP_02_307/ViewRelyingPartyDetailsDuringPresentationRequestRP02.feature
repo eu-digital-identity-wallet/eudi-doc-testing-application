@@ -20,20 +20,20 @@ Feature: Display of RP's registered details on the Consent Screen
 
   @US_VRPDDPR_TC_02
   Scenario: User consents and completes the presentation successfully
-    Given the Data Sharing Request User-Approval screen is displayed with the RP's details
+    Given the Data Sharing Request User Approval screen is displayed with the RP's details
     When the user reviews the information, consents to share the selected attributes
-    And the user authenticates by entering the correct six-digit PIN
+    And the user authenticates by entering the correct six digit PIN
     Then the Wallet displays a confirmation of successful presentation
 
   @US_VRPDDPR_TC_03
   Scenario: User-friendly description of the RP's intended use is displayed
     Given the user has requested to present attestations via the Wallet
-    When the Data Sharing Request User-Approval screen is displayed
-    Then a user-friendly description of the RP's intended use of the requested data is shown
+    When the Data Sharing Request User Approval screen is displayed
+    Then a user friendly description of the RP's intended use of the requested data is shown
 
   @US_VRPDDPR_TC_04
   Scenario: Warning indicator is retained when WRPRC validation fails and the user chooses to proceed
-    Given the Wallet-RP Access Certificate (WRPRC) validation has failed
+    Given the Wallet RP Access Certificate (WRPRC) validation has failed
     When the Data Sharing Request screen is displayed
     Then a warning indicator is shown stating RP could not be verified
     And the warning indicator remains visible throughout the consent screen
