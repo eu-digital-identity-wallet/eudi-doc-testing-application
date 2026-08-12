@@ -27,7 +27,7 @@ Feature: Automatic validation of Provider's registration certificate before issu
     When the Wallet performs the automatic validation check
     Then the Wallet treats this as a validation failure
 
-  @US_VEAAPIDPRC_TC_03 @manual:Failed
+  @US_VEAAPIDPRC_TC_03 @manual:Passed
   Scenario: Validation fails when the registration certificate is not issued by a trusted authority or does not contain a registration certificate
     Given the issuer metadata contains a registration certificate that is not issued by a trusted authority
     When the Wallet performs the automatic validation check
