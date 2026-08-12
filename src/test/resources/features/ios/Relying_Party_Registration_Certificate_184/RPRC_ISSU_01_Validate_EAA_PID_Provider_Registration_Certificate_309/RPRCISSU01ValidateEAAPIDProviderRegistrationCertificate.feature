@@ -21,13 +21,13 @@ Feature: Automatic validation of Provider's registration certificate before issu
     And the issuance approval screen is displayed
     And the screen shows the provider details and the attestation or PID to be issued
 
-  @US_VEAAPIDPRC_TC_02 @manual:Passed
+  @US_VEAAPIDPRC_TC_02 @manual:Failed
   Scenario: Validation fails when the registration certificate is revoked
     Given the issuer metadata contains a registration certificate that is revoked
     When the Wallet performs the automatic validation check
     Then the Wallet treats this as a validation failure
 
-  @US_VEAAPIDPRC_TC_03 @manual:Passed
+  @US_VEAAPIDPRC_TC_03 @manual:Failed
   Scenario: Validation fails when the registration certificate is not issued by a trusted authority or does not contain a registration certificate
     Given the issuer metadata contains a registration certificate that is not issued by a trusted authority
     When the Wallet performs the automatic validation check
