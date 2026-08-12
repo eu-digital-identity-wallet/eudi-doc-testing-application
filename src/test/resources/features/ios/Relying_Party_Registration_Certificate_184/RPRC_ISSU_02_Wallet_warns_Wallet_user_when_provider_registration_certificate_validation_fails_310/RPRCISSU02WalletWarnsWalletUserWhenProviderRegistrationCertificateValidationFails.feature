@@ -26,7 +26,7 @@ Feature: Warning when the provider's registration certificate cannot be validate
     And the Wallet displays a blocker stating that the provider could not be validated
 
   @US_WWWUWPRCVF_TC_03 @manual:Passed
-  Scenario: User cancels from the blocker and returns to the Home screen
+  Scenario: User cancels from the blocker and returns to the issuance initiation request page
     Given the blocker stating that the provider could not be validated is displayed
     When the user selects Cancel
     Then the Wallet returns the user to the issuance initiation request page
