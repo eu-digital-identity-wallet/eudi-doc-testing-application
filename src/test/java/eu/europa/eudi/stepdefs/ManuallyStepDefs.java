@@ -10291,4 +10291,9 @@ public class ManuallyStepDefs {
     public void theIssuerMetadataContainsARegistrationCertificateDoesNotContainARegistrationCertificate() {
         //manual
     }
+
+    @Then("the Wallet returns the user to the issuance initiation request page")
+    public void theWalletReturnsTheUserToTheIssuanceInitiationRequestPage() {
+        //manual
+    }
 }
