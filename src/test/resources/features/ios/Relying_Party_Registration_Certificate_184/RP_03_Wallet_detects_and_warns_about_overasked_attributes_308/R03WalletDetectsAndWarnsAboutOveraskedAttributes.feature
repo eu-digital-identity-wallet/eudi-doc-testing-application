@@ -33,7 +33,7 @@ Feature: Warning for presentation requests that exceed RP's registered scope
   @US_WDAWAOA_TC_05 @manual:Passed
   Scenario: User cancels the presentation after seeing the warning
     Given the warning for unregistered attributes is displayed on the consent screen
-    When the user chooses to cancel
+    When the user cancels the presentation process
     Then the Wallet returns the user to the Home screen
 
   @US_WDAWAOA_TC_06 @manual:Passed

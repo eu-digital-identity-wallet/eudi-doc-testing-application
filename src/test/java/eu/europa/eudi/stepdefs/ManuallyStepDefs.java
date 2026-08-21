@@ -9992,11 +9992,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the Wallet RP Access Certificate \\(WRPRC) validation has failed")
-    public void theWalletRPAccessCertificateWRPRCValidationHasFailed() {
-        //manual
-    }
-
     @When("the Data Sharing Request screen is displayed")
     public void theDataSharingRequestScreenIsDisplayed() {
         //manual
@@ -10294,6 +10289,21 @@ public class ManuallyStepDefs {
 
     @Then("the Wallet returns the user to the issuance initiation request page")
     public void theWalletReturnsTheUserToTheIssuanceInitiationRequestPage() {
+        //manual
+    }
+
+    @Given("the Wallet RP Registration Certificate \\(WRPRC) validation has failed")
+    public void theWalletRPRegistrationCertificateWRPRCValidationHasFailed() {
+        //manual
+    }
+
+    @Given("the Wallet RP Registration Certificate \\(WRPRC) validation has failed due to revoked certificate")
+    public void theWalletRPRegistrationCertificateWRPRCValidationHasFailedDueToRevokedCertificate() {
+        //manual
+    }
+
+    @When("the user cancels the presentation process")
+    public void theUserCancelsThePresentationProcess() {
         //manual
     }
 }
