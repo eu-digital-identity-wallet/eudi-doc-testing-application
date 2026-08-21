@@ -2335,42 +2335,64 @@ public class Issuer {
         }
     }
 
+    public void viewDataPage() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage, Literals.Verifier.VIEW_DATA_PAGE.label));
+
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.viewDataPage).getText().trim();
+
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
+            Thread.sleep(5000);
+
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+        }
+    }
+
     public void performIssuance(String issueScenario, String credential, String issuanceMethod, String issuerType) throws InterruptedException {
        this.issuerType = issuerType;
         switch (issuanceMethod.toLowerCase()) {
             case "credential offer":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                    switch (issueScenario.toLowerCase()) {
-                        case "same device":
-                            if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                                test.mobile().issuer().issueCredentialsPageIsDisplayed();
-                                test.mobile().issuer().clickWalletLink();
-                                test.mobile().wallet().viewDataPage();
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)){
+                        switch (issueScenario.toLowerCase()) {
+                            case "same device":
+                                if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                                    test.mobile().issuer().issueCredentialsPageIsDisplayed();
+                                    test.mobile().issuer().clickWalletLink();
+                                    test.mobile().issuer().viewDataPage();
+                                    test.mobile().wallet().clickAddButton();
+                                    test.mobile().issuer().signInUser();
+                                    test.mobile().issuer().fillLoginForm();
+                                }
+                                break;
+                            case "cross device":
+                                test.mobile().issuer().qrCodeIsDisplayedKotlin();
+                                test.mobile().verifier().captureScreen();
+                                test.mobile().wallet().restartApp();
+                                test.mobile().wallet().createAPin();
+                                test.mobile().wallet().clickOnDocuments();
+                                test.mobile().wallet().clickToAddDocument();
+                                test.mobile().wallet().clickQROption();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    if (test.mobile().wallet().isQrVisible()) {
+                                        test.mobile().wallet().onlyThisTimeQR();
+                                    }
+                                }
+                                test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                                test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().signInUser();
                                 test.mobile().issuer().fillLoginForm();
-                            }
-                            break;
-                        case "cross device":
-                            test.mobile().issuer().qrCodeIsDisplayedKotlin();
-                            test.mobile().verifier().captureScreen();
-                            test.mobile().wallet().restartApp();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().clickOnDocuments();
-                            test.mobile().wallet().clickToAddDocument();
-                            test.mobile().wallet().clickQROption();
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                if (test.mobile().wallet().isQrVisible()) {
-                                    test.mobile().wallet().onlyThisTimeQR();
-                                }
-                            }
-                            test.mobile().wallet().theQRScannerIsActivatedForIssuance();
-                            test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                            test.mobile().wallet().viewDataPage();
-                            test.mobile().wallet().clickAddButton();
-                            test.mobile().issuer().signInUser();
-                            test.mobile().issuer().fillLoginForm();
-                            break;
+                                break;
+                        }
                     }
                 } else {
                     switch (issueScenario.toLowerCase()) {
@@ -2438,7 +2460,7 @@ public class Issuer {
                                 }
                                 test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                                 test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                                test.mobile().wallet().viewDataPage();
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issuePID(this.credential);
                             } else {
@@ -2463,7 +2485,7 @@ public class Issuer {
                                 }
                                 test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                                 test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                                test.mobile().wallet().viewDataPage();
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issueMDL();
                                 break;
@@ -2552,7 +2574,7 @@ public class Issuer {
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet_sdjwt.yml");
-                }else{
+                }else if ("mDL (MSO Mdoc)".equalsIgnoreCase(credential)){
                     test.mobile().wallet().clickExpandVerification();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
                 }

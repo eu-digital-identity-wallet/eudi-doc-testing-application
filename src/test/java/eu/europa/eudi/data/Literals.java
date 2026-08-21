@@ -39,7 +39,8 @@ public interface Literals {
 
     enum Verifier{
 
-        VIEW_DATA_PAGE("The following transaction requires your permission and authentication."),
+        VIEW_DATA_PAGE("Issuance request"),
+        DATA_SHARING_REQUEST("Data sharing request"),
         APP_OPEN_SUCCESSFULLY("Define your presentation request"),
         WALLET_RESPONDED("eu.europa.ec.eudi.pid.1"),
         PRESENTATION_QUERY_TYPE("Request URI Method"),

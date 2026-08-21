@@ -55,18 +55,18 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WaitsActionsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
-                    Literals.Verifier.VIEW_DATA_PAGE.label,
+                    eu.europa.eudi.elements.android.VerifierElements.dataSharingRequestPage,
+                    Literals.Verifier.DATA_SHARING_REQUEST.label,
                     driver,
                     50
             );
             String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage
+                    eu.europa.eudi.elements.android.VerifierElements.dataSharingRequestPage
             ).getText().trim();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
+            Assert.assertEquals(Literals.Verifier.DATA_SHARING_REQUEST.label, headerText);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPageOnWallet)).getText();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+            Assert.assertEquals(Literals.Verifier.DATA_SHARING_REQUEST.label, pageHeader);
         }
     }
 

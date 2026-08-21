@@ -40,7 +40,7 @@ public class WalletElements {
     public static By onlyThisTimeQR = By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_one_time_button\"]");
     public static By authenticateButton = By.xpath("//android.widget.TextView[@text=\"Authenticate\"]");
     public static By walletLink = By.xpath("//android.widget.TextView[@text=\"Link\"]");
-    public static By addButton = By.xpath("//android.widget.TextView[@text=\"Add\"]");
+    public static By addButton = By.xpath("//android.widget.TextView[@text=\"Accept\"]");
     public static By clickExpandDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By clickPidFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc)\"]");;
     public static By clickPidSDJWTFromKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");;
