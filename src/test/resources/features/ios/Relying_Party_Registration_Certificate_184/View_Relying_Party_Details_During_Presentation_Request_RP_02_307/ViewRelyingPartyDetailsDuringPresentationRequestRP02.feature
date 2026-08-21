@@ -6,7 +6,7 @@ Feature: Display of RP's registered details on the Consent Screen
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/307
 
-  @US_VRPDDPR_TC_01 @manual:Failed
+  @US_VRPDDPR_TC_01 @manual:Passed
   Scenario: Successful display of RP details and completion of the presentation flow
     Given the user visits the RP service
     And the RP requests the presentation of certain attestations of attributes
@@ -25,7 +25,7 @@ Feature: Display of RP's registered details on the Consent Screen
     And the user authenticates by entering the correct six digit PIN
     Then the Wallet displays a confirmation of successful presentation
 
-  @US_VRPDDPR_TC_03 @manual:Failed
+  @US_VRPDDPR_TC_03 @manual:Passed
   Scenario: User-friendly description of the RP's intended use is displayed
     Given the user has requested to present attestations via the Wallet
     When the Data Sharing Request User Approval screen is displayed
@@ -33,18 +33,25 @@ Feature: Display of RP's registered details on the Consent Screen
 
   @US_VRPDDPR_TC_04 @manual:Passed
   Scenario: Warning indicator is retained when WRPRC validation fails and the user chooses to proceed
-    Given the Wallet RP Access Certificate (WRPRC) validation has failed
+    Given the Wallet RP Registration Certificate (WRPRC) validation has failed
     When the Data Sharing Request screen is displayed
     Then a warning indicator is shown stating RP could not be verified
     And the warning indicator remains visible throughout the consent screen
 
   @US_VRPDDPR_TC_05 @manual:Passed
+  Scenario: Warning indicator is retained when WRPRC validation fails and the user chooses to proceed
+    Given the Wallet RP Registration Certificate (WRPRC) validation has failed due to revoked certificate
+    When the Data Sharing Request screen is displayed
+    Then a warning indicator is shown stating RP could not be verified
+    And the warning indicator remains visible throughout the consent screen
+
+  @US_VRPDDPR_TC_06 @manual:Passed
   Scenario: User reviews information and consents to share selected attributes
     Given the Data Sharing Request screen is displayed with the the warning indicator
     When the user gives consent to proceed
     Then the Wallet proceeds to the authentication step
 
-  @US_VRPDDPR_TC_06 @manual:Passed
+  @US_VRPDDPR_TC_07 @manual:Passed
   Scenario: User authenticates successfully with PIN after giving consent
     Given the user has consented to share the selected attributes
     When the user enters the correct six-digit PIN
