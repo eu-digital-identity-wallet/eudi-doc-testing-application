@@ -16,8 +16,6 @@ if exist target\rerun.txt del /Q target\rerun.txt
 if exist target\rerun2.txt del /Q target\rerun2.txt
 if exist target\rerun3.txt del /Q target\rerun3.txt
 
-mkdir "%BACKUP_DIR%" 2>nul
-
 echo.
 echo ===============================
 echo Main execution
@@ -25,12 +23,14 @@ echo ===============================
 
 call mvn clean verify -ntp ^
     -Dtest=TestRunner ^
-    -Dcucumber.filter.tags="@IOS and @execution_Q3_2026"
+    -Dcucumber.filter.tags="@ANDROID and @execution_Q12_2026"
 
 echo.
 echo ===============================
 echo Backup Serenity JSON
 echo ===============================
+
+mkdir "%BACKUP_DIR%" 2>nul
 
 if exist "%RESULTS_DIR%\*.json" (
     copy /Y "%RESULTS_DIR%\*.json" "%BACKUP_DIR%\" >nul
@@ -90,7 +90,7 @@ echo Generate Serenity Report
 echo ===============================
 
 call mvn serenity:aggregate ^
-    -Dtags="@IOS and @execution_Q3_2026"
+    -Dtags="@ANDROID and @execution_Q12_2026"
 
 echo.
 echo ===============================

@@ -2360,7 +2360,6 @@ public class Issuer {
         switch (issuanceMethod.toLowerCase()) {
             case "credential offer":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)){
                         switch (issueScenario.toLowerCase()) {
                             case "same device":
                                 if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
@@ -2393,7 +2392,6 @@ public class Issuer {
                                 test.mobile().issuer().fillLoginForm();
                                 break;
                         }
-                    }
                 } else {
                     switch (issueScenario.toLowerCase()) {
                         case "same device":
@@ -2528,9 +2526,9 @@ public class Issuer {
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
                     if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
-                    }else {
                         test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                    }else {
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
                     }
                     } else {
                     test.mobile().wallet().clickExpandVerificationMSODocIOS();
