@@ -25,7 +25,7 @@ public class WalletElements {
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
-    public static By clickExpandVerificationMSODoc = AppiumBy.accessibilityId("PID (MSO Mdoc)");
+    public static By clickExpandVerificationMSODoc = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By clickExpandNationality = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationality']]/XCUIElementTypeImage[@name='chevron.down']");
     public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]/XCUIElementTypeImage[@name='chevron.down']");
     public static By clickAddMyDigitalID = By.id("Go to home");
@@ -38,7 +38,7 @@ public class WalletElements {
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
     public static By clickToAddDocument = By.id("plus");
     public static By clickFromList = By.id("Choose from list");
-    public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO MDoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO MDoc)']");
+    public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']");
     public static By pinTexfield1Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]");
     public static By pinTexfield2Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[2]");
     public static By pinTexfield3Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[3]");
@@ -62,6 +62,5 @@ public class WalletElements {
     public static By pidSdJwtIsDisplayed = AppiumBy.accessibilityId("PID (SD-JWT VC)");
     public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.accessibilityId("PID (SD-JWT VC Compact)");
     public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
-    public static By onlinePresentation = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_online_button\"])[2]");
     public static By clickExpandDetails = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
 }

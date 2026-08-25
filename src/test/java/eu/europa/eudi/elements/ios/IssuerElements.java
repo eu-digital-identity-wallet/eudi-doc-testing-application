@@ -31,7 +31,7 @@ public class IssuerElements {
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date\"]");
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[@name=\"Country Code\"]/XCUIElementTypeTextField");
-    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationalities\"]");
+    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
     public static By enterCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]/following::XCUIElementTypeTextField[1]");
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");

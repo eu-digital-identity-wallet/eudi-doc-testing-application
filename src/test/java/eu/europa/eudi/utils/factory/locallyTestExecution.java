@@ -3,7 +3,7 @@ package eu.europa.eudi.utils.factory;
 import java.io.IOException;
 
 public class locallyTestExecution {
-    public static final String SHELL_SCRIPT = "./local-execution-mac.sh";
+    public static final String SHELL_SCRIPT = "local-execution.cmd";
 
     public static void main(String[] args) {
         runShellScript();
