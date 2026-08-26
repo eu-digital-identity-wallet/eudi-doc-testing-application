@@ -2564,7 +2564,7 @@ public class Issuer {
 //                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }else{
-                        test.mobile().wallet().clickExpandVerification();
+                        test.mobile().wallet().clickExpandVerificationForSDJWT();
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
