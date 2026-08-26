@@ -25,9 +25,9 @@ public class WalletElements {
     public static By successMessageIsDisplayedForIssuer = By.id("document_success_screen_content_header_description");
     public static By pinFieldIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label=\"Enter your PIN\"]");
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
-    public static By clickExpandVerificationForDJWT = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"][2]");
+    public static By clickExpandVerificationForSDJWT = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"][2]");
     public static By clickExpandVerificationMSODoc = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
-    public static By clickExpandNationality = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationality']]/XCUIElementTypeImage[@name='chevron.down']");
+    public static By clickExpandNationality = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationalities']]/XCUIElementTypeImage[@name='chevron.down']");
     public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]/XCUIElementTypeImage[@name='chevron.down']");
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID Combined");
@@ -60,8 +60,7 @@ public class WalletElements {
     public static By scanQR = By.id("Scan QR");
     public static By clickMdlKotlin = By.id("Mobile Driving Licence (MSO MDoc)");
     public static By pidMdocIsDisplayed = AppiumBy.accessibilityId("PID (MSO Mdoc)");
-    public static By pidSdJwtIsDisplayed = AppiumBy.accessibilityId("PID (SD-JWT VC)");
-    public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.accessibilityId("PID (SD-JWT VC Compact)");
+    public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.accessibilityId("PID (SD-JWT VC)");
     public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
     public static By clickExpandDetails = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
 }
