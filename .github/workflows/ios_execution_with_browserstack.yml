@@ -24,6 +24,7 @@ on:
         options:
           - PID mso_mdoc
           - MDL
+          - PID_sdjwt
 
 jobs:
   build:
