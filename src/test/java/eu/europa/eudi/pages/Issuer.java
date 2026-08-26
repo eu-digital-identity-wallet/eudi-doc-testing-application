@@ -2545,7 +2545,7 @@ public class Issuer {
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
                 } else {
-                    test.mobile().wallet().clickExpandVerificationForSDJWT();
+                    test.mobile().wallet().clickPidSdJwt();
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandNationalityIOS();
