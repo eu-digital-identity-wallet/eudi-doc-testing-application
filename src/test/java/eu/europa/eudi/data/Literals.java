@@ -28,8 +28,13 @@ public interface Literals {
         PID_IOS("PID (MSO Mdoc)"),
         PID_SD_JWT("PID (SD-JWT VC)"),
         PID_SD_JWT_ANDROID("PID (SD-JWT VC Compact)"),
+<<<<<<< HEAD
         PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC Compact)"),
         PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC Compact)");
+=======
+        PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC)"),
+        PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC)");
+>>>>>>> c2a8b4181dbad7089f97e5b6d54f69c6c8aac8bb
 
         public final String label;
         Wallet(String label) {
