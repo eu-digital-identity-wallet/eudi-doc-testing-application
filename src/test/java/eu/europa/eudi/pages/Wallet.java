@@ -358,10 +358,12 @@ public class Wallet {
         }
     }
 
-    public void clickExpandVerificationMSODocIOS() {
-        test.mobileWebDriverFactory().getWait().until(
-            ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)).click();
-    }
+    public void clickExpandVerificationMSODocIOS(String issuerType) {
+        if ("Python".equalsIgnoreCase(issuerType)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)).click();
+        }else{
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlin)).click();
+        }}
 
     public void clickExpandNationalityIOS() {
         scrollToAndClickIOS(eu.europa.eudi.elements.ios.WalletElements.clickExpandNationality);
