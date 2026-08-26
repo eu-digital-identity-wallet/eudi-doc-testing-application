@@ -2525,22 +2525,32 @@ public class Issuer {
                     test.mobile().wallet().scrollUntilPlaceOfBirth();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
-                    if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
-                    }else {
-                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
-                    }
-                    } else {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+                } else {
                     test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandNationalityIOS();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
-                    if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
-                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
-                    }else{
-                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
-                    }
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+
+                }
+            } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().clickExpandVerificationForSDJWT();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                } else {
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
+                    test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandNationalityIOS();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
                 }
             }
         }
