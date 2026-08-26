@@ -2531,7 +2531,7 @@ public class Issuer {
                         test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
                     }
                     } else {
-                    test.mobile().wallet().clickExpandVerificationMSODocIOS();
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandNationalityIOS();
@@ -2578,7 +2578,7 @@ public class Issuer {
                 }
             } else {
                 if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                    test.mobile().wallet().clickExpandVerificationMSODocIOS();
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
                     test.mobile().wallet().clickExpandNationalityIOS();
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();

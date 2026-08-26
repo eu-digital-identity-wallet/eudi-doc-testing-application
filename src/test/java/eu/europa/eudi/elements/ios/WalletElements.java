@@ -38,7 +38,7 @@ public class WalletElements {
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
     public static By clickToAddDocument = By.id("plus");
     public static By clickFromList = By.id("Choose from list");
-    public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']");
+    public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO MDoc)']");
     public static By pinTexfield1Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]");
     public static By pinTexfield2Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[2]");
     public static By pinTexfield3Ver = By.xpath("//XCUIElementTypeApplication[@name=\"EUDI Wallet\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[3]");
@@ -55,7 +55,7 @@ public class WalletElements {
     public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By selectPIDSDJWTPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (SD-JWT VC)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
-    public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
+    public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
     public static By scanQR = By.id("Scan QR");
     public static By clickMdlKotlin = By.id("Mobile Driving Licence (MSO MDoc)");
     public static By pidMdocIsDisplayed = AppiumBy.accessibilityId("PID (MSO Mdoc)");
