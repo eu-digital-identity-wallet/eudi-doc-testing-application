@@ -20,7 +20,7 @@ Feature: Issuance and presentation - PID (SD-JWT)
       | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | same device           | specific attributes  |
       | PID (SD-JWT) | Python | credential offer | cross device   | Web verifier | cross device          | specific attributes  |
 
-  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Kotlin Issuer - PID (SD-JWT)
+  Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID (SD-JWT)
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
     And the issuance is performed on a <issue_scenario> for the <credential> and <issuance_method>
