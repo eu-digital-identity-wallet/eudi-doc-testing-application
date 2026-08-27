@@ -2537,7 +2537,7 @@ public class Issuer {
                 }
             } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                    test.mobile().wallet().clickExpandVerificationForSDJWT();
+                    test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUntilPlaceOfBirth();
@@ -2567,14 +2567,14 @@ public class Issuer {
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
                 } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                     if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                        test.mobile().wallet().clickExpandVerificationForSDJWT();
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
 //                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }else{
-                        test.mobile().wallet().clickExpandVerificationForSDJWT();
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
@@ -2595,7 +2595,7 @@ public class Issuer {
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
                 } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                     if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                        test.mobile().wallet().clickExpandVerificationForSDJWT();
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
