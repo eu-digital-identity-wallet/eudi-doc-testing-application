@@ -1304,7 +1304,7 @@ public class Wallet {
             if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
-                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments();
+                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments(issuerType);
             }else if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
@@ -1320,18 +1320,22 @@ public class Wallet {
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidMdocIsDisplayed();
             }else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)){
-                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments();
+                test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments(issuerType);
             }
         }
     }
 
-    private void pidSdJwtIsDisplayedOnDocuments() {
+    private void pidSdJwtIsDisplayedOnDocuments(String issuerType) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
             Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_ANDROID.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS.label, pageHeader);
+            if ("Python".equalsIgnoreCase(issuerType)){
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocumentsPython)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON.label, pageHeader);}
+            else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS.label, pageHeader);}
         }
     }
 
