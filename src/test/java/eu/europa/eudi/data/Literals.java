@@ -29,7 +29,8 @@ public interface Literals {
         PID_SD_JWT("PID (SD-JWT VC)"),
         PID_SD_JWT_ANDROID("PID (SD-JWT VC Compact)"),
         PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC)"),
-        PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC)");
+        PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC Compact)"),
+        PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON("PID (SD-JWT VC)");
 
         public final String label;
         Wallet(String label) {
