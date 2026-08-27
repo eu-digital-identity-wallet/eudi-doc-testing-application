@@ -56,7 +56,7 @@ public class WalletElements {
     public static By clickMdlKotlin = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View/android.view.View");
     public static By selectPIDSDJWTPythonCredential = By.xpath("//android.widget.TextView[@text=\" PID (SD-JWT VC)\"]/preceding-sibling::android.widget.CheckBox");;
     public static By clickPidSDJWTFromKotlinFromList;
-    public static By clickExpandVerificationSDJWT = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[2]");
+    public static By clickExpandVerificationSDJWT = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
     public static By pidSdJwtIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
-    public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
+    public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
 }
