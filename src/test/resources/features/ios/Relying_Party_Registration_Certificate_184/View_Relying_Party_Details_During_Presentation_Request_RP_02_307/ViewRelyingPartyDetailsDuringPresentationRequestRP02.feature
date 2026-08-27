@@ -1,4 +1,4 @@
-@IOS @US_VRPDDPR @Q3_2026
+@IOS @US_VRPDDPR @Q3.1_2026
 Feature: Display of RP's registered details on the Consent Screen
   As a Wallet user,
   I want to see the RP's registered details on the consent screen,
