@@ -1,4 +1,4 @@
-@ANDROID @US_VEAAPIDPRC @Q3_2026
+@ANDROID @US_VEAAPIDPRC @Q3.1_2026
 Feature: Automatic validation of Provider's registration certificate before issuance
   As a Wallet user,
   I want the wallet to automatically validate the provider's registration certificate before the issuance of any attestation or PID,
