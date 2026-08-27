@@ -1,4 +1,4 @@
-@IOS @US_WDAWAOA @Q3_2026
+@IOS @US_WDAWAOA @Q3.1_2026
 Feature: Warning for presentation requests that exceed RP's registered scope
   As a Wallet user,
   I want to be warned if the presentation request does not comply with the registered information of the RP, including attributes scope and authorised intermediation,

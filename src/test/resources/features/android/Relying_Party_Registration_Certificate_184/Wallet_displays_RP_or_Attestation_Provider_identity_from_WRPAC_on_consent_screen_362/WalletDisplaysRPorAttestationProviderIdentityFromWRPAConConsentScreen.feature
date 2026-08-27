@@ -1,4 +1,4 @@
-@ANDROID @US_WDRPAPIFWRPACCS @Q3_2026
+@ANDROID @US_WDRPAPIFWRPACCS @Q3.1_2026
 Feature: Retrieval and display of the interacting party's identity from the Access Certificate
   As a Wallet user,
   I want the wallet to retrieve and display the identity of the party I am interacting with from their access certificate,
