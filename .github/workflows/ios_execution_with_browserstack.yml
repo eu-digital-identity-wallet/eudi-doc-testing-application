@@ -22,7 +22,7 @@ on:
         description: 'iOS Tags to execute'
         type: choice
         options:
-          - PID mso_mdoc
+          - PID_mso_mdoc
           - MDL
           - PID_sdjwt
 
