@@ -1,4 +1,4 @@
-@IOS @US_WDRPAPIFWRPACCS @Q3_2026
+@IOS @US_WDRPAPIFWRPACCS @Q3.1_2026
 Feature: Retrieval and display of the interacting party's identity from the Access Certificate
   As a Wallet user,
   I want the wallet to retrieve and display the identity of the party I am interacting with from their access certificate,
@@ -12,13 +12,13 @@ Feature: Retrieval and display of the interacting party's identity from the Acce
     When the consent screen is displayed
     Then the screen shows the RP's user friendly trade name and the trade name of the specific service
 
-  @US_WDRPAPIFWRPACCS_TC_02 @manual:Failed
+  @US_WDRPAPIFWRPACCS_TC_02 @manual:Passed
   Scenario: Intermediary's trade name is not disclosed to the user during the transaction
     Given the RP uses an intermediary for the presentation request
     When the consent screen is displayed
     Then the Wallet does not inform the user of the intermediary's trade name or its service trade name
 
-  @US_WDRPAPIFWRPACCS_TC_03 @manual:Passed
+  @US_WDRPAPIFWRPACCS_TC_03 @manual:Failed
   Scenario: Intermediary's trade name is recorded in the transaction log
     Given the RP uses an intermediary for the presentation request
     When the transaction is completed
