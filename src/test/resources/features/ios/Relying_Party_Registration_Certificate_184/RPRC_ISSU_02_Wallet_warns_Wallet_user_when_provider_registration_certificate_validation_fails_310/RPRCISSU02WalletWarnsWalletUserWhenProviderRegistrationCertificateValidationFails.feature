@@ -1,4 +1,4 @@
-@IOS @US_WWWUWPRCVF @Q3_2026
+@IOS @US_WWWUWPRCVF @Q3.1_2026
 Feature: Warning when the provider's registration certificate cannot be validated
   As a Wallet user,
   I want to be clearly warned if the provider's registration certificate could not be validated,
