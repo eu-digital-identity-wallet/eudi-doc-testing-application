@@ -3,7 +3,7 @@ screen: "Wallet Data From Kotlin Issuer"
 fields:
 
   "Birth Date":
-    value: "1955-04-12"
+    value: "12 Apr 1955"
     required: true
 
   "Birth Family Name(s)":

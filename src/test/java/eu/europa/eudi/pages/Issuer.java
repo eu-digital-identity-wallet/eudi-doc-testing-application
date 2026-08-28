@@ -2550,7 +2550,7 @@ public class Issuer {
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandNationalityIOS();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
-                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sd_jwt_ios.yml");
                 }
             }
         }

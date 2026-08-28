@@ -39,7 +39,7 @@ Feature: Display of RP's registered details on the Consent Screen
     And the warning indicator remains visible throughout the consent screen
 
   @US_VRPDDPR_TC_05 @manual:Passed
-  Scenario: Warning indicator is retained when WRPRC validation fails and the user chooses to proceed
+  Scenario: Warning indicator is retained when WRPRC validation fails due to revoked certificate
     Given the Wallet RP Registration Certificate (WRPRC) validation has failed due to revoked certificate
     When the Data Sharing Request screen is displayed
     Then a warning indicator is shown stating RP could not be verified
