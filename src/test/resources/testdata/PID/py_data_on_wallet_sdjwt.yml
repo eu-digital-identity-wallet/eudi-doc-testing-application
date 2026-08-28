@@ -2,9 +2,9 @@ screen: "Wallet Data From Python Issuer"
 
 fields:
 
-  "Birth Date":
-    value: "10 Mar 2020"
-    required: true
+#  "Birth Date":
+#    value: "10 Mar 2020"
+#    required: true
 
   "country":
     value: "Athens"

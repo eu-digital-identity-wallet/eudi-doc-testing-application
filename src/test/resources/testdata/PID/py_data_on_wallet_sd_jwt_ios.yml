@@ -2,9 +2,9 @@ screen: "Wallet Data From Python Issuer SD-JWT"
 
 fields:
 
-  "Birth Date":
-    value: "2020-03-10"
-    required: true
+#  "Birth Date":
+#    value: "2020-03-10"
+#    required: true
 
   "country":
     value: "Athens"

@@ -10,5 +10,5 @@ fields:
     value: "Nikos"
     required: true
 
-  "birthdate":
-    value: "2020-03-10"
+#  "birthdate":
+#    value: "2020-03-10"

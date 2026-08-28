@@ -2,9 +2,9 @@ screen: "Wallet Data From Kotlin Issuer"
 
 fields:
 
-  "Birth Date":
-    value: "1955-04-12"
-    required: true
+#  "Birth Date":
+#    value: "1955-04-12"
+#    required: true
 
   "Birth Family Name(s)":
     value: "Neal"
@@ -34,9 +34,9 @@ fields:
     value: "Tyler"
     required: true
 
-  "Issuing Authority":
-    value: "GR Administrative authority"
-    required: true
+#  "Issuing Authority":
+#    value: "GR Administrative authority"
+#    required: true
 
   "Issuance Date":
     value: ""
