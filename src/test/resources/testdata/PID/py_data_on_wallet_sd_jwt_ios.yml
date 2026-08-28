@@ -34,6 +34,6 @@ fields:
     value: "FC"
     required: true
 
-  "Nationality":
+  "nationalities":
     value: "GR"
     required: true
