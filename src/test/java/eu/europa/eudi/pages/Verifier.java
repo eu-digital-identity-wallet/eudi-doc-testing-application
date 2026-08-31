@@ -55,18 +55,18 @@ public class Verifier {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             WaitsActionsUtils.waitForExactText(
-                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage,
-                    Literals.Verifier.VIEW_DATA_PAGE.label,
+                    eu.europa.eudi.elements.android.VerifierElements.dataSharingRequestPage,
+                    Literals.Verifier.DATA_SHARING_REQUEST.label,
                     driver,
                     50
             );
             String headerText = driver.findElement(
-                    eu.europa.eudi.elements.android.VerifierElements.viewDataPage
+                    eu.europa.eudi.elements.android.VerifierElements.dataSharingRequestPage
             ).getText().trim();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
+            Assert.assertEquals(Literals.Verifier.DATA_SHARING_REQUEST.label, headerText);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPageOnWallet)).getText();
-            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+            Assert.assertEquals(Literals.Verifier.DATA_SHARING_REQUEST.label, pageHeader);
         }
     }
 
@@ -505,7 +505,7 @@ public class Verifier {
         }
     }
 
-    public void selectSpecificAttributesOnVerifier() {
+    public void selectSpecificAttributesOnVerifier(String credential) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickData)).click();
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributes)).click();
@@ -513,15 +513,25 @@ public class Verifier {
                 Dimension dropdownSize = dropdown.getSize();
                 MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormat)).click();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
                 WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
                 Dimension dropdownSize2 = dropdown2.getSize();
                 MobileActionsUtils.tapActionOffSet(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() / 3);
+            }else{
+                WebElement dropdown2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdoc));
+                Dimension dropdownSize2 = dropdown2.getSize();
+                MobileActionsUtils.tapActionOffSet(dropdown2, dropdownSize2.getWidth() / 2, dropdownSize2.getHeight() * 2 / 3);
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.clickPersonIdentificationData)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesBy)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.specificAttributesMdl)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickFormat)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.msoMdoc)).click();
+            } else {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.sdJwt)).click();
+            }
         }
     }
 
@@ -589,13 +599,13 @@ public class Verifier {
 
     public void selectSpecificAttributesForMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickDataMdl)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesMdl)).click();
-                WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.specificAttributesMdl));
-                Dimension dropdownSize = dropdown.getSize();
-                MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatMdl)).click();
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickDataMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesMdl)).click();
+            WebElement dropdown = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.specificAttributesMdl));
+            Dimension dropdownSize = dropdown.getSize();
+            MobileActionsUtils.tapActionOffSet(dropdown, dropdownSize.getWidth() / 2, dropdownSize.getHeight() / 3);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatMdl)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocMdl)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickDataMdl)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.selectAttributesMdl)).click();
@@ -625,12 +635,16 @@ public class Verifier {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForMdl)).click();
     }
 
-    public void selectSpecificAttributesOnWebForPID() {
+    public void selectSpecificAttributesOnWebForPID(String credential) {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDataOnWebForPID)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.selectAttributesOnWebForPID)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.firstAttributeSpecificOnWebForPID)).click();
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickFormatOnWebForPID)).click();
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForPID)).click();
+        if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+            test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.msoMdocOnWebForPID)).click();
+        }else if ("PID (SD-JWT)".equalsIgnoreCase(credential)){
+            test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.sdJwtOnWebForPID)).click();
+        }
     }
 
     public void clickSpecificAttributesButtonForMdl() {
@@ -643,19 +657,6 @@ public class Verifier {
 
     public void selectSpecificAttributesOnWeb() {
         for (int i = 0; i < 3; i++) {
-            try {
-                By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
-                test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
-            } catch (Exception e) {
-                System.out.println("Could not click attribute " + i + ", continuing...");
-            }
-        }
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
-    }
-
-    public void selectMandatoryAttributesOnWeb() {
-        int[] mandatoryIndices = {0, 1, 2, 3, 4, 9, 11, 12, 13, 14, 15};
-        for (int i : mandatoryIndices) {
             try {
                 By attributeLocator = By.xpath("//label[@for='mat-mdc-checkbox-" + i + "-input']");
                 test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator)).click();
@@ -741,7 +742,39 @@ public class Verifier {
                     test.webWebDriverFactory().quitDriverWeb();
                     break;
             }
-        } else {
+        } else if ("PID (SD-JWT)".equalsIgnoreCase(credential)) {
+            switch (presentationScenario.toLowerCase()) {
+                case "same device":
+                    test.mobile().wallet().clickClose();
+                    test.mobile().verifier().walletRespondedSdJwt();
+                    test.mobile().verifier().clickViewContent();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_verifier_from_wallet_sdjwt.yml");
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_verifier_from_wallet_sdjwt.yml");
+                        }
+                    }
+                    break;
+                case "cross device":
+                    test.mobile().wallet().clickClose();
+                    test.web().verifier().clickViewContentOnWeb();
+                    if ("Python".equalsIgnoreCase(this.issuerType)) {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/data_on_verifier_from_wallet_sdjwt.yml");
+                        }
+                    } else {
+                        if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePageOnWeb("testdata/PID/kotlin_data_on_verifier_from_wallet_sdjwt.yml");
+                        }
+                    }
+                    test.web().verifier().clickCloseOnVerifierWeb();
+                    test.webWebDriverFactory().quitDriverWeb();
+                    break;
+            }
+        } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(credential)) {
             switch (presentationScenario.toLowerCase()) {
                 case "same device":
                     test.mobile().wallet().clickClose();
@@ -773,6 +806,20 @@ public class Verifier {
                     test.webWebDriverFactory().quitDriverWeb();
                     break;
             }
+        }
+    }
+
+    private void walletRespondedSdJwt() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedSdJwt)).getText();
+            Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_SDJWT.label, pageHeader);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.walletRespondedSdJwt)).getText();
+            Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_SDJWT.label, pageHeader);
         }
     }
 }

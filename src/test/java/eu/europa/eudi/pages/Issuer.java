@@ -14,8 +14,6 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
@@ -865,6 +863,8 @@ public class Issuer {
 
 // Click
             driver.findElement(authorizeButton).click();
+            Thread.sleep(5000); // 3-second delay
+
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.context("NATIVE_APP");
@@ -1054,7 +1054,7 @@ public class Issuer {
         }
     }
 
-    public void issuePID() throws InterruptedException {
+    public void issuePID(String credential) throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         }
@@ -1073,7 +1073,15 @@ public class Issuer {
         scrollUntilFindSubmit();
         clickConfirm();
         authorizeIsDisplayed();
-        verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
+        if ("PID (SD-JWT)".equalsIgnoreCase(credential)) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt_android.yml");
+            }else{
+                verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization_sd_jwt.yml");
+            }
+        } else {
+            verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_issuer_authorization.yml");
+        }
         scrollUntilAuthorize();
         clickAuthorize();
     }
@@ -2096,7 +2104,7 @@ public class Issuer {
         }
     }
 
-    public void selectMdlPythonIssuer() throws InterruptedException {
+    public void selectMdlPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
         } else {
@@ -2105,7 +2113,7 @@ public class Issuer {
         }
     }
 
-    public void selectPidPythonIssuer() throws InterruptedException {
+    public void selectPidPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDPythonCredential)).click();
         } else {
@@ -2148,6 +2156,43 @@ public class Issuer {
                     swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                     driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
+    public void scrollUntilPidSDJWTIssuer() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement element = null;
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.selectPIDSDJWTPythonCredential);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    MobileActionsUtils.slowScroll();
+                }
+            }
+        } else {
+            envDataConfig = new EnvDataConfig();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 1; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
             }
         }
     }
@@ -2212,6 +2257,29 @@ public class Issuer {
                     }
             }
 
+    public void clickUseEudiwPidSDJWT() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String deepLink =
+                    "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_vc_sd_jwt%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2256c01aa5-3d6f-4983-b376-5e759bbeded6%22%7D%7D%7D";
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+                driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                        "url", deepLink,
+                        "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                ));
+
+                System.out.println("Deep link executed on Android");
+
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+        }
+    }
+
     public void issuanceMethodIs(String issuanceMethod, String credential, String issuerType) throws InterruptedException {
         this.issuanceMethod = issuanceMethod;
         this.issuerType = issuerType;
@@ -2219,13 +2287,13 @@ public class Issuer {
         switch (issuanceMethod.toLowerCase()) {
             case "from list":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential) || "PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertPidFromListKotlin();
-                    } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    }  else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertMdlFromListKotlin();
                     }
                 } else {
-                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential) || "PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertPidFromList();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().wallet().insertMdlFromList();
@@ -2239,6 +2307,8 @@ public class Issuer {
                         test.mobile().issuer().selectPIDKotlin();
                     } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                         test.mobile().issuer().selectMDLKotlin();
+                    }else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                        test.mobile().issuer().selectPIDSDJWTKotlin();
                     }
                     test.mobile().issuer().scrollUntilGenerate();
                     test.mobile().issuer().clickGenerate();
@@ -2253,57 +2323,95 @@ public class Issuer {
         }
     }
 
+    private void selectPIDSDJWTKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidSDJWT)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidSDJWT)).click();
+        }
+    }
+
+    public void viewDataPage() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(eu.europa.eudi.elements.android.VerifierElements.viewDataPage, Literals.Verifier.VIEW_DATA_PAGE.label));
+
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.viewDataPage).getText().trim();
+
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, headerText);
+            Thread.sleep(5000);
+
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.viewDataPage)).getText();
+            Assert.assertEquals(Literals.Verifier.VIEW_DATA_PAGE.label, pageHeader);
+        }
+    }
+
     public void performIssuance(String issueScenario, String credential, String issuanceMethod, String issuerType) throws InterruptedException {
        this.issuerType = issuerType;
         switch (issuanceMethod.toLowerCase()) {
             case "credential offer":
                 if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                    switch (issueScenario.toLowerCase()) {
-                        case "same device":
-                            if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
-                                test.mobile().issuer().issueCredentialsPageIsDisplayed();
-                                test.mobile().issuer().clickWalletLink();
-                                test.mobile().wallet().viewDataPage();
+                        switch (issueScenario.toLowerCase()) {
+                            case "same device":
+                                if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                                    test.mobile().issuer().issueCredentialsPageIsDisplayed();
+                                    test.mobile().issuer().clickWalletLink();
+                                    test.mobile().issuer().viewDataPage();
+                                    test.mobile().wallet().clickAddButton();
+                                    test.mobile().issuer().signInUser();
+                                    test.mobile().issuer().fillLoginForm();
+                                }
+                                break;
+                            case "cross device":
+                                test.mobile().issuer().qrCodeIsDisplayedKotlin();
+                                test.mobile().verifier().captureScreen();
+                                test.mobile().wallet().restartApp();
+                                test.mobile().wallet().createAPin();
+                                test.mobile().wallet().clickOnDocuments();
+                                test.mobile().wallet().clickToAddDocument();
+                                test.mobile().wallet().clickQROption();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    if (test.mobile().wallet().isQrVisible()) {
+                                        test.mobile().wallet().onlyThisTimeQR();
+                                    }
+                                }
+                                test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+                                test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().signInUser();
                                 test.mobile().issuer().fillLoginForm();
-                            }
-                            break;
-                        case "cross device":
-                            test.mobile().issuer().qrCodeIsDisplayedKotlin();
-                            test.mobile().verifier().captureScreen();
-                            test.mobile().wallet().restartApp();
-                            test.mobile().wallet().createAPin();
-                            test.mobile().wallet().clickOnDocuments();
-                            test.mobile().wallet().clickToAddDocument();
-                            test.mobile().wallet().clickQROption();
-                            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                if (test.mobile().wallet().isQrVisible()) {
-                                    test.mobile().wallet().onlyThisTimeQR();
-                                }
-                            }
-                            test.mobile().wallet().theQRScannerIsActivatedForIssuance();
-                            test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                            test.mobile().wallet().viewDataPage();
-                            test.mobile().wallet().clickAddButton();
-                            test.mobile().issuer().signInUser();
-                            test.mobile().issuer().fillLoginForm();
-                            break;
-                    }
+                                break;
+                        }
                 } else {
                     switch (issueScenario.toLowerCase()) {
                         case "same device":
-                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || "PID (SD-JWT)".equalsIgnoreCase(credential)) {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
-                                test.mobile().issuer().scrollUntilPidIssuer();
-                                test.mobile().issuer().selectPidPythonIssuer();
-                                test.mobile().issuer().scrollUntilFindSubmitIssuer();
-                                test.mobile().issuer().clickSubmitButton();
-                                test.mobile().issuer().clickUseEudiwPid();
+                                if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                                    test.mobile().issuer().scrollUntilPidIssuer();
+                                    test.mobile().issuer().selectPidPythonIssuer();
+                                    test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                    test.mobile().issuer().clickSubmitButton();
+                                    test.mobile().issuer().clickUseEudiwPid();
+                                }else{
+                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
+                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                    test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                                    test.mobile().issuer().clickSubmitButton();
+                                    test.mobile().issuer().clickUseEudiwPidSDJWT();
+                                }
                                 test.mobile().wallet().clickAddButton();
-                                test.mobile().issuer().issuePID();
+                                test.mobile().issuer().issuePID(this.credential);
                             } else {
                                 if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                                     test.mobile().issuer().issuerService();
@@ -2321,12 +2429,17 @@ public class Issuer {
                             }
                             break;
                         case "cross device":
-                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || "PID (SD-JWT)".equalsIgnoreCase(credential)) {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
                                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                                 test.mobile().issuer().scrollUntilPidIssuer();
                                 test.mobile().issuer().selectPidPythonIssuer();
+                            }else{
+                                test.mobile().issuer().scrollUntilPidSDJWTIssuer();
+                                test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                            }
                                 test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                 test.mobile().issuer().clickSubmitButton();
                                 test.mobile().issuer().qrCodeIsDisplayed();
@@ -2343,9 +2456,9 @@ public class Issuer {
                                 }
                                 test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                                 test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                                test.mobile().wallet().viewDataPage();
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
-                                test.mobile().issuer().issuePID();
+                                test.mobile().issuer().issuePID(this.credential);
                             } else {
                                 test.mobile().issuer().issuerService();
                                 test.mobile().issuer().clickissuerService();
@@ -2368,7 +2481,7 @@ public class Issuer {
                                 }
                                 test.mobile().wallet().theQRScannerIsActivatedForIssuance();
                                 test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
-                                test.mobile().wallet().viewDataPage();
+                                test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issueMDL();
                                 break;
@@ -2376,6 +2489,15 @@ public class Issuer {
                     }
                 }
                 break;
+        }
+    }
+
+    private void selectPidSDJWTPythonIssuer() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectPIDSDJWTPythonCredential)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDSDJWTPython)).click();
+
         }
     }
 
@@ -2387,34 +2509,106 @@ public class Issuer {
         }
     }
 
-    public void completedIsuuanceFlow(String issuerType, String credential) {
+    public void completedIsuuanceFlow(String issuerType, String credential, String issuanceMethod) {
         this.issuerType = issuerType;
         this.credential = credential;
+        this.issuanceMethod = issuanceMethod;
         if ("Python".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().clickExpandVerification();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+                } else {
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
+                    test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandNationalityIOS();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+
+                }
+            } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().clickExpandVerificationDown();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
+                } else {
+                    test.mobile().wallet().clickPidSdJwt();
+                    test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                    test.mobile().wallet().scrollUntilNationality();
+                    test.mobile().wallet().clickExpandNationalityIOS();
+                    test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sd_jwt_ios.yml");
+                }
+            }
         }
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().successMessageIsDisplayedForIssuer();
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                test.mobile().wallet().clickExpandVerification();
                 if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+                    test.mobile().wallet().clickExpandVerification();
                     test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUntilPlaceOfBirth();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
-                } else {
+                } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                    if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
+                        test.mobile().wallet().scrollUntilNationality();
+                        test.mobile().wallet().clickExpandVerificationDown();
+                        test.mobile().wallet().scrollUntilPlaceOfBirth();
+                        test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    }else{
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
+                        test.mobile().wallet().scrollUntilNationality();
+                        test.mobile().wallet().clickExpandVerificationDown();
+                        test.mobile().wallet().scrollUntilPlaceOfBirth();
+                        test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    }
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet_sdjwt.yml");
+                }else if ("mDL (MSO Mdoc)".equalsIgnoreCase(credential)){
+                    test.mobile().wallet().clickExpandVerification();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/kotlin_data_on_wallet.yml");
                 }
             } else {
                 if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
-                    test.mobile().wallet().clickExpandVerificationMSODocIOS();
+                    test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
                     test.mobile().wallet().clickExpandNationalityIOS();
                     test.mobile().wallet().clickExpandPlaceOfBirthIOS();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
-                } else {
+                } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
+                    if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
+                        test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
+                        test.mobile().wallet().scrollUntilNationality();
+                        test.mobile().wallet().clickExpandVerificationDown();
+                        test.mobile().wallet().scrollUntilPlaceOfBirth();
+                        test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    }else{
+                        test.mobile().wallet().clickExpandVerification();
+                        test.mobile().wallet().scrollUntilNationality();
+                        test.mobile().wallet().clickExpandVerificationDown();
+                        test.mobile().wallet().scrollUntilPlaceOfBirth();
+                        test.mobile().wallet().scrollUpForBirthDateOnPID();
+                    }
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet_sdjwt.yml");
+                    }else{
+                        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet_sdjwt_ios.yml");
+                    }
+                }else{
                     test.mobile().wallet().clickExpandVerification();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/mDL/ios_kotlin_data_on_wallet.yml");
                 }
