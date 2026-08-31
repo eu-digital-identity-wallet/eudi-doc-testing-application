@@ -153,10 +153,62 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
+
+      # ---------------- FINAL RESULT VALIDATION ----------------
+      - name: Validate Final Serenity Results
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob
+          import json
+          import os
+          from collections import Counter
+
+          directory = "target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+
+          files = glob.glob(os.path.join(directory, "*.json"))
+
+          counter = Counter()
+
+          print("========================================")
+          print("FINAL SERENITY JSON VALIDATION")
+          print("========================================")
+          print(f"JSON files: {len(files)}")
+          print()
+
+          for file in files:
+              try:
+                  with open(file, encoding="utf-8") as fp:
+                      data = json.load(fp)
+
+                  result = data.get("result", "MISSING")
+                  counter[result] += 1
+
+                  print(
+                      f"{os.path.basename(file)} | "
+                      f"{data.get('name', '?')} | "
+                      f"{result}"
+                  )
+
+              except Exception as e:
+                  print(f"ERROR: {file}: {e}")
+
+          print()
+          print("========================================")
+          print("RESULT SUMMARY")
+          print("========================================")
+
+          for result, count in counter.items():
+              print(f"{result}: {count}")
+
+          print("========================================")
+          PY  
+
   # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
+          rm -rf target/site/serenity
           mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
