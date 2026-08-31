@@ -304,7 +304,7 @@ This section documents the compatibility between test automation versions and EU
 
 | Branch Automation Testing                                                                                                  | Android App Version | iOS App Version | Release Date | Validated Device                                   |
 |----------------------------------------------------------------------------------------------------------------------------|---------------------|-----------------|--------------|----------------------------------------------------|
-| [milestone/2026.Q3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q3.1) | 2026.08.41 Demo     | 2026.08.41 Demo | 2026-08-16   | Samsung Galaxy S22 Ultra (12.0) / iPhone 15 (26.0) |
+| [milestone/2026.Q3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/tree/milestone/2026.Q3.1) | 2026.08.41 Demo     | 2026.08.41 Demo | 2026-08-26   | Samsung Galaxy S22 Ultra (12.0) / iPhone 15 (26.0) |
 
 ## Contributing
 
