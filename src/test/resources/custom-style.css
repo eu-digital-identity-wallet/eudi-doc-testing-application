@@ -2855,3 +2855,9 @@ display: none!important;
         content: "\f26a"; /* check-circle-fill */
         font-family: "bootstrap-icons";
     }
+
+
+a[href="c8a8249d2dab9cccae685df6653c69915d815923c954709a3b210a4217a96fe2.html"],
+a[href="1d51a38cb17ef867f6fa697ec88048ce3327c1351a4f4ec5206f4ed6aac2fea0.html"] {
+    display: none !important;
+}

@@ -437,7 +437,6 @@ public class Wallet {
 
     public void clickPID() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickPID)).click();
             WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickPID));
             MobileActionsUtils.tapActionWallet(button, false);
             Thread.sleep(5000); // 3-second delay
@@ -1175,56 +1174,6 @@ public class Wallet {
         });
     }
 
-    public String collectAllTextsIOS(IOSDriver driver) {
-
-        List<WebElement> elements = driver.findElements(
-                AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText'")
-        );
-
-        StringBuilder allText = new StringBuilder();
-
-        for (WebElement el : elements) {
-            String text = el.getAttribute("name");
-
-            if (text != null && !text.trim().isEmpty()) {
-                allText.append(text.toLowerCase()).append(" ");
-            }
-        }
-
-        return allText.toString();
-    }
-
-    public String getPageText(AndroidDriver driver) {
-        return driver.findElement(By.tagName("body")).getText();
-    }
-
-    public void switchToWebView(AndroidDriver driver) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        wait.until(d -> {
-            for (String context : driver.getContextHandles()) {
-
-                System.out.println("Found context: " + context);
-
-                if (context.contains("WEBVIEW")) {
-                    try {
-                        driver.context(context);
-
-                        if (driver.getPageSource().length() > 0) {
-                            System.out.println("Switched to WebView: " + context);
-                            return true;
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("WebView not ready yet...");
-                    }
-                }
-            }
-            return false;
-        });
-    }
-
     public void verifyMandatoryInfoLabelsPresentInAuthorizePage(String yamlPath) {
 
         FormYml yml = YmlLoader.load(yamlPath, FormYml.class);
@@ -1637,17 +1586,6 @@ public class Wallet {
             test.mobile().wallet().clickMdlKotlin();
             test.mobile().issuer().signInUser();
             test.mobile().issuer().fillLoginForm();
-    }
-
-    public void insertPidSdjwtFromListKotlin() throws InterruptedException {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().clickToAddDocument();
-        test.mobile().wallet().addDocumentPageIsDisplayed();
-        test.mobile().wallet().clickFromList();
-        test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
-        test.mobile().wallet().clickKotlinPIDSDWJTFromList();
-        test.mobile().issuer().signInUser();
-        test.mobile().issuer().fillLoginForm();
     }
 
     private void clickKotlinPIDSDWJTFromList() throws InterruptedException {
