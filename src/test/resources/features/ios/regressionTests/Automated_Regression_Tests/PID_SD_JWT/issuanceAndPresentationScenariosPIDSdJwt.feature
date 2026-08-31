@@ -1,5 +1,6 @@
-@IOS @US_ETESA @automated @PID_sdjwt
+@IOS @US_ETESA @automated @PID_sdjwt @local_execution
 Feature: Issuance and presentation - PID (SD-JWT)
+
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID (SD-JWT)
     Given the user initiates a <credential> issuance using the <issuer>

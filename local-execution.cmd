@@ -23,7 +23,7 @@ echo ===============================
 
 call mvn clean verify -ntp ^
     -Dtest=TestRunner ^
-    -Dcucumber.filter.tags="@ANDROID and @execution_Q12_2026"
+    -Dcucumber.filter.tags="@local_execution"
 
 echo.
 echo ===============================

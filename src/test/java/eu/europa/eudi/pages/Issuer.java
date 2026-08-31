@@ -14,8 +14,6 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en_scouse.An;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
@@ -2106,7 +2104,7 @@ public class Issuer {
         }
     }
 
-    public void selectMdlPythonIssuer() throws InterruptedException {
+    public void selectMdlPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
         } else {
@@ -2115,7 +2113,7 @@ public class Issuer {
         }
     }
 
-    public void selectPidPythonIssuer() throws InterruptedException {
+    public void selectPidPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDPythonCredential)).click();
         } else {
@@ -2571,14 +2569,12 @@ public class Issuer {
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
-//                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }else{
                         test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
-//                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet_sdjwt.yml");
@@ -2599,14 +2595,12 @@ public class Issuer {
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
-//                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }else{
                         test.mobile().wallet().clickExpandVerification();
                         test.mobile().wallet().scrollUntilNationality();
                         test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUntilPlaceOfBirth();
-//                    test.mobile().wallet().clickExpandVerificationDown();
                         test.mobile().wallet().scrollUpForBirthDateOnPID();
                     }
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
