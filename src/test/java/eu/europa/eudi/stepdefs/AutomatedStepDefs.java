@@ -97,7 +97,7 @@ public class AutomatedStepDefs {
     public void theUserSelectsOneAttestationToBeIssued() throws InterruptedException {
         test.mobile().wallet().scrollUntilPID();
         test.mobile().wallet().clickPID();
-        test.mobile().issuer().issuePID();
+        test.mobile().issuer().issuePID("PID (MSO Mdoc)");
     }
 
     @Then("the wallet displays a success screen")
@@ -454,7 +454,7 @@ public class AutomatedStepDefs {
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential);
+      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
     }
 
     @Then("the credential is stored in the Wallet")

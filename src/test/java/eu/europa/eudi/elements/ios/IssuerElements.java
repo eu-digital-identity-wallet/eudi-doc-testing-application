@@ -31,7 +31,7 @@ public class IssuerElements {
     public static By clickScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"Expiry Date\"]");
     public static By authorize = By.xpath("//XCUIElementTypeButton[@name=\"Authorize\"]");
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[@name=\"Country Code\"]/XCUIElementTypeTextField");
-    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
+    public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name='Nationality' or @name='Nationalities']");
     public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
     public static By enterCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]/following::XCUIElementTypeTextField[1]");
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");
@@ -39,6 +39,7 @@ public class IssuerElements {
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
+    public static By pidSDJWT = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_vc_sd_jwt\"]");
     public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
     public static By clickUsername = By.xpath("//XCUIElementTypeTextField");
     public static By clickPassword = By.xpath("//XCUIElementTypeSecureTextField");

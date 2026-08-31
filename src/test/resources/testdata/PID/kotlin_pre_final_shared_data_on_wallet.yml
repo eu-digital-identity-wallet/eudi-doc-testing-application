@@ -2,9 +2,9 @@ screen: "Wallet - PID details - Specific Attributes Kotlin"
 
 fields:
 
-  "Birth Date":
-    value: "12 Apr 1955"
-    required: true
+#  "Birth Date":
+#    value: "1955-04-12"
+#    required: true
 
   "Family Name(s)":
     value: "Neal"
