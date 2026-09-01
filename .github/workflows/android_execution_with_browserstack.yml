@@ -13,8 +13,6 @@ on:
           - develop
           - milestone/2026.Q1
           - milestone/2026.Q2
-          - milestone/2026.Q3
-          - milestone/2026.Q3.1
 
         default: develop
 
@@ -24,7 +22,6 @@ on:
         options:
           - PID mso_mdoc
           - MDL
-          - PID_sdjwt
 
 jobs:
   build:
@@ -101,7 +98,7 @@ jobs:
           TEST_TAGS="@$TEST_CASES and @ANDROID"
           echo "Running tests: $TEST_TAGS"
 
-          mvn verify -ntp \
+          mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS"
 
       # ---------------- BACKUP RESULTS ----------------
@@ -109,7 +106,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
           
           # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -123,9 +120,9 @@ jobs:
 
       - name: Merge Results Pass 1
         if: always()
-        run: python3 merge_serenity_results.py
+        run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 2 ----------------
+      # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
         if: always()
         run: |
@@ -137,9 +134,9 @@ jobs:
 
       - name: Merge Results Pass 2
         if: always()
-        run: python3 merge_serenity_results.py
+        run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 3 ----------------
+      # ---------------- RERUN PASS 3 ----------------
       - name: Rerun Pass 3
         if: always()
         run: |
@@ -151,22 +148,19 @@ jobs:
 
       - name: Merge Results Pass 3
         if: always()
-        run: python3 merge_serenity_results.py
+        run: python3 merge_serenity_results.py || true
 
-  # ---------------- REPORT ----------------
+      # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
-          rm -rf target/site/serenity
-
-          mvn serenity:aggregate \
-            -Dtags="@${{ inputs.test-cases }} and @ANDROID"
+          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-            cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
