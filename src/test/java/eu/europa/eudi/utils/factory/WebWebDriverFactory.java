@@ -18,9 +18,20 @@ public class WebWebDriverFactory {
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
+        String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
+
+        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        }
+
         webDriver = new ChromeDriver(options);
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+
+        wait = new WebDriverWait(
+                webDriver,
+                Duration.ofSeconds(30)
+        );
     }
+
 
     public WebDriver getDriverWeb() {
         return webDriver;
