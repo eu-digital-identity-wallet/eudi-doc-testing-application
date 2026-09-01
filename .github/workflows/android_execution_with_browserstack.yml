@@ -72,6 +72,14 @@ jobs:
           echo "=== Selenium Manager cache ==="
           find ~/.cache/selenium -type f 2>/dev/null || true
 
+      - name: Configure ChromeDriver
+        run: |
+          CHROMEDRIVER_PATH=$(which chromedriver)
+          echo "ChromeDriver path: $CHROMEDRIVER_PATH"
+          echo "ChromeDriver version:"
+          "$CHROMEDRIVER_PATH" --version
+          echo "CHROMEDRIVER_PATH=$CHROMEDRIVER_PATH" >> $GITHUB_ENV
+
       # ---------------- CLEAN ----------------
       - name: Clean Old Results
         run: |
