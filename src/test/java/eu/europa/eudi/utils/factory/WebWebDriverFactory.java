@@ -15,11 +15,27 @@ public class WebWebDriverFactory {
     public WebWebDriverFactory(TestSetup test) {
     }
 
+//    public void startWebDriverSession() {
+//        ChromeOptions options = new ChromeOptions();
+//
+//        webDriver = new ChromeDriver(options);
+//        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//    }
+
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
+        System.setProperty(
+                "webdriver.chrome.driver",
+                "/usr/local/bin/chromedriver"
+        );
+
         webDriver = new ChromeDriver(options);
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+
+        wait = new WebDriverWait(
+                webDriver,
+                Duration.ofSeconds(30)
+        );
     }
 
     public WebDriver getDriverWeb() {
