@@ -15,7 +15,6 @@ on:
           - milestone/2026.Q2
           - milestone/2026.Q3
           - milestone/2026.Q3.1
-
         default: develop
 
       test-cases:
@@ -56,6 +55,23 @@ jobs:
         with:
           node-version: '22'
 
+      # ---------------- CHROME DIAGNOSTICS ----------------
+      - name: Check Chrome version
+        run: |
+          echo "=== Chrome version ==="
+          /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
+      - name: Check ChromeDriver version
+        run: |
+          echo "=== ChromeDriver version ==="
+          which chromedriver || true
+          chromedriver --version || true
+
+      - name: Check Selenium Manager cache
+        run: |
+          echo "=== Selenium Manager cache ==="
+          find ~/.cache/selenium -type f 2>/dev/null || true
+
       # ---------------- CLEAN ----------------
       - name: Clean Old Results
         run: |
@@ -92,7 +108,7 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-      # ---------------- TEST EXECUTION (FIXED) ----------------
+      # ---------------- TEST EXECUTION ----------------
       - name: Run Android Tests on BrowserStack
         continue-on-error: true
         env:
@@ -110,8 +126,8 @@ jobs:
         run: |
           mkdir -p target/serenity-backup
           cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
-          
-          # ---------------- RERUN PASS 1 ----------------
+
+      # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
@@ -180,6 +196,7 @@ jobs:
           name: android-serenity-json
           path: target/site/reports/**/**/*.json
 
+      # ---------------- BROWSERSTACK LOGS ----------------
       - name: Show downloaded BrowserStack logs
         if: always()
         run: |
