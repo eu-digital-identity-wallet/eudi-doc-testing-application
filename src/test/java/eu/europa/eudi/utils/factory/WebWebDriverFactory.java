@@ -15,11 +15,28 @@ public class WebWebDriverFactory {
     public WebWebDriverFactory(TestSetup test) {
     }
 
+//    public void startWebDriverSession() {
+//        ChromeOptions options = new ChromeOptions();
+//
+//        webDriver = new ChromeDriver(options);
+//        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//    }
+
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
+        String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
+
+        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        }
+
         webDriver = new ChromeDriver(options);
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+
+        wait = new WebDriverWait(
+                webDriver,
+                Duration.ofSeconds(30)
+        );
     }
 
     public WebDriver getDriverWeb() {

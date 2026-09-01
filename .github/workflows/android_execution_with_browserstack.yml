@@ -15,14 +15,13 @@ on:
           - milestone/2026.Q2
           - milestone/2026.Q3
           - milestone/2026.Q3.1
-
         default: develop
 
       test-cases:
         description: 'Android Tags to execute'
         type: choice
         options:
-          - PID mso_mdoc
+          - PID_mso_mdoc
           - MDL
           - PID_sdjwt
 
@@ -55,6 +54,31 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '22'
+
+      # ---------------- CHROME DIAGNOSTICS ----------------
+      - name: Check Chrome version
+        run: |
+          echo "=== Chrome version ==="
+          /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
+      - name: Check ChromeDriver version
+        run: |
+          echo "=== ChromeDriver version ==="
+          which chromedriver || true
+          chromedriver --version || true
+
+      - name: Check Selenium Manager cache
+        run: |
+          echo "=== Selenium Manager cache ==="
+          find ~/.cache/selenium -type f 2>/dev/null || true
+
+      - name: Configure ChromeDriver
+        run: |
+          CHROMEDRIVER_PATH=$(which chromedriver)
+          echo "ChromeDriver path: $CHROMEDRIVER_PATH"
+          echo "ChromeDriver version:"
+          "$CHROMEDRIVER_PATH" --version
+          echo "CHROMEDRIVER_PATH=$CHROMEDRIVER_PATH" >> $GITHUB_ENV
 
       # ---------------- CLEAN ----------------
       - name: Clean Old Results
@@ -92,7 +116,7 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-      # ---------------- TEST EXECUTION (FIXED) ----------------
+      # ---------------- TEST EXECUTION ----------------
       - name: Run Android Tests on BrowserStack
         continue-on-error: true
         env:
@@ -109,9 +133,9 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
-          
-          # ---------------- RERUN PASS 1 ----------------
+          cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
+
+      # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
@@ -125,7 +149,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 2 ----------------
+      # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
         if: always()
         run: |
@@ -139,7 +163,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 3 ----------------
+      # ---------------- RERUN PASS 3 ----------------
       - name: Rerun Pass 3
         if: always()
         run: |
@@ -153,7 +177,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- REPORT ----------------
+      # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
@@ -162,8 +186,8 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-            cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
@@ -180,6 +204,7 @@ jobs:
           name: android-serenity-json
           path: target/site/reports/**/**/*.json
 
+      # ---------------- BROWSERSTACK LOGS ----------------
       - name: Show downloaded BrowserStack logs
         if: always()
         run: |

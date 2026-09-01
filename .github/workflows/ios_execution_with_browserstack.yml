@@ -1,6 +1,6 @@
-name: iOS Automation Tests Execution
+name: Android Automation Tests Execution
 
-run-name: "ios Automation Tests Execution | ${{ inputs.test-cases }}"
+run-name: "Android Automation Tests Execution | ${{ inputs.test-cases }}"
 
 on:
   workflow_dispatch:
@@ -19,10 +19,10 @@ on:
         default: develop
 
       test-cases:
-        description: 'iOS Tags to execute'
+        description: 'Android Tags to execute'
         type: choice
         options:
-          - PID_mso_mdoc
+          - PID mso_mdoc
           - MDL
           - PID_sdjwt
 
@@ -32,7 +32,6 @@ jobs:
     timeout-minutes: 240
 
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
@@ -44,17 +43,18 @@ jobs:
           lfs: false
           ref: ${{ inputs.branch-to-checkout }}
 
-      # ---------------- JAVA + NODE ----------------
+      # ---------------- JDK ----------------
       - name: Set up JDK 17
         uses: actions/setup-java@v5
         with:
           java-version: 17
           distribution: 'oracle'
 
+      # ---------------- NODE ----------------
       - name: Set up Node JS
         uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
 
       # ---------------- CLEAN ----------------
       - name: Clean Old Results
@@ -71,7 +71,6 @@ jobs:
       - name: Check jq Installation
         run: |
           if ! command -v jq &> /dev/null; then
-            echo "jq not found, installing..."
             brew install jq
           else
             jq --version
@@ -86,7 +85,6 @@ jobs:
       # ---------------- BUILD ID ----------------
       - name: Get Latest BrowserStack Build ID
         id: fetch-build
-        if: always()
         run: |
           BUILD_ID=$(curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
             https://api-cloud.browserstack.com/app-automate/builds.json \
@@ -94,13 +92,13 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
-      # ---------------- TEST EXECUTION ----------------
-      - name: Run iOS Tests on BrowserStack
+      # ---------------- TEST EXECUTION (FIXED) ----------------
+      - name: Run Android Tests on BrowserStack
         continue-on-error: true
         env:
           TEST_CASES: ${{ inputs.test-cases }}
         run: |
-          TEST_TAGS="@$TEST_CASES and @IOS"
+          TEST_TAGS="@$TEST_CASES and @ANDROID"
           echo "Running tests: $TEST_TAGS"
 
           mvn clean verify -ntp \
@@ -112,13 +110,12 @@ jobs:
         run: |
           mkdir -p target/serenity-backup
           cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
-
-      # ---------------- RERUN PASS 1 ----------------
+          
+          # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
         if: always()
         run: |
           if [ -s target/rerun.txt ]; then
-            echo "Running rerun pass 1..."
             mvn test -Dtest=RerunTestRunner
           else
             echo "No rerun.txt found"
@@ -126,51 +123,41 @@ jobs:
 
       - name: Merge Results Pass 1
         if: always()
-        run: |
-          python3 merge_serenity_results.py || true
+        run: python3 merge_serenity_results.py || true
 
       # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
         if: always()
         run: |
           if [ -s target/rerun2.txt ]; then
-            echo "Running rerun pass 2..."
-            mvn test \
-              -Dtest=RerunTestRunner2 \
-              -Dcucumber.features="@target/rerun2.txt"
+            mvn test -Dtest=RerunTestRunner2 -Dcucumber.features="@target/rerun2.txt"
           else
             echo "No rerun2.txt found"
           fi
 
       - name: Merge Results Pass 2
         if: always()
-        run: |
-          python3 merge_serenity_results.py || true
+        run: python3 merge_serenity_results.py || true
 
       # ---------------- RERUN PASS 3 ----------------
       - name: Rerun Pass 3
         if: always()
         run: |
           if [ -s target/rerun3.txt ]; then
-            echo "Running rerun pass 3..."
-            mvn test \
-              -Dtest=RerunTestRunner3 \
-              -Dcucumber.features="@target/rerun3.txt"
+            mvn test -Dtest=RerunTestRunner3 -Dcucumber.features="@target/rerun3.txt"
           else
             echo "No rerun3.txt found"
           fi
 
       - name: Merge Results Pass 3
         if: always()
-        run: |
-          python3 merge_serenity_results.py || true
+        run: python3 merge_serenity_results.py || true
 
       # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
-          mvn serenity:aggregate \
-            -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
+          mvn serenity:aggregate -Dtags="@${{ inputs.test-cases }} and @IOS"
 
       - name: Replace Serenity Core CSS
         if: always()
@@ -183,26 +170,26 @@ jobs:
         uses: actions/upload-artifact@v5
         if: always()
         with:
-          name: ios-serenity-report
+          name: android-serenity-report
           path: target/site/
 
       - name: Upload Serenity JSON Results
         uses: actions/upload-artifact@v5
         if: always()
         with:
-          name: ios-serenity-json
-          path: target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/**/*.json
+          name: android-serenity-json
+          path: target/site/reports/**/**/*.json
 
       - name: Show downloaded BrowserStack logs
         if: always()
         run: |
           echo "Searching for BrowserStack logs..."
-          find src/test/resources/features/ios -type f -path "*/logs/ui/*" || true
+          find src/test/resources/features/android -type f -path "*/logs/ui/*" || true
 
-      - name: Upload iOS BrowserStack Logs
+      - name: Upload Android BrowserStack Logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ios-device-logs
-          path: src/test/resources/features/ios/**/logs/ui/**
+          name: android-device-logs
+          path: src/test/resources/features/android/**/logs/ui/**
           if-no-files-found: warn
