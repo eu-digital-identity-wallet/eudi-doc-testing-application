@@ -25,10 +25,11 @@ public class WebWebDriverFactory {
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
-        System.setProperty(
-                "webdriver.chrome.driver",
-                "/usr/local/bin/chromedriver"
-        );
+        String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
+
+        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        }
 
         webDriver = new ChromeDriver(options);
 
