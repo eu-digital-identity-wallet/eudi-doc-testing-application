@@ -43,6 +43,24 @@ jobs:
           lfs: false
           ref: ${{ inputs.branch-to-checkout }}
 
+      - name: Check environment
+        run: |
+          echo "Runner:"
+          uname -a
+
+          echo "macOS:"
+          sw_vers
+
+          echo "Chrome:"
+          /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
+          echo "ChromeDriver:"
+          which chromedriver || true
+          chromedriver --version || true
+
+          echo "CHROMEDRIVER_PATH:"
+          env | grep CHROMEDRIVER || true
+
       # ---------------- JDK ----------------
       - name: Set up JDK 17
         uses: actions/setup-java@v5
@@ -91,6 +109,7 @@ jobs:
             | jq -r '.[0].automation_build.hashed_id')
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+          
 
       # ---------------- TEST EXECUTION (FIXED) ----------------
       - name: Run Android Tests on BrowserStack
