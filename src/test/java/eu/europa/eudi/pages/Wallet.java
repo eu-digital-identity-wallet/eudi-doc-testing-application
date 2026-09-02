@@ -1634,4 +1634,39 @@ public class Wallet {
     public void clickPidSdJwt() {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidSdjwt)).click();
     }
+
+    public void requestTransactionCode() {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.transactionCodePage).getText();
+        Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+    }
+
+    public void insertTransactionCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String fullPin = test.getTransactionCode();
+
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("android.widget.EditText")
+                    )
+            );
+
+            pinField.click();
+
+            for (char digit : fullPin.toCharArray()) {
+                driver.pressKey(
+                        new KeyEvent(
+                                AndroidKey.valueOf("DIGIT_" + digit)
+                        )
+                );
+            }
+        }
+    }
 }
