@@ -111,6 +111,22 @@ jobs:
           echo "========== Selenium dependencies =========="
           mvn dependency:tree -Dincludes=org.seleniumhq.selenium
 
+      - name: Inspect Chrome installations
+        run: |
+         echo "===== Applications ====="
+         ls -la /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome || true
+
+         echo "===== Chrome locations ====="
+         which -a google-chrome || true
+         which -a chrome || true
+         which -a chromium || true
+
+         echo "===== Chrome processes ====="
+         ps aux | grep -i '[C]hrome' || true
+
+         echo "===== Chrome version ====="
+         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
       # ---------------- TEST EXECUTION (FIXED) ----------------
       - name: Run Android Tests on BrowserStack
         continue-on-error: true

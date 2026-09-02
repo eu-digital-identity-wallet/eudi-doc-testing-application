@@ -25,11 +25,9 @@ public class WebWebDriverFactory {
     public void startWebDriverSession() {
         ChromeOptions options = new ChromeOptions();
 
-        String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
-
-        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
-            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        }
+        options.setBinary(
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        );
 
         webDriver = new ChromeDriver(options);
 
@@ -37,6 +35,7 @@ public class WebWebDriverFactory {
                 webDriver,
                 Duration.ofSeconds(30)
         );
+
     }
 
     public WebDriver getDriverWeb() {
