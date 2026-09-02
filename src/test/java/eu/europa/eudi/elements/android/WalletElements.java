@@ -1,6 +1,7 @@
 package eu.europa.eudi.elements.android;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class WalletElements {
@@ -58,4 +59,6 @@ public class WalletElements {
     public static By clickExpandVerificationSDJWT = By.xpath("//android.widget.TextView[@text='PID (SD-JWT VC)']");
     public static By pidSdJwtIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
     public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
+    public static By clickPreAuthorizationCode = By.xpath("//android.widget.RadioButton[@resource-id=\"check2\"]");
+    public static By getTransactionCode = By.xpath("//android.view.View[@text='Transaction Code']/parent::android.view.View/android.widget.EditText");
 }

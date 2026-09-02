@@ -61,6 +61,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:disableSuppressAccessibilityService", false);
                 options.setCapability("autoGrantPermissions", true);
                 options.setCapability("disableWindowAnimation", true);
+                // WebView
+                options.setCapability("chromedriverAutodownload", true);
                 options.setCapability("newCommandTimeout", 300);
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("allowInvisibleElements", true);
@@ -158,7 +160,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("sessionName", featureName);
                 options.setCapability("includeSafariInWebviews", true);
                 options.setCapability("waitForQuiescence", true);
-
+// WebView
+                options.setCapability("appium:chromedriverAutodownload", true);
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");

@@ -16,6 +16,7 @@ public class TestSetup {
     WebPageObjectFactory webPageObjectFactory;
     String systemOperation;
     Scenario scenario;
+    private String transactionCode;
 
     public TestSetup(boolean noReset, String systemOperation, Scenario scenario) {
         this.systemOperation = systemOperation;
@@ -111,5 +112,13 @@ public class TestSetup {
 
     public WebWebDriverFactory webWebDriverFactory() {
         return webWebDriverFactory;
+    }
+
+    public void setTransactionCode(String transactionCode) {
+        this.transactionCode = transactionCode;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
     }
 }

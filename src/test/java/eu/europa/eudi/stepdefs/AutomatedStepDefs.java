@@ -1,12 +1,21 @@
 package eu.europa.eudi.stepdefs;
 
+import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.*;
 
 public class AutomatedStepDefs {
@@ -481,5 +490,135 @@ public class AutomatedStepDefs {
     @Then("the verifier verifies the credential successfully with {} for {}")
     public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
       test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+    }
+
+    @Given("the user is accessing the issuer service")
+    public void theUserIsAccessingTheIssuerService() {
+        test.mobile().issuer().issuerService();
+        test.mobile().issuer().clickissuerService();
+        test.mobile().issuer().requestCredentialsPageIsDisplayed();
+    }
+
+    @When("the user selects to issue a document using pre-authorization")
+    public void theUserSelectsToIssueADocumentUsingPreAuthorization() throws InterruptedException {
+        test.mobile().issuer().scrollUntilPidIssuer();
+        test.mobile().issuer().selectPidPythonIssuer();
+        test.mobile().issuer().scrollUntilFindSubmitIssuer();
+        test.mobile().issuer().clickPreAuthorizationCode();
+        test.mobile().issuer().clickSubmitButton();
+    }
+
+    @Then("the user provides their personal information")
+    public void theUserProvidesTheirPersonalInformation() throws InterruptedException {
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().scrollUntilCountryCodePid();
+        test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickConfirm();
+        test.mobile().issuer().authorizeIsDisplayed();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @And("a transaction code is generated")
+    public void aTransactionCodeIsGenerated() {
+//        test.mobile().issuer().transactionCodeIsDisplayed();
+       String code = test.mobile().issuer().getTransactionCode();
+       test.setTransactionCode(code); // <-- store it for later steps
+
+        System.out.println("Stored transaction code: " + code);
+    }
+
+    @Given("the transaction code has been generated")
+    public void theTransactionCodeHasBeenGenerated() throws InterruptedException {
+        //nothing for automation
+        theUserIsAccessingTheIssuerService();
+        theUserSelectsToIssueADocumentUsingPreAuthorization();
+        theUserProvidesTheirPersonalInformation();
+        aTransactionCodeIsGenerated();
+    }
+
+    @When("the user chooses to register through the EUDI wallet app")
+    public void theUserChoosesToRegisterThroughTheEUDIWalletApp() {
+        test.mobile().issuer().clickUseEudiwPid();
+    }
+
+    @Then("the user is navigated to the EUDI wallet application")
+    public void theUserIsNavigatedToTheEUDIWalletApplication() {
+        test.mobile().wallet().checkIfPageIsTrue();
+    }
+
+    @And("the user provides the PIN")
+    public void theUserProvidesThePIN() {
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
+    }
+
+    @Given("the user has provided the PIN")
+    public void theUserHasProvidedThePIN() throws InterruptedException {
+        //nothing for automation
+        theTransactionCodeHasBeenGenerated();
+        theUserChoosesToRegisterThroughTheEUDIWalletApp();
+        theUserIsNavigatedToTheEUDIWalletApplication();
+        theUserProvidesThePIN();
+    }
+
+    @When("the issuer request is shown in the wallet app")
+    public void theIssuerRequestIsShownInTheWalletApp() throws InterruptedException {
+        test.mobile().issuer().viewDataPage();
+    }
+
+    @Then("the user selects the ISSUE button")
+    public void theUserSelectsTheISSUEButton() throws InterruptedException {
+        test.mobile().wallet().clickAddButton();
+    }
+
+    @Given("the user has selected the ISSUE button")
+    public void theUserHasSelectedTheISSUEButton() throws InterruptedException {
+        //nothing for automation
+        theUserHasProvidedThePIN();
+        theIssuerRequestIsShownInTheWalletApp();
+        theUserSelectsTheISSUEButton();
+    }
+
+    @When("the Wallet app prompts for the transaction code")
+    public void theWalletAppPromptsForTheTransactionCode() {
+        test.mobile().wallet().requestTransactionCode();
+    }
+
+    @Then("the user enters the transaction code received from the Issuer")
+    public void theUserEntersTheTransactionCodeReceivedFromTheIssuer() {
+        test.mobile().wallet().insertTransactionCode();
+    }
+
+    @Given("the user has entered the transaction code received from the Issuer")
+    public void theUserHasEnteredTheTransactionCodeReceivedFromTheIssuer() throws InterruptedException {
+        //nothing for automation
+        theUserHasSelectedTheISSUEButton();
+        theWalletAppPromptsForTheTransactionCode();
+        theUserEntersTheTransactionCodeReceivedFromTheIssuer();
+    }
+
+    @When("the Wallet application shows a successful issuance message")
+    public void theWalletApplicationShowsASuccessfulIssuanceMessage() {
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+    }
+
+    @Then("the user selects the CONTINUE button")
+    public void theUserSelectsTheCONTINUEButton() {
+        test.mobile().wallet().clickClose();
+    }
+
+    @And("the document appears on the documents screen")
+    public void theDocumentAppearsOnTheDocumentsScreen() {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().pidMdocIsDisplayed();
     }
 }
