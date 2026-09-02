@@ -92,6 +92,25 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
+      - name: Diagnose Chrome and ChromeDriver
+        run: |
+         echo "========== Chrome =========="
+         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
+         echo "========== ChromeDriver =========="
+         which chromedriver || true
+         chromedriver --version || true
+
+          echo "========== Selenium Manager cache =========="
+          ls -la ~/.cache/selenium 2>/dev/null || true
+          find ~/.cache/selenium -maxdepth 3 -type f 2>/dev/null || true
+
+          echo "========== CHROMEDRIVER_PATH =========="
+          echo "${CHROMEDRIVER_PATH:-NOT_SET}"
+
+          echo "========== Selenium dependencies =========="
+          mvn dependency:tree -Dincludes=org.seleniumhq.selenium
+
       # ---------------- TEST EXECUTION (FIXED) ----------------
       - name: Run Android Tests on BrowserStack
         continue-on-error: true
