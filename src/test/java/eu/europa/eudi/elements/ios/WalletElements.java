@@ -64,5 +64,7 @@ public class WalletElements {
     public static By pidSdJwtIsDisplayedOnDocumentsPython = AppiumBy.accessibilityId("PID (SD-JWT VC)");
     public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
     public static By clickExpandDetails = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
-    public static By clickPreAuthorizationCode;
+    public static By clickPreAuthorizationCode = By.xpath("//XCUIElementTypeOther[@name=\"Pre-Authorization Code Grant\"]");
+    public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
+    public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
 }

@@ -60,5 +60,9 @@ public class WalletElements {
     public static By pidSdJwtIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
     public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
     public static By clickPreAuthorizationCode = By.xpath("//android.widget.RadioButton[@resource-id=\"check2\"]");
-    public static By getTransactionCode = By.xpath("//android.view.View[@text='Transaction Code']/parent::android.view.View/android.widget.EditText");
+    public static By deferredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
+    public static By notificationForDeferred = By.xpath("//android.widget.TextView[@text=\"In progress!\"]");
+    public static By pendigStatus = By.xpath("//android.widget.TextView[@text=\"Pending\"]");
+    public static By popUpConfirmation = By.xpath("//android.widget.TextView[@text=\"Documents issued\"]");
+    public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
 }

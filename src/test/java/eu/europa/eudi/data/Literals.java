@@ -32,7 +32,11 @@ public interface Literals {
         PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC Compact)"),
         PID_SD_JWT_ON_DOCUMENTS_ANDROID_("PID (SD-JWT VC)"),
         PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC Compact)"),
-        PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON("PID (SD-JWT VC)");
+        PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON("PID (SD-JWT VC)"),
+        POP_UP_CONFIRMATION("Documents issued"),
+        PENDING_STATUS("Pending"),
+        PID_DEFERRED_DISPLAYED("PID (MSO Mdoc Deferred"),
+        NOTIFICATION_DEFERRED_WALLET("In progress!");
 
         public final String label;
         Wallet(String label) {
@@ -53,7 +57,8 @@ public interface Literals {
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
         WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
         WALLET_RESPONDED_SDJWT("urn:eudi:pid:1"),
-        TRANSACTION_CODE_PAGE("Digital Credentials Issuer requires verification");
+        TRANSACTION_CODE_PAGE("Digital Credentials Issuer requires verification"),
+        DEFERRED_IS_DISPLAYED("PID (MSO Mdoc Deferred)");
 
         public final String label;
         Verifier(String label) {
@@ -83,6 +88,7 @@ public interface Literals {
         ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
         SIGN_IN_USER_PAGE("Sign in to your account"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin");
+
 
         public final String label;
         Issuer(String label) {

@@ -50,7 +50,10 @@ public class Issuer {
                 Map<String, Object> deepLinkArgs = new HashMap<>();
                 deepLinkArgs.put("url", url);
                 deepLinkArgs.put("package", "com.android.chrome");
+
                 driver.executeScript("mobile:deepLink", deepLinkArgs);
+
+                System.out.println("CONTEXTS = " + driver.getContextHandles());
             } else {
                 Map<String, Object> args = new HashMap<>();
                 args.put("command", "am");
@@ -1086,7 +1089,7 @@ public class Issuer {
         clickAuthorize();
     }
 
-    private void selectCountryOfOrigin() {
+    public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
@@ -2257,6 +2260,29 @@ public class Issuer {
         }
     }
 
+    public void clickUseEudiwPidDeferred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc_deferred%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2283c32b0b-623d-4c26-b079-1baa32a7ff87%22%7D%7D%7D";
+
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
+                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+                driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                        "url", deepLink,
+                        "package", test.envDataConfig().getAppiumAndroidAppPackage()
+                ));
+
+                System.out.println("Deep link executed on Android");
+
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickEudiwButton)).click();
+        }
+    }
+
     public void clickUseEudiwPidSDJWT() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String deepLink =
@@ -2630,22 +2656,93 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait waitNativeAppTransition =
+                    new WebDriverWait(driver, Duration.ofSeconds(2000));
 
-            WebElement transactionCode = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(
-                            AppiumBy.xpath(
-                                    "//android.view.View[@text='Transaction Code']" +
-                                            "/following-sibling::android.widget.EditText"
-                            )
-                    )
+            waitNativeAppTransition.until(
+                    d -> driver.getContextHandles().contains("NATIVE_APP")
             );
 
-            String code = transactionCode.getText();
+            String code = null;
 
-            System.out.println("Transaction Code: " + code);
+            // ==========================================
+            // 1. TRY TO FIND TRANSACTION CODE IN NATIVE
+            // ==========================================
+            try {
+                driver.context("NATIVE_APP");
 
-            return code;
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement transactionCode = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                AppiumBy.xpath(
+                                        "//android.view.View[@text='Transaction Code']" +
+                                                "/following-sibling::android.widget.EditText"
+                                )
+                        )
+                );
+
+                code = transactionCode.getText().trim();
+
+                if (!code.isEmpty()) {
+                    System.out.println("Transaction Code found in NATIVE: " + code);
+                    return code;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Transaction Code not found in NATIVE");
+            }
+
+
+            // ==========================================
+            // 2. TRY TO FIND TRANSACTION CODE IN WEBVIEW
+            // ==========================================
+            try {
+                String webViewContext = null;
+
+                for (String context : driver.getContextHandles()) {
+                    System.out.println("Available Context: " + context);
+
+                    if (context.contains("WEBVIEW")) {
+                        webViewContext = context;
+                        break;
+                    }
+                }
+
+                if (webViewContext == null) {
+                    throw new RuntimeException("No WEBVIEW context found");
+                }
+
+                driver.context(webViewContext);
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+
+                WebElement transactionCode = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector("input[name='tx_code']")
+                        )
+                );
+
+                code = transactionCode.getAttribute("value").trim();
+
+                System.out.println("Transaction Code found in WEBVIEW: " + code);
+
+                return code;
+
+            } catch (Exception e) {
+                throw new RuntimeException(
+                        "Transaction Code was not found in NATIVE_APP or WEBVIEW",
+                        e
+                );
+
+            } finally {
+                // Always return to native context
+                try {
+                    driver.context("NATIVE_APP");
+                } catch (Exception e) {
+                    System.out.println("Could not switch back to NATIVE_APP");
+                }
+            }
         } else {
             IOSDriver driver =
                     (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -2655,7 +2752,7 @@ public class Issuer {
             WebElement transactionCode = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(
                             AppiumBy.xpath(
-                                    "//XCUIElementTypeStaticText[@name='Transaction Code']" +
+                                    "//XCUIElementTypeOther[@name='Transaction Code']" +
                                             "/following-sibling::XCUIElementTypeTextField"
                             )
                     )
@@ -2668,4 +2765,14 @@ public class Issuer {
             return code;
         }
     }
+
+    public void selectPIDDeferred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectPIDDeferredPythonCredential)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPreAuthorizationCode)).click();
+        }
+    }
+
+
 }
