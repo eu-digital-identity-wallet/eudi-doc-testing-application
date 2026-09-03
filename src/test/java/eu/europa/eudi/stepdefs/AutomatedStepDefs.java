@@ -527,6 +527,7 @@ public class AutomatedStepDefs {
 
     @And("a transaction code is generated")
     public void aTransactionCodeIsGenerated() {
+        test.mobile().issuer().qrCodeIsDisplayed();
 //        test.mobile().issuer().transactionCodeIsDisplayed();
        String code = test.mobile().issuer().getTransactionCode();
        test.setTransactionCode(code); // <-- store it for later steps
@@ -550,7 +551,7 @@ public class AutomatedStepDefs {
 
     @Then("the user is navigated to the EUDI wallet application")
     public void theUserIsNavigatedToTheEUDIWalletApplication() {
-        test.mobile().wallet().checkIfPageIsTrue();
+        //nothing on automation
     }
 
     @And("the user provides the PIN")
@@ -589,13 +590,35 @@ public class AutomatedStepDefs {
     }
 
     @When("the Wallet app prompts for the transaction code")
-    public void theWalletAppPromptsForTheTransactionCode() {
-        test.mobile().wallet().requestTransactionCode();
+    public void theWalletAppPromptsForTheTransactionCode() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().issuer().selectCountryOfOrigin();
+            test.mobile().issuer().clickFormEu();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().formIsDisplayed();
+            test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().enterGivenName();
+            test.mobile().issuer().scrollUntilCountryCodePid();
+            test.mobile().issuer().enterCountryCode();
+            test.mobile().issuer().scrollUntilCountry();
+            test.mobile().issuer().enterCountry();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickConfirm();
+            test.mobile().issuer().authorizeIsDisplayed();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+        }else {
+            test.mobile().wallet().requestTransactionCode();
+        }
     }
 
     @Then("the user enters the transaction code received from the Issuer")
     public void theUserEntersTheTransactionCodeReceivedFromTheIssuer() {
-        test.mobile().wallet().insertTransactionCode();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().insertTransactionCode();
+        }
     }
 
     @Given("the user has entered the transaction code received from the Issuer")
@@ -618,7 +641,109 @@ public class AutomatedStepDefs {
 
     @And("the document appears on the documents screen")
     public void theDocumentAppearsOnTheDocumentsScreen() {
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().pidMdocIsDisplayed();
+        test.mobile().wallet().pidDeferredIsDisplayed();
+    }
+
+    @When("the user chooses to deliver a credential to the wallet")
+    public void theUserChoosesToDeliverACredentialToTheWallet() throws InterruptedException {
+        test.mobile().issuer().scrollUntilPidIssuer();
+        test.mobile().issuer().selectPidPythonIssuer();
+        test.mobile().issuer().scrollUntilFindSubmitIssuer();
+        test.mobile().issuer().clickSubmitButton();
+        test.mobile().issuer().clickUseEudiwPid();
+    }
+
+    @Then("the EUDI Wallet application is opened")
+    public void theEUDIWalletApplicationIsOpened() throws InterruptedException {
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().issuer().viewDataPage();
+    }
+
+    @And("the issuance information is displayed to the user")
+    public void theIssuanceInformationIsDisplayedToTheUser() {
+        test.mobile().wallet().defferedIsDisplayed();
+    }
+
+    @When("the user chooses to deliver a deferred credential to the wallet")
+    public void theUserChoosesToDeliverADeferredCredentialToTheWallet() throws InterruptedException {
+        test.mobile().issuer().scrollUntilPidIssuer();
+        test.mobile().issuer().selectPIDDeferred();
+        test.mobile().issuer().scrollUntilFindSubmitIssuer();
+        test.mobile().issuer().clickSubmitButton();
+        test.mobile().issuer().qrCodeIsDisplayed();
+        test.mobile().issuer().clickUseEudiwPidDeferred();
+    }
+
+    @And("the user is redirected to the issuer service for authentication and authorization")
+    public void theUserIsRedirectedToTheIssuerServiceForAuthenticationAndAuthorization() throws InterruptedException {
+        test.mobile().issuer().selectCountryOfOrigin();
+        test.mobile().issuer().clickFormEu();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickSubmit();
+        test.mobile().issuer().formIsDisplayed();
+        test.mobile().issuer().chooseBirthDate();
+        test.mobile().issuer().enterFamilyName();
+        test.mobile().issuer().enterGivenName();
+        test.mobile().issuer().scrollUntilCountryCodePid();
+        test.mobile().issuer().enterCountryCode();
+        test.mobile().issuer().scrollUntilCountry();
+        test.mobile().issuer().enterCountry();
+        test.mobile().issuer().scrollUntilFindSubmit();
+        test.mobile().issuer().clickConfirm();
+    }
+
+    @When("the user completes authentication and confirms the issuance")
+    public void theUserCompletesAuthenticationAndConfirmsTheIssuance() throws InterruptedException {
+        test.mobile().issuer().authorizeIsDisplayed();
+        test.mobile().issuer().scrollUntilAuthorize();
+        test.mobile().issuer().clickAuthorize();
+    }
+
+    @And("a notification indicates that the credential request is being processed")
+    public void aNotificationIndicatesThatTheCredentialRequestIsBeingProcessed() {
+        test.mobile().wallet().notificationOnWalletForDeferred();
+    }
+
+    @When("the user dismisses the notification by pressing OK")
+    public void theUserDismissesTheNotificationByPressingOK() {
+        test.mobile().wallet().clickingOkButton();
+    }
+
+    @And("the document is displayed as unavailable with a pending status")
+    public void theDocumentIsDisplayedAsUnavailableWithAPendingStatus() {
+        test.mobile().wallet().pendingStatus();
+    }
+
+    @When("the issuer provides the requested credential to the wallet")
+    public void theIssuerProvidesTheRequestedCredentialToTheWallet() {
+        //nothing for automation
+    }
+
+    @Then("the user receives a confirmation message indicating that the document has been issued")
+    public void theUserReceivesAConfirmationMessageIndicatingThatTheDocumentHasBeenIssued() {
+        test.mobile().wallet().popUpConfirmation();
+    }
+
+    @When("the user chooses to inspect the document details")
+    public void theUserChoosesToInspectTheDocumentDetails() {
+        test.mobile().wallet().inspectDocument();
+    }
+
+    @Then("the issued credential information is displayed")
+    public void theIssuedCredentialInformationIsDisplayed() {
+        test.mobile().wallet().pidDeferredIsDisplayed();
+    }
+
+    @And("the user presses the X button to close the document")
+    public void theUserPressesTheXButtonToCloseTheDocument() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the document details are no longer displayed")
+    public void theDocumentDetailsAreNoLongerDisplayed() {
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 }

@@ -1636,9 +1636,15 @@ public class Wallet {
     }
 
     public void requestTransactionCode() {
-        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.transactionCodePage).getText();
-        Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.transactionCodePage).getText();
+            Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.transactionCodePage).getText();
+            Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        }
     }
 
     public void insertTransactionCode() {
@@ -1667,6 +1673,90 @@ public class Wallet {
                         )
                 );
             }
+        }else{
+            String fullPin = test.getTransactionCode();
+            char secondDigit = fullPin.charAt(0);
+            char thirdDigit = fullPin.charAt(1);
+            char fourthDigit = fullPin.charAt(2);
+            char fifthDigit = fullPin.charAt(3);
+            char sixthDigit = fullPin.charAt(4);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("XCUIElementTypeTextField")
+                    )
+            );
+            pinField.click();
+
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(sixthDigit));
+        }
+    }
+
+    public void defferedIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.WalletElements.deferredIsDisplayed).getText();
+            Assert.assertEquals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label, headerText);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.transactionCodePage).getText();
+            Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        }
+    }
+
+    public void notificationOnWalletForDeferred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.notificationForDeferred)).getText();
+            Assert.assertEquals(Literals.Wallet.NOTIFICATION_DEFERRED_WALLET.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
+        }
+    }
+
+    public void clickingOkButton() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOkButton)).click();
+    }
+
+    public void pendingStatus() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pendigStatus)).getText();
+            Assert.assertEquals(Literals.Wallet.PENDING_STATUS.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
+        }
+    }
+
+    public void popUpConfirmation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.popUpConfirmation)).getText();
+            Assert.assertEquals(Literals.Wallet.POP_UP_CONFIRMATION.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
+        }
+    }
+
+    public void inspectDocument() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.inspectDeferredDocument)).click();
+    }
+
+    public void pidDeferredIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidDefrredIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
         }
     }
 }
