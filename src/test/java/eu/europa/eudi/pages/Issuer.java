@@ -1892,6 +1892,15 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidMsoMdoc)).click();
         }
     }
+    public void selectPIDDeferredKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidDeferred)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidMsoMdocDefered)).click();
+        }
+    }
 
     public void selectMDLKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -2770,9 +2779,48 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectPIDDeferredPythonCredential)).click();
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickPreAuthorizationCode)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.selectPIDPythonDeferred)).click();
         }
     }
 
 
+    public void accessingIssuerType(String issuerType) {
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().issuer().kotlinIssuerService();
+        } else {
+            test.mobile().issuer().issuerService();
+            test.mobile().issuer().clickissuerService();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+        }
+    }
+
+    public void deliverDeferredToWallet(String issuerType) throws InterruptedException {
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().issuer().selectPIDDeferredKotlin();
+            test.mobile().issuer().scrollUntilGenerate();
+            test.mobile().issuer().clickGenerate();
+            test.mobile().issuer().issueCredentialsPageIsDisplayed();
+            test.mobile().issuer().clickWalletLink();
+        } else {
+            test.mobile().issuer().scrollUntilPidIssuer();
+            test.mobile().issuer().selectPIDDeferred();
+            test.mobile().issuer().scrollUntilFindSubmitIssuer();
+            test.mobile().issuer().clickSubmitButton();
+            test.mobile().issuer().qrCodeIsDisplayed();
+            test.mobile().issuer().clickUseEudiwPidDeferred();
+        }
+    }
+
+    public void issuanceInformation(String issuerType) throws InterruptedException {
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickAddButton();
+            test.mobile().issuer().signInUser();
+            test.mobile().issuer().fillLoginForm();
+        }else{
+            test.mobile().wallet().defferedIsDisplayed();
+        }
+    }
 }

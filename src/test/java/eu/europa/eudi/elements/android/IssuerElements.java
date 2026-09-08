@@ -36,6 +36,7 @@ public class IssuerElements {
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
+    public static By pidDeferred = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[2]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
     public static By usernameWeb = By.cssSelector("#username");

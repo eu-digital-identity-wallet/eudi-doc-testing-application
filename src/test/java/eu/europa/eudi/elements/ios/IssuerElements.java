@@ -39,6 +39,7 @@ public class IssuerElements {
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
+    public static By pidMsoMdocDefered = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc_deferred\"]");
     public static By pidSDJWT = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_vc_sd_jwt\"]");
     public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
     public static By clickUsername = By.xpath("//XCUIElementTypeTextField");

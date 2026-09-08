@@ -54,6 +54,7 @@ public class WalletElements {
     public static By selectMDLKotlin = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'org.iso.18013.5.1.mDL'");
     public static By selectMDLPython = By.xpath("//XCUIElementTypeStaticText[@name='mDL (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By selectPIDPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc)']/preceding-sibling::XCUIElementTypeSwitch[1]");
+    public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By selectPIDSDJWTPython = By.xpath("//XCUIElementTypeStaticText[@name='PID (SD-JWT VC)']/preceding-sibling::XCUIElementTypeSwitch[1]");
     public static By mdlIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Mobile Driving Licence (MSO MDoc)\"])");
     public static By clickPidFromKotlin = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc)\"]");
@@ -62,9 +63,17 @@ public class WalletElements {
     public static By pidMdocIsDisplayed = AppiumBy.accessibilityId("PID (MSO Mdoc)");
     public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.accessibilityId("PID (SD-JWT VC Compact)");
     public static By pidSdJwtIsDisplayedOnDocumentsPython = AppiumBy.accessibilityId("PID (SD-JWT VC)");
-    public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
+    public static By clickPidSdjwt = By.id("PID (SD-JWT VC)");
     public static By clickExpandDetails = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By clickPreAuthorizationCode = By.xpath("//XCUIElementTypeOther[@name=\"Pre-Authorization Code Grant\"]");
-    public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
-    public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
+    public static By clickOkButton = By.xpath("(//XCUIElementTypeButton[@name=\"OK\"])");
+    public static By inspectDeferredDocument = By.xpath("(//XCUIElementTypeImage[@name=\"chevron.right\"])");
+    public static By notificationForDeferred = By.xpath("(//XCUIElementTypeStaticText[@name=\"success_screen_title\"])");
+    public static By pendigStatus = By.xpath("(//XCUIElementTypeStaticText[@name=\"Pending\"])");
+    public static By pidDefrredIsDisplayedPython = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"])");
+    public static By popUpConfirmation = By.id("Documents issued");
+    public static By pidDefrredIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc) (deferred)\"])");
+    public static By counterIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"30/30\"])");
+    public static By counterIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"7/7\"])");
+    public static By authenticationError = By.xpath("(//XCUIElementTypeStaticText[@name=\"Invalid pin\"])");
 }
