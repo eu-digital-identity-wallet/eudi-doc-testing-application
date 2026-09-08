@@ -42,7 +42,8 @@ public interface Literals {
         DASHBOARD_PAGE_DEFERRED("Welcome"),
         NOTIFICATION_DEFERRED_WALLET_IOS("In progress"),
         COUNTER_DISPLAYED("30/30"), COUNTER_DISPLAYED_KOTLIN("7/7"),
-        AUTHENTICATION_ERROR("Invalid pin");
+        AUTHENTICATION_ERROR("Invalid pin"),
+        SUCCESSFULLY_SIGNED("You have successfully signed your document.");
 
         public final String label;
         Wallet(String label) {

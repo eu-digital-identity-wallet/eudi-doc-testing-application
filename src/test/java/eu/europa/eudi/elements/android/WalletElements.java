@@ -73,4 +73,9 @@ public class WalletElements {
     public static By counterIsDisplayed = By.xpath("//android.widget.TextView[@text=\"30/30\"]");
     public static By counterIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"7/7\"]");;
     public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
+    public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
+    public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
+    public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
+    public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
+    public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
 }
