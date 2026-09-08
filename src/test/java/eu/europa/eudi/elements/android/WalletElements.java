@@ -65,4 +65,8 @@ public class WalletElements {
     public static By pendigStatus = By.xpath("//android.widget.TextView[@text=\"Pending\"]");
     public static By popUpConfirmation = By.xpath("//android.widget.TextView[@text=\"Documents issued\"]");
     public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
+    public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
+    public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
+    public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
+    public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
 }

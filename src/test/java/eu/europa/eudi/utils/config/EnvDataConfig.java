@@ -41,6 +41,7 @@ public class EnvDataConfig {
     public static final String KOTLIN_ISSUER = "kotlin.url";
     public static final String VERIFIER_URL = "verifier.url";
     public static final String PYTHON_ISSUER = "python.url";
+    public static final String SAMPLE_DOCUMENT_URL = "sample.document.url";
 
     ResourcesConfig resourcesConfig;
 
@@ -201,6 +202,10 @@ public class EnvDataConfig {
 
     public String getPythonUrl() {
         return getEnvProperties().getProperty(PYTHON_ISSUER);
+    }
+
+    public String getSampleDocumentUrl() {
+        return getEnvProperties().getProperty(SAMPLE_DOCUMENT_URL);
     }
 
     public boolean isBrowserStackDeviceLogsEnabled() {
