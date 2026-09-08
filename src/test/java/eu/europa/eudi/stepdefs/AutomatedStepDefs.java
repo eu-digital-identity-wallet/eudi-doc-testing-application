@@ -6,6 +6,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,6 +15,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.*;
@@ -745,5 +747,236 @@ public class AutomatedStepDefs {
     @Then("the document details are no longer displayed")
     public void theDocumentDetailsAreNoLongerDisplayed() {
         test.mobile().wallet().documentsPageIsDisplayed();
+    }
+
+    @Given("the user uploads a document and an attestation using {} and selects a QTSP")
+    public void theUserUploadsADocumentAndAnAttestationUsingAndSelectsAQTSP(String issuerType) throws IOException, InterruptedException {
+        this.issuerType = issuerType;
+        test.mobile().wallet().downloadSampleDocument();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().insertAttestationForSigning(issuerType);
+        test.mobile().wallet().clickHome();
+    }
+
+    @When("the EUDI Wallet fetches the Credential ID details from the QTSP")
+    public void theEUDIWalletFetchesTheCredentialIDDetailsFromTheQTSP() {
+        test.mobile().wallet().clickSignDocument();
+        test.mobile().wallet().clickSelectDocument();
+        test.mobile().wallet().selectSamplePDF();
+    }
+
+    @Then("the EUDI Wallet displays the Credential ID details to the user")
+    public void theEUDIWalletDisplaysTheCredentialIDDetailsToTheUser() {
+        test.mobile().wallet().selectSigningService();
+        test.mobile().wallet().clickWalletCentric();
+    }
+
+    @And("the user agrees to proceed with the signing operation")
+    public void theUserAgreesToProceedWithTheSigningOperation() {
+        test.mobile().wallet().clickProceed();
+    }
+
+    @When("the user opts not to proceed")
+    public void theUserOptsNotToProceed() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the user selects the Abort operation option")
+    public void theUserSelectsTheAbortOperationOption() {
+        //no actions occur in automation
+    }
+
+    @And("the EUDI Wallet redirects the user to the main page")
+    public void theEUDIWalletRedirectsTheUserToTheMainPage() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @When("the EUDI Wallet asks the user to consent to the release of the requested attestation")
+    public void theEUDIWalletAsksTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
+        theEUDIWalletFetchesTheCredentialIDDetailsFromTheQTSP();
+        theEUDIWalletDisplaysTheCredentialIDDetailsToTheUser();
+        theUserAgreesToProceedWithTheSigningOperation();
+    }
+
+    @And("the user successfully authenticates in the Wallet")
+    public void theUserSuccessfullyAuthenticatesInTheWallet() {
+        test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().createAPin();
+    }
+
+    @Then("the EUDI Wallet shares the requested attestation with the QTSP")
+    public void theEUDIWalletSharesTheRequestedAttestationWithTheQTSP() {
+        test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickDone();
+        test.mobile().wallet().selectSigningCertificate();
+        test.mobile().wallet().clickCredentialForTests();
+        test.mobile().wallet().clickProceed();
+        test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().createAPin();
+
+    }
+
+    @And("a success screen appears with the signed document")
+    public void aSuccessScreenAppearsWithTheSignedDocument() {
+        test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickDone();
+    }
+
+    @When("the EUDI Wallet obtains the signed document")
+    public void theEUDIWalletObtainsTheSignedDocument() {
+        test.mobile().wallet().successfullySignedTheDoc();
+        test.mobile().wallet().clickX();
+    }
+
+    @Then("the EUDI Wallet allows the user to share the document or close the process")
+    public void theEUDIWalletAllowsTheUserToShareTheDocumentOrCloseTheProcess() {
+        test.mobile().wallet().dashboardPageIsDisplayed();
+    }
+
+    @Given("the user issues two attestations using {}")
+    public void theUserIssuesTwoAttestationsUsing(String issuerType) throws InterruptedException {
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertPidFromListKotlin();
+            test.mobile().wallet().clickClose();
+            test.mobile().wallet().insertMdlFromListKotlin();
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertPidFromList();
+            test.mobile().wallet().clickDone();
+            test.mobile().wallet().insertMdlFromList();
+            test.mobile().wallet().clickDone();
+        }
+    }
+
+    @And("the user is on the Home screen of the Wallet")
+    public void theUserIsOnTheHomeScreenOfTheWallet() {
+        test.mobile().wallet().clickHome();
+    }
+
+    @When("the user opens the Documents screen")
+    public void theUserOpensTheDocumentsScreen() {
+        test.mobile().wallet().clickOnDocuments();
+    }
+
+    @Then("the Documents screen lists the issued attestations")
+    public void theDocumentsScreenListsTheIssuedAttestations() {
+        test.mobile().wallet().pidMdocIsDisplayed();
+        test.mobile().wallet().defferedIsDisplayed();
+    }
+
+    @When("the user taps on an attestation from the list")
+    public void theUserTapsOnAnAttestationFromTheList() throws InterruptedException {
+        test.mobile().wallet().openPidAttestation();
+    }
+
+    @Then("the attestation details are displayed")
+    public void theAttestationDetailsAreDisplayed() {
+        test.mobile().wallet().pidDetailsDisplayed(this.issuerType);
+    }
+
+    @And("the attestation details are blurred by default")
+    public void theAttestationDetailsAreBlurredByDefault() {
+        test.mobile().wallet().detailsAreBlurred("yes");
+    }
+
+    @And("an eye icon is shown to reveal the attestation details")
+    public void anEyeIconIsShownToRevealTheAttestationDetails() {
+        //no action occurs for automation
+    }
+
+    @When("the user taps on the eye icon")
+    public void theUserTapsOnTheEyeIcon() {
+        test.mobile().wallet().scrollUpForEyeIcon();
+        test.mobile().wallet().clickEyeIcon();
+    }
+
+    @Then("the attestation details are no longer blurred")
+    public void theAttestationDetailsAreNoLongerBlurred() {
+        test.mobile().wallet().detailsAreBlurred("no");
+    }
+
+    @And("the user can view the full attestation details")
+    public void theUserCanViewTheFullAttestationDetails() {
+        //no action occurs for automation
+    }
+
+    @When("the user taps the bookmark icon on the attestation")
+    public void theUserTapsTheBookmarkIconOnTheAttestation() {
+        test.mobile().wallet().clickBookmarkButton();
+    }
+
+    @Then("the attestation gets marked as bookmarked")
+    public void theAttestationGetsMarkedAsBookmarked() {
+        //no action occurs for automation
+    }
+
+    @And("the bookmark icon updates to indicate the bookmarked state")
+    public void theBookmarkIconUpdatesToIndicateTheBookmarkedState() {
+        test.mobile().wallet().bookmarkIsMarked();
+    }
+
+    @When("the user bookmarks two more attestations to reach the maximum of three")
+    public void theUserBookmarksTwoMoreAttestationsToReachTheMaximumOfThree() {
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickPidSdJwt();
+        test.mobile().wallet().clickBookmarkButton();
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickDeferredPid();
+        test.mobile().wallet().clickBookmarkButton();
+    }
+
+    @And("the user attempts to bookmark a fourth attestation")
+    public void theUserAttemptsToBookmarkAFourthAttestation() {
+    }
+
+    @Then("the bookmark option is disabled for the additional attestation")
+    public void theBookmarkOptionIsDisabledForTheAdditionalAttestation() {
+    }
+
+    @And("the user is informed that only up to three attestations can be bookmarked")
+    public void theUserIsInformedThatOnlyUpToThreeAttestationsCanBeBookmarked() {
+    }
+
+    @When("the user opens the issuer details from the attestation")
+    public void theUserOpensTheIssuerDetailsFromTheAttestation() {
+    }
+
+    @Then("the issuer details are displayed to the user")
+    public void theIssuerDetailsAreDisplayedToTheUser() {
+    }
+
+    @When("the user opens the transaction history from the attestation")
+    public void theUserOpensTheTransactionHistoryFromTheAttestation() {
+    }
+
+    @Then("the latest transactions for the attestation are displayed")
+    public void theLatestTransactionsForTheAttestationAreDisplayed() {
+    }
+
+    @When("the user closes the attestation details without deleting it")
+    public void theUserClosesTheAttestationDetailsWithoutDeletingIt() {
+    }
+
+    @Then("the user lands back on the Documents screen")
+    public void theUserLandsBackOnTheDocumentsScreen() {
+    }
+
+    @When("the user reopens the attestation and selects the delete option")
+    public void theUserReopensTheAttestationAndSelectsTheDeleteOption() {
+    }
+
+    @Then("the attestation gets removed from the EUDI Wallet")
+    public void theAttestationGetsRemovedFromTheEUDIWallet() {
+    }
+
+    @And("the Documents screen no longer lists the deleted attestation")
+    public void theDocumentsScreenNoLongerListsTheDeletedAttestation() {
     }
 }

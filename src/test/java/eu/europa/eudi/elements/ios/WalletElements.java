@@ -27,8 +27,8 @@ public class WalletElements {
     public static By clickExpandVerification = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By clickExpandVerificationForSDJWT = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"PID (SD-JWT VC\")]");
     public static By clickExpandVerificationMSODoc = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
-    public static By clickExpandNationality = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationalities']]/XCUIElementTypeImage[@name='chevron.down']");
-    public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]/XCUIElementTypeImage[@name='chevron.down']");
+    public static By clickExpandNationality = By.xpath("//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationalities']");
+    public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]");
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
@@ -36,7 +36,7 @@ public class WalletElements {
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
-    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
+    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"] | //XCUIElementTypeButton[@name=\"chevron.left\"]");
     public static By clickToAddDocument = By.id("plus");
     public static By clickFromList = By.id("Choose from list");
     public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO MDoc)']");
@@ -67,4 +67,19 @@ public class WalletElements {
     public static By clickPreAuthorizationCode = By.xpath("//XCUIElementTypeOther[@name=\"Pre-Authorization Code Grant\"]");
     public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
     public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
+    public static By clickHome = By.xpath("//XCUIElementTypeButton[@name=\"home_tab\"]");
+    public static By clickSignDocument = By.xpath("//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_sign_button\"]");
+    public static By clickSelectDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Select document\"]");
+    public static By selectPDFSample = By.xpath("//XCUIElementTypeCell[@name=\"sample, pdf\"]/XCUIElementTypeOther[2]");
+    public static By selectSigningService = By.xpath("//XCUIElementTypeStaticText[@name=\"Select signing service\"]");
+    public static By clickWalletCentric = By.xpath("//XCUIElementTypeStaticText[@name=\"Wallet-Centric\"]");
+    public static By clickProceed = By.xpath("//XCUIElementTypeButton[@name=\"Proceed\"]");
+    public static By selectSigningCertificate = By.xpath("//XCUIElementTypeStaticText[@name=\"Select signing certificate\"]");
+    public static By credentialForTests = By.xpath("//XCUIElementTypeStaticText[@name=\"This is a credential for tests\"]");
+    public static By successfullySigned = By.xpath("//XCUIElementTypeStaticText[@name=\"You have successfully signed your document.\"]");
+    public static By clickX = By.xpath("//XCUIElementTypeButton[@name=\"xmark\"]");
+    public static By placeOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Place\"]");
+    public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_eye_slash_button\" or @name=\"document_details_screen_eye_button\"]");
+    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
+    public static By deferredPid = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
 }

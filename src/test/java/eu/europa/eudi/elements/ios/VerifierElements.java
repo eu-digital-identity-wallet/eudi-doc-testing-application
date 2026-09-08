@@ -27,4 +27,5 @@ public class VerifierElements {
     public static By sdJwt = AppiumBy.accessibilityId("dc+sd-jwt");
     public static By walletRespondedSdJwt = By.xpath("//XCUIElementTypeStaticText[@name=\"urn:eudi:pid:1\"]");
     public static By transactionCodePage = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer requires verification\"]");
+    public static By deferredIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
 }
