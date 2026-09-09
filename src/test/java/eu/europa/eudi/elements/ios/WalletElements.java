@@ -93,8 +93,6 @@ public class WalletElements {
     public static By reissueDocumentText = By.xpath("//XCUIElementTypeStaticText[@name=\"You may reissue this document at any time.\"]");
     public static By openIssuerDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
     public static By deleteButton = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_delete_button\"]");
-    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
-    public static By deferredPid = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
     public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
 
 }
