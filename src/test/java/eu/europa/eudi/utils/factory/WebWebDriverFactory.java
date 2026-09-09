@@ -1,6 +1,7 @@
 package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -23,6 +24,8 @@ public class WebWebDriverFactory {
 //    }
 
     public void startWebDriverSession() {
+        WebDriverManager.chromedriver().setup();
+
         ChromeOptions options = new ChromeOptions();
 
         options.setBinary(
