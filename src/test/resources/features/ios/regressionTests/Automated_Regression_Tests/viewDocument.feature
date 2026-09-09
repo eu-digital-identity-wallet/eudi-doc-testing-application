@@ -1,4 +1,4 @@
-@IOS @automated @US_VD
+@IOS @automated @US_VD @REG_GENERAL
 Feature: View and manage attestations in the EUDI Wallet
 
   As a EUDI Wallet User
