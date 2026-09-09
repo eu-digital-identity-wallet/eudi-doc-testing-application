@@ -1,7 +1,6 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,7 +11,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -633,6 +631,11 @@ public class AutomatedStepDefs {
         test.mobile().issuer().viewDataPage();
     }
 
+    @And("the issuance information is displayed to the user")
+    public void theIssuanceInformationIsDisplayedToTheUser() {
+        test.mobile().wallet().defferedIsDisplayed("python");
+    }
+
     @When("the user chooses to deliver a deferred credential to the wallet")
     public void theUserChoosesToDeliverADeferredCredentialToTheWallet() throws InterruptedException {
         test.mobile().issuer().scrollUntilPidIssuer();
@@ -816,8 +819,9 @@ public class AutomatedStepDefs {
         test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
     }
 
-    @Given("the user issues two attestations using {}")
-    public void theUserIssuesTwoAttestationsUsing(String issuerType) throws InterruptedException {
+    @Given("the user issues an attestation using {}")
+    public void theUserIssuesAnAttestationUsing(String issuerType) throws InterruptedException {
+        this.issuerType = issuerType;
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
@@ -825,12 +829,8 @@ public class AutomatedStepDefs {
         if ("kotlin".equalsIgnoreCase(issuerType)) {
             test.mobile().wallet().insertPidFromListKotlin();
             test.mobile().wallet().clickClose();
-            test.mobile().wallet().insertMdlFromListKotlin();
-            test.mobile().wallet().clickClose();
         } else {
             test.mobile().wallet().insertPidFromList();
-            test.mobile().wallet().clickDone();
-            test.mobile().wallet().insertMdlFromList();
             test.mobile().wallet().clickDone();
         }
     }
@@ -847,13 +847,21 @@ public class AutomatedStepDefs {
 
     @Then("the Documents screen lists the issued attestations")
     public void theDocumentsScreenListsTheIssuedAttestations() {
-        test.mobile().wallet().pidMdocIsDisplayed();
-        test.mobile().wallet().defferedIsDisplayed();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        } else {
+            test.mobile().wallet().pidMdocIsDisplayed();
+        }
+        test.mobile().wallet().defferedIsDisplayed(this.issuerType);
     }
 
     @When("the user taps on an attestation from the list")
     public void theUserTapsOnAnAttestationFromTheList() throws InterruptedException {
-        test.mobile().wallet().openPidAttestation();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickPIDFromKotlin();
+        } else {
+            test.mobile().wallet().openPidAttestation();
+        }
     }
 
     @Then("the attestation details are displayed")
@@ -887,77 +895,44 @@ public class AutomatedStepDefs {
         //no action occurs for automation
     }
 
-    @When("the user taps the bookmark icon on the attestation")
-    public void theUserTapsTheBookmarkIconOnTheAttestation() {
-        test.mobile().wallet().clickBookmarkButton();
-    }
-
-    @Then("the attestation gets marked as bookmarked")
-    public void theAttestationGetsMarkedAsBookmarked() {
-        //no action occurs for automation
-    }
-
-    @And("the bookmark icon updates to indicate the bookmarked state")
-    public void theBookmarkIconUpdatesToIndicateTheBookmarkedState() {
-        test.mobile().wallet().bookmarkIsMarked();
-    }
-
-    @When("the user bookmarks two more attestations to reach the maximum of three")
-    public void theUserBookmarksTwoMoreAttestationsToReachTheMaximumOfThree() {
-        test.mobile().wallet().clickBackButton();
-        test.mobile().wallet().clickPidSdJwt();
-        test.mobile().wallet().clickBookmarkButton();
-        test.mobile().wallet().clickBackButton();
-        test.mobile().wallet().clickDeferredPid();
-        test.mobile().wallet().clickBookmarkButton();
-    }
-
-    @And("the user attempts to bookmark a fourth attestation")
-    public void theUserAttemptsToBookmarkAFourthAttestation() {
-    }
-
-    @Then("the bookmark option is disabled for the additional attestation")
-    public void theBookmarkOptionIsDisabledForTheAdditionalAttestation() {
-    }
-
-    @And("the user is informed that only up to three attestations can be bookmarked")
-    public void theUserIsInformedThatOnlyUpToThreeAttestationsCanBeBookmarked() {
-    }
-
     @When("the user opens the issuer details from the attestation")
     public void theUserOpensTheIssuerDetailsFromTheAttestation() {
+        test.mobile().wallet().openIssuerDetails();
     }
 
     @Then("the issuer details are displayed to the user")
     public void theIssuerDetailsAreDisplayedToTheUser() {
-    }
-
-    @When("the user opens the transaction history from the attestation")
-    public void theUserOpensTheTransactionHistoryFromTheAttestation() {
-    }
-
-    @Then("the latest transactions for the attestation are displayed")
-    public void theLatestTransactionsForTheAttestationAreDisplayed() {
+        test.mobile().wallet().issuerDetailsAreDisplayed();
     }
 
     @When("the user closes the attestation details without deleting it")
     public void theUserClosesTheAttestationDetailsWithoutDeletingIt() {
+        test.mobile().wallet().clickBackButton();
     }
 
     @Then("the user lands back on the Documents screen")
     public void theUserLandsBackOnTheDocumentsScreen() {
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 
     @When("the user reopens the attestation and selects the delete option")
     public void theUserReopensTheAttestationAndSelectsTheDeleteOption() {
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().clickPIDFromKotlin();
+        } else {
+            test.mobile().wallet().openPidAttestation();
+        }
+        test.mobile().wallet().removeAttestation();
     }
 
     @Then("the attestation gets removed from the EUDI Wallet")
     public void theAttestationGetsRemovedFromTheEUDIWallet() {
+        //no action occurs in automation
     }
 
     @And("the Documents screen no longer lists the deleted attestation")
     public void theDocumentsScreenNoLongerListsTheDeletedAttestation() {
+        test.mobile().wallet().attestationRemovedFromDocuments(this.issuerType);
     }
 
     @Given("the user is accessing {} service")

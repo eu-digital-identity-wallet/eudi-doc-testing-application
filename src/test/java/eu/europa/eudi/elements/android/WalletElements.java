@@ -64,7 +64,7 @@ public class WalletElements {
     public static By pidSdJwtIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
     public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
     public static By clickPreAuthorizationCode = By.xpath("//android.widget.RadioButton[@resource-id=\"check2\"]");
-    public static By deferredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
+    public static By deferredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\" or @text=\"PID (MSO MDoc) (deferred)\"]");
     public static By notificationForDeferred = By.xpath("//android.widget.TextView[@text=\"In progress!\"]");
     public static By pendigStatus = By.xpath("//android.widget.TextView[@text=\"Pending\"]");
     public static By popUpConfirmation = By.xpath("//android.widget.TextView[@text=\"Documents issued\"]");
@@ -79,6 +79,13 @@ public class WalletElements {
     public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
+    public static By openIssuerDetails = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer\"]");
+    public static By expiresOnLabel = By.xpath("//android.widget.TextView[starts-with(@text, \"Expires on:\")]");
+    public static By issuedOnLabel = By.xpath("//android.widget.TextView[starts-with(@text, \"Issued on:\")]");
+    public static By reissueDocumentText = By.xpath("//android.widget.TextView[@text=\"You may reissue this document at any time.\"]");
+    public static By threeDotMenu = By.xpath("//android.view.View[@content-desc=\"More Items\"]");
+    public static By clickRemoveInDropdown = By.xpath("//android.widget.TextView[@text=\"Remove\"]");
+    public static By selectRemove = By.xpath("//android.view.View[contains(@resource-id, \"id/document_details_screen_dialogue_delete_document_positive_button\")]");
     public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
     public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
     public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
