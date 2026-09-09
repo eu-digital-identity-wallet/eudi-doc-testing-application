@@ -166,11 +166,21 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(BROWSERSTACK_INTERACTIVE_DEBUGGING);
     }
     public String getAppiumBrowserstackGeneralUsername() {
-        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_USERNAME);
+        String fromProps =
+                getEnvProperties().getProperty(BROWSERSTACK_GENERAL_USERNAME);
+        if (fromProps != null && !fromProps.isBlank()) {
+            return fromProps;
+        }
+        return System.getenv("BROWSERSTACK_USERNAME");
     }
 
     public String getAppiumBrowserstackGeneralAccesskey() {
-        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_ACCESS_KEY);
+        String fromProps =
+                getEnvProperties().getProperty(BROWSERSTACK_GENERAL_ACCESS_KEY);
+        if (fromProps != null && !fromProps.isBlank()) {
+            return fromProps;
+        }
+        return System.getenv("BROWSERSTACK_ACCESS_KEY");
     }
 
     public String getExecutionEnvironment() {
