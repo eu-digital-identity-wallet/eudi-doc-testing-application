@@ -1,4 +1,4 @@
-@IOS @automated @US_SD
+@ANDROID @automated @US_SD @REG_GENERAL
 Feature: Sign Document through EUDI Wallet
   As a EUDI Wallet User,
   I want to provide my explicit consent on signing a document through my EUDI Wallet and sing the document
@@ -23,5 +23,5 @@ Feature: Sign Document through EUDI Wallet
     Then the EUDI Wallet allows the user to share the document or close the process
     Examples:
       | issuer |
-      | Python |
       | Kotlin |
+      | Python |
