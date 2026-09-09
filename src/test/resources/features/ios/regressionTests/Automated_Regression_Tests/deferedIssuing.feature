@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DI
+@IOS @automated @US_DI @REG_GENERAL
 Feature: Deferred Credential Issuance
   As a user interacting with the issuer service
   I want to receive a credential through deferred issuance
