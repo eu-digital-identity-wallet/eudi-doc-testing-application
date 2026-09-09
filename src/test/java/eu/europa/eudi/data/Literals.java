@@ -43,7 +43,9 @@ public interface Literals {
         NOTIFICATION_DEFERRED_WALLET_IOS("In progress"),
         COUNTER_DISPLAYED("30/30"), COUNTER_DISPLAYED_KOTLIN("7/7"),
         AUTHENTICATION_ERROR("Invalid pin"),
-        SUCCESSFULLY_SIGNED("You have successfully signed your document.");
+        SUCCESSFULLY_SIGNED("You have successfully signed your document."),
+        DASHBOARD_PAGE_SECOND("Welcome, Nikos"),
+        DASHBOARD_PAGE_SECOND_KOTLIN("Welcome, Tyler");
 
         public final String label;
         Wallet(String label) {
@@ -88,8 +90,7 @@ public interface Literals {
         CREDENTIAL_PAGE("Please select credentials"),
         QR_CODE("QR Code"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
-        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
+        SUCCESSFULLY_SHARED("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Please review the selected attributes before sending to the EudiWallet demo app."),
         FORM_IOS("1"),
         ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),

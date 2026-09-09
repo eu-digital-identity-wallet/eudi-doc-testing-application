@@ -4,6 +4,8 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 
 import eu.europa.eudi.utils.factory.*;
 import io.cucumber.java.Scenario;
+
+import java.io.File;
 import java.net.MalformedURLException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -17,6 +19,7 @@ public class TestSetup {
     String systemOperation;
     Scenario scenario;
     private String transactionCode;
+    private File currentLogFile;
 
     public TestSetup(boolean noReset, String systemOperation, Scenario scenario) {
         this.systemOperation = systemOperation;
@@ -85,12 +88,16 @@ public class TestSetup {
 
         int scenarioNumber = getNextScenarioNumber(featureName);
 
-        MobileDeviceLogger.startLogging(
+        this.currentLogFile = MobileDeviceLogger.startLogging(
                 featureDirPath,
                 featureName,
                 String.valueOf(scenarioNumber),
                 systemOperation
         );
+    }
+
+    public File getCurrentLogFile() {
+        return currentLogFile;
     }
 
     private static final ConcurrentHashMap<String, AtomicInteger> SCENARIO_COUNTERS =

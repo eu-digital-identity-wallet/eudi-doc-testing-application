@@ -90,4 +90,6 @@ public class WalletElements {
     public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_eye_slash_button\" or @name=\"document_details_screen_eye_button\"]");
     public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
     public static By deferredPid = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
+    public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
+
 }
