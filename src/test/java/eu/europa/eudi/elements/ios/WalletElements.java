@@ -28,7 +28,7 @@ public class WalletElements {
     public static By clickExpandVerificationForSDJWT = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"PID (SD-JWT VC\")]");
     public static By clickExpandVerificationMSODoc = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc)\"]");
     public static By clickExpandNationality = By.xpath("//XCUIElementTypeStaticText[@label='Nationality' or @name='Nationalities']");
-    public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeButton[.//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']]");
+    public static By clickExpandPlaceOfBirth = By.xpath("//XCUIElementTypeStaticText[@label='Place of Birth' or @name='Birth Place']");
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
@@ -80,6 +80,9 @@ public class WalletElements {
     public static By clickX = By.xpath("//XCUIElementTypeButton[@name=\"xmark\"]");
     public static By placeOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Place\"]");
     public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_eye_slash_button\" or @name=\"document_details_screen_eye_button\"]");
-    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
-    public static By deferredPid = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
+    public static By expiresOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Expires on:\")]");
+    public static By issuedOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Issued on:\")]");
+    public static By reissueDocumentText = By.xpath("//XCUIElementTypeStaticText[@name=\"You may reissue this document at any time.\"]");
+    public static By openIssuerDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
+    public static By deleteButton = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_delete_button\"]");
 }

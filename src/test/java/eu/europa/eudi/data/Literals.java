@@ -59,7 +59,9 @@ public interface Literals {
         WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
         WALLET_RESPONDED_SDJWT("urn:eudi:pid:1"),
         TRANSACTION_CODE_PAGE("Digital Credentials Issuer requires verification"),
-        DEFERRED_IS_DISPLAYED("PID (MSO Mdoc Deferred)");
+        DEFERRED_IS_DISPLAYED("PID (MSO Mdoc Deferred)"),
+        DEFERRED_IS_DISPLAYED_KOTLIN("PID (MSO MDoc) (deferred)"),
+        DEFERRED_IS_DISPLAYED_IOS("PID (MSO Mdoc deferred)");
 
         public final String label;
         Verifier(String label) {
