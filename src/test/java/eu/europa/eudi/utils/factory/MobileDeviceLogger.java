@@ -39,6 +39,10 @@ public class MobileDeviceLogger {
                     featureName + "_" + scenarioNumber + ".log"
             );
 
+            if (!logDir.exists() && !logDir.mkdirs()) {
+                throw new IOException("Cannot create log directory: " + logDir);
+            }
+
             if (logFile.exists() && !logFile.delete()) {
                 throw new IOException("Cannot delete old log file: " + logFile);
             }
