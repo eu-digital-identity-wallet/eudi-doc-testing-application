@@ -2820,7 +2820,7 @@ public class Issuer {
             test.mobile().issuer().signInUser();
             test.mobile().issuer().fillLoginForm();
         }else{
-            test.mobile().wallet().defferedIsDisplayed();
+            test.mobile().wallet().defferedIsDisplayed(issuerType);
         }
     }
 }
