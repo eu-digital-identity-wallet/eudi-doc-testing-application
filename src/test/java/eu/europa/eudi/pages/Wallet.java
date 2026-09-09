@@ -653,7 +653,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PID_KOTLIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_KOTLIN.label, pageHeader);
         }
     }
 
@@ -1792,15 +1792,21 @@ public class Wallet {
         }
     }
 
-    public void defferedIsDisplayed() {
+    public void defferedIsDisplayed(String issuerType) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String headerText = driver.findElement(eu.europa.eudi.elements.android.WalletElements.deferredIsDisplayed).getText();
-            Assert.assertEquals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label, headerText);
+            Assert.assertTrue("Unexpected deferred PID label: " + headerText, headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label) || headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED_KOTLIN.label));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.deferredIsDisplayed).getText();
-            Assert.assertEquals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label, headerText);
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.deferredIsDisplayedKotlin).getText();
+                Assert.assertEquals(Literals.Verifier.DEFERRED_IS_DISPLAYED_KOTLIN.label, headerText);
+            } else {
+                String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.deferredIsDisplayed).getText();
+                Assert.assertTrue("Unexpected deferred PID label: " + headerText,
+                        headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label) || headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED_IOS.label));
+            }
         }
     }
 
@@ -2119,18 +2125,18 @@ public class Wallet {
                 Assert.assertEquals("Hide", contentDesc);
             }
         } else {
-            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.eyeIcon)).getAttribute("label");
+            String name = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.eyeIcon)).getAttribute("name");
             if ("yes".equalsIgnoreCase(blurred)) {
-                Assert.assertEquals("Show", label);
+                Assert.assertEquals("document_details_screen_eye_slash_button", name);
             } else {
-                Assert.assertEquals("Hide", label);
+                Assert.assertEquals("document_details_screen_eye_button", name);
             }
         }
     }
 
     public void clickEyeIcon() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.eyeIcon)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.eyeIcon)).click();
         }
@@ -2174,29 +2180,83 @@ public class Wallet {
         }
     }
 
-    public void clickBookmarkButton() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.bookmarkIcon)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.bookmarkIcon)).click();
+    public void openIssuerDetails() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails)).click();
         }
     }
 
-    public void bookmarkIsMarked() {
+    public void scrollUpForIssuerDetails() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String contentDesc = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.bookmarkIcon)).getAttribute("content-desc");
-            Assert.assertEquals("Bookmark filled", contentDesc);
-        } else {
-            String name = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.bookmarkIcon)).getAttribute("name");
-            Assert.assertEquals("bookmark.fill", name);
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(WalletElements.expiresOnLabel);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+                els = driver.findElements(WalletElements.expiresOnLabel);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Issuer details not found after scrolling up");
+            }
         }
     }
 
-    public void clickDeferredPid() {
+    public void issuerDetailsAreDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.deferredIsDisplayed)).click();
+            scrollUpForIssuerDetails();
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.expiresOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.issuedOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.reissueDocumentText)).isDisplayed());
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.deferredPid)).click();
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.expiresOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuedOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.reissueDocumentText)).isDisplayed());
+        }
+    }
+
+    public void removeAttestation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.threeDotMenu)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickRemoveInDropdown)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectRemove)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.deleteButton);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                try {
+                    MobileActionsUtils.slowScroll();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                count++;
+                els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.deleteButton);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Delete button not found after scrolling down");
+            }
+
+            els.get(0).click();
+        }
+    }
+
+    public void attestationRemovedFromDocuments(String issuerType) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            By locator = "kotlin".equalsIgnoreCase(issuerType) ? WalletElements.clickPidFromKotlin : WalletElements.pidMdocIsDisplayed;
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.invisibilityOfElementLocated(locator)));
+        } else {
+            By locator = "kotlin".equalsIgnoreCase(issuerType) ? eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlin : eu.europa.eudi.elements.ios.WalletElements.pidMdocIsDisplayed;
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.invisibilityOfElementLocated(locator)));
         }
     }
 
