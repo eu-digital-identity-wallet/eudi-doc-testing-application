@@ -22,9 +22,10 @@ on:
         description: 'Android Tags to execute'
         type: choice
         options:
-          - PID mso_mdoc
-          - MDL
-          - PID_sdjwt
+          - REG_ISSUANCE_PRESENTATION_PID_mso_mdoc
+          - REG_ISSUANCE_PRESENTATION_MDL
+          - REG_ISSUANCE_PRESENTATION_PID_sdjwt
+          - REG_GENERAL
 
 jobs:
   build:
@@ -61,8 +62,8 @@ jobs:
         run: |
           rm -rf target/serenity
           rm -rf target/site/reports
-          rm -rf target/site/serenity
           rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
+          find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
@@ -92,6 +93,41 @@ jobs:
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
 
+      - name: Diagnose Chrome and ChromeDriver
+        run: |
+         echo "========== Chrome =========="
+         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
+         echo "========== ChromeDriver =========="
+         which chromedriver || true
+         chromedriver --version || true
+
+          echo "========== Selenium Manager cache =========="
+          ls -la ~/.cache/selenium 2>/dev/null || true
+          find ~/.cache/selenium -maxdepth 3 -type f 2>/dev/null || true
+
+          echo "========== CHROMEDRIVER_PATH =========="
+          echo "${CHROMEDRIVER_PATH:-NOT_SET}"
+
+          echo "========== Selenium dependencies =========="
+          mvn dependency:tree -Dincludes=org.seleniumhq.selenium
+
+      - name: Inspect Chrome installations
+        run: |
+         echo "===== Applications ====="
+         ls -la /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome || true
+
+         echo "===== Chrome locations ====="
+         which -a google-chrome || true
+         which -a chrome || true
+         which -a chromium || true
+
+         echo "===== Chrome processes ====="
+         ps aux | grep -i '[C]hrome' || true
+
+         echo "===== Chrome version ====="
+         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
+
       # ---------------- TEST EXECUTION (FIXED) ----------------
       - name: Run Android Tests on BrowserStack
         continue-on-error: true
@@ -109,7 +145,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
           
           # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -125,7 +161,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 2 ----------------
+      # ---------------- RERUN PASS 2 ----------------
       - name: Rerun Pass 2
         if: always()
         run: |
@@ -139,7 +175,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- RERUN PASS 3 ----------------
+      # ---------------- RERUN PASS 3 ----------------
       - name: Rerun Pass 3
         if: always()
         run: |
@@ -153,7 +189,7 @@ jobs:
         if: always()
         run: python3 merge_serenity_results.py || true
 
-  # ---------------- REPORT ----------------
+      # ---------------- REPORT ----------------
       - name: Generate Serenity Report
         if: always()
         run: |
@@ -162,8 +198,8 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-            REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.07.39-Demo"
-            cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
