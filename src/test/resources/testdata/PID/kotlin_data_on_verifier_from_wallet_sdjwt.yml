@@ -1,0 +1,11 @@
+screen: "Wallet Data To Verifier - Kotlin PID Specific Attributes"
+
+fields:
+
+  "family name":
+    value: "Neal"
+    required: true
+
+  "given name":
+    value: "Tyler"
+    required: true

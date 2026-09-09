@@ -38,7 +38,7 @@ Feature: User onboarding experience
     Then the greeting is updated to Welcome, [Name]
 
   @US_IOFUEDTA_TC_06 @manual:Passed
-  Scenario: Home tab greeting update
+  Scenario: Home tab greeting updated
     Given the user opens the app
     When user navigates to the Home tab
     Then the hyperlink Learn more is a button
