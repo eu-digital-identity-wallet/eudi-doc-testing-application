@@ -36,7 +36,7 @@ public class WalletElements {
     public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
-    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"] | //XCUIElementTypeButton[@name=\"chevron.left\"]");
+    public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
     public static By clickToAddDocument = By.id("plus");
     public static By clickFromList = By.id("Choose from list");
     public static By secondPidIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@label='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO Mdoc)'] | //XCUIElementTypeStaticText[@name='PID (MSO MDoc)']");
@@ -62,11 +62,19 @@ public class WalletElements {
     public static By pidMdocIsDisplayed = AppiumBy.accessibilityId("PID (MSO Mdoc)");
     public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.accessibilityId("PID (SD-JWT VC Compact)");
     public static By pidSdJwtIsDisplayedOnDocumentsPython = AppiumBy.accessibilityId("PID (SD-JWT VC)");
-    public static By clickPidSdjwt =  By.id("PID (SD-JWT VC)");
+    public static By clickPidSdjwt = By.id("PID (SD-JWT VC)");
     public static By clickExpandDetails = By.xpath("//XCUIElementTypeImage[@label=\"Go Down\"]");
     public static By clickPreAuthorizationCode = By.xpath("//XCUIElementTypeOther[@name=\"Pre-Authorization Code Grant\"]");
-    public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
-    public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
+    public static By clickOkButton = By.xpath("(//XCUIElementTypeButton[@name=\"OK\"])");
+    public static By inspectDeferredDocument = By.xpath("(//XCUIElementTypeImage[@name=\"chevron.right\"])");
+    public static By notificationForDeferred = By.xpath("(//XCUIElementTypeStaticText[@name=\"success_screen_title\"])");
+    public static By pendigStatus = By.xpath("(//XCUIElementTypeStaticText[@name=\"Pending\"])");
+    public static By pidDefrredIsDisplayedPython = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"])");
+    public static By popUpConfirmation = By.id("Documents issued");
+    public static By pidDefrredIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc) (deferred)\"])");
+    public static By counterIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"30/30\"])");
+    public static By counterIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"7/7\"])");
+    public static By authenticationError = By.xpath("(//XCUIElementTypeStaticText[@name=\"Invalid pin\"])");
     public static By clickHome = By.xpath("//XCUIElementTypeButton[@name=\"home_tab\"]");
     public static By clickSignDocument = By.xpath("//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_sign_button\"]");
     public static By clickSelectDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Select document\"]");
@@ -85,4 +93,8 @@ public class WalletElements {
     public static By reissueDocumentText = By.xpath("//XCUIElementTypeStaticText[@name=\"You may reissue this document at any time.\"]");
     public static By openIssuerDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
     public static By deleteButton = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_delete_button\"]");
+    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
+    public static By deferredPid = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\"]");
+    public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
+
 }

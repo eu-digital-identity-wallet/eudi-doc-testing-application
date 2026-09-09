@@ -25,6 +25,7 @@ on:
           - PID_mso_mdoc
           - MDL
           - PID_sdjwt
+          - US_SD
 
 jobs:
   build:
@@ -61,8 +62,8 @@ jobs:
         run: |
           rm -rf target/serenity
           rm -rf target/site/reports
-          rm -rf target/site/serenity
           rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
+          find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
