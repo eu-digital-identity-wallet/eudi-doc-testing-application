@@ -208,7 +208,7 @@ public class TestHooks {
 
                 if (conn.getResponseCode() == 200) {
 
-                    File file = MobileDeviceLogger.getCurrentLogFile();
+                    File file = test.getCurrentLogFile();
 
                     if (file == null) {
                         file = new File("logs/ui/fallback.log");

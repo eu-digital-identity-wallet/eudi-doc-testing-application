@@ -1,6 +1,7 @@
 package eu.europa.eudi.elements.android;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class WalletElements {
@@ -15,8 +16,12 @@ public class WalletElements {
     public static By loginPageIsDisplayed = By.id(APP_PACKAGE + ":id/biometric_screen_title");
     public static By clickPID = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.pid_mdoc,eu.europa.ec.eudi.pid_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.pid_mdoc,eu.europa.ec.eudi.pid_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.pid_mdoc,eu.europa.ec.eudi.pid_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt\"]/android.view.View/android.view.View");
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
+    public static By PIDIsDisplayedPython = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlPython = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View/android.view.View");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
+    public static By dashboardPageIsDisplayedSecond = By.xpath("//android.widget.TextView[@text=\"Welcome, Nikos\"]");
+    public static By dashboardPageIsDisplayedSecondKotlin = By.xpath("//android.widget.TextView[@text=\"Welcome, Tyler\"]");
+    public static By dashboardPageIsDisplayedDeferred = By.xpath("//android.widget.TextView[@text=\"Welcome\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
     public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
@@ -63,6 +68,13 @@ public class WalletElements {
     public static By notificationForDeferred = By.xpath("//android.widget.TextView[@text=\"In progress!\"]");
     public static By pendigStatus = By.xpath("//android.widget.TextView[@text=\"Pending\"]");
     public static By popUpConfirmation = By.xpath("//android.widget.TextView[@text=\"Documents issued\"]");
+    public static By pidDefrredIsDisplayedPython = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
+    public static By pidDefrredIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"PID (MSO MDoc) (deferred)\"]");
+    public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
+    public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
+    public static By counterIsDisplayed = By.xpath("//android.widget.TextView[@text=\"30/30\"]");
+    public static By counterIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"7/7\"]");;
+    public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
     public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
     public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
@@ -74,4 +86,16 @@ public class WalletElements {
     public static By threeDotMenu = By.xpath("//android.view.View[@content-desc=\"More Items\"]");
     public static By clickRemoveInDropdown = By.xpath("//android.widget.TextView[@text=\"Remove\"]");
     public static By selectRemove = By.xpath("//android.view.View[contains(@resource-id, \"id/document_details_screen_dialogue_delete_document_positive_button\")]");
+    public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
+    public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
+    public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
+    public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
+    public static By clickFromDevice = By.xpath("//android.widget.TextView[@text=\"From device\"]");
+    public static By selectSigningService = By.xpath("//android.widget.TextView[@text=\"Select signing service\"]");
+    public static By clickProceed = By.xpath("//android.widget.TextView[@text=\"Done\"]");
+    public static By selectSigningCertificate = By.xpath("//android.widget.TextView[@text=\"Select signing certificate\"]");
+    public static By credentialForTests = By.xpath("//android.widget.TextView[@text=\"This is a credential for tests\"]");
+    public static By successfullySigned = By.xpath("//android.widget.TextView[@text=\"You have successfully signed your document.\"]");
+    public static By clickX = By.xpath("//android.widget.TextView[@text=\"Close\"]");
+    public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"Continue\"]");
 }
