@@ -19,6 +19,8 @@ public class WalletElements {
     public static By PIDIsDisplayedPython = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlPython = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View/android.view.View");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
+    public static By dashboardPageIsDisplayedSecond = By.xpath("//android.widget.TextView[@text=\"Welcome, Nikos\"]");
+    public static By dashboardPageIsDisplayedSecondKotlin = By.xpath("//android.widget.TextView[@text=\"Welcome, Tyler\"]");
     public static By dashboardPageIsDisplayedDeferred = By.xpath("//android.widget.TextView[@text=\"Welcome\"]");
     public static By addDoc = By.xpath("//android.view.View[@content-desc=\"Add\"]");
     public static By addDocumentPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Add document\"]");
@@ -78,4 +80,15 @@ public class WalletElements {
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
     public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
+    public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
+    public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
+    public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
+    public static By clickFromDevice = By.xpath("//android.widget.TextView[@text=\"From device\"]");
+    public static By selectSigningService = By.xpath("//android.widget.TextView[@text=\"Select signing service\"]");
+    public static By clickProceed = By.xpath("//android.widget.TextView[@text=\"Done\"]");
+    public static By selectSigningCertificate = By.xpath("//android.widget.TextView[@text=\"Select signing certificate\"]");
+    public static By credentialForTests = By.xpath("//android.widget.TextView[@text=\"This is a credential for tests\"]");
+    public static By successfullySigned = By.xpath("//android.widget.TextView[@text=\"You have successfully signed your document.\"]");
+    public static By clickX = By.xpath("//android.widget.TextView[@text=\"Close\"]");
+    public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"Continue\"]");
 }

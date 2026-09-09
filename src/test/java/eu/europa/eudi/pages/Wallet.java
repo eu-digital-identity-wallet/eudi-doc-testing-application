@@ -300,10 +300,16 @@ public class Wallet {
         }
     }
 
-    public void dashboardPageIsDisplayed() {
+    public void dashboardPageIsDisplayed(String issuerType) {
+        this.issuerType = issuerType;
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE.label, pageHeader);
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.dashboardPageIsDisplayedSecondKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE_SECOND_KOTLIN.label, pageHeader);
+            }else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayedSecond)).getText();
+                Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE_SECOND.label, pageHeader);
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.dashboardPageIsDisplayed)).isDisplayed();
         }
@@ -1977,7 +1983,7 @@ public class Wallet {
 
     public void clickSignDocument() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSignDocument)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSignDocument)).click();
         }
@@ -1985,7 +1991,7 @@ public class Wallet {
 
     public void clickSelectDocument() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSelectDocument)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSelectDocument)).click();
         }
@@ -1993,7 +1999,7 @@ public class Wallet {
 
     public void selectSamplePDF() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPDFSample)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPDFSample)).click();
         }
@@ -2001,7 +2007,7 @@ public class Wallet {
 
     public void selectSigningService() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectSigningService)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectSigningService)).click();
         }
@@ -2017,7 +2023,7 @@ public class Wallet {
 
     public void clickProceed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickProceed)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
         }
@@ -2025,7 +2031,7 @@ public class Wallet {
 
     public void selectSigningCertificate() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectSigningCertificate)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectSigningCertificate)).click();
         }
@@ -2033,7 +2039,7 @@ public class Wallet {
 
     public void clickCredentialForTests() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.credentialForTests)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.credentialForTests)).click();
         }
@@ -2041,7 +2047,8 @@ public class Wallet {
 
     public void successfullySignedTheDoc() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successfullySigned)).getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successfullySigned)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
@@ -2050,7 +2057,7 @@ public class Wallet {
 
     public void clickX() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickX)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.setSetting("autoAcceptAlerts", false);
@@ -2191,5 +2198,13 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.deferredPid)).click();
         }
+    }
+
+    public void clickFromDevice() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickFromDevice)).click();
+    }
+
+    public void clickContinue() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
     }
 }

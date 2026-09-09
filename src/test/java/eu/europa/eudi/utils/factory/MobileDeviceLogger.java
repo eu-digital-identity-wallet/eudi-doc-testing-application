@@ -11,7 +11,7 @@ public class MobileDeviceLogger {
     private static Process logcatProcess;
     private static Thread logcatThread;
 
-    public static void startLogging(String featureDirPath,
+    public static File startLogging(String featureDirPath,
                                     String featureName,
                                     String scenarioNumber,
                                     String platform) {
@@ -57,7 +57,7 @@ public class MobileDeviceLogger {
             // ----------------------------
             if ("browserstack".equalsIgnoreCase(env)) {
                 System.out.println("BrowserStack mode → skipping local logcat, file created");
-                return;
+                return logFile;
             }
 
             // ----------------------------
@@ -111,8 +111,11 @@ public class MobileDeviceLogger {
             logcatThread.setDaemon(true);
             logcatThread.start();
 
+            return logFile;
+
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 

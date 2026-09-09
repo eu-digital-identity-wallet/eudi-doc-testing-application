@@ -263,7 +263,7 @@ public class AutomatedStepDefs {
 
     @And("EUDI Wallet should return the user to the main page")
     public void eudiWalletShouldReturnTheUserToTheMainPage() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
     }
 
     @Then("the EUDI Wallet enables the user to share the document or close the process")
@@ -313,7 +313,7 @@ public class AutomatedStepDefs {
 
     @And("the user views the document on the dashboard which issued based on the PID")
     public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
         test.mobile().wallet().clickOnDocuments();
     }
 
@@ -328,7 +328,7 @@ public class AutomatedStepDefs {
 
     @Then("the dashboard appears with the document grayed out and in a pending state")
     public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
         test.mobile().wallet().clickOnDocuments();
     }
 
@@ -405,7 +405,7 @@ public class AutomatedStepDefs {
 
     @Then("the Wallet uses an attestation not previously presented to any Relying Party")
     public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
         test.mobile().wallet().clickOnDocuments();
     }
 
@@ -428,7 +428,7 @@ public class AutomatedStepDefs {
 
     @Then("issuer service issues multiple attestations")
     public void issuerServiceIssuesMultipleAttestations() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
         test.mobile().wallet().clickOnDocuments();
         test.mobile().wallet().nationalIdIsDisplayed();
     }
@@ -735,6 +735,9 @@ public class AutomatedStepDefs {
     @When("the EUDI Wallet fetches the Credential ID details from the QTSP")
     public void theEUDIWalletFetchesTheCredentialIDDetailsFromTheQTSP() {
         test.mobile().wallet().clickSignDocument();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickFromDevice();
+        }
         test.mobile().wallet().clickSelectDocument();
         test.mobile().wallet().selectSamplePDF();
     }
@@ -762,7 +765,7 @@ public class AutomatedStepDefs {
 
     @And("the EUDI Wallet redirects the user to the main page")
     public void theEUDIWalletRedirectsTheUserToTheMainPage() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
     }
 
     @When("the EUDI Wallet asks the user to consent to the release of the requested attestation")
@@ -785,6 +788,9 @@ public class AutomatedStepDefs {
         test.mobile().wallet().selectSigningCertificate();
         test.mobile().wallet().clickCredentialForTests();
         test.mobile().wallet().clickProceed();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
 
@@ -804,7 +810,10 @@ public class AutomatedStepDefs {
 
     @Then("the EUDI Wallet allows the user to share the document or close the process")
     public void theEUDIWalletAllowsTheUserToShareTheDocumentOrCloseTheProcess() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickX();
+        }
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
     }
 
     @Given("the user issues two attestations using {}")
