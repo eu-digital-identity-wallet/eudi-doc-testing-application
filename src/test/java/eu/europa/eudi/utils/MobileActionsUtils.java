@@ -225,8 +225,8 @@ public class MobileActionsUtils {
 
             int x = width / 2;
 
-            int startY = (int) (height * 0.80); // Start near bottom
-            int endY = (int) (height * 0.25);   // Move to top
+            int startY = (int) (height * 0.25); // Start near top
+            int endY = (int) (height * 0.80);   // Move to bottom
 
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence swipe = new Sequence(finger, 1);

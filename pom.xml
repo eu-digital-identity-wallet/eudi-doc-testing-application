@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2026.07.39-Demo</version>
+    <version>EUDI_Wallet_Version_2026.08.41-Demo</version>
     <packaging>jar</packaging>
 
     <properties>

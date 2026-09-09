@@ -1,0 +1,59 @@
+screen: "Wallet Data From Kotlin Issuer"
+
+fields:
+
+#  "Birth Date":
+#    value: "12 Apr 1955"
+#    required: true
+
+  "Birth Family Name(s)":
+    value: "Neal"
+    required: true
+
+  "Birth Given Name(s)":
+    value: "Tyler"
+    required: true
+
+  "Document Number":
+    value: ""
+    required: true
+
+  "Email Address":
+    value: "tyler.neal@example.com"
+    required: false
+
+  "Expiry Date":
+    value: ""
+    required: true
+
+  "Family Name(s)":
+    value: "Neal"
+    required: true
+
+  "Given Name(s)":
+    value: "Tyler"
+    required: true
+
+  "Issuing Authority":
+    value: "GR Administrative authority"
+    required: true
+
+  "Issuance Date":
+    value: ""
+    required: true
+
+  "Issuing Country":
+    value: "GR"
+    required: true
+
+  "Issuing Jurisdiction":
+    value: "GR-I"
+    required: true
+
+  "Nationality":
+    value: "AT"
+    required: true
+
+  "Sex":
+    value: "Male"
+    required: true
