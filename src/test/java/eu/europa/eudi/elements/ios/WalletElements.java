@@ -88,6 +88,8 @@ public class WalletElements {
     public static By clickX = By.xpath("//XCUIElementTypeButton[@name=\"xmark\"]");
     public static By placeOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Place\"]");
     public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_eye_slash_button\" or @name=\"document_details_screen_eye_button\"]");
+    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
+    public static By bookmarkIconFilled = By.xpath("//XCUIElementTypeButton[@name=\"bookmark.fill\"]");
     public static By expiresOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Expires on:\")]");
     public static By issuedOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Issued on:\")]");
     public static By reissueDocumentText = By.xpath("//XCUIElementTypeStaticText[@name=\"You may reissue this document at any time.\"]");
