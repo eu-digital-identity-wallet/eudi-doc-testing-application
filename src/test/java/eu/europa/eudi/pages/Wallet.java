@@ -2291,4 +2291,13 @@ public class Wallet {
     public void clickContinue() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
     }
+
+    public void nameOfIssuerDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //todo
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
+        }
+    }
 }

@@ -38,7 +38,7 @@ public class WalletElements {
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID (MSO MDoc)\"])");
-    public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
+    public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome\"]");
     public static By clickDownArrow = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");

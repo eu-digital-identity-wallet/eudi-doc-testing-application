@@ -21,7 +21,7 @@ public interface Literals {
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
-        HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
+        HOME_PAGE_IS_DISPLAYED("Welcome"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
@@ -45,7 +45,8 @@ public interface Literals {
         AUTHENTICATION_ERROR("Invalid pin"),
         SUCCESSFULLY_SIGNED("You have successfully signed your document."),
         DASHBOARD_PAGE_SECOND("Welcome, Nikos"),
-        DASHBOARD_PAGE_SECOND_KOTLIN("Welcome, Tyler");
+        DASHBOARD_PAGE_SECOND_KOTLIN("Welcome, Tyler"),
+        NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer");
 
         public final String label;
         Wallet(String label) {
