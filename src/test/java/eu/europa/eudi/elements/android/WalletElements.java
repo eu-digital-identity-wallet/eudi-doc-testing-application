@@ -18,7 +18,6 @@ public class WalletElements {
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
     public static By PIDIsDisplayedPython = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlPython = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View/android.view.View");
-    public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By dashboardPageIsDisplayedSecond = By.xpath("//android.widget.TextView[@text=\"Welcome, Nikos\"]");
     public static By dashboardPageIsDisplayedSecondKotlin = By.xpath("//android.widget.TextView[@text=\"Welcome, Tyler\"]");
     public static By dashboardPageIsDisplayedDeferred = By.xpath("//android.widget.TextView[@text=\"Welcome\"]");
@@ -32,6 +31,7 @@ public class WalletElements {
     public static By pinFieldIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PIN\"]");
     public static By clickAddMyDigitalID = By.id(APP_PACKAGE + ":id/success_screen_primary_button");
     public static By clickDocuments = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_documents");
+    public static By documentsTab = By.xpath("//android.widget.TextView[@text=\"Documents\"]");
     public static By clickClose = By.id(APP_PACKAGE + ":id/document_success_screen_button");
     public static By documentsPageIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"Documents\"])[1]");
     public static By clickToAddDocument = By.id(APP_PACKAGE + ":id/documents_screen_plus_button");
@@ -75,18 +75,15 @@ public class WalletElements {
     public static By counterIsDisplayed = By.xpath("//android.widget.TextView[@text=\"30/30\"]");
     public static By counterIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"7/7\"]");;
     public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
-    public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
-    public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
+    public static By clickHome = By.xpath("//android.widget.TextView[@text=\"Home\"]");
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
-    public static By openIssuerDetails = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer\"]");
     public static By expiresOnLabel = By.xpath("//android.widget.TextView[starts-with(@text, \"Expires on:\")]");
     public static By issuedOnLabel = By.xpath("//android.widget.TextView[starts-with(@text, \"Issued on:\")]");
     public static By reissueDocumentText = By.xpath("//android.widget.TextView[@text=\"You may reissue this document at any time.\"]");
     public static By threeDotMenu = By.xpath("//android.view.View[@content-desc=\"More Items\"]");
     public static By clickRemoveInDropdown = By.xpath("//android.widget.TextView[@text=\"Remove\"]");
     public static By selectRemove = By.xpath("//android.view.View[contains(@resource-id, \"id/document_details_screen_dialogue_delete_document_positive_button\")]");
-    public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
     public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
     public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
     public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
@@ -98,4 +95,12 @@ public class WalletElements {
     public static By successfullySigned = By.xpath("//android.widget.TextView[@text=\"You have successfully signed your document.\"]");
     public static By clickX = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"Continue\"]");
+    public static By clickView = By.xpath("//android.widget.TextView[@text=\"VIEW\"]");
+    public static By trustIconIsDisplayed = By.xpath("//android.widget.ImageView[@content-desc=\"Verified\"]");
+    public static By historyIsDisplayed = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]");
+    public static By inPersonIsDisplayed = By.xpath("//android.widget.TextView[@text=\"In person\"]");
+    public static By onlineIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Online\"]");
+    public static By clickScreen = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]");
+    public static By signDocument = By.xpath("//android.widget.TextView[@text=\"Sign document\"]");
+    public static By homeHighlighted = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
 }
