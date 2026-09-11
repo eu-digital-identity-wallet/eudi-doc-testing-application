@@ -33,7 +33,7 @@ public class WalletElements {
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
     public static By clickOnDocuments = By.id("documents_tab");
-    public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
+    public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"home_tab_screen_username_text\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
@@ -88,6 +88,8 @@ public class WalletElements {
     public static By clickX = By.xpath("//XCUIElementTypeButton[@name=\"xmark\"]");
     public static By placeOfBirth = By.xpath("//XCUIElementTypeStaticText[@name=\"Birth Place\"]");
     public static By eyeIcon = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_eye_slash_button\" or @name=\"document_details_screen_eye_button\"]");
+    public static By bookmarkIcon = By.xpath("//XCUIElementTypeButton[@name=\"bookmark\" or @name=\"bookmark.fill\"]");
+    public static By bookmarkIconFilled = By.xpath("//XCUIElementTypeButton[@name=\"bookmark.fill\"]");
     public static By expiresOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Expires on:\")]");
     public static By issuedOnLabel = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Issued on:\")]");
     public static By reissueDocumentText = By.xpath("//XCUIElementTypeStaticText[@name=\"You may reissue this document at any time.\"]");
@@ -102,4 +104,5 @@ public class WalletElements {
     public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
     public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
+    public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
 }
