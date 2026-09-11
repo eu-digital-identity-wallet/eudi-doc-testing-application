@@ -1355,6 +1355,9 @@ public class Wallet {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
+                test.mobile().wallet().clickPIDFromKotlin();
+                test.mobile().wallet().pidDetailsDisplayed(issuerType);
+                test.mobile().wallet().clickBackButton();
             } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
@@ -1365,6 +1368,9 @@ public class Wallet {
             test.mobile().wallet().clickOnDocuments();
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidMdocIsDisplayed();
+                test.mobile().wallet().openPidAttestation();
+                test.mobile().wallet().pidDetailsDisplayed(issuerType);
+                test.mobile().wallet().clickBackButton();
             } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments(issuerType);
             }
@@ -2205,6 +2211,24 @@ public class Wallet {
         }
     }
 
+    public void clickBookmarkButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.bookmarkIcon)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.closeBookmarkSheet)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.bookmarkIcon)).click();
+        }
+    }
+
+    public void bookmarkIsMarked() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String contentDesc = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.bookmarkIcon)).getAttribute("content-desc");
+            Assert.assertEquals("Bookmark filled", contentDesc);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.bookmarkIconFilled));
+        }
+    }
+
     public void openIssuerDetails() {
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails)).click();
@@ -2412,6 +2436,15 @@ public class Wallet {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocument)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
+        }
+    }
+
+    public void nameOfIssuerDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //todo
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
         }
     }
 }

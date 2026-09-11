@@ -1,5 +1,5 @@
 @IOS @automated @US_VD @REG_GENERAL
-Feature: View and manage attestations in the EUDI Wallet
+Feature: View, bookmark and manage attestations in the EUDI Wallet
 
   As a EUDI Wallet User
   I want to be able to view my attestations issued in the EUDI Wallet
@@ -8,8 +8,8 @@ Feature: View and manage attestations in the EUDI Wallet
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/198
 
   @US_VD_TC_01
-  Scenario Outline: View, inspect and delete an attestation through the EUDI Wallet
-    Given the user issues an attestation using <issuer>
+  Scenario Outline: View, bookmark, inspect and delete an attestation through the EUDI Wallet
+    Given the user issues a <credential> attestation using <issuer>
     And the user is on the Home screen of the Wallet
     When the user opens the Documents screen
     Then the Documents screen lists the issued attestations
@@ -20,6 +20,9 @@ Feature: View and manage attestations in the EUDI Wallet
     When the user taps on the eye icon
     Then the attestation details are no longer blurred
     And the user can view the full attestation details
+    When the user taps the bookmark icon on the attestation
+    Then the attestation gets marked as bookmarked
+    And the bookmark icon updates to indicate the bookmarked state
     When the user opens the issuer details from the attestation
     Then the issuer details are displayed to the user
     When the user closes the attestation details without deleting it
@@ -28,6 +31,6 @@ Feature: View and manage attestations in the EUDI Wallet
     Then the attestation gets removed from the EUDI Wallet
     And the Documents screen no longer lists the deleted attestation
     Examples:
-      | issuer |
-      | Python |
-      | Kotlin |
+      | credential     | issuer |
+      | PID (MSO Mdoc) | Python |
+      | PID (MSO Mdoc) | Kotlin |

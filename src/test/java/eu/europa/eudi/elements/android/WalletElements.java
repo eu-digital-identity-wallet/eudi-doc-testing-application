@@ -38,7 +38,7 @@ public class WalletElements {
     public static By clickFromList = By.xpath("//android.widget.TextView[@text=\"From list\"]");
     public static By clickBackButton = By.xpath("//android.view.View[@content-desc=\"Go Back\"]");
     public static By secondPidIsDisplayed = By.xpath("(//android.widget.TextView[@text=\"PID (MSO MDoc)\"])");
-    public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Foteini\"]");
+    public static By homePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome\"]");
     public static By clickDownArrow = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By clickAdd = By.xpath("//android.widget.TextView[@text=\"Add\"]");
     public static By scanQRButton = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[2]/android.view.View[2]/android.widget.Button");
@@ -84,6 +84,8 @@ public class WalletElements {
     public static By threeDotMenu = By.xpath("//android.view.View[@content-desc=\"More Items\"]");
     public static By clickRemoveInDropdown = By.xpath("//android.widget.TextView[@text=\"Remove\"]");
     public static By selectRemove = By.xpath("//android.view.View[contains(@resource-id, \"id/document_details_screen_dialogue_delete_document_positive_button\")]");
+    public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
+    public static By closeBookmarkSheet = By.xpath("//android.view.View[contains(@content-desc, \"Close sheet\")]");
     public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
     public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
     public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
