@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Objects;
 
 public class WebWebDriverFactory {
     private WebDriver webDriver;
@@ -24,7 +25,8 @@ public class WebWebDriverFactory {
 //    }
 
     public void startWebDriverSession() {
-        WebDriverManager.chromedriver().setup();
+        if (Objects.equals(System.getProperty("ci.environment"), "githubactions")){
+            WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
 
@@ -38,8 +40,14 @@ public class WebWebDriverFactory {
                 webDriver,
                 Duration.ofSeconds(30)
         );
+    }else{
+        ChromeOptions options = new ChromeOptions();
+
+        webDriver = new ChromeDriver(options);
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
 
     }
+}
 
     public WebDriver getDriverWeb() {
         return webDriver;

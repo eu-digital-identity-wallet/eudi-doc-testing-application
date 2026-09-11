@@ -786,13 +786,26 @@ public class AutomatedStepDefs {
 
     @Then("the EUDI Wallet shares the requested attestation with the QTSP")
     public void theEUDIWalletSharesTheRequestedAttestationWithTheQTSP() {
+        this.issuerType = issuerType;
         test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+        }else{
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+        }
         test.mobile().wallet().clickDone();
         test.mobile().wallet().selectSigningCertificate();
         test.mobile().wallet().clickCredentialForTests();
         test.mobile().wallet().clickProceed();
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobile().wallet().clickContinue();
+        }
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+        }else{
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
         }
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -802,12 +815,21 @@ public class AutomatedStepDefs {
     @And("a success screen appears with the signed document")
     public void aSuccessScreenAppearsWithTheSignedDocument() {
         test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+        }else{
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+        }
         test.mobile().wallet().clickDone();
     }
 
     @When("the EUDI Wallet obtains the signed document")
     public void theEUDIWalletObtainsTheSignedDocument() {
         test.mobile().wallet().successfullySignedTheDoc();
+        test.mobile().wallet().clickView();
+        test.mobile().wallet().trustIconIsDisplayed();
+        test.mobile().wallet().clickBackButtonSigning();
         test.mobile().wallet().clickX();
     }
 
@@ -821,18 +843,7 @@ public class AutomatedStepDefs {
 
     @Given("the user issues an attestation using {}")
     public void theUserIssuesAnAttestationUsing(String issuerType) throws InterruptedException {
-        this.issuerType = issuerType;
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickAddMyDigitalID();
-        if ("kotlin".equalsIgnoreCase(issuerType)) {
-            test.mobile().wallet().insertPidFromListKotlin();
-            test.mobile().wallet().clickClose();
-        } else {
-            test.mobile().wallet().insertPidFromList();
-            test.mobile().wallet().clickDone();
-        }
+      test.mobile().issuer().userIssuesAnAttestation();
     }
 
     @And("the user is on the Home screen of the Wallet")
@@ -1025,40 +1036,71 @@ public class AutomatedStepDefs {
 
     @When("the user is unable to authenticate using a six-digit PIN or Biometrics")
     public void theUserIsUnableToAuthenticateUsingASixDigitPINOrBiometrics() {
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            test.mobile().wallet().pinFieldIsDisplayed();
-            test.mobile().verifier().insertPIN();
-        }
-        test.mobile().verifier().viewDataPage();
-
-        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
-                test.mobile().wallet().clickPIDFromKotlin();
-            }
-        } else {
-            test.mobile().wallet().clickToViewDetails();
-        }
-
-        if ("Python".equalsIgnoreCase(this.issuerType)) {
-            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
-                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
-                        "testdata/PID/pre_final_shared_data_on_wallet.yml");
-
-            }
-        }
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().pinFieldIsDisplayed();
-        test.mobile().wallet().createAFalsePin();
-
+        test.mobile().wallet().walletUnableToAuthenticate();
     }
 
     @Then("the Wallet displays an authentication error")
     public void theWalletDisplaysAnAuthenticationError() {
+
         test.mobile().wallet().authenticationError();
     }
 
     @Then("the EUDI Wallet notifies the user that the Relying Party is requesting an attestation with {}")
     public void theEUDIWalletNotifiesTheUserThatTheRelyingPartyIsRequestingAnAttestation(String presentationScenario) {
         test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+    }
+
+    @Given("the user is viewing the EUDI Wallet Home screen")
+    public void theUserIsViewingTheEUDIWalletHomeScreen() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+    }
+
+    @Then("the bottom navigation bar displays Home, Documents, and Transactions")
+    public void theBottomNavigationBarDisplaysHomeDocumentsAndTransactions() {
+        test.mobile().wallet().homeIsDisplayed();
+        test.mobile().wallet().documentsIsDisplayed();
+        test.mobile().wallet().historyIsDisplayed();
+    }
+
+    @When("the user chooses the Home option from the bottom navigation bar")
+    public void theUserChoosesTheHomeOptionFromTheBottomNavigationBar() {
+        //NOTHING FOR AUTOMATION
+    }
+
+    @Then("the Home option appears highlighted")
+    public void theHomeOptionAppearsHighlighted() {
+        test.mobile().wallet().homeHighlighted();
+    }
+
+    @And("the Home screen presents the Authenticate and Sign a document sections")
+    public void theHomeScreenPresentsTheAuthenticateAndSignADocumentSections() {
+        test.mobile().wallet().authenticateIsDisplayed();
+        test.mobile().wallet().signIsDisplayed();
+    }
+
+    @When("the user taps the Authenticate section")
+    public void theUserTapsTheAuthenticateSection() {
+        test.mobile().wallet().clickAuthenticate();
+    }
+
+    @Then("the Authenticate section provides In Person and Online options")
+    public void theAuthenticateSectionProvidesInPersonAndOnlineOptions() {
+        test.mobile().wallet().inPersonIsDisplayed();
+        test.mobile().wallet().onlineIsDisplayed();
+    }
+
+    @When("the user selects the Sign a document section")
+    public void theUserSelectsTheSignADocumentSection() {
+        test.mobile().wallet().clickScreen();
+        test.mobile().wallet().clickSignDocument();
+    }
+
+    @Then("the Sign Document screen appears")
+    public void theSignDocumentScreenAppears() {
+        test.mobile().wallet().signDocumentScreen();
     }
 }

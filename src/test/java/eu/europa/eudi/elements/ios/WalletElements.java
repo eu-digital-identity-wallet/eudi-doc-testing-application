@@ -94,5 +94,12 @@ public class WalletElements {
     public static By openIssuerDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
     public static By deleteButton = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_delete_button\"]");
     public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
-
+    public static By clickView = By.xpath("(//XCUIElementTypeImage[@name=\"chevron.right\"])");
+    public static By trustIconIsDisplayed = By.xpath("(//XCUIElementTypeImage[@name=\"verifiedUser\"])");
+    public static By clickBackButtonSigning = By.xpath("//XCUIElementTypeButton[@name=\"BackButton\"]");
+    public static By documentsTab = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
+    public static By inPersonIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"In person\"]");
+    public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
+    public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
+    public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
 }
