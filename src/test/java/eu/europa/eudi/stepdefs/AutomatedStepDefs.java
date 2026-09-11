@@ -953,20 +953,38 @@ public class AutomatedStepDefs {
         test.mobile().wallet().attestationRemovedFromDocuments(this.issuerType);
     }
 
-    @Given("the user visits the Issuer service, generates a QR code for a PID attestation and returns to the Home screen of the Wallet")
-    public void theUserVisitsTheIssuerServiceGeneratesAQRCodeForAPIDAttestationAndReturnsToTheHomeScreenOfTheWallet() throws InterruptedException {
-        test.mobile().issuer().issuerService();
-        test.mobile().issuer().clickissuerService();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilPidIssuer();
-        test.mobile().issuer().selectPidPythonIssuer();
-        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-        test.mobile().issuer().clickSubmitButton();
-        test.mobile().issuer().qrCodeIsDisplayed();
+    @Given("the user visits the Issuer service, generates a QR code for a PID attestation using {} and returns to the Home screen of the Wallet")
+    public void theUserVisitsTheIssuerServiceGeneratesAQRCodeForAPIDAttestationAndReturnsToTheHomeScreenOfTheWallet(String issuerType) throws InterruptedException {
+        this.credential = "PID (MSO Mdoc)";
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().issuer().kotlinIssuerService();
+            test.mobile().issuer().selectPIDKotlin();
+            test.mobile().issuer().scrollUntilGenerate();
+            test.mobile().issuer().clickGenerate();
+            test.mobile().issuer().qrCodeIsDisplayedKotlin();
+        } else {
+            test.mobile().issuer().issuerService();
+            test.mobile().issuer().clickissuerService();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+            test.mobile().issuer().scrollUntilPidIssuer();
+            test.mobile().issuer().selectPidPythonIssuer();
+            test.mobile().issuer().scrollUntilFindSubmitIssuer();
+            test.mobile().issuer().clickSubmitButton();
+            test.mobile().issuer().qrCodeIsDisplayed();
+        }
         test.mobile().verifier().captureScreen();
-        test.mobile().wallet().restartApp();
+        test.mobile().wallet().launchApp();
         test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
         test.mobile().wallet().homePageIsDisplayed();
+    }
+
+    @When("the user taps the add document button on the Documents screen")
+    public void theUserTapsTheAddDocumentButtonOnTheDocumentsScreen() {
+        test.mobile().wallet().clickToAddDocument();
     }
 
     @Then("the wallet displays the Add document screen")
@@ -997,34 +1015,60 @@ public class AutomatedStepDefs {
     @Then("the wallet displays the credential offer with the attestation to be issued and the name of the issuer")
     public void theWalletDisplaysTheCredentialOfferWithTheAttestationToBeIssuedAndTheNameOfTheIssuer() throws InterruptedException {
         test.mobile().issuer().viewDataPage();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        } else {
+            test.mobile().wallet().pidMdocIsDisplayed();
+        }
+        test.mobile().wallet().nameOfIssuerDisplayed();
     }
 
     @When("the user selects the Cancel button on the credential offer")
     public void theUserSelectsTheCancelButtonOnTheCredentialOffer() {
+        test.mobile().wallet().clickX();
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickBackButton();
     }
 
     @Then("the issuing process is canceled")
     public void theIssuingProcessIsCanceled() {
+        //no action occurs in automation
     }
 
     @And("the user is returned to the Documents screen")
     public void theUserIsReturnedToTheDocumentsScreen() {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().documentsPageIsDisplayed();
     }
 
     @And("the user selects the Add document button on the credential offer")
-    public void theUserSelectsTheAddDocumentButtonOnTheCredentialOffer() {
+    public void theUserSelectsTheAddDocumentButtonOnTheCredentialOffer() throws InterruptedException {
+        test.mobile().wallet().clickAddButton();
     }
 
     @Then("the user proceeds with the attestation issuing flow")
-    public void theUserProceedsWithTheAttestationIssuingFlow() {
+    public void theUserProceedsWithTheAttestationIssuingFlow() throws InterruptedException {
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().issuer().signInUser();
+            test.mobile().issuer().fillLoginForm();
+        } else {
+            test.mobile().issuer().issuePID(this.credential);
+        }
     }
 
     @And("the wallet displays a success screen with the details of the issued attestation")
-    public void theWalletDisplaysASuccessScreenWithTheDetailsOfTheIssuedAttestation() {
+    public void theWalletDisplaysASuccessScreenWithTheDetailsOfTheIssuedAttestation() throws InterruptedException {
+        test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, "credential offer");
     }
 
     @Then("the attestation is added to the EUDI Wallet")
     public void theAttestationIsAddedToTheEUDIWallet() {
+        test.mobile().wallet().clickOnDocuments();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        } else {
+            test.mobile().wallet().pidMdocIsDisplayed();
+        }
     }
 
     @Given("the user is accessing {} service")

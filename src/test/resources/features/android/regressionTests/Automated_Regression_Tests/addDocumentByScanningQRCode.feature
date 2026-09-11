@@ -7,11 +7,11 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/199
 
   @US_ADBSQRC_TC_01
-  Scenario: Add a document to the EUDI Wallet by scanning a QR code
-    Given the user visits the Issuer service, generates a QR code for a PID attestation and returns to the Home screen of the Wallet
+  Scenario Outline: Add a document to the EUDI Wallet by scanning a QR code
+    Given the user visits the Issuer service, generates a QR code for a PID attestation using <issuer> and returns to the Home screen of the Wallet
     When the user opens the Documents screen
     Then the Documents screen is displayed
-    When the user selects to add a new document
+    When the user taps the add document button on the Documents screen
     Then the wallet displays the Add document screen
     When the user selects the option to scan a QR code
     Then the wallet opens the scanner to scan the QR code rendered by the Issuer
@@ -26,3 +26,7 @@ Feature: Issuing and storing attestations in the EUDI Wallet via QR code
     And the wallet displays a success screen with the details of the issued attestation
     When the user closes the success screen
     Then the attestation is added to the EUDI Wallet
+    Examples:
+      | issuer |
+      | Python |
+      | Kotlin |

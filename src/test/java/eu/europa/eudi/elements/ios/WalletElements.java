@@ -33,7 +33,7 @@ public class WalletElements {
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
     public static By clickOnDocuments = By.id("documents_tab");
-    public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Welcome back, Foteini\"]");
+    public static By homePageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"home_tab_screen_username_text\"]");
     public static By documentsPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By PIDIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID\" or @name=\"eu_pid_doctype_name\" or @name=\"PID (MSO Mdoc)\"]");
     public static By clickBackButton = By.xpath("//XCUIElementTypeButton[@label=\"Back\"]"); //XCUIElementTypeButton[@name="chevron.left"]
@@ -97,4 +97,5 @@ public class WalletElements {
     public static By deleteButton = By.xpath("//XCUIElementTypeButton[@name=\"document_details_screen_delete_button\"]");
     public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
 
+    public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
 }
