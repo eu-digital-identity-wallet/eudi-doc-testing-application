@@ -102,6 +102,7 @@ public class WalletElements {
     public static By documentsTab = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
     public static By inPersonIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"In person\"]");
     public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
+    public static By clickOnlinePresentation = By.xpath("//XCUIElementTypeButton[@label=\"Online\"]");
     public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
