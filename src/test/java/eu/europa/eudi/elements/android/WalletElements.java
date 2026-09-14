@@ -18,6 +18,7 @@ public class WalletElements {
     public static By PIDIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID\" or @text=\"eu.europa.ec.eudi.pid.1\" or @text=\"PID (MSO MDoc)\"]");
     public static By PIDIsDisplayedPython = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By clickMdlPython = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.mdl_mdoc\"]/android.view.View/android.view.View");
+    public static By clickLoyalty = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.loyalty_mdoc\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.loyalty_mdoc\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer.eudiw.dev_eu.europa.ec.eudi.loyalty_mdoc\"]/android.view.View/android.view.View");
     public static By dashboardPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Welcome back, Nikos\"]");
     public static By dashboardPageIsDisplayedSecond = By.xpath("//android.widget.TextView[@text=\"Welcome, Nikos\"]");
     public static By dashboardPageIsDisplayedSecondKotlin = By.xpath("//android.widget.TextView[@text=\"Welcome, Tyler\"]");
@@ -77,6 +78,8 @@ public class WalletElements {
     public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
     public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
     public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
+    // resource-id still says "transactions" from before the app renamed the tab to "History"
+    public static By clickHistory = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]");
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
     public static By openIssuerDetails = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer\"]");
@@ -99,4 +102,10 @@ public class WalletElements {
     public static By successfullySigned = By.xpath("//android.widget.TextView[@text=\"You have successfully signed your document.\"]");
     public static By clickX = By.xpath("//android.widget.TextView[@text=\"Close\"]");
     public static By clickContinue = By.xpath("//android.widget.TextView[@text=\"Continue\"]");
+    public static By issuerNameDisplayed = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer\"]");
+    public static By clickCancel = By.xpath("//android.widget.TextView[@text=\"Cancel\"]");
+    public static By searchBar = By.xpath("//android.view.View[@content-desc=\"Search\"]");
+    public static By filterButton = By.xpath("//android.view.View[@content-desc=\"Filters\"]");
+    public static By validUntilLabelOnCard = By.xpath("//android.widget.TextView[starts-with(@text, \"Valid until:\")]");
+    public static By healthCategoryHeader = By.xpath("//android.widget.TextView[@text=\"HEALTH\"]");
 }

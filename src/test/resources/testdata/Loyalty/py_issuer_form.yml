@@ -1,0 +1,19 @@
+screen: "PY Issuer Loyalty Mandatory Information Form"
+
+fields:
+
+  "Client Id":
+    value: "1234"
+    required: true
+
+  "Company":
+    value: "Netcompany"
+    required: true
+
+  "Family Name":
+    value: "Papadopoulos"
+    required: true
+
+  "Given Name":
+    value: "Foteini"
+    required: true

@@ -2,23 +2,13 @@ package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.time.Duration;
-import java.util.*;
 
 public class AutomatedStepDefs {
 
@@ -838,6 +828,15 @@ public class AutomatedStepDefs {
         }
     }
 
+    @And("the user issues a Loyalty attestation")
+    public void theUserIssuesALoyaltyAttestation() throws InterruptedException {
+        test.mobile().wallet().insertLoyaltyFromList();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        test.mobile().wallet().clickExpandVerification();
+        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_data_on_wallet.yml");
+        test.mobile().wallet().clickDone();
+    }
+
     @And("the user is on the Home screen of the Wallet")
     public void theUserIsOnTheHomeScreenOfTheWallet() {
         test.mobile().wallet().clickHome();
@@ -1025,9 +1024,13 @@ public class AutomatedStepDefs {
 
     @When("the user selects the Cancel button on the credential offer")
     public void theUserSelectsTheCancelButtonOnTheCredentialOffer() {
-        test.mobile().wallet().clickX();
-        test.mobile().wallet().clickBackButton();
-        test.mobile().wallet().clickBackButton();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickX();
+            test.mobile().wallet().clickBackButton();
+            test.mobile().wallet().clickBackButton();
+        } else {
+            test.mobile().wallet().clickCancel();
+        }
     }
 
     @Then("the issuing process is canceled")
@@ -1196,5 +1199,35 @@ public class AutomatedStepDefs {
     @Then("the EUDI Wallet notifies the user that the Relying Party is requesting an attestation with {}")
     public void theEUDIWalletNotifiesTheUserThatTheRelyingPartyIsRequestingAnAttestation(String presentationScenario) {
         test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+    }
+
+    @Then("the bottom navigation bar shows the Home, Documents, and History tabs")
+    public void theBottomNavigationBarShowsTheHomeDocumentsAndHistoryTabs() {
+        test.mobile().wallet().bottomNavigationBarTabDisplays();
+    }
+
+    @Then("the Documents tab becomes highlighted after selection")
+    public void theDocumentsTabBecomesHighlightedAfterSelection() {
+        test.mobile().wallet().documentsTabIsHighlighted();
+    }
+
+    @And("the Documents screen provides a Search bar")
+    public void theDocumentsScreenProvidesASearchBar() {
+        test.mobile().wallet().searchBarIsDisplayed();
+    }
+
+    @And("the Documents screen provides a Filter control")
+    public void theDocumentsScreenProvidesAFilterControl() {
+        test.mobile().wallet().filterButtonIsDisplayed();
+    }
+
+    @And("the listed attestations are organized by category")
+    public void theListedAttestationsAreOrganizedByCategory() {
+        test.mobile().wallet().listedAttestationsAreOrganizedByCategory();
+    }
+
+    @And("each attestation card shows the attestation name, the issuer, and the validity end date")
+    public void eachAttestationCardShowsTheAttestationNameTheIssuerAndTheValidityEndDate() {
+        test.mobile().wallet().attestationCardDisplaysRequiredFields();
     }
 }

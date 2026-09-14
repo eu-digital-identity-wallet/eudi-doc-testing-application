@@ -98,4 +98,6 @@ public class WalletElements {
     public static By selectPIDPythonDeferred = By.xpath("//XCUIElementTypeStaticText[@name='PID (MSO Mdoc Deferred)']/preceding-sibling::XCUIElementTypeSwitch[1]");
 
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
+    public static By validUntilLabelOnCard = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Valid until:\")]");
+    public static By healthCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"HEALTH\"]");
 }

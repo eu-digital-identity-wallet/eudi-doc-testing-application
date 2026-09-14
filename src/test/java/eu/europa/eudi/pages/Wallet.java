@@ -822,6 +822,51 @@ public class Wallet {
         }
     }
 
+    public void scrollUntilLoyaltyOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebElement element = null;
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.clickLoyalty);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll(driver);
+                }
+            }
+        } else {
+            //todo
+        }
+    }
+
+    public void clickLoyalty() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickLoyalty));
+            MobileActionsUtils.tapActionWallet(button, false);
+            Thread.sleep(5000);
+        } else {
+            //todo
+        }
+    }
+
+    public void insertLoyaltyFromList() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilLoyaltyOnDocuments();
+        test.mobile().wallet().clickLoyalty();
+        test.mobile().issuer().issueLoyalty();
+    }
+
     private boolean isElementVisible(IOSDriver driver, String issuerType) {
         By mdlLocator = "kotlin".equalsIgnoreCase(issuerType)
                 ? eu.europa.eudi.elements.ios.WalletElements.clickMdlKotlin
@@ -2294,10 +2339,70 @@ public class Wallet {
 
     public void nameOfIssuerDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.issuerNameDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void clickCancel() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCancel)).click();
+    }
+
+    public void bottomNavigationBarTabDisplays() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickHome));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickHistory));
+        } else {
+            //todo
+        }
+    }
+
+    public void documentsTabIsHighlighted() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement documentsTab = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
+            Assert.assertEquals("true", documentsTab.getAttribute("selected"));
+        } else {
+            //todo
+        }
+    }
+
+    public void searchBarIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.searchBar));
+        } else {
+            //todo
+        }
+    }
+
+    public void listedAttestationsAreOrganizedByCategory() {
+        if (this.credential != null && this.credential.toUpperCase().contains("EHIC")) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.healthCategoryHeader));
+            } else {
+                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.healthCategoryHeader));
+            }
+        }
+    }
+
+    public void attestationCardDisplaysRequiredFields() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.issuerNameDisplayed));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.validUntilLabelOnCard));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.validUntilLabelOnCard));
+        }
+    }
+
+    public void filterButtonIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.filterButton));
+        } else {
+            //todo
         }
     }
 }
