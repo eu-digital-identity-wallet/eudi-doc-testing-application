@@ -99,10 +99,12 @@ public class WalletElements {
     public static By clickView = By.xpath("(//XCUIElementTypeImage[@name=\"chevron.right\"])");
     public static By trustIconIsDisplayed = By.xpath("(//XCUIElementTypeImage[@name=\"verifiedUser\"])");
     public static By clickBackButtonSigning = By.xpath("//XCUIElementTypeButton[@name=\"BackButton\"]");
-    public static By documentsTab = By.xpath("//XCUIElementTypeStaticText[@name=\"Documents\"]");
-    public static By inPersonIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"In person\"]");
+    public static By documentsTab = By.xpath("//XCUIElementTypeButton[@name=\"documents_tab\"]");
+    public static By inPersonIsDisplayed = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_in_person_button\"])[2]");
     public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
-    public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
+    public static By signDocument = By.xpath("//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_sign_button\"]");
+    public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
+    public static By clickScreen = By.xpath("(//XCUIElementTypeImage[@name=\"house.fill\"])");
 }
