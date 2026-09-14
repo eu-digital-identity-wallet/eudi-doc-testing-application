@@ -36,7 +36,9 @@ public class MobileDeviceLogger {
 
             File logFile = new File(
                     logDir,
-                    featureName + "_" + scenarioNumber + ".log"
+                    (scenarioNumber == null || scenarioNumber.isEmpty())
+                            ? featureName + ".log"
+                            : featureName + "_" + scenarioNumber + ".log"
             );
 
             if (!logDir.exists() && !logDir.mkdirs()) {

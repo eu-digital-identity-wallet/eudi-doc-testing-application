@@ -16,7 +16,7 @@ Feature: Pre-authorization code same device
     And the user is navigated to the EUDI wallet application
     And the user provides the PIN
     When the issuer request is shown in the wallet app
-    Then the user selects the ISSUE button
+    Then the user selects ISSUE button
     And the Wallet app prompts for the transaction code
     And the user enters the transaction code received from the Issuer
     And the Wallet application shows a successful issuance message

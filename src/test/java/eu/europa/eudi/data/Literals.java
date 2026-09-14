@@ -9,7 +9,6 @@ public interface Literals {
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back!"),
         LOGIN_ANDROID("Welcome back"),
-
         PID("PID (MSO MDoc)"),
         PID_PYTHON("PID (MSO Mdoc)"),
         DASHBOARD_PAGE("Welcome back, Nikos"),
@@ -46,6 +45,17 @@ public interface Literals {
         SUCCESSFULLY_SIGNED("You have successfully signed your document."),
         DASHBOARD_PAGE_SECOND("Welcome, Nikos"),
         DASHBOARD_PAGE_SECOND_KOTLIN("Welcome, Tyler"),
+        TRUST_ICON("Verified"),
+        TRUST_ICON_IOS("verifiedUser"),
+        HOME("Home"),
+        HISTORY(""),
+        AUTHENTICATE("Authenticate"),
+        SIGN("Sign"),
+        IN_PERSON("In person"),
+        SIGN_DOCUMENT("Sign document"),
+        ONLINE("Online"),
+        HISTORY_IOS("History"),
+        HOME_IOS("1"),
         NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer");
 
         public final String label;
