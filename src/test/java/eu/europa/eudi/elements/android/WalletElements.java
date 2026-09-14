@@ -91,7 +91,6 @@ public class WalletElements {
     public static By clickRemoveInDropdown = By.xpath("//android.widget.TextView[@text=\"Remove\"]");
     public static By selectRemove = By.xpath("//android.view.View[contains(@resource-id, \"id/document_details_screen_dialogue_delete_document_positive_button\")]");
     public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
-    public static By closeBookmarkSheet = By.xpath("//android.view.View[contains(@content-desc, \"Close sheet\")]");
     public static By clickSignDocument = By.xpath("//android.widget.TextView[@text=\"Sign\"]");
     public static By clickSelectDocument = By.xpath("//android.widget.TextView[@text=\"Select document\"]");
     public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
@@ -118,4 +117,5 @@ public class WalletElements {
     public static By validUntilLabelOnCard = By.xpath("//android.widget.TextView[contains(@text, \"Valid until\")]");
     public static By governmentCategoryHeader = By.xpath("//android.widget.TextView[@text=\"GOVERNMENT\"]");
     public static By retailCategoryHeader = By.xpath("//android.widget.TextView[@text=\"RETAIL\"]");
+    public static By closeBookmarkSheet = By.xpath("//android.view.View[contains(@content-desc, \"Close sheet\")]");
 }
