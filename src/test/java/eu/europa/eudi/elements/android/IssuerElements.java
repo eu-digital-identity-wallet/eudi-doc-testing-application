@@ -47,5 +47,9 @@ public class IssuerElements {
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
     public static By pidSDJWT = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[3]");;
     public static By selectPIDDeferredPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc Deferred)']/../android.widget.CheckBox");
+    public static By clientIdLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
+    public static By companyLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
+    public static By familyNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[3]");
+    public static By givenNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[4]");
 
 }
