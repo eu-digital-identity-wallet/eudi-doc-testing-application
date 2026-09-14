@@ -19,7 +19,7 @@ Feature: EUDI Wallet Documents Screen
     And the Documents screen lists the issued attestations
     And the listed attestations are organized by category
     And each attestation card shows the attestation name, the issuer, and the validity end date
-    When the user taps on an attestation from the list
+    When the user taps twice on an attestation from the list
     Then the attestation details are displayed
     Examples:
       | credential     | issuer |

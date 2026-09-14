@@ -50,4 +50,8 @@ public class IssuerElements {
     public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"https://issuer.eudiw.dev/credential_offer\"]");;
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");;
+    public static By clientIdLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
+    public static By companyLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
+    public static By familyNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[3]");
+    public static By givenNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[4]");
 }
