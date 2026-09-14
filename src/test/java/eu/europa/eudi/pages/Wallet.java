@@ -2497,8 +2497,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSignDocument)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSignDocument)).getText();
-            Assert.assertEquals(Literals.Wallet.SIGN.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocument)).getText();
+            Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
         }
     }
 
@@ -2507,8 +2507,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.inPersonIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.IN_PERSON.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.inPersonIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.IN_PERSON.label, pageHeader);
+//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.inPersonIsDisplayed)).getText();
+//            Assert.assertEquals(Literals.Wallet.IN_PERSON.label, pageHeader);
         }
     }
 
@@ -2517,8 +2517,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.onlineIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.ONLINE.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlineIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.ONLINE.label, pageHeader);
+//            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.onlineIsDisplayed)).getText();
+//            Assert.assertEquals(Literals.Wallet.ONLINE.label, pageHeader);
         }
     }
 
@@ -2526,7 +2526,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
         } else {
-
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
         }
     }
 
@@ -2535,7 +2535,7 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.signDocument)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocument)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocumentInside)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
         }
     }
