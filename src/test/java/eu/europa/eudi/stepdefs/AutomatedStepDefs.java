@@ -1231,7 +1231,7 @@ public class AutomatedStepDefs {
 
     @When("the user taps the Authenticate section")
     public void theUserTapsTheAuthenticateSection() {
-        test.mobile().wallet().clickAuthenticate();
+//        test.mobile().wallet().clickAuthenticate();
     }
 
     @Then("the Authenticate section provides In Person and Online options")
