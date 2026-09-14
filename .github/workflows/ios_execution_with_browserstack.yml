@@ -22,10 +22,9 @@ on:
         description: 'iOS Tags to execute'
         type: choice
         options:
-          - REG_ISSUANCE_PRESENTATION_PID_mso_mdoc
-          - REG_ISSUANCE_PRESENTATION_MDL
-          - REG_ISSUANCE_PRESENTATION_PID_sdjwt
-          - REG_GENERAL
+          - PID_mso_mdoc
+          - MDL
+          - PID_sdjwt
 
 jobs:
   build:
