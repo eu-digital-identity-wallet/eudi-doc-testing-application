@@ -1089,6 +1089,79 @@ public class Issuer {
         clickAuthorize();
     }
 
+    public void issueLoyalty() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
+        }
+        formIsDisplayed();
+        enterClientIdLoyalty();
+        enterCompanyLoyalty();
+        enterFamilyNameLoyalty();
+        enterGivenNameLoyalty();
+        scrollUntilFindSubmit();
+        clickConfirm();
+        authorizeIsDisplayed();
+        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_issuer_authorization.yml");
+        scrollUntilAuthorize();
+        clickAuthorize();
+    }
+
+    public void enterClientIdLoyalty() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String clientId = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Client Id");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clientIdLoyalty)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clientIdLoyalty);
+            field.clear();
+            field.sendKeys(clientId);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            //todo
+        }
+    }
+
+    public void enterCompanyLoyalty() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String company = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Company");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.companyLoyalty)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.companyLoyalty);
+            field.clear();
+            field.sendKeys(company);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            //todo
+        }
+    }
+
+    public void enterFamilyNameLoyalty() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String familyNameLoyalty = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Family Name");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.familyNameLoyalty)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.familyNameLoyalty);
+            field.clear();
+            field.sendKeys(familyNameLoyalty);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            //todo
+        }
+    }
+
+    public void enterGivenNameLoyalty() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String givenNameLoyalty = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Given Name");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.givenNameLoyalty)).click();
+            AppiumDriver driver = (AppiumDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.givenNameLoyalty);
+            field.clear();
+            field.sendKeys(givenNameLoyalty);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+        } else {
+            //todo
+        }
+    }
+
     public void selectCountryOfOrigin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();

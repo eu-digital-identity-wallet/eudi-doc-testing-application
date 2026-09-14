@@ -1,0 +1,27 @@
+screen: "Wallet Data From Python Issuer - Loyalty"
+
+fields:
+
+  "Client ID":
+    value: "1234"
+    required: true
+
+  "Loyalty Card Company":
+    value: "Netcompany"
+    required: true
+
+  "Family Name":
+    value: "Papadopoulos"
+    required: true
+
+  "Given Name":
+    value: "Foteini"
+    required: true
+
+  "Expiry Date":
+    value: ""
+    required: true
+
+  "Issuance Date":
+    value: ""
+    required: true
