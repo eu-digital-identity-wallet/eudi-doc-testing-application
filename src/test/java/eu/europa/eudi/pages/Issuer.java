@@ -1116,7 +1116,12 @@ public class Issuer {
             field.sendKeys(clientId);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            //todo
+            String clientId = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Client Id");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clientIdLoyalty)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.clientIdLoyalty);
+            field.clear();
+            field.sendKeys(clientId);
         }
     }
 
@@ -1130,7 +1135,12 @@ public class Issuer {
             field.sendKeys(company);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            //todo
+            String company = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Company");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.companyLoyalty)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.companyLoyalty);
+            field.clear();
+            field.sendKeys(company);
         }
     }
 
@@ -1144,7 +1154,12 @@ public class Issuer {
             field.sendKeys(familyNameLoyalty);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            //todo
+            String familyNameLoyalty = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Family Name");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.familyNameLoyalty)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.familyNameLoyalty);
+            field.clear();
+            field.sendKeys(familyNameLoyalty);
         }
     }
 
@@ -1158,7 +1173,13 @@ public class Issuer {
             field.sendKeys(givenNameLoyalty);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
         } else {
-            //todo
+            String givenNameLoyalty = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Given Name");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.givenNameLoyalty)).click();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            WebElement field = driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.givenNameLoyalty);
+            field.clear();
+            field.sendKeys(givenNameLoyalty);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameText)).click();
         }
     }
 

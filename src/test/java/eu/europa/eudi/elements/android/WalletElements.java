@@ -79,9 +79,8 @@ public class WalletElements {
     public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
     public static By pidDefrredIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc Deferred)\"]");
     public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
-    // resource-id still says "transactions" from before the app renamed the tab to "History"
     public static By clickHistory = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]");
-    public static By clickHome = By.xpath("//android.widget.TextView[@text=\"Home\"]");
+    public static By homeTabTextDisplayed = By.xpath("//android.widget.TextView[@text=\"Home\"]");
     public static By pidMdocIsDisplayed = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\"]");
     public static By eyeIcon = By.xpath("//android.view.View[@content-desc=\"Show\" or @content-desc=\"Hide\"]");
     public static By expiresOnLabel = By.xpath("//android.widget.TextView[starts-with(@text, \"Expires on:\")]");
@@ -115,6 +114,7 @@ public class WalletElements {
     public static By clickCancel = By.xpath("//android.widget.TextView[@text=\"Cancel\"]");
     public static By searchBar = By.xpath("//android.view.View[@content-desc=\"Search\"]");
     public static By filterButton = By.xpath("//android.view.View[@content-desc=\"Filters\"]");
-    public static By validUntilLabelOnCard = By.xpath("//android.widget.TextView[starts-with(@text, \"Valid until:\")]");
-    public static By healthCategoryHeader = By.xpath("//android.widget.TextView[@text=\"HEALTH\"]");
+    public static By validUntilLabelOnCard = By.xpath("//android.widget.TextView[contains(@text, \"Valid until\")]");
+    public static By governmentCategoryHeader = By.xpath("//android.widget.TextView[@text=\"GOVERNMENT\"]");
+    public static By retailCategoryHeader = By.xpath("//android.widget.TextView[@text=\"RETAIL\"]");
 }

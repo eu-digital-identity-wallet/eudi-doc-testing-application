@@ -860,7 +860,47 @@ public class Wallet {
                 }
             }
         } else {
-            //todo
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+
+                if (isElementVisibleLoyalty(driver)) {
+                    break;
+                }
+
+                Dimension size = driver.manage().window().getSize();
+
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.80);
+                int endY = (int) (size.height * 0.40);
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+                swipe.addAction(new Pause(finger, Duration.ofMillis(120)));
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+            }
         }
     }
 
@@ -870,7 +910,8 @@ public class Wallet {
             MobileActionsUtils.tapActionWallet(button, false);
             Thread.sleep(5000);
         } else {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty)).click();
+            Thread.sleep(5000);
         }
     }
 
@@ -896,6 +937,11 @@ public class Wallet {
     private boolean isElementVisiblePID(IOSDriver driver) {
         return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).isEmpty()
                 && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).get(0).isDisplayed();
+    }
+
+    private boolean isElementVisibleLoyalty(IOSDriver driver) {
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty).isEmpty()
+                && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty).get(0).isDisplayed();
     }
 
     public void clickQROption() {
@@ -2056,7 +2102,7 @@ public class Wallet {
 
     public void homeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickHome)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.homeTabTextDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.HOME.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickHome)).getText();
@@ -2504,7 +2550,9 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickHistory));
         } else {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickHome));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOnDocuments));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.historyIsDisplayed));
         }
     }
 
@@ -2513,7 +2561,8 @@ public class Wallet {
             WebElement documentsTab = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
             Assert.assertEquals("true", documentsTab.getAttribute("selected"));
         } else {
-            //todo
+            WebElement documentsTab = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOnDocuments));
+            Assert.assertTrue(documentsTab.isSelected());
         }
     }
 
@@ -2521,17 +2570,17 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.searchBar));
         } else {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.searchBar));
         }
     }
 
     public void listedAttestationsAreOrganizedByCategory() {
-        if (this.credential != null && this.credential.toUpperCase().contains("EHIC")) {
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.healthCategoryHeader));
-            } else {
-                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.healthCategoryHeader));
-            }
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.governmentCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.retailCategoryHeader));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.governmentCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.retailCategoryHeader));
         }
     }
 
@@ -2549,7 +2598,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.filterButton));
         } else {
-            //todo
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.filterButton));
         }
     }
 }

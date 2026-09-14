@@ -21,7 +21,7 @@ public class AutomatedStepDefs {
 
 
     @Given("user opens Verifier App")
-    public void userOpensVerifierApp(){
+    public void userOpensVerifierApp() {
         test.mobile().wallet().userOpensVerifier();
         test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
@@ -33,7 +33,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user enters the correct PIN")
-    public void theUserEntersTheCorrectPIN(){
+    public void theUserEntersTheCorrectPIN() {
         test.mobile().wallet().createAPin();
     }
 
@@ -433,14 +433,14 @@ public class AutomatedStepDefs {
 
     @Then("verifier verifies the credential successfully with {}")
     public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
-       test.mobile().verifier().verifyCredential(status);
+        test.mobile().verifier().verifyCredential(status);
     }
 
     @Given("the user initiates a {} issuance using the {}")
     public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) {
         this.issuerType = issuerType;
         this.credential = credential;
-      test.mobile().wallet().initiateCredential(credential, issuerType);
+        test.mobile().wallet().initiateCredential(credential, issuerType);
     }
 
     @And("the issuance method is {}")
@@ -450,22 +450,22 @@ public class AutomatedStepDefs {
 
     @And("the issuance is performed on a {} for the {} and {}")
     public void theIssuanceIsPerformedOnA(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
-       test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
+        test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
     }
 
     @When("the issuance flow is completed")
     public void theIssuanceFlowIsCompleted() {
-      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
+        test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
     }
 
     @Then("the credential is stored in the Wallet")
     public void theCredentialIsStoredInTheWallet() {
-      test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
+        test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
     }
 
     @When("the user presents the credential to the {}")
     public void theUserPresentsTheCredentialToThe(String verifierType) {
-       test.mobile().wallet().presentCredential(verifierType);
+        test.mobile().wallet().presentCredential(verifierType);
     }
 
     @And("the presentation is performed on a {} for the {}")
@@ -481,7 +481,7 @@ public class AutomatedStepDefs {
 
     @Then("the verifier verifies the credential successfully with {} for {}")
     public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
-      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+        test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
     }
 
     @When("the user selects to issue a document using pre-authorization")
@@ -514,8 +514,8 @@ public class AutomatedStepDefs {
     public void aTransactionCodeIsGenerated() {
         test.mobile().issuer().qrCodeIsDisplayed();
 //        test.mobile().issuer().transactionCodeIsDisplayed();
-       String code = test.mobile().issuer().getTransactionCode();
-       test.setTransactionCode(code); // <-- store it for later steps
+        String code = test.mobile().issuer().getTransactionCode();
+        test.setTransactionCode(code); // <-- store it for later steps
 
         System.out.println("Stored transaction code: " + code);
     }
@@ -553,7 +553,7 @@ public class AutomatedStepDefs {
 
     @Then("the user selects ISSUE button")
     public void theUserSelectsISSUEButton() throws InterruptedException {
-            test.mobile().wallet().clickAddButton();
+        test.mobile().wallet().clickAddButton();
     }
 
     @When("the Wallet app prompts for the transaction code")
@@ -576,7 +576,7 @@ public class AutomatedStepDefs {
             test.mobile().issuer().authorizeIsDisplayed();
             test.mobile().issuer().scrollUntilAuthorize();
             test.mobile().issuer().clickAuthorize();
-        }else {
+        } else {
             test.mobile().wallet().requestTransactionCode();
         }
     }
@@ -781,7 +781,7 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
-        }else{
+        } else {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
         }
         test.mobile().wallet().clickDone();
@@ -794,7 +794,7 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
-        }else{
+        } else {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
         }
         test.mobile().wallet().clickShareButton();
@@ -808,7 +808,7 @@ public class AutomatedStepDefs {
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
-        }else{
+        } else {
             test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
         }
         test.mobile().wallet().clickDone();
@@ -1097,7 +1097,7 @@ public class AutomatedStepDefs {
     }
 
     @Given("the user is accessing {} service")
-    public void theUserIsAccessingService(String issuerType ) {
+    public void theUserIsAccessingService(String issuerType) {
         test.mobile().issuer().accessingIssuerType(issuerType);
     }
 
@@ -1282,5 +1282,16 @@ public class AutomatedStepDefs {
     @And("each attestation card shows the attestation name, the issuer, and the validity end date")
     public void eachAttestationCardShowsTheAttestationNameTheIssuerAndTheValidityEndDate() {
         test.mobile().wallet().attestationCardDisplaysRequiredFields();
+    }
+
+    @When("the user taps twice on an attestation from the list")
+    public void theUserTapsTwiceOnAnAttestationFromTheList() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().openPidAttestation();
+
+        } else {
+            test.mobile().wallet().openPidAttestation();
+            test.mobile().wallet().openPidAttestation();
+        }
     }
 }

@@ -105,6 +105,10 @@ public class WalletElements {
     public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
-    public static By validUntilLabelOnCard = By.xpath("//XCUIElementTypeStaticText[starts-with(@name, \"Valid until:\")]");
-    public static By healthCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"HEALTH\"]");
+    public static By validUntilLabelOnCard = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"Valid until\")]");
+    public static By governmentCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"GOVERNMENT\"]");
+    public static By retailCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"RETAIL\"]");
+    public static By searchBar = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
+    public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
+    public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
 }
