@@ -102,7 +102,7 @@ public class WalletElements {
     public static By documentsTab = By.xpath("//XCUIElementTypeButton[@name=\"documents_tab\"]");
     public static By inPersonIsDisplayed = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_in_person_button\"])[2]");
     public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
-    public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
+    public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
     public static By clickScreen = By.xpath("(//XCUIElementTypeImage[@name=\"house.fill\"])");
@@ -112,4 +112,7 @@ public class WalletElements {
     public static By searchBar = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
     public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
+    public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
+    public static By signDocumentButton = By.xpath("//XCUIElementTypeButton[@label=\"Sign document\"]");
+
 }
