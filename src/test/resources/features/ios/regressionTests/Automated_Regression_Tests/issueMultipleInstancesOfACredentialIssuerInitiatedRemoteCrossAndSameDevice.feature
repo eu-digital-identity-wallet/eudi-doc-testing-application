@@ -5,6 +5,7 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
   so that my privacy is protected when presenting attributes from an attestation multiple times to the same Relying Party or colluding Relying Parties (Relying Party linkability)
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/180
+
   Scenario Outline:Batch Issuance of Attestations in EUDI Wallet
     Given the user initiates a <credential> issuance using the <issuer>
     And the issuance method is <issuance_method>
