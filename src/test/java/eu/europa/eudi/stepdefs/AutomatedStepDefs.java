@@ -1294,4 +1294,60 @@ public class AutomatedStepDefs {
             test.mobile().wallet().openPidAttestation();
         }
     }
+
+    @And("a Relying Party renders a presentation request as a QR code")
+    public void aRelyingPartyRendersAPresentationRequestAsAQRCode() {
+        test.webWebDriverFactory().startWebDriverSession();
+        try {
+            String url = test.envDataConfig().getVerifierUrl();
+            test.webWebDriverFactory().getDriverWeb().get(url);
+            test.web().verifier().appOpensSuccessfullyOnWeb();
+            test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+            test.web().verifier().scrollUntilNextOnWeb();
+            test.web().verifier().pidIsDisplayedOnWeb();
+            test.web().verifier().clickSpecificAttributesButtonForPID();
+            test.web().verifier().selectSpecificAttributesOnWeb();
+            test.web().verifier().scrollUntilNextOnWeb();
+            test.web().verifier().uriMethodIsDisplayed();
+            test.web().verifier().scrollUntilSubmitOnWeb();
+            test.web().verifier().assertQrCodeIsVisible();
+            test.web().verifier().captureScreenOnWeb();
+        } catch (org.openqa.selenium.WebDriverException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @When("the user opens the Online option from the Authenticate section")
+    public void theUserOpensTheOnlineOptionFromTheAuthenticateSection() throws InterruptedException {
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickOnlinePresentation();
+    }
+
+    @And("the Wallet scans the Relying Party's presentation request QR code")
+    public void theWalletScansTheRelyingPartysPresentationRequestQRCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if (test.mobile().wallet().isQrVisible()) {
+                test.mobile().wallet().onlyThisTimeQR();
+            }
+        }
+        test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+    }
+
+    @Then("the Wallet displays the attestation details requested for sharing")
+    public void theWalletDisplaysTheAttestationDetailsRequestedForSharing() {
+        test.mobile().wallet().clickToViewDetails();
+        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/pre_final_shared_data_on_wallet.yml");
+    }
+
+    @When("the user cancels the presentation request")
+    public void theUserCancelsThePresentationRequest() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the user returns to the Wallet Home screen")
+    public void theUserReturnsToTheWalletHomeScreen() {
+        test.mobile().wallet().walletHomeScreenIsDisplayed();
+    }
 }
