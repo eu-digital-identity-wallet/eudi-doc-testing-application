@@ -2487,7 +2487,7 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSignDocument)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocument)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocumentButton)).getText();
             Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
         }
     }
