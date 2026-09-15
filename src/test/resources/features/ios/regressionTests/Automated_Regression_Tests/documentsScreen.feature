@@ -9,7 +9,7 @@ Feature: EUDI Wallet Documents Screen
   @US_DS_TC_01
   Scenario Outline: Documents screen consolidates and lists issued attestations
     Given the user issues a <credential> attestation using <issuer>
-    And the user issues a Loyalty attestation
+    And the user issues the second attestation for <issuer>
     And the user is on the Home screen of the Wallet
     Then the bottom navigation bar shows the Home, Documents, and History tabs
     When the user opens the Documents screen
@@ -24,3 +24,4 @@ Feature: EUDI Wallet Documents Screen
     Examples:
       | credential     | issuer |
       | PID (MSO Mdoc) | Python |
+      | PID (MSO Mdoc) | Kotlin |

@@ -300,6 +300,48 @@ public class Wallet {
         }
     }
 
+    public void clickLearningCredentialKotlin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickLearningCredentialKotlin)).click();
+        } else {
+            throw new UnsupportedOperationException("iOS locator for the Kotlin Learning credential attestation is not defined yet");
+        }
+    }
+
+    public void scrollUntilLearningCredentialOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebElement element = null;
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.clickLearningCredentialKotlin);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll(driver);
+                }
+            }
+        } else {
+            throw new UnsupportedOperationException("iOS locator for the Kotlin Learning credential attestation is not defined yet");
+        }
+    }
+
+    public void insertLearningCredentialFromListKotlin() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilLearningCredentialOnDocuments();
+        test.mobile().wallet().clickLearningCredentialKotlin();
+    }
+
     public void dashboardPageIsDisplayed(String issuerType) {
         this.issuerType = issuerType;
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -2584,13 +2626,19 @@ public class Wallet {
         }
     }
 
-    public void listedAttestationsAreOrganizedByCategory() {
+    public void listedAttestationsAreOrganizedByCategory(String issuerType) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            By secondCategoryHeader = "kotlin".equalsIgnoreCase(issuerType)
+                    ? eu.europa.eudi.elements.android.WalletElements.otherCategoryHeader
+                    : eu.europa.eudi.elements.android.WalletElements.retailCategoryHeader;
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.governmentCategoryHeader));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.retailCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(secondCategoryHeader));
         } else {
+            By secondCategoryHeader = "kotlin".equalsIgnoreCase(issuerType)
+                    ? eu.europa.eudi.elements.ios.WalletElements.otherCategoryHeader
+                    : eu.europa.eudi.elements.ios.WalletElements.retailCategoryHeader;
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.governmentCategoryHeader));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.retailCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(secondCategoryHeader));
         }
     }
 
