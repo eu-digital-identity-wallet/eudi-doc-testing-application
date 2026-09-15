@@ -115,4 +115,7 @@ public class WalletElements {
     public static By searchBar = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
     public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
+    public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
+    public static By signDocumentButton = By.xpath("//XCUIElementTypeButton[@label=\"Sign document\"]");
+
 }
