@@ -850,13 +850,19 @@ public class AutomatedStepDefs {
         }
     }
 
-    @And("the user issues a Loyalty attestation")
-    public void theUserIssuesALoyaltyAttestation() throws InterruptedException {
-        test.mobile().wallet().insertLoyaltyFromList();
-        test.mobile().wallet().successMessageIsDisplayedForIssuer();
-        test.mobile().wallet().clickExpandVerification();
-        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_data_on_wallet.yml");
-        test.mobile().wallet().clickDone();
+    @And("the user issues the second attestation for {}")
+    public void theUserIssuesTheSecondAttestationFor(String issuerType) throws InterruptedException {
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertLearningCredentialFromListKotlin();
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertLoyaltyFromList();
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_data_on_wallet.yml");
+            test.mobile().wallet().clickDone();
+        }
     }
 
     @And("the user is on the Home screen of the Wallet")
@@ -1321,7 +1327,7 @@ public class AutomatedStepDefs {
 
     @And("the listed attestations are organized by category")
     public void theListedAttestationsAreOrganizedByCategory() {
-        test.mobile().wallet().listedAttestationsAreOrganizedByCategory();
+        test.mobile().wallet().listedAttestationsAreOrganizedByCategory(this.issuerType);
     }
 
     @And("each attestation card shows the attestation name, the issuer, and the validity end date")
@@ -1332,11 +1338,19 @@ public class AutomatedStepDefs {
     @When("the user taps twice on an attestation from the list")
     public void theUserTapsTwiceOnAnAttestationFromTheList() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobile().wallet().openPidAttestation();
-
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().clickPIDFromKotlin();
+            } else {
+                test.mobile().wallet().openPidAttestation();
+            }
         } else {
-            test.mobile().wallet().openPidAttestation();
-            test.mobile().wallet().openPidAttestation();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().clickPIDFromKotlin();
+                test.mobile().wallet().clickPIDFromKotlin();
+            } else {
+                test.mobile().wallet().openPidAttestation();
+                test.mobile().wallet().openPidAttestation();
+            }
         }
     }
 
