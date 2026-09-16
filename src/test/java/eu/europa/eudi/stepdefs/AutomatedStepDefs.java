@@ -1209,6 +1209,51 @@ public class AutomatedStepDefs {
         test.mobile().wallet().dashboardPageIsDisplayedDeferred();
     }
 
+    @Given("the user launches the EUDI Wallet for the first time")
+    public void theUserLaunchesTheEUDIWalletForTheFirstTime() {
+        test.mobile().wallet().launchApp();
+    }
+
+    @Then("the Welcome to your Wallet screen is displayed")
+    public void theWelcomeToYourWalletScreenIsDisplayed() {
+        test.mobile().wallet().welcomeScreenIsDisplayed();
+    }
+
+    @And("the logo is displayed")
+    public void theLogoIsDisplayed() {
+        test.mobile().wallet().welcomeLogoIsDisplayed();
+    }
+
+    @And("the text \"Secure your wallet with a PIN code and connect to your National System.\" is displayed")
+    public void theSecureYourWalletSubtitleIsDisplayed() {
+        test.mobile().wallet().welcomeSubtitleIsDisplayed();
+    }
+
+    @And("the label \"Type a PIN\" is displayed")
+    public void theLabelTypeAPINIsDisplayed() {
+        test.mobile().wallet().typeAPinLabelIsDisplayed();
+    }
+
+    @And("a six-digit PIN field is displayed")
+    public void aSixDigitPINFieldIsDisplayed() {
+        test.mobile().wallet().pinFieldIsDisplayedForSetup();
+    }
+
+    @Given("the user is on the Welcome to your Wallet screen")
+    public void theUserIsOnTheWelcomeToYourWalletScreen() {
+        test.mobile().wallet().welcomeScreenIsDisplayed();
+    }
+
+    @When("the user inserts the PIN")
+    public void theUserInsertsThePIN() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @Then("the user is prompted to confirm the PIN")
+    public void theUserIsPromptedToConfirmThePIN() {
+        test.mobile().wallet().confirmPinLabelIsDisplayed();
+    }
+
     @Then("the bottom navigation bar displays Home, Documents, and Transactions")
     public void theBottomNavigationBarDisplaysHomeDocumentsAndTransactions() {
         test.mobile().wallet().homeIsDisplayed();

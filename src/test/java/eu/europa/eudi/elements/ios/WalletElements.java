@@ -5,6 +5,10 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.id("pin_screen_title");
+    public static By welcomeLogo = By.xpath("//XCUIElementTypeImage[@label=\"Logo icon and text\"]");
+    public static By welcomeSubtitle = By.xpath("//XCUIElementTypeStaticText[@label=\"Secure your wallet with a PIN code and connect to your National System.\"]");
+    public static By typeAPinLabel = By.xpath("//XCUIElementTypeStaticText[@label=\"Type a PIN\"]");
+    public static By confirmPinLabel = By.xpath("//XCUIElementTypeStaticText[@label=\"Confirm PIN\"]");
     public static By pinTexfield1 = By.id("pin_text_field_0");
     public static By pinTexfield2 = By.id("pin_text_field_1");
     public static By pinTexfield3 = By.id("pin_text_field_2");
@@ -115,5 +119,4 @@ public class WalletElements {
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
     public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
     public static By signDocumentButton = By.xpath("//XCUIElementTypeButton[@label=\"Sign document\"]");
-
 }

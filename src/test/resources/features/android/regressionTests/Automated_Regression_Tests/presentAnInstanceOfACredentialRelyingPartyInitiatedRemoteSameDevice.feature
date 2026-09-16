@@ -1,4 +1,4 @@
-@ANDROID @automated @US_PAIOACRPIRSD @Q2_2025 @REG_GENERAL
+@ANDROID @automated @US_PAIOACRPIRSD @Q2_2025 @GENERAL_TESTS
 Feature: Presentation of Batch Issued Attestations in EUDI Wallet
   As an EUDI Wallet User,,
   I want to present attributes of a batch issued attestation to a requestor Relying Party residing on the same device as my EUDI Wallet

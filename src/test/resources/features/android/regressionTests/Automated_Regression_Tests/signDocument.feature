@@ -1,4 +1,4 @@
-@ANDROID @automated @US_SD @REG_GENERAL
+@ANDROID @automated @US_SD @GENERAL_TESTS
 Feature: Sign Document through EUDI Wallet
   As a EUDI Wallet User,
   I want to provide my explicit consent on signing a document through my EUDI Wallet and sing the document

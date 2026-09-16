@@ -5,6 +5,9 @@ public interface Literals {
     enum Wallet{
 
         WELCOME_HEADER("Welcome to your Wallet"),
+        WELCOME_SUBTITLE("Secure your wallet with a PIN code and connect to your National System."),
+        TYPE_A_PIN_LABEL("Type a PIN"),
+        CONFIRM_PIN_LABEL("Confirm PIN"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back!"),
