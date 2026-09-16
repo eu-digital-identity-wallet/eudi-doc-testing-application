@@ -1,4 +1,4 @@
-@ANDROID @automated @US_VD @REG_GENERAL
+@ANDROID @automated @US_VD @GENERAL_TESTS
 Feature: View, bookmark and manage attestations in the EUDI Wallet
 
   As a EUDI Wallet User

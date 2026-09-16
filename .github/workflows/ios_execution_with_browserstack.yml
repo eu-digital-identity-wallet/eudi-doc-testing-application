@@ -25,6 +25,7 @@ on:
           - PID_mso_mdoc
           - MDL
           - PID_sdjwt
+          - GENERAL_TESTS
 
 jobs:
   build:

@@ -9,6 +9,10 @@ public class WalletElements {
     private static final String APP_PACKAGE = new EnvDataConfig().getAppiumAndroidAppPackage();
 
     public static final By welcomeScreen = By.id(APP_PACKAGE + ":id/pin_screen_title");
+    public static By welcomeLogo = By.xpath("//android.widget.ImageView[@content-desc=\"Logo icon and text\"]");
+    public static By welcomeSubtitle = By.xpath("//android.widget.TextView[@text=\"Secure your wallet with a PIN code and connect to your National System.\"]");
+    public static By typeAPinLabel = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
+    public static By confirmPinLabel = By.xpath("//android.widget.TextView[@text=\"Confirm PIN\"]");
     public static By clickConfirm = By.id(APP_PACKAGE + ":id/pin_screen_button");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"Your wallet is secured!\"]");
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");

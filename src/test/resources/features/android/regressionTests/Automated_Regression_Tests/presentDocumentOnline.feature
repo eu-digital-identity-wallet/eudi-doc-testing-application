@@ -1,4 +1,4 @@
-@ANDROID @automated @US_PDO @REG_GENERAL
+@ANDROID @automated @US_PDO @GENERAL_TESTS
 Feature: EUDI Wallet Online Document Presentation
   As a EUDI Wallet User
   I want to be able to present attestations from my EUDI Wallet

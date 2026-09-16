@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DS @REG_GENERAL
+@ANDROID @automated @US_DS @GENERAL_TESTS
 Feature: EUDI Wallet Documents Screen
   As a EUDI Wallet User
   I want to have a 'Documents' screen consolidating my issued attestations

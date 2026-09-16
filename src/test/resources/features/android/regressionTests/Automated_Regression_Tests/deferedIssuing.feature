@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DI @REG_GENERAL
+@ANDROID @automated @US_DI @GENERAL_TESTS
 Feature: Deferred Credential Issuance
   As a user interacting with the issuer service
   I want to receive a credential through deferred issuance

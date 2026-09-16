@@ -1,4 +1,4 @@
-@IOS @automated @US_ADBSQRC @REG_GENERAL
+@IOS @automated @US_ADBSQRC @GENERAL_TESTS
 Feature: Issuing and storing attestations in the EUDI Wallet via QR code
   As a EUDI Wallet User
   I want to issue and store attestations in my EUDI Wallet advertised by issuers

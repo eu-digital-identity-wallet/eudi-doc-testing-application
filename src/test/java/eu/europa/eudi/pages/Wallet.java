@@ -70,6 +70,56 @@ public class Wallet {
         }
     }
 
+    public void welcomeScreenIsDisplayed() {
+        checkIfPageIsTrue();
+    }
+
+    public void welcomeLogoIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.welcomeLogo)).isDisplayed();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.welcomeLogo)).isDisplayed();
+        }
+    }
+
+    public void welcomeSubtitleIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String subtitle = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.welcomeSubtitle)).getText();
+            Assert.assertEquals(Literals.Wallet.WELCOME_SUBTITLE.label, subtitle);
+        } else {
+            String subtitle = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.welcomeSubtitle)).getText();
+            Assert.assertEquals(Literals.Wallet.WELCOME_SUBTITLE.label, subtitle);
+        }
+    }
+
+    public void typeAPinLabelIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.typeAPinLabel)).getText();
+            Assert.assertEquals(Literals.Wallet.TYPE_A_PIN_LABEL.label, label);
+        } else {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.typeAPinLabel)).getText();
+            Assert.assertEquals(Literals.Wallet.TYPE_A_PIN_LABEL.label, label);
+        }
+    }
+
+    public void pinFieldIsDisplayedForSetup() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(AppiumBy.className("android.widget.EditText"))).isDisplayed();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(AppiumBy.className("XCUIElementTypeTextField"))).isDisplayed();
+        }
+    }
+
+    public void confirmPinLabelIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.confirmPinLabel)).getText();
+            Assert.assertEquals(Literals.Wallet.CONFIRM_PIN_LABEL.label, label);
+        } else {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.confirmPinLabel)).getText();
+            Assert.assertEquals(Literals.Wallet.CONFIRM_PIN_LABEL.label, label);
+        }
+    }
+
     public void createAPin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String fullPin = test.envDataConfig().getPin();
