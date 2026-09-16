@@ -108,12 +108,14 @@ public class WalletElements {
     public static By onlineIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Online\"]");
     public static By clickOnlinePresentation = By.xpath("//XCUIElementTypeButton[@label=\"Online\"]");
     public static By signDocument = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign Document\"]");
+    public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
     public static By issuerNameDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer\"]");
     public static By clickScreen = By.xpath("(//XCUIElementTypeImage[@name=\"house.fill\"])");
     public static By validUntilLabelOnCard = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"Valid until\")]");
     public static By governmentCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"GOVERNMENT\"]");
     public static By retailCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"RETAIL\"]");
+    public static By otherCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"OTHER\"]"); // TODO confirm exact iOS header text
     public static By searchBar = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
     public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
