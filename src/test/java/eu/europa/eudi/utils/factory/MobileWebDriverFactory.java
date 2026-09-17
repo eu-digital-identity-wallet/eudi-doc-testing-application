@@ -156,8 +156,8 @@ public class MobileWebDriverFactory {
                 options.setCapability("name", featureName + " - iOS Test");
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
-                options.setCapability("includeSafariInWebviews", true);
-                options.setCapability("waitForQuiescence", true);
+//                options.setCapability("includeSafariInWebviews", true);
+//                options.setCapability("waitForQuiescence", true);
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");
