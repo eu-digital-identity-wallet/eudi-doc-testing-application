@@ -6,7 +6,7 @@ Feature: EUDI Wallet Home Screen
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/205
 
-  @US_HS_TC_01 @manual:Passed
+  @US_HS_TC_01
   Scenario: Bottom navigation bar options
     Given the user is viewing the EUDI Wallet Home screen
     Then the bottom navigation bar displays Home, Documents, and Transactions
