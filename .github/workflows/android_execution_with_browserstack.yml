@@ -25,6 +25,12 @@ on:
           - PID_mso_mdoc
           - MDL
           - PID_sdjwt
+          - GENERAL_TESTS
+
+      device-logs-enabled:
+        description: 'Enable BrowserStack device logs (true/false)'
+        type: boolean
+        default: true
 
 
 jobs:
@@ -138,7 +144,8 @@ jobs:
           echo "Running tests: $TEST_TAGS"
 
           mvn clean verify -ntp \
-            -Dcucumber.filter.tags="$TEST_TAGS"
+            -Dcucumber.filter.tags="$TEST_TAGS" \
+            -Dbrowserstack.device.logs.enabled="${{ inputs.device-logs-enabled }}"
 
       # ---------------- BACKUP RESULTS ----------------
       - name: Backup Serenity JSON Results
