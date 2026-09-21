@@ -223,6 +223,11 @@ public class EnvDataConfig {
     }
 
     public boolean isBrowserStackDeviceLogsEnabled() {
+        // Allow GitHub Actions to override via a system property (browserstack.device.logs.enabled)
+        String fromSystem = System.getProperty("browserstack.device.logs.enabled");
+        if (fromSystem != null && !fromSystem.isBlank()) {
+            return Boolean.parseBoolean(fromSystem);
+        }
         return Boolean.parseBoolean(
                 getEnvProperties().getProperty("browserstack.device.logs.enabled")
         );
