@@ -6,10 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "@target/rerun3.txt",
+        features = {"@target/rerun4.txt"},
         monochrome = true,
-        glue = {"eu.europa.eudi.stepdefs"},
-        plugin = {"rerun:target/rerun4.txt"})
+        glue = {"eu.europa.eudi.stepdefs"})
 
-public class RerunTestRunner3 {
+public class RerunTestRunner4 {
 }

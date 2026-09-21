@@ -68,7 +68,7 @@ jobs:
         run: |
           rm -rf target/serenity
           rm -rf target/site/reports
-          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt
+          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt target/rerun4.txt
           find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
       - name: Initialize Session Map
@@ -193,6 +193,20 @@ jobs:
           fi
 
       - name: Merge Results Pass 3
+        if: always()
+        run: python3 merge_serenity_results.py || true
+
+      # ---------------- RERUN PASS 4 ----------------
+      - name: Rerun Pass 4
+        if: always()
+        run: |
+          if [ -s target/rerun4.txt ]; then
+            mvn test -Dtest=RerunTestRunner4 -Dcucumber.features="@target/rerun4.txt"
+          else
+            echo "No rerun4.txt found"
+          fi
+
+      - name: Merge Results Pass 4
         if: always()
         run: python3 merge_serenity_results.py || true
 
