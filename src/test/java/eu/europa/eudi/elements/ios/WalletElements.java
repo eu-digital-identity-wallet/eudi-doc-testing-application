@@ -116,4 +116,8 @@ public class WalletElements {
     public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
     public static By signDocumentButton = By.xpath("//XCUIElementTypeButton[@label=\"Sign document\"]");
+    public static By clickAllow = By.xpath("//XCUIElementTypeButton[@label=\"Allow\"]");
+    public static By clickContinue = By.xpath("//XCUIElementTypeButton[@label=\"Continue\"]");
+    public static By clickOpen = By.xpath("//XCUIElementTypeButton[@label=\"Open\"]");
+    public static By clickScreen = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
 }

@@ -145,7 +145,7 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("appium:automationName", envDataConfig.getAppiumBrowserstackIosAutomationName());
-                options.setCapability("autoAcceptAlerts", true);
+                options.setCapability("autoAcceptAlerts", false);
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("browserstack.video", true);

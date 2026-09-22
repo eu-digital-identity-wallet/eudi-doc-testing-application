@@ -150,6 +150,9 @@ public class AutomatedStepDefs {
     public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().clickOpen();
+        }
     }
 
     @When("the request from the issuer is displayed on the wallet app")
@@ -523,6 +526,9 @@ public class AutomatedStepDefs {
     @When("the user chooses to register through the EUDI wallet app")
     public void theUserChoosesToRegisterThroughTheEUDIWalletApp() {
         test.mobile().issuer().clickUseEudiwPid();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().clickOpen();
+        }
     }
 
     @Then("the user is navigated to the EUDI wallet application")
@@ -1285,7 +1291,7 @@ public class AutomatedStepDefs {
 
     @When("the user taps the Authenticate section")
     public void theUserTapsTheAuthenticateSection() {
-//        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickAuthenticate();
     }
 
     @Then("the Authenticate section provides In Person and Online options")
