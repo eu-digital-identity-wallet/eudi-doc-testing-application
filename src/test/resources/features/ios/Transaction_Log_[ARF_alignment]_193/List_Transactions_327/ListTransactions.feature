@@ -54,7 +54,7 @@ Feature: List Transactions in History tab
       | Datetime         | Time (e.g., 11:07 AM) for transactions within the day                  |
       | Datetime         | Datetime (e.g., 14 Feb 2024 11:07 AM) for transactions before today    |
 
-  @US_LT_TC_04 @manual:
+  @US_LT_TC_05 @manual:
   Scenario Outline: Transaction types displayed on the History screen
     Given the user is on the History screen
     Then the transaction type <Type> is <Displayed> on the History screen
