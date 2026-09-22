@@ -66,9 +66,9 @@ Feature: Transaction Search in History tab
 
     Examples:
       | options                                                                                           |
-      | Relying Party name (attestation presentation)
-      | Intermediary name (attestation presentation)
-      | Document name (signing transactions)
-      | PID Provider or Attestation Provider name (PID/attestation issuance and re-issuance transactions)
-      | Attestation type (PID/attestation deletion)
-      | Provider name (PID/attestation deletion)
+      | Relying Party name (attestation presentation)                                                     |
+      | Intermediary name (attestation presentation)                                                      |
+      | Document name (signing transactions)                                                              |
+      | PID Provider or Attestation Provider name (PID/attestation issuance and re-issuance transactions) |
+      | Attestation type (PID/attestation deletion)                                                       |
+      | Provider name (PID/attestation deletion)                                                          |
