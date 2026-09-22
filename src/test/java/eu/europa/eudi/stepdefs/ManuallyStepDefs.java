@@ -10306,4 +10306,389 @@ public class ManuallyStepDefs {
     public void theUserCancelsThePresentationProcess() {
         //manual
     }
+
+    @When("the user selects a transaction entry from the list")
+    public void theUserSelectsATransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the transaction details screen opens")
+    public void theTransactionDetailsScreenOpens() {
+        //manual
+    }
+
+    @And("a delete button is visible in the top right corner")
+    public void aDeleteButtonIsVisibleInTheTopRightCorner() {
+        //manual
+    }
+
+    @Given("the user has opened the details screen of a transaction")
+    public void theUserHasOpenedTheDetailsScreenOfATransaction() {
+        //manual
+    }
+
+    @Then("a confirmation dialog is displayed")
+    public void aConfirmationDialogIsDisplayed() {
+        //manual
+    }
+
+    @And("no transaction is removed yet")
+    public void noTransactionIsRemovedYet() {
+        //manual
+    }
+
+    @Given("the confirmation dialog is displayed")
+    public void theConfirmationDialogIsDisplayed() {
+        //manual
+    }
+
+    @Then("the dialog include a warning message indicating the consequences of deleting the transaction")
+    public void theDialogIncludeAWarningMessageIndicatingTheConsequencesOfDeletingTheTransaction() {
+        //manual
+    }
+
+    @And("the dialog provides a Confirm deletion button and a Cancel button")
+    public void theDialogProvidesAConfirmDeletionButtonAndACancelButton() {
+        //manual
+    }
+
+    @Given("the confirmation dialog is displayed for a transaction")
+    public void theConfirmationDialogIsDisplayedForATransaction() {
+        //manual
+    }
+
+    @Then("the dialog closes")
+    public void theDialogCloses() {
+        //manual
+    }
+
+    @And("the user remains on the details screen of the same transaction")
+    public void theUserRemainsOnTheDetailsScreenOfTheSameTransaction() {
+        //manual
+    }
+
+    @And("the transaction log is unchanged")
+    public void theTransactionLogIsUnchanged() {
+        //manual
+    }
+
+    @Given("the user has cancelled the deletion of a transaction")
+    public void theUserHasCancelledTheDeletionOfATransaction() {
+        //manual
+    }
+
+    @When("the user navigates back to the History screen")
+    public void theUserNavigatesBackToTheHistoryScreen() {
+        //manual
+    }
+
+    @Then("the transaction is still visible in the list")
+    public void theTransactionIsStillVisibleInTheList() {
+        //manual
+    }
+
+    @When("the user selects Confirm deletion")
+    public void theUserSelectsConfirmDeletion() {
+        //manual
+    }
+
+    @And("the user is returned to the History screen")
+    public void theUserIsReturnedToTheHistoryScreen() {
+        //manual
+    }
+
+    @And("the transaction is no longer shown in the list")
+    public void theTransactionIsNoLongerShownInTheList() {
+        //manual
+    }
+
+    @Given("the user has deleted a transaction and knows its relying party name, type, status and date")
+    public void theUserHasDeletedATransactionAndKnowsItsRelyingPartyNameTypeStatusAndDate() {
+        //manual
+    }
+
+    @When("the user searches for it or applies matching filters")
+    public void theUserSearchesForItOrAppliesMatchingFilters() {
+        //manual
+    }
+
+    @Then("the deleted transaction is not returned in any of the search or filter")
+    public void theDeletedTransactionIsNotReturnedInAnyOfTheSearchOrFilter() {
+        //manual
+    }
+
+    @Given("the transaction log contains exactly one transaction")
+    public void theTransactionLogContainsExactlyOneTransaction() {
+        //manual
+    }
+
+    @When("the user deletes that transaction and confirms")
+    public void theUserDeletesThatTransactionAndConfirms() {
+        //manual
+    }
+
+    @Then("the history screen shows the empty state message")
+    public void theHistoryScreenShowsTheEmptyStateMessage() {
+        //manual
+    }
+
+    @Given("the user reached a transaction through an active search or filter")
+    public void theUserReachedATransactionThroughAnActiveSearchOrFilter() {
+        //manual
+    }
+
+    @Then("the user returns to the same filtered or search view")
+    public void theUserReturnsToTheSameFilteredOrSearchView() {
+        //manual
+    }
+
+    @And("the deleted transaction is missing from the results")
+    public void theDeletedTransactionIsMissingFromTheResults() {
+        //manual
+    }
+
+    @And("the other results remain displayed")
+    public void theOtherResultsRemainDisplayed() {
+        //manual
+    }
+
+    @Given("the user has one transaction of each category available")
+    public void theUserHasOneTransactionOfEachCategoryAvailable() {
+        //manual
+    }
+
+    @When("the user deletes them one by one via the delete button and confirmation dialog")
+    public void theUserDeletesThemOneByOneViaTheDeleteButtonAndConfirmationDialog() {
+        //manual
+    }
+
+    @Then("the same warning dialog appear for every category")
+    public void theSameWarningDialogAppearForEveryCategory() {
+        //manual
+    }
+
+    @And("each transaction disappears from the list search and filters")
+    public void eachTransactionDisappearsFromTheListSearchAndFilters() {
+        //manual
+    }
+
+    @Given("the user enters the History screen")
+    public void theUserEntersTheHistoryScreen() {
+        //manual
+    }
+
+    @Then("no filter is applied, the default option")
+    public void noFilterIsAppliedTheDefaultOption() {
+        //manual
+    }
+
+    @And("the transactions are sorted by transaction date descending, the default sort option")
+    public void theTransactionsAreSortedByTransactionDateDescendingTheDefaultSortOption() {
+        //manual
+    }
+
+    @And("the filter button has no visual indication that a user filter option is applied")
+    public void theFilterButtonHasNoVisualIndicationThatAUserFilterOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter button")
+    public void theUserTapsTheFilterButton() {
+        //manual
+    }
+
+    @Then("the filter bottom sheet options slide up from the bottom screen")
+    public void theFilterBottomSheetOptionsSlideUpFromTheBottomScreen() {
+        //manual
+    }
+
+    @And("the filter options are displayed in separate sections")
+    public void theFilterOptionsAreDisplayedInSeparateSections() {
+        //manual
+    }
+
+    @And("each section under the title displays the available filter options")
+    public void eachSectionUnderTheTitleDisplaysTheAvailableFilterOptions() {
+        //manual
+    }
+
+    @Given("the user is on the filter bottom sheet")
+    public void theUserIsOnTheFilterBottomSheet() {
+        //manual
+    }
+
+    @When("the user selects to filter by Date")
+    public void theUserSelectsToFilterByDate() {
+        //manual
+    }
+
+    @When("the user selects to filter by Status")
+    public void theUserSelectsToFilterByStatus() {
+        //manual
+    }
+
+    @Then("the user can select an operation status option to filter the transactions")
+    public void theUserCanSelectToFilterTheTransactionsByOperationStatus() {
+        //manual
+    }
+
+    @When("the user selects to filter by Transaction Type")
+    public void theUserSelectsToFilterByTransactionType() {
+        //manual
+    }
+
+    @Then("a list of all supported transaction types is displayed")
+    public void aListOfAllSupportedTransactionTypesIsDisplayed() {
+        //manual
+    }
+
+    @And("the user can filter by selecting or deselecting the corresponding types listed")
+    public void theUserCanFilterBySelectingOrDeselectingTheCorrespondingTypesListed() {
+        //manual
+    }
+
+    @Then("the filters are reset to the default values")
+    public void theFiltersAreResetToTheDefaultValues() {
+        //manual
+    }
+
+    @When("the user taps the Reset all button")
+    public void theUserTapsTheResetAllButton() {
+        //manual
+    }
+
+    @And("the EUDI Wallet applies a filter options to the transactions list")
+    public void theEUDIWalletAppliesAFilterOptionsToTheTransactionsList() {
+        //manual
+    }
+
+    @And("the filter button has visual indication that user filter options have been applied")
+    public void theFilterButtonHasVisualIndicationThatUserFilterOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @Given("the user applies a filter option")
+    public void theUserAppliesAFilterOption() {
+        //manual
+    }
+
+    @When("the user selects the History option in the bottom navigation bar")
+    public void theUserSelectsTheHistoryOptionInTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the History button is highlighted")
+    public void theHistoryButtonIsHighlighted() {
+        //manual
+    }
+
+    @And("the History screen is displayed")
+    public void theHistoryScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the History screen includes a Search bar")
+    public void theHistoryScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @And("the History screen includes a Filter button")
+    public void theHistoryScreenIncludesAFilterButton() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including {} and {}")
+    public void aCardIsDisplayedForEachTransactionEntryIncludingAnd(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the transaction type {} is {} on the History screen")
+    public void theTransactionTypeIsOnTheHistoryScreen(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the user can filter the transactions by selecting or deselecting the corresponding parties listed")
+    public void theUserCanFilterTheTransactionsBySelectingOrDeselectingTheCorrespondingPartiesListed() {
+        //manual
+    }
+
+    @When("the user selects to filter by Relying Party")
+    public void theUserSelectsToFilterByRelyingParty() {
+        //manual
+    }
+
+    @When("the user clicks the History button")
+    public void theUserClicksTheHistoryButton() {
+        //manual
+    }
+
+    @And("all transactions are displayed")
+    public void allTransactionsAreDisplayed() {
+        //manual
+    }
+
+    @Then("the user can edit the text")
+    public void theUserCanEditTheText() {
+        //manual
+    }
+
+    @And("a Clear icon button \\(e.g. X) is displayed")
+    public void aClearIconButtonEGXIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user types on the search field")
+    public void theUserTypesOnTheSearchField() {
+        //manual
+    }
+
+    @Given("the user previously searched for a text and results are displayed")
+    public void theUserPreviouslySearchedForATextAndResultsAreDisplayed() {
+        //manual
+    }
+
+    @When("the user search with an empty search field")
+    public void theUserSearchWithAnEmptySearchField() {
+        //manual
+    }
+
+    @When("the user selects a credential presentation transaction entry from the list")
+    public void theUserSelectsACredentialPresentationTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by {} and {}")
+    public void theEUDIWalletPresentsTheFollowingDetailsByAnd(String arg0, String arg1) {
+        //manual
+    }
+
+    @When("the user selects a signing sealing transaction entry from the list")
+    public void theUserSelectsASigningSealingTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @When("the user selects a credential issuance or reissuance transaction entry from the list")
+    public void theUserSelectsACredentialIssuanceOrReissuanceTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @When("the user selects a credential deletion transaction entry from the list")
+    public void theUserSelectsACredentialDeletionTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the user is returned to the History page")
+    public void theUserIsReturnedToTheHistoryPage() {
+        //manual
+    }
+
+    @And("the user can reset the selected dates using Reset dates button link")
+    public void theUserCanResetTheSelectedDatesUsingResetDatesButtonLink() {
+        //manual
+    }
+
+    @When("the user taps the check icon button")
+    public void theUserTapsTheCheckIconButton() {
+        //manual
+    }
 }
