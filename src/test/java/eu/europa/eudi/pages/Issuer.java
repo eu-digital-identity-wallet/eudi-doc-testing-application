@@ -1870,6 +1870,7 @@ public class Issuer {
 
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletLink)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
         }
     }
 
@@ -2532,12 +2533,18 @@ public class Issuer {
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiwPid();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                        test.mobile().issuer().clickOpen();
+                                    }
                                 } else {
                                     test.mobile().issuer().scrollUntilPidSDJWTIssuer();
                                     test.mobile().issuer().selectPidSDJWTPythonIssuer();
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiwPidSDJWT();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                        test.mobile().issuer().clickOpen();
+                                    }
                                 }
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().issuePID(this.credential);
@@ -2551,6 +2558,9 @@ public class Issuer {
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiw();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                        test.mobile().issuer().clickOpen();
+                                    }
                                     test.mobile().wallet().clickAddButton();
                                     test.mobile().issuer().issueMDL();
 
@@ -2619,6 +2629,10 @@ public class Issuer {
                 }
                 break;
         }
+    }
+
+    public void clickOpen() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
     }
 
     private void selectPidSDJWTPythonIssuer() {
@@ -2904,6 +2918,9 @@ public class Issuer {
             test.mobile().issuer().clickSubmitButton();
             test.mobile().issuer().qrCodeIsDisplayed();
             test.mobile().issuer().clickUseEudiwPidDeferred();
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().issuer().clickOpen();
+            }
         }
     }
 

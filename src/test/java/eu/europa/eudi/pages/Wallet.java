@@ -1051,6 +1051,8 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQR)).click();
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAllow)).click();
         }
     }
 
@@ -1143,6 +1145,8 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
         }
     }
 
@@ -1153,6 +1157,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilPidOnDocuments();
         test.mobile().wallet().clickPID();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().issuePID(this.credential);
     }
 
@@ -1248,6 +1255,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilmDLOnDocuments("python");
         test.mobile().wallet().clickMdl();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().issueMDL();
     }
 
@@ -1269,11 +1279,24 @@ public class Wallet {
         return !driver.findElements(eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR).isEmpty();
     }
 
+    public boolean isPopUpVisible() {
+        if (!test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            return false;
+        }
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickAllow).isEmpty();
+    }
+
     public void clickOnlinePresentation() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlinePresentation)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOnlinePresentation)).click();
+            if (test.mobile().wallet().isPopUpVisible()) {
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAllow)).click();
+
+            }
         }
     }
 
@@ -1361,6 +1384,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
         test.mobile().wallet().clickKotlinPIDFromList();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
     }
@@ -1882,6 +1908,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilmDLOnDocuments("kotlin");
         test.mobile().wallet().clickMdlKotlin();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
     }
@@ -2507,7 +2536,11 @@ public class Wallet {
     }
 
     public void clickContinue() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
+        }
     }
 
     public void walletUnableToAuthenticate() {
@@ -2618,7 +2651,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
         } else {
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
         }
     }
 
