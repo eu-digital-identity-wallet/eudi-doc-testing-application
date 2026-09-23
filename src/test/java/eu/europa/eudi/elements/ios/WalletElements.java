@@ -77,7 +77,7 @@ public class WalletElements {
     public static By popUpConfirmation = By.id("Documents issued");
     public static By pidDefrredIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc) (deferred)\"])");
     public static By counterIsDisplayed = By.xpath("(//XCUIElementTypeStaticText[@name=\"30/30\"])");
-    public static By counterIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"7/7\"])");
+    public static By counterIsDisplayedKotlin = By.xpath("(//XCUIElementTypeStaticText[@name=\"5/5\"])");
     public static By authenticationError = By.xpath("(//XCUIElementTypeStaticText[@name=\"Invalid pin\"])");
     public static By clickHome = By.xpath("//XCUIElementTypeButton[@name=\"home_tab\"]");
     public static By clickSignDocument = By.xpath("//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_sign_button\"]");

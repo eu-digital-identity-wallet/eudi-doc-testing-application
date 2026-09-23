@@ -43,7 +43,8 @@ public interface Literals {
         NOTIFICATION_DEFERRED_WALLET("In progress!"),
         DASHBOARD_PAGE_DEFERRED("Welcome"),
         NOTIFICATION_DEFERRED_WALLET_IOS("In progress"),
-        COUNTER_DISPLAYED("30/30"), COUNTER_DISPLAYED_KOTLIN("7/7"),
+        COUNTER_DISPLAYED("30/30"),
+        COUNTER_DISPLAYED_KOTLIN("5/5"),
         AUTHENTICATION_ERROR("Invalid pin"),
         SUCCESSFULLY_SIGNED("You have successfully signed your document."),
         DASHBOARD_PAGE_SECOND("Welcome, Nikos"),
@@ -59,7 +60,10 @@ public interface Literals {
         ONLINE("Online"),
         HISTORY_IOS("History"),
         HOME_IOS("1"),
-        NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer");
+        NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer"),
+        CHANGE_PIN("Change pin"),
+        CANCEL_PIN("Cancel pin changing?"),
+        TYPE_A_PIN("Type a PIN");
 
         public final String label;
         Wallet(String label) {

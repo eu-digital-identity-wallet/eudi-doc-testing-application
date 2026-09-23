@@ -4,7 +4,6 @@ import browserstack.shaded.org.json.JSONObject;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.config.EnvDataConfig;
-import eu.europa.eudi.utils.factory.MobileDeviceLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.After;
