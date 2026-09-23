@@ -515,12 +515,7 @@ public class AutomatedStepDefs {
 
     @And("a transaction code is generated")
     public void aTransactionCodeIsGenerated() {
-        test.mobile().issuer().qrCodeIsDisplayed();
-//        test.mobile().issuer().transactionCodeIsDisplayed();
-        String code = test.mobile().issuer().getTransactionCode();
-        test.setTransactionCode(code); // <-- store it for later steps
-
-        System.out.println("Stored transaction code: " + code);
+        test.mobile().issuer().aTrasactionCodeGenerated();
     }
 
     @When("the user chooses to register through the EUDI wallet app")
@@ -609,15 +604,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().pidDeferredIsDisplayed(issuerType);
     }
 
-    @When("the user chooses to deliver a credential to the wallet")
-    public void theUserChoosesToDeliverACredentialToTheWallet() throws InterruptedException {
-        test.mobile().issuer().scrollUntilPidIssuer();
-        test.mobile().issuer().selectPidPythonIssuer();
-        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-        test.mobile().issuer().clickSubmitButton();
-        test.mobile().issuer().clickUseEudiwPid();
-    }
-
     @Then("the EUDI Wallet application is opened")
     public void theEUDIWalletApplicationIsOpened() throws InterruptedException {
         test.mobile().wallet().createAPin();
@@ -625,21 +611,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().successMessageOfSetUpPin();
         test.mobile().wallet().clickAddMyDigitalID();
         test.mobile().issuer().viewDataPage();
-    }
-
-    @And("the issuance information is displayed to the user")
-    public void theIssuanceInformationIsDisplayedToTheUser() {
-        test.mobile().wallet().defferedIsDisplayed("python");
-    }
-
-    @When("the user chooses to deliver a deferred credential to the wallet")
-    public void theUserChoosesToDeliverADeferredCredentialToTheWallet() throws InterruptedException {
-        test.mobile().issuer().scrollUntilPidIssuer();
-        test.mobile().issuer().selectPIDDeferred();
-        test.mobile().issuer().scrollUntilFindSubmitIssuer();
-        test.mobile().issuer().clickSubmitButton();
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiwPidDeferred();
     }
 
     @And("the user is redirected to the issuer service for authentication and authorization for {}")
@@ -1123,13 +1094,6 @@ public class AutomatedStepDefs {
         test.mobile().issuer().issuanceInformation(issuerType);
     }
 
-    @Given("the user open the issuer service")
-    public void theUserOpenTheIssuerService() {
-        test.mobile().issuer().issuerService();
-        test.mobile().issuer().clickissuerService();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-    }
-
     @Then("the document appears on the documents screen")
     public void theDocumentAppearsOnTheDocumentsScreen() {
         test.mobile().wallet().clickOnDocuments();
@@ -1181,11 +1145,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().createAPin();
     }
 
-    @Given("the user has been successfully authenticated in the EUDI Wallet")
-    public void theUserHasBeenSuccessfullyAuthenticatedInTheEUDIWallet() {
-        test.mobile().wallet().authenticationSuccessfully();
-    }
-
     @Then("the authentication is completed successfully")
     public void theAuthenticationIsCompletedSuccessfully() {
         test.mobile().wallet().authenticationSuccessfully();
@@ -1219,51 +1178,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().clickAddMyDigitalID();
         test.mobile().wallet().dashboardPageIsDisplayedDeferred();
-    }
-
-    @Given("the user launches the EUDI Wallet for the first time")
-    public void theUserLaunchesTheEUDIWalletForTheFirstTime() {
-        test.mobile().wallet().launchApp();
-    }
-
-    @Then("the Welcome to your Wallet screen is displayed")
-    public void theWelcomeToYourWalletScreenIsDisplayed() {
-        test.mobile().wallet().welcomeScreenIsDisplayed();
-    }
-
-    @And("the logo is displayed")
-    public void theLogoIsDisplayed() {
-        test.mobile().wallet().welcomeLogoIsDisplayed();
-    }
-
-    @And("the text \"Secure your wallet with a PIN code and connect to your National System.\" is displayed")
-    public void theSecureYourWalletSubtitleIsDisplayed() {
-        test.mobile().wallet().welcomeSubtitleIsDisplayed();
-    }
-
-    @And("the label \"Type a PIN\" is displayed")
-    public void theLabelTypeAPINIsDisplayed() {
-        test.mobile().wallet().typeAPinLabelIsDisplayed();
-    }
-
-    @And("a six-digit PIN field is displayed")
-    public void aSixDigitPINFieldIsDisplayed() {
-        test.mobile().wallet().pinFieldIsDisplayedForSetup();
-    }
-
-    @Given("the user is on the Welcome to your Wallet screen")
-    public void theUserIsOnTheWelcomeToYourWalletScreen() {
-        test.mobile().wallet().welcomeScreenIsDisplayed();
-    }
-
-    @When("the user inserts the PIN")
-    public void theUserInsertsThePIN() {
-        test.mobile().wallet().createAPin();
-    }
-
-    @Then("the user is prompted to confirm the PIN")
-    public void theUserIsPromptedToConfirmThePIN() {
-        test.mobile().wallet().confirmPinLabelIsDisplayed();
     }
 
     @Then("the bottom navigation bar displays Home, Documents, and Transactions")
@@ -1414,5 +1328,97 @@ public class AutomatedStepDefs {
     @Then("the user returns to the Wallet Home screen")
     public void theUserReturnsToTheWalletHomeScreen() {
         test.mobile().wallet().walletHomeScreenIsDisplayed();
+    }
+
+    @Given("the user opens the Settings option")
+    public void theUserOpensTheSettingsOption() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickMenu();
+    }
+
+    @When("the user accesses the Change PIN screen")
+    public void theUserAccessesTheChangePINScreen() {
+        test.mobile().wallet().clickChangePin();
+    }
+
+    @Then("the title is displayed as Change PIN")
+    public void theTitleIsDisplayedAsChangePIN() {
+        test.mobile().wallet().changePinIsDisplayed();
+    }
+
+    @When("the user taps Back button")
+    public void theUserTapsBackButton() {
+        test.mobile().wallet().clickCloseButton();
+    }
+
+    @Then("a confirmation prompt is displayed with the text Cancel PIN change")
+    public void aConfirmationPromptIsDisplayedWithTheTextCancelPINChange() {
+        test.mobile().wallet().cancelPinIsDisplayed();
+    }
+
+    @Given("the user launches the application for the first time or opens it again")
+    public void theUserLaunchesTheApplicationForTheFirstTimeOrOpensItAgain() {
+        test.mobile().wallet().checkIfPageIsTrue();
+    }
+
+    @When("the user proceeds through the onboarding flow")
+    public void theUserProceedsThroughTheOnboardingFlow() {
+        //nothing for automation
+    }
+
+    @Then("the updated wallet logo is shown consistently across the onboarding screens")
+    public void theUpdatedWalletLogoIsShownConsistentlyAcrossTheOnboardingScreens() {
+        test.mobile().wallet().welcomeLogoIsDisplayed();
+    }
+
+    @And("the message Secure your wallet with a PIN code and connect to your National System is displayed on the screen")
+    public void theMessageSecureYourWalletWithAPINCodeAndConnectToYourNationalSystemIsDisplayedOnTheScreen() {
+        test.mobile().wallet().welcomeSubtitleIsDisplayed();
+    }
+
+    @And("the Type a PIN label is displayed above the PIN input fields")
+    public void theTypeAPINLabelIsDisplayedAboveThePINInputFields() {
+        test.mobile().wallet().typeApin();
+    }
+
+    @And("the Next button is not displayed after a PIN is entered")
+    public void theNextButtonIsNotDisplayedAfterAPINIsEntered() {
+       //nothing for automation
+    }
+
+    @When("the user completes the PIN entry")
+    public void theUserCompletesThePINEntry() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @And("the Confirm PIN label is displayed above the input fields")
+    public void theConfirmPINLabelIsDisplayedAboveTheInputFields() {
+        test.mobile().wallet().confirmPinLabelIsDisplayed();
+    }
+
+    @And("the user re-enters the PIN")
+    public void theUserReEntersThePIN() {
+        test.mobile().wallet().renterThePin();
+    }
+
+    @When("the user opens the application again after successfully issuing a PID")
+    public void theUserOpensTheApplicationAgainAfterSuccessfullyIssuingAPID() throws InterruptedException {
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().insertPidFromListKotlin();
+        test.mobile().wallet().clickClose();
+    }
+
+    @And("navigates to the Home tab")
+    public void navigatesToTheHomeTab() throws InterruptedException {
+        test.mobile().wallet().clickHome();
+    }
+
+    @Then("the greeting displays Welcome, [Name]")
+    public void theGreetingDisplaysWelcomeName() {
+        test.mobile().wallet().dashboardPageIsDisplayed("Kotlin");
     }
 }

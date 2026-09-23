@@ -2935,18 +2935,10 @@ public class Issuer {
         }
     }
 
-    public void userIssuesAnAttestation() throws InterruptedException {
-        this.issuerType = issuerType;
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().successMessageOfSetUpPin();
-        test.mobile().wallet().clickAddMyDigitalID();
-        if ("kotlin".equalsIgnoreCase(issuerType)) {
-            test.mobile().wallet().insertPidFromListKotlin();
-            test.mobile().wallet().clickClose();
-        } else {
-            test.mobile().wallet().insertPidFromList();
-            test.mobile().wallet().clickDone();
-        }
+    public void aTrasactionCodeGenerated() {
+        test.mobile().issuer().qrCodeIsDisplayed();
+        String code = test.mobile().issuer().getTransactionCode();
+        test.setTransactionCode(code); // <-- store it for later steps
+        System.out.println("Stored transaction code: " + code);
     }
 }

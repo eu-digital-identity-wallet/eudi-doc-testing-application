@@ -17,13 +17,6 @@ public class WebWebDriverFactory {
     public WebWebDriverFactory(TestSetup test) {
     }
 
-//    public void startWebDriverSession() {
-//        ChromeOptions options = new ChromeOptions();
-//
-//        webDriver = new ChromeDriver(options);
-//        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
-//    }
-
     public void startWebDriverSession() {
         if (Objects.equals(System.getProperty("ci.environment"), "githubactions")){
             WebDriverManager.chromedriver().setup();

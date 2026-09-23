@@ -1,10 +1,8 @@
 package eu.europa.eudi.utils;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
-
 import eu.europa.eudi.utils.factory.*;
 import io.cucumber.java.Scenario;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;

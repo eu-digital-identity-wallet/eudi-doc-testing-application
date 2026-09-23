@@ -66,7 +66,6 @@ public class WalletElements {
     public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (MSO Mdoc)\"]");
     public static By clickMdlKotlin = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View/android.view.View");
     public static By selectPIDSDJWTPythonCredential = By.xpath("//android.widget.TextView[@text=\" PID (SD-JWT VC)\"]/preceding-sibling::android.widget.CheckBox");;
-    public static By clickPidSDJWTFromKotlinFromList;
     public static By clickExpandVerificationSDJWT = By.xpath("//android.widget.TextView[@text='PID (SD-JWT VC)']");
     public static By pidSdJwtIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC Compact)\"]");
     public static By pidSdJwtIsDisplayedOnDocuments = By.xpath("//android.widget.TextView[@text=\"PID (SD-JWT VC)\"]");
@@ -80,7 +79,7 @@ public class WalletElements {
     public static By clickOkButton = By.xpath("//android.widget.TextView[@text=\"OK\"]");
     public static By inspectDeferredDocument = By.xpath("//android.view.View[@content-desc=\"Arrow right\"]");
     public static By counterIsDisplayed = By.xpath("//android.widget.TextView[@text=\"30/30\"]");
-    public static By counterIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"7/7\"]");;
+    public static By counterIsDisplayedKotlin = By.xpath("//android.widget.TextView[@text=\"5/5\"]");
     public static By authenticationError = By.xpath("//android.widget.TextView[@text=\"Invalid pin\"]");
     public static By clickHome = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_home\"]");
     public static By clickHistory = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]");
@@ -122,4 +121,10 @@ public class WalletElements {
     public static By retailCategoryHeader = By.xpath("//android.widget.TextView[@text=\"RETAIL\"]");
     public static By otherCategoryHeader = By.xpath("//android.widget.TextView[@text=\"OTHER\"]");
     public static By closeBookmarkSheet = By.xpath("//android.view.View[contains(@content-desc, \"Close sheet\")]");
+    public static By clickMenu = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View");
+    public static By clickChangePin = By.xpath("//android.widget.TextView[@text=\"Change PIN\"]");
+    public static By changePinIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"eu.europa.ec.euidi:id/pin_screen_title\"]");
+    public static By clickCloseButton = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
+    public static By cancelPinIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Cancel pin changing?\"]");
+    public static By typeApinIsDispalyed = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
 }
