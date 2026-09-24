@@ -23,7 +23,7 @@ echo ===============================
 
 call mvn clean verify -ntp ^
     -Dtest=TestRunner ^
-    -Dcucumber.filter.tags="@local_execution"
+    -Dcucumber.filter.tags="@GENERAL_TESTS and @IOS"
 
 echo.
 echo ===============================
@@ -90,7 +90,7 @@ echo Generate Serenity Report
 echo ===============================
 
 call mvn serenity:aggregate ^
-    -Dtags="@ANDROID and @execution_Q12_2026"
+    -Dtags="@GENERAL_TESTS and @IOS"
 
 echo.
 echo ===============================
