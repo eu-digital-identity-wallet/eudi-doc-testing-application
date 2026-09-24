@@ -111,13 +111,17 @@ public class WalletElements {
     public static By validUntilLabelOnCard = By.xpath("//XCUIElementTypeStaticText[contains(@name, \"Valid until\")]");
     public static By governmentCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"GOVERNMENT\"]");
     public static By retailCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"RETAIL\"]");
-    public static By otherCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"OTHER\"]"); // TODO confirm exact iOS header text
+    public static By otherCategoryHeader = By.xpath("//XCUIElementTypeStaticText[@name=\"OTHER\"]");
     public static By searchBar = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
     public static By filterButton = By.xpath("//XCUIElementTypeButton[@name=\"slider.horizontal.3\"]");
     public static By clickLoyalty = By.xpath("//XCUIElementTypeStaticText[@name=\"Loyalty (MSO Mdoc)\"]");
+    public static By clickLearning = By.xpath("//XCUIElementTypeStaticText[@name=\"Learning Credential (SD-JWT VC Compact)\"]");
     public static By signDocumentButton = By.xpath("//XCUIElementTypeButton[@label=\"Sign document\"]");
     public static By clickAllow = By.xpath("//XCUIElementTypeButton[@label=\"Allow\"]");
     public static By clickContinue = By.xpath("//XCUIElementTypeButton[@label=\"Continue\"]");
     public static By clickOpen = By.xpath("//XCUIElementTypeButton[@label=\"Open\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
+    public static By scanQRText = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
+    public static By qrCodeOnTopRight = By.xpath("//XCUIElementTypeOther[@name=\"add_document_scan_qr_code_button\"]");
+    public static By clickClose = By.xpath("//XCUIElementTypeButton[@label=\"Close\"]");
 }

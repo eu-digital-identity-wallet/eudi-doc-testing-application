@@ -1,4 +1,4 @@
-@IOS @automated @US_IMWFUEDTA
+@ANDROID @automated @US_IMWFUEDTA
 Feature: Improve My Wallet Flow UI
   As a user
   I want clearer navigation and more intuitive options within the My Wallet section
@@ -10,6 +10,6 @@ Feature: Improve My Wallet Flow UI
   Scenario: Verify Change PIN screen and cancellation prompt
     Given the user opens the Settings option
     When the user accesses the Change PIN screen
-    Then the screen title is displayed as "Change PIN"
-    When the user taps the Back button
-    Then a confirmation prompt is displayed with the text "Cancel PIN change?"
+    Then the title is displayed as Change PIN
+    When the user taps Back button
+    Then a confirmation prompt is displayed with the text Cancel PIN change

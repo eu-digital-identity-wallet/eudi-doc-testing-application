@@ -63,7 +63,9 @@ public interface Literals {
         NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer"),
         CHANGE_PIN("Change pin"),
         CANCEL_PIN("Cancel pin changing?"),
-        TYPE_A_PIN("Type a PIN");
+        TYPE_A_PIN("Type a PIN"),
+        AUTHENTICATE_ME_IDENTITY("Authenticate my identity"),
+        SCANQRText("Scan a QR code provided from an interacting party to authenticate your identity.");
 
         public final String label;
         Wallet(String label) {

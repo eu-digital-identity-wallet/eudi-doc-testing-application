@@ -1,14 +1,20 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class AutomatedStepDefs {
 
@@ -1420,5 +1426,96 @@ public class AutomatedStepDefs {
     @Then("the greeting displays Welcome, [Name]")
     public void theGreetingDisplaysWelcomeName() {
         test.mobile().wallet().dashboardPageIsDisplayed("Kotlin");
+    }
+
+    @Given("the user is on the Home page and then selects Authenticate")
+    public void theUserIsOnTheHomePageAndThenSelectsAuthenticate() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickAuthenticate();
+    }
+
+    @When("the user chooses in person")
+    public void theUserChoosesInPerson() {
+        test.mobile().wallet().clickInPersonPresentation();
+        test.mobile().wallet().clickEnable();
+        test.mobile().wallet().clickOn();
+        test.mobile().wallet().clickBackOnBlutooth();
+        test.mobile().wallet().clickBackOnBlutooth();
+        test.mobile().wallet().clickBackOnDevice();
+        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickInPersonPresentation();
+    }
+
+    @And("the title Authenticate my identity is shown")
+    public void theTitleAuthenticateMyIdentityIsShown() {
+        test.mobile().wallet().authenticateMyIdentity();
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @When("the user chooses online")
+    public void theUserChoosesOnline() {
+        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickOnlinePresentation();
+    }
+
+    @Then("the scan the QR code provided by the interacting party is displayed")
+    public void theScanTheQRCodeProvidedByTheInteractingPartyIsDisplayed() {
+        test.mobile().wallet().scanQrText();
+    }
+
+    @Given("the user opens the Add Document screen")
+    public void theUserOpensTheAddDocumentScreen() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+    }
+
+    @When("the user selects add document from the list")
+    public void theUserSelectsAddDocumentFromTheList() {
+        test.mobile().wallet().clickFromList();
+    }
+
+    @Then("the QR code option is displayed in the top right corner")
+    public void theQRCodeOptionIsDisplayedInTheTopRightCorner() {
+        test.mobile().wallet().qrCodeIsDisplayedOnTheTopRight();
+    }
+
+    @And("when the user proceeds with attestation issuance, no instance count is shown")
+    public void whenTheUserProceedsWithAttestationIssuanceNoInstanceCountIsShown() throws InterruptedException {
+        test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
+        test.mobile().wallet().clickKotlinPIDFromList();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
+        test.mobile().issuer().signInUser();
+        test.mobile().issuer().fillLoginForm();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            List<WebElement> counterElements = test.mobileWebDriverFactory()
+                    .getDriverAndroid()
+                    .findElements(WalletElements.counterIsDisplayedKotlin);
+
+            Assert.assertTrue(
+                    "Counter is not displayed",
+                    counterElements.isEmpty()
+            );
+        }else{
+            List<WebElement> counterElements = test.mobileWebDriverFactory()
+                    .getDriverAndroid()
+                    .findElements(eu.europa.eudi.elements.ios.WalletElements.counterIsDisplayedKotlin);
+
+            Assert.assertTrue(
+                    "Counter is not displayed",
+                    counterElements.isEmpty()
+            );
+        }
+        test.mobile().wallet().clickClose();
     }
 }
