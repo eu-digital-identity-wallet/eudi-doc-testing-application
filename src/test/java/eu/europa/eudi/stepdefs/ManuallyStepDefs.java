@@ -11196,4 +11196,239 @@ public class ManuallyStepDefs {
     public void theWalletReturnsToThePresentationInformationScreenForTheSelectedTransaction() {
         //manual
     }
+
+    @Given("the user is logging in to the Wallet for the first time")
+    public void theUserIsLoggingInToTheWalletForTheFirstTime() {
+        //manual
+    }
+
+    @When("the first-time login experience is displayed")
+    public void theFirstTimeLoginExperienceIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Trust Mark view")
+    public void theWalletDisplaysTheTrustMarkView() {
+        //manual
+    }
+
+    @Given("the authenticated user is on the Wallet home screen")
+    public void theAuthenticatedUserIsOnTheWalletHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the burger menu and chooses About EUDI Wallet")
+    public void theUserSelectsTheBurgerMenuAndChoosesAboutEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is viewing the Trust Mark screen")
+    public void theUserIsViewingTheTrustMarkScreen() {
+        //manual
+    }
+
+    @When("the Trust Mark content is displayed")
+    public void theTrustMarkContentIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Wallet displays a link to the EUDI Wallet Provider Trusted List")
+    public void theWalletDisplaysALinkToTheEUDIWalletProviderTrustedList() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet Provider Trusted List link is displayed")
+    public void theEUDIWalletProviderTrustedListLinkIsDisplayed() {
+        //manual
+    }
+
+    @When("the user selects the link")
+    public void theUserSelectsTheLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the European Commission-hosted webpage in an external browser or supported web view")
+    public void theWalletOpensTheEuropeanCommissionHostedWebpageInAnExternalBrowserOrSupportedWebView() {
+        //manual
+    }
+
+    @And("the webpage allows the user to view the officially certified Wallet Solutions")
+    public void theWebpageAllowsTheUserToViewTheOfficiallyCertifiedWalletSolutions() {
+        //manual
+    }
+
+    @Given("the certified Wallet Solutions webpage cannot be opened due to network or device limitations")
+    public void theCertifiedWalletSolutionsWebpageCannotBeOpenedDueToNetworkOrDeviceLimitations() {
+        //manual
+    }
+
+    @When("the user selects the EUDI Wallet Provider Trusted List link")
+    public void theUserSelectsTheEUDIWalletProviderTrustedListLink() {
+        //manual
+    }
+
+    @And("the Wallet allows the user to retry the action")
+    public void theWalletAllowsTheUserToRetryTheAction() {
+        //manual
+    }
+
+    @Given("the official source providing the certified Wallet Solutions list is temporarily unavailable")
+    public void theOfficialSourceProvidingTheCertifiedWalletSolutionsListIsTemporarilyUnavailable() {
+        //manual
+    }
+
+    @When("the user attempts to access the EUDI Wallet Provider Trusted List")
+    public void theUserAttemptsToAccessTheEUDIWalletProviderTrustedList() {
+        //manual
+    }
+
+    @Then("the Wallet informs the user that the list cannot currently be retrieved")
+    public void theWalletInformsTheUserThatTheListCannotCurrentlyBeRetrieved() {
+        //manual
+    }
+
+    @Given("the Wallet Solution is certified and recognized by at least one Member State")
+    public void theWalletSolutionIsCertifiedAndRecognizedByAtLeastOneMemberState() {
+        //manual
+    }
+
+    @When("the user accesses the Trust Mark functionality")
+    public void theUserAccessesTheTrustMarkFunctionality() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Trust Mark")
+    public void theWalletDisplaysTheTrustMark() {
+        //manual
+    }
+
+    @Given("the Wallet Solution has not yet been certified")
+    public void theWalletSolutionHasNotYetBeenCertified() {
+        //manual
+    }
+
+    @When("the user accesses the Wallet")
+    public void theUserAccessesTheWallet() {
+        //manual
+    }
+
+    @Then("the Wallet does not display the Trust Mark")
+    public void theWalletDoesNotDisplayTheTrustMark() {
+        //manual
+    }
+
+    @Given("the Wallet Solution certification is no longer valid or has been revoked")
+    public void theWalletSolutionCertificationIsNoLongerValidOrHasBeenRevoked() {
+        //manual
+    }
+
+    @Given("the Wallet Solution is no longer recognized by any Member State")
+    public void theWalletSolutionIsNoLongerRecognizedByAnyMemberState() {
+        //manual
+    }
+
+    @Given("the Trust Mark is displayed for the Wallet Solution")
+    public void theTrustMarkIsDisplayedForTheWalletSolution() {
+        //manual
+    }
+
+    @When("the user accesses the Trust Mark view")
+    public void theUserAccessesTheTrustMarkView() {
+        //manual
+    }
+
+    @Then("the Wallet displays the associated certification information")
+    public void theWalletDisplaysTheAssociatedCertificationInformation() {
+        //manual
+    }
+
+    @And("the Wallet provides the certification-status links")
+    public void theWalletProvidesTheCertificationStatusLinks() {
+        //manual
+    }
+
+    @Given("the Trust Mark is not displayed for the Wallet Solution")
+    public void theTrustMarkIsNotDisplayedForTheWalletSolution() {
+        //manual
+    }
+
+    @Then("the Wallet does not provide the associated certification links or references")
+    public void theWalletDoesNotProvideTheAssociatedCertificationLinksOrReferences() {
+        //manual
+    }
+
+    @Then("the Wallet displays a link to the Wallet Solution certification information page")
+    public void theWalletDisplaysALinkToTheWalletSolutionCertificationInformationPage() {
+        //manual
+    }
+
+    @Given("the certification information link is displayed in the Trust Mark view")
+    public void theCertificationInformationLinkIsDisplayedInTheTrustMarkView() {
+        //manual
+    }
+
+    @When("the user selects the certification information link")
+    public void theUserSelectsTheCertificationInformationLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the European Commission-hosted certification information page in an external browser or supported web view")
+    public void theWalletOpensTheEuropeanCommissionHostedCertificationInformationPageInAnExternalBrowserOrSupportedWebView() {
+        //manual
+    }
+
+    @And("the page allows the user to verify the certification status of the Wallet Solution")
+    public void thePageAllowsTheUserToVerifyTheCertificationStatusOfTheWalletSolution() {
+        //manual
+    }
+
+    @Given("the certification information page cannot be opened due to network or device limitations")
+    public void theCertificationInformationPageCannotBeOpenedDueToNetworkOrDeviceLimitations() {
+        //manual
+    }
+
+    @Then("the Wallet displays general informational text explaining the certification of Wallet Solutions within the EUDI Wallet ecosystem")
+    public void theWalletDisplaysGeneralInformationalTextExplainingTheCertificationOfWalletSolutionsWithinTheEUDIWalletEcosystem() {
+        //manual
+    }
+
+    @And("the informational text is displayed according to the device language settings")
+    public void theInformationalTextIsDisplayedAccordingToTheDeviceLanguageSettings() {
+        //manual
+    }
+
+    @Then("the Wallet displays the official EU Digital Identity Wallet Trust Mark graphics or logo")
+    public void theWalletDisplaysTheOfficialEUDigitalIdentityWalletTrustMarkGraphicsOrLogo() {
+        //manual
+    }
+
+    @And("the Wallet displays informational text according to the device language settings")
+    public void theWalletDisplaysInformationalTextAccordingToTheDeviceLanguageSettings() {
+        //manual
+    }
+
+    @And("the Wallet provides links to certification status information")
+    public void theWalletProvidesLinksToCertificationStatusInformation() {
+        //manual
+    }
+
+    @When("the user selects the back arrow")
+    public void theUserSelectsTheBackArrow() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the Wallet home screen")
+    public void theWalletReturnsToTheWalletHomeScreen() {
+        //manual
+    }
+
+    @Given("a certification status link cannot be opened due to device restrictions or network issues")
+    public void aCertificationStatusLinkCannotBeOpenedDueToDeviceRestrictionsOrNetworkIssues() {
+        //manual
+    }
+
+    @When("the user selects the certification status link")
+    public void theUserSelectsTheCertificationStatusLink() {
+        //manual
+    }
 }
