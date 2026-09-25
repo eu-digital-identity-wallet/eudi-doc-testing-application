@@ -28,4 +28,3 @@ Feature: EUDI Wallet Online Document Presentation
     Examples:
       | credential     | issuer |
       | PID (MSO Mdoc) | Python |
-      | PID (MSO Mdoc) | Kotlin |
