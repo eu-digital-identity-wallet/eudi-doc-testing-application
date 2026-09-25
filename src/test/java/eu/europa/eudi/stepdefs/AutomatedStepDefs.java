@@ -810,6 +810,8 @@ public class AutomatedStepDefs {
     public void theEUDIWalletAllowsTheUserToShareTheDocumentOrCloseTheProcess() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobile().wallet().clickX();
+        }else{
+            test.mobile().wallet().clickDoneSign();
         }
         test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
     }
@@ -1323,7 +1325,7 @@ public class AutomatedStepDefs {
     @Then("the Wallet displays the attestation details requested for sharing")
     public void theWalletDisplaysTheAttestationDetailsRequestedForSharing() {
         test.mobile().wallet().clickToViewDetails();
-        test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/pre_final_shared_data_on_wallet.yml");
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/pre_final_shared_data_on_wallet.yml");
     }
 
     @When("the user cancels the presentation request")

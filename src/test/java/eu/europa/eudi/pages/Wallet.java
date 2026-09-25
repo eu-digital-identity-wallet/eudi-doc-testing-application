@@ -2221,15 +2221,30 @@ public class Wallet {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.pushFile("/sdcard/Download/sample.pdf", sampleDocument);
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.runAppInBackground(Duration.ofSeconds(10));
+            IOSDriver driver =
+                    (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            // Open Safari
             driver.activateApp("com.apple.mobilesafari");
+
+            // Open the PDF
             driver.get(test.envDataConfig().getSampleDocumentUrl());
-            Map<String, Object> args = new HashMap<>();
-            args.put("bundleId", "com.apple.mobilesafari");
-            Thread.sleep(3000);
-            driver.executeScript("mobile: launchApp", args);
-            driver.activateApp(test.envDataConfig().getAppiumIosBundleId());
+
+            // Wait for the PDF to load
+            Thread.sleep(5000);
+
+            // Tap the Share button in Safari
+            driver.findElement(
+                    AppiumBy.accessibilityId("Download")
+            ).click();
+
+            // Wait for the Share Sheet
+            Thread.sleep(2000);
+
+            // Return to EUDI Wallet
+            driver.activateApp(
+                    test.envDataConfig().getAppiumIosBundleId()
+            );
         }
     }
 
@@ -2295,6 +2310,7 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickProceed)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
         }
     }
 
@@ -2302,6 +2318,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectSigningCertificate)).click();
         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectSigningCertificate)).click();
         }
     }
@@ -2319,6 +2336,7 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successfullySigned)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
         } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successfullySigned)).getText();
             Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
         }
@@ -2458,7 +2476,7 @@ public class Wallet {
             Assert.assertEquals("Bookmark filled", contentDesc);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.bookmarkIconFilled));
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickClose));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickClose)).click();
         }
     }
 
@@ -2869,5 +2887,9 @@ public class Wallet {
             Boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.qrCodeOnTopRight)).isDisplayed();
             Assert.assertTrue("QR is displayed", pageHeader);
         }
+    }
+
+    public void clickDoneSign() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickDoneSign)).click();
     }
 }

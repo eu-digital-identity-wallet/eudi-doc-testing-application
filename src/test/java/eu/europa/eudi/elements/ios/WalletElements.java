@@ -123,5 +123,6 @@ public class WalletElements {
     public static By clickScreen = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
     public static By scanQRText = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
     public static By qrCodeOnTopRight = By.xpath("//XCUIElementTypeOther[@name=\"add_document_scan_qr_code_button\"]");
-    public static By clickClose = By.xpath("//XCUIElementTypeButton[@label=\"Close\"]");
+        public static By clickClose = By.id("Close");
+    public static By clickDoneSign = By.xpath("//XCUIElementTypeButton[@label=\"Done\"]");;
 }
