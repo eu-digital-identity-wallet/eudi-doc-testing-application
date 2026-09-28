@@ -2117,8 +2117,19 @@ public class Issuer {
                 );
             }
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Issuer.ISSUANCE_CREDENTIALS.label, pageHeader);
+            String pageHeader = new WebDriverWait(
+                    test.mobileWebDriverFactory().iosDriver,
+                    Duration.ofSeconds(2000)
+            ).until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            eu.europa.eudi.elements.ios.IssuerElements.issueCredentialPageIsDisplayed
+                    )
+            ).getText();
+
+            Assert.assertEquals(
+                    Literals.Issuer.ISSUANCE_CREDENTIALS.label,
+                    pageHeader
+            );
         }
     }
 
