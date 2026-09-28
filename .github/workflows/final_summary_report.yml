@@ -159,6 +159,12 @@ jobs:
 
           mvn serenity:aggregate
 
+      - name: Replace Serenity Core CSS
+        if: always()
+        run: |
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
 
       # =========================================================
       # 8. UPLOAD FINAL REPORT
