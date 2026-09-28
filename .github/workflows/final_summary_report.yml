@@ -10,7 +10,6 @@ on:
         default: '35104244652,35104244680'
 
 jobs:
-
   merge-reports:
     runs-on: macos-latest
 
@@ -44,49 +43,68 @@ jobs:
         run: |
           mkdir -p reports
           mkdir -p target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
-      
+
 
       # =========================================================
-      # 4. DOWNLOAD REPORTS FROM RUN IDS
+      # 4. DOWNLOAD ALL SERENITY REPORTS FROM RUN IDS
       # =========================================================
 
       - name: Download Serenity reports
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           RUN_IDS: ${{ inputs.run-ids }}
+
         run: |
-          
-          echo "Run IDs: $RUN_IDS"
-          
+
+          echo "========================================="
+          echo "RUN IDS"
+          echo "========================================="
+          echo "$RUN_IDS"
+
           IFS=',' read -ra IDS <<< "$RUN_IDS"
-          
+
           for RUN_ID in "${IDS[@]}"; do
-          
+
             RUN_ID=$(echo "$RUN_ID" | xargs)
-          
+
+            echo ""
             echo "========================================="
-            echo "Downloading artifact from Run ID: $RUN_ID"
+            echo "Processing Run ID: $RUN_ID"
             echo "========================================="
-          
+
             mkdir -p "reports/$RUN_ID"
-          
+
+            # Download Android report if it exists
+            echo "Checking Android Serenity report..."
+
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name android-serenity-json \
-              --dir "reports/$RUN_ID" \
-              || \
+              --dir "reports/$RUN_ID/android" \
+              || echo "No Android Serenity report found."
+
+
+            # Download iOS report if it exists
+            echo "Checking iOS Serenity report..."
+
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name ios-serenity-json \
-              --dir "reports/$RUN_ID" \
-              || \
+              --dir "reports/$RUN_ID/ios" \
+              || echo "No iOS Serenity report found."
+
+
+            # Download Manual report if it exists
+            echo "Checking Manual Serenity report..."
+
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name manual-serenity-json \
-              --dir "reports/$RUN_ID"
-          
+              --dir "reports/$RUN_ID/manual" \
+              || echo "No Manual Serenity report found."
+
           done
-      
+
 
       # =========================================================
       # 5. SHOW DOWNLOADED FILES
@@ -94,32 +112,39 @@ jobs:
 
       - name: Show downloaded files
         run: |
+
           echo "========================================="
           echo "DOWNLOADED FILES"
           echo "========================================="
-          
-          find reports -type f
-      
+
+          find reports -type f -print
+
 
       # =========================================================
-      # 6. COPY ALL JSON FILES
+      # 6. COPY ALL JSON FILES TO SERENITY INPUT DIRECTORY
       # =========================================================
 
-      - name: Merge JSON files
+      - name: Collect all Serenity JSON files
         run: |
-          
+
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-          
-          echo "Copying Serenity JSON files..."
-          
-          find reports -name "*.json" -exec cp {} "$REPORT_DIR/" \;
-          
+
+          echo "========================================="
+          echo "COLLECTING SERENITY JSON FILES"
+          echo "========================================="
+
+          find reports -type f -name "*.json" -print
+
+          find reports -type f -name "*.json" -exec cp {} "$REPORT_DIR/" \;
+
+
+          echo ""
           echo "========================================="
           echo "JSON FILES TO AGGREGATE"
           echo "========================================="
-          
-          find "$REPORT_DIR" -name "*.json"
-      
+
+          find "$REPORT_DIR" -type f -name "*.json" -print
+
 
       # =========================================================
       # 7. GENERATE COMBINED SERENITY REPORT
@@ -127,8 +152,13 @@ jobs:
 
       - name: Generate Final Serenity Report
         run: |
+
+          echo "========================================="
+          echo "GENERATING COMBINED SERENITY REPORT"
+          echo "========================================="
+
           mvn serenity:aggregate
-      
+
 
       # =========================================================
       # 8. UPLOAD FINAL REPORT
