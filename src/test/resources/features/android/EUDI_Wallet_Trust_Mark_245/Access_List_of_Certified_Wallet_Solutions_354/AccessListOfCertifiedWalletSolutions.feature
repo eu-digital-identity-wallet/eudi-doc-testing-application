@@ -6,39 +6,40 @@ Feature: Access the official list of certified Wallet Solutions
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/354
 
-  @US_ALOCWS_TC_01
-  Scenario: Access Trust Mark during first-time login
-    Given the user is logging in to the Wallet for the first time
-    When the first-time login experience is displayed
+  @US_ALOCWS_TC_01 @manual:Passed
+  Scenario: Display Trust Mark when opening the Wallet for the first time
+    Given the user opens the Wallet for the first time
     Then the Wallet displays the Trust Mark view
+    When the user selects Continue
+    Then the Wallet displays the Login screen
 
-  @US_ALOCWS_TC_02
+  @US_ALOCWS_TC_02 @manual:Passed
   Scenario: Access Trust Mark from the Wallet menu
     Given the authenticated user is on the Wallet home screen
     When the user selects the burger menu and chooses About EUDI Wallet
     Then the Wallet displays the Trust Mark view
 
-  @US_ALOCWS_TC_03
+  @US_ALOCWS_TC_03 @manual:Passed
   Scenario: Display EUDI Wallet Provider Trusted List link
     Given the user is viewing the Trust Mark screen
     When the Trust Mark content is displayed
     Then the Wallet displays a link to the EUDI Wallet Provider Trusted List
 
-  @US_ALOCWS_TC_04
+  @US_ALOCWS_TC_04 @manual:Passed
   Scenario: Open the certified Wallet Solutions list
     Given the EUDI Wallet Provider Trusted List link is displayed
     When the user selects the link
     Then the Wallet opens the European Commission-hosted webpage in an external browser or supported web view
     And the webpage allows the user to view the officially certified Wallet Solutions
 
-  @US_ALOCWS_TC_05
+  @US_ALOCWS_TC_05 @manual:Pending
   Scenario: Handle certified Wallet Solutions list opening failure
     Given the certified Wallet Solutions webpage cannot be opened due to network or device limitations
     When the user selects the EUDI Wallet Provider Trusted List link
     Then the Wallet displays an appropriate error message
     And the Wallet allows the user to retry the action
 
-  @US_ALOCWS_TC_06
+  @US_ALOCWS_TC_06 @manual:Pending
   Scenario: Handle temporary unavailability of the official trusted list
     Given the official source providing the certified Wallet Solutions list is temporarily unavailable
     When the user attempts to access the EUDI Wallet Provider Trusted List

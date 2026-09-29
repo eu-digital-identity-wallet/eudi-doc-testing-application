@@ -7,10 +7,11 @@ Feature: Access the official list of certified Wallet Solutions
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/354
 
   @US_ALOCWS_TC_01
-  Scenario: Access Trust Mark during first-time login
-    Given the user is logging in to the Wallet for the first time
-    When the first-time login experience is displayed
+  Scenario: Display Trust Mark when opening the Wallet for the first time
+    Given the user opens the Wallet for the first time
     Then the Wallet displays the Trust Mark view
+    When the user selects Continue
+    Then the Wallet displays the Login screen
 
   @US_ALOCWS_TC_02
   Scenario: Access Trust Mark from the Wallet menu

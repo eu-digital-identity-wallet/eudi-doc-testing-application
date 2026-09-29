@@ -10,7 +10,7 @@ Feature: Transaction Search in History tab
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is authenticated in the EUDI Wallet
 
-  @US_ST_TC_01 @manual:
+  @US_ST_TC_01 @manual:Passed
   Scenario: Initial state of the History screen
     Given the user is on the Home screen
     When the user clicks the History button
@@ -18,7 +18,7 @@ Feature: Transaction Search in History tab
     And all transactions are displayed
     And no search or filters are applied
 
-  @US_ST_TC_02 @manual:
+  @US_ST_TC_02 @manual:Passed
   Scenario Outline: History screen display features
     Given the user is on the History screen
     When the user observes the transactions screen
@@ -32,7 +32,7 @@ Feature: Transaction Search in History tab
       | the search field contains a search icon on the left side |
       | the search field displays a hinted search text "Search"  |
 
-  @US_ST_TC_03 @manual:
+  @US_ST_TC_03 @manual:Passed
   Scenario: Edit previous search text
     Given the user previously searched for a text
     When the user taps on the search field
@@ -41,7 +41,7 @@ Feature: Transaction Search in History tab
     And the search field contains the edited text
     And returns the new results
 
-  @US_ST_TC_04 @manual:
+  @US_ST_TC_04 @manual:Passed
   Scenario: Search field "Clear" icon button
     Given the user types on the search field
     When the user taps on the Clear icon button
@@ -49,14 +49,14 @@ Feature: Transaction Search in History tab
     And the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_05 @manual:
+  @US_ST_TC_05 @manual:Passed
   Scenario: Search with empty search field
     Given the user previously searched for a text and results are displayed
     When the user search with an empty search field
     Then the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_06 @manual:
+  @US_ST_TC_06 @manual:Pending
   Scenario Outline: Search using the search field
     Given the user taps on the search field
     When the user types a text
