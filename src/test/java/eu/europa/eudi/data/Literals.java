@@ -65,7 +65,13 @@ public interface Literals {
         CANCEL_PIN("Cancel pin changing?"),
         TYPE_A_PIN("Type a PIN"),
         AUTHENTICATE_ME_IDENTITY("Authenticate my identity"),
-        SCANQRText("Scan a QR code provided from an interacting party to authenticate your identity.");
+        SCANQRText("Scan a QR code provided from an interacting party to authenticate your identity."),
+        HISTORY_TAB("History"),
+        SEARCH("Search"),
+        FILTER_BY("Filter by"),
+        EXPAND_FILTER_SECTION("Before today (expired)"),
+        COUNTER_DISPLAYED_KOTLIN_ON_DETAILS("Instances remaining 5/5"),
+        DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1");
 
         public final String label;
         Wallet(String label) {

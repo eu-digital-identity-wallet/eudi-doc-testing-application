@@ -1,4 +1,4 @@
-@ANDROID @automated @US_IOFUEDTA
+@IOS @automated @US_IOFUEDTA
 Feature: User onboarding experience
   As a new user
   I want a clear onboarding flow
