@@ -36,8 +36,8 @@ Feature: View Transactions in History tab
       | "View previously attempted requests" and "Initiate Deletion Request" button   | The user can request deletion of personal data previously shared with the Relying Party (only for presentation transactions) |
       | "View previously attempted requests" and "Initiate Transaction report" button | The user can report any suspicious operations related to this presentation                                                   |
 
-  @US_VT_TC_03 @manual:Pending
-  Scenario Outline: User views signing/sealing transaction details //Ignore
+  @US_VT_TC_03 @manual:Passed
+  Scenario Outline: User views signing/sealing transaction details
     Given the user is on the History screen
     When the user selects a signing sealing transaction entry from the list
     Then the EUDI Wallet presents the following details by <Detail> and <Description>
