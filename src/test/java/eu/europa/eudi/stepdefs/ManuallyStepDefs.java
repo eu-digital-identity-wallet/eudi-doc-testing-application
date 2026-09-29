@@ -11431,4 +11431,94 @@ public class ManuallyStepDefs {
     public void theUserSelectsTheCertificationStatusLink() {
         //manual
     }
+
+    @Given("user views the presentation information screen")
+    public void userViewsThePresentationInformationScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays an informational screen explaining that the user is about to leave the Wallet")
+    public void theWalletDisplaysAnInformationalScreenExplainingThatTheUserIsAboutToLeaveTheWallet() {
+        //manual
+    }
+
+    @And("explains that the Wallet facilitates the initiation of the request by opening the appropriate communication channel")
+    public void explainsThatTheWalletFacilitatesTheInitiationOfTheRequestByOpeningTheAppropriateCommunicationChannel() {
+        //manual
+    }
+
+    @And("states that the Wallet does not submit, manage or track the request")
+    public void statesThatTheWalletDoesNotSubmitManageOrTrackTheRequest() {
+        //manual
+    }
+
+    @And("states that the user is responsible for completing and submitting the request outside the Wallet")
+    public void statesThatTheUserIsResponsibleForCompletingAndSubmittingTheRequestOutsideTheWallet() {
+        //manual
+    }
+
+    @And("states that the Relying Party is responsible for evaluating and processing the request")
+    public void statesThatTheRelyingPartyIsResponsibleForEvaluatingAndProcessingTheRequest() {
+        //manual
+    }
+
+    @When("the Wallet displays the informational screen")
+    public void theWalletDisplaysTheInformationalScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to [Relying Party]'s website")
+    public void theWalletDisplaysASingleActionButtonContinueToRelyingPartySWebsite() {
+        //manual
+    }
+
+    @When("the user selects the Continue to [Relying Party]'s website button")
+    public void theUserSelectsTheContinueToRelyingPartySWebsiteButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to [Relying Party]'s email")
+    public void theWalletDisplaysASingleActionButtonContinueToRelyingPartySEmail() {
+        //manual
+    }
+
+    @When("the user selects the Continue to [Relying Party]'s email button")
+    public void theUserSelectsTheContinueToRelyingPartySEmailButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to call [Relying Party]")
+    public void theWalletDisplaysASingleActionButtonContinueToCallRelyingParty() {
+        //manual
+    }
+
+    @When("the user selects the Continue to call [Relying Party] button")
+    public void theUserSelectsTheContinueToCallRelyingPartyButton() {
+        //manual
+    }
+
+    @Given("the user is viewing the informational screen")
+    public void theUserIsViewingTheInformationalScreen() {
+        //manual
+    }
+
+    @When("the user selects the Back navigation button")
+    public void theUserSelectsTheBackNavigationButton() {
+        //manual
+    }
+
+    @Given("contact information cannot be retrieved from the WRPRC")
+    public void contactInformationCannotBeRetrievedFromTheWRPRC() {
+        //manual
+    }
+
+    @When("the EUDI Wallet informs the user that the data deletion request cannot be initiated")
+    public void theEUDIWalletInformsTheUserThatTheDataDeletionRequestCannotBeInitiated() {
+        //manual
+    }
+
+    @Then("the Continue to [contact method] button is not available")
+    public void theContinueToContactMethodButtonIsNotAvailable() {
+        //manual
+    }
 }
