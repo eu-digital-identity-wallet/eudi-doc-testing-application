@@ -73,7 +73,7 @@ Feature: Delete a transaction from transaction log
     And the deleted transaction is missing from the results
     And the other results remain displayed
 
-  @US_DTFTL_TC_10 @manual:Passed //check also signing case
+  @US_DTFTL_TC_10 @manual:Passed
   Scenario: Deletion flow is uniform across all transaction categories
     Given the user has one transaction of each category available
     When the user deletes them one by one via the delete button and confirmation dialog
