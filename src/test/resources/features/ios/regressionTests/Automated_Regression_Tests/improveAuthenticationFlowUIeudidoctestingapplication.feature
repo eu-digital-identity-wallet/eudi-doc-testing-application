@@ -1,4 +1,4 @@
-@ANDROID @automation @US_IAFUEDTA @Q2_2026
+@IOS @automation @US_IAFUEDTA @Q2_2026
 Feature: Improve Authentication Flow UI
   As a user
   I want clear guidance when authenticating my identity

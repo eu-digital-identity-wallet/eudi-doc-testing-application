@@ -134,4 +134,15 @@ public class WalletElements {
     public static By clickBackOnBlutooth = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
     public static By scanQRText = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an interacting party to authenticate your identity.\"]");
     public static By qrCodeOnTopRight = By.xpath("//android.view.View[@content-desc=\"QR Scanner\"]");
+    public static By historyTab = By.xpath("//android.widget.TextView[@text=\"History\"]");
+    public static By historyIcon = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]/android.view.View[3]");
+    public static By historyScreen = By.xpath("(//android.widget.TextView[@text=\"History\"])[1]");
+    public static By searchIsDsiaplyed = By.xpath("//android.widget.TextView[@text=\"Search\"]");
+    public static By filterTab = By.xpath("//android.view.View[@content-desc=\"Filters\"]");
+    public static By downwardIsDisplayed = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[1]");
+    public static By upwardIsDisplayed = By.xpath("//android.view.View[@content-desc=\"Arrow up\"]");
+    public static By filterByIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Filter by\"]");
+    public static By expandFilterSection = By.xpath("//android.widget.TextView[@text=\"Before today (expired)\"]");
+    public static By counterIsDisplayedKotlinOnDetails = By.xpath("//android.widget.TextView[@text=\"Instances remaining 5/5\"]");
+    public static By openIssuerDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
 }

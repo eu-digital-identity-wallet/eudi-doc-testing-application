@@ -1441,7 +1441,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user chooses in person")
-    public void theUserChoosesInPerson() {
+    public void theUserChoosesInPerson() throws InterruptedException {
         test.mobile().wallet().clickInPersonPresentation();
         test.mobile().wallet().clickEnable();
         test.mobile().wallet().clickOn();
@@ -1454,6 +1454,10 @@ public class AutomatedStepDefs {
 
     @And("the title Authenticate my identity is shown")
     public void theTitleAuthenticateMyIdentityIsShown() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickAuthenticate();
+            test.mobile().wallet().clickInPersonPresentation();
+        }
         test.mobile().wallet().authenticateMyIdentity();
         test.mobile().wallet().clickBackButton();
     }
@@ -1499,7 +1503,7 @@ public class AutomatedStepDefs {
         }
         test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             List<WebElement> counterElements = test.mobileWebDriverFactory()
                     .getDriverAndroid()
                     .findElements(WalletElements.counterIsDisplayedKotlin);
@@ -1510,7 +1514,7 @@ public class AutomatedStepDefs {
             );
         }else{
             List<WebElement> counterElements = test.mobileWebDriverFactory()
-                    .getDriverAndroid()
+                    .getDriverIos()
                     .findElements(eu.europa.eudi.elements.ios.WalletElements.counterIsDisplayedKotlin);
 
             Assert.assertTrue(
@@ -1519,5 +1523,203 @@ public class AutomatedStepDefs {
             );
         }
         test.mobile().wallet().clickClose();
+    }
+
+    @Given("the History section is displayed")
+    public void theHistorySectionIsDisplayed() throws InterruptedException {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().issuanceMethodIs("from list", "PID (MSO Mdoc)", "kotlin");
+            test.mobile().issuer().performIssuance("same device", "PID (MSO Mdoc)", "from list", "kotlin");
+            test.mobile().issuer().completedIsuuanceFlow("kotlin", "PID (MSO Mdoc)", "from list");
+            test.mobile().wallet().credentialStoredInWallet("PID (MSO Mdoc)", "kotlin");
+            test.mobile().wallet().presentCredential("Web verifier");
+            test.mobile().wallet().performPresentation("same device", "PID (MSO Mdoc)", "specific attributes", "kotlin");
+            test.mobile().verifier().verifierVerifyCredential("same device", "specific attributes", "kotlin", "PID (MSO Mdoc)");
+            test.mobile().wallet().restartApp();
+            test.mobile().wallet().createAPin();
+        }
+            test.mobile().wallet().historyTabIsDisplayed();
+    }
+
+    @And("the corresponding icon should be updated to History")
+    public void theCorrespondingIconShouldBeUpdatedToHistory() {
+        test.mobile().wallet().historyIconIsDisplayed();
+    }
+
+    @Then("all references to Transactions should be displayed as History")
+    public void allReferencesToTransactionsShouldBeDisplayedAsHistory() {
+        test.mobile().wallet().clickHistoryTab();
+        test.mobile().wallet().historyScreenIsDisplayed();
+    }
+
+    @And("the search field should be labelled Search")
+    public void theSearchFieldShouldBeLabelledSearch() {
+        test.mobile().wallet().searchIsDisplayed();
+    }
+
+    @And("the filter section is collapsed")
+    public void theFilterSectionIsCollapsed() {
+        test.mobile().wallet().clickFilter();
+    }
+
+    @And("collapsed filter sections should display a downward arrow")
+    public void collapsedFilterSectionsShouldDisplayADownwardArrow() {
+        test.mobile().wallet().downwardIsDisplayed();
+        test.mobile().wallet().clickDownward();
+    }
+
+    @Then("expanded filter sections should display an upward arrow")
+    public void expandedFilterSectionsShouldDisplayAnUpwardArrow() {
+        test.mobile().wallet().upwardIsDisplayed();
+    }
+
+    @Given("the user launches the app")
+    public void theUserLaunchesTheApp() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+    }
+
+    @When("Document List screen is displayed")
+    public void documentListScreenIsDisplayed() {
+        //nothing for automation
+    }
+
+    @Then("the + button is not visible anymore")
+    public void theButtonIsNotVisibleAnymore() throws InterruptedException {
+        test.mobile().wallet().insertPidFromListKotlin();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        test.mobile().wallet().clickClose();
+        test.mobile().wallet().clickOnDocuments();
+    }
+
+    @And("the user is on Document List screen")
+    public void theUserIsOnDocumentListScreen() {
+        test.mobile().wallet().documentsIsDisplayed();
+    }
+
+    @Then("search field should display the label Search")
+    public void searchFieldShouldDisplayTheLabelSearch() {
+        test.mobile().wallet().searchIsDisplayed();
+    }
+
+    @When("user scrolls down the list")
+    public void userScrollsDownTheList() {
+        //nothing for automation
+    }
+
+    @Then("Add document FAB should collapse to icon only")
+    public void addDocumentFABShouldCollapseToIconOnly() {
+        //nothing for automation
+    }
+
+    @When("user scrolls up")
+    public void userScrollsUp() {
+        //nothing for automation
+    }
+
+    @Then("FAB should expand to show label and icon")
+    public void fabShouldExpandToShowLabelAndIcon() {
+        //nothing for automation
+    }
+
+    @Given("user opens a document details screen")
+    public void userOpensADocumentDetailsScreen() {
+        test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        test.mobile().wallet().clickPIDFromKotlin();
+    }
+
+    @When("user navigates at the bottom of the screen")
+    public void userNavigatesAtTheBottomOfTheScreen() {
+        test.mobile().wallet().userScrollUntilRemoveButton();
+    }
+
+    @And("the remaining instances section is displayed at the bottom of the screen page")
+    public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreenPage() {
+        test.mobile().wallet().counterIsDisplayedOnDetails();
+    }
+
+    @And("Eye button should be placed next to Document Details text")
+    public void eyeButtonShouldBePlacedNextToDocumentDetailsText() {
+        test.mobile().wallet().scrollUpForEyeIcon();
+    }
+
+    @When("user observes the top of the screen")
+    public void userObservesTheTopOfTheScreen() {
+        //nothing for automation
+    }
+
+    @And("Issuer details card is displayed on top")
+    public void issuerDetailsCardIsDisplayedOnTop() {
+        test.mobile().wallet().openIssuerDetails();
+        test.mobile().wallet().issuerDetailsAreDisplayed();
+    }
+
+    @And("button should be labeled Remove from wallet")
+    public void buttonShouldBeLabeledRemoveFromWallet() {
+        test.mobile().wallet().userScrollUntilRemoveButton();
+    }
+
+    @And("text Delete document should not be visible")
+    public void textDeleteDocumentShouldNotBeVisible() {
+        //nothing for automation
+    }
+
+    @And("user opens the Filter screen on device")
+    public void userOpensTheFilterScreen() {
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickFilter();
+    }
+
+    @And("filter section is collapsed")
+    public void filterSectionIsCollapsed() {
+        test.mobile().wallet().filterByIsDisplayed();
+    }
+
+    @Then("arrow icon should point down")
+    public void arrowIconShouldPointDown() {
+        test.mobile().wallet().clickDownward();
+    }
+
+    @And("user expands a filter section")
+    public void userExpandsAFilterSection() {
+        test.mobile().wallet().expandFilterSection();
+    }
+
+    @Then("arrow icon should point up")
+    public void arrowIconShouldPointUp() {
+        test.mobile().wallet().upwardIsDisplayed();
+    }
+
+    @And("use switches instead of checkboxes on filters")
+    public void useSwitchesInsteadOfCheckboxesOnFilters() {
+        test.mobile().wallet().switchesIsDisplayed();
+    }
+
+    @Then("a check button should be visible in upper right corner")
+    public void aCheckButtonShouldBeVisibleInUpperRightCorner() {
+        test.mobile().wallet().checkOnRightTop();
+    }
+
+    @And("the Apply button should not be visible anymore")
+    public void theApplyButtonShouldNotBeVisibleAnymore() {
+        //nothing for automation
+    }
+
+    @Then("filters options should use switches instead of checkboxes")
+    public void filtersOptionsShouldUseSwitchesInsteadOfCheckboxes() {
+        test.mobile().wallet().switchesIsDisplayedOnHistory();
+    }
+
+    @And("the filter section is collapsed on history")
+    public void theFilterSectionIsCollapsedOnHistory() {
+        test.mobile().wallet().filterButton();
     }
 }
