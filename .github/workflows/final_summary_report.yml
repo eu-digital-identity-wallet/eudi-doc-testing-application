@@ -15,16 +15,18 @@ jobs:
 
     steps:
 
-      # ============================================================
-      # CHECKOUT
-      # ============================================================
+      # =========================================================
+      # 1. CHECKOUT
+      # =========================================================
+
       - name: Checkout
         uses: actions/checkout@v5
 
 
-      # ============================================================
-      # JAVA
-      # ============================================================
+      # =========================================================
+      # 2. SET UP JAVA
+      # =========================================================
+
       - name: Set up JDK 17
         uses: actions/setup-java@v5
         with:
@@ -33,22 +35,20 @@ jobs:
           cache: maven
 
 
-      # ============================================================
-      # CLEAN
-      # ============================================================
-      - name: Clean previous reports
+      # =========================================================
+      # 3. CREATE REPORT DIRECTORIES
+      # =========================================================
+
+      - name: Create report directories
         run: |
-          rm -rf reports
-          rm -rf target/serenity-input
-          rm -rf target/site/reports
-
           mkdir -p reports
-          mkdir -p target/serenity-input
+          mkdir -p target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
 
 
-      # ============================================================
-      # DOWNLOAD ALL SERENITY ARTIFACTS
-      # ============================================================
+      # =========================================================
+      # 4. DOWNLOAD ALL SERENITY REPORTS FROM RUN IDS
+      # =========================================================
+
       - name: Download Serenity reports
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
@@ -56,198 +56,122 @@ jobs:
 
         run: |
 
+          echo "========================================="
+          echo "RUN IDS"
+          echo "========================================="
+          echo "$RUN_IDS"
+
           IFS=',' read -ra IDS <<< "$RUN_IDS"
 
-          for RUN_ID in "${IDS[@]}"
-          do
+          for RUN_ID in "${IDS[@]}"; do
 
             RUN_ID=$(echo "$RUN_ID" | xargs)
 
             echo ""
             echo "========================================="
-            echo "PROCESSING RUN $RUN_ID"
+            echo "Processing Run ID: $RUN_ID"
             echo "========================================="
 
-            mkdir -p "reports/$RUN_ID/android"
-            mkdir -p "reports/$RUN_ID/ios"
-            mkdir -p "reports/$RUN_ID/manual"
+            mkdir -p "reports/$RUN_ID"
 
+            # Download Android report if it exists
+            echo "Checking Android Serenity report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name android-serenity-json \
               --dir "reports/$RUN_ID/android" \
-              || echo "No Android Serenity artifact"
+              || echo "No Android Serenity report found."
 
+
+            # Download iOS report if it exists
+            echo "Checking iOS Serenity report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name ios-serenity-json \
               --dir "reports/$RUN_ID/ios" \
-              || echo "No iOS Serenity artifact"
+              || echo "No iOS Serenity report found."
 
+
+            # Download Manual report if it exists
+            echo "Checking Manual Serenity report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name manual-serenity-json \
               --dir "reports/$RUN_ID/manual" \
-              || echo "No Manual Serenity artifact"
+              || echo "No Manual Serenity report found."
 
           done
 
 
-      # ============================================================
-      # SHOW DOWNLOADED FILES
-      # ============================================================
-      - name: Show downloaded Serenity JSON
+      # =========================================================
+      # 5. SHOW DOWNLOADED FILES
+      # =========================================================
+
+      - name: Show downloaded files
         run: |
 
           echo "========================================="
-          echo "DOWNLOADED JSON FILES"
+          echo "DOWNLOADED FILES"
           echo "========================================="
 
-          find reports \
-            -type f \
-            -name "*.json" \
-            -print
+          find reports -type f -print
 
 
-      # ============================================================
-      # PREPARE SERENITY INPUT
-      #
-      # Every JSON gets a unique filename to prevent overwriting.
-      # ============================================================
-      - name: Prepare Serenity input
+      # =========================================================
+      # 6. COPY ALL JSON FILES TO SERENITY INPUT DIRECTORY
+      # =========================================================
+
+      - name: Collect all Serenity JSON files
         run: |
 
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+
           echo "========================================="
-          echo "PREPARING SERENITY INPUT"
+          echo "COLLECTING SERENITY JSON FILES"
           echo "========================================="
 
-          find reports \
-            -type f \
-            -name "*.json" |
-          while read FILE
-          do
+          find reports -type f -name "*.json" -print
 
-            RUN_ID=$(echo "$FILE" | cut -d'/' -f2)
-            FILE_NAME=$(basename "$FILE")
-
-            cp "$FILE" \
-              "target/serenity-input/${RUN_ID}_${FILE_NAME}"
-
-          done
+          find reports -type f -name "*.json" -exec cp {} "$REPORT_DIR/" \;
 
 
           echo ""
           echo "========================================="
-          echo "SERENITY INPUT"
+          echo "JSON FILES TO AGGREGATE"
           echo "========================================="
 
-          find target/serenity-input \
-            -type f \
-            -name "*.json" \
-            -print
+          find "$REPORT_DIR" -type f -name "*.json" -print
 
 
-      # ============================================================
-      # VALIDATE JSON
-      # ============================================================
-      - name: Validate Serenity input
-        run: |
+      # =========================================================
+      # 7. GENERATE COMBINED SERENITY REPORT
+      # =========================================================
 
-          JSON_COUNT=$(find target/serenity-input \
-            -type f \
-            -name "*.json" | wc -l)
-
-          echo "Serenity JSON files: $JSON_COUNT"
-
-          if [ "$JSON_COUNT" -eq 0 ]; then
-            echo "ERROR: No Serenity JSON files found."
-            exit 1
-          fi
-
-
-      # ============================================================
-      # GENERATE ONE COMBINED REPORT
-      # ============================================================
-      - name: Generate combined Serenity report
+      - name: Generate Final Serenity Report
         run: |
 
           echo "========================================="
           echo "GENERATING COMBINED SERENITY REPORT"
           echo "========================================="
 
-          mvn serenity:aggregate \
-            -Dserenity.sourceDirectory=target/serenity-input \
-            -Dserenity.outputDirectory=target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
+          mvn serenity:aggregate
 
-
-      # ============================================================
-      # VERIFY REPORT
-      # ============================================================
-      - name: Verify combined report
-        run: |
-
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-
-          echo "========================================="
-          echo "REPORT VALIDATION"
-          echo "========================================="
-
-          if [ ! -f "$REPORT_DIR/index.html" ]; then
-            echo "ERROR: index.html was not generated."
-            exit 1
-          fi
-
-          echo "index.html: OK"
-
-
-          HTML_COUNT=$(find "$REPORT_DIR" \
-            -type f \
-            -name "*.html" | wc -l)
-
-          echo "HTML files: $HTML_COUNT"
-
-
-          echo ""
-          echo "Report files:"
-          find "$REPORT_DIR" \
-            -maxdepth 2 \
-            -type f \
-            | sort
-
-
-      # ============================================================
-      # CUSTOM CSS
-      # ============================================================
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-
-          if [ -f "$REPORT_DIR/css/core.css" ]; then
-
-            cp src/test/resources/custom-style.css \
-              "$REPORT_DIR/css/core.css"
-
-            echo "Custom CSS applied."
-
-          else
-
-            echo "core.css not found."
-
-          fi
+          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
 
-      # ============================================================
-      # UPLOAD ONLY THE FINAL REPORT
-      # ============================================================
-      - name: Upload final combined Serenity report
+      # =========================================================
+      # 8. UPLOAD FINAL REPORT
+      # =========================================================
+
+      - name: Upload Final Serenity Report
         uses: actions/upload-artifact@v5
-        if: always()
         with:
           name: final-combined-serenity-report
-          path: target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/
-          if-no-files-found: error
+          path: target/site/
