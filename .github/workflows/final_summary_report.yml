@@ -16,14 +16,14 @@ jobs:
     steps:
 
       # ============================================================
-      # 1. CHECKOUT
+      # CHECKOUT
       # ============================================================
       - name: Checkout
         uses: actions/checkout@v5
 
 
       # ============================================================
-      # 2. JAVA
+      # JAVA
       # ============================================================
       - name: Set up JDK 17
         uses: actions/setup-java@v5
@@ -34,9 +34,9 @@ jobs:
 
 
       # ============================================================
-      # 3. CLEAN DIRECTORIES
+      # CLEAN
       # ============================================================
-      - name: Create report directories
+      - name: Clean previous reports
         run: |
           rm -rf reports
           rm -rf target/serenity-input
@@ -47,7 +47,7 @@ jobs:
 
 
       # ============================================================
-      # 4. DOWNLOAD REPORTS FROM ALL RUNS
+      # DOWNLOAD ALL SERENITY ARTIFACTS
       # ============================================================
       - name: Download Serenity reports
         env:
@@ -55,11 +55,6 @@ jobs:
           RUN_IDS: ${{ inputs.run-ids }}
 
         run: |
-
-          echo "========================================="
-          echo "RUN IDS"
-          echo "========================================="
-          echo "$RUN_IDS"
 
           IFS=',' read -ra IDS <<< "$RUN_IDS"
 
@@ -70,7 +65,7 @@ jobs:
 
             echo ""
             echo "========================================="
-            echo "PROCESSING RUN: $RUN_ID"
+            echo "PROCESSING RUN $RUN_ID"
             echo "========================================="
 
             mkdir -p "reports/$RUN_ID/android"
@@ -78,97 +73,110 @@ jobs:
             mkdir -p "reports/$RUN_ID/manual"
 
 
-            echo "Downloading Android Serenity report..."
-
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name android-serenity-json \
               --dir "reports/$RUN_ID/android" \
-              || echo "No Android report found for $RUN_ID"
+              || echo "No Android Serenity artifact"
 
-
-            echo "Downloading iOS Serenity report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name ios-serenity-json \
               --dir "reports/$RUN_ID/ios" \
-              || echo "No iOS report found for $RUN_ID"
+              || echo "No iOS Serenity artifact"
 
-
-            echo "Downloading Manual Serenity report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name manual-serenity-json \
               --dir "reports/$RUN_ID/manual" \
-              || echo "No Manual report found for $RUN_ID"
+              || echo "No Manual Serenity artifact"
 
           done
 
 
       # ============================================================
-      # 5. SHOW DOWNLOADED FILES
+      # SHOW DOWNLOADED FILES
       # ============================================================
-      - name: Show downloaded files
+      - name: Show downloaded Serenity JSON
         run: |
 
           echo "========================================="
-          echo "DOWNLOADED FILES"
+          echo "DOWNLOADED JSON FILES"
           echo "========================================="
 
-          find reports -type f -print
+          find reports \
+            -type f \
+            -name "*.json" \
+            -print
 
 
       # ============================================================
-      # 6. COLLECT JSON FILES
+      # PREPARE SERENITY INPUT
       #
-      # IMPORTANT:
-      # Prefix every JSON with RUN_ID.
-      # This prevents files from different runs overwriting each other.
+      # Every JSON gets a unique filename to prevent overwriting.
       # ============================================================
-      - name: Collect Serenity JSON files
+      - name: Prepare Serenity input
         run: |
 
-          INPUT_DIR="target/serenity-input"
-
           echo "========================================="
-          echo "COLLECTING SERENITY JSON FILES"
+          echo "PREPARING SERENITY INPUT"
           echo "========================================="
 
-          find reports -type f -name "*.json" -print
-
-
-          find reports -type f -name "*.json" | while read FILE
+          find reports \
+            -type f \
+            -name "*.json" |
+          while read FILE
           do
 
             RUN_ID=$(echo "$FILE" | cut -d'/' -f2)
             FILE_NAME=$(basename "$FILE")
 
-            cp "$FILE" "$INPUT_DIR/${RUN_ID}_${FILE_NAME}"
+            cp "$FILE" \
+              "target/serenity-input/${RUN_ID}_${FILE_NAME}"
 
           done
 
 
           echo ""
           echo "========================================="
-          echo "FINAL SERENITY INPUT FILES"
+          echo "SERENITY INPUT"
           echo "========================================="
 
-          find "$INPUT_DIR" -type f -name "*.json" -print
+          find target/serenity-input \
+            -type f \
+            -name "*.json" \
+            -print
 
 
       # ============================================================
-      # 7. GENERATE ONE COMBINED SERENITY REPORT
+      # VALIDATE JSON
       # ============================================================
-      - name: Generate Final Serenity Report
+      - name: Validate Serenity input
+        run: |
+
+          JSON_COUNT=$(find target/serenity-input \
+            -type f \
+            -name "*.json" | wc -l)
+
+          echo "Serenity JSON files: $JSON_COUNT"
+
+          if [ "$JSON_COUNT" -eq 0 ]; then
+            echo "ERROR: No Serenity JSON files found."
+            exit 1
+          fi
+
+
+      # ============================================================
+      # GENERATE ONE COMBINED REPORT
+      # ============================================================
+      - name: Generate combined Serenity report
         run: |
 
           echo "========================================="
           echo "GENERATING COMBINED SERENITY REPORT"
           echo "========================================="
-
-          rm -rf target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
 
           mvn serenity:aggregate \
             -Dserenity.sourceDirectory=target/serenity-input \
@@ -176,199 +184,67 @@ jobs:
 
 
       # ============================================================
-      # 8. VERIFY REPORT
+      # VERIFY REPORT
       # ============================================================
-      - name: Verify generated Serenity report
-        if: always()
+      - name: Verify combined report
         run: |
 
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
 
           echo "========================================="
-          echo "REPORT DIRECTORY"
+          echo "REPORT VALIDATION"
           echo "========================================="
 
-          if [ ! -d "$REPORT_DIR" ]; then
-            echo "ERROR: Serenity report directory does not exist."
+          if [ ! -f "$REPORT_DIR/index.html" ]; then
+            echo "ERROR: index.html was not generated."
             exit 1
           fi
 
-          ls -lah "$REPORT_DIR"
+          echo "index.html: OK"
 
 
-          echo ""
-          echo "========================================="
-          echo "INDEX.HTML"
-          echo "========================================="
-
-          if [ -f "$REPORT_DIR/index.html" ]; then
-            echo "index.html FOUND"
-          else
-            echo "ERROR: index.html NOT FOUND"
-            exit 1
-          fi
-
-
-          echo ""
-          echo "========================================="
-          echo "HTML FILE COUNT"
-          echo "========================================="
-
-          HTML_COUNT=$(find "$REPORT_DIR" -type f -name "*.html" | wc -l)
+          HTML_COUNT=$(find "$REPORT_DIR" \
+            -type f \
+            -name "*.html" | wc -l)
 
           echo "HTML files: $HTML_COUNT"
 
 
           echo ""
-          echo "========================================="
-          echo "SAMPLE HTML FILES"
-          echo "========================================="
-
-          find "$REPORT_DIR" -type f -name "*.html" | head -30
+          echo "Report files:"
+          find "$REPORT_DIR" \
+            -maxdepth 2 \
+            -type f \
+            | sort
 
 
       # ============================================================
-      # 9. CHECK THE SPECIFIC FILE FROM YOUR ERROR
+      # CUSTOM CSS
       # ============================================================
-      - name: Verify Serenity detail pages
+      - name: Replace Serenity Core CSS
         if: always()
         run: |
 
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
 
-          FILE="0272dadd83d6e6ac748d9a947522ca78b8873f5156f9bd38d6a0eb735ee5993b.html"
+          if [ -f "$REPORT_DIR/css/core.css" ]; then
 
-          echo "========================================="
-          echo "CHECKING DETAIL PAGE"
-          echo "========================================="
+            cp src/test/resources/custom-style.css \
+              "$REPORT_DIR/css/core.css"
 
-          if find "$REPORT_DIR" -type f -name "$FILE" | grep -q "$FILE"; then
-            echo "FOUND: $FILE"
+            echo "Custom CSS applied."
+
           else
-            echo "NOT FOUND: $FILE"
+
+            echo "core.css not found."
+
           fi
 
 
       # ============================================================
-      # 10. CHECK BROKEN HTML REFERENCES
+      # UPLOAD ONLY THE FINAL REPORT
       # ============================================================
-      - name: Check broken HTML references
-        if: always()
-        run: |
-
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-
-          python3 <<'PY'
-
-          import os
-          import re
-
-          report_dir = "target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-
-          html_files = []
-
-          for root, dirs, files in os.walk(report_dir):
-
-              for file in files:
-
-                  if file.endswith(".html"):
-                      html_files.append(
-                          os.path.join(root, file)
-                      )
-
-
-          print(f"HTML files found: {len(html_files)}")
-
-
-          existing_files = set()
-
-          for path in html_files:
-              existing_files.add(os.path.basename(path))
-
-
-          broken = set()
-
-
-          for path in html_files:
-
-              with open(
-                  path,
-                  "r",
-                  encoding="utf-8",
-                  errors="ignore"
-              ) as f:
-
-                  content = f.read()
-
-
-              references = re.findall(
-                  r'(?:href|src)=["\']([^"\']+\.html)["\']',
-                  content
-              )
-
-
-              for reference in references:
-
-                  filename = os.path.basename(reference)
-
-                  if filename not in existing_files:
-
-                      broken.add(filename)
-
-
-          print("")
-          print("=========================================")
-          print("BROKEN HTML REFERENCES")
-          print("=========================================")
-
-
-          if broken:
-
-              for item in sorted(broken):
-                  print(item)
-
-              print("")
-              print(
-                  f"Total broken references: {len(broken)}"
-              )
-
-          else:
-
-              print("No broken HTML references found.")
-
-          PY
-
-
-#      # ============================================================
-#      # 11. CUSTOM CSS
-#      # ============================================================
-#      - name: Replace Serenity Core CSS
-#        if: always()
-#        run: |
-#
-#          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-#
-#          if [ -f "$REPORT_DIR/css/core.css" ]; then
-#
-#            cp src/test/resources/custom-style.css \
-#              "$REPORT_DIR/css/core.css"
-#
-#            echo "Custom CSS applied."
-#
-#          else
-#
-#            echo "Serenity core.css not found."
-#
-#          fi
-
-
-      # ============================================================
-      # 12. UPLOAD ONLY THE FINAL REPORT
-      #
-      # IMPORTANT:
-      # Upload the report directory itself.
-      # ============================================================
-      - name: Upload Final Serenity Report
+      - name: Upload final combined Serenity report
         uses: actions/upload-artifact@v5
         if: always()
         with:
