@@ -73,6 +73,7 @@ public interface Literals {
         COUNTER_DISPLAYED_KOTLIN_ON_DETAILS("Instances remaining 5/5"),
         DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1");
 
+
         public final String label;
         Wallet(String label) {
             this.label = label;
