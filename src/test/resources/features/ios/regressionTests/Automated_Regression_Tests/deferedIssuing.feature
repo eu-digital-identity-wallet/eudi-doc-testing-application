@@ -1,4 +1,4 @@
-@IOS @automated @US_DI @GENERAL_TESTS
+@IOS @automated @US_DI
 Feature: Deferred Credential Issuance
   As a user interacting with the issuer service
   I want to receive a credential through deferred issuance

@@ -1,4 +1,4 @@
-@IOS @automated @US_VD @GENERAL_TESTS
+@IOS @automated @US_VD
 Feature: View, bookmark and manage attestations in the EUDI Wallet
 
   As a EUDI Wallet User
