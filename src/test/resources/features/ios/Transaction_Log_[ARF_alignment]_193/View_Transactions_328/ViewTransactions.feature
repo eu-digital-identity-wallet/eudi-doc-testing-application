@@ -10,14 +10,14 @@ Feature: View Transactions in History tab
     Given the user is registered to a valid EUDI Wallet on their mobile device
     And the user is authenticated in the EUDI Wallet
 
-  @US_VT_TC_01 @manual:
+  @US_VT_TC_01 @manual:Passed
   Scenario: User navigates to the History screen
     Given the user is on the Home screen
     When the user clicks the History button
     Then the user navigates to the Transactions screen
     And all transactions are displayed
 
-  @US_VT_TC_02 @manual:
+  @US_VT_TC_02 @manual:Pending
   Scenario Outline: User views credential presentation transaction details
     Given the user is on the History screen
     When the user selects a credential presentation transaction entry from the list
@@ -36,7 +36,7 @@ Feature: View Transactions in History tab
       | "View previously attempted requests" and "Initiate Deletion Request" button   | The user can request deletion of personal data previously shared with the Relying Party (only for presentation transactions) |
       | "View previously attempted requests" and "Initiate Transaction report" button | The user can report any suspicious operations related to this presentation                                                   |
 
-  @US_VT_TC_03 @manual:
+  @US_VT_TC_03 @manual:Failed
   Scenario Outline: User views signing/sealing transaction details //Ignore
     Given the user is on the History screen
     When the user selects a signing sealing transaction entry from the list
@@ -51,7 +51,7 @@ Feature: View Transactions in History tab
       | signingTransactionIdentifier	| where applicable 										|
       | Document/data    				| The document or data signed or sealed, if available   |
 
-  @US_VT_TC_04 @manual:
+  @US_VT_TC_04 @manual:Failed
   Scenario Outline: User views credential (PID/attestation) issuance/re-issuance transaction details
     Given the user is on the History screen
     When the user selects a credential issuance or reissuance transaction entry from the list
@@ -65,7 +65,7 @@ Feature: View Transactions in History tab
       | Credential             | The credential requested and issued                                                                                       |
       | Re-issuance            | Whether User-triggered or automatically initiated by the Wallet Unit and Interacting Party contact details (if available) |
 
-  @US_VT_TC_05 @manual:
+  @US_VT_TC_05 @manual:Passed
   Scenario Outline: User views credential (PID/attestation) deletion transaction details
     Given the user is on the History screen
     When the user selects a credential deletion transaction entry from the list
@@ -77,7 +77,7 @@ Feature: View Transactions in History tab
       | Credential      | The credential deleted                                 |
       | Provider name   | The original PID Provider or Attestation Provider name |
 
-  @US_VT_TC_06 @manual:
+  @US_VT_TC_06 @manual:Passed
   Scenario: Details screen back button
     Given the user is viewing the details of a transaction entry
     When the user presses the back button on top of the screen
