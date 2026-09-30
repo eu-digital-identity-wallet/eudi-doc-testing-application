@@ -339,27 +339,27 @@ jobs:
           PY
 
 
-      # ============================================================
-      # 11. CUSTOM CSS
-      # ============================================================
-      - name: Replace Serenity Core CSS
-        if: always()
-        run: |
-
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-
-          if [ -f "$REPORT_DIR/css/core.css" ]; then
-
-            cp src/test/resources/custom-style.css \
-              "$REPORT_DIR/css/core.css"
-
-            echo "Custom CSS applied."
-
-          else
-
-            echo "Serenity core.css not found."
-
-          fi
+#      # ============================================================
+#      # 11. CUSTOM CSS
+#      # ============================================================
+#      - name: Replace Serenity Core CSS
+#        if: always()
+#        run: |
+#
+#          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+#
+#          if [ -f "$REPORT_DIR/css/core.css" ]; then
+#
+#            cp src/test/resources/custom-style.css \
+#              "$REPORT_DIR/css/core.css"
+#
+#            echo "Custom CSS applied."
+#
+#          else
+#
+#            echo "Serenity core.css not found."
+#
+#          fi
 
 
       # ============================================================
