@@ -40,7 +40,7 @@ Feature: Initiate a report for an unlawful or suspicious data request
     And the Wallet informs the user that the Wallet does not submit or track the report
     And the Wallet informs the user that the report must be completed directly with the identified Data Protection Authority
 
-  @US_ISTR_TC_06
+  @US_ISTR_TC_06 @manual:Passed
   Scenario: Display all available communication methods
     Given the responsible Data Protection Authority provides website, email, and phone contact information
     When the Wallet displays the communication methods
