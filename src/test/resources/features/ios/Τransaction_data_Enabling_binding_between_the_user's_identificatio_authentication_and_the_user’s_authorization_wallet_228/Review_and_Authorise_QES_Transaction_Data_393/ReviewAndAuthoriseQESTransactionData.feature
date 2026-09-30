@@ -12,11 +12,10 @@ Feature: Review and authorise QES transaction data
     When the Wallet presents the transaction information for review
     Then the Wallet displays the QES transaction type and applicable trust framework
     And the Wallet displays the document name or description
-    And the Wallet identifies the Relying Party associated with the transaction
 
   @US_RAAQESTD_TC_02
   Scenario: Provide access to the document to be signed
-    Given the QES transaction contains a reference to the document to be signed
+    Given the QES transaction contains a reference to the document to be signed where provided
     When the Wallet presents the transaction information
     Then the user can access the document associated with the signing transaction
 
@@ -24,8 +23,7 @@ Feature: Review and authorise QES transaction data
   Scenario: Display document and signing information when available
     Given the QES transaction contains additional document or signing information
     When the Wallet presents the transaction information for review
-    Then the Wallet displays the document integrity status and applicable DTBSR information
-    And the Wallet displays the signature format and conformance level where provided
+    Then the Wallet displays the applicable DTBSR information
     And the Wallet displays the signed attributes and requested credentials where applicable
 
   @US_RAAQESTD_TC_04
@@ -34,6 +32,8 @@ Feature: Review and authorise QES transaction data
     When the Wallet presents the transaction information for review
     Then the Wallet displays the OTP where provided
     And the Wallet displays the Response URI where applicable
+    And the Wallet displays the document integrity status
+    And the Wallet displays the signature format and conformance level where provided
 
   @US_RAAQESTD_TC_05
   Scenario: Approve the QES transaction
