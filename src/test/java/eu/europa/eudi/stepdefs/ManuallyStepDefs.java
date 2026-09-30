@@ -11531,4 +11531,139 @@ public class ManuallyStepDefs {
     public void theUserSelectsContinue() {
         //manual
     }
+
+    @Given("the user has initiated a QES signing operation")
+    public void theUserHasInitiatedAQESSigningOperation() {
+        //manual
+    }
+
+    @When("the Wallet presents the transaction information for review")
+    public void theWalletPresentsTheTransactionInformationForReview() {
+        //manual
+    }
+
+    @Then("the Wallet displays the QES transaction type and applicable trust framework")
+    public void theWalletDisplaysTheQESTransactionTypeAndApplicableTrustFramework() {
+        //manual
+    }
+
+    @And("the Wallet displays the document name or description")
+    public void theWalletDisplaysTheDocumentNameOrDescription() {
+        //manual
+    }
+
+    @Given("the QES transaction contains a reference to the document to be signed where provided")
+    public void theQESTransactionContainsAReferenceToTheDocumentToBeSignedWhereProvided() {
+        //manual
+    }
+
+    @When("the Wallet presents the transaction information")
+    public void theWalletPresentsTheTransactionInformation() {
+        //manual
+    }
+
+    @Then("the user can access the document associated with the signing transaction")
+    public void theUserCanAccessTheDocumentAssociatedWithTheSigningTransaction() {
+        //manual
+    }
+
+    @Given("the QES transaction contains additional document or signing information")
+    public void theQESTransactionContainsAdditionalDocumentOrSigningInformation() {
+        //manual
+    }
+
+    @Then("the Wallet displays the applicable DTBSR information")
+    public void theWalletDisplaysTheApplicableDTBSRInformation() {
+        //manual
+    }
+
+    @And("the Wallet displays the signed attributes and requested credentials where applicable")
+    public void theWalletDisplaysTheSignedAttributesAndRequestedCredentialsWhereApplicable() {
+        //manual
+    }
+
+    @Given("optional QES transaction information is provided")
+    public void optionalQESTransactionInformationIsProvided() {
+        //manual
+    }
+
+    @Then("the Wallet displays the OTP where provided")
+    public void theWalletDisplaysTheOTPWhereProvided() {
+        //manual
+    }
+
+    @And("the Wallet displays the Response URI where applicable")
+    public void theWalletDisplaysTheResponseURIWhereApplicable() {
+        //manual
+    }
+
+    @And("the Wallet displays the document integrity status")
+    public void theWalletDisplaysTheDocumentIntegrityStatus() {
+        //manual
+    }
+
+    @And("the Wallet displays the signature format and conformance level where provided")
+    public void theWalletDisplaysTheSignatureFormatAndConformanceLevelWhereProvided() {
+        //manual
+    }
+
+    @Given("the user has reviewed the transaction information and document")
+    public void theUserHasReviewedTheTransactionInformationAndDocument() {
+        //manual
+    }
+
+    @When("the user explicitly approves the QES transaction")
+    public void theUserExplicitlyApprovesTheQESTransaction() {
+        //manual
+    }
+
+    @Then("the Wallet continues the QES signing process")
+    public void theWalletContinuesTheQESSigningProcess() {
+        //manual
+    }
+
+    @Given("the user is reviewing the QES transaction")
+    public void theUserIsReviewingTheQESTransaction() {
+        //manual
+    }
+
+    @When("the user rejects or cancels the transaction")
+    public void theUserRejectsOrCancelsTheTransaction() {
+        //manual
+    }
+
+    @Then("the QES signing operation does not proceed")
+    public void theQESSigningOperationDoesNotProceed() {
+        //manual
+    }
+
+    @Given("the QES transaction has been completed")
+    public void theQESTransactionHasBeenCompleted() {
+        //manual
+    }
+
+    @When("the user accesses the Transaction Log")
+    public void theUserAccessesTheTransactionLog() {
+        //manual
+    }
+
+    @Then("the QES transaction is available in the Transaction Log")
+    public void theQESTransactionIsAvailableInTheTransactionLog() {
+        //manual
+    }
+
+    @When("the user opens the recorded QES transaction")
+    public void theUserOpensTheRecordedQESTransaction() {
+        //manual
+    }
+
+    @Then("the Wallet displays the relevant Transaction Data associated with the transaction")
+    public void theWalletDisplaysTheRelevantTransactionDataAssociatedWithTheTransaction() {
+        //manual
+    }
+
+    @And("the Wallet displays the user's recorded decision to approve or reject the transaction")
+    public void theWalletDisplaysTheUserSRecordedDecisionToApproveOrRejectTheTransaction() {
+        //manual
+    }
 }
