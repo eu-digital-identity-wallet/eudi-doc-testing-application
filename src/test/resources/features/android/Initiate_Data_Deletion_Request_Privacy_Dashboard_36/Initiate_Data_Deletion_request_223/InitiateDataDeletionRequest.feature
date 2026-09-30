@@ -32,69 +32,31 @@ Feature: Initiate a data deletion request
 
   @US_IDDR_TC_04 @manual:Passed
   Scenario: Display single action button for Website communication method
-    Given the WRPRC contains a website and other contact information for the Relying Party
+    Given the WRPRC contains a website for the Relying Party
     When the Wallet displays the informational screen
     Then the Wallet displays a single action button Continue to [Relying Party]'s website
 
-  @US_IDDR_TC_05 @manual:Pending
+  @US_IDDR_TC_05 @manual:Passed
   Scenario: Use Website as the preferred communication method
-    Given the WRPRC contains a website and other contact information for the Relying Party
+    Given the WRPRC contains a website for the Relying Party
     When the user selects the Continue to [Relying Party]'s website button
     Then the Wallet opens the Relying Party website in the device's default browser
 
-  @US_IDDR_TC_06 @manual:Pending
-  Scenario: Display single action button for Email communication method
-    Given the WRPRC contains an email address but no website for the Relying Party
-    When the Wallet displays the informational screen
-    Then the Wallet displays a single action button Continue to [Relying Party]'s email
-
-  @US_IDDR_TC_07 @manual:Pending
-  Scenario: Use Email when Website is not available
-    Given the WRPRC contains an email address but no website for the Relying Party
-    When the user selects the Continue to [Relying Party]'s email button
-    Then the Wallet opens the device's default email application with a pre-filled email
-
-  @US_IDDR_TC_08 @manual:Pending
-  Scenario: Display single action button for Phone communication method
-    Given the WRPRC contains a telephone number but no website or email address for the Relying Party
-    When the Wallet displays the informational screen
-    Then the Wallet displays a single action button Continue to call [Relying Party]
-
-  @US_IDDR_TC_09 @manual:Pending
-  Scenario: Use Phone when Website and Email are not available
-    Given the WRPRC contains a telephone number but no website or email address for the Relying Party
-    When the user selects the Continue to call [Relying Party] button
-    Then the Wallet opens the device's phone application using the Relying Party telephone number
-
-  @US_IDDR_TC_10 @manual:Pending
-  Scenario: Display pre-filled deletion request email
-    Given Email is the selected communication method for the data deletion request
-    When the default email application is opened
-    Then the email contains the Relying Party email address
-    And the subject indicates a request for deletion of personal data
-    And the email contains template content to assist the user in preparing the request
-
-  @US_IDDR_TC_11 @manual:Passed
+  @US_IDDR_TC_06 @manual:Passed
   Scenario: Return to Presentation Information using Back navigation
     Given the user is viewing the informational screen
     When the user selects the Back navigation button
     Then the Wallet returns to the Presentation Information screen
 
-  @US_IDDR_TC_12 @manual:Passed
+  @US_IDDR_TC_07 @manual:Passed
   Scenario: Record data deletion request initiation
     Given the user has initiated a data deletion request
     When the selected external application is successfully launched
     Then the Wallet records the data deletion request initiation
 
-  @US_IDDR_TC_13 @manual:Passed
+  @US_IDDR_TC_08 @manual:Passed
   Scenario: Disable deletion request when contact information cannot be retrieved
-    Given contact information cannot be retrieved from the WRPRC
-    When the EUDI Wallet informs the user that the data deletion request cannot be initiated
-    Then the Continue to [contact method] button is not available
-
-  @US_IDDR_TC_14 @manual:Pending
-  Scenario: Handle external application launch failure
-    Given the Wallet cannot launch the external application for the selected communication method
-    When the user initiates the data deletion request
-    Then the Wallet displays an appropriate error message
-    And the Wallet does not record the data deletion request attempt
+    Given contact information are not available in the WRPRC
+    When contact information cannot be retrieved from the WRPRC
+    Then the data deletion request cannot be initiated
+    And the Initiate Deletion Request button in is disabled

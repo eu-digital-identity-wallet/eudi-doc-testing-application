@@ -17,7 +17,7 @@ Feature: View Transactions in History tab
     Then the user navigates to the Transactions screen
     And all transactions are displayed
 
-  @US_VT_TC_02 @manual:Pending
+  @US_VT_TC_02 @manual:Passed
   Scenario Outline: User views credential presentation transaction details
     Given the user is on the History screen
     When the user selects a credential presentation transaction entry from the list
@@ -27,7 +27,7 @@ Feature: View Transactions in History tab
       | Detail                                                                        | Description                                                                                                                  |
       | Relying Party name                                                            | The Interacting Party name with a verification badge next to it, for trusted Parties (if available)                          |
       | Relying Party information                                                     | URL, country and contact details (if available)                                                                              |
-      | Intermediary RP information                                                   | Intermediary Relying Party name, contact details, country (if applicable)                                                    |
+      | Intermediary RP information                                                   | Intermediary Relying Party information (if applicable)                                                    |
       | DateTime                                                                      | The presentation operation was performed in ISO8601 format                                                                   |
       | Status                                                                        | The presentation result (Completed or Not Completed), reason of non-completion shown where available                         |
       | Credential(s)                                                                 | Each credential details shared presented as an expandable/collapsible card; only attribute identifiers displayed (no values) |

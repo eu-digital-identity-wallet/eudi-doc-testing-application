@@ -11666,4 +11666,24 @@ public class ManuallyStepDefs {
     public void theWalletDisplaysTheUserSRecordedDecisionToApproveOrRejectTheTransaction() {
         //manual
     }
+
+    @Given("contact information are not available in the WRPRC")
+    public void contactInformationAreNotAvailableInTheWRPRC() {
+        //manual
+    }
+
+    @Then("the data deletion request cannot be initiated")
+    public void theDataDeletionRequestCannotBeInitiated() {
+        //manual
+    }
+
+    @And("the Initiate Deletion Request button in is disabled")
+    public void theInitiateDeletionRequestButtonInIsDisabled() {
+        //manual
+    }
+
+    @Given("the WRPRC contains a website for the Relying Party")
+    public void theWRPRCContainsAWebsiteForTheRelyingParty() {
+        //manual
+    }
 }
