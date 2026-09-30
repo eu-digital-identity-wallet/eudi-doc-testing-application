@@ -11202,11 +11202,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the first-time login experience is displayed")
-    public void theFirstTimeLoginExperienceIsDisplayed() {
-        //manual
-    }
-
     @Then("the Wallet displays the Trust Mark view")
     public void theWalletDisplaysTheTrustMarkView() {
         //manual
@@ -11519,6 +11514,21 @@ public class ManuallyStepDefs {
 
     @Then("the Continue to [contact method] button is not available")
     public void theContinueToContactMethodButtonIsNotAvailable() {
+        //manual
+    }
+
+    @Given("the user opens the Wallet for the first time")
+    public void theUserOpensTheWalletForTheFirstTime() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Login screen")
+    public void theWalletDisplaysTheLoginScreen() {
+        //manual
+    }
+
+    @When("the user selects Continue")
+    public void theUserSelectsContinue() {
         //manual
     }
 }

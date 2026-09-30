@@ -6,32 +6,33 @@ Feature: Access Wallet Solution certification status information
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/353
 
-  @US_VCSOTWS_TC_01
-  Scenario: Access Trust Mark during first-time login
-    Given the user is logging in to the Wallet for the first time
-    When the first-time login experience is displayed
+  @US_VCSOTWS_TC_01 @manual:Passed
+  Scenario: Display Trust Mark when opening the Wallet for the first time
+    Given the user opens the Wallet for the first time
     Then the Wallet displays the Trust Mark view
+    When the user selects Continue
+    Then the Wallet displays the Login screen
 
-  @US_VCSOTWS_TC_02
+  @US_VCSOTWS_TC_02 @manual:Passed
   Scenario: Access Trust Mark from the Wallet menu
     Given the authenticated user is on the Wallet home screen
     When the user selects the burger menu and chooses About EUDI Wallet
     Then the Wallet displays the Trust Mark view
 
-  @US_VCSOTWS_TC_03
+  @US_VCSOTWS_TC_03 @manual:Passed
   Scenario: Display certification information link
     Given the user is viewing the Trust Mark screen
     When the Trust Mark content is displayed
     Then the Wallet displays a link to the Wallet Solution certification information page
 
-  @US_VCSOTWS_TC_04
+  @US_VCSOTWS_TC_04 @manual:Passed
   Scenario: Open Wallet certification information
     Given the certification information link is displayed in the Trust Mark view
     When the user selects the certification information link
     Then the Wallet opens the European Commission-hosted certification information page in an external browser or supported web view
     And the page allows the user to verify the certification status of the Wallet Solution
 
-  @US_VCSOTWS_TC_05
+  @US_VCSOTWS_TC_05 @manual:Pending
   Scenario: Handle certification information page opening failure
     Given the certification information page cannot be opened due to network or device limitations
     When the user selects the certification information link
