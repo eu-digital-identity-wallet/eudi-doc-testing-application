@@ -36,17 +36,21 @@ jobs:
 
 
       # =========================================================
-      # 3. CREATE REPORT DIRECTORIES
+      # 3. CREATE DIRECTORIES
       # =========================================================
 
       - name: Create report directories
         run: |
+          rm -rf reports
+          rm -rf target/site/reports
+
           mkdir -p reports
+          mkdir -p target/serenity-input
           mkdir -p target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
 
 
       # =========================================================
-      # 4. DOWNLOAD ALL SERENITY REPORTS FROM RUN IDS
+      # 4. DOWNLOAD ALL SERENITY JSON REPORTS
       # =========================================================
 
       - name: Download Serenity reports
@@ -59,6 +63,7 @@ jobs:
           echo "========================================="
           echo "RUN IDS"
           echo "========================================="
+
           echo "$RUN_IDS"
 
           IFS=',' read -ra IDS <<< "$RUN_IDS"
@@ -72,36 +77,35 @@ jobs:
             echo "Processing Run ID: $RUN_ID"
             echo "========================================="
 
-            mkdir -p "reports/$RUN_ID"
+            mkdir -p "reports/$RUN_ID/android"
+            mkdir -p "reports/$RUN_ID/ios"
+            mkdir -p "reports/$RUN_ID/manual"
 
-            # Download Android report if it exists
-            echo "Checking Android Serenity report..."
+            echo "Downloading Android report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name android-serenity-json \
               --dir "reports/$RUN_ID/android" \
-              || echo "No Android Serenity report found."
+              || echo "No Android report."
 
 
-            # Download iOS report if it exists
-            echo "Checking iOS Serenity report..."
+            echo "Downloading iOS report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name ios-serenity-json \
               --dir "reports/$RUN_ID/ios" \
-              || echo "No iOS Serenity report found."
+              || echo "No iOS report."
 
 
-            # Download Manual report if it exists
-            echo "Checking Manual Serenity report..."
+            echo "Downloading Manual report..."
 
             gh run download "$RUN_ID" \
               --repo "${{ github.repository }}" \
               --name manual-serenity-json \
               --dir "reports/$RUN_ID/manual" \
-              || echo "No Manual Serenity report found."
+              || echo "No Manual report."
 
           done
 
@@ -121,29 +125,38 @@ jobs:
 
 
       # =========================================================
-      # 6. COPY ALL JSON FILES TO SERENITY INPUT DIRECTORY
+      # 6. COPY JSON FILES TO SERENITY INPUT
       # =========================================================
 
-      - name: Collect all Serenity JSON files
+      - name: Collect Serenity JSON files
         run: |
 
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+          INPUT_DIR="target/serenity-input"
 
           echo "========================================="
-          echo "COLLECTING SERENITY JSON FILES"
+          echo "COLLECTING JSON FILES"
           echo "========================================="
 
           find reports -type f -name "*.json" -print
 
-          find reports -type f -name "*.json" -exec cp {} "$REPORT_DIR/" \;
+
+          find reports -type f -name "*.json" | while read FILE
+          do
+
+            RUN_ID=$(echo "$FILE" | cut -d'/' -f2)
+            FILE_NAME=$(basename "$FILE")
+
+            cp "$FILE" "$INPUT_DIR/${RUN_ID}_${FILE_NAME}"
+
+          done
 
 
           echo ""
           echo "========================================="
-          echo "JSON FILES TO AGGREGATE"
+          echo "FINAL INPUT FILES"
           echo "========================================="
 
-          find "$REPORT_DIR" -type f -name "*.json" -print
+          find "$INPUT_DIR" -type f -name "*.json" -print
 
 
       # =========================================================
@@ -157,21 +170,51 @@ jobs:
           echo "GENERATING COMBINED SERENITY REPORT"
           echo "========================================="
 
-          mvn serenity:aggregate
+          mvn serenity:aggregate \
+            -Dserenity.sourceDirectory=target/serenity-input \
+            -Dserenity.outputDirectory=target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
+
+
+      # =========================================================
+      # 8. SHOW GENERATED REPORT
+      # =========================================================
+
+      - name: Verify generated report
+        if: always()
+        run: |
+
+          echo "========================================="
+          echo "GENERATED REPORT FILES"
+          echo "========================================="
+
+          find target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo \
+            -maxdepth 2 \
+            -type f \
+            | sort
+
+
+      # =========================================================
+      # 9. REPLACE CSS
+      # =========================================================
 
       - name: Replace Serenity Core CSS
         if: always()
         run: |
+
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
+          cp src/test/resources/custom-style.css \
+             "$REPORT_DIR/css/core.css" \
+             || true
 
 
       # =========================================================
-      # 8. UPLOAD FINAL REPORT
+      # 10. UPLOAD FINAL REPORT
       # =========================================================
 
       - name: Upload Final Serenity Report
         uses: actions/upload-artifact@v5
+        if: always()
         with:
           name: final-combined-serenity-report
-          path: target/site/
+          path: target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/
