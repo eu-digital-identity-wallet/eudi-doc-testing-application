@@ -458,7 +458,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
             String birthDate = yml.fields.get("Birth Date").value;
-
+            driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickBirthDate))
                     .click();
@@ -904,7 +904,10 @@ public class Issuer {
                         driver.context("NATIVE_APP");
                     }
 
-                    // First try WITHOUT refresh
+                    // Pull to refresh BEFORE checking
+                    System.out.println("Refreshing page before checking...");
+                    pullToRefresh(driver);
+
                     element = new WebDriverWait(driver, Duration.ofSeconds(15))
                             .pollingEvery(Duration.ofMillis(500))
                             .ignoring(NoSuchElementException.class)
@@ -916,7 +919,9 @@ public class Issuer {
                                         WebElement e = d.findElement(locator);
 
                                         if (e.isDisplayed()) {
-                                            System.out.println("SUCCESS: Found using " + locator);
+                                            System.out.println(
+                                                    "SUCCESS: Found using " + locator
+                                            );
                                             return e;
                                         }
 
@@ -932,13 +937,13 @@ public class Issuer {
                     }
 
                 } catch (Exception e) {
-                    System.out.println("Element not found on attempt " + attempt);
 
-                    // Refresh only after the first failed attempt
-                    if (attempt < maxAttempts) {
-                        System.out.println("Refreshing page...");
-                        pullToRefresh(driver);
-                    }
+                    System.out.println(
+                            "Element not found on attempt " + attempt
+                    );
+
+                    // Do not refresh here.
+                    // The next iteration will refresh BEFORE checking again.
                 }
             }
 
@@ -946,7 +951,8 @@ public class Issuer {
                 element.click();
             } else {
                 throw new AssertionError(
-                        "Element was not displayed even after " + maxAttempts + " attempts."
+                        "Element was not displayed even after "
+                                + maxAttempts + " attempts."
                 );
             }
         } else {
@@ -1042,18 +1048,26 @@ public class Issuer {
         System.out.println("Pull-to-refresh executed.");
 
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-
-            WebElement continueButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            AppiumBy.id("com.android.chrome:id/positive_button")
-                    )
+            List<WebElement> continueButtons = driver.findElements(
+                    AppiumBy.id("com.android.chrome:id/positive_button")
             );
 
-            continueButton.click();
-            System.out.println("Clicked Continue.");
-        } catch (TimeoutException e) {
-            System.out.println("Confirm Form Resubmission popup did not appear.");
+            if (!continueButtons.isEmpty()
+                    && continueButtons.get(0).isDisplayed()) {
+
+                continueButtons.get(0).click();
+                System.out.println("Continue button is visible. Clicked Continue.");
+
+            } else {
+                System.out.println(
+                        "Continue button is not visible. Nothing to do."
+                );
+            }
+
+        } catch (WebDriverException e) {
+            System.out.println(
+                    "Could not check Chrome Continue button: " + e.getMessage()
+            );
         }
     }
 
@@ -2150,23 +2164,82 @@ public class Issuer {
             By nativeLocator = eu.europa.eudi.elements.android.IssuerElements.signPageIsDisplayed;
             By webLocator = By.cssSelector("#kc-page-title");
 
-            WebElement header;
-            try {
-                header = waitForVisibleAcrossContexts(
-                        driver,
-                        nativeLocator,
-                        webLocator,
-                        Duration.ofSeconds(300));
-            } catch (TimeoutException e) {
-                System.out.println("Contexts at failure: " + driver.getContextHandles());
-                System.out.println("Current context: " + driver.getContext());
-                System.out.println("Page source:\n" + driver.getPageSource());
-                throw new AssertionError("Sign page header was not found.", e);
+            WebElement header = null;
+
+            int maxAttempts = 5;
+            int attempt = 0;
+
+            while (attempt < maxAttempts) {
+
+                attempt++;
+
+                System.out.println("Attempt " + attempt + " to find Sign page header.");
+
+                try {
+                    // Always start from NATIVE_APP
+                    if (!"NATIVE_APP".equals(driver.getContext())) {
+                        driver.context("NATIVE_APP");
+                    }
+
+                    // Refresh BEFORE checking
+                    System.out.println("Refreshing page before checking...");
+                    pullToRefresh(driver);
+
+                    // Check across NATIVE_APP and WEBVIEW
+                    header = waitForVisibleAcrossContexts(
+                            driver,
+                            nativeLocator,
+                            webLocator,
+                            Duration.ofSeconds(300)
+                    );
+
+                    if (header != null && header.isDisplayed()) {
+                        System.out.println("SUCCESS: Sign page header found.");
+                        break;
+                    }
+
+                } catch (TimeoutException e) {
+
+                    System.out.println(
+                            "Sign page header not found on attempt " + attempt
+                    );
+
+                    System.out.println(
+                            "Contexts at failure: " + driver.getContextHandles()
+                    );
+
+                    System.out.println(
+                            "Current context: " + driver.getContext()
+                    );
+
+                    // Don't refresh here.
+                    // The next attempt will refresh BEFORE checking again.
+                }
+            }
+
+            if (header == null || !header.isDisplayed()) {
+                System.out.println(
+                        "Contexts at final failure: " + driver.getContextHandles()
+                );
+
+                System.out.println(
+                        "Current context: " + driver.getContext()
+                );
+
+                System.out.println(
+                        "Page source:\n" + driver.getPageSource()
+                );
+
+                throw new AssertionError(
+                        "Sign page header was not found after "
+                                + maxAttempts + " attempts."
+                );
             }
 
             Assert.assertTrue(header.isDisplayed());
 
-            driver.context("NATIVE_APP"); // Reset before continuing native steps
+// Reset before continuing native steps
+            driver.context("NATIVE_APP");
 
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
