@@ -1,20 +1,13 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
-import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.List;
 
 public class AutomatedStepDefs {
 
@@ -214,7 +207,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user selects the URL")
-    public void theUserSelectsTheURL() throws InterruptedException {
+    public void theUserSelectsTheURL() {
         test.mobile().issuer().qrCodeIsDisplayed();
         test.mobile().issuer().clickUseEudiw();
     }
@@ -358,7 +351,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the user authenticates using a six-digit PIN or Biometrics")
-    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() throws InterruptedException {
+    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() {
         test.mobile().verifier().viewDataPage();
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -366,7 +359,7 @@ public class AutomatedStepDefs {
 
 
     @Given("the user visits the Relying Party service on their mobile device")
-    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() throws MalformedURLException {
+    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() {
         userOpensVerifierApp();
     }
 
@@ -871,7 +864,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user taps on an attestation from the list")
-    public void theUserTapsOnAnAttestationFromTheList() throws InterruptedException {
+    public void theUserTapsOnAnAttestationFromTheList() {
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().clickPIDFromKotlin();
         } else {
@@ -1073,7 +1066,7 @@ public class AutomatedStepDefs {
     }
 
     @And("the wallet displays a success screen with the details of the issued attestation")
-    public void theWalletDisplaysASuccessScreenWithTheDetailsOfTheIssuedAttestation() throws InterruptedException {
+    public void theWalletDisplaysASuccessScreenWithTheDetailsOfTheIssuedAttestation() {
         test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, "credential offer");
     }
 
@@ -1264,7 +1257,7 @@ public class AutomatedStepDefs {
     }
 
     @When("the user taps twice on an attestation from the list")
-    public void theUserTapsTwiceOnAnAttestationFromTheList() throws InterruptedException {
+    public void theUserTapsTwiceOnAnAttestationFromTheList() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                 test.mobile().wallet().clickPIDFromKotlin();
