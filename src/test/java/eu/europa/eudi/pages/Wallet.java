@@ -430,7 +430,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilLearningCredentialOnDocuments();
         test.mobile().wallet().clickLearningCredentialKotlin();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
         test.mobile().wallet().clickContinue();
+        }
     }
 
     public void dashboardPageIsDisplayed(String issuerType) {
@@ -2487,7 +2489,7 @@ public class Wallet {
 
     public void openIssuerDetails() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.openIssuerDetails)).click();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.openIssuerDetails)).click();
         }else{
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails)).click();
         }

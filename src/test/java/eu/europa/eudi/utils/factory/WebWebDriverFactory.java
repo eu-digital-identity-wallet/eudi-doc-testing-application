@@ -1,6 +1,7 @@
 package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,9 +21,7 @@ public class WebWebDriverFactory {
         if (Objects.equals(System.getProperty("ci.environment"), "githubactions")){
         ChromeOptions options = new ChromeOptions();
 
-        options.setBinary(
-                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-        );
+        WebDriverManager.chromedriver().setup();
 
         webDriver = new ChromeDriver(options);
 
