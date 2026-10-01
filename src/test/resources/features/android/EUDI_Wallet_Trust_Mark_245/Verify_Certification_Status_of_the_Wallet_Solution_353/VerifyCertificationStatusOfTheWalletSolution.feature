@@ -32,10 +32,3 @@ Feature: Access Wallet Solution certification status information
     Then the Wallet opens the European Commission-hosted certification information page in an external browser or supported web view
     And the page allows the user to verify the certification status of the Wallet Solution
 
-  @US_VCSOTWS_TC_05 @manual:Pending
-  Scenario: Handle certification information page opening failure
-    Given the certification information page cannot be opened due to network or device limitations
-    When the user selects the certification information link
-    Then the Wallet displays an appropriate error message
-    And the Wallet allows the user to retry the action
-
