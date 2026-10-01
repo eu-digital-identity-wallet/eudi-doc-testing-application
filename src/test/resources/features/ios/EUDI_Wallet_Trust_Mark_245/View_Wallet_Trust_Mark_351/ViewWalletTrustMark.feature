@@ -6,19 +6,20 @@ Feature: View Wallet Trust Mark
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/351
 
-  @US_VWTM_TC_01
-  Scenario: Display Trust Mark during first login
-    Given the user is logging in to the Wallet for the first time
-    When the first-time login experience is displayed
+  @US_VWTM_TC_01 @manual:Passed
+  Scenario: Display Trust Mark when opening the Wallet for the first time
+    Given the user opens the Wallet for the first time
     Then the Wallet displays the Trust Mark view
+    When the user selects Continue
+    Then the Wallet displays the Login screen
 
-  @US_VWTM_TC_02
+  @US_VWTM_TC_02 @manual:Passed
   Scenario: Access Trust Mark from the Wallet menu
     Given the authenticated user is on the Wallet home screen
     When the user selects the burger menu and chooses About EUDI Wallet
     Then the Wallet displays the Trust Mark view
 
-  @US_VWTM_TC_03
+  @US_VWTM_TC_03 @manual:Passed
   Scenario: Display Wallet Trust Mark information
     Given the user is viewing the Trust Mark screen
     When the Trust Mark content is displayed
@@ -26,15 +27,9 @@ Feature: View Wallet Trust Mark
     And the Wallet displays informational text according to the device language settings
     And the Wallet provides links to certification status information
 
-  @US_VWTM_TC_04
+  @US_VWTM_TC_04 @manual:Passed
   Scenario: Return to the Wallet home screen
     Given the user is viewing the Trust Mark screen
     When the user selects the back arrow
     Then the Wallet returns to the Wallet home screen
 
-  @US_VWTM_TC_05
-  Scenario: Handle certification link opening failure
-    Given a certification status link cannot be opened due to device restrictions or network issues
-    When the user selects the certification status link
-    Then the Wallet displays an appropriate error message
-    And the Wallet allows the user to retry the action

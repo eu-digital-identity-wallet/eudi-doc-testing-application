@@ -6,20 +6,20 @@ Feature: View Wallet Solution certification information
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/352
 
-  @US_VWCI_TC_01
+  @US_VWCI_TC_01 @manual:Passed
   Scenario: Display Trust Mark when opening the Wallet for the first time
     Given the user opens the Wallet for the first time
     Then the Wallet displays the Trust Mark view
     When the user selects Continue
     Then the Wallet displays the Login screen
 
-  @US_VWCI_TC_02
+  @US_VWCI_TC_02 @manual:Passed
   Scenario: Access Trust Mark from the Wallet menu
     Given the authenticated user is on the Wallet home screen
     When the user selects the burger menu and chooses About EUDI Wallet
     Then the Wallet displays the Trust Mark view
 
-  @US_VWCI_TC_03
+  @US_VWCI_TC_03 @manual:Passed
   Scenario: Display Wallet certification information
     Given the user is viewing the Trust Mark screen
     When the Trust Mark content is displayed
