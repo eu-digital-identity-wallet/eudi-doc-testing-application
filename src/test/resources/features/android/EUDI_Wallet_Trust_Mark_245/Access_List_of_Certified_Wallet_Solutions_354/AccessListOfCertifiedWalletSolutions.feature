@@ -32,17 +32,5 @@ Feature: Access the official list of certified Wallet Solutions
     Then the Wallet opens the European Commission-hosted webpage in an external browser or supported web view
     And the webpage allows the user to view the officially certified Wallet Solutions
 
-  @US_ALOCWS_TC_05 @manual:Pending
-  Scenario: Handle certified Wallet Solutions list opening failure
-    Given the certified Wallet Solutions webpage cannot be opened due to network or device limitations
-    When the user selects the EUDI Wallet Provider Trusted List link
-    Then the Wallet displays an appropriate error message
-    And the Wallet allows the user to retry the action
-
-  @US_ALOCWS_TC_06 @manual:Pending
-  Scenario: Handle temporary unavailability of the official trusted list
-    Given the official source providing the certified Wallet Solutions list is temporarily unavailable
-    When the user attempts to access the EUDI Wallet Provider Trusted List
-    Then the Wallet informs the user that the list cannot currently be retrieved
 
 
