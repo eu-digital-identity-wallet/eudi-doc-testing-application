@@ -78,15 +78,3 @@ Feature: Initiate a report for an unlawful or suspicious data request
     Given the user is viewing the transaction report information screen
     When the user selects the Back navigation option
     Then the Wallet returns to the Presentation Information screen
-
-  @US_ISTR_TC_12 @manual:Pending
-  Scenario: Display an error when the selected external application cannot be launched
-    Given the selected communication method cannot launch its corresponding external application
-    When the user selects the communication method
-    Then the Wallet displays an appropriate error message
-
-  @US_ISTR_TC_13 @manual:Pending
-  Scenario: Do not record a transaction report attempt when the external application cannot be launched
-    Given the selected external application cannot be launched
-    When the external application launch fails
-    Then the Wallet does not record the transaction report attempt

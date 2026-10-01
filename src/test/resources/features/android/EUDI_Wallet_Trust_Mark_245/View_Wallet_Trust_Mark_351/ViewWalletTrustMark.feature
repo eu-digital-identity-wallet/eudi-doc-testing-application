@@ -33,9 +33,3 @@ Feature: View Wallet Trust Mark
     When the user selects the back arrow
     Then the Wallet returns to the Wallet home screen
 
-  @US_VWTM_TC_05 @manual:Pending
-  Scenario: Handle certification link opening failure
-    Given a certification status link cannot be opened due to device restrictions or network issues
-    When the user selects the certification status link
-    Then the Wallet displays an appropriate error message
-    And the Wallet allows the user to retry the action
