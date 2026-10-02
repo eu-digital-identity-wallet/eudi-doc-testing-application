@@ -1,7 +1,6 @@
 package eu.europa.eudi.utils.factory;
 
 import eu.europa.eudi.utils.TestSetup;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,8 +19,10 @@ public class WebWebDriverFactory {
     public void startWebDriverSession() {
         if (Objects.equals(System.getProperty("ci.environment"), "githubactions")){
         ChromeOptions options = new ChromeOptions();
-
-        WebDriverManager.chromedriver().setup();
+        // Let Selenium Manager resolve the matching ChromeDriver for the installed Chrome version.
+        // (WebDriverManager pre-downloaded a driver that could mismatch the runner's Chrome,
+        //  causing "This version of ChromeDriver only supports Chrome version NNN".)
+        options.setBrowserVersion("stable");
 
         webDriver = new ChromeDriver(options);
 
