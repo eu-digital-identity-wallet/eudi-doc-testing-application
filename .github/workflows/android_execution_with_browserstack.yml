@@ -71,6 +71,38 @@ jobs:
           rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt target/rerun4.txt
           find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
+      - name: Diagnose Chrome
+        shell: bash
+        run: |
+          echo "========== Chrome =========="
+          
+          CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+          
+          if [ -x "$CHROME" ]; then
+            "$CHROME" --version
+          else
+            echo "Chrome not found!"
+            exit 1
+          fi
+          
+          echo "========== Existing ChromeDriver =========="
+          
+          if command -v chromedriver >/dev/null 2>&1; then
+            echo "ChromeDriver found on PATH:"
+            which chromedriver
+            chromedriver --version
+          else
+            echo "No ChromeDriver found on PATH."
+          fi
+          
+          echo "========== Selenium Manager =========="
+          
+          if [ -d "$HOME/.cache/selenium" ]; then
+            find "$HOME/.cache/selenium" -maxdepth 3 -type f -print
+          else
+            echo "Selenium Manager cache does not exist yet."
+          fi
+
       - name: Initialize Session Map
         run: echo "" > session_map.txt
 
