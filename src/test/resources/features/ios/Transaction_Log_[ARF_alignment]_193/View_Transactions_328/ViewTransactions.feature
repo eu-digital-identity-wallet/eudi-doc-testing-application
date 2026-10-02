@@ -51,7 +51,7 @@ Feature: View Transactions in History tab
       | signingTransactionIdentifier	| where applicable 										|
       | Document/data    				| The document or data signed or sealed, if available   |
 
-  @US_VT_TC_04 @manual:Failed
+  @US_VT_TC_04 @manual:Passed
   Scenario Outline: User views credential (PID/attestation) issuance/re-issuance transaction details
     Given the user is on the History screen
     When the user selects a credential issuance or reissuance transaction entry from the list
