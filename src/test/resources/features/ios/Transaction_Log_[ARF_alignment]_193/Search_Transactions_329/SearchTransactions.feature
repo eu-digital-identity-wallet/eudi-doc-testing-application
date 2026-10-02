@@ -56,7 +56,7 @@ Feature: Transaction Search in History tab
     Then the EUDI Wallet resets any previously applied search
     And the screen lists all transactions that respects the filtering and sorting already in force
 
-  @US_ST_TC_06 @manual:Failed
+  @US_ST_TC_06 @manual:Passed
   Scenario Outline: Search using the search field
     Given the user taps on the search field
     When the user types a text
