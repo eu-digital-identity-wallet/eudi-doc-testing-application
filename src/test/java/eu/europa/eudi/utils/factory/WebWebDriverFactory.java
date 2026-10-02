@@ -17,12 +17,8 @@ public class WebWebDriverFactory {
     }
 
     public void startWebDriverSession() {
-        if (Objects.equals(System.getProperty("ci.environment"), "githubactions")){
+
         ChromeOptions options = new ChromeOptions();
-        // Let Selenium Manager resolve the matching ChromeDriver for the installed Chrome version.
-        // (WebDriverManager pre-downloaded a driver that could mismatch the runner's Chrome,
-        //  causing "This version of ChromeDriver only supports Chrome version NNN".)
-        options.setBrowserVersion("stable");
 
         webDriver = new ChromeDriver(options);
 
@@ -30,14 +26,7 @@ public class WebWebDriverFactory {
                 webDriver,
                 Duration.ofSeconds(30)
         );
-    }else{
-        ChromeOptions options = new ChromeOptions();
-
-        webDriver = new ChromeDriver(options);
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
-
     }
-}
 
     public WebDriver getDriverWeb() {
         return webDriver;
