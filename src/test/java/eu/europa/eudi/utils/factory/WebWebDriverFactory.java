@@ -22,23 +22,30 @@ public class WebWebDriverFactory {
 
         ChromeOptions options = new ChromeOptions();
 
-        // macOS Chrome location
         if ("githubactions".equalsIgnoreCase(
                 System.getProperty("ci.environment"))) {
 
-            options.setBinary(
-                    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-            );
+            String chromePath =
+                    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-            System.out.println(
-                    "Running ChromeDriver on GitHub Actions macOS"
-            );
+            options.setBinary(chromePath);
 
-            System.out.println(
-                    "Chrome binary: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-            );
-
+            System.out.println("=== GitHub Actions Chrome ===");
+            System.out.println("Chrome binary: " + chromePath);
         }
+
+        /*
+         * Do NOT configure ChromeDriver manually.
+         * Selenium Manager will resolve the compatible driver.
+         */
+        webDriver = new ChromeDriver(options);
+
+        wait = new WebDriverWait(
+                webDriver,
+                Duration.ofSeconds(30)
+        );
+
+        System.out.println("Chrome WebDriver session started successfully.");
     }
 
     public WebDriver getDriverWeb() {

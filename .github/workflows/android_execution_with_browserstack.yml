@@ -71,37 +71,38 @@ jobs:
           rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt target/rerun4.txt
           find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
-      - name: Diagnose Chrome
+      - name: Prepare Chrome and Selenium Manager
         shell: bash
         run: |
-          echo "========== Chrome =========="
-          
-          CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-          
-          if [ -x "$CHROME" ]; then
-            "$CHROME" --version
-          else
-            echo "Chrome not found!"
-            exit 1
-          fi
-          
-          echo "========== Existing ChromeDriver =========="
-          
-          if command -v chromedriver >/dev/null 2>&1; then
-            echo "ChromeDriver found on PATH:"
-            which chromedriver
-            chromedriver --version
-          else
-            echo "No ChromeDriver found on PATH."
-          fi
-          
-          echo "========== Selenium Manager =========="
-          
-          if [ -d "$HOME/.cache/selenium" ]; then
-            find "$HOME/.cache/selenium" -maxdepth 3 -type f -print
-          else
-            echo "Selenium Manager cache does not exist yet."
-          fi
+         set -e
+
+         CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+         echo "========== Chrome =========="
+         "$CHROME" --version
+
+         echo "========== Remove Selenium Manager cache =========="
+         rm -rf "$HOME/.cache/selenium"
+
+         echo "========== Remove manually installed ChromeDriver =========="
+         brew uninstall --ignore-dependencies chromedriver 2>/dev/null || true
+         rm -f /usr/local/bin/chromedriver 2>/dev/null || true
+         rm -f /opt/homebrew/bin/chromedriver 2>/dev/null || true
+
+         echo "========== ChromeDriver on PATH =========="
+         if command -v chromedriver >/dev/null 2>&1; then
+         which chromedriver
+         chromedriver --version
+         else
+         echo "No ChromeDriver on PATH"
+         fi
+
+         echo "========== Selenium cache =========="
+         if [ -d "$HOME/.cache/selenium" ]; then
+         find "$HOME/.cache/selenium" -maxdepth 3 -type f -print
+         else
+         echo "Selenium cache is clean."
+         fi
 
       - name: Initialize Session Map
         run: echo "" > session_map.txt
@@ -130,41 +131,6 @@ jobs:
             | jq -r '.[0].automation_build.hashed_id')
 
           echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
-
-      - name: Diagnose Chrome and ChromeDriver
-        run: |
-         echo "========== Chrome =========="
-         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
-
-         echo "========== ChromeDriver =========="
-         which chromedriver || true
-         chromedriver --version || true
-
-          echo "========== Selenium Manager cache =========="
-          ls -la ~/.cache/selenium 2>/dev/null || true
-          find ~/.cache/selenium -maxdepth 3 -type f 2>/dev/null || true
-
-          echo "========== CHROMEDRIVER_PATH =========="
-          echo "${CHROMEDRIVER_PATH:-NOT_SET}"
-
-          echo "========== Selenium dependencies =========="
-          mvn dependency:tree -Dincludes=org.seleniumhq.selenium
-
-      - name: Inspect Chrome installations
-        run: |
-         echo "===== Applications ====="
-         ls -la /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome || true
-
-         echo "===== Chrome locations ====="
-         which -a google-chrome || true
-         which -a chrome || true
-         which -a chromium || true
-
-         echo "===== Chrome processes ====="
-         ps aux | grep -i '[C]hrome' || true
-
-         echo "===== Chrome version ====="
-         /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version || true
 
       # ---------------- TEST EXECUTION (FIXED) ----------------
       - name: Run Android Tests on BrowserStack
