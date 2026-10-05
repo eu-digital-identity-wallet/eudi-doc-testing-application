@@ -693,6 +693,8 @@ public class AutomatedStepDefs {
     public void theUserUploadsADocumentAndAnAttestationUsingAndSelectsAQTSP(String issuerType) throws IOException, InterruptedException {
         this.issuerType = issuerType;
         test.mobile().wallet().downloadSampleDocument();
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
@@ -1174,6 +1176,8 @@ public class AutomatedStepDefs {
 
     @Given("the user is viewing the EUDI Wallet Home screen")
     public void theUserIsViewingTheEUDIWalletHomeScreen() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();

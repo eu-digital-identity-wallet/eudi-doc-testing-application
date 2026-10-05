@@ -71,7 +71,8 @@ public interface Literals {
         FILTER_BY("Filter by"),
         EXPAND_FILTER_SECTION("Before today (expired)"),
         COUNTER_DISPLAYED_KOTLIN_ON_DETAILS("Instances remaining 5/5"),
-        DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1");
+        DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1"),
+        EU_IS_DISPLAYED("EU Digital Identity Wallet");
 
 
         public final String label;

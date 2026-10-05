@@ -3064,4 +3064,14 @@ public class Wallet {
         boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.checkOnRightTop)).isDisplayed();
         Assert.assertTrue("Check on right top is displayed", pageHeader);
     }
+
+    public void eudiPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.eudiIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRText)).getText();
+            Assert.assertEquals(Literals.Wallet.SCANQRText.label, pageHeader);
+        }
+    }
 }
