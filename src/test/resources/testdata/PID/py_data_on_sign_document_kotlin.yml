@@ -14,7 +14,7 @@ fields:
     value: "Tyler"
     required: true
 
-  "Issuance Authority":
+  "Issuing Authority":
     value: "GR Administrative authority"
     required: true
 

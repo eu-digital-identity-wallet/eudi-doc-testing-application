@@ -145,4 +145,5 @@ public class WalletElements {
     public static By expandFilterSection = By.xpath("//android.widget.TextView[@text=\"Before today (expired)\"]");
     public static By counterIsDisplayedKotlinOnDetails = By.xpath("//android.widget.TextView[@text=\"Instances remaining 5/5\"]");
     public static By openIssuerDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
+    public static By eudiIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EU Digital Identity Wallet\"]");
 }
