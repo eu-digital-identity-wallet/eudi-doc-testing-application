@@ -532,6 +532,8 @@ public class AutomatedStepDefs {
 
     @And("the user provides the PIN")
     public void theUserProvidesThePIN() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
@@ -605,6 +607,8 @@ public class AutomatedStepDefs {
 
     @Then("the EUDI Wallet application is opened")
     public void theEUDIWalletApplicationIsOpened() throws InterruptedException {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
@@ -815,6 +819,8 @@ public class AutomatedStepDefs {
     public void theUserIssuesAnAttestationUsing(String credential, String issuerType) throws InterruptedException {
         this.credential = credential;
         this.issuerType = issuerType;
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
@@ -982,6 +988,8 @@ public class AutomatedStepDefs {
         }
         test.mobile().verifier().captureScreen();
         test.mobile().wallet().launchApp();
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
