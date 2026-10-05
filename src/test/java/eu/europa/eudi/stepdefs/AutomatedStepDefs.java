@@ -1055,6 +1055,7 @@ public class AutomatedStepDefs {
     @And("the user selects the Add document button on the credential offer")
     public void theUserSelectsTheAddDocumentButtonOnTheCredentialOffer() throws InterruptedException {
         test.mobile().wallet().clickAddButton();
+
     }
 
     @Then("the user proceeds with the attestation issuing flow")
