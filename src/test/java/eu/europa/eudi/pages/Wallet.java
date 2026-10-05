@@ -1621,6 +1621,8 @@ public class Wallet {
     public void initiateCredential(String credential, String issuerType) {
 
         test.mobile().wallet().launchApp();
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
