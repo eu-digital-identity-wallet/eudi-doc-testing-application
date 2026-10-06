@@ -145,5 +145,4 @@ public class WalletElements {
     public static By historyScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"History\"]");
     public static By switchesIsDisplayedOnHistory = By.xpath("//XCUIElementTypeSwitch[@name=\"Completed\"]/XCUIElementTypeSwitch[@value=\"1\"]");
     public static By eudiIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EU Digital Identity Wallet\"]");
-
 }
