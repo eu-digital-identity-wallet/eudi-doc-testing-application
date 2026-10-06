@@ -1,0 +1,27 @@
+screen: "PY Issuer Loyalty Authorization Page"
+
+fields:
+
+  "Client Id":
+    value: "1234"
+    required: true
+
+  "Company":
+    value: "Netcompany"
+    required: true
+
+  "Family Name":
+    value: "Papadopoulos"
+    required: true
+
+  "Given Name":
+    value: "Foteini"
+    required: true
+
+  "Issuing Authority":
+    value: "Test QEAA Issuer"
+    required: true
+
+  "Issuing Country":
+    value: "FC"
+    required: true

@@ -10306,4 +10306,1384 @@ public class ManuallyStepDefs {
     public void theUserCancelsThePresentationProcess() {
         //manual
     }
+
+    @When("the user selects a transaction entry from the list")
+    public void theUserSelectsATransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the transaction details screen opens")
+    public void theTransactionDetailsScreenOpens() {
+        //manual
+    }
+
+    @And("a delete button is visible in the top right corner")
+    public void aDeleteButtonIsVisibleInTheTopRightCorner() {
+        //manual
+    }
+
+    @Given("the user has opened the details screen of a transaction")
+    public void theUserHasOpenedTheDetailsScreenOfATransaction() {
+        //manual
+    }
+
+    @Then("a confirmation dialog is displayed")
+    public void aConfirmationDialogIsDisplayed() {
+        //manual
+    }
+
+    @And("no transaction is removed yet")
+    public void noTransactionIsRemovedYet() {
+        //manual
+    }
+
+    @Given("the confirmation dialog is displayed")
+    public void theConfirmationDialogIsDisplayed() {
+        //manual
+    }
+
+    @Then("the dialog include a warning message indicating the consequences of deleting the transaction")
+    public void theDialogIncludeAWarningMessageIndicatingTheConsequencesOfDeletingTheTransaction() {
+        //manual
+    }
+
+    @And("the dialog provides a Confirm deletion button and a Cancel button")
+    public void theDialogProvidesAConfirmDeletionButtonAndACancelButton() {
+        //manual
+    }
+
+    @Given("the confirmation dialog is displayed for a transaction")
+    public void theConfirmationDialogIsDisplayedForATransaction() {
+        //manual
+    }
+
+    @Then("the dialog closes")
+    public void theDialogCloses() {
+        //manual
+    }
+
+    @And("the user remains on the details screen of the same transaction")
+    public void theUserRemainsOnTheDetailsScreenOfTheSameTransaction() {
+        //manual
+    }
+
+    @And("the transaction log is unchanged")
+    public void theTransactionLogIsUnchanged() {
+        //manual
+    }
+
+    @Given("the user has cancelled the deletion of a transaction")
+    public void theUserHasCancelledTheDeletionOfATransaction() {
+        //manual
+    }
+
+    @When("the user navigates back to the History screen")
+    public void theUserNavigatesBackToTheHistoryScreen() {
+        //manual
+    }
+
+    @Then("the transaction is still visible in the list")
+    public void theTransactionIsStillVisibleInTheList() {
+        //manual
+    }
+
+    @When("the user selects Confirm deletion")
+    public void theUserSelectsConfirmDeletion() {
+        //manual
+    }
+
+    @And("the user is returned to the History screen")
+    public void theUserIsReturnedToTheHistoryScreen() {
+        //manual
+    }
+
+    @And("the transaction is no longer shown in the list")
+    public void theTransactionIsNoLongerShownInTheList() {
+        //manual
+    }
+
+    @Given("the user has deleted a transaction and knows its relying party name, type, status and date")
+    public void theUserHasDeletedATransactionAndKnowsItsRelyingPartyNameTypeStatusAndDate() {
+        //manual
+    }
+
+    @When("the user searches for it or applies matching filters")
+    public void theUserSearchesForItOrAppliesMatchingFilters() {
+        //manual
+    }
+
+    @Then("the deleted transaction is not returned in any of the search or filter")
+    public void theDeletedTransactionIsNotReturnedInAnyOfTheSearchOrFilter() {
+        //manual
+    }
+
+    @Given("the transaction log contains exactly one transaction")
+    public void theTransactionLogContainsExactlyOneTransaction() {
+        //manual
+    }
+
+    @When("the user deletes that transaction and confirms")
+    public void theUserDeletesThatTransactionAndConfirms() {
+        //manual
+    }
+
+    @Then("the history screen shows the empty state message")
+    public void theHistoryScreenShowsTheEmptyStateMessage() {
+        //manual
+    }
+
+    @Given("the user reached a transaction through an active search or filter")
+    public void theUserReachedATransactionThroughAnActiveSearchOrFilter() {
+        //manual
+    }
+
+    @Then("the user returns to the same filtered or search view")
+    public void theUserReturnsToTheSameFilteredOrSearchView() {
+        //manual
+    }
+
+    @And("the deleted transaction is missing from the results")
+    public void theDeletedTransactionIsMissingFromTheResults() {
+        //manual
+    }
+
+    @And("the other results remain displayed")
+    public void theOtherResultsRemainDisplayed() {
+        //manual
+    }
+
+    @Given("the user has one transaction of each category available")
+    public void theUserHasOneTransactionOfEachCategoryAvailable() {
+        //manual
+    }
+
+    @When("the user deletes them one by one via the delete button and confirmation dialog")
+    public void theUserDeletesThemOneByOneViaTheDeleteButtonAndConfirmationDialog() {
+        //manual
+    }
+
+    @Then("the same warning dialog appear for every category")
+    public void theSameWarningDialogAppearForEveryCategory() {
+        //manual
+    }
+
+    @And("each transaction disappears from the list search and filters")
+    public void eachTransactionDisappearsFromTheListSearchAndFilters() {
+        //manual
+    }
+
+    @Given("the user enters the History screen")
+    public void theUserEntersTheHistoryScreen() {
+        //manual
+    }
+
+    @Then("no filter is applied, the default option")
+    public void noFilterIsAppliedTheDefaultOption() {
+        //manual
+    }
+
+    @And("the transactions are sorted by transaction date descending, the default sort option")
+    public void theTransactionsAreSortedByTransactionDateDescendingTheDefaultSortOption() {
+        //manual
+    }
+
+    @And("the filter button has no visual indication that a user filter option is applied")
+    public void theFilterButtonHasNoVisualIndicationThatAUserFilterOptionIsApplied() {
+        //manual
+    }
+
+    @When("the user taps the filter button")
+    public void theUserTapsTheFilterButton() {
+        //manual
+    }
+
+    @Then("the filter bottom sheet options slide up from the bottom screen")
+    public void theFilterBottomSheetOptionsSlideUpFromTheBottomScreen() {
+        //manual
+    }
+
+    @And("the filter options are displayed in separate sections")
+    public void theFilterOptionsAreDisplayedInSeparateSections() {
+        //manual
+    }
+
+    @And("each section under the title displays the available filter options")
+    public void eachSectionUnderTheTitleDisplaysTheAvailableFilterOptions() {
+        //manual
+    }
+
+    @Given("the user is on the filter bottom sheet")
+    public void theUserIsOnTheFilterBottomSheet() {
+        //manual
+    }
+
+    @When("the user selects to filter by Date")
+    public void theUserSelectsToFilterByDate() {
+        //manual
+    }
+
+    @When("the user selects to filter by Status")
+    public void theUserSelectsToFilterByStatus() {
+        //manual
+    }
+
+    @Then("the user can select an operation status option to filter the transactions")
+    public void theUserCanSelectToFilterTheTransactionsByOperationStatus() {
+        //manual
+    }
+
+    @When("the user selects to filter by Transaction Type")
+    public void theUserSelectsToFilterByTransactionType() {
+        //manual
+    }
+
+    @Then("a list of all supported transaction types is displayed")
+    public void aListOfAllSupportedTransactionTypesIsDisplayed() {
+        //manual
+    }
+
+    @And("the user can filter by selecting or deselecting the corresponding types listed")
+    public void theUserCanFilterBySelectingOrDeselectingTheCorrespondingTypesListed() {
+        //manual
+    }
+
+    @Then("the filters are reset to the default values")
+    public void theFiltersAreResetToTheDefaultValues() {
+        //manual
+    }
+
+    @When("the user taps the Reset all button")
+    public void theUserTapsTheResetAllButton() {
+        //manual
+    }
+
+    @And("the EUDI Wallet applies a filter options to the transactions list")
+    public void theEUDIWalletAppliesAFilterOptionsToTheTransactionsList() {
+        //manual
+    }
+
+    @And("the filter button has visual indication that user filter options have been applied")
+    public void theFilterButtonHasVisualIndicationThatUserFilterOptionsHaveBeenApplied() {
+        //manual
+    }
+
+    @Given("the user applies a filter option")
+    public void theUserAppliesAFilterOption() {
+        //manual
+    }
+
+    @When("the user selects the History option in the bottom navigation bar")
+    public void theUserSelectsTheHistoryOptionInTheBottomNavigationBar() {
+        //manual
+    }
+
+    @Then("the History button is highlighted")
+    public void theHistoryButtonIsHighlighted() {
+        //manual
+    }
+
+    @And("the History screen is displayed")
+    public void theHistoryScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the History screen includes a Search bar")
+    public void theHistoryScreenIncludesASearchBar() {
+        //manual
+    }
+
+    @And("the History screen includes a Filter button")
+    public void theHistoryScreenIncludesAFilterButton() {
+        //manual
+    }
+
+    @Then("a card is displayed for each transaction entry including {} and {}")
+    public void aCardIsDisplayedForEachTransactionEntryIncludingAnd(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the transaction type {} is {} on the History screen")
+    public void theTransactionTypeIsOnTheHistoryScreen(String arg0, String arg1) {
+        //manual
+    }
+
+    @Then("the user can filter the transactions by selecting or deselecting the corresponding parties listed")
+    public void theUserCanFilterTheTransactionsBySelectingOrDeselectingTheCorrespondingPartiesListed() {
+        //manual
+    }
+
+    @When("the user selects to filter by Relying Party")
+    public void theUserSelectsToFilterByRelyingParty() {
+        //manual
+    }
+
+    @When("the user clicks the History button")
+    public void theUserClicksTheHistoryButton() {
+        //manual
+    }
+
+    @And("all transactions are displayed")
+    public void allTransactionsAreDisplayed() {
+        //manual
+    }
+
+    @Then("the user can edit the text")
+    public void theUserCanEditTheText() {
+        //manual
+    }
+
+    @And("a Clear icon button \\(e.g. X) is displayed")
+    public void aClearIconButtonEGXIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user types on the search field")
+    public void theUserTypesOnTheSearchField() {
+        //manual
+    }
+
+    @Given("the user previously searched for a text and results are displayed")
+    public void theUserPreviouslySearchedForATextAndResultsAreDisplayed() {
+        //manual
+    }
+
+    @When("the user search with an empty search field")
+    public void theUserSearchWithAnEmptySearchField() {
+        //manual
+    }
+
+    @When("the user selects a credential presentation transaction entry from the list")
+    public void theUserSelectsACredentialPresentationTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the EUDI Wallet presents the following details by {} and {}")
+    public void theEUDIWalletPresentsTheFollowingDetailsByAnd(String arg0, String arg1) {
+        //manual
+    }
+
+    @When("the user selects a signing sealing transaction entry from the list")
+    public void theUserSelectsASigningSealingTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @When("the user selects a credential issuance or reissuance transaction entry from the list")
+    public void theUserSelectsACredentialIssuanceOrReissuanceTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @When("the user selects a credential deletion transaction entry from the list")
+    public void theUserSelectsACredentialDeletionTransactionEntryFromTheList() {
+        //manual
+    }
+
+    @Then("the user is returned to the History page")
+    public void theUserIsReturnedToTheHistoryPage() {
+        //manual
+    }
+
+    @And("the user can reset the selected dates using Reset dates button link")
+    public void theUserCanResetTheSelectedDatesUsingResetDatesButtonLink() {
+        //manual
+    }
+
+    @When("the user taps the check icon button")
+    public void theUserTapsTheCheckIconButton() {
+        //manual
+    }
+
+    @Given("the authenticated user has selected a presentation transaction from the Wallet History")
+    public void theAuthenticatedUserHasSelectedAPresentationTransactionFromTheWalletHistory() {
+        //manual
+    }
+
+    @When("the Presentation Information screen is displayed")
+    public void thePresentationInformationScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Wallet displays the intended use of the presentation request")
+    public void theWalletDisplaysTheIntendedUseOfThePresentationRequest() {
+        //manual
+    }
+
+    @And("the Wallet displays the applicable privacy policy when available")
+    public void theWalletDisplaysTheApplicablePrivacyPolicyWhenAvailable() {
+        //manual
+    }
+
+    @And("the Wallet displays the attributes shared during the presentation transaction")
+    public void theWalletDisplaysTheAttributesSharedDuringThePresentationTransaction() {
+        //manual
+    }
+
+    @When("the user views the Presentation Information screen")
+    public void theUserViewsThePresentationInformationScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Initiate Deletion Request button")
+    public void theWalletDisplaysTheInitiateDeletionRequestButton() {
+        //manual
+    }
+
+    @Given("the WRPRC contains a website and other contact information for the Relying Party")
+    public void theWRPRCContainsAWebsiteAndOtherContactInformationForTheRelyingParty() {
+        //manual
+    }
+
+    @When("the user selects the Initiate Deletion Request button")
+    public void theUserSelectsTheInitiateDeletionRequestButton() {
+        //manual
+    }
+
+    @Then("the Wallet opens the Relying Party website in the device's default browser")
+    public void theWalletOpensTheRelyingPartyWebsiteInTheDeviceSDefaultBrowser() {
+        //manual
+    }
+
+    @Given("the WRPRC contains an email address but no website for the Relying Party")
+    public void theWRPRCContainsAnEmailAddressButNoWebsiteForTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet opens the device's default email application with a pre-filled email")
+    public void theWalletOpensTheDeviceSDefaultEmailApplicationWithAPreFilledEmail() {
+        //manual
+    }
+
+    @Given("the WRPRC contains a telephone number but no website or email address for the Relying Party")
+    public void theWRPRCContainsATelephoneNumberButNoWebsiteOrEmailAddressForTheRelyingParty() {
+        //manual
+    }
+
+    @Then("the Wallet opens the device's phone application using the Relying Party telephone number")
+    public void theWalletOpensTheDeviceSPhoneApplicationUsingTheRelyingPartyTelephoneNumber() {
+        //manual
+    }
+
+    @Given("Email is the selected communication method for the data deletion request")
+    public void emailIsTheSelectedCommunicationMethodForTheDataDeletionRequest() {
+        //manual
+    }
+
+    @When("the default email application is opened")
+    public void theDefaultEmailApplicationIsOpened() {
+        //manual
+    }
+
+    @Then("the email contains the Relying Party email address")
+    public void theEmailContainsTheRelyingPartyEmailAddress() {
+        //manual
+    }
+
+    @And("the subject indicates a request for deletion of personal data")
+    public void theSubjectIndicatesARequestForDeletionOfPersonalData() {
+        //manual
+    }
+
+    @And("the email contains template content to assist the user in preparing the request")
+    public void theEmailContainsTemplateContentToAssistTheUserInPreparingTheRequest() {
+        //manual
+    }
+
+    @Given("the user has initiated a data deletion request")
+    public void theUserHasInitiatedADataDeletionRequest() {
+        //manual
+    }
+
+    @When("the selected external application is successfully launched")
+    public void theSelectedExternalApplicationIsSuccessfullyLaunched() {
+        //manual
+    }
+
+    @Then("the Wallet records the data deletion request initiation")
+    public void theWalletRecordsTheDataDeletionRequestInitiation() {
+        //manual
+    }
+
+    @Given("contact information cannot be retrieved from the WRPRC or National Registry")
+    public void contactInformationCannotBeRetrievedFromTheWRPRCOrNationalRegistry() {
+        //manual
+    }
+
+    @Then("the Initiate Deletion Request button is disabled")
+    public void theInitiateDeletionRequestButtonIsDisabled() {
+        //manual
+    }
+
+    @Given("the Wallet cannot launch the external application for the selected communication method")
+    public void theWalletCannotLaunchTheExternalApplicationForTheSelectedCommunicationMethod() {
+        //manual
+    }
+
+    @When("the user initiates the data deletion request")
+    public void theUserInitiatesTheDataDeletionRequest() {
+        //manual
+    }
+
+    @Then("the Wallet displays an appropriate error message")
+    public void theWalletDisplaysAnAppropriateErrorMessage() {
+        //manual
+    }
+
+    @And("the Wallet does not record the data deletion request attempt")
+    public void theWalletDoesNotRecordTheDataDeletionRequestAttempt() {
+        //manual
+    }
+
+    @Given("the authenticated user has presentation transactions in the Wallet History")
+    public void theAuthenticatedUserHasPresentationTransactionsInTheWalletHistory() {
+        //manual
+    }
+
+    @When("the user selects a presentation transaction")
+    public void theUserSelectsAPresentationTransaction() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Presentation Information for the selected transaction")
+    public void theWalletDisplaysThePresentationInformationForTheSelectedTransaction() {
+        //manual
+    }
+
+    @Given("the selected presentation transaction has one or more recorded data deletion request attempts")
+    public void theSelectedPresentationTransactionHasOneOrMoreRecordedDataDeletionRequestAttempts() {
+        //manual
+    }
+
+    @Then("the Wallet displays the View previously attempted requests link")
+    public void theWalletDisplaysTheViewPreviouslyAttemptedRequestsLink() {
+        //manual
+    }
+
+    @Given("the selected presentation transaction has no recorded data deletion request attempts")
+    public void theSelectedPresentationTransactionHasNoRecordedDataDeletionRequestAttempts() {
+        //manual
+    }
+
+    @Then("the Wallet does not display the View previously attempted requests link")
+    public void theWalletDoesNotDisplayTheViewPreviouslyAttemptedRequestsLink() {
+        //manual
+    }
+
+    @When("the user selects the View previously attempted requests link")
+    public void theUserSelectsTheViewPreviouslyAttemptedRequestsLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the Data Deletion Request History screen")
+    public void theWalletOpensTheDataDeletionRequestHistoryScreen() {
+        //manual
+    }
+
+    @And("the Wallet displays the corresponding title")
+    public void theWalletDisplaysTheCorrespondingTitle() {
+        //manual
+    }
+
+    @And("the Wallet displays explanatory text above the list of previous attempts")
+    public void theWalletDisplaysExplanatoryTextAboveTheListOfPreviousAttempts() {
+        //manual
+    }
+
+    @And("the Wallet displays the previous attempts associated with the selected presentation transaction")
+    public void theWalletDisplaysThePreviousAttemptsAssociatedWithTheSelectedPresentationTransaction() {
+        //manual
+    }
+
+    @Given("the Data Deletion Request History screen contains previous attempts")
+    public void theDataDeletionRequestHistoryScreenContainsPreviousAttempts() {
+        //manual
+    }
+
+    @When("the user views the list of previous attempts")
+    public void theUserViewsTheListOfPreviousAttempts() {
+        //manual
+    }
+
+    @Then("each attempt displays the date of the attempt")
+    public void eachAttemptDisplaysTheDateOfTheAttempt() {
+        //manual
+    }
+
+    @And("each attempt displays the communication method used")
+    public void eachAttemptDisplaysTheCommunicationMethodUsed() {
+        //manual
+    }
+
+    @Given("the user is viewing the Data Deletion Request History screen")
+    public void theUserIsViewingTheDataDeletionRequestHistoryScreen() {
+        //manual
+    }
+
+    @When("the user selects the Back navigation option")
+    public void theUserSelectsTheBackNavigationOption() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the Presentation Information screen")
+    public void theWalletReturnsToThePresentationInformationScreen() {
+        //manual
+    }
+
+    @When("the user selects a presentation transaction from the History screen")
+    public void theUserSelectsAPresentationTransactionFromTheHistoryScreen() {
+        //manual
+    }
+
+    @Given("the user has selected a presentation transaction from the History screen")
+    public void theUserHasSelectedAPresentationTransactionFromTheHistoryScreen() {
+        //manual
+    }
+
+    @And("the Wallet displays the applicable privacy policy")
+    public void theWalletDisplaysTheApplicablePrivacyPolicy() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Initiate Transaction Report button")
+    public void theWalletDisplaysTheInitiateTransactionReportButton() {
+        //manual
+    }
+
+    @Given("the user is viewing the Presentation Information for a presentation transaction")
+    public void theUserIsViewingThePresentationInformationForAPresentationTransaction() {
+        //manual
+    }
+
+    @When("the user selects the Initiate Transaction Report button")
+    public void theUserSelectsTheInitiateTransactionReportButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays the transaction report information screen")
+    public void theWalletDisplaysTheTransactionReportInformationScreen() {
+        //manual
+    }
+
+    @Given("the transaction report information screen has been opened")
+    public void theTransactionReportInformationScreenHasBeenOpened() {
+        //manual
+    }
+
+    @When("the screen content is displayed")
+    public void theScreenContentIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Wallet identifies the responsible Data Protection Authority")
+    public void theWalletIdentifiesTheResponsibleDataProtectionAuthority() {
+        //manual
+    }
+
+    @And("the Wallet informs the user that the Wallet does not submit or track the report")
+    public void theWalletInformsTheUserThatTheWalletDoesNotSubmitOrTrackTheReport() {
+        //manual
+    }
+
+    @And("the Wallet informs the user that the report must be completed directly with the identified Data Protection Authority")
+    public void theWalletInformsTheUserThatTheReportMustBeCompletedDirectlyWithTheIdentifiedDataProtectionAuthority() {
+        //manual
+    }
+
+    @Given("the responsible Data Protection Authority provides website, email, and phone contact information")
+    public void theResponsibleDataProtectionAuthorityProvidesWebsiteEmailAndPhoneContactInformation() {
+        //manual
+    }
+
+    @When("the Wallet displays the communication methods")
+    public void theWalletDisplaysTheCommunicationMethods() {
+        //manual
+    }
+
+    @Then("the Wallet displays Website, Email, and Phone as available options")
+    public void theWalletDisplaysWebsiteEmailAndPhoneAsAvailableOptions() {
+        //manual
+    }
+
+    @Given("the Website communication method is available")
+    public void theWebsiteCommunicationMethodIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the Website communication method")
+    public void theUserSelectsTheWebsiteCommunicationMethod() {
+        //manual
+    }
+
+    @Then("the Wallet opens the DPA reporting website in the device's default browser")
+    public void theWalletOpensTheDPAReportingWebsiteInTheDeviceSDefaultBrowser() {
+        //manual
+    }
+
+    @Given("the Email communication method is available")
+    public void theEmailCommunicationMethodIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the Email communication method")
+    public void theUserSelectsTheEmailCommunicationMethod() {
+        //manual
+    }
+
+    @And("the pre-filled email contains the Data Protection Authority email address")
+    public void thePreFilledEmailContainsTheDataProtectionAuthorityEmailAddress() {
+        //manual
+    }
+
+    @And("the pre-filled email subject indicates an allegedly unlawful or suspicious presentation request")
+    public void thePreFilledEmailSubjectIndicatesAnAllegedlyUnlawfulOrSuspiciousPresentationRequest() {
+        //manual
+    }
+
+    @And("the pre-filled email content identifies the relevant Relying Party")
+    public void thePreFilledEmailContentIdentifiesTheRelevantRelyingParty() {
+        //manual
+    }
+
+    @Given("the Phone communication method is available")
+    public void thePhoneCommunicationMethodIsAvailable() {
+        //manual
+    }
+
+    @When("the user selects the Phone communication method")
+    public void theUserSelectsThePhoneCommunicationMethod() {
+        //manual
+    }
+
+    @Then("the Wallet opens the device's phone application using the DPA telephone number")
+    public void theWalletOpensTheDeviceSPhoneApplicationUsingTheDPATelephoneNumber() {
+        //manual
+    }
+
+    @Given("the user has selected an available communication method")
+    public void theUserHasSelectedAnAvailableCommunicationMethod() {
+        //manual
+    }
+
+    @When("the corresponding external application is successfully launched")
+    public void theCorrespondingExternalApplicationIsSuccessfullyLaunched() {
+        //manual
+    }
+
+    @Then("the Wallet records the transaction report initiation")
+    public void theWalletRecordsTheTransactionReportInitiation() {
+        //manual
+    }
+
+    @Given("the user is viewing the transaction report information screen")
+    public void theUserIsViewingTheTransactionReportInformationScreen() {
+        //manual
+    }
+
+    @Given("the selected communication method cannot launch its corresponding external application")
+    public void theSelectedCommunicationMethodCannotLaunchItsCorrespondingExternalApplication() {
+        //manual
+    }
+
+    @When("the user selects the communication method")
+    public void theUserSelectsTheCommunicationMethod() {
+        //manual
+    }
+
+    @Given("the selected external application cannot be launched")
+    public void theSelectedExternalApplicationCannotBeLaunched() {
+        //manual
+    }
+
+    @When("the external application launch fails")
+    public void theExternalApplicationLaunchFails() {
+        //manual
+    }
+
+    @Then("the Wallet does not record the transaction report attempt")
+    public void theWalletDoesNotRecordTheTransactionReportAttempt() {
+        //manual
+    }
+
+    @Given("the selected presentation transaction has one or more recorded transaction report attempts")
+    public void theSelectedPresentationTransactionHasOneOrMoreRecordedTransactionReportAttempts() {
+        //manual
+    }
+
+    @Then("the Wallet displays the corresponding link")
+    public void theWalletDisplaysTheCorrespondingLink() {
+        //manual
+    }
+
+    @Given("the selected presentation transaction has no recorded transaction report attempts")
+    public void theSelectedPresentationTransactionHasNoRecordedTransactionReportAttempts() {
+        //manual
+    }
+
+    @Then("the Wallet does not display the corresponding link")
+    public void theWalletDoesNotDisplayTheCorrespondingLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the transaction report History screen")
+    public void theWalletOpensTheTransactionReportHistoryScreen() {
+        //manual
+    }
+
+    @Given("the user has opened the transaction report History for a selected presentation transaction")
+    public void theUserHasOpenedTheTransactionReportHistoryForASelectedPresentationTransaction() {
+        //manual
+    }
+
+    @When("the transaction report History screen is displayed")
+    public void theTransactionReportHistoryScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the title is displayed as Previous transaction report for [Relying Party Name]")
+    public void theTitleIsDisplayedAsPreviousTransactionReportForRelyingPartyName() {
+        //manual
+    }
+
+    @Then("explanatory text is displayed above the list of previous attempts")
+    public void explanatoryTextIsDisplayedAboveTheListOfPreviousAttempts() {
+        //manual
+    }
+
+    @Given("previous transaction report attempts are associated with the selected presentation transaction")
+    public void previousTransactionReportAttemptsAreAssociatedWithTheSelectedPresentationTransaction() {
+        //manual
+    }
+
+    @When("the user opens the transaction report History screen")
+    public void theUserOpensTheTransactionReportHistoryScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays only the previous transaction report attempts associated with the selected presentation transaction")
+    public void theWalletDisplaysOnlyThePreviousTransactionReportAttemptsAssociatedWithTheSelectedPresentationTransaction() {
+        //manual
+    }
+
+    @And("each transaction report attempt displays the date of the attempt")
+    public void eachTransactionReportAttemptDisplaysTheDateOfTheAttempt() {
+        //manual
+    }
+
+    @Given("the selected presentation transaction has previously attempted transaction reports")
+    public void theSelectedPresentationTransactionHasPreviouslyAttemptedTransactionReports() {
+        //manual
+    }
+
+    @When("the transaction report History screen displays the previous attempts")
+    public void theTransactionReportHistoryScreenDisplaysThePreviousAttempts() {
+        //manual
+    }
+
+    @Then("each transaction report attempt displays the communication method used")
+    public void eachTransactionReportAttemptDisplaysTheCommunicationMethodUsed() {
+        //manual
+    }
+
+    @And("the Wallet does not display any indication of its completion, submission, or processing status")
+    public void theWalletDoesNotDisplayAnyIndicationOfItsCompletionSubmissionOrProcessingStatus() {
+        //manual
+    }
+
+    @Given("the user is viewing the transaction report History screen")
+    public void theUserIsViewingTheTransactionReportHistoryScreen() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the Presentation Information screen for the selected transaction")
+    public void theWalletReturnsToThePresentationInformationScreenForTheSelectedTransaction() {
+        //manual
+    }
+
+    @Given("the user is logging in to the Wallet for the first time")
+    public void theUserIsLoggingInToTheWalletForTheFirstTime() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Trust Mark view")
+    public void theWalletDisplaysTheTrustMarkView() {
+        //manual
+    }
+
+    @Given("the authenticated user is on the Wallet home screen")
+    public void theAuthenticatedUserIsOnTheWalletHomeScreen() {
+        //manual
+    }
+
+    @When("the user selects the burger menu and chooses About EUDI Wallet")
+    public void theUserSelectsTheBurgerMenuAndChoosesAboutEUDIWallet() {
+        //manual
+    }
+
+    @Given("the user is viewing the Trust Mark screen")
+    public void theUserIsViewingTheTrustMarkScreen() {
+        //manual
+    }
+
+    @When("the Trust Mark content is displayed")
+    public void theTrustMarkContentIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Wallet displays a link to the EUDI Wallet Provider Trusted List")
+    public void theWalletDisplaysALinkToTheEUDIWalletProviderTrustedList() {
+        //manual
+    }
+
+    @Given("the EUDI Wallet Provider Trusted List link is displayed")
+    public void theEUDIWalletProviderTrustedListLinkIsDisplayed() {
+        //manual
+    }
+
+    @When("the user selects the link")
+    public void theUserSelectsTheLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the European Commission-hosted webpage in an external browser or supported web view")
+    public void theWalletOpensTheEuropeanCommissionHostedWebpageInAnExternalBrowserOrSupportedWebView() {
+        //manual
+    }
+
+    @And("the webpage allows the user to view the officially certified Wallet Solutions")
+    public void theWebpageAllowsTheUserToViewTheOfficiallyCertifiedWalletSolutions() {
+        //manual
+    }
+
+    @Given("the certified Wallet Solutions webpage cannot be opened due to network or device limitations")
+    public void theCertifiedWalletSolutionsWebpageCannotBeOpenedDueToNetworkOrDeviceLimitations() {
+        //manual
+    }
+
+    @When("the user selects the EUDI Wallet Provider Trusted List link")
+    public void theUserSelectsTheEUDIWalletProviderTrustedListLink() {
+        //manual
+    }
+
+    @And("the Wallet allows the user to retry the action")
+    public void theWalletAllowsTheUserToRetryTheAction() {
+        //manual
+    }
+
+    @Given("the official source providing the certified Wallet Solutions list is temporarily unavailable")
+    public void theOfficialSourceProvidingTheCertifiedWalletSolutionsListIsTemporarilyUnavailable() {
+        //manual
+    }
+
+    @When("the user attempts to access the EUDI Wallet Provider Trusted List")
+    public void theUserAttemptsToAccessTheEUDIWalletProviderTrustedList() {
+        //manual
+    }
+
+    @Then("the Wallet informs the user that the list cannot currently be retrieved")
+    public void theWalletInformsTheUserThatTheListCannotCurrentlyBeRetrieved() {
+        //manual
+    }
+
+    @Given("the Wallet Solution is certified and recognized by at least one Member State")
+    public void theWalletSolutionIsCertifiedAndRecognizedByAtLeastOneMemberState() {
+        //manual
+    }
+
+    @When("the user accesses the Trust Mark functionality")
+    public void theUserAccessesTheTrustMarkFunctionality() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Trust Mark")
+    public void theWalletDisplaysTheTrustMark() {
+        //manual
+    }
+
+    @Given("the Wallet Solution has not yet been certified")
+    public void theWalletSolutionHasNotYetBeenCertified() {
+        //manual
+    }
+
+    @When("the user accesses the Wallet")
+    public void theUserAccessesTheWallet() {
+        //manual
+    }
+
+    @Then("the Wallet does not display the Trust Mark")
+    public void theWalletDoesNotDisplayTheTrustMark() {
+        //manual
+    }
+
+    @Given("the Wallet Solution certification is no longer valid or has been revoked")
+    public void theWalletSolutionCertificationIsNoLongerValidOrHasBeenRevoked() {
+        //manual
+    }
+
+    @Given("the Wallet Solution is no longer recognized by any Member State")
+    public void theWalletSolutionIsNoLongerRecognizedByAnyMemberState() {
+        //manual
+    }
+
+    @Given("the Trust Mark is displayed for the Wallet Solution")
+    public void theTrustMarkIsDisplayedForTheWalletSolution() {
+        //manual
+    }
+
+    @When("the user accesses the Trust Mark view")
+    public void theUserAccessesTheTrustMarkView() {
+        //manual
+    }
+
+    @Then("the Wallet displays the associated certification information")
+    public void theWalletDisplaysTheAssociatedCertificationInformation() {
+        //manual
+    }
+
+    @And("the Wallet provides the certification-status links")
+    public void theWalletProvidesTheCertificationStatusLinks() {
+        //manual
+    }
+
+    @Given("the Trust Mark is not displayed for the Wallet Solution")
+    public void theTrustMarkIsNotDisplayedForTheWalletSolution() {
+        //manual
+    }
+
+    @Then("the Wallet does not provide the associated certification links or references")
+    public void theWalletDoesNotProvideTheAssociatedCertificationLinksOrReferences() {
+        //manual
+    }
+
+    @Then("the Wallet displays a link to the Wallet Solution certification information page")
+    public void theWalletDisplaysALinkToTheWalletSolutionCertificationInformationPage() {
+        //manual
+    }
+
+    @Given("the certification information link is displayed in the Trust Mark view")
+    public void theCertificationInformationLinkIsDisplayedInTheTrustMarkView() {
+        //manual
+    }
+
+    @When("the user selects the certification information link")
+    public void theUserSelectsTheCertificationInformationLink() {
+        //manual
+    }
+
+    @Then("the Wallet opens the European Commission-hosted certification information page in an external browser or supported web view")
+    public void theWalletOpensTheEuropeanCommissionHostedCertificationInformationPageInAnExternalBrowserOrSupportedWebView() {
+        //manual
+    }
+
+    @And("the page allows the user to verify the certification status of the Wallet Solution")
+    public void thePageAllowsTheUserToVerifyTheCertificationStatusOfTheWalletSolution() {
+        //manual
+    }
+
+    @Given("the certification information page cannot be opened due to network or device limitations")
+    public void theCertificationInformationPageCannotBeOpenedDueToNetworkOrDeviceLimitations() {
+        //manual
+    }
+
+    @Then("the Wallet displays general informational text explaining the certification of Wallet Solutions within the EUDI Wallet ecosystem")
+    public void theWalletDisplaysGeneralInformationalTextExplainingTheCertificationOfWalletSolutionsWithinTheEUDIWalletEcosystem() {
+        //manual
+    }
+
+    @And("the informational text is displayed according to the device language settings")
+    public void theInformationalTextIsDisplayedAccordingToTheDeviceLanguageSettings() {
+        //manual
+    }
+
+    @Then("the Wallet displays the official EU Digital Identity Wallet Trust Mark graphics or logo")
+    public void theWalletDisplaysTheOfficialEUDigitalIdentityWalletTrustMarkGraphicsOrLogo() {
+        //manual
+    }
+
+    @And("the Wallet displays informational text according to the device language settings")
+    public void theWalletDisplaysInformationalTextAccordingToTheDeviceLanguageSettings() {
+        //manual
+    }
+
+    @And("the Wallet provides links to certification status information")
+    public void theWalletProvidesLinksToCertificationStatusInformation() {
+        //manual
+    }
+
+    @When("the user selects the back arrow")
+    public void theUserSelectsTheBackArrow() {
+        //manual
+    }
+
+    @Then("the Wallet returns to the Wallet home screen")
+    public void theWalletReturnsToTheWalletHomeScreen() {
+        //manual
+    }
+
+    @Given("a certification status link cannot be opened due to device restrictions or network issues")
+    public void aCertificationStatusLinkCannotBeOpenedDueToDeviceRestrictionsOrNetworkIssues() {
+        //manual
+    }
+
+    @When("the user selects the certification status link")
+    public void theUserSelectsTheCertificationStatusLink() {
+        //manual
+    }
+
+    @Given("user views the presentation information screen")
+    public void userViewsThePresentationInformationScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays an informational screen explaining that the user is about to leave the Wallet")
+    public void theWalletDisplaysAnInformationalScreenExplainingThatTheUserIsAboutToLeaveTheWallet() {
+        //manual
+    }
+
+    @And("explains that the Wallet facilitates the initiation of the request by opening the appropriate communication channel")
+    public void explainsThatTheWalletFacilitatesTheInitiationOfTheRequestByOpeningTheAppropriateCommunicationChannel() {
+        //manual
+    }
+
+    @And("states that the Wallet does not submit, manage or track the request")
+    public void statesThatTheWalletDoesNotSubmitManageOrTrackTheRequest() {
+        //manual
+    }
+
+    @And("states that the user is responsible for completing and submitting the request outside the Wallet")
+    public void statesThatTheUserIsResponsibleForCompletingAndSubmittingTheRequestOutsideTheWallet() {
+        //manual
+    }
+
+    @And("states that the Relying Party is responsible for evaluating and processing the request")
+    public void statesThatTheRelyingPartyIsResponsibleForEvaluatingAndProcessingTheRequest() {
+        //manual
+    }
+
+    @When("the Wallet displays the informational screen")
+    public void theWalletDisplaysTheInformationalScreen() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to [Relying Party]'s website")
+    public void theWalletDisplaysASingleActionButtonContinueToRelyingPartySWebsite() {
+        //manual
+    }
+
+    @When("the user selects the Continue to [Relying Party]'s website button")
+    public void theUserSelectsTheContinueToRelyingPartySWebsiteButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to [Relying Party]'s email")
+    public void theWalletDisplaysASingleActionButtonContinueToRelyingPartySEmail() {
+        //manual
+    }
+
+    @When("the user selects the Continue to [Relying Party]'s email button")
+    public void theUserSelectsTheContinueToRelyingPartySEmailButton() {
+        //manual
+    }
+
+    @Then("the Wallet displays a single action button Continue to call [Relying Party]")
+    public void theWalletDisplaysASingleActionButtonContinueToCallRelyingParty() {
+        //manual
+    }
+
+    @When("the user selects the Continue to call [Relying Party] button")
+    public void theUserSelectsTheContinueToCallRelyingPartyButton() {
+        //manual
+    }
+
+    @Given("the user is viewing the informational screen")
+    public void theUserIsViewingTheInformationalScreen() {
+        //manual
+    }
+
+    @When("the user selects the Back navigation button")
+    public void theUserSelectsTheBackNavigationButton() {
+        //manual
+    }
+
+    @Given("contact information cannot be retrieved from the WRPRC")
+    public void contactInformationCannotBeRetrievedFromTheWRPRC() {
+        //manual
+    }
+
+    @When("the EUDI Wallet informs the user that the data deletion request cannot be initiated")
+    public void theEUDIWalletInformsTheUserThatTheDataDeletionRequestCannotBeInitiated() {
+        //manual
+    }
+
+    @Then("the Continue to [contact method] button is not available")
+    public void theContinueToContactMethodButtonIsNotAvailable() {
+        //manual
+    }
+
+    @Given("the user opens the Wallet for the first time")
+    public void theUserOpensTheWalletForTheFirstTime() {
+        //manual
+    }
+
+    @Then("the Wallet displays the Login screen")
+    public void theWalletDisplaysTheLoginScreen() {
+        //manual
+    }
+
+    @When("the user selects Continue")
+    public void theUserSelectsContinue() {
+        //manual
+    }
+
+    @Given("the user has initiated a QES signing operation")
+    public void theUserHasInitiatedAQESSigningOperation() {
+        //manual
+    }
+
+    @When("the Wallet presents the transaction information for review")
+    public void theWalletPresentsTheTransactionInformationForReview() {
+        //manual
+    }
+
+    @Then("the Wallet displays the QES transaction type and applicable trust framework")
+    public void theWalletDisplaysTheQESTransactionTypeAndApplicableTrustFramework() {
+        //manual
+    }
+
+    @And("the Wallet displays the document name or description")
+    public void theWalletDisplaysTheDocumentNameOrDescription() {
+        //manual
+    }
+
+    @Given("the QES transaction contains a reference to the document to be signed where provided")
+    public void theQESTransactionContainsAReferenceToTheDocumentToBeSignedWhereProvided() {
+        //manual
+    }
+
+    @When("the Wallet presents the transaction information")
+    public void theWalletPresentsTheTransactionInformation() {
+        //manual
+    }
+
+    @Then("the user can access the document associated with the signing transaction")
+    public void theUserCanAccessTheDocumentAssociatedWithTheSigningTransaction() {
+        //manual
+    }
+
+    @Given("the QES transaction contains additional document or signing information")
+    public void theQESTransactionContainsAdditionalDocumentOrSigningInformation() {
+        //manual
+    }
+
+    @Then("the Wallet displays the applicable DTBSR information")
+    public void theWalletDisplaysTheApplicableDTBSRInformation() {
+        //manual
+    }
+
+    @And("the Wallet displays the signed attributes and requested credentials where applicable")
+    public void theWalletDisplaysTheSignedAttributesAndRequestedCredentialsWhereApplicable() {
+        //manual
+    }
+
+    @Given("optional QES transaction information is provided")
+    public void optionalQESTransactionInformationIsProvided() {
+        //manual
+    }
+
+    @Then("the Wallet displays the OTP where provided")
+    public void theWalletDisplaysTheOTPWhereProvided() {
+        //manual
+    }
+
+    @And("the Wallet displays the Response URI where applicable")
+    public void theWalletDisplaysTheResponseURIWhereApplicable() {
+        //manual
+    }
+
+    @And("the Wallet displays the document integrity status")
+    public void theWalletDisplaysTheDocumentIntegrityStatus() {
+        //manual
+    }
+
+    @And("the Wallet displays the signature format and conformance level where provided")
+    public void theWalletDisplaysTheSignatureFormatAndConformanceLevelWhereProvided() {
+        //manual
+    }
+
+    @Given("the user has reviewed the transaction information and document")
+    public void theUserHasReviewedTheTransactionInformationAndDocument() {
+        //manual
+    }
+
+    @When("the user explicitly approves the QES transaction")
+    public void theUserExplicitlyApprovesTheQESTransaction() {
+        //manual
+    }
+
+    @Then("the Wallet continues the QES signing process")
+    public void theWalletContinuesTheQESSigningProcess() {
+        //manual
+    }
+
+    @Given("the user is reviewing the QES transaction")
+    public void theUserIsReviewingTheQESTransaction() {
+        //manual
+    }
+
+    @When("the user rejects or cancels the transaction")
+    public void theUserRejectsOrCancelsTheTransaction() {
+        //manual
+    }
+
+    @Then("the QES signing operation does not proceed")
+    public void theQESSigningOperationDoesNotProceed() {
+        //manual
+    }
+
+    @Given("the QES transaction has been completed")
+    public void theQESTransactionHasBeenCompleted() {
+        //manual
+    }
+
+    @When("the user accesses the Transaction Log")
+    public void theUserAccessesTheTransactionLog() {
+        //manual
+    }
+
+    @Then("the QES transaction is available in the Transaction Log")
+    public void theQESTransactionIsAvailableInTheTransactionLog() {
+        //manual
+    }
+
+    @When("the user opens the recorded QES transaction")
+    public void theUserOpensTheRecordedQESTransaction() {
+        //manual
+    }
+
+    @Then("the Wallet displays the relevant Transaction Data associated with the transaction")
+    public void theWalletDisplaysTheRelevantTransactionDataAssociatedWithTheTransaction() {
+        //manual
+    }
+
+    @And("the Wallet displays the user's recorded decision to approve or reject the transaction")
+    public void theWalletDisplaysTheUserSRecordedDecisionToApproveOrRejectTheTransaction() {
+        //manual
+    }
+
+    @Given("contact information are not available in the WRPRC")
+    public void contactInformationAreNotAvailableInTheWRPRC() {
+        //manual
+    }
+
+    @Then("the data deletion request cannot be initiated")
+    public void theDataDeletionRequestCannotBeInitiated() {
+        //manual
+    }
+
+    @And("the Initiate Deletion Request button in is disabled")
+    public void theInitiateDeletionRequestButtonInIsDisabled() {
+        //manual
+    }
+
+    @Given("the WRPRC contains a website for the Relying Party")
+    public void theWRPRCContainsAWebsiteForTheRelyingParty() {
+        //manual
+    }
 }

@@ -71,6 +71,39 @@ jobs:
           rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt target/rerun4.txt
           find src/test/resources/features -type d -name ui -path "*logs*" -exec rm -rf {} + || true
 
+      - name: Prepare Chrome and Selenium Manager
+        shell: bash
+        run: |
+         set -e
+
+         CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+         echo "========== Chrome =========="
+         "$CHROME" --version
+
+         echo "========== Remove Selenium Manager cache =========="
+         rm -rf "$HOME/.cache/selenium"
+
+         echo "========== Remove manually installed ChromeDriver =========="
+         brew uninstall --ignore-dependencies chromedriver 2>/dev/null || true
+         rm -f /usr/local/bin/chromedriver 2>/dev/null || true
+         rm -f /opt/homebrew/bin/chromedriver 2>/dev/null || true
+
+         echo "========== ChromeDriver on PATH =========="
+         if command -v chromedriver >/dev/null 2>&1; then
+         which chromedriver
+         chromedriver --version
+         else
+         echo "No ChromeDriver on PATH"
+         fi
+
+         echo "========== Selenium cache =========="
+         if [ -d "$HOME/.cache/selenium" ]; then
+         find "$HOME/.cache/selenium" -maxdepth 3 -type f -print
+         else
+         echo "Selenium cache is clean."
+         fi
+
       - name: Initialize Session Map
         run: echo "" > session_map.txt
 
@@ -152,7 +185,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo/*.json target/serenity-backup/ || true
           
           # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -219,7 +252,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------

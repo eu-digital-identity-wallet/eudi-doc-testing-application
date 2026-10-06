@@ -26,6 +26,7 @@ public class EnvDataConfig {
     public static final String APPIUM_URL_IOS = "appium.url.ios";
     public static final String APPIUM_MEDIUM_WAIT_IN_SECONDS = "appium.mediumWaitInSeconds";
     public static final String WALLET_PIN = "wallet.pin";
+    public static final String WALLET_FALSE_PIN = "wallet.false.pin";
     public static final String BROWSERSTACK_ANDROID_APP_URL = "browserstack.android.appUrl";
     public static final String BROWSERSTACK_ANDROID_DEVICE_NAME = "browserstack.android.deviceName";
     public static final String BROWSERSTACK_ANDROID_PLATFORM_VERSION = "browserstack.android.platformVersion";
@@ -41,6 +42,7 @@ public class EnvDataConfig {
     public static final String KOTLIN_ISSUER = "kotlin.url";
     public static final String VERIFIER_URL = "verifier.url";
     public static final String PYTHON_ISSUER = "python.url";
+    public static final String SAMPLE_DOCUMENT_URL = "sample.document.url";
 
     ResourcesConfig resourcesConfig;
 
@@ -144,6 +146,9 @@ public class EnvDataConfig {
     public String getPin() {
         return getEnvProperties().getProperty(WALLET_PIN);
     }
+    public String getFalsePin() {
+        return getEnvProperties().getProperty(WALLET_FALSE_PIN);
+    }
 
     public String getAppiumBrowserstackAndroidAppUrl() {
         return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_APP_URL);
@@ -161,11 +166,21 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(BROWSERSTACK_INTERACTIVE_DEBUGGING);
     }
     public String getAppiumBrowserstackGeneralUsername() {
-        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_USERNAME);
+        String fromProps =
+                getEnvProperties().getProperty(BROWSERSTACK_GENERAL_USERNAME);
+        if (fromProps != null && !fromProps.isBlank()) {
+            return fromProps;
+        }
+        return System.getenv("BROWSERSTACK_USERNAME");
     }
 
     public String getAppiumBrowserstackGeneralAccesskey() {
-        return getEnvProperties().getProperty(BROWSERSTACK_GENERAL_ACCESS_KEY);
+        String fromProps =
+                getEnvProperties().getProperty(BROWSERSTACK_GENERAL_ACCESS_KEY);
+        if (fromProps != null && !fromProps.isBlank()) {
+            return fromProps;
+        }
+        return System.getenv("BROWSERSTACK_ACCESS_KEY");
     }
 
     public String getExecutionEnvironment() {
@@ -203,7 +218,16 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(PYTHON_ISSUER);
     }
 
+    public String getSampleDocumentUrl() {
+        return getEnvProperties().getProperty(SAMPLE_DOCUMENT_URL);
+    }
+
     public boolean isBrowserStackDeviceLogsEnabled() {
+        // Allow GitHub Actions to override via a system property (browserstack.device.logs.enabled)
+        String fromSystem = System.getProperty("browserstack.device.logs.enabled");
+        if (fromSystem != null && !fromSystem.isBlank()) {
+            return Boolean.parseBoolean(fromSystem);
+        }
         return Boolean.parseBoolean(
                 getEnvProperties().getProperty("browserstack.device.logs.enabled")
         );

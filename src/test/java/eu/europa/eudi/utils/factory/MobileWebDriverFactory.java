@@ -145,20 +145,19 @@ public class MobileWebDriverFactory {
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackIosPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
                 options.setCapability("appium:automationName", envDataConfig.getAppiumBrowserstackIosAutomationName());
-                options.setCapability("autoAcceptAlerts", true);
+                options.setCapability("autoAcceptAlerts", false);
                 options.setCapability("browserstack.debug", true);
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("browserstack.video", true);
-                options.setCapability("browserstack.appiumLogs", false);
+                options.setCapability("browserstack.appiumLogs", true);
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
                 options.setCapability("name", featureName + " - iOS Test");
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
-                options.setCapability("includeSafariInWebviews", true);
-                options.setCapability("waitForQuiescence", true);
-
+//                options.setCapability("includeSafariInWebviews", true);
+//                options.setCapability("waitForQuiescence", true);
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");

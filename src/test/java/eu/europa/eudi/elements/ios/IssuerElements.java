@@ -39,6 +39,7 @@ public class IssuerElements {
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
+    public static By pidMsoMdocDefered = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc_deferred\"]");
     public static By pidSDJWT = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_vc_sd_jwt\"]");
     public static By clickGenerateButton = By.xpath("//XCUIElementTypeButton[@label=\"Generate\"]");
     public static By clickUsername = By.xpath("//XCUIElementTypeTextField");
@@ -49,4 +50,8 @@ public class IssuerElements {
     public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
     public static By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"https://issuer.eudiw.dev/credential_offer\"]");;
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");;
+    public static By clientIdLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
+    public static By companyLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
+    public static By familyNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[3]");
+    public static By givenNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[4]");
 }

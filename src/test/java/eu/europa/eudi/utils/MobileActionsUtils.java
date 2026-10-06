@@ -240,33 +240,6 @@ public class MobileActionsUtils {
         }
     }
 
-    public static void fastSwipe(AndroidDriver driver) {
-        try {
-            String originalContext = driver.getContext();
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context("NATIVE_APP");
-            }
-
-            Dimension size = driver.manage().window().getSize();
-            int startX = size.width / 2;
-            int startY = (int) (size.height * 0.7);
-            int endY = (int) (size.height * 0.3);
-
-            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-            Sequence swipe = new Sequence(finger, 0);
-            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), startX, endY)); // faster swipe
-            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-            driver.perform(Collections.singletonList(swipe));
-            if (!"NATIVE_APP".equals(originalContext)) {
-                driver.context(originalContext);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Swipe failed", e);
-        }
-    }
-
     public static void scrollFast(AppiumDriver driver, int startX, int startY, int endY) {
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1);

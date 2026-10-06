@@ -9,7 +9,7 @@ public class MobilePageObjectFactory {
     TestSetup test;
     Wallet wallet;
     Verifier verifier;
-    Issuer issuer;
+    public Issuer issuer;
 
     public MobilePageObjectFactory(TestSetup test) {
         this.test = test;

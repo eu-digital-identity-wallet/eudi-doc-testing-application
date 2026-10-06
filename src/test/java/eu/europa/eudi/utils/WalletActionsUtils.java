@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;

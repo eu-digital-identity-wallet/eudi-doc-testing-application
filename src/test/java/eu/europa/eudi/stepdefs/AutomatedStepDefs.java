@@ -1,485 +1,1368 @@
 package eu.europa.eudi.stepdefs;
 
+import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.utils.TestSetup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.*;
-import java.net.MalformedURLException;
-import java.util.*;
+import java.io.IOException;
 
 public class AutomatedStepDefs {
 
-    private final TestSetup test = TestHooks.getTest();
-
-    public String selectiveDisclosure;
-    public String issuerType;
-    public String credential;
-    public String issuanceMethod;
-
-
-    @Given("user opens Verifier App")
-    public void userOpensVerifierApp(){
-        test.mobile().wallet().userOpensVerifier();
-        test.mobile().verifier().launchSafari();
-        test.mobile().verifier().appOpensSuccessfully();
+        private final TestSetup test = TestHooks.getTest();
+        public String selectiveDisclosure;
+        public String issuerType;
+        public String credential;
+        public String issuanceMethod;
+
+
+        @Given("user opens Verifier App")
+        public void userOpensVerifierApp() {
+            test.mobile().wallet().userOpensVerifier();
+            test.mobile().verifier().launchSafari();
+            test.mobile().verifier().appOpensSuccessfully();
+        }
+
+        @When("the user enters their PIN")
+        public void theUserEntersTheirPIN() {
+            test.mobile().wallet().createAPin();
+        }
+
+        @When("the user enters the correct PIN")
+        public void theUserEntersTheCorrectPIN() {
+            test.mobile().wallet().createAPin();
+        }
+
+        @Given("the user is on the Login screen")
+        public void theUserIsOnTheLoginScreen() throws InterruptedException {
+            test.mobile().wallet().restartApp();
+        }
+
+        @Given("the test is being ignored")
+        public void theTestIsBeingIgnored() {
+            test.mobile().wallet().skippedTest();
+        }
+
+        @Then("the user should see the home screen")
+        public void theUserShouldSeeTheHomeScreen() {
+            test.mobile().wallet().homePageIsDisplayed();
+        }
+
+        @Given("the user is on the home screen")
+        public void theUserIsOnTheHomeScreen() throws InterruptedException {
+            theUserIsOnTheLoginScreen();
+            theUserEntersTheirPIN();
+            theUserShouldSeeTheHomeScreen();
+        }
+
+        @When("the user navigates to the Documents screen")
+        public void theUserNavigatesToTheDocumentsScreen() {
+            test.mobile().wallet().clickOnDocuments();
+        }
+
+        @Then("the Documents screen is displayed")
+        public void theDocumentsScreenIsDisplayed() {
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @Given("the user is on the Documents screen")
+        public void theUserIsOnTheDocumentsScreen() throws InterruptedException {
+            theUserIsOnTheHomeScreen();
+            theUserNavigatesToTheDocumentsScreen();
+            theDocumentsScreenIsDisplayed();
+        }
+
+        @When("the user selects to add a new document")
+        public void theUserSelectsToAddANewDocument() {
+            test.mobile().wallet().addDocButton();
+        }
+
+        @And("the user selects to add a new document From list")
+        public void theUserSelectsToAddANewDocumentFromList() {
+            test.mobile().wallet().clickFromList();
+        }
+
+
+        @Given("the user is viewing the predefined list of attestations")
+        public void theUserIsViewingThePredefinedListOfAttestations() throws InterruptedException {
+            theUserIsOnTheDocumentsScreen();
+            theUserSelectsToAddANewDocument();
+            theUserSelectsToAddANewDocumentFromList();
+        }
+
+        @When("the user selects one attestation to be issued")
+        public void theUserSelectsOneAttestationToBeIssued() throws InterruptedException {
+            test.mobile().wallet().scrollUntilPID();
+            test.mobile().wallet().clickPID();
+            test.mobile().issuer().issuePID("PID (MSO Mdoc)");
+        }
+
+        @Then("the wallet displays a success screen")
+        public void theWalletDisplaysASuccessScreen() {
+            test.mobile().issuer().successfullySharedMessage();
+        }
+
+        @When("the user closes the success screen")
+        public void theUserClosesTheSuccessScreen() {
+            test.mobile().wallet().clickDone();
+        }
+
+        @Then("the user navigates back to the Home screen")
+        public void theUserShouldBeNavigatedBackToTheHomeScreen() {
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @When("the user chooses to issue a doc with pre-authorization")
+        public void theUserChoosesToIssueADocWithPreAuthorization() throws InterruptedException {
+            test.mobile().issuer().launchSafari();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickPersonalIdentificationData();
+            test.mobile().issuer().clickSubmitButton();
+        }
+
+        @Then("the user registers their personal data")
+        public void theUserRegistersTheirPersonalData() throws InterruptedException {
+            test.mobile().issuer().formIsDisplayed();
+            test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().enterGivenName();
+            test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().enterCountry();
+            test.mobile().issuer().scrollUntilCountryCode();
+            test.mobile().issuer().enterCountryCode();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().authorizeIsDisplayed();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+        }
+
+        @And("a transaction code has been created")
+        public void aTransactionCodeHasBeenCreated() {
+            test.mobile().issuer().transactionCodeIsDisplayed();
+        }
+
+        @When("the user selects to register with the EUDI wallet app")
+        public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
+            test.mobile().issuer().qrCodeIsDisplayed();
+            test.mobile().issuer().clickUseEudiw();
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().issuer().clickOpen();
+            }
+        }
+
+        @When("the request from the issuer is displayed on the wallet app")
+        public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
+            test.mobile().wallet().detailsArePresented();
+        }
+
+        @Then("the user clicks on the ISSUE button")
+        public void theUserClicksOnTheISSUEButton() {
+            test.mobile().wallet().clickIssue();
+        }
+
+        @When("the Wallet application displays a success message")
+        public void theWalletApplicationDisplaysASuccessMessage() {
+            test.mobile().issuer().successfullySharedMessage();
+        }
+
+        @Then("the user clicks on the CONTINUE button")
+        public void theUserClicksOnTheCONTINUEButton() {
+            test.mobile().wallet().clickDone();
+        }
+
+        @And("the doc is displayed in the dashboard screen")
+        public void theDocIsDisplayedInTheDashboardScreen() {
+            test.mobile().wallet().homePageIsDisplayed();
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().nationalIdIsDisplayed();
+        }
+
+        @Given("the user visits the Issuer service")
+        public void theUserVisitsTheIssuerService() {
+            test.mobile().issuer().issuerService();
+        }
+
+        @When("the user selects to issue credential")
+        public void theUserSelectsToIssueCredential() throws InterruptedException {
+            test.mobile().issuer().launchSafari();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmitButton();
+        }
+
+        @Then("the user is presented with a URL to initiate the EUDI Wallet on the same device")
+        public void theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice() {
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+        }
+
+        @Given("the user is presented with a URL to initiate the EUDI Wallet")
+        public void theUserIsPresentedWithAURLToInitiateTheEUDIWallet() throws InterruptedException {
+            theUserVisitsTheIssuerService();
+            theUserSelectsToIssueCredential();
+            theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice();
+        }
+
+        @When("the user selects the URL")
+        public void theUserSelectsTheURL() {
+            test.mobile().issuer().qrCodeIsDisplayed();
+            test.mobile().issuer().clickUseEudiw();
+        }
+
+        @Then("the user is redirected to the Issuer service to present their PID")
+        public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
+            test.mobile().issuer().authenticationPageIsDisplayed();
+        }
+
+        @Given("the user is on the issuer service page")
+        public void theUserIsOnTheIssuerServicePage() {
+            test.mobile().issuer().issuerService();
+        }
+
+        @When("the user chooses to issue a credential to the wallet app")
+        public void theUserChoosesToIssueACredentialToTheWalletApp() throws InterruptedException {
+            test.mobile().issuer().launchSafari();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickSubmitButton();
+        }
+
+        @Then("the user is redirected to the wallet app")
+        public void theUserIsRedirectedToTheWalletApp() {
+            test.mobile().issuer().qrCodeIsDisplayed();
+            test.mobile().issuer().clickUseEudiw();
+        }
+
+        @Then("the user is redirected to the issuer for authentication and consent")
+        public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
+            test.mobile().issuer().authenticationPageIsDisplayed();
+        }
+
+        @Given("the user is on the Home page")
+        public void theUserIsOnTheHomePage() {
+            test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        }
+
+        @When("the user decides not to proceed")
+        public void theUserDecidesNotToProceed() {
+            test.mobile().verifier().insertPIN2();
+        }
+
+        @And("EUDI Wallet should return the user to the main page")
+        public void eudiWalletShouldReturnTheUserToTheMainPage() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+        }
+
+        @Then("the EUDI Wallet enables the user to share the document or close the process")
+        public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
+            test.mobile().wallet().clickDone();
+        }
+
+        @When("the EUDI Wallet displays the presentation request for PID")
+        public void theEUDIWalletDisplaysThePresentationRequestForPID() {
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().qrCodeIsDisplayed();
+        }
+
+        @Then("the user is prompted to consent by selecting the Share button")
+        public void theUserIsPromptedToConsentBySelectingTheShareButton() {
+            test.mobile().verifier().viewDataPage();
+        }
+
+        @When("the user selects the Share button")
+        public void theUserSelectsTheShareButton() {
+            test.mobile().wallet().clickShareButton();
+        }
+
+        @When("the user enters their six-digit PIN correctly")
+        public void theUserEntersTheirSixDigitPINCorrectly() {
+            test.mobile().wallet().createAPin();
+        }
+
+        @Then("a success message is displayed for the successful presentation of the PID")
+        public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
+            test.mobile().wallet().authenticationSuccessfully();
+        }
+
+        @When("the user clicks the Continue button")
+        public void theUserClicksTheContinueButton() throws InterruptedException {
+            test.mobile().wallet().clickDone();
+            test.mobile().wallet().clickSubmit();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+        }
+
+        @Then("the user views a success message for issuing the document")
+        public void theUserViewsASuccessMessageForIssuingTheDocument() {
+            test.mobile().wallet().successMessageForDrivingIsDisplayed();
+            test.mobile().wallet().clickDone();
+        }
+
+        @And("the user views the document on the dashboard which issued based on the PID")
+        public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+            test.mobile().wallet().clickOnDocuments();
+        }
+
+        @When("the user authenticates and consents the issuance")
+        public void theUserAuthenticatesAndConsentsTheIssuance() throws InterruptedException {
+            test.mobile().issuer().clickCountrySelection();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().formIsDisplayed();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+        }
+
+        @Then("the dashboard appears with the document grayed out and in a pending state")
+        public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+            test.mobile().wallet().clickOnDocuments();
+        }
+
+
+        @Given("the user visits the issuer service on the same device")
+        public void theUserVisitsTheIssuerServiceOnTheSameDevice() {
+            test.mobile().issuer().issuerService();
+        }
+
+        @When("the user requests the issuance of an attestation type")
+        public void theUserRequestsTheIssuanceOfAnAttestationType() throws InterruptedException {
+            test.mobile().issuer().launchSafari();
+            test.mobile().issuer().requestCredentialsPageIsDisplayed();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickPersonalIdentificationData();
+            test.mobile().issuer().clickSubmitButton();
+        }
+
+        @Then("the issuer service redirects the user to the Wallet")
+        public void theIssuerServiceRedirectsTheUserToTheWallet() {
+            test.mobile().issuer().qrCodeIsDisplayed();
+            test.mobile().issuer().clickUseEudiw();
+        }
+
+        @Given("the EUDI Wallet opens")
+        public void theEUDIWalletOpens() throws InterruptedException {
+            theUserVisitsTheIssuerServiceOnTheSameDevice();
+            theUserRequestsTheIssuanceOfAnAttestationType();
+            theIssuerServiceRedirectsTheUserToTheWallet();
+        }
+
+        @And("the user authenticates using a six-digit PIN or Biometrics")
+        public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() {
+            test.mobile().verifier().viewDataPage();
+            test.mobile().wallet().clickShareButton();
+            test.mobile().wallet().createAPin();
+        }
+
+
+        @Given("the user visits the Relying Party service on their mobile device")
+        public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() {
+            userOpensVerifierApp();
+        }
+
+        @Then("the Relying Party service redirects the user to the EUDI Wallet")
+        public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
+            test.mobile().verifier().chooseWalletPageIsDisplayed();
+            test.mobile().verifier().chooseWallet();
+            test.mobile().verifier().insertPIN2();
+        }
+
+        @Then("the authentication is successful")
+        public void theAuthenticationIsSuccessful() {
+            test.mobile().wallet().authenticationSuccessfully();
+            test.mobile().wallet().clickDone();
+        }
+
+
+        @Then("the EUDI Wallet informs the user that the Relying Party requests an attestation")
+        public void theEUDIWalletInformsTheUserThatTheRelyingPartyRequestsAnAttestation() {
+            test.mobile().verifier().viewDataPage();
+        }
+
+        @Then("the EUDI Wallet displays a confirmation message indicating the outcome")
+        public void theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome() {
+            test.mobile().wallet().authenticationSuccessfully();
+            test.mobile().wallet().clickDone();
+        }
+
+        @Then("the Relying Party service receives the attestation")
+        public void theRelyingPartyServiceReceivesTheAttestation() {
+            test.mobile().verifier().walletResponded();
+        }
+
+        @Then("the Wallet uses an attestation not previously presented to any Relying Party")
+        public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+            test.mobile().wallet().clickOnDocuments();
+        }
+
+        @When("the Wallet receives the attestation from the issuer service")
+        public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
+            test.mobile().issuer().clickFormEu();
+            test.mobile().issuer().clickSubmit();
+            test.mobile().issuer().formIsDisplayed();
+            test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().enterGivenName();
+            test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().enterCountry();
+            test.mobile().issuer().scrollUntilCountryCode();
+            test.mobile().issuer().enterCountryCode();
+            test.mobile().issuer().authorizeIsDisplayed();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+            test.mobile().wallet().clickClose();
+        }
+
+        @Then("issuer service issues multiple attestations")
+        public void issuerServiceIssuesMultipleAttestations() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().nationalIdIsDisplayed();
+        }
+
+        @When("the user clicks on the X button")
+        public void theUserClicksOnTheXButton() {
+            test.mobile().wallet().clickBackButton();
+        }
+
+        @Then("the document appears on the dashboard screen")
+        public void theDocumentAppearsOnTheDashboardScreen() {
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @Then("verifier verifies the credential successfully with {}")
+        public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
+            test.mobile().verifier().verifyCredential(status);
+        }
+
+        @Given("the user initiates a {} issuance using the {}")
+        public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) {
+            this.issuerType = issuerType;
+            this.credential = credential;
+            test.mobile().wallet().initiateCredential(credential, issuerType);
+        }
+
+        @And("the issuance method is {}")
+        public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
+            test.mobile().issuer().issuanceMethodIs(issuanceMethod, this.credential, this.issuerType);
+        }
+
+        @And("the issuance is performed on a {} for the {} and {}")
+        public void theIssuanceIsPerformedOnA(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
+            test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
+        }
+
+        @When("the issuance flow is completed")
+        public void theIssuanceFlowIsCompleted() {
+            test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
+        }
+
+        @Then("the credential is stored in the Wallet")
+        public void theCredentialIsStoredInTheWallet() {
+            test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
+        }
+
+        @When("the user presents the credential to the {}")
+        public void theUserPresentsTheCredentialToThe(String verifierType) {
+            test.mobile().wallet().presentCredential(verifierType);
+        }
+
+        @And("the presentation is performed on a {} for the {}")
+        public void thePresentationIsPerformedOnA(String presentationScenario, String credential) throws InterruptedException {
+            test.mobile().wallet().performPresentation(presentationScenario, credential, this.selectiveDisclosure, this.issuerType);
+        }
+
+
+        @And("the user shares {}")
+        public void theUserShares(String selectiveDisclosure) {
+            this.selectiveDisclosure = selectiveDisclosure;
+        }
+
+        @Then("the verifier verifies the credential successfully with {} for {}")
+        public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
+            test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+        }
+
+        @When("the user selects to issue a document using pre-authorization")
+        public void theUserSelectsToIssueADocumentUsingPreAuthorization() throws InterruptedException {
+            test.mobile().issuer().scrollUntilPidIssuer();
+            test.mobile().issuer().selectPidPythonIssuer();
+            test.mobile().issuer().scrollUntilFindSubmitIssuer();
+            test.mobile().issuer().clickPreAuthorizationCode();
+            test.mobile().issuer().clickSubmitButton();
+        }
+
+        @Then("the user provides their personal information")
+        public void theUserProvidesTheirPersonalInformation() throws InterruptedException {
+            test.mobile().issuer().formIsDisplayed();
+            test.mobile().issuer().chooseBirthDate();
+            test.mobile().issuer().enterFamilyName();
+            test.mobile().issuer().enterGivenName();
+            test.mobile().issuer().scrollUntilCountryCodePid();
+            test.mobile().issuer().enterCountryCode();
+            test.mobile().issuer().scrollUntilCountry();
+            test.mobile().issuer().enterCountry();
+            test.mobile().issuer().scrollUntilFindSubmit();
+            test.mobile().issuer().clickConfirm();
+            test.mobile().issuer().authorizeIsDisplayed();
+            test.mobile().issuer().scrollUntilAuthorize();
+            test.mobile().issuer().clickAuthorize();
+        }
+
+        @And("a transaction code is generated")
+        public void aTransactionCodeIsGenerated() {
+            test.mobile().issuer().aTrasactionCodeGenerated();
+        }
+
+        @When("the user chooses to register through the EUDI wallet app")
+        public void theUserChoosesToRegisterThroughTheEUDIWalletApp() {
+            test.mobile().issuer().clickUseEudiwPid();
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().issuer().clickOpen();
+            }
+        }
+
+        @Then("the user is navigated to the EUDI wallet application")
+        public void theUserIsNavigatedToTheEUDIWalletApplication() {
+            //nothing on automation
+        }
+
+        @And("the user provides the PIN")
+        public void theUserProvidesThePIN() {
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+        }
+
+        @When("the issuer request is shown in the wallet app")
+        public void theIssuerRequestIsShownInTheWalletApp() throws InterruptedException {
+            test.mobile().issuer().viewDataPage();
+        }
+
+        @Then("the user selects the ISSUE button for {}")
+        public void theUserSelectsTheISSUEButton(String issuerType) throws InterruptedException {
+            this.issuerType = issuerType;
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().clickAddButton();
+            }
+        }
+
+        @Then("the user selects ISSUE button")
+        public void theUserSelectsISSUEButton() throws InterruptedException {
+            test.mobile().wallet().clickAddButton();
+        }
+
+        @When("the Wallet app prompts for the transaction code")
+        public void theWalletAppPromptsForTheTransactionCode() throws InterruptedException {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().issuer().selectCountryOfOrigin();
+                test.mobile().issuer().clickFormEu();
+                test.mobile().issuer().scrollUntilFindSubmit();
+                test.mobile().issuer().clickSubmit();
+                test.mobile().issuer().formIsDisplayed();
+                test.mobile().issuer().chooseBirthDate();
+                test.mobile().issuer().enterFamilyName();
+                test.mobile().issuer().enterGivenName();
+                test.mobile().issuer().scrollUntilCountryCodePid();
+                test.mobile().issuer().enterCountryCode();
+                test.mobile().issuer().scrollUntilCountry();
+                test.mobile().issuer().enterCountry();
+                test.mobile().issuer().scrollUntilFindSubmit();
+                test.mobile().issuer().clickConfirm();
+                test.mobile().issuer().authorizeIsDisplayed();
+                test.mobile().issuer().scrollUntilAuthorize();
+                test.mobile().issuer().clickAuthorize();
+            } else {
+                test.mobile().wallet().requestTransactionCode();
+            }
+        }
+
+        @Then("the user enters the transaction code received from the Issuer")
+        public void theUserEntersTheTransactionCodeReceivedFromTheIssuer() {
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().insertTransactionCode();
+            }
+        }
+
+        @When("the Wallet application shows a successful issuance message")
+        public void theWalletApplicationShowsASuccessfulIssuanceMessage() {
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        }
+
+        @Then("the user selects the CONTINUE button")
+        public void theUserSelectsTheCONTINUEButton() {
+            test.mobile().wallet().clickClose();
+        }
+
+        @And("the document appears on the documents screen for {}")
+        public void theDocumentAppearsOnTheDocumentsScreen(String issuerType) {
+            test.mobile().wallet().pidDeferredIsDisplayed(issuerType);
+        }
+
+        @Then("the EUDI Wallet application is opened")
+        public void theEUDIWalletApplicationIsOpened() throws InterruptedException {
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().issuer().viewDataPage();
+        }
+
+        @And("the user is redirected to the issuer service for authentication and authorization for {}")
+        public void theUserIsRedirectedToTheIssuerServiceForAuthenticationAndAuthorization(String issuerType) throws InterruptedException {
+            this.issuerType = issuerType;
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().issuer().selectCountryOfOrigin();
+                test.mobile().issuer().clickFormEu();
+                test.mobile().issuer().scrollUntilFindSubmit();
+                test.mobile().issuer().clickSubmit();
+                test.mobile().issuer().formIsDisplayed();
+                test.mobile().issuer().chooseBirthDate();
+                test.mobile().issuer().enterFamilyName();
+                test.mobile().issuer().enterGivenName();
+                test.mobile().issuer().scrollUntilCountryCodePid();
+                test.mobile().issuer().enterCountryCode();
+                test.mobile().issuer().scrollUntilCountry();
+                test.mobile().issuer().enterCountry();
+                test.mobile().issuer().scrollUntilFindSubmit();
+                test.mobile().issuer().clickConfirm();
+            }
+        }
+
+        @When("the user completes authentication and confirms the issuance for {}")
+        public void theUserCompletesAuthenticationAndConfirmsTheIssuance(String issuerType) throws InterruptedException {
+            this.issuerType = issuerType;
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().issuer().authorizeIsDisplayed();
+                test.mobile().issuer().scrollUntilAuthorize();
+                test.mobile().issuer().clickAuthorize();
+            }
+        }
+
+        @And("a notification indicates that the credential request is being processed")
+        public void aNotificationIndicatesThatTheCredentialRequestIsBeingProcessed() {
+            test.mobile().wallet().notificationOnWalletForDeferred();
+        }
+
+        @When("the user dismisses the notification by pressing OK")
+        public void theUserDismissesTheNotificationByPressingOK() {
+            test.mobile().wallet().clickingOkButton();
+        }
+
+        @And("the document is displayed as unavailable with a pending status")
+        public void theDocumentIsDisplayedAsUnavailableWithAPendingStatus() {
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().pendingStatus();
+        }
+
+        @When("the issuer provides the requested credential to the wallet")
+        public void theIssuerProvidesTheRequestedCredentialToTheWallet() {
+            //nothing for automation
+        }
+
+        @Then("the user receives a confirmation message indicating that the document has been issued")
+        public void theUserReceivesAConfirmationMessageIndicatingThatTheDocumentHasBeenIssued() {
+            test.mobile().wallet().popUpConfirmation();
+        }
+
+        @When("the user chooses to inspect the document details")
+        public void theUserChoosesToInspectTheDocumentDetails() {
+            test.mobile().wallet().inspectDocument();
+        }
+
+        @Then("the issued credential information is displayed for {}")
+        public void theIssuedCredentialInformationIsDisplayed(String issuerType) {
+            test.mobile().wallet().pidDeferredIsDisplayed(issuerType);
+        }
+
+        @And("the user presses the X button to close the document")
+        public void theUserPressesTheXButtonToCloseTheDocument() {
+            test.mobile().wallet().clickBackButton();
+        }
+
+        @Then("the document details are no longer displayed")
+        public void theDocumentDetailsAreNoLongerDisplayed() {
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @Given("the user uploads a document and an attestation using {} and selects a QTSP")
+        public void theUserUploadsADocumentAndAnAttestationUsingAndSelectsAQTSP(String issuerType) throws IOException, InterruptedException {
+            this.issuerType = issuerType;
+            test.mobile().wallet().downloadSampleDocument();
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().insertAttestationForSigning(issuerType);
+            test.mobile().wallet().clickHome();
+        }
+
+        @When("the EUDI Wallet fetches the Credential ID details from the QTSP")
+        public void theEUDIWalletFetchesTheCredentialIDDetailsFromTheQTSP() {
+            test.mobile().wallet().clickSignDocument();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().clickFromDevice();
+            }
+            test.mobile().wallet().clickSelectDocument();
+            test.mobile().wallet().selectSamplePDF();
+        }
+
+        @Then("the EUDI Wallet displays the Credential ID details to the user")
+        public void theEUDIWalletDisplaysTheCredentialIDDetailsToTheUser() {
+            test.mobile().wallet().selectSigningService();
+            test.mobile().wallet().clickWalletCentric();
+        }
+
+        @And("the user agrees to proceed with the signing operation")
+        public void theUserAgreesToProceedWithTheSigningOperation() {
+            test.mobile().wallet().clickProceed();
+        }
+
+        @When("the user opts not to proceed")
+        public void theUserOptsNotToProceed() {
+            test.mobile().wallet().clickBackButton();
+        }
+
+        @Then("the user selects the Abort operation option")
+        public void theUserSelectsTheAbortOperationOption() {
+            //no actions occur in automation
+        }
+
+        @And("the EUDI Wallet redirects the user to the main page")
+        public void theEUDIWalletRedirectsTheUserToTheMainPage() {
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+        }
+
+        @When("the EUDI Wallet asks the user to consent to the release of the requested attestation")
+        public void theEUDIWalletAsksTheUserToConsentToTheReleaseOfTheRequestedAttestation() {
+            theEUDIWalletFetchesTheCredentialIDDetailsFromTheQTSP();
+            theEUDIWalletDisplaysTheCredentialIDDetailsToTheUser();
+            theUserAgreesToProceedWithTheSigningOperation();
+        }
+
+        @And("the user successfully authenticates in the Wallet")
+        public void theUserSuccessfullyAuthenticatesInTheWallet() {
+            test.mobile().wallet().clickShareButton();
+            test.mobile().wallet().createAPin();
+        }
+
+        @Then("the EUDI Wallet shares the requested attestation with the QTSP")
+        public void theEUDIWalletSharesTheRequestedAttestationWithTheQTSP() {
+            this.issuerType = issuerType;
+            test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickExpandVerification();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+                }
+            } else {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+                }
+            }
+            test.mobile().wallet().clickDone();
+            test.mobile().wallet().selectSigningCertificate();
+            test.mobile().wallet().clickCredentialForTests();
+            test.mobile().wallet().clickProceed();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().clickContinue();
+            }
+            test.mobile().wallet().clickExpandVerification();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+                }
+            } else {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+                }
+            }
+            test.mobile().wallet().clickShareButton();
+            test.mobile().wallet().createAPin();
+
+        }
+
+        @And("a success screen appears with the signed document")
+        public void aSuccessScreenAppearsWithTheSignedDocument() {
+            test.mobile().issuer().successfullySharedMessage();
+            test.mobile().wallet().clickExpandVerification();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+                }
+            } else {
+                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+                }else{
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+                }
+            }
+            test.mobile().wallet().clickDone();
+        }
+
+        @When("the EUDI Wallet obtains the signed document")
+        public void theEUDIWalletObtainsTheSignedDocument() {
+            test.mobile().wallet().successfullySignedTheDoc();
+            test.mobile().wallet().clickView();
+            test.mobile().wallet().trustIconIsDisplayed();
+            test.mobile().wallet().clickBackButtonSigning();
+            test.mobile().wallet().clickX();
+        }
+
+        @Then("the EUDI Wallet allows the user to share the document or close the process")
+        public void theEUDIWalletAllowsTheUserToShareTheDocumentOrCloseTheProcess() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().clickX();
+            }else{
+                test.mobile().wallet().clickDoneSign();
+            }
+            test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+        }
+
+        @Given("the user issues a {} attestation using {}")
+        public void theUserIssuesAnAttestationUsing(String credential, String issuerType) throws InterruptedException {
+            this.credential = credential;
+            this.issuerType = issuerType;
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().wallet().insertPidFromListKotlin();
+                test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+                test.mobile().wallet().clickClose();
+            } else {
+                test.mobile().wallet().insertPidFromList();
+                test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+                test.mobile().wallet().clickDone();
+            }
+        }
+
+        @And("the user issues the second attestation for {}")
+        public void theUserIssuesTheSecondAttestationFor(String issuerType) throws InterruptedException {
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().wallet().insertLearningCredentialFromListKotlin();
+                test.mobile().wallet().successMessageIsDisplayedForIssuer();
+                test.mobile().wallet().clickClose();
+            } else {
+                test.mobile().wallet().insertLoyaltyFromList();
+                test.mobile().wallet().successMessageIsDisplayedForIssuer();
+                test.mobile().wallet().clickExpandVerification();
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_data_on_wallet.yml");
+                test.mobile().wallet().clickDone();
+            }
+        }
+
+        @And("the user is on the Home screen of the Wallet")
+        public void theUserIsOnTheHomeScreenOfTheWallet() {
+            test.mobile().wallet().clickHome();
+        }
+
+        @When("the user opens the Documents screen")
+        public void theUserOpensTheDocumentsScreen() {
+            test.mobile().wallet().clickOnDocuments();
+        }
+
+        @Then("the Documents screen lists the issued attestations")
+        public void theDocumentsScreenListsTheIssuedAttestations() {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().secondPIDKotlinIsDisplayed();
+            } else {
+                test.mobile().wallet().pidMdocIsDisplayed();
+            }
+            test.mobile().wallet().defferedIsDisplayed(this.issuerType);
+        }
+
+        @When("the user taps on an attestation from the list")
+        public void theUserTapsOnAnAttestationFromTheList() {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().clickPIDFromKotlin();
+            } else {
+                test.mobile().wallet().openPidAttestation();
+            }
+        }
+
+        @Then("the attestation details are displayed")
+        public void theAttestationDetailsAreDisplayed() {
+            test.mobile().wallet().pidDetailsDisplayed(this.issuerType);
+        }
+
+        @And("the attestation details are blurred by default")
+        public void theAttestationDetailsAreBlurredByDefault() {
+            test.mobile().wallet().detailsAreBlurred("yes");
+        }
+
+        @And("an eye icon is shown to reveal the attestation details")
+        public void anEyeIconIsShownToRevealTheAttestationDetails() {
+            //no action occurs for automation
+        }
+
+        @When("the user taps on the eye icon")
+        public void theUserTapsOnTheEyeIcon() {
+            test.mobile().wallet().scrollUpForEyeIcon();
+            test.mobile().wallet().clickEyeIcon();
+        }
+
+        @Then("the attestation details are no longer blurred")
+        public void theAttestationDetailsAreNoLongerBlurred() {
+            test.mobile().wallet().detailsAreBlurred("no");
+        }
+
+        @And("the user can view the full attestation details")
+        public void theUserCanViewTheFullAttestationDetails() {
+            //no action occurs for automation
+        }
+
+        @When("the user taps the bookmark icon on the attestation")
+        public void theUserTapsTheBookmarkIconOnTheAttestation() {
+            test.mobile().wallet().clickBookmarkButton();
+        }
+
+        @Then("the attestation gets marked as bookmarked")
+        public void theAttestationGetsMarkedAsBookmarked() {
+            //no action occurs for automation
+        }
+
+        @And("the bookmark icon updates to indicate the bookmarked state")
+        public void theBookmarkIconUpdatesToIndicateTheBookmarkedState() {
+            test.mobile().wallet().bookmarkIsMarked();
+        }
+
+        @When("the user opens the issuer details from the attestation")
+        public void theUserOpensTheIssuerDetailsFromTheAttestation() {
+            test.mobile().wallet().openIssuerDetails();
+        }
+
+        @Then("the issuer details are displayed to the user")
+        public void theIssuerDetailsAreDisplayedToTheUser() {
+            test.mobile().wallet().issuerDetailsAreDisplayed();
+        }
+
+        @When("the user closes the attestation details without deleting it")
+        public void theUserClosesTheAttestationDetailsWithoutDeletingIt() {
+            test.mobile().wallet().clickBackButton();
+        }
+
+        @Then("the user lands back on the Documents screen")
+        public void theUserLandsBackOnTheDocumentsScreen() {
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @When("the user reopens the attestation and selects the delete option")
+        public void theUserReopensTheAttestationAndSelectsTheDeleteOption() {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().clickPIDFromKotlin();
+            } else {
+                test.mobile().wallet().openPidAttestation();
+            }
+            test.mobile().wallet().removeAttestation();
+        }
+
+        @Then("the attestation gets removed from the EUDI Wallet")
+        public void theAttestationGetsRemovedFromTheEUDIWallet() {
+            //no action occurs in automation
+        }
+
+        @And("the Documents screen no longer lists the deleted attestation")
+        public void theDocumentsScreenNoLongerListsTheDeletedAttestation() {
+            test.mobile().wallet().attestationRemovedFromDocuments(this.issuerType);
+        }
+
+        @Given("the user visits the Issuer service, generates a QR code for a PID attestation using {} and returns to the Home screen of the Wallet")
+        public void theUserVisitsTheIssuerServiceGeneratesAQRCodeForAPIDAttestationAndReturnsToTheHomeScreenOfTheWallet(String issuerType) throws InterruptedException {
+            this.credential = "PID (MSO Mdoc)";
+            this.issuerType = issuerType;
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().issuer().kotlinIssuerService();
+                test.mobile().issuer().selectPIDKotlin();
+                test.mobile().issuer().scrollUntilGenerate();
+                test.mobile().issuer().clickGenerate();
+                test.mobile().issuer().qrCodeIsDisplayedKotlin();
+            } else {
+                test.mobile().issuer().issuerService();
+                test.mobile().issuer().clickissuerService();
+                test.mobile().issuer().requestCredentialsPageIsDisplayed();
+                test.mobile().issuer().scrollUntilPidIssuer();
+                test.mobile().issuer().selectPidPythonIssuer();
+                test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                test.mobile().issuer().clickSubmitButton();
+                test.mobile().issuer().qrCodeIsDisplayed();
+            }
+            test.mobile().verifier().captureScreen();
+            test.mobile().wallet().launchApp();
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().homePageIsDisplayed();
+        }
+
+        @When("the user taps the add document button on the Documents screen")
+        public void theUserTapsTheAddDocumentButtonOnTheDocumentsScreen() {
+            test.mobile().wallet().clickToAddDocument();
+        }
+
+        @Then("the wallet displays the Add document screen")
+        public void theWalletDisplaysTheAddDocumentScreen() {
+            test.mobile().wallet().addDocumentPageIsDisplayed();
+        }
+
+        @When("the user selects the option to scan a QR code")
+        public void theUserSelectsTheOptionToScanAQRCode() {
+            test.mobile().wallet().clickQROption();
+        }
+
+        @Then("the wallet opens the scanner to scan the QR code rendered by the Issuer")
+        public void theWalletOpensTheScannerToScanTheQRCodeRenderedByTheIssuer() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                if (test.mobile().wallet().isQrVisible()) {
+                    test.mobile().wallet().onlyThisTimeQR();
+                }
+            }
+            test.mobile().wallet().theQRScannerIsActivatedForIssuance();
+        }
+
+        @When("the user scans a valid QR code rendered by the Issuer")
+        public void theUserScansAValidQRCodeRenderedByTheIssuer() {
+            test.mobile().wallet().mockQRInject(test.mobile().verifier().getCapturedScreenFile());
+        }
+
+        @Then("the wallet displays the credential offer with the attestation to be issued and the name of the issuer")
+        public void theWalletDisplaysTheCredentialOfferWithTheAttestationToBeIssuedAndTheNameOfTheIssuer() throws InterruptedException {
+            test.mobile().issuer().viewDataPage();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().secondPIDKotlinIsDisplayed();
+            } else {
+                test.mobile().wallet().pidMdocIsDisplayed();
+            }
+            test.mobile().wallet().nameOfIssuerDisplayed();
+        }
+
+        @When("the user selects the Cancel button on the credential offer")
+        public void theUserSelectsTheCancelButtonOnTheCredentialOffer() {
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickX();
+                test.mobile().wallet().clickBackButton();
+                test.mobile().wallet().clickBackButton();
+            } else {
+                test.mobile().wallet().clickCancel();
+            }
+        }
+
+        @Then("the issuing process is canceled")
+        public void theIssuingProcessIsCanceled() {
+            //no action occurs in automation
+        }
+
+        @And("the user is returned to the Documents screen")
+        public void theUserIsReturnedToTheDocumentsScreen() {
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().documentsPageIsDisplayed();
+        }
+
+        @And("the user selects the Add document button on the credential offer")
+        public void theUserSelectsTheAddDocumentButtonOnTheCredentialOffer() throws InterruptedException {
+            test.mobile().wallet().clickAddButton();
+
+        }
+
+        @Then("the user proceeds with the attestation issuing flow")
+        public void theUserProceedsWithTheAttestationIssuingFlow() throws InterruptedException {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
+            } else {
+                test.mobile().issuer().issuePID(this.credential);
+            }
+        }
+
+        @And("the wallet displays a success screen with the details of the issued attestation")
+        public void theWalletDisplaysASuccessScreenWithTheDetailsOfTheIssuedAttestation() {
+            test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, "credential offer");
+        }
+
+        @Then("the attestation is added to the EUDI Wallet")
+        public void theAttestationIsAddedToTheEUDIWallet() {
+            test.mobile().wallet().clickOnDocuments();
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                test.mobile().wallet().secondPIDKotlinIsDisplayed();
+            } else {
+                test.mobile().wallet().pidMdocIsDisplayed();
+            }
+        }
+
+        @Given("the user is accessing {} service")
+        public void theUserIsAccessingService(String issuerType) {
+            test.mobile().issuer().accessingIssuerType(issuerType);
+        }
+
+        @When("the user chooses to deliver a deferred credential to the wallet with {}")
+        public void theUserChoosesToDeliverADeferredCredentialToTheWalletWith(String issuerType) throws InterruptedException {
+            test.mobile().issuer().deliverDeferredToWallet(issuerType);
+        }
+
+        @And("the issuance information is displayed to the user for {}")
+        public void theIssuanceInformationIsDisplayedToTheUserFor(String issuerType) throws InterruptedException {
+            test.mobile().issuer().issuanceInformation(issuerType);
+        }
+
+        @Then("the document appears on the documents screen")
+        public void theDocumentAppearsOnTheDocumentsScreen() {
+            test.mobile().wallet().clickOnDocuments();
+            test.mobile().wallet().pidIsDisplayed();
+        }
+
+        @Then("the issuer service generates multiple attestations")
+        public void theIssuerServiceGeneratesMultipleAttestations() {
+            //nothing for automation
+        }
+
+        @And("the Wallet shows a counter indicating the total number of attestations issued")
+        public void theWalletShowsACounterIndicatingTheTotalNumberOfAttestationsIssued() {
+            test.mobile().wallet().counterIsDisplayed();
+        }
+
+        @Then("the issuance process continues with the issuer's maximum batch size")
+        public void theIssuanceProcessContinuesWithTheIssuerSMaximumBatchSize() {
+            //nothing for automation
+        }
+
+        @And("the Wallet saves the attestations based on the issuer-defined batch size")
+        public void theWalletSavesTheAttestationsBasedOnTheIssuerDefinedBatchSize() {
+            //nothing for automation
+        }
+
+        @When("the issuer advertised maximum batch size is below the Wallet internal minimum threshold")
+        public void theIssuerAdvertisedMaximumBatchSizeIsBelowTheWalletInternalMinimumThreshold() {
+            //nothing for automation
+        }
+
+        @And("the user accesses the Relying Party service through their mobile device using {}")
+        public void theUserAccessesTheRelyingPartyServiceThroughTheirMobileDevice(String verifierType) {
+            test.mobile().wallet().presentCredential(verifierType);
+        }
+
+        @When("the user chooses to present an attestation type")
+        public void theUserChoosesToPresentAnAttestationType() {
+            test.mobile().wallet().presentAttestation();
+        }
+
+        @Then("the Relying Party service navigates the user to the EUDI Wallet")
+        public void theRelyingPartyServiceNavigatesTheUserToTheEUDIWallet() {
+            test.mobile().wallet().navigateUserToWallet();
+        }
+
+        @When("the user verifies their identity using a six-digit PIN or Biometrics")
+        public void theUserVerifiesTheirIdentityUsingASixDigitPINOrBiometrics() {
+            test.mobile().wallet().createAPin();
+        }
+
+        @Then("the authentication is completed successfully")
+        public void theAuthenticationIsCompletedSuccessfully() {
+            test.mobile().wallet().authenticationSuccessfully();
+        }
+
+        @And("the user is allowed to attempt the authentication again")
+        public void theUserIsAllowedToAttemptTheAuthenticationAgain() {
+            //NOTHING FOR AUTOMATION
+        }
+
+        @When("the user is unable to authenticate using a six-digit PIN or Biometrics")
+        public void theUserIsUnableToAuthenticateUsingASixDigitPINOrBiometrics() {
+            test.mobile().wallet().walletUnableToAuthenticate();
+        }
+
+        @Then("the Wallet displays an authentication error")
+        public void theWalletDisplaysAnAuthenticationError() {
+
+            test.mobile().wallet().authenticationError();
+        }
+
+        @Then("the EUDI Wallet notifies the user that the Relying Party is requesting an attestation with {}")
+        public void theEUDIWalletNotifiesTheUserThatTheRelyingPartyIsRequestingAnAttestation(String presentationScenario) {
+            test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
+        }
+
+        @Given("the user is viewing the EUDI Wallet Home screen")
+        public void theUserIsViewingTheEUDIWalletHomeScreen() {
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        }
+
+        @Then("the bottom navigation bar displays Home, Documents, and Transactions")
+        public void theBottomNavigationBarDisplaysHomeDocumentsAndTransactions() {
+            test.mobile().wallet().homeIsDisplayed();
+            test.mobile().wallet().documentsIsDisplayed();
+            test.mobile().wallet().historyIsDisplayed();
+        }
+
+        @When("the user chooses the Home option from the bottom navigation bar")
+        public void theUserChoosesTheHomeOptionFromTheBottomNavigationBar() {
+            //NOTHING FOR AUTOMATION
+        }
+
+        @Then("the Home option appears highlighted")
+        public void theHomeOptionAppearsHighlighted() {
+            test.mobile().wallet().homeHighlighted();
+        }
+
+        @And("the Home screen presents the Authenticate and Sign a document sections")
+        public void theHomeScreenPresentsTheAuthenticateAndSignADocumentSections() {
+            test.mobile().wallet().authenticateIsDisplayed();
+            test.mobile().wallet().signIsDisplayed();
+        }
+
+        @When("the user taps the Authenticate section")
+        public void theUserTapsTheAuthenticateSection() {
+            test.mobile().wallet().clickAuthenticate();
+        }
+
+        @Then("the Authenticate section provides In Person and Online options")
+        public void theAuthenticateSectionProvidesInPersonAndOnlineOptions() {
+            test.mobile().wallet().inPersonIsDisplayed();
+            test.mobile().wallet().onlineIsDisplayed();
+        }
+
+        @When("the user selects the Sign a document section")
+        public void theUserSelectsTheSignADocumentSection() {
+            test.mobile().wallet().clickScreen();
+            test.mobile().wallet().clickSignDocument();
+        }
+
+        @Then("the Sign Document screen appears")
+        public void theSignDocumentScreenAppears() {
+            test.mobile().wallet().signDocumentScreen();
+        }
+
+        @Then("the bottom navigation bar shows the Home, Documents, and History tabs")
+        public void theBottomNavigationBarShowsTheHomeDocumentsAndHistoryTabs() {
+            test.mobile().wallet().bottomNavigationBarTabDisplays();
+        }
+
+        @Then("the Documents tab becomes highlighted after selection")
+        public void theDocumentsTabBecomesHighlightedAfterSelection() {
+            test.mobile().wallet().documentsTabIsHighlighted();
+        }
+
+        @And("the Documents screen provides a Search bar")
+        public void theDocumentsScreenProvidesASearchBar() {
+            test.mobile().wallet().searchBarIsDisplayed();
+        }
+
+        @And("the Documents screen provides a Filter control")
+        public void theDocumentsScreenProvidesAFilterControl() {
+            test.mobile().wallet().filterButtonIsDisplayed();
+        }
+
+        @And("the listed attestations are organized by category")
+        public void theListedAttestationsAreOrganizedByCategory() {
+            test.mobile().wallet().listedAttestationsAreOrganizedByCategory(this.issuerType);
+        }
+
+        @And("each attestation card shows the attestation name, the issuer, and the validity end date")
+        public void eachAttestationCardShowsTheAttestationNameTheIssuerAndTheValidityEndDate() {
+            test.mobile().wallet().attestationCardDisplaysRequiredFields();
+        }
+
+        @When("the user taps twice on an attestation from the list")
+        public void theUserTapsTwiceOnAnAttestationFromTheList() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    test.mobile().wallet().clickPIDFromKotlin();
+                } else {
+                    test.mobile().wallet().openPidAttestation();
+                }
+            } else {
+                if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                    test.mobile().wallet().clickPIDFromKotlin();
+                    test.mobile().wallet().clickPIDFromKotlin();
+                } else {
+                    test.mobile().wallet().openPidAttestation();
+                    test.mobile().wallet().openPidAttestation();
+                }
+            }
+        }
+
+        @And("a Relying Party renders a presentation request as a QR code")
+        public void aRelyingPartyRendersAPresentationRequestAsAQRCode() {
+            test.webWebDriverFactory().startWebDriverSession();
+            try {
+                String url = test.envDataConfig().getVerifierUrl();
+                test.webWebDriverFactory().getDriverWeb().get(url);
+                test.web().verifier().appOpensSuccessfullyOnWeb();
+                test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+                test.web().verifier().scrollUntilNextOnWeb();
+                test.web().verifier().pidIsDisplayedOnWeb();
+                test.web().verifier().clickSpecificAttributesButtonForPID();
+                test.web().verifier().selectSpecificAttributesOnWeb();
+                test.web().verifier().scrollUntilNextOnWeb();
+                test.web().verifier().uriMethodIsDisplayed();
+                test.web().verifier().scrollUntilSubmitOnWeb();
+                test.web().verifier().assertQrCodeIsVisible();
+                test.web().verifier().captureScreenOnWeb();
+            } catch (org.openqa.selenium.WebDriverException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @When("the user opens the Online option from the Authenticate section")
+        public void theUserOpensTheOnlineOptionFromTheAuthenticateSection() throws InterruptedException {
+            test.mobile().wallet().restartApp();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().clickAuthenticate();
+            test.mobile().wallet().clickOnlinePresentation();
+        }
+
+        @And("the Wallet scans the Relying Party's presentation request QR code")
+        public void theWalletScansTheRelyingPartySPresentationRequestQRCode() {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                if (test.mobile().wallet().isQrVisible()) {
+                    test.mobile().wallet().onlyThisTimeQR();
+                }
+            }
+            test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+        }
+
+        @Then("the Wallet displays the attestation details requested for sharing")
+        public void theWalletDisplaysTheAttestationDetailsRequestedForSharing() {
+            test.mobile().wallet().clickToViewDetails();
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/pre_final_shared_data_on_wallet.yml");
+        }
+
+        @When("the user cancels the presentation request")
+        public void theUserCancelsThePresentationRequest() {
+            test.mobile().wallet().clickBackButton();
+        }
+
+        @Then("the user returns to the Wallet Home screen")
+        public void theUserReturnsToTheWalletHomeScreen() {
+            test.mobile().wallet().walletHomeScreenIsDisplayed();
+        }
     }
-
-    @When("the user enters their PIN")
-    public void theUserEntersTheirPIN() {
-        test.mobile().wallet().createAPin();
-    }
-
-    @When("the user enters the correct PIN")
-    public void theUserEntersTheCorrectPIN(){
-        test.mobile().wallet().createAPin();
-    }
-
-    @Given("the user is on the Login screen")
-    public void theUserIsOnTheLoginScreen() throws InterruptedException {
-        test.mobile().wallet().restartApp();
-    }
-
-    @Given("the test is being ignored")
-    public void theTestIsBeingIgnored() {
-        test.mobile().wallet().skippedTest();
-    }
-
-    @Then("the user should see the home screen")
-    public void theUserShouldSeeTheHomeScreen() {
-        test.mobile().wallet().homePageIsDisplayed();
-    }
-
-    @Given("the user is on the home screen")
-    public void theUserIsOnTheHomeScreen() throws InterruptedException {
-        theUserIsOnTheLoginScreen();
-        theUserEntersTheirPIN();
-        theUserShouldSeeTheHomeScreen();
-    }
-
-    @When("the user navigates to the Documents screen")
-    public void theUserNavigatesToTheDocumentsScreen() {
-        test.mobile().wallet().clickOnDocuments();
-    }
-
-    @Then("the Documents screen is displayed")
-    public void theDocumentsScreenIsDisplayed() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @Given("the user is on the Documents screen")
-    public void theUserIsOnTheDocumentsScreen() throws InterruptedException {
-        theUserIsOnTheHomeScreen();
-        theUserNavigatesToTheDocumentsScreen();
-        theDocumentsScreenIsDisplayed();
-    }
-
-    @When("the user selects to add a new document")
-    public void theUserSelectsToAddANewDocument() {
-        test.mobile().wallet().addDocButton();
-    }
-
-    @And("the user selects to add a new document From list")
-    public void theUserSelectsToAddANewDocumentFromList() {
-        test.mobile().wallet().clickFromList();
-    }
-
-
-    @Given("the user is viewing the predefined list of attestations")
-    public void theUserIsViewingThePredefinedListOfAttestations() throws InterruptedException {
-        theUserIsOnTheDocumentsScreen();
-        theUserSelectsToAddANewDocument();
-        theUserSelectsToAddANewDocumentFromList();
-    }
-
-    @When("the user selects one attestation to be issued")
-    public void theUserSelectsOneAttestationToBeIssued() throws InterruptedException {
-        test.mobile().wallet().scrollUntilPID();
-        test.mobile().wallet().clickPID();
-        test.mobile().issuer().issuePID("PID (MSO Mdoc)");
-    }
-
-    @Then("the wallet displays a success screen")
-    public void theWalletDisplaysASuccessScreen() {
-        test.mobile().issuer().successfullySharedMessage();
-    }
-
-    @When("the user closes the success screen")
-    public void theUserClosesTheSuccessScreen() {
-        test.mobile().wallet().clickDone();
-    }
-
-    @Then("the user navigates back to the Home screen")
-    public void theUserShouldBeNavigatedBackToTheHomeScreen() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @When("the user chooses to issue a doc with pre-authorization")
-    public void theUserChoosesToIssueADocWithPreAuthorization() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickPersonalIdentificationData();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the user registers their personal data")
-    public void theUserRegistersTheirPersonalData() throws InterruptedException {
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterCountry();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @And("a transaction code has been created")
-    public void aTransactionCodeHasBeenCreated() {
-        test.mobile().issuer().transactionCodeIsDisplayed();
-    }
-
-    @When("the user selects to register with the EUDI wallet app")
-    public void theUserSelectsToRegisterWithTheEUDIWalletApp() {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @When("the request from the issuer is displayed on the wallet app")
-    public void theRequestFromTheIssuerIsDisplayedOnTheWalletApp() {
-        test.mobile().wallet().detailsArePresented();
-    }
-
-    @Then("the user clicks on the ISSUE button")
-    public void theUserClicksOnTheISSUEButton() {
-        test.mobile().wallet().clickIssue();
-    }
-
-    @When("the Wallet application displays a success message")
-    public void theWalletApplicationDisplaysASuccessMessage() {
-        test.mobile().issuer().successfullySharedMessage();
-    }
-
-    @Then("the user clicks on the CONTINUE button")
-    public void theUserClicksOnTheCONTINUEButton() {
-        test.mobile().wallet().clickDone();
-    }
-
-    @And("the doc is displayed in the dashboard screen")
-    public void theDocIsDisplayedInTheDashboardScreen() {
-        test.mobile().wallet().homePageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @Given("the user visits the Issuer service")
-    public void theUserVisitsTheIssuerService() {
-        test.mobile().issuer().issuerService();
-    }
-
-    @When("the user selects to issue credential")
-    public void theUserSelectsToIssueCredential() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the user is presented with a URL to initiate the EUDI Wallet on the same device")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice() {
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-    }
-
-    @Given("the user is presented with a URL to initiate the EUDI Wallet")
-    public void theUserIsPresentedWithAURLToInitiateTheEUDIWallet() throws InterruptedException {
-        theUserVisitsTheIssuerService();
-        theUserSelectsToIssueCredential();
-        theUserIsPresentedWithAURLToInitiateTheEUDIWalletOnTheSameDevice();
-    }
-
-    @When("the user selects the URL")
-    public void theUserSelectsTheURL() throws InterruptedException {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @Then("the user is redirected to the Issuer service to present their PID")
-    public void theUserIsRedirectedToTheIssuerServiceToPresentTheirPID() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
-    }
-
-    @Given("the user is on the issuer service page")
-    public void theUserIsOnTheIssuerServicePage() {
-        test.mobile().issuer().issuerService();
-    }
-
-    @When("the user chooses to issue a credential to the wallet app")
-    public void theUserChoosesToIssueACredentialToTheWalletApp() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the user is redirected to the wallet app")
-    public void theUserIsRedirectedToTheWalletApp() {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @Then("the user is redirected to the issuer for authentication and consent")
-    public void theUserIsRedirectedToTheIssuerForAuthenticationAndConsent() {
-        test.mobile().issuer().authenticationPageIsDisplayed();
-    }
-
-    @Given("the user is on the Home page")
-    public void theUserIsOnTheHomePage() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @When("the user decides not to proceed")
-    public void theUserDecidesNotToProceed() {
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @And("EUDI Wallet should return the user to the main page")
-    public void eudiWalletShouldReturnTheUserToTheMainPage() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-    }
-
-    @Then("the EUDI Wallet enables the user to share the document or close the process")
-    public void theEUDIWalletEnablesTheUserToShareTheDocumentOrCloseTheProcess() {
-        test.mobile().wallet().clickDone();
-    }
-
-    @When("the EUDI Wallet displays the presentation request for PID")
-    public void theEUDIWalletDisplaysThePresentationRequestForPID() {
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().qrCodeIsDisplayed();
-    }
-
-    @Then("the user is prompted to consent by selecting the Share button")
-    public void theUserIsPromptedToConsentBySelectingTheShareButton() {
-        test.mobile().verifier().viewDataPage();
-    }
-
-    @When("the user selects the Share button")
-    public void theUserSelectsTheShareButton() {
-        test.mobile().wallet().clickShareButton();
-    }
-
-    @When("the user enters their six-digit PIN correctly")
-    public void theUserEntersTheirSixDigitPINCorrectly() {
-        test.mobile().wallet().createAPin();
-    }
-
-    @Then("a success message is displayed for the successful presentation of the PID")
-    public void aSuccessMessageIsDisplayedForTheSuccessfulPresentationOfThePID() {
-        test.mobile().wallet().authenticationSuccessfully();
-    }
-
-    @When("the user clicks the Continue button")
-    public void theUserClicksTheContinueButton() throws InterruptedException {
-        test.mobile().wallet().clickDone();
-        test.mobile().wallet().clickSubmit();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("the user views a success message for issuing the document")
-    public void theUserViewsASuccessMessageForIssuingTheDocument() {
-        test.mobile().wallet().successMessageForDrivingIsDisplayed();
-        test.mobile().wallet().clickDone();
-    }
-
-    @And("the user views the document on the dashboard which issued based on the PID")
-    public void theUserViewsTheDocumentOnTheDashboardWhichIssuedBasedOnThePID() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
-    }
-
-    @When("the user authenticates and consents the issuance")
-    public void theUserAuthenticatesAndConsentsTheIssuance() throws InterruptedException {
-        test.mobile().issuer().clickCountrySelection();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-    }
-
-    @Then("the dashboard appears with the document grayed out and in a pending state")
-    public void theDashboardAppearsWithTheDocumentGrayedOutAndInAPendingState() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
-    }
-
-
-    @Given("the user visits the issuer service on the same device")
-    public void theUserVisitsTheIssuerServiceOnTheSameDevice() {
-        test.mobile().issuer().issuerService();
-    }
-
-    @When("the user requests the issuance of an attestation type")
-    public void theUserRequestsTheIssuanceOfAnAttestationType() throws InterruptedException {
-        test.mobile().issuer().launchSafari();
-        test.mobile().issuer().requestCredentialsPageIsDisplayed();
-        test.mobile().issuer().scrollUntilFindSubmit();
-        test.mobile().issuer().clickPersonalIdentificationData();
-        test.mobile().issuer().clickSubmitButton();
-    }
-
-    @Then("the issuer service redirects the user to the Wallet")
-    public void theIssuerServiceRedirectsTheUserToTheWallet() {
-        test.mobile().issuer().qrCodeIsDisplayed();
-        test.mobile().issuer().clickUseEudiw();
-    }
-
-    @Given("the EUDI Wallet opens")
-    public void theEUDIWalletOpens() throws InterruptedException {
-        theUserVisitsTheIssuerServiceOnTheSameDevice();
-        theUserRequestsTheIssuanceOfAnAttestationType();
-        theIssuerServiceRedirectsTheUserToTheWallet();
-    }
-
-    @And("the user authenticates using a six-digit PIN or Biometrics")
-    public void theUserAuthenticatesUsingASixDigitPINOrBiometrics() throws InterruptedException {
-        test.mobile().verifier().viewDataPage();
-        test.mobile().wallet().clickShareButton();
-        test.mobile().wallet().createAPin();
-    }
-
-
-    @Given("the user visits the Relying Party service on their mobile device")
-    public void theUserVisitsTheRelyingPartyServiceOnTheirMobileDevice() throws MalformedURLException {
-        userOpensVerifierApp();
-    }
-
-    @Then("the Relying Party service redirects the user to the EUDI Wallet")
-    public void theRelyingPartyServiceRedirectsTheUserToTheEUDIWallet() {
-        test.mobile().verifier().chooseWalletPageIsDisplayed();
-        test.mobile().verifier().chooseWallet();
-        test.mobile().verifier().insertPIN2();
-    }
-
-    @Then("the authentication is successful")
-    public void theAuthenticationIsSuccessful() {
-        test.mobile().wallet().authenticationSuccessfully();
-        test.mobile().wallet().clickDone();
-    }
-
-
-    @Then("the EUDI Wallet informs the user that the Relying Party requests an attestation")
-    public void theEUDIWalletInformsTheUserThatTheRelyingPartyRequestsAnAttestation() {
-        test.mobile().verifier().viewDataPage();
-    }
-
-    @Then("the EUDI Wallet displays a confirmation message indicating the outcome")
-    public void theEUDIWalletDisplaysAConfirmationMessageIndicatingTheOutcome() {
-        test.mobile().wallet().authenticationSuccessfully();
-        test.mobile().wallet().clickDone();
-    }
-
-    @Then("the Relying Party service receives the attestation")
-    public void theRelyingPartyServiceReceivesTheAttestation() {
-        test.mobile().verifier().walletResponded();
-    }
-
-    @Then("the Wallet uses an attestation not previously presented to any Relying Party")
-    public void theWalletUsesAnAttestationNotPreviouslyPresentedToAnyRelyingParty() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
-    }
-
-    @When("the Wallet receives the attestation from the issuer service")
-    public void theWalletReceivesTheAttestationFromTheIssuerService() throws InterruptedException {
-        test.mobile().issuer().clickFormEu();
-        test.mobile().issuer().clickSubmit();
-        test.mobile().issuer().formIsDisplayed();
-        test.mobile().issuer().enterFamilyName();
-        test.mobile().issuer().enterGivenName();
-        test.mobile().issuer().chooseBirthDate();
-        test.mobile().issuer().enterCountry();
-        test.mobile().issuer().scrollUntilCountryCode();
-        test.mobile().issuer().enterCountryCode();
-        test.mobile().issuer().authorizeIsDisplayed();
-        test.mobile().issuer().scrollUntilAuthorize();
-        test.mobile().issuer().clickAuthorize();
-        test.mobile().wallet().clickClose();
-    }
-
-    @Then("issuer service issues multiple attestations")
-    public void issuerServiceIssuesMultipleAttestations() {
-        test.mobile().wallet().dashboardPageIsDisplayed();
-        test.mobile().wallet().clickOnDocuments();
-        test.mobile().wallet().nationalIdIsDisplayed();
-    }
-
-    @When("the user clicks on the X button")
-    public void theUserClicksOnTheXButton() {
-        test.mobile().wallet().clickBackButton();
-    }
-
-    @Then("the document appears on the dashboard screen")
-    public void theDocumentAppearsOnTheDashboardScreen() {
-        test.mobile().wallet().documentsPageIsDisplayed();
-    }
-
-    @Then("verifier verifies the credential successfully with {}")
-    public void theVerifierVerifiesTheCredentialSuccessfullyWith(String status) {
-       test.mobile().verifier().verifyCredential(status);
-    }
-
-    @Given("the user initiates a {} issuance using the {}")
-    public void theUserInitiatesACredentialIssuanceUsingThe(String credential, String issuerType) {
-        this.issuerType = issuerType;
-        this.credential = credential;
-      test.mobile().wallet().initiateCredential(credential, issuerType);
-    }
-
-    @And("the issuance method is {}")
-    public void theIssuanceMethodIs(String issuanceMethod) throws InterruptedException {
-        test.mobile().issuer().issuanceMethodIs(issuanceMethod, this.credential, this.issuerType);
-    }
-
-    @And("the issuance is performed on a {} for the {} and {}")
-    public void theIssuanceIsPerformedOnA(String issueScenario, String credential, String issuanceMethod) throws InterruptedException {
-       test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
-    }
-
-    @When("the issuance flow is completed")
-    public void theIssuanceFlowIsCompleted() {
-      test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
-    }
-
-    @Then("the credential is stored in the Wallet")
-    public void theCredentialIsStoredInTheWallet() {
-      test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
-    }
-
-    @When("the user presents the credential to the {}")
-    public void theUserPresentsTheCredentialToThe(String verifierType) {
-       test.mobile().wallet().presentCredential(verifierType);
-    }
-
-    @And("the presentation is performed on a {} for the {}")
-    public void thePresentationIsPerformedOnA(String presentationScenario, String credential) throws InterruptedException {
-        test.mobile().wallet().performPresentation(presentationScenario, credential, this.selectiveDisclosure, this.issuerType);
-    }
-
-
-    @And("the user shares {}")
-    public void theUserShares(String selectiveDisclosure) {
-        this.selectiveDisclosure = selectiveDisclosure;
-    }
-
-    @Then("the verifier verifies the credential successfully with {} for {}")
-    public void theVerifierVerifiesTheCredentialSuccessfully(String presentationScenario, String selectiveDisclosure) {
-      test.mobile().verifier().verifierVerifyCredential(presentationScenario, selectiveDisclosure, this.issuerType, this.credential);
-    }
-}

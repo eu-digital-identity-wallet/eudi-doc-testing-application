@@ -21,6 +21,7 @@ import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.*;
 import com.google.zxing.BarcodeFormat;
@@ -34,7 +35,6 @@ import com.google.zxing.common.HybridBinarizer;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -43,6 +43,7 @@ public class Wallet {
     public String selectiveDisclosure;
     public String issuerType;
     public String credential;
+    public String pin;
     TestSetup test;
     EnvDataConfig envDataConfig;
 
@@ -71,22 +72,12 @@ public class Wallet {
     public void createAPin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String fullPin = test.envDataConfig().getPin();
-
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-            WebElement pinField = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(
-                            AppiumBy.className("android.widget.EditText")
-                    )
-            );
-
+            WebElement pinField = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.className("android.widget.EditText")));
             pinField.click();
-
             for (char digit : fullPin.toCharArray()) {
                 driver.pressKey(
                         new KeyEvent(
@@ -104,6 +95,54 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("XCUIElementTypeTextField")
+                    )
+            );
+            pinField.click();
+
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6).sendKeys(String.valueOf(sixthDigit));
+        }
+    }
+
+    public void createAFalsePin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String fullPin = test.envDataConfig().getFalsePin();
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("android.widget.EditText")
+                    )
+            );
+
+            pinField.click();
+
+            for (char digit : fullPin.toCharArray()) {
+                driver.pressKey(
+                        new KeyEvent(
+                                AndroidKey.valueOf("DIGIT_" + digit)
+                        )
+                );
+            }
+        } else {
+            String fullPin = test.envDataConfig().getFalsePin();
+            char secondDigit = fullPin.charAt(1);
+            char thirdDigit = fullPin.charAt(2);
+            char fourthDigit = fullPin.charAt(3);
+            char fifthDigit = fullPin.charAt(4);
+            char sixthDigit = fullPin.charAt(5);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 
             WebElement pinField = wait.until(
@@ -112,7 +151,6 @@ public class Wallet {
                     )
             );
             pinField.click();
-
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
@@ -164,7 +202,6 @@ public class Wallet {
                     )
             );
             pinField.click();
-
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2).sendKeys(String.valueOf(secondDigit));
             driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
@@ -197,7 +234,7 @@ public class Wallet {
 
     public void authenticationSuccessfully() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationSuccess)).getText();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationSuccess)).getText();
             Assert.assertEquals(Literals.Wallet.AUTHENTICATION_SUCCESS.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticationSuccess)).getText();
@@ -225,7 +262,7 @@ public class Wallet {
         }
     }
 
-    public void clickMdl() throws InterruptedException {
+    public void clickMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickMdlPython)).click();
@@ -244,10 +281,110 @@ public class Wallet {
         }
     }
 
-    public void dashboardPageIsDisplayed() {
+    public void clickLearningCredentialKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE.label, pageHeader);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickLearningCredentialKotlin)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickLearning)).click();
+        }
+    }
+
+    public void scrollUntilLearningCredentialOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebElement element = null;
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.clickLearningCredentialKotlin);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll(driver);
+                }
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+
+                if (isElementVisibleLearning(driver)) {
+                    break;
+                }
+
+                Dimension size = driver.manage().window().getSize();
+
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.80);
+                int endY = (int) (size.height * 0.40);
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+                swipe.addAction(new Pause(finger, Duration.ofMillis(120)));
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
+    public void insertLearningCredentialFromListKotlin() {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilLearningCredentialOnDocuments();
+        test.mobile().wallet().clickLearningCredentialKotlin();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+        test.mobile().wallet().clickContinue();
+        }
+    }
+
+    public void dashboardPageIsDisplayed(String issuerType) {
+        this.issuerType = issuerType;
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.dashboardPageIsDisplayedSecondKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE_SECOND_KOTLIN.label, pageHeader);
+            }else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.dashboardPageIsDisplayedSecond)).getText();
+                Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE_SECOND.label, pageHeader);
+            }
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.dashboardPageIsDisplayed)).isDisplayed();
+        }
+    }
+
+    public void dashboardPageIsDisplayedDeferred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.dashboardPageIsDisplayedDeferred)).getText();
+            Assert.assertEquals(Literals.Wallet.DASHBOARD_PAGE_DEFERRED.label, pageHeader);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.dashboardPageIsDisplayed)).isDisplayed();
         }
@@ -361,9 +498,10 @@ public class Wallet {
     public void clickExpandVerificationMSODocIOS(String issuerType) {
         if ("Python".equalsIgnoreCase(issuerType)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickExpandVerificationMSODoc)).click();
-        }else{
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlin)).click();
-        }}
+        }
+    }
 
     public void clickExpandNationalityIOS() {
         scrollToAndClickIOS(eu.europa.eudi.elements.ios.WalletElements.clickExpandNationality);
@@ -388,13 +526,16 @@ public class Wallet {
                     if (el.getLocation().getY() > size.height * 0.72) {
                         PointerInput nudge = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                         Sequence nudgeUp = new Sequence(nudge, 1);
-                        nudgeUp.addAction(nudge.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int)(size.height * 0.58)));
+                        nudgeUp.addAction(nudge.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int) (size.height * 0.58)));
                         nudgeUp.addAction(nudge.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                        nudgeUp.addAction(nudge.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int)(size.height * 0.40)));
+                        nudgeUp.addAction(nudge.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int) (size.height * 0.40)));
                         nudgeUp.addAction(nudge.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                         driver.perform(Collections.singletonList(nudgeUp));
                         els = driver.findElements(locator);
-                        if (!els.isEmpty()) { els.get(0).click(); return; }
+                        if (!els.isEmpty()) {
+                            els.get(0).click();
+                            return;
+                        }
                     } else {
                         el.click();
                         return;
@@ -402,9 +543,9 @@ public class Wallet {
                 }
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence scroll = new Sequence(finger, 1);
-                scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int)(size.height * 0.62)));
+                scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, (int) (size.height * 0.62)));
                 scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-                scroll.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int)(size.height * 0.43)));
+                scroll.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), startX, (int) (size.height * 0.43)));
                 scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
                 driver.perform(Collections.singletonList(scroll));
             }
@@ -455,6 +596,15 @@ public class Wallet {
         }
     }
 
+    public void documentsIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.documentsTab)).getText();
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.documentsTab)).getText();
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);        }
+    }
+
     public void clickClose() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickClose)).click();
@@ -498,7 +648,15 @@ public class Wallet {
         }
     }
 
-    public void scrollUntilPID(){
+    public void clickBackButtonSigning() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickBackButton)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickBackButtonSigning)).click();
+        }
+    }
+
+    public void scrollUntilPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
@@ -559,7 +717,7 @@ public class Wallet {
     private void slowScroll(AndroidDriver driver) {
         int startX = driver.manage().window().getSize().width / 2;
         int startY = (int) (driver.manage().window().getSize().height * 0.8);
-        int endY   = (int) (driver.manage().window().getSize().height * 0.4);
+        int endY = (int) (driver.manage().window().getSize().height * 0.4);
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1);
@@ -578,7 +736,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.PID_KOTLIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.PID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.PID_KOTLIN.label, pageHeader);
         }
     }
 
@@ -602,6 +760,14 @@ public class Wallet {
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.homePageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.HOME_PAGE_IS_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void walletHomeScreenIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.walletHomeScreenDisplayed));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.homePageIsDisplayed));
         }
     }
 
@@ -653,7 +819,7 @@ public class Wallet {
 
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.80);
-                int endY   = (int) (size.height * 0.40);
+                int endY = (int) (size.height * 0.40);
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
@@ -716,7 +882,7 @@ public class Wallet {
 
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.80);
-                int endY   = (int) (size.height * 0.40);
+                int endY = (int) (size.height * 0.40);
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
@@ -747,6 +913,93 @@ public class Wallet {
         }
     }
 
+    public void scrollUntilLoyaltyOnDocuments() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebElement element = null;
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+                try {
+                    element = driver.findElement(WalletElements.clickLoyalty);
+
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        break;
+                    }
+
+                } catch (Exception ignored) {
+                    slowScroll(driver);
+                }
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ZERO);
+
+            for (int i = 0; i < 80; i++) {
+
+                if (isElementVisibleLoyalty(driver)) {
+                    break;
+                }
+
+                Dimension size = driver.manage().window().getSize();
+
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.80);
+                int endY = (int) (size.height * 0.40);
+
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        startY
+                ));
+
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+                swipe.addAction(new Pause(finger, Duration.ofMillis(120)));
+
+                swipe.addAction(finger.createPointerMove(
+                        Duration.ofMillis(350),
+                        PointerInput.Origin.viewport(),
+                        startX,
+                        endY
+                ));
+
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+                driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
+    public void clickLoyalty() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement button = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickLoyalty));
+            MobileActionsUtils.tapActionWallet(button, false);
+            Thread.sleep(5000);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
+            Thread.sleep(5000);
+        }
+    }
+
+    public void insertLoyaltyFromList() throws InterruptedException {
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilLoyaltyOnDocuments();
+        test.mobile().wallet().clickLoyalty();
+        test.mobile().issuer().issueLoyalty();
+    }
+
     private boolean isElementVisible(IOSDriver driver, String issuerType) {
         By mdlLocator = "kotlin".equalsIgnoreCase(issuerType)
                 ? eu.europa.eudi.elements.ios.WalletElements.clickMdlKotlin
@@ -761,13 +1014,25 @@ public class Wallet {
                 && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickPID).get(0).isDisplayed();
     }
 
+    private boolean isElementVisibleLoyalty(IOSDriver driver) {
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty).isEmpty()
+                && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty).get(0).isDisplayed();
+    }
+
+    private boolean isElementVisibleLearning(IOSDriver driver) {
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLearning).isEmpty()
+                && driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickLearning).get(0).isDisplayed();
+    }
+
     public void clickQROption() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait()
-                .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRButton)).click();
-        }else{
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.scanQRButton)).click();
+        } else {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQR)).click();
+            test.mobileWebDriverFactory().getWait()
+                    .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAllow)).click();
         }
     }
 
@@ -803,7 +1068,6 @@ public class Wallet {
 
                 LuminanceSource source = new BufferedImageLuminanceSource(grayImage);
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
                 Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
                 hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
                 hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
@@ -847,17 +1111,11 @@ public class Wallet {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticateButton)).click();
         } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.authenticateButton)).click();
-            try {
-                driver.executeScript("mobile: alert", ImmutableMap.of("action", "accept", "buttonLabel", "Online"));
-            } catch (Exception ignored) {
-            }
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticateButton)).click();
         }
     }
 
-    public void clickAddButton() throws InterruptedException {
+    public void clickAddButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
@@ -866,7 +1124,20 @@ public class Wallet {
         } else {
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickIssue)).click();
-        }
+            try {
+                WebElement continueButton = new WebDriverWait(
+                        test.mobileWebDriverFactory().getDriverIos(),
+                        Duration.ofSeconds(15)
+                ).until(ExpectedConditions.visibilityOfElementLocated(
+                        eu.europa.eudi.elements.ios.WalletElements.clickContinue
+                ));
+
+                continueButton.click();
+
+            } catch (TimeoutException e) {
+                // Button is not displayed → do nothing
+            }
+            }
     }
 
     public void insertPidFromList() throws InterruptedException {
@@ -876,7 +1147,20 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilPidOnDocuments();
         test.mobile().wallet().clickPID();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().issuePID(this.credential);
+    }
+
+    public void insertAttestationForSigning(String issuerType) throws InterruptedException {
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertPidFromListKotlin();
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertPidFromList();
+            test.mobile().wallet().clickDone();
+        }
     }
 
     public void clickExpandVerificationDown() {
@@ -923,10 +1207,11 @@ public class Wallet {
     public void clickPIDFromKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.clickPidFromKotlin)).click();
-        }else {
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.secondPidIsDisplayed)).click();
         }
     }
+
     public void clickMDLFromKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             WalletActionsUtils.safeClick(WalletElements.mdlIsDisplayedKotlin);
@@ -960,6 +1245,9 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilmDLOnDocuments("python");
         test.mobile().wallet().clickMdl();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().issueMDL();
     }
 
@@ -981,49 +1269,64 @@ public class Wallet {
         return !driver.findElements(eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR).isEmpty();
     }
 
+    public boolean isPopUpVisible() {
+        if (!test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            return false;
+        }
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickAllow).isEmpty();
+    }
+
     public void clickOnlinePresentation() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlinePresentation)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOnlinePresentation)).click();
+            if (test.mobile().wallet().isPopUpVisible()) {
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAllow)).click();
+
+            }
         }
     }
 
     public void scrollUpForBirthDateOnPID() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-        int maxScrolls = 10;     // safety limit
-        int count = 0;
-        By locator = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
-        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            MobileActionsUtils.slowScrollUp();
-            count++;
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            int maxScrolls = 10;     // safety limit
+            int count = 0;
+            By locator = By.xpath("//android.widget.TextView[@text=\"Birth Date\"]");
+            while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+            }
+
+            if (driver.findElements(locator).isEmpty()) {
+                throw new RuntimeException("Mandatory Information not found after scrolling up");
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            By locator = By.xpath(
+                    "//XCUIElementTypeStaticText[@name='Birth Date' " +
+                            "or @label='Birth Date' " +
+                            "or @value='Birth Date']"
+            );
+
+            while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+            }
+
+            if (driver.findElements(locator).isEmpty()) {
+                throw new RuntimeException("Mandatory Information not found after scrolling up");
+            }
         }
-
-        if (driver.findElements(locator).isEmpty()) {
-            throw new RuntimeException("Mandatory Information not found after scrolling up");
-        }
-    } else {
-        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-        int maxScrolls = 10;
-        int count = 0;
-
-        By locator = By.xpath(
-                "//XCUIElementTypeStaticText[@name='Birth Date' " +
-                        "or @label='Birth Date' " +
-                        "or @value='Birth Date']"
-        );
-
-        while (driver.findElements(locator).isEmpty() && count < maxScrolls) {
-            MobileActionsUtils.slowScrollUp();
-            count++;
-        }
-
-        if (driver.findElements(locator).isEmpty()) {
-            throw new RuntimeException("Mandatory Information not found after scrolling up");
-        }
-    }
     }
 
 
@@ -1055,8 +1358,8 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             try {
                 driver.executeScript("mobile: scroll", ImmutableMap.of(
-                    "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
-                    "direction", "down"
+                        "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
+                        "direction", "down"
                 ));
             } catch (Exception ignored) {
                 // element already visible or scroll not needed
@@ -1071,17 +1374,20 @@ public class Wallet {
         test.mobile().wallet().clickFromList();
         test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
         test.mobile().wallet().clickKotlinPIDFromList();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
         test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
     }
 
-    private void clickKotlinPIDFromList() throws InterruptedException {
+    public void clickKotlinPIDFromList() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickPidFromKotlinFromList)).click();
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = AppiumBy.iOSNsPredicateString(
-                "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'"
+                    "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'"
             );
             driver.setSetting("waitForQuiescence", false);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
@@ -1092,8 +1398,8 @@ public class Wallet {
                         return;
                     } catch (Exception e) {
                         driver.executeScript("mobile: scroll", ImmutableMap.of(
-                            "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
-                            "direction", "down"
+                                "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
+                                "direction", "down"
                         ));
                     }
                 }
@@ -1109,7 +1415,6 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
             for (int i = 0; i < 10; i++) {
                 try {
                     WebElement pidElement = driver.findElement(IssuerElements.clickPlaceOfBirth);
@@ -1118,7 +1423,6 @@ public class Wallet {
                     slowScroll(driver);
                 }
             }
-
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 2; i++) {
@@ -1236,14 +1540,16 @@ public class Wallet {
 
     public void initiateCredential(String credential, String issuerType) {
 
-                    test.mobile().wallet().launchApp();
-                    test.mobile().wallet().checkIfPageIsTrue();
-                    test.mobile().wallet().createAPin();
-                    test.mobile().wallet().renterThePin();
-                    test.mobile().wallet().successMessageOfSetUpPin();
-                    test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().launchApp();
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
 
-        }
+    }
 
 
     public void credentialStoredInWallet(String credential, String issuerType) {
@@ -1254,10 +1560,13 @@ public class Wallet {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments(issuerType);
-            }else if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
+            } else if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
                 test.mobile().wallet().secondPIDKotlinIsDisplayed();
+                test.mobile().wallet().clickPIDFromKotlin();
+                test.mobile().wallet().pidDetailsDisplayed(issuerType);
+                test.mobile().wallet().clickBackButton();
             } else if ("mDL (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().clickClose();
                 test.mobile().wallet().clickOnDocuments();
@@ -1268,7 +1577,10 @@ public class Wallet {
             test.mobile().wallet().clickOnDocuments();
             if ("PID (MSO Mdoc)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidMdocIsDisplayed();
-            }else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)){
+                test.mobile().wallet().openPidAttestation();
+                test.mobile().wallet().pidDetailsDisplayed(issuerType);
+                test.mobile().wallet().clickBackButton();
+            } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                 test.mobile().wallet().pidSdJwtIsDisplayedOnDocuments(issuerType);
             }
         }
@@ -1279,23 +1591,25 @@ public class Wallet {
             if ("Python".equalsIgnoreCase(issuerType)) {
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
                 Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_ANDROID_PYTHON.label, pageHeader);
-            } else{
+            } else {
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.pidSdJwtIsDisplayedKotlin)).getText();
                 Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_ANDROID.label, pageHeader);
-                }
+            }
         } else {
-            if ("Python".equalsIgnoreCase(issuerType)){
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocumentsPython)).getText();
-            Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON.label, pageHeader);}
-            else {
+            if ("Python".equalsIgnoreCase(issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocumentsPython)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON.label, pageHeader);
+            } else {
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidSdJwtIsDisplayedOnDocuments)).getText();
-                Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS.label, pageHeader);}
+                Assert.assertEquals(Literals.Wallet.PID_SD_JWT_ON_DOCUMENTS_IOS.label, pageHeader);
+            }
         }
     }
 
     public void pidMdocIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //todo
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pidMdocIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_PYTHON.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidMdocIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.PID_IOS.label, pageHeader);
@@ -1314,15 +1628,10 @@ public class Wallet {
         this.selectiveDisclosure = selectiveDisclosure;
         this.issuerType = issuerType;
         if ("PID (MSO Mdoc)".equalsIgnoreCase(credential) || "PID (SD-JWT)".equalsIgnoreCase(credential)) {
-
             switch (presentationScenario.toLowerCase()) {
-
                 case "same device":
-
                     switch (this.selectiveDisclosure.toLowerCase()) {
-
                         case "specific attributes":
-
                             test.mobile().verifier().launchSafari();
                             test.mobile().wallet().rotateScreen();
                             test.mobile().verifier().appOpensSuccessfully();
@@ -1383,11 +1692,8 @@ public class Wallet {
                 case "cross device":
 
                     switch (this.selectiveDisclosure.toLowerCase()) {
-
                         case "specific attributes":
-
                             test.webWebDriverFactory().startWebDriverSession();
-
                             try {
                                 test.envDataConfig();
                                 String url = test.envDataConfig().getVerifierUrl();
@@ -1403,12 +1709,9 @@ public class Wallet {
                                 test.web().verifier().scrollUntilSubmitOnWeb();
                                 test.web().verifier().assertQrCodeIsVisible();
                                 test.web().verifier().captureScreenOnWeb();
-
                             } catch (org.openqa.selenium.WebDriverException e) {
-
                                 e.printStackTrace();
                             }
-
                             break;
                     }
 
@@ -1537,7 +1840,7 @@ public class Wallet {
                     test.mobile().wallet().createAPin();
                     test.mobile().wallet().clickAuthenticate();
                     test.mobile().wallet().clickOnlinePresentation();
-                        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                         if (test.mobile().wallet().isQrVisible()) {
                             test.mobile().wallet().onlyThisTimeQR();
                         }
@@ -1578,52 +1881,24 @@ public class Wallet {
     }
 
     public void insertMdlFromListKotlin() throws InterruptedException {
-            test.mobile().wallet().clickOnDocuments();
-            test.mobile().wallet().clickToAddDocument();
-            test.mobile().wallet().addDocumentPageIsDisplayed();
-            test.mobile().wallet().clickFromList();
-            test.mobile().wallet().scrollUntilmDLOnDocuments("kotlin");
-            test.mobile().wallet().clickMdlKotlin();
-            test.mobile().issuer().signInUser();
-            test.mobile().issuer().fillLoginForm();
-    }
-
-    private void clickKotlinPIDSDWJTFromList() throws InterruptedException {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            Thread.sleep(5000); // 3-second delay
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickPidSDJWTFromKotlinFromList)).click();
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            By locator = AppiumBy.iOSNsPredicateString(
-                    "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'"
-            );
-            driver.setSetting("waitForQuiescence", false);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-            try {
-                for (int attempt = 0; attempt < 5; attempt++) {
-                    try {
-                        driver.findElement(locator).click();
-                        return;
-                    } catch (Exception e) {
-                        driver.executeScript("mobile: scroll", ImmutableMap.of(
-                                "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
-                                "direction", "down"
-                        ));
-                    }
-                }
-                throw new RuntimeException("PID Combined (Kotlin) not clickable after retries");
-            } finally {
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-                driver.setSetting("waitForQuiescence", true);
-            }
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
+        test.mobile().wallet().addDocumentPageIsDisplayed();
+        test.mobile().wallet().clickFromList();
+        test.mobile().wallet().scrollUntilmDLOnDocuments("kotlin");
+        test.mobile().wallet().clickMdlKotlin();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
         }
+        test.mobile().issuer().signInUser();
+        test.mobile().issuer().fillLoginForm();
     }
 
     public void clickExpandVerificationForSDJWT(String issuerType) {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             if ("Python".equalsIgnoreCase(issuerType)) {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickExpandVerificationSDJWT)).click();
-            }else{
+            } else {
                 test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.pidSdJwtIsDisplayedKotlin)).click();
             }
         } else {
@@ -1632,6 +1907,963 @@ public class Wallet {
     }
 
     public void clickPidSdJwt() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.pidSdJwtIsDisplayedOnDocuments)).click();
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickPidSdjwt)).click();
+        }
+    }
+
+    public void requestTransactionCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.VerifierElements.transactionCodePage).getText();
+            Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.transactionCodePage).getText();
+            Assert.assertEquals(Literals.Verifier.TRANSACTION_CODE_PAGE.label, headerText);
+        }
+    }
+
+    public void insertTransactionCode() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String fullPin = test.getTransactionCode();
+
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("android.widget.EditText")
+                    )
+            );
+
+            pinField.click();
+
+            for (char digit : fullPin.toCharArray()) {
+                driver.pressKey(
+                        new KeyEvent(
+                                AndroidKey.valueOf("DIGIT_" + digit)
+                        )
+                );
+            }
+        } else {
+            String fullPin = test.getTransactionCode();
+            char secondDigit = fullPin.charAt(0);
+            char thirdDigit = fullPin.charAt(1);
+            char fourthDigit = fullPin.charAt(2);
+            char fifthDigit = fullPin.charAt(3);
+            char sixthDigit = fullPin.charAt(4);
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+
+            WebElement pinField = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            AppiumBy.className("XCUIElementTypeTextField")
+                    )
+            );
+            pinField.click();
+
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1).sendKeys(String.valueOf(secondDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3).sendKeys(String.valueOf(thirdDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4).sendKeys(String.valueOf(fourthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(fifthDigit));
+            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5).sendKeys(String.valueOf(sixthDigit));
+        }
+    }
+
+    public void defferedIsDisplayed(String issuerType) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            String headerText = driver.findElement(eu.europa.eudi.elements.android.WalletElements.deferredIsDisplayed).getText();
+            Assert.assertTrue("Unexpected deferred PID label: " + headerText, headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label) || headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED_KOTLIN.label));
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.deferredIsDisplayedKotlin).getText();
+                Assert.assertEquals(Literals.Verifier.DEFERRED_IS_DISPLAYED_KOTLIN.label, headerText);
+            } else {
+                String headerText = driver.findElement(eu.europa.eudi.elements.ios.VerifierElements.deferredIsDisplayed).getText();
+                Assert.assertTrue("Unexpected deferred PID label: " + headerText,
+                        headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED.label) || headerText.equals(Literals.Verifier.DEFERRED_IS_DISPLAYED_IOS.label));
+            }
+        }
+    }
+
+    public void notificationOnWalletForDeferred() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.notificationForDeferred)).getText();
+            Assert.assertEquals(Literals.Wallet.NOTIFICATION_DEFERRED_WALLET.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.notificationForDeferred)).getText();
+            Assert.assertEquals(Literals.Wallet.NOTIFICATION_DEFERRED_WALLET_IOS.label, pageHeader);
+        }
+    }
+
+    public void clickingOkButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickOkButton)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOkButton)).click();
+        }
+    }
+
+    public void pendingStatus() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.pendigStatus)).getText();
+            Assert.assertEquals(Literals.Wallet.PENDING_STATUS.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pendigStatus)).getText();
+            Assert.assertEquals(Literals.Wallet.PENDING_STATUS.label, pageHeader);
+        }
+    }
+
+    public void popUpConfirmation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.popUpConfirmation)).getText();
+            Assert.assertEquals(Literals.Wallet.POP_UP_CONFIRMATION.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.popUpConfirmation)).getText();
+            Assert.assertEquals(Literals.Wallet.POP_UP_CONFIRMATION.label, pageHeader);
+        }
+    }
+
+    public void inspectDocument() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.inspectDeferredDocument)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.inspectDeferredDocument)).click();
+        }
+    }
+
+    public void pidDeferredIsDisplayed(String issuerType) {
+        this.issuerType = issuerType;
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.pidDefrredIsDisplayedPython)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED.label, pageHeader);
+        }else{
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.pidDefrredIsDisplayedKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED_KOTLIN.label, pageHeader);
+            }
+        } else {
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidDefrredIsDisplayedPython)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED.label, pageHeader);
+            }else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidDefrredIsDisplayedKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED_KOTLIN.label, pageHeader);
+            }
+        }
+    }
+
+    public void pidIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.PIDIsDisplayedPython)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_PYTHON.label, pageHeader);
+        }else{
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.PIDIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.PID_PYTHON.label, pageHeader);
+        }
+    }
+
+    public void counterIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.counterIsDisplayedKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.COUNTER_DISPLAYED_KOTLIN.label, pageHeader);
+            }else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.counterIsDisplayed)).getText();
+                Assert.assertEquals(Literals.Wallet.COUNTER_DISPLAYED.label, pageHeader);
+            }
+        } else {
+            if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.counterIsDisplayedKotlin)).getText();
+                Assert.assertEquals(Literals.Wallet.COUNTER_DISPLAYED_KOTLIN.label, pageHeader);
+            }else {
+                String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.counterIsDisplayed)).getText();
+                Assert.assertEquals(Literals.Wallet.COUNTER_DISPLAYED.label, pageHeader);
+            }
+        }
+    }
+
+    public void presentAttestation() {
+        test.mobile().verifier().launchSafari();
+        test.mobile().wallet().rotateScreen();
+        test.mobile().verifier().appOpensSuccessfully();
+        test.mobile().verifier().selectSpecificAttributesOnVerifier(this.credential);
+        test.mobile().verifier().scrollUntilNext();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().clickSpecificAttributes();
+        test.mobile().verifier().clickSelect();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().scrollUntilSumbit();
+        test.mobile().verifier().clickSubmit();
+    }
+
+    public void navigateUserToWallet() {
+        test.mobile().verifier().chooseWallet();
+    }
+
+    public void authenticationError() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.authenticationError)).getText();
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATION_ERROR.label, pageHeader);
+        }else{
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticationError)).getText();
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATION_ERROR.label, pageHeader);
+        }
+    }
+
+    public void downloadSampleDocument() throws IOException, InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            File sampleDocument = new File("src/test/resources/testdata/signing/sample.pdf");
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.pushFile("/sdcard/Download/sample.pdf", sampleDocument);
+        } else {
+            IOSDriver driver =
+                    (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            // Open Safari
+            driver.activateApp("com.apple.mobilesafari");
+
+            // Open the PDF
+            driver.get(test.envDataConfig().getSampleDocumentUrl());
+
+            // Wait for the PDF to load
+            Thread.sleep(5000);
+
+            // Tap the Share button in Safari
+            driver.findElement(
+                    AppiumBy.accessibilityId("Download")
+            ).click();
+
+            // Wait for the Share Sheet
+            Thread.sleep(2000);
+
+            // Return to EUDI Wallet
+            driver.activateApp(
+                    test.envDataConfig().getAppiumIosBundleId()
+            );
+        }
+    }
+
+    public void clickHome() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickHome)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickHome)).click();
+        }
+    }
+
+    public void homeIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.homeTabTextDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.HOME.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickHome)).getText();
+            Assert.assertEquals(Literals.Wallet.HOME_IOS.label, pageHeader);        }
+    }
+
+    public void clickSignDocument() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSignDocument)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSignDocument)).click();
+        }
+    }
+
+    public void clickSelectDocument() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickSelectDocument)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickSelectDocument)).click();
+        }
+    }
+
+    public void selectSamplePDF() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPDFSample)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPDFSample)).click();
+        }
+    }
+
+    public void selectSigningService() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectSigningService)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectSigningService)).click();
+        }
+    }
+
+    public void clickWalletCentric() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //nothing for android
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickWalletCentric)).click();
+        }
+    }
+
+    public void clickProceed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickProceed)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
+        }
+    }
+
+    public void selectSigningCertificate() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectSigningCertificate)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectSigningCertificate)).click();
+        }
+    }
+
+    public void clickCredentialForTests() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.credentialForTests)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.credentialForTests)).click();
+        }
+    }
+
+    public void successfullySignedTheDoc() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.successfullySigned)).getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.successfullySigned)).getText();
+            Assert.assertEquals(Literals.Wallet.SUCCESSFULLY_SIGNED.label, pageHeader);
+        }
+    }
+
+    public void clickX() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickX)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.setSetting("autoAcceptAlerts", false);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickX)).click();
+        }
+    }
+
+    public void openPidAttestation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.pidMdocIsDisplayed)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.pidMdocIsDisplayed)).click();
+        }
+    }
+
+    public void pidDetailsDisplayed(String issuerType) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().scrollUntilNationality();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUntilPlaceOfBirth();
+            test.mobile().wallet().clickExpandVerificationDown();
+            test.mobile().wallet().scrollUpForBirthDateOnPID();
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_wallet.yml");
+            } else {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+            }
+        } else {
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().wallet().clickExpandVerificationMSODocIOS(issuerType);
+                test.mobile().wallet().clickExpandNationalityIOS();
+                test.mobile().wallet().clickExpandPlaceOfBirthIOS();
+                test.mobile().wallet().scrollUpForBirthDateOnPID();
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/ios_kotlin_data_on_wallet.yml");
+            } else {
+                test.mobile().wallet().clickPlaceOfBirth();
+                test.mobile().wallet().scrollUntilNationality();
+                test.mobile().wallet().clickExpandNationalityIOS();
+                test.mobile().wallet().scrollUpForBirthDateOnPID();
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet.yml");
+            }
+        }
+    }
+
+    public void clickPlaceOfBirth() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.placeOfBirth)).click();
+        }
+    }
+
+    public void detailsAreBlurred(String blurred) {
+        test.mobile().wallet().scrollUpForEyeIcon();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String contentDesc = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.eyeIcon)).getAttribute("content-desc");
+            if ("yes".equalsIgnoreCase(blurred)) {
+                Assert.assertEquals("Show", contentDesc);
+            } else {
+                Assert.assertEquals("Hide", contentDesc);
+            }
+        } else {
+            String name = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.eyeIcon)).getAttribute("name");
+            if ("yes".equalsIgnoreCase(blurred)) {
+                Assert.assertEquals("document_details_screen_eye_slash_button", name);
+            } else {
+                Assert.assertEquals("document_details_screen_eye_button", name);
+            }
+        }
+    }
+
+    public void clickEyeIcon() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.eyeIcon)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.eyeIcon)).click();
+        }
+    }
+
+    public void scrollUpForEyeIcon() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(WalletElements.eyeIcon);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+                els = driver.findElements(WalletElements.eyeIcon);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Eye icon not found after scrolling up");
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.eyeIcon);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+                els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.eyeIcon);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Eye icon not found after scrolling up");
+            }
+        }
+    }
+
+    public void clickBookmarkButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.bookmarkIcon)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.closeBookmarkSheet)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.bookmarkIcon)).click();
+        }
+    }
+
+    public void bookmarkIsMarked() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String contentDesc = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(WalletElements.bookmarkIcon)).getAttribute("content-desc");
+            Assert.assertEquals("Bookmark filled", contentDesc);
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.bookmarkIconFilled));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickClose)).click();
+        }
+    }
+
+    public void openIssuerDetails() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            //nothing for android
+        }else{
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails)).click();
+        }
+    }
+
+    public void scrollUpForIssuerDetails() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(WalletElements.expiresOnLabel);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                MobileActionsUtils.slowScrollUp();
+                count++;
+                els = driver.findElements(WalletElements.expiresOnLabel);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Issuer details not found after scrolling up");
+            }
+        }
+    }
+
+    public void issuerDetailsAreDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            scrollUpForIssuerDetails();
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.expiresOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.issuedOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.reissueDocumentText)).isDisplayed());
+        } else {
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.expiresOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuedOnLabel)).isDisplayed());
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.reissueDocumentText)).isDisplayed());
+        }
+    }
+
+    public void removeAttestation() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.threeDotMenu)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickRemoveInDropdown)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectRemove)).click();
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            int maxScrolls = 10;
+            int count = 0;
+
+            List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.deleteButton);
+            while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
+                try {
+                    MobileActionsUtils.slowScroll();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                count++;
+                els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.deleteButton);
+            }
+
+            if (els.isEmpty() || !els.get(0).isDisplayed()) {
+                throw new RuntimeException("Delete button not found after scrolling down");
+            }
+
+            els.get(0).click();
+        }
+    }
+
+    public void attestationRemovedFromDocuments(String issuerType) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            By locator = "kotlin".equalsIgnoreCase(issuerType) ? WalletElements.clickPidFromKotlin : WalletElements.pidMdocIsDisplayed;
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.invisibilityOfElementLocated(locator)));
+        } else {
+            By locator = "kotlin".equalsIgnoreCase(issuerType) ? eu.europa.eudi.elements.ios.WalletElements.clickPidFromKotlin : eu.europa.eudi.elements.ios.WalletElements.pidMdocIsDisplayed;
+            Assert.assertTrue(test.mobileWebDriverFactory().getWait().until(ExpectedConditions.invisibilityOfElementLocated(locator)));
+        }
+    }
+
+    public void clickFromDevice() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickFromDevice)).click();
+    }
+
+    public void clickContinue() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
+        }
+    }
+
+    public void walletUnableToAuthenticate() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().pinFieldIsDisplayed();
+            test.mobile().verifier().insertPIN();
+        }
+        test.mobile().verifier().viewDataPage();
+
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+                test.mobile().wallet().clickPIDFromKotlin();
+            }
+        } else {
+            test.mobile().wallet().clickToViewDetails();
+        }
+
+        if ("Python".equalsIgnoreCase(this.issuerType)) {
+            if ("PID (MSO Mdoc)".equalsIgnoreCase(credential)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage(
+                        "testdata/PID/pre_final_shared_data_on_wallet.yml");
+
+            }
+        }
+        test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().pinFieldIsDisplayed();
+        test.mobile().wallet().createAFalsePin();
+    }
+
+    public void clickView() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickView)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickView)).click();
+        }
+    }
+
+    public void trustIconIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.trustIconIsDisplayed)).getAttribute("content-desc");
+            Assert.assertEquals(Literals.Wallet.TRUST_ICON.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.trustIconIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.TRUST_ICON_IOS.label, pageHeader);
+        }
+    }
+
+    public void historyIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.historyIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.HISTORY.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.historyIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.HISTORY_IOS.label, pageHeader);
+        }
+    }
+
+    public void homeHighlighted() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.homeHighlighted)).getAttribute("focusable");
+            Assert.assertEquals("true", pageHeader);
+        } else {
+            //nothing for ios
+        }
+    }
+
+    public void authenticateIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.authenticateButton)).getText();
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATE.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticateButton)).getText();
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATE.label, pageHeader);
+        }
+    }
+
+    public void signIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clickSignDocument)).getText();
+            Assert.assertEquals(Literals.Wallet.SIGN.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocumentButton)).getText();
+            Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
+        }
+    }
+
+    public void inPersonIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.inPersonIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.IN_PERSON.label, pageHeader);
+        } else {
+            //nothing for ios
+        }
+    }
+
+    public void onlineIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.onlineIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.ONLINE.label, pageHeader);
+        } else {
+            //nothing for ios
+        }
+    }
+
+    public void clickScreen() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickScreen)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickScreen)).click();
+        }
+    }
+
+    public void signDocumentScreen() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.signDocument)).getText();
+            Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.signDocumentInside)).getText();
+            Assert.assertEquals(Literals.Wallet.SIGN_DOCUMENT.label, pageHeader);
+        }
+    }
+
+    public void nameOfIssuerDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.issuerNameDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.NAME_OF_ISSUER_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void clickCancel() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickCancel)).click();
+    }
+
+    public void bottomNavigationBarTabDisplays() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickHome));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickHistory));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickHome));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOnDocuments));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.historyIsDisplayed));
+        }
+    }
+
+    public void documentsTabIsHighlighted() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            WebElement documentsTab = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickDocuments));
+            Assert.assertEquals("true", documentsTab.getAttribute("selected"));
+        } else {
+            WebElement documentsTab = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOnDocuments));
+            Assert.assertTrue(documentsTab.isSelected());
+        }
+    }
+
+    public void searchBarIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.searchBar));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.searchBar));
+        }
+    }
+
+    public void listedAttestationsAreOrganizedByCategory(String issuerType) {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            By secondCategoryHeader = "kotlin".equalsIgnoreCase(issuerType)
+                    ? eu.europa.eudi.elements.android.WalletElements.otherCategoryHeader
+                    : eu.europa.eudi.elements.android.WalletElements.retailCategoryHeader;
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.governmentCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(secondCategoryHeader));
+        } else {
+            By secondCategoryHeader = "kotlin".equalsIgnoreCase(issuerType)
+                    ? eu.europa.eudi.elements.ios.WalletElements.otherCategoryHeader
+                    : eu.europa.eudi.elements.ios.WalletElements.retailCategoryHeader;
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.governmentCategoryHeader));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(secondCategoryHeader));
+        }
+    }
+
+    public void attestationCardDisplaysRequiredFields() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.issuerNameDisplayed));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.validUntilLabelOnCard));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.issuerNameDisplayed));
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.validUntilLabelOnCard));
+        }
+    }
+
+    public void filterButtonIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.filterButton));
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.filterButton));
+        }
+    }
+
+    public void clickDoneSign() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickDoneSign)).click();
+    }
+
+    public void userScrollUntilRemoveButton() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            for (int i = 0; i < 15; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
+            }
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            for (int i = 0; i < 25; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
+            }
+        }
+    }
+
+    public void filterByIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.filterByIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.FILTER_BY.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.filterByIsDisplayed)).getAttribute("name");
+            Assert.assertEquals(Literals.Wallet.FILTER_BY.label, pageHeader);
+        }
+    }
+
+    public void expandFilterSection() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.expandFilterSection)).getText();
+            Assert.assertEquals(Literals.Wallet.EXPAND_FILTER_SECTION.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRText)).getText();
+            Assert.assertEquals(Literals.Wallet.SCANQRText.label, pageHeader);
+        }
+    }
+
+    public void switchesIsDisplayed() {
+        boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.switchesIsDisplayed)).isDisplayed();
+        Assert.assertTrue("Switches is displayed", pageHeader);
+    }
+
+    public void switchesIsDisplayedOnHistory() {
+        boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.switchesIsDisplayedOnHistory)).isDisplayed();
+        Assert.assertTrue("Switches is displayed", pageHeader);
+    }
+
+    public void checkOnRightTop() {
+        boolean pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.checkOnRightTop)).isDisplayed();
+        Assert.assertTrue("Check on right top is displayed", pageHeader);
+    }
+
+    public void eudiPageIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.eudiIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.eudiIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, pageHeader);
+        }
+    }
+
+    public void requestedAttestationWithQtsp() {
+        this.issuerType = issuerType;
+        test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
+        } else {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
+        }
+        test.mobile().wallet().clickDone();
+        test.mobile().wallet().selectSigningCertificate();
+        test.mobile().wallet().clickCredentialForTests();
+        test.mobile().wallet().clickProceed();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickContinue();
+        }
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
+        } else {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
+        }
+        test.mobile().wallet().clickShareButton();
+        test.mobile().wallet().createAPin();
+    }
+
+    public void sucessScreenWithSignedDocument() {
+        test.mobile().issuer().successfullySharedMessage();
+        test.mobile().wallet().clickExpandVerification();
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
+        } else {
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
+        }
+        test.mobile().wallet().clickDone();
+    }
+
+    public void allowShareOrCloseTheProcess() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickX();
+        }else{
+            test.mobile().wallet().clickDoneSign();
+        }
+        test.mobile().wallet().dashboardPageIsDisplayed(issuerType);
+    }
+
+    public void userIssuesAttestation() throws InterruptedException {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertPidFromListKotlin();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertPidFromList();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickDone();
+        }
+    }
+
+    public void issueSecondAttestation(String issuerType) throws InterruptedException {
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertLearningCredentialFromListKotlin();
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertLoyaltyFromList();
+            test.mobile().wallet().successMessageIsDisplayedForIssuer();
+            test.mobile().wallet().clickExpandVerification();
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/Loyalty/py_data_on_wallet.yml");
+            test.mobile().wallet().clickDone();
+        }
     }
 }
