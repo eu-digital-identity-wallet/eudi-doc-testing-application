@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set "RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.08.41-Demo"
+set "RESULTS_DIR=target\site\reports\EUDI_Wallet_Version_2026.10.43-Demo"
 set "BACKUP_DIR=target\serenity-backup"
 
 echo ===============================
@@ -23,7 +23,7 @@ echo ===============================
 
 call mvn clean verify -ntp ^
     -Dtest=TestRunner ^
-    -Dcucumber.filter.tags="@local_execution"
+    -Dcucumber.filter.tags="@Q3_2026"
 
 echo.
 echo ===============================
@@ -90,7 +90,7 @@ echo Generate Serenity Report
 echo ===============================
 
 call mvn serenity:aggregate ^
-    -Dtags="@ANDROID and @execution_Q12_2026"
+    -Dtags="@Q3_2026"
 
 echo.
 echo ===============================
@@ -108,7 +108,7 @@ echo ==========================================
 echo Execution completed.
 echo.
 echo Report:
-echo target\site\reports\EUDI_Wallet_Version_2026.08.41-Demo\index.html
+echo target\site\reports\EUDI_Wallet_Version_2026.10.43-Demo\index.html
 echo ==========================================
 
 pause

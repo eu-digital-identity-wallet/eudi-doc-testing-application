@@ -1,0 +1,58 @@
+name: Merge Android & iOS Reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      android-run-ids:
+        description: 'run IDs of the Android executions'
+        required: true
+        type: string
+      ios-run-ids:
+        description: 'run IDs of the iOS executions'
+        required: true
+        type: string
+
+jobs:
+  merge:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'oracle'
+
+      - name: Set up Node JS
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Download Android JSON results
+        run: python3 .github/scripts/download_run_artifacts.py \
+             "${{ github.repository }}" "${{ inputs.android-run-ids }}" android
+        env:
+          GH_TOKEN: ${{ secrets.MERGE_PAT }}
+
+      - name: Download iOS JSON results
+        run: python3 .github/scripts/download_run_artifacts.py \
+             "${{ github.repository }}" "${{ inputs.ios-run-ids }}" ios
+        env:
+          GH_TOKEN: ${{ secrets.MERGE_PAT }}
+
+      - name: Consolidate JSONs into one report dir
+        run: |
+          mkdir -p target/site/reports/merged
+          cp artifacts/android/*.json target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo 2>/dev/null || true
+          cp artifacts/ios/*.json    target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo 2>/dev/null || true
+          ls -la target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo
+
+      - name: Generate combined Serenity report
+        run: mvn serenity:aggregate -Dserenity.outputDirectory=target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo
+
+      - name: Upload combined report
+        uses: actions/upload-artifact@v5
+        with:
+          name: merged-serenity-report
+          path: target/site

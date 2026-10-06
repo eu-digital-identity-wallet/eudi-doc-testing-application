@@ -48,6 +48,7 @@ public class Verifier {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.chooseWallet)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.chooseWallet)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
         }
     }
 
@@ -551,20 +552,13 @@ public class Verifier {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
-
-
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-
             List<WebElement> switches = wait.until(d ->
                     driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"))
             );
-
             for (int i = 0; i < 3; i++) {
-
                 switches = driver.findElements(AppiumBy.className("XCUIElementTypeSwitch"));
-
                 WebElement el = switches.get(i);
-
                 wait.until(ExpectedConditions.visibilityOf(el));
                 wait.until(ExpectedConditions.elementToBeClickable(el));
 

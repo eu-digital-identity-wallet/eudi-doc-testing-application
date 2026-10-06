@@ -5,12 +5,15 @@ public interface Literals {
     enum Wallet{
 
         WELCOME_HEADER("Welcome to your Wallet"),
+        WELCOME_SUBTITLE("Secure your wallet with a PIN code and connect to your National System."),
+        TYPE_A_PIN_LABEL("Type a PIN"),
+        CONFIRM_PIN_LABEL("Confirm PIN"),
         SUCCESS_MESSAGE("Your wallet is secured!"),
         AUTHENTICATION_SUCCESS("You successfully shared the following information with"),
         LOGIN("Welcome back!"),
         LOGIN_ANDROID("Welcome back"),
-
         PID("PID (MSO MDoc)"),
+        PID_PYTHON("PID (MSO Mdoc)"),
         DASHBOARD_PAGE("Welcome back, Nikos"),
         ADD_DOCUMENT("Add document"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
@@ -20,7 +23,7 @@ public interface Literals {
         PIN_FIELD_IS_DISPLAYED("PIN"),
         PIN_FIELD_IS_DISPLAYED_IOS("Enter your PIN"),
         DOCUMENTS_PAGE_IS_DISPLAYED("Documents"),
-        HOME_PAGE_IS_DISPLAYED("Welcome back, Foteini"),
+        HOME_PAGE_IS_DISPLAYED("Welcome"),
         WELCOME_HEADER_IOS("Welcome to your wallet"),
         PID_KOTLIN("PID (MSO MDoc)"),
         QR_SCANNER_IS_ACTIVATED_FOR_ISSUANCE("Scan a QR code provided from an issuer to add a digital document to your wallet."),
@@ -32,7 +35,45 @@ public interface Literals {
         PID_SD_JWT_ON_DOCUMENTS_ANDROID("PID (SD-JWT VC Compact)"),
         PID_SD_JWT_ON_DOCUMENTS_ANDROID_("PID (SD-JWT VC)"),
         PID_SD_JWT_ON_DOCUMENTS_IOS("PID (SD-JWT VC Compact)"),
-        PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON("PID (SD-JWT VC)");
+        PID_SD_JWT_ON_DOCUMENTS_IOS_PYTHON("PID (SD-JWT VC)"),
+        POP_UP_CONFIRMATION("Documents issued"),
+        PENDING_STATUS("Pending"),
+        PID_DEFERRED_DISPLAYED("PID (MSO Mdoc Deferred)"),
+        PID_DEFERRED_DISPLAYED_KOTLIN("PID (MSO MDoc) (deferred)"),
+        NOTIFICATION_DEFERRED_WALLET("In progress!"),
+        DASHBOARD_PAGE_DEFERRED("Welcome"),
+        NOTIFICATION_DEFERRED_WALLET_IOS("In progress"),
+        COUNTER_DISPLAYED("30/30"),
+        COUNTER_DISPLAYED_KOTLIN("5/5"),
+        AUTHENTICATION_ERROR("Invalid pin"),
+        SUCCESSFULLY_SIGNED("You have successfully signed your document."),
+        DASHBOARD_PAGE_SECOND("Welcome, Nikos"),
+        DASHBOARD_PAGE_SECOND_KOTLIN("Welcome, Tyler"),
+        TRUST_ICON("Verified"),
+        TRUST_ICON_IOS("verifiedUser"),
+        HOME("Home"),
+        HISTORY(""),
+        AUTHENTICATE("Authenticate"),
+        SIGN("Sign"),
+        IN_PERSON("In person"),
+        SIGN_DOCUMENT("Sign document"),
+        ONLINE("Online"),
+        HISTORY_IOS("History"),
+        HOME_IOS("1"),
+        NAME_OF_ISSUER_DISPLAYED("Digital Credentials Issuer"),
+        CHANGE_PIN("Change pin"),
+        CANCEL_PIN("Cancel pin changing?"),
+        TYPE_A_PIN("Type a PIN"),
+        AUTHENTICATE_ME_IDENTITY("Authenticate my identity"),
+        SCANQRText("Scan a QR code provided from an interacting party to authenticate your identity."),
+        HISTORY_TAB("History"),
+        SEARCH("Search"),
+        FILTER_BY("Filter by"),
+        EXPAND_FILTER_SECTION("Before today (expired)"),
+        COUNTER_DISPLAYED_KOTLIN_ON_DETAILS("Instances remaining 5/5"),
+        DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1"),
+        EU_IS_DISPLAYED("EU Digital Identity Wallet");
+
 
         public final String label;
         Wallet(String label) {
@@ -52,7 +93,11 @@ public interface Literals {
         MDL_IS_DISPLAYED_ON_WEB_KOTLIN("Mobile Driving Licence (MDL)"),
         URI_METHOD_IS_DISPLAYED_ON_WEB("Request URI Method"),
         WALLET_RESPONDED_MDL_KOTLIN("org.iso.18013.5.1.mDL"),
-        WALLET_RESPONDED_SDJWT("urn:eudi:pid:1");
+        WALLET_RESPONDED_SDJWT("urn:eudi:pid:1"),
+        TRANSACTION_CODE_PAGE("Digital Credentials Issuer requires verification"),
+        DEFERRED_IS_DISPLAYED("PID (MSO Mdoc Deferred)"),
+        DEFERRED_IS_DISPLAYED_KOTLIN("PID (MSO MDoc) (deferred)"),
+        DEFERRED_IS_DISPLAYED_IOS("PID (MSO Mdoc deferred)");
 
         public final String label;
         Verifier(String label) {
@@ -75,13 +120,13 @@ public interface Literals {
         CREDENTIAL_PAGE("Please select credentials"),
         QR_CODE("QR Code"),
         AUTHENTICATION_PAGE("Authentication Method Selection"),
-        SUCCESSFULLY_SHARED("You have successfully added the following to your wallet"),
-        SUCCESSFULLY_SHARED_IOS("You successfully shared the following information with"),
+        SUCCESSFULLY_SHARED("You successfully shared the following information with"),
         AUTHORIZE_IS_DISPLAYED("Please review the selected attributes before sending to the EudiWallet demo app."),
         FORM_IOS("1"),
         ISSUANCE_CREDENTIALS("Scan the generated QR Code to issue the requested Credentials:"),
         SIGN_IN_USER_PAGE("Sign in to your account"),
         SELECT_COUNTRY_IS_DISPLAYED("Please select your country of origin");
+
 
         public final String label;
         Issuer(String label) {

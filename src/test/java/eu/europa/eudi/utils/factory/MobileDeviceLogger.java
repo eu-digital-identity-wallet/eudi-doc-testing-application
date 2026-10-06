@@ -11,7 +11,7 @@ public class MobileDeviceLogger {
     private static Process logcatProcess;
     private static Thread logcatThread;
 
-    public static void startLogging(String featureDirPath,
+    public static File startLogging(String featureDirPath,
                                     String featureName,
                                     String scenarioNumber,
                                     String platform) {
@@ -36,8 +36,14 @@ public class MobileDeviceLogger {
 
             File logFile = new File(
                     logDir,
-                    featureName + "_" + scenarioNumber + ".log"
+                    (scenarioNumber == null || scenarioNumber.isEmpty())
+                            ? featureName + ".log"
+                            : featureName + "_" + scenarioNumber + ".log"
             );
+
+            if (!logDir.exists() && !logDir.mkdirs()) {
+                throw new IOException("Cannot create log directory: " + logDir);
+            }
 
             if (logFile.exists() && !logFile.delete()) {
                 throw new IOException("Cannot delete old log file: " + logFile);
@@ -57,7 +63,7 @@ public class MobileDeviceLogger {
             // ----------------------------
             if ("browserstack".equalsIgnoreCase(env)) {
                 System.out.println("BrowserStack mode → skipping local logcat, file created");
-                return;
+                return logFile;
             }
 
             // ----------------------------
@@ -111,8 +117,11 @@ public class MobileDeviceLogger {
             logcatThread.setDaemon(true);
             logcatThread.start();
 
+            return logFile;
+
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 

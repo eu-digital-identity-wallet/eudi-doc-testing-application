@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.eudi</groupId>
     <artifactId>eudiw-automated-tests</artifactId>
-    <version>EUDI_Wallet_Version_2026.08.41-Demo</version>
+    <version>EUDI_Wallet_Version_2026.10.43-Demo</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -81,6 +81,14 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
         </dependency>
+
+        <!-- WebDriverManager: auto-download matching ChromeDriver -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.9.2</version>
+        </dependency>
+
 
         <!-- Appium -->
         <dependency>

@@ -22,10 +22,6 @@ fields:
     value: "tyler.neal@example.com"
     required: false
 
-  "Expiry Date":
-    value: ""
-    required: true
-
   "Family Name(s)":
     value: "Neal"
     required: true
@@ -36,10 +32,6 @@ fields:
 
   "Issuance Authority":
     value: "GR Administrative authority"
-    required: true
-
-  "Issuance Date":
-    value: ""
     required: true
 
   "Issuing Country":
@@ -68,10 +60,6 @@ fields:
 
   "Resident Country":
     value: "AT"
-    required: true
-
-  "Resident House Number":
-    value: "101"
     required: true
 
   "Resident Postal Code":
