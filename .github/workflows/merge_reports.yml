@@ -44,12 +44,12 @@ jobs:
       - name: Consolidate JSONs into one report dir
         run: |
           mkdir -p target/site/reports/merged
-          cp artifacts/android/*.json target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo 2>/dev/null || true
-          cp artifacts/ios/*.json    target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo 2>/dev/null || true
-          ls -la target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
+          cp artifacts/android/*.json target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo 2>/dev/null || true
+          cp artifacts/ios/*.json    target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo 2>/dev/null || true
+          ls -la target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo
 
       - name: Generate combined Serenity report
-        run: mvn serenity:aggregate -Dserenity.outputDirectory=target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo
+        run: mvn serenity:aggregate -Dserenity.outputDirectory=target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo
 
       - name: Upload combined report
         uses: actions/upload-artifact@v5
