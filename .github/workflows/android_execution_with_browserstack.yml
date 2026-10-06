@@ -150,7 +150,7 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo/*.json target/serenity-backup/ || true
+          cp target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo/*.json target/serenity-backup/ || true
           
           # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -217,7 +217,7 @@ jobs:
       - name: Replace Serenity Core CSS
         if: always()
         run: |
-          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.08.41-Demo"
+          REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo"
           cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
