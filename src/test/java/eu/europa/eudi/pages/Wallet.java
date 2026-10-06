@@ -3072,8 +3072,8 @@ public class Wallet {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.eudiIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, pageHeader);
         } else {
-            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.scanQRText)).getText();
-            Assert.assertEquals(Literals.Wallet.SCANQRText.label, pageHeader);
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.eudiIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, pageHeader);
         }
     }
 }
