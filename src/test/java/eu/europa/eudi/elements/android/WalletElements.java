@@ -1,7 +1,6 @@
 package eu.europa.eudi.elements.android;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class WalletElements {
@@ -144,6 +143,5 @@ public class WalletElements {
     public static By filterByIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Filter by\"]");
     public static By expandFilterSection = By.xpath("//android.widget.TextView[@text=\"Before today (expired)\"]");
     public static By counterIsDisplayedKotlinOnDetails = By.xpath("//android.widget.TextView[@text=\"Instances remaining 5/5\"]");
-    public static By openIssuerDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
     public static By eudiIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EU Digital Identity Wallet\"]");
 }

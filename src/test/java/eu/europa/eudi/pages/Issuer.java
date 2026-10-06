@@ -1820,7 +1820,6 @@ public class Issuer {
     }
 
     public void scrollUntilGenerate() {
-
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
@@ -1837,7 +1836,6 @@ public class Issuer {
                     ));
                 }
             }
-
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -1848,13 +1846,11 @@ public class Issuer {
                 int endY = (int) (size.height * 0.5);
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence swipe = new Sequence(finger, 1);
-
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
                 swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
                 swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
                 swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
                 swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
                 driver.perform(Collections.singletonList(swipe));
             }
         }
@@ -1863,9 +1859,7 @@ public class Issuer {
     public void clickWalletLink() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             driver.context("NATIVE_APP");
-
             try {
                 test.mobileWebDriverFactory().getWait()
                         .until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink))
@@ -1879,9 +1873,7 @@ public class Issuer {
                         .until(ExpectedConditions.presenceOfElementLocated(WalletElements.walletLink))
                         .click();
             }
-
             driver.context("NATIVE_APP");
-
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.walletLink)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
@@ -1892,7 +1884,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
             WebElement username;
             try {
                 username = waitForVisibleAcrossContexts(driver,
@@ -1905,7 +1896,6 @@ public class Issuer {
             }
             username.click();
             username.sendKeys("tneal"); // or wherever the value comes from
-
             WebElement password = waitForVisibleAcrossContexts(driver,
                     IssuerElements.clickPassword, IssuerElements.passwordWeb,
                     Duration.ofSeconds(2000));
@@ -1916,18 +1906,14 @@ public class Issuer {
                     IssuerElements.loginSubmit, IssuerElements.loginSubmitWeb,
                     Duration.ofSeconds(2000));
             submit.click();
-
             driver.context("NATIVE_APP"); // reset before continuing native steps
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(3000));
             waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
             driver.context("NATIVE_APP");
-
             test.mobileWebDriverFactory().iosDriver.rotate(ScreenOrientation.PORTRAIT);
-
             By locator = eu.europa.eudi.elements.ios.IssuerElements.clickUsername;
-
             boolean found = false;
             int maxAttempts = 8;
             int waitSeconds = 90;
@@ -1936,9 +1922,7 @@ public class Issuer {
                 try {
                     waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
                     driver.context("NATIVE_APP");
-
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
-
                     WebElement element = wait.until(
                             ExpectedConditions.visibilityOfElementLocated(locator)
                     );
@@ -1954,7 +1938,6 @@ public class Issuer {
                     }
                 }
             }
-
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.visibilityOfElementLocated(locator))
                     .click();
@@ -1964,19 +1947,14 @@ public class Issuer {
 
             username.clear();
             username.sendKeys("tneal");
-
             By passwordLocator = eu.europa.eudi.elements.ios.IssuerElements.clickPassword;
-
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(passwordLocator))
                     .click();
-
             WebElement password = test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.visibilityOfElementLocated(passwordLocator));
-
             password.clear();
             password.sendKeys("password");
-
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(
                             eu.europa.eudi.elements.ios.IssuerElements.clickSignIn))
@@ -2147,16 +2125,14 @@ public class Issuer {
         }
     }
 
-    public void signInUser() throws InterruptedException {
+    public void signInUser() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
 // Wait until the NATIVE_APP context exists
             new WebDriverWait(driver, Duration.ofSeconds(3000))
                     .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
 
             driver.context("NATIVE_APP");
-
 // Perform your native actions
             safeScrollForwardAndBack(driver);
 
@@ -2724,7 +2700,6 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectPIDSDJWTPythonCredential)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDSDJWTPython)).click();
-
         }
     }
 
@@ -2851,7 +2826,6 @@ public class Issuer {
         }
     }
 
-
     public String getTransactionCode() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver =
@@ -2974,7 +2948,6 @@ public class Issuer {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.selectPIDPythonDeferred)).click();
         }
     }
-
 
     public void accessingIssuerType(String issuerType) {
         this.issuerType = issuerType;
