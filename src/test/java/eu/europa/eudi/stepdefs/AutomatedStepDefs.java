@@ -762,9 +762,17 @@ public class AutomatedStepDefs {
         test.mobile().issuer().successfullySharedMessage();
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
         } else {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
         }
         test.mobile().wallet().clickDone();
         test.mobile().wallet().selectSigningCertificate();
@@ -775,9 +783,17 @@ public class AutomatedStepDefs {
         }
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
         } else {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
         }
         test.mobile().wallet().clickShareButton();
         test.mobile().wallet().createAPin();
@@ -789,9 +805,17 @@ public class AutomatedStepDefs {
         test.mobile().issuer().successfullySharedMessage();
         test.mobile().wallet().clickExpandVerification();
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin_ios.yml");
+            }
         } else {
-            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python.yml");
+            }else{
+                test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_python_ios.yml");
+            }
         }
         test.mobile().wallet().clickDone();
     }

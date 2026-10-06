@@ -130,7 +130,7 @@ public class WalletElements {
     public static By clickChangePin = By.xpath("//XCUIElementTypeStaticText[@name=\"Change pin\"]");
     public static By changePinIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"pin_screen_title\"]");
     public static By clickCloseButton = By.xpath("//XCUIElementTypeButton[@name=\"chevron.left\"]");
-    public static By cancelPinIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Cancel pin changing?\"]");;
+    public static By cancelPinIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Cancel pin changing?\"]");
     public static By InPersonPresentation = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_in_person_button\"])[2]");
     public static By authenticateMyIdentity;
     public static By clickEnable = By.xpath("//XCUIElementTypeButton[@name=\"Enable\"]");
@@ -144,4 +144,6 @@ public class WalletElements {
     public static By historyIcon = By.xpath("//XCUIElementTypeImage[@name=\"clock.fill\"]");
     public static By historyScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"History\"]");
     public static By switchesIsDisplayedOnHistory = By.xpath("//XCUIElementTypeSwitch[@name=\"Completed\"]/XCUIElementTypeSwitch[@value=\"1\"]");
+    public static By eudiIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EU Digital Identity Wallet\"]");
+
 }
