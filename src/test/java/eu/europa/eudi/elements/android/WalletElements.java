@@ -8,10 +8,6 @@ public class WalletElements {
     private static final String APP_PACKAGE = new EnvDataConfig().getAppiumAndroidAppPackage();
 
     public static final By welcomeScreen = By.id(APP_PACKAGE + ":id/pin_screen_title");
-    public static By welcomeLogo = By.xpath("//android.widget.ImageView[@content-desc=\"Logo icon and text\"]");
-    public static By welcomeSubtitle = By.xpath("//android.widget.TextView[@text=\"Secure your wallet with a PIN code and connect to your National System.\"]");
-    public static By typeAPinLabel = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
-    public static By confirmPinLabel = By.xpath("//android.widget.TextView[@text=\"Confirm PIN\"]");
     public static By clickConfirm = By.id(APP_PACKAGE + ":id/pin_screen_button");
     public static By successMessage = By.xpath("//android.widget.TextView[@text=\"Your wallet is secured!\"]");
     public static By clickShare = By.xpath("//android.widget.TextView[@text=\"Share\"]");
@@ -61,7 +57,6 @@ public class WalletElements {
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
     public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By onlinePresentation = By.xpath("//android.widget.TextView[@text=\"Online\"]");
-    public static By InPersonPresentation = By.xpath("//android.widget.TextView[@text=\"In person\"]");
     public static By clickPidFromKotlinFromList = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred\"]/android.view.View/android.view.View");
     public static By clickPowerOfPresentation = By.xpath("//android.widget.TextView[@text=\"Power Of Representation (MSO Mdoc)\"]");
     public static By clickMdlKotlin = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View" + " | " + "//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_org.iso.18013.5.1.mDL\"]/android.view.View/android.view.View");
@@ -121,27 +116,7 @@ public class WalletElements {
     public static By retailCategoryHeader = By.xpath("//android.widget.TextView[@text=\"RETAIL\"]");
     public static By otherCategoryHeader = By.xpath("//android.widget.TextView[@text=\"OTHER\"]");
     public static By closeBookmarkSheet = By.xpath("//android.view.View[contains(@content-desc, \"Close sheet\")]");
-    public static By clickMenu = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View");
-    public static By clickChangePin = By.xpath("//android.widget.TextView[@text=\"Change PIN\"]");
-    public static By changePinIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"eu.europa.ec.euidi:id/pin_screen_title\"]");
-    public static By clickCloseButton = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
-    public static By cancelPinIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Cancel pin changing?\"]");
-    public static By typeApinIsDispalyed = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
-    public static By authenticateMyIdentity = By.xpath("//android.widget.TextView[@text=\"Authenticate my identity\"]");
-    public static By clickEnable = By.xpath("//android.widget.TextView[@text=\"ENABLE\"]");
-    public static By clickOn = By.xpath("//android.widget.Switch[@resource-id=\"com.android.settings:id/switch_widget\"]");
-    public static By clickBackOnBlutooth = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
-    public static By scanQRText = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an interacting party to authenticate your identity.\"]");
-    public static By qrCodeOnTopRight = By.xpath("//android.view.View[@content-desc=\"QR Scanner\"]");
-    public static By historyTab = By.xpath("//android.widget.TextView[@text=\"History\"]");
-    public static By historyIcon = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]/android.view.View[3]");
-    public static By historyScreen = By.xpath("(//android.widget.TextView[@text=\"History\"])[1]");
-    public static By searchIsDsiaplyed = By.xpath("//android.widget.TextView[@text=\"Search\"]");
-    public static By filterTab = By.xpath("//android.view.View[@content-desc=\"Filters\"]");
-    public static By downwardIsDisplayed = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[1]");
-    public static By upwardIsDisplayed = By.xpath("//android.view.View[@content-desc=\"Arrow up\"]");
     public static By filterByIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Filter by\"]");
     public static By expandFilterSection = By.xpath("//android.widget.TextView[@text=\"Before today (expired)\"]");
-    public static By counterIsDisplayedKotlinOnDetails = By.xpath("//android.widget.TextView[@text=\"Instances remaining 5/5\"]");
     public static By eudiIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EU Digital Identity Wallet\"]");
 }

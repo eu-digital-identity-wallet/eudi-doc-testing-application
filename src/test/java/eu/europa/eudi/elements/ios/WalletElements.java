@@ -5,10 +5,6 @@ import org.openqa.selenium.By;
 
 public class WalletElements {
     public static final By welcomeScreen = By.id("pin_screen_title");
-    public static By welcomeLogo = By.xpath("//XCUIElementTypeImage[@name=\"logo-eu-digital-indentity-wallet\"]");
-    public static By welcomeSubtitle = By.xpath("//XCUIElementTypeStaticText[@label=\"Secure your wallet with a PIN code and connect to your National System.\"]");
-    public static By typeAPinLabel = By.xpath("//XCUIElementTypeStaticText[@label=\"Type a PIN\"]");
-    public static By confirmPinLabel = By.xpath("//XCUIElementTypeStaticText[@label=\"Confirm PIN\"]");
     public static By pinTexfield1 = By.id("pin_text_field_0");
     public static By pinTexfield2 = By.id("pin_text_field_1");
     public static By pinTexfield3 = By.id("pin_text_field_2");
@@ -122,27 +118,11 @@ public class WalletElements {
     public static By clickOpen = By.xpath("//XCUIElementTypeButton[@label=\"Open\"]");
     public static By clickScreen = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
     public static By scanQRText = By.xpath("//XCUIElementTypeButton[@label=\"Cancel\"]");
-    public static By qrCodeOnTopRight = By.xpath("//XCUIElementTypeOther[@name=\"add_document_scan_qr_code_button\"]");
     public static By clickClose = By.id("Close");
     public static By clickDoneSign = By.xpath("//XCUIElementTypeButton[@label=\"Done\"]");;
-    public static By typeApinIsDispalyed = By.xpath("//XCUIElementTypeStaticText[@name=\"Type a PIN\"]");
-    public static By clickMenu = By.xpath("//XCUIElementTypeOther[@name=\"menu_button\"]");
-    public static By clickChangePin = By.xpath("//XCUIElementTypeStaticText[@name=\"Change pin\"]");
-    public static By changePinIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"pin_screen_title\"]");
-    public static By clickCloseButton = By.xpath("//XCUIElementTypeButton[@name=\"chevron.left\"]");
-    public static By cancelPinIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Cancel pin changing?\"]");
-    public static By InPersonPresentation = By.xpath("(//XCUIElementTypeButton[@name=\"home_tab_screen_dialog_in_person_button\"])[2]");
-    public static By authenticateMyIdentity;
-    public static By clickEnable = By.xpath("//XCUIElementTypeButton[@name=\"Enable\"]");
-    public static By counterIsDisplayedKotlinOnDetails = By.xpath("//XCUIElementTypeStaticText[@name=\"Instances remaining 5/5\"]");
-    public static By filterTab = By.xpath("//XCUIElementTypeButton[@name=\"documents_screen_filters_button\"]");
     public static By filterByIsDisplayed = By.xpath("//XCUIElementTypeNavigationBar[@name=\"Filter by\"]");
     public static By switchesIsDisplayed = By.xpath("//XCUIElementTypeSwitch[@name=\"Default\"]/XCUIElementTypeSwitch[@value=\"1\"]");
     public static By checkOnRightTop = By.xpath("//XCUIElementTypeOther[@name=\"checkmark\"]");
-    public static By searchIsDsiaplyed = By.xpath("//XCUIElementTypeSearchField[@name=\"Search\"]");
-    public static By historyTab = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
-    public static By historyIcon = By.xpath("//XCUIElementTypeImage[@name=\"clock.fill\"]");
-    public static By historyScreen = By.xpath("//XCUIElementTypeStaticText[@name=\"History\"]");
     public static By switchesIsDisplayedOnHistory = By.xpath("//XCUIElementTypeSwitch[@name=\"Completed\"]/XCUIElementTypeSwitch[@value=\"1\"]");
     public static By eudiIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EU Digital Identity Wallet\"]");
 }
