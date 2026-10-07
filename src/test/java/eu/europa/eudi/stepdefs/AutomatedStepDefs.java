@@ -1,12 +1,17 @@
 package eu.europa.eudi.stepdefs;
 
 import eu.europa.eudi.data.Literals;
+import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
+import java.util.List;
 
 public class AutomatedStepDefs {
 
@@ -1365,4 +1370,364 @@ public class AutomatedStepDefs {
         public void theUserReturnsToTheWalletHomeScreen() {
             test.mobile().wallet().walletHomeScreenIsDisplayed();
         }
+
+    @Given("the user opens the Add Document screen")
+    public void theUserOpensTheAddDocumentScreen() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickOnDocuments();
+        test.mobile().wallet().clickToAddDocument();
     }
+
+    @When("the user selects add document from the list")
+    public void theUserSelectsAddDocumentFromTheList() {
+        test.mobile().wallet().clickFromList();
+    }
+
+    @Then("the QR code option is displayed in the top right corner")
+    public void theQRCodeOptionIsDisplayedInTheTopRightCorner() {
+        test.mobile().wallet().qrCodeIsDisplayedOnTheTopRight();
+    }
+
+    @And("when the user proceeds with attestation issuance, no instance count is shown")
+    public void whenTheUserProceedsWithAttestationIssuanceNoInstanceCountIsShown() throws InterruptedException {
+        test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
+        test.mobile().wallet().clickKotlinPIDFromList();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinue();
+        }
+        test.mobile().issuer().signInUser();
+        test.mobile().issuer().fillLoginForm();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            List<WebElement> counterElements = test.mobileWebDriverFactory()
+                    .getDriverAndroid()
+                    .findElements(WalletElements.counterIsDisplayedKotlin);
+
+            Assert.assertTrue(
+                    "Counter is not displayed",
+                    counterElements.isEmpty()
+            );
+        }else{
+            List<WebElement> counterElements = test.mobileWebDriverFactory()
+                    .getDriverIos()
+                    .findElements(eu.europa.eudi.elements.ios.WalletElements.counterIsDisplayedKotlin);
+
+            Assert.assertTrue(
+                    "Counter is not displayed",
+                    counterElements.isEmpty()
+            );
+        }
+        test.mobile().wallet().clickClose();
+    }
+
+    @Given("the History section is displayed")
+    public void theHistorySectionIsDisplayed() throws InterruptedException {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().issuer().issuanceMethodIs("from list", "PID (MSO Mdoc)", "kotlin");
+            test.mobile().issuer().performIssuance("same device", "PID (MSO Mdoc)", "from list", "kotlin");
+            test.mobile().issuer().completedIsuuanceFlow("kotlin", "PID (MSO Mdoc)", "from list");
+            test.mobile().wallet().credentialStoredInWallet("PID (MSO Mdoc)", "kotlin");
+            test.mobile().wallet().presentCredential("Web verifier");
+            test.mobile().wallet().performPresentation("same device", "PID (MSO Mdoc)", "specific attributes", "kotlin");
+            test.mobile().verifier().verifierVerifyCredential("same device", "specific attributes", "kotlin", "PID (MSO Mdoc)");
+            test.mobile().wallet().restartApp();
+            test.mobile().wallet().createAPin();
+        }
+        test.mobile().wallet().historyTabIsDisplayed();
+    }
+
+    @Given("the user is on the Home page and then selects Authenticate")
+    public void theUserIsOnTheHomePageAndThenSelectsAuthenticate() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickAuthenticate();
+    }
+
+    @When("the user chooses in person")
+    public void theUserChoosesInPerson() throws InterruptedException {
+        test.mobile().wallet().clickInPersonPresentation();
+        test.mobile().wallet().clickEnable();
+        test.mobile().wallet().clickOn();
+        test.mobile().wallet().clickBackOnBlutooth();
+        test.mobile().wallet().clickBackOnBlutooth();
+        test.mobile().wallet().clickBackOnDevice();
+        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickInPersonPresentation();
+    }
+
+    @And("the title Authenticate my identity is shown")
+    public void theTitleAuthenticateMyIdentityIsShown() {
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickAuthenticate();
+            test.mobile().wallet().clickInPersonPresentation();
+        }
+        test.mobile().wallet().authenticateMyIdentity();
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @When("the user chooses online")
+    public void theUserChoosesOnline() {
+        test.mobile().wallet().clickAuthenticate();
+        test.mobile().wallet().clickOnlinePresentation();
+    }
+
+    @Then("the scan the QR code provided by the interacting party is displayed")
+    public void theScanTheQRCodeProvidedByTheInteractingPartyIsDisplayed() {
+        test.mobile().wallet().scanQrText();
+    }
+
+    @Given("the user launches the app")
+    public void theUserLaunchesTheApp() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+    }
+
+    @When("Document List screen is displayed")
+    public void documentListScreenIsDisplayed() {
+        //nothing for automation
+    }
+
+    @Then("the + button is not visible anymore")
+    public void theButtonIsNotVisibleAnymore() throws InterruptedException {
+        test.mobile().wallet().insertPidFromListKotlin();
+        test.mobile().wallet().successMessageIsDisplayedForIssuer();
+        test.mobile().wallet().clickClose();
+        test.mobile().wallet().clickOnDocuments();
+    }
+
+    @And("the user is on Document List screen")
+    public void theUserIsOnDocumentListScreen() {
+        test.mobile().wallet().documentsIsDisplayed();
+    }
+
+    @Then("search field should display the label Search")
+    public void searchFieldShouldDisplayTheLabelSearch() {
+        test.mobile().wallet().searchIsDisplayed();
+    }
+
+    @When("user scrolls down the list")
+    public void userScrollsDownTheList() {
+        //nothing for automation
+    }
+
+    @Then("Add document FAB should collapse to icon only")
+    public void addDocumentFABShouldCollapseToIconOnly() {
+        //nothing for automation
+    }
+
+    @When("user scrolls up")
+    public void userScrollsUp() {
+        //nothing for automation
+    }
+
+    @Then("FAB should expand to show label and icon")
+    public void fabShouldExpandToShowLabelAndIcon() {
+        //nothing for automation
+    }
+
+    @Given("user opens a document details screen")
+    public void userOpensADocumentDetailsScreen() {
+        test.mobile().wallet().secondPIDKotlinIsDisplayed();
+        test.mobile().wallet().clickPIDFromKotlin();
+    }
+
+    @When("user navigates at the bottom of the screen")
+    public void userNavigatesAtTheBottomOfTheScreen() {
+        test.mobile().wallet().userScrollUntilRemoveButton();
+    }
+
+    @And("the remaining instances section is displayed at the bottom of the screen page")
+    public void theRemainingInstancesSectionIsDisplayedAtTheBottomOfTheScreenPage() {
+        test.mobile().wallet().counterIsDisplayedOnDetails();
+    }
+
+    @And("Eye button should be placed next to Document Details text")
+    public void eyeButtonShouldBePlacedNextToDocumentDetailsText() {
+        test.mobile().wallet().scrollUpForEyeIcon();
+    }
+
+    @When("user observes the top of the screen")
+    public void userObservesTheTopOfTheScreen() {
+        //nothing for automation
+    }
+
+    @And("Issuer details card is displayed on top")
+    public void issuerDetailsCardIsDisplayedOnTop() {
+        test.mobile().wallet().openIssuerDetails();
+        test.mobile().wallet().issuerDetailsAreDisplayed();
+    }
+
+    @And("button should be labeled Remove from wallet")
+    public void buttonShouldBeLabeledRemoveFromWallet() {
+        test.mobile().wallet().userScrollUntilRemoveButton();
+    }
+
+    @And("text Delete document should not be visible")
+    public void textDeleteDocumentShouldNotBeVisible() {
+        //nothing for automation
+    }
+
+    @And("user opens the Filter screen on device")
+    public void userOpensTheFilterScreen() {
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickFilter();
+    }
+
+    @And("filter section is collapsed")
+    public void filterSectionIsCollapsed() {
+        test.mobile().wallet().filterByIsDisplayed();
+    }
+
+    @Then("arrow icon should point down")
+    public void arrowIconShouldPointDown() {
+        test.mobile().wallet().clickDownward();
+    }
+
+    @And("user expands a filter section")
+    public void userExpandsAFilterSection() {
+        test.mobile().wallet().expandFilterSection();
+    }
+
+    @Then("arrow icon should point up")
+    public void arrowIconShouldPointUp() {
+        test.mobile().wallet().upwardIsDisplayed();
+    }
+
+    @And("the corresponding icon should be updated to History")
+    public void theCorrespondingIconShouldBeUpdatedToHistory() {
+        test.mobile().wallet().historyIconIsDisplayed();
+    }
+
+    @Then("all references to Transactions should be displayed as History")
+    public void allReferencesToTransactionsShouldBeDisplayedAsHistory() {
+        test.mobile().wallet().clickHistoryTab();
+        test.mobile().wallet().historyScreenIsDisplayed();
+    }
+
+    @And("the search field should be labelled Search")
+    public void theSearchFieldShouldBeLabelledSearch() {
+        test.mobile().wallet().searchIsDisplayed();
+    }
+
+    @And("the filter section is collapsed")
+    public void theFilterSectionIsCollapsed() {
+        test.mobile().wallet().clickFilter();
+    }
+
+    @And("collapsed filter sections should display a downward arrow")
+    public void collapsedFilterSectionsShouldDisplayADownwardArrow() {
+        test.mobile().wallet().downwardIsDisplayed();
+        test.mobile().wallet().clickDownward();
+    }
+
+    @Then("expanded filter sections should display an upward arrow")
+    public void expandedFilterSectionsShouldDisplayAnUpwardArrow() {
+        test.mobile().wallet().upwardIsDisplayed();
+    }
+
+    @Given("the user opens the Settings option")
+    public void theUserOpensTheSettingsOption() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickMenu();
+    }
+
+    @When("the user accesses the Change PIN screen")
+    public void theUserAccessesTheChangePINScreen() {
+        test.mobile().wallet().clickChangePin();
+    }
+
+    @Then("the title is displayed as Change PIN")
+    public void theTitleIsDisplayedAsChangePIN() {
+        test.mobile().wallet().changePinIsDisplayed();
+    }
+
+    @When("the user taps Back button")
+    public void theUserTapsBackButton() {
+        test.mobile().wallet().clickCloseButton();
+    }
+
+    @Then("a confirmation prompt is displayed with the text Cancel PIN change")
+    public void aConfirmationPromptIsDisplayedWithTheTextCancelPINChange() {
+        test.mobile().wallet().cancelPinIsDisplayed();
+    }
+
+    @Given("the user launches the application for the first time or opens it again")
+    public void theUserLaunchesTheApplicationForTheFirstTimeOrOpensItAgain() {
+        test.mobile().wallet().checkIfPageIsTrue();
+    }
+
+    @When("the user proceeds through the onboarding flow")
+    public void theUserProceedsThroughTheOnboardingFlow() {
+        //nothing for automation
+    }
+
+    @Then("the updated wallet logo is shown consistently across the onboarding screens")
+    public void theUpdatedWalletLogoIsShownConsistentlyAcrossTheOnboardingScreens() {
+        test.mobile().wallet().welcomeLogoIsDisplayed();
+    }
+
+    @And("the message Secure your wallet with a PIN code and connect to your National System is displayed on the screen")
+    public void theMessageSecureYourWalletWithAPINCodeAndConnectToYourNationalSystemIsDisplayedOnTheScreen() {
+        test.mobile().wallet().welcomeSubtitleIsDisplayed();
+    }
+
+    @And("the Type a PIN label is displayed above the PIN input fields")
+    public void theTypeAPINLabelIsDisplayedAboveThePINInputFields() {
+        test.mobile().wallet().typeApin();
+    }
+
+    @And("the Next button is not displayed after a PIN is entered")
+    public void theNextButtonIsNotDisplayedAfterAPINIsEntered() {
+        //nothing for automation
+    }
+
+    @When("the user completes the PIN entry")
+    public void theUserCompletesThePINEntry() {
+        test.mobile().wallet().createAPin();
+    }
+
+    @And("the Confirm PIN label is displayed above the input fields")
+    public void theConfirmPINLabelIsDisplayedAboveTheInputFields() {
+        test.mobile().wallet().confirmPinLabelIsDisplayed();
+    }
+
+    @And("the user re-enters the PIN")
+    public void theUserReEntersThePIN() {
+        test.mobile().wallet().renterThePin();
+    }
+
+    @When("the user opens the application again after successfully issuing a PID")
+    public void theUserOpensTheApplicationAgainAfterSuccessfullyIssuingAPID() throws InterruptedException {
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().insertPidFromListKotlin();
+        test.mobile().wallet().clickClose();
+    }
+
+    @And("navigates to the Home tab")
+    public void navigatesToTheHomeTab() throws InterruptedException {
+        test.mobile().wallet().clickHome();
+    }
+
+    @Then("the greeting displays Welcome, [Name]")
+    public void theGreetingDisplaysWelcomeName() {
+        test.mobile().wallet().dashboardPageIsDisplayed("Kotlin");
+    }
+}

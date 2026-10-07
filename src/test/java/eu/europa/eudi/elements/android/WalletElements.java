@@ -119,4 +119,28 @@ public class WalletElements {
     public static By filterByIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Filter by\"]");
     public static By expandFilterSection = By.xpath("//android.widget.TextView[@text=\"Before today (expired)\"]");
     public static By eudiIsDisplayed = By.xpath("//android.widget.TextView[@text=\"EU Digital Identity Wallet\"]");
+    public static By qrCodeOnTopRight = By.xpath("//android.view.View[@content-desc=\"QR Scanner\"]");
+    public static By historyTab = By.xpath("//android.widget.TextView[@text=\"History\"]");
+    public static By historyIcon = By.xpath("//android.view.View[@resource-id=\"eu.europa.ec.euidi:id/dashboard_screen_bottom_navigation_item_transactions\"]/android.view.View[3]");
+    public static By historyScreen = By.xpath("(//android.widget.TextView[@text=\"History\"])[1]");
+    public static By searchIsDsiaplyed = By.xpath("//android.widget.TextView[@text=\"Search\"]");
+    public static By filterTab = By.xpath("//android.view.View[@content-desc=\"Filters\"]");
+    public static By downwardIsDisplayed = By.xpath("(//android.view.View[@content-desc=\"Arrow down\"])[1]");
+    public static By upwardIsDisplayed = By.xpath("//android.view.View[@content-desc=\"Arrow up\"]");
+    public static By counterIsDisplayedKotlinOnDetails = By.xpath("//android.widget.TextView[@text=\"Instances remaining 5/5\"]");
+    public static By InPersonPresentation = By.xpath("//android.widget.TextView[@text=\"In person\"]");
+    public static By clickEnable = By.xpath("//android.widget.TextView[@text=\"ENABLE\"]");
+    public static By clickOn = By.xpath("//android.widget.Switch[@resource-id=\"com.android.settings:id/switch_widget\"]");
+    public static By clickBackOnBlutooth = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
+    public static By authenticateMyIdentity = By.xpath("//android.widget.TextView[@text=\"Authenticate my identity\"]");
+    public static By scanQRText = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an interacting party to authenticate your identity.\"]");
+    public static By clickMenu = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View");
+    public static By clickChangePin = By.xpath("//android.widget.TextView[@text=\"Change PIN\"]");
+    public static By changePinIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"eu.europa.ec.euidi:id/pin_screen_title\"]");
+    public static By clickCloseButton = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
+    public static By cancelPinIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Cancel pin changing?\"]");
+    public static By welcomeLogo = By.xpath("//android.widget.ImageView[@content-desc=\"Logo icon and text\"]");
+    public static By welcomeSubtitle = By.xpath("//android.widget.TextView[@text=\"Secure your wallet with a PIN code and connect to your National System.\"]");
+    public static By typeApinIsDispalyed = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
+    public static By confirmPinLabel = By.xpath("//android.widget.TextView[@text=\"Confirm PIN\"]");
 }
