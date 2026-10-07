@@ -15,7 +15,6 @@ on:
           - milestone/2026.Q2
           - milestone/2026.Q3
           - milestone/2026.Q3.1
-
         default: develop
 
       test-cases:
@@ -43,6 +42,8 @@ jobs:
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
     steps:
+
+      # ---------------- CHECKOUT ----------------
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -62,16 +63,77 @@ jobs:
         with:
           node-version: '20'
 
+      # ---------------- CHROME / SELENIUM ----------------
+      - name: Prepare Chrome for Selenium
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+          echo "========== Chrome =========="
+
+          if [ -x "$CHROME" ]; then
+            "$CHROME" --version
+          else
+            echo "ERROR: Google Chrome was not found at:"
+            echo "$CHROME"
+            exit 1
+          fi
+
+          echo "========== Existing ChromeDriver =========="
+
+          if command -v chromedriver >/dev/null 2>&1; then
+            echo "ChromeDriver found:"
+            which chromedriver
+            chromedriver --version || true
+          else
+            echo "No ChromeDriver currently found on PATH"
+          fi
+
+          echo "========== Remove Homebrew ChromeDriver =========="
+
+          brew uninstall --ignore-dependencies chromedriver 2>/dev/null || true
+
+          echo "========== Remove ChromeDriver binaries =========="
+
+          sudo rm -f /usr/local/bin/chromedriver || true
+          sudo rm -f /opt/homebrew/bin/chromedriver || true
+
+          echo "========== Remove Selenium Manager cache =========="
+
+          rm -rf "$HOME/.cache/selenium"
+
+          echo "========== Verify ChromeDriver is gone =========="
+
+          if command -v chromedriver >/dev/null 2>&1; then
+            echo "WARNING: ChromeDriver is still present:"
+            which chromedriver
+            chromedriver --version || true
+          else
+            echo "SUCCESS: No ChromeDriver found on PATH."
+            echo "Selenium Manager will resolve the compatible driver."
+          fi
+
+          echo "========== Final Chrome version =========="
+
+          "$CHROME" --version
+
       # ---------------- CLEAN ----------------
       - name: Clean Old Results
         run: |
           rm -rf target/serenity
           rm -rf target/site/reports
           rm -rf target/site/serenity
-          rm -f target/rerun.txt target/rerun2.txt target/rerun3.txt target/rerun4.txt
+          rm -f target/rerun.txt
+          rm -f target/rerun2.txt
+          rm -f target/rerun3.txt
+          rm -f target/rerun4.txt
 
+      # ---------------- SESSION MAP ----------------
       - name: Initialize Session Map
-        run: echo "" > session_map.txt
+        run: |
+          echo "" > session_map.txt
 
       # ---------------- JQ ----------------
       - name: Check jq Installation
@@ -87,7 +149,7 @@ jobs:
       - name: Check BrowserStack Credentials
         run: |
           curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
-          https://api.browserstack.com/automate/plan.json
+            https://api.browserstack.com/automate/plan.json
 
       # ---------------- BUILD ID ----------------
       - name: Get Latest BrowserStack Build ID
@@ -98,7 +160,7 @@ jobs:
             https://api-cloud.browserstack.com/app-automate/builds.json \
             | jq -r '.[0].automation_build.hashed_id')
 
-          echo "buildid=$BUILD_ID" >> $GITHUB_OUTPUT
+          echo "buildid=$BUILD_ID" >> "$GITHUB_OUTPUT"
 
       # ---------------- TEST EXECUTION ----------------
       - name: Run iOS Tests on BrowserStack
@@ -107,7 +169,11 @@ jobs:
           TEST_CASES: ${{ inputs.test-cases }}
         run: |
           TEST_TAGS="@$TEST_CASES and @IOS"
-          echo "Running tests: $TEST_TAGS"
+
+          echo "========================================="
+          echo "Running iOS tests"
+          echo "Test tags: $TEST_TAGS"
+          echo "========================================="
 
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS" \
@@ -118,7 +184,9 @@ jobs:
         if: always()
         run: |
           mkdir -p target/serenity-backup
-          cp target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo/*.json target/serenity-backup/ || true
+
+          cp target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo/*.json \
+            target/serenity-backup/ || true
 
       # ---------------- RERUN PASS 1 ----------------
       - name: Rerun Pass 1
@@ -126,11 +194,14 @@ jobs:
         run: |
           if [ -s target/rerun.txt ]; then
             echo "Running rerun pass 1..."
-            mvn test -Dtest=RerunTestRunner
+
+            mvn test \
+              -Dtest=RerunTestRunner
           else
             echo "No rerun.txt found"
           fi
 
+      # ---------------- MERGE PASS 1 ----------------
       - name: Merge Results Pass 1
         if: always()
         run: |
@@ -142,6 +213,7 @@ jobs:
         run: |
           if [ -s target/rerun2.txt ]; then
             echo "Running rerun pass 2..."
+
             mvn test \
               -Dtest=RerunTestRunner2 \
               -Dcucumber.features="@target/rerun2.txt"
@@ -149,6 +221,7 @@ jobs:
             echo "No rerun2.txt found"
           fi
 
+      # ---------------- MERGE PASS 2 ----------------
       - name: Merge Results Pass 2
         if: always()
         run: |
@@ -160,6 +233,7 @@ jobs:
         run: |
           if [ -s target/rerun3.txt ]; then
             echo "Running rerun pass 3..."
+
             mvn test \
               -Dtest=RerunTestRunner3 \
               -Dcucumber.features="@target/rerun3.txt"
@@ -167,6 +241,7 @@ jobs:
             echo "No rerun3.txt found"
           fi
 
+      # ---------------- MERGE PASS 3 ----------------
       - name: Merge Results Pass 3
         if: always()
         run: |
@@ -178,6 +253,7 @@ jobs:
         run: |
           if [ -s target/rerun4.txt ]; then
             echo "Running rerun pass 4..."
+
             mvn test \
               -Dtest=RerunTestRunner4 \
               -Dcucumber.features="@target/rerun4.txt"
@@ -185,6 +261,7 @@ jobs:
             echo "No rerun4.txt found"
           fi
 
+      # ---------------- MERGE PASS 4 ----------------
       - name: Merge Results Pass 4
         if: always()
         run: |
@@ -197,11 +274,14 @@ jobs:
           mvn serenity:aggregate \
             -Dtags="@${{ inputs.test-cases }} and (@ANDROID or @IOS)"
 
+      # ---------------- CUSTOM SERENITY CSS ----------------
       - name: Replace Serenity Core CSS
         if: always()
         run: |
           REPORT_DIR="target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo"
-          cp src/test/resources/custom-style.css "$REPORT_DIR/css/core.css" || true
+
+          cp src/test/resources/custom-style.css \
+            "$REPORT_DIR/css/core.css" || true
 
       # ---------------- ARTIFACTS ----------------
       - name: Upload Serenity Report
@@ -211,6 +291,7 @@ jobs:
           name: ios-serenity-report
           path: target/site/
 
+      # ---------------- SERENITY JSON ----------------
       - name: Upload Serenity JSON Results
         uses: actions/upload-artifact@v5
         if: always()
@@ -218,12 +299,17 @@ jobs:
           name: ios-serenity-json
           path: target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo/**/*.json
 
+      # ---------------- SHOW BROWSERSTACK LOGS ----------------
       - name: Show downloaded BrowserStack logs
         if: always()
         run: |
           echo "Searching for BrowserStack logs..."
-          find src/test/resources/features/ios -type f -path "*/logs/ui/*" || true
 
+          find src/test/resources/features/ios \
+            -type f \
+            -path "*/logs/ui/*" || true
+
+      # ---------------- UPLOAD BROWSERSTACK LOGS ----------------
       - name: Upload iOS BrowserStack Logs
         if: always()
         uses: actions/upload-artifact@v4
