@@ -32,6 +32,14 @@ on:
         type: boolean
         default: true
 
+      environment:
+        description: 'Environment to run against'
+        type: choice
+        options:
+          - prod
+          - dev
+        default: prod
+
 
 jobs:
   build:
@@ -178,7 +186,8 @@ jobs:
 
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS" \
-            -Dbrowserstack.device.logs.enabled="${{ inputs.device-logs-enabled }}"
+            -Dbrowserstack.device.logs.enabled="${{ inputs.device-logs-enabled }}" \
+            -Dapp.environment="${{ inputs.environment }}"
 
       # ---------------- BACKUP RESULTS ----------------
       - name: Backup Serenity JSON Results
@@ -192,7 +201,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun.txt ]; then
-            mvn test -Dtest=RerunTestRunner
+            mvn test -Dtest=RerunTestRunner -Dapp.environment="${{ inputs.environment }}"
           else
             echo "No rerun.txt found"
           fi
@@ -206,7 +215,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun2.txt ]; then
-            mvn test -Dtest=RerunTestRunner2 -Dcucumber.features="@target/rerun2.txt"
+            mvn test -Dtest=RerunTestRunner2 -Dcucumber.features="@target/rerun2.txt" -Dapp.environment="${{ inputs.environment }}"
           else
             echo "No rerun2.txt found"
           fi
@@ -220,7 +229,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun3.txt ]; then
-            mvn test -Dtest=RerunTestRunner3 -Dcucumber.features="@target/rerun3.txt"
+            mvn test -Dtest=RerunTestRunner3 -Dcucumber.features="@target/rerun3.txt" -Dapp.environment="${{ inputs.environment }}"
           else
             echo "No rerun3.txt found"
           fi
@@ -234,7 +243,7 @@ jobs:
         if: always()
         run: |
           if [ -s target/rerun4.txt ]; then
-            mvn test -Dtest=RerunTestRunner4 -Dcucumber.features="@target/rerun4.txt"
+            mvn test -Dtest=RerunTestRunner4 -Dcucumber.features="@target/rerun4.txt" -Dapp.environment="${{ inputs.environment }}"
           else
             echo "No rerun4.txt found"
           fi
