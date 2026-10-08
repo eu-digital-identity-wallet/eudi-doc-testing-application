@@ -69,7 +69,7 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(APPIUM_IOS_AUTOMATION_NAME);
     }
     public String getAppiumIosBundleId() {
-        return getEnvProperties().getProperty(APPIUM_IOS_BUNDLE_ID);
+        return getEnvProperties().getProperty(APPIUM_IOS_BUNDLE_ID + "." + getEnvironmentSuffix());
     }
 
     public String getAppiumAndroidDeviceName() {
@@ -91,7 +91,7 @@ public class EnvDataConfig {
         return getEnvProperties().getProperty(APPIUM_ANDROID_AUTOMATION_NAME);
     }
     public String getAppiumAndroidAppPackage() {
-        return getEnvProperties().getProperty(APPIUM_ANDROID_APP_PACKAGE);
+        return getEnvProperties().getProperty(APPIUM_ANDROID_APP_PACKAGE + "." + getEnvironmentSuffix());
     }
 
     public int getAppiumLongWaitInSeconds() {
@@ -131,6 +131,19 @@ public class EnvDataConfig {
         }
 
         return properties;
+    }
+
+    /**
+     * Resolves the active environment suffix ("prod" or "dev").
+     * A system property (e.g. -Dapp.environment=dev) takes precedence,
+     * otherwise it falls back to the value in env.properties, defaulting to "prod".
+     */
+    private String getEnvironmentSuffix() {
+        String fromSystem = System.getProperty("app.environment");
+        if (fromSystem != null && !fromSystem.isBlank()) {
+            return fromSystem;
+        }
+        return getEnvProperties().getProperty("app.environment", "prod");
     }
 
     private static Properties readProperties(String filePath) {
@@ -207,15 +220,15 @@ public class EnvDataConfig {
     }
 
     public String getVerifierUrl() {
-        return getEnvProperties().getProperty(VERIFIER_URL);
+        return getEnvProperties().getProperty(VERIFIER_URL + "." + getEnvironmentSuffix());
     }
 
     public String getKotlinUrl() {
-        return getEnvProperties().getProperty(KOTLIN_ISSUER);
+        return getEnvProperties().getProperty(KOTLIN_ISSUER + "." + getEnvironmentSuffix());
     }
 
     public String getPythonUrl() {
-        return getEnvProperties().getProperty(PYTHON_ISSUER);
+        return getEnvProperties().getProperty(PYTHON_ISSUER + "." + getEnvironmentSuffix());
     }
 
     public String getSampleDocumentUrl() {

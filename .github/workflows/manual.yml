@@ -21,6 +21,14 @@ on:
         type: string
         required: true
 
+      environment:
+        description: 'Environment to run against'
+        type: choice
+        options:
+          - prod
+          - dev
+        default: prod
+
 jobs:
   build:
     runs-on: macos-latest
@@ -55,7 +63,7 @@ jobs:
       - name: Run Ui Tests
         run: |
           #!/bin/bash
-          mvn clean verify -Dcucumber.filter.tags="@${{ github.event.inputs.tagName }}" "$@"
+          mvn clean verify -Dcucumber.filter.tags="@${{ github.event.inputs.tagName }}" -Dapp.environment="${{ github.event.inputs.environment }}" "$@"
           rm -rf target/site/serenity 
           mvn serenity:aggregate -Dtags="@${{ github.event.inputs.tagName }}"
           echo "Modifying JSON files to mark tests as manual..."
