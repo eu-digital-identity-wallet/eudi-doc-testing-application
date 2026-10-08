@@ -15,6 +15,7 @@ on:
           - milestone/2026.Q2
           - milestone/2026.Q3
           - milestone/2026.Q3.1
+          - milestone/2026.Q4
 
         default: develop
 
