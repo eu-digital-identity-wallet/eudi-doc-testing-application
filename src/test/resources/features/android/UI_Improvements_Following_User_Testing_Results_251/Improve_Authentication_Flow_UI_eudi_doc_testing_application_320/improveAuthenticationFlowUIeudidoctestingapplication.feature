@@ -9,7 +9,7 @@ Feature: Improve Authentication Flow UI
   @US_IAFUEDTA_TC_01 @manual:Passed
   Scenario: Verify navigation to Authentication Intro screen
     Given the user is on the Home page and selects Authenticate
-    When the user selects either in person or online
+    When the user selects either in person
     Then the title Authenticate my identity is displayed
 
   @US_IAFUEDTA_TC_02 @manual:Passed
