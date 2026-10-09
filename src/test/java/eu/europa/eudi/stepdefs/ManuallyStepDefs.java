@@ -9151,7 +9151,7 @@ public class ManuallyStepDefs {
 
     }
 
-    @When("the user selects either in person or online")
+    @When("the user selects either in person")
     public void theUserSelectsEitherInPersonOrOnline() {
         //manual
 
