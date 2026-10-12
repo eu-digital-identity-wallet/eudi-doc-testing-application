@@ -602,7 +602,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.documentsTab)).getText();
-            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);        }
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED_IOS.label, pageHeader);        }
     }
 
     public void clickClose() {
@@ -2353,14 +2353,14 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            int maxScrolls = 10;
+            int maxScrolls = 30;
             int count = 0;
 
-            List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.eyeIcon);
+            List<WebElement> els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails);
             while ((els.isEmpty() || !els.get(0).isDisplayed()) && count < maxScrolls) {
                 MobileActionsUtils.slowScrollUp();
                 count++;
-                els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.eyeIcon);
+                els = driver.findElements(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails);
             }
 
             if (els.isEmpty() || !els.get(0).isDisplayed()) {
@@ -2390,7 +2390,7 @@ public class Wallet {
 
     public void openIssuerDetails() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            //nothing for android
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.openIssuerDetails)).click();
         }else{
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.openIssuerDetails)).click();
         }
@@ -2907,7 +2907,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickOn)).click();
         } else {
-            //nothing for ios
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickAllow)).click();
         }
     }
 
@@ -3105,5 +3105,4 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.CONFIRM_PIN_LABEL.label, label);
         }
     }
-
 }

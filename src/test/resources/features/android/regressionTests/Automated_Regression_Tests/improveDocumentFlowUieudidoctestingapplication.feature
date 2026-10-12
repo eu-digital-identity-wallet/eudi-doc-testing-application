@@ -25,7 +25,7 @@ Feature: User document management experience
     And Issuer details card is displayed on top
     And button should be labeled Remove from wallet
     And text Delete document should not be visible
-    And user opens the Filter screen on Android
+    And user opens the Filter screen on device
     And filter section is collapsed
     Then arrow icon should point down
     And user expands a filter section

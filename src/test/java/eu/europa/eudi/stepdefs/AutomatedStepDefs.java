@@ -1373,6 +1373,8 @@ public class AutomatedStepDefs {
 
     @Given("the user opens the Add Document screen")
     public void theUserOpensTheAddDocumentScreen() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
@@ -1425,6 +1427,8 @@ public class AutomatedStepDefs {
 
     @Given("the History section is displayed")
     public void theHistorySectionIsDisplayed() throws InterruptedException {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
@@ -1446,6 +1450,8 @@ public class AutomatedStepDefs {
 
     @Given("the user is on the Home page and then selects Authenticate")
     public void theUserIsOnTheHomePageAndThenSelectsAuthenticate() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
@@ -1489,6 +1495,8 @@ public class AutomatedStepDefs {
 
     @Given("the user launches the app")
     public void theUserLaunchesTheApp() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
@@ -1623,6 +1631,16 @@ public class AutomatedStepDefs {
         test.mobile().wallet().searchIsDisplayed();
     }
 
+    @And("the filter section is collapsed on history")
+    public void theFilterSectionIsCollapsedOnHistory() {
+        test.mobile().wallet().filterButtonIsDisplayed();
+    }
+
+    @Then("filters options should use switches instead of checkboxes")
+    public void filtersOptionsShouldUseSwitchesInsteadOfCheckboxes() {
+        test.mobile().wallet().switchesIsDisplayedOnHistory();
+    }
+
     @And("the filter section is collapsed")
     public void theFilterSectionIsCollapsed() {
         test.mobile().wallet().clickFilter();
@@ -1641,6 +1659,8 @@ public class AutomatedStepDefs {
 
     @Given("the user opens the Settings option")
     public void theUserOpensTheSettingsOption() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
         test.mobile().wallet().createAPin();
         test.mobile().wallet().renterThePin();
@@ -1671,6 +1691,8 @@ public class AutomatedStepDefs {
 
     @Given("the user launches the application for the first time or opens it again")
     public void theUserLaunchesTheApplicationForTheFirstTimeOrOpensItAgain() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
         test.mobile().wallet().checkIfPageIsTrue();
     }
 
@@ -1729,5 +1751,83 @@ public class AutomatedStepDefs {
     @Then("the greeting displays Welcome, [Name]")
     public void theGreetingDisplaysWelcomeName() {
         test.mobile().wallet().dashboardPageIsDisplayed("Kotlin");
+    }
+
+    @Given("a wallet user navigates to Documents section and selects to add from a list {} using {}")
+    public void aWalletUserNavigatesToDocumentsSectionAndSelectsToAddFromAListUsing(String credential, String issuerType) {
+        this.issuerType = issuerType;
+        this.credential = credential;
+        test.mobile().wallet().initiateCredential(credential, issuerType);
+    }
+
+    @When("the documents on list are displayed using {}")
+    public void theDocumentsOnListAreDisplayedUsing(String issuanceMethod) throws InterruptedException {
+        test.mobile().issuer().issuanceMethodIs(issuanceMethod, this.credential, this.issuerType);
+    }
+
+    @Then("the user can see one PID option without format indication on a {} for the {} and {}")
+    public void theUserCanSeeOnePIDOptionWithoutFormatIndicationOnAForTheAnd(String issueScenario, String issuanceMethod, String issuerType) throws InterruptedException {
+        test.mobile().issuer().performIssuance(issueScenario, credential, issuanceMethod, this.issuerType);
+    }
+
+    @And("both formats are delivered to user's wallet in a secure transaction")
+    public void bothFormatsAreDeliveredToUserSWalletInASecureTransaction() {
+        test.mobile().issuer().completedIsuuanceFlow(this.issuerType, this.credential, this.issuanceMethod);
+    }
+
+    @And("both formats are stored in wallet")
+    public void bothFormatsAreStoredInWallet() {
+        test.mobile().wallet().credentialStoredInWallet(this.credential, this.issuerType);
+    }
+
+    @When("the wallet user requests a PID issuance")
+    public void theWalletUserRequestsAPIDIssuance() {
+            //nothing for automation
+    }
+
+    @And("the PID provider processes the request of issuance")
+    public void thePIDProviderProcessesTheRequestOfIssuance() {
+        //nothing for automation
+    }
+
+    @Then("both ISO mdoc and SD-JWT VC formats are generated the same time")
+    public void bothISOMdocAndSDJWTVCFormatsAreGeneratedTheSameTime() {
+        //nothing for automation
+    }
+
+    @Then("the wallet automatically selects appropriate format for {}")
+    public void theWalletAutomaticallySelectsAppropriateFormat(String issuerType) throws InterruptedException {
+        test.mobile().wallet().presentCredential("Web verifier");
+        test.mobile().wallet().performPresentation("same device", "PID (MSO Mdoc)", "specific attributes", this.issuerType);
+    }
+
+    @And("both formats are accessible in Documents section")
+    public void bothFormatsAreAccessibleInDocumentsSection() {
+        //nothing for automation
+    }
+
+    @And("they appear as PID mdoc and PID sd-jwt docs")
+    public void theyAppearAsPIDMdocAndPIDSdJwtDocs() {
+        //nothing for automation
+    }
+
+    @When("service requests PID-based identity verification")
+    public void serviceRequestsPIDBasedIdentityVerification() {
+        //nothing for automation
+    }
+
+    @And("use switches instead of checkboxes on filters")
+    public void useSwitchesInsteadOfCheckboxesOnFilters() {
+        test.mobile().wallet().switchesIsDisplayed();
+    }
+
+    @Then("a check button should be visible in upper right corner")
+    public void aCheckButtonShouldBeVisibleInUpperRightCorner() {
+        test.mobile().wallet().checkOnRightTop();
+    }
+
+    @And("the Apply button should not be visible anymore")
+    public void theApplyButtonShouldNotBeVisibleAnymore() {
+        //nothing for automation
     }
 }

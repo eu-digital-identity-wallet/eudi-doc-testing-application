@@ -100,6 +100,7 @@ public class WalletElements {
     public static By trustIconIsDisplayed = By.xpath("(//XCUIElementTypeImage[@name=\"verifiedUser\"])");
     public static By clickBackButtonSigning = By.xpath("//XCUIElementTypeButton[@name=\"BackButton\"]");
     public static By documentsTab = By.xpath("//XCUIElementTypeButton[@name=\"documents_tab\"]");
+    public static By documentsTabSecond = By.xpath("//XCUIElementTypeButton[@name=\"Documents\"]");
     public static By clickOnlinePresentation = By.xpath("//XCUIElementTypeButton[@label=\"Online\"]");
     public static By signDocumentInside = By.xpath("//XCUIElementTypeStaticText[@label=\"Sign document\"]");
     public static By historyIsDisplayed = By.xpath("//XCUIElementTypeButton[@name=\"history_tab\"]");
@@ -123,7 +124,7 @@ public class WalletElements {
     public static By filterByIsDisplayed = By.xpath("//XCUIElementTypeNavigationBar[@name=\"Filter by\"]");
     public static By switchesIsDisplayed = By.xpath("//XCUIElementTypeSwitch[@name=\"Default\"]/XCUIElementTypeSwitch[@value=\"1\"]");
     public static By checkOnRightTop = By.xpath("//XCUIElementTypeOther[@name=\"checkmark\"]");
-    public static By switchesIsDisplayedOnHistory = By.xpath("//XCUIElementTypeSwitch[@name=\"Completed\"]/XCUIElementTypeSwitch[@value=\"1\"]");
+    public static By switchesIsDisplayedOnHistory = By.xpath("(//XCUIElementTypeStaticText[@name=\"Completed\"])[1]");
     public static By eudiIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"EU Digital Identity Wallet\"]");
     public static By welcomeLogo = By.xpath("//XCUIElementTypeImage[@name=\"logo-eu-digital-indentity-wallet\"]");
     public static By welcomeSubtitle = By.xpath("//XCUIElementTypeStaticText[@label=\"Secure your wallet with a PIN code and connect to your National System.\"]");
