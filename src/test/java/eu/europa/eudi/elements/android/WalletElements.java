@@ -2,6 +2,7 @@ package eu.europa.eudi.elements.android;
 
 import eu.europa.eudi.utils.config.EnvDataConfig;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class WalletElements {
 
@@ -134,13 +135,14 @@ public class WalletElements {
     public static By clickBackOnBlutooth = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
     public static By authenticateMyIdentity = By.xpath("//android.widget.TextView[@text=\"Authenticate my identity\"]");
     public static By scanQRText = By.xpath("//android.widget.TextView[@text=\"Scan a QR code provided from an interacting party to authenticate your identity.\"]");
-    public static By clickMenu = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View");
+    public static By clickMenu = By.xpath("//gb1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.view.View");
     public static By clickChangePin = By.xpath("//android.widget.TextView[@text=\"Change PIN\"]");
     public static By changePinIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"eu.europa.ec.euidi:id/pin_screen_title\"]");
-    public static By clickCloseButton = By.xpath("//q91/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
+    public static By clickCloseButton = By.xpath("//gb1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
     public static By cancelPinIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Cancel pin changing?\"]");
     public static By welcomeLogo = By.xpath("//android.widget.ImageView[@content-desc=\"Logo icon and text\"]");
     public static By welcomeSubtitle = By.xpath("//android.widget.TextView[@text=\"Secure your wallet with a PIN code and connect to your National System.\"]");
     public static By typeApinIsDispalyed = By.xpath("//android.widget.TextView[@text=\"Type a PIN\"]");
     public static By confirmPinLabel = By.xpath("//android.widget.TextView[@text=\"Confirm PIN\"]");
+    public static By openIssuerDetails = By.xpath("//android.view.View[@content-desc=\"Arrow down\"]");
 }
