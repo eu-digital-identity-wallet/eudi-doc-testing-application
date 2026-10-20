@@ -72,7 +72,25 @@ public interface Literals {
         EXPAND_FILTER_SECTION("Before today (expired)"),
         COUNTER_DISPLAYED_KOTLIN_ON_DETAILS("Instances remaining 5/5"),
         DOCUMENTS_PAGE_IS_DISPLAYED_IOS("1"),
-        EU_IS_DISPLAYED("EU Digital Identity Wallet");
+        EU_IS_DISPLAYED("EU Digital Identity Wallet"),
+        TRANSACTION_INFORMATION("Transaction information"),
+        FOR_TESTING_PURPOSES("For Testing Purposes"),
+        INTETED_USE("Intended use"),
+        URL_PRIVACY("http://data.europa.eu/eudi/policy/trust-service-practice-statement"),
+        DATA_SHARED("DATA SHARED"),
+        FAMILY_NAME_HISTORY("[\"family_name\"]"),
+        GIVEN_NAME_HISTORY("[\"given_name\"]"),
+        BIRTH_DATE("[\"birthdate\"]"),
+        INITIATE_DELETION("Initiate deletion request"),
+        INFORMATIONAL_SCREEN("Before you continue"),
+        CLARIFY_FOR_COMMUNICATION_CHANEL("You're about to leave the wallet and go to NiScy’s website, where you can fill in a form to request deletion of the data you shared."),
+        CLARIFY_FOR_COMMUNICATION_CHANEL_IOS("You’re about to leave the wallet and go to NiScy’s website, where you can fill in a form to request deletion of the data you shared."),
+        THE_RELYING_PARTY_IS_RESPONSIBLE("NiScy may still be required to keep some of your data for legal reasons, even after your request. Any updates on the outcome will come from NiScy directly, not the wallet."),
+        BUTTON_TO_WEBSITE("Continue to NiScy’s website"),
+        PRIVACY_POLICY("Privacy policy"),
+        NOTES_FOR_REQUEST("Before you continue"),
+        DATA_DELETION_REQUEST_INITIATION("View previous data deletion requests (1)"),
+        PREVIOUS_DATA_DELETION_IS_DISPLAYED("Previous data deletion requests for NiScy");
 
 
         public final String label;

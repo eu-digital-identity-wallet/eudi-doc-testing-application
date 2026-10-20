@@ -92,7 +92,7 @@ public class Verifier {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             int i = 1;
-            while (i < 5) {
+            while (i < 2) {
                 Map<String, Object> params = new HashMap<>();
                 params.put("direction", "up");
                 driver.executeScript("mobile: swipe", params);
@@ -815,5 +815,9 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.walletRespondedSdJwt)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_RESPONDED_SDJWT.label, pageHeader);
         }
+    }
+
+    public void clickContinue() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickContinue)).click();
     }
 }

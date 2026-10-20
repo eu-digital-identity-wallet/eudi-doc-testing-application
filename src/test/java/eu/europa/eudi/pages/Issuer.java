@@ -459,6 +459,7 @@ public class Issuer {
             FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
             String birthDate = yml.fields.get("Birth Date").value;
             driver.context("NATIVE_APP");
+
             test.mobileWebDriverFactory().getWait()
                     .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickBirthDate))
                     .click();
@@ -468,19 +469,20 @@ public class Issuer {
             int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
+// 1. Click the month/year toggle button (UPDATED LOCATOR)
             try {
-                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+                driver.findElement(By.id("com.android.chrome:id/month_navigation_fragment_toggle")).click();
             } catch (Exception e) {
-                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+                driver.findElement(By.xpath("//*[contains(@resource-id,'month_navigation_fragment_toggle')]")).click();
             }
 
             selectYearScrollUp(driver, year);
 
-            By nextBtn = By.id("android:id/next");
-            By prevBtn = By.id("android:id/prev");
+// 2. Next/Previous month buttons (UPDATED LOCATORS)
+            By nextBtn = By.id("com.android.chrome:id/month_navigation_next");
+            By prevBtn = By.id("com.android.chrome:id/month_navigation_previous");
 
             int currentMonth = LocalDate.now().getMonthValue();
-
             int diff = 3 - currentMonth;
 
             WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -493,11 +495,12 @@ public class Issuer {
                     calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
             }
-            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
-                    .click();
+// 3. Select the day (UPDATED LOCATOR: TextView instead of View)
+            driver.findElement(By.xpath("//android.widget.TextView[@text='" + day + "']")).click();
+
+// 4. Confirm selection (Optional: Click OK if needed)
+            driver.findElement(By.id("com.android.chrome:id/confirm_button")).click();
 
         } else {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();

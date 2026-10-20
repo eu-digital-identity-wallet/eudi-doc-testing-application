@@ -1,6 +1,7 @@
 package eu.europa.eudi.elements.android;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class VerifierElements {
     public static By clickData = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-2\"]");
@@ -50,4 +51,5 @@ public class VerifierElements {
     public static By sdJwtOnWebForPID = By.xpath("//mat-option[normalize-space(.)='dc+sd-jwt']");
     public static By walletRespondedSdJwt = By.xpath("//android.widget.TextView[@text=\"urn:eudi:pid:1\"]");
     public static By transactionCodePage = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer requires verification\"]");
+    public static By clickContinue = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]");
 }
