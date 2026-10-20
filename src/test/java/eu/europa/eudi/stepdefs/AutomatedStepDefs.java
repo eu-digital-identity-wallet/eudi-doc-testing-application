@@ -1830,4 +1830,106 @@ public class AutomatedStepDefs {
     public void theApplyButtonShouldNotBeVisibleAnymore() {
         //nothing for automation
     }
+
+    @And("the user opens the Relying Party service page on the same device")
+    public void theUserOpensTheRelyingPartyServicePageOnTheSameDevice() {
+        test.mobile().wallet().presentCredential("Web verifier");
+    }
+
+    @When("the user starts the wallet verification flow from the Relying Party page")
+    public void theUserStartsTheWalletVerificationFlowFromTheRelyingPartyPage() throws InterruptedException {
+        test.mobile().verifier().appOpensSuccessfully();
+        test.mobile().wallet().performPresentation("same device", "mDL (MSO Mdoc)", "specific attributes", this.issuerType);
+        Thread.sleep(50000);
+    }
+
+    @Then("the Relying Party raises a presentation request")
+    public void theRelyingPartyRaisesAPresentationRequest() {
+        //no automation action occurs
+    }
+
+    @When("Chrome invokes the Digital Credentials API for the presentation request")
+    public void chromeInvokesTheDigitalCredentialsAPIForThePresentationRequest() {
+        //TODO
+    }
+
+    @Then("the browser asks the user to grant permission to proceed")
+    public void theBrowserAsksTheUserToGrantPermissionToProceed() {
+        //TODO
+    }
+
+    @When("the user grants the requested permission")
+    public void theUserGrantsTheRequestedPermission() {
+        //TODO
+    }
+
+    @Then("the device searches the installed Wallet Units for matching attestations")
+    public void theDeviceSearchesTheInstalledWalletUnitsForMatchingAttestations() {
+        //TODO
+    }
+
+    @And("the process ends with a user notification when no attestations match the request")
+    public void theProcessEndsWithAUserNotificationWhenNoAttestationsMatchTheRequest() {
+        //TODO
+    }
+
+    @When("suitable attestations are located on the device")
+    public void suitableAttestationsAreLocatedOnTheDevice() {
+        //TODO
+    }
+
+    @Then("the browser presents a selector listing the matching attestations")
+    public void theBrowserPresentsASelectorListingTheMatchingAttestations() {
+        //TODO
+    }
+
+    @And("each listed attestation shows its credential type and the Wallet Unit that holds it")
+    public void eachListedAttestationShowsItsCredentialTypeAndTheWalletUnitThatHoldsIt() {
+        //TODO
+    }
+
+    @And("the selector marks which Wallet Unit each listed attestation belongs to")
+    public void theSelectorMarksWhichWalletUnitEachListedAttestationBelongsTo() {
+        //TODO
+    }
+
+    @When("the user picks one of the listed attestations")
+    public void theUserPicksOneOfTheListedAttestations() {
+        //TODO
+    }
+
+    @Then("the matching Wallet Unit launches automatically")
+    public void theMatchingWalletUnitLaunchesAutomatically() {
+        //TODO
+    }
+
+    @And("the presentation request screen displays the requested attestations and their attributes")
+    public void thePresentationRequestScreenDisplaysTheRequestedAttestationsAndTheirAttributes() {
+        if ("kotlin".equalsIgnoreCase(this.issuerType)) {
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_pre_final_shared_data_on_wallet.yml");
+        } else {
+            test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/pre_final_shared_data_on_wallet.yml");
+        }
+    }
+
+    @When("the user consents to share the requested attributes")
+    public void theUserConsentsToShareTheRequestedAttributes() {
+        this.selectiveDisclosure = "";
+        test.mobile().wallet().clickShareButton();
+    }
+
+    @Then("the Wallet prompts the user for a six-digit PIN")
+    public void theWalletPromptsTheUserForASixDigitPIN() {
+        test.mobile().wallet().pinFieldIsDisplayed();
+    }
+
+    @Then("the attestation is shared successfully")
+    public void theAttestationIsSharedSuccessfully() {
+        test.mobile().wallet().authenticationSuccessfully();
+    }
+
+    @And("the Relying Party confirms the verification was successful in the browser")
+    public void theRelyingPartyConfirmsTheVerificationWasSuccessfulInTheBrowser() {
+        test.mobile().verifier().verifierVerifyCredential("same device", this.selectiveDisclosure, this.issuerType, this.credential);
+    }
 }
