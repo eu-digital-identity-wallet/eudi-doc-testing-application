@@ -310,6 +310,15 @@ This section documents the compatibility between test automation versions and EU
 
 Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
+### Locator Best Practices (XPath → Native)
+
+When adding or refactoring mobile element locators, **always** follow the reusable skill:
+**[`skills/refactor-xpath-to-native/SKILL.md`](skills/refactor-xpath-to-native/SKILL.md)**
+
+It is a **general-purpose refactoring tool** (not tied to this project) that provides a step-by-step
+process to replace XPath locators with faster, more stable native Appium locators using the priority order:
+**Accessibility ID → Resource-ID → iOS Predicate / Class Chain → Android UiSelector → XPath (last resort).**
+
 ## License
 
 Copyright (c) 2024 European Commission

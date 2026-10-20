@@ -1830,4 +1830,187 @@ public class AutomatedStepDefs {
     public void theApplyButtonShouldNotBeVisibleAnymore() {
         //nothing for automation
     }
+
+    @Given("the authenticated user has selected presentation transaction from the Wallet History")
+    public void theAuthenticatedUserHasSelectedPresentationTransactionFromTheWalletHistory() {
+        test.mobile().wallet().historyTabIsDisplayed();
+        test.mobile().wallet().clickHistoryTab();
+        test.mobile().wallet().clickPresentationTransaction();
+    }
+
+    @Given("the user issues the {} attestation using {}")
+    public void theUserIssuesTheAttestationUsing(String credential, String issuerType) throws InterruptedException {
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+        test.mobile().wallet().clickMenu();
+        test.mobile().wallet().clickSettings();
+        test.mobile().wallet().enableRegistrationCertificate();
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+        this.credential = credential;
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertPidFromListKotlin();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertPidFromList();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickDone();
+        }
+        test.mobile().wallet().presentCredential("Web verifier");
+        test.mobile().wallet().performPresentation("same device", credential, "specific attributes", issuerType);
+        test.mobile().verifier().verifierVerifyCredential("same device", "specific attributes",issuerType, credential);
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+
+    }
+
+    @When("the Presentation Information screen is shown")
+    public void thePresentationInformationScreenIsShown() {
+        test.mobile().wallet().transactionInformationIsDisplayed();
+    }
+
+    @Then("the intended use of the presentation request is visible")
+    public void theIntendedUseOfThePresentationRequestIsVisible() {
+        test.mobile().wallet().clickViewDetails();
+        test.mobile().wallet().intededUseIsDisplayed();
+        test.mobile().wallet().forTestingPurposes();
+    }
+
+    @And("the applicable privacy policy is displayed when available")
+    public void theApplicablePrivacyPolicyIsDisplayedWhenAvailable() {
+        test.mobile().wallet().privacyPolicyIsDisplayed();
+        test.mobile().wallet().urlPrivacyPolicyIsDisplayed();
+    }
+
+    @And("the attributes shared during the presentation transaction are listed")
+    public void theAttributesSharedDuringThePresentationTransactionAreListed() throws InterruptedException {
+        test.mobile().wallet().scrollUntilDataShared();
+        test.mobile().wallet().dataSharedIsDisplayed();
+        test.mobile().wallet().clickDownward();
+        test.mobile().wallet().familyNameOnHistory();
+        test.mobile().wallet().givemNameOnHistory();
+        test.mobile().wallet().birthDateOnHistory();
+    }
+
+    @And("the Initiate Deletion Request button is presented")
+    public void theInitiateDeletionRequestButtonIsPresented() throws InterruptedException {
+        test.mobile().wallet().scrollUntilInitiateDeletion();
+        test.mobile().wallet().initiateDeletionIsDisplayed();
+    }
+
+    @When("the user taps the Initiate Deletion Request button")
+    public void theUserTapsTheInitiateDeletionRequestButton() {
+        test.mobile().wallet().clickInitiateDeletion();
+    }
+
+    @Then("an informational screen appears explaining that the user is about to leave the Wallet")
+    public void anInformationalScreenAppearsExplainingThatTheUserIsAboutToLeaveTheWallet() {
+        test.mobile().wallet().informationalScreen();
+    }
+
+    @And("the screen clarifies that the Wallet facilitates the initiation of the request by opening the appropriate communication channel")
+    public void theScreenClarifiesThatTheWalletFacilitatesTheInitiationOfTheRequestByOpeningTheAppropriateCommunicationChannel() {
+        test.mobile().wallet().clarifyForCommunicationChanel();
+    }
+
+    @And("the screen notes that the Wallet does not submit, manage or track the request")
+    public void theScreenNotesThatTheWalletDoesNotSubmitManageOrTrackTheRequest() {
+        test.mobile().wallet().notesForTheRequest();
+    }
+
+    @And("the screen informs that the user is responsible for completing and submitting the request outside the Wallet")
+    public void theScreenInformsThatTheUserIsResponsibleForCompletingAndSubmittingTheRequestOutsideTheWallet() {
+            //nothing for automation
+    }
+
+    @And("the screen states that the Relying Party is responsible for evaluating and processing the request")
+    public void theScreenStatesThatTheRelyingPartyIsResponsibleForEvaluatingAndProcessingTheRequest() {
+        test.mobile().wallet().theRelyingPartyIsResponsible();
+    }
+
+    @Given("the WRPRC holds a website for the Relying Party")
+    public void theWRPRCHoldsAWebsiteForTheRelyingParty() {
+            //nothing for automation
+    }
+
+    @Then("a single action button labelled Continue to [Relying Party]'s website is shown")
+    public void aSingleActionButtonLabelledContinueToRelyingPartySWebsiteIsShown() {
+        test.mobile().wallet().buttonToWebsite();
+    }
+
+    @When("the user activates the Continue to [Relying Party]'s website button")
+    public void theUserActivatesTheContinueToRelyingPartySWebsiteButton() {
+        test.mobile().wallet().clickButtonToWebsite();
+    }
+
+    @Then("the Relying Party website opens in the device's default browser")
+    public void theRelyingPartyWebsiteOpensInTheDeviceSDefaultBrowser() throws InterruptedException {
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickHistoryTab();
+        test.mobile().wallet().clickPresentationTransaction();
+    }
+
+    @And("the Wallet logs the data deletion request initiation")
+    public void theWalletLogsTheDataDeletionRequestInitiation() {
+        test.mobile().wallet().dataDeletionRequestInitiation();
+        test.mobile().wallet().clickdataDeletionRequestInitiation();
+        test.mobile().wallet().previousDataDeletionIsDisplayed();
+    }
+
+    @When("the user presses the Back navigation button")
+    public void theUserPressesTheBackNavigationButton() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the Wallet navigates back to the Presentation Information screen")
+    public void theWalletNavigatesBackToThePresentationInformationScreen() {
+        test.mobile().wallet().transactionInformationIsDisplayed();
+    }
+
+    @Given("the WRPRC contains no contact information")
+    public void theWRPRCContainsNoContactInformation() throws InterruptedException {
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickMenu();
+        test.mobile().wallet().clickSettings();
+        test.mobile().wallet().enableRegistrationCertificate();
+        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+    }
+
+    @Then("data deletion request cannot be initiated for {} using {}")
+    public void dataDeletionRequestCannotBeInitiated(String credential, String issuerType) throws InterruptedException {
+        this.credential = credential;
+        this.issuerType = issuerType;
+        if ("kotlin".equalsIgnoreCase(issuerType)) {
+            test.mobile().wallet().insertPidFromListKotlinSecond();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickClose();
+        } else {
+            test.mobile().wallet().insertPidFromList();
+            test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+            test.mobile().wallet().clickDone();
+        }
+        test.mobile().wallet().presentCredential("Web verifier");
+        test.mobile().wallet().performPresentation("same device", credential, "specific attributes", issuerType);
+        test.mobile().wallet().restartApp();
+        test.mobile().wallet().createAPin();
+        theAuthenticatedUserHasSelectedPresentationTransactionFromTheWalletHistory();
+        thePresentationInformationScreenIsShown();
+    }
+
+    @And("the Initiate Deletion Request button remains disabled")
+    public void theInitiateDeletionRequestButtonRemainsDisabled() throws InterruptedException {
+        test.mobile().wallet().scrollUntilInitiateDeletion();
+        test.mobile().wallet().scrollUntilInitiateDeletionIsDisabled();
+    }
 }
