@@ -34,5 +34,6 @@ Feature: Initiate a data deletion request
 
     Examples:
       | credential   | issuer |
+      | PID (SD-JWT) | Kotlin |
       | PID (SD-JWT) | Python |
 
