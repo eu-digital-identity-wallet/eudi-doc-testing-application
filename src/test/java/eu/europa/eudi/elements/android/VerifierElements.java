@@ -53,6 +53,7 @@ public class VerifierElements {
     public static By transactionCodePage = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer requires verification\"]");
     public static By clickContinue = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]");
     public static By clickViaDcApi = By.xpath("//android.view.View[@resource-id=\"mat-tab-group-0-label-1\"]");
+    public static By clickViaDcApiOnWeb = By.xpath("//div[@role='tab'][.//span[contains(@class,'mdc-tab__text-label') and normalize-space()='Submit via DC API']]");
     public static By verifierAsksPermision = By.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/message_paragraph\"]");
     public static By noAttestationFound = By.xpath("//android.widget.TextView[contains(@text, \"Your info wasn\") and contains(@text, \"t found\")]");
     public static By clickClose = By.xpath("//android.widget.TextView[@text=\"Close\"]");

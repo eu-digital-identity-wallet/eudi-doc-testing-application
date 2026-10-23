@@ -129,7 +129,7 @@ public class TestHooks {
     }
 
     private void cleanup() {
-        cleanupScreenshotsFolder();
+        //cleanupScreenshotsFolder(); // temporarily disabled for DC-API QR debugging - re-enable after
         test.stopLogging();
     }
 

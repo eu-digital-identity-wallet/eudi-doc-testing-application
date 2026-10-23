@@ -21,6 +21,10 @@ import java.util.*;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.awt.Robot;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 import static org.junit.Assert.fail;
 
@@ -890,5 +894,89 @@ public class Verifier {
 
     public void clickAgreeAndContinue() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.agreeAndContinue)).click();
+    }
+
+    public void openVerifierOnDesktopBrowser() {
+        test.webWebDriverFactory().startWebDriverSession();
+        String url = test.envDataConfig().getVerifierUrl();
+        test.webWebDriverFactory().getDriverWeb().get(url);
+        appOpensSuccessfullyOnWeb();
+    }
+
+    public void startDcApiFlowOnDesktopBrowser(String credential) {
+        selectSpecificAttributesOnWebForPID(credential);
+        scrollUntilNextOnWeb();
+        pidIsDisplayedOnWeb();
+        clickSpecificAttributesButtonForPID();
+        selectSpecificAttributesOnWeb();
+        scrollUntilNextOnWeb();
+        uriMethodIsDisplayed();
+        clickViaDcApiOnWeb();
+        scrollUntilSubmitOnWeb();
+        acceptNativeChromeDialogWithEnterKey();
+    }
+
+    // "Do you trust this site with your data?" and the hybrid QR dialog triggered by the
+    // Digital Credentials API are rendered by Chrome's own browser chrome, not the page DOM,
+    // so Selenium/ChromeDriver cannot locate or click them. Pressing Enter at the OS level
+    // (java.awt.Robot) hits the dialog's default-focused "Continue" button instead.
+    private void acceptNativeChromeDialogWithEnterKey() {
+        try {
+            WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+            driver.manage().window().maximize();
+            Thread.sleep(1500);
+
+            // Robot's key events go to whichever window has OS-level input focus, which is not
+            // necessarily the Chrome window Selenium is driving (e.g. the IDE/terminal running the
+            // test can still hold focus). Click the Chrome title bar first to force the OS to give
+            // it focus before sending Enter, otherwise the key press is a no-op for the dialog.
+            org.openqa.selenium.Point position = driver.manage().window().getPosition();
+            org.openqa.selenium.Dimension size = driver.manage().window().getSize();
+
+            Robot robot = new Robot();
+            robot.mouseMove(position.getX() + size.getWidth() / 2, position.getY() + 10);
+            robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            Thread.sleep(300);
+
+            robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
+            robot.keyRelease(java.awt.event.KeyEvent.VK_ENTER);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to accept native Chrome Digital Credentials dialog via Robot", e);
+        }
+    }
+
+    // The hybrid-transport QR shown for the Digital Credentials API is also native Chrome UI
+    // (no DOM canvas like the regular cross-device QR), so it has to be captured as real screen
+    // pixels rather than exported from a <canvas> element.
+    public void captureNativeQrScreenshot() {
+        try {
+            WebDriver driver = test.webWebDriverFactory().getDriverWeb();
+            driver.manage().window().maximize();
+            Thread.sleep(1500);
+
+            org.openqa.selenium.Point position = driver.manage().window().getPosition();
+            org.openqa.selenium.Dimension size = driver.manage().window().getSize();
+            Rectangle windowRect = new Rectangle(position.getX(), position.getY(), size.getWidth(), size.getHeight());
+
+            Robot robot = new Robot();
+            BufferedImage screenCapture = robot.createScreenCapture(windowRect);
+
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            File screenshotsDir = new File("screenshots");
+            if (!screenshotsDir.exists()) {
+                screenshotsDir.mkdirs();
+            }
+            File destFile = new File(screenshotsDir, timestamp + "_dc_api_qr.png");
+            ImageIO.write(screenCapture, "png", destFile);
+
+            this.capturedScreenFile = destFile;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to capture native Digital Credentials QR screenshot", e);
+        }
+    }
+
+    public void clickViaDcApiOnWeb() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickViaDcApiOnWeb)).click();
     }
 }

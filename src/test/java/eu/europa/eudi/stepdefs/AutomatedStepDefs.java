@@ -2137,6 +2137,59 @@ public class AutomatedStepDefs {
         test.mobile().wallet().authenticationSuccessfully();
     }
 
+    // TEMP (2026-10-22): issuers are down while devs work on a fix, so this skips the real issuance
+    // call and only runs the wallet's PIN setup, which does not depend on the issuer backend. Used to
+    // keep exercising the cross-device DC API scan mechanism in the meantime. Remove once issuance is
+    // restored and go back to "the user issues a {credential} attestation using {issuer}" as Given step.
+    @Given("the wallet is freshly set up with no attestations issued for {}")
+    public void theWalletIsFreshlySetUpWithNoAttestationsIssuedFor(String credential) {
+        this.credential = credential;
+        test.mobile().wallet().eudiPageIsDisplayed();
+        test.mobile().wallet().clickContinue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().successMessageOfSetUpPin();
+    }
+
+    @And("the user opens the Relying Party service page on a different device")
+    public void theUserOpensTheRelyingPartyServicePageOnADifferentDevice() {
+        test.mobile().verifier().openVerifierOnDesktopBrowser();
+    }
+
+    @When("the user starts the wallet verification flow from the Relying Party page on the different device")
+    public void theUserStartsTheWalletVerificationFlowFromTheRelyingPartyPageOnTheDifferentDevice() {
+        test.mobile().verifier().startDcApiFlowOnDesktopBrowser(this.credential);
+    }
+
+    @When("the Desktop browser invokes the Digital Credentials API for the presentation request")
+    public void theDesktopBrowserInvokesTheDigitalCredentialsAPIForThePresentationRequest() {
+        //no action occurs in automation
+    }
+
+    @Then("the browser displays a QR code for the user to scan with the mobile device")
+    public void theBrowserDisplaysAQRCodeForTheUserToScanWithTheMobileDevice() {
+        test.web().verifier().captureNativeQrScreenshot();
+    }
+
+    @When("the mobile device camera scans the displayed QR code")
+    public void theMobileDeviceCameraScansTheDisplayedQRCode() {
+        test.mobile().wallet().injectHybridTransportQr(test.web().verifier().getCapturedScreenFile());
+    }
+
+    @Then("the Mobile Operating System presents a selector listing the matching attestations")
+    public void theMobileOperatingSystemPresentsASelectorListingTheMatchingAttestations() {
+        //todo: not verified on a real cross-device run - injectHybridTransportQr deep-links into Google
+        //Play Services (not the Wallet), so it is unclear whether a separate native selector screen
+        //actually appears before "the matching Wallet Unit launches automatically", or whether GMS
+        //resolves straight to the Wallet, or whether the whole handshake even succeeds without a real
+        //BLE/cloud tunnel back to the Desktop browser session.
+    }
+
+    @And("the Relying Party confirms the verification was successful in the Desktop browser")
+    public void theRelyingPartyConfirmsTheVerificationWasSuccessfulInTheDesktopBrowser() {
+        test.mobile().verifier().verifierVerifyCredential("cross device", "specific attributes", this.issuerType, this.credential);
+    }
+
     @And("the Relying Party confirms the verification was successful in the browser")
     public void theRelyingPartyConfirmsTheVerificationWasSuccessfulInTheBrowser() {
         test.mobile().verifier().verifierVerifyCredential("same device", this.selectiveDisclosure, this.issuerType, this.credential);

@@ -1083,35 +1083,39 @@ public class Wallet {
         }
     }
 
+    private String decodeQrContent(File qrImagePath) throws Exception {
+        if (qrImagePath == null) {
+            throw new IllegalArgumentException("QR image file path is null");
+        }
+        if (!qrImagePath.exists()) {
+            throw new IllegalArgumentException("QR image file does not exist: " + qrImagePath.getAbsolutePath());
+        }
+
+        BufferedImage bufferedImage = ImageIO.read(qrImagePath);
+
+        BufferedImage grayImage = new BufferedImage(
+                bufferedImage.getWidth(),
+                bufferedImage.getHeight(),
+                BufferedImage.TYPE_BYTE_GRAY
+        );
+        grayImage.getGraphics().drawImage(bufferedImage, 0, 0, null);
+
+        LuminanceSource source = new BufferedImageLuminanceSource(grayImage);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+        Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
+        hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+
+        Result result = new MultiFormatReader().decode(bitmap, hints);
+        return result.getText();
+    }
+
     public void mockQRInject(File qrImagePath) {
         int maxAttempts = 2;
 
         for (int attempt = 1; attempt <= maxAttempts; attempt++) {
             try {
-                if (qrImagePath == null) {
-                    throw new IllegalArgumentException("QR image file path is null");
-                }
-                if (!qrImagePath.exists()) {
-                    throw new IllegalArgumentException("QR image file does not exist: " + qrImagePath.getAbsolutePath());
-                }
-
-                BufferedImage bufferedImage = ImageIO.read(qrImagePath);
-
-                BufferedImage grayImage = new BufferedImage(
-                        bufferedImage.getWidth(),
-                        bufferedImage.getHeight(),
-                        BufferedImage.TYPE_BYTE_GRAY
-                );
-                grayImage.getGraphics().drawImage(bufferedImage, 0, 0, null);
-
-                LuminanceSource source = new BufferedImageLuminanceSource(grayImage);
-                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-                Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
-                hints.put(DecodeHintType.POSSIBLE_FORMATS, Collections.singletonList(BarcodeFormat.QR_CODE));
-                hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-
-                Result result = new MultiFormatReader().decode(bitmap, hints);
-                String qrContent = result.getText();
+                String qrContent = decodeQrContent(qrImagePath);
 
                 System.out.println("QR decoded successfully on attempt " + attempt);
 
@@ -1139,6 +1143,45 @@ public class Wallet {
 
                 if (attempt == maxAttempts) {
                     throw new RuntimeException("Failed to process QR code after retries", e);
+                }
+            }
+        }
+    }
+
+    // FIDO hybrid-transport QRs are handled at the OS level by Google Play Services' Credential
+    // Manager, not by the Wallet - the Wallet declares no intent-filter for the FIDO: scheme, which
+    // is why mockQRInject's explicit package=<wallet> deep link fails with "unable to resolve
+    // Intent". Target GMS explicitly instead, the same component a real device's system camera/QR
+    // scanner routes this QR type to, so Android can actually launch the real hybrid handshake.
+    public void injectHybridTransportQr(File qrImagePath) {
+        int maxAttempts = 2;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                String qrContent = decodeQrContent(qrImagePath);
+
+                System.out.println("Hybrid QR decoded successfully on attempt " + attempt);
+
+                test.mobileWebDriverFactory().androidDriver.executeScript("mobile: deepLink",
+                        ImmutableMap.of(
+                                "url", qrContent,
+                                "package", "com.google.android.gms"
+                        ));
+
+                return;
+
+            } catch (com.google.zxing.NotFoundException e) {
+                System.out.println("QR not found in image (attempt " + attempt + ")");
+
+                if (attempt == maxAttempts) {
+                    throw new RuntimeException("QR code not found after retries: " + qrImagePath.getAbsolutePath(), e);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Hybrid QR processing error (attempt " + attempt + "): " + e.getMessage());
+
+                if (attempt == maxAttempts) {
+                    throw new RuntimeException("Failed to inject hybrid-transport QR after retries", e);
                 }
             }
         }
