@@ -1,4 +1,4 @@
-@ANDROID @US_IDDR @Q3_2026
+@ANDROID @US_IDDR @GENERAL_TESTS
 Feature: Initiate a data deletion request
   As a EUDI Wallet User
   I want to initiate a data deletion request to Relying Parties that have received my personal data,

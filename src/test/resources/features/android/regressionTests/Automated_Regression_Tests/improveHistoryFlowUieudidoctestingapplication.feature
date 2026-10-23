@@ -1,4 +1,4 @@
-@ANDROID @automated@US_IHFUEDTA
+@ANDROID @automated@US_IHFUEDTA @GENERAL_TESTS
 Feature: Validate History Flow UI Improvements
   As a user
   I want the History interface to be clear and consistent

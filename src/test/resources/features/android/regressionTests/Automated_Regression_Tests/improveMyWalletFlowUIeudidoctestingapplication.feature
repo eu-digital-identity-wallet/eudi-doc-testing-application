@@ -1,4 +1,4 @@
-@ANDROID @automated @US_IMWFUEDTA
+@ANDROID @automated @US_IMWFUEDTA @GENERAL_TESTS
 Feature: Improve My Wallet Flow UI
   As a user
   I want clearer navigation and more intuitive options within the My Wallet section

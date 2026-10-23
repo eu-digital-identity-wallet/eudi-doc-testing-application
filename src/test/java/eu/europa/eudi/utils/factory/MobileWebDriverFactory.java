@@ -65,6 +65,12 @@ public class MobileWebDriverFactory {
                 Map<String, Object> appiumSettings = new HashMap<>();
                 appiumSettings.put("allowInvisibleElements", true);
                 options.setCapability("appium:settings", appiumSettings);
+                // Start the session in German when the scenario is tagged @GERMAN_LANGUAGE
+                if (test.getScenario().getSourceTagNames().contains("@GERMAN_LANGUAGE")) {
+                    options.setCapability("language", "de");
+                    options.setCapability("locale", "de_DE");
+                    System.out.println("GERMAN_LANGUAGE tag detected - starting Android session in German (de_DE)");
+                }
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");
@@ -150,6 +156,13 @@ public class MobileWebDriverFactory {
                 options.setCapability("browserstack.deviceLogs", true);
                 options.setCapability("browserstack.video", true);
                 options.setCapability("browserstack.appiumLogs", true);
+                // Start the session in German when the scenario is tagged @GERMAN_LANGUAGE
+                // (BrowserStack iOS does not allow changing the device language mid-session).
+                if (test.getScenario().getSourceTagNames().contains("@GERMAN_LANGUAGE")) {
+                    options.setCapability("language", "de");
+                    options.setCapability("locale", "de_DE");
+                    System.out.println("GERMAN_LANGUAGE tag detected - starting iOS session in German (de_DE)");
+                }
                 String featureName = test.getScenario().getUri().getPath()
                         .substring(test.getScenario().getUri().getPath().lastIndexOf('/') + 1)
                         .replace(".feature", "");

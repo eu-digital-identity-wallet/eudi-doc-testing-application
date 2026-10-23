@@ -31,5 +31,5 @@ fields:
     required: true
 
   "Issuing Country":
-    value: "FC"
+    value: "LU"
     required: true

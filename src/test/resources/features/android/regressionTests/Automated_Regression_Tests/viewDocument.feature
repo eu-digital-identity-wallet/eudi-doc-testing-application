@@ -23,7 +23,6 @@ Feature: View, bookmark and manage attestations in the EUDI Wallet
     When the user taps the bookmark icon on the attestation
     Then the attestation gets marked as bookmarked
     And the bookmark icon updates to indicate the bookmarked state
-    When the user opens the issuer details from the attestation
     Then the issuer details are displayed to the user
     When the user closes the attestation details without deleting it
     Then the user lands back on the Documents screen

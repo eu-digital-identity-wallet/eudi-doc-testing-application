@@ -23,6 +23,7 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.IOException;
+import java.net.URI;
 import java.time.Duration;
 import java.util.*;
 import com.google.zxing.BarcodeFormat;
@@ -50,6 +51,19 @@ public class Wallet {
 
     public Wallet(TestSetup test) {
         this.test = test;
+    }
+
+    /**
+     * Extracts the host (without scheme) from the configured kotlin issuer URL,
+     * e.g. "https://issuer-backend.eudiw.dev/issuer/credentialsOffer/generate" -> "issuer-backend.eudiw.dev".
+     */
+    private String getKotlinIssuerHost() {
+        try {
+            URI uri = new URI(test.envDataConfig().getKotlinUrl());
+            return uri.getHost();
+        } catch (Exception e) {
+            throw new IllegalStateException("Invalid kotlin issuer URL: " + test.envDataConfig().getKotlinUrl(), e);
+        }
     }
 
     public void launchApp() {
@@ -768,7 +782,30 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.walletHomeScreenDisplayed));
         } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.homePageIsDisplayed));
+            // On iOS, the About screen "Back" returns to the menu drawer. Close it first (if open),
+            // then verify the home/dashboard screen.
+            closeIosMenuIfOpen();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.dashboardPageIsDisplayed));
+        }
+    }
+
+    /**
+     * On iOS, if the menu drawer is open (identified by the "My EU Wallet" navigation bar),
+     * taps the menu's back button to close it and reveal the home screen.
+     */
+    private void closeIosMenuIfOpen() {
+        if (!test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            try {
+                WebElement menuBar = test.mobileWebDriverFactory().getWait().until(
+                        ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.myEuWalletMenu));
+                if (menuBar.isDisplayed()) {
+                    test.mobileWebDriverFactory().getWait().until(
+                            ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickBackButton)).click();
+                    Thread.sleep(1500);
+                }
+            } catch (Exception e) {
+                // Menu not open - nothing to close
+            }
         }
     }
 
@@ -1359,7 +1396,7 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             try {
                 driver.executeScript("mobile: scroll", ImmutableMap.of(
-                        "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
+                        "predicateString", "name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_sdJwtPid' OR name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_mDocPid'",
                         "direction", "down"
                 ));
             } catch (Exception ignored) {
@@ -1404,7 +1441,7 @@ public class Wallet {
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             By locator = AppiumBy.iOSNsPredicateString(
-                    "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'"
+                    "name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_sdJwtPid' OR name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_mDocPid'"
             );
             driver.setSetting("waitForQuiescence", false);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
@@ -1415,7 +1452,7 @@ public class Wallet {
                         return;
                     } catch (Exception e) {
                         driver.executeScript("mobile: scroll", ImmutableMap.of(
-                                "predicateString", "name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_sdJwtPid' OR name == 'add_document_screen_attestation_issuer-backend.eudiw.dev_mDocPid'",
+                                "predicateString", "name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_sdJwtPid' OR name == 'add_document_screen_attestation_" + getKotlinIssuerHost() + "_mDocPid'",
                                 "direction", "down"
                         ));
                     }
@@ -3425,5 +3462,161 @@ public class Wallet {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.initiateDeletion)).getText();
             Assert.assertEquals(Literals.Wallet.INITIATE_DELETION.label, label);
         }
+    }
+
+    public void clickAboutEudiWallet() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.aboutEudiWallet)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.aboutEudiWallet)).click();
+        }
+    }
+
+    public void trustMarkIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.trustMarkIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.TRUSTMARK_IS_DISPLAYED.label, label);
+        } else {
+            // The trust mark title is localized; "EU Digital Identity Wallet" is present in both languages.
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.trustMarkTitleIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EU_IS_DISPLAYED.label, label);
+        }
+    }
+
+    public void trustMarkContentIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.trustMarkContentIsDisplayed)).isDisplayed();
+            Assert.assertTrue("Trust Mark is displayed", label);
+        } else {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.trustMarkContentIsDisplayed)).isDisplayed();
+            Assert.assertTrue("Trust Mark is displayed", label);
+        }
+    }
+
+    public void linkToWalletProviderIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.linkToWalletProviderIsDisplayed)).isDisplayed();
+            Assert.assertTrue("Link is displayed", label);
+        } else {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.linkToWalletProviderIsDisplayed)).isDisplayed();
+            Assert.assertTrue("Link is displayed", label);
+        }
+    }
+
+    public void selectlinkToWalletProvider() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.linkToWalletProviderIsDisplayed)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.linkToWalletProviderIsDisplayed)).click();
+        }
+    }
+
+    public void europeanCommissionWebPage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.europeanCommissionWebPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EUROPEAN_COMMISSION_IS_DISPLAYED.label, label);
+        } else {
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.europeanCommissionWebPageIsDisplayed)).getText();
+            Assert.assertEquals(Literals.Wallet.EUROPEAN_COMMISSION_IS_DISPLAYED.label, label);
+        }
+    }
+
+    public void linkToWalletSolutionInformationPage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String label = test.mobileWebDriverFactory()
+                    .getWait()
+                    .until(ExpectedConditions.visibilityOfElementLocated(
+                            eu.europa.eudi.elements.android.WalletElements.linkToWalletSolutionInformationPage))
+                    .getText();
+
+            String expected = Literals.Wallet.LINK_TO_WALLET_SOLUTION_INFORMATION.label;
+
+            Assert.assertEquals(
+                    expected.replace('\u00A0', ' ').replaceAll("\\s+", " ").trim(),
+                    label.replace('\u00A0', ' ').replaceAll("\\s+", " ").trim()
+            );
+        } else {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.linkToWalletSolutionInformationPage)).isDisplayed();
+            Assert.assertTrue("Link is displayed", label);
+        }
+    }
+
+    public void clicklinkToWalletSolutionInformationPage() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.clicklinkToWalletSolutionInformationPage)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.linkToWalletSolutionInformationPage)).click();
+        }
+    }
+
+    public void EUTrustMarkLogoIsDisplayed() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.EUTrustMarkLogoIsDisplayed)).isDisplayed();
+            Assert.assertTrue("Link is displayed", label);
+        } else {
+            // iOS: the trust mark logo is rendered as part of the trust mark header (localized title)
+            boolean label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.trustMarkTitleIsDisplayed)).isDisplayed();
+            Assert.assertTrue("EU Digital Identity Wallet Trust Mark is displayed", label);
+        }
+    }
+
+    public void changeDeviceLanguageToGermanAndVerifyTrustMarkText() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            driver.activateApp("com.android.settings");
+            scrollToTextInSettings("General management", 10);
+            clickByTextInSettings("General management");
+            scrollToTextInSettings("Language", 6);
+            clickByTextInSettings("Language");
+            clickByTextInSettings("Add language");
+            scrollToTextInSettings("Deutsch", 15);
+            clickByTextInSettings("Deutsch");
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.WalletElements.settingsCountryGermany)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.WalletElements.settingsSetAsDefault)).click();
+            driver.activateApp(test.envDataConfig().getAppiumAndroidAppPackage());
+            WebElement pinField = test.mobileWebDriverFactory().getWait().until(
+                    ExpectedConditions.presenceOfElementLocated(AppiumBy.className("android.widget.EditText")));
+            pinField.click();
+            for (char digit : test.envDataConfig().getPin().toCharArray()) {
+                driver.pressKey(new KeyEvent(AndroidKey.valueOf("DIGIT_" + digit)));
+            }
+            test.mobile().wallet().clickMenu();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.WalletElements.aboutEudiWallet)).click();
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.android.WalletElements.trustMarkContentIsDisplayedGerman)).getText();
+            Assert.assertEquals(Literals.Wallet.TRUSTMARK_CONTENT_IS_DISPLAYED_GERMAN.label, label);
+        } else {
+            // iOS: the session starts in German when @GERMAN_LANGUAGE is used (see MobileWebDriverFactory).
+            // Navigate to the About EUDI Wallet (Trust Mark) screen and verify the German informational text.
+//            test.mobile().wallet().clickMenu();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+//                    eu.europa.eudi.elements.ios.WalletElements.aboutEudiWallet)).click();
+            String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                    eu.europa.eudi.elements.ios.WalletElements.trustMarkContentIsDisplayedGerman)).getText();
+            Assert.assertEquals(Literals.Wallet.TRUSTMARK_CONTENT_IS_DISPLAYED_GERMAN.label, label);
+        }
+    }
+
+    private void scrollToTextInSettings(String text, int maxSwipes) {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        for (int i = 0; i < maxSwipes; i++) {
+            try {
+                WebElement el = driver.findElement(AppiumBy.androidUIAutomator(
+                        "new UiSelector().text(\"" + text + "\")"));
+                if (el.isDisplayed()) return;
+            } catch (Exception e) {
+                // not visible yet, keep scrolling
+            }
+            slowScroll(driver);
+        }
+    }
+
+    private void clickByTextInSettings(String text) {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
+                AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))).click();
     }
 }

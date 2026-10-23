@@ -90,7 +90,12 @@ public interface Literals {
         PRIVACY_POLICY("Privacy policy"),
         NOTES_FOR_REQUEST("Before you continue"),
         DATA_DELETION_REQUEST_INITIATION("View previous data deletion requests (1)"),
-        PREVIOUS_DATA_DELETION_IS_DISPLAYED("Previous data deletion requests for NiScy");
+        PREVIOUS_DATA_DELETION_IS_DISPLAYED("Previous data deletion requests for NiScy"),
+        TRUSTMARK_IS_DISPLAYED("Officially Certified And Trusted EUDI Wallet"),
+        TRUSTMARK_CONTENT_IS_DISPLAYED("This wallet application has been certified conformant with the EUDI Wallet’s security and privacy requirements and is part of the EUDI Wallet Provider Trusted List[ ]Open new."),
+        TRUSTMARK_CONTENT_IS_DISPLAYED_GERMAN("Beispieltext-für-Benutzer"),
+        EUROPEAN_COMMISSION_IS_DISPLAYED("The EU Digital Identity Framework"),
+        LINK_TO_WALLET_SOLUTION_INFORMATION("See the Certification information page Open new for detailed certification information of this wallet.");
 
 
         public final String label;

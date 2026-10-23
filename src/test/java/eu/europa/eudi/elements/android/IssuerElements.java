@@ -1,9 +1,13 @@
 package eu.europa.eudi.elements.android;
 
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class IssuerElements {
+
+    private static final String PYTHON_ISSUER_URL = new EnvDataConfig().getPythonUrl().replaceAll("/+$", "");
+
     public static By requestCredentialsPageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select credentials\"]");
     public static By checkPID = By.xpath("//android.widget.TextView[@text=\" PID (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox"); //(//android.widget.CheckBox[@resource-id="check"])[8]
     public static By clickSubmitButton = By.xpath("//android.widget.Button[@text=\"Submit\"]");
@@ -15,13 +19,13 @@ public class IssuerElements {
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
     public static By clickFamilyName = By.xpath("//android.view.View[@text='Family Name']/../android.widget.EditText");
-    public static By clickBirthDate = By.xpath("//android.widget.DatePicker");
+    public static By clickBirthDate = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"field-birth_date\")");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/confirm_button\"]");
     public static By enterDocumentNumber = By.xpath("//android.view.View[@text=\"Document Number\"]/following-sibling::android.widget.EditText[1]\n");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Document Number\"]");
-    public static By clickIssueDate = By.xpath("//android.view.View[@text='Issue Date']/following-sibling::android.widget.Spinner[1]\n");
-    public static By clickExpiryDate = By.xpath("//android.view.View[@text='Expiry Date']/following-sibling::android.widget.Spinner[1]\n");
-    public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
+    public static By clickIssueDate = By.xpath("//android.view.View[@text='Issue Date']/following-sibling::android.widget.DataPicker[1]\n");
+    public static By clickExpiryDate = By.xpath("//android.view.View[@text='Expiry Date']/following-sibling::android.widget.DataPicker[1]\n");
+    public static By clickSubmit =  AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.Button\").text(\"Submit\")");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Expiry Date\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\" or @text=\"Place Of Birth\"]");
@@ -43,7 +47,7 @@ public class IssuerElements {
     public static By passwordWeb = By.cssSelector("#password");;
     public static By loginSubmit = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"kc-login\")");;
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
-    public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"https://issuer.eudiw.dev/credential_offer\"]");
+    public static final By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
     public static By pidSDJWT = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[3]");;
     public static By selectPIDDeferredPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc Deferred)']/../android.widget.CheckBox");

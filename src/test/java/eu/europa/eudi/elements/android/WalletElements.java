@@ -4,9 +4,21 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
+import java.net.URI;
+
 public class WalletElements {
 
     private static final String APP_PACKAGE = new EnvDataConfig().getAppiumAndroidAppPackage();
+    private static final String KOTLIN_ISSUER_HOST = extractKotlinIssuerHost(new EnvDataConfig().getKotlinUrl());
+
+    private static String extractKotlinIssuerHost(String url) {
+        try {
+            URI uri = new URI(url);
+            return uri.getScheme() + "://" + uri.getHost();
+        } catch (Exception e) {
+            throw new IllegalStateException("Invalid kotlin issuer URL: " + url, e);
+        }
+    }
 
     public static final By welcomeScreen = By.id(APP_PACKAGE + ":id/pin_screen_title");
     public static By clickConfirm = By.id(APP_PACKAGE + ":id/pin_screen_button");
@@ -56,9 +68,9 @@ public class WalletElements {
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Eaa-0\"]");
     public static By mdlIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Mobile Driving Licence (MSO MDoc)\")");
     public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
-    public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc)']/../android.widget.CheckBox");
+    public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text='PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By onlinePresentation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Online\")");
-    public static By clickPidFromKotlinFromList = By.id("eu.europa.ec.euidi:id/add_document_screen_attestation_https://issuer-backend.eudiw.dev_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred");
+    public static By clickPidFromKotlinFromList = By.id(APP_PACKAGE + ":id/add_document_screen_attestation_" + KOTLIN_ISSUER_HOST + "_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred");
     public static By clickPowerOfPresentation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Power Of Representation (MSO Mdoc)\")");
     public static By clickMdlKotlin = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*add_document_screen_attestation.*mDL.*\")");
     public static By selectPIDSDJWTPythonCredential = By.xpath("//android.widget.TextView[@text=\" PID (SD-JWT VC)\"]/preceding-sibling::android.widget.CheckBox");
@@ -167,4 +179,15 @@ public class WalletElements {
     public static By dataDeletionRequestInitiation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"View previous data deletion requests (1)\")");
     public static By previousDataDeletionIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Previous data deletion requests for NiScy\")");
     public static By noContactInfromation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"EU\")");
+    public static By aboutEudiWallet = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"About EUDI Wallet\")");
+    public static By trustMarkIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Officially Certified And Trusted EUDI Wallet\")");
+    public static By trustMarkContentIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").instance(4)");
+    public static By linkToWalletProviderIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").description(\"Open new\")");
+    public static By europeanCommissionWebPageIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"The EU Digital Identity Framework\")");
+    public static By linkToWalletSolutionInformationPage = By.xpath("//android.widget.TextView[@text=\"See the Certification information page Open new for detailed certification information of this wallet.\"]");
+    public static By clicklinkToWalletSolutionInformationPage = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").description(\"Open new\").instance(1)");
+    public static By EUTrustMarkLogoIsDisplayed = AppiumBy.accessibilityId("EUDI Wallet Trust Mark");
+    public static By settingsCountryGermany = AppiumBy.androidUIAutomator("new UiSelector().description(\"Germany\")");
+    public static By settingsSetAsDefault = AppiumBy.androidUIAutomator("new UiSelector().text(\"Set as default\")");
+    public static By trustMarkContentIsDisplayedGerman = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Beispieltext-für-Benutzer\")");
 }

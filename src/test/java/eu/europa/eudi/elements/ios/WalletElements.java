@@ -132,6 +132,7 @@ public class WalletElements {
     public static By qrCodeOnTopRight = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeOther' AND name == 'add_document_scan_qr_code_button'");
     public static By typeApinIsDispalyed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Type a PIN'");
     public static By clickMenu = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeOther' AND name == 'menu_button'");
+    public static By myEuWalletMenu = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeNavigationBar' AND name == 'My EU Wallet'");
     public static By clickChangePin = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Change pin'");
     public static By changePinIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'pin_screen_title'");
     public static By clickCloseButton = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'chevron.left'");
@@ -169,4 +170,12 @@ public class WalletElements {
     public static By dataDeletionRequestInitiation = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'View previous data deletion requests' OR label CONTAINS[c] 'View previous data deletion requests')");
     public static By previousDataDeletionIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'Previous data deletion requests for NiScy' OR label CONTAINS[c] 'Previous data deletion requests for NiScy')");
     public static By initiateDeletionDisabled = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name == 'Initiate deletion request' OR label == 'Initiate deletion request') AND enabled == false");
+    public static By trustMarkIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'Officially Certified And Trusted EUDI Wallet'");
+    public static By trustMarkTitleIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'EU Digital Identity Wallet'");
+    public static By aboutEudiWallet = By.id("About EUDI Wallet");
+    public static By trustMarkContentIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'This wallet application has been certified conformant'");
+    public static By trustMarkContentIsDisplayedGerman = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'Beispieltext'");
+    public static By linkToWalletProviderIsDisplayed = By.id("https://eidas.ec.europa.eu/efda/wallet/certified");
+    public static By europeanCommissionWebPageIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'The EU Digital Identity Framework'");
+    public static By linkToWalletSolutionInformationPage = By.id("https://eidas.ec.europa.eu/efda/wallet/certified?id=WALLET_SOLUTION_ID");;
 }

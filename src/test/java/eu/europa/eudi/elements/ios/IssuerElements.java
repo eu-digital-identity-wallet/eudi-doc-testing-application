@@ -1,8 +1,12 @@
 package eu.europa.eudi.elements.ios;
 
+import eu.europa.eudi.utils.config.EnvDataConfig;
 import org.openqa.selenium.By;
 
 public class IssuerElements {
+
+    private static final String PYTHON_ISSUER_URL = new EnvDataConfig().getPythonUrl().replaceAll("/+$", "");
+
     public static By requestCredentialsPageIsDisplayed = By.xpath("//XCUIElementTypeOther[@name=\"Request Credentials for your EUDI Wallet\" and @value=\"1\"]");
     public static By clickSubmitButton = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
     public static By qrCodeIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"QR Code\"]");
@@ -48,7 +52,7 @@ public class IssuerElements {
     public static By issueCredentialPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
     public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
-    public static By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"https://issuer.eudiw.dev/credential_offer\"]");;
+    public static final By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");;
     public static By clientIdLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
     public static By companyLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");

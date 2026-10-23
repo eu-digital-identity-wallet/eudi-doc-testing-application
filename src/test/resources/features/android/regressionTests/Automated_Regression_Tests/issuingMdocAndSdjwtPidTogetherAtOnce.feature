@@ -1,4 +1,4 @@
-@ANDROID @automated @US_IMASPTAO
+@ANDROID @automated @US_IMASPTAO @GENERAL_TESTS
 Feature: PID-07 Issuing mdoc and sd-jwt PID together at once
 
   As a wallet user requesting a PID

@@ -13,6 +13,8 @@ import eu.europa.eudi.utils.config.EnvDataConfig;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -412,8 +414,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(IssuerElements.clickGivenName);
             searchBar.clear();
             searchBar.sendKeys(givenName);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
-        } else {
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));        } else {
             String givenNameText = getValueFromYml("testdata/PID/py_issuer_form.yml", "Given Name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenName)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -432,6 +433,7 @@ public class Issuer {
             searchBar.clear();
             searchBar.sendKeys(familyName);
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String familyName = getValueFromYml("testdata/PID/py_issuer_form.yml", "Family Name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyName)).click();
@@ -556,7 +558,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(IssuerElements.enterDocumentNumber);
             searchBar.clear();
             searchBar.sendKeys("1234");
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardBefore03)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterDocumentNumber)).click();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -571,33 +573,33 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-
-            String issueDate = yml.fields.get("Issue Date").value;
+            FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
+            String birthDate = yml.fields.get("Birth Date").value;
+            driver.context("NATIVE_APP");
 
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.android.IssuerElements.clickIssueDate))
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickIssueDate))
                     .click();
 
-            String[] p = issueDate.split("-");
+            String[] p = birthDate.split("-");
             String year = p[0];
+            int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
 
+// 1. Click the month/year toggle button (UPDATED LOCATOR)
             try {
-                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+                driver.findElement(By.id("com.android.chrome:id/month_navigation_fragment_toggle")).click();
             } catch (Exception e) {
-                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+                driver.findElement(By.xpath("//*[contains(@resource-id,'month_navigation_fragment_toggle')]")).click();
             }
 
             selectYearScrollUp(driver, year);
 
-            By nextBtn = By.id("android:id/next");
-            By prevBtn = By.id("android:id/prev");
+// 2. Next/Previous month buttons (UPDATED LOCATORS)
+            By nextBtn = By.id("com.android.chrome:id/month_navigation_next");
+            By prevBtn = By.id("com.android.chrome:id/month_navigation_previous");
 
             int currentMonth = LocalDate.now().getMonthValue();
-
             int diff = 3 - currentMonth;
 
             WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -610,11 +612,12 @@ public class Issuer {
                     calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
             }
-            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
 
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
-                    .click();
+// 3. Select the day (UPDATED LOCATOR: TextView instead of View)
+            driver.findElement(By.xpath("//android.widget.TextView[@text='" + day + "']")).click();
+
+// 4. Confirm selection (Optional: Click OK if needed)
+            driver.findElement(By.id("com.android.chrome:id/confirm_button")).click();
 
         } else {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
@@ -657,26 +660,35 @@ public class Issuer {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            FormYml yml = YmlLoader.load("testdata/mDL/py_issuer_authorization.yml", FormYml.class);
-            String expiryDate = yml.fields.get("Expiry Date").value;
+            FormYml yml = YmlLoader.load("testdata/PID/py_issuer_form.yml", FormYml.class);
+            String birthDate = yml.fields.get("Birth Date").value;
+            driver.context("NATIVE_APP");
+
             test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(
-                            eu.europa.eudi.elements.android.IssuerElements.clickExpiryDate))
+                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.clickExpiryDate))
                     .click();
-            String[] p = expiryDate.split("-");
+
+            String[] p = birthDate.split("-");
             String year = p[0];
+            int targetMonth = Integer.parseInt(p[1]);
             String day = String.valueOf(Integer.parseInt(p[2]));
+
+// 1. Click the month/year toggle button (UPDATED LOCATOR)
             try {
-                driver.findElement(By.id("android:id/date_picker_header_year")).click();
+                driver.findElement(By.id("com.android.chrome:id/month_navigation_fragment_toggle")).click();
             } catch (Exception e) {
-                driver.findElement(By.xpath("//*[contains(@resource-id,'date_picker_header_year')]")).click();
+                driver.findElement(By.xpath("//*[contains(@resource-id,'month_navigation_fragment_toggle')]")).click();
             }
+
             selectYearScrollUp(driver, year);
 
-            By nextBtn = By.id("android:id/next");
-            By prevBtn = By.id("android:id/prev");
+// 2. Next/Previous month buttons (UPDATED LOCATORS)
+            By nextBtn = By.id("com.android.chrome:id/month_navigation_next");
+            By prevBtn = By.id("com.android.chrome:id/month_navigation_previous");
+
             int currentMonth = LocalDate.now().getMonthValue();
             int diff = 3 - currentMonth;
+
             WebDriverWait calendarWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             for (int i = 0; i < Math.abs(diff); i++) {
                 if (diff > 0) {
@@ -687,10 +699,12 @@ public class Issuer {
                     calendarWait.until(ExpectedConditions.elementToBeClickable(prevBtn));
                 }
             }
-            driver.findElement(By.xpath("//android.view.View[@text='" + day + "']")).click();
-            test.mobileWebDriverFactory().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(IssuerElements.chooseSet))
-                    .click();
+
+// 3. Select the day (UPDATED LOCATOR: TextView instead of View)
+            driver.findElement(By.xpath("//android.widget.TextView[@text='" + day + "']")).click();
+
+// 4. Confirm selection (Optional: Click OK if needed)
+            driver.findElement(By.id("com.android.chrome:id/confirm_button")).click();
         } else {
             WebDriverWait wait = test.mobileWebDriverFactory().getWait();
             wait.until(ExpectedConditions.elementToBeClickable(
@@ -777,6 +791,36 @@ public class Issuer {
     }
 
     public void scrollUntilFindSubmit() throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+            for (int i = 0; i < 2; i++) {
+                try {
+                    WebElement pidElement = driver.findElement(WalletElements.clickSubmit);
+                    if (pidElement.isDisplayed()) break;
+                } catch (Exception e) {
+                    MobileActionsUtils.slowScroll();
+                }
+            }
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        } else {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            int i = 1;
+            while (i < 5) {
+                WebElement scrollView = driver.findElement(AppiumBy.className("XCUIElementTypeScrollView"));
+                String elementId = ((RemoteWebElement) scrollView).getId();
+                Map<String, Object> params = new HashMap<>();
+                params.put("direction", "up");
+                params.put("element", elementId);
+                driver.executeScript("mobile: swipe", params);
+                i++;
+            }
+        }
+    }
+
+    public void scrollUntilFindConfirm() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -1090,7 +1134,7 @@ public class Issuer {
         enterCountryCode();
         scrollUntilCountry();
         enterCountry();
-        scrollUntilFindSubmit();
+        scrollUntilFindConfirm();
         clickConfirm();
         authorizeIsDisplayed();
         if ("PID (SD-JWT)".equalsIgnoreCase(credential)) {
@@ -1336,7 +1380,7 @@ public class Issuer {
         scrollUntilFindSign();
         enterCode();
         scrollUntilFindDate();
-        clickScreen();
+//        clickScreen();
         chooseExpiryDate();
         chooseIssueDate();
         scrollUntilFindName();
@@ -1352,13 +1396,14 @@ public class Issuer {
 
     public void enterGivenNameOnMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickGivenName)).click();
             WebElement givenName = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickGivenName));
             givenName.clear();
             givenName.sendKeys(givenNameText);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String givenNameText = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Given name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickGivenNameOnMdl)).click();
@@ -1372,12 +1417,13 @@ public class Issuer {
 
     public void enterFamilyNameOnMdl() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName)).click();
             WebElement givenFamily = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.clickFamilyName));
             givenFamily.clear();
             givenFamily.sendKeys(familyName);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String familyName = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Family name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickFamilyNameOnMdl)).click();
@@ -1395,7 +1441,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(IssuerElements.enterCode);
             searchBar.clear();
             searchBar.sendKeys(code);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickCode)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String code = getValueFromYml("testdata/mDL/py_data_on_wallet.yml", "Licence number");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.enterCode)).click();
@@ -1452,7 +1498,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(IssuerElements.clickCountry);
             searchBar.clear();
             searchBar.sendKeys(country);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickPlaceOfBirth)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String countryText = getValueFromYml("testdata/PID/py_issuer_form.yml", "Place Of Birth.Country");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountry)).click();
@@ -1682,7 +1728,7 @@ public class Issuer {
             WebElement searchBar = driver.findElement(IssuerElements.clickCountryCode);
             searchBar.clear();
             searchBar.sendKeys(countryCode);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.closeKeyboard)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String countryCodeText = getValueFromYml("testdata/PID/py_issuer_form.yml", "Nationality.Country Code");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickCountryCode)).click();
@@ -2276,8 +2322,39 @@ public class Issuer {
 
     public void selectMdlPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectMDLPythonCredential)).click();
-        } else {
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            String nativeContext = driver.getContext();
+
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
+                        break;
+                    }
+                }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.mdl_mdoc']"
+                                )
+                        )
+                );
+
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
+            }        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectMDLPython)).click();
 
         }
@@ -2285,7 +2362,39 @@ public class Issuer {
 
     public void selectPidPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDPythonCredential)).click();
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            String nativeContext = driver.getContext();
+
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
+                        break;
+                    }
+                }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.pid_mdoc']"
+                                )
+                        )
+                );
+
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDPython)).click();
 
@@ -2294,21 +2403,34 @@ public class Issuer {
 
     public void scrollUntilMdlIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            WebElement element = null;
+            String nativeContext = driver.getContext();
 
-            for (int i = 0; i < 80; i++) {
-                try {
-                    element = driver.findElement(WalletElements.selectMDLPythonCredential);
-
-                    if (element.isDisplayed() && element.isEnabled()) {
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
                         break;
                     }
-
-                } catch (Exception ignored) {
-                    MobileActionsUtils.slowScroll();
                 }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.mdl_mdoc']"
+                                )
+                        )
+                );
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
             }
         } else {
             envDataConfig = new EnvDataConfig();
@@ -2332,20 +2454,34 @@ public class Issuer {
 
     public void scrollUntilPidSDJWTIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement element = null;
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            for (int i = 0; i < 80; i++) {
-                try {
-                    element = driver.findElement(WalletElements.selectPIDSDJWTPythonCredential);
+            String nativeContext = driver.getContext();
 
-                    if (element.isDisplayed() && element.isEnabled()) {
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
                         break;
                     }
-
-                } catch (Exception ignored) {
-                    MobileActionsUtils.slowScroll();
                 }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']"
+                                )
+                        )
+                );
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
             }
         } else {
             envDataConfig = new EnvDataConfig();
@@ -2369,20 +2505,34 @@ public class Issuer {
 
     public void scrollUntilPidIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-            WebElement element = null;
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            for (int i = 0; i < 80; i++) {
-                try {
-                    element = driver.findElement(WalletElements.selectPIDPythonCredential);
+            String nativeContext = driver.getContext();
 
-                    if (element.isDisplayed() && element.isEnabled()) {
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
                         break;
                     }
-
-                } catch (Exception ignored) {
-                    MobileActionsUtils.slowScroll();
                 }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.pid_mdoc']"
+                                )
+                        )
+                );
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
             }
         } else {
             envDataConfig = new EnvDataConfig();
@@ -2406,20 +2556,18 @@ public class Issuer {
 
     public void clickUseEudiwPid() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+            String issuerUrl = test.envDataConfig().getPythonUrl().replaceAll("/+$", "");
 
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22"
+                    + issuerUrl
+                    + "%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
-                AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-                driver.executeScript("mobile: deepLink", ImmutableMap.of(
-                        "url", deepLink,
-                        "package", test.envDataConfig().getAppiumAndroidAppPackage()
-                ));
-
-                System.out.println("Deep link executed on Android");
-
-            }
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.executeScript("mobile: deepLink", ImmutableMap.of(
+                    "url", deepLink,
+                    "package", test.envDataConfig().getAppiumAndroidAppPackage()
+            ));
+            System.out.println("Deep link executed on Android");
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.context("NATIVE_APP");
@@ -2700,8 +2848,39 @@ public class Issuer {
 
     private void selectPidSDJWTPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.selectPIDSDJWTPythonCredential)).click();
-        } else {
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            String nativeContext = driver.getContext();
+
+            try {
+                // Switch to Chrome WebView
+                for (int i = 0; i < 20; i++) {
+                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                        driver.context("WEBVIEW_chrome");
+                        break;
+                    }
+                }
+
+                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+                WebElement checkbox = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']"
+                                )
+                        )
+                );
+
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+
+            } finally {
+                // Return to the original context
+                driver.context(nativeContext);
+            }        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDSDJWTPython)).click();
         }
     }

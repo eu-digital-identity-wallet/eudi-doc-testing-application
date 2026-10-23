@@ -2115,4 +2115,118 @@ public class AutomatedStepDefs {
     public void theRelyingPartyConfirmsTheVerificationWasSuccessfulInTheBrowser() {
         test.mobile().verifier().verifierVerifyCredential("same device", this.selectiveDisclosure, this.issuerType, this.credential);
     }
+
+    @Given("the user opens the Wallet for first time")
+    public void theUserOpensTheWalletForFirstTime() {
+        //nothing for automation
+    }
+
+    @And("the Wallet displays Trust Mark view")
+    public void theWalletDisplaysTrustMarkView() {
+        test.mobile().wallet().eudiPageIsDisplayed();
+    }
+
+    @When("the user selects the Continue button")
+    public void theUserSelectsTheContinueButton() {
+        test.mobile().wallet().clickContinue();
+    }
+
+    @Then("the Wallet displays Login screen")
+    public void theWalletDisplaysLoginScreen() {
+        test.mobile().wallet().checkIfPageIsTrue();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().renterThePin();
+        test.mobile().wallet().clickAddMyDigitalID();
+    }
+
+    @And("the authenticated user is on Wallet home screen")
+    public void theAuthenticatedUserIsOnWalletHomeScreen() {
+        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+    }
+
+    @When("user selects the burger menu and chooses About EUDI Wallet")
+    public void userSelectsTheBurgerMenuAndChoosesAboutEUDIWallet() {
+        test.mobile().wallet().clickMenu();
+        test.mobile().wallet().clickAboutEudiWallet();
+    }
+
+    @Then("Wallet displays the Trust Mark view")
+    public void walletDisplaysTheTrustMarkView() {
+        test.mobile().wallet().trustMarkIsDisplayed();
+    }
+
+    @And("Trust Mark content is displayed")
+    public void trustMarkContentIsDisplayed() {
+        test.mobile().wallet().trustMarkContentIsDisplayed();
+    }
+
+    @And("Wallet displays a link to the EUDI Wallet Provider Trusted List")
+    public void walletDisplaysALinkToTheEUDIWalletProviderTrustedList() {
+        test.mobile().wallet().linkToWalletProviderIsDisplayed();
+    }
+
+    @And("user selects the link")
+    public void userSelectsTheLink() {
+        test.mobile().wallet().selectlinkToWalletProvider();
+    }
+
+    @When("Wallet opens the European Commission-hosted webpage in an external browser or supported web view")
+    public void walletOpensTheEuropeanCommissionHostedWebpageInAnExternalBrowserOrSupportedWebView() {
+        test.mobile().wallet().europeanCommissionWebPage();
+    }
+
+    @Then("webpage allows the user to view the officially certified Wallet Solutions")
+    public void webpageAllowsTheUserToViewTheOfficiallyCertifiedWalletSolutions() {
+            //nothing for automation
+    }
+
+    @And("Wallet displays a link to the Wallet Solution certification information page")
+    public void walletDisplaysALinkToTheWalletSolutionCertificationInformationPage() {
+        test.mobile().wallet().linkToWalletSolutionInformationPage();
+    }
+
+    @When("user selects the certification information link")
+    public void userSelectsTheCertificationInformationLink() {
+        test.mobile().wallet().clicklinkToWalletSolutionInformationPage();
+    }
+
+    @And("Wallet opens the European Commission-hosted certification information page in an external browser or supported web view")
+    public void walletOpensTheEuropeanCommissionHostedCertificationInformationPageInAnExternalBrowserOrSupportedWebView() {
+        test.mobile().wallet().europeanCommissionWebPage();
+    }
+
+    @Then("page allows the user to verify the certification status of the Wallet Solution")
+    public void pageAllowsTheUserToVerifyTheCertificationStatusOfTheWalletSolution() {
+            //nothing for automation
+    }
+
+    @Then("Wallet displays the official EU Digital Identity Wallet Trust Mark graphics or logo")
+    public void walletDisplaysTheOfficialEUDigitalIdentityWalletTrustMarkGraphicsOrLogo() {
+        test.mobile().wallet().EUTrustMarkLogoIsDisplayed();
+    }
+
+    @And("Wallet displays informational text according to the device language settings")
+    public void walletDisplaysInformationalTextAccordingToTheDeviceLanguageSettings() throws InterruptedException {
+        test.mobile().wallet().changeDeviceLanguageToGermanAndVerifyTrustMarkText();
+    }
+
+    @And("Wallet provides links to certification status information")
+    public void walletProvidesLinksToCertificationStatusInformation() {
+        test.mobile().wallet().linkToWalletSolutionInformationPage();
+    }
+
+    @When("the user selects back arrow")
+    public void theUserSelectsBackArrow() {
+        test.mobile().wallet().clickBackButton();
+    }
+
+    @Then("the Wallet returns to Wallet home screen")
+    public void theWalletReturnsToWalletHomeScreen() {
+        test.mobile().wallet().walletHomeScreenIsDisplayed();
+    }
+
+    @Then("Wallet displays general informational text explaining the certification of Wallet Solutions within the EUDI Wallet ecosystem")
+    public void walletDisplaysGeneralInformationalTextExplainingTheCertificationOfWalletSolutionsWithinTheEUDIWalletEcosystem() {
+            //nothing for automation
+    }
 }

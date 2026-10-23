@@ -1,4 +1,4 @@
-@ANDROID @automated @US_IADFUEDTA
+@ANDROID @automated @US_IADFUEDTA @GENERAL_TESTS
 Feature: Improve Add Document Flow UI
   As a user
   I want a clearer and more consistent experience when adding documents to my wallet
