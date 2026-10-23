@@ -52,4 +52,12 @@ public class VerifierElements {
     public static By walletRespondedSdJwt = By.xpath("//android.widget.TextView[@text=\"urn:eudi:pid:1\"]");
     public static By transactionCodePage = By.xpath("//android.widget.TextView[@text=\"Digital Credentials Issuer requires verification\"]");
     public static By clickContinue = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]");
+    public static By clickViaDcApi = By.xpath("//android.view.View[@resource-id=\"mat-tab-group-0-label-1\"]");
+    public static By verifierAsksPermision = By.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/message_paragraph\"]");
+    public static By noAttestationFound = By.xpath("//android.widget.TextView[contains(@text, \"Your info wasn\") and contains(@text, \"t found\")]");
+    public static By clickClose = By.xpath("//android.widget.TextView[@text=\"Close\"]");
+    public static By clickBack = By.xpath("//android.view.View[@resource-id=\"back_button\"]");
+    public static By credentialType = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\" or @text=\"PID (MSO MDoc)\"]");
+    public static By walletUnit = By.xpath("//android.widget.TextView[@text=\"EUDI Wallet\"]");
+    public static By agreeAndContinue = By.xpath("//android.widget.TextView[@text=\"Agree and continue\"]");
 }

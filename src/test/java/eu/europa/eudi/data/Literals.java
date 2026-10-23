@@ -120,7 +120,12 @@ public interface Literals {
         TRANSACTION_CODE_PAGE("Digital Credentials Issuer requires verification"),
         DEFERRED_IS_DISPLAYED("PID (MSO Mdoc Deferred)"),
         DEFERRED_IS_DISPLAYED_KOTLIN("PID (MSO MDoc) (deferred)"),
-        DEFERRED_IS_DISPLAYED_IOS("PID (MSO Mdoc deferred)");
+        DEFERRED_IS_DISPLAYED_IOS("PID (MSO Mdoc deferred)"),
+        VERIFIER_ASKS_PERMISION("verifier.eudiw.dev wants to use personal info from your digital wallet."),
+        NO_ATTESTATION_FOUND("Your info wasn’t found"),
+        CREDENTIAL_TYPE("PID (MSO Mdoc)"),
+        WALLET_UNIT("EUDI Wallet"),
+        CREDENTIAL_TYPE_KOTLIN("PID (MSO MDoc)");
 
         public final String label;
         Verifier(String label) {

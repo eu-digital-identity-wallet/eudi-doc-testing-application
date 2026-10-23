@@ -2021,54 +2021,78 @@ public class AutomatedStepDefs {
 
     @When("the user starts the wallet verification flow from the Relying Party page")
     public void theUserStartsTheWalletVerificationFlowFromTheRelyingPartyPage() throws InterruptedException {
+        test.mobile().verifier().launchSafari();
         test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().wallet().performPresentation("same device", "mDL (MSO Mdoc)", "specific attributes", this.issuerType);
-        Thread.sleep(50000);
+        test.mobile().wallet().rotateScreen();
+        test.mobile().verifier().selectSpecificAttributesForMdl();
+        test.mobile().verifier().scrollUntilNext();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().clickSpecificAttributes();
+        test.mobile().verifier().clickSelect();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().clickViaDcApi();
+        test.mobile().verifier().scrollUntilSumbit();
+        test.mobile().verifier().clickSubmit();
     }
 
     @Then("the Relying Party raises a presentation request")
     public void theRelyingPartyRaisesAPresentationRequest() {
-        //no automation action occurs
+        //no action occurs in automation
     }
 
     @When("Chrome invokes the Digital Credentials API for the presentation request")
     public void chromeInvokesTheDigitalCredentialsAPIForThePresentationRequest() {
-        //TODO
+        //no action occurs in automation
     }
 
     @Then("the browser asks the user to grant permission to proceed")
     public void theBrowserAsksTheUserToGrantPermissionToProceed() {
-        //TODO
+        test.mobile().verifier().verifierAsksPermissionToProceed();
     }
 
     @When("the user grants the requested permission")
     public void theUserGrantsTheRequestedPermission() {
-        //TODO
+        test.mobile().verifier().clickContinue();
     }
 
     @Then("the device searches the installed Wallet Units for matching attestations")
     public void theDeviceSearchesTheInstalledWalletUnitsForMatchingAttestations() {
-        //TODO
+        //no action occurs in automation
     }
 
     @And("the process ends with a user notification when no attestations match the request")
     public void theProcessEndsWithAUserNotificationWhenNoAttestationsMatchTheRequest() {
-        //TODO
+        test.mobile().verifier().noAttestationFound();
     }
 
     @When("suitable attestations are located on the device")
     public void suitableAttestationsAreLocatedOnTheDevice() {
-        //TODO
+        test.mobile().verifier().clickClose();
+        test.mobile().verifier().clickBack();
     }
 
     @Then("the browser presents a selector listing the matching attestations")
     public void theBrowserPresentsASelectorListingTheMatchingAttestations() {
-        //TODO
+        test.mobile().verifier().appOpensSuccessfully();
+        test.mobile().verifier().refreshVerifierPage();
+        test.mobile().verifier().selectSpecificAttributesOnVerifier(this.credential);
+        test.mobile().verifier().scrollUntilNext();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().selectAttributes();
+        test.mobile().verifier().clickSpecificAttributes();
+        test.mobile().verifier().clickSelect();
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().clickViaDcApi();
+        test.mobile().verifier().scrollUntilSumbit();
+        test.mobile().verifier().clickSubmit();
+        test.mobile().verifier().verifierAsksPermissionToProceed();
+        test.mobile().verifier().clickContinue();
     }
 
     @And("each listed attestation shows its credential type and the Wallet Unit that holds it")
     public void eachListedAttestationShowsItsCredentialTypeAndTheWalletUnitThatHoldsIt() {
-        //TODO
+        test.mobile().verifier().listedAttestationDetails(this.issuerType);
     }
 
     @And("the selector marks which Wallet Unit each listed attestation belongs to")
@@ -2078,12 +2102,14 @@ public class AutomatedStepDefs {
 
     @When("the user picks one of the listed attestations")
     public void theUserPicksOneOfTheListedAttestations() {
-        //TODO
+        test.mobile().verifier().clickAgreeAndContinue();
     }
 
     @Then("the matching Wallet Unit launches automatically")
     public void theMatchingWalletUnitLaunchesAutomatically() {
-        //TODO
+        test.mobile().wallet().loginPageIsDisplayed();
+        test.mobile().wallet().createAPin();
+        test.mobile().wallet().clickExpandVerification();
     }
 
     @And("the presentation request screen displays the requested attestations and their attributes")
