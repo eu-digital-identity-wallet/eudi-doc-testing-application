@@ -46,14 +46,6 @@ fields:
     value: "AT"
     required: true
 
-  "country":
-    value: "AT"
-    required: true
-
-  "locality":
-    value: "101 Trauner"
-    required: true
-
   "Resident City":
     value: "Gemeinde Biberbach"
     required: true

@@ -1069,8 +1069,8 @@ public class AutomatedStepDefs {
         public void theUserSelectsTheCancelButtonOnTheCredentialOffer() {
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().wallet().clickX();
-                test.mobile().wallet().clickBackButton();
-                test.mobile().wallet().clickBackButton();
+//                test.mobile().wallet().clickBackButton();
+//                test.mobile().wallet().clickBackButton();
             } else {
                 test.mobile().wallet().clickCancel();
             }
@@ -2137,10 +2137,6 @@ public class AutomatedStepDefs {
         test.mobile().wallet().authenticationSuccessfully();
     }
 
-    // TEMP (2026-10-22): issuers are down while devs work on a fix, so this skips the real issuance
-    // call and only runs the wallet's PIN setup, which does not depend on the issuer backend. Used to
-    // keep exercising the cross-device DC API scan mechanism in the meantime. Remove once issuance is
-    // restored and go back to "the user issues a {credential} attestation using {issuer}" as Given step.
     @Given("the wallet is freshly set up with no attestations issued for {}")
     public void theWalletIsFreshlySetUpWithNoAttestationsIssuedFor(String credential) {
         this.credential = credential;
@@ -2179,10 +2175,6 @@ public class AutomatedStepDefs {
     @Then("the Mobile Operating System presents a selector listing the matching attestations")
     public void theMobileOperatingSystemPresentsASelectorListingTheMatchingAttestations() {
         //todo: not verified on a real cross-device run - injectHybridTransportQr deep-links into Google
-        //Play Services (not the Wallet), so it is unclear whether a separate native selector screen
-        //actually appears before "the matching Wallet Unit launches automatically", or whether GMS
-        //resolves straight to the Wallet, or whether the whole handshake even succeeds without a real
-        //BLE/cloud tunnel back to the Desktop browser session.
     }
 
     @And("the Relying Party confirms the verification was successful in the Desktop browser")

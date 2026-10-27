@@ -90,7 +90,7 @@ public class Verifier {
                     "new UiScrollable(new UiSelector().scrollable(true))" +
                             ".setAsVerticalList()" +
                             ".flingForward()" +
-                            ".setMaxSearchSwipes(50)" +
+                            ".setMaxSearchSwipes(150)" +
                             ".scrollIntoView(new UiSelector().text(\"Next\"))"
             ));
         } else {
