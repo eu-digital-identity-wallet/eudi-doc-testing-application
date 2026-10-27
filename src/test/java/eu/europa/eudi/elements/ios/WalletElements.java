@@ -32,7 +32,7 @@ public class WalletElements {
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
-    public static By clickOnDocuments = By.id("documents_tab");
+    public static By clickOnDocuments = By.id("Documents");
     public static By homePageIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'home_tab_screen_username_text'");
     public static By documentsPageIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Documents'");
     public static By PIDIsDisplayed = AppiumBy.iOSNsPredicateString("(type == 'XCUIElementTypeStaticText' AND name == 'PID') OR (type == 'XCUIElementTypeStaticText' AND name == 'eu_pid_doctype_name') OR (type == 'XCUIElementTypeStaticText' AND name == 'PID (MSO Mdoc)')");
@@ -75,7 +75,7 @@ public class WalletElements {
     public static By counterIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == '30/30'");
     public static By counterIsDisplayedKotlin = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == '5/5'");
     public static By authenticationError = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Invalid pin'");
-    public static By clickHome = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'home_tab'");
+    public static By clickHome = By.id("house.fill");
     public static By clickSignDocument = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'home_tab_screen_dialog_sign_button'");
     public static By clickSelectDocument = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Select document'");
     public static By selectPDFSample = By.xpath("//XCUIElementTypeCell[@name=\"sample, pdf\"]/XCUIElementTypeOther[2]");
@@ -99,11 +99,11 @@ public class WalletElements {
     public static By clickView = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeImage' AND name == 'chevron.right'");
     public static By trustIconIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeImage' AND name == 'verifiedUser'");
     public static By clickBackButtonSigning = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'BackButton'");
-    public static By documentsTab = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'documents_tab'");
+    public static By documentsTab = By.id("Documents");
     public static By documentsTabSecond = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Documents'");
     public static By clickOnlinePresentation = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Online'");
     public static By signDocumentInside = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND label == 'Sign document'");
-    public static By historyIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'history_tab'");
+    public static By historyIsDisplayed = By.id("History");
     public static By issuerNameDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Digital Credentials Issuer'");
     public static By validUntilLabelOnCard = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name CONTAINS[c] 'Valid until'");
     public static By governmentCategoryHeader = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'GOVERNMENT'");
@@ -115,7 +115,7 @@ public class WalletElements {
     public static By clickLearning = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Learning Credential (SD-JWT VC Compact)'");
     public static By signDocumentButton = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Sign document'");
     public static By clickAllow = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Allow'");
-    public static By clickContinue = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Continue'");
+    public static By clickContinue = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Continue'");
     public static By clickOpen = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Open'");
     public static By clickScreen = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Cancel'");
     public static By scanQRText = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Cancel'");

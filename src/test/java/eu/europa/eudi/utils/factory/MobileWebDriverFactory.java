@@ -203,7 +203,7 @@ public class MobileWebDriverFactory {
                 caps1.setCapability("noReset", noReset);
                 caps1.setCapability("fullReset", false);
                 caps1.setCapability("app", apkPath1.getAbsolutePath());
-                caps1.setCapability("autoAcceptAlerts", true);
+                caps1.setCapability("autoAcceptAlerts", false);
                 caps1.setCapability("usePrebuiltWDA", true);
                 caps1.setCapability("waitForIdleTimeout", 150);
                 caps1.setCapability("autoDismissAlerts", true);
