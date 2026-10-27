@@ -36,10 +36,10 @@ public class IssuerElements {
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]");
     public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
-    public static By clickGenerateButton = By.xpath("//android.widget.Button[@text=\"Generate\"]");
+    public static By clickGenerateButton = By.xpath("//android.widget.Button[@resource-id=\"generateButton\"]");
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
-    public static By pidMsoMdoc = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[1]");
+    public static By pidMsoMdoc = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-0\"]");
     public static By pidDeferred = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[2]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
@@ -49,7 +49,7 @@ public class IssuerElements {
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
     public static final By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
-    public static By pidSDJWT = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[3]");;
+    public static By pidSDJWT = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-2\"]");;
     public static By selectPIDDeferredPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc Deferred)']/../android.widget.CheckBox");
     public static By clientIdLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
     public static By companyLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");

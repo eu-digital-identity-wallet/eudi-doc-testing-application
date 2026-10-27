@@ -1069,8 +1069,8 @@ public class AutomatedStepDefs {
         public void theUserSelectsTheCancelButtonOnTheCredentialOffer() {
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().wallet().clickX();
-                test.mobile().wallet().clickBackButton();
-                test.mobile().wallet().clickBackButton();
+//                test.mobile().wallet().clickBackButton();
+//                test.mobile().wallet().clickBackButton();
             } else {
                 test.mobile().wallet().clickCancel();
             }

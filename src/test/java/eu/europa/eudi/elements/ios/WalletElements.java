@@ -32,7 +32,7 @@ public class WalletElements {
     public static By clickAddMyDigitalID = By.id("Go to home");
     public static By clickPID = By.id("PID Combined");
     public static By clickDone = By.id("document_success_screen_done_button");
-    public static By clickOnDocuments = By.id("documents_tab");
+    public static By clickOnDocuments = By.id("Documents");
     public static By homePageIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'home_tab_screen_username_text'");
     public static By documentsPageIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Documents'");
     public static By PIDIsDisplayed = AppiumBy.iOSNsPredicateString("(type == 'XCUIElementTypeStaticText' AND name == 'PID') OR (type == 'XCUIElementTypeStaticText' AND name == 'eu_pid_doctype_name') OR (type == 'XCUIElementTypeStaticText' AND name == 'PID (MSO Mdoc)')");

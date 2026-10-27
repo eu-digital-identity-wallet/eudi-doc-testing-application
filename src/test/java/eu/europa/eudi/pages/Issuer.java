@@ -932,8 +932,8 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             By[] locators = {
-                    AppiumBy.androidUIAutomator("resourceId(\"content\")"),
-                    AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
+                    AppiumBy.id("content"),
+                    AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Mandatory Information\")")
             };
 
             int maxAttempts = 5;
@@ -1175,7 +1175,7 @@ public class Issuer {
             WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clientIdLoyalty);
             field.clear();
             field.sendKeys(clientId);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String clientId = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Client Id");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clientIdLoyalty)).click();
@@ -1194,7 +1194,7 @@ public class Issuer {
             WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.companyLoyalty);
             field.clear();
             field.sendKeys(company);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String company = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Company");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.companyLoyalty)).click();
@@ -1213,7 +1213,7 @@ public class Issuer {
             WebElement field = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.familyNameLoyalty);
             field.clear();
             field.sendKeys(familyNameLoyalty);
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.closeKeyboardForm)).click();
+            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
         } else {
             String familyNameLoyalty = getValueFromYml("testdata/Loyalty/py_issuer_form.yml", "Family Name");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.familyNameLoyalty)).click();
@@ -2511,27 +2511,92 @@ public class Issuer {
             String nativeContext = driver.getContext();
 
             try {
-                // Switch to Chrome WebView
-                for (int i = 0; i < 20; i++) {
-                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
-                        driver.context("WEBVIEW_chrome");
-                        break;
+                WebDriverWait wait =
+                        new WebDriverWait(driver, Duration.ofSeconds(20));
+
+                wait.until(d ->
+                        driver.getContextHandles().contains("WEBVIEW_chrome"));
+
+                driver.context("WEBVIEW_chrome");
+
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+
+                wait.until(d -> Boolean.TRUE.equals(
+                        js.executeScript("return document.readyState === 'complete'")));
+
+                // DEBUG: Inspect the actual DOM
+                System.out.println("Current URL: " + js.executeScript("return location.href"));
+                System.out.println("Page title: " + js.executeScript("return document.title"));
+
+                System.out.println("Checkbox inputs and labels:");
+                System.out.println(js.executeScript("""
+            return JSON.stringify(
+                [...document.querySelectorAll('input')].map(el => ({
+                    type: el.type,
+                    name: el.name,
+                    id: el.id,
+                    checked: el.checked,
+                    visible: !!(el.offsetWidth || el.offsetHeight ||
+                                el.getClientRects().length),
+                    label: el.labels
+                        ? [...el.labels].map(l => l.innerText).join(' ')
+                        : ''
+                }))
+            , null, 2);
+            """));
+
+                By locator = By.cssSelector(
+                        "input[name='eu.europa.ec.eudi.pid_mdoc']");
+
+                for (int i = 0; i < 80; i++) {
+
+                    // Check whether the expected element exists
+                    List<WebElement> elements = driver.findElements(locator);
+
+                    if (!elements.isEmpty()) {
+                        WebElement checkbox = elements.get(0);
+
+                        if (checkbox.isDisplayed() && checkbox.isEnabled()) {
+                            js.executeScript(
+                                    "arguments[0].scrollIntoView({block:'center'});",
+                                    checkbox);
+
+                            System.out.println("PID checkbox found.");
+                            return;
+                        }
+                    }
+
+                    // Scroll the main page
+                    js.executeScript("window.scrollBy(0, 250);");
+
+                    // Scroll nested containers if the main page cannot scroll
+                    js.executeScript("""
+                if (window.scrollY === 0) {
+                    const candidates =
+                        [...document.querySelectorAll('*')].filter(el => {
+                            const s = getComputedStyle(el);
+                            return el.scrollHeight > el.clientHeight + 5 &&
+                                el.clientHeight > 0 &&
+                                /(auto|scroll)/.test(s.overflowY);
+                        });
+
+                    candidates.sort((a, b) =>
+                        (b.scrollHeight - b.clientHeight) -
+                        (a.scrollHeight - a.clientHeight));
+
+                    if (candidates.length) {
+                        candidates[0].scrollTop += 250;
                     }
                 }
+                """);
 
-                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+                    Thread.sleep(250);
+                }
 
-                WebElement checkbox = wait.until(
-                        ExpectedConditions.visibilityOfElementLocated(
-                                By.cssSelector(
-                                        "input[name='eu.europa.ec.eudi.pid_mdoc']"
-                                )
-                        )
-                );
+                throw new NoSuchElementException(
+                        "PID checkbox not found. Check the printed HTML inputs and labels.");
 
             } finally {
-                // Return to the original context
                 driver.context(nativeContext);
             }
         } else {
@@ -2704,6 +2769,9 @@ public class Issuer {
                             if ("credential offer".equalsIgnoreCase(this.issuanceMethod)) {
                                 test.mobile().issuer().issueCredentialsPageIsDisplayed();
                                 test.mobile().issuer().clickWalletLink();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    test.mobile().verifier().clickContinue();
+                                }
                                 test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 test.mobile().issuer().signInUser();
