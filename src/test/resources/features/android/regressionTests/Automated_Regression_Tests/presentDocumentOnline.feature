@@ -6,7 +6,7 @@ Feature: EUDI Wallet Online Document Presentation
 
   #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/201
 
-  @US_PDO_TC_01
+  @US_PDO_TC_01 @presentation_online
   Scenario Outline: User can cancel and then complete an online data sharing presentation
     Given the user issues a <credential> attestation using <issuer>
     And the user is on the Home screen of the Wallet
