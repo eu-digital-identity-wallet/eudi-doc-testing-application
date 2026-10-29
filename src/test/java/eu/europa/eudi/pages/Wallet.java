@@ -1882,6 +1882,7 @@ public class Wallet {
                     }
 
                     test.mobile().verifier().chooseWallet();
+                    test.mobile().verifier().clickContinue();
                     if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                         test.mobile().wallet().pinFieldIsDisplayed();
                         test.mobile().verifier().insertPIN();

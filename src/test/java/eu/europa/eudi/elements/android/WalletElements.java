@@ -190,4 +190,5 @@ public class WalletElements {
     public static By settingsCountryGermany = AppiumBy.androidUIAutomator("new UiSelector().description(\"Germany\")");
     public static By settingsSetAsDefault = AppiumBy.androidUIAutomator("new UiSelector().text(\"Set as default\")");
     public static By trustMarkContentIsDisplayedGerman = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Beispieltext-für-Benutzer\")");
+    public static By selectPIDSDJWTPython = By.xpath("//android.view.View[@resource-id=\"selectCredential\"]/android.view.View[8]");
 }

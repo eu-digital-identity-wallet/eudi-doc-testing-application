@@ -260,7 +260,9 @@ public class Issuer {
     public void clickUseEudiw() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
+            String issuerUrl = test.envDataConfig().getPythonUrl().replaceAll("/+$", "");
+
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22" + issuerUrl + "%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.mdl_mdoc%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%22ced958d4-c8c6-4763-9e7d-dd8c8b27b256%22%7D%7D%7D";
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -2182,6 +2184,7 @@ public class Issuer {
                     .until(d -> driver.getContextHandles().contains("NATIVE_APP"));
 
             driver.context("NATIVE_APP");
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 // Perform your native actions
             safeScrollForwardAndBack(driver);
 
@@ -2205,6 +2208,7 @@ public class Issuer {
                     if (!"NATIVE_APP".equals(driver.getContext())) {
                         driver.context("NATIVE_APP");
                     }
+                    test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
 
                     // Refresh BEFORE checking
                     System.out.println("Refreshing page before checking...");
@@ -2457,31 +2461,50 @@ public class Issuer {
             AndroidDriver driver =
                     (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            String nativeContext = driver.getContext();
+            driver.context("NATIVE_APP");
+
+            List<WebElement> resubmissionContinueButtons = driver.findElements(
+                    AppiumBy.id("com.android.chrome:id/positive_button")
+            );
+
+            if (!resubmissionContinueButtons.isEmpty()
+                    && resubmissionContinueButtons.get(0).isDisplayed()) {
+                resubmissionContinueButtons.get(0).click();
+                System.out.println("Confirm Form Resubmission dialog visible. Clicked Continue.");
+            }
 
             try {
-                // Switch to Chrome WebView
+                String webviewContext = null;
                 for (int i = 0; i < 20; i++) {
-                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
-                        driver.context("WEBVIEW_chrome");
+                    for (String ctx : driver.getContextHandles()) {
+                        if (ctx.startsWith("WEBVIEW")) {
+                            webviewContext = ctx;
+                            break;
+                        }
+                    }
+                    if (webviewContext != null) {
+                        driver.context(webviewContext);
                         break;
                     }
                 }
 
-                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+                System.out.println("DEBUG contexts=" + driver.getContextHandles() + " switchedTo=" + driver.getContext());
 
-                WebElement checkbox = wait.until(
-                        ExpectedConditions.visibilityOfElementLocated(
-                                By.cssSelector(
-                                        "input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']"
-                                )
-                        )
-                );
-
+                try {
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+                    wait.until(
+                            ExpectedConditions.visibilityOfElementLocated(
+                                    By.cssSelector("input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']")
+                            )
+                    );
+                } catch (org.openqa.selenium.TimeoutException e) {
+                    String pageSource = driver.getPageSource();
+                    System.out.println("DEBUG pidSDJWT checkbox not found. context=" + driver.getContext());
+                    System.out.println("DEBUG pageSource (first 5000 chars): " + pageSource.substring(0, Math.min(5000, pageSource.length())));
+                    throw e;
+                }
             } finally {
-                // Return to the original context
-                driver.context(nativeContext);
+                driver.context("NATIVE_APP");
             }
         } else {
             envDataConfig = new EnvDataConfig();
@@ -2642,7 +2665,9 @@ public class Issuer {
 
     public void clickUseEudiwPidDeferred() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc_deferred%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2283c32b0b-623d-4c26-b079-1baa32a7ff87%22%7D%7D%7D";
+            String issuerUrl = test.envDataConfig().getPythonUrl().replaceAll("/+$", "");
+
+            String deepLink = "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22" + issuerUrl + "%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_mdoc_deferred%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2283c32b0b-623d-4c26-b079-1baa32a7ff87%22%7D%7D%7D";
 
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
@@ -2665,8 +2690,10 @@ public class Issuer {
 
     public void clickUseEudiwPidSDJWT() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String issuerUrl = test.envDataConfig().getPythonUrl().replaceAll("/+$", "");
+
             String deepLink =
-                    "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22https://issuer.eudiw.dev%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_vc_sd_jwt%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2256c01aa5-3d6f-4983-b376-5e759bbeded6%22%7D%7D%7D";
+                    "haip-vci://credential_offer?credential_offer=%7B%22credential_issuer%22:%20%22" + issuerUrl + "%22%2C%20%22credential_configuration_ids%22:%20%5B%22eu.europa.ec.eudi.pid_vc_sd_jwt%22%5D%2C%20%22grants%22:%20%7B%22authorization_code%22:%20%7B%22issuer_state%22:%20%2256c01aa5-3d6f-4983-b376-5e759bbeded6%22%7D%7D%7D";
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
 
                 AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -2734,6 +2761,7 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.context("NATIVE_APP");
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidSDJWT)).click();
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.pidSDJWT)).click();
         }
@@ -2816,7 +2844,7 @@ public class Issuer {
                                         test.mobile().issuer().clickOpen();
                                     }
                                 } else {
-                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
+//                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
                                     test.mobile().issuer().selectPidSDJWTPythonIssuer();
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
@@ -2855,7 +2883,7 @@ public class Issuer {
                                     test.mobile().issuer().scrollUntilPidIssuer();
                                     test.mobile().issuer().selectPidPythonIssuer();
                                 } else {
-                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
+//                                    test.mobile().issuer().scrollUntilPidSDJWTIssuer();
                                     test.mobile().issuer().selectPidSDJWTPythonIssuer();
                                 }
                                 test.mobile().issuer().scrollUntilFindSubmitIssuer();
@@ -2916,39 +2944,34 @@ public class Issuer {
 
     private void selectPidSDJWTPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            String nativeContext = driver.getContext();
-
-            try {
-                // Switch to Chrome WebView
-                for (int i = 0; i < 20; i++) {
-                    if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
-                        driver.context("WEBVIEW_chrome");
-                        break;
+            int attempt = 0;
+            while (true) {
+                try {
+                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDSDJWTPython)).click();
+                    break;
+                } catch (org.openqa.selenium.TimeoutException e) {
+                    attempt++;
+                    if (attempt >= 3) {
+                        throw e;
+                    }
+                    System.out.println("DEBUG selectPIDSDJWTPython not found, refreshing page (attempt " + attempt + ")");
+                    String webviewContext = null;
+                    for (String ctx : driver.getContextHandles()) {
+                        if (ctx.startsWith("WEBVIEW")) {
+                            webviewContext = ctx;
+                            break;
+                        }
+                    }
+                    if (webviewContext != null) {
+                        driver.context(webviewContext);
+                        driver.navigate().refresh();
+                        driver.context("NATIVE_APP");
                     }
                 }
-
-                // Locate PID (MSO Mdoc) checkbox by its HTML attributes
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
-                WebElement checkbox = wait.until(
-                        ExpectedConditions.visibilityOfElementLocated(
-                                By.cssSelector(
-                                        "input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']"
-                                )
-                        )
-                );
-
-                if (!checkbox.isSelected()) {
-                    checkbox.click();
-                }
-
-            } finally {
-                // Return to the original context
-                driver.context(nativeContext);
-            }        } else {
+            }
+        } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDSDJWTPython)).click();
         }
     }
