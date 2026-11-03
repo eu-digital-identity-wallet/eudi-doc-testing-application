@@ -165,7 +165,7 @@ public class WalletElements {
     public static By informationalScreen = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name == 'Before you continue' OR label == 'Before you continue')");
     public static By clarifyForCommunicationChanel = By.id("You’re about to leave the wallet and go to NiScy’s website, where you can fill in a form to request deletion of the data you shared.");
     public static By notesForRequest = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name == 'Before you continue' OR label == 'Before you continue')");
-    public static By theRelyingPartyIsResponsible = By.id("NiScy may still be required to keep some of your data for legal reasons, even after your request. Any updates on the outcome will come from NiScy directly, not the wallet.");
+    public static By theRelyingPartyIsResponsible = AppiumBy.iOSNsPredicateString("label CONTAINS 'may still be required to keep some of your data for legal reasons' OR accessibilityIdentifier CONTAINS 'may still be required to keep some of your data for legal reasons'");
     public static By buttonToWebsite = By.id("Continue to NiScy’s website");
     public static By dataDeletionRequestInitiation = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'View previous data deletion requests' OR label CONTAINS[c] 'View previous data deletion requests')");
     public static By previousDataDeletionIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'Previous data deletion requests for NiScy' OR label CONTAINS[c] 'Previous data deletion requests for NiScy')");

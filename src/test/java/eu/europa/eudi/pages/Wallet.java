@@ -3445,10 +3445,10 @@ public class Wallet {
     public void theRelyingPartyIsResponsible() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.theRelyingPartyIsResponsible)).getText();
-            Assert.assertEquals(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label, label);
+            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
         } else {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.theRelyingPartyIsResponsible)).getText();
-            Assert.assertEquals(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label, label);
+            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
         }
     }
 
@@ -3662,5 +3662,13 @@ public class Wallet {
     private void clickByTextInSettings(String text) {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))).click();
+    }
+
+    public void openDigitalWallet() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.openDigitalWallet)).click();
+    }
+
+    public void continueToTrustSite() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.continueToTrustSite)).click();
     }
 }

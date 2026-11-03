@@ -45,6 +45,7 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             driver.runAppInBackground(Duration.ofSeconds(10));
+            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
             test.envDataConfig();
             String url = test.envDataConfig().getPythonUrl();
             String env = test.envDataConfig().getExecutionEnvironment();
@@ -112,7 +113,6 @@ public class Issuer {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE.label, pageHeader);
-            test.mobileWebDriverFactory().androidDriver.rotate(ScreenOrientation.PORTRAIT);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.IssuerElements.requestCredentialsPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Issuer.CREDENTIAL_PAGE_IOS.label, pageHeader);
@@ -795,6 +795,12 @@ public class Issuer {
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            try {
+                driver.hideKeyboard();
+            } catch (Exception e) {
+            }
+
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
             for (int i = 0; i < 2; i++) {
@@ -1048,6 +1054,68 @@ public class Issuer {
 
     public void pullToRefresh(AndroidDriver driver) {
 
+        if (refreshViaChromeJs(driver)) {
+            System.out.println("Pull-to-refresh executed via JS location.reload().");
+        } else {
+            performNativeSwipeRefresh(driver);
+            System.out.println("Pull-to-refresh executed via native swipe.");
+        }
+
+        try {
+            List<WebElement> continueButtons = driver.findElements(
+                    AppiumBy.id("com.android.chrome:id/positive_button")
+            );
+
+            if (!continueButtons.isEmpty()
+                    && continueButtons.get(0).isDisplayed()) {
+
+                continueButtons.get(0).click();
+                System.out.println("Continue button is visible. Clicked Continue.");
+
+            } else {
+                System.out.println(
+                        "Continue button is not visible. Nothing to do."
+                );
+            }
+
+        } catch (WebDriverException e) {
+            System.out.println(
+                    "Could not check Chrome Continue button: " + e.getMessage()
+            );
+        }
+    }
+
+    private boolean refreshViaChromeJs(AndroidDriver driver) {
+        String originalContext = driver.getContext();
+        try {
+            if (!driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                return false;
+            }
+
+            driver.context("WEBVIEW_chrome");
+
+            Object href = ((JavascriptExecutor) driver).executeScript("return location.href");
+            String url = href == null ? "" : href.toString();
+
+            if (url.isEmpty() || url.startsWith("chrome-native://")) {
+                return false;
+            }
+
+            ((JavascriptExecutor) driver).executeScript("location.reload();");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("JS reload attempt failed, falling back to native swipe: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                driver.context(originalContext);
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    private void performNativeSwipeRefresh(AndroidDriver driver) {
         Dimension size = driver.manage().window().getSize();
 
         int centerX = size.width / 2;
@@ -1093,31 +1161,6 @@ public class Issuer {
         );
 
         driver.perform(Collections.singletonList(swipe));
-
-        System.out.println("Pull-to-refresh executed.");
-
-        try {
-            List<WebElement> continueButtons = driver.findElements(
-                    AppiumBy.id("com.android.chrome:id/positive_button")
-            );
-
-            if (!continueButtons.isEmpty()
-                    && continueButtons.get(0).isDisplayed()) {
-
-                continueButtons.get(0).click();
-                System.out.println("Continue button is visible. Clicked Continue.");
-
-            } else {
-                System.out.println(
-                        "Continue button is not visible. Nothing to do."
-                );
-            }
-
-        } catch (WebDriverException e) {
-            System.out.println(
-                    "Could not check Chrome Continue button: " + e.getMessage()
-            );
-        }
     }
 
     public void issuePID(String credential) throws InterruptedException {
@@ -1764,19 +1807,31 @@ public class Issuer {
     public void scrollUntilFindSubmitIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            try {
+                driver.hideKeyboard();
+            } catch (Exception e) {
+                // no keyboard open, nothing to hide
+            }
+
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             for (int i = 0; i < 5; i++) {
+                boolean displayed = false;
                 try {
                     WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
-                    if (pidElement.isDisplayed()) {
-                        break;
-                    }
+                    displayed = pidElement.isDisplayed();
                 } catch (Exception e) {
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
-                    ));
+                    // not found yet, fall through to scroll
                 }
+
+                if (displayed) {
+                    break;
+                }
+
+                driver.findElement(AppiumBy.androidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"
+                ));
             }
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -2300,13 +2355,24 @@ public class Issuer {
             for (String ctx : ad.getContextHandles()) {
                 try {
                     ad.context(ctx);
+
+                    if (!"NATIVE_APP".equals(ctx)) {
+                        try {
+                            Object href = ((JavascriptExecutor) ad).executeScript("return location.href");
+                            System.out.println("DEBUG ctx=" + ctx + " url=" + href);
+                        } catch (Exception urlEx) {
+                            System.out.println("DEBUG ctx=" + ctx + " url=<failed: " + urlEx.getMessage() + ">");
+                        }
+                    }
+
                     By locator = ctx.equals("NATIVE_APP") ? nativeLocator : webLocator;
                     List<WebElement> found = ad.findElements(locator);
+                    System.out.println("DEBUG ctx=" + ctx + " locator=" + locator + " found=" + found.size());
                     if (!found.isEmpty() && found.get(0).isDisplayed()) {
                         return found.get(0);
                     }
                 } catch (Exception ignored) {
-                    // context not attached yet / transient — try next context
+                    System.out.println("DEBUG ctx=" + ctx + " context switch/find threw: " + ignored);
                 }
             }
             return null; // triggers another poll cycle
@@ -2546,6 +2612,48 @@ public class Issuer {
 
                 wait.until(d -> Boolean.TRUE.equals(
                         js.executeScript("return document.readyState === 'complete'")));
+
+                boolean navigated = false;
+                boolean retried = false;
+                for (int i = 0; i < 40; i++) {
+                    Object href = js.executeScript("return location.href");
+                    String url = href == null ? "" : href.toString();
+                    if (url.contains("credential_offer")) {
+                        navigated = true;
+                        break;
+                    }
+                    if (i == 16 && !retried) {
+                        driver.context("NATIVE_APP");
+                        try {
+                            System.out.println("DEBUG stuck on blank tab, re-clicking issuer credential offer link");
+                            new WebDriverWait(driver, Duration.ofSeconds(10))
+                                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssuerCredentialOffer))
+                                    .click();
+                        } catch (Exception e) {
+                            System.out.println("DEBUG retry click failed (" + e.getMessage() + "), re-firing deep link to " + test.envDataConfig().getPythonUrl());
+                            Map<String, Object> deepLinkArgs = new HashMap<>();
+                            deepLinkArgs.put("url", test.envDataConfig().getPythonUrl());
+                            deepLinkArgs.put("package", "com.android.chrome");
+                            driver.executeScript("mobile:deepLink", deepLinkArgs);
+                            try {
+                                new WebDriverWait(driver, Duration.ofSeconds(10))
+                                        .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssuerCredentialOffer))
+                                        .click();
+                            } catch (Exception e2) {
+                                System.out.println("DEBUG click after re-fired deep link also failed: " + e2.getMessage());
+                            }
+                        }
+                        driver.context("WEBVIEW_chrome");
+                        retried = true;
+                    }
+
+                    Thread.sleep(500);
+                }
+
+                if (!navigated) {
+                    throw new org.openqa.selenium.TimeoutException(
+                            "Issuer page never navigated past Chrome's blank tab.");
+                }
 
                 // DEBUG: Inspect the actual DOM
                 System.out.println("Current URL: " + js.executeScript("return location.href"));
@@ -3011,9 +3119,8 @@ public class Issuer {
             } else if ("PID (SD-JWT)".equalsIgnoreCase(this.credential)) {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                     test.mobile().wallet().clickExpandVerificationForSDJWT(issuerType);
-                    test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandVerificationDown();
-                    test.mobile().wallet().scrollUntilPlaceOfBirth();
+                    test.mobile().wallet().scrollUntilNationality();
                     test.mobile().wallet().clickExpandVerificationDown();
                     test.mobile().wallet().scrollUpForBirthDateOnPID();
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_wallet_sdjwt.yml");
@@ -3214,9 +3321,56 @@ public class Issuer {
         }
     }
 
-    public void selectPIDDeferred() {
+    public void selectPIDDeferred() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.IssuerElements.selectPIDDeferredPythonCredential)).click();
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            String nativeContext = driver.getContext();
+
+            try {
+                String webviewContext = null;
+                for (int i = 0; i < 20 && webviewContext == null; i++) {
+                    for (String ctx : driver.getContextHandles()) {
+                        if (!ctx.startsWith("WEBVIEW")) {
+                            continue;
+                        }
+                        try {
+                            driver.context(ctx);
+                            Object href = ((JavascriptExecutor) driver).executeScript("return location.href");
+                            String url = href == null ? "" : href.toString();
+                            if (!url.isEmpty() && !url.startsWith("chrome-native://")) {
+                                webviewContext = ctx;
+                                break;
+                            }
+                        } catch (Exception e) {
+                            // try next context
+                        }
+                    }
+                    if (webviewContext == null) {
+                        Thread.sleep(500);
+                    }
+                }
+
+                if (webviewContext != null) {
+                    driver.context(webviewContext);
+                }
+
+                WebElement checkbox = new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.cssSelector(
+                                        "input[name='eu.europa.ec.eudi.pid_mdoc_deferred']"
+                                )
+                        )
+                );
+
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+
+            } finally {
+                driver.context(nativeContext);
+            }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.selectPIDPythonDeferred)).click();
         }
@@ -3241,16 +3395,122 @@ public class Issuer {
             test.mobile().issuer().clickGenerate();
             test.mobile().issuer().issueCredentialsPageIsDisplayed();
             test.mobile().issuer().clickWalletLink();
+            test.mobile().wallet().continueToTrustSite();
         } else {
-            test.mobile().issuer().scrollUntilPidIssuer();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().issuer().ensureIssuerCredentialsPageInChrome();
+            } else {
+                test.mobile().issuer().scrollUntilPidIssuer();
+            }
             test.mobile().issuer().selectPIDDeferred();
-            test.mobile().issuer().scrollUntilFindSubmitIssuer();
-            test.mobile().issuer().clickSubmitButton();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().issuer().submitDeferredCredentialSelection();
+            } else {
+                test.mobile().issuer().scrollUntilFindSubmitIssuer();
+                test.mobile().issuer().clickSubmitButton();
+            }
             test.mobile().issuer().qrCodeIsDisplayed();
             test.mobile().issuer().clickUseEudiwPidDeferred();
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().issuer().clickOpen();
             }
+        }
+    }
+
+    public void ensureIssuerCredentialsPageInChrome() throws InterruptedException {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+        driver.activateApp("com.android.chrome");
+
+        String webviewContext = null;
+        for (int i = 0; i < 20; i++) {
+            if (driver.getContextHandles().contains("WEBVIEW_chrome")) {
+                webviewContext = "WEBVIEW_chrome";
+                break;
+            }
+            Thread.sleep(500);
+        }
+        if (webviewContext == null) {
+            throw new io.appium.java_client.NoSuchContextException(
+                    "WEBVIEW_chrome never attached after launching Chrome directly.");
+        }
+
+        driver.context(webviewContext);
+        try {
+            driver.get(test.envDataConfig().getPythonUrl());
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(d ->
+                    Boolean.TRUE.equals(js.executeScript("return document.readyState === 'complete'")));
+
+            Object credentialOfferHref = js.executeScript(
+                    "var a = document.querySelector('a[href*=\"credential_offer\"]'); return a ? a.href : null;");
+            if (credentialOfferHref == null) {
+                throw new NoSuchElementException(
+                        "No credential_offer link found on issuer homepage: " + js.executeScript("return location.href"));
+            }
+
+            driver.get(credentialOfferHref.toString());
+
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(d ->
+                    Boolean.TRUE.equals(js.executeScript("return document.readyState === 'complete'")));
+        } finally {
+            driver.context("NATIVE_APP");
+        }
+    }
+
+    public void submitDeferredCredentialSelection() throws InterruptedException {
+        AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+        String nativeContext = driver.getContext();
+
+        try {
+            String webviewContext = null;
+            for (int i = 0; i < 20 && webviewContext == null; i++) {
+                for (String ctx : driver.getContextHandles()) {
+                    if (!ctx.startsWith("WEBVIEW")) {
+                        continue;
+                    }
+                    try {
+                        driver.context(ctx);
+                        Object href = ((JavascriptExecutor) driver).executeScript("return location.href");
+                        String url = href == null ? "" : href.toString();
+                        if (!url.isEmpty() && !url.startsWith("chrome-native://")) {
+                            webviewContext = ctx;
+                            break;
+                        }
+                    } catch (Exception e) {
+                        // try next context
+                    }
+                }
+                if (webviewContext == null) {
+                    Thread.sleep(500);
+                }
+            }
+            if (webviewContext == null) {
+                throw new io.appium.java_client.NoSuchContextException(
+                        "No navigated WEBVIEW context found for submitting the credential selection.");
+            }
+
+            driver.context(webviewContext);
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            String findSubmitExpr = """
+                    (function() {
+                        var btns = [...document.querySelectorAll('button, input[type="submit"]')];
+                        return btns.find(b => (b.innerText || b.value || '').trim().toLowerCase() === 'submit') || null;
+                    })()
+                    """;
+
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(d ->
+                    js.executeScript("return " + findSubmitExpr) != null);
+
+            js.executeScript("var b = " + findSubmitExpr + "; if (b) { b.scrollIntoView({block:'center'}); }");
+
+            js.executeScript(
+                    "var b = " + findSubmitExpr + "; if (b) { b.click(); return true; } return false;");
+        } finally {
+            driver.context(nativeContext);
         }
     }
 

@@ -19,7 +19,7 @@ public class IssuerElements {
     public static By authorizePageIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please review the selected attributes before sending to the EudiWallet demo app.\"]");
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
     public static By clickFamilyName = By.xpath("//android.view.View[@text='Family Name']/../android.widget.EditText");
-    public static By clickBirthDate = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"field-birthdate\")");
+    public static By clickBirthDate = By.xpath("//*[@resource-id=\"field-birthdate\" or @resource-id=\"field-birth_date\"]");
     public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/confirm_button\"]");
     public static By enterDocumentNumber = By.xpath("//android.view.View[@text=\"Document Number\"]/following-sibling::android.widget.EditText[1]\n");
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Document Number\"]");
@@ -40,7 +40,7 @@ public class IssuerElements {
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-0\"]");
-    public static By pidDeferred = By.xpath("//android.view.View[@resource-id=\"generate-credential-offer-form\"]/android.view.View/android.view.View[2]");
+    public static By pidDeferred = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-3\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");
     public static By usernameWeb = By.cssSelector("#username");
@@ -54,5 +54,6 @@ public class IssuerElements {
     public static By clientIdLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
     public static By companyLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
     public static By familyNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[3]");
-    public static By givenNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[4]");
+    public static By givenNameLoyalty = By.xpath("//android.widget.EditText[@resource-id=\"field-given_name\"]");
+    public static By clickGivenNameText = By.xpath("//android.view.View[@text=\"Given Name\"]");
 }
