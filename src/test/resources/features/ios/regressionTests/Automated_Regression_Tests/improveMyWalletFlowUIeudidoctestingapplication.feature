@@ -6,7 +6,7 @@ Feature: Improve My Wallet Flow UI
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/318
 
-  @US_IMWFUEDTA_TC_01 @manual:Passed
+  @US_IMWFUEDTA_TC_01 @presentation_online
   Scenario: Verify Change PIN screen and cancellation prompt
     Given the user opens the Settings option
     When the user accesses the Change PIN screen

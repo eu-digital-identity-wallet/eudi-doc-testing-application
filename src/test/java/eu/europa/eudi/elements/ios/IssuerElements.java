@@ -28,7 +28,7 @@ public class IssuerElements {
     public static By clickBirthDate = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[3]");
     public static By enterDocumentNumber = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
     public static By documentNumberField = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
-    public static By closeKeyboardBefore03 = By.xpath("//XCUIElementTypeStaticText[@name=\"Document Number\"]");
+    public static By closeKeyboardBefore03 = By.xpath("//XCUIElementTypeStaticText[@name=\"Driving Privileges\"]");
     public static By clickIssueDate = By.xpath("//XCUIElementTypeOther[@name=\"Issue Date\"]/following::XCUIElementTypeOther[1]");
     public static By clickExpiryDate = By.xpath("//XCUIElementTypeOther[@name=\"Expiry Date\"]/following::XCUIElementTypeOther[1]");
     public static By clickSubmit = By.xpath("//XCUIElementTypeButton[@name=\"Submit\"]");
@@ -37,8 +37,8 @@ public class IssuerElements {
     public static By clickCountryCode = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeOther[@name=\"Country Code\"]/XCUIElementTypeTextField");
     public static By closeKeyboard = By.xpath("//XCUIElementTypeStaticText[@name='Nationality' or @name='Nationalities']");
     public static By clickConfirm = By.xpath("//XCUIElementTypeButton[@name=\"Confirm\"]");
-    public static By enterCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]/following::XCUIElementTypeTextField[1]");
-    public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Code\"]");
+    public static By enterCode = By.xpath("//XCUIElementTypeTextField[@name=\"Code\"]");
+    public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Codes\"]");
     public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
@@ -58,4 +58,7 @@ public class IssuerElements {
     public static By companyLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
     public static By familyNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[3]");
     public static By givenNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[4]");
+    public static By clickForm = By.id("form");
+    public static By clickMandatoryInformation = By.xpath("//XCUIElementTypeOther[@name=\"Mandatory Information\"]");
+    public static By clickPortrait = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait\"]");
 }

@@ -12,6 +12,9 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Pause;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.file.Files;
@@ -95,33 +98,40 @@ public class Verifier {
             ));
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            int i = 1;
-            while (i < 2) {
-                Map<String, Object> params = new HashMap<>();
-                params.put("direction", "up");
-                driver.executeScript("mobile: swipe", params);
-                i++;
+            for (int i = 0; i < 2; i++) {
+                Dimension size = driver.manage().window().getSize();
+                int startX = size.width / 2;
+                int startY = (int) (size.height * 0.6);
+                int endY = (int) (size.height * 0.5);
+                PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+                Sequence swipe = new Sequence(finger, 1);
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+                swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+                swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+                swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+                swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+                driver.perform(Collections.singletonList(swipe));
             }
         }
     }
 
     public void launchSafari() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-        } else {
-            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            } else {
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
-            try {
                 try {
-                    driver.terminateApp("eu.europa.ec.euidi");
+                    try {
+                        driver.terminateApp("eu.europa.ec.euidi");
+                    } catch (Exception e) {
+                    }
+                    driver.activateApp("com.apple.mobilesafari");
+                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                    driver.context("NATIVE_APP");
                 } catch (Exception e) {
+                    throw new RuntimeException("Failed to launch Safari", e);
                 }
-                driver.activateApp("com.apple.mobilesafari");
-                WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-                waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-                driver.context("NATIVE_APP");
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to launch Safari", e);
-            }
         }
     }
 

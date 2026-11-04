@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 import java.util.List;
@@ -153,7 +154,11 @@ public class AutomatedStepDefs {
             test.mobile().issuer().qrCodeIsDisplayed();
             test.mobile().issuer().clickUseEudiw();
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                test.mobile().issuer().clickOpen();
+                if (test.getScenario().getSourceTagNames().contains("@presentation_online")) {
+                    test.mobile().issuer().clickOpen();
+                }else{
+                   //nothing to do
+                }
             }
         }
 
@@ -478,7 +483,6 @@ public class AutomatedStepDefs {
             test.mobile().wallet().performPresentation(presentationScenario, credential, this.selectiveDisclosure, this.issuerType);
         }
 
-
         @And("the user shares {}")
         public void theUserShares(String selectiveDisclosure) {
             this.selectiveDisclosure = selectiveDisclosure;
@@ -554,6 +558,9 @@ public class AutomatedStepDefs {
             if ("Python".equalsIgnoreCase(this.issuerType)) {
                 test.mobile().wallet().clickAddButton();
             }
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickContinueNew();
+            }
         }
 
         @Then("the user selects ISSUE button")
@@ -610,13 +617,13 @@ public class AutomatedStepDefs {
 
         @Then("the EUDI Wallet application is opened")
         public void theEUDIWalletApplicationIsOpened() throws InterruptedException {
-            test.mobile().wallet().eudiPageIsDisplayed();
-            test.mobile().wallet().clickContinue();
-            test.mobile().wallet().createAPin();
-            test.mobile().wallet().renterThePin();
-            test.mobile().wallet().successMessageOfSetUpPin();
-            test.mobile().wallet().clickAddMyDigitalID();
-            test.mobile().issuer().viewDataPage();
+                test.mobile().wallet().eudiPageIsDisplayed();
+                test.mobile().wallet().clickContinue();
+                test.mobile().wallet().createAPin();
+                test.mobile().wallet().renterThePin();
+                test.mobile().wallet().successMessageOfSetUpPin();
+                test.mobile().wallet().clickAddMyDigitalID();
+                test.mobile().issuer().viewDataPage();
         }
 
         @And("the user is redirected to the issuer service for authentication and authorization for {}")
@@ -733,7 +740,7 @@ public class AutomatedStepDefs {
 
         @When("the user opts not to proceed")
         public void theUserOptsNotToProceed() {
-            test.mobile().wallet().clickBackButton();
+            test.mobile().wallet().clickBackButtonSign();
         }
 
         @Then("the user selects the Abort operation option")
@@ -781,10 +788,11 @@ public class AutomatedStepDefs {
             test.mobile().wallet().selectSigningCertificate();
             test.mobile().wallet().clickCredentialForTests();
             test.mobile().wallet().clickProceed();
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                test.mobile().wallet().clickContinue();
-            }
-            test.mobile().wallet().clickExpandVerification();
+//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
+//            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
+//            }
+            test.mobile().wallet().clickExpandVerificationSigning();
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
@@ -1090,8 +1098,10 @@ public class AutomatedStepDefs {
         @And("the user selects the Add document button on the credential offer")
         public void theUserSelectsTheAddDocumentButtonOnTheCredentialOffer() throws InterruptedException {
             test.mobile().wallet().clickAddButton();
-
-        }
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickContinueNew();
+            }
+            }
 
         @Then("the user proceeds with the attestation issuing flow")
         public void theUserProceedsWithTheAttestationIssuingFlow() throws InterruptedException {
@@ -1343,6 +1353,10 @@ public class AutomatedStepDefs {
             test.mobile().wallet().createAPin();
             test.mobile().wallet().clickAuthenticate();
             test.mobile().wallet().clickOnlinePresentation();
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickAllowNew();
+            }
+
         }
 
         @And("the Wallet scans the Relying Party's presentation request QR code")
@@ -1398,9 +1412,6 @@ public class AutomatedStepDefs {
     public void whenTheUserProceedsWithAttestationIssuanceNoInstanceCountIsShown() throws InterruptedException {
         test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
         test.mobile().wallet().clickKotlinPIDFromList();
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            test.mobile().wallet().clickContinue();
-        }
         test.mobile().issuer().signInUser();
         test.mobile().issuer().fillLoginForm();
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
@@ -1681,7 +1692,7 @@ public class AutomatedStepDefs {
 
     @When("the user taps Back button")
     public void theUserTapsBackButton() {
-        test.mobile().wallet().clickCloseButton();
+        test.mobile().wallet().clickBackButton();
     }
 
     @Then("a confirmation prompt is displayed with the text Cancel PIN change")

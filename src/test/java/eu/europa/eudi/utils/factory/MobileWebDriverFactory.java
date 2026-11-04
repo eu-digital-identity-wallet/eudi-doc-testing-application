@@ -203,13 +203,19 @@ public class MobileWebDriverFactory {
                 caps1.setCapability("noReset", noReset);
                 caps1.setCapability("fullReset", false);
                 caps1.setCapability("app", apkPath1.getAbsolutePath());
-                caps1.setCapability("autoAcceptAlerts", false);
                 caps1.setCapability("usePrebuiltWDA", true);
                 caps1.setCapability("waitForIdleTimeout", 150);
-                caps1.setCapability("autoDismissAlerts", true);
+                caps1.setCapability("autoDismissAlerts", false);
                 caps1.setCapability("newCommandTimeout", 180);
                 caps1.setCapability("includeNonModalElements", true);
                 caps1.setCapability("connectHardwareKeyboard", false);
+                caps1.setCapability("autoAcceptAlerts", false);
+
+                if (test.getScenario().getSourceTagNames().contains("@GERMAN_LANGUAGE")) {
+                    caps1.setCapability("language", "de");
+                    caps1.setCapability("locale", "de_DE");
+                    System.out.println("GERMAN_LANGUAGE tag detected - starting iOS session in German (de_DE)");
+                }
 
                 try {
                     iosDriver = new IOSDriver(new URL(test.envDataConfig().getAppiumUrlIos()), caps1);

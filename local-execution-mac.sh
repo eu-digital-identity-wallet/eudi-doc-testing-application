@@ -2,7 +2,7 @@
 
 set +e
 
-export CUCUMBER_FILTER_TAGS="@ANDROID and @execution_Q2_2026"
+export CUCUMBER_FILTER_TAGS="@IOS and @execution_Q2_2026_IOS"
 
 RESULTS_DIR="target/site/reports/EUDI_Wallet_Version_2026.10.43-Demo"
 BACKUP_DIR="target/serenity-backup"
@@ -21,7 +21,7 @@ echo "========== MAIN EXECUTION =========="
 mvn clean verify \
     -ntp \
     -Dtest=TestRunner \
-    -Dcucumber.filter.tags="@ANDROID and @execution_Q2_2026"
+    -Dcucumber.filter.tags="@IOS and @execution_Q2_2026_IOS"
 
 echo "========== BACKUP RESULTS =========="
 
