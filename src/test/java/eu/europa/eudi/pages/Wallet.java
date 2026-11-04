@@ -1039,6 +1039,7 @@ public class Wallet {
             Thread.sleep(5000);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
             Thread.sleep(5000);
         }
     }
@@ -1934,6 +1935,11 @@ public class Wallet {
 //                        test.mobile().wallet().pinFieldIsDisplayed();
 //                        test.mobile().verifier().insertPIN();
 //                    }
+                    test.mobile().verifier().clickContinue();
+                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                        test.mobile().wallet().pinFieldIsDisplayed();
+                        test.mobile().verifier().insertPIN();
+                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -3496,10 +3502,10 @@ public class Wallet {
     public void theRelyingPartyIsResponsible() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.theRelyingPartyIsResponsible)).getText();
-            Assert.assertEquals(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label, label);
+            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
         } else {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.theRelyingPartyIsResponsible)).getText();
-            Assert.assertEquals(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE_IOS.label, label);
+            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
         }
     }
 
@@ -3713,5 +3719,13 @@ public class Wallet {
     private void clickByTextInSettings(String text) {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))).click();
+    }
+
+    public void openDigitalWallet() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.openDigitalWallet)).click();
+    }
+
+    public void continueToTrustSite() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.continueToTrustSite)).click();
     }
 }

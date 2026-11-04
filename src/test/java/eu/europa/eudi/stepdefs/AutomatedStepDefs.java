@@ -154,11 +154,7 @@ public class AutomatedStepDefs {
             test.mobile().issuer().qrCodeIsDisplayed();
             test.mobile().issuer().clickUseEudiw();
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                if (test.getScenario().getSourceTagNames().contains("@presentation_online")) {
-                    test.mobile().issuer().clickOpen();
-                }else{
-                   //nothing to do
-                }
+                test.mobile().issuer().clickOpen();
             }
         }
 
@@ -736,6 +732,8 @@ public class AutomatedStepDefs {
         @And("the user agrees to proceed with the signing operation")
         public void theUserAgreesToProceedWithTheSigningOperation() {
             test.mobile().wallet().clickProceed();
+            test.mobile().wallet().openDigitalWallet();
+            test.mobile().wallet().continueToTrustSite();
         }
 
         @When("the user opts not to proceed")
@@ -793,6 +791,12 @@ public class AutomatedStepDefs {
 //                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
 //            }
             test.mobile().wallet().clickExpandVerificationSigning();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().clickContinue();
+            }
+            test.mobile().wallet().openDigitalWallet();
+            test.mobile().wallet().continueToTrustSite();
+            test.mobile().wallet().clickExpandVerification();
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");

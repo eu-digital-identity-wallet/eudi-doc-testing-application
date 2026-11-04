@@ -31,7 +31,7 @@ public class WalletElements {
     public static By PIDIsDisplayedPython = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (MSO Mdoc)\")");
     public static By clickMdlPython = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*add_document_screen_attestation.*mdl_mdoc.*\")");
     public static By clickLoyalty = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*add_document_screen_attestation.*loyalty.*\")");
-    public static By clickLearningCredentialKotlin = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*add_document_screen_attestation.*learning.*\")");
+    public static By clickLearningCredentialKotlin = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"eu.europa.ec.euidi.dev:id/add_document_screen_attestation_https://dev.issuer-backend.eudiw.dev_urn:eu.europa.ec.eudi:learning:credential:1:dc+sd-jwt-compact\")");
     public static By dashboardPageIsDisplayedSecond = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Welcome, Nikos\")");
     public static By dashboardPageIsDisplayedSecondKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Welcome, Tyler\")");
     public static By dashboardPageIsDisplayedDeferred = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Welcome\")");
@@ -77,17 +77,17 @@ public class WalletElements {
     public static By clickExpandVerificationSDJWT = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC)\")");
     public static By pidSdJwtIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC Compact)\")");
     public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC)\")");
-    public static By clickPreAuthorizationCode = By.id("check2");
+    public static By clickPreAuthorizationCode = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"check2\")");
     public static By deferredIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").textMatches(\"(?i).*deferred.*\")");
     public static By notificationForDeferred = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"In progress!\")");
     public static By pendigStatus = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Pending\")");
     public static By popUpConfirmation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Documents issued\")");
     public static By pidDefrredIsDisplayedPython = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (MSO Mdoc Deferred)\")");
-    public static By pidDefrredIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (MSO MDoc) (deferred)\")");
+    public static By pidDefrredIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC Compact) (deferred)\")");
     public static By clickOkButton = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"OK\")");
     public static By inspectDeferredDocument = AppiumBy.accessibilityId("Arrow right");
     public static By counterIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"30/30\")");
-    public static By counterIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"5/5\")");
+    public static By counterIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"7/7\")");
     public static By authenticationError = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Invalid pin\")");
     public static By clickHome = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_home");
     public static By clickHistory = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_transactions");
@@ -101,10 +101,10 @@ public class WalletElements {
     public static By clickRemoveInDropdown = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Remove\")");
     public static By selectRemove = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*document_details_screen_dialogue_delete_document_positive_button.*\")");
     public static By bookmarkIcon = By.xpath("//android.view.View[@content-desc=\"Bookmark\" or @content-desc=\"Bookmark filled\"]");
-    public static By clickSignDocument = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Sign\")");
+    public static By clickSignDocument = AppiumBy.androidUIAutomator("new UiSelector().text(\"Sign\")");
     public static By clickSelectDocument = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Select document\")");
     public static By selectPDFSample = By.xpath("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"sample.pdf\"]");
-    public static By clickFromDevice = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"From device\")");
+    public static By clickFromDevice = AppiumBy.androidUIAutomator("new UiSelector().text(\"From device\")");
     public static By selectSigningService = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Select signing service\")");
     public static By clickProceed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Done\")");
     public static By selectSigningCertificate = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Select signing certificate\")");
@@ -117,7 +117,7 @@ public class WalletElements {
     public static By historyIsDisplayed = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_transactions");
     public static By inPersonIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"In person\")");
     public static By onlineIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Online\")");
-    public static By clickScreen = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]");
+    public static By clickScreen = By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View/android.view.View");
     public static By signDocument = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Sign document\")");
     public static By homeHighlighted = By.id(APP_PACKAGE + ":id/dashboard_screen_bottom_navigation_item_home");
     public static By issuerNameDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Digital Credentials Issuer\")");
@@ -140,7 +140,7 @@ public class WalletElements {
     public static By filterTab = AppiumBy.accessibilityId("Filters");
     public static By downwardIsDisplayed = AppiumBy.accessibilityId("Arrow down");
     public static By upwardIsDisplayed = AppiumBy.accessibilityId("Arrow up");
-    public static By counterIsDisplayedKotlinOnDetails = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Instances remaining 5/5\")");
+    public static By counterIsDisplayedKotlinOnDetails = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Instances remaining 7/7\")");
     public static By InPersonPresentation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"In person\")");
     public static By clickEnable = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"ENABLE\")");
     public static By clickOn = By.id("com.android.settings:id/switch_widget");
@@ -150,7 +150,7 @@ public class WalletElements {
     public static By clickMenu = AppiumBy.accessibilityId("Menu");
     public static By clickChangePin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Change PIN\")");
     public static By changePinIsDisplayed = By.id(APP_PACKAGE + ":id/pin_screen_title");
-    public static By clickCloseButton = By.xpath("//gb1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]");
+    public static By clickCloseButton = AppiumBy.androidUIAutomator("new UiSelector().description(\"Close\")");
     public static By cancelPinIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Cancel pin changing?\")");
     public static By welcomeLogo = AppiumBy.accessibilityId("Logo icon and text");
     public static By welcomeSubtitle = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Secure your wallet with a PIN code and connect to your National System.\")");
@@ -163,7 +163,7 @@ public class WalletElements {
     public static By transactionInformationIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Transaction information\")");
     public static By clickViewDetails = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"View details\")");
     public static By intededUse = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Intended use\")");
-    public static By forTestingPurposes = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"For Testing Purposes\")");
+    public static By forTestingPurposes = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"For testing purposes only\")");
     public static By privacyPolicy = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Privacy policy\")");
     public static By urlPrivacyPolicy = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"http://data.europa.eu/eudi/policy/trust-service-practice-statement\")");
     public static By dataSharedIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"DATA SHARED\")");
@@ -172,12 +172,12 @@ public class WalletElements {
     public static By birthDateOnHistory = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"[\"birthdate\"]\")");
     public static By initiateDeletion = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Initiate deletion request\")");
     public static By informationalScreen = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Before you continue\")");
-    public static By clarifyForCommunicationChanel = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"You're about to leave the wallet and go to NiScy’s website, where you can fill in a form to request deletion of the data you shared.\")");
+    public static By clarifyForCommunicationChanel = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"You're about to leave the wallet and go to Niscy’s website, where you can fill in a form to request deletion of the data you shared.\")");
     public static By notesForRequest = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Before you continue\")");
-    public static By theRelyingPartyIsResponsible = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"NiScy may still be required to keep some of your data for legal reasons, even after your request. Any updates on the outcome will come from NiScy directly, not the wallet.\")");
-    public static By buttonToWebsite = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Continue to NiScy’s website\")");;
+    public static By theRelyingPartyIsResponsible = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").textContains(\"may still be required to keep some of your data for legal reasons\")");
+    public static By buttonToWebsite = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Continue to Niscy’s website\")");;
     public static By dataDeletionRequestInitiation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"View previous data deletion requests (1)\")");
-    public static By previousDataDeletionIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Previous data deletion requests for NiScy\")");
+    public static By previousDataDeletionIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Previous data deletion requests for Niscy\")");
     public static By noContactInfromation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"EU\")");
     public static By aboutEudiWallet = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"About EUDI Wallet\")");
     public static By trustMarkIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Officially Certified And Trusted EUDI Wallet\")");
@@ -190,4 +190,8 @@ public class WalletElements {
     public static By settingsCountryGermany = AppiumBy.androidUIAutomator("new UiSelector().description(\"Germany\")");
     public static By settingsSetAsDefault = AppiumBy.androidUIAutomator("new UiSelector().text(\"Set as default\")");
     public static By trustMarkContentIsDisplayedGerman = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Beispieltext-für-Benutzer\")");
+    public static By selectPIDSDJWTPython = By.xpath("//android.view.View[@resource-id=\"selectCredential\"]/android.view.View[8]");
+    public static By openDigitalWallet = AppiumBy.accessibilityId("Open Digital Wallet");
+    public static By continueToTrustSite = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.android.chrome:id/positive_button\")");
+
 }
