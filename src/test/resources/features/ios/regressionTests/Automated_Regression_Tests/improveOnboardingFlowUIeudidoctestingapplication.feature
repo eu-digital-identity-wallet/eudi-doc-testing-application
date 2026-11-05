@@ -1,4 +1,4 @@
-@IOS @automated @US_IOFUEDTA
+@IOS @automated @US_IOFUEDTA @GENERAL_TESTS
 Feature: User onboarding experience
   As a new user
   I want a clear onboarding flow

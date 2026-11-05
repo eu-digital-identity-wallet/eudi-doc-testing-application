@@ -1,4 +1,4 @@
-@IOS @automated @US_IDFUEDTA
+@IOS @automated @US_IDFUEDTA @GENERAL_TESTS
 Feature: User document management experience
   As a user
   I want a clearer and more intuitive document management experience

@@ -1,4 +1,4 @@
-@ANDROID @automated @US_ALOCWS
+@ANDROID @automated @US_ALOCWS @GENERAL_TESTS
 Feature: Access the official list of certified Wallet Solutions
   As a EUDI Wallet User
   I want to access the official list of certified Wallet Solutions,

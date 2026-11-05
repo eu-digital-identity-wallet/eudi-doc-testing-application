@@ -1,4 +1,4 @@
-@IOS @automated @US_VCSOTWS
+@IOS @automated @US_VCSOTWS @GENERAL_TESTS
 Feature: Access Wallet Solution certification status information
   As a EUDI Wallet User
   I want to access the certification status information of the Wallet Solution,

@@ -1,4 +1,4 @@
-@ANDROID @automated @US_VWCI
+@ANDROID @automated @US_VWCI @GENERAL_TESTS
 Feature: View Wallet Solution certification information
   As a EUDI Wallet User
   I want to view information about the certification of the Wallet Solution,

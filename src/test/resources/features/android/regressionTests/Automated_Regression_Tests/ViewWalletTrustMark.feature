@@ -1,4 +1,4 @@
-@ANDROID @automated @US_VWTM
+@ANDROID @automated @US_VWTM @GENERAL_TESTS
 Feature: View Wallet Trust Mark
   As a EUDI Wallet User
   I want to view the Wallet Trust Mark within the wallet application,
