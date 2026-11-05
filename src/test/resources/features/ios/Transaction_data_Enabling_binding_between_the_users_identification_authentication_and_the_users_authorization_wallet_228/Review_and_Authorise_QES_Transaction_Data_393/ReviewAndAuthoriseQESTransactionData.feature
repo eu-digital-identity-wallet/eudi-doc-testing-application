@@ -53,7 +53,7 @@ Feature: Review and authorise QES transaction data
     When the user accesses the Transaction Log
     Then the QES transaction is available in the Transaction Log
 
-  @US_RAAQESTD_TC_08 @manual:Ignored
+  @US_RAAQESTD_TC_08 @manual:Passed
   Scenario: Display recorded QES transaction information
     Given the QES transaction is available in the Transaction Log
     When the user opens the recorded QES transaction
