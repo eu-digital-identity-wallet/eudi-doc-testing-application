@@ -2983,6 +2983,9 @@ public class Issuer {
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiwPidSDJWT();
                                 }
+                                if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                    test.mobile().wallet().clickOpenNew();
+                                }
                                 test.mobile().wallet().clickAddButton();
                                 if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                     test.mobile().wallet().clickContinueNew();
@@ -2998,9 +3001,11 @@ public class Issuer {
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiw();
-                                    test.mobile().wallet().clickAddButton();
                                     if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                         test.mobile().wallet().clickContinueNew();
+                                    }
+                                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                        test.mobile().wallet().clickAddButton();
                                     }
                                     test.mobile().issuer().issueMDL();
 
@@ -3432,7 +3437,9 @@ public class Issuer {
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().wallet().clickOpenNew();
             }
-            test.mobile().wallet().continueToTrustSite();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().continueToTrustSite();
+            }
         } else {
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 test.mobile().issuer().ensureIssuerCredentialsPageInChrome();

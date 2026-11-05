@@ -3,6 +3,8 @@ package eu.europa.eudi.stepdefs;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -1416,8 +1418,20 @@ public class AutomatedStepDefs {
     public void whenTheUserProceedsWithAttestationIssuanceNoInstanceCountIsShown() throws InterruptedException {
         test.mobile().wallet().scrollUntilKotlinPidOnDocuments();
         test.mobile().wallet().clickKotlinPIDFromList();
-        test.mobile().issuer().signInUser();
-        test.mobile().issuer().fillLoginForm();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickContinueNew();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                    && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
+            }
+        }else{
+            test.mobile().issuer().signInUser();
+            test.mobile().issuer().fillLoginForm();
+        }
+
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             List<WebElement> counterElements = test.mobileWebDriverFactory()
                     .getDriverAndroid()
@@ -1463,36 +1477,63 @@ public class AutomatedStepDefs {
         test.mobile().wallet().historyTabIsDisplayed();
     }
 
-    @Given("the user is on the Home page and then selects Authenticate")
-    public void theUserIsOnTheHomePageAndThenSelectsAuthenticate() {
-        test.mobile().wallet().eudiPageIsDisplayed();
-        test.mobile().wallet().clickContinue();
-        test.mobile().wallet().checkIfPageIsTrue();
-        test.mobile().wallet().createAPin();
-        test.mobile().wallet().renterThePin();
-        test.mobile().wallet().clickAddMyDigitalID();
-        test.mobile().wallet().dashboardPageIsDisplayedDeferred();
-        test.mobile().wallet().clickAuthenticate();
+    @Given("the user is on the Home page and then selects Authenticate with {} and {}")
+    public void theUserIsOnTheHomePageAndThenSelectsAuthenticate(String credential, String issuerType) throws InterruptedException {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().checkIfPageIsTrue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            test.mobile().wallet().dashboardPageIsDisplayedDeferred();
+            test.mobile().wallet().clickAuthenticate();
+        }else{
+            this.credential = credential;
+            this.issuerType = issuerType;
+            test.mobile().wallet().eudiPageIsDisplayed();
+            test.mobile().wallet().clickContinue();
+            test.mobile().wallet().createAPin();
+            test.mobile().wallet().renterThePin();
+            test.mobile().wallet().successMessageOfSetUpPin();
+            test.mobile().wallet().clickAddMyDigitalID();
+            if ("kotlin".equalsIgnoreCase(issuerType)) {
+                test.mobile().wallet().insertPidFromListKotlin();
+                test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+                test.mobile().wallet().clickClose();
+            } else {
+                test.mobile().wallet().insertPidFromList();
+                test.mobile().issuer().completedIsuuanceFlow(issuerType, credential, "from list");
+                test.mobile().wallet().clickDone();
+            }
+            test.mobile().wallet().clickHome();
+            test.mobile().wallet().clickAuthenticate();
+        }
     }
 
     @When("the user chooses in person")
     public void theUserChoosesInPerson() throws InterruptedException {
-        test.mobile().wallet().clickInPersonPresentation();
-        test.mobile().wallet().clickEnable();
-        test.mobile().wallet().clickOn();
-        test.mobile().wallet().clickBackOnBlutooth();
-        test.mobile().wallet().clickBackOnBlutooth();
-        test.mobile().wallet().clickBackOnDevice();
-        test.mobile().wallet().clickAuthenticate();
-        test.mobile().wallet().clickInPersonPresentation();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickInPersonPresentation();
+            test.mobile().wallet().clickEnable();
+            test.mobile().wallet().clickOn();
+            test.mobile().wallet().clickBackOnBlutooth();
+            test.mobile().wallet().clickBackOnBlutooth();
+            test.mobile().wallet().clickBackOnDevice();
+            test.mobile().wallet().clickAuthenticate();
+            test.mobile().wallet().clickInPersonPresentation();
+        }else{
+            test.mobile().wallet().clickInPersonPresentation();
+            test.mobile().wallet().clickAllowNew();
+//            test.mobile().wallet().clickEnable();
+//            test.mobile().wallet().clickBackOnDevice();
+//            test.mobile().wallet().clickAuthenticate();
+//            test.mobile().wallet().clickInPersonPresentation();
+        }
     }
 
     @And("the title Authenticate my identity is shown")
     public void theTitleAuthenticateMyIdentityIsShown() {
-        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            test.mobile().wallet().clickAuthenticate();
-            test.mobile().wallet().clickInPersonPresentation();
-        }
         test.mobile().wallet().authenticateMyIdentity();
         test.mobile().wallet().clickBackButton();
     }
@@ -1501,6 +1542,9 @@ public class AutomatedStepDefs {
     public void theUserChoosesOnline() {
         test.mobile().wallet().clickAuthenticate();
         test.mobile().wallet().clickOnlinePresentation();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+            test.mobile().wallet().clickAllowNew();
+        }
     }
 
     @Then("the scan the QR code provided by the interacting party is displayed")

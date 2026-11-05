@@ -13,13 +13,13 @@ public class VerifierElements {
     public static By walletResponded = By.xpath("//android.widget.TextView[@text=\"eu.europa.ec.eudi.pid.1\"]");
     public static By chooseWalletPageDisplayed = By.xpath("//android.widget.TextView[@text=\"Invoke Wallet\"]");
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[1]/android.view.View");
-    public static By selectAttributesMdl =  By.xpath("//android.view.View[@resource-id=\"mat-mdc-form-field-label-5\"]");
+    public static By selectAttributesMdl =  By.xpath("//android.view.View[@resource-id=\"mat-mdc-form-field-label-7\"]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[3]/android.view.View");
-    public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-3\"]/android.view.View/android.view.View[3]/android.view.View");
+    public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-4\"]/android.view.View/android.view.View[3]/android.view.View");
     public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id='mat-select-2-panel']");
-    public static By msoMdocMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-4-panel\"]");
+    public static By msoMdocMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-6-panel\"]");
     public static By specificAttributes = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
-    public static By specificAttributesMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-3-panel\"]");
+    public static By specificAttributesMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-5-panel\"]");
     public static By appOpensSuccessfullyOnWeb =  By.xpath("//h4[normalize-space()='Define your presentation request']");;
     public static By selectAttributesOnWebForMdl = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Mobile Driving Licence')]]//div[contains(@class,'mat-mdc-select-trigger')]");
     public static By selectAttributesOnWebForPID = By.xpath("//mat-expansion-panel[.//mat-panel-title[contains(.,'Person Identification Data')]]//div[contains(@class,'mat-mdc-select-trigger')]");
@@ -34,7 +34,7 @@ public class VerifierElements {
     public static By clickSelectAttributes = By.xpath("//android.widget.Button[@text=\"Select\"]");
     public static By clickViewContent = By.xpath("//android.widget.Button[@text=\"View Content\"]");
     public static By clickViewContentOnWeb = By.xpath("//button[contains(@class, 'mat-mdc-outlined-button') and .//span[normalize-space(.)='View Content']]");
-    public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-3\"]");
+    public static By clickDataMdl = By.xpath("//android.widget.Button[@resource-id=\"mat-expansion-panel-header-4\"]");
     public static By walletRespondedMdlKotlin = By.xpath("//android.widget.TextView[@text=\"org.iso.18013.5.1.mDL\"]");
     public static By clickDataOnWebForMdl = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Mobile Driving Licence (MDL)']]");
     public static By clickDataOnWebForPID = By.xpath("//mat-expansion-panel-header[.//mat-panel-title[normalize-space(.)='Person Identification Data (PID)']]");

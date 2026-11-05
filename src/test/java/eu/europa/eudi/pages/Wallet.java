@@ -625,7 +625,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.documentsTab)).getText();
-            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED_IOS.label, pageHeader);        }
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IOS.label, pageHeader);        }
     }
 
     public void clickClose() {
@@ -1039,7 +1039,6 @@ public class Wallet {
             Thread.sleep(5000);
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickLoyalty)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickContinue)).click();
             Thread.sleep(5000);
         }
     }
@@ -1936,10 +1935,10 @@ public class Wallet {
 //                        test.mobile().verifier().insertPIN();
 //                    }
                     test.mobile().verifier().clickContinue();
-                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-                        test.mobile().wallet().pinFieldIsDisplayed();
-                        test.mobile().verifier().insertPIN();
-                    }
+//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+//                        test.mobile().wallet().pinFieldIsDisplayed();
+//                        test.mobile().verifier().insertPIN();
+//                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2216,7 +2215,7 @@ public class Wallet {
                 Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED.label, pageHeader);
             }else {
                 String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.pidDefrredIsDisplayedKotlin)).getText();
-                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED_KOTLIN.label, pageHeader);
+                Assert.assertEquals(Literals.Wallet.PID_DEFERRED_DISPLAYED_KOTLIN_IOS.label, pageHeader);
             }
         }
     }
@@ -3093,7 +3092,7 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.AUTHENTICATE_ME_IDENTITY.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.authenticateMyIdentity)).getText();
-            Assert.assertEquals(Literals.Wallet.AUTHENTICATE_ME_IDENTITY.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.AUTHENTICATE_ME_IDENTITY_IOS.label, pageHeader);
         }
     }
 

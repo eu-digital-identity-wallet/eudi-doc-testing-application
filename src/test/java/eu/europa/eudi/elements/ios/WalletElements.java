@@ -121,7 +121,7 @@ public class WalletElements {
     public static By clickContinue = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Continue'");
     public static By clickOpen = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Open'");
     public static By clickScreen = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Cancel'");
-    public static By scanQRText = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Cancel'");
+    public static By scanQRText = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Scan a QR code provided from an interacting party to authenticate your identity.'");
     public static By clickClose = By.id("Close");
     public static By clickDoneSign = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND label == 'Done'");
     public static By filterByIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeNavigationBar' AND name == 'Filter by'");
@@ -141,7 +141,7 @@ public class WalletElements {
     public static By clickCloseButton = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'chevron.left'");
     public static By cancelPinIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Cancel pin changing?'");
     public static By InPersonPresentation = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'home_tab_screen_dialog_in_person_button'");
-    public static By authenticateMyIdentity;
+    public static By authenticateMyIdentity = AppiumBy.accessibilityId("Authenticate my identity ");
     public static By clickEnable = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Enable'");
     public static By counterIsDisplayedKotlinOnDetails = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'Instances remaining 7/7'");
     public static By filterTab = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'documents_screen_filters_button'");

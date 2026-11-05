@@ -832,7 +832,9 @@ public class Verifier {
     }
 
     public void clickContinue() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickContinue)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickContinue)).click();
+        }
     }
 
     public void clickViaDcApi() {
