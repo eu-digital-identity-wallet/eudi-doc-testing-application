@@ -1239,17 +1239,33 @@ public class Wallet {
     }
 
     public void clickContinueNew() {
-        IOSDriver driver =
-                (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-        try {
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            alert.accept();
-            System.out.println("Alert found and accepted.");
-        } catch (TimeoutException e) {
-            System.out.println("No alert appeared. Continuing test...");
+            IOSDriver driver =
+                    (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            try {
+                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+                alert.accept();
+                System.out.println("Alert found and accepted.");
+            } catch (TimeoutException e) {
+                System.out.println("No alert appeared. Continuing test...");
+            }
+        }else{
+            AndroidDriver driver =
+                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            try {
+                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+                alert.accept();
+                System.out.println("Alert found and accepted.");
+            } catch (TimeoutException e) {
+                System.out.println("No alert appeared. Continuing test...");
+            }
         }
+
     }
 
     public void clickOpenNew() {
@@ -1504,6 +1520,9 @@ public class Wallet {
                 test.mobile().issuer().signInUser();
                 test.mobile().issuer().fillLoginForm();
             }
+        }else{
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
         }
     }
 
@@ -2047,6 +2066,9 @@ public class Wallet {
             test.mobile().wallet().clickContinueNew();
             test.mobile().issuer().signInUser();
             test.mobile().issuer().fillLoginForm();
+        }else{
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
         }
     }
 
@@ -2372,6 +2394,16 @@ public class Wallet {
     public void clickProceed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickProceed)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
+        }
+    }
+
+    public void clickProceedForSigning() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
@@ -3504,7 +3536,7 @@ public class Wallet {
             Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
         } else {
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.theRelyingPartyIsResponsible)).getText();
-            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE.label));
+            Assert.assertTrue(label.contains(Literals.Wallet.THE_RELYING_PARTY_IS_RESPONSIBLE_IOS.label));
         }
     }
 

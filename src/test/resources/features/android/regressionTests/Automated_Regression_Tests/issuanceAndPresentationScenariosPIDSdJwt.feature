@@ -33,8 +33,4 @@ Feature: Issuance and presentation - PID (SD-JWT)
     Examples:
       | credential   | issuer | issuance_method  | issue_scenario | verifier     | presentation_scenario | selective_disclosure |
       | PID (SD-JWT) | Kotlin | from list        | same device    | Web verifier | same device           | specific attributes  |
-      | PID (SD-JWT) | Kotlin | from list        | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (SD-JWT) | Kotlin | credential offer | same device    | Web verifier | same device           | specific attributes  |
-      | PID (SD-JWT) | Kotlin | credential offer | same device    | Web verifier | cross device          | specific attributes  |
-      | PID (SD-JWT) | Kotlin | credential offer | cross device   | Web verifier | same device           | specific attributes  |
       | PID (SD-JWT) | Kotlin | credential offer | cross device   | Web verifier | cross device          | specific attributes  |

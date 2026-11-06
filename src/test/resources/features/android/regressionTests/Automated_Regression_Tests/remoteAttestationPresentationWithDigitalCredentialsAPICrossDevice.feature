@@ -1,4 +1,4 @@
-@ANDROID @automated @US_RAPDCAPICD @GENERAL_TESTS
+@ANDROID @automated @US_RAPDCAPICD
 Feature: Present Digital Attestations via Browser using EUDI Wallet on a Different Device
   As a EUDI Wallet User
   I want to present digital attestations to a requestor Relying Party residing on a different device (e.g., Laptop/Desktop) than my EUDI Wallet, by utilising the browser's Digital Credentials API

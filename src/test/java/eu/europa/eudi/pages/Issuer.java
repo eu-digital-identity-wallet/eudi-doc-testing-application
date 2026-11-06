@@ -2918,20 +2918,26 @@ public class Issuer {
                                 test.mobile().issuer().clickWalletLink();
                                 if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                     test.mobile().wallet().clickContinueNew();
+                                }else{
+                                        test.mobile().wallet().clickContinueNew();
+                                        test.mobile().wallet().continueToTrustSite();
                                 }
+                                test.mobile().wallet().createAPin();
                                 test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                     test.mobile().wallet().clickContinueNew();
-                                }
-
                                 IOSDriver driver =
                                         (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
                                 if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
                                         && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
-                                test.mobile().issuer().signInUser();
-                                test.mobile().issuer().fillLoginForm();
-                            }
+                                    test.mobile().issuer().signInUser();
+                                    test.mobile().issuer().fillLoginForm();
+                                }
+                            }else{
+                                      test.mobile().issuer().signInUser();
+                                      test.mobile().issuer().fillLoginForm();
+                                }
                                 }
                             break;
                         case "cross device":
@@ -2953,11 +2959,14 @@ public class Issuer {
                             test.mobile().wallet().clickAddButton();
                             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                 test.mobile().wallet().clickContinueNew();
-                            }
-                            IOSDriver driver =
-                                    (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                            if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
-                                    && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                                IOSDriver driver =
+                                        (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                                if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                                        && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                                    test.mobile().issuer().signInUser();
+                                    test.mobile().issuer().fillLoginForm();
+                                }
+                            }else{
                                 test.mobile().issuer().signInUser();
                                 test.mobile().issuer().fillLoginForm();
                             }
@@ -3008,7 +3017,6 @@ public class Issuer {
                                         test.mobile().wallet().clickAddButton();
                                     }
                                     test.mobile().issuer().issueMDL();
-
                                 }
                             }
                             break;

@@ -788,17 +788,14 @@ public class AutomatedStepDefs {
             test.mobile().wallet().selectSigningCertificate();
             test.mobile().wallet().clickCredentialForTests();
             test.mobile().wallet().clickProceed();
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
-//            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//                test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
-//            }
-            test.mobile().wallet().clickExpandVerificationSigning();
+
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                 test.mobile().wallet().clickContinue();
+                test.mobile().wallet().openDigitalWallet();
+                test.mobile().wallet().continueToTrustSite();
             }
-            test.mobile().wallet().openDigitalWallet();
-            test.mobile().wallet().continueToTrustSite();
-            test.mobile().wallet().clickExpandVerification();
+
+            test.mobile().wallet().clickExpandVerificationSigning();
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                 if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                     test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/py_data_on_sign_document_kotlin.yml");
