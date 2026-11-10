@@ -6,7 +6,7 @@ Feature: Validate History Flow UI Improvements
 
 # https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/319
 
-  @US_IHFUEDTA_TC_01 @manual:Passed
+  @US_IHFUEDTA_TC_01
   Scenario: Verify History screen UI updates
     Given the History section is displayed
     And the corresponding icon should be updated to History

@@ -625,6 +625,15 @@ public class Wallet {
             Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.documentsTab)).getText();
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED_IOS.label, pageHeader);        }
+    }
+
+    public void documentsIsDisplayedSecond() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.documentsTab)).getText();
+            Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IS_DISPLAYED.label, pageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.documentsTab)).getText();
             Assert.assertEquals(Literals.Wallet.DOCUMENTS_PAGE_IOS.label, pageHeader);        }
     }
 
