@@ -497,7 +497,7 @@ public class AutomatedStepDefs {
             test.mobile().issuer().selectPidPythonIssuer();
             test.mobile().issuer().scrollUntilFindSubmitIssuer();
             test.mobile().issuer().clickPreAuthorizationCode();
-            test.mobile().issuer().clickSubmitButton();
+            test.mobile().issuer().clickSubmitButtonIssuer();
         }
 
         @Then("the user provides their personal information")
@@ -558,6 +558,8 @@ public class AutomatedStepDefs {
             }
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().wallet().clickContinueNew();
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
             }
         }
 
@@ -1737,7 +1739,7 @@ public class AutomatedStepDefs {
 
     @When("the user taps Back button")
     public void theUserTapsBackButton() {
-        test.mobile().wallet().clickBackButton();
+        test.mobile().wallet().clickBackButtonChangePin();
     }
 
     @Then("a confirmation prompt is displayed with the text Cancel PIN change")

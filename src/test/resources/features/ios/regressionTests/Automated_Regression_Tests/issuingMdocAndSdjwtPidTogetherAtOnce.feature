@@ -23,6 +23,6 @@ Feature: PID-07 Issuing mdoc and sd-jwt PID together at once
     Then the wallet automatically selects appropriate format for <issuer>
 
     Examples:
-      | credential     | issuer | issuance_method |
-      | PID (MSO Mdoc) | Python | from list       |
-      | PID (MSO Mdoc) | Kotlin | from list       |
+      | credential     | issuer | issuance_method | issue_scenario |
+      | PID (MSO Mdoc) | Python | from list       | same device    |
+      | PID (MSO Mdoc) | Kotlin | from list       | same device    |

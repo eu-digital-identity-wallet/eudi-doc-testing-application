@@ -671,6 +671,14 @@ public class Wallet {
         }
     }
 
+    public void clickBackButtonChangePin() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickBackButtonChangePin)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickBackButton)).click();
+        }
+    }
+
     public void clickBackButtonSign() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickBackButton)).click();
@@ -2672,10 +2680,9 @@ public class Wallet {
     }
 
     public void walletUnableToAuthenticate() {
-//        if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//            test.mobile().wallet().pinFieldIsDisplayed();
-//            test.mobile().verifier().insertPIN();
-//        }
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().continueToTrustSite();
+        }
         test.mobile().verifier().viewDataPage();
 
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {

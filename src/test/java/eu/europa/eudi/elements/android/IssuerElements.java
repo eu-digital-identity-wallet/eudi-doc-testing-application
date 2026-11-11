@@ -25,7 +25,7 @@ public class IssuerElements {
     public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Document Number\"]");
     public static By clickIssueDate = By.xpath("//android.widget.DatePicker[@resource-id=\"field-driving_privileges[0][issue_date]\"]");
     public static By clickExpiryDate = By.xpath("//android.widget.DatePicker[@resource-id=\"field-driving_privileges[0][expiry_date]\"]");
-    public static By clickSubmit =  AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.Button\").text(\"Submit\")");
+    public static By clickSubmit =  By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By clickScreen = By.xpath("//android.view.View[@text=\"Expiry Date\"]");
     public static By authorize = By.xpath("//android.widget.Button[@text=\"Authorize\"]");
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\" or @text=\"Place Of Birth\"]");
@@ -56,4 +56,5 @@ public class IssuerElements {
     public static By familyNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[3]");
     public static By givenNameLoyalty = By.xpath("//android.widget.EditText[@resource-id=\"field-given_name\"]");
     public static By clickGivenNameText = By.xpath("//android.view.View[@text=\"Given Name\"]");
+    public static By clickSubmitButtonIssuer = By.xpath("//android.widget.Button[@resource-id=\"btncheck\"]");
 }

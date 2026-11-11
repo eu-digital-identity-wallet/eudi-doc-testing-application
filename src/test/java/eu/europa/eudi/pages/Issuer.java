@@ -135,6 +135,14 @@ public class Issuer {
         }
     }
 
+    public void clickSubmitButtonIssuer() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(IssuerElements.clickSubmitButtonIssuer)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.IssuerElements.clickSubmitButton)).click();
+        }
+    }
+
     public void qrCodeIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
@@ -807,11 +815,11 @@ public class Issuer {
             } catch (Exception e) {
             }
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 try {
-                    WebElement pidElement = driver.findElement(WalletElements.clickSubmit);
+                    WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
                 } catch (Exception e) {
                     MobileActionsUtils.slowScroll();
@@ -946,9 +954,10 @@ public class Issuer {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             By[] locators = {
-                    AppiumBy.id("content"),
-                    AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Mandatory Information\")")
+                    AppiumBy.androidUIAutomator("resourceId(\"content\")"),
+                    AppiumBy.androidUIAutomator("new UiSelector().text(\"Mandatory Information\")")
             };
+
 
             int maxAttempts = 5;
             int attempt = 0;
@@ -1060,12 +1069,53 @@ public class Issuer {
 
     public void pullToRefresh(AndroidDriver driver) {
 
-        if (refreshViaChromeJs(driver)) {
-            System.out.println("Pull-to-refresh executed via JS location.reload().");
-        } else {
-            performNativeSwipeRefresh(driver);
-            System.out.println("Pull-to-refresh executed via native swipe.");
-        }
+        Dimension size = driver.manage().window().getSize();
+
+        int centerX = size.width / 2;
+
+        int startY = (int) (size.height * 0.25);
+        int endY = (int) (size.height * 0.70);
+
+        PointerInput finger = new PointerInput(
+                PointerInput.Kind.TOUCH,
+                "finger"
+        );
+
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(
+                finger.createPointerMove(
+                        Duration.ZERO,
+                        PointerInput.Origin.viewport(),
+                        centerX,
+                        startY
+                )
+        );
+
+        swipe.addAction(
+                finger.createPointerDown(
+                        PointerInput.MouseButton.LEFT.asArg()
+                )
+        );
+
+        swipe.addAction(
+                finger.createPointerMove(
+                        Duration.ofMillis(800),
+                        PointerInput.Origin.viewport(),
+                        centerX,
+                        endY
+                )
+        );
+
+        swipe.addAction(
+                finger.createPointerUp(
+                        PointerInput.MouseButton.LEFT.asArg()
+                )
+        );
+
+        driver.perform(Collections.singletonList(swipe));
+
+        System.out.println("Pull-to-refresh executed.");
 
         try {
             List<WebElement> continueButtons = driver.findElements(
@@ -1829,7 +1879,7 @@ public class Issuer {
             for (int i = 0; i < 5; i++) {
                 boolean displayed = false;
                 try {
-                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButton);
+                    WebElement pidElement = driver.findElement(eu.europa.eudi.elements.android.IssuerElements.clickSubmitButtonIssuer);
                     displayed = pidElement.isDisplayed();
                 } catch (Exception e) {
                     // not found yet, fall through to scroll
@@ -2367,24 +2417,13 @@ public class Issuer {
             for (String ctx : ad.getContextHandles()) {
                 try {
                     ad.context(ctx);
-
-                    if (!"NATIVE_APP".equals(ctx)) {
-                        try {
-                            Object href = ((JavascriptExecutor) ad).executeScript("return location.href");
-                            System.out.println("DEBUG ctx=" + ctx + " url=" + href);
-                        } catch (Exception urlEx) {
-                            System.out.println("DEBUG ctx=" + ctx + " url=<failed: " + urlEx.getMessage() + ">");
-                        }
-                    }
-
                     By locator = ctx.equals("NATIVE_APP") ? nativeLocator : webLocator;
                     List<WebElement> found = ad.findElements(locator);
-                    System.out.println("DEBUG ctx=" + ctx + " locator=" + locator + " found=" + found.size());
                     if (!found.isEmpty() && found.get(0).isDisplayed()) {
                         return found.get(0);
                     }
                 } catch (Exception ignored) {
-                    System.out.println("DEBUG ctx=" + ctx + " context switch/find threw: " + ignored);
+                    // context not attached yet / transient — try next context
                 }
             }
             return null; // triggers another poll cycle
@@ -2606,142 +2645,25 @@ public class Issuer {
 
     public void scrollUntilPidIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            String nativeContext = driver.getContext();
+            driver.context("WEBVIEW_chrome");
 
-            try {
-                WebDriverWait wait =
-                        new WebDriverWait(driver, Duration.ofSeconds(20));
+            By locator = By.cssSelector("input[name='eu.europa.ec.eudi.pid_mdoc']");
 
-                wait.until(d ->
-                        driver.getContextHandles().contains("WEBVIEW_chrome"));
+            WebElement element = new WebDriverWait(driver, Duration.ofSeconds(50))
+                    .until(ExpectedConditions.presenceOfElementLocated(locator));
 
-                driver.context("WEBVIEW_chrome");
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block: 'center', behavior: 'instant'});",
+                    element
+            );
 
-                JavascriptExecutor js = (JavascriptExecutor) driver;
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.elementToBeClickable(locator))
+                    .click();
 
-                wait.until(d -> Boolean.TRUE.equals(
-                        js.executeScript("return document.readyState === 'complete'")));
-
-                boolean navigated = false;
-                boolean retried = false;
-                for (int i = 0; i < 40; i++) {
-                    Object href = js.executeScript("return location.href");
-                    String url = href == null ? "" : href.toString();
-                    if (url.contains("credential_offer")) {
-                        navigated = true;
-                        break;
-                    }
-                    if (i == 16 && !retried) {
-                        driver.context("NATIVE_APP");
-                        try {
-                            System.out.println("DEBUG stuck on blank tab, re-clicking issuer credential offer link");
-                            new WebDriverWait(driver, Duration.ofSeconds(10))
-                                    .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssuerCredentialOffer))
-                                    .click();
-                        } catch (Exception e) {
-                            System.out.println("DEBUG retry click failed (" + e.getMessage() + "), re-firing deep link to " + test.envDataConfig().getPythonUrl());
-                            Map<String, Object> deepLinkArgs = new HashMap<>();
-                            deepLinkArgs.put("url", test.envDataConfig().getPythonUrl());
-                            deepLinkArgs.put("package", "com.android.chrome");
-                            driver.executeScript("mobile:deepLink", deepLinkArgs);
-                            try {
-                                new WebDriverWait(driver, Duration.ofSeconds(10))
-                                        .until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.IssuerElements.clickIssuerCredentialOffer))
-                                        .click();
-                            } catch (Exception e2) {
-                                System.out.println("DEBUG click after re-fired deep link also failed: " + e2.getMessage());
-                            }
-                        }
-                        driver.context("WEBVIEW_chrome");
-                        retried = true;
-                    }
-
-                    Thread.sleep(500);
-                }
-
-                if (!navigated) {
-                    throw new org.openqa.selenium.TimeoutException(
-                            "Issuer page never navigated past Chrome's blank tab.");
-                }
-
-                // DEBUG: Inspect the actual DOM
-                System.out.println("Current URL: " + js.executeScript("return location.href"));
-                System.out.println("Page title: " + js.executeScript("return document.title"));
-
-                System.out.println("Checkbox inputs and labels:");
-                System.out.println(js.executeScript("""
-            return JSON.stringify(
-                [...document.querySelectorAll('input')].map(el => ({
-                    type: el.type,
-                    name: el.name,
-                    id: el.id,
-                    checked: el.checked,
-                    visible: !!(el.offsetWidth || el.offsetHeight ||
-                                el.getClientRects().length),
-                    label: el.labels
-                        ? [...el.labels].map(l => l.innerText).join(' ')
-                        : ''
-                }))
-            , null, 2);
-            """));
-
-                By locator = By.cssSelector(
-                        "input[name='eu.europa.ec.eudi.pid_mdoc']");
-
-                for (int i = 0; i < 80; i++) {
-
-                    // Check whether the expected element exists
-                    List<WebElement> elements = driver.findElements(locator);
-
-                    if (!elements.isEmpty()) {
-                        WebElement checkbox = elements.get(0);
-
-                        if (checkbox.isDisplayed() && checkbox.isEnabled()) {
-                            js.executeScript(
-                                    "arguments[0].scrollIntoView({block:'center'});",
-                                    checkbox);
-
-                            System.out.println("PID checkbox found.");
-                            return;
-                        }
-                    }
-
-                    // Scroll the main page
-                    js.executeScript("window.scrollBy(0, 250);");
-
-                    // Scroll nested containers if the main page cannot scroll
-                    js.executeScript("""
-                if (window.scrollY === 0) {
-                    const candidates =
-                        [...document.querySelectorAll('*')].filter(el => {
-                            const s = getComputedStyle(el);
-                            return el.scrollHeight > el.clientHeight + 5 &&
-                                el.clientHeight > 0 &&
-                                /(auto|scroll)/.test(s.overflowY);
-                        });
-
-                    candidates.sort((a, b) =>
-                        (b.scrollHeight - b.clientHeight) -
-                        (a.scrollHeight - a.clientHeight));
-
-                    if (candidates.length) {
-                        candidates[0].scrollTop += 250;
-                    }
-                }
-                """);
-
-                    Thread.sleep(250);
-                }
-
-                throw new NoSuchElementException(
-                        "PID checkbox not found. Check the printed HTML inputs and labels.");
-
-            } finally {
-                driver.context(nativeContext);
-            }
+            driver.context("NATIVE_APP");
         } else {
             envDataConfig = new EnvDataConfig();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
@@ -3570,8 +3492,10 @@ public class Issuer {
         this.issuerType = issuerType;
         if ("kotlin".equalsIgnoreCase(this.issuerType)) {
             test.mobile().wallet().clickAddButton();
-//            test.mobile().issuer().signInUser();
-//            test.mobile().issuer().fillLoginForm();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().issuer().signInUser();
+            test.mobile().issuer().fillLoginForm();
+            }
         }else{
             test.mobile().wallet().defferedIsDisplayed(issuerType);
         }

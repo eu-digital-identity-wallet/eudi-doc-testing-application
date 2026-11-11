@@ -11,6 +11,7 @@ public class WalletElements {
     private static final String APP_PACKAGE = new EnvDataConfig().getAppiumAndroidAppPackage();
     private static final String KOTLIN_ISSUER_HOST = extractKotlinIssuerHost(new EnvDataConfig().getKotlinUrl());
 
+
     private static String extractKotlinIssuerHost(String url) {
         try {
             URI uri = new URI(url);
@@ -37,7 +38,7 @@ public class WalletElements {
     public static By dashboardPageIsDisplayedDeferred = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Welcome\")");
     public static By addDoc = AppiumBy.accessibilityId("Add");
     public static By addDocumentPageIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Add document\")");
-    public static By clickSubmit = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.Button\").text(\"Submit\")");
+    public static By clickSubmit = By.xpath("//android.widget.Button[@text=\"Submit\"]");
     public static By successMessageForDrivingIsDisplayed = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"You have successfully added the following to your wallet\")");
     public static By issuanceDetails = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (MSO Mdoc)\")");
     public static By successMessageIsDisplayedForIssuer = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"You have successfully added the following to your wallet\")");
@@ -193,5 +194,5 @@ public class WalletElements {
     public static By selectPIDSDJWTPython = By.xpath("//android.view.View[@resource-id=\"selectCredential\"]/android.view.View[8]");
     public static By openDigitalWallet = AppiumBy.accessibilityId("Open Digital Wallet");
     public static By continueToTrustSite = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.android.chrome:id/positive_button\")");
-
+    public static By clickBackButtonChangePin = AppiumBy.accessibilityId("Close");
 }

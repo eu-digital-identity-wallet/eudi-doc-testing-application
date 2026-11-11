@@ -15,7 +15,7 @@ public class VerifierElements {
     public static By selectAttributes = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[1]/android.view.View");
     public static By selectAttributesMdl =  By.xpath("//android.view.View[@resource-id=\"mat-mdc-form-field-label-7\"]");
     public static By clickFormat = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-2\"]/android.view.View/android.view.View[3]/android.view.View");
-    public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"cdk-accordion-child-4\"]/android.view.View/android.view.View[3]/android.view.View");
+    public static By clickFormatMdl = By.xpath("//android.view.View[@resource-id=\"mat-mdc-form-field-label-8\"]");
     public static By msoMdoc = By.xpath("//android.widget.ListView[@resource-id='mat-select-2-panel']");
     public static By msoMdocMdl = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-6-panel\"]");
     public static By specificAttributes = By.xpath("//android.widget.ListView[@resource-id=\"mat-select-1-panel\"]");
