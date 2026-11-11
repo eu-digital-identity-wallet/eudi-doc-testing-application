@@ -2509,7 +2509,7 @@ public class Issuer {
 
             } finally {
                 // Return to the original context
-                driver.context(nativeContext);
+                driver.context("NATIVE_APP");
             }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDPython)).click();
