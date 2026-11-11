@@ -1,0 +1,31 @@
+{
+  "fetchedAt": "2026-11-11T12:45:00Z",
+  "method": "REST API (no project board access - missing read:project scope)",
+  "reposChecked": [
+    "eudi-app-android-wallet-ui",
+    "eudi-app-ios-wallet-ui",
+    "eudi-doc-testing-application"
+  ],
+  "issues": [
+    { "repo": "eudi-app-android-wallet-ui", "number": 743, "title": "Interconnection of sandboxes", "state": "closed", "updated_at": "2026-11-11T08:36:33Z" },
+    { "repo": "eudi-app-android-wallet-ui", "number": 762, "title": "Universal EUDI design system", "state": "closed", "updated_at": "2026-11-11T08:32:42Z" },
+    { "repo": "eudi-app-android-wallet-ui", "number": 701, "title": "Deferred documents are polled every 5 seconds, ignoring the interval the issuer asks for", "state": "open", "updated_at": "2026-11-11T02:51:11Z" },
+    { "repo": "eudi-app-android-wallet-ui", "number": 729, "title": "Android wallet security hardening", "state": "closed", "updated_at": "2026-11-06T12:20:01Z" },
+    { "repo": "eudi-app-ios-wallet-ui", "number": 598, "title": "iOS wallet security hardening", "state": "closed", "updated_at": "2026-11-06T15:49:20Z" },
+    { "repo": "eudi-doc-testing-application", "number": 408, "title": "[Test Results] Review and Authorise QES Transaction Data", "state": "closed", "updated_at": "2026-11-05T09:24:08Z" }
+  ],
+  "featureFolderIssueNumbers": {
+    "android_ios": [4, 8, 10, 15, 16, 18, 35, 36, 40, 41, 42, 45, 46, 52, 57, 65, 153, 184, 193, 228, 236, 238, 245, 251, 257],
+    "android_only": [80, 87, 89]
+  },
+  "featureIssueStatuses": {
+    "184": { "state": "closed", "title": "Using the PDA1 attestation", "updated_at": "2025-10-23T09:28:48Z" },
+    "193": { "state": "closed", "title": "[Story] Sign document (R5)", "updated_at": "2025-10-23T09:30:18Z" },
+    "228": { "state": "closed", "title": "[Recruitment] Sign contract with EUDI Wallet (Job Contract) (remote/cross-device)", "updated_at": "2025-12-31T09:33:38Z" },
+    "236": { "state": "open", "title": "[Story] Export Transactions Log", "updated_at": "2025-10-21T14:13:42Z" },
+    "238": { "state": "open", "title": "[Story] Revoke PID/Attestation as Issuer", "updated_at": "2025-10-21T14:13:52Z" },
+    "245": { "state": "closed", "title": "[Test Results] Filter and Sort documents (Redesign)", "updated_at": "2025-10-23T14:44:59Z" },
+    "251": { "state": "closed", "title": "[Test Results] Present document in person (Redesign)", "updated_at": "2025-10-23T14:48:44Z" },
+    "257": { "state": "closed", "title": "[Test Results] Select document to be signed", "updated_at": "2025-10-23T14:17:39Z" }
+  }
+}

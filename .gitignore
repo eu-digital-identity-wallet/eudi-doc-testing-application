@@ -12,6 +12,7 @@ buildNumber.properties
 *.iml
 target/
 browserstack-local.properties
+github.properties
 session_map.txt
 .DS_Store
 .gitattributes

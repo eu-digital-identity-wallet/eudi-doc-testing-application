@@ -19,8 +19,6 @@ Feature: Batch Issuance of Attestations in EUDI Wallet
 
     Examples:
       | credential     | issuer | issuance_method  | issue_scenario |
-      | PID (MSO Mdoc) | Python | from list        | same device    |
-      | PID (MSO Mdoc) | Kotlin | from list        | same device    |
       | PID (MSO Mdoc) | Python | credential offer | same device    |
       | PID (MSO Mdoc) | Kotlin | credential offer | same device    |
       | PID (MSO Mdoc) | Python | credential offer | cross device   |

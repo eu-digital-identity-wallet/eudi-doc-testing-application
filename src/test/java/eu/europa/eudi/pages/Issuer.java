@@ -378,6 +378,7 @@ public class Issuer {
             if (!elementClicked) {
                 throw new AssertionError("Click FormEu not found after " + maxAttempts + " refreshes and attempts.");
             }
+            driver.context("NATIVE_APP");
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
 
@@ -809,15 +810,9 @@ public class Issuer {
     public void scrollUntilFindSubmit() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-            try {
-                driver.hideKeyboard();
-            } catch (Exception e) {
-            }
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
-
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     WebElement pidElement = driver.findElement(WalletElements.clickConfirm);
                     if (pidElement.isDisplayed()) break;
@@ -2644,27 +2639,51 @@ public class Issuer {
     }
 
     public void scrollUntilPidIssuer() throws InterruptedException {
+
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(150));
+
+            // Wait until WEBVIEW_chrome is available
+            wait.until(d -> driver.getContextHandles().contains("WEBVIEW_chrome"));
 
             driver.context("WEBVIEW_chrome");
 
-            By locator = By.cssSelector("input[name='eu.europa.ec.eudi.pid_mdoc']");
+            System.out.println("Current context: " + driver.getContext());
 
-            WebElement element = new WebDriverWait(driver, Duration.ofSeconds(50))
-                    .until(ExpectedConditions.presenceOfElementLocated(locator));
+            try {
+                // Refresh page BEFORE other actions
+                driver.navigate().refresh();
 
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block: 'center', behavior: 'instant'});",
-                    element
-            );
+                // Wait until refreshed page is fully loaded
+                wait.until(d -> "complete".equals(
+                        ((JavascriptExecutor) driver).executeScript("return document.readyState")
+                ));
 
-            new WebDriverWait(driver, Duration.ofSeconds(10))
-                    .until(ExpectedConditions.elementToBeClickable(locator))
-                    .click();
+                By locator = By.cssSelector("input[name='eu.europa.ec.eudi.pid_mdoc']");
 
-            driver.context("NATIVE_APP");
-        } else {
+                WebElement element = wait.until(
+                        ExpectedConditions.presenceOfElementLocated(locator)
+                );
+
+                // Scroll to element
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block: 'center', behavior: 'auto'});",
+                        element
+                );
+
+                // Click element
+                new WebDriverWait(driver, Duration.ofSeconds(10))
+                        .until(ExpectedConditions.elementToBeClickable(locator))
+                        .click();
+
+            } finally {
+                // Switch back to native context
+                driver.context("NATIVE_APP");
+            }
+    } else {
             envDataConfig = new EnvDataConfig();
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             for (int i = 0; i < 9; i++) {
