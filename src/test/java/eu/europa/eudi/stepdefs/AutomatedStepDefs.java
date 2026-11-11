@@ -736,8 +736,10 @@ public class AutomatedStepDefs {
         @And("the user agrees to proceed with the signing operation")
         public void theUserAgreesToProceedWithTheSigningOperation() {
             test.mobile().wallet().clickProceed();
-            test.mobile().wallet().openDigitalWallet();
-            test.mobile().wallet().continueToTrustSite();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().openDigitalWallet();
+                test.mobile().wallet().continueToTrustSite();
+            }
         }
 
         @When("the user opts not to proceed")
@@ -1577,7 +1579,7 @@ public class AutomatedStepDefs {
 
     @And("the user is on Document List screen")
     public void theUserIsOnDocumentListScreen() {
-        test.mobile().wallet().documentsIsDisplayed();
+        test.mobile().wallet().documentsIsDisplayedSecond();
     }
 
     @Then("search field should display the label Search")

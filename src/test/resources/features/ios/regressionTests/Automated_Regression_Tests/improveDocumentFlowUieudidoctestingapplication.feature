@@ -6,7 +6,7 @@ Feature: User document management experience
 
 #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/316
 
-  @US_IDFUEDTA_TC_01 @manual:Passed
+  @US_IDFUEDTA_TC_01
   Scenario: Verify + button is removed
     Given the user launches the app
     When Document List screen is displayed
