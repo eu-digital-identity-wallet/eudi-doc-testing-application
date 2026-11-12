@@ -240,7 +240,7 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShare)).click();
-            driver.terminateApp("com.android.chrome");
+//            driver.terminateApp("com.android.chrome");
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickShare)).click();
 
@@ -640,6 +640,14 @@ public class Wallet {
     public void clickClose() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickClose)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDone)).click();
+        }
+    }
+
+    public void clickCloseOnSuccess() {
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.clickX)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickDone)).click();
         }
@@ -1553,10 +1561,10 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             test.mobile().wallet().clickContinueNew();
         }
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobile().issuer().signInUser();
-            test.mobile().issuer().fillLoginForm();
-        }
+//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+//            test.mobile().issuer().signInUser();
+//            test.mobile().issuer().fillLoginForm();
+//        }
     }
 
     public void clickKotlinPIDFromList() throws InterruptedException {
@@ -3749,7 +3757,7 @@ public class Wallet {
         }
     }
 
-    private void scrollToTextInSettings(String text, int maxSwipes) {
+    public void scrollToTextInSettings(String text, int maxSwipes) {
         AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
         for (int i = 0; i < maxSwipes; i++) {
             try {
@@ -3763,7 +3771,7 @@ public class Wallet {
         }
     }
 
-    private void clickByTextInSettings(String text) {
+    public void clickByTextInSettings(String text) {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))).click();
     }

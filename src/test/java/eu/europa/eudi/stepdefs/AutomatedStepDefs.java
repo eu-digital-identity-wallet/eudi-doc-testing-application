@@ -1800,7 +1800,7 @@ public class AutomatedStepDefs {
     public void theUserOpensTheApplicationAgainAfterSuccessfullyIssuingAPID() throws InterruptedException {
         test.mobile().wallet().clickAddMyDigitalID();
         test.mobile().wallet().insertPidFromListKotlin();
-        test.mobile().wallet().clickClose();
+        test.mobile().wallet().clickCloseOnSuccess();
     }
 
     @And("navigates to the Home tab")
