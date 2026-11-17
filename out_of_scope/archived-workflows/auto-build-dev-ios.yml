@@ -1,0 +1,91 @@
+name: Auto-build Dev iOS on Develop Changes
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  ios-dev:
+    runs-on: macos-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq &> /dev/null; then
+            brew install jq
+          else
+            jq --version
+          fi
+
+      - name: Get develop HEAD commit
+        id: head
+        run: |
+          SHA=$(git ls-remote https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui.git refs/heads/develop | awk '{print $1}')
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Check if already built
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LAST=$(gh variable get LAST_BUILT_IOS_DEV_SHA 2>/dev/null || echo "")
+          NEW="${{ steps.head.outputs.sha }}"
+          echo "last=$LAST new=$NEW"
+          if [ -n "$NEW" ] && [ "$NEW" != "$LAST" ]; then
+            echo "skip=false" >> $GITHUB_OUTPUT
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Clone wallet repo (develop)
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git clone --depth 1 --branch develop \
+            https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui.git
+
+      - name: Apply QA build recipe
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          cp build/ios/Fastfile eudi-app-ios-wallet-ui/fastlane/Fastfile
+          cp build/ios/Gemfile eudi-app-ios-wallet-ui/Gemfile
+          rm -f eudi-app-ios-wallet-ui/Gemfile.lock eudi-app-ios-wallet-ui/fastlane/Pluginfile
+
+      - name: Install fastlane
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-ios-wallet-ui
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Build unsigned IPA
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-ios-wallet-ui
+        env:
+          APP_SCHEME: 'EUDI Wallet Dev'
+        run: bundle exec fastlane build_for_qa
+
+      - name: Upload IPA to BrowserStack
+        if: steps.check.outputs.skip == 'false'
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          IPA="eudi-app-ios-wallet-ui/build/EUDI_Wallet.ipa"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${IPA}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        if: steps.check.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_IOS_DEV_SHA "${{ steps.head.outputs.sha }}"

@@ -1,0 +1,78 @@
+name: Auto-build Dev Android on Develop Changes
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  android-dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Get develop HEAD commit
+        id: head
+        run: |
+          SHA=$(git ls-remote https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui.git refs/heads/develop | awk '{print $1}')
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Check if already built
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LAST=$(gh variable get LAST_BUILT_ANDROID_DEV_SHA 2>/dev/null || echo "")
+          NEW="${{ steps.head.outputs.sha }}"
+          echo "last=$LAST new=$NEW"
+          if [ -n "$NEW" ] && [ "$NEW" != "$LAST" ]; then
+            echo "skip=false" >> $GITHUB_OUTPUT
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up JDK 17
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Install Android SDK 37
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-37" || true
+
+      - name: Clone wallet repo (develop)
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git clone --depth 1 --branch develop \
+            https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui.git
+
+      - name: Build Dev Debug APK
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-android-wallet-ui
+        run: ./gradlew :app:assembleDevDebug --no-daemon
+
+      - name: Upload APK to BrowserStack
+        if: steps.check.outputs.skip == 'false'
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          APK="eudi-app-android-wallet-ui/app/build/outputs/apk/dev/debug/app-dev-debug.apk"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${APK}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        if: steps.check.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_ANDROID_DEV_SHA "${{ steps.head.outputs.sha }}"

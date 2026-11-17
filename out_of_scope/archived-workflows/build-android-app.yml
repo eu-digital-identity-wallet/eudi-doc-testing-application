@@ -1,0 +1,86 @@
+name: Build Android APK for BrowserStack
+
+on:
+  workflow_dispatch:
+    inputs:
+      android-tag:
+        description: 'Git tag of eudi-app-android-wallet-ui to build (empty = latest release)'
+        required: false
+        default: ''
+
+      flavor:
+        description: 'Product flavor (debug variant, auto-signed)'
+        required: true
+        type: choice
+        options:
+          - demo
+          - dev
+        default: demo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y jq
+          else
+            jq --version
+          fi
+
+      - name: Resolve release tag and version
+        id: tag
+        run: |
+          if [ -z "${{ inputs.android-tag }}" ]; then
+            REL=$(curl -s https://api.github.com/repos/eu-digital-identity-wallet/eudi-app-android-wallet-ui/releases/latest)
+          else
+            REL=$(curl -s https://api.github.com/repos/eu-digital-identity-wallet/eudi-app-android-wallet-ui/releases/tags/${{ inputs.android-tag }})
+          fi
+          TAG=$(echo "$REL" | jq -r '.tag_name')
+          VERSION=$(echo "$REL" | jq -r '.name')
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Install Android SDK 37
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-37" || true
+
+      - name: Clone wallet repo at tag
+        run: |
+          git clone --depth 1 --branch "${{ steps.tag.outputs.tag }}" \
+            https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui.git
+
+      - name: Build Debug APK
+        working-directory: eudi-app-android-wallet-ui
+        run: |
+          FLAVOR_CAP=$(echo '${{ inputs.flavor }}' | sed 's/.*/\u&/')
+          ./gradlew :app:assemble${FLAVOR_CAP}Debug --no-daemon
+
+      - name: Rename APK with version
+        run: |
+          cp "eudi-app-android-wallet-ui/app/build/outputs/apk/${{ inputs.flavor }}/debug/app-${{ inputs.flavor }}-debug.apk" \
+             "eudi-app-android-wallet-ui/build-${{ steps.tag.outputs.version }}.apk"
+          ls -la eudi-app-android-wallet-ui/*.apk
+
+      - name: Upload APK to BrowserStack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          APK="eudi-app-android-wallet-ui/build-${{ steps.tag.outputs.version }}.apk"
+          echo "Uploading $APK"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${APK}" \
+            https://api-cloud.browserstack.com/app-automate/upload

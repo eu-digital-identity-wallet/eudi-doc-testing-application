@@ -1,0 +1,157 @@
+name: Auto-build Dev Apps on Firebase Release
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      new: ${{ steps.compare.outputs.new }}
+      version: ${{ steps.firebase.outputs.version }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Get latest Firebase dev release
+        id: firebase
+        env:
+          FIREBASE_SA_JSON: ${{ secrets.FIREBASE_SA_JSON }}
+          FIREBASE_APP_ID: ${{ vars.FIREBASE_APP_ID }}
+        run: |
+          if [ -z "$FIREBASE_SA_JSON" ]; then
+            echo "::error::Secret FIREBASE_SA_JSON is not set"
+            exit 1
+          fi
+          if [ -z "$FIREBASE_APP_ID" ]; then
+            echo "::error::Variable FIREBASE_APP_ID is not set"
+            exit 1
+          fi
+          printf '%s' "$FIREBASE_SA_JSON" > /tmp/firebase-sa.json
+          python -m pip install --quiet --break-system-packages google-auth google-auth-httplib2 \
+            || python -m pip install --quiet --user google-auth google-auth-httplib2
+          OUTPUT=$(python scripts/firebase-latest-release.py \
+            --app-id "$FIREBASE_APP_ID" \
+            --service-account-json /tmp/firebase-sa.json)
+          echo "$OUTPUT"
+          VERSION=$(echo "$OUTPUT" | jq -r '.display_version')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Compare with last built
+        id: compare
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LAST=$(gh variable get LAST_BUILT_DEV 2>/dev/null || echo "")
+          NEW="${{ steps.firebase.outputs.version }}"
+          echo "last=$LAST new=$NEW"
+          if [ -n "$NEW" ] && [ "$NEW" != "$LAST" ]; then
+            echo "new=true" >> $GITHUB_OUTPUT
+          else
+            echo "new=false" >> $GITHUB_OUTPUT
+          fi
+
+  android-dev:
+    needs: check
+    if: needs.check.outputs.new == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Install Android SDK 37
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-37" || true
+
+      - name: Clone wallet repo (develop)
+        run: |
+          git clone --depth 1 --branch develop \
+            https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui.git
+
+      - name: Build Dev Debug APK
+        working-directory: eudi-app-android-wallet-ui
+        run: ./gradlew :app:assembleDevDebug --no-daemon
+
+      - name: Upload APK to BrowserStack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          APK="eudi-app-android-wallet-ui/app/build/outputs/apk/dev/debug/app-dev-debug.apk"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${APK}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_DEV "${{ needs.check.outputs.version }}"
+
+  ios-dev:
+    needs: check
+    if: needs.check.outputs.new == 'true'
+    runs-on: macos-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq &> /dev/null; then
+            brew install jq
+          else
+            jq --version
+          fi
+
+      - name: Clone wallet repo (develop)
+        run: |
+          git clone --depth 1 --branch develop \
+            https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui.git
+
+      - name: Apply QA build recipe
+        run: |
+          cp build/ios/Fastfile eudi-app-ios-wallet-ui/fastlane/Fastfile
+          cp build/ios/Gemfile eudi-app-ios-wallet-ui/Gemfile
+          rm -f eudi-app-ios-wallet-ui/Gemfile.lock eudi-app-ios-wallet-ui/fastlane/Pluginfile
+
+      - name: Install fastlane
+        working-directory: eudi-app-ios-wallet-ui
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Build unsigned IPA
+        working-directory: eudi-app-ios-wallet-ui
+        env:
+          APP_SCHEME: 'EUDI Wallet Dev'
+        run: bundle exec fastlane build_for_qa
+
+      - name: Upload IPA to BrowserStack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          IPA="eudi-app-ios-wallet-ui/build/EUDI_Wallet.ipa"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${IPA}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_DEV "${{ needs.check.outputs.version }}"

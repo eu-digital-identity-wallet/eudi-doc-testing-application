@@ -1,0 +1,85 @@
+name: Build iOS IPA for BrowserStack
+
+on:
+  workflow_dispatch:
+    inputs:
+      ios-tag:
+        description: 'Git tag of eudi-app-ios-wallet-ui to build (empty = latest release)'
+        required: false
+        default: ''
+
+      scheme:
+        description: 'Xcode scheme to build'
+        required: true
+        type: choice
+        options:
+          - 'EUDI Wallet Demo'
+          - 'EUDI Wallet Dev'
+        default: 'EUDI Wallet Demo'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq &> /dev/null; then
+            brew install jq
+          else
+            jq --version
+          fi
+
+      - name: Resolve release tag and version
+        id: tag
+        run: |
+          if [ -z "${{ inputs.ios-tag }}" ]; then
+            TAG=$(curl -s https://api.github.com/repos/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/releases/latest | jq -r '.tag_name')
+          else
+            TAG="${{ inputs.ios-tag }}"
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          VERSION=$(echo "$TAG" | sed -E 's/.*_([0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z]+)?).*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Clone wallet repo at tag
+        run: |
+          git clone --depth 1 --branch "${{ steps.tag.outputs.tag }}" \
+            https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui.git
+
+      - name: Apply QA build recipe
+        run: |
+          cp build/ios/Fastfile eudi-app-ios-wallet-ui/fastlane/Fastfile
+          cp build/ios/Gemfile eudi-app-ios-wallet-ui/Gemfile
+          rm -f eudi-app-ios-wallet-ui/Gemfile.lock eudi-app-ios-wallet-ui/fastlane/Pluginfile
+
+      - name: Install fastlane
+        working-directory: eudi-app-ios-wallet-ui
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Build unsigned IPA
+        working-directory: eudi-app-ios-wallet-ui
+        env:
+          APP_SCHEME: ${{ inputs.scheme }}
+        run: bundle exec fastlane build_for_qa
+
+      - name: Rename IPA with version
+        run: |
+          mv eudi-app-ios-wallet-ui/build/EUDI_Wallet.ipa "eudi-app-ios-wallet-ui/build/${{ steps.tag.outputs.version }}.ipa"
+          ls -la eudi-app-ios-wallet-ui/build/
+
+      - name: Upload IPA to BrowserStack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          IPA="eudi-app-ios-wallet-ui/build/${{ steps.tag.outputs.version }}.ipa"
+          echo "Uploading $IPA"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${IPA}" \
+            https://api-cloud.browserstack.com/app-automate/upload

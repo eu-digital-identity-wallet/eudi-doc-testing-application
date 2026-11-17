@@ -1,0 +1,166 @@
+name: Auto-build Demo Apps from Upstream Releases
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  android-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Resolve latest upstream release
+        id: release
+        run: |
+          REL=$(curl -s https://api.github.com/repos/eu-digital-identity-wallet/eudi-app-android-wallet-ui/releases/latest)
+          TAG=$(echo "$REL" | jq -r '.tag_name')
+          VERSION=$(echo "$REL" | jq -r '.name')
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if already built
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LAST=$(gh variable get LAST_BUILT_ANDROID_DEMO 2>/dev/null || echo "")
+          echo "last=$LAST" >> $GITHUB_OUTPUT
+          if [ "$LAST" == "${{ steps.release.outputs.tag }}" ]; then
+            echo "Already built $LAST - skipping"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up JDK 17
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Install Android SDK 37
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-37" || true
+
+      - name: Clone wallet repo at tag
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git clone --depth 1 --branch "${{ steps.release.outputs.tag }}" \
+            https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui.git
+
+      - name: Build Debug APK
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-android-wallet-ui
+        run: ./gradlew :app:assembleDemoDebug --no-daemon
+
+      - name: Upload APK to BrowserStack
+        if: steps.check.outputs.skip == 'false'
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          APK="eudi-app-android-wallet-ui/app/build/outputs/apk/demo/debug/app-demo-debug.apk"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${APK}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        if: steps.check.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_ANDROID_DEMO "${{ steps.release.outputs.tag }}"
+
+  ios-demo:
+    runs-on: macos-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq &> /dev/null; then
+            brew install jq
+          else
+            jq --version
+          fi
+
+      - name: Resolve latest upstream release
+        id: release
+        run: |
+          REL=$(curl -s https://api.github.com/repos/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/releases/latest)
+          TAG=$(echo "$REL" | jq -r '.tag_name')
+          VERSION=$(echo "$REL" | jq -r '.name')
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if already built
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LAST=$(gh variable get LAST_BUILT_IOS_DEMO 2>/dev/null || echo "")
+          echo "last=$LAST" >> $GITHUB_OUTPUT
+          if [ "$LAST" == "${{ steps.release.outputs.tag }}" ]; then
+            echo "Already built $LAST - skipping"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Clone wallet repo at tag
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git clone --depth 1 --branch "${{ steps.release.outputs.tag }}" \
+            https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui.git
+
+      - name: Apply QA build recipe
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          cp build/ios/Fastfile eudi-app-ios-wallet-ui/fastlane/Fastfile
+          cp build/ios/Gemfile eudi-app-ios-wallet-ui/Gemfile
+          rm -f eudi-app-ios-wallet-ui/Gemfile.lock eudi-app-ios-wallet-ui/fastlane/Pluginfile
+
+      - name: Install fastlane
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-ios-wallet-ui
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Build unsigned IPA
+        if: steps.check.outputs.skip == 'false'
+        working-directory: eudi-app-ios-wallet-ui
+        env:
+          APP_SCHEME: 'EUDI Wallet Demo'
+        run: bundle exec fastlane build_for_qa
+
+      - name: Upload IPA to BrowserStack
+        if: steps.check.outputs.skip == 'false'
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          IPA="eudi-app-ios-wallet-ui/build/EUDI_Wallet.ipa"
+          curl -u "${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}" \
+            -F "file=@${IPA}" \
+            https://api-cloud.browserstack.com/app-automate/upload
+
+      - name: Mark as built
+        if: steps.check.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh variable set LAST_BUILT_IOS_DEMO "${{ steps.release.outputs.tag }}"
