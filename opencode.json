@@ -2,5 +2,12 @@
   "$schema": "https://opencode.ai/config.json",
   "skills": {
     "paths": ["./skills"]
+  },
+  "mcp": {
+    "appium": {
+      "type": "local",
+      "command": ["npx", "-y", "appium-mcp-server@latest"],
+      "enabled": true
+    }
   }
 }
