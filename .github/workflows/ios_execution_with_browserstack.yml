@@ -27,8 +27,8 @@ on:
           - PID_sdjwt_issunance/presentation
           - GENERAL_TESTS
 
-      device-logs-enabled:
-        description: 'Enable BrowserStack device logs (true/false)'
+      device-logs:
+        description: 'Enable Device logs'
         type: boolean
         default: true
 
@@ -38,7 +38,7 @@ on:
         options:
           - prod
           - dev
-        default: prod
+        default: dev
 
 jobs:
   build:
@@ -277,7 +277,7 @@ jobs:
 
       # ---------------- BROWSERSTACK LOGS ----------------
       - name: Show downloaded BrowserStack logs
-        if: always()
+        if: always() && inputs.device-logs-enabled
         run: |
           echo "Searching for BrowserStack logs..."
 
@@ -286,7 +286,7 @@ jobs:
             -path "*/logs/ui/*" || true
 
       - name: Upload iOS BrowserStack Logs
-        if: always()
+        if: always() && inputs.device-logs-enabled
         uses: actions/upload-artifact@v4
         with:
           name: ios-device-logs
