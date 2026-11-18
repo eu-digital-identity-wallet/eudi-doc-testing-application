@@ -1,4 +1,4 @@
-@IOS @US_ETESA @automated @PID_sdjwt
+@IOS @US_ETESA @automated @PID_sdjwt_issunance/presentation
 Feature: Issuance and presentation - PID (SD-JWT)
 
 

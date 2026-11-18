@@ -180,7 +180,8 @@ ci.environment=locally
 ```
 **Android Configuration:**
 ```properties
-browserstack.android.appUrl=bs://************************************
+browserstack.android.appUrl.dev=bs://************************************
+browserstack.android.appUrl.prod=bs://************************************
 appium.android.deviceName=YourDeviceName
 appium.android.platformVersion=YourPlatformVersion
 appium.android.platformName=Android
@@ -188,11 +189,14 @@ appium.android.platformName=Android
 
 **iOS Configuration:**
 ```properties
-browserstack.ios.appUrl=bs://************************************
+browserstack.ios.appUrl.dev=bs://************************************
+browserstack.ios.appUrl.prod=bs://************************************
 appium.ios.deviceName=YourDeviceName
 appium.ios.platformVersion=YourPlatformVersion
 appium.ios.platformName=iOS
 ```
+
+The active build is chosen by `app.environment` (`dev` → `*.appUrl.dev`, `prod` → `*.appUrl.prod`, the Demo build). To keep the URLs up to date automatically, run `scripts/update-latest-browserstack-apps.py` (matches the latest Dev builds by custom_id and the latest Demo builds by file name `-Demo.apk` / `-Demo.ipa`).
 
 **Note**:
 

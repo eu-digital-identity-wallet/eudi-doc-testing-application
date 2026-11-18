@@ -164,7 +164,7 @@ public class EnvDataConfig {
     }
 
     public String getAppiumBrowserstackAndroidAppUrl() {
-        return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_APP_URL);
+        return getEnvProperties().getProperty(BROWSERSTACK_ANDROID_APP_URL + "." + getEnvironmentSuffix());
     }
 
     public String getAppiumBrowserstackAndroidDeviceName() {
@@ -203,7 +203,7 @@ public class EnvDataConfig {
     }
 
     public String getAppiumBrowserstackIosAppUrl() {
-        return getEnvProperties().getProperty(BROWSERSTACK_IOS_APP_URL);
+        return getEnvProperties().getProperty(BROWSERSTACK_IOS_APP_URL + "." + getEnvironmentSuffix());
     }
 
     public String getAppiumBrowserstackIosDeviceName() {

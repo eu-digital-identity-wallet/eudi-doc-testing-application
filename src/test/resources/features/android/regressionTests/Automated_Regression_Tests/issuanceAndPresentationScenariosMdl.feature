@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated @MDL
+@ANDROID @US_ETESA @automated @MDL_issunance/presentation
 Feature: Issuance and presentation - mDL
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - mDL

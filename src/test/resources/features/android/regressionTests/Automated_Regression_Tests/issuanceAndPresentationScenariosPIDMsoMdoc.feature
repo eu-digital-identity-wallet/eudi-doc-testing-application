@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated @PID_mso_mdoc
+@ANDROID @US_ETESA @automated @PID_mso_mdoc_issunance/presentation
 Feature: Issuance and presentation - PID (MSO Mdoc)
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID (MSO Mdoc)

@@ -1,4 +1,4 @@
-@ANDROID @US_ETESA @automated @PID_sdjwt
+@ANDROID @US_ETESA @automated @PID_sdjwt_issunance/presentation
 Feature: Issuance and presentation - PID (SD-JWT)
 
   Scenario Outline: Successful credential issuance and presentation with selective disclosure - Python Issuer - PID (SD-JWT)

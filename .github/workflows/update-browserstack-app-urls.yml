@@ -1,0 +1,43 @@
+name: Update BrowserStack App URLs
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-app-urls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch latest BrowserStack builds and update env.properties
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: python3 scripts/update-latest-browserstack-apps.py
+
+      - name: Commit and push if env.properties changed
+        run: |
+          if git diff --quiet -- env.properties; then
+            echo "env.properties unchanged - nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add env.properties
+            git commit -m "chore: update BrowserStack app URLs to latest builds"
+            git push
+            echo "env.properties updated and pushed."
+          fi
