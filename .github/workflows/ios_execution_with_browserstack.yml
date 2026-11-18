@@ -22,9 +22,9 @@ on:
         description: 'iOS Tags to execute'
         type: choice
         options:
-          - PID_mso_mdoc
-          - MDL
-          - PID_sdjwt
+          - PID_mso_mdoc_issunance/presentation
+          - MDL_issunance/presentation
+          - PID_sdjwt_issunance/presentation
           - GENERAL_TESTS
 
       device-logs-enabled:
