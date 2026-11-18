@@ -187,7 +187,7 @@ jobs:
 
           mvn clean verify -ntp \
             -Dcucumber.filter.tags="$TEST_TAGS" \
-            -Dbrowserstack.device.logs.enabled="${{ inputs.device-logs-enabled }}" \
+            -Dbrowserstack.device.logs.enabled="${{ inputs.device-logs }}" \
             -Dapp.environment="${{ inputs.environment }}"
 
       # ---------------- BACKUP RESULTS ----------------
@@ -281,13 +281,13 @@ jobs:
           path: target/site/reports/**/**/*.json
 
       - name: Show downloaded BrowserStack logs
-        if: always() && inputs.device-logs-enabled
+        if: always() && inputs.device-logs
         run: |
           echo "Searching for BrowserStack logs..."
           find src/test/resources/features/android -type f -path "*/logs/ui/*" || true
 
       - name: Upload Android BrowserStack Logs
-        if: always() && inputs.device-logs-enabled
+        if: always() && inputs.device-logs
         uses: actions/upload-artifact@v4
         with:
           name: android-device-logs
