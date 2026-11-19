@@ -180,4 +180,6 @@ public class WalletElements {
     public static By linkToWalletSolutionInformationPage = By.id("https://eidas.ec.europa.eu/efda/wallet/certified?id=WALLET_SOLUTION_ID");;
     public static By clickOpenDigitalWallet = By.xpath("//XCUIElementTypeStaticText[@name=\"Open Digital Wallet\"]");
     public static By clickOnDocumentsHighlighted = AppiumBy.accessibilityId("document.fill");
+    public static By clickUnderstandTheRisk = By.xpath("//XCUIElementTypeSwitch[@name=\"I understand the risks and agree to share my data\"]/XCUIElementTypeSwitch[@value=\"0\"]");
+    public static By clickAccept = By.xpath("//XCUIElementTypeButton[@name=\"Accept\"]");
 }

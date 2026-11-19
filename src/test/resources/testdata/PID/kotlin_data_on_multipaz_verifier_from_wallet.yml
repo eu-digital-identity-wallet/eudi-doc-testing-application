@@ -1,0 +1,39 @@
+screen: "Wallet Data To Verifier"
+
+fields:
+
+  "W3C DC Protocol":
+    value: "org-iso-mdoc"
+    required: true
+
+  "Response end-toend encrypted":
+    value: "true"
+    required: true
+
+  "Device Response":
+    value: "Verified"
+    required: true
+
+  "DocType":
+    value: "eu.europa.ec.eudi.pid.1"
+    required: true
+
+  "Namespace":
+    value: "eu.europa.ec.eudi.pid.1"
+    required: true
+
+  "issuing_authority":
+    value: "GR Administrative authority"
+    required: true
+
+  "issuing_country":
+    value: "GR"
+    required: true
+
+  "family_name":
+    value: "Neal"
+    required: true
+
+  "given_name":
+    value: "Tyler"
+    required: true

@@ -473,7 +473,7 @@ public class Wallet {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
             driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
-            String url = test.envDataConfig().getVerifierUrl();
+            String url = test.envDataConfig().getMultipazVerifierUrl();
             driver.get(url);
             Map<String, Object> args = new HashMap<>();
             args.put("bundleId", "com.apple.mobilesafari");
@@ -3749,5 +3749,13 @@ public class Wallet {
 
     public void continueToTrustSite() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(WalletElements.continueToTrustSite)).click();
+    }
+
+    public void clickUnderstandTheRisk() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickUnderstandTheRisk)).click();
+    }
+
+    public void clickAccept() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.clickAccept)).click();
     }
 }

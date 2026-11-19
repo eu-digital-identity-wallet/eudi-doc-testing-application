@@ -28,7 +28,7 @@ Feature: Present Digital Attestations via Browser using EUDI Wallet on Same Devi
     When the user consents to share the requested attributes
     Then the Wallet prompts the user for a six-digit PIN
     When the user enters their six-digit PIN correctly
-    Then the attestation is shared successfully
+    Then the attestation is shared successfully for multipaz
     And the Relying Party confirms the verification was successful in the browser
     Examples:
       | credential     | issuer |

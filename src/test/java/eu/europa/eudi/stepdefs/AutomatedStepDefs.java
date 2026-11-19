@@ -2103,6 +2103,7 @@ public class AutomatedStepDefs {
         test.mobile().verifier().scrollUntilDeviceRequest();
         test.mobile().verifier().clickDeviceRequest();
         test.mobile().verifier().chooseSecond();
+        test.mobile().verifier().clickMandatoryDataElements();
     }
 
     @Then("the Relying Party raises a presentation request")
@@ -2143,20 +2144,29 @@ public class AutomatedStepDefs {
 
     @Then("the browser presents a selector listing the matching attestations")
     public void theBrowserPresentsASelectorListingTheMatchingAttestations() {
-        test.mobile().verifier().appOpensSuccessfully();
-        test.mobile().verifier().refreshVerifierPage();
-        test.mobile().verifier().selectSpecificAttributesOnVerifier(this.credential);
-        test.mobile().verifier().scrollUntilNext();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().selectAttributes();
-        test.mobile().verifier().clickSpecificAttributes();
-        test.mobile().verifier().clickSelect();
-        test.mobile().verifier().clickNext();
-        test.mobile().verifier().clickViaDcApi();
-        test.mobile().verifier().scrollUntilSumbit();
-        test.mobile().verifier().clickSubmit();
-        test.mobile().verifier().verifierAsksPermissionToProceed();
-        test.mobile().verifier().clickContinue();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().verifier().appOpensSuccessfully();
+            test.mobile().verifier().refreshVerifierPage();
+            test.mobile().verifier().selectSpecificAttributesOnVerifier(this.credential);
+            test.mobile().verifier().scrollUntilNext();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().selectAttributes();
+            test.mobile().verifier().clickSpecificAttributes();
+            test.mobile().verifier().clickSelect();
+            test.mobile().verifier().clickNext();
+            test.mobile().verifier().clickViaDcApi();
+            test.mobile().verifier().scrollUntilSumbit();
+            test.mobile().verifier().clickSubmit();
+            test.mobile().verifier().verifierAsksPermissionToProceed();
+            test.mobile().verifier().clickContinue();
+        } else {
+            test.mobile().verifier().scrollUpUntilPid();
+            test.mobile().verifier().clickPersonalId();
+            test.mobile().verifier().scrollUntilDeviceRequest();
+            test.mobile().verifier().clickDeviceRequest();
+            test.mobile().verifier().chooseSecond();
+            test.mobile().verifier().clickMandatoryDataElements();
+        }
     }
 
     @And("each listed attestation shows its credential type and the Wallet Unit that holds it")
@@ -2193,7 +2203,12 @@ public class AutomatedStepDefs {
     @When("the user consents to share the requested attributes")
     public void theUserConsentsToShareTheRequestedAttributes() {
         this.selectiveDisclosure = "";
-        test.mobile().wallet().clickShareButton();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().wallet().clickShareButton();
+        } else {
+            test.mobile().wallet().clickUnderstandTheRisk();
+            test.mobile().wallet().clickAccept();
+        }
     }
 
     @Then("the Wallet prompts the user for a six-digit PIN")
@@ -2253,7 +2268,20 @@ public class AutomatedStepDefs {
 
     @And("the Relying Party confirms the verification was successful in the browser")
     public void theRelyingPartyConfirmsTheVerificationWasSuccessfulInTheBrowser() {
-        test.mobile().verifier().verifierVerifyCredential("same device", this.selectiveDisclosure, this.issuerType, this.credential);
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobile().verifier().verifierVerifyCredential("same device", this.selectiveDisclosure, this.issuerType, this.credential);
+        } else {
+            test.mobile().verifier().verifierResponded();
+            if ("Python".equalsIgnoreCase(this.issuerType)) {
+                if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/data_on_multipaz_verifier_from_wallet.yml");
+                }
+            } else {
+                if ("specific attributes".equalsIgnoreCase(this.selectiveDisclosure)) {
+                    test.mobile().wallet().verifyMandatoryInfoLabelsPresentInAuthorizePage("testdata/PID/kotlin_data_on_multipaz_verifier_from_wallet.yml");
+                }
+            }
+        }
     }
 
     @Given("the user opens the Wallet for first time")
@@ -2368,5 +2396,10 @@ public class AutomatedStepDefs {
     @Then("Wallet displays general informational text explaining the certification of Wallet Solutions within the EUDI Wallet ecosystem")
     public void walletDisplaysGeneralInformationalTextExplainingTheCertificationOfWalletSolutionsWithinTheEUDIWalletEcosystem() {
             //nothing for automation
+    }
+
+    @Then("the attestation is shared successfully for multipaz")
+    public void theAttestationIsSharedSuccessfullyForMultipaz() {
+            //nothing for ios
     }
 }

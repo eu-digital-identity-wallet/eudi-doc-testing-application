@@ -131,7 +131,9 @@ public interface Literals {
         NO_ATTESTATION_FOUND("Your info wasn’t found"),
         CREDENTIAL_TYPE("PID (MSO Mdoc)"),
         WALLET_UNIT("EUDI Wallet"),
-        CREDENTIAL_TYPE_KOTLIN("PID (MSO MDoc)");
+        CREDENTIAL_TYPE_KOTLIN("PID (MSO MDoc)"),
+        NO_ELIGIBLE_IDS_FOUND("There are no eligible IDs available on your device."),
+        VERFIER_RESPONDED("Received 1 credentials");
 
         public final String label;
         Verifier(String label) {

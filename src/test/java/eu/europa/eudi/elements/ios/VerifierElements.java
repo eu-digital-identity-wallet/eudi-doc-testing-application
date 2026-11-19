@@ -29,4 +29,12 @@ public class VerifierElements {
     public static By transactionCodePage = By.xpath("//XCUIElementTypeStaticText[@name=\"Digital Credentials Issuer requires verification\"]");
     public static By deferredIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO Mdoc Deferred)\" or @name=\"PID (MSO Mdoc deferred)\"]");
     public static By deferredIsDisplayedKotlin = By.xpath("//XCUIElementTypeStaticText[@name=\"PID (MSO MDoc) (deferred)\"]");
+    public static By clickDeviceRequest = By.xpath("//XCUIElementTypeOther[@name=\"DeviceRequest Version:\" and @value=\"1.1\"]");
+    public static By chooseSecond = By.xpath("//XCUIElementTypeButton[@name=\"1.0\"]");
+    public static By clickMandatoryDataElements = By.xpath("//XCUIElementTypeButton[@name=\"Mandatory data elements\"]");
+    public static By noAttestationFound = By.xpath("//XCUIElementTypeStaticText[@name=\"There are no eligible IDs available on your device.\"]");
+    public static By clickClose = By.xpath("//XCUIElementTypeButton[@name=\"Close\"]");
+    public static By clickPersonalId = By.xpath("//XCUIElementTypeButton[@name=\"Personal ID (mdoc)\"]");
+    public static By multipazVerifierResponded = By.xpath("//XCUIElementTypeStaticText[@name=\"Received 1 credentials\"]");
+    public static By clickCloseAfterNoFinding = By.xpath("//XCUIElementTypeStaticText[@name=\"Close\"]");
 }

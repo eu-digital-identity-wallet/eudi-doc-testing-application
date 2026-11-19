@@ -791,6 +791,8 @@ public class Verifier {
     public void clickContinue() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickContinue)).click();
+        } else {
+            //nothing for ios
         }
     }
 
@@ -804,6 +806,8 @@ public class Verifier {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.verifierAsksPermision)).getText();
             Assert.assertEquals(Literals.Verifier.VERIFIER_ASKS_PERMISION.label, pageHeader);
+        } else {
+            //nothing for ios
         }
     }
 
@@ -815,15 +819,27 @@ public class Verifier {
             String normalizedPageHeader = pageHeader.replace('’', '\'');
             String normalizedExpected = Literals.Verifier.NO_ATTESTATION_FOUND.label.replace('’', '\'');
             Assert.assertEquals(normalizedExpected, normalizedPageHeader);
+        } else {
+            String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.noAttestationFound)).getText();
+            Assert.assertEquals(Literals.Verifier.NO_ELIGIBLE_IDS_FOUND.label, pageHeader);
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickClose)).click();
         }
     }
 
     public void clickClose() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickClose)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickClose)).click();
+        } else {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickCloseAfterNoFinding)).click();
+        }
     }
 
     public void clickBack() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickBack)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.clickBack)).click();
+        } else {
+            //nothing for ios
+        }
     }
 
     public void refreshVerifierPage() {
@@ -852,11 +868,17 @@ public class Verifier {
             }
             String pageHeader2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletUnit)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_UNIT.label, pageHeader2);
+        } else {
+            //nothing for ios
         }
     }
 
     public void clickAgreeAndContinue() {
-        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.agreeAndContinue)).click();
+        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(VerifierElements.agreeAndContinue)).click();
+        } else {
+//nothing for ios
+        }
     }
 
     public void openVerifierOnDesktopBrowser() {
@@ -934,7 +956,7 @@ public class Verifier {
 
     public void scrollUntilDeviceRequest() {
         IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             Dimension size = driver.manage().window().getSize();
             int startX = size.width / 2;
             int startY = (int) (size.height * 0.6);
@@ -951,10 +973,80 @@ public class Verifier {
     }
 
     public void clickDeviceRequest() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDeviceRequest)).click();
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickDeviceRequest)).click();
     }
 
     public void chooseSecond() {
-        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.chooseSecond)).click();
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.chooseSecond)).click();
+    }
+
+    public void clickMandatoryDataElements() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickMandatoryDataElements)).click();
+    }
+
+    public void scrollUpUntilPid() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.3);
+        int endY = (int) (size.height * 0.8);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
+        for (int i = 0; i < 5; i++) {
+
+            Sequence swipe = new Sequence(finger, 1);
+
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ZERO,
+                    PointerInput.Origin.viewport(),
+                    startX, startY
+            ));
+
+            swipe.addAction(finger.createPointerDown(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
+
+            swipe.addAction(finger.createPointerMove(
+                    Duration.ofMillis(700),
+                    PointerInput.Origin.viewport(),
+                    startX, endY
+            ));
+
+            swipe.addAction(finger.createPointerUp(
+                    PointerInput.MouseButton.LEFT.asArg()
+            ));
+
+            driver.perform(Collections.singletonList(swipe));
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+    }
+
+    public void clickPersonalId() {
+        test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickPersonalId)).click();
+    }
+
+    public void scrollUntilMandatoryElements() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        int i = 1;
+        while (i < 2) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("direction", "up");
+            driver.executeScript("mobile: swipe", params);
+            i++;
+        }
+    }
+
+    public void verifierResponded() {
+        String pageHeader2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.ios.VerifierElements.multipazVerifierResponded)).getText();
+        Assert.assertEquals(Literals.Verifier.VERFIER_RESPONDED.label, pageHeader2);
     }
 }
