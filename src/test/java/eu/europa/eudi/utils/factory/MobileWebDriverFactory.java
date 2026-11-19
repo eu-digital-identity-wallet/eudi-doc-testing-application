@@ -39,14 +39,9 @@ public class MobileWebDriverFactory {
         System.out.println("Running environment: " + env);
         try {
             if (env.equalsIgnoreCase("browserstack")) {
-                String appUrl = System.getenv("BROWSERSTACK_APP_URL");
                 // --- BrowserStack setup ---
                 UiAutomator2Options options = new UiAutomator2Options();
-//                if (envCI.equalsIgnoreCase("githubactions")) {
-//                    options.setCapability("appium:app", appUrl);
-//                }else{
                 options.setCapability("appium:app", envDataConfig.getAppiumBrowserstackAndroidAppUrl());
-                //  }
                 options.setCapability("appium:deviceName", envDataConfig.getAppiumBrowserstackAndroidDeviceName());
                 options.setCapability("appium:platformVersion", envDataConfig.getAppiumBrowserstackAndroidPlatformVersion());
                 options.setCapability("browserstack.interactiveDebugging", envDataConfig.getAppiumBrowserstackInteractiveDebugging());
@@ -169,8 +164,6 @@ public class MobileWebDriverFactory {
                 options.setCapability("name", featureName + " - iOS Test");
                 options.setCapability("feature_name", featureName);
                 options.setCapability("sessionName", featureName);
-//                options.setCapability("includeSafariInWebviews", true);
-//                options.setCapability("waitForQuiescence", true);
                 try {
                     if (envCI.equalsIgnoreCase("githubactions")) {
                         String username = System.getenv("BROWSERSTACK_USERNAME");

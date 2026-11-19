@@ -62,6 +62,4 @@ public class VerifierElements {
     public static By credentialType = By.xpath("//android.widget.TextView[@text=\"PID (MSO Mdoc)\" or @text=\"PID (MSO MDoc)\"]");
     public static By walletUnit = By.xpath("//android.widget.TextView[@text=\"EUDI Wallet\"]");
     public static By agreeAndContinue = By.xpath("//android.widget.TextView[@text=\"Agree and continue\"]");
-    public static By clickDeviceRequest = AppiumBy.accessibilityId("devicerequest-version-select");
-    public static By chooseSecond = By.xpath("//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"1.0\"]");
 }

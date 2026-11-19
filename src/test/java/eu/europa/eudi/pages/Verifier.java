@@ -7,8 +7,6 @@ import eu.europa.eudi.utils.TestSetup;
 import eu.europa.eudi.utils.WaitsActionsUtils;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -28,7 +26,6 @@ import java.awt.Robot;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-
 import static org.junit.Assert.fail;
 
 public class Verifier {
@@ -1032,17 +1029,6 @@ public class Verifier {
 
     public void clickPersonalId() {
         test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.VerifierElements.clickPersonalId)).click();
-    }
-
-    public void scrollUntilMandatoryElements() {
-        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        int i = 1;
-        while (i < 2) {
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "up");
-            driver.executeScript("mobile: swipe", params);
-            i++;
-        }
     }
 
     public void verifierResponded() {
