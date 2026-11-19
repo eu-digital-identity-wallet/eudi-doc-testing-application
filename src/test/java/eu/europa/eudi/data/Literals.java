@@ -14,7 +14,6 @@ public interface Literals {
         LOGIN_ANDROID("Welcome back"),
         PID("PID (MSO MDoc)"),
         PID_PYTHON("PID (MSO Mdoc)"),
-        DASHBOARD_PAGE("Welcome back, Nikos"),
         ADD_DOCUMENT("Add document"),
         SUCCESS_MESSAGE_DRIVING_LICENCE("You successfully shared the following information with"),
         SUCCESS_MESSAGE_DRIVING_LICENCE_ANDROID("You have successfully added the following to your wallet"),

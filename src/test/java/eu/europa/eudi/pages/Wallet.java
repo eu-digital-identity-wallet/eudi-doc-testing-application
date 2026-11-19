@@ -238,9 +238,7 @@ public class Wallet {
 
     public void clickShareButton() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickShare)).click();
-//            driver.terminateApp("com.android.chrome");
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickShare)).click();
 
@@ -469,6 +467,17 @@ public class Wallet {
             args.put("bundleId", "com.apple.mobilesafari");
             driver.executeScript("mobile: launchApp", args);
         }
+    }
+
+    public void userOpensMultipazVerifier() {
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            driver.runAppInBackground(Duration.ofSeconds(10));
+            driver.activateApp("com.apple.mobilesafari");
+            String url = test.envDataConfig().getVerifierUrl();
+            driver.get(url);
+            Map<String, Object> args = new HashMap<>();
+            args.put("bundleId", "com.apple.mobilesafari");
+            driver.executeScript("mobile: launchApp", args);
     }
 
     public void detailsArePresented() {
@@ -1190,11 +1199,6 @@ public class Wallet {
         }
     }
 
-    // FIDO hybrid-transport QRs are handled at the OS level by Google Play Services' Credential
-    // Manager, not by the Wallet - the Wallet declares no intent-filter for the FIDO: scheme, which
-    // is why mockQRInject's explicit package=<wallet> deep link fails with "unable to resolve
-    // Intent". Target GMS explicitly instead, the same component a real device's system camera/QR
-    // scanner routes this QR type to, so Android can actually launch the real hybrid handshake.
     public void injectHybridTransportQr(File qrImagePath) {
         int maxAttempts = 2;
 
@@ -1437,14 +1441,6 @@ public class Wallet {
         return !driver.findElements(eu.europa.eudi.elements.android.WalletElements.onlyThisTimeQR).isEmpty();
     }
 
-    public boolean isPopUpVisible() {
-        if (!test.getSystemOperation().equals(Literals.General.IOS.label)) {
-            return false;
-        }
-        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-        return !driver.findElements(eu.europa.eudi.elements.ios.WalletElements.clickAllow).isEmpty();
-    }
-
     public void clickOnlinePresentation() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.android.WalletElements.onlinePresentation)).click();
@@ -1561,10 +1557,6 @@ public class Wallet {
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             test.mobile().wallet().clickContinueNew();
         }
-//        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-//            test.mobile().issuer().signInUser();
-//            test.mobile().issuer().fillLoginForm();
-//        }
     }
 
     public void clickKotlinPIDFromList() throws InterruptedException {
@@ -1725,7 +1717,6 @@ public class Wallet {
     }
 
     public void initiateCredential(String credential, String issuerType) {
-
         test.mobile().wallet().launchApp();
         test.mobile().wallet().eudiPageIsDisplayed();
         test.mobile().wallet().clickContinue();
@@ -1734,9 +1725,7 @@ public class Wallet {
         test.mobile().wallet().renterThePin();
         test.mobile().wallet().successMessageOfSetUpPin();
         test.mobile().wallet().clickAddMyDigitalID();
-
     }
-
 
     public void credentialStoredInWallet(String credential, String issuerType) {
         this.credential = credential;
@@ -1807,6 +1796,11 @@ public class Wallet {
             case "web verifier":
                 test.mobile().wallet().userOpensVerifier();
                 break;
+
+            case "multipaz":
+                test.mobile().wallet().userOpensMultipazVerifier();
+                break;
+
         }
     }
 
@@ -1837,10 +1831,6 @@ public class Wallet {
                     if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
                         test.mobile().verifier().clickContinue();
                     }
-//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//                        test.mobile().wallet().pinFieldIsDisplayed();
-//                        test.mobile().verifier().insertPIN();
-//                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -1974,15 +1964,7 @@ public class Wallet {
                     }
 
                     test.mobile().verifier().chooseWallet();
-//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//                        test.mobile().wallet().pinFieldIsDisplayed();
-//                        test.mobile().verifier().insertPIN();
-//                    }
                     test.mobile().verifier().clickContinue();
-//                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
-//                        test.mobile().wallet().pinFieldIsDisplayed();
-//                        test.mobile().verifier().insertPIN();
-//                    }
                     test.mobile().verifier().viewDataPage();
 
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
@@ -2419,16 +2401,6 @@ public class Wallet {
     public void clickProceed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.clickProceed)).click();
-        } else {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpen)).click();
-        }
-    }
-
-    public void clickProceedForSigning() {
-        if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(WalletElements.clickContinue)).click();
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickProceed)).click();
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.clickOpenDigitalWallet)).click();
@@ -3746,11 +3718,6 @@ public class Wallet {
                     eu.europa.eudi.elements.android.WalletElements.trustMarkContentIsDisplayedGerman)).getText();
             Assert.assertEquals(Literals.Wallet.TRUSTMARK_CONTENT_IS_DISPLAYED_GERMAN.label, label);
         } else {
-            // iOS: the session starts in German when @GERMAN_LANGUAGE is used (see MobileWebDriverFactory).
-            // Navigate to the About EUDI Wallet (Trust Mark) screen and verify the German informational text.
-//            test.mobile().wallet().clickMenu();
-//            test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
-//                    eu.europa.eudi.elements.ios.WalletElements.aboutEudiWallet)).click();
             String label = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(
                     eu.europa.eudi.elements.ios.WalletElements.trustMarkContentIsDisplayedGerman)).getText();
             Assert.assertEquals(Literals.Wallet.TRUSTMARK_CONTENT_IS_DISPLAYED_GERMAN.label, label);

@@ -3,7 +3,6 @@ package eu.europa.eudi.stepdefs;
 import eu.europa.eudi.data.Literals;
 import eu.europa.eudi.elements.android.WalletElements;
 import eu.europa.eudi.utils.TestSetup;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,8 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -2079,6 +2076,11 @@ public class AutomatedStepDefs {
         test.mobile().wallet().presentCredential("Web verifier");
     }
 
+    @And("the user opens the Relying Party multipaz service page on the same device")
+    public void theUserOpensTheRelyingPartyMultipazServicePageOnTheSameDevice() {
+        test.mobile().wallet().presentCredential("multipaz");
+    }
+
     @When("the user starts the wallet verification flow from the Relying Party page")
     public void theUserStartsTheWalletVerificationFlowFromTheRelyingPartyPage() throws InterruptedException {
         test.mobile().verifier().launchSafari();
@@ -2094,6 +2096,13 @@ public class AutomatedStepDefs {
         test.mobile().verifier().clickViaDcApi();
         test.mobile().verifier().scrollUntilSumbit();
         test.mobile().verifier().clickSubmit();
+    }
+
+    @When("the user starts the wallet verification flow from the multipaz Relying Party page")
+    public void theUserStartsTheWalletVerificationFlowFromTheMultipazRelyingPartyPage() throws InterruptedException {
+        test.mobile().verifier().scrollUntilDeviceRequest();
+        test.mobile().verifier().clickDeviceRequest();
+        test.mobile().verifier().chooseSecond();
     }
 
     @Then("the Relying Party raises a presentation request")

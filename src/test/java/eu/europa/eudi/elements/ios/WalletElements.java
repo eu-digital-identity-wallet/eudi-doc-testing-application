@@ -103,7 +103,6 @@ public class WalletElements {
     public static By trustIconIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeImage' AND name == 'verifiedUser'");
     public static By clickBackButtonSigning = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'BackButton'");
     public static By documentsTab = By.id("Documents");
-    public static By documentsTabSecond = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Documents'");
     public static By clickOnlinePresentation = AppiumBy.iOSClassChain("**/XCUIElementTypeButton[`name == 'home_tab_screen_dialog_online_button'`][2]");
     public static By signDocumentInside = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND label == 'Sign document'");
     public static By historyIsDisplayed = By.id("History");
@@ -172,8 +171,6 @@ public class WalletElements {
     public static By buttonToWebsite = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND (name == 'Continue to Niscy’s website' OR label == 'Continue to Niscy’s website')");
     public static By dataDeletionRequestInitiation = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'View previous data deletion requests' OR label CONTAINS[c] 'View previous data deletion requests')");
     public static By previousDataDeletionIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name CONTAINS[c] 'Previous data deletion requests for Niscy' OR label CONTAINS[c] 'Previous data deletion requests for Niscy')");
-    public static By initiateDeletionDisabled = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND (name == 'Initiate deletion request' OR label == 'Initiate deletion request') AND enabled == false");
-    public static By trustMarkIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'Officially Certified And Trusted EUDI Wallet'");
     public static By trustMarkTitleIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == 'EU Digital Identity Wallet'");
     public static By aboutEudiWallet = By.id("About EUDI Wallet");
     public static By trustMarkContentIsDisplayed = AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND " + "name CONTAINS 'This wallet application has been certified conformant'");

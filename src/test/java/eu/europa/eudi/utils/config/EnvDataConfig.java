@@ -41,6 +41,7 @@ public class EnvDataConfig {
     public static final String BROWSERSTACK_IOS_AUTOMATION_NAME = "browserstack.ios.automationName";
     public static final String KOTLIN_ISSUER = "kotlin.url";
     public static final String VERIFIER_URL = "verifier.url";
+    public static final String MULTIPAZ_VERIFIER_URL = "multipaz.verifier.url";
     public static final String PYTHON_ISSUER = "python.url";
     public static final String SAMPLE_DOCUMENT_URL = "sample.document.url";
 
@@ -221,6 +222,10 @@ public class EnvDataConfig {
 
     public String getVerifierUrl() {
         return getEnvProperties().getProperty(VERIFIER_URL + "." + getEnvironmentSuffix());
+    }
+
+    public String getMultipazVerifierUrl() {
+        return getEnvProperties().getProperty(MULTIPAZ_VERIFIER_URL);
     }
 
     public String getKotlinUrl() {

@@ -116,65 +116,22 @@ public class Verifier {
     }
 
     public void launchSafari() {
-            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            } else {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-
-                try {
-                    try {
-                        driver.terminateApp("eu.europa.ec.euidi");
-                    } catch (Exception e) {
-                    }
-                    driver.activateApp("com.apple.mobilesafari");
-                    WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
-                    waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
-                    driver.context("NATIVE_APP");
-                } catch (Exception e) {
-                    throw new RuntimeException("Failed to launch Safari", e);
-                }
-        }
-    }
-
-    public void insertPIN() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            String fullPin = test.envDataConfig().getPin();
-
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-            WebElement pinField = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(
-                            AppiumBy.className("android.widget.EditText")
-                    )
-            );
-            pinField.click();
-            for (char digit : fullPin.toCharArray()) {
-                driver.pressKey(
-                        new KeyEvent(
-                                AndroidKey.valueOf("DIGIT_" + digit)
-                        )
-                );
-            }
         } else {
-            String fullPin = test.envDataConfig().getPin();
-            char firstDigit = fullPin.charAt(0);
-            char secondDigit = fullPin.charAt(1);
-            char thirdDigit = fullPin.charAt(2);
-            char fourthDigit = fullPin.charAt(3);
-            char fifthDigit = fullPin.charAt(4);
-            char sixthDigit = fullPin.charAt(5);
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield1Ver).sendKeys(String.valueOf(firstDigit));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield2Ver).sendKeys(String.valueOf(secondDigit));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield3Ver).sendKeys(String.valueOf(thirdDigit));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield4Ver).sendKeys(String.valueOf(fourthDigit));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield5Ver).sendKeys(String.valueOf(fifthDigit));
-            driver.findElement(eu.europa.eudi.elements.ios.WalletElements.pinTexfield6Ver).sendKeys(String.valueOf(sixthDigit));
+
+            try {
+                try {
+                    driver.terminateApp("eu.europa.ec.euidi");
+                } catch (Exception e) {
+                }
+                driver.activateApp("com.apple.mobilesafari");
+                WebDriverWait waitNativeAppTransition = new WebDriverWait(driver, Duration.ofSeconds(2000));
+                waitNativeAppTransition.until(d -> driver.getContextHandles().contains("NATIVE_APP"));
+                driver.context("NATIVE_APP");
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to launch Safari", e);
+            }
         }
     }
 
@@ -847,8 +804,6 @@ public class Verifier {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.verifierAsksPermision)).getText();
             Assert.assertEquals(Literals.Verifier.VERIFIER_ASKS_PERMISION.label, pageHeader);
-        } else {
-            //todo
         }
     }
 
@@ -860,8 +815,6 @@ public class Verifier {
             String normalizedPageHeader = pageHeader.replace('’', '\'');
             String normalizedExpected = Literals.Verifier.NO_ATTESTATION_FOUND.label.replace('’', '\'');
             Assert.assertEquals(normalizedExpected, normalizedPageHeader);
-        } else {
-            //todo
         }
     }
 
@@ -894,13 +847,11 @@ public class Verifier {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.credentialType)).getText();
             if (issuerType.equalsIgnoreCase("Python")) {
                 Assert.assertEquals(Literals.Verifier.CREDENTIAL_TYPE.label, pageHeader);
-            }else{
+            } else {
                 Assert.assertEquals(Literals.Verifier.CREDENTIAL_TYPE_KOTLIN.label, pageHeader);
             }
             String pageHeader2 = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletUnit)).getText();
             Assert.assertEquals(Literals.Verifier.WALLET_UNIT.label, pageHeader2);
-        } else {
-            //todo
         }
     }
 
@@ -928,20 +879,12 @@ public class Verifier {
         acceptNativeChromeDialogWithEnterKey();
     }
 
-    // "Do you trust this site with your data?" and the hybrid QR dialog triggered by the
-    // Digital Credentials API are rendered by Chrome's own browser chrome, not the page DOM,
-    // so Selenium/ChromeDriver cannot locate or click them. Pressing Enter at the OS level
-    // (java.awt.Robot) hits the dialog's default-focused "Continue" button instead.
     private void acceptNativeChromeDialogWithEnterKey() {
         try {
             WebDriver driver = test.webWebDriverFactory().getDriverWeb();
             driver.manage().window().maximize();
             Thread.sleep(1500);
 
-            // Robot's key events go to whichever window has OS-level input focus, which is not
-            // necessarily the Chrome window Selenium is driving (e.g. the IDE/terminal running the
-            // test can still hold focus). Click the Chrome title bar first to force the OS to give
-            // it focus before sending Enter, otherwise the key press is a no-op for the dialog.
             org.openqa.selenium.Point position = driver.manage().window().getPosition();
             org.openqa.selenium.Dimension size = driver.manage().window().getSize();
 
@@ -958,9 +901,6 @@ public class Verifier {
         }
     }
 
-    // The hybrid-transport QR shown for the Digital Credentials API is also native Chrome UI
-    // (no DOM canvas like the regular cross-device QR), so it has to be captured as real screen
-    // pixels rather than exported from a <canvas> element.
     public void captureNativeQrScreenshot() {
         try {
             WebDriver driver = test.webWebDriverFactory().getDriverWeb();
@@ -990,5 +930,31 @@ public class Verifier {
 
     public void clickViaDcApiOnWeb() {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickViaDcApiOnWeb)).click();
+    }
+
+    public void scrollUntilDeviceRequest() {
+        IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+        for (int i = 0; i < 5; i++) {
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.6);
+            int endY = (int) (size.height * 0.5);
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(new Pause(finger, Duration.ofMillis(500)));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(250), PointerInput.Origin.viewport(), startX, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            driver.perform(Collections.singletonList(swipe));
+        }
+    }
+
+    public void clickDeviceRequest() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.clickDeviceRequest)).click();
+    }
+
+    public void chooseSecond() {
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.VerifierElements.chooseSecond)).click();
     }
 }

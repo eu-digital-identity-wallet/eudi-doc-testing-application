@@ -41,7 +41,6 @@ public class IssuerElements {
     public static By clickCode = By.xpath("//XCUIElementTypeStaticText[@name=\"Codes\"]");
     public static By clickFamilyNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Family Name']/following::XCUIElementTypeTextField[1]");
     public static By clickGivenNameOnMdl = By.xpath("//XCUIElementTypeStaticText[@name='Given Name']/following::XCUIElementTypeTextField[1]");
-    public static By clickGivenNameText = By.xpath("//XCUIElementTypeStaticText[@name=\"Given Name\"]");
     public static By pidMsoMdoc = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc\"]");
     public static By pidMsoMdocDefered = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_mso_mdoc_deferred\"]");
     public static By pidSDJWT = By.xpath("//XCUIElementTypeStaticText[@name=\"eu.europa.ec.eudi.pid_vc_sd_jwt\"]");
@@ -52,13 +51,12 @@ public class IssuerElements {
     public static By issueCredentialPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Scan the generated QR Code to issue the requested Credentials:\"]");
     public static By signPageIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Sign in to your account\"]");
     public static By nationality = By.xpath("//XCUIElementTypeStaticText[@name=\"Nationality\"]");
-    public static final By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
+    public static By clickIssuerCredentialOffer = By.xpath("//XCUIElementTypeStaticText[@name=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//XCUIElementTypeStaticText[@name=\"Please select your country of origin\"]");;
     public static By clientIdLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[1]");
     public static By companyLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[2]");
     public static By familyNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[3]");
     public static By givenNameLoyalty = By.xpath("//XCUIElementTypeOther[@name=\"form\"]/XCUIElementTypeTextField[4]");
-    public static By clickForm = By.id("form");
     public static By clickMandatoryInformation = By.xpath("//XCUIElementTypeOther[@name=\"Mandatory Information\"]");
     public static By clickPortrait = By.xpath("//XCUIElementTypeStaticText[@name=\"Portrait\"]");
 }

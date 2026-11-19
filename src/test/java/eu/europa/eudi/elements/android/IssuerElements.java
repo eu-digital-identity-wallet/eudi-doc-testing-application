@@ -20,9 +20,7 @@ public class IssuerElements {
     public static By clickGivenName = By.xpath("//android.view.View[@text=\"Given Name\"]/following-sibling::android.widget.EditText[1]\n");
     public static By clickFamilyName = By.xpath("//android.view.View[@text='Family Name']/../android.widget.EditText");
     public static By clickBirthDate = By.xpath("//*[@resource-id=\"field-birthdate\" or @resource-id=\"field-birth_date\"]");
-    public static By chooseSet = By.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/confirm_button\"]");
     public static By enterDocumentNumber = By.xpath("//android.view.View[@text=\"Document Number\"]/following-sibling::android.widget.EditText[1]\n");
-    public static By closeKeyboardBefore03 = By.xpath("//android.view.View[@text=\"Document Number\"]");
     public static By clickIssueDate = By.xpath("//android.widget.DatePicker[@resource-id=\"field-driving_privileges[0][issue_date]\"]");
     public static By clickExpiryDate = By.xpath("//android.widget.DatePicker[@resource-id=\"field-driving_privileges[0][expiry_date]\"]");
     public static By clickSubmit =  By.xpath("//android.widget.Button[@text=\"Submit\"]");
@@ -31,11 +29,9 @@ public class IssuerElements {
     public static By clickPlaceOfBirth = By.xpath("//android.widget.TextView[@text=\"Place of Birth\" or @text=\"Place Of Birth\"]");
     public static By clickCountryCode = By.xpath("//android.view.View[@text='Country Code']/../android.widget.EditText");
     public static By clickCountry = By.xpath("//android.view.View[@text='Country']/../android.widget.EditText[1]");
-    public static By closeKeyboard = By.xpath("//android.widget.TextView[@text='Nationality' or @text='Nationalities']");
     public static By closeKeyboardForm = By.xpath("//android.view.View[@text=\"Family Name\"]");
     public static By clickConfirm = By.xpath("//android.widget.Button[@text=\"Confirm\"]");
     public static By enterCode = By.xpath("//android.view.View[@text='Code']/following-sibling::android.widget.EditText[1]");
-    public static By clickCode = By.xpath("//android.widget.TextView[@text=\"Codes\"]");
     public static By clickGenerateButton = By.xpath("//android.widget.Button[@resource-id=\"generateButton\"]");
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
@@ -47,14 +43,12 @@ public class IssuerElements {
     public static By passwordWeb = By.cssSelector("#password");;
     public static By loginSubmit = By.xpath("//android.widget.Button[@resource-id=\"kc-login\"]");;
     public static By loginSubmitWeb = By.cssSelector("#kc-login");;
-    public static final By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
+    public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
     public static By pidSDJWT = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-2\"]");;
-    public static By selectPIDDeferredPythonCredential = By.xpath("//android.widget.TextView[@text=' PID (MSO Mdoc Deferred)']/../android.widget.CheckBox");
     public static By clientIdLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
     public static By companyLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
     public static By familyNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[3]");
     public static By givenNameLoyalty = By.xpath("//android.widget.EditText[@resource-id=\"field-given_name\"]");
-    public static By clickGivenNameText = By.xpath("//android.view.View[@text=\"Given Name\"]");
     public static By clickSubmitButtonIssuer = By.xpath("//android.widget.Button[@resource-id=\"btncheck\"]");
 }

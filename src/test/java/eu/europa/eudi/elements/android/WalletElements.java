@@ -68,13 +68,10 @@ public class WalletElements {
     public static By scanQRIsActivatedForIssuance = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Scan a QR code provided from an issuer to add a digital document to your wallet.\")");
     public static By selectMDLKotlinCredential = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Eaa-0\"]");
     public static By mdlIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Mobile Driving Licence (MSO MDoc)\")");
-    public static By selectMDLPythonCredential = By.xpath("//android.widget.TextView[@text=\" mDL (MSO Mdoc)\"]/preceding-sibling::android.widget.CheckBox");
-    public static By selectPIDPythonCredential = By.xpath("//android.widget.TextView[@text='PID (MSO Mdoc)']/../android.widget.CheckBox");
     public static By onlinePresentation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Online\")");
     public static By clickPidFromKotlinFromList = By.id(APP_PACKAGE + ":id/add_document_screen_attestation_" + KOTLIN_ISSUER_HOST + "_eu.europa.ec.eudi.pid_mso_mdoc,eu.europa.ec.eudi.pid_mso_mdoc_deferred,eu.europa.ec.eudi.pid_vc_sd_jwt,eu.europa.ec.eudi.pid_vc_sd_jwt_deferred");
     public static By clickPowerOfPresentation = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"Power Of Representation (MSO Mdoc)\")");
     public static By clickMdlKotlin = AppiumBy.androidUIAutomator("new UiSelector().resourceIdMatches(\".*add_document_screen_attestation.*mDL.*\")");
-    public static By selectPIDSDJWTPythonCredential = By.xpath("//android.widget.TextView[@text=\" PID (SD-JWT VC)\"]/preceding-sibling::android.widget.CheckBox");
     public static By clickExpandVerificationSDJWT = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC)\")");
     public static By pidSdJwtIsDisplayedKotlin = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC Compact)\")");
     public static By pidSdJwtIsDisplayedOnDocuments = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.TextView\").text(\"PID (SD-JWT VC)\")");
