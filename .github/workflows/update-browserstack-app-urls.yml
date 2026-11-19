@@ -16,6 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: milestone/2026.Q4
           fetch-depth: 0
 
       - name: Set up Python
