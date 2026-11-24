@@ -46,6 +46,7 @@ public class IssuerElements {
     public static By clickIssuerCredentialOffer = By.xpath("//android.widget.TextView[@text=\"" + PYTHON_ISSUER_URL + "/credential_offer\"]");
     public static By selectCountryOfOriginIsDisplayed = By.xpath("//android.widget.TextView[@text=\"Please select your country of origin\"]");;
     public static By pidSDJWT = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-2\"]");;
+    public static By pidSDJWTIssuer = By.xpath("//android.view.View[@resource-id=\"selectCredential\"]/android.view.View[8]");
     public static By clientIdLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[1]");
     public static By companyLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[2]");
     public static By familyNameLoyalty = By.xpath("//android.view.View[@resource-id=\"selectCountryForm\"]/android.widget.EditText[3]");

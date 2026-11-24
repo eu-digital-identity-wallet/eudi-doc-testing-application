@@ -2000,7 +2000,16 @@ public class Wallet {
                                 test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
-                                test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+                                test.web().verifier().selectSpecificAttributesOnWebForMdl();
+                                test.web().verifier().scrollUntilNextOnWeb();
+                                test.web().verifier().mdlIsDisplayedOnWeb();
+                                test.web().verifier().clickSpecificAttributesButtonForMdl();
+                                test.web().verifier().selectSpecificAttributesOnWeb();
+                                test.web().verifier().scrollUntilNextOnWeb();
+                                test.web().verifier().uriMethodIsDisplayed();
+                                test.web().verifier().scrollUntilSubmitOnWeb();
+                                test.web().verifier().assertQrCodeIsVisible();
+                                test.web().verifier().captureScreenOnWeb();
                             } catch (org.openqa.selenium.WebDriverException e) {
 
                                 e.printStackTrace();
@@ -2020,6 +2029,7 @@ public class Wallet {
                         }
                     }
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                         test.mobile().wallet().clickMDLFromKotlin();
                     } else {

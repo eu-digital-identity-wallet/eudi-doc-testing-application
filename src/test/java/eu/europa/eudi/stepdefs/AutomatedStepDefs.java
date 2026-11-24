@@ -2509,7 +2509,7 @@ public class AutomatedStepDefs {
         test.web().verifier().clickSpecificAttributesButtonForPID();
         test.web().verifier().selectSpecificAttributesOnWeb();
         test.web().verifier().clickSpecificAttributesButtonForMdl();
-        test.mobile().verifier().clickSpecificAttributes();
+        test.mobile().verifier().selectSpecificAttributesOnWebMdl();
         test.mobile().verifier().clickSelect();
         test.web().verifier().scrollUntilNextOnWeb();
     }

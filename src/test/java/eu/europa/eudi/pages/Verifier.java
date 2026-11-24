@@ -629,6 +629,16 @@ public class Verifier {
         test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
     }
 
+    public void selectSpecificAttributesOnWebMdl() {
+        By attributeLocator1 = By.xpath("//label[@for='mat-mdc-checkbox-" + 204 + "-input']");
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator1)).click();
+        By attributeLocator2 = By.xpath("//label[@for='mat-mdc-checkbox-" + 205 + "-input']");
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator2)).click();
+        By attributeLocator3 = By.xpath("//label[@for='mat-mdc-checkbox-" + 206 + "-input']");
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(attributeLocator3)).click();
+        test.webWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.//span[normalize-space()='Select']]"))).click();
+    }
+
     public void walletRespondedOnWebforMdlKotlin() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.webWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.VerifierElements.walletRespondedWebMdlKotlin)).getText();
