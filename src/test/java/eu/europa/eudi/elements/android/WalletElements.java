@@ -11,7 +11,6 @@ public class WalletElements {
     private static final String APP_PACKAGE = new EnvDataConfig().getAppiumAndroidAppPackage();
     private static final String KOTLIN_ISSUER_HOST = extractKotlinIssuerHost(new EnvDataConfig().getKotlinUrl());
 
-
     private static String extractKotlinIssuerHost(String url) {
         try {
             URI uri = new URI(url);
@@ -192,4 +191,5 @@ public class WalletElements {
     public static By openDigitalWallet = AppiumBy.accessibilityId("Open Digital Wallet");
     public static By continueToTrustSite = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.android.chrome:id/positive_button\")");
     public static By clickBackButtonChangePin = AppiumBy.accessibilityId("Close");
+    public static By clickCancelOnWallet = By.xpath("//android.widget.TextView[@text=\"Cancel\"]");
 }

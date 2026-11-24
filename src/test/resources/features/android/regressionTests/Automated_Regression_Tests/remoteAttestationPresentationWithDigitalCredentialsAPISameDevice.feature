@@ -11,14 +11,6 @@ Feature: Present Digital Attestations via Browser using EUDI Wallet on Same Devi
     Given the user issues a <credential> attestation using <issuer>
     And the user is on the Home screen of the Wallet
     And the user opens the Relying Party service page on the same device
-#    When the user starts the wallet verification flow from the Relying Party page
-#    Then the Relying Party raises a presentation request
-#    When Chrome invokes the Digital Credentials API for the presentation request
-#    Then the browser asks the user to grant permission to proceed
-#    When the user grants the requested permission
-#    Then the device searches the installed Wallet Units for matching attestations
-#    And the process ends with a user notification when no attestations match the request
-#    When suitable attestations are located on the device
     Then the browser presents a selector listing the matching attestations
     And each listed attestation shows its credential type and the Wallet Unit that holds it
     And the selector marks which Wallet Unit each listed attestation belongs to

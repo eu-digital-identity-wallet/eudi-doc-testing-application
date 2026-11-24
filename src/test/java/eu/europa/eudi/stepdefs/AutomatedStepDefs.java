@@ -1043,7 +1043,7 @@ public class AutomatedStepDefs {
 
         @Then("the wallet displays the Add document screen")
         public void theWalletDisplaysTheAddDocumentScreen() {
-            test.mobile().wallet().addDocumentPageIsDisplayed();
+            test.mobile().wallet().documentsPageIsDisplayed();
         }
 
         @When("the user selects the option to scan a QR code")
@@ -1145,6 +1145,29 @@ public class AutomatedStepDefs {
         @And("the issuance information is displayed to the user for {}")
         public void theIssuanceInformationIsDisplayedToTheUserFor(String issuerType) throws InterruptedException {
             test.mobile().issuer().issuanceInformation(issuerType);
+        }
+
+        @When("the user selects the cancel button")
+        public void theUserSelectsTheCancelButton() {
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickScreen();
+            } else {
+                test.mobile().wallet().clickCancel();
+            }
+        }
+
+        @Then("the wallet displays a confirmation modal to cancel the issuance process")
+        public void theWalletDisplaysAConfirmationModalToCancelTheIssuanceProcess() {
+            //no action occurs in automation
+        }
+
+        @When("the user selects the cancel button on the confirmation modal")
+        public void theUserSelectsTheCancelButtonOnTheConfirmationModal() {
+            if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                test.mobile().wallet().clickScreen();
+            } else {
+                test.mobile().wallet().clickCancel();
+            }
         }
 
         @Then("the document appears on the documents screen")
@@ -2401,5 +2424,125 @@ public class AutomatedStepDefs {
     @Then("the attestation is shared successfully for multipaz")
     public void theAttestationIsSharedSuccessfullyForMultipaz() {
             //nothing for ios
+    }
+
+    @Given("the user opens the EUDIW web verifier")
+    public void theUserOpensTheEUDIWWebVerifier() {
+        test.web().verifier().openVerifierOnDesktopBrowser();
+    }
+
+    @When("the user opens the presentation request section")
+    public void theUserOpensThePresentationRequestSection() {
+        test.web().verifier().appOpensSuccessfullyOnWeb();
+    }
+
+    @Then("the user sees the presentation request guide")
+    public void theUserSeesThePresentationRequestGuide() {
+        test.web().verifier().appOpensSuccessfullyOnWeb();
+    }
+
+    @When("the user selects a single attestation option")
+    public void theUserSelectsASingleAttestationOption() {
+        test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+    }
+
+    @Then("the verifier permits the user to move to the next step")
+    public void theVerifierPermitsTheUserToMoveToTheNextStep() {
+        test.web().verifier().scrollUntilNextOnWeb();
+        test.web().verifier().pidIsDisplayedOnWeb();
+    }
+
+    @When("the user requests to choose specific attributes")
+    public void theUserRequestsToChooseSpecificAttributes() {
+        test.web().verifier().clickSpecificAttributesButtonForPID();
+        test.web().verifier().selectSpecificAttributesOnWeb();
+         }
+
+    @And("the user chooses the format of the attestation")
+    public void theUserChoosesTheFormatOfTheAttestation() {
+        //no action occurs in automation
+    }
+
+    @Then("the user selects the next button")
+    public void theUserSelectsTheNextButton() {
+        test.web().verifier().scrollUntilNextOnWeb();
+    }
+
+    @When("the user selects the applicable data items for the request")
+    public void theUserSelectsTheApplicableDataItemsForTheRequest() {
+        //nothing for automation
+    }
+
+    @Then("the user reaches the third step")
+    public void theUserReachesTheThirdStep() {
+        test.web().verifier().uriMethodIsDisplayed();
+    }
+
+    @Then("the verifier produces a QR code")
+    public void theVerifierProducesAQRCode() {
+        test.web().verifier().assertQrCodeIsVisible();
+        test.web().verifier().captureScreenOnWeb();
+    }
+
+    @And("the user scans the generated QR code")
+    public void theUserScansTheGeneratedQRCode() {
+        test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+    }
+
+    @Then("the user's request to the verifier appears in the wallet")
+    public void theUserSRequestToTheVerifierAppearsInTheWallet() {
+        test.mobile().wallet().clickToViewDetails();
+    }
+
+    @When("the user selects the multiple attestations option")
+    public void theUserSelectsTheMultipleAttestationsOption() {
+        test.web().verifier().openVerifierOnDesktopBrowser();
+    }
+
+    @Then("the verifier shows the available attestations")
+    public void theVerifierShowsTheAvailableAttestations() {
+        test.web().verifier().appOpensSuccessfullyOnWeb();
+        test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+        test.mobile().verifier().selectSpecificAttributesOnWebForMdl();
+        test.web().verifier().scrollUntilNextOnWeb();
+        test.web().verifier().pidIsDisplayedOnWeb();
+        test.web().verifier().clickSpecificAttributesButtonForPID();
+        test.web().verifier().selectSpecificAttributesOnWeb();
+        test.web().verifier().clickSpecificAttributesButtonForMdl();
+        test.mobile().verifier().clickSpecificAttributes();
+        test.mobile().verifier().clickSelect();
+        test.web().verifier().scrollUntilNextOnWeb();
+    }
+
+    @When("the user requests to choose specific attributes for the attestations they want")
+    public void theUserRequestsToChooseSpecificAttributesForTheAttestationsTheyWant() {
+        //no action occurs in automation
+    }
+
+    @And("the user chooses the format of the attestations")
+    public void theUserChoosesTheFormatOfTheAttestations() {
+        //no action occurs in automation
+    }
+
+    @Then("the verifier stores the selected options")
+    public void theVerifierStoresTheSelectedOptions() {
+        //no action occurs in automation
+    }
+
+    @When("the user scans the generated QR code with the EUDI wallet app")
+    public void theUserScansTheGeneratedQRCodeWithTheEUDIWalletApp() {
+        test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+    }
+
+    @When("the user selects the next button on second step")
+    public void theUserSelectsTheNextButtonOnSecondStep() {
+        test.web().verifier().scrollUntilSubmitOnWeb();
+    }
+
+    @And("the user selects the next button on multiple attestations")
+    public void theUserSelectsTheNextButtonOnMultipleAttestations() {
+        test.mobile().verifier().clickNext();
+        test.mobile().verifier().scrollUntilSumbit();
+        test.mobile().verifier().clickSubmit();
     }
 }
