@@ -185,7 +185,6 @@ public class MobileWebDriverFactory {
             } else {
                 // --- Real device setup ---
                 envDataConfig = new EnvDataConfig();
-                File apkPath1 = new File("src/test/resources/app/iosApp.ipa");
                 XCUITestOptions caps1 = new XCUITestOptions();
                 caps1.setCapability("deviceName", test.envDataConfig().getAppiumIosDeviceName());
                 caps1.setCapability("platformName", test.envDataConfig().getAppiumIosPlatformName());
@@ -195,7 +194,6 @@ public class MobileWebDriverFactory {
                 caps1.setCapability("bundleId", test.envDataConfig().getAppiumIosBundleId()); // your app's bundle id
                 caps1.setCapability("noReset", noReset);
                 caps1.setCapability("fullReset", false);
-                caps1.setCapability("app", apkPath1.getAbsolutePath());
                 caps1.setCapability("usePrebuiltWDA", true);
                 caps1.setCapability("waitForIdleTimeout", 150);
                 caps1.setCapability("autoDismissAlerts", false);
