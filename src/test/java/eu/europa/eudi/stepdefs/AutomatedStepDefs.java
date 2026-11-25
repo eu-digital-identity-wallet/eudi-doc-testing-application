@@ -1043,7 +1043,7 @@ public class AutomatedStepDefs {
 
         @Then("the wallet displays the Add document screen")
         public void theWalletDisplaysTheAddDocumentScreen() {
-            test.mobile().wallet().documentsPageIsDisplayed();
+            test.mobile().wallet().addDocumentPageIsDisplayed();
         }
 
         @When("the user selects the option to scan a QR code")

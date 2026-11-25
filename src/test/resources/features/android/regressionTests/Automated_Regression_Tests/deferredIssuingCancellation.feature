@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DIC @GENERAL_TESTS
+@ANDROID @automated @US_DIC
 Feature: Credential Issuance Cancellation
   As a user of the issuer service
   I want to be able to issue a credential in deferred mode
