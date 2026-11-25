@@ -65,7 +65,7 @@ public class Issuer {
             }
         } else {
             IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-            driver.runAppInBackground(Duration.ofSeconds(10));
+//            driver.runAppInBackground(Duration.ofSeconds(10));
             driver.activateApp("com.apple.mobilesafari");
             String url = test.envDataConfig().getPythonUrl();
             driver.get(url);
@@ -2992,7 +2992,9 @@ public class Issuer {
                                         test.mobile().wallet().clickContinueNew();
                                         test.mobile().wallet().continueToTrustSite();
                                 }
-                                test.mobile().wallet().createAPin();
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    test.mobile().wallet().createAPin();
+                                }
                                 test.mobile().issuer().viewDataPage();
                                 test.mobile().wallet().clickAddButton();
                                 if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
@@ -3091,8 +3093,9 @@ public class Issuer {
                                     if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                         test.mobile().wallet().clickContinueNew();
                                     }
-                                    if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                                        test.mobile().wallet().clickAddButton();
+                                    test.mobile().wallet().clickAddButton();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                        test.mobile().wallet().clickContinueNew();
                                     }
                                     test.mobile().issuer().issueMDL();
                                 }
@@ -3144,6 +3147,7 @@ public class Issuer {
                                 test.mobile().verifier().captureScreen();
                                 test.mobile().wallet().restartApp();
                                 test.mobile().wallet().createAPin();
+                                test.mobile().wallet().homePageIsDisplayed();
                                 test.mobile().wallet().clickOnDocuments();
                                 test.mobile().wallet().clickToAddDocument();
                                 test.mobile().wallet().clickQROption();
