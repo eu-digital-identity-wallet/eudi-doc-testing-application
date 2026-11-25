@@ -556,8 +556,12 @@ public class AutomatedStepDefs {
             }
             if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().wallet().clickContinueNew();
-                test.mobile().issuer().signInUser();
-                test.mobile().issuer().fillLoginForm();
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                        && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                    test.mobile().issuer().signInUser();
+                    test.mobile().issuer().fillLoginForm();
+                }
             }
         }
 
@@ -1044,7 +1048,11 @@ public class AutomatedStepDefs {
 
         @Then("the wallet displays the Add document screen")
         public void theWalletDisplaysTheAddDocumentScreen() {
-            test.mobile().wallet().documentsPageIsDisplayed();
+            if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                test.mobile().wallet().documentsPageIsDisplayed();
+            }else {
+                test.mobile().wallet().addDocumentPageIsDisplayed();
+            }
         }
 
         @When("the user selects the option to scan a QR code")
@@ -1111,11 +1119,15 @@ public class AutomatedStepDefs {
         @Then("the user proceeds with the attestation issuing flow")
         public void theUserProceedsWithTheAttestationIssuingFlow() throws InterruptedException {
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                test.mobile().issuer().signInUser();
-                test.mobile().issuer().fillLoginForm();
-            } else {
-                test.mobile().issuer().issuePID(this.credential);
-            }
+                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                        && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                    test.mobile().issuer().signInUser();
+                    test.mobile().issuer().fillLoginForm();
+                }
+                } else {
+                    test.mobile().issuer().issuePID(this.credential);
+                }
         }
 
         @And("the wallet displays a success screen with the details of the issued attestation")
