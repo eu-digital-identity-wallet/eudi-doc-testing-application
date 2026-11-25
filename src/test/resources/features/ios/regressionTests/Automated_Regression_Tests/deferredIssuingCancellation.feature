@@ -21,4 +21,3 @@ Feature: Credential Issuance Cancellation
     Examples:
       | issuer |
       | Python |
-      | Kotlin |

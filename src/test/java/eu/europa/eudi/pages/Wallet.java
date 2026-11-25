@@ -258,7 +258,7 @@ public class Wallet {
     public void loginPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.loginPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.LOGIN_ANDROID.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.loginPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
@@ -2000,7 +2000,16 @@ public class Wallet {
                                 test.webWebDriverFactory().getDriverWeb().get(url);
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
                                 test.web().verifier().appOpensSuccessfullyOnWeb();
-                                test.web().verifier().selectSpecificAttributesOnWebForPID(this.credential);
+                                test.web().verifier().selectSpecificAttributesOnWebForMdl();
+                                test.web().verifier().scrollUntilNextOnWeb();
+                                test.web().verifier().mdlIsDisplayedOnWeb();
+                                test.web().verifier().clickSpecificAttributesButtonForMdl();
+                                test.web().verifier().selectSpecificAttributesOnWeb();
+                                test.web().verifier().scrollUntilNextOnWeb();
+                                test.web().verifier().uriMethodIsDisplayed();
+                                test.web().verifier().scrollUntilSubmitOnWeb();
+                                test.web().verifier().assertQrCodeIsVisible();
+                                test.web().verifier().captureScreenOnWeb();
                             } catch (org.openqa.selenium.WebDriverException e) {
 
                                 e.printStackTrace();
@@ -2063,8 +2072,12 @@ public class Wallet {
         test.mobile().wallet().clickMdlKotlin();
         if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
             test.mobile().wallet().clickContinueNew();
-            test.mobile().issuer().signInUser();
-            test.mobile().issuer().fillLoginForm();
+            IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+            if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                    && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                test.mobile().issuer().signInUser();
+                test.mobile().issuer().fillLoginForm();
+            }
         }else{
                 test.mobile().issuer().signInUser();
                 test.mobile().issuer().fillLoginForm();
