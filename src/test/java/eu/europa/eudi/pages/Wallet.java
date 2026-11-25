@@ -2029,6 +2029,7 @@ public class Wallet {
                         }
                     }
                     test.mobile().wallet().mockQRInject(test.web().verifier().getCapturedScreenFile());
+
                     if ("kotlin".equalsIgnoreCase(this.issuerType)) {
                         test.mobile().wallet().clickMDLFromKotlin();
                     } else {

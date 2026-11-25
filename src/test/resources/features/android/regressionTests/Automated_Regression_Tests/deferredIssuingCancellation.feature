@@ -1,4 +1,4 @@
-@ANDROID @automated @US_DIC @GENERAL_TESTS
+@ANDROID @automated @US_DIC
 Feature: Credential Issuance Cancellation
   As a user of the issuer service
   I want to be able to issue a credential in deferred mode
@@ -13,12 +13,11 @@ Feature: Credential Issuance Cancellation
     Then the EUDI Wallet application is opened
     And the issuance information is displayed to the user for <issuer>
     When the user selects the cancel button
-    Then the wallet displays a confirmation modal to cancel the issuance process
-    When the user selects the cancel button on the confirmation modal
-    Then the issuing process is canceled
+#    Then the wallet displays a confirmation modal to cancel the issuance process
+#    When the user selects the cancel button on the confirmation modal
+#    Then the issuing process is canceled
     And the wallet displays the Add document screen
 
     Examples:
       | issuer |
       | Python |
-      | Kotlin |

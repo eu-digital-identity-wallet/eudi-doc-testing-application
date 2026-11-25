@@ -2638,51 +2638,48 @@ public class Issuer {
 
     public void scrollUntilPidSDJWTIssuer() throws InterruptedException {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver =
-                    (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            driver.context("NATIVE_APP");
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
-            List<WebElement> resubmissionContinueButtons = driver.findElements(
-                    AppiumBy.id("com.android.chrome:id/positive_button")
-            );
-
-            if (!resubmissionContinueButtons.isEmpty()
-                    && resubmissionContinueButtons.get(0).isDisplayed()) {
-                resubmissionContinueButtons.get(0).click();
-                System.out.println("Confirm Form Resubmission dialog visible. Clicked Continue.");
-            }
+            By locator = By.cssSelector("input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']");
 
             try {
-                String webviewContext = null;
-                for (int i = 0; i < 20; i++) {
-                    for (String ctx : driver.getContextHandles()) {
-                        if (ctx.startsWith("WEBVIEW")) {
-                            webviewContext = ctx;
-                            break;
-                        }
-                    }
-                    if (webviewContext != null) {
-                        driver.context(webviewContext);
-                        break;
-                    }
-                }
-
-                System.out.println("DEBUG contexts=" + driver.getContextHandles() + " switchedTo=" + driver.getContext());
-
+                WebElement element;
+                boolean isWeb = true;
                 try {
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-                    wait.until(
-                            ExpectedConditions.visibilityOfElementLocated(
-                                    By.cssSelector("input[name='eu.europa.ec.eudi.pid_vc_sd_jwt']")
-                            )
-                    );
-                } catch (org.openqa.selenium.TimeoutException e) {
-                    String pageSource = driver.getPageSource();
-                    System.out.println("DEBUG pidSDJWT checkbox not found. context=" + driver.getContext());
-                    System.out.println("DEBUG pageSource (first 5000 chars): " + pageSource.substring(0, Math.min(5000, pageSource.length())));
-                    throw e;
+                    element = findInWebViews(driver, locator, Duration.ofSeconds(60));
+                } catch (TimeoutException webTimeout) {
+                    // Fallback: the issuer HTML is also exposed as native elements
+                    System.out.println("Not found in any WEBVIEW, falling back to native locator...");
+                    driver.context("NATIVE_APP");
+                    element = new WebDriverWait(driver, Duration.ofSeconds(30))
+                            .until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidSDJWTIssuer));
+                    isWeb = false;
                 }
+
+                if (isWeb) {
+                    // Scroll to element
+                    ((JavascriptExecutor) driver).executeScript(
+                            "arguments[0].scrollIntoView({block: 'center', behavior: 'auto'});",
+                            element
+                    );
+
+                    // Click element
+                    new WebDriverWait(driver, Duration.ofSeconds(10))
+                            .until(ExpectedConditions.elementToBeClickable(locator))
+                            .click();
+                } else {
+                    element.click();
+                }
+
+            } catch (Exception e) {
+                System.out.println("DEBUG scrollUntilPidIssuer failed. contexts=" + driver.getContextHandles() + " current=" + driver.getContext());
+                try {
+                    String body = (String) ((JavascriptExecutor) driver).executeScript(
+                            "return document.body ? document.body.innerHTML.substring(0, 3000) : 'no body'");
+                    System.out.println("DEBUG page body: " + body);
+                } catch (Exception ignored) {}
+                throw e;
             } finally {
                 driver.context("NATIVE_APP");
             }
@@ -2741,22 +2738,43 @@ public class Issuer {
     public void scrollUntilPidIssuer() throws InterruptedException {
 
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-
             AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
 
             By locator = By.cssSelector("input[name='eu.europa.ec.eudi.pid_mdoc']");
 
             try {
+                // Wait for WEBVIEW context and switch to it
+                String webviewContext = new WebDriverWait(driver, Duration.ofSeconds(30))
+                        .until(d -> driver.getContextHandles().stream()
+                                .filter(ctx -> ctx.startsWith("WEBVIEW"))
+                                .findFirst()
+                                .orElse(null));
+
+                driver.context(webviewContext);
+
+                System.out.println("DEBUG Switched to context: " + driver.getContext());
+
+                // Wait until the web page is fully loaded
+                new WebDriverWait(driver, Duration.ofSeconds(30))
+                        .until(d -> "complete".equals(
+                                ((JavascriptExecutor) driver)
+                                        .executeScript("return document.readyState")));
+
                 WebElement element;
                 boolean isWeb = true;
+
                 try {
                     element = findInWebViews(driver, locator, Duration.ofSeconds(60));
+
                 } catch (TimeoutException webTimeout) {
-                    // Fallback: the issuer HTML is also exposed as native elements
                     System.out.println("Not found in any WEBVIEW, falling back to native locator...");
+
                     driver.context("NATIVE_APP");
+
                     element = new WebDriverWait(driver, Duration.ofSeconds(30))
-                            .until(ExpectedConditions.visibilityOfElementLocated(IssuerElements.pidMsoMdoc));
+                            .until(ExpectedConditions.visibilityOfElementLocated(
+                                    IssuerElements.pidMsoMdoc));
+
                     isWeb = false;
                 }
 
@@ -2771,18 +2789,26 @@ public class Issuer {
                     new WebDriverWait(driver, Duration.ofSeconds(10))
                             .until(ExpectedConditions.elementToBeClickable(locator))
                             .click();
+
                 } else {
                     element.click();
                 }
 
             } catch (Exception e) {
-                System.out.println("DEBUG scrollUntilPidIssuer failed. contexts=" + driver.getContextHandles() + " current=" + driver.getContext());
+                System.out.println("DEBUG scrollUntilPidIssuer failed. contexts="
+                        + driver.getContextHandles() + " current=" + driver.getContext());
+
                 try {
-                    String body = (String) ((JavascriptExecutor) driver).executeScript(
-                            "return document.body ? document.body.innerHTML.substring(0, 3000) : 'no body'");
-                    System.out.println("DEBUG page body: " + body);
+                    if (driver.getContext().startsWith("WEBVIEW")) {
+                        String body = (String) ((JavascriptExecutor) driver).executeScript(
+                                "return document.body ? document.body.innerHTML.substring(0, 3000) : 'no body'");
+
+                        System.out.println("DEBUG page body: " + body);
+                    }
                 } catch (Exception ignored) {}
+
                 throw e;
+
             } finally {
                 driver.context("NATIVE_APP");
             }
@@ -3033,10 +3059,18 @@ public class Issuer {
                                     test.mobile().issuer().clickUseEudiwPid();
                                 } else {
                                     test.mobile().issuer().scrollUntilPidSDJWTIssuer();
-                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+//                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiwPidSDJWT();
+                                }
+                                if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
+                                    if (test.mobileWebDriverFactory().getDriverAndroid()
+                                            .findElements(AppiumBy.className("android.widget.EditText"))
+                                            .stream().anyMatch(WebElement::isDisplayed)) {
+
+                                        test.mobile().wallet().createAPin();
+                                    }
                                 }
                                 if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                                     test.mobile().wallet().clickOpenNew();
@@ -3077,7 +3111,7 @@ public class Issuer {
                                     test.mobile().issuer().selectPidPythonIssuer();
                                 } else {
                                     test.mobile().issuer().scrollUntilPidSDJWTIssuer();
-                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+//                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
                                 }
                                 test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                 test.mobile().issuer().clickSubmitButton();
@@ -3147,32 +3181,49 @@ public class Issuer {
 
     private void selectPidSDJWTPythonIssuer() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory().getDriverAndroid();
+            AndroidDriver driver = (AndroidDriver) test.mobileWebDriverFactory()
+                    .getDriverAndroid();
 
-            int attempt = 0;
-            while (true) {
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+            int maxAttempts = 3;
+
+            for (int attempt = 1; attempt <= maxAttempts; attempt++) {
                 try {
-                    test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.android.WalletElements.selectPIDSDJWTPython)).click();
-                    break;
-                } catch (org.openqa.selenium.TimeoutException e) {
-                    attempt++;
-                    if (attempt >= 3) {
+                    shortWait.until(ExpectedConditions.presenceOfElementLocated(
+                            eu.europa.eudi.elements.android.WalletElements.selectPIDSDJWTPython));
+
+                } catch (TimeoutException e) {
+
+                    if (attempt == maxAttempts) {
                         throw e;
                     }
-                    System.out.println("DEBUG selectPIDSDJWTPython not found, refreshing page (attempt " + attempt + ")");
-                    String webviewContext = null;
-                    for (String ctx : driver.getContextHandles()) {
-                        if (ctx.startsWith("WEBVIEW")) {
-                            webviewContext = ctx;
-                            break;
-                        }
-                    }
-                    if (webviewContext != null) {
-                        driver.context(webviewContext);
+
+                    System.out.println("DEBUG: selectPIDSDJWTPython not found. "
+                            + "Refreshing page. Attempt: " + attempt);
+
+                    String webviewContext = driver.getContextHandles().stream()
+                            .filter(ctx -> ctx.startsWith("WEBVIEW"))
+                            .findFirst()
+                            .orElseThrow(() -> new IllegalStateException("WEBVIEW not found"));
+
+                    driver.context(webviewContext);
+
+                    try {
                         driver.navigate().refresh();
+                    } finally {
                         driver.context("NATIVE_APP");
                     }
+
+                    continue;
                 }
+
+                test.mobileWebDriverFactory().getWait()
+                        .until(ExpectedConditions.elementToBeClickable(
+                                eu.europa.eudi.elements.android.WalletElements.selectPIDSDJWTPython))
+                        .click();
+
+                break;
             }
         } else {
             test.mobileWebDriverFactory().getWait().until(ExpectedConditions.elementToBeClickable(eu.europa.eudi.elements.ios.WalletElements.selectPIDSDJWTPython)).click();
