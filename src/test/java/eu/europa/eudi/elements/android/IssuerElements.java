@@ -36,6 +36,7 @@ public class IssuerElements {
     public static By clickUsername = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"username\")");
     public static By clickPassword = By.xpath("//android.widget.EditText[@resource-id=\"password\"]");
     public static By pidMsoMdoc = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-0\"]");
+    public static By pidMsoMdocIssuer = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.CheckBox\")" + ".text(\"PID (MSO Mdoc)\")");
     public static By pidDeferred = By.xpath("//android.widget.CheckBox[@resource-id=\"credentialId-Pid-3\"]");
     public static By nationality = By.xpath("//android.widget.TextView[@text=\"Nationality\"]");
     public static By signPageIsDisplayed = By.xpath("//android.widget.TextView[@resource-id=\"kc-page-title\"]");

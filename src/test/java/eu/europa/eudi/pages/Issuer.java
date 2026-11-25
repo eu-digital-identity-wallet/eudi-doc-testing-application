@@ -2773,7 +2773,7 @@ public class Issuer {
 
                     element = new WebDriverWait(driver, Duration.ofSeconds(30))
                             .until(ExpectedConditions.visibilityOfElementLocated(
-                                    IssuerElements.pidMsoMdoc));
+                                    IssuerElements.pidMsoMdocIssuer));
 
                     isWeb = false;
                 }
