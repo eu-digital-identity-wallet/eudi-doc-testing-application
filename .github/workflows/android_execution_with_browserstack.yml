@@ -12,8 +12,6 @@ on:
           - main
           - milestone/2026.Q4
 
-        default: develop
-
       test-cases:
         description: 'Android Tags to execute'
         type: choice

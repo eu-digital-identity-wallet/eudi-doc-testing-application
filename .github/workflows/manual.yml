@@ -10,8 +10,6 @@ on:
           - main
           - milestone/2026.Q4
 
-        default: develop
-
       tagName:
         description: 'Manual Tags to execute'
         type: string

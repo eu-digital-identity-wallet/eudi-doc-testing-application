@@ -258,7 +258,7 @@ public class Wallet {
     public void loginPageIsDisplayed() {
         if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.visibilityOfElementLocated(eu.europa.eudi.elements.android.WalletElements.loginPageIsDisplayed)).getText();
-            Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
+            Assert.assertEquals(Literals.Wallet.LOGIN_ANDROID.label, pageHeader);
         } else {
             String pageHeader = test.mobileWebDriverFactory().getWait().until(ExpectedConditions.presenceOfElementLocated(eu.europa.eudi.elements.ios.WalletElements.loginPageIsDisplayed)).getText();
             Assert.assertEquals(Literals.Wallet.LOGIN.label, pageHeader);
