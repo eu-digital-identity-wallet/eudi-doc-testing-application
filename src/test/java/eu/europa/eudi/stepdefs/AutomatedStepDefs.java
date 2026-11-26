@@ -1025,7 +1025,9 @@ public class AutomatedStepDefs {
                 test.mobile().issuer().clickissuerService();
                 test.mobile().issuer().requestCredentialsPageIsDisplayed();
                 test.mobile().issuer().scrollUntilPidIssuer();
+                if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
                 test.mobile().issuer().selectPidPythonIssuer();
+                }
                 test.mobile().issuer().scrollUntilFindSubmitIssuer();
                 test.mobile().issuer().clickSubmitButton();
                 test.mobile().issuer().qrCodeIsDisplayed();
@@ -1049,7 +1051,7 @@ public class AutomatedStepDefs {
         @Then("the wallet displays the Add document screen")
         public void theWalletDisplaysTheAddDocumentScreen() {
             if (test.getSystemOperation().equals(Literals.General.ANDROID.label)) {
-                test.mobile().wallet().documentsPageIsDisplayed();
+                test.mobile().wallet().addDocumentPageIsDisplayed();
             }else {
                 test.mobile().wallet().addDocumentPageIsDisplayed();
             }
@@ -1119,12 +1121,17 @@ public class AutomatedStepDefs {
         @Then("the user proceeds with the attestation issuing flow")
         public void theUserProceedsWithTheAttestationIssuingFlow() throws InterruptedException {
             if ("kotlin".equalsIgnoreCase(this.issuerType)) {
-                IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
-                if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
-                        && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
-                    test.mobile().issuer().signInUser();
-                    test.mobile().issuer().fillLoginForm();
-                }
+                if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                    IOSDriver driver = (IOSDriver) test.mobileWebDriverFactory().getDriverIos();
+                    if (!driver.findElements(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isEmpty()
+                            && driver.findElement(eu.europa.eudi.elements.ios.IssuerElements.signPageIsDisplayed).isDisplayed()) {
+                        test.mobile().issuer().signInUser();
+                        test.mobile().issuer().fillLoginForm();
+                    }
+                    } else {
+                        test.mobile().issuer().signInUser();
+                        test.mobile().issuer().fillLoginForm();
+                    }
                 } else {
                     test.mobile().issuer().issuePID(this.credential);
                 }

@@ -3059,7 +3059,9 @@ public class Issuer {
                                     test.mobile().issuer().clickUseEudiwPid();
                                 } else {
                                     test.mobile().issuer().scrollUntilPidSDJWTIssuer();
-//                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                                                        }
                                     test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                     test.mobile().issuer().clickSubmitButton();
                                     test.mobile().issuer().clickUseEudiwPidSDJWT();
@@ -3111,7 +3113,9 @@ public class Issuer {
                                     test.mobile().issuer().selectPidPythonIssuer();
                                 } else {
                                     test.mobile().issuer().scrollUntilPidSDJWTIssuer();
-//                                    test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                    if (test.getSystemOperation().equals(Literals.General.IOS.label)) {
+                                        test.mobile().issuer().selectPidSDJWTPythonIssuer();
+                                    }
                                 }
                                 test.mobile().issuer().scrollUntilFindSubmitIssuer();
                                 test.mobile().issuer().clickSubmitButton();

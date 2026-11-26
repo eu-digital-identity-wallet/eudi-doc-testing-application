@@ -1,4 +1,4 @@
-@IOS @automated @US_RWVCD @Q4_2024 @GENERAL_TESTS
+@IOS @automated @US_RWVCD @Q4_2024
 Feature: EUDIW Web Verifier
   As a User,
   I want the EUDIW web verifier to guide me through in the generation of presentation requests
