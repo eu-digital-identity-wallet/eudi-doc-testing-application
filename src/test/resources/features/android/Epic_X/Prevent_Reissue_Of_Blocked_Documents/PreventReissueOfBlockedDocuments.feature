@@ -4,7 +4,7 @@ Feature: Prevent reissue of blocked documents
   I want revoked, suspended, and unrecognised documents to be unavailable for manual or background reissuance
   So that the wallet cannot obtain a new copy of a document that the issuer has blocked or whose status cannot be safely interpreted
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/420
 
   @US_PROBD_TC_01
   Scenario: Reissue attempt ends in error screen when document becomes revoked
@@ -13,7 +13,7 @@ Feature: Prevent reissue of blocked documents
     When the user initiates the reissue action
     Then the reissue attempt is aborted
     And an error screen is displayed
-    And the error screen displays the message: The issuer has revoked or suspended this document, so it cannot be reissued
+    And the error screen displays the message: 'The issuer has revoked or suspended this document, so it cannot be reissued'
     And the error screen provides only a close action
 
   @US_PROBD_TC_02

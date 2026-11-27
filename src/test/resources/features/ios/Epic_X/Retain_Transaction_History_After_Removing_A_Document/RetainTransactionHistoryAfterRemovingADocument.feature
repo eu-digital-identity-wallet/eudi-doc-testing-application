@@ -4,7 +4,8 @@ Feature: Retain transaction history after removing a document
   I want transaction history for a removed document to remain available
   So that the wallet preserves the legally required record of my past document-sharing activity
 
-  #
+    #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/423
+
 
   @US_RTHARAD_TC_01
   Scenario: Removing a document removes it from the wallet documents list

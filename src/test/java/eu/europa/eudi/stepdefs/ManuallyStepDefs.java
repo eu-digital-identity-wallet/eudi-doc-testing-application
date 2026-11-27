@@ -11686,4 +11686,1476 @@ public class ManuallyStepDefs {
     public void theWRPRCContainsAWebsiteForTheRelyingParty() {
         //manual
     }
+
+    @Given("a document with status Revoked exists in the wallet")
+    public void aDocumentWithStatusRevokedExistsInTheWallet() {
+        //manual
+    }
+
+    @When("a Digital Credentials API request is made to list offerable documents")
+    public void aDigitalCredentialsAPIRequestIsMadeToListOfferableDocuments() {
+        //manual
+    }
+
+    @Then("the revoked document is NOT included in the response")
+    public void theRevokedDocumentIsNOTIncludedInTheResponse() {
+        //manual
+    }
+
+    @And("the response contains only valid-active documents")
+    public void theResponseContainsOnlyValidActiveDocuments() {
+        //manual
+    }
+
+    @When("the user initiates a presentation request from within the wallet")
+    public void theUserInitiatesAPresentationRequestFromWithinTheWallet() {
+        //manual
+    }
+
+    @Then("the revoked document is NOT displayed in the document selection list")
+    public void theRevokedDocumentIsNOTDisplayedInTheDocumentSelectionList() {
+        //manual
+    }
+
+    @Given("a valid-active document exists in the wallet")
+    public void aValidActiveDocumentExistsInTheWallet() {
+        //manual
+    }
+
+    @And("the wallet performs a document-status check")
+    public void theWalletPerformsADocumentStatusCheck() {
+        //manual
+    }
+
+    @And("the status check returns status Revoked for the document")
+    public void theStatusCheckReturnsStatusRevokedForTheDocument() {
+        //manual
+    }
+
+    @And("a website has initiated a presentation request")
+    public void aWebsiteHasInitiatedAPresentationRequest() {
+        //manual
+    }
+
+    @When("the wallet responds to the website's presentation request")
+    public void theWalletRespondsToTheWebsiteSPresentationRequest() {
+        //manual
+    }
+
+    @Then("the document is NOT offered to the website")
+    public void theDocumentIsNOTOfferedToTheWebsite() {
+        //manual
+    }
+
+    @Given("the platform is iOS")
+    public void thePlatformIsIOS() {
+        //manual
+    }
+
+    @And("a presentation request for the revoked document reaches the ID Provider extension")
+    public void aPresentationRequestForTheRevokedDocumentReachesTheIDProviderExtension() {
+        //manual
+    }
+
+    @When("the user completes the login step in the ID Provider extension")
+    public void theUserCompletesTheLoginStepInTheIDProviderExtension() {
+        //manual
+    }
+
+    @Then("the request is declined")
+    public void theRequestIsDeclined() {
+        //manual
+    }
+
+    @And("the document is NOT disclosed")
+    public void theDocumentIsNOTDisclosed() {
+        //manual
+    }
+
+    @And("the ID Provider extension displays a corresponding message")
+    public void theIDProviderExtensionDisplaysACorrespondingMessage() {
+        //manual
+    }
+
+    @And("no Accept or Reject actions are feasible")
+    public void noAcceptOrRejectActionsAreFeasible() {
+        //manual
+    }
+
+    @Given("the user has opened the wallet")
+    public void theUserHasOpenedTheWallet() {
+        //manual
+    }
+
+    @And("the wallet supports the DC API setting on the current platform")
+    public void theWalletSupportsTheDCAPISettingOnTheCurrentPlatform() {
+        //manual
+    }
+
+    @When("the user navigates to Settings")
+    public void theUserNavigatesToSettings() {
+        //manual
+    }
+
+    @Then("the setting 'Allow documents requests from apps and websites DC API' is displayed")
+    public void theSettingAllowDocumentsRequestsFromAppsAndWebsitesDCAPIIsDisplayed() {
+        //manual
+
+    }
+
+    @And("the setting is enabled")
+    public void theSettingIsEnabled() {
+        //manual
+    }
+
+    @Given("the wallet contains a document eligible for the request")
+    public void theWalletContainsADocumentEligibleForTheRequest() {
+        //manual
+    }
+
+    @And("the setting 'Allow documents requests from apps and websites DC API' is enabled")
+    public void theSettingAllowDocumentsRequestsFromAppsAndWebsitesDCAPIIsEnabled() {
+        //manual
+    }
+
+    @When("an external source requests the document through the Digital Credentials API")
+    public void anExternalSourceRequestsTheDocumentThroughTheDigitalCredentialsAPI() {
+        //manual
+    }
+
+    @Then("the eligible wallet document is offered for the request")
+    public void theEligibleWalletDocumentIsOfferedForTheRequest() {
+        //manual
+    }
+
+    @And("the setting 'Allow documents requests from apps and websites DC API' is disabled")
+    public void theSettingAllowDocumentsRequestsFromAppsAndWebsitesDCAPIIsDisabled() {
+        //manual
+    }
+
+    @Then("no wallet documents are offered for the request")
+    public void noWalletDocumentsAreOfferedForTheRequest() {
+        //manual
+    }
+
+    @And("a related message is displayed")
+    public void aRelatedMessageIsDisplayed() {
+        //manual
+    }
+
+    @When("the user disables the setting")
+    public void theUserDisablesTheSetting() {
+        //manual
+    }
+
+    @And("an external source requests the document through the Digital Credentials API without restarting the wallet")
+    public void anExternalSourceRequestsTheDocumentThroughTheDigitalCredentialsAPIWithoutRestartingTheWallet() {
+        //manual
+    }
+
+    @Given("the wallet is locked")
+    public void theWalletIsLocked() {
+        //manual
+    }
+
+    @When("the wallet receives a request")
+    public void theWalletReceivesARequest() {
+        //manual
+    }
+
+    @Then("the login screen is displayed first")
+    public void theLoginScreenIsDisplayedFirst() {
+        //manual
+    }
+
+    @And("the request flow is not started")
+    public void theRequestFlowIsNotStarted() {
+        //manual
+    }
+
+    @And("no request-specific information is displayed on the login screen")
+    public void noRequestSpecificInformationIsDisplayedOnTheLoginScreen() {
+        //manual
+    }
+
+    @And("a valid request has been received")
+    public void aValidRequestHasBeenReceived() {
+        //manual
+    }
+
+    @And("the login screen is displayed")
+    public void theLoginScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user successfully logs in")
+    public void theUserSuccessfullyLogsIn() {
+        //manual
+    }
+
+    @Then("the Home screen is opened")
+    public void theHomeScreenIsOpened() {
+        //manual
+    }
+
+    @And("the corresponding request flow is started")
+    public void theCorrespondingRequestFlowIsStarted() {
+        //manual
+    }
+
+    @And("the started flow corresponds to the original request")
+    public void theStartedFlowCorrespondsToTheOriginalRequest() {
+        //manual
+    }
+
+    @When("the user attempts to log in unsuccessfully")
+    public void theUserAttemptsToLogInUnsuccessfully() {
+        //manual
+    }
+
+    @Then("the wallet remains locked")
+    public void theWalletRemainsLocked() {
+        //manual
+    }
+
+    @And("the received request flow is not started")
+    public void theReceivedRequestFlowIsNotStarted() {
+        //manual
+    }
+
+    @And("the Home screen is not accessible")
+    public void theHomeScreenIsNotAccessible() {
+        //manual
+    }
+
+    @And("no internal wallet screen is opened through the request")
+    public void noInternalWalletScreenIsOpenedThroughTheRequest() {
+        //manual
+    }
+
+    @And("the user has not authenticated")
+    public void theUserHasNotAuthenticated() {
+        //manual
+    }
+
+    @When("the operating system terminates the wallet application process")
+    public void theOperatingSystemTerminatesTheWalletApplicationProcess() {
+        //manual
+    }
+
+    @And("the user launches the wallet without opening the request again")
+    public void theUserLaunchesTheWalletWithoutOpeningTheRequestAgain() {
+        //manual
+    }
+
+    @And("the previously received request flow is not started")
+    public void thePreviouslyReceivedRequestFlowIsNotStarted() {
+        //manual
+    }
+
+    @And("the previously received request is not automatically restored")
+    public void thePreviouslyReceivedRequestIsNotAutomaticallyRestored() {
+        //manual
+    }
+
+    @Given("the Android wallet is unlocked")
+    public void theAndroidWalletIsUnlocked() {
+        //manual
+    }
+
+    @And("an HTTPS link is available inside the wallet")
+    public void anHTTPSLinkIsAvailableInsideTheWallet() {
+        //manual
+    }
+
+    @When("the user selects the HTTPS link")
+    public void theUserSelectsTheHTTPSLink() {
+        //manual
+    }
+
+    @Then("the link is opened in the browser")
+    public void theLinkIsOpenedInTheBrowser() {
+        //manual
+    }
+
+    @And("the browser navigates to the selected HTTPS URL")
+    public void theBrowserNavigatesToTheSelectedHTTPSURL() {
+        //manual
+    }
+
+    @Given("the user has opened the details of a document with status Active")
+    public void theUserHasOpenedTheDetailsOfADocumentWithStatusActive() {
+        //manual
+    }
+
+    @And("a document-status check now identifies the document as Revoked")
+    public void aDocumentStatusCheckNowIdentifiesTheDocumentAsRevoked() {
+        //manual
+    }
+
+    @When("the user initiates the reissue action")
+    public void theUserInitiatesTheReissueAction() {
+        //manual
+    }
+
+    @Then("the reissue attempt is aborted")
+    public void theReissueAttemptIsAborted() {
+        //manual
+    }
+
+    @And("an error screen is displayed")
+    public void anErrorScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the error screen displays the message: 'The issuer has revoked or suspended this document, so it cannot be reissued'")
+    public void theErrorScreenDisplaysTheMessageTheIssuerHasRevokedOrSuspendedThisDocumentSoItCannotBeReissued() {
+        //manual
+    }
+
+    @And("the error screen provides only a close action")
+    public void theErrorScreenProvidesOnlyACloseAction() {
+        //manual
+    }
+
+    @Given("the error screen is displayed for a blocked document")
+    public void theErrorScreenIsDisplayedForABlockedDocument() {
+        //manual
+    }
+
+    @When("the user taps the close action")
+    public void theUserTapsTheCloseAction() {
+        //manual
+    }
+
+    @Then("the error screen is dismissed")
+    public void theErrorScreenIsDismissed() {
+        //manual
+    }
+
+    @And("the user is returned to the previous screen")
+    public void theUserIsReturnedToThePreviousScreen() {
+        //manual
+    }
+
+    @And("no reissue request has been sent")
+    public void noReissueRequestHasBeenSent() {
+        //manual
+    }
+
+    @When("the user views the issuer card for the revoked document")
+    public void theUserViewsTheIssuerCardForTheRevokedDocument() {
+        //manual
+    }
+
+    @Then("the reissue action is hidden")
+    public void theReissueActionIsHidden() {
+        //manual
+    }
+
+    @When("the user opens the documents options menu for the revoked document")
+    public void theUserOpensTheDocumentsOptionsMenuForTheRevokedDocument() {
+        //manual
+    }
+
+    @Then("the reissue option is disabled")
+    public void theReissueOptionIsDisabled() {
+        //manual
+    }
+
+    @And("the reissue option cannot be selected")
+    public void theReissueOptionCannotBeSelected() {
+        //manual
+    }
+
+    @Given("the user has access to the wallet")
+    public void theUserHasAccessToTheWallet() {
+        //manual
+    }
+
+    @And("the wallet contains a document with the configured portrait claim")
+    public void theWalletContainsADocumentWithTheConfiguredPortraitClaim() {
+        //manual
+    }
+
+    @When("the wallet receives a presentation type request containing the portrait claim")
+    public void theWalletReceivesAPresentation_typeRequestContainingThePortraitClaim() {
+        //manual
+    }
+
+    @And("the request screen is displayed")
+    public void theRequestScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the following notice is displayed on the request screen 'This request includes your portrait, which can be used as biometric data to identify you by your face'")
+    public void theFollowingNoticeIsDisplayedOnTheRequestScreenThisRequestIncludesYourPortraitWhichCanBeUsedAsBiometricDataToIdentifyYouByYourFace() {
+        //manual
+    }
+
+    @When("the wallet receives a presentation request that does not include the portrait claim")
+    public void theWalletReceivesAPresentationRequestThatDoesNotIncludeThePortraitClaim() {
+        //manual
+    }
+
+    @Then("the portrait-specific biometric data notice is not displayed")
+    public void thePortraitSpecificBiometricDataNoticeIsNotDisplayed() {
+        //manual
+    }
+
+    @Given("the wallet has received a presentation request")
+    public void theWalletHasReceivedAPresentationRequest() {
+        //manual
+    }
+
+    @And("the request includes the configured portrait claim")
+    public void theRequestIncludesTheConfiguredPortraitClaim() {
+        //manual
+    }
+
+    @And("the portrait is included in the data selected for sharing")
+    public void thePortraitIsIncludedInTheDataSelectedForSharing() {
+        //manual
+    }
+
+    @When("the user selects Share")
+    public void theUserSelectsShare() {
+        //manual
+    }
+
+    @Then("the portrait specific confirmation is displayed")
+    public void thePortraitSpecificConfirmationIsDisplayed() {
+        //manual
+    }
+
+    @And("the presentation awaits the user's confirmation")
+    public void thePresentationAwaitsTheUserSConfirmation() {
+        //manual
+    }
+
+    @And("no requested document data is shared before the user confirms")
+    public void noRequestedDocumentDataIsSharedBeforeTheUserConfirms() {
+        //manual
+    }
+
+    @Then("the portrait confirmation is displayed")
+    public void thePortraitConfirmationIsDisplayed() {
+        //manual
+    }
+
+    @And("the confirmation title is 'Share your portrait'")
+    public void theConfirmationTitleIsShareYourPortrait() {
+        //manual
+    }
+
+    @And("the confirmation displays the following message: 'Your portrait will be sent to this relying party. Share it only if you trust the relying party and the request needs it'")
+    public void theConfirmationDisplaysTheFollowingMessageYourPortraitWillBeSentToThisRelyingPartyShareItOnlyIfYouTrustTheRelyingPartyAndTheRequestNeedsIt() {
+        //manual
+    }
+
+    @And("the confirmation provides a Share action")
+    public void theConfirmationProvidesAShareAction() {
+        //manual
+    }
+
+    @And("the confirmation provides a Cancel action")
+    public void theConfirmationProvidesACancelAction() {
+        //manual
+    }
+
+    @And("both actions are enabled")
+    public void bothActionsAreEnabled() {
+        //manual
+    }
+
+    @Given("the wallet has received a valid presentation request")
+    public void theWalletHasReceivedAValidPresentationRequest() {
+        //manual
+    }
+
+    @When("the user selects Share in the portrait confirmation")
+    public void theUserSelectsShareInThePortraitConfirmation() {
+        //manual
+    }
+
+    @Then("the portrait confirmation is closed")
+    public void thePortraitConfirmationIsClosed() {
+        //manual
+    }
+
+    @And("the presentation continues to the applicable authorization step")
+    public void thePresentationContinuesToTheApplicableAuthorizationStep() {
+        //manual
+    }
+
+    @When("the user successfully completes the required authorization")
+    public void theUserSuccessfullyCompletesTheRequiredAuthorization() {
+        //manual
+    }
+
+    @Then("the selected document data is shared with the relying party")
+    public void theSelectedDocumentDataIsSharedWithTheRelyingParty() {
+        //manual
+    }
+
+    @And("the shared document data includes the selected portrait claim")
+    public void theSharedDocumentDataIncludesTheSelectedPortraitClaim() {
+        //manual
+    }
+
+    @When("the user selects Cancel in the portrait confirmation")
+    public void theUserSelectsCancelInThePortraitConfirmation() {
+        //manual
+    }
+
+    @And("the original request screen is displayed")
+    public void theOriginalRequestScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the original presentation request remains available")
+    public void theOriginalPresentationRequestRemainsAvailable() {
+        //manual
+    }
+
+    @And("the user is not redirected to the PIN step")
+    public void theUserIsNotRedirectedToThePINStep() {
+        //manual
+    }
+
+    @And("none of the selected document claims are transmitted to the relying party")
+    public void noneOfTheSelectedDocumentClaimsAreTransmittedToTheRelyingParty() {
+        //manual
+    }
+
+    @And("the selected data includes the portrait and other document claims")
+    public void theSelectedDataIncludesThePortraitAndOtherDocumentClaims() {
+        //manual
+    }
+
+    @When("the user removes the portrait from the selected data")
+    public void theUserRemovesThePortraitFromTheSelectedData() {
+        //manual
+    }
+
+    @And("at least one other requested claim remains selected")
+    public void atLeastOneOtherRequestedClaimRemainsSelected() {
+        //manual
+    }
+
+    @Then("the portrait-specific confirmation is not displayed")
+    public void thePortraitSpecificConfirmationIsNotDisplayed() {
+        //manual
+    }
+
+    @And("the presentation continues according to the standard sharing flow")
+    public void thePresentationContinuesAccordingToTheStandardSharingFlow() {
+        //manual
+    }
+
+    @And("the request does not include the portrait claim")
+    public void theRequestDoesNotIncludeThePortraitClaim() {
+        //manual
+    }
+
+    @And("the user has selected document claims for sharing")
+    public void theUserHasSelectedDocumentClaimsForSharing() {
+        //manual
+    }
+
+    @Then("the selected document claims are shared")
+    public void theSelectedDocumentClaimsAreShared() {
+        //manual
+    }
+
+    @And("the shared document data does not include the portrait claim")
+    public void theSharedDocumentDataDoesNotIncludeThePortraitClaim() {
+        //manual
+    }
+
+    @And("the portrait is selected for sharing")
+    public void thePortraitIsSelectedForSharing() {
+        //manual
+    }
+
+    @And("no requested document data is shared")
+    public void noRequestedDocumentDataIsShared() {
+        //manual
+    }
+
+    @When("the user selects Share again")
+    public void theUserSelectsShareAgain() {
+        //manual
+    }
+
+    @Then("the portrait-specific confirmation is displayed again")
+    public void thePortraitSpecificConfirmationIsDisplayedAgain() {
+        //manual
+    }
+
+    @And("the user must explicitly confirm sharing the portrait")
+    public void theUserMustExplicitlyConfirmSharingThePortrait() {
+        //manual
+    }
+
+    @And("no requested document data is shared before confirmation")
+    public void noRequestedDocumentDataIsSharedBeforeConfirmation() {
+        //manual
+    }
+
+    @Given("a credential offer is received")
+    public void aCredentialOfferIsReceived() {
+        //manual
+    }
+
+    @And("the offer contains a transaction code")
+    public void theOfferContainsATransactionCode() {
+        //manual
+    }
+
+    @And("the transaction code does not specify its length")
+    public void theTransactionCodeDoesNotSpecifyItsLength() {
+        //manual
+    }
+
+    @When("the wallet processes the offer")
+    public void theWalletProcessesTheOffer() {
+        //manual
+    }
+
+    @Then("the offer is refused")
+    public void theOfferIsRefused() {
+        //manual
+    }
+
+    @And("the attestation is NOT added to the wallet")
+    public void theAttestationIsNOTAddedToTheWallet() {
+        //manual
+    }
+
+    @Given("a credential offer with a transaction code that does not specify its length is received")
+    public void aCredentialOfferWithATransactionCodeThatDoesNotSpecifyItsLengthIsReceived() {
+        //manual
+    }
+
+    @When("the wallet refuses the offer")
+    public void theWalletRefusesTheOffer() {
+        //manual
+    }
+
+    @Then("the wallet displays a corresponding error message")
+    public void theWalletDisplaysACorrespondingErrorMessage() {
+        //manual
+    }
+
+    @Given("an offer screen for offer A is open")
+    public void anOfferScreenForOfferAIsOpen() {
+        //manual
+    }
+
+    @When("a second credential offer B arrives")
+    public void aSecondCredentialOfferBArrives() {
+        //manual
+    }
+
+    @Then("the offer A screen is closed")
+    public void theOfferAScreenIsClosed() {
+        //manual
+    }
+
+    @And("the new offer screen for offer B is opened")
+    public void theNewOfferScreenForOfferBIsOpened() {
+        //manual
+    }
+
+    @And("only the offer B screen is displayed")
+    public void onlyTheOfferBScreenIsDisplayed() {
+        //manual
+    }
+
+    @Given("the user requests two documents from an issuer: document A and document B")
+    public void theUserRequestsTwoDocumentsFromAnIssuerDocumentAAndDocumentB() {
+        //manual
+    }
+
+    @And("the issuer issues only document A")
+    public void theIssuerIssuesOnlyDocumentA() {
+        //manual
+    }
+
+    @When("the issuance success screen is displayed")
+    public void theIssuanceSuccessScreenIsDisplayed() {
+        //manual
+    }
+
+    @Then("the success screen identifies document B as requested but not issued")
+    public void theSuccessScreenIdentifiesDocumentBAsRequestedButNotIssued() {
+        //manual
+    }
+
+    @Then("the success screen identifies that document B was not added")
+    public void theSuccessScreenIdentifiesThatDocumentBWasNotAdded() {
+        //manual
+    }
+
+    @And("no message is shown that falsely implies all requested documents were issued")
+    public void noMessageIsShownThatFalselyImpliesAllRequestedDocumentsWereIssued() {
+        //manual
+    }
+
+    @Then("a warning is displayed below the header of the success screen")
+    public void aWarningIsDisplayedBelowTheHeaderOfTheSuccessScreen() {
+        //manual
+    }
+
+    @And("the warning displays the text 'These documents were not added to your wallet: document B'")
+    public void theWarningDisplaysTheTextTheseDocumentsWereNotAddedToYourWalletDocumentB() {
+        //manual
+    }
+
+    @Given("a partial issuance occurred and only document A was issued")
+    public void aPartialIssuanceOccurredAndOnlyDocumentAWasIssued() {
+        //manual
+    }
+
+    @When("the user closes the issuance success screen")
+    public void theUserClosesTheIssuanceSuccessScreen() {
+        //manual
+    }
+
+    @Then("document A is present in the wallet documents list")
+    public void documentAIsPresentInTheWalletDocumentsList() {
+        //manual
+    }
+
+    @And("document A is available for use")
+    public void documentAIsAvailableForUse() {
+        //manual
+    }
+
+    @Given("a document exists in the wallet")
+    public void aDocumentExistsInTheWallet() {
+        //manual
+    }
+
+    @When("the user removes the document")
+    public void theUserRemovesTheDocument() {
+        //manual
+    }
+
+    @Then("the document no longer appears in the wallet documents list")
+    public void theDocumentNoLongerAppearsInTheWalletDocumentsList() {
+        //manual
+    }
+
+    @And("the document is no longer offerable or reissuable")
+    public void theDocumentIsNoLongerOfferableOrReissuable() {
+        //manual
+    }
+
+    @Given("the wallet contains two documents: document A and document B")
+    public void theWalletContainsTwoDocumentsDocumentAAndDocumentB() {
+        //manual
+    }
+
+    @When("the user removes document A")
+    public void theUserRemovesDocumentA() {
+        //manual
+    }
+
+    @Then("document B remains in the wallet documents list")
+    public void documentBRemainsInTheWalletDocumentsList() {
+        //manual
+    }
+
+    @And("document B remains offerable and reissuable")
+    public void documentBRemainsOfferableAndReissuable() {
+        //manual
+    }
+
+    @Given("a document with sharing transactions exists in the wallet")
+    public void aDocumentWithSharingTransactionsExistsInTheWallet() {
+        //manual
+    }
+
+    @Then("the document's transaction-history entries are NOT deleted")
+    public void theDocumentSTransactionHistoryEntriesAreNOTDeleted() {
+        //manual
+    }
+
+    @And("the transaction entries remain in the wallet transaction-history screen")
+    public void theTransactionEntriesRemainInTheWalletTransactionHistoryScreen() {
+        //manual
+    }
+
+    @Given("a document with sharing transactions was removed from the wallet")
+    public void aDocumentWithSharingTransactionsWasRemovedFromTheWallet() {
+        //manual
+    }
+
+    @When("the user uninstalls the wallet app")
+    public void theUserUninstallsTheWalletApp() {
+        //manual
+    }
+
+    @And("reinstalls it and completes onboarding")
+    public void reinstallsItAndCompletesOnboarding() {
+        //manual
+    }
+
+    @Then("the transaction-history entries of the removed document are NOT restored")
+    public void theTransactionHistoryEntriesOfTheRemovedDocumentAreNOTRestored() {
+        //manual
+    }
+
+    @Given("a user completes an issuance flow for one document")
+    public void aUserCompletesAnIssuanceFlowForOneDocument() {
+        //manual
+    }
+
+    @And("the document's issuer is verified")
+    public void theDocumentSIssuerIsVerified() {
+        //manual
+    }
+
+    @Then("the issuer header displays the verified badge")
+    public void theIssuerHeaderDisplaysTheVerifiedBadge() {
+        //manual
+    }
+
+    @Given("a user completes an issuance flow for multiple documents")
+    public void aUserCompletesAnIssuanceFlowForMultipleDocuments() {
+        //manual
+    }
+
+    @And("every issued document has a verified issuer")
+    public void everyIssuedDocumentHasAVerifiedIssuer() {
+        //manual
+    }
+
+    @And("the document's issuer is not verified")
+    public void theDocumentSIssuerIsNotVerified() {
+        //manual
+    }
+
+    @Then("the issuer header does NOT display the verified badge")
+    public void theIssuerHeaderDoesNOTDisplayTheVerifiedBadge() {
+        //manual
+    }
+
+    @And("a corresponding message is displayed beneath the document")
+    public void aCorrespondingMessageIsDisplayedBeneathTheDocument() {
+        //manual
+    }
+
+    @And("at least one issued document has an unverified issuer")
+    public void atLeastOneIssuedDocumentHasAnUnverifiedIssuer() {
+        //manual
+    }
+
+    @And("every issued document has an unverified issuer")
+    public void everyIssuedDocumentHasAnUnverifiedIssuer() {
+        //manual
+    }
+
+    @And("a corresponding message is displayed beneath the documents")
+    public void aCorrespondingMessageIsDisplayedBeneathTheDocuments() {
+        //manual
+    }
+
+    @Given("a document with an unverified issuer exists in the wallet")
+    public void aDocumentWithAnUnverifiedIssuerExistsInTheWallet() {
+        //manual
+    }
+
+    @When("the user opens the document details screen")
+    public void theUserOpensTheDocumentDetailsScreen() {
+        //manual
+    }
+
+    @Then("the issuer card displays the corresponding message")
+    public void theIssuerCardDisplaysTheCorrespondingMessage() {
+        //manual
+    }
+
+    @And("the message is displayed in the configured warning colour")
+    public void theMessageIsDisplayedInTheConfiguredWarningColour() {
+        //manual
+    }
+
+    @Given("a document with a verified issuer exists in the wallet")
+    public void aDocumentWithAVerifiedIssuerExistsInTheWallet() {
+        //manual
+    }
+
+    @And("the message is displayed in green")
+    public void theMessageIsDisplayedInGreen() {
+        //manual
+    }
+
+    @Given("a document was issued before the issuer verification update")
+    public void aDocumentWasIssuedBeforeTheIssuerVerificationUpdate() {
+        //manual
+    }
+
+    @And("the document has no historical issuer verification result")
+    public void theDocumentHasNoHistoricalIssuerVerificationResult() {
+        //manual
+    }
+
+    @When("the user views the document on the issuance success screen")
+    public void theUserViewsTheDocumentOnTheIssuanceSuccessScreen() {
+        //manual
+    }
+
+    @Then("the message 'Issuer not verified' is displayed beneath the document")
+    public void theMessageIssuerNotVerifiedIsDisplayedBeneathTheDocument() {
+        //manual
+
+    }
+
+    @Given("a user completes an issuance flow for two documents")
+    public void aUserCompletesAnIssuanceFlowForTwoDocuments() {
+        //manual
+    }
+
+    @And("the first document's issuer is verified")
+    public void theFirstDocumentSIssuerIsVerified() {
+        //manual
+    }
+
+    @And("the second document's issuer is not verified")
+    public void theSecondDocumentSIssuerIsNotVerified() {
+        //manual
+    }
+
+    @And("the user has initiated a proximity presentation")
+    public void theUserHasInitiatedAProximityPresentation() {
+        //manual
+    }
+
+    @And("the proximity QR code is displayed")
+    public void theProximityQRCodeIsDisplayed() {
+        //manual
+    }
+
+    @And("no reader has taken over the proximity-sharing session")
+    public void noReaderHasTakenOverTheProximitySharingSession() {
+        //manual
+    }
+
+    @When("the user moves the wallet application to the background")
+    public void theUserMovesTheWalletApplicationToTheBackground() {
+        //manual
+    }
+
+    @Then("the proximity-sharing session is terminated")
+    public void theProximitySharingSessionIsTerminated() {
+        //manual
+    }
+
+    @And("the associated QR code is no longer valid for document sharing")
+    public void theAssociatedQRCodeIsNoLongerValidForDocumentSharing() {
+        //manual
+    }
+
+    @When("the user navigates away from the QR-code screen")
+    public void theUserNavigatesAwayFromTheQRCodeScreen() {
+        //manual
+    }
+
+    @And("the QR code associated with the terminated session is no longer valid for document sharing")
+    public void theQRCodeAssociatedWithTheTerminatedSessionIsNoLongerValidForDocumentSharing() {
+        //manual
+    }
+
+    @And("no message related to the proximity-sharing session termination is displayed")
+    public void noMessageRelatedToTheProximitySharingSessionTerminationIsDisplayed() {
+        //manual
+    }
+
+    @When("the user pulls down Control Center over the QR-code screen")
+    public void theUserPullsDownControlCenterOverTheQRCodeScreen() {
+        //manual
+    }
+
+    @Then("the proximity-sharing session remains active")
+    public void theProximitySharingSessionRemainsActive() {
+        //manual
+    }
+
+    @And("the proximity-sharing session is not terminated due to opening Control Center")
+    public void theProximitySharingSessionIsNotTerminatedDueToOpeningControlCenter() {
+        //manual
+    }
+
+    @Given("a website has requested a document")
+    public void aWebsiteHasRequestedADocument() {
+        //manual
+    }
+
+    @When("the ID Provider extension is invoked")
+    public void theIDProviderExtensionIsInvoked() {
+        //manual
+    }
+
+    @Then("the PIN or biometric screen is displayed before the request screen")
+    public void thePINOrBiometricScreenIsDisplayedBeforeTheRequestScreen() {
+        //manual
+    }
+
+    @And("no user identity data is visible")
+    public void noUserIdentityDataIsVisible() {
+        //manual
+    }
+
+    @Given("the login step is displayed")
+    public void theLoginStepIsDisplayed() {
+        //manual
+    }
+
+    @Then("the initial authentication succeeds")
+    public void theInitialAuthenticationSucceeds() {
+        //manual
+    }
+
+    @And("the document request is displayed")
+    public void theDocumentRequestIsDisplayed() {
+        //manual
+    }
+
+    @When("the user authenticates with Face ID")
+    public void theUserAuthenticatesWithFaceID() {
+        //manual
+    }
+
+    @And("biometric authentication fails")
+    public void biometricAuthenticationFails() {
+        //manual
+    }
+
+    @Then("the document request is NOT displayed")
+    public void theDocumentRequestIsNOTDisplayed() {
+        //manual
+    }
+
+    @And("no user identity data is shown")
+    public void noUserIdentityDataIsShown() {
+        //manual
+    }
+
+    @When("the user selects Accept")
+    public void theUserSelectsAccept() {
+        //manual
+    }
+
+    @Then("the extension asks for PIN or biometric authentication again")
+    public void theExtensionAsksForPINOrBiometricAuthenticationAgain() {
+        //manual
+    }
+
+    @And("the response is NOT sent before this second authentication succeeds")
+    public void theResponseIsNOTSentBeforeThisSecondAuthenticationSucceeds() {
+        //manual
+    }
+
+    @And("the user has selected Accept")
+    public void theUserHasSelectedAccept() {
+        //manual
+    }
+
+    @When("the second authentication fails")
+    public void theSecondAuthenticationFails() {
+        //manual
+    }
+
+    @Then("the response is NOT sent")
+    public void theResponseIsNOTSent() {
+        //manual
+    }
+
+    @And("the wallet contains documents eligible for both presentation requests")
+    public void theWalletContainsDocumentsEligibleForBothPresentationRequests() {
+        //manual
+    }
+
+    @When("the user initiates a presentation")
+    public void theUserInitiatesAPresentation() {
+        //manual
+    }
+
+    @And("the user initiates another presentation")
+    public void theUserInitiatesAnotherPresentation() {
+        //manual
+    }
+
+    @Then("the second presentation uses a session different from the first presentation")
+    public void theSecondPresentationUsesASessionDifferentFromTheFirstPresentation() {
+        //manual
+    }
+
+    @And("the second session contains only data associated with the second presentation request")
+    public void theSecondSessionContainsOnlyDataAssociatedWithTheSecondPresentationRequest() {
+        //manual
+    }
+
+    @And("no request-specific data from the first presentation is carried over to the second session")
+    public void noRequestSpecificDataFromTheFirstPresentationIsCarriedOverToTheSecondSession() {
+        //manual
+    }
+
+    @And("a presentation is active")
+    public void aPresentationIsActive() {
+        //manual
+    }
+
+    @And("the presentation request contains identifiable request-specific data")
+    public void thePresentationRequestContainsIdentifiableRequestSpecificData() {
+        //manual
+    }
+
+    @When("a second presentation request is received")
+    public void aSecondPresentationRequestIsReceived() {
+        //manual
+    }
+
+    @And("the second request contains different request-specific data")
+    public void theSecondRequestContainsDifferentRequestSpecificData() {
+        //manual
+    }
+
+    @And("data from the two presentation requests is not mixed")
+    public void dataFromTheTwoPresentationRequestsIsNotMixed() {
+        //manual
+    }
+
+    @And("the second presentation request does not reuse the first presentation session")
+    public void theSecondPresentationRequestDoesNotReuseTheFirstPresentationSession() {
+        //manual
+    }
+
+    @When("the wallet becomes locked")
+    public void theWalletBecomesLocked() {
+        //manual
+    }
+
+    @Then("the active presentation is terminated")
+    public void theActivePresentationIsTerminated() {
+        //manual
+    }
+
+    @And("the associated presentation session is no longer active")
+    public void theAssociatedPresentationSessionIsNoLongerActive() {
+        //manual
+    }
+
+    @And("the interrupted session cannot continue the document presentation")
+    public void theInterruptedSessionCannotContinueTheDocumentPresentation() {
+        //manual
+    }
+
+    @And("a remote presentation is active")
+    public void aRemotePresentationIsActive() {
+        //manual
+    }
+
+    @And("the user successfully logs in to the wallet again")
+    public void theUserSuccessfullyLogsInToTheWalletAgain() {
+        //manual
+    }
+
+    @Then("the wallet dashboard is displayed")
+    public void theWalletDashboardIsDisplayed() {
+        //manual
+    }
+
+    @And("the user is not redirected to the interrupted remote presentation")
+    public void theUserIsNotRedirectedToTheInterruptedRemotePresentation() {
+        //manual
+    }
+
+    @Then("the previous presentation is no longer active")
+    public void thePreviousPresentationIsNoLongerActive() {
+        //manual
+    }
+
+    @And("no message related to the presentation termination is displayed when the wallet locks")
+    public void noMessageRelatedToThePresentationTerminationIsDisplayedWhenTheWalletLocks() {
+        //manual
+    }
+
+    @And("no message related to the presentation termination is displayed after login")
+    public void noMessageRelatedToThePresentationTerminationIsDisplayedAfterLogin() {
+        //manual
+    }
+
+    @And("a valid remote sharing request has been received")
+    public void aValidRemoteSharingRequestHasBeenReceived() {
+        //manual
+    }
+
+    @And("the remote sharing request screen is displayed")
+    public void theRemoteSharingRequestScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the wallet contains documents eligible for the request")
+    public void theWalletContainsDocumentsEligibleForTheRequest() {
+        //manual
+    }
+
+    @And("network connectivity is unavailable")
+    public void networkConnectivityIsUnavailable() {
+        //manual
+    }
+
+    @And("the remote sharing response fails to send")
+    public void theRemoteSharingResponseFailsToSend() {
+        //manual
+    }
+
+    @Then("the remote sharing error screen is displayed")
+    public void theRemoteSharingErrorScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the 'Try again' action is available")
+    public void theTryAgainActionIsAvailable() {
+        //manual
+    }
+
+    @And("the close action is available")
+    public void theCloseActionIsAvailable() {
+        //manual
+    }
+
+    @And("a remote sharing response has failed to send")
+    public void aRemoteSharingResponseHasFailedToSend() {
+        //manual
+    }
+
+    @When("the user selects the close action")
+    public void theUserSelectsTheCloseAction() {
+        //manual
+    }
+
+    @Then("the error screen is closed")
+    public void theErrorScreenIsClosed() {
+        //manual
+    }
+
+    @And("the original remote sharing request screen is displayed")
+    public void theOriginalRemoteSharingRequestScreenIsDisplayed() {
+        //manual
+    }
+
+    @And("the remote sharing request remains available")
+    public void theRemoteSharingRequestRemainsAvailable() {
+        //manual
+    }
+
+    @And("the user selects Back")
+    public void theUserSelectsBack() {
+        //manual
+    }
+
+    @Then("the remote sharing request is closed")
+    public void theRemoteSharingRequestIsClosed() {
+        //manual
+    }
+
+    @And("the remote sharing request screen is no longer displayed")
+    public void theRemoteSharingRequestScreenIsNoLongerDisplayed() {
+        //manual
+    }
+
+    @And("the previous remote sharing request is no longer active")
+    public void thePreviousRemoteSharingRequestIsNoLongerActive() {
+        //manual
+    }
+
+    @And("the existing transaction-history result for the request has been recorded for comparison")
+    public void theExistingTransactionHistoryResultForTheRequestHasBeenRecordedForComparison() {
+        //manual
+    }
+
+    @And("the user navigates to the transaction history")
+    public void theUserNavigatesToTheTransactionHistory() {
+        //manual
+    }
+
+    @Then("the existing transaction-history entry remains available")
+    public void theExistingTransactionHistoryEntryRemainsAvailable() {
+        //manual
+    }
+
+    @And("the transaction-history result matches the previously recorded result")
+    public void theTransactionHistoryResultMatchesThePreviouslyRecordedResult() {
+        //manual
+    }
+
+    @And("the existing result is not overwritten as a result of selecting Back")
+    public void theExistingResultIsNotOverwrittenAsAResultOfSelectingBack() {
+        //manual
+    }
+
+    @And("the transaction is not incorrectly recorded as declined")
+    public void theTransactionIsNotIncorrectlyRecordedAsDeclined() {
+        //manual
+    }
+
+    @And("the Share action is available")
+    public void theShareActionIsAvailable() {
+        //manual
+    }
+
+    @And("the user can attempt to share the requested documents again")
+    public void theUserCanAttemptToShareTheRequestedDocumentsAgain() {
+        //manual
+    }
+
+    @And("the original remote sharing response has failed due to unavailable network connectivity")
+    public void theOriginalRemoteSharingResponseHasFailedDueToUnavailableNetworkConnectivity() {
+        //manual
+    }
+
+    @And("the original response has not reached the relying party")
+    public void theOriginalResponseHasNotReachedTheRelyingParty() {
+        //manual
+    }
+
+    @And("network connectivity is restored")
+    public void networkConnectivityIsRestored() {
+        //manual
+    }
+
+    @Then("the wallet attempts to send the sharing response again")
+    public void theWalletAttemptsToSendTheSharingResponseAgain() {
+        //manual
+    }
+
+    @And("the response is successfully delivered to the relying party")
+    public void theResponseIsSuccessfullyDeliveredToTheRelyingParty() {
+        //manual
+    }
+
+    @And("the response corresponds to the original remote sharing request")
+    public void theResponseCorrespondsToTheOriginalRemoteSharingRequest() {
+        //manual
+    }
+
+    @And("the remote sharing process completes successfully")
+    public void theRemoteSharingProcessCompletesSuccessfully() {
+        //manual
+    }
+
+    @Given("the wallet contains multiple document sets")
+    public void theWalletContainsMultipleDocumentSets() {
+        //manual
+    }
+
+    @And("more than one document set satisfies the proximity presentation request")
+    public void moreThanOneDocumentSetSatisfiesTheProximityPresentationRequest() {
+        //manual
+    }
+
+    @When("the wallet receives the proximity presentation request")
+    public void theWalletReceivesTheProximityPresentationRequest() {
+        //manual
+    }
+
+    @Then("all valid documents are displayed as selectable options")
+    public void allValidDocumentsAreDisplayedAsSelectableOptions() {
+        //manual
+    }
+
+    @And("the user can select any document for sharing")
+    public void theUserCanSelectAnyDocumentForSharing() {
+        //manual
+    }
+
+    @Given("the user has selected a document set on the consent screen")
+    public void theUserHasSelectedADocumentSetOnTheConsentScreen() {
+        //manual
+    }
+
+    @When("the presentation response is sent")
+    public void thePresentationResponseIsSent() {
+        //manual
+    }
+
+    @Then("the response contains exactly the documents and claims of the selected set")
+    public void theResponseContainsExactlyTheDocumentsAndClaimsOfTheSelectedSet() {
+        //manual
+    }
+
+    @And("no other documents or claims are included")
+    public void noOtherDocumentsOrClaimsAreIncluded() {
+        //manual
+    }
+
+    @Given("the wallet contains a document with multiple claims")
+    public void theWalletContainsADocumentWithMultipleClaims() {
+        //manual
+    }
+
+    @And("a valid Digital Credentials API request has been received")
+    public void aValidDigitalCredentialsAPIRequestHasBeenReceived() {
+        //manual
+    }
+
+    @And("the iOS ID Provider extension is displayed")
+    public void theIOSIDProviderExtensionIsDisplayed() {
+        //manual
+    }
+
+    @When("the user selects a document set on the consent screen")
+    public void theUserSelectsADocumentSetOnTheConsentScreen() {
+        //manual
+    }
+
+    @And("selects Accept and successfully completes any required authorization")
+    public void selectsAcceptAndSuccessfullyCompletesAnyRequiredAuthorization() {
+        //manual
+    }
+
+    @Then("the Digital Credentials API presentation completes successfully")
+    public void theDigitalCredentialsAPIPresentationCompletesSuccessfully() {
+        //manual
+    }
+
+    @And("the response contains only the claims displayed in the ID Provider extension")
+    public void theResponseContainsOnlyTheClaimsDisplayedInTheIDProviderExtension() {
+        //manual
+    }
+
+    @And("the shared claim values match the approved claim values")
+    public void theSharedClaimValuesMatchTheApprovedClaimValues() {
+        //manual
+    }
+
+    @When("the user selects Reject")
+    public void theUserSelectsReject() {
+        //manual
+    }
+
+    @And("navigates to the wallet transaction history")
+    public void navigatesToTheWalletTransactionHistory() {
+        //manual
+    }
+
+    @Then("a transaction-history entry exists for the rejected request")
+    public void aTransactionHistoryEntryExistsForTheRejectedRequest() {
+        //manual
+    }
+
+    @And("the transaction is recorded as not completed")
+    public void theTransactionIsRecordedAsNotCompleted() {
+        //manual
+    }
+
+    @And("the rejection reason is 'Cancelled by the user'")
+    public void theRejectionReasonIsCancelledByTheUser() {
+        //manual
+    }
 }

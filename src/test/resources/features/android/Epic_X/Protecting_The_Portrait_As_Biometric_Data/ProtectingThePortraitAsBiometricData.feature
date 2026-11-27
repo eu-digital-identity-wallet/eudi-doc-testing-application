@@ -4,15 +4,15 @@ Feature: Protecting the portrait as biometric data
   I want the wallet to warn me when a presentation request includes my portrait and ask for confirmation before it is shared
   So that I understand that my portrait can be used as biometric data to identify me by my face
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/428
 
   @US_PTPABD_TC_01
-  Scenario: Verify the biometric data notice for a request containing the portrait claim --------corresponding notice?
+  Scenario: Verify the corresponding biometric data notice for a request containing the portrait claim
     Given the user has access to the wallet
     And the wallet contains a document with the configured portrait claim
-    When the wallet receives a <presentation_type> request containing the portrait claim
+    When the wallet receives a presentation type request containing the portrait claim
     And the request screen is displayed
-    Then the following notice is displayed on the request screen ' This request includes your portrait, which can be used as biometric data to identify you by your face'
+    Then the following notice is displayed on the request screen 'This request includes your portrait, which can be used as biometric data to identify you by your face'
 
   @US_PTPABD_TC_02
   Scenario: Verify that the biometric data notice is not displayed for requests without a portrait
@@ -29,7 +29,7 @@ Feature: Protecting the portrait as biometric data
     And the request screen is displayed
     And the portrait is included in the data selected for sharing
     When the user selects Share
-    Then the portraitspecific confirmation is displayed
+    Then the portrait specific confirmation is displayed
     And the presentation awaits the user's confirmation
     And no requested document data is shared before the user confirms
 

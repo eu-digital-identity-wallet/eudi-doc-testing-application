@@ -4,7 +4,7 @@ Feature: Report documents missing from a partial issuance
   I want the wallet to tell me when an issuer has not issued all the documents I requested
   So that I understand which documents were added to my wallet and which were not
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/422
 
   @US_RDMFAPI_TC_01
   Scenario: Partial issuance identifies the requested document that was not issued
@@ -27,7 +27,7 @@ Feature: Report documents missing from a partial issuance
     And the issuer issues only document A
     When the issuance success screen is displayed
     Then a warning is displayed below the header of the success screen
-    And the warning displays the text These documents were not added to your wallet: document B
+    And the warning displays the text 'These documents were not added to your wallet: document B'
 
   @US_RDMFAPI_TC_04
   Scenario: Documents successfully issued remain available in the wallet after a partial issuance

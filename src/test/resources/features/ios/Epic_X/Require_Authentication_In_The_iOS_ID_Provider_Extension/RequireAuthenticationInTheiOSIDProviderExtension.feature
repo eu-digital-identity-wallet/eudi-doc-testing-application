@@ -4,7 +4,7 @@ Feature: Require authentication in the iOS ID Provider extension
   I want the iOS ID Provider extension to require authentication before displaying a document request and before sending a response
   So that my identity data is not exposed and no document is shared without my approval
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/418
 
   @US_RAITIIPE_TC_01
   Scenario: The authentication screen is displayed before the request screen for a website request

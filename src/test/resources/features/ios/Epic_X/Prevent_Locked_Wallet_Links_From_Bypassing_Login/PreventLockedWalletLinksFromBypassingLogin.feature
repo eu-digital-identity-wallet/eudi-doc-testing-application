@@ -4,7 +4,7 @@ Feature: Prevent locked wallet links from bypassing login
   I want any wallet link received while my wallet is locked to wait until I authenticate
   So that wallet flows and internal screens cannot be opened without my login
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/430
 
   @US_PLWLFBL_TC_01
   Scenario: Display login before request flow
@@ -38,7 +38,7 @@ Feature: Prevent locked wallet links from bypassing login
   @US_PLWLFBL_TC_04
   Scenario: Discard pending links after OS termination
     Given the wallet is locked
-    And a valid request  has been received
+    And a valid request has been received
     And the login screen is displayed
     And the user has not authenticated
     When the operating system terminates the wallet application process

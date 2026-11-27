@@ -4,7 +4,7 @@ Feature: Reject malformed credential offers and isolate each offer
   I want the wallet to reject malformed credential offers and handle each offer on a separate approval screen
   So that I cannot approve an invalid offer or accidentally approve a different offer than the one I reviewed
 
-  #
+  #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/432
 
   @US_RMCOAIEO_TC_01
   Scenario: A credential offer with a transaction code missing its length is refused
