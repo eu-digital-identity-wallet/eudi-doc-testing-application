@@ -1,4 +1,4 @@
-@ANDROID @US_SPSWTULTW @Q4_2026
+@IOS @US_SPSWTULTW @Q4_2026
 Feature: Stop proximity sharing when the user leaves the wallet
   As a EUDI Wallet User
   I want an active proximity-sharing session to stop when I leave the QR-code screen or move the wallet to the background
@@ -8,7 +8,7 @@ Feature: Stop proximity sharing when the user leaves the wallet
 
   @US_SPSWTULTW_TC_01
   Scenario: Verify that proximity sharing stops when the wallet moves to the background
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the user has initiated a proximity presentation
     And the proximity QR code is displayed
     And no reader has taken over the proximity-sharing session
@@ -18,7 +18,7 @@ Feature: Stop proximity sharing when the user leaves the wallet
 
   @US_SPSWTULTW_TC_02
   Scenario: Verify that leaving the proximity QR-code screen terminates the session
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the user has initiated a proximity presentation
     And the proximity QR code is displayed
     And no reader has taken over the proximity-sharing session
@@ -30,13 +30,9 @@ Feature: Stop proximity sharing when the user leaves the wallet
 
   @US_SPSWTULTW_TC_03
   Scenario: Verify that opening Control Center does not terminate proximity sharing
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the user has initiated a proximity presentation
     And the proximity QR code is displayed
     When the user pulls down Control Center over the QR-code screen
     Then the proximity-sharing session remains active
     And the proximity-sharing session is not terminated due to opening Control Center
-
-
-
-

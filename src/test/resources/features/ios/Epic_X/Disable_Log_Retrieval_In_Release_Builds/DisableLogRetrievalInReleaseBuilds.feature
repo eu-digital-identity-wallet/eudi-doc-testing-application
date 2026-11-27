@@ -6,10 +6,10 @@ Feature: Disable log retrieval in release builds
 
   #
 
-@US_DLRIRB_TC_01
-Scenario: Hide Retrieve logs in release builds
-Given the user has installed a release build of the wallet
-And the Wallet is unlocked
-When the user navigates to Settings
-Then the Retrieve logs option is not displayed
-And no log retrieval action is available in Settings
+  @US_DLRIRB_TC_01
+  Scenario: Hide Retrieve logs in release builds
+    Given the user has installed a release build of the wallet
+    And the wallet is unlocked
+    When the user navigates to Settings
+    Then the Retrieve logs option is not displayed
+    And no log retrieval action is available in Settings

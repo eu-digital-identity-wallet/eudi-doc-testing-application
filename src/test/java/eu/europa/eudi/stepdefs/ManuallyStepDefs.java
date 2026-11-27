@@ -7592,7 +7592,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Then("the Wallet is unlocked")
+    @Then("the wallet is unlocked")
     public void theWalletIsUnlocked() {
         //manual
     }
@@ -9992,7 +9992,7 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @When("the Data Sharing Request screen is displayed")
+    @When("the Data sharing request screen is displayed")
     public void theDataSharingRequestScreenIsDisplayed() {
         //manual
     }
@@ -11958,11 +11958,6 @@ public class ManuallyStepDefs {
         //manual
     }
 
-    @Given("the Android wallet is unlocked")
-    public void theAndroidWalletIsUnlocked() {
-        //manual
-    }
-
     @And("an HTTPS link is available inside the wallet")
     public void anHTTPSLinkIsAvailableInsideTheWallet() {
         //manual
@@ -13391,6 +13386,277 @@ public class ManuallyStepDefs {
 
     @And("no data from the suspended document is shared for verification")
     public void noDataFromTheSuspendedDocumentIsSharedForVerification() {
+        //manual
+    }
+
+    @When("an unverified relying party sends a presentation request")
+    public void anUnverifiedRelyingPartySendsAPresentationRequest() {
+        //manual
+    }
+
+    @And("the following warning is displayed above the Cancel and Share buttons {string}")
+    public void theFollowingWarningIsDisplayedAboveTheCancelAndShareButtonsWarningTheIdentityOfThisRelyingPartyCouldNotBeVerifiedReviewCarefullyBeforeSharingYourData() {
+        //manual
+    }
+
+    @And("the {string} switch is displayed")
+    public void theIUnderstandTheRisksAndAgreeToShareMyDataSwitchIsDisplayed() {
+        //manual
+    }
+
+    @And("the risk acknowledgement switch is off by default")
+    public void theRiskAcknowledgementSwitchIsOffByDefault() {
+        //manual
+    }
+
+    @And("the Share button is disabled")
+    public void theShareButtonIsDisabled() {
+        //manual
+    }
+
+    @Given("an unverified proximity presentation request is displayed")
+    public void anUnverifiedProximityPresentationRequestIsDisplayed() {
+        //manual
+    }
+
+    @And("the risk acknowledgement switch is off")
+    public void theRiskAcknowledgementSwitchIsOff() {
+        //manual
+    }
+
+    @When("the user enables the risk acknowledgement switch")
+    public void theUserEnablesTheRiskAcknowledgementSwitch() {
+        //manual
+    }
+
+    @Then("the Share button is enabled")
+    public void theShareButtonIsEnabled() {
+        //manual
+    }
+
+    @And("no document data is automatically shared")
+    public void noDocumentDataIsAutomaticallyShared() {
+        //manual
+    }
+
+    @And("the unverified requester warning remains displayed")
+    public void theUnverifiedRequesterWarningRemainsDisplayed() {
+        //manual
+    }
+
+    @Given("a valid unverified proximity presentation request is displayed")
+    public void aValidUnverifiedProximityPresentationRequestIsDisplayed() {
+        //manual
+    }
+
+    @Then("the presentation completes successfully")
+    public void thePresentationCompletesSuccessfully() {
+        //manual
+    }
+
+    @And("only the approved document data is shared with the relying party")
+    public void onlyTheApprovedDocumentDataIsSharedWithTheRelyingParty() {
+        //manual
+    }
+
+    @When("the user attempts to select Share")
+    public void theUserAttemptsToSelectShare() {
+        //manual
+    }
+
+    @Then("the Share button remains disabled")
+    public void theShareButtonRemainsDisabled() {
+        //manual
+    }
+
+    @And("the presentation does not proceed to sharing")
+    public void thePresentationDoesNotProceedToSharing() {
+        //manual
+    }
+
+    @Then("the presentation request is cancelled")
+    public void thePresentationRequestIsCancelled() {
+        //manual
+    }
+
+    @And("no risk acknowledgement is required")
+    public void noRiskAcknowledgementIsRequired() {
+        //manual
+    }
+
+    @And("no document data is shared with the relying party")
+    public void noDocumentDataIsSharedWithTheRelyingParty() {
+        //manual
+    }
+
+    @And("no document data is shared")
+    public void noDocumentDataIsShared() {
+        //manual
+    }
+
+    @Given("the Android wallet supports Digital Credentials API requests")
+    public void theAndroidWalletSupportsDigitalCredentialsAPIRequests() {
+        //manual
+    }
+
+    @When("the wallet receives a DC API request from an unverified relying party")
+    public void theWalletReceivesADCAPIRequestFromAnUnverifiedRelyingParty() {
+        //manual
+    }
+
+    @Given("the wallet supports Digital Credentials API requests")
+    public void theWalletSupportsDigitalCredentialsAPIRequests() {
+        //manual
+    }
+
+    @When("the wallet receives a valid DC API request from an unverified relying party")
+    public void theWalletReceivesAValidDCAPIRequestFromAnUnverifiedRelyingParty() {
+        //manual
+    }
+
+    @Given("an unverified DC API request is displayed")
+    public void anUnverifiedDCAPIRequestIsDisplayed() {
+        //manual
+    }
+
+    @And("all other sharing prerequisites are satisfied")
+    public void allOtherSharingPrerequisitesAreSatisfied() {
+        //manual
+    }
+
+    @Given("a valid unverified DC API request is displayed")
+    public void aValidUnverifiedDCAPIRequestIsDisplayed() {
+        //manual
+    }
+
+    @Then("the DC API presentation completes successfully")
+    public void theDCAPIPresentationCompletesSuccessfully() {
+        //manual
+    }
+
+    @And("no credential-bearing DC API response is returned")
+    public void noCredentialBearingDCAPIResponseIsReturned() {
+        //manual
+    }
+
+    @Then("the DC API request is cancelled")
+    public void theDCAPIRequestIsCancelled() {
+        //manual
+    }
+
+    @And("the following warning is displayed above the Share button {string}")
+    public void theFollowingWarningIsDisplayedAboveTheShareButtonWarningTheIdentityOfThisRelyingPartyCouldNotBeVerifiedReviewCarefullyBeforeSharingYourData() {
+        //manual
+    }
+
+    @When("an unverified relying party sends a valid presentation request")
+    public void anUnverifiedRelyingPartySendsAValidPresentationRequest() {
+        //manual
+    }
+
+    @And("the risk acknowledgement switch is on")
+    public void theRiskAcknowledgementSwitchIsOn() {
+        //manual
+    }
+
+    @When("the user disables the risk acknowledgement switch")
+    public void theUserDisablesTheRiskAcknowledgementSwitch() {
+        //manual
+    }
+
+    @When("a proximity reader sends a presentation request without authenticating")
+    public void aProximityReaderSendsAPresentationRequestWithoutAuthenticating() {
+        //manual
+    }
+
+    @And("no verified badge is displayed for the reader")
+    public void noVerifiedBadgeIsDisplayedForTheReader() {
+        //manual
+    }
+
+    @Then("the requester name is displayed as {string}")
+    public void theRequesterNameIsDisplayedAsVerifier() {
+        //manual
+    }
+
+    @And("risk acknowledgement is required before sharing")
+    public void riskAcknowledgementIsRequiredBeforeSharing() {
+        //manual
+    }
+
+    @And("the unverified requester warning is displayed")
+    public void theUnverifiedRequesterWarningIsDisplayed() {
+        //manual
+    }
+
+    @And("the name contained in the reader certificate is not used as the requester name")
+    public void theNameContainedInTheReaderCertificateIsNotUsedAsTheRequesterName() {
+        //manual
+    }
+
+    @Given("a valid DC API request has been received")
+    public void aValidDCAPIRequestHasBeenReceived() {
+        //manual
+    }
+
+    @When("the ID Provider extension is displayed")
+    public void theIDProviderExtensionIsDisplayed() {
+        //manual
+    }
+
+    @And("the user successfully authenticates")
+    public void theUserSuccessfullyAuthenticates() {
+        //manual
+    }
+
+
+    @And("the following warning is displayed above the Accept and Reject buttons {string}")
+    public void theFollowingWarningIsDisplayedAboveTheAcceptAndRejectButtonsWarningTheIdentityOfThisRelyingPartyCouldNotBeVerifiedReviewCarefullyBeforeSharingYourData() {
+        //manual
+    }
+
+    @And("the Accept button is disabled")
+    public void theAcceptButtonIsDisabled() {
+        //manual
+    }
+
+    @Given("a DC API request is displayed")
+    public void aDCAPIRequestIsDisplayed() {
+        //manual
+    }
+
+    @Then("the Accept button is enabled")
+    public void theAcceptButtonIsEnabled() {
+        //manual
+    }
+
+    @Given("a valid DC API request is displayed")
+    public void aValidDCAPIRequestIsDisplayed() {
+        //manual
+    }
+
+    @And("the user successfully completes any required authorization")
+    public void theUserSuccessfullyCompletesAnyRequiredAuthorization() {
+        //manual
+    }
+
+    @And("only the approved document data is returned to the relying party")
+    public void onlyTheApprovedDocumentDataIsReturnedToTheRelyingParty() {
+        //manual
+    }
+
+    @When("the user attempts to select Accept")
+    public void theUserAttemptsToSelectAccept() {
+        //manual
+    }
+
+    @Then("the Accept button remains disabled")
+    public void theAcceptButtonRemainsDisabled() {
+        //manual
+    }
+
+    @And("no verified badge is displayed")
+    public void noVerifiedBadgeIsDisplayed() {
         //manual
     }
 }

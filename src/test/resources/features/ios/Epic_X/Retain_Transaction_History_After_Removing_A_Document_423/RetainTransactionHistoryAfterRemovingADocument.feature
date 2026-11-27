@@ -6,7 +6,6 @@ Feature: Retain transaction history after removing a document
 
     #https://github.com/eu-digital-identity-wallet/eudi-doc-testing-application/issues/423
 
-
   @US_RTHARAD_TC_01
   Scenario: Removing a document removes it from the wallet documents list
     Given a document exists in the wallet

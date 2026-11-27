@@ -8,7 +8,7 @@ Feature: Reject credential offers from unconfigured issuers
 
   @US_RCOFUI_TC_01
   Scenario: Accept offers from configured issuers
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the issuer is listed in the wallet configuration
     When the tries to issue an attestation from a configured issuer
     Then the credential offer is accepted for processing
@@ -19,7 +19,7 @@ Feature: Reject credential offers from unconfigured issuers
 
   @US_RCOFUI_TC_02
   Scenario: Reject offers from unconfigured issuers
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the issuing entity is not listed in the wallet configuration
     When the user tries to issue an attestation from the unconfigured issuer
     Then the credential offer is rejected

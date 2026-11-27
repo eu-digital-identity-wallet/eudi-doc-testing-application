@@ -8,7 +8,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_01
   Scenario: Verify available actions after a remote sharing response fails
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a valid remote sharing request has been received
     And the remote sharing request screen is displayed
     And the wallet contains documents eligible for the request
@@ -22,7 +22,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_02
   Scenario: Verify navigation after closing the remote sharing error screen
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a remote sharing response has failed to send
     And the remote sharing error screen is displayed
     When the user selects the close action
@@ -32,7 +32,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_03
   Scenario: Verify that Back closes a previously failed remote sharing request
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a remote sharing response has failed to send
     And the remote sharing error screen is displayed
     When the user selects the close action
@@ -44,7 +44,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_04
   Scenario: Verify that the transaction-history result remains unchanged after closing a failed remote sharing request
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a remote sharing response has failed to send
     And the existing transaction-history result for the request has been recorded for comparison
     And the remote sharing error screen is displayed
@@ -59,7 +59,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_05
   Scenario: Verify that Share remains available after a remote sharing failure
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a remote sharing response has failed to send
     And the remote sharing error screen is displayed
     When the user selects the close action
@@ -69,7 +69,7 @@ Feature: Prevent duplicate responses after a failed remote share
 
   @US_PDRAAFRS_TC_06
   Scenario: Verify successful remote sharing using Share after a previous failure
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a valid remote sharing request has been received
     And the original remote sharing response has failed due to unavailable network connectivity
     And the original response has not reached the relying party

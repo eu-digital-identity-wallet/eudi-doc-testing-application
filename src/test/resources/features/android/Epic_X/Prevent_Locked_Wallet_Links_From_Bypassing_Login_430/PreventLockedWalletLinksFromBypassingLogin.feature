@@ -50,7 +50,7 @@ Feature: Prevent locked wallet links from bypassing login
 
   @US_PLWLFBL_TC_05
   Scenario: Open internal HTTPS links in browser
-    Given the Android wallet is unlocked
+    Given the wallet is unlocked
     And an HTTPS link is available inside the wallet
     When the user selects the HTTPS link
     Then the link is opened in the browser

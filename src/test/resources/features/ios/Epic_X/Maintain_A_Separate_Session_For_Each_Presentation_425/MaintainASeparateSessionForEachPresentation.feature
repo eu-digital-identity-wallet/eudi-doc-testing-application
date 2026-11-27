@@ -8,7 +8,7 @@ Feature: Maintain a separate session for each presentation
 
   @US_MASSFEP_TC_01
   Scenario: Verify session isolation between different presentation types
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And the wallet contains documents eligible for both presentation requests
     When the user initiates a presentation
     And the presentation is completed
@@ -19,7 +19,7 @@ Feature: Maintain a separate session for each presentation
 
   @US_MASSFEP_TC_02
   Scenario: Verify that overlapping presentation requests remain isolated
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a presentation is active
     And the presentation request contains identifiable request-specific data
     When a second presentation request is received
@@ -29,7 +29,7 @@ Feature: Maintain a separate session for each presentation
 
   @US_MASSFEP_TC_03
   Scenario: Verify that locking the wallet terminates an active presentation
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a presentation is active
     When the wallet becomes locked
     Then the active presentation is terminated
@@ -38,7 +38,7 @@ Feature: Maintain a separate session for each presentation
 
   @US_MASSFEP_TC_04
   Scenario: Verify dashboard navigation after a remote presentation is interrupted by a wallet lock
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a remote presentation is active
     When the wallet becomes locked
     And the user successfully logs in to the wallet again
@@ -47,7 +47,7 @@ Feature: Maintain a separate session for each presentation
 
   @US_MASSFEP_TC_05
   Scenario: Verify silent presentation termination due to a wallet lock
-    Given the Wallet is unlocked
+    Given the wallet is unlocked
     And a presentation is active
     When the wallet becomes locked
     And the user successfully logs in to the wallet again
