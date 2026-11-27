@@ -13158,4 +13158,239 @@ public class ManuallyStepDefs {
     public void theRejectionReasonIsCancelledByTheUser() {
         //manual
     }
+
+    @Given("the user has installed a release build of the wallet")
+    public void theUserHasInstalledAReleaseBuildOfTheWallet() {
+        //manual
+    }
+
+    @Then("the Retrieve logs option is not displayed")
+    public void theRetrieveLogsOptionIsNotDisplayed() {
+        //manual
+    }
+
+    @And("no log retrieval action is available in Settings")
+    public void noLogRetrievalActionIsAvailableInSettings() {
+        //manual
+    }
+
+    @And("the issuer is listed in the wallet configuration")
+    public void theIssuerIsListedInTheWalletConfiguration() {
+        //manual
+    }
+
+    @When("the tries to issue an attestation from a configured issuer")
+    public void theTriesToIssueAnAttestationFromAConfiguredIssuer() {
+        //manual
+    }
+
+    @Then("the credential offer is accepted for processing")
+    public void theCredentialOfferIsAcceptedForProcessing() {
+        //manual
+    }
+
+    @And("the wallet proceeds with the credential issuance flow")
+    public void theWalletProceedsWithTheCredentialIssuanceFlow() {
+        //manual
+    }
+
+    @When("the user successfully completes the required issuance steps")
+    public void theUserSuccessfullyCompletesTheRequiredIssuanceSteps() {
+        //manual
+    }
+
+    @Then("the credential is successfully issued")
+    public void theCredentialIsSuccessfullyIssued() {
+        //manual
+    }
+
+    @And("the issued credential is available in the wallet")
+    public void theIssuedCredentialIsAvailableInTheWallet() {
+        //manual
+    }
+
+    @And("the issuing entity is not listed in the wallet configuration")
+    public void theIssuingEntityIsNotListedInTheWalletConfiguration() {
+        //manual
+    }
+
+    @When("the user tries to issue an attestation from the unconfigured issuer")
+    public void theUserTriesToIssueAnAttestationFromTheUnconfiguredIssuer() {
+        //manual
+    }
+
+    @Then("the credential offer is rejected")
+    public void theCredentialOfferIsRejected() {
+        //manual
+    }
+
+    @And("a corresponding error screen is displayed, e.g. 'This offer comes from an issuer that this wallet is not set up to use'")
+    public void aCorrespondingErrorScreenIsDisplayedEGThisOfferComesFromAnIssuerThatThisWalletIsNotSetUpToUse() {
+        //manual
+    }
+
+    @And("the user cannot proceed with credential issuance")
+    public void theUserCannotProceedWithCredentialIssuance() {
+        //manual
+    }
+
+    @Given("the wallet has received a credential offer from an unconfigured issuer")
+    public void theWalletHasReceivedACredentialOfferFromAnUnconfiguredIssuer() {
+        //manual
+    }
+
+    @And("the unconfigured issuer error screen is displayed")
+    public void theUnconfiguredIssuerErrorScreenIsDisplayed() {
+        //manual
+    }
+
+    @When("the user selects Close")
+    public void theUserSelectsClose() {
+        //manual
+    }
+
+    @And("the rejected credential offer is no longer active")
+    public void theRejectedCredentialOfferIsNoLongerActive() {
+        //manual
+    }
+
+    @And("no credential is added to the wallet")
+    public void noCredentialIsAddedToTheWallet() {
+        //manual
+    }
+
+    @Given("the wallet contains a valid document")
+    public void theWalletContainsAValidDocument() {
+        //manual
+    }
+
+    @When("an issuer status check identifies the document as revoked")
+    public void anIssuerStatusCheckIdentifiesTheDocumentAsRevoked() {
+        //manual
+    }
+
+    @Then("the document status is updated to revoked")
+    public void theDocumentStatusIsUpdatedToRevoked() {
+        //manual
+    }
+
+    @And("the document cannot be used for verification")
+    public void theDocumentCannotBeUsedForVerification() {
+        //manual
+    }
+
+    @When("an issuer status check identifies the document as suspended")
+    public void anIssuerStatusCheckIdentifiesTheDocumentAsSuspended() {
+        //manual
+    }
+
+    @Then("the document status is updated to suspended")
+    public void theDocumentStatusIsUpdatedToSuspended() {
+        //manual
+    }
+
+    @And("the document is identified as suspended in the wallet")
+    public void theDocumentIsIdentifiedAsSuspendedInTheWallet() {
+        //manual
+    }
+
+    @Given("the wallet contains a suspended document")
+    public void theWalletContainsASuspendedDocument() {
+        //manual
+    }
+
+    @When("a subsequent issuer status check confirms that the document is valid")
+    public void aSubsequentIssuerStatusCheckConfirmsThatTheDocumentIsValid() {
+        //manual
+    }
+
+    @Then("the document status is updated to valid")
+    public void theDocumentStatusIsUpdatedToValid() {
+        //manual
+    }
+
+    @And("the suspended status is no longer displayed")
+    public void theSuspendedStatusIsNoLongerDisplayed() {
+        //manual
+    }
+
+    @And("the suspension-related verification restriction is removed")
+    public void theSuspensionRelatedVerificationRestrictionIsRemoved() {
+        //manual
+    }
+
+    @And("the dashboard is displayed")
+    public void theDashboardIsDisplayed() {
+        //manual
+    }
+
+    @When("a background status check identifies the document as revoked")
+    public void aBackgroundStatusCheckIdentifiesTheDocumentAsRevoked() {
+        //manual
+    }
+
+    @Then("a notification sheet is displayed on the dashboard")
+    public void aNotificationSheetIsDisplayedOnTheDashboard() {
+        //manual
+    }
+
+    @And("the affected document is listed in the sheet")
+    public void theAffectedDocumentIsListedInTheSheet() {
+        //manual
+    }
+
+    @And("the sheet title is 'Revoked or suspended documents'")
+    public void theSheetTitleIsRevokedOrSuspendedDocuments() {
+        //manual
+    }
+
+    @And("the sheet displays a corresponding message")
+    public void theSheetDisplaysACorrespondingMessage() {
+        //manual
+    }
+
+    @When("a background status check identifies the document as suspended")
+    public void aBackgroundStatusCheckIdentifiesTheDocumentAsSuspended() {
+        //manual
+    }
+
+    @Given("the wallet contains a revoked document")
+    public void theWalletContainsARevokedDocument() {
+        //manual
+    }
+
+    @And("the document would otherwise satisfy a presentation request")
+    public void theDocumentWouldOtherwiseSatisfyAPresentationRequest() {
+        //manual
+    }
+
+    @And("the relying party requests the revoked document")
+    public void theRelyingPartyRequestsTheRevokedDocument() {
+        //manual
+    }
+
+    @Then("the revoked document cannot be used to satisfy the request")
+    public void theRevokedDocumentCannotBeUsedToSatisfyTheRequest() {
+        //manual
+    }
+
+    @And("no data from the revoked document is shared for verification")
+    public void noDataFromTheRevokedDocumentIsSharedForVerification() {
+        //manual
+    }
+
+    @And("the relying party requests the suspended document")
+    public void theRelyingPartyRequestsTheSuspendedDocument() {
+        //manual
+    }
+
+    @Then("the suspended document cannot be used to satisfy the request")
+    public void theSuspendedDocumentCannotBeUsedToSatisfyTheRequest() {
+        //manual
+    }
+
+    @And("no data from the suspended document is shared for verification")
+    public void noDataFromTheSuspendedDocumentIsSharedForVerification() {
+        //manual
+    }
 }
